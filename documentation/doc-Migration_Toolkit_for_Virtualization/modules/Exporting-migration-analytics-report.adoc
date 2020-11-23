@@ -1,0 +1,17 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_using-migration-analytics.adoc
+// * documentation/doc-Forklift/assemblies/assembly_using-migration-analytics.adoc
+
+[id='Exporting-migration-analytics-report_{context}']
+= Exporting a Migration Analytics report
+
+You can export a complete or filtered Migration Analytics report in CSV format.
+
+.Procedure
+
+. Click *VM migration inventory* in the Migration Analytics report.
+. Optional: Filter the report.
+. Click *Export as CSV*.
++
+The Migration Analytics report is downloaded to your local machine as a CSV file.

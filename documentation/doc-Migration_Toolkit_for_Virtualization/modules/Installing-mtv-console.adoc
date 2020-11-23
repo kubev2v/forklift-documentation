@@ -1,0 +1,27 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Forklift/assemblies/assembly_installing-mtv.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_installing-mtv.adoc
+
+[id="installing-mtv-console_{context}"]
+= Installing {project-short} with the web console
+
+You can install the {project-first} by using the {virt} web console.
+
+.Prerequisites
+
+* Admin privileges
+
+.Procedure
+
+. In the {virt} web console, click *Operators* -> *OperatorHub*.
+. Use the *Filter by keyword* field to find the *{project-short} Operator*.
+. Select the *{project-short} Operator* and click *Install*.
+. On the *Install Operator* page, click *Install*.
++
+On the *Installed Operators* page, the *{project-short} Operator* appears in the *openshift-migration* project with the status *Succeeded*.
+
+. Click *{project-short} Operator*.
+. Under *Provided APIs*, locate the *VirtController* tile, and click *Create Instance*.
+. Click *Create*.
+. Click *Workloads* -> *Pods* to verify that the Provider Inventory, Validation, User Interface, and Controller pods are running.

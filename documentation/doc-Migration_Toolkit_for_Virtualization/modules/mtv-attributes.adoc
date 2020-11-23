@@ -1,0 +1,27 @@
+:icons:
+:experimental:
+:toc: macro
+:toc-title:
+:imagesdir: ../images
+:kebab: Options menu image:kebab.png[title="Options menu"]
+
+ifeval::["{build}" == "upstream"]
+:project-short: Forklift
+:project-full: Forklift
+:project-first: Forklift
+:project-version: 2.0
+:virt: KubeVirt
+:ocp: OpenShift{nbsp}Kubernetes{nbsp}Engine
+:ocp-version: 4.6
+:ocp-short: OKE
+endif::[]
+ifeval::["{build}" == "downstream"]
+:project-short: MTV
+:project-full: Migration{nbsp}Toolkit{nbsp}for{nbsp}Virtualization
+:project-first: {project-full} ({project-short})
+:project-version: 2.0
+:virt: OpenShift Virtualization
+:ocp: Red{nbsp}Hat{nbsp}OpenShift{nbsp}Container{nbsp}Platform
+:ocp-version: 4.6
+:ocp-short: OCP
+endif::[]

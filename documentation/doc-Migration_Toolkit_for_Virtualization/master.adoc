@@ -1,0 +1,32 @@
+= Migration Toolkit for Virtualization
+:imagesdir: images
+:vernum: 2.0
+:toc: left
+:toclevels: 3
+:compat-mode:
+:build: downstream
+:context: mtv
+:mtv:
+
+include::modules/mtv-attributes.adoc[]
+
+{project-first} enables you to migrate a large number of virtual machines from VMware vSphere to {virt}.
+
+You can download the VMware provider data collected by {project-short} and upload it to the Migration Analytics service on link:https://cloud.redhat.com/migrations/migration-analytics[cloud.redhat.com] for a detailed workload analysis report and migration recommendations.
+
+include::modules/About-mtv.adoc[leveloffset=+1]
+
+// include::assemblies/Upgrading-mtv.adoc[leveloffset=+1]
+
+include::assemblies/assembly_planning-migration.adoc[leveloffset=+1]
+include::assemblies/assembly_installing-mtv.adoc[leveloffset=+1]
+
+[id="migrating-virtual-machines_{context}"]
+== Migrating virtual machines
+
+include::assemblies/assembly_migrating-vms-web-console.adoc[leveloffset=+2]
+include::modules/Migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
+include::assemblies/assembly_using-migration-analytics.adoc[leveloffset=+1]
+include::assemblies/assembly_troubleshooting.adoc[leveloffset=+1]
+:mtv!:

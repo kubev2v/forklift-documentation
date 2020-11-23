@@ -1,0 +1,9 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_troubleshooting.adoc
+// * documentation/doc-Forklift/assemblies/assembly_troubleshooting.adoc
+
+[id="collecting-logs_{context}"]
+= Collecting logs - to do
+
+TBD
