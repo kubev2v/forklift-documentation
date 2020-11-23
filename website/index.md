@@ -85,7 +85,7 @@ The following documentation versions are available.
 </table>
 
 > info ""
-> These guides are created from the [`documentation/doc-Forklift`](https://github.com/apinnick/mtv-test/tree/master/documentation/doc-Forklift) folder.
+> These guides are created from the [`documentation/doc-Forklift`](https://github.com/konveyor/forklift-documentation/tree/master/documentation/doc-Forklift) folder.
 
 ### Development Draft
 
