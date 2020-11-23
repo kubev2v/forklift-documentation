@@ -85,14 +85,14 @@ The following documentation versions are available.
 </table>
 
 > info ""
-> These guides are created from the [`documentation/doc-Forklift`](https://github.com/konveyor/forklift-documentation/tree/master/documentation/doc-Forklift) folder.
+> These guides are created from the [`documentation/doc-Forklift`](https://github.com/konveyor/forklift-documentation/tree/main/documentation/doc-Forklift) folder.
 
 ### Development Draft
 
 <table style="width:100%">
   <tr>
     <th>Document</th>
-    <th>Access</th>
+    <th>Format</th>
   </tr>
 
 {% for doc in site.data.devprev %}
@@ -131,4 +131,4 @@ The following documentation versions are available.
 </table>
 
 > error ""
-> Documents in this section are incomplete drafts and may contain inaccuracies
+> Documents in this section are incomplete drafts and may contain inaccuracies.
