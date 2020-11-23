@@ -3,8 +3,8 @@ show_downloads: false
 title: 'Forklift'
 description: "Upstream project for migrating VMware virtual machines to OpenShift Virtualization."
 permalink: pretty
-repository: apinnick/mtv-test
-baseurl: /mtv-test/
+repository: konveyor/forklift-documentation
+baseurl: /forklift-documentation/
 
 
 plugins: [jekyll-paginate, jekyll-asciidoc, jekyll-redirect-from, jekyll-feed, jekyll-sitemap, premonition, jekyll/tagging,  jekyll-seo-tag]
@@ -34,15 +34,3 @@ kramdown:
     block:
       line_numbers: false
       start_line: 1
-# theme: jekyll-rtd-theme
-# title: Forklift
-# repo_url: 'https://github.com/apinnick/mtv-test'
-# baseurl: '/mtv-test'
-#
-# plugins:
-#   - jekyll-paginate
-#   - jekyll-sitemap
-#   - jekyll-gist
-#   - jekyll-feed
-#   - jekyll-remote-theme
-#   - jekyll-github-metadata
