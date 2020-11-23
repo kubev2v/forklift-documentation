@@ -1,0 +1,31 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_migrating-vms-web-console.adoc
+// * documentation/doc-Forklift/assemblies/assembly_migrating-vms-web-console.adoc
+
+[id="adding-vmware-provider_{context}"]
+= Adding the VMware provider
+
+You can add the VMware provider in the web console.
+endif::[]
+
+.Prerequisites
+
+* Admin privileges
+
+
+.Procedure
+
+. In the web console, navigate to *Providers* and click *Add provider*.
+. Select *VMware* from the *Type* list.
+. Fill in the following fields:
+
+* *Name*: vCenter name to display in the list of providers
+* *Hostname*: vCenter host name or IP address
+* *Username*: vCenter admin user name, for example, `administrator@vsphere.local`
+* *Password*: vCenter password
+
+. Click *Check connection* to verify the credentials.
+. Click *Add* to add and save the provider.
++
+The provider appears in the list of providers.

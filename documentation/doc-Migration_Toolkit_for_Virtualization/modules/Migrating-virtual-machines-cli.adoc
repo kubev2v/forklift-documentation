@@ -1,0 +1,149 @@
+// Module included in the following assemblies:
+//
+// doc-mtv_2.0/master.adoc
+
+[id="migrating-virtual-machines-cli_{context}"]
+= Migrating virtual machines from the CLI
+
+You can migrate virtual machines from the command line (CLI) by creating the following custom resources:
+
+* Secret: Contains the VMware vSphere credentials
+* Provider: Specifies the VMware provider
+* Plan: Specifies the source and target clusters, network mappings, data store mappings, and VMs to migrate
+* Migration: Runs the Plan
++
+If a Migration does not complete, you can create a new Migration CR, referencing the same Plan, to migrate the remaining VMs.
+
+.Prerequisites
+
+* link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] installed
+* Admin privileges
+
+.Procedure
+
+. Get the SSL thumbprint of the vCenter:
++
+[source,terminal]
+----
+$ openssl s_client \
+    -connect <vcenter.example.com>:443 \ <1>
+    < /dev/null 2>/dev/null \
+    | openssl x509 -fingerprint -noout -in /dev/stdin \
+    | cut -d '=' -f 2
+----
+<1> Specify the vCenter host name.
+
+. Create a Secret object with the VMware credentials:
++
+[source,terminal]
+----
+$ cat < EOF | oc apply -f -
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vmware-secret
+  namespace: openshift-migration
+type: Opaque
+stringData:
+  user: administrator@vsphere.local
+  password: <password> <1>
+  thumbprint: <01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67> <2>
+EOF
+----
+<1> Specify the password.
+<2> Specify the thumbprint.
+
+. Create a Provider object for VMware vSphere:
++
+[source,terminal]
+----
+$ cat < EOF | oc apply -f -
+---
+apiVersion: virt.konveyor.io/v1alpha1
+kind: Provider
+metadata:
+  name: vmware-provider
+  namespace: openshift-migration
+spec:
+  type: vsphere
+  url: https://<vcenter.example.com>/sdk <1>
+  secret:
+    name: vmware-secret <2>
+    namespace: openshift-migration
+EOF
+----
+<1> Specify the vSphere API end point.
+<2> Specify the Secret.
+
+. Create a Plan object for the migration:
++
+[source,terminal]
+----
+$ cat < EOF | oc apply -f -
+---
+apiVersion: virt.konveyor.io/v1alpha1
+kind: Plan
+metadata:
+  name: test-migration-plan
+  namespace: openshift-migration
+spec:
+  provider:
+    source:
+      name: vmware-provider
+      namespace: openshift-migration
+    destination:
+      name: host <1>
+      namespace: openshift-migration
+  map:
+    networks:
+      - source:
+          id: <network-31> <2>
+        destination:
+          type: pod
+          name: pod
+          namespace: openshift-migration
+      - source:
+          id: <network-723>
+        destination:
+          type: pod
+          name: pod
+          namespace: openshift-migration
+    datastores:
+      - source:
+          id: <datastore-30> <3>
+        destination:
+          storageClass: standard
+      - source:
+          id: <datastore-35>
+        destination:
+          storageClass: standard
+  vms:
+    - id: <vm-1630> <4>
+    - id: <vm-2841>
+EOF
+----
+<1> The OpenShift provider is added automatically as `host` when the Operator is deployed.
+<2> Specify a source network.
+<3> Specify a source data store.
+<4> Specify the IDs of the VMs to migrate.
+
+. Create a Migration CR to run the Plan CR:
++
+[source,terminal]
+----
+$ cat < EOF | oc apply -f -
+---
+apiVersion: virt.konveyor.io/v1alpha1
+kind: Migration
+metadata:
+  name: migration-test-001
+  namespace: openshift-migration
+spec:
+  plan:
+    name: test-migration-plan
+    namespace: openshift-migration
+EOF
+----
+
+The Migration CR creates a `VirtualMachineImport` object for each VM being migrated. You can monitor the progress of the migration by viewing the `VirtualMachineImport` pods in the `openshift-migration` namespace.

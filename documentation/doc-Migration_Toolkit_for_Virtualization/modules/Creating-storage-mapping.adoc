@@ -1,0 +1,24 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_migrating-vms-web-console.adoc
+// * documentation/doc-Forklift/assemblies/assembly_migrating-vms-web-console.adoc
+
+[id="creating-storage-mapping_{context}"]
+= Creating a storage mapping
+
+You can create a storage mapping to map VMware data stores to {virt} storage classes.
+
+.Prerequisites
+
+* The local and shared persistent storage must support VM migration.
+
+.Procedure
+
+. In the web console, navigate to *Mappings* -> *Storage*.
+. Click *Create mapping*.
+. Select a *Source provider* and a *Target provider*.
+. Select a data store from the *Source datastores* list and a storage class from the *Target storage classes* list.
+. Click *Add* to create additional storage mappings or to map multiple data stores to a single storage class.
+. Click *Create*.
++
+The mapping is displayed in the *Storage mappings* list.

@@ -1,0 +1,26 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_migrating-vms-web-console.adoc
+// * documentation/doc-Forklift/assemblies/assembly_migrating-vms-web-console.adoc
+
+[id="creating-network-mapping_{context}"]
+= Creating a network mapping
+
+You can create a network mapping to map VMware networks to {virt} networks.
+
+[NOTE]
+====
+You cannot map an opaque network to a {virt} network.
+====
+
+.Procedure
+
+
+. In the web console, navigate to *Mappings* -> *Network*.
+. Click *Create mapping*.
+. Select a *Source provider* and a *Target provider*.
+. Select a network from the *Source networks* list and from the *Target networks* list.
+. Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
+. Click *Create*.
++
+The mapping is displayed in the *Network mappings* list.

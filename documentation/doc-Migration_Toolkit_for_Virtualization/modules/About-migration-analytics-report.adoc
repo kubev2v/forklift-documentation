@@ -1,0 +1,26 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_using-migration-analytics.adoc
+// * documentation/doc-Forklift/assemblies/assembly_using-migration-analytics.adoc
+
+[id="about-migration-analytics-report_{context}"]
+= About the Migration Analytics report
+
+The Migration Analytics report contains a VM migration summary and a VM migration inventory.
+
+.VM migration summary
+
+The VM migration summary displays the following information:
+
+* *Summary*: Providers, hosts, clusters, and VMs. Percentage of VMs that have no issues for migrating to {virt}.
+* *Migration risk assessment*: Suitability of a VM for migration. The assessment is determined by rules that detect certain configurations or operating systems.
+* *Rules summary (issues that impact migration risk)*: Information about the rules.
+* *Operating systems identified*: Operating systems that can be migrated to Red Hat Enterprise Linux.
+
+.VM migration inventory
+
+The VM migration inventory displays a list of virtual machines with detailed information.
+
+You can click a VM to view its migration risk assessment.
+
+You can filter the VM migration inventory and export it as a CSV file.

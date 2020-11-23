@@ -1,0 +1,54 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Forklift/master.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="about-mtv_{context}"]
+= About {project-full}
+
+Placeholder for diagram
+// architecture diagram
+
+.Custom resources
+
+{project-short} creates the following custom resources (CRs):
+
+* `Provider`:
+** Created when you add a source or target provider
+** Stores provider attributes in order to connect to and interact with the providers
+
+* `Plan`:
+** Created when you create a migration plan
+** Contains a list of VMs that are migrated together with the same migration parameters
+** Selects VMs to fit the available migration resources until all VMs are migrated
+
+* `Mapping`: Created when you map source and target networks or source and target storage
+
+* `Migration`:
+** Created when you run a migration plan
+** Aggregates the migration progress
++
+If a virtual machine fails to migrate, you can run a new migration with the same migration plan. Only the virtual machines that have not migrated will be migrated.
+
+.Services
+
+{project-short} creates the following services:
+
+* Provider Inventory:
+** Connects to the source and target providers
+** Maintains a local inventory for mappings and plans
+** Separate provider inventory pods for each provider enable scalability
+
+* Validation:
+** Validates the suitability of a VM for migration to {virt} by applying rules
+** Triggered by the Provider Inventory service whenever a VM configuration change is detected
+** Stores the VM validation status
+* User Interface:
+** Enables you to manipulate the {project-short} CRs
+** Indicates the state of the CRs
+** Displays the progress of a migration
+* Controller: Implements the logic to reconcile the CRs with the state defined by the user
++
+For example, when you create a Plan, the controllers validate it and add a status label. If a Plan fails validation, its status is `Not ready` and the Plan cannot be used to perform a migration.
+
+* Aggregates the status of related CRs to provide a holistic and consistent view of the state of a migration

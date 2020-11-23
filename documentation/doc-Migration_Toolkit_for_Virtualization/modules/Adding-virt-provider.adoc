@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_migrating-vms-web-console.adoc
+// * documentation/doc-Forklift/assemblies/assembly_migrating-vms-web-console.adoc
+
+[id="adding-virt-provider_{context}"]
+= Adding the {virt} provider
+
+You can add the {virt} provider in the web console.
+
+.Prerequisites
+
+* link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/using-service-accounts-in-applications.html[`VirtController` service account token]
+
+.Procedure
+
+. In the web console, navigate to *Providers* and click *Add provider*.
+. Select *{virt}* from the *Type* list.
+. Fill in the following fields:
+
+* *Cluster name*: OpenShift cluster name to display in the list of providers
+* *URL*: OpenShift cluster API endpoint
+* *Service account token*: VirtController service account token
+
+. Click *Check connection* to verify the credentials.
+. Click *Add* to add and save the provider.
++
+The provider appears in the list of providers.
