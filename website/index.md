@@ -4,11 +4,11 @@ layout: default
 tags: [mtv, openshift virtualization, upstream, documentation]
 ---
 
-## Forklift
+## Forklift documentation
 
-### Documentation
+### Released documents
 
-The following documentation versions are available.
+The following documents are official releases.
 
 <table style="width:100%">
   <tr>
@@ -85,14 +85,14 @@ The following documentation versions are available.
 </table>
 
 > info ""
-> These guides are created from the [`documentation/doc-Forklift`](https://github.com/konveyor/forklift-documentation/tree/main/documentation/doc-Forklift) folder.
+> These documents are created from the [`documentation/doc-Forklift`](https://github.com/apinnick/mtv-test/tree/master/documentation/doc-Forklift) folder.
 
-### Development Draft
+### Draft documents
 
 <table style="width:100%">
   <tr>
     <th>Document</th>
-    <th>Format</th>
+    <th>Format/release</th>
   </tr>
 
 {% for doc in site.data.devprev %}
@@ -131,4 +131,5 @@ The following documentation versions are available.
 </table>
 
 > error ""
-> Documents in this section are incomplete drafts and may contain inaccuracies.
+> Documents in this section are in progress and might contain inaccuracies.
+
