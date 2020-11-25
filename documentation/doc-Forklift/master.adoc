@@ -14,7 +14,11 @@ include::modules/mtv-attributes.adoc[]
 
 You can download the VMware provider data collected by {project-short} and upload it to the Migration Analytics service on link:https://cloud.redhat.com/migrations/migration-analytics[cloud.redhat.com] for a detailed workload analysis report and migration recommendations.
 
-include::modules/About-mtv.adoc[leveloffset=+1]
+= About {project-full}
+
+TBD
+
+// include::modules/About-mtv.adoc[leveloffset=+1]
 
 // include::assemblies/Upgrading-mtv.adoc[leveloffset=+1]
 
