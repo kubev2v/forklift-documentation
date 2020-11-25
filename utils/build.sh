@@ -16,7 +16,7 @@ DOCS=(
 
 # Documents using latest
 STATIC=(
-    # 'Forklift'
+    'Forklift'
 )
 
 DEV=(
