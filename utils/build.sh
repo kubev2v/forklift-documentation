@@ -5,7 +5,7 @@
 RELEASES=""
 
 # Devel releases for static documents and devel docs
-DEVRELEASE="2.0"
+DEVRELEASE=""
 
 # STATIC Release
 STATICRELEASE="${DEVRELEASE}"
