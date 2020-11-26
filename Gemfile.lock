@@ -77,6 +77,10 @@ GEM
       nuggets
     jekyll-watch (2.2.1)
       listen (~> 3.0)
+    just-the-docs (0.3.3)
+      jekyll (>= 3.8.5)
+      jekyll-seo-tag (~> 2.0)
+      rake (>= 12.3.1, < 13.1.0)
     kramdown (2.3.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -160,6 +164,7 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   jekyll-tagging
+  just-the-docs
   premonition (>= 4.0.0)
   pygments.rb
   rake
