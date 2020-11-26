@@ -20,6 +20,7 @@ gem "jekyll", ">= 4.0.0"
 gem "premonition", ">= 4.0.0"
 gem "pygments.rb"
 gem "rake"
+gem "just-the-docs"
 
 
 # gem "rails"
