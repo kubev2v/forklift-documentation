@@ -2,10 +2,10 @@
 # Builds documentation for each release in both HTML and PDF versions
 
 # Space separated version list to build
-RELEASES=""
+RELEASES="2.0-beta"
 
 # Devel releases for static documents and devel docs
-DEVRELEASE="2.0"
+DEVRELEASE="2.0-beta"
 
 # STATIC Release
 STATICRELEASE="${DEVRELEASE}"
@@ -16,7 +16,6 @@ DOCS=(
 
 # Documents using latest
 STATIC=(
-    'Forklift'
 )
 
 DEV=(

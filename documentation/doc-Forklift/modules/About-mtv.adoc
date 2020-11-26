@@ -6,6 +6,8 @@
 [id="about-mtv_{context}"]
 = About {project-full}
 
+IN PROGRESS
+
 Placeholder for diagram
 // architecture diagram
 

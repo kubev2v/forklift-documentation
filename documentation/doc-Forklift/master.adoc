@@ -1,6 +1,6 @@
 = Forklift
 :imagesdir: images
-:vernum: 2.0
+:vernum: 2.0-beta
 :toc: left
 :toclevels: 3
 :compat-mode:
@@ -9,6 +9,16 @@
 :mtv:
 
 include::modules/mtv-attributes.adoc[]
+
+[IMPORTANT]
+.Draft documentation
+====
+This draft document is a work in progress.
+
+. It might not be complete.
+. It might be not accurate.
+. It might break your environment.
+====
 
 {project-first} enables you to migrate a large number of virtual machines from VMware vSphere to {virt}.
 

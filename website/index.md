@@ -84,8 +84,6 @@ The following documents are official releases.
 
 </table>
 
-> info ""
-<!-- > These documents are created from the [`documentation/doc-Forklift`](https://github.com/apinnick/mtv-test/tree/master/documentation/doc-Forklift) folder. -->
 
 ### Draft documents
 
