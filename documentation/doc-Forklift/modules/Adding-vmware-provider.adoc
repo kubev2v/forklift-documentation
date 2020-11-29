@@ -6,13 +6,11 @@
 [id="adding-vmware-provider_{context}"]
 = Adding the VMware provider
 
-You can add the VMware provider in the web console.
-endif::[]
+You can add the VMware provider in the {mtv-short} web console.
 
 .Prerequisites
 
 * Admin privileges
-
 
 .Procedure
 

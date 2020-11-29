@@ -6,7 +6,7 @@
 [id="installing-mtv-console_{context}"]
 = Installing {project-short} with the web console
 
-You can install the {project-first} by using the {virt} web console.
+You can install the {project-first} with the {virt} web console.
 
 .Prerequisites
 
@@ -15,8 +15,18 @@ You can install the {project-first} by using the {virt} web console.
 .Procedure
 
 . In the {virt} web console, click *Operators* -> *OperatorHub*.
-. Use the *Filter by keyword* field to find the *{project-short} Operator*.
-. Select the *{project-short} Operator* and click *Install*.
+ifeval::["build" == "downstream"]
+. Use the *Filter by keyword* field to find the *Forklift Operator for VMs*.
++
+[NOTE]
+====
+The Forklift Operator for VMs is a Community Operator. Red Had does not support Community Operators.
+====
+endif::[]
+ifeval::["build" == "downstream"]
+. Use the *Filter by keyword* field to find the *{project-full} Operator*.
+endif::[]
+. Click the Operator and then click *Install*.
 . On the *Install Operator* page, click *Install*.
 +
 On the *Installed Operators* page, the *{project-short} Operator* appears in the *openshift-migration* project with the status *Succeeded*.
