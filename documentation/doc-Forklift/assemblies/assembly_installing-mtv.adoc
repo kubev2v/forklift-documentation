@@ -31,7 +31,7 @@
 
 :context: installing-mtv
 
-You can install the {project-first} by using the {virt} web console or the CLI.
+You can install the {project-first} with the {virt} web console or from the CLI.
 
 Then you can create a VMware Virtual Disk Development Kit (VDDK) image. {project-short} uses VDDK to copy the source disks.
 
