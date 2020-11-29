@@ -87,6 +87,8 @@ The following documents are official releases.
 
 ### Draft documents
 
+The following documents are drafts.
+
 <table style="width:100%">
   <tr>
     <th>Document</th>

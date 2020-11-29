@@ -27,7 +27,7 @@
 // If the assembly covers a task, start the title with a verb in the gerund
 // form, such as Creating or Configuring.
 [id='planning-migration_{context}']
-= Planning the migration - tbd
+= Planning the migration
 
 // The `context` attribute enables module reuse. Every module's ID
 // includes {context}, which ensures that the module has a unique ID even if
