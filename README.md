@@ -10,17 +10,17 @@ Read the [Guidelines for Red Hat Documentation](https://redhat-documentation.git
 
 Use the following variables:
 
-| Variable           | Upstream value                 | Downstream value                     |
-| --------           | --------------                 | ----------------                     |
+| Variable | Upstream value | Downstream value |
+| -------- | -------------- | ---------------- |
 | project-full | Forklift   | Migration Toolkit for Virtualization |
 | project-short | Forklift | MTV |
-| project-version | 2.0 | 2.0 |
+| project-version | 2.0-beta | 2.0-beta |
 | virt | KubeVirt | OpenShift Virtualization |
 | ocp | OpenShift Kubernetes Engine | Red Hat OpenShift Container Platform |
 | ocp-version   | 4.6 | 4.6 |
 | ocp-short | OKE | OCP |
 
-Variables cannot be used in shell or code examples unless you include the "attributes" keyword:
+Variables cannot be used in CLI commands or code blocks unless you include the "attributes" keyword:
 
 	[options="nowrap" subs="+quotes,+attributes"]
 	----
@@ -29,18 +29,19 @@ Variables cannot be used in shell or code examples unless you include the "attri
 
 You can hide or show specific blocks, paragraphs, warnings or chapters with the `build` variable. Its value can be set to "downstream" or "upstream":
 
-	ifeval::["{build}" == "upstream"]
+	ifeval::["build" == "upstream"]
 	This content is only relevant for Forklift.
 	endif::[]
 
-### Previewing changes in a container
+### Building a document preview
 
-You can preview the changes to this repository by running a Jekyll container.
+You can build a document preview by running a Jekyll container.
 
-- Clone repository, check out the source branch, and prepare the Jekyll site:
+- Clone the repository, check out the `main` branch, and make your changes.
+- Build the Jekyll site:
 
   ```console
-  git clone -b source https://github.com/apinnick/mtv-test.git && cd mtv-test
+  git clone -b source https://github.com/konveyor/forklift-documentation.git && cd forklift-documentation
   for i in .jekyll-cache _site; do mkdir ${i} && chmod 777 ${i}; done
   for i in Gemfile.lock; do touch ${i} && chmod 777 ${i}; done
   ```
@@ -59,4 +60,4 @@ You can preview the changes to this repository by running a Jekyll container.
   podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll jekyll/jekyll jekyll serve --watch --future
   ```
 
-- Navigate to `http://0.0.0.0:4000` in a web browser to view the site preview.
+- Navigate to `http://0.0.0.0:4000` in a web browser to view the preview.
