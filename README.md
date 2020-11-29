@@ -68,4 +68,8 @@ You must have Podman installed.
   podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll jekyll/jekyll jekyll serve --watch --future
   ```
 
+<<<<<<< HEAD
 5. Navigate to `http://0.0.0.0:4000` in a web browser to view the preview.
+=======
+- Navigate to `http://0.0.0.0:4000` in a web browser to view the preview.
+>>>>>>> bbbf4df... updating index.md
