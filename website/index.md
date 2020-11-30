@@ -5,7 +5,7 @@ tags: [mtv, openshift virtualization, upstream, documentation]
 ---
 
 ## Forklift documentation
-
+<!--
 ### Released documents
 
 The following documents are official releases.
@@ -82,12 +82,10 @@ The following documents are official releases.
   </tr>
   {% endfor %}
 
-</table>
+</table> -->
 
 
 ### Draft documents
-
-The following documents are drafts.
 
 <table style="width:100%">
   <tr>
