@@ -1,7 +1,7 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_using-migration-analytics.adoc
-// * documentation/doc-Forklift/assemblies/assembly_using-migration-analytics.adoc
+// * documentation/assemblies/assembly_using-migration-analytics.adoc
+// * documentation/assemblies/assembly_using-migration-analytics.adoc
 
 [id='Filtering-migration-analytics-report_{context}']
 = Filtering a Migration Analytics report

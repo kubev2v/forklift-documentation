@@ -24,6 +24,8 @@ include::assemblies/assembly_installing-mtv.adoc[leveloffset=+1]
 [id="migrating-virtual-machines_{context}"]
 == Migrating virtual machines
 
+You can migrate virtual machines in the web console or from the CLI.
+
 include::assemblies/assembly_migrating-vms-web-console.adoc[leveloffset=+2]
 include::modules/Migrating-virtual-machines-cli.adoc[leveloffset=+2]
 

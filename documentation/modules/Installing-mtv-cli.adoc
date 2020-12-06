@@ -1,7 +1,7 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Forklift/assemblies/assembly_installing-mtv.adoc
-// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_installing-mtv.adoc
+// * documentation/assemblies/assembly_installing-mtv.adoc
+// * documentation/assemblies/assembly_installing-mtv.adoc
 
 [id="installing-mtv-cli_{context}"]
 = Installing {project-short} from the CLI
@@ -11,7 +11,7 @@ You can install the {project-full} from the CLI.
 .Prerequisites
 
 * link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] installed
-* Admin privileges
+* `cluster-admin` privileges
 
 .Procedure
 

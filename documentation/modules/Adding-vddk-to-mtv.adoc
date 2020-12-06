@@ -1,12 +1,12 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Forklift/assemblies/assembly_installing-mtv.adoc
-// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_installing-mtv.adoc
+// * documentation/assemblies/assembly_installing-mtv.adoc
+// * documentation/assemblies/assembly_installing-mtv.adoc
 
 [id="adding-vddk-to-mtv_{context}"]
 = Adding a VDDK image to {project-short}
 
-You can create a VDDK image and store it in a private image registry. Then, you can add the image to the `v2v-vmware` ConfigMap.
+You can create a VDDK image and store it in a private image registry. Then, you can add the image to the `v2v-vmware` config map.
 
 [NOTE]
 ====
@@ -53,7 +53,7 @@ ENTRYPOINT ["cp", "-r", "/vmware-vix-disklib-distrib", "/opt"]
 EOF
 ----
 
-. Build the image:
+. Build the VDDK image:
 +
 [source,terminal]
 ----
@@ -64,14 +64,14 @@ $ podman build . -t <registry_route_or_server_path>/vddk:<tag> <1>
 * For an internal {ocp} registry, specify the internal registry route, for example, `image-registry.openshift-image-registry.svc:5000/openshift/vddk:<tag>`.
 * For an external registry, specify the server name, path, and tag, for example, `server.example.com:5000/vddk:<tag>`.
 
-. Push the image to the registry:
+. Push the VDDK image to the registry:
 +
 [source,terminal]
 ----
 $ podman push <registry_route_or_server_path>/vddk:<tag>
 ----
 
-. Edit the `v2v-vmware` ConfigMap in the *openshift-cnv* project:
+. Edit the `v2v-vmware` config map in the *openshift-cnv* project:
 +
 [source,terminal]
 ----

@@ -1,7 +1,7 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_troubleshooting.adoc
-// * documentation/doc-Forklift/assemblies/assembly_troubleshooting.adoc
+// * documentation/assemblies/assembly_troubleshooting.adoc
+// * documentation/assemblies/assembly_troubleshooting.adoc
 
 [id="known-issues_{context}"]
 = Known issues - in progress
