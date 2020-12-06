@@ -1,7 +1,7 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Forklift/assemblies/assembly_installing-mtv.adoc
-// * documentation/doc-Migration_Toolkit_for_Virtualization/assemblies/assembly_installing-mtv.adoc
+// * documentation/assemblies/assembly_installing-mtv.adoc
+// * documentation/assemblies/assembly_installing-mtv.adoc
 
 [id="installing-mtv-console_{context}"]
 = Installing {project-short} with the web console
@@ -10,17 +10,17 @@ You can install the {project-first} with the {virt} web console.
 
 .Prerequisites
 
-* Admin privileges
+* `cluster-admin` privileges
 
 .Procedure
 
 . In the {virt} web console, click *Operators* -> *OperatorHub*.
 ifeval::["build" == "downstream"]
-. Use the *Filter by keyword* field to find the *Forklift Operator for VMs*.
+. Use the *Filter by keyword* field to find the *Konveyor Operator for VMs*.
 +
 [NOTE]
 ====
-The Forklift Operator for VMs is a Community Operator. Red Had does not support Community Operators.
+The Konveyor Operator for VMs is a Community Operator. Red Had does not support Community Operators.
 ====
 endif::[]
 ifeval::["build" == "downstream"]
@@ -34,4 +34,4 @@ On the *Installed Operators* page, the *{project-short} Operator* appears in the
 . Click *{project-short} Operator*.
 . Under *Provided APIs*, locate the *VirtController* tile, and click *Create Instance*.
 . Click *Create*.
-. Click *Workloads* -> *Pods* to verify that the Provider Inventory, Validation, User Interface, and Controller pods are running.
+. Click *Workloads* -> *Pods* to verify that the `ProviderInventory`, `Validation`, `UserInterface`, and `Controller` pods are running.
