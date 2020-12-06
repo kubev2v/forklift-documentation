@@ -10,7 +10,7 @@ logo: "/assets/img/forklift-logo-lightbg.svg"
 type: website
 =======
 title: 'Forklift'
-description: "Forkstream is an upstream project for migrating VMware virtual machines to OpenShift Virtualization.\nThe downstream project is Migration Toolkit for Virtualization."
+description: "Forkstream is an upstream project for migrating VMware virtual machines to OpenShift Virtualization. The downstream project is Migration Toolkit for Virtualization."
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /forklift-documentation/
