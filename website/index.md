@@ -90,7 +90,7 @@ The following documents are official releases.
 <table style="width:100%">
   <tr>
     <th>Document</th>
-    <th>Format/release</th>
+    <th>Format</th>
   </tr>
 
 {% for doc in site.data.devprev %}
