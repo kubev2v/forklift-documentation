@@ -1,6 +1,6 @@
 # Site settings
 show_downloads: false
-title: 'Forklift'
+# title: "Forklift"
 description: "Forkstream is an upstream project for migrating VMware virtual machines to OpenShift Virtualization.
 
 The downstream project is Migration Toolkit for Virtualization."
