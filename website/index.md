@@ -5,7 +5,6 @@ tags: [mtv, openshift virtualization, upstream, documentation]
 ---
 
 ## Forklift documentation
-
 <!--
 ### Released documents
 
