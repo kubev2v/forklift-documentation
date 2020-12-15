@@ -1,14 +1,16 @@
-# Forklift
+![logo](/documentation/images/forklift-logo-lightbg.png)
 
-Forklift is the upstream project for Migration Toolkit for Virtualization.
+Forkstream is an upstream project for migrating VMware virtual machines to OpenShift Virtualization.
 
-## Contributing
+The downstream project is the Migration Toolkit for Virtualization.
+
+## Contributing to Forklift documentation
 
 Read the [Guidelines for Red Hat Documentation](https://redhat-documentation.github.io/) before opening a pull request.
 
 ### Upstream and downstream variables
 
-Use the following variables:
+This document uses the following variables to ensure that upstream and downstream product names and versions are rendered correctly.
 
 | Variable | Upstream value | Downstream value |
 | -------- | -------------- | ---------------- |
