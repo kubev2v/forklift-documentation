@@ -1,10 +1,11 @@
 ---
-title: Forklift
+title: Forklift documentation
 layout: default
 tags: [mtv, openshift virtualization, upstream, documentation]
 ---
 
 ## Forklift documentation
+
 <!--
 ### Released documents
 
@@ -90,7 +91,7 @@ The following documents are official releases.
 <table style="width:100%">
   <tr>
     <th>Document</th>
-    <th>Format/release</th>
+    <th>Format</th>
   </tr>
 
 {% for doc in site.data.devprev %}
@@ -129,4 +130,4 @@ The following documents are official releases.
 </table>
 
 > error ""
-> Documents in this section are works in progress.
+> Draft documents are works in progress.
