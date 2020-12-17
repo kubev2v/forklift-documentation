@@ -6,6 +6,7 @@
 :compat-mode:
 :build: upstream
 :context: forklift
+:icons: font
 
 include::modules/mtv-attributes.adoc[]
 
