@@ -1,4 +1,4 @@
-:icons:
+:icons: font
 :experimental:
 :toc: macro
 :toc-title:
