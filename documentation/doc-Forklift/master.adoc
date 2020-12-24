@@ -6,7 +6,11 @@
 :compat-mode:
 :build: upstream
 :context: forklift
+:docinfo: shared
 :icons: font
+:keywords: VMware, VSphere, Migration, MTV, Migration Toolkit
+:description: Documentation about the Migration ToolKit for Virtualization
+:title: Migration Toolkit for Virtualization
 
 include::modules/mtv-attributes.adoc[]
 
