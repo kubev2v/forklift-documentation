@@ -8,6 +8,8 @@ The downstream project is the Migration Toolkit for Virtualization.
 
 Read the [Guidelines for Red Hat Documentation](https://redhat-documentation.github.io/) before opening a pull request.
 
+Fork and clone this repository.
+
 ### Upstream and downstream variables
 
 This document uses the following variables to ensure that upstream and downstream product names and versions are rendered correctly.
@@ -51,13 +53,13 @@ You must have Podman installed.
   ```
 3. Create a `Gemfile.lock` file:
   ```console
-  $ for i in Gemfile.lock; do touch ${i} && chmod 777 ${i}; don
+  $ for i in Gemfile.lock; do touch ${i} && chmod 777 ${i}; done
   ```
-4. Create a container for Jekyll:
+4. Run a Jekyll container:
 - If your operating system is SELinux-enabled:
 
   ```console
-  podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll:Z jekyll/jekyll jekyll serve --watch --future
+  $ podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll:Z jekyll/jekyll jekyll serve --watch --future
   ```
 
   **NOTE**: The Z at the end of the volume (-v) relabels the contents so that they can be written from within the container, like running `chcon -Rt svirt_sandbox_file_t -l s0:c1,c2` yourself. You must run this command in the cloned directory.
@@ -65,7 +67,7 @@ You must have Podman installed.
 - If your operating system is not SELinux-enabled:
 
   ```console
-  podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll jekyll/jekyll jekyll serve --watch --future
+  $ podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll jekyll/jekyll jekyll serve --watch --future
   ```
 
 5. Navigate to `http://0.0.0.0:4000` in a web browser to view the preview.
