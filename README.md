@@ -8,8 +8,6 @@ The downstream project is the Migration Toolkit for Virtualization.
 
 Read the [Guidelines for Red Hat Documentation](https://redhat-documentation.github.io/) before opening a pull request.
 
-Fork and clone this repository.
-
 ### Upstream and downstream variables
 
 This document uses the following variables to ensure that upstream and downstream product names and versions are rendered correctly.
