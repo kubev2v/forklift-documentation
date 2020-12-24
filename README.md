@@ -39,22 +39,28 @@ You can hide or show specific blocks, paragraphs, warnings or chapters with the 
 
 You can build a document preview by running a Jekyll container.
 
-- Clone the repository, check out the `main` branch, and make your changes.
-- Build the Jekyll site:
+You must have Podman installed.
 
+1. Clone the repository:
   ```console
-  git clone -b source https://github.com/konveyor/forklift-documentation.git && cd forklift-documentation
-  for i in .jekyll-cache _site; do mkdir ${i} && chmod 777 ${i}; done
-  for i in Gemfile.lock; do touch ${i} && chmod 777 ${i}; done
+  $ git clone -b source https://github.com/konveyor/forklift-documentation.git && cd forklift-documentation
   ```
-
+2. Create `.jekyll-cache` and `_site` directories:
+  ```console
+  $ for i in .jekyll-cache _site; do mkdir ${i} && chmod 777 ${i}; done
+  ```
+3. Create a `Gemfile.lock` file:
+  ```console
+  $ for i in Gemfile.lock; do touch ${i} && chmod 777 ${i}; don
+  ```
+4. Create a container for Jekyll:
 - If your operating system is SELinux-enabled:
 
   ```console
   podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll:Z jekyll/jekyll jekyll serve --watch --future
   ```
 
-  **NOTE**: The Z at the end of the volume (-v) will relabel its contents so that it can be written from within the container, like running `chcon -Rt svirt_sandbox_file_t -l s0:c1,c2` yourself. Be sure that you have changed your present working directory to the git cloned directory as shown above.
+  **NOTE**: The Z at the end of the volume (-v) relabels the contents so that they can be written from within the container, like running `chcon -Rt svirt_sandbox_file_t -l s0:c1,c2` yourself. You must run this command in the cloned directory.
 
 - If your operating system is not SELinux-enabled:
 
@@ -62,4 +68,4 @@ You can build a document preview by running a Jekyll container.
   podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll jekyll/jekyll jekyll serve --watch --future
   ```
 
-- Navigate to `http://0.0.0.0:4000` in a web browser to view the preview.
+5. Navigate to `http://0.0.0.0:4000` in a web browser to view the preview.
