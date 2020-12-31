@@ -6,7 +6,7 @@
 [id="installing-mtv-cli_{context}"]
 = Installing {project-short} from the CLI
 
-You can install the {project-full} from the CLI.
+You can install {project-full} from the CLI.
 
 .Prerequisites
 
