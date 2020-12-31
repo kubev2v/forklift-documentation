@@ -6,51 +6,67 @@
 [id="about-mtv_{context}"]
 = About {project-full}
 
-IN PROGRESS
-
-Placeholder for diagram
-// architecture diagram
-
-.Custom resources
+You can migrate VMware virtual machines to {virt} by using the {product-full} ({product-short}) web console or the CLI.
 
 {project-short} creates the following custom resources (CRs):
 
-* `Provider`:
-** Created when you add a source or target provider
-** Stores provider attributes in order to connect to and interact with the providers
-
-* `Plan`:
-** Created when you create a migration plan
-** Contains a list of VMs that are migrated together with the same migration parameters
-** Selects VMs to fit the available migration resources until all VMs are migrated
-
-* `Mapping`: Created when you map source and target networks or source and target storage
-
-* `Migration`:
-** Created when you run a migration plan
-** Aggregates the migration progress
+* `Provider` CR stores provider attributes in order to connect to and interact with the providers.
+* `Plan` CR contains a list of VMs that are migrated together with the same migration parameters. It selects VMs to fit the available migration resources until all VMs are migrated
+* `Mapping` CR maps source and target networks and storage
+* `Migration` CR runs a migration plan.
 +
 If a virtual machine fails to migrate, you can run a new migration with the same migration plan. Only the virtual machines that have not migrated will be migrated.
 
-.Services
+Placeholder diagrams
 
-{project-short} creates the following services:
+image::migration.png[Migration workflow]
 
-* Provider Inventory:
-** Connects to the source and target providers
-** Maintains a local inventory for mappings and plans
-** Separate provider inventory pods for each provider enable scalability
+The migration workflow includes the following steps:
 
-* Validation:
-** Validates the suitability of a VM for migration to {virt} by applying rules
-** Triggered by the Provider Inventory service whenever a VM configuration change is detected
-** Stores the VM validation status
-* User Interface:
-** Enables you to manipulate the {project-short} CRs
-** Indicates the state of the CRs
-** Displays the progress of a migration
-* Controller: Implements the logic to reconcile the CRs with the state defined by the user
-+
-For example, when you create a Plan, the controllers validate it and add a status label. If a Plan fails validation, its status is `Not ready` and the Plan cannot be used to perform a migration.
+. You create `Provider` CRs for the source and target providers and `Mapping` CRs for the source and target networks and storage.
+. You create a `Plan` CR. The `Plan` CR references the following:
+* One source `Provider` CR
+* One target `Provider` CR
+* One or more virtual machine IDs
+* One or more storage `Mapping` CRs
+* One or more network `Mapping` CRs
+. You run the migration plan, which creates a `Migration` CR.
+. The Migration Controller monitors the `Migration` CR. For each virtual machine ID in the `Plan` CR, the Migration Controller gets the VM configuration and the provider credentials from ???.
+. The Migration Controller creates a `VirtualMachineImport` CR.
+. The Migration Controller monitors the `VirtualMachineImport` CR and marks the `Plan` CR as `complete`. (this might be the last step, after the troubleshooting diagram)
 
-* Aggregates the status of related CRs to provide a holistic and consistent view of the state of a migration
+image::troubleshooting.png[Troubleshooting diagram]
+
+. The user runs a migration plan, which creates a `VirtualMachineImport` CR.
+. The Virtual Machine Import Controller validates the `VirtualMachineImport` CR and generates a `VirtualMachine` CR for each virtual machine that is being migrated.
+. The Virtual Machine Import Controller retrieves the configuration of the VM linked in the `VirtualMachineImport` CR.  
+. For each disk of the VM, the Virtual Machine Import Controller creates a `DataVolume` CR (wrapper for PVC + annotations).  
+. For each disk, the Containerized Data Importer (CDI) Controller creates a Persistent Volume Claim. The Persistent Volume is dynamically provisioned by the `StorageClass` ?.  
+. For each disk, the CDI controller spawns an `Importer` pod. The `Importer` pod connects to the source disk, by using the VDDK SDK, and streams the disk to the PV.
+. Once all disks are transferred, the Virtual Machine Import Controller spawns a `Conversion` pod that runs virt-v2v with all the PVCs attached to it.
+. If the source VM was powered on, the Kubevirt Controller creates a `VirtualMachineInstance` to run the qemu-kvm process with all the PVCs attached as disks.
+
+
+
+// .Services
+//
+// {project-short} creates the following services:
+//
+// * Provider Inventory:
+// ** Connects to the source and target providers
+// ** Maintains a local inventory for mappings and plans
+// ** Separate provider inventory pods for each provider enable scalability
+//
+// * Validation:
+// ** Validates the suitability of a VM for migration to {virt} by applying rules
+// ** Triggered by the Provider Inventory service whenever a VM configuration change is detected
+// ** Stores the VM validation status
+// * User Interface:
+// ** Enables you to manipulate the {project-short} CRs
+// ** Indicates the state of the CRs
+// ** Displays the progress of a migration
+// * Controller: Implements the logic to reconcile the CRs with the state defined by the user
+// +
+// For example, when you create a Plan, the controllers validate it and add a status label. If a Plan fails validation, its status is `Not ready` and the Plan cannot be used to perform a migration.
+//
+// * Aggregates the status of related CRs to provide a holistic and consistent view of the state of a migration
