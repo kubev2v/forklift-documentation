@@ -6,12 +6,12 @@
 [id="about-mtv_{context}"]
 = About {project-full}
 
-You can migrate VMware virtual machines to {virt} by using the {product-full} ({product-short}) web console or the CLI.
+You can migrate VMware virtual machines to {virt} by using the {project-full} ({{project-short}}) web console or the CLI.
 
 {project-short} creates the following custom resources (CRs):
 
 * `Provider` CR stores provider attributes in order to connect to and interact with the providers.
-* `Plan` CR contains a list of VMs that are migrated together with the same migration parameters. It selects VMs to fit the available migration resources until all VMs are migrated
+* `Plan` CR contains a list of virtual VMs that are migrated together with the same migration parameters. It selects VMs to fit the available migration resources until all VMs are migrated
 * `Mapping` CR maps source and target networks and storage
 * `Migration` CR runs a migration plan.
 +
