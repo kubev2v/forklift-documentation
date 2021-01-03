@@ -6,7 +6,7 @@
 [id="adding-virt-provider_{context}"]
 = Adding the {virt} provider
 
-You can add the {virt} provider in the {mtv-short} web console.
+You can add the {virt} provider in the {project-short} web console.
 
 .Prerequisites
 
