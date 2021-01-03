@@ -1,9 +1,0 @@
-// Module included in the following assemblies:
-//
-// * documentation/assemblies/assembly_troubleshooting.adoc
-// * documentation/assemblies/assembly_troubleshooting.adoc
-
-[id="collecting-logs_{context}"]
-= Collecting logs - to do
-
-TBD

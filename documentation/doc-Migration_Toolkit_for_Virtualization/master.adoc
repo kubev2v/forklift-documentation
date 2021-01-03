@@ -1,34 +1,74 @@
 = Migration Toolkit for Virtualization
-:imagesdir: images
 :vernum: 2.0-beta
+:icons: font
 :toc: left
 :toclevels: 3
 :compat-mode:
-:build: downstream
+:experimental:
 :context: mtv
 :mtv:
 
-include::modules/mtv-attributes.adoc[]
+include::modules/MTV-attributes.adoc[]
 
-{project-first} enables you to migrate a large number of virtual machines from VMware vSphere to {virt}.
+[IMPORTANT]
+====
+This is a draft document.
+====
 
-You can download the VMware provider data collected by {project-short} and upload it to the Migration Analytics service on link:https://cloud.redhat.com/migrations/migration-analytics[cloud.redhat.com] for a detailed workload analysis report and migration recommendations.
+{The} {project-first} enables you to migrate a large number of virtual machines from VMware vSphere to {virt}.
 
-include::modules/About-mtv.adoc[leveloffset=+1]
+[id="about-mtv_{context}"]
+== About {the-lc} {project-full}
 
-// include::assemblies/Upgrading-mtv.adoc[leveloffset=+1]
+This section describes the {project-short} resources, services, and workflows.
 
-include::assemblies/assembly_planning-migration.adoc[leveloffset=+1]
-include::assemblies/assembly_installing-mtv.adoc[leveloffset=+1]
+include::modules/MTV-custom-crs-and-services.adoc[leveloffset=+2]
+include::modules/MTV-workflows.adoc[leveloffset=+2]
+
+[id='installing-mtv_{context}']
+== Installing {project-full}
+
+You can install {the-lc} {project-first} with the {virt} web console or from the CLI.
+
+Then you create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source disks.
+
+include::modules/Installing-mtv-console.adoc[leveloffset=+2]
+include::modules/Installing-mtv-cli.adoc[leveloffset=+2]
+include::modules/Adding-vddk-to-mtv.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines_{context}"]
 == Migrating virtual machines
 
-You can migrate virtual machines in the web console or from the CLI.
+[id='migrating-vms-web-console_{context}']
+=== Migrating virtual machines with the web console
 
-include::assemblies/assembly_migrating-vms-web-console.adoc[leveloffset=+2]
+You can add providers, create network and storage mappings, and create and run a migration plan in the web console.
+
+[id="adding-providers_{context}"]
+==== Adding providers
+
+You must add the {virt} and VMware providers in the web console.
+
+include::modules/Adding-virt-provider.adoc[leveloffset=+4]
+include::modules/Adding-vmware-provider.adoc[leveloffset=+4]
+
+[id="creating-mappings_{context}"]
+==== Creating mappings
+
+You must create mappings to map the source and target networks and storage.
+
+include::modules/Creating-network-mapping.adoc[leveloffset=+4]
+include::modules/Creating-storage-mapping.adoc[leveloffset=+4]
+
+// include::modules/Creating-hooks.adoc[leveloffset=+2]
+include::modules/Creating-migration-plan.adoc[leveloffset=+3]
+include::modules/Running-migration-plan.adoc[leveloffset=+3]
+
 include::modules/Migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
-include::assemblies/assembly_using-migration-analytics.adoc[leveloffset=+1]
-include::assemblies/assembly_troubleshooting.adoc[leveloffset=+1]
+[id='troubleshooting_{context}']
+== Troubleshooting
+
+include::modules/Collecting-logs.adoc[leveloffset=+2]
+include::modules/Known-issues.adoc[leveloffset=+2]
 :mtv!:

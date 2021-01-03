@@ -1,6 +1,8 @@
-![logo](/documentation/images/forklift-logo-lightbg.png)
+<img src="assets/img/forklift-logo-lightbg.svg" alt="Logo" width="100" />
 
-Forkstream is an upstream project for migrating VMware virtual machines to OpenShift Virtualization.
+# Forklift documentation
+
+Forklift is an upstream project for migrating VMware virtual machines to KubeVirt.
 
 The downstream project is the Migration Toolkit for Virtualization.
 
@@ -60,7 +62,7 @@ You must have Podman installed.
   $ podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll:Z jekyll/jekyll jekyll serve --watch --future
   ```
 
-  **NOTE**: The Z at the end of the volume (-v) relabels the contents so that they can be written from within the container, like running `chcon -Rt svirt_sandbox_file_t -l s0:c1,c2` yourself. You must run this command in the cloned directory.
+  **Note**: The `Z` at the end of the volume (`-v`) relabels the contents so that they can be written from within the container, like running `chcon -Rt svirt_sandbox_file_t -l s0:c1,c2` yourself. You must run this command in the cloned directory.
 
 - If your operating system is not SELinux-enabled:
 
@@ -68,4 +70,4 @@ You must have Podman installed.
   $ podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll jekyll/jekyll jekyll serve --watch --future
   ```
 
-5. Navigate to `http://0.0.0.0:4000` in a web browser to view the preview.
+5. Navigate to `http://<localhost>:4000` in a web browser to view the preview.

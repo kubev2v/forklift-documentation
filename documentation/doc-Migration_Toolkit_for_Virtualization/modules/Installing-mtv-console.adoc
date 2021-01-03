@@ -1,0 +1,36 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="installing-mtv-console_{context}"]
+= Installing {the-lc} {project-full} with the web console
+
+You can install {the-lc} {project-first} with the {virt} web console.
+
+.Prerequisites
+
+* `cluster-admin` privileges
+
+.Procedure
+
+. In the {virt} web console, click *Operators* -> *OperatorHub*.
+ifeval::["build" == "upstream"]
+. Use the *Filter by keyword* field to find the *Konveyor Operator for VMs*.
++
+[NOTE]
+====
+The Konveyor Operator for VMs is a Community Operator. Red Had does not support Community Operators.
+====
+endif::[]
+ifeval::["build" == "downstream"]
+. Use the *Filter by keyword* field to find the *{project-full} Operator*.
+endif::[]
+. Click the Operator and then click *Install*.
+. On the *Install Operator* page, click *Install*.
++
+On the *Installed Operators* page, the *{project-short} Operator* appears in the *openshift-migration* project with the status *Succeeded*.
+
+. Click *{project-short} Operator*.
+. Under *Provided APIs*, locate the *VirtController* tile, and click *Create Instance*.
+. Click *Create*.
+. Click *Workloads* -> *Pods* to verify that the `ProviderInventory`, `Validation`, `UserInterface`, and `Controller` pods are running.

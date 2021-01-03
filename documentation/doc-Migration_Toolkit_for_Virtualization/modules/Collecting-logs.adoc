@@ -1,0 +1,8 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="collecting-logs_{context}"]
+= Collecting logs - to do
+
+TBD

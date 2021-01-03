@@ -1,0 +1,19 @@
+:icons: font
+:experimental:
+:toc: macro
+:toc-title:
+:imagesdir: modules/images
+:kebab: Options menu image:kebab.png[title="Options menu"]
+
+// downstream attributes. Upstream attributes are in _config.yml
+
+:project-short: MTV
+:project-full: Migration{nbsp}Toolkit{nbsp}for{nbsp}Virtualization
+:The: The
+:the-lc: the
+:project-first: {project-full} ({project-short})
+:project-version: 2.0
+:virt: OpenShift Virtualization
+:ocp: Red{nbsp}Hat{nbsp}OpenShift{nbsp}Container{nbsp}Platform
+:ocp-version: 4.6
+:ocp-short: OCP

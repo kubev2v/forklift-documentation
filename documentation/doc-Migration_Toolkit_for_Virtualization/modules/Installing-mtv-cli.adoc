@@ -1,0 +1,94 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="installing-mtv-cli_{context}"]
+= Installing {the-lc} {project-full} from the CLI
+
+You can install {the-lc} {project-first} from the CLI.
+
+.Prerequisites
+
+* link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] installed
+* `cluster-admin` privileges
+
+.Procedure
+
+. Log in to the {ocp} cluster and create an `openshift-migration` project:
++
+[source,terminal]
+----
+$ cat << EOF | oc apply -f -
+---
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  name: openshift-migration
+EOF
+----
+
+. Create an `OperatorGroup` object called `migration`:
++
+[source,terminal]
+----
+$ cat << EOF | oc apply -f -
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: migration
+  namespace: openshift-migration
+spec:
+  targetNamespaces:
+    - openshift-migration
+EOF
+----
+
+. Create a `Subscription` object for the `virt-operator`:
++
+[source,terminal]
+----
+$ cat << EOF | oc apply -f -
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: virt-operator
+  namespace: openshift-migration
+spec:
+  channel: development
+  installPlanApproval: Automatic
+  name: virt-operator
+  source: konveyor-for-vms
+  sourceNamespace: openshift-marketplace
+  startingCSV: "konveyor-virt-operator.v99.0.0"
+EOF
+----
+
+. Create a `VirtController` object:
++
+[source,terminal]
+----
+$ cat << EOF | oc apply -f -
+---
+apiVersion: virt.konveyor.io/v1alpha1
+kind: VirtController
+metadata:
+  name: virt-controller
+  namespace: openshift-migration
+spec:
+  olm_managed: true
+EOF
+----
+
+. View the resources created by the `VirtController` object:
++
+[source,terminal]
+----
+$ oc get pods -n openshift-migration
+----
++
+.Example output
+----
+TBD
+----

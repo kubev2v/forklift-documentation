@@ -1,0 +1,23 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="creating-migration-analytics-report_{context}"]
+= Creating a Migration Analytics report
+
+You can download VMware provider data in the {project-short} web console and upload it to the Migration Analytics service on link:https://cloud.redhat.com/migrations/migration-analytics[cloud.redhat.com] to create a Migration Analytics report.
+
+.Procedure
+
+. In the web console, navigate to *Providers*.
+. In the *VMware* tab, select a VMware provider and click *Download data*.
+. Launch a browser and navigate to link:https://cloud.redhat.com[cloud.redhat.com].
+. In the *Migration Services* tile, click *Migration Analytics*.
+. Click *Get Started* if you are creating a report for the first time or navigate to *Payload Files* and click *Upload file*.
+. Browse to the VMware provider data file and click *Open*.
+. Select the data file and click *Create report*.
+. Select *OpenShift Virtualization* as the *Preferred target*.
+. Enter the *Report name* and optional *Report description*.
+. Click *OK*.
++
+The generated report appears in the *Reports* list.
