@@ -6,7 +6,7 @@
 [id="adding-vmware-provider_{context}"]
 = Adding the VMware provider
 
-You can add the VMware provider in the {mtv-short} web console.
+You can add the VMware provider in the {project-short} web console.
 
 .Prerequisites
 
