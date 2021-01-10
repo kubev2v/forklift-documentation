@@ -1,7 +1,6 @@
 # Site settings
 show_downloads: false
 title: "Forklift documentation"
-description: "Forklift is an upstream project for migrating VMware virtual machines to OpenShift Virtualization. The downstream project is Migration Toolkit for Virtualization."
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /forklift-documentation/
@@ -30,6 +29,8 @@ asciidoctor:
   - project-short=Forklift
   - project-full=Forklift
   - project-first=Forklift
+  - the-lc=
+  - The=
   - project-version=2.0
   - virt=KubeVirt
   - ocp=OpenShift{nbsp}Kubernetes{nbsp}Engine

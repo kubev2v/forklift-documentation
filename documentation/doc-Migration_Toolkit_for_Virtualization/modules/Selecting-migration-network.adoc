@@ -15,7 +15,7 @@ The default network might not provide the best performance for migration. If a V
 The migration network has the following prerequisites:
 
 * Minimum speed of 10 Gbps
-* Accessible to the OpenShift nodes through the default gateway. The source disks are copied by a Pod that is connected to the Pod network of the target namespace.
+* Accessible to the OpenShift nodes through the default gateway. The source disks are copied by a pod that is connected to the pod network of the target namespace.
 * Jumbo frames enabled
 
 [discrete]

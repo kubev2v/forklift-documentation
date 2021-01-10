@@ -11,8 +11,7 @@ You can define a hook by using an Ansible playbook or a container image.
 
 You can create a hook before a migration plan or while creating a migration plan.
 
-[discrete]
-== Procedure
+.Procedure
 
 . In the web console, navigate to *Hooks* and click *Create hook*.
 . Specify the hook *Name*.

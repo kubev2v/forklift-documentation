@@ -14,7 +14,7 @@ You can install {the-lc} {project-first} with the {virt} web console.
 .Procedure
 
 . In the {virt} web console, click *Operators* -> *OperatorHub*.
-ifeval::["build" == "downstream"]
+ifeval::["build" == "upstream"]
 . Use the *Filter by keyword* field to find the *Konveyor Operator for VMs*.
 +
 [NOTE]
