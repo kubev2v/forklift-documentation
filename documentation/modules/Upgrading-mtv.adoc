@@ -1,8 +1,7 @@
 // Module included in the following assemblies:
 //
-// doc-mtv_2.0/master.adoc
-
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 [id="upgrading-mtv_{context}"]
-= Upgrading the {project-full} - to do
+= Upgrading {project-full}
 
 TBD
