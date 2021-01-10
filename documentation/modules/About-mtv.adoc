@@ -1,6 +1,5 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Forklift/master.adoc
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="about-mtv_{context}"]

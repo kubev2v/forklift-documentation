@@ -1,4 +1,4 @@
-![logo](/documentation/images/forklift-logo-lightbg.png)
+![logo](/modules/images/forklift-logo-lightbg.png)
 
 Forkstream is an upstream project for migrating VMware virtual machines to OpenShift Virtualization.
 
