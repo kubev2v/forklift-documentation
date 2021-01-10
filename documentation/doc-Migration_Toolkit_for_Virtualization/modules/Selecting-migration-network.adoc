@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * doc-mtv_2.0/master.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="selecting-provider-network_{context}"]
 = Selecting a migration network for a source provider
@@ -29,7 +29,7 @@ The migration network has the following prerequisites:
 * *Host admin password*: Password to connect to the ESXi hosts
 * *Network*: Select a network from the list of available networks.
 +
-The network list displays only the networks accessible to all the selected hosts. The hosts must have 
+The network list displays only the networks accessible to all the selected hosts. The hosts must have
 
 . Click *Check connection* to verify the credentials.
 . Click *Select* to select the migration network.

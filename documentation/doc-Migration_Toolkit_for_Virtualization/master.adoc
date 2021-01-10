@@ -8,15 +8,13 @@
 
 include::modules/mtv-attributes.adoc[]
 
-ifeval::["{build}" == "upstream"]
-== Forklift documentation (upstream)
 
-This is the upstream documentation for Forklift.
+[IMPORTANT]
+====
+This is a draft document.
+====
 
-Attributes for the upstream documentation are set in the `_config.yml` file. GitHub cannot read attributes from an included attributes file.
-endif::[]
-
-{project-first} enables you to migrate a large number of virtual machines from VMware vSphere to {virt}.
+{The} {project-first} enables you to migrate a large number of virtual machines from VMware vSphere to {virt}.
 
 You can download the VMware provider data collected by {project-short} and upload it to the Migration Analytics service on link:https://cloud.redhat.com/migrations/migration-analytics[cloud.redhat.com] for a detailed workload analysis report and migration recommendations.
 
@@ -25,7 +23,7 @@ include::modules/About-mtv.adoc[leveloffset=+1]
 [id='installing-mtv_{context}']
 == Installing {project-full}
 
-You can install the {project-first} with the {virt} web console or from the CLI.
+You can install {the-lc} {project-first} with the {virt} web console or from the CLI.
 
 Then you create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source disks.
 

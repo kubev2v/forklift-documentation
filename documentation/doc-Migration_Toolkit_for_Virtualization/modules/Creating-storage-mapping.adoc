@@ -1,7 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/assemblies/assembly_migrating-vms-web-console.adoc
-// * documentation/assemblies/assembly_migrating-vms-web-console.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="creating-storage-mapping_{context}"]
 = Creating a storage mapping

@@ -1,12 +1,11 @@
 // Module included in the following assemblies:
 //
-// * documentation/assemblies/assembly_installing-mtv.adoc
-// * documentation/assemblies/assembly_installing-mtv.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="installing-mtv-console_{context}"]
-= Installing {project-short} with the web console
+= Installing {the-lc} {project-full} with the web console
 
-You can install the {project-first} with the {virt} web console.
+You can install {the-lc} {project-first} with the {virt} web console.
 
 .Prerequisites
 
