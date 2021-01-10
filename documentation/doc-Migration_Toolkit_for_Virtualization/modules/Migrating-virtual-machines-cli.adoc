@@ -21,7 +21,7 @@ If a Migration does not complete, you can create a new Migration CR, referencing
 
 .Procedure
 
-. Get the SSL thumbprint of the vCenter:
+. Get the SSL thumbprint of the vCenter host:
 +
 [source,terminal]
 ----
@@ -33,7 +33,7 @@ $ openssl s_client \
 ----
 <1> Specify the vCenter host name.
 
-. Create a Secret object with the VMware credentials:
+. Create a `Secret` CR with the VMware credentials:
 +
 [source,terminal]
 ----
@@ -54,7 +54,7 @@ EOF
 <1> Specify the password.
 <2> Specify the thumbprint.
 
-. Create a Provider object for VMware vSphere:
+. Create a `Provider` CR for VMware vSphere:
 +
 [source,terminal]
 ----
@@ -74,9 +74,9 @@ spec:
 EOF
 ----
 <1> Specify the vSphere API end point.
-<2> Specify the Secret.
+<2> Specify the `Secret`.
 
-. Create a Plan object for the migration:
+. Create a `Plan` CR for the migration:
 +
 [source,terminal]
 ----
@@ -128,7 +128,7 @@ EOF
 <3> Specify a source data store.
 <4> Specify the IDs of the VMs to migrate.
 
-. Create a Migration CR to run the Plan CR:
+. Create a `Migration` CR to run the `Plan` CR:
 +
 [source,terminal]
 ----

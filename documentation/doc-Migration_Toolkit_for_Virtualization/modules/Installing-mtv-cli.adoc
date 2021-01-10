@@ -3,9 +3,9 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="installing-mtv-cli_{context}"]
-= Installing {project-short} from the CLI
+= Installing {the-lc} {project-full} from the CLI
 
-You can install {project-full} from the CLI.
+You can install {the-lc} {project-first} from the CLI.
 
 .Prerequisites
 
