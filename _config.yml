@@ -26,6 +26,7 @@ asciidoctor:
   attributes:
   - showtitle=@
   - build=upstream
+  - imagesdir=modules/images
   - project-short=Forklift
   - project-full=Forklift
   - project-first=Forklift
