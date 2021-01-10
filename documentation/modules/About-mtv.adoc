@@ -1,12 +1,11 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Forklift/master.adoc
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="about-mtv_{context}"]
 = About {project-full}
 
-You can migrate VMware virtual machines to {virt} by using the {project-full} ({project-short}) web console or the CLI.
+You can migrate VMware virtual machines to {virt} by using the {project-first} web console or the CLI.
 
 {project-short} creates the following custom resources (CRs):
 

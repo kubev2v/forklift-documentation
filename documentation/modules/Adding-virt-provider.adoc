@@ -1,7 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/assemblies/assembly_migrating-vms-web-console.adoc
-// * documentation/assemblies/assembly_migrating-vms-web-console.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="adding-virt-provider_{context}"]
 = Adding the {virt} provider

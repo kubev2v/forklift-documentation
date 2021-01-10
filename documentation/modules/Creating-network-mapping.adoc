@@ -1,7 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/assemblies/assembly_migrating-vms-web-console.adoc
-// * documentation/assemblies/assembly_migrating-vms-web-console.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="creating-network-mapping_{context}"]
 = Creating a network mapping
@@ -14,7 +13,6 @@ You cannot map an opaque network to a {virt} network.
 ====
 
 .Procedure
-
 
 . In the web console, navigate to *Mappings* -> *Network*.
 . Click *Create mapping*.

@@ -1,0 +1,6 @@
+# Forklift documentation
+:page-layout: default
+
+Forklift is an upstream project for migrating virtual machines from VMware to Red Hat OpenShift Virtualization. The downstream project is the Migration Toolkit for Virtualization (not yet released).
+
+The link:documentation/doc-Migration_Toolkit_for_Virtualization/master/index.html[Forklift guide] is a work in progress.

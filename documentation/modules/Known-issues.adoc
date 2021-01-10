@@ -1,7 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/assemblies/assembly_troubleshooting.adoc
-// * documentation/assemblies/assembly_troubleshooting.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="known-issues_{context}"]
 = Known issues - in progress

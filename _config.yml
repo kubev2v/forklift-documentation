@@ -20,10 +20,26 @@ defaults:
 
 plugins: [jekyll-paginate, jekyll-asciidoc, jekyll-redirect-from, jekyll-feed, jekyll-sitemap, premonition, jekyll/tagging,  jekyll-seo-tag]
 
+# empty array for asciidoc
+asciidoc: {}
+# upstream doc attributes
+asciidoctor:
+  attributes:
+  - showtitle=@
+  - build=upstream
+  - project-short=Forklift
+  - project-full=Forklift
+  - project-first=Forklift
+  - project-version=2.0
+  - virt=KubeVirt
+  - ocp=OpenShift{nbsp}Kubernetes{nbsp}Engine
+  - ocp-version=4.6
+  - ocp-short=OKE
+  - context=forklift
+  safe: unsafe
+
 exclude:
-  - GUIDELINES.md
   - README.md
-  - TODO.md
   - .history
 
 tag_page_layout: tag

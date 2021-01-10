@@ -1,7 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/assemblies/assembly_using-migration-analytics.adoc
-// * documentation/assemblies/assembly_using-migration-analytics.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="creating-migration-analytics-report_{context}"]
 = Creating a Migration Analytics report
