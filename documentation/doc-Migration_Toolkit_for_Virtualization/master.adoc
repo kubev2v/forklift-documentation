@@ -1,8 +1,4 @@
 = Migration Toolkit for Virtualization
-:title: Forklift
-:description: Installing and using Forklift to migrate virtual machines from VMware to KubeVirt.
-:keywords: migration, VMware, OpenShift Virtualization, KubeVirt
-:author: Red Hat Modernization and Migration Solutions documentation team
 :vernum: 2.0-beta
 :icons: font
 :toc: left

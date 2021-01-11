@@ -24,6 +24,10 @@ asciidoc: {}
 # upstream doc attributes
 asciidoctor:
   attributes:
+  - title=Forklift documentation
+  - description=Installing and using Forklift to migrate virtual machines from VMware to KubeVirt.
+  - keywords=migration, VMware, OpenShift Virtualization, KubeVirt
+  - author=Red Hat Modernization and Migration Solutions documentation team
   - showtitle=@
   - build=upstream
   - imagesdir=../modules/images
