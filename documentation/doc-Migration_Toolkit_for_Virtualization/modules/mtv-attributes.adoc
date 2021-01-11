@@ -6,6 +6,7 @@
 :kebab: Options menu image:kebab.png[title="Options menu"]
 
 // downstream attributes. Upstream attributes are in _config.yml
+
 :project-short: MTV
 :project-full: Migration{nbsp}Toolkit{nbsp}for{nbsp}Virtualization
 :The: The
