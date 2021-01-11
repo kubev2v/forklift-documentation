@@ -5,14 +5,14 @@
 [id="migrating-virtual-machines-cli_{context}"]
 = Migrating virtual machines from the CLI
 
-You can migrate virtual machines from the command line (CLI) by creating the following custom resources:
+You can migrate virtual machines from the command line (CLI) by creating the following custom resources (CRs):
 
-* Secret: Contains the VMware vSphere credentials
-* Provider: Specifies the VMware provider
-* Plan: Specifies the source and target clusters, network mappings, data store mappings, and VMs to migrate
-* Migration: Runs the Plan
+* `Secret` CR contains the VMware provider credentials.
+* `Provider` CR specifies the VMware provider.
+* `Plan` CR specifies the source and target clusters, network mappings, data store mappings, and VMs to migrate.
+* `Migration` CR runs the `Plan` CR.
 +
-If a Migration does not complete, you can create a new Migration CR, referencing the same Plan, to migrate the remaining VMs.
+If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs.
 
 .Prerequisites
 
@@ -21,7 +21,7 @@ If a Migration does not complete, you can create a new Migration CR, referencing
 
 .Procedure
 
-. Get the SSL thumbprint of the vCenter:
+. Get the SSL thumbprint of the vCenter host:
 +
 [source,terminal]
 ----
@@ -33,7 +33,7 @@ $ openssl s_client \
 ----
 <1> Specify the vCenter host name.
 
-. Create a Secret object with the VMware credentials:
+. Create a `Secret` CR with the VMware credentials:
 +
 [source,terminal]
 ----
@@ -54,7 +54,7 @@ EOF
 <1> Specify the password.
 <2> Specify the thumbprint.
 
-. Create a Provider object for VMware vSphere:
+. Create a `Provider` CR for VMware vSphere:
 +
 [source,terminal]
 ----
@@ -74,9 +74,9 @@ spec:
 EOF
 ----
 <1> Specify the vSphere API end point.
-<2> Specify the Secret.
+<2> Specify the `Secret`.
 
-. Create a Plan object for the migration:
+. Create a `Plan` CR for the migration:
 +
 [source,terminal]
 ----
@@ -128,7 +128,7 @@ EOF
 <3> Specify a source data store.
 <4> Specify the IDs of the VMs to migrate.
 
-. Create a Migration CR to run the Plan CR:
+. Create a `Migration` CR to run the `Plan` CR:
 +
 [source,terminal]
 ----
@@ -146,4 +146,4 @@ spec:
 EOF
 ----
 
-The Migration CR creates a `VirtualMachineImport` object for each VM being migrated. You can monitor the progress of the migration by viewing the `VirtualMachineImport` pods in the `openshift-migration` namespace.
+The `Migration` CR creates a `VirtualMachineImport` CR for each VM being migrated. You can monitor the progress of the migration by viewing the `VirtualMachineImport` pods in the `openshift-migration` namespace.

@@ -3,9 +3,9 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="installing-mtv-console_{context}"]
-= Installing {project-short} with the web console
+= Installing {the-lc} {project-full} with the web console
 
-You can install the {project-first} with the {virt} web console.
+You can install {the-lc} {project-first} with the {virt} web console.
 
 .Prerequisites
 
@@ -14,7 +14,7 @@ You can install the {project-first} with the {virt} web console.
 .Procedure
 
 . In the {virt} web console, click *Operators* -> *OperatorHub*.
-ifeval::["build" == "downstream"]
+ifeval::["build" == "upstream"]
 . Use the *Filter by keyword* field to find the *Konveyor Operator for VMs*.
 +
 [NOTE]

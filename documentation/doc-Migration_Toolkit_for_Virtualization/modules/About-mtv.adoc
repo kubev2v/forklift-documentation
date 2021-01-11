@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="about-mtv_{context}"]
-= About {project-full}
+= About {the-lc} {project-full}
 
 You can migrate VMware virtual machines to {virt} by using the {project-first} web console or the CLI.
 
@@ -18,7 +18,7 @@ If a virtual machine fails to migrate, you can run a new migration with the same
 
 Placeholder diagrams
 
-image::migration.png[Migration workflow]
+image::migration.png[Migration workflow,width=800]
 
 The migration workflow includes the following steps:
 
@@ -34,7 +34,7 @@ The migration workflow includes the following steps:
 . The Migration Controller creates a `VirtualMachineImport` CR.
 . The Migration Controller monitors the `VirtualMachineImport` CR and marks the `Plan` CR as `complete`. (this might be the last step, after the troubleshooting diagram)
 
-image::troubleshooting.png[Troubleshooting diagram]
+image::troubleshooting.png[Troubleshooting diagram,width=800]
 
 . The user runs a migration plan, which creates a `VirtualMachineImport` CR.
 . The Virtual Machine Import Controller validates the `VirtualMachineImport` CR and generates a `VirtualMachine` CR for each virtual machine that is being migrated.

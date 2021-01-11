@@ -2,6 +2,6 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 [id="upgrading-mtv_{context}"]
-= Upgrading {project-full}
+= Upgrading {the-lc} {project-full}
 
 TBD
