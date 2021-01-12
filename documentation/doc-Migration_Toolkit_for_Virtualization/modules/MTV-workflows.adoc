@@ -1,0 +1,44 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="mtv-workflows_{context}"]
+= {project-full} workflows
+
+This section describes the {project-full} and {virt} workflows for migrating virtual machines (VMs). These steps assume that you are performing the migration by using the {project-short} console but you can also perform these steps by using the CLI.
+
+The power state of a source VM is maintained after migration.
+
+NOTE: These diagrams are in progress.
+
+.{project-short} workflow
+image::mtv-workflow.png[{project-short} workflow,800]
+
+The {project-short} workflow comprises the following steps:
+
+. You create a source provider, a target provider, a network mapping and a storage mapping.
+. You create a migration plan that refers to the following resources:
+* Source provider
+* Target provider
+* Network mapping
+* Storage mapping
+* One or more VMs
+. You run a migration plan. Each time you run a migration plan, the plan creates a `Migration` CR. If a migration is incomplete, you can run a migration plan multiple times until all VMs are migrated.
+. For each VM in the migration plan, the _Migration Controller_ creates a `VirtualMachineImport` CR and monitors its status. When all VMs have been migrated, the Migration Controller sets the status of the migration plan to `Completed`.
+
+.{virt} workflow
+image::ocp-virt-workflow.png[{virt} workflow,800]
+
+The {virt} workflow comprises the following steps:
+
+. When you run a migration plan, the _Migration Controller_ creates a `VirtualMachineImport` CR for each source VM.
+. The _Virtual Machine Import Controller_ validates the `VirtualMachineImport` CR and generates a `VirtualMachine` CR and a `VirtualMachineInstance` CR.
+. The Virtual Machine Import Controller retrieves the VM configuration, including network, storage, and metadata, linked in the `VirtualMachineImport` CR.  
++
+_For each VM disk:_
+
+. The Virtual Machine Import Controller creates a `DataVolume` CR as a wrapper for the Persistent Volume Claim (PVC) and annotations.  
+. The _Containerized Data Importer (CDI) Controller_ creates a PVC. The Persistent Volume (PV) is dynamically provisioned by the `StorageClass` provisioner.  
+. The CDI Controller creates an `Importer` pod. The `Importer` pod connects to the source VM disk, by using the VDDK SDK, and streams the disk to the PV.
+. After the VM disks are transferred, the Virtual Machine Import Controller creates a `Conversion` pod that runs `virt-v2v` with all the PVCs attached to it.
+. When the VM is powered on, the KubeVirt Controller creates a `VirtualMachineInstance` that runs the `QEMU-KVM` process with the PVCs attached as VM disks.
