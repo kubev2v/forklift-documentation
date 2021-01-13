@@ -7,7 +7,7 @@
 :context: mtv
 :mtv:
 
-include::modules/MTV-attributes.adoc[]
+include::modules/mtv-attributes.adoc[]
 
 [IMPORTANT]
 ====
@@ -18,13 +18,7 @@ This is a draft document.
 
 You can download the VMware provider data collected by {project-short} and upload it to the Migration Analytics service on link:https://cloud.redhat.com/migrations/migration-analytics[cloud.redhat.com] for a detailed workload analysis report and migration recommendations.
 
-[id="about-mtv_{context}"]
-== About {the-lc} {project-full}
-
-This section describes the {project-short} resources, services, and workflows.
-
-include::modules/MTV-custom-crs-and-services.adoc[leveloffset=+2]
-include::modules/MTV-workflows.adoc[leveloffset=+2]
+include::modules/About-mtv.adoc[leveloffset=+1]
 
 [id='installing-mtv_{context}']
 == Installing {project-full}
