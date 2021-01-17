@@ -5,7 +5,7 @@
 [id="creating-network-mapping_{context}"]
 = Creating a network mapping
 
-You can create a network mapping to map VMware networks to {virt} networks.
+You can create a network mapping to map source networks to {virt} networks.
 
 [NOTE]
 ====

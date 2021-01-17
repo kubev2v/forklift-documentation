@@ -16,7 +16,6 @@ This is a draft document.
 ====
 
 {The} {project-first} enables you to migrate a large number of virtual machines from VMware vSphere to {virt}.
-=
 
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
