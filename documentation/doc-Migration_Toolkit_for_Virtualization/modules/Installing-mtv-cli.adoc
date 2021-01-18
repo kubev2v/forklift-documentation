@@ -3,18 +3,20 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="installing-mtv-cli_{context}"]
-= Installing {the-lc} {project-full} from the CLI
+= Installing {the-lc} {project-full} using the CLI
 
-You can install {the-lc} {project-first} from the CLI.
+You can install {the-lc} {project-first} using the command line interface (CLI).
 
 .Prerequisites
 
-* link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] installed
-* `cluster-admin` privileges
+* Install {ocp} {ocp-version} on your cluster.
+* Install the {virt} Operator.
+* Install the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI].
+* Log in as a user with `cluster-admin` privileges.
 
 .Procedure
 
-. Log in to the {ocp} cluster and create an `openshift-migration` project:
+. Create an `openshift-migration` project:
 +
 [source,terminal]
 ----

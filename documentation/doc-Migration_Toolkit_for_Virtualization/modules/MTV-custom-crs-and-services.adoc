@@ -2,15 +2,16 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+[id="mtv-custom-crs-and-services_{context}"]
 = {project-full} custom resources and services
 
 {The} {project-first} creates the following custom resources (CRs) and services.
 
 .Custom resources
 
-* `Provider` CRs store the source and target provider attributes in order to connect to and interact with the providers.
-* `Mapping` CRs map the networks and storage of the source and target environments.
-* A `Plan` CR, also called a migration plan, contains a list of virtual VMs that are migrated together with the same migration parameters. The `Plan` CR selects VMs to fit the available migration resources until all VMs are migrated.
+* The `Provider` CRs store attributes that enable {project-short} to connect to and interact with the source and target providers.
+* The `Mapping` CRs map the networks and storage of the source and target providers.
+* A `Plan` CR, also called a migration plan, contains a list of virtual VMs that are migrated together with the same migration parameters. The `Plan` selects VMs to fit the available migration resources until all VMs are migrated.
 // +
 // If a virtual machine fails to migrate, you can run a new migration with the same migration plan. Only the virtual machines that have not been migrated will be migrated.
 * A `Migration` CR is created when you run a migration plan.
