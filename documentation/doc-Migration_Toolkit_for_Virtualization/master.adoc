@@ -15,7 +15,7 @@ include::modules/MTV-attributes.adoc[]
 This is a draft document.
 ====
 
-{The} {project-first} enables you to migrate a large number of virtual machines from VMware vSphere to {virt}.
+{The} {project-first} enables you to migrate a large number of virtual machines from VMware vSphere to {virt} running on {ocp} {ocp-virt}. You can perform the migration by using the {ocp} web console or the command line interface (CLI).
 
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
@@ -26,11 +26,11 @@ include::modules/MTV-custom-crs-and-services.adoc[leveloffset=+2]
 include::modules/MTV-workflows.adoc[leveloffset=+2]
 
 [id='installing-mtv_{context}']
-== Installing {project-full}
+== Installing {the-lc} {project-full}
 
-You can install {the-lc} {project-first} with the {virt} web console or from the CLI.
+You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
 
-Then you create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source disks.
+You must create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source VM disks.
 
 include::modules/Installing-mtv-console.adoc[leveloffset=+2]
 include::modules/Installing-mtv-cli.adoc[leveloffset=+2]
@@ -38,6 +38,8 @@ include::modules/Adding-vddk-to-mtv.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines_{context}"]
 == Migrating virtual machines
+
+You can migrate virtual machines with the {ocp} web console or from the CLI.
 
 [id='migrating-vms-web-console_{context}']
 === Migrating virtual machines with the web console
@@ -47,7 +49,7 @@ You can add providers, create network and storage mappings, and create and run a
 [id="adding-providers_{context}"]
 ==== Adding providers
 
-You must add the {virt} and VMware providers in the web console.
+You can add the {virt} and VMware providers in the web console.
 
 include::modules/Adding-virt-provider.adoc[leveloffset=+4]
 include::modules/Adding-vmware-provider.adoc[leveloffset=+4]
@@ -55,7 +57,7 @@ include::modules/Adding-vmware-provider.adoc[leveloffset=+4]
 [id="creating-mappings_{context}"]
 ==== Creating mappings
 
-You must create mappings to map the source and target networks and storage.
+You can create mappings to map the source and target networks and storage.
 
 include::modules/Creating-network-mapping.adoc[leveloffset=+4]
 include::modules/Creating-storage-mapping.adoc[leveloffset=+4]
