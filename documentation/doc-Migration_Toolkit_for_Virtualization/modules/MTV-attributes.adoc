@@ -4,9 +4,11 @@
 :toc-title:
 :imagesdir: modules/images
 :kebab: Options menu image:kebab.png[title="Options menu"]
+:vernum: 2.0-beta
+:toclevels: 3
+:compat-mode:
 
-// downstream attributes. Upstream attributes are in _config.yml
-
+// Upstream attributes are in _config.yml
 :project-short: MTV
 :project-full: Migration{nbsp}Toolkit{nbsp}for{nbsp}Virtualization
 :The: The
@@ -17,3 +19,7 @@
 :ocp: OpenShift{nbsp}Container{nbsp}Platform
 :ocp-version: 4.6
 :ocp-short: OCP
+
+:abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp} {ocp-version}.
+:title: Installing and using {the} {project-full}
+:subtitle: Migrating from VMware to Red Hat {virt}
