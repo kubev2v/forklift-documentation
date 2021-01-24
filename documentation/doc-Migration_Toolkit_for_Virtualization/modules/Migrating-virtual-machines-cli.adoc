@@ -16,8 +16,10 @@ If a migration does not complete, you can create a new `Migration` CR, without c
 
 .Prerequisites
 
-* link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] installed
-* Admin privileges
+* Install {ocp} {ocp-version} on your cluster.
+* Install the {virt} Operator.
+* Install the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI].
+* Log in as a user with `cluster-admin` privileges.
 
 .Procedure
 
