@@ -5,7 +5,7 @@
 [id="mtv-workflows_{context}"]
 = {project-full} workflows
 
-This section describes the {project-full} and {virt} workflows for migrating virtual machines (VMs). These steps assume that you are performing the migration by using the {project-short} console but you can also perform these steps by using the CLI.
+This section describes the {project-full} and {virt} workflows for migrating virtual machines (VMs). These steps assume that you are performing the migration using the {project-short} console but you can also perform these steps using the CLI.
 
 The power state of a source VM is maintained after migration.
 
@@ -16,8 +16,8 @@ image::mtv-workflow.png[{project-short} workflow,800]
 
 The {project-short} workflow comprises the following steps:
 
-. You create a source provider, a target provider, a network mapping and a storage mapping.
-. You create a migration plan that refers to the following resources:
+. You create a source provider, a target provider, a network mapping, and a storage mapping.
+. You create a migration plan that includes the following resources:
 * Source provider
 * Target provider
 * Network mapping
