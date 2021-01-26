@@ -23,6 +23,7 @@ The {project-short} workflow comprises the following steps:
 * Network mapping
 * Storage mapping
 * One or more VMs
+
 . You run a migration plan. Each time you run a migration plan, the plan creates a `Migration` CR. If a migration is incomplete, you can run a migration plan multiple times until all VMs are migrated.
 . For each VM in the migration plan, the _Migration Controller_ creates a `VirtualMachineImport` CR and monitors its status. When all VMs have been migrated, the Migration Controller sets the status of the migration plan to `Completed`.
 
@@ -40,5 +41,5 @@ _For each VM disk:_
 . The Virtual Machine Import Controller creates a `DataVolume` CR as a wrapper for the Persistent Volume Claim (PVC) and annotations.  
 . The _Containerized Data Importer (CDI) Controller_ creates a PVC. The Persistent Volume (PV) is dynamically provisioned by the `StorageClass` provisioner.  
 . The CDI Controller creates an `Importer` pod. The `Importer` pod connects to the source VM disk, by using the VDDK SDK, and streams the disk to the PV.
-. After the VM disks are transferred, the Virtual Machine Import Controller creates a `Conversion` pod that runs `virt-v2v` with all the PVCs attached to it.
+. _After all VM disks are transferred_, the Virtual Machine Import Controller creates a `Conversion` pod that runs `virt-v2v` with all PVCs attached to it.
 . When the VM is powered on, the KubeVirt Controller creates a `VirtualMachineInstance` that runs the `QEMU-KVM` process with the PVCs attached as VM disks.
