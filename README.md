@@ -20,7 +20,7 @@ This document uses the following variables to ensure that upstream and downstrea
 | project-short | Forklift | MTV |
 | project-version | 2.0-beta | 2.0-beta |
 | virt | KubeVirt | OpenShift Virtualization |
-| ocp | OpenShift Kubernetes Engine | Red Hat OpenShift Container Platform |
+| ocp | OKD | Red Hat OpenShift Container Platform |
 | ocp-version   | 4.6 | 4.6 |
 | ocp-short | OKE | OCP |
 
