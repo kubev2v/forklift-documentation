@@ -22,7 +22,7 @@ This document uses the following variables to ensure that upstream and downstrea
 | virt | KubeVirt | OpenShift Virtualization |
 | ocp | OpenShift Kubernetes Engine | Red Hat OpenShift Container Platform |
 | ocp-version   | 4.6 | 4.6 |
-| ocp-short | OKE | OCP |
+| ocp-short | OKD | OCP |
 
 Variables cannot be used in CLI commands or code blocks unless you include the "attributes" keyword:
 
