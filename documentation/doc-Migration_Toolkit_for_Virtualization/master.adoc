@@ -12,8 +12,9 @@ include::modules/making-open-source-more-inclusive.adoc[]
 
 This section describes the {project-first} custom resources, services, and workflows.
 
-include::modules/MTV-custom-crs-and-services.adoc[leveloffset=+2]
-include::modules/MTV-workflows.adoc[leveloffset=+2]
+include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
+include::modules/mtv-workflow.adoc[leveloffset=+2]
+include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 
 [id='installing-mtv_{context}']
 == Installing {the-lc} {project-full}

@@ -1,0 +1,26 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="mtv-workflow_{context}"]
+= {project-full} workflow
+
+This section describes the {project-first} workflow for migrating virtual machines (VMs) using the {project-short} console. You can migrate VMs using the CLI.
+
+The power state of a source VM is maintained after migration.
+
+.{project-short} workflow
+image::136_OpenShift_Migration_Toolkit_0121-mtv-workflow.svg[{project-short} workflow]
+
+The {project-short} workflow comprises the following steps:
+
+. You create a source provider, a target provider, a network mapping, and a storage mapping.
+. You create a migration plan that includes the following resources:
+* Source provider
+* Target provider
+* Network mapping
+* Storage mapping
+* One or more VMs
+
+. You run a migration plan. Each time you run a migration plan, the plan creates a `Migration` CR. If a migration is incomplete, you can run a migration plan multiple times until all VMs are migrated.
+. For each VM in the migration plan, the _Migration Controller_ creates a `VirtualMachineImport` CR and monitors its status. When all VMs have been migrated, the Migration Controller sets the status of the migration plan to `Completed`.

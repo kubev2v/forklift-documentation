@@ -1,0 +1,25 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="virt-migration-workflows_{context}"]
+= {virt} migration workflow
+
+This section describes the {virt} workflow for migrating virtual machines (VMs).
+
+.{virt} workflow
+image::136_OpenShift_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
+
+. When you run a migration plan, the _Migration Controller_ creates a `VirtualMachineImport` CR for each source VM.
+. The _Virtual Machine Import Controller_ validates the `VirtualMachineImport` CR and generates a `VirtualMachine` CR
+. The Virtual Machine Import Controller retrieves the VM configuration, including network, storage, and metadata, linked in the `VirtualMachineImport` CR.  
++
+_For each VM disk:_
+
+. The Virtual Machine Import Controller creates a `DataVolume` CR as a wrapper for a Persistent Volume Claim (PVC) and annotations.  
+. The _Containerized Data Importer (CDI) Controller_ creates a PVC. The Persistent Volume (PV) is dynamically provisioned by the `StorageClass` provisioner.  
+. The CDI Controller creates an `Importer` pod.
+. The `Importer` pod connects to the source VM disk, using the VDDK SDK, and streams the disk to the PV.
+. _After the VM disks are transferred_, the Virtual Machine Import Controller creates a `Conversion` pod with the PVCs attached to it. The `Conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the target VM.
+. The Virtual Machine Import Controller creates a `VirtualMachineInstance` CR.
+. When the target VM is powered on, the KubeVirt Controller creates a VM pod. The VM pod runs `QEMU-KVM` with the PVCs attached as VM disks.
