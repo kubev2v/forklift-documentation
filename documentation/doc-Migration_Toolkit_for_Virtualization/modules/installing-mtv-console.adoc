@@ -1,0 +1,40 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="installing-mtv-console_{context}"]
+= Installing {the-lc} {project-full} using the web console
+
+You can install {the-lc} {project-first} using the OpenShift web console.
+
+.Prerequisites
+
+* Install {ocp} {ocp-version} on your cluster.
+* Install the {virt} Operator.
+* Log in as a user with `cluster-admin` privileges.
+
+.Procedure
+
+. Open a browser window and log in to the OpenShift web console.
+. Click *Operators* -> *OperatorHub*.
+. Use the *Filter by keyword* field to find the *{operator}*.
+ifeval::["{build}" == "upstream"]
++
+[NOTE]
+====
+The {operator} is a Community Operator. Red Hat does not support Community Operators.
+====
+endif::[]
+. Click the {operator} and then click *Install*.
+. On the *Install Operator* page, click *Install*.
+. Click *Operators* -> *Installed Operators* to verify that the {operator} appears in the *openshift-migration* project with the status *Succeeded*.
+
+. Click the {operator}.
+ifeval::["{build}" == "upstream"]
+. Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
+endif::[]
+ifeval::["{build}" == "downstream"]
+. Under *Provided APIs*, locate the *VirtController*, and click *Create Instance*.
+endif::[]
+. Click *Create*.
+. Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.

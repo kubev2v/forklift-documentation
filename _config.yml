@@ -1,16 +1,16 @@
 # Site settings
 show_downloads: false
-title: "Forklift documentation"
+title: "Forklift Documentation"
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /forklift-documentation/
-logo: "/assets/img/forklift-logo-lightbg.svg"
+logo: "/assets/img/forklift-logo-darkbg.svg"
 type: website
 future: false
 
 # Build settings
 markdown: kramdown
-
+theme: jekyll-theme-cayman
 defaults:
   - scope:
       path: "assets/img"
@@ -25,7 +25,9 @@ asciidoc: {}
 asciidoctor:
   attributes:
   - title=Installing and using Forklift
-  - description=Installing and using Forklift to migrate virtual machines from VMware to KubeVirt.
+  - context=forklift
+  - description=Migrating virtual machines to KubeVirt
+  - abstract=Forklift enables you to migrate virtual machines to {virt} running on {ocp} {ocp-version}.
   - keywords=migration, VMware, OpenShift Virtualization, KubeVirt
   - author=Red Hat Modernization and Migration Solutions documentation team
   - showtitle=@
@@ -41,7 +43,7 @@ asciidoctor:
   - ocp=OpenShift Kubernetes Engine
   - ocp-version=4.6
   - ocp-short=OKE
-  - context=forklift
+  - operator=Konveyor Forklift Operator
   safe: unsafe
 
 exclude:

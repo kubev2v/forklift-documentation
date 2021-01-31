@@ -5,12 +5,17 @@
 [id="mtv-workflow_{context}"]
 = {project-full} workflow
 
-This section describes the {project-first} workflow for migrating virtual machines (VMs) using the {project-short} console. You can migrate VMs using the CLI.
+You can migrate virtual machines (VMs) using the {project-short} console or the command line.
 
-The power state of a source VM is maintained after migration.
-
+ifeval::["{build}" == "downstream"]
 .{project-short} workflow
-image::136_OpenShift_Migration_Toolkit_0121-mtv-workflow.svg[{project-short} workflow]
+image::136_OpenShift_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
+endif::[]
+
+ifeval::["{build}" == "upstream"]
+.{project-short} workflow
+image::136_Upstream_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
+endif::[]
 
 The {project-short} workflow comprises the following steps:
 
@@ -23,4 +28,4 @@ The {project-short} workflow comprises the following steps:
 * One or more VMs
 
 . You run a migration plan. Each time you run a migration plan, the plan creates a `Migration` CR. If a migration is incomplete, you can run a migration plan multiple times until all VMs are migrated.
-. For each VM in the migration plan, the _Migration Controller_ creates a `VirtualMachineImport` CR and monitors its status. When all VMs have been migrated, the Migration Controller sets the status of the migration plan to `Completed`.
+. For each VM in the migration plan, the _Migration Controller_ creates a `VirtualMachineImport` CR and monitors its status. When all VMs have been migrated, the Migration Controller sets the status of the migration plan to `Completed`. The power state of a source VM is maintained after migration.
