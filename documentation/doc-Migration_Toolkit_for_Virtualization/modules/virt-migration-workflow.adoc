@@ -7,8 +7,12 @@
 
 This section describes the {virt} workflow for migrating virtual machines (VMs).
 
+ifeval::["{build}" == "downstream"]
 .{virt} workflow
 image::136_OpenShift_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
+endif::[]
+
+image::136_Upstream_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
 
 . When you run a migration plan, the _Migration Controller_ creates a `VirtualMachineImport` CR for each source VM.
 . The _Virtual Machine Import Controller_ validates the `VirtualMachineImport` CR and generates a `VirtualMachine` CR

@@ -9,8 +9,7 @@ This section describes the {project-first} workflow for migrating virtual machin
 
 The power state of a source VM is maintained after migration.
 
-.{project-short} workflow
-image::136_OpenShift_Migration_Toolkit_0121-mtv-workflow.svg[{project-short} workflow]
+image::136_Upstream_Migration_Toolkit_0121_mtv-workflow[{project-short} workflow]
 
 The {project-short} workflow comprises the following steps:
 

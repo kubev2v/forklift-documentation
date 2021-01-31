@@ -1,11 +1,13 @@
 // common document attributes
-include::modules/MTV-attributes.adoc[]
+include::modules/common-attributes.adoc[]
 
 = {title}
 :context: mtv
 :mtv:
 
+ifeval::["(build)" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[]
+endif::[]
 
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}

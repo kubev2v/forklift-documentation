@@ -31,6 +31,7 @@ asciidoctor:
   - showtitle=@
   - build=upstream
   - imagesdir=../modules/images
+  - virt-workflow=image::136_Upstream_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
   - project-short=Forklift
   - project-full=Forklift
   - project-first=Forklift

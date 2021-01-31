@@ -9,6 +9,7 @@
 :compat-mode:
 
 // Upstream attributes are in _config.yml
+:build: downstream
 :project-short: MTV
 :project-full: Migration{nbsp}Toolkit{nbsp}for{nbsp}Virtualization
 :The: The
