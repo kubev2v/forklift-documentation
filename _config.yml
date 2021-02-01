@@ -10,7 +10,7 @@ future: false
 
 # Build settings
 markdown: kramdown
-
+theme: jekyll-theme-cayman
 defaults:
   - scope:
       path: "assets/img"
