@@ -4,7 +4,7 @@ title: "Forklift documentation"
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /forklift-documentation/
-logo: "/assets/img/forklift-logo-lightbg.svg"
+logo: "/assets/img/forklift-logo-darkbg.svg"
 type: website
 future: false
 
