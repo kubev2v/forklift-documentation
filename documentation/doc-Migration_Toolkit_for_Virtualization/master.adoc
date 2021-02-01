@@ -4,9 +4,18 @@ include::modules/common-attributes.adoc[]
 = {title}
 :context: mtv
 :mtv:
+:toc:
+:toc-title:
+:vernum: 2.0-beta
+:toclevels: 3
+:compat-mode:
 
-ifeval::["(build)" == "downstream"]
+ifeval::["{build}" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[]
+endif::[]
+
+ifdef::forklift[]
+{abstract}
 endif::[]
 
 [id="about-mtv_{context}"]

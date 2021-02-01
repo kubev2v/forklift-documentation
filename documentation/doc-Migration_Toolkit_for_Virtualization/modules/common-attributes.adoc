@@ -1,12 +1,7 @@
 :icons: font
 :experimental:
-:toc: macro
-:toc-title:
 :imagesdir: modules/images
 :kebab: Options menu image:kebab.png[title="Options menu"]
-:vernum: 2.0-beta
-:toclevels: 3
-:compat-mode:
 
 // Upstream attributes are in _config.yml
 :build: downstream

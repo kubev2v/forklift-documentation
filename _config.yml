@@ -25,13 +25,13 @@ asciidoc: {}
 asciidoctor:
   attributes:
   - title=Installing and using Forklift
+  - context=forklift
   - description=Installing and using Forklift to migrate virtual machines from VMware to KubeVirt.
   - keywords=migration, VMware, OpenShift Virtualization, KubeVirt
   - author=Red Hat Modernization and Migration Solutions documentation team
   - showtitle=@
   - build=upstream
   - imagesdir=../modules/images
-  - virt-workflow=image::136_Upstream_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
   - project-short=Forklift
   - project-full=Forklift
   - project-first=Forklift
@@ -42,7 +42,6 @@ asciidoctor:
   - ocp=OpenShift Kubernetes Engine
   - ocp-version=4.6
   - ocp-short=OKE
-  - context=forklift
   safe: unsafe
 
 exclude:
