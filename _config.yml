@@ -42,6 +42,7 @@ asciidoctor:
   - ocp=OpenShift Kubernetes Engine
   - ocp-version=4.6
   - ocp-short=OKE
+  - operator=Konveyor Forklift Operator
   safe: unsafe
 
 exclude:
