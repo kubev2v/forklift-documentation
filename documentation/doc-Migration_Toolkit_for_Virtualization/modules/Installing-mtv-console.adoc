@@ -5,7 +5,7 @@
 [id="installing-mtv-console_{context}"]
 = Installing {the-lc} {project-full} using the web console
 
-You can install {the-lc} {project-first} using the {ocp} web console.
+You can install {the-lc} {project-first} using the OpenShift web console.
 
 .Prerequisites
 
@@ -15,25 +15,26 @@ You can install {the-lc} {project-first} using the {ocp} web console.
 
 .Procedure
 
-. Open a browser window and log in to the {ocp} web console.
+. Open a browser window and log in to the OpenShift web console.
 . Click *Operators* -> *OperatorHub*.
-ifeval::["build" == "upstream"]
-. Use the *Filter by keyword* field to find the *Konveyor Operator for VMs*.
+. Use the *Filter by keyword* field to find the *{operator}*.
+ifeval::["{build}" == "upstream"]
 +
 [NOTE]
 ====
-The Konveyor Operator for VMs is a Community Operator. Red Hat does not support Community Operators.
+The {operator} is a Community Operator. Red Hat does not support Community Operators.
 ====
 endif::[]
-ifeval::["build" == "downstream"]
-. Use the *Filter by keyword* field to find the *{project-full} Operator*.
-endif::[]
-. Click the Operator and then click *Install*.
+. Click the {operator} and then click *Install*.
 . On the *Install Operator* page, click *Install*.
-+
-On the *Installed Operators* page, the Operator appears in the *openshift-migration* project with the status *Succeeded*.
+. Click *Operators* -> *Installed Operators* to verify that the {operator} appears in the *openshift-migration* project with the status *Succeeded*.
 
-. Click the Operator.
-. Under *Provided APIs*, locate the *VirtController* tile, and click *Create Instance*.
+. Click the {operator}.
+ifeval::["{build}" == "upstream"]
+. Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
+endif::[]
+ifeval::["{build}" == "downstream"]
+. Under *Provided APIs*, locate the *VirtController*, and click *Create Instance*.
+endif::[]
 . Click *Create*.
-. Click *Workloads* -> *Pods* to verify that the `ProviderInventory`, `Validation`, `UserInterface`, and `Controller` pods are running.
+. Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.

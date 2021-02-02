@@ -4,13 +4,13 @@ title: "Forklift documentation"
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /forklift-documentation/
-logo: "/assets/img/forklift-logo-lightbg.svg"
+logo: "/assets/img/forklift-logo-darkbg.svg"
 type: website
 future: false
 
 # Build settings
 markdown: kramdown
-
+theme: jekyll-theme-cayman
 defaults:
   - scope:
       path: "assets/img"
@@ -24,7 +24,6 @@ asciidoc: {}
 # upstream doc attributes
 asciidoctor:
   attributes:
-  - title=Installing and using Forklift
   - context=forklift
   - description=Installing and using Forklift to migrate virtual machines from VMware to KubeVirt.
   - keywords=migration, VMware, OpenShift Virtualization, KubeVirt
@@ -42,6 +41,7 @@ asciidoctor:
   - ocp=OpenShift Kubernetes Engine
   - ocp-version=4.6
   - ocp-short=OKE
+  - operator=Konveyor Forklift Operator
   safe: unsafe
 
 exclude:
