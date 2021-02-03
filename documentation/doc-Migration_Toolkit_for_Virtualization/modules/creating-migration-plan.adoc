@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="creating-a-migration-plan_{context}"]
+[id="creating-migration-plan_{context}"]
 = Creating a migration plan
 
 You can create a migration plan in the {project-short} web console.

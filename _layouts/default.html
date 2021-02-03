@@ -21,11 +21,10 @@
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
   </head>
   <body>
-    <header class="page-header" role="banner">
+    <header class="page-header">
         {% if site.logo %}
-          <img src="{{site.logo | relative_url}}" alt="Logo" width="200" />
+          <a href="{{ site.baseurl }}"><img src="{{site.logo | relative_url}}" alt="Forklift Documentation" width="200" /></a><br>
         {% endif %}
-      <a href="{{ site.baseurl }}"><h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2></a>
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
       {% endif %}
