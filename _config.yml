@@ -25,7 +25,8 @@ asciidoc: {}
 asciidoctor:
   attributes:
   - context=forklift
-  - description=Installing and using Forklift to migrate virtual machines from VMware to KubeVirt.
+  - description=Migrating virtual machines to KubeVirt
+  - abstract=Forklift enables you to migrate virtual machines to {virt} running on {ocp} {ocp-version}.
   - keywords=migration, VMware, OpenShift Virtualization, KubeVirt
   - author=Red Hat Modernization and Migration Solutions documentation team
   - showtitle=@
