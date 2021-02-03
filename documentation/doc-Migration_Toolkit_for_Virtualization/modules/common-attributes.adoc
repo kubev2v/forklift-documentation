@@ -17,6 +17,5 @@
 :ocp-short: OCP
 :operator: {virt} Operator
 
-:abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp} {ocp-version}.
 :title: Installing and using {the-lc} {project-full}
-:subtitle: Migrating from VMware to Red Hat {virt}
+:subtitle: Migrating virtual machines to Red Hat {virt}

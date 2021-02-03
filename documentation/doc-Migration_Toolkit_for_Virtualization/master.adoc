@@ -1,7 +1,7 @@
 // common document attributes
 include::modules/common-attributes.adoc[]
 
-= {title}
+= {title} ({project-version} draft)
 :context: mtv
 :mtv:
 :toc:
@@ -14,14 +14,12 @@ ifeval::["{build}" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[]
 endif::[]
 
-ifdef::forklift[]
-{abstract}
-endif::[]
+{the} {project-first} enables you to migrate virtual machines to {virt}.
 
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
 
-This section describes the {project-first} custom resources, services, and workflows.
+This section describes the custom resources, services, and workflows of {the-lc} {project-first}.
 
 include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
 include::modules/mtv-workflow.adoc[leveloffset=+2]
@@ -34,45 +32,33 @@ You can install {the-lc} {project-first} using the {ocp} web console or the comm
 
 You must create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source VM disks.
 
-include::modules/Installing-mtv-console.adoc[leveloffset=+2]
-include::modules/Installing-mtv-cli.adoc[leveloffset=+2]
-include::modules/Adding-vddk-to-mtv.adoc[leveloffset=+2]
+include::modules/installing-mtv-console.adoc[leveloffset=+2]
+include::modules/installing-mtv-cli.adoc[leveloffset=+2]
+include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
 
-[id="migrating-virtual-machines_{context}"]
-== Migrating virtual machines
+[id="migrating-virtual-machines-to-virt_{context}"]
+== Migrating virtual machines to {virt}
 
-You can migrate virtual machines using the {ocp} web console or the CLI.
+You can migrate virtual machines to {virt} with the {project-short} web console or the command line interface (CLI).
 
 [id='migrating-vms-web-console_{context}']
-=== Migrating virtual machines with the web console
+=== Migrating virtual machines with the {project-short} web console
 
-You can add providers and create network and storage mappings. Then, you create and run a migration plan.
+You can migrate virtual machines to {virt} with the {project-short} web console.
 
-[id="adding-providers_{context}"]
-==== Adding providers
+You add the source and target providers and create a network mapping and a storage mapping. Then, you create and run a migration plan.
 
-You can add the {virt} and VMware providers in the web console.
+include::modules/adding-virt-provider.adoc[leveloffset=+3]
+include::modules/adding-source-provider.adoc[leveloffset=+3]
+include::modules/creating-network-mapping.adoc[leveloffset=+3]
+include::modules/creating-storage-mapping.adoc[leveloffset=+3]
+// include::modules/creating-hooks.adoc[leveloffset=+3]
+include::modules/creating-migration-plan.adoc[leveloffset=+3]
+include::modules/running-migration-plan.adoc[leveloffset=+3]
 
-include::modules/Adding-virt-provider.adoc[leveloffset=+4]
-include::modules/Adding-vmware-provider.adoc[leveloffset=+4]
+include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
-[id="creating-mappings_{context}"]
-==== Creating mappings
+// [id='troubleshooting_{context}']
+// == Troubleshooting
 
-You can create mappings to map the source and target networks and storage.
-
-include::modules/Creating-network-mapping.adoc[leveloffset=+4]
-include::modules/Creating-storage-mapping.adoc[leveloffset=+4]
-
-// include::modules/Creating-hooks.adoc[leveloffset=+2]
-include::modules/Creating-migration-plan.adoc[leveloffset=+3]
-include::modules/Running-migration-plan.adoc[leveloffset=+3]
-
-include::modules/Migrating-virtual-machines-cli.adoc[leveloffset=+2]
-
-[id='troubleshooting_{context}']
-== Troubleshooting
-
-include::modules/Collecting-logs.adoc[leveloffset=+2]
-// include::modules/Known-issues.adoc[leveloffset=+2]
 :mtv!:

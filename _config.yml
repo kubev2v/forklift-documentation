@@ -1,6 +1,6 @@
 # Site settings
 show_downloads: false
-title: "Forklift documentation"
+title: "Forklift Documentation"
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /forklift-documentation/
@@ -24,9 +24,8 @@ asciidoc: {}
 # upstream doc attributes
 asciidoctor:
   attributes:
-  - title=Installing and using Forklift
   - context=forklift
-  - description=Installing and using Forklift to migrate virtual machines from VMware to KubeVirt.
+  - description=Migrating virtual machines to KubeVirt
   - keywords=migration, VMware, OpenShift Virtualization, KubeVirt
   - author=Red Hat Modernization and Migration Solutions documentation team
   - showtitle=@
