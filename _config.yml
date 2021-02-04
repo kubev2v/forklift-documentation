@@ -40,9 +40,9 @@ asciidoctor:
   - The=
   - project-version=2.0-beta
   - virt=KubeVirt
-  - ocp=OpenShift Kubernetes Engine
+  - ocp=OKD
   - ocp-version=4.6
-  - ocp-short=OKE
+  - ocp-short=OKD
   - operator=Konveyor Forklift Operator
   safe: unsafe
 
