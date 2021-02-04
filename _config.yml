@@ -24,6 +24,7 @@ asciidoc: {}
 # upstream doc attributes
 asciidoctor:
   attributes:
+  - title=Installing and using Forklift
   - context=forklift
   - description=Migrating virtual machines to KubeVirt
   - abstract=Forklift enables you to migrate virtual machines to {virt} running on {ocp} {ocp-version}.
