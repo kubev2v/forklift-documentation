@@ -14,13 +14,7 @@ ifeval::["{build}" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[]
 endif::[]
 
-ifeval::["{build}" == "upstream"]
-{abstract}
-endif::[]
-
-{virt} is an add-on to {ocp} that allows you to run and manage virtual machine workloads alongside container workloads.
-
-{virt} is an add-on to {ocp} that allows you to run and manage virtual machine workloads alongside container workloads.
+{the-lc} {project-first} enables you to migrate virtual machines to {virt}. {virt} is an add-on to {ocp} that allows you to run and manage virtual machine workloads alongside container workloads.
 
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
