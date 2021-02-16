@@ -3,55 +3,35 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="installing-mtv-cli_{context}"]
-= Installing {the-lc} {project-full} using the CLI
+= Installing {the-lc} {project-full} from the CLI
 
-You can install {the-lc} {project-first} using the command line interface (CLI).
+You can install {the-lc} {project-first} from the command line interface (CLI).
 
 .Prerequisites
 
-* Install {ocp} {ocp-version} on your cluster.
-* Install the {virt} Operator.
-* Install the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI].
-* Log in as a user with `cluster-admin` privileges.
+* You have installed {ocp} {ocp-version} on your cluster.
+* You have installed the {virt} Operator.
+* You have installed the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI].
+* You have logged in as a user with `cluster-admin` privileges.
 
 .Procedure
 
-ifeval::["{build}" == "upstream"]
-. Create an `openshift-migration` project:
-endif::[]
-ifeval::["{build}" == "downstream"]
-. Create an `openshift-rhmtv` project:
-endif::[]
+. Create an `{namespace}` project:
 +
-ifeval::["{build}" == "upstream"]
-[source,terminal]
+[source,terminal,subs="attributes"]
 ----
 $ cat << EOF | oc apply -f -
 ---
 apiVersion: project.openshift.io/v1
 kind: Project
 metadata:
-  name: openshift-migration
+  name: {namespace}
 EOF
 ----
-endif::[]
-ifeval::["{build}" == "downstream"]
-[source,terminal]
-----
-$ cat << EOF | oc apply -f -
----
-apiVersion: project.openshift.io/v1
-kind: Project
-metadata:
-  name: openshift-rhmtv
-EOF
-----
-endif::[]
 
-. Create an `OperatorGroup` object called `migration`:
+. Create an `OperatorGroup` CR called `migration`:
 +
-ifeval::["{build}" == "upstream"]
-[source,terminal]
+[source,terminal,subs="attributes"]
 ----
 $ cat << EOF | oc apply -f -
 ---
@@ -59,71 +39,49 @@ apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
   name: migration
-  namespace: openshift-rhmtv
+  namespace: {namespace}
 spec:
   targetNamespaces:
-    - openshift-rhmtv
+    - {namespace}
 EOF
 ----
-endif::[]
-ifeval::["{build}" == "downstream"]
-[source,terminal]
-----
-$ cat << EOF | oc apply -f -
----
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-  name: migration
-  namespace: openshift-rhmtv
-spec:
-  targetNamespaces:
-    - openshift-rhmtv
-EOF
-----
-endif::[]
 
-ifeval::["{build}" == "upstream"]
-. Create a `Subscription` object for the `virt-operator`:
-endif::[]
-ifeval::["{build}" == "downstream"]
-. Create a `Subscription` object for the `rhmtv-operator`:
-endif::[]
+. Create a `Subscription` CR for the `{operator}`:
 +
 ifeval::["{build}" == "upstream"]
-[source,terminal]
+[source,terminal,subs="attributes"]
 ----
 $ cat << EOF | oc apply -f -
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: virt-operator
+  name: {operator}
   namespace: openshift-migration
 spec:
   channel: development
   installPlanApproval: Automatic
-  name: virt-operator
+  name: {operator}
   source: community-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "konveyor-virt-operator.v2.0.0-beta.0"
+  startingCSV: "konveyor-forklift-operator.v2.0.0-beta.0"
 EOF
 ----
 endif::[]
 ifeval::["{build}" == "downstream"]
-[source,terminal]
+[source,terminal,subs="attributes"]
 ----
 $ cat << EOF | oc apply -f -
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: rhmtv-operator
+  name: {operator}
   namespace: openshift-rhmtv
 spec:
   channel: release-v2.0.0-beta
   installPlanApproval: Automatic
-  name: rhmtv-operator
+  name: {operator}
   source: redhat-operators
   sourceNamespace: openshift-marketplace
   startingCSV: "mtv-operator.v2.0.0-beta.1"
@@ -131,10 +89,9 @@ EOF
 ----
 endif::[]
 
-. Create a `ForkliftController` object:
+. Create a `ForkliftController` CR:
 +
-ifeval::["{build}" == "upstream"]
-[source,terminal]
+[source,terminal,subs="attributes"]
 ----
 $ cat << EOF | oc apply -f -
 ---
@@ -142,42 +99,18 @@ apiVersion: forklift.konveyor.io/v1alpha1
 kind: ForkliftController
 metadata:
   name: forklift-controller
-  namespace: openshift-migration
+  namespace: {namespace}
 spec:
   olm_managed: true
 EOF
 ----
-endif::[]
-ifeval::["{build}" == "downstream"]
-[source,terminal]
-----
-$ cat << EOF | oc apply -f -
----
-apiVersion: forklift.konveyor.io/v1alpha1
-kind: ForkliftController
-metadata:
-  name: forklift-controller
-  namespace: openshift-rhmtv
-spec:
-  olm_managed: true
-EOF
-----
-endif::[]
 
-. View the pods created during the `ForkliftController` object reconciliation:
+. Verify that the {project-short} pods are running:
 +
-ifeval::["{build}" == "upstream"]
-[source,terminal]
+[source,terminal,subs="attributes"]
 ----
-$ oc get pods -n openshift-migration
+$ oc get pods -n {namespace}
 ----
-endif::[]
-ifeval::["{build}" == "downstream"]
-[source,terminal]
-----
-$ oc get pods -n openshift-rhmtv
-----
-endif::[]
 +
 .Example output
 ----

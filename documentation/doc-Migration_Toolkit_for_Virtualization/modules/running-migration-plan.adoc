@@ -18,4 +18,4 @@ The *Migration plans* list displays the source and target providers, the number 
 +
 This screen displays the migration start and end time, the amount of data copied, and a progress pipeline for each VM being migrated.
 
-. Expand a VM to view the migration steps, elapsed time of each step, and the state.
+. Optional: Click a VM to view the migration steps, elapsed time of each step, and the state.

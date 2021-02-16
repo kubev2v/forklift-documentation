@@ -5,20 +5,30 @@
 [id="creating-network-mapping_{context}"]
 = Creating a network mapping
 
-You can create a network mapping to map source networks to {virt} networks.
+You can create a network mapping by using the {project-first} web console to map source networks to {virt} networks.
 
 [NOTE]
 ====
 You cannot map an opaque network, typically managed by NSX, to a {virt} network.
 ====
 
+.Prerequisites
+
+* You have added source and target providers to the web console.
+
 .Procedure
 
 . In the web console, navigate to *Mappings* -> *Network*.
 . Click *Create mapping*.
-. Select a *Source provider* and a *Target provider*.
-. Select a network from the *Source networks* list and from the *Target networks* list.
-. Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
+. Complete the following fields:
+
+* *Name*: Enter a name to display in the network mappings list.
+* *Source provider*: Select a source provider.
+* *Target provider*: Select a target provider.
+* *Source networks*: Select a source network.
+* *Target namespaces/networks*: Select a target network.
+
+. Optional: Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
 . Click *Create*.
 +
-The mapping is displayed in the *Network mappings* list.
+The network mapping is displayed on the *Network mappings* screen.

@@ -43,7 +43,8 @@ asciidoctor:
   - ocp=OKD
   - ocp-version=4.6
   - ocp-short=OKD
-  - operator=Konveyor Forklift Operator
+  - operator=forklift-operator
+  - namespace=openshift-migration
   safe: unsafe
 
 exclude:

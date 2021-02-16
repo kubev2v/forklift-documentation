@@ -5,44 +5,36 @@
 [id="creating-migration-plan_{context}"]
 = Creating a migration plan
 
-You can create a migration plan in the {project-short} web console.
+You can create a migration plan by using the {project-first} web console.
 
 A migration plan allows you to group virtual machines that should be migrated together or with the same migration parameters, for example, a percentage of the members of a cluster or a complete application.
 
 .Prerequisites
 
-* The web console has source and target providers.
+* You have added source and target providers to the web console.
 
 .Procedure
 
 . In the web console, navigate to *Migration plans* and click *Create migration plan*.
-. Fill in the following fields in the *General settings* screen:
-* *Plan name*: Plan name that is displayed in the web console.
-* *Plan description*: Optional. Brief description of the migration plan.
-* *Source provider*: Select a VMware provider.
-* *Target provider*: Select the {virt} provider.
-* *Target namespace*: Select the namespace where the migrated VMs will be added. You can type to search or create a new namespace.
+. Complete the following fields:
+
+* *Plan name*: Enter a migration plan name to display in the migration plan list.
+* *Plan description*: Optional: Brief description of the migration plan.
+* *Source provider*: Select a source provider.
+* *Target provider*: Select a target provider.
+* *Target namespace*: You can type to search for an existing target namespace or create a new namespace.
 
 . Click *Next*.
-. Filter the VMs that you want to migrate by selecting data centers, clusters, or folders.
-. Select the VMs to migrate.
-. Click *Next*.
+. Click *By clusters and hosts* or *By folders*, select clusters, hosts, or folders to filter the VMs, and then click *Next*.
+. Select the VMs to migrate and click *Next*.
 . Select an existing network mapping or create a new network mapping.
-.. If you want to create a new network mapping, for each item from the *Source networks* list select a network from the *Target networks* dropdown list.
-.. You can save the network mapping by selecting *Save mapping to use again* and typing the mapping name in the *Name* field.
+. Optional: If you select *Create a new network mapping*, select a target network for each source network.
+. Optional: Select *Save mapping to use again* and enter a network mapping name.
 . Click *Next*.
 . Select an existing storage mapping or create a new storage mapping.
-.. If you want to create a new storage mapping, for each item from the *Source datastores* list select a network from the *Target storage classes* dropdown list.
-.. You can save the storage mapping by selecting *Save mapping to use again* and typing the mapping name in the *Name* field.
+. Optional: If you select *Create a new storage mapping*, select a target storage class for each source data store.
+. Optional: Select *Save mapping to use again* and enter a storage mapping name.
 . Click *Next*.
-// . If you want to add a hook to the migration plan:
-//
-// .. Select an existing hook from the list or click *Add hook*.
-// .. Select *Ansible playbook* or *Custom container image* as the hook definition.
-// .. Select the migration step when you want the hook to run.
-// .. Click *Add*.
-//
-// . Click *Next*.
 . Review your migration plan and click *Finish*.
 +
 The migration plan is saved in the migration plan list.
