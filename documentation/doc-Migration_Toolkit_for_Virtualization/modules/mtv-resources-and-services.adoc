@@ -5,25 +5,30 @@
 [id="mtv-resources-and-services_{context}"]
 = {project-full} custom resources and services
 
-{The} {project-first} creates the following custom resources (CRs) and services.
+{The} {project-first} is provided in the form of an operator. It creates and manages the following custom resources (CRs) and services.
 
 .Custom resources
 
 * The `Provider` CRs store attributes that enable {project-short} to connect to and interact with the source and target providers.
-* The `Mapping` CRs map the networks and storage of the source and target providers.
-* A `Plan` CR, also called a migration plan, contains a list of virtual VMs that are migrated together with the same migration parameters. The `Plan` selects VMs to fit the available migration resources until all VMs are migrated.
+* The `NetworkMapping` CRs map the networks of the source and target providers.
+* The `StorageMapping` CRs map the storage of the source and target providers.
+* The `Provisioner` CRs store configuration for the various storage provisioners, such as supported volume and access modes.
+* A `Plan` CR, also called a migration plan, contains a list of VMs that are migrated together with the same migration parameters, as well as the mapping information that apply to the selected VMs.
+
 // +
 // If a virtual machine fails to migrate, you can run a new migration with the same migration plan. Only the virtual machines that have not been migrated will be migrated.
-* A `Migration` CR is created when you run a migration plan.
+* A `Migration` CR is created when you run a migration plan. Only one Migration CR per migration plan is executed at a given time. 
 
 .Services
 
-* The _Provider Inventory_ service connects to the source and target providers. It maintains a local inventory for mappings and plans. Each provider has its own `ProviderInventory` pod to ensure scalability.
+* The _Provider Inventory_ service connects to the source and target providers. It maintains a local inventory for mappings and plans.
 
-* The _Validation_ service checks the suitability of a VM for migration by applying rules and stores the validation status. The Validation service is triggered by the Provider Inventory service whenever a VM configuration change is detected.
+* The _Validation_ service checks the suitability of a VM for migration by applying rules. The Validation service is triggered by the Provider Inventory service whenever a VM configuration change is detected and the Provider Inventory stores the VM conditions in its database.
 
 * The _User Interface_ service enables you to create and configure {project-short} CRs. It also displays the status of the CRs and the progress of a migration.
 
-* The _Migration Controller_, _Virtual Machine Import Controller_, _Kubevirt Controller_, and _Containerized Data Import (CDI) Controller_ services implement the logic to reconcile the CRs with the state defined by the user. Controllers perform actions with CRs in response to user requests.
+* The _Migration Controller_ service implement the logic to reconcile the CRs with the state defined by the user. Controllers perform actions with CRs in response to user requests.
 +
-For example, when you create a migration plan, the Migration Controller validates the plan and adds a status label. If the plan fails validation, its status is `Not ready` and the plan cannot be used to perform a migration. If the plan passes validation, its status is `Ready` and it can be used to perform a migration. After the migration, the Migration Controller changes the plan status to `Completed`.
+The Migration controller mainly deals with orchestrating the migrations and delegates most of the technical operations to the _Virtual Machine Import Controller_, _Kubevirt Controller_, and _Containerized Data Import (CDI) Controller_ services that are deployed with Kubevirt.
++
+When you create a migration plan, the Migration Controller validates the plan and adds a status label. If the plan fails validation, its status is `Not ready` and the plan cannot be used to perform a migration. If the plan passes validation, its status is `Ready` and it can be used to perform a migration. After the migration, the Migration Controller changes the plan status to `Completed`.

@@ -9,7 +9,7 @@ You can add the VMware source provider using the {project-short} web console.
 
 .Prerequisites
 
-* Admin privileges
+* VMware vCenter user account with administrator privileges
 
 .Procedure
 
@@ -19,11 +19,69 @@ You can add the VMware source provider using the {project-short} web console.
 . Fill in the following fields:
 
 * *Name*: vCenter name to display in the list of providers
-* *Hostname*: vCenter host name or IP address
+* *Hostname or IP address*: vCenter host name or IP address
 * *Username*: vCenter admin user name, for example, `administrator@vsphere.local`
 * *Password*: vCenter password
+* *Certificate SHA1 Fingerprint*: vCenter server SSL SHA 1 fingerprint
 
-. Click *Check connection* to verify the credentials.
+The following command will print the SSL fingerprint for a vCenter server at `vcenter.example.com`:
+
+[source,terminal]
+----
+$ openssl s_client \
+    -connect vcenter.example.com:443 < /dev/null 2>/dev/null \
+    | openssl x509 -fingerprint -noout -in /dev/stdin \
+    | cut -d '=' -f 2
+
+----
+
 . Click *Add* to add and save the provider.
 +
 The source provider appears in the list of providers.
+
+[id="selecting-migration-network-for-source-provider_{context}"]
+== Selecting the migration network for the source provider
+
+To copy the disks, {project-short} relies on VMware VDDK. The default behavior
+is to connect to vCenter to retrieve the hostname or IP address of the ESXi
+host associated to the virtual machine, as well as an authentication token.
+This token is then used to connect to the ESXi host to perform the transfer.
+
+However, the hostname or IP address is the one for the management network. This
+can lead to poor performance since it is common that the bandwidth is low on
+this network. And it can even impact the VMware platform if the disks transfer
+saturates the network and perturbates the communication between vCenter and the
+ESXi hosts.
+
+{project-short} allows selecting the migration network for the ESXi hosts to
+reduce the risk and increase the performance. When a migration network is
+selected, the disk copy pod connects directly to the ESXi host on its interface
+connected to the migration network. This requires valid credentials for the
+ESXi host since there is not connection to vCenter to retrieve an
+authentication token.
+
+.Prerequisites
+
+* VMware network with enough capacity for disk transfer.
+* The network must be reachable from the OpenShift Virtualization nodes.
+* User account with administrator privilege for each ESXi host.
+
+.Procedure
+
+. In the web console, navigate to *Providers* and click *VMware* tab.
+. For a given VMware provider, click on the Hosts count. This opens a view with the list of hosts.
+. Select the hosts that you want to configure and click *Select migration network*.
+. Fill the following fields in the *Select migration network* form:
+
+* *Network*: network that will be used as migration network
+* *Host admin username*: ESXi host admin user name, for example, `root`
+* *Host admin password*: ESXi host password
+
+. Click *Save*
+
+The migration network is selected for the ESXi hosts that were selected. The
+details are displayed in the hosts list.
+
+If the host status is not *Ready* after a few seconds, it usually means that
+the host is unreachable on that network or that credentials are incorrect. In
+this case, you can select the host and modify the configuration.

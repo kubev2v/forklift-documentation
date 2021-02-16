@@ -37,6 +37,25 @@ $ openssl s_client \
 
 . Create a `Secret` CR with the VMware credentials:
 +
+ifeval::["{build}" == "downstream"]
+[source,terminal]
+----
+$ cat < EOF | oc apply -f -
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vmware-secret
+  namespace: openshift-rhmtv
+type: Opaque
+stringData:
+  user: administrator@vsphere.local
+  password: <password> <1>
+  thumbprint: <01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67> <2>
+EOF
+----
+endif::[]
+ifeval::["{build}" == "upstream"]
 [source,terminal]
 ----
 $ cat < EOF | oc apply -f -
@@ -53,11 +72,32 @@ stringData:
   thumbprint: <01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67> <2>
 EOF
 ----
+endif::[]
 <1> Specify the password.
 <2> Specify the thumbprint.
 
 . Create a `Provider` CR for VMware vSphere:
 +
+ifeval::["{build}" == "downstream"]
+[source,terminal]
+----
+$ cat < EOF | oc apply -f -
+---
+apiVersion: virt.konveyor.io/v1alpha1
+kind: Provider
+metadata:
+  name: vmware-provider
+  namespace: openshift-rhmtv
+spec:
+  type: vsphere
+  url: https://<vcenter.example.com>/sdk <1>
+  secret:
+    name: vmware-secret <2>
+    namespace: openshift-rhmtv
+EOF
+----
+endif::[]
+ifeval::["{build}" == "upstream"]
 [source,terminal]
 ----
 $ cat < EOF | oc apply -f -
@@ -75,11 +115,60 @@ spec:
     namespace: openshift-migration
 EOF
 ----
+endif::[]
 <1> Specify the vSphere API end point.
 <2> Specify the `Secret`.
 
 . Create a `Plan` CR for the migration:
 +
+ifeval::["{build}" == "downstream"]
+[source,terminal]
+----
+$ cat < EOF | oc apply -f -
+---
+apiVersion: virt.konveyor.io/v1alpha1
+kind: Plan
+metadata:
+  name: test-migration-plan
+  namespace: openshift-rhmtv
+spec:
+  provider:
+    source:
+      name: vmware-provider
+      namespace: openshift-rhmtv
+    destination:
+      name: host <1>
+      namespace: openshift-rhmtv
+  map:
+    networks:
+      - source:
+          id: <network-31> <2>
+        destination:
+          type: pod
+          name: pod
+          namespace: openshift-rhmtv
+      - source:
+          id: <network-723>
+        destination:
+          type: pod
+          name: pod
+          namespace: openshift-rhmtv
+    datastores:
+      - source:
+          id: <datastore-30> <3>
+        destination:
+          storageClass: standard
+      - source:
+          id: <datastore-35>
+        destination:
+          storageClass: standard
+  vms:
+    - id: <vm-1630> <4>
+    - id: <vm-2841>
+EOF
+----
+endif::[]
+ifeval::["{build}" == "upstream"]
 [source,terminal]
 ----
 $ cat < EOF | oc apply -f -
@@ -125,13 +214,32 @@ spec:
     - id: <vm-2841>
 EOF
 ----
-<1> The OpenShift provider is added automatically as `host` when the Operator is deployed.
-<2> Specify a source network.
-<3> Specify a source data store.
-<4> Specify the IDs of the VMs to migrate.
+endif::[]
+<1> The OpenShift provider where {project-short} is deployed is added automatically as `host`.
+<2> Specify a source network by its Managed Object Reference.
+<3> Specify a source data store by its Managed Object Reference.
+<4> Specify the IDs of the VMs to migrate by their Managed Object Reference.
 
 . Create a `Migration` CR to run the `Plan` CR:
 +
+ifeval::["{build}" == "downstream"]
+[source,terminal]
+----
+$ cat < EOF | oc apply -f -
+---
+apiVersion: virt.konveyor.io/v1alpha1
+kind: Migration
+metadata:
+  name: migration-test-001
+  namespace: openshift-rhmtv
+spec:
+  plan:
+    name: test-migration-plan
+    namespace: openshift-rhmtv
+EOF
+----
+endif::[]
+ifeval::["{build}" == "upstream"]
 [source,terminal]
 ----
 $ cat < EOF | oc apply -f -
@@ -147,5 +255,6 @@ spec:
     namespace: openshift-migration
 EOF
 ----
+endif::[]
 
-The `Migration` CR creates a `VirtualMachineImport` CR for each VM being migrated. You can monitor the progress of the migration by viewing the `VirtualMachineImport` pods in the `openshift-migration` namespace.
+The `Migration` CR creates a `VirtualMachineImport` CR for each VM being migrated. You can monitor the progress of the migration by viewing the `VirtualMachineImport` pods in the target namespace.

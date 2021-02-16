@@ -9,7 +9,7 @@ You can create a network mapping to map source networks to {virt} networks.
 
 [NOTE]
 ====
-You cannot map an opaque network to a {virt} network.
+You cannot map an opaque network, typically managed by NSX, to a {virt} network.
 ====
 
 .Procedure

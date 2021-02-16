@@ -70,18 +70,10 @@ $ podman build . -t <registry_route_or_server_path>/vddk:<tag> <1>
 $ podman push <registry_route_or_server_path>/vddk:<tag>
 ----
 
-. Edit the `v2v-vmware` config map in the *openshift-cnv* project:
+. Patch the `v2v-vmware` config map in the *openshift-cnv* project to add the `vddk-init-image` field:
 +
 [source,terminal]
 ----
-$ oc edit configmap v2v-vmware -n openshift-cnv
-----
-
-. Add the `vddk-init-image` parameter to the `data` stanza:
-+
-[source,yaml]
-----
-...
-data:
-  vddk-init-image: <registry_route_or_server_path>/vddk:<tag>
+oc patch configmap/v2v-vmware -n openshift-cnv \
+    -p '{"data": {"vddk-init-image": "<registry_route_or_server_path>/vddk:<tag>"}}'
 ----
