@@ -7,15 +7,11 @@
 
 You can run a migration plan and view its progress in the web console.
 
-.Prerequisites
-
-* The VMware VMs must be powered off.
-
 .Procedure
 
 . In the web console, navigate to *Migration plans*.
 +
-The *Migration plans* list displays the source and target providers, the number of VMs being migrated, the status of the plan, and a high-level progress bar that shows how many VMs have been migrated.
+The *Migration plans* list displays the source and target providers, the number of VMs being migrated, and the status of the plan.
 
 . Click *Start* beside a migration plan with a *Ready* status to run the plan.
 . To view the *Migration Details by VM* screen, click the name of a migration plan.

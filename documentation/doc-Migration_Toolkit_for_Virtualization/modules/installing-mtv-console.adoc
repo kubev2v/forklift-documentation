@@ -27,14 +27,13 @@ The {operator} is a Community Operator. Red Hat does not support Community Opera
 endif::[]
 . Click the {operator} and then click *Install*.
 . On the *Install Operator* page, click *Install*.
-. Click *Operators* -> *Installed Operators* to verify that the {operator} appears in the *openshift-migration* project with the status *Succeeded*.
-
-. Click the {operator}.
 ifeval::["{build}" == "upstream"]
-. Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
+. Click *Operators* -> *Installed Operators* to verify that the {operator} appears in the *openshift-migration* project with the status *Succeeded*.
 endif::[]
 ifeval::["{build}" == "downstream"]
-. Under *Provided APIs*, locate the *VirtController*, and click *Create Instance*.
+. Click *Operators* -> *Installed Operators* to verify that the {operator} appears in the *openshift-rhmtv* project with the status *Succeeded*.
 endif::[]
+. Click the {operator}.
+. Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
 . Click *Create*.
 . Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.

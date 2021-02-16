@@ -11,7 +11,6 @@ A migration plan allows you to group virtual machines that should be migrated to
 
 .Prerequisites
 
-* The migration network supports migration.
 * The web console has source and target providers.
 
 .Procedure
@@ -22,19 +21,19 @@ A migration plan allows you to group virtual machines that should be migrated to
 * *Plan description*: Optional. Brief description of the migration plan.
 * *Source provider*: Select a VMware provider.
 * *Target provider*: Select the {virt} provider.
+* *Target namespace*: Select the namespace where the migrated VMs will be added. You can type to search or create a new namespace.
 
 . Click *Next*.
 . Filter the VMs that you want to migrate by selecting data centers, clusters, or folders.
-. Select the VMs to migrate. You can click each VM to view its migration risk assessment.
-. Select an existing storage mapping or create a new storage mapping.
-. If you want to create a new storage mapping:
-.. Select a data store from the *Source datastores* list and a storage class from the *Target storage classes* list.
-.. Click *Add* to create additional storage mappings or to map multiple data stores to a single storage class.
+. Select the VMs to migrate.
 . Click *Next*.
 . Select an existing network mapping or create a new network mapping.
-. If you want to create a new network mapping:
-.. Select a network from the *Source networks* list and a network from the *Target networks* list.
-.. Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
+.. If you want to create a new network mapping, for each item from the *Source networks* list select a network from the *Target networks* dropdown list.
+.. You can save the network mapping by selecting *Save mapping to use again* and typing the mapping name in the *Name* field.
+. Click *Next*.
+. Select an existing storage mapping or create a new storage mapping.
+.. If you want to create a new storage mapping, for each item from the *Source datastores* list select a network from the *Target storage classes* dropdown list.
+.. You can save the storage mapping by selecting *Save mapping to use again* and typing the mapping name in the *Name* field.
 . Click *Next*.
 // . If you want to add a hook to the migration plan:
 //

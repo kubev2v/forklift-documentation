@@ -10,10 +10,10 @@
 :The: The
 :the-lc: the
 :project-first: {project-full} ({project-short})
-:project-version: 2.0-beta
+:project-version: 2.0.0-beta.1
 :virt: OpenShift{nbsp}Virtualization
 :ocp: OpenShift{nbsp}Container{nbsp}Platform
-:ocp-version: 4.6
+:ocp-version: 4.7
 :ocp-short: OCP
 :operator: {virt} Operator
 
