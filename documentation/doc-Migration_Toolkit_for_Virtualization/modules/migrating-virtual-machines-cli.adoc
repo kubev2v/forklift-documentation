@@ -23,24 +23,23 @@ If a migration does not complete, you can create a new `Migration` CR, without c
 
 .Procedure
 
-. Get the SSL thumbprint of the vCenter host:
+. Obtain the SSL thumbprint of the vCenter host:
 +
 [source,terminal]
 ----
 $ openssl s_client \
-    -connect <vcenter.example.com>:443 \ <1>
+    -connect <vcenter_host>:443 \ <1>
     < /dev/null 2>/dev/null \
     | openssl x509 -fingerprint -noout -in /dev/stdin \
     | cut -d '=' -f 2
 ----
 <1> Specify the vCenter host name.
 
-. Create a `Secret` CR with the VMware credentials:
+. Create a `Secret` CR for the VMware provider:
 +
 [source,terminal,subs="attributes"]
 ----
-$ cat < EOF | oc apply -f -
----
+$ cat << EOF | oc apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
@@ -50,18 +49,17 @@ type: Opaque
 stringData:
   user: administrator@vsphere.local
   password: <password> <1>
-  thumbprint: <01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67> <2>
+  thumbprint: <vmware_thumbprint> <2>
 EOF
 ----
 <1> Specify the password.
-<2> Specify the thumbprint.
+<2> Specify the thumbprint, for example, `01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67`.
 
-. Create a `Provider` CR for VMware vSphere:
+. Create a `Provider` CR for the VMware provider:
 +
 [source,terminal,subs="attributes"]
 ----
-$ cat < EOF | oc apply -f -
----
+$ cat << EOF | oc apply -f -
 apiVersion: virt.konveyor.io/v1alpha1
 kind: Provider
 metadata:
@@ -69,25 +67,24 @@ metadata:
   namespace: {namespace}
 spec:
   type: vsphere
-  url: https://<vcenter.example.com>/sdk <1>
+  url: <api_end_point> <1>
   secret:
     name: vmware-secret <2>
     namespace: {namespace}
 EOF
 ----
-<1> Specify the vSphere API end point.
+<1> Specify the vSphere API end point, for example, `/https://vcenter.host.com/sdk`.
 <2> Specify the VMware `Secret` CR.
 
 . Create a `Plan` CR for the migration:
 +
 [source,terminal,subs="attributes"]
 ----
-$ cat < EOF | oc apply -f -
----
+$ cat << EOF | oc apply -f -
 apiVersion: virt.konveyor.io/v1alpha1
 kind: Plan
 metadata:
-  name: test-migration-plan
+  name: migration-plan
   namespace: {namespace}
 spec:
   provider:
@@ -100,46 +97,34 @@ spec:
   map:
     networks:
       - source:
-          id: <network-31> <2>
-        destination:
-          type: pod
-          name: pod
-          namespace: {namespace}
-      - source:
-          id: <network-723>
+          id: <network_ref> <2>
         destination:
           type: pod
           name: pod
           namespace: {namespace}
     datastores:
       - source:
-          id: <datastore-30> <3>
-        destination:
-          storageClass: standard
-      - source:
-          id: <datastore-35>
+          id: <datastore_ref> <3>
         destination:
           storageClass: standard
   vms:
-    - id: <vm-1630> <4>
-    - id: <vm-2841>
+    - id: <vm_ref> <4>
 EOF
 ----
 <1> The cluster on which {project-short} is deployed is added automatically as `host`.
-<2> Specify a source network by its Managed Object Reference.
-<3> Specify a source data store by its Managed Object Reference.
-<4> Specify the IDs of the VMs to migrate by their Managed Object Reference.
+<2> Specify the managed object reference of one or more VMware networks.
+<3> Specify the managed object reference of the VMware data store.
+<4> Specify the managed object reference of one or more VMware VMs.
 
 . Create a `Migration` CR to run the `Plan` CR:
 +
 [source,terminal,subs="attributes"]
 ----
-$ cat < EOF | oc apply -f -
----
+$ cat << EOF | oc apply -f -
 apiVersion: virt.konveyor.io/v1alpha1
 kind: Migration
 metadata:
-  name: migration-test-001
+  name: migration-001
   namespace: {namespace}
 spec:
   plan:
@@ -148,7 +133,7 @@ spec:
 EOF
 ----
 +
-The `Migration` CR creates a `VirtualMachineImport` CR for each VM being migrated.
+The `Migration` CR creates a `VirtualMachineImport` CR for each VM that is migrated.
 
 . Monitor the progress of the migration by viewing the `VirtualMachineImport` pods:
 +

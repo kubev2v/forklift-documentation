@@ -16,12 +16,11 @@ You can install {the-lc} {project-first} from the command line interface (CLI).
 
 .Procedure
 
-. Create a project for {project-short}:
+. Create the {namespace} project:
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
----
 apiVersion: project.openshift.io/v1
 kind: Project
 metadata:
@@ -31,10 +30,9 @@ EOF
 
 . Create an `OperatorGroup` CR called `migration`:
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
----
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
@@ -47,17 +45,16 @@ EOF
 ----
 
 . Create a `Subscription` CR for the Operator:
-+
 ifeval::["{build}" == "upstream"]
-[source,terminal,subs="attributes"]
++
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
----
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: {operator}
-  namespace: openshift-migration
+  namespace: {namespace}
 spec:
   channel: development
   installPlanApproval: Automatic
@@ -69,15 +66,15 @@ EOF
 ----
 endif::[]
 ifeval::["{build}" == "downstream"]
-[source,terminal,subs="attributes"]
++
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
----
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: {operator}
-  namespace: openshift-rhmtv
+  namespace: {namespace}
 spec:
   channel: release-v2.0.0-beta
   installPlanApproval: Automatic
@@ -91,10 +88,9 @@ endif::[]
 
 . Create a `ForkliftController` CR:
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
----
 apiVersion: forklift.konveyor.io/v1alpha1
 kind: ForkliftController
 metadata:
@@ -107,7 +103,7 @@ EOF
 
 . Verify that the {project-short} pods are running:
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ oc get pods -n {namespace}
 ----

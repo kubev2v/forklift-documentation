@@ -1,4 +1,5 @@
 :icons: font
+:toc: macro
 :experimental:
 :imagesdir: modules/images
 :kebab: Options menu image:kebab.png[title="Options menu"]
@@ -9,9 +10,9 @@
 :project-full: Migration{nbsp}Toolkit{nbsp}for{nbsp}Virtualization
 :The: The
 :the-lc: the
-:project-first: {project-full} ({project-short})
-:project-version: 2.0.0-beta.1
-:virt: OpenShift{nbsp}Virtualization
+:project-first: {project-full}{nbsp}({project-short})
+:project-version: 2.0-beta
+:virt: OpenShift Virtualization
 :ocp: OpenShift{nbsp}Container{nbsp}Platform
 :ocp-version: 4.7
 :ocp-short: OCP
