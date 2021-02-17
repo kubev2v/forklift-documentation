@@ -5,7 +5,7 @@
 [id="adding-vddk-to-mtv_{context}"]
 = Adding a VDDK image to {project-short}
 
-{mtc-full} ({mtc-short}) uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks.
+{project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks.
 
 You can create a VDDK image, store it in a private image registry, and add it to the `v2v-vmware` config map.
 

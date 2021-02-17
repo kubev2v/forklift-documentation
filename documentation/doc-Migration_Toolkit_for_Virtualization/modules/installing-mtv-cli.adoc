@@ -16,7 +16,7 @@ You can install {the-lc} {project-first} from the command line interface (CLI).
 
 .Procedure
 
-. Create an `{namespace}` project:
+. Create a project for {project-short}:
 +
 [source,terminal,subs="attributes"]
 ----
@@ -46,7 +46,7 @@ spec:
 EOF
 ----
 
-. Create a `Subscription` CR for the `{operator}`:
+. Create a `Subscription` CR for the Operator:
 +
 ifeval::["{build}" == "upstream"]
 [source,terminal,subs="attributes"]
