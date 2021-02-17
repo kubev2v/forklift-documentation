@@ -18,7 +18,7 @@ You can install {the-lc} {project-first} from the command line interface (CLI).
 
 . Create the {namespace} project:
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: project.openshift.io/v1
@@ -30,7 +30,7 @@ EOF
 
 . Create an `OperatorGroup` CR called `migration`:
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: operators.coreos.com/v1
@@ -47,7 +47,7 @@ EOF
 . Create a `Subscription` CR for the Operator:
 ifeval::["{build}" == "upstream"]
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: operators.coreos.com/v1alpha1
@@ -67,7 +67,7 @@ EOF
 endif::[]
 ifeval::["{build}" == "downstream"]
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: operators.coreos.com/v1alpha1
@@ -88,7 +88,7 @@ endif::[]
 
 . Create a `ForkliftController` CR:
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1alpha1
@@ -103,7 +103,7 @@ EOF
 
 . Verify that the {project-short} pods are running:
 +
-[source,terminal,subs="attributes"]
+[source,terminal,subs="attributes+"]
 ----
 $ oc get pods -n {namespace}
 ----

@@ -1,17 +1,17 @@
 // common document attributes
 include::modules/common-attributes.adoc[]
 = {title}
-:context: mtv
-:mtv:
 :toc:
 :toc-title:
-:vernum: 2.0.0-beta.1
 :toclevels: 3
 :compat-mode:
+:context: mtv
+:mtv:
 
 ifeval::["{build}" == "upstream"]
 Version: {project-version} (in progress)
 endif::[]
+
 ifeval::["{build}" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[]
 endif::[]
@@ -32,7 +32,7 @@ include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 
 You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
 
-You must create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source VM disks.
+You then create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source VM disks.
 
 include::modules/installing-mtv-console.adoc[leveloffset=+2]
 include::modules/installing-mtv-cli.adoc[leveloffset=+2]
@@ -61,7 +61,5 @@ include::modules/running-migration-plan.adoc[leveloffset=+3]
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
-// [id='troubleshooting_{context}']
-// == Troubleshooting
 
 :mtv!:
