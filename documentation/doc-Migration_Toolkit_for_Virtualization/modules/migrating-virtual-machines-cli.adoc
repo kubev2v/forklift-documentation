@@ -39,8 +39,7 @@ $ openssl s_client \
 +
 [source,terminal,subs="attributes"]
 ----
-$ cat < EOF | oc apply -f -
----
+$ cat << EOF | oc apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
@@ -60,8 +59,7 @@ EOF
 +
 [source,terminal,subs="attributes"]
 ----
-$ cat < EOF | oc apply -f -
----
+$ cat << EOF | oc apply -f -
 apiVersion: virt.konveyor.io/v1alpha1
 kind: Provider
 metadata:
@@ -82,8 +80,7 @@ EOF
 +
 [source,terminal,subs="attributes"]
 ----
-$ cat < EOF | oc apply -f -
----
+$ cat << EOF | oc apply -f -
 apiVersion: virt.konveyor.io/v1alpha1
 kind: Plan
 metadata:
@@ -134,8 +131,7 @@ EOF
 +
 [source,terminal,subs="attributes"]
 ----
-$ cat < EOF | oc apply -f -
----
+$ cat << EOF | oc apply -f -
 apiVersion: virt.konveyor.io/v1alpha1
 kind: Migration
 metadata:
