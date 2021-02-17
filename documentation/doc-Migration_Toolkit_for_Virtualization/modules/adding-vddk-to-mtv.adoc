@@ -5,22 +5,22 @@
 [id="adding-vddk-to-mtv_{context}"]
 = Adding a VDDK image to {project-short}
 
-You can create a VDDK image and store it in a private image registry. Then, you can add the image to the `v2v-vmware` config map.
+{mtc-full} ({mtc-short}) uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks.
+
+You can create a VDDK image, store it in a private image registry, and add it to the `v2v-vmware` config map.
 
 [NOTE]
 ====
-Storing the VDDK image in a public registry might violate the terms of the VMware license.
+Store the VDDK image in a private registry. Storing the image in a public registry might violate the license terms.
 ====
 
-[discrete]
-== Prerequisites
+.Prerequisites
 
-* An internal link:https://docs.openshift.com/container-platform/{ocp-version}/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html[{ocp} image registry] or a secure link:https://docs.openshift.com/container-platform/{ocp-version}/registry/registry-options.html[external registry]
+* Internal link:https://docs.openshift.com/container-platform/{ocp-version}/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html[{ocp} image registry] or a secure link:https://docs.openshift.com/container-platform/{ocp-version}/registry/registry-options.html[external registry]
 * Access to the image registry from your {virt} environment
 * Podman installed
 
-[discrete]
-== Procedure
+.Procedure
 
 . Create and navigate to a temporary directory:
 +
@@ -29,10 +29,10 @@ Storing the VDDK image in a public registry might violate the terms of the VMwar
 $ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
 ----
 
-. In a browser, navigate to link:https://code.vmware.com/home[VMware code] and click *SDKs*.
-. In the *Compute Virtualization* section, click *Virtual Disk Development Kit (VDDK)*.
+. In a browser, navigate to the link:https://code.vmware.com/home[VMware code] site and click *SDKs*.
+. In the *Hyperconverged Infrastructure* section, click *Virtual Disk Development Kit (VDDK)*.
 . Select the VDDK version that corresponds to your VMware vSphere version, for example, VDDK 7.0 for vSphere 7.0.
-. Click *Download* and save the VDDK archive in the temporary directory.
+. Click *Download* and save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
 +
 [source,terminal]
@@ -56,24 +56,21 @@ EOF
 +
 [source,terminal]
 ----
-$ podman build . -t <registry_route_or_server_path>/vddk:<tag> <1>
+$ podman build . -t <image> <1>
 ----
-<1> Specify your image registry:
-+
-* For an internal {ocp} registry, specify the internal registry route, for example, `image-registry.openshift-image-registry.svc:5000/openshift/vddk:<tag>`.
-* For an external registry, specify the server name, path, and tag, for example, `server.example.com:5000/vddk:<tag>`.
+<1> Specify the image, for example, `image-registry.openshift-image-registry.svc:5000/openshift/vddk:latest` or `registry.example.com:5000/vddk:latest`.
 
 . Push the VDDK image to the registry:
 +
 [source,terminal]
 ----
-$ podman push <registry_route_or_server_path>/vddk:<tag>
+$ podman push <image>
 ----
 
 . Patch the `v2v-vmware` config map in the *openshift-cnv* project to add the `vddk-init-image` field:
 +
 [source,terminal]
 ----
-oc patch configmap/v2v-vmware -n openshift-cnv \
-    -p '{"data": {"vddk-init-image": "<registry_route_or_server_path>/vddk:<tag>"}}'
+$ oc patch configmap/v2v-vmware -n openshift-cnv \
+    -p '{"data": {"vddk-init-image": "<image>"}}'
 ----

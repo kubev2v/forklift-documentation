@@ -1,15 +1,17 @@
 // common document attributes
 include::modules/common-attributes.adoc[]
-
-= {title} {project-version} - draft
+= {title}
 :context: mtv
 :mtv:
 :toc:
 :toc-title:
-:vernum: 2.0-beta
+:vernum: 2.0.0-beta.1
 :toclevels: 3
 :compat-mode:
 
+ifeval::["{build}" == "upstream"]
+Version: {project-version} (in progress)
+endif::[]
 ifeval::["{build}" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[]
 endif::[]
@@ -28,7 +30,7 @@ include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 [id='installing-mtv_{context}']
 == Installing {the-lc} {project-full}
 
-You can install {the-lc} {project-first} using the {ocp} web console or the command line interface (CLI).
+You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
 
 You must create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source VM disks.
 
@@ -39,17 +41,18 @@ include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
 [id="migrating-virtual-machines-to-virt_{context}"]
 == Migrating virtual machines to {virt}
 
-You can migrate virtual machines to {virt} with the {project-short} web console or the command line interface (CLI).
+You can migrate virtual machines to {virt} by using the {project-short} web console or the command line interface (CLI).
 
 [id='migrating-vms-web-console_{context}']
-=== Migrating virtual machines with the {project-short} web console
+=== Migrating virtual machines by using the {project-short} web console
 
-You can migrate virtual machines to {virt} with the {project-short} web console.
+You can migrate virtual machines to {virt} by using the {project-short} web console.
 
 You add the source and target providers and create a network mapping and a storage mapping. Then, you create and run a migration plan.
 
 include::modules/adding-virt-provider.adoc[leveloffset=+3]
 include::modules/adding-source-provider.adoc[leveloffset=+3]
+include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+3]
 include::modules/creating-network-mapping.adoc[leveloffset=+3]
 include::modules/creating-storage-mapping.adoc[leveloffset=+3]
 // include::modules/creating-hooks.adoc[leveloffset=+3]

@@ -3,20 +3,19 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="installing-mtv-console_{context}"]
-= Installing {the-lc} {project-full} using the web console
+= Installing {the-lc} {project-full} with the {ocp} web console
 
-You can install {the-lc} {project-first} using the OpenShift web console.
+You can install {the-lc} {project-first} with the {ocp} web console.
 
 .Prerequisites
 
-* Install {ocp} {ocp-version} on your cluster.
-* Install the {virt} Operator.
-* Log in as a user with `cluster-admin` privileges.
+* You have installed {ocp} {ocp-version} on your cluster.
+* You have installed the {virt} Operator.
+* You have logged in as a user with `cluster-admin` privileges.
 
 .Procedure
 
-. Open a browser window and log in to the OpenShift web console.
-. Click *Operators* -> *OperatorHub*.
+. In the {ocp} web console, navigate to *Operators* -> *OperatorHub*.
 . Use the *Filter by keyword* field to find the *{operator}*.
 ifeval::["{build}" == "upstream"]
 +
@@ -27,12 +26,7 @@ The {operator} is a Community Operator. Red Hat does not support Community Opera
 endif::[]
 . Click the {operator} and then click *Install*.
 . On the *Install Operator* page, click *Install*.
-ifeval::["{build}" == "upstream"]
-. Click *Operators* -> *Installed Operators* to verify that the {operator} appears in the *openshift-migration* project with the status *Succeeded*.
-endif::[]
-ifeval::["{build}" == "downstream"]
-. Click *Operators* -> *Installed Operators* to verify that the {operator} appears in the *openshift-rhmtv* project with the status *Succeeded*.
-endif::[]
+. Click *Operators* -> *Installed Operators* to verify that the {operator} appears in the *{namespace}* project with the status *Succeeded*.
 . Click the {operator}.
 . Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
 . Click *Create*.
