@@ -12,11 +12,11 @@ ifeval::["{build}" == "upstream"]
 Version: {project-version} (in progress)
 endif::[]
 
-ifeval::["{build}" == "downstream"]
-include::modules/making-open-source-more-inclusive.adoc[]
-endif::[]
+{the} {project-first} enables you to migrate virtual machines from VMware 6.5 and later to {virt}.
 
-{the-lc} {project-first} enables you to migrate virtual machines to {virt}. {virt} is an add-on to {ocp} that allows you to run and manage virtual machine workloads alongside container workloads.
+{virt} is an add-on to {ocp} {ocp-version} that allows you to run and manage virtual machine workloads alongside container workloads.
+
+include::modules/making-open-source-more-inclusive.adoc[]
 
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
