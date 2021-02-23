@@ -1,0 +1,65 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="about-storage_{context}"]
+= Storage support and default modes
+
+{project-first} supports link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/importing_vms/virt-importing-vmware-vm.html#virt-features-for-storage-matrix_virt-importing-vmware-vm[{virt} storage features].
+
+[NOTE]
+====
+If the {virt} storage does not support link:https://docs.openshift.com/container-platform/{ocp-version}/storage/dynamic-provisioning.html[dynamic provisioning], {project-short} applies the default settings, `Filesystem` volume mode and `ReadWriteOnce` access mode. `Filesystem` volume mode is slower than `Block` volume mode. `ReadWriteOnce` access mode does not enable live VM migration.
+====
+
+{project-short} uses the following default volume and access modes.
+
+.Default volume and access modes
+[cols="1,1,1", options="header"]
+|===
+|Provisioner |Volume mode |Access mode
+
+|kubernetes.io/aws-ebs
+|Block
+|ReadWriteOnce
+
+|kubernetes.io/azure-disk
+|Block
+|ReadWriteOnce
+
+|kubernetes.io/azure-file
+|Filesystem
+|ReadWriteMany
+
+|kubernetes.io/cinder
+|Block
+|ReadWriteOnce
+
+|kubernetes.io/gce-pd
+|Block
+|ReadWriteOnce
+
+|kubernetes.io/hostpath-provisioner
+|Filesystem
+|ReadWriteOnce
+
+|manila.csi.openstack.org
+|Filesystem
+|ReadWriteMany
+
+|openshift-storage.cephfs.csi.ceph.com
+|Filesystem
+|ReadWriteMany
+
+|openshift-storage.rbd.csi.ceph.com
+|Block
+|ReadWriteOnce
+
+|kubernetes.io/rbd
+|Block
+|ReadWriteOnce
+
+|kubernetes.io/vsphere-volume
+|Block
+|ReadWriteOnce
+|===

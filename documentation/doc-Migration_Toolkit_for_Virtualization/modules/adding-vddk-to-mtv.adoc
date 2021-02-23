@@ -3,22 +3,22 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="adding-vddk-to-mtv_{context}"]
-= Adding a VDDK image to {project-short}
+= Creating a VDDK image
 
 {project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks.
 
-You can create a VDDK image, store it in a private image registry, and add it to the `v2v-vmware` config map.
+You can download VDDK, build a VDDK image, push it to a private image registry, and then add the image to the `v2v-vmware` config map.
 
 [NOTE]
 ====
-Store the VDDK image in a private registry. Storing the image in a public registry might violate the license terms.
+Storing the VDDK image in a public registry might violate the license terms.
 ====
 
 .Prerequisites
 
-* Internal link:https://docs.openshift.com/container-platform/{ocp-version}/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html[{ocp} image registry] or a secure link:https://docs.openshift.com/container-platform/{ocp-version}/registry/registry-options.html[external registry]
-* Access to the image registry from your {virt} environment
-* Podman installed
+* You have access to an internal link:https://docs.openshift.com/container-platform/{ocp-version}/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html[{ocp} image registry] or a secure link:https://docs.openshift.com/container-platform/{ocp-version}/registry/registry-options.html[external registry].
+* {virt} has access to the image registry.
+* You have installed Podman.
 
 .Procedure
 
@@ -67,7 +67,7 @@ $ podman build . -t <image> <1>
 $ podman push <image>
 ----
 
-. Patch the `v2v-vmware` config map in the *openshift-cnv* project to add the `vddk-init-image` field:
+. Patch the `v2v-vmware` config map to add the `vddk-init-image` field:
 +
 [source,terminal]
 ----

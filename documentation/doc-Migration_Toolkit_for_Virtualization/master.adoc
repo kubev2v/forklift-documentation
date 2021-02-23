@@ -9,7 +9,7 @@ include::modules/common-attributes.adoc[]
 :mtv:
 
 ifeval::["{build}" == "upstream"]
-Version: {project-version} (in progress)
+*Version: {project-version} (in progress)*
 endif::[]
 
 {the} {project-first} enables you to migrate virtual machines from VMware 6.5 and later to {virt}.
@@ -26,6 +26,7 @@ This section describes the custom resources, services, and workflows of {the-lc}
 include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
 include::modules/mtv-workflow.adoc[leveloffset=+2]
 include::modules/virt-migration-workflow.adoc[leveloffset=+2]
+include::modules/about-storage.adoc[leveloffset=+2]
 
 [id='installing-mtv_{context}']
 == Installing {the-lc} {project-full}
@@ -33,11 +34,25 @@ include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
 
 You then create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source VM disks.
+:!mtv
 
+:context: mtv-console
+:mtv-console:
 include::modules/installing-mtv-console.adoc[leveloffset=+2]
-include::modules/installing-mtv-cli.adoc[leveloffset=+2]
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
 
+[discrete]
+include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
+:!mtv-console:
+
+:context: mtv-cli
+:mtv-cli:
+include::modules/installing-mtv-cli.adoc[leveloffset=+2]
+
+[discrete]
+include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
+:!mtv-cli:
+
+:mtv:
 [id="migrating-virtual-machines-to-virt_{context}"]
 == Migrating virtual machines to {virt}
 
