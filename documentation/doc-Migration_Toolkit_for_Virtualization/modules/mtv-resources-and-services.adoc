@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="mtv-resources-and-services_{context}"]
-= {project-full} custom resources and services
+= Custom resources and services
 
 {The} {project-first} is provided in the form of an operator. It creates and manages the following custom resources (CRs) and services.
 

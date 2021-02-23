@@ -3,9 +3,11 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="mtv-workflow_{context}"]
-= {project-full} workflow
+= {project-full}  workflow
 
 You can migrate virtual machines (VMs) using the {project-short} console or the command line.
+
+The following diagram is a high-level view of the migration workflow.
 
 ifeval::["{build}" == "downstream"]
 .{project-short} workflow
