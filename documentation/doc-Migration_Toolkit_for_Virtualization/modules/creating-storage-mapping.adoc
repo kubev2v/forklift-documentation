@@ -7,6 +7,8 @@
 
 You can create a storage mapping to map source data stores to {virt} storage classes.
 
+{project-first} supports the following link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/importing_vms/virt-importing-vmware-vm.html#virt-features-for-storage-matrix_virt-importing-vmware-vm[storage features].
+
 [NOTE]
 ====
 If the {virt} storage does not support link:https://docs.openshift.com/container-platform/{ocp-version}/storage/dynamic-provisioning.html[dynamic provisioning], the default settings, `Filesystem` volume mode and `ReadWriteOnce` access mode, are applied. `Filesystem` volume mode is slower than `Block` volume mode. `ReadWriteOnce` access mode does not allow live VM migration.
