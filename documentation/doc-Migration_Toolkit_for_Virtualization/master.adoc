@@ -8,20 +8,28 @@ include::modules/common-attributes.adoc[]
 :context: mtv
 :mtv:
 
-ifeval::["{build}" == "upstream"]
-*Version: {project-version} (in progress)*
-endif::[]
-
-{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}.
-
-{virt} is an add-on to {ocp} {ocp-version} that allows you to run and manage virtual machine workloads alongside container workloads.
 
 include::modules/making-open-source-more-inclusive.adoc[]
 
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
 
-This section describes the custom resources, services, and workflows of {the-lc} {project-first}.
+{the} {project-first} enables you to migrate virtual machines from VMware 6.5 and later to {virt} 2.6.
+
+{virt} is an add-on to {ocp} {ocp-version} that allows you to run and manage virtual machine workloads alongside container workloads.
+
+[IMPORTANT]
+====
+{project-short} is a Technology Preview feature only. Technology Preview features
+are not supported with Red Hat production service level agreements (SLAs) and
+might not be functionally complete. Red Hat does not recommend using them
+in production. These features provide early access to upcoming product
+features, enabling customers to test functionality and provide feedback during
+the development process.
+
+For more information about the support scope of Red Hat Technology Preview
+features, see https://access.redhat.com/support/offerings/techpreview/.
+====
 
 include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
 include::modules/mtv-workflow.adoc[leveloffset=+2]
@@ -33,25 +41,26 @@ include::modules/about-storage.adoc[leveloffset=+2]
 
 You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
 
-You then create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source VM disks.
-
-include::modules/mtv-prerequisites.adoc[leveloffset=+2]
 :!mtv:
 
 :context: mtv-console
 :mtv-console:
 include::modules/installing-mtv-console.adoc[leveloffset=+2]
 
-[discrete]
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
+After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image.
+
+include::modules/adding-vddk-to-mtv.adoc[leveloffset=+3]
+include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
 :!mtv-console:
 
 :context: mtv-cli
 :mtv-cli:
 include::modules/installing-mtv-cli.adoc[leveloffset=+2]
 
-[discrete]
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
+After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image.
+
+include::modules/adding-vddk-to-mtv.adoc[leveloffset=+3]
+include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
 :!mtv-cli:
 
 :mtv:
@@ -61,7 +70,7 @@ include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
 You can migrate virtual machines to {virt} by using the {project-short} web console or the command line interface (CLI).
 
 [id='migrating-vms-web-console_{context}']
-=== Migrating virtual machines by using the {project-short} web console
+=== Migrating virtual machines by using the web console
 
 You can migrate virtual machines to {virt} by using the {project-short} web console.
 

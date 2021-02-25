@@ -9,8 +9,8 @@ You can create a storage mapping to map source data stores to {virt} storage cla
 
 .Prerequisites
 
-* You have added source and target providers to the web console.
-* The local and shared persistent storage support VM migration.
+* You must add source and target providers to the web console.
+* The local and shared persistent storage must support VM migration.
 
 .Procedure
 

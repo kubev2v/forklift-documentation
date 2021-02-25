@@ -1,0 +1,34 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="increasing-esxi-nfc-service-memory_{context}"]
+= Increasing the NFC service memory of an ESXi host
+
+If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
+
+.Procedure
+
+. Log in to the ESXi host as root.
+. Change the value of `maxMemory` to `1000000000` in `/etc/vmware/hostd/config.xml`:
++
+[source,xml]
+----
+...
+      <nfcsvc>
+         <path>libnfcsvc.so</path>
+         <enabled>true</enabled>
+         <maxMemory>1000000000</maxMemory>
+         <maxStreamMemory>10485760</maxStreamMemory>
+      </nfcsvc>
+...
+----
+
+. Restart `hostd`: :
++
+[source,terminal]
+----
+# /etc/init.d/hostd restart
+----
++
+You do not need to reboot the host.

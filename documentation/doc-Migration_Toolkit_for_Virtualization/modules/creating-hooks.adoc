@@ -8,9 +8,13 @@
 
 Hooks are commands that you can run on the target cluster at certain stages of the migration.
 
-You can define a hook by using an Ansible playbook or a container image.
+You can define a hook by using an Ansible playbook or a custom hook container.
 
 You can create a hook before a migration plan or while creating a migration plan.
+
+.Prerequisites
+
+* You must create an Ansible playbook or a custom hook container.
 
 .Procedure
 
