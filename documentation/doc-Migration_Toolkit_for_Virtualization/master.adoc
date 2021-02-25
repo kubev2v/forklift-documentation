@@ -12,7 +12,7 @@ ifeval::["{build}" == "upstream"]
 *Version: {project-version} (in progress)*
 endif::[]
 
-{the} {project-first} enables you to migrate virtual machines from VMware 6.5 and later to {virt}.
+{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}.
 
 {virt} is an add-on to {ocp} {ocp-version} that allows you to run and manage virtual machine workloads alongside container workloads.
 
@@ -34,7 +34,9 @@ include::modules/about-storage.adoc[leveloffset=+2]
 You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
 
 You then create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map. {project-short} uses VDDK to copy the source VM disks.
-:!mtv
+
+include::modules/mtv-prerequisites.adoc[leveloffset=+2]
+:!mtv:
 
 :context: mtv-console
 :mtv-console:

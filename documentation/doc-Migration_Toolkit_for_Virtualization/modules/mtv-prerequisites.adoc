@@ -1,0 +1,13 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="mtv-prerequisites_{context}"]
+= Prerequisites
+
+{project-first} has the following prerequisites:
+
+* The source environment must be VMware vSphere 6.5 or later.
+* The VMware virtual machine operating systems must be certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
+* You must install {ocp} {ocp-version} on the target cluster.
+* You must install the {virt} Operator.
