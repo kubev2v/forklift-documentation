@@ -11,7 +11,7 @@ A migration plan allows you to group virtual machines that should be migrated to
 
 .Prerequisites
 
-* You have added source and target providers to the web console.
+* You must add source and target providers to the web console.
 
 .Procedure
 
