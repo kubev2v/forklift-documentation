@@ -25,11 +25,11 @@
 ** Connects to the source and target providers
 ** Maintains a local inventory for mappings and plans
 ** Stores VM configurations
-** Runs the Validation service if a VM configuration change is detected
-
-* Validation service:
-** Checks the suitability of a VM for migration by applying rules
-** Triggered by the Provider Inventory service if a VM configuration change is detected
+// ** Runs the Validation service if a VM configuration change is detected
+// 
+// * Validation service:
+// ** Checks the suitability of a VM for migration by applying rules
+// ** Triggered by the Provider Inventory service if a VM configuration change is detected
 
 * User Interface service:
 ** Enables you to create and configure {project-short} CRs.
