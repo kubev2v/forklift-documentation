@@ -34,6 +34,13 @@ $ openssl s_client \
     | cut -d '=' -f 2
 ----
 <1> Specify the vCenter host name.
++
+.Example output
++
+[source,terminal]
+----
+01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67
+----
 
 . Create a `Secret` CR for the VMware provider:
 +
@@ -47,13 +54,14 @@ metadata:
   namespace: {namespace}
 type: Opaque
 stringData:
-  user: administrator@vsphere.local
-  password: <password> <1>
-  thumbprint: <vmware_thumbprint> <2>
+  user: <user_name> <1>
+  password: <password> <2>
+  thumbprint: <vcenter_thumbprint> <3>
 EOF
 ----
-<1> Specify the password.
-<2> Specify the thumbprint, for example, `01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67`.
+<1> Specify the vCenter administrator account, for example, `administrator@vsphere.local`.
+<2> Specify the vCenter password.
+<3> Specify the SSL thumbprint of the vCenter host.
 
 . Create a `Provider` CR for the VMware provider:
 +
@@ -74,7 +82,7 @@ spec:
 EOF
 ----
 <1> Specify the vSphere API end point, for example, `/https://vcenter.host.com/sdk`.
-<2> Specify the VMware `Secret` CR.
+<2> Specify the VMware `Secret` CR name.
 
 . Create a `Plan` CR for the migration:
 +
@@ -92,29 +100,32 @@ spec:
       name: vmware-provider
       namespace: {namespace}
     destination:
-      name: host <1>
-      namespace: {namespace}
+      name: <target_cluster> <1>
+      namespace: <target_namespace> <2>
   map:
     networks:
       - source:
-          id: <network_ref> <2>
+          id: <network_ref> <3>
         destination:
           type: pod
           name: pod
-          namespace: {namespace}
+          namespace: <target_namespace> <4>
     datastores:
-      - source:
-          id: <datastore_ref> <3>
+      - source: <5>
+          id: <datastore_ref> <6>
         destination:
           storageClass: standard
   vms:
-    - id: <vm_ref> <4>
+    - id: <vm_ref_or_name> <7>
 EOF
 ----
-<1> The cluster on which {project-short} is deployed is added automatically as `host`.
-<2> Specify the managed object reference of one or more VMware networks.
-<3> Specify the managed object reference of the VMware data store.
-<4> Specify the managed object reference of one or more VMware VMs.
+<1> Specify the target cluster.
+<2> Specify the target namespace.
+<3> Specify the managed object reference of one or more VMware networks.
+<4> Specify the target namespace.
+<5> Specify one or more VMware data stores to map to the target data store.
+<6> Specify the managed object reference of the data store.
+<7> Specify the managed object reference or names of one or more VMware VMs.
 
 . Create a `Migration` CR to run the `Plan` CR:
 +
