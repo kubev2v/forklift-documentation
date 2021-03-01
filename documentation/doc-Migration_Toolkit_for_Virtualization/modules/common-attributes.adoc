@@ -1,14 +1,13 @@
+// Attributes for the Migration Toolkit for Virtualization (downstream)
 :icons: font
 :toc: macro
 :experimental:
 :imagesdir: modules/images
 :kebab: Options menu image:kebab.png[title="Options menu"]
-
-// Upstream attributes are in _config.yml
 :build: downstream
 :project-short: MTV
 :project-full: Migration{nbsp}Toolkit{nbsp}for{nbsp}Virtualization
-:The: The
+:the: The
 :the-lc: the
 :project-first: {project-full}{nbsp}({project-short})
 :project-version: 2.0-beta
@@ -22,3 +21,5 @@
 :abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp} {ocp-version}.
 :title: Installing and using {the-lc} {project-full}
 :subtitle: Migrating from VMware to Red Hat {virt}
+
+// Attributes for Forklift (upstream) are in _config.yml
