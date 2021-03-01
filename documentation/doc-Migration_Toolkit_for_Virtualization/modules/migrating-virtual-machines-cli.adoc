@@ -16,10 +16,10 @@ If a migration does not complete, you can create a new `Migration` CR, without c
 
 .Prerequisites
 
-* You have installed {ocp} {ocp-version} on your cluster.
-* You have installed the {virt} Operator.
-* You have installed the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI].
-* You have logged in as a user with `cluster-admin` privileges.
+* You must install {ocp} {ocp-version} on your cluster.
+* You must install the {virt} Operator.
+* You must install the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI].
+* You must log in as a user with `cluster-admin` privileges.
 
 .Procedure
 
@@ -72,16 +72,16 @@ apiVersion: virt.konveyor.io/v1alpha1
 kind: Provider
 metadata:
   name: vmware-provider
-  namespace: {namespace}
+  namespace: source-namespace
 spec:
   type: vsphere
   url: <api_end_point> <1>
   secret:
-    name: vmware-secret <2>
+    name: <vmware-secret> <2>
     namespace: {namespace}
 EOF
 ----
-<1> Specify the vSphere API end point, for example, `/https://vcenter.host.com/sdk`.
+<1> Specify the vSphere API end point, for example, `https://vcenter.host.com/sdk`.
 <2> Specify the VMware `Secret` CR name.
 
 . Create a `Plan` CR for the migration:
@@ -98,7 +98,7 @@ spec:
   provider:
     source:
       name: vmware-provider
-      namespace: {namespace}
+      namespace: source-namespace
     destination:
       name: <target_cluster> <1>
       namespace: <target_namespace> <2>
@@ -125,7 +125,7 @@ EOF
 <4> Specify the target namespace.
 <5> Specify one or more VMware data stores to map to the target data store.
 <6> Specify the managed object reference of the data store.
-<7> Specify the managed object reference or names of one or more VMware VMs.
+<7> Specify the managed object reference or the names of one or more VMware VMs.
 
 . Create a `Migration` CR to run the `Plan` CR:
 +
