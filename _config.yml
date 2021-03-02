@@ -3,7 +3,8 @@ show_downloads: false
 title: "Forklift Documentation"
 permalink: pretty
 repository: konveyor/forklift-documentation
-baseurl: /docs.konveyor.io/
+baseurl: /
+
 logo: "/assets/img/forklift-logo-darkbg.svg"
 type: website
 future: false
