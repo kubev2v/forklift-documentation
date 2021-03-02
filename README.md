@@ -21,7 +21,7 @@ This document uses the following variables to ensure that upstream and downstrea
 | project-version | 2.0-beta | 2.0-beta |
 | virt | KubeVirt | OpenShift Virtualization |
 | ocp | OKD | Red Hat OpenShift Container Platform |
-| ocp-version   | 4.6 | 4.6 |
+| ocp-version   | 4.7 | 4.7 |
 | ocp-short | OKD | OCP |
 
 Variables cannot be used in CLI commands or code blocks unless you include the "attributes" keyword:
