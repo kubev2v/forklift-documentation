@@ -3,12 +3,10 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 // not for beta
 
-[id="creating-hooks_{context}"]
-= Creating hooks
+[id="adding-hooks_{context}"]
+= Adding hooks
 
-Hooks are commands that you can run on the target cluster at certain stages of the migration.
-
-You can define a hook by using an Ansible playbook or a custom hook container.
+Hooks are custom code that you can run at certain stages of the migration. You can define a hook by using an Ansible playbook or a custom hook container.
 
 You can create a hook before a migration plan or while creating a migration plan.
 
