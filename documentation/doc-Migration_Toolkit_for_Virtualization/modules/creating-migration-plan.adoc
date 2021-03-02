@@ -11,6 +11,7 @@ A migration plan allows you to group virtual machines that should be migrated to
 
 .Prerequisites
 
+* You must create a VDDK image and add it to the `v2v-vmware` config map.
 * You must add source and target providers to the web console.
 
 .Procedure

@@ -9,7 +9,7 @@ You can add a VMware source provider by using the {project-short} web console.
 
 .Prerequisites
 
-* You have a VMware vCenter user account with administrator privileges
+* You must have a VMware vCenter user account with administrator privileges.
 
 .Procedure
 
