@@ -4,7 +4,7 @@
 
 Forklift is an upstream project for migrating VMware virtual machines to KubeVirt.
 
-The downstream project is the Migration Toolkit for Virtualization.
+The downstream project is the [Migration Toolkit for Virtualization](https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization).
 
 ## Contributing to Forklift documentation
 
