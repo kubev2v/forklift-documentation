@@ -9,14 +9,26 @@ You can install {the-lc} {project-first} by using the {ocp} web console.
 
 .Prerequisites
 
-* The source environment must be VMware vSphere 6.5 or later.
+* The source cluster must be VMware vSphere 6.5 or later.
 * If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
+* You must install {ocp} {ocp-version} on the target cluster.
+* You must install the {virt} Operator.
+* You must log in as a user with `cluster-admin` permissions.
+
+* VMware virtual machines:
+** link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] must be installed.
+** ISO/CDROM disks must be unmounted.
+** A NIC must have no more than one IPv4 and/or one IPv6 address.
+** The VM name can contain lowercase letters (`a-z`), numbers (`0-9`), and hyphens (`-`), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (`.`), or special characters.
+** The VM name must not duplicate the name of a virtual machine in the {virt} environment.
+** The operating system must be certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
+
 * Network:
 ** IP addresses, VLANs, and other network configuration settings must not be changed before or after migration. The MAC addresses of the virtual machines are preserved during migration.
 ** The network connections between the clusters and the replication repository must be uninterrupted and reliable.
 ** The firewall rules must enable traffic over the network ports required for migration.
-+
-[cols="1,2,2,2,2",options="header"]
+
+[cols="1,1,1,1,2",options="header"]
 .Required network ports
 |===
 |Port |Protocol |Source |Destination |Purpose
@@ -25,8 +37,9 @@ You can install {the-lc} {project-first} by using the {ocp} web console.
 |TCP
 |OpenShift nodes
 |VMware vCenter
-a|* VMware provider inventory
-* Disk transfer authentication
+a|VMware provider inventory
+
+Disk transfer authentication
 
 |443
 |TCP
@@ -40,18 +53,6 @@ a|* VMware provider inventory
 |VMware ESXi hosts
 |Disk transfer data copy
 |===
-
-* VMware virtual machines:
-** link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] must be installed.
-** ISO/CDROM disks must be unmounted.
-** A NIC must have no more than one IPv4 and/or one IPv6 address.
-** The VM name can contain lowercase letters (`a-z`), numbers (`0-9`), and hyphens (`-`), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (`.`), or special characters.
-** The VM name must not duplicate the name of a virtual machine in the {virt} environment.
-** The operating system must be certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
-
-* You must install {ocp} {ocp-version} on the target cluster.
-* You must install the {virt} Operator.
-* You must log in as a user with `cluster-admin` permissions.
 
 .Procedure
 
