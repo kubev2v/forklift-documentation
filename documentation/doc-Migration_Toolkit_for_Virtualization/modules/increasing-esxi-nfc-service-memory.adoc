@@ -24,7 +24,7 @@ If you are performing more than 10 concurrent migrations from a single ESXi host
 ...
 ----
 
-. Restart `hostd`: :
+. Restart `hostd`:
 +
 [source,terminal]
 ----

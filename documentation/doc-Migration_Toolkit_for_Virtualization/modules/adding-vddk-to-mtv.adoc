@@ -11,7 +11,7 @@ You can download VDDK, build a VDDK image, push it to a private image registry, 
 
 [NOTE]
 ====
-Storing the VDDK image in a public registry might violate the license terms.
+Storing the VDDK image in a public registry might violate the VMware license terms.
 ====
 
 .Prerequisites

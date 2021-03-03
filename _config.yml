@@ -28,7 +28,7 @@ asciidoctor:
   - title=Installing and using Forklift
   - context=forklift
   - description=Migrating virtual machines to KubeVirt
-  - abstract=Forklift enables you to migrate virtual machines to {virt} running on {ocp} {ocp-version}.
+  - abstract=Forklift enables you to migrate virtual machines to {virt} running on {ocp}.
   - keywords=migration, VMware, OpenShift Virtualization, KubeVirt
   - author=Red Hat Modernization and Migration Solutions documentation team
   - showtitle=@

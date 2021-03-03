@@ -11,13 +11,12 @@
 
 * `Provider` CR: Stores attributes that enable {project-short} to connect to and interact with the source and target providers.
 * `NetworkMapping` CR: Maps the networks of the source and target providers.
-* `StorageMapping` CRs map the storage of the source and target providers.
-* `Provisioner` CR: Stores configuration for storage provisioners, such as supported volume and access modes
+* `StorageMapping` CR: Maps the storage of the source and target providers.
+* `Provisioner` CR: Stores the configuration of the storage provisioners, such as supported volume and access modes.
 * `Plan` CR: Contains a list of VMs that are migrated together with the same migration parameters and associated network and storage mappings.
-* `Migration` CR:
-** Runs a migration plan.
-** Only one `Migration` CR per migration plan can run at a given time.
-** You can create multiple `Migration` CRs for a single `Plan` CR.
+* `Migration` CR: Runs a migration plan.
++
+Only one `Migration` CR per migration plan can run at a given time. You can create multiple `Migration` CRs for a single `Plan` CR.
 
 .Services
 
@@ -26,7 +25,7 @@
 ** Maintains a local inventory for mappings and plans
 ** Stores VM configurations
 // ** Runs the Validation service if a VM configuration change is detected
-// 
+//
 // * Validation service:
 // ** Checks the suitability of a VM for migration by applying rules
 // ** Triggered by the Provider Inventory service if a VM configuration change is detected

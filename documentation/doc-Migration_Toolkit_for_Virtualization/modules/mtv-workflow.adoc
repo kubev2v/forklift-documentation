@@ -30,4 +30,4 @@ The {project-short} workflow comprises the following steps:
 * One or more VMs
 
 . You run a migration plan by creating a `Migration` CR that references the migration plan. If a migration is incomplete, you can run a migration plan multiple times until all VMs are migrated.
-. For each VM in the migration plan, the _Migration Controller_ creates a `VirtualMachineImport` CR and monitors its status. When all VMs have been migrated, the Migration Controller sets the status of the migration plan to `Completed`. The power state of a source VM is maintained after migration.
+. For each VM in the migration plan, the Migration Controller creates a `VirtualMachineImport` CR and monitors its status. When all VMs have been migrated, the Migration Controller sets the status of the migration plan to `Completed`. The power state of a source VM is maintained after migration.
