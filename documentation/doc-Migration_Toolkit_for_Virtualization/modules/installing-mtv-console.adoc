@@ -28,7 +28,7 @@ You can install {the-lc} {project-first} by using the {ocp} web console.
 ** The network connections between the clusters and the replication repository must be uninterrupted and reliable.
 ** The firewall rules must enable traffic over the network ports required for migration.
 
-[cols="1,1,1,1,1",options="header"]
+[cols="1,1,1,1,2",options="header"]
 .Required network ports
 |===
 |Port |Protocol |Source |Destination |Purpose
