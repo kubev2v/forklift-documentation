@@ -73,17 +73,17 @@ apiVersion: virt.konveyor.io/v1alpha1
 kind: Provider
 metadata:
   name: vmware-provider
-  namespace: source-namespace
+  namespace: {namespace}
 spec:
   type: vsphere
   url: <api_end_point> <1>
   secret:
-    name: <vmware-secret> <2>
+    name: <vmware_secret> <2>
     namespace: {namespace}
 EOF
 ----
 <1> Specify the vSphere API end point, for example, `https://vcenter.host.com/sdk`.
-<2> Specify the VMware `Secret` CR name.
+<2> Specify the name of the VMware `Secret` CR.
 
 . Create a `Plan` CR for the migration:
 +
@@ -93,40 +93,45 @@ $ cat << EOF | oc apply -f -
 apiVersion: virt.konveyor.io/v1alpha1
 kind: Plan
 metadata:
-  name: migration-plan
+  name: <plan_name> <1>
   namespace: {namespace}
 spec:
   provider:
     source:
       name: vmware-provider
-      namespace: source-namespace
+      namespace: {namespace}
     destination:
-      name: <target_cluster> <1>
-      namespace: <target_namespace> <2>
+      name: destination-cluster
+      namespace: {namespace}
   map:
-    networks:
-      - source:
-          id: <network_ref> <3>
+    networks: <2>
+      - source: <3>
+          id: <source_network_mor> <4>
+          name: <source_network_name>
         destination:
           type: pod
           name: pod
-          namespace: <target_namespace> <4>
-    datastores:
-      - source: <5>
-          id: <datastore_ref> <6>
+          namespace: {namespace}
+    datastores: <5>
+      - source: <6>
+          id: <source_datastore_mor> <7>
+          name: <source_datastore_name>
         destination:
           storageClass: standard
-  vms:
-    - id: <vm_ref_or_name> <7>
+  vms: <8>
+    - id: <source_vm_mor> <9>
+    - name: <source_vm_name>
 EOF
 ----
-<1> Specify the target cluster.
-<2> Specify the target namespace.
-<3> Specify the managed object reference of one or more VMware networks.
-<4> Specify the target namespace.
-<5> Specify one or more VMware data stores to map to the target data store.
-<6> Specify the managed object reference of the data store.
-<7> Specify the managed object reference or the names of one or more VMware VMs.
+<1> Specify the name of the `Plan` CR.
+<2> You can create multiple network mappings for source and destination networks.
+<3> You can use either the `id` _or_ the `name` parameter to specify the source network.
+<4> _Managed object reference_ of the source network.
+<5> You can create multiple storage mappings for source data stores and destination storage classes.
+<6> You can use either the `id` _or_ the `name` parameter to specify the source data store.
+<7> _Managed object reference_ of the source data store.
+<8>  You can use either the `id` _or_ the `name` parameter to specify the source VM.
+<9> _Managed object reference_ of the source VM.
 
 . Create a `Migration` CR to run the `Plan` CR:
 +
@@ -136,14 +141,16 @@ $ cat << EOF | oc apply -f -
 apiVersion: virt.konveyor.io/v1alpha1
 kind: Migration
 metadata:
-  name: migration-001
+  name: <migration_name> <1>
   namespace: {namespace}
 spec:
   plan:
-    name: test-migration-plan
+    name: <plan_name> <2>
     namespace: {namespace}
 EOF
 ----
+<1> Specify the name of the `Migration` CR.
+<2> Specify the name of the `Plan` CR that you are running.
 +
 The `Migration` CR creates a `VirtualMachineImport` CR for each VM that is migrated.
 
