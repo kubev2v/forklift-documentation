@@ -1,0 +1,27 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id='uninstalling-mtv-ui_{context}']
+= Uninstalling {project-short} by using the {ocp} web console
+
+You can uninstall {project-first} by using the {ocp} web console to delete the {project-short} project and custom resource definitions (CRDs).
+
+.Prerequisites
+
+* You must log in as a user with `cluster-admin` privileges.
+
+.Procedure
+
+. Navigate to *Home* -> *Projects*.
+ifeval::["{build}" == "upstream"]
+. Enter `forklift` in the *Search* field to locate the {namespace} project.
+endif::[]
+ifeval::["{build}" == "downstream"]
+. Enter `rhmtv` in the *Search* field to locate the {namespace} project.
+endif::[]
+. On the right side of the project, select *Delete Project* from the {kebab}.
+. In the *Delete Project* pane, enter the project name and click *Delete*.
+. Navigate to *Administration* -> *CustomResourceDefinitions*.
+. Enter `forklift` in the *Search* field to locate the CRDs in the `forklift.konveyor.io` group.
+. On the right side of each CRD, select *Delete CustomResourceDefinition* from the {kebab}.

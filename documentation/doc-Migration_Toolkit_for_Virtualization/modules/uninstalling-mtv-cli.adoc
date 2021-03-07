@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id='uninstalling-mtv-cli_{context}']
+= Uninstalling {project-short} from the CLI
+
+You can uninstall {project-first} from the command line interface (CLI) by deleting the `openshift-rhmtv` project and the `forklift.konveyor.io` custom resource definitions (CRDs).
+
+.Prerequisites
+
+* You must log in as a user with `cluster-admin` privileges.
+
+.Procedure
+
+. Delete the project:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc delete project {namespace}
+----
+
+. Delete the CRDs:
++
+[source,terminal]
+----
+$ oc get crd -o name | grep "forklift.konveyor.io" | xargs oc delete
+----
