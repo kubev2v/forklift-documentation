@@ -16,6 +16,7 @@
 :ocp-version: 4.7
 :ocp-short: OCP
 :operator: rhmtv-operator
+// If namespace must be formatted with backticks, use + instead.
 :namespace: openshift-rhmtv
 
 :abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp}.

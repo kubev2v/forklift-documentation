@@ -5,7 +5,7 @@
 [id='uninstalling-mtv-cli_{context}']
 = Uninstalling {project-short} from the CLI
 
-You can uninstall {project-first} from the command line interface (CLI) by deleting the `openshift-rhmtv` project and the `forklift.konveyor.io` custom resource definitions (CRDs).
+You can uninstall {project-first} from the command line interface (CLI) by deleting the +{namespace}+ project and the `forklift.konveyor.io` custom resource definitions (CRDs).
 
 .Prerequisites
 
