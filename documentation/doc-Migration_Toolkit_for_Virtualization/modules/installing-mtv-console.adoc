@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="installing-mtv-console_{context}"]
-= Installing {the-lc} {project-full} by using the web console
+= Installing {the-lc} {project-full} by using the {ocp} web console
 
 You can install {the-lc} {project-first} by using the {ocp} web console.
 

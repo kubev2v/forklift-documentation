@@ -3,7 +3,7 @@
 :toc: macro
 :experimental:
 :imagesdir: modules/images
-:kebab: Options menu image:kebab.png[title="Options menu"]
+:kebab: Options menu image:kebab.png[title="Options menu",height=20]
 :build: downstream
 :project-short: MTV
 :project-full: Migration{nbsp}Toolkit{nbsp}for{nbsp}Virtualization
