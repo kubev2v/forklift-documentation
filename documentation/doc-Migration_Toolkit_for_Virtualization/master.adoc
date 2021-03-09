@@ -74,7 +74,7 @@ include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
 You can migrate virtual machines to {virt} by using the {project-short} web console or the command line interface (CLI).
 
 [id='migrating-vms-web-console_{context}']
-=== Migrating virtual machines by using the web console
+=== Migrating virtual machines by using the {project-short} web console
 
 You can migrate virtual machines to {virt} by using the {project-short} web console.
 
@@ -91,5 +91,11 @@ include::modules/running-migration-plan.adoc[leveloffset=+3]
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
+[id="uninstalling-mtv_{context}"]
+== Uninstalling {the-lc} {project-full}
 
+You can uninstall {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
+
+include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
+include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 :mtv!:
