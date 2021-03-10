@@ -31,7 +31,7 @@ $ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
 
 . In a browser, navigate to the link:https://code.vmware.com/home[VMware code] site and click *SDKs*.
 . In the *Hyperconverged Infrastructure* section, click *Virtual Disk Development Kit (VDDK)*.
-. Select the VDDK version that corresponds to your VMware vSphere version, for example, VDDK 7.0 for vSphere 7.0.
+. Select the latest VDDK version.
 . Click *Download* and save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
 +
