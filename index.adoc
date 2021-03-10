@@ -5,8 +5,6 @@
 
 Forklift is a tool in the link:https://konveyor.io/[Konveyor community] for migrating virtual machines to KubeVirt.
 
-The downstream project is the link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/[Migration Toolkit for Virtualization].
-
 ## Documentation
 
 * link:documentation/doc-Migration_Toolkit_for_Virtualization/master/index.html[Installing and using Forklift - 2.0-beta] (GA: March 3, 2021)
