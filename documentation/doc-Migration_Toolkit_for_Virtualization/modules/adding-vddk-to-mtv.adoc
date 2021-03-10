@@ -7,7 +7,7 @@
 
 {project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks.
 
-You can download VDDK, build a VDDK image, push it to a private image registry, and then add the image to the `v2v-vmware` config map.
+You must download VDDK, build a VDDK image, push it to a private image registry, and then add the image to the `v2v-vmware` config map.
 
 [NOTE]
 ====
@@ -31,7 +31,7 @@ $ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
 
 . In a browser, navigate to the link:https://code.vmware.com/home[VMware code] site and click *SDKs*.
 . In the *Hyperconverged Infrastructure* section, click *Virtual Disk Development Kit (VDDK)*.
-. Select the VDDK version that corresponds to your VMware vSphere version, for example, VDDK 7.0 for vSphere 7.0.
+. Select the latest VDDK version.
 . Click *Download* and save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
 +
