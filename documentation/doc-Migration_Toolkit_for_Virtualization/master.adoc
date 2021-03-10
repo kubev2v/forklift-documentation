@@ -47,29 +47,18 @@ include::modules/about-storage.adoc[leveloffset=+2]
 
 You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
 
-:!mtv:
+[IMPORTANT]
+====
+After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map.
+====
 
-:context: mtv-console
-:mtv-console:
+If you are performing more than 10 concurrent VM migrations from a single ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
+
 include::modules/installing-mtv-console.adoc[leveloffset=+2]
-
-After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image.
-
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+3]
-include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
-:!mtv-console:
-
-:context: mtv-cli
-:mtv-cli:
 include::modules/installing-mtv-cli.adoc[leveloffset=+2]
+include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
+include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
 
-After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image.
-
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+3]
-include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
-:!mtv-cli:
-
-:mtv:
 [id="migrating-virtual-machines-to-virt_{context}"]
 == Migrating virtual machines to {virt}
 
