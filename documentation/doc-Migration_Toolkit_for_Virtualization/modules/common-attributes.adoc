@@ -11,7 +11,7 @@
 :the: The
 :the-lc: the
 :project-first: {project-full}{nbsp}({project-short})
-:project-version: 2.0-beta
+:project-version: 2.0
 :virt: OpenShift Virtualization
 :ocp: OpenShift{nbsp}Container{nbsp}Platform
 :ocp-version: 4.7
