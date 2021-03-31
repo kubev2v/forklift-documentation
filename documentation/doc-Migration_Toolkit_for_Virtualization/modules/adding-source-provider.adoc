@@ -19,12 +19,12 @@ You can add VMware as a source provider by using the {project-short} web console
 . Fill in the following fields:
 
 * *Name*: Name to display in the list of providers
-* *Hostname or IP address*: ESXi host name or IP address
-* *Username*: ESXi admin user name, for example, `administrator@vsphere.local`
-* *Password*: ESXi admin password
-* *Certificate SHA1 Fingerprint*: ESXi SHA-1 fingerprint
+* *Hostname or IP address*: vCenter host name or IP address
+* *Username*: vCenter admin user name, for example, `administrator@vsphere.local`
+* *Password*: vCenter admin password
+* *Certificate SHA1 Fingerprint*: vCenter SHA-1 fingerprint
 +
-To obtain the ESXi SHA-1 fingerprint, enter the following command:
+To obtain the vCenter SHA-1 fingerprint, enter the following command:
 +
 [source,terminal]
 ----
@@ -33,7 +33,7 @@ $ openssl s_client \
     | openssl x509 -fingerprint -noout -in /dev/stdin \
     | cut -d '=' -f 2
 ----
-<1> Specify the ESXi host name.
+<1> Specify the vCenter host name.
 
 . Click *Add* to add and save the provider.
 +
