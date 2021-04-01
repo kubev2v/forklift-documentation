@@ -29,7 +29,7 @@ To obtain the vCenter SHA-1 fingerprint, enter the following command:
 [source,terminal]
 ----
 $ openssl s_client \
-    -connect <www.example.com>:443 < /dev/null 2>/dev/null \ <1>
+    -connect <vcenter.example.com>:443 < /dev/null 2>/dev/null \ <1>
     | openssl x509 -fingerprint -noout -in /dev/stdin \
     | cut -d '=' -f 2
 ----
