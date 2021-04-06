@@ -9,36 +9,9 @@ Forklift is an upstream project for migrating VMware virtual machines to KubeVir
 This project is [Apache 2.0 licensed](LICENSE) and accepts contributions via
 GitHub pull requests.
 
-Read the [Guidelines for Red Hat Documentation](https://redhat-documentation.github.io/) before opening a pull request.
+See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Upstream and downstream variables
-
-This document uses the following variables to ensure that upstream and downstream product names and versions are rendered correctly.
-
-| Variable | Upstream value | Downstream value |
-| -------- | -------------- | ---------------- |
-| project-full | Forklift   | Migration Toolkit for Virtualization |
-| project-short | Forklift | MTV |
-| project-version | 2.0-beta | 2.0-beta |
-| virt | KubeVirt | OpenShift Virtualization |
-| ocp | OKD | Red Hat OpenShift Container Platform |
-| ocp-version   | 4.7 | 4.7 |
-| ocp-short | OKD | OCP |
-
-Variables cannot be used in CLI commands or code blocks unless you include the "attributes" keyword:
-
-	[options="nowrap" subs="+quotes,+attributes"]
-	----
-	# ls {VariableName}
-	----
-
-You can hide or show specific blocks, paragraphs, warnings or chapters with the `build` variable. Its value can be set to "downstream" or "upstream":
-
-	ifeval::["build" == "upstream"]
-	This content is only relevant for Forklift.
-	endif::[]
-
-### Building a document preview
+## Building a document preview
 
 You can build a document preview by running a Jekyll container.
 
@@ -73,10 +46,10 @@ You must have Podman installed.
 
 5. Navigate to `http://<localhost>:4000` in a web browser to view the preview.
 
-### Code of conduct
+## Code of conduct
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
-### Pull request preview rendering
+## Pull request preview rendering
 
 [![](https://www.netlify.com/img/global/badges/netlify-light.svg)](https://www.netlify.com)
