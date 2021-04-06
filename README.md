@@ -50,6 +50,6 @@ You must have Podman installed.
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
-## Pull request preview rendering
+## PR preview rendering
 
 [![](https://www.netlify.com/img/global/badges/netlify-light.svg)](https://www.netlify.com)
