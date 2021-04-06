@@ -4,9 +4,10 @@
 
 Forklift is an upstream project for migrating VMware virtual machines to KubeVirt.
 
-The downstream project is the [Migration Toolkit for Virtualization](https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization).
-
 ## Contributing to Forklift documentation
+
+This project is [Apache 2.0 licensed](LICENSE) and accepts contributions via
+GitHub pull requests.
 
 Read the [Guidelines for Red Hat Documentation](https://redhat-documentation.github.io/) before opening a pull request.
 
@@ -71,3 +72,11 @@ You must have Podman installed.
   ```
 
 5. Navigate to `http://<localhost>:4000` in a web browser to view the preview.
+
+### Code of conduct
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)
+
+### Pull request preview rendering
+
+[![](https://www.netlify.com/img/global/badges/netlify-light.svg)](https://www.netlify.com)
