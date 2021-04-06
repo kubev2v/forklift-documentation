@@ -10,7 +10,6 @@ endif::[]
 :toc-title:
 :toclevels: 3
 :compat-mode:
-:keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
 :context: mtv
 :mtv:
 
