@@ -4,6 +4,7 @@ title: "Forklift Documentation"
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /
+tags: "migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift"
 
 logo: "/assets/img/forklift-logo-darkbg.svg"
 type: website
@@ -29,7 +30,6 @@ asciidoctor:
   - context=forklift
   - description=Migrating virtual machines to KubeVirt
   - abstract=Forklift enables you to migrate virtual machines to {virt} running on {ocp}.
-  - keywords=migration, VMware, OpenShift Virtualization, KubeVirt
   - author=Red Hat Modernization and Migration Solutions documentation team
   - showtitle=@
   - build=upstream
