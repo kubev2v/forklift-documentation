@@ -1,5 +1,6 @@
 # Forklift Documentation
 :page-layout: default
+:keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
 
 ## What is Forklift?
 
