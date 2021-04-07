@@ -4,7 +4,7 @@ ifeval::["{build}" == "downstream"]
 = {title}
 endif::[]
 ifeval::["{build}" == "upstream"]
-= {title} ({project-version})
+= {title} ({project-version} DRAFT)
 endif::[]
 :toc:
 :toc-title:

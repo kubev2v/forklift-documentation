@@ -7,7 +7,7 @@
 
 {The} {project-first} is provided as an {ocp} Operator. It creates and manages the following custom resources (CRs) and services.
 
-.Custom resources
+== {project-short} custom resources
 
 * `Provider` CR: Stores attributes that enable {project-short} to connect to and interact with the source and target providers.
 * `NetworkMapping` CR: Maps the networks of the source and target providers.
@@ -18,21 +18,26 @@
 +
 Only one `Migration` CR per migration plan can run at a given time. You can create multiple `Migration` CRs for a single `Plan` CR.
 
-.Services
+== {project-short} services
 
-* Provider Inventory service:
+* `Provider Inventory` service:
 ** Connects to the source and target providers
 ** Maintains a local inventory for mappings and plans
 ** Stores VM configurations
+** Runs the `Validation` service if a VM configuration change is detected
 
-* User Interface service:
-** Enables you to create and configure {project-short} CRs.
+* `Validation` service: Checks the suitability of a VM for migration by applying rules
+
+:FeatureName: The Validation service
+include::technology-preview.adoc[leveloffset=+1]
+
+* `User Interface` service:
+** Enables you to create and configure {project-short} CRs
 ** Displays the status of the CRs and the progress of a migration
 
 * Controller services:
-** Perform actions with CRs in response to user requests.
-** The Migration Controller service orchestrates migrations.
+** `Migration Controller` service orchestrates migrations.
 +
 When you create a migration plan, the Migration Controller service validates the plan and adds a status label. If the plan fails validation, the plan status is `Not ready` and the plan cannot be used to perform a migration. If the plan passes validation, the plan status is `Ready` and it can be used to perform a migration. After a successful migration, the Migration Controller changes the plan status to `Completed`.
 
-** The Virtual Machine Import Controller, Kubevirt Controller, and Containerized Data Import (CDI) Controller services handle most technical operations.
+** `Virtual Machine Import Controller`, `Kubevirt Controller`, and `Containerized Data Import (CDI) Controller` services handle most technical operations.

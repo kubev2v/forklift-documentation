@@ -17,6 +17,8 @@
 :project-z-version: 2.0.0
 :the: The
 :the-lc: the
+:project-first: {project-full}{nbsp}({project-short})
+:project-version: 2.0
 :virt: OpenShift Virtualization
 :a-virt: an {virt}
 
