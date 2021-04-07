@@ -45,7 +45,7 @@ $ tar -xzf VMware-vix-disklib-<version>.x86_64.tar.gz
 [source,terminal]
 ----
 $ cat > Dockerfile <<EOF
-FROM registry.access.redhat.com/ubi8/ubi-minimal
+FROM busybox:latest
 COPY vmware-vix-disklib-distrib /vmware-vix-disklib-distrib
 RUN mkdir -p /opt
 ENTRYPOINT ["cp", "-r", "/vmware-vix-disklib-distrib", "/opt"]
