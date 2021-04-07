@@ -30,9 +30,6 @@ The source virtual disks are copied by a pod that is connected to the pod networ
 . Complete the following fields:
 
 * *Network*: Select the migration network.
-+
-You can clear the migration network selection by selecting the default management network.
-
 * *ESXi host admin username*: Specify the ESXi host admin user name, for example, `root`.
 * *ESXi host admin password*: Specify the ESXi host password.
 
