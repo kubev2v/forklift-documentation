@@ -1,11 +1,14 @@
-# Forklift Documentation
-:page-layout: default
-:keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
+---
+title: Forklift documentation
+layout: default
+tags: [migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift]
+---
+= Forklift Documentation
 
-## What is Forklift?
+== What is Forklift?
 
 Forklift is a tool in the link:https://konveyor.io/[Konveyor community] for migrating virtual machines to KubeVirt.
 
-## Documentation
+== Documentation
 
 * link:documentation/doc-Migration_Toolkit_for_Virtualization/master/index.html[Installing and using Forklift - 2.0-beta] (GA: March 3, 2021)

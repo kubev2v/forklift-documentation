@@ -2,7 +2,7 @@
 :icons: font
 :toc: macro
 :experimental:
-:keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
+// :keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
 :imagesdir: modules/images
 :kebab: Options menu image:kebab.png[title="Options menu",height=20]
 :build: downstream
