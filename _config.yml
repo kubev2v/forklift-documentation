@@ -5,7 +5,6 @@ description: "Migrating VMware virtual machines to KubeVirt"
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /
-tags: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
 
 logo: "/assets/img/forklift-logo-darkbg.svg"
 type: website
