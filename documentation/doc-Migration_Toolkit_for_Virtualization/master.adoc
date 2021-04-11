@@ -7,7 +7,6 @@ ifeval::["{build}" == "downstream"]
 = {title}
 endif::[]
 ifeval::["{build}" == "upstream"]
-[id="installing-and-using-{title}"]
 = {title} ({project-version})
 endif::[]
 :toc:
