@@ -10,6 +10,10 @@ logo: "/assets/img/forklift-logo-darkbg.svg"
 type: website
 future: false
 
+twitter:
+  username: konveyor_io
+  image: "/assets/img/konveyor-logo-forklift.jpg"
+
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-cayman
