@@ -3,9 +3,16 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="installing-mtv-console_{context}"]
+ifdef::web[]
 = Installing {the-lc} {project-full} by using the {ocp} web console
 
 You can install {the-lc} {project-first} by using the {ocp} web console.
+endif::[]
+ifdef::cli[]
+= Installing {the-lc} {project-full} from the CLI
+
+You can install {the-lc} {project-first} from the command line interface (CLI).
+endif::[]
 
 * VMware vSphere 6.5 or later.
 * {ocp} {ocp-version} installed.
@@ -54,6 +61,7 @@ Disk transfer authentication
 
 .Procedure
 
+ifdef::web[]
 . In the {ocp} web console, navigate to *Operators* -> *OperatorHub*.
 . Use the *Filter by keyword* field to search for *{operator}*.
 ifeval::["{build}" == "upstream"]
@@ -70,3 +78,106 @@ endif::[]
 . Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
 . Click *Create*.
 . Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.
+endif::[]
+ifdef::cli[]
+
+. Create the {namespace} project:
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  name: {namespace}
+EOF
+----
+
+. Create an `OperatorGroup` CR called `migration`:
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: migration
+  namespace: {namespace}
+spec:
+  targetNamespaces:
+    - {namespace}
+EOF
+----
+
+. Create a `Subscription` CR for the Operator:
+ifeval::["{build}" == "upstream"]
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: {operator}
+  namespace: {namespace}
+spec:
+  channel: development
+  installPlanApproval: Automatic
+  name: {operator}
+  source: community-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: "konveyor-forklift-operator.v2.0.0-beta.0"
+EOF
+----
+endif::[]
+ifeval::["{build}" == "downstream"]
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: {operator}
+  namespace: {namespace}
+spec:
+  channel: release-v2.0.0-beta
+  installPlanApproval: Automatic
+  name: {operator}
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: "mtv-operator.v2.0.0-beta.1"
+EOF
+----
+endif::[]
+
+. Create a `ForkliftController` CR:
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: ForkliftController
+metadata:
+  name: forklift-controller
+  namespace: {namespace}
+spec:
+  olm_managed: true
+EOF
+----
+
+. Verify that the {project-short} pods are running:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc get pods -n {namespace}
+----
++
+.Example output
+----
+NAME                                   READY   STATUS    RESTARTS   AGE
+forklift-controller-788bdb4c69-mw268   2/2     Running   0          2m
+forklift-operator-6bf45b8d8-qps9v      1/1     Running   0          5m
+forklift-ui-7cdf96d8f6-xnw5n           1/1     Running   0          2m
+----
+endif::[]
