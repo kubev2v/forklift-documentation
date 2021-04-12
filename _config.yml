@@ -34,19 +34,21 @@ asciidoctor:
   - showtitle=@
   - build=upstream
   - imagesdir=../modules/images
-  - project-short=Forklift
-  - project-full=Forklift
-  - project-first=Forklift
-  - the-lc=
-  - The=
-  - project-version=2.0
-  - virt=KubeVirt
+  - must-gather=quay.io/konveyor/forklift-must-gather:latest
+  - namespace=konveyor-forklift
   - ocp=OKD
   - ocp-version=4.7
   - ocp-short=OKD
   - operator=forklift-operator
   - operator-name=Forklift Operator
-  - namespace=konveyor-forklift
+  - project-short=Forklift
+  - project-full=Forklift
+  - project-first=Forklift
+  - project-version=2.0
+  - project-z-version=2.0.0
+  - the-lc=
+  - the=
+  - virt=KubeVirt
   safe: unsafe
 
 exclude:
