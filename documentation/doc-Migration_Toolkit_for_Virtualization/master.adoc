@@ -76,4 +76,9 @@ You can uninstall {the-lc} {project-first} by using the {ocp} web console or the
 
 include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
 include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
+
+== Troubleshooting
+
+include::modules/using-must-gather.adoc[leveloffset=+2]
+
 :mtv!:

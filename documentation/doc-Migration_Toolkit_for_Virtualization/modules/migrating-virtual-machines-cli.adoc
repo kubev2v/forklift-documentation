@@ -24,7 +24,7 @@ If a migration does not complete, you can create a new `Migration` CR, without c
 
 .Procedure
 
-. Obtain the SSL thumbprint of the vCenter host:
+. Obtain the SHA-1 fingerprint of the ESXi host:
 +
 [source,terminal]
 ----
@@ -34,7 +34,7 @@ $ openssl s_client \
     | openssl x509 -fingerprint -noout -in /dev/stdin \
     | cut -d '=' -f 2
 ----
-<1> Specify the vCenter host name.
+<1> Specify the ESXi host name.
 +
 .Example output
 +
@@ -57,12 +57,12 @@ type: Opaque
 stringData:
   user: <user_name> <1>
   password: <password> <2>
-  thumbprint: <vcenter_thumbprint> <3>
+  thumbprint: <fingerprint> <3>
 EOF
 ----
-<1> Specify the vCenter administrator account, for example, `administrator@vsphere.local`.
-<2> Specify the vCenter password.
-<3> Specify the SSL thumbprint of the vCenter host.
+<1> Specify the ESXi administrator account, for example, `administrator@vsphere.local`.
+<2> Specify the ESXi password.
+<3> Specify the SHA-1 fingerprint of the ESXi host.
 
 . Create a `Provider` CR for the VMware provider:
 +
