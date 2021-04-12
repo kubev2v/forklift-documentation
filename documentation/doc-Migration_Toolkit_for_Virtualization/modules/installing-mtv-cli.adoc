@@ -101,7 +101,7 @@ spec:
   name: {operator}
   source: community-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "konveyor-{operator}.v2.0.0"
+  startingCSV: "konveyor-forklift-operator.v2.0.0"
 EOF
 ----
 endif::[]
