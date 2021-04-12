@@ -9,27 +9,27 @@ You can install {the-lc} {project-first} from the command line interface (CLI).
 
 .Prerequisites
 
-* The source cluster must be VMware vSphere 6.5 or later.
+* VMware vSphere 6.5 or later.
+* {ocp} {ocp-version} installed.
+* {virt} Operator installed.
+* You must be logged in as a user with `cluster-admin` permissions.
 * If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
-* You must install {ocp} {ocp-version} on the target cluster.
-* You must install the {virt} Operator.
-* You must log in as a user with `cluster-admin` permissions.
 
 * VMware virtual machines:
-** link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] must be installed.
-** ISO/CDROM disks must be unmounted.
-** A NIC must have no more than one IPv4 and/or one IPv6 address.
-** The VM name can contain lowercase letters (`a-z`), numbers (`0-9`), and hyphens (`-`), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (`.`), or special characters.
-** The VM name must not duplicate the name of a virtual machine in the {virt} environment.
-** The operating system must be certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
+** link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] installed.
+** ISO/CDROM disks  unmounted.
+** NIC with no more than one IPv4 and/or one IPv6 address.
+** VM name containing only lowercase letters (`a-z`), numbers (`0-9`), or hyphens (`-`), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (`.`), or special characters.
+** VM name that does not duplicate the name of a virtual machine in the {virt} environment.
+** Operating system certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
 
 * Network:
 ** IP addresses, VLANs, and other network configuration settings must not be changed before or after migration. The MAC addresses of the virtual machines are preserved during migration.
-** The network connections between the clusters and the replication repository must be uninterrupted and reliable.
-** The firewall rules must enable traffic over the network ports required for migration.
+** Uninterrupted and reliable network connections between the clusters and the replication repository.
+** Network ports enabled in the firewall rules.
 
 [cols="1,1,1,1,2",options="header"]
-.Required network ports
+.Network ports required for migration
 |===
 |Port |Protocol |Source |Destination |Purpose
 
@@ -101,7 +101,7 @@ spec:
   name: {operator}
   source: community-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "konveyor-forklift-operator.v2.0.0-beta.0"
+  startingCSV: "konveyor-forklift-operator.v2.0.0"
 EOF
 ----
 endif::[]
@@ -116,12 +116,12 @@ metadata:
   name: {operator}
   namespace: {namespace}
 spec:
-  channel: release-v2.0.0-beta
+  channel: release-v2.0.0
   installPlanApproval: Automatic
   name: {operator}
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "mtv-operator.v2.0.0-beta.1"
+  startingCSV: "mtv-operator.v2.0.0"
 EOF
 ----
 endif::[]

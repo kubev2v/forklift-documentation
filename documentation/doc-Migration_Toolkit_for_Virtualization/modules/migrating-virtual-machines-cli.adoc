@@ -16,11 +16,11 @@ If a migration does not complete, you can create a new `Migration` CR, without c
 
 .Prerequisites
 
-* You must install {ocp} {ocp-version} on your cluster.
-* You must install the {virt} Operator.
-* You must install the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI].
-* You must create a VDDK image and add it to the `v2v-vmware` config map.
-* You must log in as a user with `cluster-admin` privileges.
+* {virt} Operator installed.
+* {operator} installed.
+* link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] installed.
+* VDDK image added to the `v2v-vmware` config map.
+* You must be logged in as a user with `cluster-admin` privileges.
 
 .Procedure
 
