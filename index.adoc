@@ -2,6 +2,7 @@
 title: Forklift documentation
 layout: default
 tags: [migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift]
+description: Migrating virtual machines to KubeVirt
 ---
 = Forklift Documentation
 

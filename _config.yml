@@ -5,14 +5,14 @@ description: "Migrating VMware virtual machines to KubeVirt"
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /
-
-logo: "/assets/img/forklift-logo-darkbg.svg"
+image: assets/img/konveyor-logo-forklift.jpg
+logo: /assets/img/forklift-logo-darkbg.svg
 type: website
 future: false
 
 twitter:
   username: konveyor_io
-  image: "/assets/img/konveyor-logo-forklift.jpg"
+  image: assets/img/konveyor-logo-forklift.jpg
 
 # Build settings
 markdown: kramdown
