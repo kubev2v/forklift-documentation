@@ -17,6 +17,7 @@
 :ocp-version: 4.7
 :ocp-short: OCP
 :operator: rhmtv-operator
+:operator-name: RHMTV Operator
 // If namespace must be formatted with backticks, use + instead.
 :namespace: openshift-rhmtv
 

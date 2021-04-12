@@ -101,7 +101,7 @@ spec:
   name: {operator}
   source: community-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "konveyor-forklift-operator.v2.0.0"
+  startingCSV: "konveyor-{operator}.v2.0.0"
 EOF
 ----
 endif::[]
@@ -121,7 +121,7 @@ spec:
   name: {operator}
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "mtv-operator.v2.0.0"
+  startingCSV: "{operator}.v2.0.0"
 EOF
 ----
 endif::[]

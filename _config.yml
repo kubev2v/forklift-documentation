@@ -45,6 +45,7 @@ asciidoctor:
   - ocp-version=4.7
   - ocp-short=OKD
   - operator=forklift-operator
+  - operator-name=Forklift Operator
   - namespace=konveyor-forklift
   safe: unsafe
 

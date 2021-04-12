@@ -55,18 +55,18 @@ Disk transfer authentication
 .Procedure
 
 . In the {ocp} web console, navigate to *Operators* -> *OperatorHub*.
-. Use the *Filter by keyword* field to find the *{operator}*.
+. Use the *Filter by keyword* field to search for *{operator}*.
 ifeval::["{build}" == "upstream"]
 +
 [NOTE]
 ====
-The {operator} is a Community Operator. Red Hat does not support Community Operators.
+The {operator-name} is a Community Operator. Red Hat does not support Community Operators.
 ====
 endif::[]
-. Click the {operator} and then click *Install*.
+. Click the {operator-name} and then click *Install*.
 . On the *Install Operator* page, click *Install*.
-. Click *Operators* -> *Installed Operators* to verify that the {operator} appears in the *{namespace}* project with the status *Succeeded*.
-. Click the {operator}.
+. Click *Operators* -> *Installed Operators* to verify that the {operator-name} appears in the *{namespace}* project with the status *Succeeded*.
+. Click the {operator-name}.
 . Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
 . Click *Create*.
 . Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.
