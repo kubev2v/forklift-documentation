@@ -24,5 +24,12 @@ $ oc delete project {namespace}
 +
 [source,terminal]
 ----
-$ oc get crd -o name | grep "forklift.konveyor.io" | xargs oc delete
+$ oc get crd -o name | grep 'forklift' | xargs oc delete
+----
+
+. Delete the OAuthClient:
++
+[source,terminal]
+----
+$ oc get oauthclient -o name | grep 'forklift' | xargs oc delete
 ----
