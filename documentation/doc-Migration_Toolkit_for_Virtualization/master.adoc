@@ -1,7 +1,3 @@
----
-layout: default
-tags: [migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift]
----
 include::modules/common-attributes.adoc[]
 ifeval::["{build}" == "downstream"]
 [id="installing-and-using-{title}"]
@@ -28,19 +24,6 @@ endif::[]
 
 {virt} is an add-on to {ocp} {ocp-version} that allows you to run and manage virtual machine workloads alongside container workloads.
 
-// [IMPORTANT]
-// ====
-// {project-short} is a Technology Preview feature only. Technology Preview features
-// are not supported with Red Hat production service level agreements (SLAs) and
-// might not be functionally complete. Red Hat does not recommend using them
-// in production. These features provide early access to upcoming product
-// features, enabling customers to test functionality and provide feedback during
-// the development process.
-//
-// For more information about the support scope of Red Hat Technology Preview
-// features, see https://access.redhat.com/support/offerings/techpreview/.
-// ====
-
 include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
 include::modules/mtv-workflow.adoc[leveloffset=+2]
 include::modules/virt-migration-workflow.adoc[leveloffset=+2]
@@ -51,29 +34,18 @@ include::modules/about-storage.adoc[leveloffset=+2]
 
 You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
 
-:!mtv:
+[IMPORTANT]
+====
+After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map.
+====
 
-:context: mtv-console
-:mtv-console:
+If you are performing more than 10 concurrent VM migrations from a single ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
+
 include::modules/installing-mtv-console.adoc[leveloffset=+2]
-
-After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image.
-
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+3]
-include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
-:!mtv-console:
-
-:context: mtv-cli
-:mtv-cli:
 include::modules/installing-mtv-cli.adoc[leveloffset=+2]
+include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
+include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
 
-After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image.
-
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+3]
-include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
-:!mtv-cli:
-
-:mtv:
 [id="migrating-virtual-machines-to-virt_{context}"]
 == Migrating virtual machines to {virt}
 
@@ -91,7 +63,6 @@ include::modules/adding-source-provider.adoc[leveloffset=+3]
 include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+3]
 include::modules/creating-network-mapping.adoc[leveloffset=+3]
 include::modules/creating-storage-mapping.adoc[leveloffset=+3]
-// include::modules/adding-hooks.adoc[leveloffset=+3]
 include::modules/creating-migration-plan.adoc[leveloffset=+3]
 include::modules/running-migration-plan.adoc[leveloffset=+3]
 
