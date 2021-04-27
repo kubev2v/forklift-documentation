@@ -1,0 +1,23 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id='known-issues_{context}']
+= Known issues
+
+// will be fixed in 2.1.0
+* After a successful migration, the `Migration` custom resource (CR) is missing the following section of the first VM's migration status (*link:https://bugzilla.redhat.com/show_bug.cgi?id=1952362[BZ#1952362]*):
++
+.Example missing VM status
+[source,yaml]
+----
+...
+  - completed: "2021-04-22T05:50:07Z"
+    conditions:
+    - category: Advisory
+      durable: true
+      lastTransitionTime: "2021-04-22T05:50:07Z"
+      message: The VM migration has SUCCEEDED.
+      status: "True"
+      type: Succeeded
+----
