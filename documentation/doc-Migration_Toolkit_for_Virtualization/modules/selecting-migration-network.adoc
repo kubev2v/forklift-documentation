@@ -10,17 +10,15 @@ You can select a migration network for a source provider in the web console.
 
 The default network might not provide the best performance for migration. If a VMware host network is not optimal for migration, a Warning icon is displayed beside the host number in the *Hosts* column of the provider list.
 
-[discrete]
-== Prerequisites
+.Prerequisites
 
 The migration network has the following prerequisites:
 
-* Minimum speed of 10 Gbps
+* Minimum speed of 10 Gbps.
 * Accessible to the OpenShift nodes through the default gateway. The source disks are copied by a pod that is connected to the pod network of the target namespace.
-* Jumbo frames enabled
+* Jumbo frames enabled.
 
-[discrete]
-== Procedure
+.Procedure
 
 . In the web console, navigate to *Providers*.
 . Click the host number of a provider to view the host list and network details.

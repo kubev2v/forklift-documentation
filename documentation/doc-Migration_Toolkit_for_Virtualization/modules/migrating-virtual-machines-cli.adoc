@@ -16,15 +16,16 @@ If a migration does not complete, you can create a new `Migration` CR, without c
 
 .Prerequisites
 
-* You must install {ocp} {ocp-version} on your cluster.
-* You must install the {virt} Operator.
-* You must install the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI].
-* You must create a VDDK image and add it to the `v2v-vmware` config map.
-* You must log in as a user with `cluster-admin` privileges.
+* {virt} Operator installed.
+* {operator-name} installed.
+* link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] installed.
+* VDDK image added to the `v2v-vmware` config map.
+* You must be logged in as a user with `cluster-admin` privileges.
+* You must have a VMware vCenter user account with administrator privileges.
 
 .Procedure
 
-. Obtain the SSL thumbprint of the vCenter host:
+. Obtain the SHA-1 fingerprint of the vCenter host:
 +
 [source,terminal]
 ----
@@ -57,12 +58,12 @@ type: Opaque
 stringData:
   user: <user_name> <1>
   password: <password> <2>
-  thumbprint: <vcenter_thumbprint> <3>
+  thumbprint: <fingerprint> <3>
 EOF
 ----
 <1> Specify the vCenter administrator account, for example, `administrator@vsphere.local`.
 <2> Specify the vCenter password.
-<3> Specify the SSL thumbprint of the vCenter host.
+<3> Specify the SHA-1 fingerprint of the vCenter host.
 
 . Create a `Provider` CR for the VMware provider:
 +
@@ -82,7 +83,7 @@ spec:
     namespace: {namespace}
 EOF
 ----
-<1> Specify the vSphere API end point, for example, `https://vcenter.host.com/sdk`.
+<1> Specify the vSphere API end point, for example, `https://<vcenter.host.com>/sdk`.
 <2> Specify the name of the VMware `Secret` CR.
 
 . Create a `Plan` CR for the migration:
