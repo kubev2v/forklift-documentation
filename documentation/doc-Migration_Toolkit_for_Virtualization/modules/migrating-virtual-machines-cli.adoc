@@ -69,7 +69,7 @@ EOF
 [source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
-apiVersion: forklfit.konveyor.io/v1beta1
+apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
   name: vmware-provider
