@@ -5,7 +5,7 @@
 [id="creating-migration-plan_{context}"]
 = Creating a migration plan
 
-You can create a migration plan by using the {project-first} web console.
+You can create a migration plan by using the {project-short} web console.
 
 A migration plan allows you to group virtual machines that should be migrated together or with the same migration parameters, for example, a percentage of the members of a cluster or a complete application.
 
@@ -24,16 +24,19 @@ A migration plan allows you to group virtual machines that should be migrated to
 * *Source provider*: Select a source provider.
 * *Target provider*: Select a target provider.
 * *Target namespace*: You can type to search for an existing target namespace or create a new namespace.
+* You can change the migration transfer network for this plan by clicking *Select a different network*, selecting a network from the list, and clicking *Select*.
++
+If you defined a migration transfer network for the {virt} provider and if the network is in the target namespace, that network is the default network for all migration plans. Otherwise, the `pod` network is used.
 
 . Click *Next*.
 . Click *By clusters and hosts* or *By folders*, select clusters, hosts, or folders to filter the VMs, and then click *Next*.
 . Select the VMs to migrate and click *Next*.
 . Select an existing network mapping or create a new network mapping.
-. Optional: If you select *Create a new network mapping*, select a target network for each source network.
+. If you selected *Create a new network mapping*, select a target network for each source network.
 . Optional: Select *Save mapping to use again* and enter a network mapping name.
 . Click *Next*.
 . Select an existing storage mapping or create a new storage mapping.
-. Optional: If you select *Create a new storage mapping*, select a target storage class for each source data store.
+. If you selected *Create a new storage mapping*, select a target storage class for each source data store.
 . Optional: Select *Save mapping to use again* and enter a storage mapping name.
 . Click *Next*.
 . Review your migration plan and click *Finish*.

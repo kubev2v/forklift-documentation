@@ -56,11 +56,10 @@ You can migrate virtual machines to {virt} by using the {project-short} web cons
 
 You can migrate virtual machines to {virt} by using the {project-short} web console.
 
-You add the source and target providers and create a network mapping and a storage mapping. Then, you create and run a migration plan.
-
-include::modules/adding-virt-provider.adoc[leveloffset=+3]
 include::modules/adding-source-provider.adoc[leveloffset=+3]
-include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+3]
+include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+4]
+include::modules/adding-virt-provider.adoc[leveloffset=+3]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
 include::modules/creating-network-mapping.adoc[leveloffset=+3]
 include::modules/creating-storage-mapping.adoc[leveloffset=+3]
 include::modules/creating-migration-plan.adoc[leveloffset=+3]
@@ -80,6 +79,4 @@ include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 
 include::modules/using-must-gather.adoc[leveloffset=+2]
 
-include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
-include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 :mtv!:

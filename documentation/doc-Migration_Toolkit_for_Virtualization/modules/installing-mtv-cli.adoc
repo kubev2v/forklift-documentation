@@ -90,7 +90,7 @@ ifeval::["{build}" == "upstream"]
 [source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
-apiVersion: operators.coreos.com/v1alpha1
+apiVersion: operators.coreos.com/v1beta1
 kind: Subscription
 metadata:
   name: {operator}
@@ -110,7 +110,7 @@ ifeval::["{build}" == "downstream"]
 [source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
-apiVersion: operators.coreos.com/v1alpha1
+apiVersion: operators.coreos.com/v1beta1
 kind: Subscription
 metadata:
   name: {operator}

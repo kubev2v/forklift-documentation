@@ -86,6 +86,28 @@ EOF
 <1> Specify the vSphere API end point, for example, `https://<vcenter.host.com>/sdk`.
 <2> Specify the name of the VMware `Secret` CR.
 
+. Create a `Host` CR for the VMware provider:
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Host
+metadata:
+  name: vmware_host
+  namespace: {namespace}
+spec:
+  provider:
+    namespace: {namespace}
+    name: <provider_name> <1>
+  id: <source_host_mor> <2>
+  ipAddress: <source_network> <3>
+EOF
+----
+<1> Specify the name of the VMware `Provider` CR.
+<2> Specify the _managed object reference_ of the VMware host.
+<3> Specify the IP address of the VMware migration network.
+
 . Create a `Plan` CR for the migration:
 +
 [source,terminal,subs="attributes+"]
@@ -104,35 +126,37 @@ spec:
     destination:
       name: destination-cluster
       namespace: {namespace}
+  transferNetwork: <target_migration_network> <2>
   map:
-    networks: <2>
-      - source: <3>
-          id: <source_network_mor> <4>
+    networks: <3>
+      - source: <4>
+          id: <source_network_mor> <5>
           name: <source_network_name>
         destination:
           type: pod
           name: pod
           namespace: {namespace}
-    datastores: <5>
-      - source: <6>
-          id: <source_datastore_mor> <7>
+    datastores: <6>
+      - source: <7>
+          id: <source_datastore_mor> <8>
           name: <source_datastore_name>
         destination:
           storageClass: standard
-  vms: <8>
-    - id: <source_vm_mor> <9>
+  vms: <9>
+    - id: <source_vm_mor> <10>
     - name: <source_vm_name>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
-<2> You can create multiple network mappings for source and destination networks.
-<3> You can use either the `id` _or_ the `name` parameter to specify the source network.
-<4> _Managed object reference_ of the source network.
-<5> You can create multiple storage mappings for source data stores and destination storage classes.
-<6> You can use either the `id` _or_ the `name` parameter to specify the source data store.
-<7> _Managed object reference_ of the source data store.
-<8>  You can use either the `id` _or_ the `name` parameter to specify the source VM.
-<9> _Managed object reference_ of the source VM.
+<2> Optional: Specify a migration network for the target cluster. If a `transferNetwork` value is specified, it has priority over the default migration network specified in the {project-short} web console _for migration plans created by using the CLI_. If a `transferNetwork` value is not specified, the default migration network specified in the web console is used.
+<3> You can create multiple network mappings for source and destination networks.
+<4> You can use either the `id` _or_ the `name` parameter to specify the source network.
+<5> Specify the _managed object reference_ of the source network.
+<6> You can create multiple storage mappings for source data stores and destination storage classes.
+<7> You can use either the `id` _or_ the `name` parameter to specify the source data store.
+<8> Specify the _managed object reference_ of the source data store.
+<9> You can use either the `id` _or_ the `name` parameter to specify the source VM.
+<10> Specify the _managed object reference_ of the source VM.
 
 . Create a `Migration` CR to run the `Plan` CR:
 +

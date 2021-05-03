@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="adding-source-provider_{context}"]
-= Adding a source provider
+= Adding a VMware source provider
 
 You can add VMware as a source provider by using the {project-short} web console.
 

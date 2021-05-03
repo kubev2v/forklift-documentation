@@ -3,11 +3,11 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="selecting-migration-network-for-source-provider_{context}"]
-== Selecting a migration network for a source provider
+= Selecting a migration network for a VMware provider
 
-Select a migration network to reduce risk to the VMware environment and to improve migration performance.
+You can select a migration network in the {project-short} web console for a VMware source provider to reduce risk to the VMware environment and to improve performance.
 
-By default, {the-lc} {project-first} selects the _management_ network of a source provider. However, using the management network for migration can result in poor performance because the network might not have sufficient bandwidth. This situation can have a negative effect on the VMware platform because the disk transfer operation might saturate the network and impede communication between vCenter and the ESXi hosts.
+The default migration network is the management network. However, using the management network for migration can result in poor performance because the network might not have sufficient bandwidth. This situation can have a negative effect on the VMware platform because the disk transfer operation might saturate the network and impede communication between vCenter and the ESXi hosts.
 
 .Prerequisites
 
@@ -24,7 +24,8 @@ The source virtual disks are copied by a pod that is connected to the pod networ
 
 .Procedure
 
-. In the web console, navigate to *Providers* and click *VMware*.
+. In the {project-short} web console, click *Providers*
+. Click *VMware*.
 . Click the host number in the *Hosts* column beside a VMware provider to view a list of hosts.
 . Select one or more hosts and click *Select migration network*.
 . Complete the following fields:
@@ -40,5 +41,3 @@ You can clear the migration network selection by selecting the default managemen
 . Verify that the status of each host is *Ready*.
 +
 If a host status is not *Ready*, the host might be unreachable on the migration network or the credentials might be incorrect. You can modify the host configuration and save the changes.
-
-The migration network is displayed in the list of ESXi hosts.
