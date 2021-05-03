@@ -116,7 +116,7 @@ metadata:
   name: {operator}
   namespace: {namespace}
 spec:
-  channel: release-v2.0.0
+  channel: release-v{project-version-z}
   installPlanApproval: Automatic
   name: {operator}
   source: redhat-operators
