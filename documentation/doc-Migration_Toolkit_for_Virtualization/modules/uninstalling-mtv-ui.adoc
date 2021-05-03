@@ -9,7 +9,7 @@ You can uninstall {project-first} by using the {ocp} web console to delete the +
 
 .Prerequisites
 
-* You must log in as a user with `cluster-admin` privileges.
+* You must be logged in as a user with `cluster-admin` privileges.
 
 .Procedure
 
