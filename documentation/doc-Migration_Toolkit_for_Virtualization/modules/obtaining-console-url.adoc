@@ -1,0 +1,45 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="obtaining-console-url_{context}"]
+= Obtaining the {project-short} web console URL
+
+ifdef::web[]
+You can obtain the {project-short} web console URL by using the {ocp} web console.
+endif::[]
+ifdef::cli[]
+You can obtain the {project-short} web console URL from the command line.
+endif::[]
+
+.Prerequisites
+
+* {virt} Operator installed.
+* {operator} installed.
+* You must be logged in as a user with `cluster-admin` privileges.
+
+.Procedure
+
+ifdef::web[]
+. Log in to the {ocp} web console.
+. Navigate to the *Networking* -> *Routes* page.
+. Select the +{namespace}+ project in the *Project:* list.
+. Click the URL for the `forklift-ui` service to open the login page for the {project-short} web console.
+endif::[]
+ifdef::cli[]
+. Obtain the {project-short} web console URL:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc get route virt -n {namespace} \
+  -o custom-columns=:.spec.host
+----
++
+.Example output
+[source,terminal,subs="attributes+"]
+----
+https://virt-{namespace}.apps.cluster.openshift.com.
+----
+
+. Launch a browser and navigate to the {project-short} web console.
+endif::[]
