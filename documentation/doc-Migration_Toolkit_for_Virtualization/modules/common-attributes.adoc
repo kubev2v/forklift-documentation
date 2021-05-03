@@ -15,12 +15,12 @@
 :kebab: Options menu image:kebab.png[title="Options menu",height=20]
 :must-gather: registry.redhat.io/rhmtv/rhmtv-must-gather: v{project-z-version}
 // If namespace must be formatted with backticks, use + instead.
-:namespace: openshift-rhmtv
+:namespace: openshift-mtv
 :ocp: OpenShift Container Platform
 :ocp-version: 4.7
 :ocp-short: OCP
-:operator: rhmtv-operator
-:operator-name: RHMTV Operator
+:operator: mtv-operator
+:operator-name: MTV Operator
 :project-first: {project-full} ({project-short})
 :project-full: Migration Toolkit for Virtualization
 :project-short: MTV
