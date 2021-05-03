@@ -18,7 +18,7 @@ ifeval::["{build}" == "upstream"]
 . Enter `forklift` in the *Search* field to locate the {namespace} project.
 endif::[]
 ifeval::["{build}" == "downstream"]
-. Enter `rhmtv` in the *Search* field to locate the {namespace} project.
+. Enter `mtv` in the *Search* field to locate the {namespace} project.
 endif::[]
 . On the right side of the project, select *Delete Project* from the {kebab}.
 . In the *Delete Project* pane, enter the project name and click *Delete*.
