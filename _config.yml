@@ -5,8 +5,9 @@ description: "Migrating VMware virtual machines to KubeVirt"
 permalink: pretty
 repository: konveyor/forklift-documentation
 baseurl: /
-image: assets/img/konveyor-logo-forklift.jpg
-logo: /assets/img/forklift-logo-darkbg.svg
+tags: "migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift"
+
+logo: "/assets/img/forklift-logo-darkbg.svg"
 type: website
 future: false
 
@@ -39,12 +40,20 @@ asciidoctor:
   - build=upstream
   - keywords=migration, virtual machines, kubevirt
   - imagesdir=../modules/images
+  - must-gather=quay.io/konveyor/forklift-must-gather:latest
+  - namespace=konveyor-forklift
+  - ocp=OKD
+  - ocp-version=4.7
+  - ocp-short=OKD
+  - operator=forklift-operator
+  - operator-name=Forklift Operator
   - project-short=Forklift
   - project-full=Forklift
   - project-first=Forklift
+  - project-version=2.0
+  - project-z-version=2.0.0
   - the-lc=
-  - The=
-  - project-version=2.0-beta
+  - the=
   - virt=KubeVirt
   - ocp=OKD
   - ocp-version=4.7

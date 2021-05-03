@@ -9,7 +9,7 @@ You can uninstall {project-first} from the command line interface (CLI) by delet
 
 .Prerequisites
 
-* You must log in as a user with `cluster-admin` privileges.
+* You must be logged in as a user with `cluster-admin` privileges.
 
 .Procedure
 
