@@ -15,9 +15,9 @@
 :ocp: OpenShift{nbsp}Container{nbsp}Platform
 :ocp-version: 4.7
 :ocp-short: OCP
-:operator: rhmtv-operator
+:operator: mtv-operator
 // If namespace must be formatted with backticks, use + instead.
-:namespace: openshift-rhmtv
+:namespace: openshift-mtv
 
 :abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp}.
 :title: Installing and using {the-lc} {project-full}
