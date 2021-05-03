@@ -14,7 +14,7 @@ You cannot map an opaque network, typically managed by NSX, to a {virt} network.
 
 .Prerequisites
 
-* You must add source and target providers to the web console.
+* Source and target providers added to the web console.
 
 .Procedure
 

@@ -13,7 +13,7 @@ This document uses the following variables to ensure that upstream and downstrea
 | -------- | -------------- | ---------------- |
 | project-full | Forklift   | Migration Toolkit for Virtualization |
 | project-short | Forklift | MTV |
-| project-version | 2.0-beta | 2.0-beta |
+| project-version | 2.0 | 2.0 |
 | virt | KubeVirt | OpenShift Virtualization |
 | ocp | OKD | Red Hat OpenShift Container Platform |
 | ocp-version   | 4.7 | 4.7 |

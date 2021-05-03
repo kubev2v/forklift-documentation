@@ -7,7 +7,7 @@
 
 {project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks.
 
-You can download VDDK, build a VDDK image, push it to a private image registry, and then add the image to the `v2v-vmware` config map.
+You must download VDDK, build a VDDK image, push it to a private image registry, and then add the image to the `v2v-vmware` config map.
 
 [NOTE]
 ====
@@ -16,9 +16,9 @@ Storing the VDDK image in a public registry might violate the VMware license ter
 
 .Prerequisites
 
-* You must have access to an internal link:https://docs.openshift.com/container-platform/{ocp-version}/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html[{ocp} image registry] or a secure link:https://docs.openshift.com/container-platform/{ocp-version}/registry/registry-options.html[external registry].
-* {virt} must have access to the image registry.
-* You must have Podman installed.
+* link:https://docs.openshift.com/container-platform/{ocp-version}/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html[{ocp} image registry] or a secure link:https://docs.openshift.com/container-platform/{ocp-version}/registry/registry-options.html[external registry].
+* Podman installed.
+* If you are using an external registry, {virt} must have access.
 
 .Procedure
 

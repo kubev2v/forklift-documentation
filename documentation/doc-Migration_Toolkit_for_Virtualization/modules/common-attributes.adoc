@@ -1,26 +1,31 @@
 // Attributes for the Migration Toolkit for Virtualization (downstream)
+// Attributes for Forklift (upstream) are in _config.yml
+// metadata
 :icons: font
+:build: downstream
 :toc: macro
 :experimental:
+:keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
 :imagesdir: modules/images
-:kebab: Options menu image:kebab.png[title="Options menu",height=20]
-:build: downstream
-:project-short: MTV
-:project-full: Migration{nbsp}Toolkit{nbsp}for{nbsp}Virtualization
-:the: The
-:the-lc: the
-:project-first: {project-full}{nbsp}({project-short})
-:project-version: 2.0-beta
-:virt: OpenShift Virtualization
-:ocp: OpenShift{nbsp}Container{nbsp}Platform
-:ocp-version: 4.7
-:ocp-short: OCP
-:operator: mtv-operator
-// If namespace must be formatted with backticks, use + instead.
-:namespace: openshift-mtv
-
 :abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp}.
 :title: Installing and using {the-lc} {project-full}
 :subtitle: Migrating from VMware to Red Hat {virt}
 
-// Attributes for Forklift (upstream) are in _config.yml
+// text
+:kebab: Options menu image:kebab.png[title="Options menu",height=20]
+:must-gather: registry.redhat.io/rhmtv/rhmtv-must-gather: v{project-z-version}
+// If namespace must be formatted with backticks, use + instead.
+:namespace: openshift-mtv
+:ocp: OpenShift Container Platform
+:ocp-version: 4.7
+:ocp-short: OCP
+:operator: mtv-operator
+:operator-name: MTV Operator
+:project-first: {project-full} ({project-short})
+:project-full: Migration Toolkit for Virtualization
+:project-short: MTV
+:project-version: 2.0
+:project-z-version: 2.0.0
+:the: The
+:the-lc: the
+:virt: OpenShift Virtualization

@@ -9,7 +9,7 @@ You can add the {virt} provider by using the {project-short} web console.
 
 .Prerequisites
 
-* You must have the link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/using-service-accounts-in-applications.html[token] of a service account with `cluster-admin` privileges.
+* link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/using-service-accounts-in-applications.html[Service account token] with `cluster-admin` privileges.
 
 .Procedure
 
