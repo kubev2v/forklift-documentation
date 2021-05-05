@@ -5,7 +5,7 @@
 [id="adding-virt-provider_{context}"]
 = Adding {a-virt} provider
 
-You can add {a-virt} provider to the {project-short} web console in addition to the default default {virt} provider, which is the provider where you installed {project-short}.
+You can add {a-virt} provider to the {project-short} web console in addition to the default {virt} provider, which is the provider where you installed {project-short}.
 
 .Prerequisites
 
