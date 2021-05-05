@@ -3,9 +3,9 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="adding-virt-provider_{context}"]
-= Adding the {virt} provider
+= Adding {a-virt} provider
 
-You can add the {virt} provider by using the {project-short} web console.
+You can add {a-virt} provider to the {project-short} web console in addition to the default default {virt} provider, which is the provider where you installed {project-short}.
 
 .Prerequisites
 
