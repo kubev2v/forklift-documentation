@@ -11,8 +11,9 @@ A migration plan allows you to group virtual machines that should be migrated to
 
 .Prerequisites
 
-* VDDK image added to the `v2v-vmware` config map.
-* Source and target providers added to the web console.
+* You must create a VDDK image and add it to the `v2v-vmware` config map.
+* You must add a source provider to the web console.
+* If the target provider is not the {virt} cluster on which you installed {project-short}, you must add a target provider.
 
 .Procedure
 
@@ -20,7 +21,7 @@ A migration plan allows you to group virtual machines that should be migrated to
 . Complete the following fields:
 
 * *Plan name*: Enter a migration plan name to display in the migration plan list.
-* *Plan description*: Optional: Brief description of the migration plan.
+* *Plan description*: Optional. Brief description of the migration plan.
 * *Source provider*: Select a source provider.
 * *Target provider*: Select a target provider.
 * *Target namespace*: You can type to search for an existing target namespace or create a new namespace.
@@ -29,12 +30,14 @@ A migration plan allows you to group virtual machines that should be migrated to
 . Click *By clusters and hosts* or *By folders*, select clusters, hosts, or folders to filter the VMs, and then click *Next*.
 . Select the VMs to migrate and click *Next*.
 . Select an existing network mapping or create a new network mapping.
-. Optional: If you select *Create a new network mapping*, select a target network for each source network.
-. Optional: Select *Save mapping to use again* and enter a network mapping name.
+. If you want to create a new network mapping:
+.. Select a target network for each source network.
+.. Optional. Select *Save mapping to use again* and enter a network mapping name.
 . Click *Next*.
 . Select an existing storage mapping or create a new storage mapping.
-. Optional: If you select *Create a new storage mapping*, select a target storage class for each source data store.
-. Optional: Select *Save mapping to use again* and enter a storage mapping name.
+. If you want to create a new storage mapping:
+.. Select a target storage class for each source data store.
+.. Optional. Select *Save mapping to use again* and enter a storage mapping name.
 . Click *Next*.
 . Review your migration plan and click *Finish*.
 +
