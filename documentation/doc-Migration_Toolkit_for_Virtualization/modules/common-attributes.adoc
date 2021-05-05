@@ -11,9 +11,9 @@
 :ocp-short: OCP
 :operator: mtv-operator
 :operator-name: MTV Operator
-:project-first: {project-full} ({project-short})
 :project-full: Migration Toolkit for Virtualization
 :project-short: MTV
+:project-first: {project-full} ({project-short})
 :project-version: 2.0
 :project-z-version: 2.0.0
 :the: The
