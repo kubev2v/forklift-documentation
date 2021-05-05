@@ -19,6 +19,7 @@
 :the: The
 :the-lc: the
 :virt: OpenShift Virtualization
+:a-virt: an {virt}
 
 // doc metadata
 :icons: font
