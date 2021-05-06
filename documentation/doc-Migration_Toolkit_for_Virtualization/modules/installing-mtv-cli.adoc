@@ -2,17 +2,12 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="installing-mtv-console_{context}"]
-ifdef::web[]
-= Installing {the-lc} {project-full} by using the {ocp} web console
-
-You can install {the-lc} {project-first} by using the {ocp} web console.
-endif::[]
-ifdef::cli[]
+[id="installing-mtv-cli_{context}"]
 = Installing {the-lc} {project-full} from the CLI
 
 You can install {the-lc} {project-first} from the command line interface (CLI).
-endif::[]
+
+.Prerequisites
 
 * VMware vSphere 6.5 or later.
 * {ocp} {ocp-version} installed.
@@ -61,26 +56,6 @@ Disk transfer authentication
 
 .Procedure
 
-ifdef::web[]
-. In the {ocp} web console, navigate to *Operators* -> *OperatorHub*.
-. Use the *Filter by keyword* field to search for *{operator}*.
-ifeval::["{build}" == "upstream"]
-+
-[NOTE]
-====
-The {operator-name} is a Community Operator. Red Hat does not support Community Operators.
-====
-endif::[]
-. Click the {operator-name} and then click *Install*.
-. On the *Install Operator* page, click *Install*.
-. Click *Operators* -> *Installed Operators* to verify that the {operator-name} appears in the *{namespace}* project with the status *Succeeded*.
-. Click the {operator-name}.
-. Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
-. Click *Create*.
-. Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.
-endif::[]
-ifdef::cli[]
-
 . Create the {namespace} project:
 +
 [source,terminal,subs="attributes+"]
@@ -126,7 +101,7 @@ spec:
   name: {operator}
   source: community-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "konveyor-forklift-operator.v2.0.0-beta.0"
+  startingCSV: "konveyor-{operator}.v2.0.0"
 EOF
 ----
 endif::[]
@@ -141,12 +116,12 @@ metadata:
   name: {operator}
   namespace: {namespace}
 spec:
-  channel: release-v2.0.0-beta
+  channel: release-v2.0.0
   installPlanApproval: Automatic
   name: {operator}
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "mtv-operator.v2.0.0-beta.1"
+  startingCSV: "{operator}.v2.0.0"
 EOF
 ----
 endif::[]
@@ -156,7 +131,7 @@ endif::[]
 [source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
-apiVersion: forklift.konveyor.io/v1beta1
+apiVersion: forklift.konveyor.io/v1alpha1
 kind: ForkliftController
 metadata:
   name: forklift-controller
@@ -180,4 +155,3 @@ forklift-controller-788bdb4c69-mw268   2/2     Running   0          2m
 forklift-operator-6bf45b8d8-qps9v      1/1     Running   0          5m
 forklift-ui-7cdf96d8f6-xnw5n           1/1     Running   0          2m
 ----
-endif::[]
