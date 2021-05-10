@@ -55,7 +55,7 @@ asciidoctor:
   - the-lc=
   - the=
   - virt=KubeVirt
-  - a-virt=a {virt}
+  - a-virt=a KubeVirt
   - ocp=OKD
   - ocp-version=4.7
   - ocp-short=OKD

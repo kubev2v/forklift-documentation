@@ -13,13 +13,14 @@ You can add {a-virt} provider to the {project-short} web console in addition to 
 
 .Procedure
 
-. In the web console, navigate to *Providers* and click *Add provider*.
+. In the  {project-short}  web console, click *Providers*.
+. Click *Add provider*.
 . Select *{virt}* from the *Type* list.
-. Fill in the following fields:
+. Complete the following fields:
 
-* *Name*: {ocp} cluster name to display in the list of providers
-* *URL*: {ocp} cluster API endpoint
-* *Service account token*: `cluster-admin` service account token
+* *Cluster name*: Specify the cluster name to display in the list of target providers.
+* *URL*: Specify the API endpoint of the cluster.
+* *Service account token*: Specify the `cluster-admin` service account token.
 
 . Click *Check connection* to verify the credentials.
 . Click *Add*.
