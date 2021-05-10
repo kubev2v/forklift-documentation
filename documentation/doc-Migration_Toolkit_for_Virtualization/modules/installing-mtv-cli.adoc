@@ -116,7 +116,7 @@ metadata:
   name: {operator}
   namespace: {namespace}
 spec:
-  channel: release-v{project-version-z}
+  channel: release-v2.0.0
   installPlanApproval: Automatic
   name: {operator}
   source: redhat-operators
@@ -131,7 +131,7 @@ endif::[]
 [source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
-apiVersion: forklift.konveyor.io/v1beta1
+apiVersion: forklift.konveyor.io/v1alpha1
 kind: ForkliftController
 metadata:
   name: forklift-controller

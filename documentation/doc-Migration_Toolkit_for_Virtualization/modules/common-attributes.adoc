@@ -1,17 +1,7 @@
 // Attributes for the Migration Toolkit for Virtualization (downstream)
 // Attributes for Forklift (upstream) are in _config.yml
-// metadata
-:icons: font
-:build: downstream
-:toc: macro
-:experimental:
-:keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
-:imagesdir: modules/images
-:abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp}.
-:title: Installing and using {the-lc} {project-full}
-:subtitle: Migrating from VMware to Red Hat {virt}
+// doc text
 
-// text
 :kebab: Options menu image:kebab.png[title="Options menu",height=20]
 :must-gather: registry.redhat.io/rhmtv/rhmtv-must-gather: v{project-z-version}
 // If namespace must be formatted with backticks, use + instead.
@@ -21,11 +11,23 @@
 :ocp-short: OCP
 :operator: mtv-operator
 :operator-name: MTV Operator
-:project-first: {project-full} ({project-short})
 :project-full: Migration Toolkit for Virtualization
 :project-short: MTV
+:project-first: {project-full} ({project-short})
 :project-version: 2.0
 :project-z-version: 2.0.0
 :the: The
 :the-lc: the
 :virt: OpenShift Virtualization
+:a-virt: an {virt}
+
+// doc metadata
+:icons: font
+:build: downstream
+:toc: macro
+:experimental:
+:keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
+:imagesdir: modules/images
+:abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp}.
+:title: Installing and using {the-lc} {project-full}
+:subtitle: Migrating from VMware to Red Hat {virt}

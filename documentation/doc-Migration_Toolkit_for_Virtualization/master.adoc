@@ -41,8 +41,23 @@ After you have installed {project-short}, you must create a VMware Virtual Disk 
 
 If you are performing more than 10 concurrent VM migrations from a single ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
 
+:context: web
+:web:
 include::modules/installing-mtv-console.adoc[leveloffset=+2]
-include::modules/installing-mtv-cli.adoc[leveloffset=+2]
+
+[discrete]
+include::modules/obtaining-console-url.adoc[leveloffset=+3]
+:!web:
+:context: cli
+:cli:
+include::modules/installing-mtv-console.adoc[leveloffset=+2]
+
+[discrete]
+include::modules/obtaining-console-url.adoc[leveloffset=+3]
+:!cli:
+:context: mtv
+:mtv:
+
 include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
 include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
 
@@ -75,8 +90,10 @@ You can uninstall {the-lc} {project-first} by using the {ocp} web console or the
 include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
 include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 
+[id="troubleshooting_{context}"]
 == Troubleshooting
 
 include::modules/using-must-gather.adoc[leveloffset=+2]
+// include::modules/known-issues.adoc[leveloffset=+2]
 
 :mtv!:
