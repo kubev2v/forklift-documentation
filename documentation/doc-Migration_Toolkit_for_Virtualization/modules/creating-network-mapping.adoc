@@ -9,7 +9,7 @@ You can create a network mapping by using the {project-first} web console to map
 
 [NOTE]
 ====
-You cannot map an opaque network, typically managed by NSX, to a {virt} network.
+You cannot map an opaque network, typically managed by NSX, to {a-virt} network.
 ====
 
 .Prerequisites
