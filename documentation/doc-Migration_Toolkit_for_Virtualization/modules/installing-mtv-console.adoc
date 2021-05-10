@@ -14,6 +14,8 @@ ifdef::cli[]
 You can install {the-lc} {project-first} from the command line interface (CLI).
 endif::[]
 
+.Prerequisites
+
 * VMware vSphere 6.5 or later.
 * {ocp} {ocp-version} installed.
 * {virt} Operator installed.

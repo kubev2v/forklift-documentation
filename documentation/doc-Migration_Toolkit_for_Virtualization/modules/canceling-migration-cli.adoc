@@ -1,0 +1,44 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="canceling-migration-cli_{context}"]
+= Cancelling a migration
+
+You can cancel an entire migration or individual virtual machines (VMs) while a migration is in progress from the command line interface (CLI).
+
+.Procedure
+
+. To cancel a migration, delete the `Migration` CR:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc delete migration <migration_name> -n {namespace} <1>
+----
+
+. To cancel the migration of individual VMs, update the `Migration` CR manifest:
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Migration
+metadata:
+  name: <migration_name>
+  namespace: {namespace}
+...
+spec:
+  cancel:
+  - id: vm-102 <1>
+  - id: vm-203
+  - name: rhel8-vm
+EOF
+----
+<1> The `id` is the _managed object reference_ of the source VM.
+
+. View the `VirtualMachineImport` pods to monitor the progress of the remaining VMs:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc get pods -n {namespace}
+----

@@ -17,11 +17,10 @@ If a migration does not complete, you can create a new `Migration` CR, without c
 .Prerequisites
 
 * {virt} Operator installed.
-* {operator-name} installed.
+* {operator} installed.
 * link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] installed.
 * VDDK image added to the `v2v-vmware` config map.
 * You must be logged in as a user with `cluster-admin` privileges.
-* You must have a VMware vCenter user account with administrator privileges.
 
 .Procedure
 
@@ -157,6 +156,11 @@ EOF
 <8> Specify the _managed object reference_ of the source data store.
 <9> You can use either the `id` _or_ the `name` parameter to specify the source VM.
 <10> Specify the _managed object reference_ of the source VM.
++
+[NOTE]
+====
+If you change the `Plan` CR manifest while the migration is running, the migration will stop because the migration plan parameters have changed.
+====
 
 . Create a `Migration` CR to run the `Plan` CR:
 +
@@ -179,7 +183,7 @@ EOF
 +
 The `Migration` CR creates a `VirtualMachineImport` CR for each VM that is migrated.
 
-. Monitor the progress of the migration by viewing the `VirtualMachineImport` pods:
+. View the `VirtualMachineImport` pods to monitor the progress of the migration:
 +
 [source,terminal,subs="attributes+"]
 ----
