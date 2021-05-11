@@ -94,6 +94,6 @@ include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 == Troubleshooting
 
 include::modules/using-must-gather.adoc[leveloffset=+2]
-// include::modules/known-issues.adoc[leveloffset=+2]
+include::modules/known-issues.adoc[leveloffset=+2]
 
 :mtv!:
