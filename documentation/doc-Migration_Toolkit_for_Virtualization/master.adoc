@@ -79,8 +79,10 @@ include::modules/creating-network-mapping.adoc[leveloffset=+3]
 include::modules/creating-storage-mapping.adoc[leveloffset=+3]
 include::modules/creating-migration-plan.adoc[leveloffset=+3]
 include::modules/running-migration-plan.adoc[leveloffset=+3]
+include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
+include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 [id="uninstalling-mtv_{context}"]
 == Uninstalling {the-lc} {project-full}
