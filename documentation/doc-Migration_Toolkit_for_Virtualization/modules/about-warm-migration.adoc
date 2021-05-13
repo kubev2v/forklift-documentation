@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="about-warm-migration_{context}"]
+= About warm migration
+
+The default migration type for {the-lc} {project-first} is cold migration. During cold migration, the virtual machines (VMs) are shut down while the data is copied.
+
+Warm migration copies most of the data during the precopy stage. Then the VMs are shut down and the remaining data is copied during the cutover stage.
+
+== About the precopy stage
+
+The VMs are not shut down during the precopy stage.
+
+The VM disks are copied incrementally using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by patching the `vm-import-controller-config` config map.
+
+[IMPORTANT]
+====
+You must enable CBT on the source VMs and the VM disks.
+
+The maximum number of CBT snapshots that a VM can support is `28`. A `warm import retry limit reached` error message is displayed when this limit is exceeded. If a VM has preexisting CBT snapshots, it will reach this limit sooner.
+====
+
+The precopy stage runs until either the cutover stage starts or the maximum number of CBT snapshots is reached.
+
+== About the cutover stage
+
+The VMs are shut down during the cutover stage and the remaining data is migrated. Data stored in RAM is not migrated.
+
+You can start the cutover stage manually in the {project-short} console.
+
+You can schedule a cutover time from the CLI by specifying the value of the `cutover` parameter in the `Migration` CR manifest.

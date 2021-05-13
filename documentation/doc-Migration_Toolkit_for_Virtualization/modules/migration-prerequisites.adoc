@@ -1,0 +1,16 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id='migration-prerequisites_{context}']
+= Migration prerequisites
+
+{project-first} has the following prerequisites:
+
+* You must install the {virt} Operator.
+* You must install the {operator-name}.
+* You must add the VDDK image to the `v2v-vmware` config map.
+* You must be logged in as a user with `cluster-admin` privileges.
+* The local and shared persistent storage must support VM migration.
+* You must have a VMware vCenter user account with administrator privileges.
+* For warm migration, link:https://kb.vmware.com/s/article/1020128[CBT] must be enabled on all source VMs and VM disks.
