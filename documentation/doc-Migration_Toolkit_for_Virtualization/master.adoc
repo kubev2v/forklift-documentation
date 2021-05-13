@@ -28,6 +28,7 @@ include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
 include::modules/mtv-workflow.adoc[leveloffset=+2]
 include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 include::modules/about-storage.adoc[leveloffset=+2]
+include::modules/about-warm-migration.adoc[leveloffset=+2]
 
 [id='installing-mtv_{context}']
 == Installing {the-lc} {project-full}
@@ -64,7 +65,11 @@ include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
 [id="migrating-virtual-machines-to-virt_{context}"]
 == Migrating virtual machines to {virt}
 
-You can migrate virtual machines to {virt} by using the {project-short} web console or the command line interface (CLI).
+You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console or the command line interface (CLI).
+
+You can run a cold or a warm migration. For details, see xref:about-warm-migration.adoc[About warm migration].
+
+include::modules/migration-prerequisites.adoc[leveloffset=+2]
 
 [id='migrating-vms-web-console_{context}']
 === Migrating virtual machines by using the {project-short} web console
@@ -96,6 +101,7 @@ include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 == Troubleshooting
 
 include::modules/using-must-gather.adoc[leveloffset=+2]
+include::modules/error-messages.adoc[leveloffset=+2]
 include::modules/known-issues.adoc[leveloffset=+2]
 
 :mtv!:

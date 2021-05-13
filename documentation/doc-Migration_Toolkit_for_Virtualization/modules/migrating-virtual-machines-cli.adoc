@@ -5,22 +5,20 @@
 [id="migrating-virtual-machines-cli_{context}"]
 = Migrating virtual machines from the CLI
 
-You can migrate virtual machines from the command line (CLI) by creating the following custom resources (CRs):
+You can migrate virtual machines (VMs) from the command line (CLI) by creating the following custom resources (CRs):
 
-* `Secret` CR: Contains the VMware provider credentials.
-* `Provider` CR: Describes the VMware provider.
-* `Plan` CR: Describes the source and target clusters, network mappings, data store mappings, and VMs to migrate.
-* `Migration` CR: Runs the `Plan` CR.
+* `Secret` CR contains the VMware provider credentials.
+* `Provider` CR describes the VMware provider.
+* `Plan` CR describes the source and target clusters, network mappings, data store mappings, and VMs to migrate.
+* `Migration` CR runs the `Plan` CR.
 +
-If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs. You can associate multiple `Migration` CRs with a single `Plan` CR.
+You can associate multiple `Migration` CRs with a single `Plan` CR. If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs.
 
 .Prerequisites
 
-* {virt} Operator installed.
-* {operator} installed.
-* link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] installed.
-* VDDK image added to the `v2v-vmware` config map.
-* You must be logged in as a user with `cluster-admin` privileges.
+* The link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] must be installed.
+* The VDDK image must be added to the `v2v-vmware` config map.
+* For warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
 
 .Procedure
 
@@ -43,7 +41,7 @@ $ openssl s_client \
 01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67
 ----
 
-. Create a `Secret` CR for the VMware provider:
+. Create a `Secret` CR manifest for the VMware provider:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -64,7 +62,7 @@ EOF
 <2> Specify the vCenter password.
 <3> Specify the SHA-1 fingerprint of the vCenter host.
 
-. Create a `Provider` CR for the VMware provider:
+. Create a `Provider` CR manifest for the VMware provider:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -85,7 +83,7 @@ EOF
 <1> Specify the vSphere API end point, for example, `https://<vcenter.host.com>/sdk`.
 <2> Specify the name of the VMware `Secret` CR.
 
-. Create a `Host` CR for the VMware provider:
+. Create a `Host` CR manifest for the VMware host:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -107,7 +105,7 @@ EOF
 <2> Specify the _managed object reference_ of the VMware host.
 <3> Specify the IP address of the VMware migration network.
 
-. Create a `Plan` CR for the migration:
+. Create a `Plan` CR manifest for the migration:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -125,7 +123,7 @@ spec:
     destination:
       name: destination-cluster
       namespace: {namespace}
-  transferNetwork: <target_migration_network> <2>
+  warm: true <2>
   map:
     networks: <3>
       - source: <4>
@@ -147,22 +145,26 @@ spec:
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
-<2> Optional: Specify a migration network for the target cluster. If a `transferNetwork` value is specified, it has priority over the default migration network specified in the {project-short} web console _for migration plans created by using the CLI_. If a `transferNetwork` value is not specified, the default migration network specified in the web console is used.
+<2> Specify whether the migration is warm or cold. If you specify a warm migration without specifying a `cutover` time, only the `precopy` runs.
 <3> You can create multiple network mappings for source and destination networks.
 <4> You can use either the `id` _or_ the `name` parameter to specify the source network.
-<5> Specify the _managed object reference_ of the source network.
+<5> _Managed object reference_ of the source network.
 <6> You can create multiple storage mappings for source data stores and destination storage classes.
 <7> You can use either the `id` _or_ the `name` parameter to specify the source data store.
-<8> Specify the _managed object reference_ of the source data store.
-<9> You can use either the `id` _or_ the `name` parameter to specify the source VM.
-<10> Specify the _managed object reference_ of the source VM.
-+
-[NOTE]
-====
-If you change the `Plan` CR manifest while the migration is running, the migration will stop because the migration plan parameters have changed.
-====
+<8> _Managed object reference_ of the source data store.
+<9>  You can use either the `id` _or_ the `name` parameter to specify the source VM.
+<10> _Managed object reference_ of the source VM.
 
-. Create a `Migration` CR to run the `Plan` CR:
+. Optional. To change the time interval between the CBT snapshots for warm migration, patch the `vm-import-controller-config` config map:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc patch configmap/vm-import-controller-config -n openshift-cnv \
+  -p '{"data": {"warmImport.intervalMinutes": "<interval>"}}' <1>
+----
+<1> Specify the time interval in minutes. The default value is `60`.
+
+. Create a `Migration` CR manifest to run the `Plan` CR:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -176,12 +178,12 @@ spec:
   plan:
     name: <plan_name> <2>
     namespace: {namespace}
+  cutover: <cutover_time> <3>
 EOF
 ----
 <1> Specify the name of the `Migration` CR.
-<2> Specify the name of the `Plan` CR that you are running.
-+
-The `Migration` CR creates a `VirtualMachineImport` CR for each VM that is migrated.
+<2> Specify the name of the `Plan` CR that you are running. The `Migration` CR creates a `VirtualMachineImport` CR for each VM that is migrated.
+<3> Optional. Specify a cutover time according to the ISO 8601 format with the UTC time offset, for example, `2021-04-04T01:23:45.678+09:00`.
 
 . View the `VirtualMachineImport` pods to monitor the progress of the migration:
 +

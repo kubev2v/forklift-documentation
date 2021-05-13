@@ -9,7 +9,7 @@
 
 [NOTE]
 ====
-If the {virt} storage does not support link:https://docs.openshift.com/container-platform/{ocp-version}/storage/dynamic-provisioning.html[dynamic provisioning], {project-short} applies the default settings, `Filesystem` volume mode and `ReadWriteOnce` access mode. `Filesystem` volume mode is slower than `Block` volume mode. `ReadWriteOnce` access mode does not enable live VM migration.
+If the {virt} storage does not support link:https://docs.openshift.com/container-platform/{ocp-version}/storage/dynamic-provisioning.html[dynamic provisioning], {project-short} applies the default settings, `Filesystem` volume mode and `ReadWriteOnce` access mode. `Filesystem` volume mode is slower than `Block` volume mode. `ReadWriteOnce` access mode does not enable live virtual machine migration.
 ====
 
 {project-short} uses the following default volume and access modes.

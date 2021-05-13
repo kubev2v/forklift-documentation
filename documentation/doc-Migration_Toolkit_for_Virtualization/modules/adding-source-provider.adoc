@@ -5,11 +5,7 @@
 [id="adding-source-provider_{context}"]
 = Adding a VMware source provider
 
-You can add VMware as a source provider by using the {project-short} web console.
-
-.Prerequisites
-
-* You must have a VMware vCenter user account with administrator privileges.
+You can add a VMware source provider by using the {project-short} web console.
 
 .Procedure
 
