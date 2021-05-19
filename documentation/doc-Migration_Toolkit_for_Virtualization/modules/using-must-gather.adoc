@@ -30,7 +30,7 @@ The data is saved in a local `must-gather` directory.
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc adm must-gather --image {must-gather} -- /usr/bin/gather_metrics_dump
+$ oc adm must-gather --image={must-gather} -- /usr/bin/gather_metrics_dump
 ----
 +
 [NOTE]
