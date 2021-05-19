@@ -9,7 +9,7 @@ The default migration type for {the-lc} {project-first} is cold migration. Durin
 
 Warm migration copies most of the data during the precopy stage. Then the VMs are shut down and the remaining data is copied during the cutover stage.
 
-== About the precopy stage
+== Precopy stage of warm migration
 
 The VMs are not shut down during the precopy stage.
 
@@ -24,7 +24,7 @@ The maximum number of CBT snapshots that a VM can support is `28`. A `warm impor
 
 The precopy stage runs until either the cutover stage starts or the maximum number of CBT snapshots is reached.
 
-== About the cutover stage
+== Cutover stage of warm migration
 
 The VMs are shut down during the cutover stage and the remaining data is migrated. Data stored in RAM is not migrated.
 

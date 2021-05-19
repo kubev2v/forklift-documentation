@@ -67,7 +67,7 @@ include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
 
 You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console or the command line interface (CLI).
 
-You can run a cold or a warm migration. For details, see xref:about-warm-migration.adoc[About warm migration].
+You can run a cold or a warm migration. For details, see xref:about-warm-migration.adoc#about-warm-migration_{context}[About warm migration].
 
 include::modules/migration-prerequisites.adoc[leveloffset=+2]
 
