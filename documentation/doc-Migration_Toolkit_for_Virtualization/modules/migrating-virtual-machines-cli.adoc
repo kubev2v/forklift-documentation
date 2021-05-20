@@ -43,7 +43,7 @@ $ openssl s_client \
 
 . Create a `Secret` CR manifest for the VMware provider:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: v1
@@ -64,7 +64,7 @@ EOF
 
 . Create a `Provider` CR manifest for the VMware provider:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
@@ -85,7 +85,7 @@ EOF
 
 . Create a `Host` CR manifest for the VMware host:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
@@ -107,7 +107,7 @@ EOF
 
 . Create a `Plan` CR manifest for the migration:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
@@ -166,7 +166,7 @@ $ oc patch configmap/vm-import-controller-config -n openshift-cnv \
 
 . Create a `Migration` CR manifest to run the `Plan` CR:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1

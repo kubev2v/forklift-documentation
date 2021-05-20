@@ -6,4 +6,56 @@
 = Known issues
 
 // will be fixed in 2.1.0
-* When a partially successful migration plan is restarted, the migration plan attempts to migrate virtual machines (VMs) that already migrated successfully instead of migrating only the VMs that were canceled or failed to migrate previously. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1953978[*BZ#1953978*])
+.Restarting a partially successful plan migrates VMs that were already migrated successfully (link:https://bugzilla.redhat.com/show_bug.cgi?id=1953145[BZ#1953145])
+
+When a partially successful migration plan is restarted, the migration plan attempts to migrate virtual machines (VMs) that already migrated successfully instead of migrating only the VMs that were canceled or failed to migrate previously.
+
+// partially fixed in 2.0.0
+.Inventory container crashes because of OOM, causing controller pod restarts (link:https://bugzilla.redhat.com/show_bug.cgi?id=1952121[BZ#1952121])
+
+The `forklift-controller` pod displays an excessive number of restarts as in the following output for `$ oc get pods`:
+
+.Example output
+[source,terminal]
+----
+NAME                                   READY   STATUS    RESTARTS   AGE
+forklift-controller-64585c555b-t2bkl   2/2     Running   4          175m
+forklift-operator-847f9d45d7-pgnzx     1/1     Running   0          175m
+forklift-ui-7fc8495999-6xhk2           1/1     Running   0          175m
+forklift-validation-7977854bdd-xfqm9   1/1     Running   0          175m
+iperf-client-h15                       1/1     Running   0          95m
+----
+
+A possible cause is that the HTTP client used by the Open Policy Agent keeps idle connections alive, leading to memory leaks. The `forklift-controller` pod runs the provider inventory service. The validation service uses the provider inventory service API to gather information about the VMs during validation. If the providers are created or deleted multiple times, the large number of validations can cause the `forklift-controller` to consume too much memory, crash, and restart.
+
+You can try the following workarounds:
+
+* Delete the `forklift-validation` pod.
++
+Deleting the `forklift-validation` pod kills the validation service and closes the open connections, immediately freeing memory in the `forklift-controller` pod. {project-short} is not affected because the validation service is stateless, it is only consumed by the provider inventory service, and it has a retry mechanism.
+
+* Increase the CPU and memory limits of the `forklift-controller` pod by patching the `ForkliftController` custom resource manifest:
++
+[source,yaml,subs="attributes+"]
+----
+$ {
+cat << EOF
+spec:
+  inventory_container_requests_cpu: "2000m"
+  inventory_container_requests_memory: "4Gi"
+  inventory_container_limits_cpu: "20000m"
+  inventory_container_limits_memory: "16Gi"
+EOF
+} | oc patch -n {namespace} forkliftcontroller <forklift-controller> --type=merge --patch "$(cat /dev/stdin)"
+----
++
+The default values are the following:
++
+[source,yaml]
+----
+spec:
+  inventory_container_requests_cpu: "1000m"
+  inventory_container_requests_memory: "2Gi"
+  inventory_container_limits_cpu: "10000m"
+  inventory_container_limits_memory: "8Gi"
+----
