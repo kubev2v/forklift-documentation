@@ -40,10 +40,6 @@ You can install {the-lc} {project-first} by using the {ocp} web console or the c
 After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map.
 ====
 
-If you are performing more than 10 concurrent VM migrations from a single ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
-
-include::modules/migration-environment-requirements.adoc[leveloffset=+2]
-
 [id="installing-the-operator_{context}"]
 === Installing the {operator-name}
 
@@ -75,9 +71,11 @@ You can migrate virtual machines (VMs) to {virt} by using the {project-short} we
 
 You can run a cold or a warm migration. For details, see xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
 
-If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
+If you are performing more than 10 concurrent VM migrations from a single ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
 
 include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
+
+include::modules/migration-environment-requirements.adoc[leveloffset=+2]
 
 [id='migrating-vms-web-console_{context}']
 === Migrating virtual machines by using the {project-short} web console
