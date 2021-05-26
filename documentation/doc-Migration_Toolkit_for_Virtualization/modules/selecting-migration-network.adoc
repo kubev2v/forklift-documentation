@@ -6,7 +6,7 @@
 [id="selecting-provider-network_{context}"]
 = Selecting a migration network for a source provider
 
-You can select a migration network for a source provider in the web console.
+You can select a migration network for a source provider in the {project-short} web console.
 
 The default network might not provide the best performance for migration. If a VMware host network is not optimal for migration, a Warning icon is displayed beside the host number in the *Hosts* column of the provider list.
 
@@ -20,7 +20,7 @@ The migration network has the following prerequisites:
 
 .Procedure
 
-. In the web console, navigate to *Providers*.
+. Click *Providers*.
 . Click the host number of a provider to view the host list and network details.
 . Select the hosts to be updated and click *Select migration network*.
 . Fill in the following fields:

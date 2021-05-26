@@ -1,0 +1,48 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id='migration-environment-requirements_{context}']
+= Migration environment requirements
+
+Check your migration environment to ensure that the following requirements are met:
+
+* VMware vSphere version 6.5 or later.
+* VMware virtual machines:
+** link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] is installed.
+** ISO/CDROM disks are unmounted.
+** NIC has no more than one IPv4 and/or one IPv6 address.
+** VM name contains only lowercase letters (`a-z`), numbers (`0-9`), or hyphens (`-`), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (`.`), or special characters.
+** VM name does not duplicate the name of a VM in the {virt} environment.
+** Operating system is certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
+
+* Network:
+** IP addresses, VLANs, and other network configuration settings must not be changed before or after migration. The MAC addresses of the virtual machines are preserved during migration.
+** Uninterrupted and reliable network connections between the clusters and the replication repository.
+** Network ports enabled in the firewall rules.
+
+[cols="1,1,1,1,2",options="header"]
+.Network ports required for migration
+|===
+|Port |Protocol |Source |Destination |Purpose
+
+|443
+|TCP
+|OpenShift nodes
+|VMware vCenter
+a|VMware provider inventory
+
+Disk transfer authentication
+
+|443
+|TCP
+|OpenShift nodes
+|VMware ESXi hosts
+|Disk transfer authentication
+
+|902
+|TCP
+|OpenShift nodes
+|VMware ESXi hosts
+|Disk transfer data copy
+|===

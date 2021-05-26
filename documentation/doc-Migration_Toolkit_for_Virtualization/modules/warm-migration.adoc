@@ -2,14 +2,14 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="about-warm-migration_{context}"]
-= About warm migration
+[id="warm-migration_{context}"]
+= Warm migration
 
 The default migration type for {the-lc} {project-first} is cold migration. During cold migration, the virtual machines (VMs) are shut down while the data is copied.
 
 Warm migration copies most of the data during the precopy stage. Then the VMs are shut down and the remaining data is copied during the cutover stage.
 
-== Precopy stage of warm migration
+.Precopy stage
 
 The VMs are not shut down during the precopy stage.
 
@@ -24,7 +24,7 @@ The maximum number of CBT snapshots that a VM can support is `28`. A `warm impor
 
 The precopy stage runs until either the cutover stage starts or the maximum number of CBT snapshots is reached.
 
-== Cutover stage of warm migration
+.Cutover stage
 
 The VMs are shut down during the cutover stage and the remaining data is migrated. Data stored in RAM is not migrated.
 

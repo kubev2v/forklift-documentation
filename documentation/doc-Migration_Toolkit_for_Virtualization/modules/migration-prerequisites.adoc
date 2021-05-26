@@ -7,10 +7,9 @@
 
 {project-first} has the following prerequisites:
 
-* You must install the {virt} Operator.
-* You must install the {operator-name}.
-* You must add the VDDK image to the `v2v-vmware` config map.
+* The VDDK image must be added to the `v2v-vmware` config map.
 * You must be logged in as a user with `cluster-admin` privileges.
-* The local and shared persistent storage must support VM migration.
 * You must have a VMware vCenter user account with administrator privileges.
-* For warm migration, link:https://kb.vmware.com/s/article/1020128[CBT] must be enabled on all source VMs and VM disks.
+* The local and shared persistent storage must support VM migration.
+* If you are performing a warm migration, link:https://kb.vmware.com/s/article/1020128[CBT] must be enabled on all source VMs and VM disks.
+* If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.

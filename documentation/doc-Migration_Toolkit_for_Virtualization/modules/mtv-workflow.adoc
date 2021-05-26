@@ -3,23 +3,21 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="mtv-workflow_{context}"]
-= {project-full}  workflow
+= High-level migration workflow
 
-You can migrate virtual machines (VMs) using the {project-short} console or the command line.
-
-The following diagram is a high-level view of the migration workflow.
+The high-level workflow shows the migration process from the point of view of the user.
 
 ifeval::["{build}" == "downstream"]
-.{project-short} workflow
+.High-level workflow
 image::136_OpenShift_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
 endif::[]
 
 ifeval::["{build}" == "upstream"]
-.{project-short} workflow
+.High-level workflow
 image::136_Upstream_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
 endif::[]
 
-The {project-short} workflow comprises the following steps:
+The workflow describes the following steps:
 
 . You create a source provider, a target provider, a network mapping, and a storage mapping.
 . You create a migration plan that includes the following resources:

@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id='uninstalling-mtv-cli_{context}']
-= Uninstalling {project-short} from the CLI
+= Uninstalling {project-short} from the command line interface
 
 You can uninstall {project-first} from the command line interface (CLI) by deleting the +{namespace}+ project and the `forklift.konveyor.io` custom resource definitions (CRDs).
 

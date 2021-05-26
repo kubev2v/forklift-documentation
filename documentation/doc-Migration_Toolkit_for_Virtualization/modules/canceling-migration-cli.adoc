@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="canceling-migration-cli_{context}"]
-= Cancelling a migration
+= Canceling a migration from the command line interface
 
 You can cancel an entire migration or individual virtual machines (VMs) while a migration is in progress from the command line interface (CLI).
 

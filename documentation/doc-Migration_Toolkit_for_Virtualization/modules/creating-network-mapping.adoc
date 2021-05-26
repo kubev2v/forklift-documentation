@@ -18,7 +18,7 @@ You cannot map an opaque network, typically managed by NSX, to {a-virt} network.
 
 .Procedure
 
-. In the web console, navigate to *Mappings* -> *Network*.
+. Click *Mappings* -> *Network*.
 . Click *Create mapping*.
 . Complete the following fields:
 
