@@ -2,69 +2,28 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="installing-mtv-console_{context}"]
+[id="installing-mtv-operator_{context}"]
 ifdef::web[]
-= Installing {the-lc} {project-full} by using the {ocp} web console
+= Installing the {operator-name} by using the {ocp} web console
 
-You can install {the-lc} {project-first} by using the {ocp} web console.
+You can install the {operator-name} by using the {ocp} web console.
 endif::[]
 ifdef::cli[]
-= Installing {the-lc} {project-full} from the CLI
+= Installing the {operator-name} from the command line interface
 
-You can install {the-lc} {project-first} from the command line interface (CLI).
+You can install the {operator-name} from the command line interface (CLI).
 endif::[]
 
 .Prerequisites
 
-* VMware vSphere 6.5 or later.
 * {ocp} {ocp-version} installed.
 * {virt} Operator installed.
 * You must be logged in as a user with `cluster-admin` permissions.
-* If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
-
-* VMware virtual machines:
-** link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] installed.
-** ISO/CDROM disks  unmounted.
-** NIC with no more than one IPv4 and/or one IPv6 address.
-** VM name containing only lowercase letters (`a-z`), numbers (`0-9`), or hyphens (`-`), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (`.`), or special characters.
-** VM name that does not duplicate the name of a virtual machine in the {virt} environment.
-** Operating system certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
-
-* Network:
-** IP addresses, VLANs, and other network configuration settings must not be changed before or after migration. The MAC addresses of the virtual machines are preserved during migration.
-** Uninterrupted and reliable network connections between the clusters and the replication repository.
-** Network ports enabled in the firewall rules.
-
-[cols="1,1,1,1,2",options="header"]
-.Network ports required for migration
-|===
-|Port |Protocol |Source |Destination |Purpose
-
-|443
-|TCP
-|OpenShift nodes
-|VMware vCenter
-a|VMware provider inventory
-
-Disk transfer authentication
-
-|443
-|TCP
-|OpenShift nodes
-|VMware ESXi hosts
-|Disk transfer authentication
-
-|902
-|TCP
-|OpenShift nodes
-|VMware ESXi hosts
-|Disk transfer data copy
-|===
 
 .Procedure
 
 ifdef::web[]
-. In the {ocp} web console, navigate to *Operators* -> *OperatorHub*.
+. In the {ocp} web console, click *Operators* -> *OperatorHub*.
 . Use the *Filter by keyword* field to search for *{operator}*.
 ifeval::["{build}" == "upstream"]
 +

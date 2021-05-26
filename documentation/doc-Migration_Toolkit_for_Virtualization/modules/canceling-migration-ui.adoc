@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="canceling-migration-ui_{context}"]
-= Cancelling a migration
+= Canceling a migration by using the {project-short} web console
 
 You can cancel the migration of some or all virtual machines while a migration plan is in progress by using the {project-short} web console.
 

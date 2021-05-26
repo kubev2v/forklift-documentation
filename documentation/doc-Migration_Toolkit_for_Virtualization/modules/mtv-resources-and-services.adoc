@@ -3,11 +3,11 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="mtv-resources-and-services_{context}"]
-= Custom resources and services
+= {project-short} custom resources and services
 
 {The} {project-first} is provided as an {ocp} Operator. It creates and manages the following custom resources (CRs) and services.
 
-== {project-short} custom resources
+.{project-short} custom resources
 
 * `Provider` CR: Stores attributes that enable {project-short} to connect to and interact with the source and target providers.
 * `NetworkMapping` CR: Maps the networks of the source and target providers.
@@ -18,7 +18,7 @@
 +
 Only one `Migration` CR per migration plan can run at a given time. You can create multiple `Migration` CRs for a single `Plan` CR.
 
-== {project-short} services
+.{project-short} services
 
 * `Provider Inventory` service:
 ** Connects to the source and target providers

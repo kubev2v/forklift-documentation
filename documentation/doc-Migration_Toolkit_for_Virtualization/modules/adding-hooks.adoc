@@ -16,7 +16,8 @@ You can create a hook before a migration plan or while creating a migration plan
 
 .Procedure
 
-. In the web console, navigate to *Hooks* and click *Create hook*.
+. In the web console, click *Hooks*.
+. Click *Create hook*.
 . Specify the hook *Name*.
 . Select *Ansible playbook* or *Custom container image* as the *Hook definition*.
 . If you select *Custom container image*, specify the image location, for example, `quay.io/github_project/container_name:container_id`.

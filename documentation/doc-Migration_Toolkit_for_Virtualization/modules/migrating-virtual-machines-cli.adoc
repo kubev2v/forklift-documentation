@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="migrating-virtual-machines-cli_{context}"]
-= Migrating virtual machines from the CLI
+= Migrating virtual machines from the command line interface
 
 You can migrate virtual machines (VMs) from the command line (CLI) by creating the following custom resources (CRs):
 
@@ -16,9 +16,11 @@ You can associate multiple `Migration` CRs with a single `Plan` CR. If a migrati
 
 .Prerequisites
 
+* You must be logged in as a user with `cluster-admin` privileges.
 * The link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] must be installed.
 * The VDDK image must be added to the `v2v-vmware` config map.
-* For warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
+* If you are performing a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
+* If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
 
 .Procedure
 

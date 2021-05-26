@@ -14,32 +14,39 @@ A migration plan allows you to group virtual machines that should be migrated to
 * You must create a VDDK image and add it to the `v2v-vmware` config map.
 * You must add a source provider to the web console.
 * If the target provider is not the {virt} cluster on which you installed {project-short}, you must add a target provider.
-* For warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking] on the virtual machines and on the virtual machine disks.
+* If you are running a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
+* If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
 
 .Procedure
 
-. In the web console, navigate to *Migration plans* and click *Create migration plan*.
+. In the web console, click *Migration plans* and then click *Create migration plan*.
 . Complete the following fields:
 
 * *Plan name*: Enter a migration plan name to display in the migration plan list.
 * *Plan description*: Optional. Brief description of the migration plan.
 * *Source provider*: Select a source provider.
 * *Target provider*: Select a target provider.
-* *Target namespace*: You can type to search for an existing target namespace or create a new namespace.
+* *Target namespace*: You can type to search for an existing target namespace or  create a new namespace.
 * You can change the migration transfer network for this plan by clicking *Select a different network*, selecting a network from the list, and clicking *Select*.
 +
 If you defined a migration transfer network for the {virt} provider and if the network is in the target namespace, that network is the default network for all migration plans. Otherwise, the `pod` network is used.
 
 . Click *Next*.
-. Click *By clusters and hosts* or *By folders*, select clusters, hosts, or folders to filter the VMs, and then click *Next*.
-. Select the VMs to migrate and click *Next*.
+. Click *By clusters and hosts* or *By folders*, select clusters, hosts, or folders to _filter_ the list of VMs, and then click *Next*.
+. Select the VMs to migrate and then click *Next*.
 . Select an existing network mapping or create a new network mapping.
-. If you select *Create a new network mapping*, select a target network for each source network.
-. Optional. If you want to save the network mapping, select *Save mapping to use again* and enter a network mapping name.
++
+To create a new network mapping:
+
+* Select a target network for each source network.
+* Optional. Select *Save mapping to use again* and enter a network mapping name.
 . Click *Next*.
 . Select an existing storage mapping or create a new storage mapping.
-. If you select *Create a new storage mapping*, select a target storage class for each source data store.
-. Optional. If you want to save the storage mapping, select *Save mapping to use again* and enter a storage mapping name.
++
+To create a new storage mapping:
+
+* Select a target storage class for each source data store.
+* Optional. Select *Save mapping to use again* and enter a storage mapping name.
 . Click *Next*.
 
 . Select *Cold migration* or *Warm migration* and click *Next*.

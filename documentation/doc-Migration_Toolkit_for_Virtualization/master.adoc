@@ -27,8 +27,8 @@ endif::[]
 include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
 include::modules/mtv-workflow.adoc[leveloffset=+2]
 include::modules/virt-migration-workflow.adoc[leveloffset=+2]
-include::modules/about-storage.adoc[leveloffset=+2]
-include::modules/about-warm-migration.adoc[leveloffset=+2]
+include::modules/storage-support.adoc[leveloffset=+2]
+include::modules/warm-migration.adoc[leveloffset=+2]
 
 [id='installing-mtv_{context}']
 == Installing {the-lc} {project-full}
@@ -42,16 +42,23 @@ After you have installed {project-short}, you must create a VMware Virtual Disk 
 
 If you are performing more than 10 concurrent VM migrations from a single ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
 
+include::modules/migration-environment-requirements.adoc[leveloffset=+2]
+
+[id="installing-the-operator_{context}"]
+=== Installing the {operator-name}
+
+You can install the {operator-name} by using the {project-short} web console or the command line interface (CLI).
+
 :context: web
 :web:
-include::modules/installing-mtv-console.adoc[leveloffset=+2]
+include::modules/installing-mtv-operator.adoc[leveloffset=+3]
 
 [discrete]
 include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :!web:
 :context: cli
 :cli:
-include::modules/installing-mtv-console.adoc[leveloffset=+2]
+include::modules/installing-mtv-operator.adoc[leveloffset=+3]
 
 [discrete]
 include::modules/obtaining-console-url.adoc[leveloffset=+3]
@@ -60,33 +67,51 @@ include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :mtv:
 
 include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
-include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines-to-virt_{context}"]
 == Migrating virtual machines to {virt}
 
 You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console or the command line interface (CLI).
 
-You can run a cold or a warm migration. For details, see xref:about-warm-migration.adoc#about-warm-migration_{context}[About warm migration].
+You can run a cold or a warm migration. For details, see xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
 
-include::modules/migration-prerequisites.adoc[leveloffset=+2]
+If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
+
+include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
 
 [id='migrating-vms-web-console_{context}']
 === Migrating virtual machines by using the {project-short} web console
 
 You can migrate virtual machines to {virt} by using the {project-short} web console.
 
-include::modules/adding-source-provider.adoc[leveloffset=+3]
+[id="adding-providers_{context}"]
+==== Adding providers
+
+You can add VMware and {virt} providers by using the {project-short} web console.
+
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+
+[discrete]
 include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+4]
-include::modules/adding-virt-provider.adoc[leveloffset=+3]
+
+include::modules/adding-virt-provider.adoc[leveloffset=+4]
+
+[discrete]
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+
 include::modules/creating-network-mapping.adoc[leveloffset=+3]
 include::modules/creating-storage-mapping.adoc[leveloffset=+3]
 include::modules/creating-migration-plan.adoc[leveloffset=+3]
 include::modules/running-migration-plan.adoc[leveloffset=+3]
-include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
+[id="canceling-migration_{context}"]
+=== Canceling a migration
+
+You can cancel a migration by using the {ocp} web console or the command line interface (CLI).
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 [id="uninstalling-mtv_{context}"]

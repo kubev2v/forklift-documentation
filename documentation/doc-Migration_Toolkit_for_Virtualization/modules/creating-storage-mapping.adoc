@@ -14,7 +14,7 @@ You can create a storage mapping by using the {project-short} web console to map
 
 .Procedure
 
-. In the web console, navigate to *Mappings* -> *Storage*.
+. Click *Mappings* -> *Storage*.
 . Click *Create mapping*.
 . Complete the following fields:
 

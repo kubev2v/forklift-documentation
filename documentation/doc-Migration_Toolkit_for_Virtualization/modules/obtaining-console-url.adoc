@@ -15,14 +15,14 @@ endif::[]
 .Prerequisites
 
 * {virt} Operator installed.
-* {operator} installed.
+* {operator-name} installed.
 * You must be logged in as a user with `cluster-admin` privileges.
 
 .Procedure
 
 ifdef::web[]
 . Log in to the {ocp} web console.
-. Navigate to the *Networking* -> *Routes* page.
+. Click *Networking* -> *Routes*.
 . Select the +{namespace}+ project in the *Project:* list.
 . Click the URL for the `forklift-ui` service to open the login page for the {project-short} web console.
 endif::[]

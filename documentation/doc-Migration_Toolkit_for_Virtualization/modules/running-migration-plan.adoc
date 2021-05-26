@@ -5,11 +5,15 @@
 [id="running-migration-plan_{context}"]
 = Running a migration plan
 
-You can run a migration plan and view its progress in the web console.
+You can run a migration plan and view its progress in the {project-short} web console.
+
+.Prerequisites
+
+* Valid migration plan.
 
 .Procedure
 
-. In the web console, navigate to *Migration plans*.
+. Click *Migration plans*.
 +
 The *Migration plans* list displays the source and target providers, the number of VMs being migrated, and the status of the plan.
 
@@ -18,8 +22,8 @@ The *Migration plans* list displays the source and target providers, the number 
 If the migration type is *Warm*, the precopy stage starts.
 
 . Click *Cutover* beside a warm migration plan to complete the migration.
-. Click the name of a migration plan to view the migration details.
+. Expand a migration plan to view the migration details.
 +
 The migration details screen displays the migration start and end time, the amount of data copied, and a progress pipeline for each VM being migrated.
 
-. Click a VM to view the migration steps, elapsed time of each step, and the state.
+. Expand a VM to view the migration steps, elapsed time of each step, and the state.
