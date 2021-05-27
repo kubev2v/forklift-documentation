@@ -136,9 +136,9 @@ $ oc get pods -n {namespace}
 +
 .Example output
 ----
-NAME                                   READY   STATUS    RESTARTS   AGE
-forklift-controller-788bdb4c69-mw268   2/2     Running   0          2m
-forklift-operator-6bf45b8d8-qps9v      1/1     Running   0          5m
-forklift-ui-7cdf96d8f6-xnw5n           1/1     Running   0          2m
+NAME                                  READY  STATUS   RESTARTS  AGE
+forklift-controller-788bdb4c69-mw268  2/2    Running  0         2m
+forklift-operator-6bf45b8d8-qps9v     1/1    Running  0         5m
+forklift-ui-7cdf96d8f6-xnw5n          1/1    Running  0         2m
 ----
 endif::[]
