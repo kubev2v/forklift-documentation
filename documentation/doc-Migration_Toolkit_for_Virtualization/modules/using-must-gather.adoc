@@ -3,16 +3,18 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id='using-must-gather_{context}']
-= Using must-gather
+= Collecting logs and metrics with the must-gather tool
 
-The `must-gather` tool for {project-first} collects logs, metrics, and information about {project-short} custom resources.
+You can collect logs, metrics, and information about {project-short} custom resources by using the `must-gather` tool.
+
+You can view metrics data with link:https://docs.openshift.com/container-platform/{ocp-version}/monitoring/understanding-the-monitoring-stack.html#understanding-the-monitoring-stack_understanding-the-monitoring-stack[Prometheus], a component of the {ocp} monitoring stack.
 
 .Prerequisites
 
 * You must be logged in to the {virt} cluster as a user with the `cluster-admin` role.
 * You must have the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[{ocp} CLI (`oc`)] installed.
 
-.Procedure
+.Running must-gather
 
 . Navigate to the directory where you want to store the `must-gather` data.
 . Run the `oc adm must-gather` command with the `--image` argument:
@@ -24,9 +26,9 @@ $ oc adm must-gather --image={must-gather}
 +
 The data is saved in a local `must-gather` directory.
 
-. To view Prometheus metrics data:
+.Viewing metrics data with Prometheus
 
-.. Run the `oc adm must-gather` command with the `gather_metrics_dump` script:
+. Run the `oc adm must-gather` command with the `gather_metrics_dump` script:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -35,17 +37,17 @@ $ oc adm must-gather --image={must-gather} -- /usr/bin/gather_metrics_dump
 +
 [NOTE]
 ====
-This process might take a long time. The tool processes the most recent `prom_data.tar.gz` file in the `/must-gather/metrics` directory.
+This process might take a long time. `must-gather` processes the most recent `prom_data.tar.gz` file in the `/must-gather/metrics` directory.
 ====
 
-.. Create a local Prometheus instance to display the data:
+. Create a local Prometheus instance to display the data:
 +
 [source,terminal]
 ----
 $ make prometheus-run
 ----
 
-.. After you have viewed the data, delete the Prometheus instance and data:
+. After you have viewed the data, delete the Prometheus instance and data:
 +
 [source,terminal]
 ----

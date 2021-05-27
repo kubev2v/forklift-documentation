@@ -71,11 +71,8 @@ You can migrate virtual machines (VMs) to {virt} by using the {project-short} we
 
 You can run a cold or a warm migration. For details, see xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
 
-If you are performing more than 10 concurrent VM migrations from a single ESXi host, you must increase the NFC service memory of the host.
-
-include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
-
 include::modules/migration-environment-requirements.adoc[leveloffset=+2]
+include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
 
 [id='migrating-vms-web-console_{context}']
 === Migrating virtual machines by using the {project-short} web console
@@ -88,28 +85,19 @@ You can migrate virtual machines to {virt} by using the {project-short} web cons
 You can add VMware and {virt} providers by using the {project-short} web console.
 
 include::modules/adding-source-provider.adoc[leveloffset=+4]
-
 [discrete]
 include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+4]
-
 include::modules/adding-virt-provider.adoc[leveloffset=+4]
-
 [discrete]
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
-
 include::modules/creating-network-mapping.adoc[leveloffset=+3]
 include::modules/creating-storage-mapping.adoc[leveloffset=+3]
 include::modules/creating-migration-plan.adoc[leveloffset=+3]
 include::modules/running-migration-plan.adoc[leveloffset=+3]
-
-include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
-
-[id="canceling-migration_{context}"]
-=== Canceling a migration
-
-You can cancel a migration by using the {project-short} web console or the command line interface (CLI).
-
 include::modules/canceling-migration-ui.adoc[leveloffset=+3]
+
+// migrating VMs, canceling migration from CLI
+include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 [id="uninstalling-mtv_{context}"]
