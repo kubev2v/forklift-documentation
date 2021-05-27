@@ -5,7 +5,7 @@
 [id="virt-migration-workflows_{context}"]
 = Detailed migration workflow
 
-The detailed migration workflow is useful for troubleshooting a failed migration.
+You can use the detailed migration workflow to troubleshoot a failed migration.
 
 ifeval::["{build}" == "downstream"]
 .Detailed {virt} migration workflow
@@ -22,12 +22,19 @@ The workflow describes the following steps:
 . The Virtual Machine Import Controller validates the `VirtualMachineImport` CR and generates a `VirtualMachine` CR.
 . The Virtual Machine Import Controller retrieves the VM configuration, including network, storage, and metadata, linked in the `VirtualMachineImport` CR.  
 +
-_For each VM disk:_
+*For each VM disk:*
 
 . The Virtual Machine Import Controller creates a `DataVolume` CR as a wrapper for a Persistent Volume Claim (PVC) and annotations.  
 . The Containerized Data Importer (CDI) Controller creates a PVC. The Persistent Volume (PV) is dynamically provisioned by the `StorageClass` provisioner.  
 . The CDI Controller creates an `Importer` pod.
-. The `Importer` pod connects to the source VM disk, using the VDDK SDK, and streams the disk to the PV.
-. _After the VM disks are transferred_, the Virtual Machine Import Controller creates a `Conversion` pod with the PVCs attached to it. The `Conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the target VM.
+. The `Importer` pod connects to the VM disk by using the VMware Virtual Disk Development Kit (VDDK) SDK and streams the VM disk to the PV.
++
+*After the VM disks are transferred:*
+
+. The Virtual Machine Import Controller creates a `Conversion` pod with the PVCs attached to it.
++
+The `Conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the target VM.
 . The Virtual Machine Import Controller creates a `VirtualMachineInstance` CR.
-. When the target VM is powered on, the KubeVirt Controller creates a VM pod. The VM pod runs `QEMU-KVM` with the PVCs attached as VM disks.
+. When the target VM is powered on, the KubeVirt Controller creates a VM pod.
++
+The VM pod runs `QEMU-KVM` with the PVCs attached as VM disks.

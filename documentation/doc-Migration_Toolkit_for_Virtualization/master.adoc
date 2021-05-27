@@ -20,7 +20,7 @@ endif::[]
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
 
-{the} {project-first} enables you to migrate virtual machines from VMware 6.5, and later, to {virt}.
+{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}.
 
 {virt} is an add-on to {ocp} {ocp-version} that allows you to run and manage virtual machine workloads alongside container workloads.
 
@@ -43,7 +43,7 @@ After you have installed {project-short}, you must create a VMware Virtual Disk 
 [id="installing-the-operator_{context}"]
 === Installing the {operator-name}
 
-You can install the {operator-name} by using the {project-short} web console or the command line interface (CLI).
+You can install the {operator-name} by using the {ocp} web console or the command line interface (CLI).
 
 :context: web
 :web:
@@ -71,7 +71,7 @@ You can migrate virtual machines (VMs) to {virt} by using the {project-short} we
 
 You can run a cold or a warm migration. For details, see xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
 
-If you are performing more than 10 concurrent VM migrations from a single ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
+If you are performing more than 10 concurrent VM migrations from a single ESXi host, you must increase the NFC service memory of the host.
 
 include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+2]
 
@@ -107,7 +107,7 @@ include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 [id="canceling-migration_{context}"]
 === Canceling a migration
 
-You can cancel a migration by using the {ocp} web console or the command line interface (CLI).
+You can cancel a migration by using the {project-short} web console or the command line interface (CLI).
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]

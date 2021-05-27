@@ -9,4 +9,4 @@ This section describes error messages and how to resolve them.
 
 .warm import retry limit reached
 
-The `warm import retry limit reached` error message is displayed during a warm migration if the virtual machine (VM) has reached the maximum number of changed block tracking (CBT) snapshots during the precopy stage. You must delete some of the CBT snapshots from the VM and restart the migration plan.
+The `warm import retry limit reached` error message is displayed during a warm migration if the virtual machine (VM) has reached the maximum number (28) of changed block tracking (CBT) snapshots during the precopy stage. You must delete some of the CBT snapshots from the VM and restart the migration plan.
