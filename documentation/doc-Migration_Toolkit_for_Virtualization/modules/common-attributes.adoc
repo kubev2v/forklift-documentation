@@ -2,7 +2,6 @@
 // Attributes for Forklift (upstream) are in _config.yml
 // text
 :kebab: Options menu image:kebab.png[title="Options menu",height=20]
-:must-gather: registry.redhat.io/rhmtv/rhmtv-must-gather: v{project-z-version}
 // If namespace must be formatted with backticks, use + instead.
 :namespace: openshift-mtv
 :ocp: OpenShift Container Platform
@@ -20,6 +19,7 @@
 :project-first: {project-full}{nbsp}({project-short})
 :project-version: 2.0
 :virt: OpenShift Virtualization
+:must-gather: registry.redhat.io/rhmtv/rhmtv-must-gather: v{project-z-version}
 :a-virt: an {virt}
 
 // doc metadata
