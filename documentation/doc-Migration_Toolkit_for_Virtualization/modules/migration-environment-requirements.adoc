@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id='migration-environment-requirements_{context}']
+[id="migration-environment-requirements_{context}"]
 = Migration environment requirements
 
 Check your migration environment to ensure that the following requirements are met.

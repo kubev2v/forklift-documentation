@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id='uninstalling-mtv-ui_{context}']
+[id="uninstalling-mtv-ui_{context}"]
 = Uninstalling {project-short} by using the {ocp} web console
 
 You can uninstall {project-first} by using the {ocp} web console to delete the +{namespace}+ project and custom resource definitions (CRDs).
