@@ -20,9 +20,7 @@ endif::[]
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
 
-{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}.
-
-{virt} is an add-on to {ocp} {ocp-version} that allows you to run and manage virtual machine workloads alongside container workloads.
+{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}, an add-on to {ocp} {ocp-version}. With {virt}, you can run and manage virtual machine workloads alongside container workloads.
 
 include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
 include::modules/mtv-workflow.adoc[leveloffset=+2]
