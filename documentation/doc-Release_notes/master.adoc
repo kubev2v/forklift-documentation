@@ -1,9 +1,7 @@
 include::modules/common-attributes.adoc[]
-[id="release-notes_{context}"]
-= {rn-title}
+= Release notes
 
 :toc:
-:toc-title:
 :toclevels: 3
 :compat-mode:
 :context: release-notes

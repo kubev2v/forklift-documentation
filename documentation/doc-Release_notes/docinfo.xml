@@ -1,4 +1,4 @@
-<title>{rn-title}</title>
+<title>Release notes</title>
 <productname>{project-full}</productname>
 <productnumber>{project-version}</productnumber>
 <subtitle>{subtitle}</subtitle>
