@@ -1,5 +1,6 @@
 include::modules/common-attributes.adoc[]
-= Release notes
+[id="{rn-title}_{context}"]
+= {rn-title}
 
 :toc:
 :toclevels: 3
