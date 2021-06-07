@@ -13,7 +13,9 @@ endif::[]
 
 == {project-full} {project-version} release notes
 
-{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}, an add-on to {ocp} {ocp-version}. With {virt}, you can run and manage virtual machine workloads alongside container workloads.
+{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}, an add-on to {ocp} {ocp-version}. With {virt}, you can manage virtual machine workloads alongside container workloads.
+
+This document describes new features and enhancements, known issues, and resolved issues for {the-lc} {project-full} {project-version}.
 
 [id="new-features-and-enhancements_{context}"]
 === New features and enhancements
