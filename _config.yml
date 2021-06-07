@@ -32,6 +32,7 @@ asciidoc: {}
 asciidoctor:
   attributes:
   - title=Installing and using Forklift
+  - rn-title=Release notes
   - context=forklift
   - description=Migrating virtual machines to KubeVirt
   - abstract=Forklift enables you to migrate virtual machines to {virt} running on {ocp}.
