@@ -31,5 +31,5 @@
 :imagesdir: modules/images
 :abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp}.
 :rn-title: Release notes
-:title: Installing and using {the-lc} {project-full}
+:user-guide-title: Installing and using {the-lc} {project-full}
 :subtitle: Migrating from VMware to Red Hat {virt}

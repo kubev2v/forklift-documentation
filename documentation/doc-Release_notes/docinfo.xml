@@ -1,7 +1,7 @@
-<title>Release notes</title>
+<title>{rn-title}</title>
 <productname>{project-full}</productname>
 <productnumber>{project-version}</productnumber>
-<subtitle>{subtitle}</subtitle>
+<subtitle></subtitle>
 <abstract>
     <para>{abstract}</para>
 </abstract>

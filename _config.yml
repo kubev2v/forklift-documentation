@@ -31,7 +31,7 @@ asciidoc: {}
 # upstream doc attributes
 asciidoctor:
   attributes:
-  - title=Installing and using Forklift
+  - user-guide-title=Installing and using Forklift
   - rn-title=Release notes
   - context=forklift
   - description=Migrating virtual machines to KubeVirt

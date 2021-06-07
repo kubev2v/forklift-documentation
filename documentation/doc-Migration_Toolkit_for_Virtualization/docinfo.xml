@@ -1,4 +1,4 @@
-<title>{title}</title>
+<title>{user-guide-title}</title>
 <productname>{project-full}</productname>
 <productnumber>{project-version}</productnumber>
 <subtitle>{subtitle}</subtitle>

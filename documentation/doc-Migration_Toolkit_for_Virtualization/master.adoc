@@ -1,10 +1,10 @@
 include::modules/common-attributes.adoc[]
 ifeval::["{build}" == "downstream"]
 [id="installing-and-using-{title}"]
-= {title}
+= {user-guide-title}
 endif::[]
 ifeval::["{build}" == "upstream"]
-= {title} {project-version}
+= {user-guide-title} {project-version}
 endif::[]
 :toc:
 :toc-title:
