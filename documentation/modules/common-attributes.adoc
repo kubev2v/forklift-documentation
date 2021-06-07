@@ -30,6 +30,6 @@
 :keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
 :imagesdir: modules/images
 :abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp}.
-:title: Installing and using {the-lc} {project-full}
 :rn-title: Release notes
+:title: Installing and using {the-lc} {project-full}
 :subtitle: Migrating from VMware to Red Hat {virt}
