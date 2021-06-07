@@ -39,7 +39,7 @@ asciidoctor:
   - showtitle=@
   - build=upstream
   - keywords=migration, virtual machines, kubevirt
-  - imagesdir=../modules/images
+  - imagesdir=modules/images
   - must-gather=quay.io/konveyor/forklift-must-gather:latest
   - namespace=konveyor-forklift
   - ocp=OKD
