@@ -31,5 +31,5 @@ $ oc get crd -o name | grep 'forklift' | xargs oc delete
 +
 [source,terminal]
 ----
-$ oc get oauthclient -o name | grep 'forklift' | xargs oc delete
+$ oc delete oauthclient/forklift-ui
 ----
