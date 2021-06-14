@@ -5,7 +5,7 @@
 [id="creating-network-mapping_{context}"]
 = Creating a network mapping
 
-You can create a network mapping by using the {project-short} web console to map source networks to {virt} networks.
+You can create one or more network mappings by using the {project-short} web console to map source networks to {virt} networks.
 
 [NOTE]
 ====
@@ -15,6 +15,12 @@ You cannot map an opaque network, typically managed by NSX, to {a-virt} network.
 .Prerequisites
 
 * Source and target providers added to the web console.
+* If you create multiple network mappings, you must create a network attachment definition for each additional target network. See link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[Creating a network attachment definition] in _OpenShift Virtualization_.
++
+[NOTE]
+====
+You must specify `br1` as the *Bridge Name* of the network attachment definition.
+====
 
 .Procedure
 
@@ -29,6 +35,9 @@ You cannot map an opaque network, typically managed by NSX, to {a-virt} network.
 * *Target namespaces/networks*: Select a target network.
 
 . Optional: Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
+
+. If you create an additional network mapping, select the network attachment definition as the target network.
+
 . Click *Create*.
 +
 The network mapping is displayed on the *Network mappings* screen.
