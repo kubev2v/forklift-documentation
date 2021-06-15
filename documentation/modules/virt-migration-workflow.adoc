@@ -18,7 +18,7 @@ endif::[]
 
 The workflow describes the following steps:
 
-. When you run a migration plan, the Migration Controller creates a `VirtualMachineImport` custom resource (CR) for each source VM.
+. When you run a migration plan, the Migration Controller creates a `VirtualMachineImport` custom resource (CR) for each source virtual machine (VM).
 . The Virtual Machine Import Controller validates the `VirtualMachineImport` CR and generates a `VirtualMachine` CR.
 . The Virtual Machine Import Controller retrieves the VM configuration, including network, storage, and metadata, linked in the `VirtualMachineImport` CR.  
 +
