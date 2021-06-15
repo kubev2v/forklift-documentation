@@ -5,23 +5,24 @@
 [id="using-must-gather_{context}"]
 = Using the must-gather tool
 
-You can collect logs, metrics, and information about {project-short} custom resources by using the `must-gather` tool.
+You can collect logs and information about {project-short} custom resources (CRs) by using the `must-gather` tool. You can gather data for a specific namespace, migration plan, or virtual machine (VM) by using the filtering options.
 
-The `must-gather` data must be attached to all customer cases.
+[NOTE]
+====
+You must attach a `must-gather` data file to all customer cases.
+====
 
-You can collect data for a one-hour or a 24-hour period and view the data with the Prometheus console.
+You can collect metrics data for a 24-hour period and view the data with the Prometheus console.
 
 .Prerequisites
 
 * You must be logged in to the {virt} cluster as a user with the `cluster-admin` role.
 * You must have the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[{ocp} CLI (`oc`)] installed.
 
-.Procedure
+.Collecting logs and CR information
 
 . Navigate to the directory where you want to store the `must-gather` data.
 . Run the `oc adm must-gather` command:
-
-* To gather data for the past hour:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -30,25 +31,54 @@ $ oc adm must-gather --image={must-gather}
 +
 The data is saved as `/must-gather/must-gather.tar.gz`. You can upload this file to a support case on the link:https://access.redhat.com/[Red Hat Customer Portal].
 
-* To gather data for the past 24 hours:
+. Optional: Run the `oc adm must-gather` command with the following options to gather filtered data:
+
+* Namespace:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc adm must-gather --image={must-gather} -- /usr/bin/gather_metrics_dump
+$ oc adm must-gather --image={must-gather} \
+  -- NS=<namespace> /usr/bin/targeted
+----
+
+* Migration plan:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc adm must-gather --image={must-gather} \
+  -- PLAN=<migration_plan> /usr/bin/targeted
+----
+
+* Virtual machine:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc adm must-gather --image={must-gather} \
+  -- VM=<vm_id> NS=<namespace> /usr/bin/targeted <1>
+----
+<1> Specify the VM name or ID as it appears in the `Plan` CR.
+
+.Collecting and viewing metrics data
+
+. Navigate to the directory where you want to store the `must-gather` data.
+. Run the `oc adm must-gather` command with the `gather_metrics_dump` script to gather data for the past 24 hours:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc adm must-gather --image={must-gather} \
+  -- /usr/bin/gather_metrics_dump
 ----
 +
-This operation can take a long time. The data is saved as `/must-gather/metrics/prom_data.tar.gz`. You can view this file with the Prometheus console.
+This operation can take a long time. The data is saved as `/must-gather/metrics/prom_data.tar.gz`.
 
-.To view data with the Prometheus console
-
-. Create a local Prometheus instance:
+. To view the data with the Prometheus console, create a local Prometheus instance:
 +
 [source,terminal]
 ----
 $ make prometheus-run
 ----
 +
-The command outputs the Prometheus URL.
+The command outputs the Prometheus URL:
 +
 .Output
 [source,terminal]
