@@ -1,5 +1,5 @@
 build/*
 */build/*
-documentation/doc-Migration_Toolkit_for_Virtualization/build/*
+documentation/*/build/*
 .jekyll-cache
 _site

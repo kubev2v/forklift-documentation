@@ -1,0 +1,19 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="canceling-migration-ui_{context}"]
+= Canceling a migration
+
+You can cancel the migration of some or all virtual machines (VMs) while a migration plan is in progress by using the {project-short} web console.
+
+.Procedure
+
+. Click *Migration Plans*.
+. Click the name of a running migration plan to view the migration details.
+. Select one or more VMs and click *Cancel*.
+. Click *Yes, cancel* to confirm the cancellation.
++
+In the *Migration details by VM* list, the status of the canceled VMs is *Canceled*. The unmigrated and the migrated virtual machines are not affected.
+
+You can restart a canceled migration by clicking *Restart* beside the migration plan on the *Migration plans* page.

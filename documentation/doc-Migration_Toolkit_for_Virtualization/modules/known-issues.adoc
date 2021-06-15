@@ -1,9 +1,0 @@
-// Module included in the following assemblies:
-//
-// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
-
-[id='known-issues_{context}']
-= Known issues
-
-// will be fixed in 2.1.0
-* When a partially successful migration plan is restarted, the migration plan attempts to migrate virtual machines (VMs) that already migrated successfully instead of migrating only the VMs that were canceled or failed to migrate previously. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1953978[*BZ#1953978*])

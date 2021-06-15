@@ -29,10 +29,9 @@ Storing the VDDK image in a public registry might violate the VMware license ter
 $ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
 ----
 
-. In a browser, navigate to the link:https://code.vmware.com/home[VMware code] site and click *SDKs*.
-. In the *Hyperconverged Infrastructure* section, click *Virtual Disk Development Kit (VDDK)*.
-. Select the latest VDDK version.
-. Click *Download* and save the VDDK archive file in the temporary directory.
+. In a browser, navigate to the link:https://code.vmware.com/sdk/vddk[VMware VDDK download page].
+. Select the latest VDDK version and click *Download*.
+. Save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
 +
 [source,terminal]

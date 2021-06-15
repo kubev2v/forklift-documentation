@@ -3,20 +3,22 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="canceling-migration-cli_{context}"]
-= Canceling a migration from the command line interface
+= Canceling a migration
 
 You can cancel an entire migration or individual virtual machines (VMs) while a migration is in progress from the command line interface (CLI).
 
-.Procedure
+.Canceling an entire migration
 
-. To cancel a migration, delete the `Migration` CR:
+* Delete the `Migration` CR:
 +
 [source,terminal,subs="attributes+"]
 ----
 $ oc delete migration <migration_name> -n {namespace} <1>
 ----
 
-. To cancel the migration of individual VMs, update the `Migration` CR manifest:
+.Canceling the migration of individual VMs
+
+. Add the individual VMs to the `Migration` CR manifest:
 +
 [source,terminal,subs="attributes+"]
 ----

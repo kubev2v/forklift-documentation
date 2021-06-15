@@ -31,7 +31,8 @@ asciidoc: {}
 # upstream doc attributes
 asciidoctor:
   attributes:
-  - title=Installing and using Forklift
+  - user-guide-title=Installing and using Forklift
+  - rn-title=Release notes
   - context=forklift
   - description=Migrating virtual machines to KubeVirt
   - abstract=Forklift enables you to migrate virtual machines to {virt} running on {ocp}.
@@ -39,7 +40,7 @@ asciidoctor:
   - showtitle=@
   - build=upstream
   - keywords=migration, virtual machines, kubevirt
-  - imagesdir=../modules/images
+  - imagesdir=modules/images
   - must-gather=quay.io/konveyor/forklift-must-gather:latest
   - namespace=konveyor-forklift
   - ocp=OKD

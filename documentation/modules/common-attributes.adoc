@@ -2,7 +2,6 @@
 // Attributes for Forklift (upstream) are in _config.yml
 // text
 :kebab: Options menu image:kebab.png[title="Options menu",height=20]
-:must-gather: registry.redhat.io/rhmtv/rhmtv-must-gather: v{project-z-version}
 // If namespace must be formatted with backticks, use + instead.
 :namespace: openshift-mtv
 :ocp: OpenShift Container Platform
@@ -17,9 +16,8 @@
 :project-z-version: 2.0.0
 :the: The
 :the-lc: the
-:project-first: {project-full}{nbsp}({project-short})
-:project-version: 2.0
 :virt: OpenShift Virtualization
+:must-gather: registry.redhat.io/rhmtv/rhmtv-must-gather:v{project-z-version}
 :a-virt: an {virt}
 
 // doc metadata
@@ -30,5 +28,6 @@
 :keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift
 :imagesdir: modules/images
 :abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt} running on {ocp}.
-:title: Installing and using {the-lc} {project-full}
+:rn-title: Release notes
+:user-guide-title: Installing and using {the-lc} {project-full}
 :subtitle: Migrating from VMware to Red Hat {virt}

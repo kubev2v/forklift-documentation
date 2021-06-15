@@ -2,13 +2,16 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id='migration-environment-requirements_{context}']
+[id="migration-environment-requirements_{context}"]
 = Migration environment requirements
 
-Check your migration environment to ensure that the following requirements are met:
+Check your migration environment to ensure that the following requirements are met.
 
-* VMware vSphere version 6.5 or later.
-* VMware virtual machines:
+.VMware environment requirements
+
+* VMware vSphere must be version 6.5 or later.
+* If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the NFC service memory of the host.
+* Virtual machines:
 ** link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] is installed.
 ** ISO/CDROM disks are unmounted.
 ** NIC has no more than one IPv4 and/or one IPv6 address.
@@ -16,10 +19,11 @@ Check your migration environment to ensure that the following requirements are m
 ** VM name does not duplicate the name of a VM in the {virt} environment.
 ** Operating system is certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
 
-* Network:
-** IP addresses, VLANs, and other network configuration settings must not be changed before or after migration. The MAC addresses of the virtual machines are preserved during migration.
-** Uninterrupted and reliable network connections between the clusters and the replication repository.
-** Network ports enabled in the firewall rules.
+.Network requirements
+
+* IP addresses, VLANs, and other network configuration settings must not be changed before or after migration. The MAC addresses of the virtual machines are preserved during migration.
+* Uninterrupted and reliable network connections between the clusters and the replication repository.
+* Network ports enabled in the firewall rules.
 
 [cols="1,1,1,1,2",options="header"]
 .Network ports required for migration
