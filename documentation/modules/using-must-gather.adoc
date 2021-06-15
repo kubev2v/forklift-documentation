@@ -14,7 +14,7 @@ You can view metrics data with link:https://docs.openshift.com/container-platfor
 * You must be logged in to the {virt} cluster as a user with the `cluster-admin` role.
 * You must have the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[{ocp} CLI (`oc`)] installed.
 
-.Running must-gather
+.Procedure
 
 . Navigate to the directory where you want to store the `must-gather` data.
 . Run the `oc adm must-gather` command with the `--image` argument:
@@ -23,10 +23,6 @@ You can view metrics data with link:https://docs.openshift.com/container-platfor
 ----
 $ oc adm must-gather --image={must-gather}
 ----
-+
-The data is saved in a local `must-gather` directory.
-
-.Viewing metrics data with Prometheus
 
 . Run the `oc adm must-gather` command with the `gather_metrics_dump` script:
 +
@@ -47,6 +43,7 @@ This process might take a long time. `must-gather` processes the most recent `pr
 $ make prometheus-run
 ----
 
+. Launch a browser and navigate to `http://<localhost>:9090` to view the Prometheus web console.
 . After you have viewed the data, delete the Prometheus instance and data:
 +
 [source,terminal]
