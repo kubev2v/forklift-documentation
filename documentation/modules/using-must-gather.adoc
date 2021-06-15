@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="using-must-gather_{context}"]
-= Collecting logs and metrics with the must-gather tool
+= Using the must-gather tool
 
 You can collect logs, metrics, and information about {project-short} custom resources by using the `must-gather` tool.
 
