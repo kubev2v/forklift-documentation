@@ -7,12 +7,26 @@
 
 You can migrate virtual machines (VMs) from the command line (CLI) by creating the following custom resources (CRs):
 
-* `Secret` CR contains the VMware provider credentials.
-* `Provider` CR describes the VMware provider.
-* `Plan` CR describes the source and target clusters, network mappings, data store mappings, and VMs to migrate.
-* `Migration` CR runs the `Plan` CR.
+* `Secret` contains the VMware provider credentials.
+* `Provider` contains the VMware provider details.
+* `Host` contains the VMware host details.
+* `NetworkAttachmentDefinition` contains the details for each additional destination network.
++
+[IMPORTANT]
+====
+If you are mapping more than one source and destination network, you must create a `NetworkAttachmentDefinition` CR manifest for each additional destination network _before_ you create the `NetworkMap` CR manifest.
+====
+* `NetworkMap` maps the source and destination networks.
+* `StorageMap` maps the source and destination storage.
+* `Plan` contains the providers, network map, storage map, and VMs to migrate. It specifies whether the migration is cold or warm.
+* `Migration` runs the `Plan`. If the migration is warm, it specifies the cutover time.
 +
 You can associate multiple `Migration` CRs with a single `Plan` CR. If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs.
+
+[NOTE]
+====
+The API uses the term `destination` to refer to the target environment.
+====
 
 .Prerequisites
 
@@ -45,7 +59,7 @@ $ openssl s_client \
 
 . Create a `Secret` CR manifest for the VMware provider:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: v1
@@ -66,7 +80,7 @@ EOF
 
 . Create a `Provider` CR manifest for the VMware provider:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
@@ -87,7 +101,7 @@ EOF
 
 . Create a `Host` CR manifest for the VMware host:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
@@ -107,9 +121,98 @@ EOF
 <2> Specify the _managed object reference_ of the VMware host.
 <3> Specify the IP address of the VMware migration network.
 
+. If you want to map multiple networks, create a `NetworkAttachmentDefinition` CR manifest for each additional destination network:
++
+[source,yaml]
+----
+$ cat << EOF | oc create -f -
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: <networkattachmentdefinition_name>
+spec:
+  config: '{
+    "cniVersion": "0.4.0",
+    "name": "<networkattachmentdefinition_name>",
+    "plugins": [
+      {
+        "type": "cnv-bridge",
+        "bridge": "br1",
+        "vlan": 1 <1>
+      },
+      {
+        "type": "cnv-tuning" <2>
+      }
+    ]
+  }'
+EOF
+----
+<1> Optional.
+<2> The `cnv-tuning` plug-in allows the MAC pool manager to assign a unique MAC address to the connection.
+
+. Create a `NetworkMap` CR manifest to map the source and destination networks:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | oc apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <networkmap_name>
+  namespace: {namespace}
+spec:
+  map:
+    - destination:
+        type: pod <1>
+      source:
+        id: <source_network_mor> <2>
+    - destination:
+        type: multus <1>
+        name: <networkattachmentdefinition_name>
+      source:
+        id: <source_network_mor> <2>
+  provider:
+    source:
+      name: vmware-provider
+      namespace: {namespace}
+    destination:
+      name: destination-cluster
+      namespace: {namespace}
+EOF
+----
+<1> Allowed values are `pod` and `multus`.
+<2> Specify the managed object reference of the VMware network.
+
+. Create a `StorageMap` CR manifest:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storagemap_name>
+  namespace: {namespace}
+spec:
+  map:
+    - destination:
+        storageClass: <destination_storageclass>
+      source:
+        id: <source_datastore_mor> <1>
+  provider:
+    source:
+      name: vmware-provider
+      namespace: {namespace}
+    destination:
+      name: destination-cluster
+      namespace: {namespace}
+EOF
+----
+<1> Specify the managed object reference of the VMware data storage.
+
 . Create a `Plan` CR manifest for the migration:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
@@ -127,35 +230,25 @@ spec:
       namespace: {namespace}
   warm: true <2>
   map:
-    networks: <3>
-      - source: <4>
-          id: <source_network_mor> <5>
-          name: <source_network_name>
-        destination:
-          type: pod
-          name: pod
-          namespace: {namespace}
-    datastores: <6>
-      - source: <7>
-          id: <source_datastore_mor> <8>
-          name: <source_datastore_name>
-        destination:
-          storageClass: standard
-  vms: <9>
-    - id: <source_vm_mor> <10>
+    network: <3>
+      name: <networkmap_name> <4>
+      namespace: {namespace}
+    storage:
+      name: <storagemap_name> <5>
+      namespace: {namespace}
+  targetNamespace: {namespace}
+  vms: <6>
+    - id: <source_vm_mor> <7>
     - name: <source_vm_name>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
 <2> Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` CR manifest, only the precopy stage will run.
 <3> You can create multiple network mappings for source and destination networks.
-<4> You can use either the `id` _or_ the `name` parameter to specify the source network.
-<5> _Managed object reference_ of the source network.
-<6> You can create multiple storage mappings for source data stores and destination storage classes.
-<7> You can use either the `id` _or_ the `name` parameter to specify the source data store.
-<8> _Managed object reference_ of the source data store.
-<9>  You can use either the `id` _or_ the `name` parameter to specify the source VM.
-<10> _Managed object reference_ of the source VM.
+<4> Specify the name of the `NetworkMap` CR.
+<5> Specify the name of the `StorageMap` CR.
+<6> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
+<7> Specify the managed object reference of the VMware VM.
 
 . Optional. To change the time interval between the CBT snapshots for warm migration, patch the `vm-import-controller-config` config map:
 +
@@ -169,7 +262,7 @@ $ oc patch configmap/vm-import-controller-config \
 
 . Create a `Migration` CR manifest to run the `Plan` CR:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
