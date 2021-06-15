@@ -14,13 +14,14 @@ endif::[]
 :mtv:
 
 ifeval::["{build}" == "downstream"]
-include::modules/making-open-source-more-inclusive.adoc[]
+[discrete]
+include::modules/making-open-source-more-inclusive.adoc[leveloffset=+1]
 endif::[]
 
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
 
-You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
+You can migrate virtual machines from VMware vSphere or {rhv-full} to {virt} with {the} project-first.
 
 If you are migrating from VMware vSphere, see link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
 
@@ -37,7 +38,7 @@ You can install {the-lc} {project-first} by using the {ocp} web console or the c
 
 [IMPORTANT]
 ====
-After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to the `spec.vddkInitImage` field of the `HyperConverged` custom resource (CR).
+If you are migrating virtual machines from VMware vSphere, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to the `HyperConverged` custom resource (CR). See xref:adding-vddk-to-mtv_{context}[Creating and using a VDDK image]
 ====
 
 [id="installing-the-operator_{context}"]
@@ -62,14 +63,16 @@ include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :context: mtv
 :mtv:
 
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
+include::modules/adding-vddk-to-mtv.adoc[leveloffset=+3]
 
 [id="migrating-virtual-machines-to-virt_{context}"]
 == Migrating virtual machines to {virt}
 
 You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console or the command line interface (CLI).
 
-You can run a cold or a warm migration. For details, see xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
+{project-short} supports warm and cold migration for VMware. See xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
+
+{project-short} supports cold migration for {rhv-full}.
 
 include::modules/migration-environment-requirements.adoc[leveloffset=+2]
 include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
@@ -82,11 +85,20 @@ You can migrate virtual machines to {virt} by using the {project-short} web cons
 [id="adding-providers_{context}"]
 ==== Adding providers
 
-You can add VMware and {virt} providers by using the {project-short} web console.
+You can add providers by using the {project-short} web console.
 
+:mtv!:
+:context: vmware
+:vmware:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
+:vmware!:
+:context: rhv
+:rhv:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:rhv:
 [discrete]
 include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+4]
+
 include::modules/adding-virt-provider.adoc[leveloffset=+4]
 [discrete]
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]

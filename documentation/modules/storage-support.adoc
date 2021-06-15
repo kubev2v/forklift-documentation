@@ -5,14 +5,19 @@
 [id="about-storage_{context}"]
 = Storage support and default modes
 
-{The} {project-first} supports link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/importing_vms/virt-importing-vmware-vm.html#virt-features-for-storage-matrix_virt-importing-vmware-vm[{virt} storage features].
+{project-short} uses the following default volume and access modes for supported storage.
 
 [NOTE]
 ====
-If the {virt} storage does not support link:https://docs.openshift.com/container-platform/{ocp-version}/storage/dynamic-provisioning.html[dynamic provisioning], {project-short} applies the default settings, `Filesystem` volume mode and `ReadWriteOnce` access mode. `Filesystem` volume mode is slower than `Block` volume mode. `ReadWriteOnce` access mode does not enable live virtual machine migration.
-====
+If the {virt} storage does not support link:https://docs.openshift.com/container-platform/{ocp-version}/storage/dynamic-provisioning.html[dynamic provisioning], {project-short} applies the default settings:
 
-{project-short} uses the following default volume and access modes.
+* `Filesystem` volume mode
++
+`Filesystem` volume mode is slower than `Block` volume mode.
+* `ReadWriteOnce` access mode
++
+`ReadWriteOnce` access mode does not support live virtual machine migration.
+====
 
 .Default volume and access modes
 [cols="1,1,1", options="header"]

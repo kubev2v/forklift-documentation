@@ -27,7 +27,7 @@ The workflow describes the following steps:
 . The Virtual Machine Import Controller creates a `DataVolume` CR as a wrapper for a Persistent Volume Claim (PVC) and annotations.  
 . The Containerized Data Importer (CDI) Controller creates a PVC. The Persistent Volume (PV) is dynamically provisioned by the `StorageClass` provisioner.  
 . The CDI Controller creates an `Importer` pod.
-. The `Importer` pod connects to the VM disk by using the VMware Virtual Disk Development Kit (VDDK) SDK and streams the VM disk to the PV.
+. For a VMware provider, the `Importer` pod connects to the VM disk by using the VMware Virtual Disk Development Kit (VDDK) SDK and streams the VM disk to the PV.
 +
 *After the VM disks are transferred:*
 

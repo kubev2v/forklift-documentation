@@ -14,12 +14,7 @@ You can uninstall {project-first} by using the {ocp} web console to delete the +
 .Procedure
 
 . Click *Home* -> *Projects*.
-ifeval::["{build}" == "upstream"]
-. Enter `forklift` in the *Search* field to locate the {namespace} project.
-endif::[]
-ifeval::["{build}" == "downstream"]
-. Enter `rhmtv` in the *Search* field to locate the {namespace} project.
-endif::[]
+. Locate the *{namespace}* project.
 . On the right side of the project, select *Delete Project* from the {kebab}.
 . In the *Delete Project* pane, enter the project name and click *Delete*.
 . Click *Administration* -> *CustomResourceDefinitions*.

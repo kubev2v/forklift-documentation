@@ -3,9 +3,9 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="increasing-esxi-nfc-service-memory_{context}"]
-= Increasing the NFC service memory of an ESXi host
+= Increasing the NFC service memory of a VMware ESXi host
 
-If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
+If you are performing more than 10 concurrent migrations from a single VMware ESXi host, you must increase the NFC service memory of the host to enable additional connections for migrations. Otherwise, the migration will fail because the NFC service memory is limited to 10 parallel connections.
 
 .Procedure
 
