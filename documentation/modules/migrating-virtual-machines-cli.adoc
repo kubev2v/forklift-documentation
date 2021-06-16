@@ -10,15 +10,9 @@ You can migrate virtual machines (VMs) from the command line (CLI) by creating t
 * `Secret` contains the VMware provider credentials.
 * `Provider` contains the VMware provider details.
 * `Host` contains the VMware host details.
-* `NetworkAttachmentDefinition` contains the details for each additional destination network.
-+
-[IMPORTANT]
-====
-If you are mapping more than one source and destination network, you must create a `NetworkAttachmentDefinition` CR manifest for each additional destination network _before_ you create the `NetworkMap` CR manifest.
-====
 * `NetworkMap` maps the source and destination networks.
 * `StorageMap` maps the source and destination storage.
-* `Plan` contains the providers, network map, storage map, and VMs to migrate. It specifies whether the migration is cold or warm.
+* `Plan` contains a list of VMs to migrate and specifies whether the migration is cold or warm. The `Plan` references the providers and maps.
 * `Migration` runs the `Plan`. If the migration is warm, it specifies the cutover time.
 +
 You can associate multiple `Migration` CRs with a single `Plan` CR. If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs.
@@ -32,6 +26,7 @@ The API uses the term `destination` to refer to the target environment.
 
 * You must be logged in as a user with `cluster-admin` privileges.
 * The link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] must be installed.
+* If you are mapping more than one source and destination network, you must create a link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network.
 * The VDDK image must be added to the `v2v-vmware` config map.
 * If you are performing a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
 * If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
@@ -121,35 +116,6 @@ EOF
 <2> Specify the _managed object reference_ of the VMware host.
 <3> Specify the IP address of the VMware migration network.
 
-. If you want to map multiple networks, create a `NetworkAttachmentDefinition` CR manifest for each additional destination network:
-+
-[source,yaml]
-----
-$ cat << EOF | oc create -f -
-apiVersion: "k8s.cni.cncf.io/v1"
-kind: NetworkAttachmentDefinition
-metadata:
-  name: <networkattachmentdefinition_name>
-spec:
-  config: '{
-    "cniVersion": "0.4.0",
-    "name": "<networkattachmentdefinition_name>",
-    "plugins": [
-      {
-        "type": "cnv-bridge",
-        "bridge": "br1",
-        "vlan": 1 <1>
-      },
-      {
-        "type": "cnv-tuning" <2>
-      }
-    ]
-  }'
-EOF
-----
-<1> Optional.
-<2> The `cnv-tuning` plug-in allows the MAC pool manager to assign a unique MAC address to the connection.
-
 . Create a `NetworkMap` CR manifest to map the source and destination networks:
 +
 [source,yaml,subs="attributes+"]
@@ -168,7 +134,7 @@ spec:
         id: <source_network_mor> <2>
     - destination:
         type: multus <1>
-        name: <networkattachmentdefinition_name>
+        name: <networkattachmentdefinition_name> <3>
       source:
         id: <source_network_mor> <2>
   provider:
@@ -182,6 +148,7 @@ EOF
 ----
 <1> Allowed values are `pod` and `multus`.
 <2> Specify the managed object reference of the VMware network.
+<3> Specify the network attachment definition for each additional destination network.
 
 . Create a `StorageMap` CR manifest:
 +
