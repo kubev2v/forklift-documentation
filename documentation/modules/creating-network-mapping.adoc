@@ -15,12 +15,7 @@ You cannot map an opaque network, typically managed by NSX, to {a-virt} network.
 .Prerequisites
 
 * Source and target providers added to the web console.
-* If you create multiple network mappings, you must create a network attachment definition for each additional target network. See link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[Creating a network attachment definition] in _OpenShift Virtualization_.
-+
-[NOTE]
-====
-You must specify `br1` as the *Bridge Name* of the network attachment definition.
-====
+* If you map more than one source and target network, you must create a link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional target network.
 
 .Procedure
 
