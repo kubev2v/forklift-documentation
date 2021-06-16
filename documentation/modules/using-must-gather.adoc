@@ -7,7 +7,7 @@
 
 You can collect logs, metrics, and information about {project-short} custom resources by using the `must-gather` tool.
 
-You can view metrics data with link:https://docs.openshift.com/container-platform/{ocp-version}/monitoring/understanding-the-monitoring-stack.html#understanding-the-monitoring-stack_understanding-the-monitoring-stack[Prometheus], a component of the {ocp} monitoring stack.
+You can also collect and view link:https://docs.openshift.com/container-platform/{ocp-version}/monitoring/understanding-the-monitoring-stack.html#understanding-the-monitoring-stack_understanding-the-monitoring-stack[Prometheus metrics] from the previous day.
 
 .Prerequisites
 
@@ -17,14 +17,14 @@ You can view metrics data with link:https://docs.openshift.com/container-platfor
 .Procedure
 
 . Navigate to the directory where you want to store the `must-gather` data.
-. Run the `oc adm must-gather` command with the `--image` argument:
+. Run the `oc adm must-gather` command to collect data about {project-short} custom resources:
 +
 [source,terminal,subs="attributes+"]
 ----
 $ oc adm must-gather --image={must-gather}
 ----
 
-. Run the `oc adm must-gather` command with the `gather_metrics_dump` script:
+. Optional: Run the `oc adm must-gather` command with the `gather_metrics_dump` script to collect Prometheus metrics from the previous day:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -36,15 +36,15 @@ $ oc adm must-gather --image={must-gather} -- /usr/bin/gather_metrics_dump
 This process might take a long time. `must-gather` processes the most recent `prom_data.tar.gz` file in the `/must-gather/metrics` directory.
 ====
 
-. Create a local Prometheus instance to display the data:
+.. Create a local Prometheus instance:
 +
 [source,terminal]
 ----
 $ make prometheus-run
 ----
 
-. Launch a browser and navigate to `http://<localhost>:9090` to view the Prometheus web console.
-. After you have viewed the data, delete the Prometheus instance and data:
+.. Launch a browser and navigate to `http://<localhost>:9090` to view the data in the Prometheus web console.
+.. After you have viewed the data, delete the Prometheus instance and data:
 +
 [source,terminal]
 ----
