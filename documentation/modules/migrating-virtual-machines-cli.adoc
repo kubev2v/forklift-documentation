@@ -217,9 +217,9 @@ EOF
 <6> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
 <7> Specify the managed object reference of the VMware VM.
 
-. Optional. To change the time interval between the CBT snapshots for warm migration, patch the `vm-import-controller-config` config map:
+. Optional: To change the time interval between the CBT snapshots for warm migration, patch the `vm-import-controller-config` config map:
 +
-[source,terminal,subs="attributes+"]
+[source,terminal]
 ----
 $ oc patch configmap/vm-import-controller-config \
   -n openshift-cnv -p '{"data": \
