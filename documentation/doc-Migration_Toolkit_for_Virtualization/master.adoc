@@ -20,7 +20,7 @@ endif::[]
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
 
-{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}, an add-on to {ocp} {ocp-version}. With {virt}, you can run and manage virtual machine workloads alongside container workloads.
+You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
 
 If you are migrating from VMware vSphere, see link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
 
@@ -117,6 +117,5 @@ This section describes ways to troubleshoot migration issues and error messages.
 
 include::modules/error-messages.adoc[leveloffset=+2]
 include::modules/using-must-gather.adoc[leveloffset=+2]
-include::modules/known-issues.adoc[leveloffset=+2]
 
 :mtv!:

@@ -1,8 +1,8 @@
 include::modules/common-attributes.adoc[]
-[id="{rn-title}_{context}"]
+[id="{rn-title}"]
 = {rn-title}
-
 :toc:
+:toc-title:
 :toclevels: 3
 :compat-mode:
 :context: release-notes
@@ -11,38 +11,8 @@ ifeval::["{build}" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[]
 endif::[]
 
-== {project-full} {project-version} release notes
+You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
 
-{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}, an add-on to {ocp} {ocp-version}. With {virt}, you can manage virtual machine workloads alongside container workloads.
+The release notes describe new features and enhancements, known issues, and technical changes.
 
-This document describes new features and enhancements, known issues, and resolved issues for {the-lc} {project-full} {project-version}.
-
-[id="new-features-and-enhancements_{context}"]
-=== New features and enhancements
-
-This release adds the following features and improvements.
-
-[id="warm-migration_{context}"]
-==== Warm migration
-
-Warm migration reduces downtime by copying most of the VM data during a precopy stage while the VMs are running. During the cutover stage, the VMs are stopped and the rest of the data is copied.
-
-[id="cancel-migration_{context}"]
-==== Cancel migration
-
-You can cancel an entire migration plan or individual VMs while a migration is in progress. A canceled migration plan can be restarted in order to migrate the remaining VMs.
-
-[id="select-migration-network_{context}"]
-==== Migration network
-
-You can select a migration network for the source and target providers for improved performance. By default, data is copied using the VMware administration network and the {ocp} pod network.
-
-[id="validation-service_{context}"]
-==== Validation service
-
-The validation service checks source VMs for issues that might affect migration and flags the VMs with concerns in the migration plan.
-
-ifeval::["{build}" == "downstream"]
-:FeatureName: The validation service
-include::modules/technology-preview.adoc[leveloffset=+1]
-endif::[]
+include::modules/rn-2.1.adoc[leveloffset=+1]
