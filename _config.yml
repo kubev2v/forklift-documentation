@@ -51,8 +51,8 @@ asciidoctor:
   - project-short=Forklift
   - project-full=Forklift
   - project-first=Forklift
-  - project-version=2.0
-  - project-z-version=2.0.0
+  - project-version=2.1
+  - project-z-version=2.1.0
   - the-lc=
   - the=
   - virt=KubeVirt
