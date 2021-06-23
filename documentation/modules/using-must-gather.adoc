@@ -7,7 +7,9 @@
 
 You can collect logs, metrics, and information about {project-short} custom resources by using the `must-gather` tool.
 
-You can also collect and view link:https://docs.openshift.com/container-platform/{ocp-version}/monitoring/understanding-the-monitoring-stack.html#understanding-the-monitoring-stack_understanding-the-monitoring-stack[Prometheus metrics] from the previous day.
+The `must-gather` data must be attached to all customer cases.
+
+You can collect data for a one-hour or a 24-hour period and view the data with the Prometheus console.
 
 .Prerequisites
 
@@ -17,34 +19,42 @@ You can also collect and view link:https://docs.openshift.com/container-platform
 .Procedure
 
 . Navigate to the directory where you want to store the `must-gather` data.
-. Run the `oc adm must-gather` command to collect data about {project-short} custom resources:
+. Run the `oc adm must-gather` command:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc adm must-gather --image={must-gather}
+$ oc adm must-gather --image={must-gather} \ <1>
+  -- /usr/bin/gather_metrics_dump <2>
 ----
-
-. Optional: Run the `oc adm must-gather` command with the `gather_metrics_dump` script to collect Prometheus metrics from the previous day:
-+
-[source,terminal,subs="attributes+"]
-----
-$ oc adm must-gather --image={must-gather} -- /usr/bin/gather_metrics_dump
-----
+<1> `oc adm must-gather` collects data for the past hour and saves the data as `/must-gather/must-gather.tar.gz`.
+<2> `oc adm must-gather` with the `/usr/bin/gather_metrics_dump` script collects data for the past 24 hours.
 +
 [NOTE]
 ====
-This process might take a long time. `must-gather` processes the most recent `prom_data.tar.gz` file in the `/must-gather/metrics` directory.
+The 24-hour data collection can take a long time.
 ====
 
-.. Create a local Prometheus instance:
+. Upload the `must-gather.tar.gz` file to your support case on the link:https://access.redhat.com/[Red Hat Customer Portal].
+
+.To view data with the Prometheus console
+
+. Create a local Prometheus instance:
 +
 [source,terminal]
 ----
 $ make prometheus-run
 ----
++
+The command outputs the Prometheus URL.
++
+.Output
+[source,terminal]
+----
+Started Prometheus on http://localhost:9090
+----
 
-.. Launch a browser and navigate to `http://<localhost>:9090` to view the data in the Prometheus web console.
-.. After you have viewed the data, delete the Prometheus instance and data:
+. Launch a web browser and navigate to the Prometheus URL to view the data.
+. After you have viewed the data, delete the Prometheus instance and data:
 +
 [source,terminal]
 ----
