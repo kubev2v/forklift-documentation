@@ -71,7 +71,11 @@ You can migrate virtual machines (VMs) to {virt} by using the {project-short} we
 
 You can run a cold or a warm migration. For details, see xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
 
-include::modules/migration-environment-requirements.adoc[leveloffset=+2]
+[id="migration-requirements_{context}"]
+=== Migration requirements
+
+include::modules/migration-environment-requirements.adoc[leveloffset=+3]
+include::modules/vmware-privileges.adoc[leveloffset=+3]
 include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
 
 [id='migrating-vms-web-console_{context}']

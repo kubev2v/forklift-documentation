@@ -7,26 +7,34 @@
 
 Check your migration environment to ensure that the following requirements are met.
 
-.VMware environment requirements
+.VMware vSphere
 
 * VMware vSphere must be version 6.5 or later.
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the NFC service memory of the host.
-* Virtual machines:
-** link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] is installed.
-** ISO/CDROM disks are unmounted.
-** NIC has no more than one IPv4 and/or one IPv6 address.
-** VM name contains only lowercase letters (`a-z`), numbers (`0-9`), or hyphens (`-`), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (`.`), or special characters.
-** VM name does not duplicate the name of a VM in the {virt} environment.
-** Operating system is certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
+* link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] must be installed on each virtual machine.
 
-.Network requirements
+.Virtual machines
+
+* ISO/CDROM disks must be unmounted.
+* The NIC must contain only one IPv4 and/or one IPv6 address.
+* The VM name must contain only lowercase letters (`a-z`), numbers (`0-9`), or hyphens (`-`), up to a maximum of 253 characters.
+* The first and last characters of the VM name must be alphanumeric.
+* The VM name must not contain uppercase letters, spaces, periods (`.`), or special characters.
+* The VM name must not duplicate the name of an existing VM in the {virt} environment.
+* The operating system must be certified and supported for {virt}. See link:https://access.redhat.com/articles/973163#ocpvirt[Certified guest operating systems in Red Hat OpenStack Platform, Red Hat Virtualization and OpenShift Virtualization].
+* The operating system must be supported by `virt-v2v`. See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7 and RHEL 8 ].
+
+.Networks
 
 * IP addresses, VLANs, and other network configuration settings must not be changed before or after migration. The MAC addresses of the virtual machines are preserved during migration.
-* Uninterrupted and reliable network connections between the clusters and the replication repository.
-* Network ports enabled in the firewall rules.
+* The network connections between the clusters and the replication repository must be reliable and uninterrupted.
+* The migration networks must have sufficient throughput, minimum speed of 10 Gbps, for disk transfer.
+* The migration networks must have jumbo frames enabled.
+* The source migration network must be accessible to the {virt} nodes through the default gateway.
+* Ports required for migration must be enabled in the firewall rules.
 
 [cols="1,1,1,1,2",options="header"]
-.Network ports required for migration
+.Ports required for migration
 |===
 |Port |Protocol |Source |Destination |Purpose
 

@@ -1,0 +1,27 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="vmware-privileges_{context}"]
+= VMware privileges
+
+The following VMware privileges are required to migrate virtual machines to {project-first}.
+
+[cols="2,2,1", options="header"]
+.VMware privileges
+|===
+|Privilege |Description |Required on
+|`Datastore.Browse datastore` |Allows browsing files on a datastore |Data stores
+|`Datastore.Low level file operations` |Allows performing read, write, delete, and rename operations in the datastore browser.  |Data stores
+|`Host.Configuration.Connection` |Allows changes to the connection status of a host (connected or disconnected). |Hosts
+|`Resource.Migrate powered off virtual machine` |Allows migration of a powered off virtual machine to a different resource pool or host.   |Virtual machines
+|`Sessions.Validate session` |Allows verification of session validity.   |Root vCenter Server
+|`Virtual machine.Configuration.?  |??? |Virtual machines
+|`Virtual machine.Interaction.Guest operating system management by VIX API`   |Allows management of the virtual machine's operating system through the VIX API.   |Virtual machines
+|`Virtual machine.Interaction.Power Off`   |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.   |Virtual machines
+|`Virtual machine.Interaction.Power On`  |Allows powering on a powered-off virtual machine, and resuming a suspended virtual machine.   |Virtual machines
+|`Virtual machine.Provisioning.Allow disk access`   |Allows opening a disk on a virtual machine for random read and write access. Used mostly for remote disk mounting.   |Virtual machines
+|`Virtual machine.Provisioning.Allow read-only disk access`   |Allows opening a disk on a virtual machine for random read access. Used mostly for remote disk mounting.   |Virtual machines
+|`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine’s current state.   |Virtual machines
+|`Virtual machine.Snapshot management.Remove Snapshot`   |Allows removal of a snapshot from the snapshot history. |Virtual machines
+|===
