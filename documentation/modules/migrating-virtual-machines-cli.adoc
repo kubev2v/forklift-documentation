@@ -27,7 +27,7 @@ The API uses the term `destination` to refer to the target environment.
 * You must be logged in as a user with `cluster-admin` privileges.
 * The link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] must be installed.
 * If you are mapping more than one source and destination network, you must create a link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network.
-* The VDDK image must be added to the `v2v-vmware` config map.
+* You must add the VDDK image to the `spec.vddkInitImage` field of the `HyperConverged` custom resource (CR).
 * If you are performing a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
 * If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
 

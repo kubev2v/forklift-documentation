@@ -3,11 +3,11 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="adding-vddk-to-mtv_{context}"]
-= Creating a VDDK image and adding it to a config map
+= Creating a VDDK image and adding it to the HyperConverged custom resource
 
 {the} {project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks.
 
-You must download VDDK, build a VDDK image, push it to a private image registry, and then add the image to the `v2v-vmware` config map.
+You can download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry. You then add the VDDK image to the `spec.vddkInitImage` field of the `HyperConverged` custom resource (CR).
 
 [NOTE]
 ====
@@ -55,21 +55,33 @@ EOF
 +
 [source,terminal]
 ----
-$ podman build . -t <image> <1>
+$ podman build . -t <registry_route_or_server_path>/vddk:<tag>
 ----
-<1> Specify the image, for example, `image-registry.openshift-image-registry.svc:5000/openshift/vddk:latest` or `registry.example.com:5000/vddk:latest`.
 
 . Push the VDDK image to the registry:
 +
 [source,terminal]
 ----
-$ podman push <image>
+$ podman push <registry_route_or_server_path>/vddk:<tag>
 ----
 
-. Patch the `v2v-vmware` config map to add the `vddk-init-image` field:
+. Ensure that the image is accessible to your {virt} environment.
+. Edit the `HyperConverged` CR in the *openshift-cnv* project:
 +
 [source,terminal]
 ----
-$ oc patch configmap/v2v-vmware -n openshift-cnv \
-    -p '{"data": {"vddk-init-image": "<image>"}}'
+$ oc edit hco -n openshift-cnv kubevirt-hyperconverged
+----
+
+. Add the `vddkInitImage` parameter to the `spec` stanza:
++
+[source,yaml]
+----
+apiVersion: hco.kubevirt.io/v1beta1
+kind: HyperConverged
+metadata:
+  name: kubevirt-hyperconverged
+  namespace: openshift-cnv
+spec:
+  vddkInitImage: <registry_route_or_server_path>/vddk:<tag>
 ----
