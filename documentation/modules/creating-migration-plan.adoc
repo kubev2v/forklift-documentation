@@ -11,7 +11,7 @@ A migration plan allows you to group virtual machines to be migrated together or
 
 .Prerequisites
 
-* You must create a VDDK image and add it to the `v2v-vmware` config map.
+* You must add the VDDK image to the `spec.vddkInitImage` field of the `HyperConverged` custom resource (CR).
 * You must add a source provider to the web console.
 * If the target provider is not the {virt} cluster on which you installed {project-short}, you must add a target provider.
 * If you are running a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
