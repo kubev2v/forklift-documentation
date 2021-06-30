@@ -12,4 +12,4 @@
                 <email>migration-docs@redhat.com</email>
         </author>
 </authorgroup>
-<xi:include href="Common_Content/Legal_Notice.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+<xi:include href="Common_Content/Legal_Notice.xml" xmlns:xi="https://www.w3.org/2001/XInclude" />
