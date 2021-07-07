@@ -57,6 +57,7 @@ Started Prometheus on http://localhost:9090
 ----
 
 . Launch a web browser and navigate to the Prometheus URL to view the data.
+
 . After you have viewed the data, delete the Prometheus instance and data:
 +
 [source,terminal]

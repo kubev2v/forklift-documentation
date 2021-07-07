@@ -26,3 +26,4 @@ $ oc patch configmap/vm-import-controller-config \
   -n openshift-cnv -p '{"data": \
   {"warmImport.intervalMinutes": "720"}}'
 ----
+
