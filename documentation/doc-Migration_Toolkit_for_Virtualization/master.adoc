@@ -35,7 +35,7 @@ You can install {the-lc} {project-first} by using the {ocp} web console or the c
 
 [IMPORTANT]
 ====
-After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to a config map.
+After you have installed {project-short}, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to the `spec.vddkInitImage` field of the `HyperConverged` custom resource (CR).
 ====
 
 [id="installing-the-operator_{context}"]
@@ -109,7 +109,11 @@ include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 [id="troubleshooting_{context}"]
 == Troubleshooting
 
-include::modules/using-must-gather.adoc[leveloffset=+2]
+This section describes ways to troubleshoot migration issues and error messages.
+
 include::modules/error-messages.adoc[leveloffset=+2]
+
+include::modules/using-must-gather.adoc[leveloffset=+2]
+include::modules/known-issues.adoc[leveloffset=+2]
 
 :mtv!:

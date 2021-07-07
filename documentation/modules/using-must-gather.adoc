@@ -7,7 +7,9 @@
 
 You can collect logs, metrics, and information about {project-short} custom resources by using the `must-gather` tool.
 
-You can view metrics data with link:https://docs.openshift.com/container-platform/{ocp-version}/monitoring/understanding-the-monitoring-stack.html#understanding-the-monitoring-stack_understanding-the-monitoring-stack[Prometheus], a component of the {ocp} monitoring stack.
+The `must-gather` data must be attached to all customer cases.
+
+You can collect data for a one-hour or a 24-hour period and view the data with the Prometheus console.
 
 .Prerequisites
 
@@ -17,33 +19,45 @@ You can view metrics data with link:https://docs.openshift.com/container-platfor
 .Procedure
 
 . Navigate to the directory where you want to store the `must-gather` data.
-. Run the `oc adm must-gather` command with the `--image` argument:
+. Run the `oc adm must-gather` command:
+
+* To gather data for the past hour:
 +
 [source,terminal,subs="attributes+"]
 ----
 $ oc adm must-gather --image={must-gather}
 ----
++
+The data is saved as `/must-gather/must-gather.tar.gz`. You can upload this file to a support case on the link:https://access.redhat.com/[Red Hat Customer Portal].
 
-. Run the `oc adm must-gather` command with the `gather_metrics_dump` script:
+* To gather data for the past 24 hours:
 +
 [source,terminal,subs="attributes+"]
 ----
 $ oc adm must-gather --image={must-gather} -- /usr/bin/gather_metrics_dump
 ----
 +
-[NOTE]
-====
-This process might take a long time. `must-gather` processes the most recent `prom_data.tar.gz` file in the `/must-gather/metrics` directory.
-====
+This operation can take a long time. The data is saved as `/must-gather/metrics/prom_data.tar.gz`. You can view this file with the Prometheus console.
 
-. Create a local Prometheus instance to display the data:
+.To view data with the Prometheus console
+
+. Create a local Prometheus instance:
 +
 [source,terminal]
 ----
 $ make prometheus-run
 ----
++
+The command outputs the Prometheus URL.
++
+.Output
+[source,terminal]
+----
+Started Prometheus on http://localhost:9090
+----
 
-. Launch a browser and navigate to `http://<localhost>:9090` to view the Prometheus web console.
+. Launch a web browser and navigate to the Prometheus URL to view the data.
+
 . After you have viewed the data, delete the Prometheus instance and data:
 +
 [source,terminal]
