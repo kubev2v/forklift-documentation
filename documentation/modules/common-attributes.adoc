@@ -17,7 +17,7 @@
 :the: The
 :the-lc: the
 :virt: OpenShift Virtualization
-:must-gather: registry.redhat.io/rhmtv/rhmtv-must-gather:{project-z-version}
+:must-gather: registry.redhat.io/migration-toolkit-virtualization/mtv-must-gather-rhel8:{project-z-version}
 :a-virt: an {virt}
 
 // doc metadata
