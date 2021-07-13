@@ -17,9 +17,13 @@ You can migrate virtual machines (VMs) from the command line (CLI) by creating t
 +
 You can associate multiple `Migration` CRs with a single `Plan` CR. If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs.
 
-[NOTE]
+The term _destination_ in the API is the same as _target_ in the web console.
+
+[IMPORTANT]
 ====
-The API uses the term `destination` to refer to the target environment.
+You must specify a name for cluster-scoped CRs.
+
+You must specify both a name and a namespace for namespace-scoped CRs.
 ====
 
 .Prerequisites
@@ -33,17 +37,17 @@ The API uses the term `destination` to refer to the target environment.
 
 .Procedure
 
-. Obtain the SHA-1 fingerprint of the vCenter host:
+. Obtain the vCenter SHA-1 fingerprint:
 +
 [source,terminal]
 ----
 $ openssl s_client \
-    -connect <vcenter_host>:443 \ <1>
+    -connect <www.example.com>:443 \ <1>
     < /dev/null 2>/dev/null \
     | openssl x509 -fingerprint -noout -in /dev/stdin \
     | cut -d '=' -f 2
 ----
-<1> Specify the vCenter host name.
+<1> Specify the vCenter name.
 +
 .Example output
 +
@@ -60,18 +64,18 @@ $ cat << EOF | oc apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
-  name: vmware-secret
+  name: <vmware_secret>
   namespace: {namespace}
 type: Opaque
 stringData:
-  user: <user_name> <1>
-  password: <password> <2>
-  thumbprint: <fingerprint> <3>
+  user: <vcenter_user> <1>
+  password: <vcenter_password> <2>
+  thumbprint: <vcenter_fingerprint> <3>
 EOF
 ----
 <1> Specify the vCenter administrator account, for example, `administrator@vsphere.local`.
 <2> Specify the vCenter password.
-<3> Specify the SHA-1 fingerprint of the vCenter host.
+<3> Specify the vCenter SHA-1 fingerprint.
 
 . Create a `Provider` CR manifest for the VMware provider:
 +
@@ -81,7 +85,7 @@ $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
-  name: vmware-provider
+  name: <vmware_provider>
   namespace: {namespace}
 spec:
   type: vsphere
@@ -102,14 +106,14 @@ $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Host
 metadata:
-  name: vmware_host
+  name: <vmware_host>
   namespace: {namespace}
 spec:
   provider:
     namespace: {namespace}
-    name: <provider_name> <1>
+    name: <source_provider> <1>
   id: <source_host_mor> <2>
-  ipAddress: <source_network> <3>
+  ipAddress: <source_network_ip> <3>
 EOF
 ----
 <1> Specify the name of the VMware `Provider` CR.
@@ -124,7 +128,7 @@ $  cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: NetworkMap
 metadata:
-  name: <networkmap_name>
+  name: <network_map>
   namespace: {namespace}
 spec:
   map:
@@ -134,21 +138,23 @@ spec:
         id: <source_network_mor> <2>
     - destination:
         type: multus <1>
-        name: <networkattachmentdefinition_name> <3>
+        name: <network_attachment_definition> <3>
+        namespace: <network_attachment_definition_namespace> <4>
       source:
         id: <source_network_mor> <2>
   provider:
     source:
-      name: vmware-provider
+      name: <vmware_provider>
       namespace: {namespace}
     destination:
-      name: destination-cluster
+      name: <destination_cluster>
       namespace: {namespace}
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
 <2> Specify the managed object reference of the VMware network.
 <3> Specify the network attachment definition for each additional destination network.
+<4> Specify the network attachment definition namespace.
 
 . Create a `StorageMap` CR manifest:
 +
@@ -158,20 +164,20 @@ $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: StorageMap
 metadata:
-  name: <storagemap_name>
+  name: <storage_map>
   namespace: {namespace}
 spec:
   map:
     - destination:
-        storageClass: <destination_storageclass>
+        storageClass: <storage_class>
       source:
         id: <source_datastore_mor> <1>
   provider:
     source:
-      name: vmware-provider
+      name: <vmware_provider>
       namespace: {namespace}
     destination:
-      name: destination-cluster
+      name: <destination_cluster>
       namespace: {namespace}
 EOF
 ----
@@ -185,28 +191,28 @@ $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
 metadata:
-  name: <plan_name> <1>
+  name: <plan> <1>
   namespace: {namespace}
 spec:
   provider:
     source:
-      name: vmware-provider
+      name: <vmware_provider>
       namespace: {namespace}
     destination:
-      name: destination-cluster
+      name: <destination_cluster>
       namespace: {namespace}
   warm: true <2>
   map:
     network: <3>
-      name: <networkmap_name> <4>
+      name: <network_map> <4>
       namespace: {namespace}
     storage:
-      name: <storagemap_name> <5>
+      name: <storage_map> <5>
       namespace: {namespace}
   targetNamespace: {namespace}
   vms: <6>
     - id: <source_vm_mor> <7>
-    - name: <source_vm_name>
+    - name: <source_vm>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
@@ -235,18 +241,18 @@ $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Migration
 metadata:
-  name: <migration_name> <1>
+  name: <migration> <1>
   namespace: {namespace}
 spec:
   plan:
-    name: <plan_name> <2>
+    name: <plan> <2>
     namespace: {namespace}
   cutover: <cutover_time> <3>
 EOF
 ----
 <1> Specify the name of the `Migration` CR.
 <2> Specify the name of the `Plan` CR that you are running. The `Migration` CR creates a `VirtualMachineImport` CR for each VM that is migrated.
-<3> Optional. Specify a cutover time according to the ISO 8601 format with the UTC time offset, for example, `2021-04-04T01:23:45.678+09:00`.
+<3> Optional: Specify a cutover time according to the ISO 8601 format with the UTC time offset, for example, `2021-04-04T01:23:45.678+09:00`.
 
 . View the `VirtualMachineImport` pods to monitor the progress of the migration:
 +
