@@ -137,11 +137,11 @@ spec:
       source:
         id: <source_network_mor> <2>
     - destination:
-        type: multus <1>
+        type: multus
         name: <network_attachment_definition> <3>
         namespace: <network_attachment_definition_namespace> <4>
       source:
-        id: <source_network_mor> <2>
+        id: <source_network_mor>
   provider:
     source:
       name: <vmware_provider>
@@ -154,7 +154,7 @@ EOF
 <1> Allowed values are `pod` and `multus`.
 <2> Specify the managed object reference of the VMware network.
 <3> Specify the network attachment definition for each additional destination network.
-<4> Specify the network attachment definition namespace.
+<4> Specify the namespace of the network attachment definition.
 
 . Create a `StorageMap` CR manifest:
 +
