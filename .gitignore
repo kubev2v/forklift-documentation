@@ -3,3 +3,4 @@ build/*
 documentation/*/build/*
 .jekyll-cache
 _site
+Gemfile.lock
