@@ -98,6 +98,8 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
+include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
+
 [id="uninstalling-mtv_{context}"]
 == Uninstalling {the-lc} {project-full}
 

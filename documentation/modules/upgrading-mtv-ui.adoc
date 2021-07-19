@@ -1,0 +1,10 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="upgrading-mtv-ui_{context}"]
+= Upgrading {the-lc} {project-full}
+
+You can upgrade the {operator-name} by using the {ocp} web console.
+
+See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html-single/operators/index#olm-upgrading-operators[Upgrading installed Operators] in the {ocp} _Operators_ documentation.
