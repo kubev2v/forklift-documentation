@@ -7,7 +7,7 @@
 
 {the} {project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks.
 
-You can download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry. You then add the VDDK image to the `spec.vddkInitImage` field of the `HyperConverged` custom resource (CR).
+You can download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to a private secure registry. You then add the VDDK image to the `v2v-vmware` config map.
 
 [NOTE]
 ====
