@@ -5,7 +5,7 @@
 // If namespace must be formatted with backticks, use + instead.
 :namespace: openshift-mtv
 :ocp: OpenShift Container Platform
-:ocp-version: 4.7
+:ocp-version: 4.8
 :ocp-short: OCP
 :operator: mtv-operator
 :operator-name: MTV Operator
