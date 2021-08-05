@@ -9,12 +9,11 @@ The high-level workflow shows the migration process from the point of view of th
 
 ifeval::["{build}" == "downstream"]
 .High-level workflow
-image:136_OpenShift_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
+image::136_OpenShift_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
 endif::[]
-
 ifeval::["{build}" == "upstream"]
 .High-level workflow
-image:136_Upstream_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
+image::136_Upstream_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
 endif::[]
 
 The workflow describes the following steps:
