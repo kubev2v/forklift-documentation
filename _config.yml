@@ -44,7 +44,7 @@ asciidoctor:
   - must-gather=quay.io/konveyor/forklift-must-gather:latest
   - namespace=konveyor-forklift
   - ocp=OKD
-  - ocp-version=4.7
+  - ocp-version=4.8
   - ocp-short=OKD
   - operator=forklift-operator
   - operator-name=Forklift Operator
@@ -57,11 +57,6 @@ asciidoctor:
   - the=
   - virt=KubeVirt
   - a-virt=a KubeVirt
-  - ocp=OKD
-  - ocp-version=4.7
-  - ocp-short=OKD
-  - operator=forklift-operator
-  - namespace=konveyor-forklift
   safe: unsafe
 
 exclude:
