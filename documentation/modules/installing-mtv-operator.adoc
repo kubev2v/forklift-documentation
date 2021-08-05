@@ -87,7 +87,7 @@ spec:
   name: {operator}
   source: community-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "konveyor-forklift-operator.v2.0.0"
+  startingCSV: "konveyor-forklift-operator.v{project-z-version}"
 EOF
 ----
 endif::[]
@@ -102,12 +102,12 @@ metadata:
   name: {operator}
   namespace: {namespace}
 spec:
-  channel: release-v2.0.0
+  channel: release-v{project-z-version}
   installPlanApproval: Automatic
   name: {operator}
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "mtv-operator.v2.0.0"
+  startingCSV: "mtv-operator.v{project-z-version}"
 EOF
 ----
 endif::[]
