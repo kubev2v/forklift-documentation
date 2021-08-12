@@ -22,6 +22,8 @@ endif::[]
 
 {the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}, an add-on to {ocp} {ocp-version}. With {virt}, you can run and manage virtual machine workloads alongside container workloads.
 
+If you are migrating from VMware vSphere, see link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
+
 include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
 include::modules/mtv-workflow.adoc[leveloffset=+2]
 include::modules/virt-migration-workflow.adoc[leveloffset=+2]
