@@ -12,12 +12,22 @@ ifdef::cli[]
 = Installing the {operator-name} from the command line interface
 
 You can install the {operator-name} from the command line interface (CLI).
+
+ifeval::["{build}" == "upstream"]
+If you are installing {project-short} on a Kubernetes cluster, you should disable TLS when you create the `ForkliftController` CR.
+endif::[]
 endif::[]
 
 .Prerequisites
 
-* {ocp} {ocp-version} installed.
+ifeval::["{build}" == "downstream"]
 * {virt} Operator installed.
+endif::[]
+ifeval::["{build}" == "upstream"]
+* Operator Lifecycle Manager (OLM) installed.
++
+OLM is installed by default on {ocp} 4. To install OLM on other Kubernetes deployments, see link:https://github.com/operator-framework/operator-lifecycle-manager/blob/master/doc/install/install.md[Installing OLM].
+endif::[]
 * You must be logged in as a user with `cluster-admin` permissions.
 
 .Procedure
@@ -42,23 +52,38 @@ endif::[]
 endif::[]
 ifdef::cli[]
 
-. Create the {namespace} project:
+. Create the +{namespace}+ project:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
-apiVersion: project.openshift.io/v1
-kind: Project
-metadata:
-  name: {namespace}
-EOF
+$ {oc} create namespace {namespace}
 ----
 
-. Create an `OperatorGroup` CR called `migration`:
+ifeval::["{build}" == "upstream"]
+. Create a `CatalogSource` CR:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | kubectl apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: konveyor-forklift
+  namespace: {namespace}
+spec:
+  displayName: Konveyor Forklift Operator
+  publisher: Red Hat
+  sourceType: grpc
+  image: quay.io/konveyor/forklift-operator-index:latest
+EOF
+----
+endif::[]
+
+. Create an `OperatorGroup` CR:
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
@@ -75,7 +100,7 @@ ifeval::["{build}" == "upstream"]
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
@@ -95,7 +120,7 @@ ifeval::["{build}" == "downstream"]
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
@@ -113,10 +138,33 @@ EOF
 endif::[]
 
 . Create a `ForkliftController` CR:
+ifeval::["{build}" == "upstream"]
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: ForkliftController
+metadata:
+  name: forklift-controller
+  namespace: {namespace}
+spec:
+  feature_ui: false <1>
+  feature_validation: true <1>
+  inventory_tls_enabled: false <1>
+  validation_tls_enabled: false <1>
+  ui_tls_enabled: false <1>
+  olm_managed: true <2>
+EOF
+----
+<1> Disable SSL/TLS for Kubernetes clusters.
+<2> For {ocp} clusters.
+endif::[]
+ifeval::["{build}" == "downstream"]
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: ForkliftController
 metadata:
@@ -126,12 +174,13 @@ spec:
   olm_managed: true
 EOF
 ----
+endif::[]
 
 . Verify that the {project-short} pods are running:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc get pods -n {namespace}
+$ {oc} get pods -n {namespace}
 ----
 +
 .Example output

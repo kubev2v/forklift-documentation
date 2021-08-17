@@ -33,6 +33,7 @@ asciidoctor:
   attributes:
   - virt=KubeVirt
   - a-virt=a KubeVirt
+  - oc=kubectl
   - ocp=OKD
   - ocp-version=4.8
   - ocp-short=OKD

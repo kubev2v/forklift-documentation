@@ -1,28 +1,28 @@
 include::modules/common-attributes.adoc[]
-ifeval::["{build}" == "downstream"]
 [id="installing-and-using-{title}"]
 = {user-guide-title}
-endif::[]
-ifeval::["{build}" == "upstream"]
-= {user-guide-title} {project-version}
-endif::[]
 :toc:
 :toc-title:
 :toclevels: 3
 :compat-mode:
-:context: mtv
-:mtv:
 
-ifeval::["{build}" == "downstream"]
-include::modules/making-open-source-more-inclusive.adoc[]
+// ifeval::["{context}" == "mtv"]
+// include::modules/making-open-source-more-inclusive.adoc[]
+// endif::[]
+
+:mtv:
+ifdef::mtv[]
+[discrete]
+include::modules/making-open-source-more-inclusive.adoc[leveloffset=+1]
 endif::[]
 
-[id="about-mtv_{context}"]
-== About {the-lc} {project-full}
+{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}, an add-on to {ocp}. With {virt}, you can run and manage virtual machine workloads alongside container workloads.
 
-{the} {project-first} enables you to migrate virtual machines from VMware vSphere to {virt}, an add-on to {ocp} {ocp-version}. With {virt}, you can run and manage virtual machine workloads alongside container workloads.
-
+ifdef::mtv[]
 If you are migrating from VMware vSphere, see link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
+endif::[]
+
+== About {the-lc} {project-full}
 
 include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
 include::modules/mtv-workflow.adoc[leveloffset=+2]

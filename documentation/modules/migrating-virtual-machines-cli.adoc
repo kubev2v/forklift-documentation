@@ -60,7 +60,7 @@ $ openssl s_client \
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
@@ -81,7 +81,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
@@ -102,7 +102,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Host
 metadata:
@@ -124,7 +124,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$  cat << EOF | oc apply -f -
+$  cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: NetworkMap
 metadata:
@@ -160,7 +160,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: StorageMap
 metadata:
@@ -187,7 +187,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
 metadata:
@@ -227,7 +227,7 @@ EOF
 +
 [source,terminal]
 ----
-$ oc patch configmap/vm-import-controller-config \
+$ {oc} patch configmap/vm-import-controller-config \
   -n openshift-cnv -p '{"data": \
   {"warmImport.intervalMinutes": "<interval>"}}' <1>
 ----
@@ -237,7 +237,7 @@ $ oc patch configmap/vm-import-controller-config \
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Migration
 metadata:
@@ -258,5 +258,5 @@ EOF
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc get pods -n {namespace}
+$ {oc} get pods -n {namespace}
 ----

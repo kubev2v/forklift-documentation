@@ -17,19 +17,19 @@ You can uninstall {project-first} from the command line interface (CLI) by delet
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc delete project {namespace}
+$ {oc} delete project {namespace}
 ----
 
 . Delete the CRDs:
 +
 [source,terminal]
 ----
-$ oc get crd -o name | grep 'forklift' | xargs oc delete
+$ {oc} get crd -o name | grep 'forklift' | xargs {oc} delete
 ----
 
 . Delete the OAuthClient:
 +
 [source,terminal]
 ----
-$ oc delete oauthclient/forklift-ui
+$ {oc} delete oauthclient/forklift-ui
 ----

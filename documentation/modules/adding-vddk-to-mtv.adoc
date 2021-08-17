@@ -66,24 +66,6 @@ $ podman push <registry_route_or_server_path>/vddk:<tag>
 ----
 
 . Ensure that the image is accessible to your {virt} environment.
-ifeval::["{ocp-version}" < "4.8"]
-. Edit the `v2v-vmware` config map in the *openshift-cnv* project:
-+
-[source,terminal]
-----
-$ oc edit configmap v2v-vmware -n openshift-cnv
-----
-
-. Add the `vddk-init-image` parameter to the `data` stanza:
-+
-[source,yaml]
-----
-...
-data:
-  vddk-init-image: <registry_route_or_server_path>/vddk:<tag>
-----
-endif::[]
-ifeval::["{ocp-version}" >= "4.8"]
 . Edit the `HyperConverged` CR in the *openshift-cnv* project:
 +
 [source,terminal]
@@ -103,4 +85,3 @@ metadata:
 spec:
   vddkInitImage: <registry_route_or_server_path>/vddk:<tag>
 ----
-endif::[]
