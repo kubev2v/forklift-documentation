@@ -7,11 +7,6 @@
 
 You can create one or more network mappings by using the {project-short} web console to map source networks to {virt} networks.
 
-[NOTE]
-====
-You cannot map an opaque network, typically managed by NSX, to {a-virt} network.
-====
-
 .Prerequisites
 
 * Source and target providers added to the web console.
