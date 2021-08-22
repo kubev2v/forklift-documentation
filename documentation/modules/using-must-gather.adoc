@@ -5,11 +5,13 @@
 [id="using-must-gather_{context}"]
 = Using the must-gather tool
 
-You can collect logs and information about {project-short} custom resources (CRs) by using the `must-gather` tool. You can gather data for a specific namespace, migration plan, or virtual machine (VM) by using the filtering options.
+You can collect logs and information about {project-short} custom resources (CRs) by using the `must-gather` tool. You must attach a `must-gather` data file to all customer cases.
+
+You can gather data for a specific namespace, migration plan, or virtual machine (VM) by using the filtering options.
 
 [NOTE]
 ====
-You must attach a `must-gather` data file to all customer cases.
+If you specify a non-existent resource in the filtered `must-gather` command, no archive file is created.
 ====
 
 You can collect metrics data for a 24-hour period and view the data with the Prometheus console.
