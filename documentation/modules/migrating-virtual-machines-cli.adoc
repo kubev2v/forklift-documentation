@@ -7,8 +7,8 @@
 
 You can migrate virtual machines (VMs) from the command line (CLI) by creating the following custom resources (CRs):
 
-* `Secret` contains the VMware provider credentials.
-* `Provider` contains the VMware provider details.
+* `Secret` contains the source provider credentials.
+* `Provider` contains the source provider details.
 * `Host` contains the VMware host details.
 * `NetworkMap` maps the source and destination networks.
 * `StorageMap` maps the source and destination storage.
@@ -31,13 +31,11 @@ You must specify both a name and a namespace for namespace-scoped CRs.
 * You must be logged in as a user with `cluster-admin` privileges.
 * The link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] must be installed.
 * If you are mapping more than one source and destination network, you must create a link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network.
-* You must add the VDDK image to the `spec.vddkInitImage` field of the `HyperConverged` custom resource (CR).
-* If you are performing a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
-* If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
-
-.Procedure
-
-. Obtain the vCenter SHA-1 fingerprint:
+* If your source provider is VMware vSphere, the following additional prerequisites apply:
+** The VDDK image must be added to the `HyperConverged` custom resource.
+** For warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
+** If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
+** You must have the SHA-1 fingerprint of the vCenter host. You can obtain the fingerprint by running the following command:
 +
 [source,terminal]
 ----
@@ -56,7 +54,9 @@ $ openssl s_client \
 01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67
 ----
 
-. Create a `Secret` CR manifest for the VMware provider:
+.Procedure
+
+. Create a `Secret` CR manifest:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -64,20 +64,22 @@ $ cat << EOF | oc apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
-  name: <vmware_secret>
+  name: <secret>
   namespace: {namespace}
 type: Opaque
 stringData:
-  user: <vcenter_user> <1>
-  password: <vcenter_password> <2>
-  thumbprint: <vcenter_fingerprint> <3>
+  user: <user> <1>
+  password: <password> <2>
+  cacert: <{rhv-short}_ca_certificate> <3>
+  thumbprint: <vcenter_fingerprint> <4>
 EOF
 ----
-<1> Specify the vCenter administrator account, for example, `administrator@vsphere.local`.
-<2> Specify the vCenter password.
-<3> Specify the vCenter SHA-1 fingerprint.
+<1> Specify the base64-encoded vCenter admin user or the {rhv-short} {manager} user.
+<2> Specify the base64-encoded password.
+<3> {rhv-short} only: Specify the base64-encoded CA certificate of the {manager}. You can retrieve it at `https://<www.example.com>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
+<4> VMware only: Specify the vCenter SHA-1 fingerprint.
 
-. Create a `Provider` CR manifest for the VMware provider:
+. Create a `Provider` CR manifest:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -85,20 +87,21 @@ $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
-  name: <vmware_provider>
+  name: <provider>
   namespace: {namespace}
 spec:
-  type: vsphere
-  url: <api_end_point> <1>
+  type: <provider_type> <1>
+  url: <api_end_point> <2>
   secret:
-    name: <vmware_secret> <2>
+    name: <secret> <3>
     namespace: {namespace}
 EOF
 ----
-<1> Specify the vSphere API end point, for example, `https://<vcenter.host.com>/sdk`.
-<2> Specify the name of the VMware `Secret` CR.
+<1> Allowed values are `ovirt` and `vsphere`.
+<2> Specify the API end point URL, for example, `https://<www.example.com>/sdk` for vSphere or `https://<www.example.com>/ovirt-engine/api/` for {rhv-short}.
+<3> Specify the name of provider `Secret` CR.
 
-. Create a `Host` CR manifest for the VMware host:
+. VMware only: Create a `Host` CR manifest:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -117,7 +120,7 @@ spec:
 EOF
 ----
 <1> Specify the name of the VMware `Provider` CR.
-<2> Specify the _managed object reference_ of the VMware host.
+<2> Specify the managed object reference (MOR) of the VMware host.
 <3> Specify the IP address of the VMware migration network.
 
 . Create a `NetworkMap` CR manifest to map the source and destination networks:
@@ -133,18 +136,22 @@ metadata:
 spec:
   map:
     - destination:
+        name: <pod>
+        namespace: {namespace}
         type: pod <1>
-      source:
-        id: <source_network_mor> <2>
+      source: <2>
+        id: <source_network_id> <3>
+        name: <source_network_name>
     - destination:
+        name: <network_attachment_definition> <4>
+        namespace: <network_attachment_definition_namespace> <5>
         type: multus
-        name: <network_attachment_definition> <3>
-        namespace: <network_attachment_definition_namespace> <4>
       source:
-        id: <source_network_mor>
+        id: <source_network_id>
+        name: <source_network_name>
   provider:
     source:
-      name: <vmware_provider>
+      name: <source_provider>
       namespace: {namespace}
     destination:
       name: <destination_cluster>
@@ -152,9 +159,10 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> Specify the managed object reference of the VMware network.
-<3> Specify the network attachment definition for each additional destination network.
-<4> Specify the namespace of the network attachment definition.
+<2> You can use either the `id` _or_ the `name` parameter to specify the source network.
+<3> Specify the VMware network MOR or {rhv-short} network UUID.
+<4> Specify a network attachment definition for each additional {virt} network.
+<5> Specify the namespace of the {virt} network attachment definition.
 
 . Create a `StorageMap` CR manifest:
 +
@@ -170,18 +178,25 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
+        accessMode: <access_mode> <1>
       source:
-        id: <source_datastore_mor> <1>
+        id: <source_datastore> <2>
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode>
+      source:
+        id: <source_datastore>
   provider:
     source:
-      name: <vmware_provider>
+      name: <source_provider>
       namespace: {namespace}
     destination:
       name: <destination_cluster>
       namespace: {namespace}
 EOF
 ----
-<1> Specify the managed object reference of the VMware data storage.
+<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+<2> Specify the VMware data storage MOR or {rhv-short} storage domain UUID, for example, `f2737930-b567-451a-9ceb-2887f6207009`.
 
 . Create a `Plan` CR manifest for the migration:
 +
@@ -194,14 +209,14 @@ metadata:
   name: <plan> <1>
   namespace: {namespace}
 spec:
+  warm: true <2>
   provider:
     source:
-      name: <vmware_provider>
+      name: <source_provider>
       namespace: {namespace}
     destination:
       name: <destination_cluster>
       namespace: {namespace}
-  warm: true <2>
   map:
     network: <3>
       name: <network_map> <4>
@@ -211,19 +226,19 @@ spec:
       namespace: {namespace}
   targetNamespace: {namespace}
   vms: <6>
-    - id: <source_vm_mor> <7>
+    - id: <source_vm> <7>
     - name: <source_vm>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
-<2> Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` CR manifest, only the precopy stage will run.
-<3> You can create multiple network mappings for source and destination networks.
+<2> VMware only: Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` CR manifest, only the precopy stage will run. Warm migration is not supported for {rhv-short}.
+<3> You can add multiple network mappings.
 <4> Specify the name of the `NetworkMap` CR.
 <5> Specify the name of the `StorageMap` CR.
 <6> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
-<7> Specify the managed object reference of the VMware VM.
+<7> Specify the VMware VM MOR or {rhv-short} VM UUID.
 
-. Optional: To change the time interval between the CBT snapshots for warm migration, patch the `vm-import-controller-config` config map:
+. Optional, for VMware only: To change the time interval between the CBT snapshots for warm migration, patch the `vm-import-controller-config` config map:
 +
 [source,terminal]
 ----

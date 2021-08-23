@@ -14,17 +14,15 @@ You can create a storage mapping by using the {project-short} web console to map
 
 .Procedure
 
-. Click *Mappings* -> *Storage*.
-. Click *Create mapping*.
-. Complete the following fields:
+. Click *Mappings*.
+. Click the *Storage* tab and then click *Create mapping*.
+. Enter the *Name* of the storage mapping.
+. Select a *Source provider* and a *Target provider*.
+. If your source provider is VMware, select a *Source datastore* and a *Target storage class*.
 
-* *Name*: Enter a name to display in the storage mappings list.
-* *Source provider*: Select a source provider.
-* *Target provider*: Select a target provider.
-* *Source datastores*: Select a source data store.
-* *Target storage classes*: Select a target storage class.
+. If your source provider is {rhv-full}, select a *Source storage domain* and a *Target storage class*.
 
-. Optional: Click *Add* to create additional storage mappings or to map multiple data stores to a single storage class.
+. Optional: Click *Add* to create additional storage mappings or to map multiple source data stores or storage domains to a single storage class.
 . Click *Create*.
 +
-The mapping is displayed on the *Storage mappings* screen.
+The mapping is displayed on the *Storage mappings* page.

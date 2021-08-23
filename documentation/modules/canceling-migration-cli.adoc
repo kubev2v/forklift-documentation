@@ -13,7 +13,7 @@ You can cancel an entire migration or individual virtual machines (VMs) while a 
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc delete migration <migration_name> -n {namespace} <1>
+$ oc delete migration <migration> -n {namespace} <1>
 ----
 
 .Canceling the migration of individual VMs
@@ -26,17 +26,18 @@ $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Migration
 metadata:
-  name: <migration_name>
+  name: <migration>
   namespace: {namespace}
 ...
 spec:
-  cancel:
-  - id: vm-102 <1>
+  cancel: <1>
+  - id: vm-102 <2>
   - id: vm-203
   - name: rhel8-vm
 EOF
 ----
-<1> The `id` is the _managed object reference_ of the source VM.
+<1> You can specify the canceled VMs by using either the `id` _or_ the `name`.
+<2> VMware VM managed object reference or {rhv-short} VM UUID.
 
 . View the `VirtualMachineImport` pods to monitor the progress of the remaining VMs:
 +

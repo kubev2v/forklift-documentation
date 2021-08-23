@@ -10,12 +10,12 @@ You can create one or more network mappings by using the {project-short} web con
 .Prerequisites
 
 * Source and target providers added to the web console.
-* If you map more than one source and target network, you must create a link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional target network.
+* If you map more than one source and target network, each additional {virt} network requires its own link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition].
 
 .Procedure
 
-. Click *Mappings* -> *Network*.
-. Click *Create mapping*.
+. Click *Mappings*.
+. Click the *Network* tab and then click *Create mapping*.
 . Complete the following fields:
 
 * *Name*: Enter a name to display in the network mappings list.
@@ -25,9 +25,7 @@ You can create one or more network mappings by using the {project-short} web con
 * *Target namespaces/networks*: Select a target network.
 
 . Optional: Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
-
 . If you create an additional network mapping, select the network attachment definition as the target network.
-
 . Click *Create*.
 +
 The network mapping is displayed on the *Network mappings* screen.

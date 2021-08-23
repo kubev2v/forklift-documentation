@@ -5,9 +5,9 @@
 [id="selecting-provider-network_{context}"]
 = Selecting a migration network for a source provider
 
-You can select a migration network for a source provider in the {project-short} web console.
+You can select a migration network for a source provider in the {project-short} web console for improved performance.
 
-The default network might not provide the best performance for migration. If a VMware host network is not optimal for migration, a Warning icon is displayed beside the host number in the *Hosts* column of the provider list.
+If a source network is not optimal for migration, a Warning icon is displayed beside the host number in the *Hosts* column of the provider list.
 
 .Prerequisites
 
@@ -21,11 +21,8 @@ The migration network has the following prerequisites:
 
 . Click *Providers*.
 . Click the host number of a provider to view the host list and network details.
-. Select the hosts to be updated and click *Select migration network*.
-. Fill in the following fields:
-* *Host admin userid*: User name to connect to the ESXi hosts
-* *Host admin password*: Password to connect to the ESXi hosts
-* *Network*: Select a network from the list of available networks.
+. Select the host to be updated and click *Select migration network*.
+. Select a *Network* from the list of available networks.
 +
 The network list displays only the networks accessible to all the selected hosts. The hosts must have
 

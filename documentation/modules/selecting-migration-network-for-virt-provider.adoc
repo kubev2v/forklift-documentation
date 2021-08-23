@@ -17,7 +17,7 @@ You can override the default migration network of the provider by selecting a di
 .Procedure
 
 . In the {project-short} web console, click *Providers*.
-. Click *{virt}*.
+. Click the *{virt}* tab.
 . Select a provider and click *Select migration network*.
 . Select a network from the list of available networks and click *Select*.
 . Click the network number in the *Networks* column beside the provider to verify that the selected network is the default migration network.

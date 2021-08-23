@@ -18,10 +18,12 @@
 :the-lc: the
 :virt: OpenShift Virtualization
 :must-gather: registry.redhat.io/migration-toolkit-virtualization/mtv-must-gather-rhel8:{project-z-version}
-:a-virt: an {virt}
 :rhv-full: Red Hat Virtualization
 :rhv-short: RHV
-:a-rhv: a Red Hat Virtualization
+:a-rhv: a {rhv-full}
+:a-rhv-short: a {rhv-short}
+:a-virt: an {virt}
+:manager: Manager
 
 // doc metadata
 :icons: font
