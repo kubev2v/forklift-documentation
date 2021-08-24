@@ -5,9 +5,9 @@
 [id="using-must-gather_{context}"]
 = Using the must-gather tool
 
-You can collect logs, metrics, and information about {project-short} custom resources by using the `must-gather` tool.
+You can collect logs and information about {project-short} custom resources (CRs) by using the `must-gather` tool. You must attach a `must-gather` data file to all customer cases.
 
-The `must-gather` data must be attached to all customer cases.
+You can gather data for a specific namespace, migration plan, or virtual machine (VM) by using the filtering options.
 
 [NOTE]
 ====
@@ -19,12 +19,10 @@ If you specify a non-existent resource in the filtered `must-gather` command, no
 * You must be logged in to the {virt} cluster as a user with the `cluster-admin` role.
 * You must have the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[{ocp} CLI (`oc`)] installed.
 
-.Procedure
+.Collecting logs and CR information
 
 . Navigate to the directory where you want to store the `must-gather` data.
 . Run the `oc adm must-gather` command:
-
-* To gather data for the past hour:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -33,12 +31,25 @@ $ oc adm must-gather --image={must-gather}
 +
 The data is saved as `/must-gather/must-gather.tar.gz`. You can upload this file to a support case on the link:https://access.redhat.com/[Red Hat Customer Portal].
 
-* To gather data for the past 24 hours:
+. Optional: Run the `oc adm must-gather` command with the following options to gather filtered data:
+
+* Namespace:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc adm must-gather --image={must-gather} -- /usr/bin/gather_metrics_dump
+$ oc adm must-gather --image={must-gather} \
+  -- NS=<namespace> /usr/bin/targeted
 ----
+
+* Migration plan:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc adm must-gather --image={must-gather} \
+  -- PLAN=<migration_plan> /usr/bin/targeted
+----
+
+* Virtual machine:
 +
 [source,terminal,subs="attributes+"]
 ----
