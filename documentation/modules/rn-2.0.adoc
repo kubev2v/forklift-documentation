@@ -1,0 +1,63 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-20_{context}"]
+= {project-full} 2.0
+
+[id="new-features-and-enhancements-20_{context}"]
+== New features and enhancements
+
+This release adds the following features and improvements.
+
+[id="warm-migration-20_{context}"]
+=== Warm migration
+
+Warm migration reduces downtime by copying most of the VM data during a precopy stage while the VMs are running. During the cutover stage, the VMs are stopped and the rest of the data is copied.
+
+[id="cancel-migration-20_{context}"]
+=== Cancel migration
+
+You can cancel an entire migration plan or individual VMs while a migration is in progress. A canceled migration plan can be restarted in order to migrate the remaining VMs.
+
+[id="select-migration-network-20_{context}"]
+=== Migration network
+
+You can select a migration network for the source and target providers for improved performance. By default, data is copied using the VMware administration network and the {ocp} pod network.
+
+[id="validation-service-20_{context}"]
+=== Validation service
+
+The validation service checks source VMs for issues that might affect migration and flags the VMs with concerns in the migration plan.
+
+ifeval::["{build}" == "downstream"]
+:FeatureName: The validation service
+include::modules/technology-preview.adoc[leveloffset=+1]
+endif::[]
+
+[id="known-issues-20_{context}"]
+== Known issues
+
+This section describes known issues and mitigations.
+
+[id="network-map-displays-a-destination-network-not-found-error-20_{context}"]
+=== Network map displays a "Destination network not found" error
+
+If the network map remains in a `NotReady` state and the `NetworkMap` CR manifest displays a `Destination network not found` error, the cause is a missing network attachment definition. You must create a link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network before you create the network map. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1971259[*BZ#1971259*])
+
+[id="warm-migration-gets-stuck-during-third-precopy-20_{context}"]
+=== Warm migration gets stuck during third precopy
+
+Warm migration uses changed block tracking snapshots to copy data during the precopy stage. The snapshots are created at one-hour intervals by default. When a snapshot is created, its contents are copied to the destination cluster. However, when the third snapshot is created, the first snapshot is deleted and the block tracking is lost. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1969894[*BZ#1969894*])
+
+You can do one of the following to mitigate this issue:
+
+* Start the cutover stage no more than one hour after the precopy stage begins so that only one internal snapshot is created.
+* Increase the snapshot interval in the `vm-import-controller-config` config map to `720` minutes:
++
+[source,terminal]
+----
+$ oc patch configmap/vm-import-controller-config \
+  -n openshift-cnv -p '{"data": \
+  {"warmImport.intervalMinutes": "720"}}'
+----
