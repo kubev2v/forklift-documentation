@@ -14,10 +14,6 @@ You can configure a hook to run an Ansible playbook or custom container image du
 .Prerequisites
 
 * If the target provider is not the {virt} cluster on which you installed {project-short}, you must add a target provider.
-* If your source provider is VMware, the following additional prerequisites apply:
-** You must create a VDDK image and add it to the `HyperConverged` custom resource.
-** For warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
-** If you are migrating more than 10 VMs from an ESXi host, you must increase the NFC service memory of the host.
 
 .Procedure
 

@@ -30,32 +30,25 @@ You must specify both a name and a namespace for namespace-scoped CRs.
 .Prerequisites
 
 * You must be logged in as a user with `cluster-admin` privileges.
-* The link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[OpenShift CLI] must be installed.
-* If you are mapping more than one source and destination network, you must create a link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network.
-* If your source provider is VMware vSphere, the following additional prerequisites apply:
-** The VDDK image must be added to the `HyperConverged` custom resource.
-** For warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
-** If you are performing more than 10 concurrent migrations from a single ESXi host, you must increase the NFC service memory of the host.
-** You must have the SHA-1 fingerprint of the vCenter host. You can obtain the fingerprint by running the following command:
-+
-[source,terminal]
-----
-$ openssl s_client \
-    -connect <www.example.com>:443 \ <1>
-    < /dev/null 2>/dev/null \
-    | openssl x509 -fingerprint -noout -in /dev/stdin \
-    | cut -d '=' -f 2
-----
-<1> Specify the vCenter name.
-+
-.Example output
-+
-[source,terminal]
-----
-01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67
-----
+* VMware only: You must have a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
 
 .Procedure
+
+. VMware only: Add the VDDK image to the `HyperConverged` CR:
++
+[source,yaml]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: hco.kubevirt.io/v1beta1
+kind: HyperConverged
+metadata:
+  name: kubevirt-hyperconverged
+  namespace: openshift-cnv
+spec:
+  vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <1>
+EOF
+----
+<1> Specify the VDDK image that you created.
 
 . Create a `Secret` CR manifest:
 +

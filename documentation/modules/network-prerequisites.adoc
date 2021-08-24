@@ -1,0 +1,69 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="network-prerequisites_{context}"]
+= Network prerequisites
+
+The following prerequisites apply to all migrations:
+
+* IP addresses, VLANs, and other network configuration settings must not be changed before or after migration. The MAC addresses of the virtual machines are preserved during migration.
+* The network connections between the source environment, the {virt} cluster, and the replication repository must be reliable and uninterrupted.
+* If you are mapping more than one source and destination network, you must create a link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network.
+
+[id="ports_{context}"]
+== Ports
+
+The firewalls must enable traffic over the following ports:
+
+[cols="1,1,1,1,2a",options="header"]
+.Network ports required for migrating from VMware vSphere
+|===
+|Port |Protocol |Source |Destination |Purpose
+
+|443
+|TCP
+|OpenShift nodes
+|VMware vCenter
+|VMware provider inventory
+
+Disk transfer authentication
+
+|443
+|TCP
+|OpenShift nodes
+|VMware ESXi hosts
+|Disk transfer authentication
+
+|902
+|TCP
+|OpenShift nodes
+|VMware ESXi hosts
+|Disk transfer data copy
+|===
+
+[cols="1,1,1,1,2a",options="header"]
+.Network ports required for migrating from {rhv-full}
+|===
+|Port |Protocol |Source |Destination |Purpose
+
+|443
+|TCP
+|OpenShift nodes
+|{rhv-short} Engine
+|{rhv-short} provider inventory
+
+Disk transfer authentication
+
+|443
+|TCP
+|OpenShift nodes
+|{rhv-short} hosts
+|Disk transfer authentication
+
+|54322
+|TCP
+|OpenShift nodes
+|{rhv-short} hosts
+|Disk transfer data copy
+|===
