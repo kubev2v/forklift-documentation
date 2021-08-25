@@ -69,12 +69,16 @@ To determine the cause:
 
 The time zone of the source VMs must be UTC with no offset. You can set the time zone to `GMT Standard Time` after first assessing the potential impact on the workload. link:https://bugzilla.redhat.com/show_bug.cgi?id=1993259[(*BZ#1993259*)]
 
-[id="rhv-resource-uuid-in-custom-resource-causes-a-provider-not-found-error-21_{context}"]
-=== {rhv-short} resource UUID in custom resource causes a "Provider not found" error
+[id="rhv-resource-uuid-causes-a-provider-not-found-error-21_{context}"]
+=== {rhv-short} resource UUID causes a "Provider not found" error
 
-If a {rhv-short} resource is referenced by its UUID in a `Host`, `NetworkMap`, `StorageMap`, or `Plan` custom resource (CR), a "Provider not found" error is displayed. You must use the resource name. link:https://bugzilla.redhat.com/show_bug.cgi?id=1994037[(*BZ#1994037*)]
+If a {rhv-short} resource UUID is used in a `Host`, `NetworkMap`, `StorageMap`, or `Plan` custom resource (CR), a "Provider not found" error is displayed.
 
-[id="rhv-resource-name-in-custom-resource-might-cause-a-critical-ambiguous-reference-condition-21_{context}"]
-=== {rhv-short} resource name in custom resource might cause a critical "Ambiguous reference" condition
+You must use the resource name. link:https://bugzilla.redhat.com/show_bug.cgi?id=1994037[(*BZ#1994037*)]
 
-If a {rhv-short} resource is referenced by name in a `NetworkMap`, `StorageMap`, or `Plan` CR and if a resource with the same name exists in another data center, the `Plan` CR displays a critical "Ambiguous reference" condition. You must rename the resource or use the resource UUID. link:https://bugzilla.redhat.com/show_bug.cgi?id=1993089[(*BZ#1993089*)]
+[id="same-rhv-resource-name-in-different-data-centers-21_{context}"]
+=== Same {rhv-short} resource name in different data centers causes ambiguous reference
+
+If a {rhv-short} resource name is used in a `NetworkMap`, `StorageMap`, or `Plan` custom resource (CR) and if the same resource name exists in another data center, the `Plan` CR displays a critical "Ambiguous reference" condition. You must rename the resource or use the resource UUID in the CR.
+
+In the web console, the resource name appears twice in the same list without a data center reference to distinguish them. You must rename the resource. link:https://bugzilla.redhat.com/show_bug.cgi?id=1993089[(*BZ#1993089*)]
