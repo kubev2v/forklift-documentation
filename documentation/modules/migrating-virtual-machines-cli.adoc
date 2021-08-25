@@ -12,6 +12,7 @@ You can migrate virtual machines (VMs) from the command line (CLI) by creating t
 * `Host` contains the VMware host details.
 * `NetworkMap` maps the source and destination networks.
 * `StorageMap` maps the source and destination storage.
+* Optional: `Hook` CR contains custom code that you can run on a VM at a specified phase of the migration.
 * `Plan` contains a list of VMs to migrate and specifies whether the migration is cold or warm. The `Plan` references the providers and maps.
 * `Migration` runs the `Plan`. If the migration is warm, it specifies the cutover time.
 +
@@ -198,6 +199,29 @@ EOF
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the VMware data storage MOR or {rhv-short} storage domain UUID, for example, `f2737930-b567-451a-9ceb-2887f6207009`.
 
+. Optional: Create a `Hook` CR manifest:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | oc apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Hook
+metadata:
+  name: <hook>
+  namespace: {namespace}
+spec:
+  image: quay.io/konveyor/hook-runner <1>
+  playbook: | <2>
+    LS0tCi0gbmFtZTogTWFpbgogIGhvc3RzOiBsb2NhbGhvc3QKICB0YXNrczoKICAtIG5hbWU6IExv
+    YWQgUGxhbgogICAgaW5jbHVkZV92YXJzOgogICAgICBmaWxlOiAiL3RtcC9ob29rL3BsYW4ueW1s
+    IgogICAgICBuYW1lOiBwbGFuCiAgLSBuYW1lOiBMb2FkIFdvcmtsb2FkCiAgICBpbmNsdWRlX3Zh
+    cnM6CiAgICAgIGZpbGU6ICIvdG1wL2hvb2svd29ya2xvYWQueW1sIgogICAgICBuYW1lOiB3b3Jr
+    bG9hZAoK
+EOF
+----
+<1> You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+<2> Optional: Base64-encoded Ansible playbook. If you specify a playbook, the `image` must be `hook-runner`.
+
 . Create a `Plan` CR manifest for the migration:
 +
 [source,yaml,subs="attributes+"]
@@ -228,6 +252,11 @@ spec:
   vms: <6>
     - id: <source_vm> <7>
     - name: <source_vm>
+      hooks: <8>
+        - hook:
+            namespace: {namespace}
+            name: <hook> <9>
+          step: <step> <10>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
@@ -237,6 +266,9 @@ EOF
 <5> Specify the name of the `StorageMap` CR.
 <6> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
 <7> Specify the VMware VM MOR or {rhv-short} VM UUID.
+<8> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<9> Specify the name of the `Hook` CR.
+<10> Allowed values are `PreHook`, before the migation plan starts, or `PostHook`, after the migration is complete.
 
 . Optional, for VMware only: To change the time interval between the CBT snapshots for warm migration, patch the `vm-import-controller-config` config map:
 +
