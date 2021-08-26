@@ -31,7 +31,7 @@ include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 include::modules/storage-support.adoc[leveloffset=+2]
 include::modules/warm-migration.adoc[leveloffset=+2]
 
-[id="Prerequisites_{context}"]
+[id="prerequisites_{context}"]
 == Prerequisites
 
 Review the following prerequisites to ensure that your environment is prepared for migration.
@@ -72,23 +72,16 @@ include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :context: mtv
 :mtv:
 
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
-
 [id="migrating-virtual-machines-to-virt_{context}"]
 == Migrating virtual machines to {virt}
 
 You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console or the command line interface (CLI).
 
-You must ensure that all xref:migration-prerequisites_{context}[migration prerequisites] are met.
+You must ensure that all xref:prerequisites_{context}[migration prerequisites] are met.
 
 {project-short} supports warm and cold migration for VMware. See xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
 
 {project-short} supports cold migration for {rhv-full}.
-
-[IMPORTANT]
-====
-If you are migrating virtual machines from VMware vSphere, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to the `HyperConverged` custom resource (CR). See xref:adding-vddk-to-mtv_{context}[Creating and using a VDDK image]
-====
 
 [id='migrating-vms-web-console_{context}']
 === Migrating virtual machines by using the {project-short} web console
