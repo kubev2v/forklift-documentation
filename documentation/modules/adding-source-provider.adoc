@@ -11,17 +11,7 @@ You can add a VMware source provider by using the {project-short} web console.
 .Prerequisites
 
 * vCenter SHA-1 fingerprint.
-+
-You can obtain the fingerprint by entering the following command:
-+
-[source,terminal]
-----
-$ openssl s_client \
-    -connect <www.example.com>:443 < /dev/null 2>/dev/null \ <1>
-    | openssl x509 -fingerprint -noout -in /dev/stdin \
-    | cut -d '=' -f 2
-----
-<1> Specify the vCenter host name.
+* VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
 endif::[]
 ifdef::rhv[]
 = Adding {a-rhv} source provider
@@ -30,16 +20,30 @@ You can add {a-rhv} source provider by using the {project-short} web console.
 
 .Prerequisites
 
-* CA certificate of the {manager}
-+
-You can obtain the CA certificate by navigating to `https://<www.example.com>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA` in a browser.
+* CA certificate of the {manager}.
 endif::[]
 
 .Procedure
 
+ifdef::vmware[]
+. Add the VDDK image to the `HyperConverged` CR:
++
+[source,yaml]
+----
+$ cat << EOF | oc apply -f -
+apiVersion: hco.kubevirt.io/v1beta1
+kind: HyperConverged
+metadata:
+  name: kubevirt-hyperconverged
+  namespace: openshift-cnv
+spec:
+  vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <1>
+EOF
+----
+<1> Specify the VDDK image that you created.
+endif::[]
 . In the {project-short} web console, click *Providers*.
 . Click *Add provider*.
-
 ifdef::vmware[]
 . Select *VMware* from the *Type* list.
 . Fill in the following fields:

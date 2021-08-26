@@ -1,0 +1,14 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="vmware-prerequisites_{context}"]
+= VMware prerequisites
+
+The following prerequisites apply to VMware migrations:
+
+* You must install link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] on all source virtual machines (VMs).
+* If you are running a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
+* You must create a VMware Virtual Disk Development Kit (VDDK) image.
+* You must obtain the SHA-1 fingerprint of the vCenter host.
+* If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the NFC service memory of the host.

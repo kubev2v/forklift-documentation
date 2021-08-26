@@ -1,0 +1,15 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="compatibility-guidelines_{context}"]
+= Software compatibility guidelines
+
+You must install compatible software versions.
+
+[cols="1,1,1,1,1", options="header"]
+.Compatible software versions
+|===
+|{project-short} |{ocp} |{virt} |VMware vSphere |{rhv-short}
+|2.1 |4.8 |4.8.1 |6.5 or later |4.6
+|===

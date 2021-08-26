@@ -31,15 +31,24 @@ include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 include::modules/storage-support.adoc[leveloffset=+2]
 include::modules/warm-migration.adoc[leveloffset=+2]
 
+[id="Prerequisites_{context}"]
+== Prerequisites
+
+Review the following prerequisites to ensure that your environment is prepared for migration.
+
+include::modules/compatibility-guidelines.adoc[leveloffset=+2]
+include::modules/network-prerequisites.adoc[leveloffset=+2]
+include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
+include::modules/rhv-prerequisites.adoc[leveloffset=+2]
+include::modules/vmware-prerequisites.adoc[leveloffset=+2]
+include::modules/creating-vddk-image.adoc[leveloffset=+3]
+include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+3]
+include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
+
 [id='installing-mtv_{context}']
 == Installing {the-lc} {project-full}
 
 You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
-
-[IMPORTANT]
-====
-If you are migrating virtual machines from VMware vSphere, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to the `HyperConverged` custom resource (CR). See xref:adding-vddk-to-mtv_{context}[Creating and using a VDDK image]
-====
 
 [id="installing-the-operator_{context}"]
 === Installing the {operator-name}
@@ -63,19 +72,23 @@ include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :context: mtv
 :mtv:
 
-include::modules/adding-vddk-to-mtv.adoc[leveloffset=+3]
+include::modules/adding-vddk-to-mtv.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines-to-virt_{context}"]
 == Migrating virtual machines to {virt}
 
 You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console or the command line interface (CLI).
 
+You must ensure that all xref:migration-prerequisites_{context}[migration prerequisites] are met.
+
 {project-short} supports warm and cold migration for VMware. See xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
 
 {project-short} supports cold migration for {rhv-full}.
 
-include::modules/migration-environment-requirements.adoc[leveloffset=+2]
-include::modules/increasing-esxi-nfc-service-memory.adoc[leveloffset=+3]
+[IMPORTANT]
+====
+If you are migrating virtual machines from VMware vSphere, you must create a VMware Virtual Disk Development Kit (VDDK) image and add it to the `HyperConverged` custom resource (CR). See xref:adding-vddk-to-mtv_{context}[Creating and using a VDDK image]
+====
 
 [id='migrating-vms-web-console_{context}']
 === Migrating virtual machines by using the {project-short} web console
