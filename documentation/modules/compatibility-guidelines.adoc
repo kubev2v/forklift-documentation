@@ -10,6 +10,6 @@ You must install compatible software versions.
 [cols="1,1,1,1,1", options="header"]
 .Compatible software versions
 |===
-|{project-short} |{ocp} |{virt} |VMware vSphere |{rhv-short}
+|{project-full} |{ocp} |{virt} |VMware vSphere |{rhv-full}
 |2.1 |4.8 |4.8.1 |6.5 or later |4.3 or later
 |===
