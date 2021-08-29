@@ -10,7 +10,7 @@ You must obtain the SHA-1 fingerprint of a vCenter host in order to create a `Se
 .Procedure
 
 * Run the following command:
-
++
 [source,terminal]
 ----
 $ openssl s_client \
@@ -20,9 +20,9 @@ $ openssl s_client \
     | cut -d '=' -f 2
 ----
 <1> Specify the vCenter name.
-
++
 .Example output
-
++
 [source,terminal]
 ----
 01:23:45:67:89:AB:CD:EF:01:23:45:67:89:AB:CD:EF:01:23:45:67
