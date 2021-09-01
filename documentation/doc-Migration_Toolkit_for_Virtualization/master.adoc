@@ -21,7 +21,7 @@ endif::[]
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
 
-You can migrate virtual machines from VMware vSphere or {rhv-full} to {virt} with {the} {project-first}.
+You can migrate virtual machines from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
 
 If you are migrating from VMware vSphere, see link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
 
