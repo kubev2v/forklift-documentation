@@ -15,7 +15,7 @@ endif::[]
 .Prerequisites
 
 * You must have the {virt} Operator installed.
-* YOu must have the {operator-name} installed.
+* You must have the {operator-name} installed.
 * You must be logged in as a user with `cluster-admin` privileges.
 
 .Procedure
