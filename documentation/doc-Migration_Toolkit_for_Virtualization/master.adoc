@@ -18,25 +18,20 @@ ifeval::["{build}" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[leveloffset=+1]
 endif::[]
 
-[id="about-mtv_{context}"]
+[id="about-mtv"]
 == About {the-lc} {project-full}
 
 You can migrate virtual machines from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
 
 If you are migrating from VMware vSphere, see link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
 
-include::modules/mtv-resources-and-services.adoc[leveloffset=+2]
-include::modules/mtv-workflow.adoc[leveloffset=+2]
-include::modules/virt-migration-workflow.adoc[leveloffset=+2]
-include::modules/storage-support.adoc[leveloffset=+2]
-include::modules/warm-migration.adoc[leveloffset=+2]
-
-[id="prerequisites_{context}"]
+[id="prerequisites"]
 == Prerequisites
 
 Review the following prerequisites to ensure that your environment is prepared for migration.
 
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
+include::modules/storage-support.adoc[leveloffset=+2]
 include::modules/network-prerequisites.adoc[leveloffset=+2]
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
@@ -45,12 +40,12 @@ include::modules/creating-vddk-image.adoc[leveloffset=+3]
 include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+3]
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
 
-[id='installing-mtv_{context}']
+[id='installing-mtv']
 == Installing {the-lc} {project-full}
 
 You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
 
-[id="installing-the-operator_{context}"]
+[id="installing-the-operator"]
 === Installing the {operator-name}
 
 You can install the {operator-name} by using the {ocp} web console or the command line interface (CLI).
@@ -72,23 +67,21 @@ include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :context: mtv
 :mtv:
 
-[id="migrating-virtual-machines-to-virt_{context}"]
+[id="migrating-virtual-machines-to-virt"]
 == Migrating virtual machines to {virt}
 
 You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console or the command line interface (CLI).
 
-You must ensure that all xref:prerequisites_{context}[migration prerequisites] are met.
+You must ensure that all xref:prerequisites[migration prerequisites] are met.
 
-{project-short} supports warm and cold migration for VMware. See xref:warm-migration.adoc#warm-migration_{context}[Warm migration].
+include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 
-{project-short} supports cold migration for {rhv-full}.
-
-[id='migrating-vms-web-console_{context}']
+[id="migrating-vms-web-console"]
 === Migrating virtual machines by using the {project-short} web console
 
 You can migrate virtual machines to {virt} by using the {project-short} web console.
 
-[id="adding-providers_{context}"]
+[id="adding-providers"]
 ==== Adding providers
 
 You can add providers by using the {project-short} web console.
@@ -120,7 +113,7 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 
-[id="uninstalling-mtv_{context}"]
+[id="uninstalling-mtv"]
 == Uninstalling {the-lc} {project-full}
 
 You can uninstall {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
@@ -128,10 +121,19 @@ You can uninstall {the-lc} {project-first} by using the {ocp} web console or the
 include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
 include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 
-[id="troubleshooting_{context}"]
+[id="troubleshooting"]
 == Troubleshooting
 
-This section describes ways to troubleshoot migration issues and error messages.
+This section provides information for troubleshooting common migration issues.
+
+[id="architecture"]
+=== Architecture
+
+This section describes {project-short} custom resources, services, and workflows.
+
+include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
+include::modules/mtv-workflow.adoc[leveloffset=+3]
+include::modules/virt-migration-workflow.adoc[leveloffset=+3]
 
 include::modules/error-messages.adoc[leveloffset=+2]
 include::modules/using-must-gather.adoc[leveloffset=+2]
