@@ -2,14 +2,22 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+[id="about-cold-warm-migration_{context}"]
+= About cold and warm migration
+
+{project-short} supports cold migration from {rhv-full} and warm migration from VMware vSphere.
+
+[id="cold-migration_{context}"]
+== Cold migration
+
+Cold migration is the default migration type. The source virtual machines are shut down while the data is copied.
+
 [id="warm-migration_{context}"]
-= Warm migration
+== Warm migration
 
-The default migration type for {the-lc} {project-first} is cold migration. During cold migration, the virtual machines (VMs) are shut down while the data is copied.
+Most of the data is copied during the _precopy_ stage while the source virtual machines (VMs) are running.
 
-{project-short} supports warm migration from VMware. 
-
-Warm migration copies most of the data during the precopy stage. Then the VMs are shut down and the remaining data is copied during the cutover stage.
+Then the VMs are shut down and the remaining data is copied during the _cutover_ stage.
 
 .Precopy stage
 
@@ -32,4 +40,4 @@ The VMs are shut down during the cutover stage and the remaining data is migrate
 
 You can start the cutover stage manually in the {project-short} console.
 
-You can schedule a cutover time from the CLI by specifying the value of the `cutover` parameter in the `Migration` CR manifest.
+You can schedule a cutover time by specifying the value of the `cutover` parameter in the `Migration` CR manifest.
