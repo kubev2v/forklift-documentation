@@ -87,7 +87,7 @@ spec:
   name: {operator}
   source: community-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "konveyor-forklift-operator.{project-z-version}"
+  startingCSV: "konveyor-forklift-operator.v{project-z-version}"
 EOF
 ----
 endif::[]
@@ -107,7 +107,7 @@ spec:
   name: {operator}
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "mtv-operator.{project-z-version}"
+  startingCSV: "mtv-operator.v{project-z-version}"
 EOF
 ----
 endif::[]
