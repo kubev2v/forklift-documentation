@@ -14,7 +14,7 @@ Check your migration environment to ensure that the following requirements are m
 * Virtual machines:
 ** link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] is installed.
 ** ISO/CDROM disks are unmounted.
-** NIC has no more than one IPv4 and/or one IPv6 address.
+** Each NIC must contain no more than one IPv4 and/or one IPv6 address.
 ** VM name contains only lowercase letters (`a-z`), numbers (`0-9`), or hyphens (`-`), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (`.`), or special characters.
 ** VM name does not duplicate the name of a VM in the {virt} environment.
 ** Operating system is certified and supported link:https://access.redhat.com/articles/973163#ocpvirt[for use as a guest operating system with {virt}] _and_ link:https://access.redhat.com/articles/1351473[for conversion to KVM with `virt-v2v`].
