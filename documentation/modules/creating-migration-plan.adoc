@@ -13,7 +13,7 @@ You can configure a hook to run an Ansible playbook or custom container image du
 
 .Prerequisites
 
-* If the target provider is not the {virt} cluster on which you installed {project-short}, you must add a target provider.
+* If {project-short} is not installed on the target cluster, you must add a target provider on the *Providers* page of the web console.
 
 .Procedure
 
