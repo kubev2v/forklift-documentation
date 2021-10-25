@@ -112,7 +112,8 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 
 // migrating VMs, canceling migration from CLI
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
-include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+2]
+include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 

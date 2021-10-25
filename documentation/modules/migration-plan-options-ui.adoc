@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="migration-plan-options-ui_{context}"]
+= Migration plan options
+
+On the *Migration plans* page of the {project-short} web console, you can click the {kebab} beside a migration plan to access the following options:
+
+* *Edit*: Edit the details of a migration plan. You cannot edit a migration plan while it is running or after it has completed successfully.
+* *Duplicate*: Create a new migration plan with the same virtual machines (VMs), parameters, mappings, and hooks as an existing plan. You can use this feature for the following tasks:
+
+** Migrate VMs to a different namespace.
+** Edit an archived migration plan.
+** Edit a migration plan with a different status, for example, failed, canceled, running, critical, or ready.
+
+* *Archive*: Delete the logs, history, and metadata of a migration plan. The plan cannot be edited or restarted. It can only be viewed.
++
+[NOTE]
+====
+The *Archive* option is irreversible. However, you can duplicate an archived plan.
+====
+
+* *Delete*: Permanently remove a migration plan. You cannot delete a running migration plan.
++
+[NOTE]
+====
+The *Delete* option is irreversible.
+====
+
+* *View details*: Display the details of a migration plan.
+* *Restart*: Restart a failed or canceled migration plan.
+* *Cancel scheduled cutover*: Cancel a scheduled cutover migration for a warm migration plan.
