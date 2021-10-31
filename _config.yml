@@ -34,7 +34,7 @@ asciidoctor:
   - virt=KubeVirt
   - a-virt=a KubeVirt
   - ocp=OKD
-  - ocp-version=4.8
+  - ocp-version=4.9
   - ocp-short=OKD
   - user-guide-title=Installing and using Forklift
   - rn-title=Release notes
