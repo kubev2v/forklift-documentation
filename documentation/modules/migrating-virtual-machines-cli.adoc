@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="migrating-virtual-machines-cli_{context}"]
-= Migrating virtual machines from the command line interface
+= Migrating virtual machines
 
 You can migrate virtual machines (VMs) from the command line (CLI) by creating the following custom resources (CRs):
 
@@ -262,16 +262,6 @@ EOF
 <8> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <9> Specify the name of the `Hook` CR.
 <10> Allowed values are `PreHook`, before the migation plan starts, or `PostHook`, after the migration is complete.
-
-. Optional, for VMware only: To change the time interval between the CBT snapshots for warm migration, patch the `vm-import-controller-config` config map:
-+
-[source,terminal]
-----
-$ oc patch configmap/vm-import-controller-config \
-  -n openshift-cnv -p '{"data": \
-  {"warmImport.intervalMinutes": "<interval>"}}' <1>
-----
-<1> Specify the time interval in minutes. The default value is `60`.
 
 . Create a `Migration` CR manifest to run the `Plan` CR:
 +

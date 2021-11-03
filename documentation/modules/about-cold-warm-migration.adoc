@@ -23,7 +23,7 @@ Then the VMs are shut down and the remaining data is copied during the _cutover_
 
 The VMs are not shut down during the precopy stage.
 
-The VM disks are copied incrementally using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by patching the `vm-import-controller-config` config map.
+The VM disks are copied incrementally using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment.
 
 [IMPORTANT]
 ====
