@@ -48,6 +48,11 @@ features, see https://access.redhat.com/support/offerings/techpreview/.
 
 This section describes known issues and mitigations.
 
+[id="qemu-guest-agent-is-not-installed-on-migrated-vms_{context}"]
+=== QEMU guest agent is not installed on migrated VMs
+
+The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[*BZ#2018062*])
+
 [id="network-map-displays-a-destination-network-not-found-error-20_{context}"]
 === Network map displays a "Destination network not found" error
 
