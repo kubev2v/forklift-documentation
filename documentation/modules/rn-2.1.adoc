@@ -5,6 +5,10 @@
 [id="rn-21_{context}"]
 = {project-full} 2.1
 
+You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
+
+The release notes describe new features and enhancements, known issues, and technical changes.
+
 [id="technical-changes-21_{context}"]
 == Technical changes
 
