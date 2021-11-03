@@ -5,28 +5,28 @@
 [id="rn-20_{context}"]
 = {project-full} 2.0
 
+You can migrate virtual machines (VMs) from VMware vSphere to {virt} with {the-lc} {project-first}.
+
+The release notes describe new features and enhancements, known issues, and technical changes.
+
 [id="new-features-and-enhancements-20_{context}"]
 == New features and enhancements
 
 This release adds the following features and improvements.
 
-[id="warm-migration-20_{context}"]
-=== Warm migration
+.Warm migration
 
 Warm migration reduces downtime by copying most of the VM data during a precopy stage while the VMs are running. During the cutover stage, the VMs are stopped and the rest of the data is copied.
 
-[id="cancel-migration-20_{context}"]
-=== Cancel migration
+.Cancel migration
 
 You can cancel an entire migration plan or individual VMs while a migration is in progress. A canceled migration plan can be restarted in order to migrate the remaining VMs.
 
-[id="select-migration-network-20_{context}"]
-=== Migration network
+.Migration network
 
 You can select a migration network for the source and target providers for improved performance. By default, data is copied using the VMware administration network and the {ocp} pod network.
 
-[id="validation-service-20_{context}"]
-=== Validation service
+.Validation service
 
 The validation service checks source VMs for issues that might affect migration and flags the VMs with concerns in the migration plan.
 
@@ -48,18 +48,15 @@ features, see https://access.redhat.com/support/offerings/techpreview/.
 
 This section describes known issues and mitigations.
 
-[id="qemu-guest-agent-is-not-installed-on-migrated-vms_{context}"]
-=== QEMU guest agent is not installed on migrated VMs
+.QEMU guest agent is not installed on migrated VMs
 
 The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[*BZ#2018062*])
 
-[id="network-map-displays-a-destination-network-not-found-error-20_{context}"]
-=== Network map displays a "Destination network not found" error
+.Network map displays a "Destination network not found" error
 
 If the network map remains in a `NotReady` state and the `NetworkMap` CR manifest displays a `Destination network not found` error, the cause is a missing network attachment definition. You must create a link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network before you create the network map. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1971259[*BZ#1971259*])
 
-[id="warm-migration-gets-stuck-during-third-precopy-20_{context}"]
-=== Warm migration gets stuck during third precopy
+.Warm migration gets stuck during third precopy
 
 Warm migration uses changed block tracking snapshots to copy data during the precopy stage. The snapshots are created at one-hour intervals by default. When a snapshot is created, its contents are copied to the destination cluster. However, when the third snapshot is created, the first snapshot is deleted and the block tracking is lost. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1969894[*BZ#1969894*])
 

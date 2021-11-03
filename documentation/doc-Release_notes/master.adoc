@@ -1,15 +1,11 @@
 include::modules/common-attributes.adoc[]
-[id="{rn-title}_{context}"]
+[id="{rn-title}"]
 = {rn-title}
-
 :toc:
-:toclevels: 3
+:toc-title:
+:toclevels: 2
 :compat-mode:
 :context: release-notes
-
-You can migrate virtual machines (VMs) from VMware vSphere to {virt} with {the-lc} {project-first}.
-
-The release notes describe new features and enhancements, known issues, and technical changes.
 
 ifeval::["{build}" == "downstream"]
 [discrete]
