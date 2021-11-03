@@ -7,13 +7,14 @@ include::modules/common-attributes.adoc[]
 :compat-mode:
 :context: release-notes
 
-ifeval::["{build}" == "downstream"]
-include::modules/making-open-source-more-inclusive.adoc[]
-endif::[]
-
 You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
 
 The release notes describe new features and enhancements, known issues, and technical changes.
+
+ifeval::["{build}" == "downstream"]
+[discrete]
+include::modules/making-open-source-more-inclusive.adoc[]
+endif::[]
 
 include::modules/rn-2.1.adoc[leveloffset=+1]
 include::modules/rn-2.0.adoc[leveloffset=+1]
