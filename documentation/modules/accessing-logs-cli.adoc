@@ -2,10 +2,10 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="using-must-gather_{context}"]
-= Using the must-gather tool
+[id="accessing-logs-cli_{context}"]
+= Accessing logs from the command line
 
-You can collect logs and information about {project-short} custom resources (CRs) by using the `must-gather` tool. You must attach a `must-gather` data file to all customer cases.
+You can access logs and information about {project-short} custom resources (CRs) from the command line by using the `must-gather` tool. You must attach a `must-gather` data file to all customer cases.
 
 You can gather data for a specific namespace, migration plan, or virtual machine (VM) by using the filtering options.
 

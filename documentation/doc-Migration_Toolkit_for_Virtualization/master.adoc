@@ -142,6 +142,11 @@ include::modules/mtv-workflow.adoc[leveloffset=+3]
 include::modules/virt-migration-workflow.adoc[leveloffset=+3]
 
 include::modules/error-messages.adoc[leveloffset=+2]
-include::modules/using-must-gather.adoc[leveloffset=+2]
+
+[id="logs_{context}"]
+=== Logs
+
+include::modules/accessing-logs-ui.adoc[leveloffset=+3]
+include::modules/accessing-logs-cli.adoc[leveloffset=+3]
 
 :mtv!:

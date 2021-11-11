@@ -1,0 +1,19 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="accessing-logs-ui_{context}"]
+= Downloading logs from the web console
+
+You can download logs for a completed, failed, or canceled migration plan and for migrated virtual machines (VMs) by using the {project-short} web console.
+
+.Procedure
+
+. In the web console, click *Migration plans*.
+. Click *Get logs* beside a migration plan name.
+. In the *Get logs* window, click *Get logs*.
++
+The logs are collected. A `Log collection complete` message is displayed.
+
+. Click *Download logs* to download the archive file.
+. Optional: To download logs for a migrated VM, click a migration plan name and then click *Get logs* beside the VM.
