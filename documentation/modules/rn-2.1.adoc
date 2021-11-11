@@ -5,6 +5,10 @@
 [id="rn-21_{context}"]
 = {project-full} 2.1
 
+You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
+
+The release notes describe new features and enhancements, known issues, and technical changes.
+
 [id="technical-changes-21_{context}"]
 == Technical changes
 
@@ -35,6 +39,10 @@ You can migrate VMs with a single root I/O virtualization (SR-IOV) network inter
 
 [id="known-issues-21_{context}"]
 == Known issues
+
+.QEMU guest agent is not installed on migrated VMs
+
+The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[*BZ#2018062*])
 
 .Disk copy stage does not progress
 

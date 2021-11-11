@@ -20,7 +20,7 @@ $ oc delete migration <migration> -n {namespace} <1>
 
 . Add the individual VMs to the `Migration` CR manifest:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | oc apply -f -
 apiVersion: forklift.konveyor.io/v1beta1

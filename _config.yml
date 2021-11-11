@@ -53,8 +53,8 @@ asciidoctor:
   - project-short=Forklift
   - project-full=Forklift
   - project-first=Forklift
-  - project-version=2.1
-  - project-z-version=2.1.0
+  - project-version=2.2
+  - project-z-version=2.2.0
   - the-lc=
   - the=
   safe: unsafe
