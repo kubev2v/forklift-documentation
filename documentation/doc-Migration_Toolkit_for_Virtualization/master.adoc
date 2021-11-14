@@ -45,26 +45,21 @@ include::modules/creating-vddk-image.adoc[leveloffset=+3]
 include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+3]
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
 
-[id='installing-mtv']
-== Installing {the-lc} {project-full}
-
-You can install {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
-
 [id="installing-the-operator"]
-=== Installing the {operator-name}
+== Installing the {operator-name}
 
 You can install the {operator-name} by using the {ocp} web console or the command line interface (CLI).
 
 :context: web
 :web:
-include::modules/installing-mtv-operator.adoc[leveloffset=+3]
+include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
 [discrete]
 include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :!web:
 :context: cli
 :cli:
-include::modules/installing-mtv-operator.adoc[leveloffset=+3]
+include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
 [discrete]
 include::modules/obtaining-console-url.adoc[leveloffset=+3]
@@ -72,49 +67,56 @@ include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :context: mtv
 :mtv:
 
-[id="migrating-virtual-machines-to-virt"]
-== Migrating virtual machines to {virt}
-
-You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console or the command line interface (CLI).
-
-You must ensure that all xref:prerequisites[migration prerequisites] are met.
-
 [id="migrating-vms-web-console"]
-=== Migrating virtual machines by using the {project-short} web console
+== Migrating virtual machines by using the {project-short} web console
 
-You can migrate virtual machines to {virt} by using the {project-short} web console.
+You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console.
+
+[IMPORTANT]
+====
+You must ensure that all xref:prerequisites[migration prerequisites] are met.
+====
 
 [id="adding-providers"]
-==== Adding providers
+=== Adding providers
 
 You can add providers by using the {project-short} web console.
 
 :mtv!:
 :context: vmware
 :vmware:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/adding-source-provider.adoc[leveloffset=+3]
 :vmware!:
 :context: rhv
 :rhv:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/adding-source-provider.adoc[leveloffset=+3]
 :rhv!:
 :mtv:
 include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+4]
 
-include::modules/adding-virt-provider.adoc[leveloffset=+4]
-
+include::modules/adding-virt-provider.adoc[leveloffset=+3]
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
-include::modules/creating-network-mapping.adoc[leveloffset=+3]
-include::modules/creating-storage-mapping.adoc[leveloffset=+3]
-include::modules/creating-migration-plan.adoc[leveloffset=+3]
-include::modules/running-migration-plan.adoc[leveloffset=+3]
-include::modules/changing-precopy-intervals-ui.adoc[leveloffset=+3]
+
+include::modules/creating-network-mapping.adoc[leveloffset=+2]
+include::modules/creating-storage-mapping.adoc[leveloffset=+2]
+include::modules/creating-migration-plan.adoc[leveloffset=+2]
+include::modules/running-migration-plan.adoc[leveloffset=+2]
 include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 
-[id="migrating-virtual-machines-from-cli"]
-=== Migrating virtual machines from the command line interface
+include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+include::modules/changing-precopy-intervals-ui.adoc[leveloffset=+3]
 
-include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+3]
+[id="migrating-virtual-machines-cli"]
+== Migrating virtual machines from the command line interface
+
+You can migrate virtual machines (VMs) to {virt} from the command line (CLI).
+
+[IMPORTANT]
+====
+You must ensure that all xref:prerequisites[migration prerequisites] are met.
+====
+
+include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
