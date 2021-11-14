@@ -74,7 +74,7 @@ You can migrate virtual machines (VMs) to {virt} by using the {project-short} we
 
 [IMPORTANT]
 ====
-You must ensure that all xref:prerequisites[migration prerequisites] are met.
+You must ensure that all xref:prerequisites[prerequisites] are met.
 ====
 
 [id="adding-providers"]
@@ -113,7 +113,7 @@ You can migrate virtual machines (VMs) to {virt} from the command line (CLI).
 
 [IMPORTANT]
 ====
-You must ensure that all xref:prerequisites[migration prerequisites] are met.
+You must ensure that all xref:prerequisites[prerequisites] are met.
 ====
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
