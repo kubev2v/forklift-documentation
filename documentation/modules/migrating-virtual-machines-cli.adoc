@@ -23,9 +23,9 @@ You must specify both a name and a namespace for namespace-scoped CRs.
 
 . VMware only: Add the VDDK image to the `HyperConverged` CR:
 +
-[source,yaml]
+[source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: hco.kubevirt.io/v1beta1
 kind: HyperConverged
 metadata:
@@ -41,7 +41,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
@@ -64,7 +64,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
@@ -86,7 +86,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Host
 metadata:
@@ -108,7 +108,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$  cat << EOF | oc apply -f -
+$  cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: NetworkMap
 metadata:
@@ -149,7 +149,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: StorageMap
 metadata:
@@ -183,7 +183,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$  cat << EOF | oc apply -f -
+$  cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Hook
 metadata:
@@ -206,7 +206,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
 metadata:
@@ -254,7 +254,7 @@ EOF
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Migration
 metadata:
@@ -277,5 +277,5 @@ You can associate multiple `Migration` CRs with a single `Plan` CR. If a migrati
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc get pods -n {namespace}
+$ {oc} get pods -n {namespace}
 ----

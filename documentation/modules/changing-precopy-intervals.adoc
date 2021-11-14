@@ -13,7 +13,7 @@ You can change the snapshot interval by patching the `ForkliftController` custom
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc patch forkliftcontroller/<forklift-controller> -n {namespace} -p '{"spec": {"controller_precopy_interval": <60>}}' --type=merge <1>
+$ {oc} patch forkliftcontroller/<forklift-controller> -n {namespace} -p '{"spec": {"controller_precopy_interval": <60>}}' --type=merge <1>
 ----
 <1> Specify the precopy interval in minutes. The default value is `60`.
 +

@@ -26,7 +26,7 @@ If you specify a non-existent resource in the filtered `must-gather` command, no
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc adm must-gather --image={must-gather}
+$ {oc} adm must-gather --image={must-gather}
 ----
 +
 The data is saved as `/must-gather/must-gather.tar.gz`. You can upload this file to a support case on the link:https://access.redhat.com/[Red Hat Customer Portal].
@@ -37,7 +37,7 @@ The data is saved as `/must-gather/must-gather.tar.gz`. You can upload this file
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc adm must-gather --image={must-gather} \
+$ {oc} adm must-gather --image={must-gather} \
   -- NS=<namespace> /usr/bin/targeted
 ----
 
@@ -45,7 +45,7 @@ $ oc adm must-gather --image={must-gather} \
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc adm must-gather --image={must-gather} \
+$ {oc} adm must-gather --image={must-gather} \
   -- PLAN=<migration_plan> /usr/bin/targeted
 ----
 
@@ -53,7 +53,7 @@ $ oc adm must-gather --image={must-gather} \
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc adm must-gather --image={must-gather} \
+$ {oc} adm must-gather --image={must-gather} \
   -- VM=<vm_name> NS=<namespace> /usr/bin/targeted <1>
 ----
 <1> You must specify the VM _name_, not the VM ID, as it appears in the `Plan` CR.

@@ -1,0 +1,34 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="accessing-default-validation-rules_{context}"]
+= Checking the default validation rules
+
+Before you create a custom rule, you must check the default rules of the `Validation` service to ensure that you do not create a rule that redefines an existing default value.
+
+Example: If a default rule contains the line `default valid_input = false` and you create a custom rule that contains the line `default valid_input = true`, the `Validation` service will not start.
+
+.Procedure
+
+. Connect to the terminal of the `Validation` pod:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} rsh <validation_pod>
+----
+
+. Go to the OPA policies directory for your provider:
++
+[source,terminal]
+----
+$ cd /usr/share/opa/policies/io/konveyor/forklift/<provider> <1>
+----
+<1> Specify `vmware` or `ovirt`.
+
+. Search for the default policies:
++
+[source,terminal]
+----
+$ grep -R "default" *
+----

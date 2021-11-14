@@ -46,7 +46,7 @@ ifdef::cli[]
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: project.openshift.io/v1
 kind: Project
 metadata:
@@ -58,7 +58,7 @@ EOF
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
@@ -75,7 +75,7 @@ ifeval::["{build}" == "upstream"]
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
@@ -95,7 +95,7 @@ ifeval::["{build}" == "downstream"]
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
@@ -116,7 +116,7 @@ endif::[]
 +
 [source,terminal,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: ForkliftController
 metadata:
@@ -131,7 +131,7 @@ EOF
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc get pods -n {namespace}
+$ {oc} get pods -n {namespace}
 ----
 +
 .Example output

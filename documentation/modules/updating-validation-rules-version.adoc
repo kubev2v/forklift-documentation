@@ -1,0 +1,57 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="updating-inventory-rules-version_{context}"]
+= Updating the inventory rules version
+
+You must update the inventory rules version each time you update the rules so that the `Provider Inventory` service detects the changes and triggers the `Validation` service.
+
+The rules version is recorded in a `rules_version.rego` file for each provider.
+
+.Procedure
+
+. Retrieve the current rules version:
++
+[source,terminal]
+----
+$ GET https://forklift-validation/v1/data/io/konveyor/forklift/<provider>/rules_version <1>
+----
++
+.Example output
++
+[source,json]
+----
+{
+   "result": {
+       "rules_version": 5
+   }
+}
+----
+
+. Connect to the terminal of the `Validation` pod:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} rsh <validation_pod>
+----
+
+. Update the rules version in the `/usr/share/opa/policies/io/konveyor/forklift/<provider>/rules_version.rego` file.
+. Log out of the `Validation` pod terminal.
+. Verify the updated rules version:
++
+[source,terminal]
+----
+$ GET https://forklift-validation/v1/data/io/konveyor/forklift/<provider>/rules_version <1>
+----
++
+.Example output
++
+[source,json]
+----
+{
+   "result": {
+       "rules_version": 6
+   }
+}
+----

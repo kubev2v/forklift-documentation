@@ -1,0 +1,126 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="creating-validation-rule_{context}"]
+= Creating a validation rule
+
+You create a validation rule by applying a config map custom resource (CR) containing the rule to the `Validation` service.
+
+[IMPORTANT]
+====
+* If you create a rule with the same _name_ as an existing rule, the `Validation` service performs an `OR` operation with the rules.
+* If you create a rule that contradicts a default rule, the `Validation` service will not start.
+====
+
+.Validation rule example
+
+Validation rules are based on virtual machine (VM) attributes collected by the `Provider Inventory` service.
+
+For example, the VMware API uses this path to check whether a VMware VM has NUMA node affinity configured: `MOR:VirtualMachine.config.extraConfig["numa.nodeAffinity"]`.
+
+The `Provider Inventory` service simplifies this configuration and returns a testable attribute with a list value:
+
+[source,terminal]
+----
+"numaNodeAffinity": [
+    "0",
+    "1"
+],
+----
+
+You create a link:https://www.openpolicyagent.org/docs/latest/policy-language/[Rego] query, based on this attribute, and add it to the `forklift-validation-config` config map:
+
+[source,terminal]
+----
+`count(input.numaNodeAffinity) != 0`
+----
+
+.Procedure
+
+. Create a config map CR according to the following example:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: <forklift-validation-config>
+  namespace: {namespace}
+data:
+  vmware_multiple_disks.rego: |-
+    package <provider_package> <1>
+
+    has_multiple_disks { <2>
+      count(input.disks) > 1
+    }
+
+    concerns[flag] {
+      has_multiple_disks <3>
+        flag := {
+          "category": "<Information>", <4>
+          "label": "Multiple disks detected",
+          "assessment": "Multiple disks detected on this VM."
+        }
+    }
+EOF
+----
+<1> Specify the provider package name. Allowed values are `io.konveyor.forklift.vmware` for VMware and `io.konveyor.forklift.ovirt` for {rhv-full}.
+<2> Specify the `concerns` name and Rego query.
+<3> Specify the `concerns` name and `flag` parameter values.
+<4> Allowed values are `Critical`, `Warning`, and `Information`.
+
+. Stop the `Validation` pod by scaling the `forklift-controller` deployment to `0`:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} scale -n {namespace} --replicas=0 deployment/forklift-controller
+----
+
+. Start the `Validation` pod by scaling the `forklift-controller` deployment to `1`:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} scale -n {namespace} --replicas=1 deployment/forklift-controller
+----
+
+. Check the `Validation` pod log to verify that the pod started:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} logs -f <validation_pod>
+----
++
+If the custom rule conflicts with a default rule, the `Validation` pod will not start.
+
+. Remove the source provider:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} delete provider <provider> -n {namespace}
+----
+
+. Add the source provider to apply the new rule:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <provider>
+  namespace: {namespace}
+spec:
+  type: <provider_type> <1>
+  url: <api_end_point> <2>
+  secret:
+    name: <secret> <3>
+    namespace: {namespace}
+EOF
+----
+<1> Allowed values are `ovirt` and `vsphere`.
+<2> Specify the API end point URL, for example, `https://<www.example.com>/sdk` for vSphere or `https://<www.example.com>/ovirt-engine/api/` for {rhv-short}.
+<3> Specify the name of provider `Secret` CR.
+
+You must update the rules version after creating a custom rule so that the `Inventory` service detects the changes and validates the VMs.

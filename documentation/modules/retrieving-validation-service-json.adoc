@@ -1,0 +1,384 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="retrieving-validation-service-json_{context}"]
+= Retrieving the Inventory service JSON
+
+You retrieve the `Inventory` service JSON by sending an `Inventory` service query to a virtual machine (VM). The output contains an `"input"` key, which contains the inventory attributes that are queried by the `Validation` service rules.
+
+You can create a validation rule based on any attribute in the `"input"` key, for example, `input.snapshot.kind`.
+
+.Procedure
+
+. Retrieve the `Inventory` service route:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} get route <inventory_service> -n {namespace}
+----
+
+. Retrieve the `UUID` of a provider:
++
+[source,terminal]
+----
+$ GET https://<inventory_service_route>/providers/<provider> <1>
+----
+<1> Allowed values for the provider are `vsphere` and `ovirt`.
+
+. Retrieve the VMs of a provider:
++
+[source,terminal]
+----
+$ GET https://<inventory_service_route>/providers/<provider>/<UUID>/vms
+----
+
+. Retrieve the details of a VM:
++
+[source,terminal]
+----
+$ GET https://<inventory_service_route>/providers/<provider>/<UUID>/workloads/<vm>
+----
++
+.Example output
+[source,yaml]
+----
+{
+    "input": {
+        "selfLink": "providers/vsphere/c872d364-d62b-46f0-bd42-16799f40324e/workloads/vm-431",
+        "id": "vm-431",
+        "parent": {
+            "kind": "Folder",
+            "id": "group-v22"
+        },
+        "revision": 1,
+        "name": "iscsi-target",
+        "revisionValidated": 1,
+        "isTemplate": false,
+        "networks": [
+            {
+                "kind": "Network",
+                "id": "network-31"
+            },
+            {
+                "kind": "Network",
+                "id": "network-33"
+            }
+        ],
+        "disks": [
+            {
+                "key": 2000,
+                "file": "[iSCSI_Datastore] iscsi-target/iscsi-target-000001.vmdk",
+                "datastore": {
+                    "kind": "Datastore",
+                    "id": "datastore-63"
+                },
+                "capacity": 17179869184,
+                "shared": false,
+                "rdm": false
+            },
+            {
+                "key": 2001,
+                "file": "[iSCSI_Datastore] iscsi-target/iscsi-target_1-000001.vmdk",
+                "datastore": {
+                    "kind": "Datastore",
+                    "id": "datastore-63"
+                },
+                "capacity": 10737418240,
+                "shared": false,
+                "rdm": false
+            }
+        ],
+        "concerns": [],
+        "policyVersion": 5,
+        "uuid": "42256329-8c3a-2a82-54fd-01d845a8bf49",
+        "firmware": "bios",
+        "powerState": "poweredOn",
+        "connectionState": "connected",
+        "snapshot": {
+            "kind": "VirtualMachineSnapshot",
+            "id": "snapshot-3034"
+        },
+        "changeTrackingEnabled": false,
+        "cpuAffinity": [
+            0,
+            2
+        ],
+        "cpuHotAddEnabled": true,
+        "cpuHotRemoveEnabled": false,
+        "memoryHotAddEnabled": false,
+        "faultToleranceEnabled": false,
+        "cpuCount": 2,
+        "coresPerSocket": 1,
+        "memoryMB": 2048,
+        "guestName": "Red Hat Enterprise Linux 7 (64-bit)",
+        "balloonedMemory": 0,
+        "ipAddress": "10.19.2.96",
+        "storageUsed": 30436770129,
+        "numaNodeAffinity": [
+            "0",
+            "1"
+        ],
+        "devices": [
+            {
+                "kind": "RealUSBController"
+            }
+        ],
+        "host": {
+            "id": "host-29",
+            "parent": {
+                "kind": "Cluster",
+                "id": "domain-c26"
+            },
+            "revision": 1,
+            "name": "www.example.com",
+            "selfLink": "providers/vsphere/c872d364-d62b-46f0-bd42-16799f40324e/hosts/host-29",
+            "status": "green",
+            "inMaintenance": false,
+            "managementServerIp": "10.19.2.96",
+            "thumbprint": <thumbprint>,
+            "timezone": "UTC",
+            "cpuSockets": 2,
+            "cpuCores": 16,
+            "productName": "VMware ESXi",
+            "productVersion": "6.5.0",
+            "networking": {
+                "pNICs": [
+                    {
+                        "key": "key-vim.host.PhysicalNic-vmnic0",
+                        "linkSpeed": 10000
+                    },
+                    {
+                        "key": "key-vim.host.PhysicalNic-vmnic1",
+                        "linkSpeed": 10000
+                    },
+                    {
+                        "key": "key-vim.host.PhysicalNic-vmnic2",
+                        "linkSpeed": 10000
+                    },
+                    {
+                        "key": "key-vim.host.PhysicalNic-vmnic3",
+                        "linkSpeed": 10000
+                    }
+                ],
+                "vNICs": [
+                    {
+                        "key": "key-vim.host.VirtualNic-vmk2",
+                        "portGroup": "VM_Migration",
+                        "dPortGroup": "",
+                        "ipAddress": "192.168.79.13",
+                        "subnetMask": "255.255.255.0",
+                        "mtu": 9000
+                    },
+                    {
+                        "key": "key-vim.host.VirtualNic-vmk0",
+                        "portGroup": "Management Network",
+                        "dPortGroup": "",
+                        "ipAddress": "10.19.2.13",
+                        "subnetMask": "255.255.255.128",
+                        "mtu": 1500
+                    },
+                    {
+                        "key": "key-vim.host.VirtualNic-vmk1",
+                        "portGroup": "Storage Network",
+                        "dPortGroup": "",
+                        "ipAddress": "172.31.2.13",
+                        "subnetMask": "255.255.0.0",
+                        "mtu": 1500
+                    },
+                    {
+                        "key": "key-vim.host.VirtualNic-vmk3",
+                        "portGroup": "",
+                        "dPortGroup": "dvportgroup-48",
+                        "ipAddress": "192.168.61.13",
+                        "subnetMask": "255.255.255.0",
+                        "mtu": 1500
+                    },
+                    {
+                        "key": "key-vim.host.VirtualNic-vmk4",
+                        "portGroup": "VM_DHCP_Network",
+                        "dPortGroup": "",
+                        "ipAddress": "10.19.2.231",
+                        "subnetMask": "255.255.255.128",
+                        "mtu": 1500
+                    }
+                ],
+                "portGroups": [
+                    {
+                        "key": "key-vim.host.PortGroup-VM Network",
+                        "name": "VM Network",
+                        "vSwitch": "key-vim.host.VirtualSwitch-vSwitch0"
+                    },
+                    {
+                        "key": "key-vim.host.PortGroup-Management Network",
+                        "name": "Management Network",
+                        "vSwitch": "key-vim.host.VirtualSwitch-vSwitch0"
+                    },
+                    {
+                        "key": "key-vim.host.PortGroup-VM_10G_Network",
+                        "name": "VM_10G_Network",
+                        "vSwitch": "key-vim.host.VirtualSwitch-vSwitch1"
+                    },
+                    {
+                        "key": "key-vim.host.PortGroup-VM_Storage",
+                        "name": "VM_Storage",
+                        "vSwitch": "key-vim.host.VirtualSwitch-vSwitch1"
+                    },
+                    {
+                        "key": "key-vim.host.PortGroup-VM_DHCP_Network",
+                        "name": "VM_DHCP_Network",
+                        "vSwitch": "key-vim.host.VirtualSwitch-vSwitch1"
+                    },
+                    {
+                        "key": "key-vim.host.PortGroup-Storage Network",
+                        "name": "Storage Network",
+                        "vSwitch": "key-vim.host.VirtualSwitch-vSwitch1"
+                    },
+                    {
+                        "key": "key-vim.host.PortGroup-VM_Isolated_67",
+                        "name": "VM_Isolated_67",
+                        "vSwitch": "key-vim.host.VirtualSwitch-vSwitch2"
+                    },
+                    {
+                        "key": "key-vim.host.PortGroup-VM_Migration",
+                        "name": "VM_Migration",
+                        "vSwitch": "key-vim.host.VirtualSwitch-vSwitch2"
+                    }
+                ],
+                "switches": [
+                    {
+                        "key": "key-vim.host.VirtualSwitch-vSwitch0",
+                        "name": "vSwitch0",
+                        "portGroups": [
+                            "key-vim.host.PortGroup-VM Network",
+                            "key-vim.host.PortGroup-Management Network"
+                        ],
+                        "pNICs": [
+                            "key-vim.host.PhysicalNic-vmnic4"
+                        ]
+                    },
+                    {
+                        "key": "key-vim.host.VirtualSwitch-vSwitch1",
+                        "name": "vSwitch1",
+                        "portGroups": [
+                            "key-vim.host.PortGroup-VM_10G_Network",
+                            "key-vim.host.PortGroup-VM_Storage",
+                            "key-vim.host.PortGroup-VM_DHCP_Network",
+                            "key-vim.host.PortGroup-Storage Network"
+                        ],
+                        "pNICs": [
+                            "key-vim.host.PhysicalNic-vmnic2",
+                            "key-vim.host.PhysicalNic-vmnic0"
+                        ]
+                    },
+                    {
+                        "key": "key-vim.host.VirtualSwitch-vSwitch2",
+                        "name": "vSwitch2",
+                        "portGroups": [
+                            "key-vim.host.PortGroup-VM_Isolated_67",
+                            "key-vim.host.PortGroup-VM_Migration"
+                        ],
+                        "pNICs": [
+                            "key-vim.host.PhysicalNic-vmnic3",
+                            "key-vim.host.PhysicalNic-vmnic1"
+                        ]
+                    }
+                ]
+            },
+            "networks": [
+                {
+                    "kind": "Network",
+                    "id": "network-31"
+                },
+                {
+                    "kind": "Network",
+                    "id": "network-34"
+                },
+                {
+                    "kind": "Network",
+                    "id": "network-57"
+                },
+                {
+                    "kind": "Network",
+                    "id": "network-33"
+                },
+                {
+                    "kind": "Network",
+                    "id": "dvportgroup-47"
+                }
+            ],
+            "datastores": [
+                {
+                    "kind": "Datastore",
+                    "id": "datastore-35"
+                },
+                {
+                    "kind": "Datastore",
+                    "id": "datastore-63"
+                }
+            ],
+            "vms": null,
+            "networkAdapters": [],
+            "cluster": {
+                "id": "domain-c26",
+                "parent": {
+                    "kind": "Folder",
+                    "id": "group-h23"
+                },
+                "revision": 1,
+                "name": "mycluster",
+                "selfLink": "providers/vsphere/c872d364-d62b-46f0-bd42-16799f40324e/clusters/domain-c26",
+                "folder": "group-h23",
+                "networks": [
+                    {
+                        "kind": "Network",
+                        "id": "network-31"
+                    },
+                    {
+                        "kind": "Network",
+                        "id": "network-34"
+                    },
+                    {
+                        "kind": "Network",
+                        "id": "network-57"
+                    },
+                    {
+                        "kind": "Network",
+                        "id": "network-33"
+                    },
+                    {
+                        "kind": "Network",
+                        "id": "dvportgroup-47"
+                    }
+                ],
+                "datastores": [
+                    {
+                        "kind": "Datastore",
+                        "id": "datastore-35"
+                    },
+                    {
+                        "kind": "Datastore",
+                        "id": "datastore-63"
+                    }
+                ],
+                "hosts": [
+                    {
+                        "kind": "Host",
+                        "id": "host-44"
+                    },
+                    {
+                        "kind": "Host",
+                        "id": "host-29"
+                    }
+                ],
+                "dasEnabled": false,
+                "dasVms": [],
+                "drsEnabled": true,
+                "drsBehavior": "fullyAutomated",
+                "drsVms": [],
+                "datacenter": null
+            }
+        }
+    }
+}
+----

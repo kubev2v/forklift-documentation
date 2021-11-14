@@ -28,9 +28,9 @@ endif::[]
 ifdef::vmware[]
 . Add the VDDK image to the `HyperConverged` CR:
 +
-[source,yaml]
+[source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: hco.kubevirt.io/v1beta1
 kind: HyperConverged
 metadata:

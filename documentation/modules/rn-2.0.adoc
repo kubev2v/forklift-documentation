@@ -65,9 +65,9 @@ You can do one of the following to mitigate this issue:
 * Start the cutover stage no more than one hour after the precopy stage begins so that only one internal snapshot is created.
 * Increase the snapshot interval in the `vm-import-controller-config` config map to `720` minutes:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-$ oc patch configmap/vm-import-controller-config \
+$ {oc} patch configmap/vm-import-controller-config \
   -n openshift-cnv -p '{"data": \
   {"warmImport.intervalMinutes": "720"}}'
 ----
