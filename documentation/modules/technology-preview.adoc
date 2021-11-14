@@ -1,6 +1,6 @@
 // When including this file, ensure that {FeatureName} is set immediately before
 // the include. Otherwise it will result in an incorrect replacement.
-
+// :FeatureName: Example
 [IMPORTANT]
 ====
 {FeatureName} is a Technology Preview feature only. Technology Preview features
