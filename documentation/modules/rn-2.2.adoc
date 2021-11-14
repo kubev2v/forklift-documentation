@@ -39,3 +39,7 @@ Retaining the `Importer` pod for debug purposes causes warm migration to hang du
 As a temporary workaround, the `Importer` pod is removed at the end of the precopy stage so that the precopy succeeds. However, this means that the `Importer` pod log is not retained after warm migration is complete. You can only view the `Importer` pod log by using the `oc logs -f <cdi-importer_pod>` command during the precopy stage.
 
 This issue only affects the `Importer` pod log and warm migration. Cold migration and the `virt-v2v` logs are not affected.
+
+.Deleting migration plan does not remove temporary resources.
+
+Deleting a migration plan does not remove temporary resources such as `Importer` pods, `Conversion` pods, config maps, secrets, failed VMs and data volumes. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[*BZ#2018974*]) You must archive a migration plan before deleting it in order to clean up the temporary resources.
