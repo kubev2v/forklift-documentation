@@ -92,24 +92,22 @@ include::modules/adding-source-provider.adoc[leveloffset=+3]
 include::modules/adding-source-provider.adoc[leveloffset=+3]
 :rhv!:
 :mtv:
-include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+4]
-
+include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+3]
 include::modules/adding-virt-provider.adoc[leveloffset=+3]
-include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+3]
 
 include::modules/creating-network-mapping.adoc[leveloffset=+2]
 include::modules/creating-storage-mapping.adoc[leveloffset=+2]
 include::modules/creating-migration-plan.adoc[leveloffset=+2]
 include::modules/running-migration-plan.adoc[leveloffset=+2]
-include::modules/canceling-migration-ui.adoc[leveloffset=+3]
-
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 include::modules/changing-precopy-intervals-ui.adoc[leveloffset=+3]
+include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
-[id="migrating-virtual-machines-cli"]
-== Migrating virtual machines from the command line interface
+[id="migrating-virtual-machines-from-cli"]
+== Migrating virtual machines from the command line
 
-You can migrate virtual machines (VMs) to {virt} from the command line (CLI).
+You can migrate virtual machines to {virt} from the command line.
 
 [IMPORTANT]
 ====
@@ -117,7 +115,7 @@ You must ensure that all xref:prerequisites[prerequisites] are met.
 ====
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
-include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 
