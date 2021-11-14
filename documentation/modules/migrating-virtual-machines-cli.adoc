@@ -3,22 +3,9 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="migrating-virtual-machines-cli_{context}"]
-= Migrating virtual machines from the command line interface
+= Migrating virtual machines
 
-You can migrate virtual machines (VMs) from the command line (CLI) by creating the following custom resources (CRs):
-
-* `Secret` contains the source provider credentials.
-* `Provider` contains the source provider details.
-* `Host` contains the VMware host details.
-* `NetworkMap` maps the source and destination networks.
-* `StorageMap` maps the source and destination storage.
-* Optional: `Hook` CR contains custom code that you can run on a VM at a specified phase of the migration.
-* `Plan` contains a list of VMs to migrate and specifies whether the migration is cold or warm. The `Plan` references the providers and maps.
-* `Migration` runs the `Plan`. If the migration is warm, it specifies the cutover time.
-+
-You can associate multiple `Migration` CRs with a single `Plan` CR. If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs.
-
-The term _destination_ in the API is the same as _target_ in the web console.
+You migrate virtual machines (VMs) from the command line (CLI) by creating {project-short} custom resources (CRs).
 
 [IMPORTANT]
 ====
@@ -50,7 +37,7 @@ EOF
 ----
 <1> Specify the VDDK image that you created.
 
-. Create a `Secret` CR manifest:
+. Create a `Secret` CR manifest for the source provider credentials:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -73,7 +60,7 @@ EOF
 <3> {rhv-short} only: Specify the base64-encoded CA certificate of the {manager}. You can retrieve it at `https://<www.example.com>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
 <4> VMware only: Specify the vCenter SHA-1 fingerprint.
 
-. Create a `Provider` CR manifest:
+. Create a `Provider` CR manifest for the source provider:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -158,7 +145,7 @@ EOF
 <4> Specify a network attachment definition for each additional {virt} network.
 <5> Specify the namespace of the {virt} network attachment definition.
 
-. Create a `StorageMap` CR manifest:
+. Create a `StorageMap` CR manifest to map source and destination storage:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -192,7 +179,7 @@ EOF
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the VMware data storage MOR or {rhv-short} storage domain UUID, for example, `f2737930-b567-451a-9ceb-2887f6207009`.
 
-. Optional: Create a `Hook` CR manifest:
+. Optional: Create a `Hook` CR manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -293,6 +280,8 @@ EOF
 <1> Specify the name of the `Migration` CR.
 <2> Specify the name of the `Plan` CR that you are running. The `Migration` CR creates a `VirtualMachineImport` CR for each VM that is migrated.
 <3> Optional: Specify a cutover time according to the ISO 8601 format with the UTC time offset, for example, `2021-04-04T01:23:45.678+09:00`.
++
+You can associate multiple `Migration` CRs with a single `Plan` CR. If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs.
 
 . View the `VirtualMachineImport` pods to monitor the progress of the migration:
 +
