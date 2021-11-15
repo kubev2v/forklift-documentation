@@ -36,7 +36,9 @@ The QEMU guest agent is not installed on migrated VMs. Workaround: Install the Q
 
 Retaining the `Importer` pod for debug purposes causes warm migration to hang during the precopy stage. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2016290[*BZ#2016290*])
 
-As a temporary workaround, the `Importer` pod is removed at the end of the precopy stage so that the precopy succeeds. However, this means that the `Importer` pod log is not retained after warm migration is complete. You can only view the `Importer` pod log by using the `oc logs -f <cdi-importer_pod>` command during the precopy stage.
+As a temporary workaround, the `Importer` pod is removed at the end of the precopy stage so that the precopy succeeds. However, this means that the `Importer` pod log is not retained after warm migration is complete. If you download a log file with the {project-short} web console or `must-gather` tool, the `current.log` file contains an error message.
+
+You can only view the `Importer` pod log by using the `oc logs -f <cdi-importer_pod>` command during the precopy stage.
 
 This issue only affects the `Importer` pod log and warm migration. Cold migration and the `virt-v2v` logs are not affected.
 
