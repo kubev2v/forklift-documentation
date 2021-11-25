@@ -7,26 +7,38 @@
 
 You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
 
-The release notes describe new features and enhancements, known issues, and technical changes.
+The release notes describe technical changes, new features and enhancements, and known issues.
 
-// [id="technical-changes-22_{context}"]
-// == Technical changes
-//
-// .TBD
-//
-// TBD
-//
-// [id="new-features-and-enhancements-22_{context}"]
-// == New features and enhancements
-//
-// This release adds the following features and improvements.
-//
-// .TBD
-//
-// TBD
+[id="technical-changes-22_{context}"]
+== Technical changes
+
+This release has the following technical changes:
+
+.Setting the precopy time interval for warm migration
+
+You can set the time interval between snapshots taken during the precopy stage of warm migration.
+
+[id="new-features-and-enhancements-22_{context}"]
+== New features and enhancements
+
+This release has the following features and improvements:
+
+.Downloading logs by using the web console
+
+You can download logs for a migration plan or a migrated VM by using the {project-short} web console.
+
+.Duplicating a migration plan by using the web console
+
+You can duplicate a migration plan by using the web console, including its VMs, mappings, and hooks, in order to edit the copy and run as a new migration plan.
+
+.Archiving a migration plan by using the web console
+
+You can archive a migration plan by using the MTV web console. Archived plans can be viewed or duplicated. They cannot be run, edited, or unarchived.
 
 [id="known-issues-22_{context}"]
 == Known issues
+
+This release has the following known issues:
 
 .QEMU guest agent is not installed on migrated VMs
 
@@ -49,3 +61,11 @@ This issue only affects the `Importer` pod log and warm migration. Cold migratio
 .Deleting migration plan does not remove temporary resources.
 
 Deleting a migration plan does not remove temporary resources such as `Importer` pods, `Conversion` pods, config maps, secrets, failed VMs and data volumes. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[*BZ#2018974*]) You must archive a migration plan before deleting it in order to clean up the temporary resources.
+
+.Unclear error status message for VM with no operating system
+
+The error status message for a VM with no operating system on the *Migration plan details* page of the web console does not describe the reason for the failure. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[*BZ#2008846*])
+
+.Network, storage, and VM referenced by name in the Plan CR are not displayed in the web console.
+
+If a Plan CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-short} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
