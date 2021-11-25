@@ -9,21 +9,33 @@ You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {vir
 
 The release notes describe new features and enhancements, known issues, and technical changes.
 
-// [id="technical-changes-22_{context}"]
-// == Technical changes
-//
-// .TBD
-//
-// TBD
-//
-// [id="new-features-and-enhancements-22_{context}"]
-// == New features and enhancements
-//
-// This release adds the following features and improvements.
-//
-// .TBD
-//
-// TBD
+[id="technical-changes-22_{context}"]
+== Technical changes
+
+.Setting interval between precopies
+
+You can set the precopy interval.
+
+.Handling RHV VMs with USB enabled
+
+You can migrate an RHV VM with a host device of the USB type mapped to it, although the mapping is not supported on the target side.
+
+[id="new-features-and-enhancements-22_{context}"]
+== New features and enhancements
+
+This release adds the following features and improvements.
+
+.Downloading must-gather logs from the web console
+
+You can download logs for a migration plan or a migrated VM in the {project-full} web console.
+
+.Cloning a plan to use as a new plan
+
+You can make a copy of an existing migration plan and use the copy as a new plan.
+
+.Archiving a plan from the UI
+
+You can archive a migration plan that is no longer in use. Archived plans can be viewed and duplicated but cannot be edited.
 
 [id="known-issues-22_{context}"]
 == Known issues
@@ -49,3 +61,11 @@ This issue only affects the `Importer` pod log and warm migration. Cold migratio
 .Deleting migration plan does not remove temporary resources.
 
 Deleting a migration plan does not remove temporary resources such as `Importer` pods, `Conversion` pods, config maps, secrets, failed VMs and data volumes. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[*BZ#2018974*]) You must archive a migration plan before deleting it in order to clean up the temporary resources.
+
+.Unclear error message for failed migration of VMs with no operation system
+
+When migration plans for VMs with no operation system fail, the error message does not indicate the reason for the failure. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[*BZ#2008846*])
+
+.In a migration plan created from the CLI using names instead of IDs for network and storage mapping and for VMs, the mapping is shown as unavailable when the plan is opened in the {project-full} web console.
+
+If you create a migration plan from the CLI and use names for storage and network mapping and for VMs instead of their IDs, the plan shows the mapping as unavailable when you open it in the {project-full} web console. In addition, the edit and duplicate features do not work. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
