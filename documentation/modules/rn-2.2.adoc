@@ -12,30 +12,26 @@ The release notes describe new features and enhancements, known issues, and tech
 [id="technical-changes-22_{context}"]
 == Technical changes
 
-.Setting interval between precopies
+.Setting the precopy interval for warm migration
 
-You can set the precopy interval.
-
-.Handling RHV VMs with USB enabled
-
-You can migrate an RHV VM with a host device of the USB type mapped to it, although the mapping is not supported on the target side.
+You can set the interval between snapshots during the precopy stage of warm migration.
 
 [id="new-features-and-enhancements-22_{context}"]
 == New features and enhancements
 
 This release adds the following features and improvements.
 
-.Downloading must-gather logs from the web console
+.Downloading logs by using the web console
 
 You can download logs for a migration plan or a migrated VM in the {project-full} web console.
 
-.Cloning a plan to use as a new plan
+.Duplicating a migration plan
 
-You can make a copy of an existing migration plan and use the copy as a new plan.
+You can duplicate a migration plan, including its VMs, mappings, and hooks, in order to edit the copy and run as a new migration plan.
 
-.Archiving a plan from the UI
+.Archiving a migration plan by using the web console
 
-You can archive a migration plan that is no longer in use. Archived plans can be viewed and duplicated but cannot be edited.
+You can archive a migration plan. Archived plans can be viewed or duplicated. They cannot be run, edited, or unarchived.
 
 [id="known-issues-22_{context}"]
 == Known issues
@@ -62,10 +58,10 @@ This issue only affects the `Importer` pod log and warm migration. Cold migratio
 
 Deleting a migration plan does not remove temporary resources such as `Importer` pods, `Conversion` pods, config maps, secrets, failed VMs and data volumes. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[*BZ#2018974*]) You must archive a migration plan before deleting it in order to clean up the temporary resources.
 
-.Unclear error message for failed migration of VMs with no operation system
+.Unclear error status message for VM with no operating system
 
-When migration plans for VMs with no operation system fail, the error message does not indicate the reason for the failure. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[*BZ#2008846*])
+The error status message for a VM with no operating system on the *Migration plan details* page of the web console does not describe the reason for the failure. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[*BZ#2008846*])
 
-.In a migration plan created from the CLI using names instead of IDs for network and storage mapping and for VMs, the mapping is shown as unavailable when the plan is opened in the {project-full} web console.
+.Network, storage, and VM names in the Plan CR are not displayed in the web console.
 
-If you create a migration plan from the CLI and use names for storage and network mapping and for VMs instead of their IDs, the plan shows the mapping as unavailable when you open it in the {project-full} web console. In addition, the edit and duplicate features do not work. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
+If a Plan CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-full} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
