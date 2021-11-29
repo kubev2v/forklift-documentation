@@ -1,0 +1,68 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="collected-logs-cr-info_{context}"]
+= Collected logs and custom resource information
+
+You can download logs and custom resource (CR) `yaml` files for the following targets by using the {project-short} web console or the command line interface (CLI):
+
+* Migration plan: Web console or CLI.
+* Virtual machine: Web console or CLI.
+* Namespace: CLI only.
+
+The `must-gather` tool collects the following logs and CR files in an archive file:
+
+* Logs:
+** `importer` pod: Disk-to-data-volume conversion log.
+** `conversion` pod: VM conversion log. The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the VM.
+** `virt-launcher` pod: VM launcher log. When a migrated VM is powered on, the `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
+** `forklift-controller` pod: Filtered for the migration plan, virtual machine, or namespace.
+** `forklift-must-gather-api` pod: Filtered for the migration plan, virtual machine, or namespace.
++
+[NOTE]
+====
+Empty or excluded log files are not included in the `must-gather` archive file.
+====
+
+* CRs:
+** `DataVolume` CR: Represents a disk mounted on a migrated VM.
+** `VirtualMachine` CR: Represents a migrated VM.
+** `Plan` CR: Defines the VMs and storage and network mapping.
+
+.Example archive structure for a migration plan
+----
+must-gather/
+└── namespaces
+    ├── target-vm-ns
+    │   ├── crs
+    │   │   ├── datavolume
+    │   │   │   ├── mig-plan-vm-7595-tkhdz.yaml
+    │   │   │   ├── mig-plan-vm-7595-5qvqp.yaml
+    │   │   │   └── mig-plan-vm-8325-xccfw.yaml
+    │   │   └── virtualmachine
+    │   │       ├── test-test-rhel8-2disks2nics.yaml
+    │   │       └── test-x2019.yaml
+    │   └── logs
+    │       ├── importer-mig-plan-vm-7595-tkhdz <1>
+    │       │   └── current.log
+    │       ├── importer-mig-plan-vm-7595-5qvqp
+    │       │   └── current.log
+    │       ├── importer-mig-plan-vm-8325-xccfw
+    │       │   └── current.log
+    │       ├── mig-plan-vm-7595-4glzd <2>
+    │       │   └── current.log
+    │       └── mig-plan-vm-8325-4zw49
+    │           └── current.log
+    └── openshift-mtv
+        ├── crs
+        │   └── plan
+        │       └── mig-plan-cold.yaml
+        └── logs
+            ├── forklift-controller-67656d574-w74md
+            │   └── current.log
+            └── forklift-must-gather-api-89fc7f4b6-hlwb6
+                └── current.log
+----
+<1> `importer` pod log. The naming convention is `importer-<migration_plan>-<vm_id>-<5_char_id>` for VMware and `importer-<migration_plan>-<partial_vm_id><5_char_id>` for {rhv-full} ({rhv-short}), for example, `importer-mig-plan-ed90dfc6-9a17-4a8btnfh`, where `ed90dfc6-9a17-4a8` is the partial VM ID and `btnfh` is the 5-character ID.
+<3> `conversion` pod log. The naming convention is `<migration_plan>-<vm_id>-<5_char_id>` for VMware and `<migration_plan>-<partial_vm_id><5_char_id>` for {rhv-short}.
