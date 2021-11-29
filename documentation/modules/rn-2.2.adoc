@@ -23,15 +23,15 @@ This release adds the following features and improvements.
 
 .Downloading logs by using the web console
 
-You can download logs for a migration plan or a migrated VM in the {project-full} web console.
+You can download logs for a migration plan or a migrated VM by using the {project-short} web console.
 
-.Duplicating a migration plan
+.Duplicating a migration plan by using the web console
 
-You can duplicate a migration plan, including its VMs, mappings, and hooks, in order to edit the copy and run as a new migration plan.
+You can duplicate a migration plan by using the web console, including its VMs, mappings, and hooks, in order to edit the copy and run as a new migration plan.
 
 .Archiving a migration plan by using the web console
 
-You can archive a migration plan. Archived plans can be viewed or duplicated. They cannot be run, edited, or unarchived.
+You can archive a migration plan by using the MTV web console. Archived plans can be viewed or duplicated. They cannot be run, edited, or unarchived.
 
 [id="known-issues-22_{context}"]
 == Known issues
@@ -62,6 +62,6 @@ Deleting a migration plan does not remove temporary resources such as `Importer`
 
 The error status message for a VM with no operating system on the *Migration plan details* page of the web console does not describe the reason for the failure. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[*BZ#2008846*])
 
-.Network, storage, and VM names in the Plan CR are not displayed in the web console.
+.Network, storage, and VM referenced by name in the Plan CR are not displayed in the web console.
 
-If a Plan CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-full} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
+If a Plan CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-short} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
