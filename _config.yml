@@ -57,6 +57,7 @@ asciidoctor:
   - project-z-version=2.2.0
   - the-lc=
   - the=
+  - icon-check=&#x2714;
   safe: unsafe
 
 exclude:

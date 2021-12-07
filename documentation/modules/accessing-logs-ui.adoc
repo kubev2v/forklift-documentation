@@ -3,9 +3,9 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="accessing-logs-ui_{context}"]
-= Downloading logs from the web console
+= Downloading logs and custom resource information from the web console
 
-You can download logs for a completed, failed, or canceled migration plan and for migrated virtual machines (VMs) by using the {project-short} web console.
+You can download logs and information about custom resources (CRs) for a completed, failed, or canceled migration plan or for migrated virtual machines (VMs) by using the {project-short} web console.
 
 .Procedure
 
@@ -16,4 +16,4 @@ You can download logs for a completed, failed, or canceled migration plan and fo
 The logs are collected. A `Log collection complete` message is displayed.
 
 . Click *Download logs* to download the archive file.
-. Optional: To download logs for a migrated VM, click a migration plan name and then click *Get logs* beside the VM.
+. To download logs for a migrated VM, click a migration plan name and then click *Get logs* beside the VM.

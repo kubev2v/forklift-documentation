@@ -2,19 +2,19 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="virt-migration-workflows_{context}"]
+[id="virt-migration-workflow_{context}"]
 = Detailed migration workflow
 
 You can use the detailed migration workflow to troubleshoot a failed migration.
 
-ifeval::["{build}" == "downstream"]
-.Detailed {virt} migration workflow
-image::136_OpenShift_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
-endif::[]
-ifeval::["{build}" == "upstream"]
-.Detailed {virt} migration workflow
-image::136_Upstream_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
-endif::[]
+// ifeval::["{build}" == "downstream"]
+// .Detailed {virt} migration workflow
+// image::136_OpenShift_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
+// endif::[]
+// ifeval::["{build}" == "upstream"]
+// .Detailed {virt} migration workflow
+// image::136_Upstream_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
+// endif::[]
 
 The workflow describes the following steps:
 
@@ -26,15 +26,15 @@ The workflow describes the following steps:
 
 . The Virtual Machine Import Controller creates a `DataVolume` CR as a wrapper for a Persistent Volume Claim (PVC) and annotations.  
 . The Containerized Data Importer (CDI) Controller creates a PVC. The Persistent Volume (PV) is dynamically provisioned by the `StorageClass` provisioner.  
-. The CDI Controller creates an `Importer` pod.
-. For a VMware provider, the `Importer` pod connects to the VM disk by using the VMware Virtual Disk Development Kit (VDDK) SDK and streams the VM disk to the PV.
+. The CDI Controller creates an `importer` pod.
+. The `importer` pod streams the VM disk to the PV.
 +
 *After the VM disks are transferred:*
 
-. The Virtual Machine Import Controller creates a `Conversion` pod with the PVCs attached to it.
+. The Virtual Machine Import Controller creates a `conversion` pod with the PVCs attached to it.
 +
-The `Conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the target VM.
+The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the target VM.
 . The Virtual Machine Import Controller creates a `VirtualMachineInstance` CR.
-. When the target VM is powered on, the KubeVirt Controller creates a VM pod.
+. When the target VM is powered on, the KubeVirt Controller creates a `virt-launcher` pod.
 +
-The VM pod runs `QEMU-KVM` with the PVCs attached as VM disks.
+The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.

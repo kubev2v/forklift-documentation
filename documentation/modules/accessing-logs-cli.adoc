@@ -3,11 +3,11 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [id="accessing-logs-cli_{context}"]
-= Accessing logs from the command line
+= Accessing logs and custom resource information from the command line interface
 
-You can access logs and information about {project-short} custom resources (CRs) from the command line by using the `must-gather` tool. You must attach a `must-gather` data file to all customer cases.
+You can access logs and information about custom resources (CRs) from the command line interface by using the `must-gather` tool. You must attach a `must-gather` data file to all customer cases.
 
-You can gather data for a specific namespace, migration plan, or virtual machine (VM) by using the filtering options.
+You can gather data for a specific namespace, a completed, failed, or canceled migration plan, or a migrated virtual machine (VM) by using the filtering options.
 
 [NOTE]
 ====
@@ -19,7 +19,7 @@ If you specify a non-existent resource in the filtered `must-gather` command, no
 * You must be logged in to the {virt} cluster as a user with the `cluster-admin` role.
 * You must have the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[{ocp} CLI (`oc`)] installed.
 
-.Collecting logs and CR information
+.Procedure
 
 . Navigate to the directory where you want to store the `must-gather` data.
 . Run the `oc adm must-gather` command:
