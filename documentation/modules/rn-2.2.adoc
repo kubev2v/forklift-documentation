@@ -14,7 +14,7 @@ The release notes describe new features and enhancements, known issues, and tech
 
 .Setting the precopy interval for warm migration
 
-You can set the interval between snapshots during the precopy stage of warm migration.
+You can set the interval between snapshots taken during the precopy stage of warm migration.
 
 [id="new-features-and-enhancements-22_{context}"]
 == New features and enhancements
