@@ -18,14 +18,12 @@ You can use the detailed migration workflow to troubleshoot a failed migration.
 
 The workflow describes the following steps:
 
-. When you run a migration plan, the Migration Controller creates a `VirtualMachineImport` custom resource (CR) for each source virtual machine (VM).
-. The Virtual Machine Import Controller validates the `VirtualMachineImport` CR and generates a `VirtualMachine` CR.
-. The Virtual Machine Import Controller retrieves the VM configuration, including network, storage, and metadata, linked in the `VirtualMachineImport` CR.  
+. When you run a migration plan, the Migration Controller creates a VirtualMachine custom resource (CR) for each source virtual machine (VM), and a DataVolume CR for each of the source VM's disks.
 +
 *For each VM disk:*
 
-. The Virtual Machine Import Controller creates a `DataVolume` CR as a wrapper for a Persistent Volume Claim (PVC) and annotations.  
-. The Containerized Data Importer (CDI) Controller creates a PVC. The Persistent Volume (PV) is dynamically provisioned by the `StorageClass` provisioner.  
+. The Containerized Data Importer (CDI) Controller creates a Persistent Volume Claim (PVC) based on parameters specified in the DataVolume CR.
+. The Persistent Volume (PV) is dynamically provisioned by the StorageClass provisioner.
 . The CDI Controller creates an `importer` pod.
 . The `importer` pod streams the VM disk to the PV.
 +
@@ -34,7 +32,6 @@ The workflow describes the following steps:
 . The Virtual Machine Import Controller creates a `conversion` pod with the PVCs attached to it.
 +
 The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the target VM.
-. The Virtual Machine Import Controller creates a `VirtualMachineInstance` CR.
-. When the target VM is powered on, the KubeVirt Controller creates a `virt-launcher` pod.
+. When the target VM is powered on, the KubeVirt Controller creates a `virt-launcher` pod and a `VirtualMachineInstance` CR.
 +
 The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.

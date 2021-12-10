@@ -29,10 +29,10 @@ The VM disks are copied incrementally using link:https://kb.vmware.com/s/article
 ====
 You must enable CBT on the source VMs and the VM disks.
 
-A VM can support up to 28 CBT snapshots. If that limit is exceeded, a `warm import retry limit reached` error message is displayed. If the VM has preexisting CBT snapshots, it will reach this limit sooner.
+A VM can support up to 28 CBT snapshots. If the source VM already has too many CBT snapshots and the Migration Controller is not able to create a new one, warm migration may fail. The Migration Controller will clean up each snapshot it creates after it is finished with it.
 ====
 
-The precopy stage runs until either the cutover stage starts or the maximum number of CBT snapshots is reached.
+The precopy stage runs indefinitely until the cutover stage is reached.
 
 .Cutover stage
 

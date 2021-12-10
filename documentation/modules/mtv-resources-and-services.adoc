@@ -35,4 +35,4 @@ Only one `Migration` CR per migration plan can run at a given time. You can crea
 +
 When you create a migration plan, the Migration Controller service validates the plan and adds a status label. If the plan fails validation, the plan status is `Not ready` and the plan cannot be used to perform a migration. If the plan passes validation, the plan status is `Ready` and it can be used to perform a migration. After a successful migration, the Migration Controller changes the plan status to `Completed`.
 
-* `Virtual Machine Import Controller`, `Kubevirt Controller`, and `Containerized Data Import (CDI) Controller` services handle most technical operations.
+* `Kubevirt Controller` and `Containerized Data Import (CDI) Controller` services handle most technical operations.
