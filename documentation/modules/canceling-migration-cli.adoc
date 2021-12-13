@@ -30,14 +30,14 @@ metadata:
   namespace: {namespace}
 ...
 spec:
-  cancel: <1>
-  - id: vm-102 <2>
+  cancel: <.>
+  - id: vm-102 <.>
   - id: vm-203
   - name: rhel8-vm
 EOF
 ----
-<1> You can specify the canceled VMs by `id` _or_ `name`.
-<2> VMware VM managed object reference or {rhv-short} VM UUID.
+<.> You can specify the VMs in the `cancel` block by using the `id` or `name`.
+<.> Specify the VMware VM managed object reference or {rhv-short} VM UUID.
 
 . View the `VirtualMachineImport` pods to monitor the progress of the remaining VMs:
 +
