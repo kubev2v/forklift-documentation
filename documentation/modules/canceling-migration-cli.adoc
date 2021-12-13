@@ -13,7 +13,7 @@ You can cancel an entire migration or individual virtual machines (VMs) while a 
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc delete migration <migration> -n {namespace} <1>
+$ {oc} delete migration <migration> -n {namespace} <1>
 ----
 
 .Canceling the migration of individual VMs
@@ -22,7 +22,7 @@ $ oc delete migration <migration> -n {namespace} <1>
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | oc apply -f -
+$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Migration
 metadata:
@@ -43,5 +43,5 @@ EOF
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc get pods -n {namespace}
+$ {oc} get pods -n {namespace}
 ----

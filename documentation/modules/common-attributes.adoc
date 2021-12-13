@@ -4,6 +4,7 @@
 :kebab: Options menu image:kebab.png[title="Options menu",height=20]
 // If namespace must be formatted with backticks, use + instead.
 :namespace: openshift-mtv
+:oc: oc
 :ocp: OpenShift Container Platform
 :ocp-version: 4.9
 :ocp-short: OCP

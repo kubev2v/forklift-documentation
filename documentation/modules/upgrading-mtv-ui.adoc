@@ -27,7 +27,7 @@ endif::[]
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc get pods -n {namespace}
+$ {oc} get pods -n {namespace}
 ----
 +
 .Example output

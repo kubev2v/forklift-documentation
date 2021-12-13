@@ -117,6 +117,24 @@ You must ensure that all xref:prerequisites[prerequisites] are met.
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
+[id="advanced-migration-options"]
+== Advanced migration options
+
+include::modules/changing-precopy-intervals-ui.adoc[leveloffset=+2]
+
+[id="creating-custom-rules-for-validation-service"]
+=== Creating custom rules for the Validation service
+
+The `Validation` service uses Open Policy Agent (OPA) policy rules to check the suitability of each virtual machine (VM) for migration. The `Validation` service generates a list of _concerns_ for each VM, which are stored in the `Provider Inventory` service as VM attributes. The web console displays the concerns for each VM in the provider inventory.
+
+You can create custom rules to extend the default ruleset of the `Validation` service. For example, you can create a rule that checks whether a VM has multiple disks.
+
+include::modules/about-rego-files.adoc[leveloffset=+3]
+include::modules/accessing-default-validation-rules.adoc[leveloffset=+3]
+include::modules/retrieving-validation-service-json.adoc[leveloffset=+3]
+include::modules/creating-validation-rule.adoc[leveloffset=+3]
+include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
+
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 
 [id="uninstalling-mtv"]

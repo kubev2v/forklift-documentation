@@ -31,7 +31,7 @@ ifdef::cli[]
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc get route virt -n {namespace} \
+$ {oc} get route virt -n {namespace} \
   -o custom-columns=:.spec.host
 ----
 +

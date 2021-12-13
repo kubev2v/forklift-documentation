@@ -20,7 +20,7 @@ Only one `Migration` CR per migration plan can run at a given time. You can crea
 
 .{project-short} services
 
-* `Provider Inventory` service:
+* `Inventory` service:
 ** Connects to the source and target providers.
 ** Maintains a local inventory for mappings and plans.
 ** Stores VM configurations.
