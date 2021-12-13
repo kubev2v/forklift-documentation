@@ -23,6 +23,10 @@ You can set the time interval between snapshots taken during the precopy stage o
 
 This release has the following features and improvements:
 
+.Creating validation rules
+
+You can create custom validation rules to check the suitability of VMs for migration. Validation rules are based on the VM attributes collected by the `Provider Inventory` service and written in link:https://www.openpolicyagent.org/docs/latest/policy-language/[Rego], the Open Policy Agent native query language.
+
 .Downloading logs by using the web console
 
 You can download logs for a migration plan or a migrated VM by using the {project-short} web console.
