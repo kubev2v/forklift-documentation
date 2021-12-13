@@ -18,7 +18,7 @@ $ {oc} delete migration <migration> -n {namespace} <1>
 
 .Canceling the migration of individual VMs
 
-. Add the individual VMs to the `Migration` CR manifest:
+. Add the individual VMs to the `Migration` manifest:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -36,7 +36,7 @@ spec:
   - name: rhel8-vm
 EOF
 ----
-<1> You can specify the canceled VMs by using either the `id` _or_ the `name`.
+<1> You can specify the canceled VMs by `id` _or_ `name`.
 <2> VMware VM managed object reference or {rhv-short} VM UUID.
 
 . View the `VirtualMachineImport` pods to monitor the progress of the remaining VMs:

@@ -40,4 +40,4 @@ The VMs are shut down during the cutover stage and the remaining data is migrate
 
 You can start the cutover stage manually in the {project-short} console.
 
-You can schedule a cutover time by specifying the value of the `cutover` parameter in the `Migration` CR manifest.
+You can schedule a cutover time by specifying the value of the `cutover` parameter in the `Migration` manifest.
