@@ -101,7 +101,6 @@ include::modules/creating-storage-mapping.adoc[leveloffset=+2]
 include::modules/creating-migration-plan.adoc[leveloffset=+2]
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
-include::modules/changing-precopy-intervals.adoc[leveloffset=+3]
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines-from-cli"]
@@ -120,7 +119,7 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 [id="advanced-migration-options"]
 == Advanced migration options
 
-include::modules/changing-precopy-intervals-ui.adoc[leveloffset=+2]
+include::modules/changing-precopy-intervals.adoc[leveloffset=+2]
 
 [id="creating-custom-rules-for-validation-service"]
 === Creating custom rules for the Validation service
