@@ -2,7 +2,7 @@
 
 # Forklift documentation
 
-Forklift is an upstream project for migrating VMware virtual machines to KubeVirt.
+Forklift is an upstream project for migrating virtual machines from VMware or oVirt to KubeVirt.
 
 ## Contributing to Forklift documentation
 
