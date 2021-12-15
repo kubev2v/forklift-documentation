@@ -4,7 +4,7 @@
 
 ## What is Forklift?
 
-Forklift is a tool in the link:https://konveyor.io/[Konveyor community] for migrating virtual machines to KubeVirt.
+Forklift is a tool in the link:https://konveyor.io/[Konveyor community] for migrating virtual machines from VMware or oVirt to KubeVirt.
 
 ## Documentation
 
