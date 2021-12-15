@@ -41,7 +41,12 @@ asciidoctor:
   - rn-title=Release notes
   - context=forklift
   - description=Migrating virtual machines to KubeVirt
-  - abstract=Forklift enables you to migrate virtual machines to {virt} running on {ocp}.
+  - rhv-full=oVirt
+  - rhv-short=oVirt
+  - a-rhv=an {rhv-full}
+  - a-rhv-short=an {rhv-short}
+  - manager=Engine
+  - abstract=Forklift enables you to migrate virtual machines from VMware or {rhv-full} to {virt} running on {ocp}.
   - author=Forklift documentation team
   - showtitle=@
   - build=upstream
@@ -58,7 +63,6 @@ asciidoctor:
   - project-z-version=2.2.0
   - the-lc=
   - the=
-  - icon-check=&#x2714;
   safe: unsafe
 
 exclude:
