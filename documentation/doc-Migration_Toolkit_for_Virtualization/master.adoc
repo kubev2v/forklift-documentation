@@ -6,7 +6,6 @@ endif::[]
 ifeval::["{build}" == "upstream"]
 = {user-guide-title} {project-version}
 endif::[]
-
 :toc:
 :toc-title:
 :toclevels: 3
