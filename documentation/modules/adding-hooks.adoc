@@ -3,6 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 // not for beta
 
+:_content-type: PROCEDURE
 [id="adding-hooks_{context}"]
 = Adding hooks
 

@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="changing-precopy-intervals_{context}"]
 = Changing precopy intervals for warm migration
 
