@@ -94,3 +94,7 @@ The error status message for a VM with no operating system on the *Migration pla
 .Network, storage, and VM referenced by name in the Plan CR are not displayed in the web console.
 
 If a Plan CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-short} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
+
+.Log archive file includes logs of a deleted migration plan or VM
+
+If you delete a migration plan and then run a new migration plan with the same name or if you delete a migrated VM and then remigrate the source VM, the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[*BZ#2023764*])
