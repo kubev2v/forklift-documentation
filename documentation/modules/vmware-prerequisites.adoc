@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: REFERENCE
 [id="vmware-prerequisites_{context}"]
 = VMware prerequisites
 

@@ -2,7 +2,8 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="virt-migration-workflow_{context}"]
+:_content-type: REFERENCE
+[id="virt-migration-workflows_{context}"]
 = Detailed migration workflow
 
 You can use the detailed migration workflow to troubleshoot a failed migration.

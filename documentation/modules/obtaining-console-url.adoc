@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="obtaining-console-url_{context}"]
 = Obtaining the {project-short} web console URL
 

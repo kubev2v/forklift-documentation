@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: REFERENCE
 [id="about-storage_{context}"]
 = Storage support and default modes
 

@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="selecting-provider-network_{context}"]
 = Selecting a migration network for a source provider
 
