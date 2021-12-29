@@ -32,7 +32,7 @@ Empty or excluded log files are not included in the `must-gather` archive file.
 
 .Example archive structure for a migration plan
 ----
-must-gather/
+must-gather
 └── namespaces
     ├── target-vm-ns
     │   ├── crs
@@ -44,13 +44,13 @@ must-gather/
     │   │       ├── test-test-rhel8-2disks2nics.yaml
     │   │       └── test-x2019.yaml
     │   └── logs
-    │       ├── importer-mig-plan-vm-7595-tkhdz
+    │       ├── importer-mig-plan-vm-7595-tkhdz <1>
     │       │   └── current.log
     │       ├── importer-mig-plan-vm-7595-5qvqp
     │       │   └── current.log
     │       ├── importer-mig-plan-vm-8325-xccfw
     │       │   └── current.log
-    │       ├── mig-plan-vm-7595-4glzd
+    │       ├── mig-plan-vm-7595-4glzd <2>
     │       │   └── current.log
     │       └── mig-plan-vm-8325-4zw49
     │           └── current.log
@@ -64,5 +64,5 @@ must-gather/
             └── forklift-must-gather-api-89fc7f4b6-hlwb6
                 └── current.log
 ----
-// <1> `importer` pod log. The naming convention is `importer-<migration_plan>-<vm_id>-<5_char_id>` for VMware and `importer-<migration_plan>-<partial_vm_id><5_char_id>` for {rhv-short}, for example, `importer-mig-plan-ed90dfc6-9a17-4a8btnfh`, where `ed90dfc6-9a17-4a8` is the partial VM ID and `btnfh` is the 5-character ID.
-// <2> `conversion` pod log. The naming convention is `<migration_plan>-<vm_id>-<5_char_id>` for VMware and `<migration_plan>-<partial_vm_id><5_char_id>` for {rhv-short}.
+<1> `importer` pod log. The naming convention is `importer-<migration_plan>-<vm_id>-<5_char_id>` for VMware and `importer-<migration_plan>-<partial_vm_id><5_char_id>` for {rhv-short}, for example, `importer-mig-plan-ed90dfc6-9a17-4a8btnfh`, where `ed90dfc6-9a17-4a8` is the partial VM ID and `btnfh` is the 5-character ID.
+<2> `conversion` pod log. The naming convention is `<migration_plan>-<vm_id>-<5_char_id>` for VMware and `<migration_plan>-<partial_vm_id><5_char_id>` for {rhv-short}.
