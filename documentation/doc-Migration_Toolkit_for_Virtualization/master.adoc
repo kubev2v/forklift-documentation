@@ -160,8 +160,6 @@ include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
 include::modules/mtv-workflow.adoc[leveloffset=+3]
 include::modules/virt-migration-workflow.adoc[leveloffset=+3]
 
-include::modules/error-messages.adoc[leveloffset=+2]
-
 [id="logs-and-crs_{context}"]
 === Logs and custom resources
 

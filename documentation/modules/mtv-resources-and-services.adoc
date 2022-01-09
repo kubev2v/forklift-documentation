@@ -20,19 +20,19 @@ Only one `Migration` CR per migration plan can run at a given time. You can crea
 
 .{project-short} services
 
-* `Inventory` service:
+* The `Inventory` service performs the following actions:
 ** Connects to the source and target providers.
 ** Maintains a local inventory for mappings and plans.
 ** Stores VM configurations.
 ** Runs the `Validation` service if a VM configuration change is detected.
 
-* `Validation` service checks the suitability of a VM for migration by applying rules.
-* `User Interface` service:
+* The `Validation` service checks the suitability of a VM for migration by applying rules.
+* The `User Interface` service performs the following actions:
 ** Enables you to create and configure {project-short} CRs.
 ** Displays the status of the CRs and the progress of a migration.
 
-* `Migration Controller` service orchestrates migrations.
+* The `Migration Controller` service orchestrates migrations.
 +
-When you create a migration plan, the Migration Controller service validates the plan and adds a status label. If the plan fails validation, the plan status is `Not ready` and the plan cannot be used to perform a migration. If the plan passes validation, the plan status is `Ready` and it can be used to perform a migration. After a successful migration, the Migration Controller changes the plan status to `Completed`.
+When you create a migration plan, the `Migration Controller` service validates the plan and adds a status label. If the plan fails validation, the plan status is `Not ready` and the plan cannot be used to perform a migration. If the plan passes validation, the plan status is `Ready` and it can be used to perform a migration. After a successful migration, the `Migration Controller` service changes the plan status to `Completed`.
 
-* `Virtual Machine Import Controller`, `Kubevirt Controller`, and `Containerized Data Import (CDI) Controller` services handle most technical operations.
+* The `Kubevirt Controller` and `Containerized Data Import (CDI) Controller` services handle most technical operations.

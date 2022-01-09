@@ -5,26 +5,32 @@
 [id="mtv-workflow_{context}"]
 = High-level migration workflow
 
-The high-level workflow shows the migration process from the point of view of the user.
+The high-level workflow shows the migration process from the point of view of the user:
 
-ifeval::["{build}" == "downstream"]
-.High-level workflow
-image::136_OpenShift_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
-endif::[]
-ifeval::["{build}" == "upstream"]
-.High-level workflow
-image::136_Upstream_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
-endif::[]
+// ifeval::["{build}" == "downstream"]
+// .High-level workflow
+// image::136_OpenShift_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
+// endif::[]
+// ifeval::["{build}" == "upstream"]
+// .High-level workflow
+// image::136_Upstream_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
+// endif::[]
 
-The workflow describes the following steps:
+// The workflow describes the following steps:
 
 . You create a source provider, a target provider, a network mapping, and a storage mapping.
-. You create a migration plan that includes the following resources:
+. You create a `Plan` custom resource (CR) that includes the following resources:
+
 * Source provider
-* Target provider
+* Target provider, if {project-short} is not installed on the target cluster
 * Network mapping
 * Storage mapping
 * One or more virtual machines (VMs)
 
-. You run a migration plan by creating a `Migration` CR that references the `Plan` CR. If a migration is incomplete, you can run a migration plan multiple times until all VMs are migrated.
-. For each VM in the migration plan, the Migration Controller creates a `VirtualMachineImport` CR and monitors its status. When all VMs have been migrated, the Migration Controller sets the status of the migration plan to `Completed`. The power state of a source VM is maintained after migration.
+. You run a migration plan by creating a `Migration` CR that references the `Plan` CR.
++
+If you cannot migrate all the VMs for any reason, you can create multiple `Migration` CRs for the same `Plan` CR until all VMs are migrated.
+
+. For each VM in the `Plan` CR, the `Migration Controller` service creates a `VirtualMachine` CR and records the VM migration progress in the `Migration` CR.
++
+When all VMs have been migrated, the `Migration Controller` service updates the status of the `Plan` CR to `Completed`. The power state of each source VM is maintained after migration.
