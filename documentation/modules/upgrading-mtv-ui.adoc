@@ -14,13 +14,61 @@ You must upgrade to the next release without skipping a release, for example, fr
 
 .Procedure
 
-. Upgrade the {operator-name}.
+. Change the update channel.
 +
 ifeval::["{build}" == "upstream"]
-See link:https://docs.okd.io/latest/operators/admin/olm-upgrading-operators.html[Upgrading installed Operators] in the {ocp} documentation.
+See link:https://docs.okd.io/latest/operators/admin/olm-upgrading-operators.html#olm-changing-update-channel_olm-upgrading-operators[Changing update channel] in the {ocp} documentation.
 endif::[]
 ifeval::["{build}" == "downstream"]
-See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html-single/operators/index#olm-upgrading-operators[Upgrading installed Operators] in the {ocp} documentation.
+See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html-single/operators/index#olm-changing-update-channel_olm-upgrading-operators[Changing update channel] in the {ocp} documentation.
+endif::[]
+
+. Restart the `CatalogSource` pod:
+
+.. In the the {ocp-short} web console, click *Operators* -> *Installed Operators*. Click *Forklift Operator* to view the *Operator details* page.
+
+..  On the *Subscriptions* tab, note the name in the *CatalogSource* field, for example, `redhat-operators`.
+..  From the command line, retrieve the list of running pods:
++
+[source,terminal,subs=attributes+]
+----
+$ {oc} get pod -n openshift-marketplace
+----
+.Example output
++
+[source,terminal,subs=attributes+]
+----
+NAME                                                              READY   STATUS      RESTARTS   AGE
+56743631b0a246d54b96aaca5d217c1221516ae0359bd69295316c--1-j2vsd   0/1     Completed   0          19h
+7fd3c8520985a7090567f60e97203dfbb6da3a051f1bbc06334e3e--1-n5pvq   0/1     Completed   0          19h
+certified-operators-64bn2                                         1/1     Running     0          34h
+community-operators-97cct                                         1/1     Running     0          15h
+hco-catalogsource-bcf5b                                           1/1     Running     0          4d3h
+marketplace-operator-7744f76566-7h9lg                             1/1     Running     0          8m42s
+ocs-catalogsource-cjdf6                                           1/1     Running     0          4d3h
+redhat-marketplace-8nwq5                                          1/1     Running     0          2d14h
+redhat-operators-mgrrm                                            1/1     Running     0          19h
+----
+
+..  Identify the pod name that includes the *CatalogSource* name on the *Subscriptions* tab in the the {ocp-short} web console. For example, if the *CatalogSource* name is `redhat-operators`, its pod is `redhat-operators-mgrrm` in the example output above.   
+..  Delete the pod:
++
+[source,terminal,subs=attributes+]
+----
+$ {oc} delete pod -n openshift-marketplace <catalog_source_pod>
+----
++
+On the *Subscriptions* tab of the *Operator details* page in the {ocp-short} web console, *Upgrade status* changes from *Up to date* to *Upgrade available*.
++
+If you set *Update approval* on the *Subscriptions* tab to *Automatic*, the upgrade starts automatically.
++
+.  If you set *Update approval* on the *Subscriptions* tab to *Manual*, approve the upgrade.
++
+ifeval::["{build}" == "upstream"]
+See link:https://docs.okd.io/latest/operators/admin/olm-upgrading-operators.html#olm-approving-pending-upgrade_olm-upgrading-operators[Manually approving a pending upgrade] in the {ocp} documentation.
+endif::[]
+ifeval::["{build}" == "downstream"]
+See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html-single/operators/index#olm-approving-pending-upgrade_olm-upgrading-operators[Manually approving a pending upgrade] in the {ocp} documentation.
 endif::[]
 
 . Verify that the `forklift-ui` pod is in a `Ready` state before you log in to the web console:
