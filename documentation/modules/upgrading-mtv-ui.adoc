@@ -28,29 +28,14 @@ endif::[]
 .. In the the {ocp-short} web console, click *Operators* -> *Installed Operators*. Click *Forklift Operator* to view the *Operator details* page.
 
 ..  On the *Subscriptions* tab, note the catalog source, for example, `redhat-operators`.
-..  From the command line, retrieve the list of running pods:
+..  From the command line, retrieve the catalog source pod:
 +
 [source,terminal,subs=attributes+]
 ----
-$ {oc} get pod -n openshift-marketplace
+$ {oc} get pod -n openshift-marketplace | grep <catalog_source>
 ----
-.Example output
 +
-[source,terminal,subs=attributes+]
-----
-NAME                                                              READY   STATUS      RESTARTS   AGE
-56743631b0a246d54b96aaca5d217c1221516ae0359bd69295316c--1-j2vsd   0/1     Completed   0          19h
-7fd3c8520985a7090567f60e97203dfbb6da3a051f1bbc06334e3e--1-n5pvq   0/1     Completed   0          19h
-certified-operators-64bn2                                         1/1     Running     0          34h
-community-operators-97cct                                         1/1     Running     0          15h
-hco-catalogsource-bcf5b                                           1/1     Running     0          4d3h
-marketplace-operator-7744f76566-7h9lg                             1/1     Running     0          8m42s
-ocs-catalogsource-cjdf6                                           1/1     Running     0          4d3h
-redhat-marketplace-8nwq5                                          1/1     Running     0          2d14h
-redhat-operators-mgrrm                                            1/1     Running     0          19h
-----
-
-..  Identify the pod name that includes the *CatalogSource* name on the *Subscriptions* tab in the the {ocp-short} web console. For example, if the *CatalogSource* name is `redhat-operators`, its pod is `redhat-operators-mgrrm` in the example output above.
+The retrieved pod name includes the *CatalogSource* name on the *Subscriptions* tab in the the {ocp-short} web console. For example, if the *CatalogSource* name is `redhat-operators`, its pod might be `redhat-operators-mgrrm`.
 ..  Delete the pod:
 +
 [source,terminal,subs=attributes+]
