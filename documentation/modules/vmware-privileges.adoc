@@ -1,0 +1,8 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="vmware-privileges_{context}"]
+= VMware privileges
+
+The following VMware privileges are required to migrate virtual machines to {project-first}.
