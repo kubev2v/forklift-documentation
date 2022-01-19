@@ -32,10 +32,10 @@ endif::[]
 +
 [source,terminal,subs=attributes+]
 ----
-$ {oc} get pod -n openshift-marketplace | grep <catalog_source>
+$ {oc} get pod -n openshift-marketplace | grep <catalog_source> <1>
 ----
+<1> Specify the catalog source, for example, redhat-operators.
 +
-The retrieved pod name includes the *CatalogSource* name on the *Subscriptions* tab in the the {ocp-short} web console. For example, if the *CatalogSource* name is `redhat-operators`, its pod might be `redhat-operators-mgrrm`.
 ..  Delete the pod:
 +
 [source,terminal,subs=attributes+]
