@@ -91,7 +91,7 @@ Deleting a migration plan does not remove temporary resources such as `Importer`
 
 The error status message for a VM with no operating system on the *Migration plan details* page of the web console does not describe the reason for the failure. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[*BZ#2008846*])
 
-.Network, storage, and VM referenced by name in the Plan CR are not displayed in the web console.
+.Network, storage, and VM referenced by name in the `Plan` CR are not displayed in the web console.
 
 If a Plan CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-short} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
 
@@ -99,6 +99,6 @@ If a Plan CR references storage, network, or VMs by name instead of by ID, the r
 
 If you delete a migration plan and then run a new migration plan with the same name or if you delete a migrated VM and then remigrate the source VM, the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[*BZ#2023764*])
 
-.If a target VM is deleted during migration, its migration status is "Succeeded" in the "Plan" CR
+.If a target VM is deleted during migration, its migration status is `Succeeded` in the `Plan` CR
 
 If you delete a target `VirtualMachine` CR during the 'Convert image to kubevirt' step of the migration, the *Migration details* page of the web console displays the state of the step as `VirtualMachine CR not found`. However, the status of the VM migration is `Succeeded` in the `Plan` CR file and in the web console. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2031529[*BZ#2031529*])
