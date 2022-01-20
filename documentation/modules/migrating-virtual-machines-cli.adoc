@@ -268,14 +268,14 @@ spec:
 EOF
 ----
 <1> Specify the name of the `Migration` CR.
-<2> Specify the name of the `Plan` CR that you are running. The `Migration` CR creates a `VirtualMachineImport` CR for each VM that is migrated.
+<2> Specify the name of the `Plan` CR that you are running. The `Migration` CR creates a `VirtualMachine` CR for each VM that is migrated.
 <3> Optional: Specify a cutover time according to the ISO 8601 format with the UTC time offset, for example, `2021-04-04T01:23:45.678+09:00`.
 +
 You can associate multiple `Migration` CRs with a single `Plan` CR. If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs.
 
-. View the `VirtualMachineImport` pods to monitor the progress of the migration:
+. Retrieve the `Migration` CR to monitor the progress of the migration:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} get pods -n {namespace}
+$ {oc} get migration/<migration> -n {namespace} -o yaml
 ----

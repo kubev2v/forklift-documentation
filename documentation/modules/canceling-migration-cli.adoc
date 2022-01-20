@@ -18,7 +18,7 @@ $ {oc} delete migration <migration> -n {namespace} <1>
 
 .Canceling the migration of individual VMs
 
-. Add the individual VMs to the `Migration` manifest:
+. Add the individual VMs to the `spec.cancel` block of the `Migration` manifest:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -30,18 +30,19 @@ metadata:
   namespace: {namespace}
 ...
 spec:
-  cancel: <.>
+  cancel:
   - id: vm-102 <.>
   - id: vm-203
   - name: rhel8-vm
 EOF
 ----
-<.> You can specify the VMs in the `cancel` block by using the `id` or `name`.
-<.> Specify the VMware VM managed object reference or {rhv-short} VM UUID.
+<.> You can specify a VM by using the `id` key or the `name` key.
++
+The value of the `id` key is the _managed object reference_, for a VMware VM, or the _VM UUID_, for a {rhv-short} VM.
 
-. View the `VirtualMachineImport` pods to monitor the progress of the remaining VMs:
+. Retrieve the `Migration` CR to monitor the progress of the remaining VMs:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} get pods -n {namespace}
+$ {oc} get migration/<migration> -n {namespace} -o yaml
 ----

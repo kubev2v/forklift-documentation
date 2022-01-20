@@ -18,23 +18,21 @@ You can use the detailed migration workflow to troubleshoot a failed migration.
 
 The workflow describes the following steps:
 
-. When you run a migration plan, the Migration Controller creates a `VirtualMachineImport` custom resource (CR) for each source virtual machine (VM).
-. The Virtual Machine Import Controller validates the `VirtualMachineImport` CR and generates a `VirtualMachine` CR.
-. The Virtual Machine Import Controller retrieves the VM configuration, including network, storage, and metadata, linked in the `VirtualMachineImport` CR.  
+. When you create a `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service  creates a `VirtualMachine` CR for each source virtual machine (VM) and a `DataVolume` CR for each source VM disk.
 +
 *For each VM disk:*
 
-. The Virtual Machine Import Controller creates a `DataVolume` CR as a wrapper for a Persistent Volume Claim (PVC) and annotations.  
-. The Containerized Data Importer (CDI) Controller creates a PVC. The Persistent Volume (PV) is dynamically provisioned by the `StorageClass` provisioner.  
-. The CDI Controller creates an `importer` pod.
+. The `Containerized Data Importer (CDI) Controller` service creates a persistent volume claim (PVC) based on the parameters specified in the `DataVolume` CR.  
+. The persistent volume (PV) is dynamically provisioned by the `StorageClass` provisioner.  
+. The `CDI Controller` service creates an `importer` pod.
 . The `importer` pod streams the VM disk to the PV.
 +
 *After the VM disks are transferred:*
 
-. The Virtual Machine Import Controller creates a `conversion` pod with the PVCs attached to it.
+. The `Migration Controller` service creates a `conversion` pod with the PVCs attached to it.
 +
 The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the target VM.
-. The Virtual Machine Import Controller creates a `VirtualMachineInstance` CR.
-. When the target VM is powered on, the KubeVirt Controller creates a `virt-launcher` pod.
+
+. When the target VM is powered on, the `KubeVirt Controller` service creates a `virt-launcher` pod and a `VirtualMachineInstance` CR.
 +
 The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.

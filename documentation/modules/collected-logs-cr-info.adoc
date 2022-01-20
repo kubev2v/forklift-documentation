@@ -19,24 +19,19 @@ The `must-gather` tool collects the following logs and CR files in an archive fi
 ** `Plan` CR: Defines the VMs and storage and network mapping.
 
 * Logs:
-** `importer` pod: Disk-to-data-volume conversion log.
-+
-The pod naming convention is `importer-<migration_plan>-<vm_id>-<5_char_id>` for VMware and `importer-<migration_plan>-<partial_vm_id><5_char_id>` for {rhv-short}, for example, `importer-mig-plan-ed90dfc6-9a17-4a8btnfh`, where `ed90dfc6-9a17-4a8` is the partial VM ID and `btnfh` is the 5-character ID.
-
-** `conversion` pod: VM conversion log. The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the VM.
-+
-The pod naming convention is `<migration_plan>-<vm_id>-<5_char_id>` for VMware and `<migration_plan>-<partial_vm_id><5_char_id>` for {rhv-short}.
+** `importer` pod: Disk-to-data-volume conversion log. The `importer` pod naming convention is `importer-<migration_plan>-<vm_id><5_char_id>`, for example, `importer-mig-plan-ed90dfc6-9a17-4a8btnfh`, where `ed90dfc6-9a17-4a8` is a truncated {rhv-short} VM ID and `btnfh` is the generated 5-character ID.
+** `conversion` pod: VM conversion log. The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the VM. The `conversion` pod naming convention is `<migration_plan>-<vm_id><5_char_id>`.
 
 ** `virt-launcher` pod: VM launcher log. When a migrated VM is powered on, the `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
-** `forklift-controller` pod: Filtered for the migration plan, virtual machine, or namespace.
-** `forklift-must-gather-api` pod: Filtered for the migration plan, virtual machine, or namespace.
+** `forklift-controller` pod: The log is filtered for the migration plan, virtual machine, or namespace specified by the `must-gather` command.
+** `forklift-must-gather-api` pod: The log is filtered for the migration plan, virtual machine, or namespace specified by the `must-gather` command.
 +
 [NOTE]
 ====
 Empty or excluded log files are not included in the `must-gather` archive file.
 ====
 
-.Example archive structure for a migration plan
+.Example must-gather archive structure for a VMware migration plan
 ----
 must-gather
 └── namespaces

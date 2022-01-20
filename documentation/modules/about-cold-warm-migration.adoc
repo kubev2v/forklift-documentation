@@ -27,17 +27,15 @@ The VM disks are copied incrementally using link:https://kb.vmware.com/s/article
 
 [IMPORTANT]
 ====
-You must enable CBT on the source VMs and the VM disks.
+You must enable CBT for each source VM and each VM disk.
 
-A VM can support up to 28 CBT snapshots. If that limit is exceeded, a `warm import retry limit reached` error message is displayed. If the VM has preexisting CBT snapshots, it will reach this limit sooner.
+A VM can support up to 28 CBT snapshots. If the source VM has too many CBT snapshots and the `Migration Controller` service is not able to create a new snapshot, warm migration might fail. The `Migration Controller` service deletes each snapshot when the snapshot is no longer required.
 ====
 
-The precopy stage runs until either the cutover stage starts or the maximum number of CBT snapshots is reached.
+The precopy stage runs until the cutover stage is started manually or is scheduled to start.
 
 .Cutover stage
 
 The VMs are shut down during the cutover stage and the remaining data is migrated. Data stored in RAM is not migrated.
 
-You can start the cutover stage manually in the {project-short} console.
-
-You can schedule a cutover time by specifying the value of the `cutover` parameter in the `Migration` manifest.
+You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` manifest.
