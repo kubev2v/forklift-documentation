@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
+:_content-type: REFERENCE
 [id="rn-20_{context}"]
 = {project-full} 2.0
 
