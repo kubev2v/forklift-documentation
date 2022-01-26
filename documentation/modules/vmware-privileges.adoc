@@ -6,3 +6,15 @@
 = VMware privileges
 
 The following VMware privileges are required to migrate virtual machines to {project-first}.
+
+[cols="2", options="header"]
+.VMware privileges
+|===
+|Privilege |Description
+|`Virtual machine.Interaction.Power Off`   |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
+|`Virtual machine.Interaction.Power On`  |Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
+|`Virtual machine.Provisioning.Allow disk access`   |Allows opening a disk on a virtual machine for random read and write access. Used mostly for remote disk mounting.
+|`Virtual machine.Provisioning.Allow read-only disk access`   |Allows opening a disk on a virtual machine for random read access. Used mostly for remote disk mounting.
+|`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine’s current state.
+|`Virtual machine.Snapshot management.Remove Snapshot`   |Allows removal of a snapshot from the snapshot history.
+|===
