@@ -5,7 +5,7 @@
 [id="vmware-privileges_{context}"]
 = VMware privileges
 
-The following VMware privileges are required to migrate virtual machines to {project-first}.
+The following VMware privileges are required to migrate virtual machines to {virt} with the {project-first}.
 
 [cols="2", options="header"]
 .VMware privileges

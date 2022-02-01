@@ -41,6 +41,7 @@ include::modules/network-prerequisites.adoc[leveloffset=+2]
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
+include::modules/vmware-privileges.adoc[leveloffset=+3]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
 include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+3]
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
@@ -75,7 +76,8 @@ You can migrate virtual machines (VMs) to {virt} by using the {project-short} we
 
 [IMPORTANT]
 ====
-You must ensure that all xref:prerequisites[prerequisites] are met.
+*  You must ensure that all xref:prerequisites[prerequisites] are met.
+*  VMware only: You must be logged in as a user with the  xref:vmware-privileges_{context}[VMware privileges].
 ====
 
 [id="adding-providers"]
@@ -112,7 +114,9 @@ You can migrate virtual machines to {virt} from the command line.
 
 [IMPORTANT]
 ====
-You must ensure that all xref:prerequisites[prerequisites] are met.
+*  You must be logged in as a user with `cluster-admin` privileges. VMware only: The xref:vmware-privileges_{context}[VMware privileges] are sufficient.
+
+*  You must ensure that all xref:prerequisites[prerequisites] are met.
 ====
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
