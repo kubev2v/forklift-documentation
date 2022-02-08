@@ -14,7 +14,7 @@ The following VMware privileges are required to migrate virtual machines to {vir
 |`Virtual machine.Interaction` privileges:|
 |`Virtual machine.Interaction.Power Off`   |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
 |`Virtual machine.Interaction.Power On`  |Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
-|`Virtual machine.Snapshot management` privileges      |
+|`Virtual machine.Snapshot management` privileges:      |
 |`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine’s current state.
 |`Virtual machine.Snapshot management.Remove Snapshot`   |Allows removal of a snapshot from the snapshot history.
 | All `Virtual machine.Provisioning` privileges:     |
