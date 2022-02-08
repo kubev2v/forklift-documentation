@@ -21,13 +21,13 @@ The following VMware privileges are required to migrate virtual machines to {vir
 |`Virtual machine.Provisioning.Allow disk access`
 |Allows opening a disk on a virtual machine for random read and write access. Used mostly for remote disk mounting.
 |`Virtual machine.Provisioning.Allow file access`
-|Allows operations on files associated with a virtual machine, including vmx, disks, logs, and nvram.
+|Allows operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
 |`Virtual machine.Provisioning.Allow read-only disk access`
 |Allows opening a disk on a virtual machine for random read access. Used mostly for remote disk mounting.
 |`Virtual machine.Provisioning.Allow virtual machine download`
-|Allows read operations on files associated with a virtual machine, including vmx, disks, logs, and nvram.
+|Allows read operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
 |`Virtual machine.Provisioning.Allow virtual machine files upload`
-|Allows write operations on files associated with a virtual machine, including vmx, disks, logs, and nvram.
+|Allows write operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
 |`Virtual machine.Provisioning.Clone template`
 |Allows cloning of a template.
 |`Virtual machine.Provisioning.Clone virtual machine`
@@ -39,7 +39,7 @@ The following VMware privileges are required to migrate virtual machines to {vir
 |`Virtual machine.Provisioning.Deploy template`
 |Allows deployment of a virtual machine from a template.
 |`Virtual machine.Provisioning.Mark as template`
-|Allows marking an existing powered off virtual machine as a template.
+|Allows marking an existing powered-off virtual machine as a template.
 |`Virtual machine.Provisioning.Mark as virtual machine`
 |Allows marking an existing template as a virtual machine.
 |`Virtual machine.Provisioning.Modify customization specification`
