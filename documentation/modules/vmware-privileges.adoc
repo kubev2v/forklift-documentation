@@ -11,10 +11,41 @@ The following VMware privileges are required to migrate virtual machines to {vir
 .VMware privileges
 |===
 |Privilege |Description
+|`Virtual machine.Interaction` privileges:|
 |`Virtual machine.Interaction.Power Off`   |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
 |`Virtual machine.Interaction.Power On`  |Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
-|`Virtual machine.Provisioning.Allow disk access`   |Allows opening a disk on a virtual machine for random read and write access. Used mostly for remote disk mounting.
-|`Virtual machine.Provisioning.Allow read-only disk access`   |Allows opening a disk on a virtual machine for random read access. Used mostly for remote disk mounting.
+|`Virtual machine.Snapshot management` privileges      |
 |`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine’s current state.
 |`Virtual machine.Snapshot management.Remove Snapshot`   |Allows removal of a snapshot from the snapshot history.
+| All `Virtual machine.Provisioning` privileges:     |
+|`Virtual machine.Provisioning.Allow disk access`
+|Allows opening a disk on a virtual machine for random read and write access. Used mostly for remote disk mounting.
+|`Virtual machine.Provisioning.Allow file access`
+|Allows operations on files associated with a virtual machine, including vmx, disks, logs, and nvram.
+|`Virtual machine.Provisioning.Allow read-only disk access`
+|Allows opening a disk on a virtual machine for random read access. Used mostly for remote disk mounting.
+|`Virtual machine.Provisioning.Allow virtual machine download`
+|Allows read operations on files associated with a virtual machine, including vmx, disks, logs, and nvram.
+|`Virtual machine.Provisioning.Allow virtual machine files upload`
+|Allows write operations on files associated with a virtual machine, including vmx, disks, logs, and nvram.
+|`Virtual machine.Provisioning.Clone template`
+|Allows cloning of a template.
+|`Virtual machine.Provisioning.Clone virtual machine`
+|Allows cloning of an existing virtual machine and allocation of resources.
+|`Virtual machine.Provisioning.Create template from virtual machine`
+|Allows creation of a new template from a virtual machine.
+|`Virtual machine.Provisioning.Customize guest`
+|Allows customization of a virtual machine’s guest operating system without moving the virtual machine.
+|`Virtual machine.Provisioning.Deploy template`
+|Allows deployment of a virtual machine from a template.
+|`Virtual machine.Provisioning.Mark as template`
+|Allows marking an existing powered off virtual machine as a template.
+|`Virtual machine.Provisioning.Mark as virtual machine`
+|Allows marking an existing template as a virtual machine.
+|`Virtual machine.Provisioning.Modify customization specification`
+|Allows creation, modification, or deletion of customization specifications.
+|`Virtual machine.Provisioning.Promote disks`
+|Allows promote operations on a virtual machine's disks.
+|`Virtual machine.Provisioning.Read customization specifications`
+|Allows reading a customization specification.
 |===

@@ -77,7 +77,7 @@ You can migrate virtual machines (VMs) to {virt} by using the {project-short} we
 [IMPORTANT]
 ====
 *  You must ensure that all xref:prerequisites[prerequisites] are met.
-*  VMware only: You must be logged in as a user with the  xref:vmware-privileges_{context}[VMware privileges].
+*  VMware only: You must have the  xref:vmware-privileges_{context}[VMware privileges].
 ====
 
 [id="adding-providers"]
@@ -114,7 +114,9 @@ You can migrate virtual machines to {virt} from the command line.
 
 [IMPORTANT]
 ====
-*  You must be logged in as a user with `cluster-admin` privileges. VMware only: The xref:vmware-privileges_{context}[VMware privileges] are sufficient.
+*  You must be logged in as a user with the {ocp} `cluster-admin` privileges.
+
+*  VMware only: You must have the xref:vmware-privileges_{context}[VMware privileges].
 
 *  You must ensure that all xref:prerequisites[prerequisites] are met.
 ====
