@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="obtaining-vmware-fingerprint_{context}"]
 = Obtaining the SHA-1 fingerprint of a vCenter host
 

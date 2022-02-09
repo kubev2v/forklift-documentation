@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="selecting-migration-network-for-virt-provider_{context}"]
 = Selecting a migration network for {a-virt} provider
 

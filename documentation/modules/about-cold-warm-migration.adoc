@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: CONCEPT
 [id="about-cold-warm-migration_{context}"]
 = About cold and warm migration
 

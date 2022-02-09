@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="accessing-logs-cli_{context}"]
 = Accessing logs and custom resource information from the command line interface
 

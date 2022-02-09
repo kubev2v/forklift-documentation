@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="creating-network-mapping_{context}"]
 = Creating a network mapping
 
