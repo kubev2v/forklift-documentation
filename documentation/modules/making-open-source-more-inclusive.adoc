@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 [preface]
-:_content-type: SNIPPET
+:_content-type: CONCEPT
 [id="making-open-source-more-inclusive"]
 = Making open source more inclusive
 
