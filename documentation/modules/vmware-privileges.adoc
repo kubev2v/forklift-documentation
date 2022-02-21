@@ -11,10 +11,10 @@ The following VMware privileges are required to migrate virtual machines to {vir
 .VMware privileges
 |===
 |Privilege |Description
-|`Virtual machine.Interaction` privileges:|
+2+|`Virtual machine.Interaction` privileges:
 |`Virtual machine.Interaction.Power Off`   |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
 |`Virtual machine.Interaction.Power On`  |Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
-| All `Virtual machine.Provisioning` privileges:     |
+2+|`Virtual machine.Provisioning` privileges:
 |`Virtual machine.Provisioning.Allow disk access`
 |Allows opening a disk on a virtual machine for random read and write access. Used mostly for remote disk mounting.
 |`Virtual machine.Provisioning.Allow file access`
@@ -45,7 +45,7 @@ The following VMware privileges are required to migrate virtual machines to {vir
 |Allows promote operations on a virtual machine's disks.
 |`Virtual machine.Provisioning.Read customization specifications`
 |Allows reading a customization specification.
-|`Virtual machine.Snapshot management` privileges:      |
+2+|`Virtual machine.Snapshot management` privileges:      
 |`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine’s current state.
 |`Virtual machine.Snapshot management.Remove Snapshot`   |Allows removal of a snapshot from the snapshot history.
 |===
