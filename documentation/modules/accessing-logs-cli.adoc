@@ -18,7 +18,7 @@ If you specify a non-existent resource in the filtered `must-gather` command, no
 .Prerequisites
 
 * You must be logged in to the {virt} cluster as a user with the `cluster-admin` role.
-* You must have the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[{ocp} CLI (`oc`)] installed.
+* You must have the link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[{ocp} CLI (`oc`)] installed.
 
 .Procedure
 

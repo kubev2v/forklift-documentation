@@ -10,7 +10,7 @@ You can add {a-virt} provider to the {project-short} web console in addition to 
 
 .Prerequisites
 
-* You must have {a-virt} link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/using-service-accounts-in-applications.html[service account token] with `cluster-admin` privileges.
+* You must have {a-virt} link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/authentication/using-service-accounts-in-applications.html[service account token] with `cluster-admin` privileges.
 
 .Procedure
 

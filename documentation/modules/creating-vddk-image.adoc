@@ -17,7 +17,7 @@ Storing the VDDK image in a public registry might violate the VMware license ter
 
 .Prerequisites
 
-* link:https://docs.openshift.com/container-platform/{ocp-version}/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html[{ocp} image registry] or a secure link:https://docs.openshift.com/container-platform/{ocp-version}/registry/registry-options.html[external registry].
+* link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/registry/configuring_registry_storage/configuring-registry-storage-baremetal.html[{ocp} image registry] or a secure link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/registry/registry-options.html[external registry].
 * `podman` installed.
 * If you are using an external registry, {virt} must be able to access it.
 
