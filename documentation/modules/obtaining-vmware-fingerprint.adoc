@@ -15,12 +15,12 @@ You must obtain the SHA-1 fingerprint of a vCenter host in order to create a `Se
 [source,terminal]
 ----
 $ openssl s_client \
-    -connect <www.example.com>:443 \ <1>
+    -connect <vcenter_host>:443 \ <1>
     < /dev/null 2>/dev/null \
     | openssl x509 -fingerprint -noout -in /dev/stdin \
     | cut -d '=' -f 2
 ----
-<1> Specify the vCenter name.
+<1> Specify the IP address or FQDN of the vCenter host.
 +
 .Example output
 +
