@@ -20,7 +20,7 @@ $ openssl s_client \
     | openssl x509 -fingerprint -noout -in /dev/stdin \
     | cut -d '=' -f 2
 ----
-<1> Specify the address of the vCenter host with an FQDN or an IP address.
+<1> Specify the IP address or FQDN of the vCenter host.
 +
 .Example output
 +
