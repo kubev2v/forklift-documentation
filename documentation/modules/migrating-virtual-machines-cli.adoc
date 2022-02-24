@@ -17,8 +17,7 @@ You must specify both a name and a namespace for namespace-scoped CRs.
 
 .Prerequisites
 
-* You must be logged in as a user with `cluster-admin` privileges.
-* VMware only: You must have a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
+VMware only: You must have a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
 
 .Procedure
 
@@ -56,7 +55,7 @@ stringData:
   thumbprint: <vcenter_fingerprint> <4>
 EOF
 ----
-<1> Specify the base64-encoded vCenter admin user or the {rhv-short} {manager} user.
+<1> Specify the base64-encoded vCenter user or the {rhv-short} {manager} user.
 <2> Specify the base64-encoded password.
 <3> {rhv-short} only: Specify the base64-encoded CA certificate of the {manager}. You can retrieve it at `https://<www.example.com>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
 <4> VMware only: Specify the vCenter SHA-1 fingerprint.

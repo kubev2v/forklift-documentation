@@ -8,8 +8,62 @@
 
 The following prerequisites apply to VMware migrations:
 
+* You must be logged in as a user with at least the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 * You must install link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] on all source virtual machines (VMs).
 * If you are running a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
 * You must create a VMware Virtual Disk Development Kit (VDDK) image.
 * You must obtain the SHA-1 fingerprint of the vCenter host.
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the NFC service memory of the host.
+
+[discrete]
+[id="vmware-privileges_{context}"]
+== VMware privileges
+
+The following minimal set of VMware privileges is required to migrate virtual machines to {virt} with the {project-first}.
+
+[cols="2", options="header"]
+.VMware privileges
+|===
+|Privilege |Description
+2+|`Virtual machine.Interaction` privileges:
+|`Virtual machine.Interaction.Power Off`   |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
+|`Virtual machine.Interaction.Power On`  |Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
+2+a|`Virtual machine.Provisioning` privileges:
+[NOTE]
+====
+All `Virtual machine.Provisioning` privileges are required.
+====
+|`Virtual machine.Provisioning.Allow disk access`
+|Allows opening a disk on a virtual machine for random read and write access. Used mostly for remote disk mounting.
+|`Virtual machine.Provisioning.Allow file access`
+|Allows operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
+|`Virtual machine.Provisioning.Allow read-only disk access`
+|Allows opening a disk on a virtual machine for random read access. Used mostly for remote disk mounting.
+|`Virtual machine.Provisioning.Allow virtual machine download`
+|Allows read operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
+|`Virtual machine.Provisioning.Allow virtual machine files upload`
+|Allows write operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
+|`Virtual machine.Provisioning.Clone template`
+|Allows cloning of a template.
+|`Virtual machine.Provisioning.Clone virtual machine`
+|Allows cloning of an existing virtual machine and allocation of resources.
+|`Virtual machine.Provisioning.Create template from virtual machine`
+|Allows creation of a new template from a virtual machine.
+|`Virtual machine.Provisioning.Customize guest`
+|Allows customization of a virtual machine’s guest operating system without moving the virtual machine.
+|`Virtual machine.Provisioning.Deploy template`
+|Allows deployment of a virtual machine from a template.
+|`Virtual machine.Provisioning.Mark as template`
+|Allows marking an existing powered-off virtual machine as a template.
+|`Virtual machine.Provisioning.Mark as virtual machine`
+|Allows marking an existing template as a virtual machine.
+|`Virtual machine.Provisioning.Modify customization specification`
+|Allows creation, modification, or deletion of customization specifications.
+|`Virtual machine.Provisioning.Promote disks`
+|Allows promote operations on a virtual machine's disks.
+|`Virtual machine.Provisioning.Read customization specifications`
+|Allows reading a customization specification.
+2+|`Virtual machine.Snapshot management` privileges:
+|`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine’s current state.
+|`Virtual machine.Snapshot management.Remove Snapshot`   |Allows removal of a snapshot from the snapshot history.
+|===
