@@ -55,7 +55,7 @@ The QEMU guest agent is not installed on migrated VMs. Workaround: Install the Q
 
 .Network map displays a "Destination network not found" error
 
-If the network map remains in a `NotReady` state and the `NetworkMap` manifest displays a `Destination network not found` error, the cause is a missing network attachment definition. You must create a link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network before you create the network map. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1971259[*BZ#1971259*])
+If the network map remains in a `NotReady` state and the `NetworkMap` manifest displays a `Destination network not found` error, the cause is a missing network attachment definition. You must create a link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network before you create the network map. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1971259[*BZ#1971259*])
 
 .Warm migration gets stuck during third precopy
 
