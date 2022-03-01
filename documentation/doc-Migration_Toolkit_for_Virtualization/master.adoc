@@ -55,18 +55,18 @@ You can install the {operator-name} by using the {ocp} web console or the comman
 :web:
 include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
-[discrete]
-include::modules/obtaining-console-url.adoc[leveloffset=+3]
+// [discrete]
+// include::modules/obtaining-console-url.adoc[leveloffset=+2]
 :!web:
 :context: cli
 :cli:
 include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
-[discrete]
-include::modules/obtaining-console-url.adoc[leveloffset=+3]
+// [discrete]
 :!cli:
 :context: mtv
 :mtv:
+include::modules/obtaining-console-url.adoc[leveloffset=+2]
 
 [id="migrating-vms-web-console"]
 == Migrating virtual machines by using the {project-short} web console

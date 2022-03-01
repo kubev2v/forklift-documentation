@@ -4,14 +4,9 @@
 
 :_content-type: PROCEDURE
 [id="obtaining-console-url_{context}"]
-= Obtaining the {project-short} web console URL
+= Getting the {project-short} web console URL
 
-ifdef::web[]
-You can obtain the {project-short} web console URL by using the {ocp} web console.
-endif::[]
-ifdef::cli[]
-You can obtain the {project-short} web console URL from the command line.
-endif::[]
+You can get the {project-short} web console URL by using either the {ocp} web console, or the command line.
 
 .Prerequisites
 
@@ -21,14 +16,16 @@ endif::[]
 
 .Procedure
 
-ifdef::web[]
+* If you are using the {ocp} web console, follow these steps:
 . Log in to the {ocp} web console.
 . Click *Networking* -> *Routes*.
 . Select the +{namespace}+ project in the *Project:* list.
-. Click the URL for the `forklift-ui` service to open the login page for the {project-short} web console.
-endif::[]
-ifdef::cli[]
-. Obtain the {project-short} web console URL:
++
+The URL for the `forklift-ui` service that opens the login page for the {project-short} web console is displayed.
++
+Click the URL to navigate to the {project-short} web console.
+
+* If you are using the command line: get the {project-short} web console URL with the following command:
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -36,11 +33,12 @@ $ {oc} get route virt -n {namespace} \
   -o custom-columns=:.spec.host
 ----
 +
+The URL for the `forklift-ui` service that opens the login page for the {project-short} web console is displayed.
++
 .Example output
 [source,terminal,subs="attributes+"]
 ----
 https://virt-{namespace}.apps.cluster.openshift.com.
 ----
 
-. Launch a browser and navigate to the {project-short} web console.
-endif::[]
+Launch a browser and navigate to the {project-short} web console.

@@ -143,3 +143,6 @@ forklift-operator-6bf45b8d8-qps9v     1/1    Running  0         5m
 forklift-ui-7cdf96d8f6-xnw5n          1/1    Running  0         2m
 ----
 endif::[]
+
+.Additional resources
+* xref:obtaining-console-url_mtv[Getting the {project-short} web console URL]
