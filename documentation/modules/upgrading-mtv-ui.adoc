@@ -15,6 +15,8 @@ You must upgrade to the next release without skipping a release, for example, fr
 
 .Procedure
 
+. Click the *Subscriptions* tab of the *Operator details* page in the {ocp-short} web console.
+
 . Change the update channel to *release-v2.2.0*.
 +
 ifeval::["{build}" == "upstream"]
@@ -24,11 +26,9 @@ ifeval::["{build}" == "downstream"]
 See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html-single/operators/index#olm-changing-update-channel_olm-upgrading-operators[Changing update channel] in the {ocp} documentation.
 endif::[]
 
-. On the *Subscriptions* tab of the *Operator details* page in the {ocp-short} web console, confirm that *Upgrade status* changes from *Up to date* to *Upgrade available*. If it does not, restart the `CatalogSource` pod:
+. Confirm that *Upgrade status* changes from *Up to date* to *Upgrade available*. If it does not, restart the `CatalogSource` pod:
 
-.. In the the {ocp-short} web console, click *Operators* -> *Installed Operators*. Click *Forklift Operator* to view the *Operator details* page.
-
-..  On the *Subscriptions* tab, note the catalog source, for example, `redhat-operators`.
+..  Note the catalog source, for example, `redhat-operators`.
 ..  From the command line, retrieve the catalog source pod:
 +
 [source,terminal,subs=attributes+]
@@ -44,7 +44,7 @@ $ {oc} get pod -n openshift-marketplace | grep <catalog_source> <1>
 $ {oc} delete pod -n openshift-marketplace <catalog_source_pod>
 ----
 +
-On the *Subscriptions* tab of the *Operator details* page in the {ocp-short} web console, *Upgrade status* changes from *Up to date* to *Upgrade available*.
+*Upgrade status* changes from *Up to date* to *Upgrade available*.
 +
 If you set *Update approval* on the *Subscriptions* tab to *Automatic*, the upgrade starts automatically.
 +
