@@ -24,7 +24,7 @@ ifeval::["{build}" == "downstream"]
 See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html-single/operators/index#olm-changing-update-channel_olm-upgrading-operators[Changing update channel] in the {ocp} documentation.
 endif::[]
 
-. Restart the `CatalogSource` pod:
+. On the *Subscriptions* tab of the *Operator details* page in the {ocp-short} web console, confirm that *Upgrade status* changes from *Up to date* to *Upgrade available*. If it does not, restart the `CatalogSource` pod:
 
 .. In the the {ocp-short} web console, click *Operators* -> *Installed Operators*. Click *Forklift Operator* to view the *Operator details* page.
 
