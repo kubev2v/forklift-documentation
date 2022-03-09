@@ -2,7 +2,6 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
 [id="adding-source-provider_{context}"]
 ifdef::vmware[]
 = Adding a VMware source provider
@@ -11,7 +10,6 @@ You can add a VMware source provider by using the {project-short} web console.
 
 .Prerequisites
 
-* vCenter SHA-1 fingerprint.
 * VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
 endif::[]
 ifdef::rhv[]
@@ -53,7 +51,8 @@ ifdef::vmware[]
 * *Hostname or IP address*: vCenter host name or IP address
 * *Username*: vCenter user, for example, `user@vsphere.local`
 * *Password*: vCenter user password
-* *SHA-1 fingerprint*: vCenter SHA-1 fingerprint
+* Click *Verify certificate*.
+* Select the *I trust the authenticity of this certificate* checkbox.
 endif::[]
 ifdef::rhv[]
 . Select *Red Hat Virtualization* from the *Type* list.
