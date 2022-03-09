@@ -52,7 +52,7 @@ ifdef::vmware[]
 * *Username*: vCenter user, for example, `user@vsphere.local`
 * *Password*: vCenter user password
 * Click *Verify certificate*.
-* Select the *I trust the authenticity of this certificate* checkbox.
+* Select the *I trust the authenticity of this certificate* checkbox. 
 endif::[]
 ifdef::rhv[]
 . Select *Red Hat Virtualization* from the *Type* list.
