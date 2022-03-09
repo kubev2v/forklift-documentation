@@ -122,6 +122,7 @@ You can migrate virtual machines to {virt} from the command line.
 ====
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
+include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+2]
 include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 [id="advanced-migration-options"]
