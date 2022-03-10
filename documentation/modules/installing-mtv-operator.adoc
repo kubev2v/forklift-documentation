@@ -33,10 +33,10 @@ ifeval::["{build}" == "upstream"]
 The {operator-name} is a Community Operator. Red Hat does not support Community Operators.
 ====
 endif::[]
-. Click the {operator-name} and then click *Install*.
+. Click *{operator-name-ui}* and then click *Install*.
 . On the *Install Operator* page, click *Install*.
-. Click *Operators* -> *Installed Operators* to verify that the {operator-name} appears in the *{namespace}* project with the status *Succeeded*.
-. Click the {operator-name}.
+. Click *Operators* -> *Installed Operators* to verify that *{operator-name-ui}* appears in the *{namespace}* project with the status *Succeeded*.
+. Click *{operator-name-ui}*.
 . Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
 . Click *Create*.
 . Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.

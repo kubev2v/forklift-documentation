@@ -15,7 +15,7 @@ You must upgrade to the next release without skipping a release, for example, fr
 
 .Procedure
 
-. In the {ocp-short} web console, click menu:Operators[Installed Operators>{operator-name} Operator>Subscription].
+. In the {ocp-short} web console, click menu:Operators[Installed Operators>{operator-name-ui}>Subscription].
 
 . Change the update channel to *release-v2.2.0*.
 +
