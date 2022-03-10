@@ -55,7 +55,6 @@ asciidoctor:
   - must-gather=quay.io/konveyor/forklift-must-gather:latest
   - namespace=konveyor-forklift
   - operator=forklift-operator
-  - operator-name-ui=Forklift Operator
   - operator-name=Forklift Operator
   - project-short=Forklift
   - project-full=Forklift
@@ -64,6 +63,7 @@ asciidoctor:
   - project-z-version=2.2.0
   - the-lc=
   - the=
+  - experimental
   safe: unsafe
 
 exclude:
