@@ -113,9 +113,11 @@ You can migrate virtual machines to {virt} from the command line.
 
 [IMPORTANT]
 ====
-*  You must be logged in as a user with the {ocp} `cluster-admin` privileges.
+*  You must be logged in as a user with `cluster-admin` privileges.
 
 *  VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
+
+*  VMware only: You must obtain the xref:obtaining-vmware-fingerprint_{context}[vCenter SHA-1 fingerprint].
 
 *  You must ensure that all xref:prerequisites[prerequisites] are met.
 ====
