@@ -14,7 +14,7 @@ You can cancel an entire migration or individual virtual machines (VMs) while a 
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} delete migration <migration> -n {namespace} <1>
+$ {oc} delete migration <migration> -n {namespace}
 ----
 
 .Canceling the migration of individual VMs
@@ -32,13 +32,12 @@ metadata:
 ...
 spec:
   cancel:
-  - id: vm-102 <.>
+  - id: vm-102 <1>
   - id: vm-203
   - name: rhel8-vm
 EOF
 ----
-<.> You can specify a VM by using the `id` key or the `name` key.
-+
+<1> You can specify a VM by using the `id` key or the `name` key.
 The value of the `id` key is the _managed object reference_, for a VMware VM, or the _VM UUID_, for a {rhv-short} VM.
 
 . Retrieve the `Migration` CR to monitor the progress of the remaining VMs:
