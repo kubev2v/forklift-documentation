@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: CONCEPT
-[id="virt-migration-workflows_{context}"]
+[id="virt-migration-workflow_{context}"]
 = Detailed migration workflow
 
 You can use the detailed migration workflow to troubleshoot a failed migration.
