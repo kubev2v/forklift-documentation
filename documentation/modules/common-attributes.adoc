@@ -9,6 +9,7 @@
 :ocp-version: 4.9
 :ocp-short: OCP
 :operator: mtv-operator
+:operator-name-ui: Migration Tookit for Virtualization Operator
 :operator-name: MTV Operator
 :project-full: Migration Toolkit for Virtualization
 :project-short: MTV

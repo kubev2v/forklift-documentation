@@ -63,6 +63,7 @@ asciidoctor:
   - project-z-version=2.2.0
   - the-lc=
   - the=
+  - experimental
   safe: unsafe
 
 exclude:
