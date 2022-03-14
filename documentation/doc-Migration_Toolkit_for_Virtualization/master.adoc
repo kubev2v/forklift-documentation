@@ -117,7 +117,7 @@ You can migrate virtual machines to {virt} from the command line.
 
 *  VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 
-*  VMware only: You must obtain the xref:obtaining-vmware-fingerprint_{context}[vCenter SHA-1 fingerprint].
+*  VMware only: You must have the xref:obtaining-vmware-fingerprint_{context}[vCenter SHA-1 fingerprint].
 
 *  You must ensure that all xref:prerequisites[prerequisites] are met.
 ====
