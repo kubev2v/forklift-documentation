@@ -34,7 +34,7 @@ spec:
   cancel:
   - id: vm-102 <1>
   - id: vm-203
-  - name: rhel8-vm
+  - name: rhel8-vm <1>
 EOF
 ----
 <1> You can specify a VM by using the `id` key or the `name` key.
