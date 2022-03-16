@@ -12,7 +12,7 @@ You can cancel an entire migration or individual virtual machines (VMs) while a 
 
 * Delete the `Migration` CR:
 +
-[source,terminal]
+[source,shell,subs="attributes+"]
 ----
 $ {oc} delete migration <migration> -n {namespace} <1>
 ----
