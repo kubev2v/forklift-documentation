@@ -6,7 +6,7 @@
 [id="about-hooks-for-migration-plans-api_{context}"]
 = API-based hooks for {project-short} migration plans
 
-You can migrate an a hook for a {project-full} migration plan from the command line by using the {project-short} API.
+You can add hooks to a migration plan from the command line by using the {project-full} API.
 
 [discrete]
 == Default hook image
@@ -23,7 +23,7 @@ You specify hooks per VM and you can run each as a _PreHook_ or a _PostHook_. In
 
 When you adding a hook, you must specify the namespace where the hook CR is located, the name of the hook, and specify whether the hook is a PreHook or PostHook.
 
-Example:
+.Example PreHook:
 
 [source,yaml]
 ----
