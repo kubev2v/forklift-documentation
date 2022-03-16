@@ -220,7 +220,7 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 include::modules/changing-precopy-intervals.adoc[leveloffset=+2]
 
-=== Adding hooks to a migration pla
+=== Adding hooks to a migration plan
 
 include::modules/about-hooks-for-migration-plans-api.adoc[leveloffset=+3]
 
