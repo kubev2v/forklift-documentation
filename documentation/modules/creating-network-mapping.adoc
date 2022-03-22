@@ -11,7 +11,7 @@ You can create one or more network mappings by using the {project-short} web con
 .Prerequisites
 
 * Source and target providers added to the web console.
-* If you map more than one source and target network, each additional {virt} network requires its own link:https://docs.openshift.com/container-platform/{ocp-version}/virt/virtual_machines/vm_networking/virt-attaching-vm-multiple-networks.html#virt-creating-network-attachment-definition[network attachment definition].
+* If you map more than one source and target network, each additional {virt} network requires its own link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-creating-network-attachment-definition[network attachment definition].
 
 .Procedure
 
