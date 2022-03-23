@@ -16,7 +16,7 @@ You must upgrade to the next release without skipping a release, for example, fr
 
 . In the {ocp-short} web console, click *Operators* -> *Installed Operators* -> *{operator-name-ui}* -> *Subscription*.
 
-. Change the update channel to *release-v2.2.0*.
+. Change the update channel to the correct release.
 +
 ifeval::["{build}" == "upstream"]
 See link:https://docs.okd.io/latest/operators/admin/olm-upgrading-operators.html#olm-changing-update-channel_olm-upgrading-operators[Changing update channel] in the {ocp} documentation.
@@ -70,8 +70,6 @@ forklift-operator-6bf45b8d8-qps9v     1/1    Running  0         5m
 forklift-ui-7cdf96d8f6-xnw5n          1/1    Running  0         2m
 ----
 +
-. If you added VMware source providers to MTV 2.2 and also mapped to NFS on the OpenShift destination provider in MTV 2.2, upgrading to MTV 2.3 will make the VMware providers have a Critical state and the NFS mapping invalid. To fix these problems:
+. If you added VMware source providers to MTV 2.2, upgrading to MTV 2.3 will make the VMware providers have a Critical state. To fix this problem: Edit the VMwhere provider by adding a VDDK `init` image and verifying the certificate of the VMware provider. For more information see link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.2/html/installing_and_using_the_migration_toolkit_for_virtualization/migrating-vms-web-console#adding-source-provider_vmware[Addding a VMSphere source provider]
 
-.. Edit the VMwhere provider by adding a VDDK `init` image and verifying the certificate of the VMware provider. For more information see link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.2/html/installing_and_using_the_migration_toolkit_for_virtualization/migrating-vms-web-console#adding-source-provider_vmware[Addding a VMSphere source provider]
-
-.. Set the `AccessModes` and `VolumeMode` parameters in the NFS storage profile. For more information, see link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-customizing-storage-profile_virt-creating-data-volumes[Customizing the storage profile]
+. If you mapped to NFS on the OpenShift destination provider in MTV 2.2, upgrading to MTV 2.3 will make the NFS mapping invalid. To fix this problem: Set the `AccessModes` and `VolumeMode` parameters in the NFS storage profile. For more information, see link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-customizing-storage-profile_virt-creating-data-volumes[Customizing the storage profile]
