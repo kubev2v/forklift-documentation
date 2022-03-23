@@ -51,8 +51,8 @@ ifdef::vmware[]
 
 * *Name*: Name to display in the list of providers
 * *Hostname or IP address*: vCenter host name or IP address
-* *Username*: vCenter user, for example, `user@vsphere.local`
-* *Password*: vCenter user password
+* *Username*: vCenter admin user, for example, `administrator@vsphere.local`
+* *Password*: vCenter admin password
 * *SHA-1 fingerprint*: vCenter SHA-1 fingerprint
 endif::[]
 ifdef::rhv[]
