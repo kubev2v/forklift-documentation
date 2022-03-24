@@ -1,0 +1,90 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-23_{context}"]
+= {project-full} 2.3
+
+You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
+
+The release notes describe technical changes, new features and enhancements, and known issues.
+
+[id="technical-changes-22_{context}"]
+== Technical changes
+
+This release has the following technical changes:
+
+
+
+[id="new-features-and-enhancements-22_{context}"]
+== New features and enhancements
+
+This release has the following features and improvements:
+
+.{project-short} {project-version} supports warm migration from {rhv-short}
+
+You can use warm migration to migrate VMs from both VMware and {rhv-short}.
+
+
+[id="known-issues-22_{context}"]
+== Known issues
+
+This release has the following known issues:
+
+.Snapshots are not deleted after warm migration
+
+The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You must delete the snapshots manually. link:https://bugzilla.redhat.com/show_bug.cgi?id=2062570[(*BZ#2062570*)]
+
+.Migration from {rhv-short} fails during precopy or cutover if a ??? snapshot operation is executed on the source VM
+
+If ??? performs another snapshot operation on the source VM during the precopy or cutover step of a warm migration, the migration fails. 
+
+
+.Certain Validation service issues do not block migration
+
+Certain `Validation` service issues, which are marked as `Critical` and display the assessment text, `The VM will not be migrated`, do not block migration. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2025977[*BZ#2025977*])
+
+The following `Validation` service assessments do not block migration:
+
+[cols="2,1", options="header"]
+.Issues that do not block migration
+|===
+|Assessment |Result
+|The disk interface type is not supported by OpenShift Virtualization (only sata, virtio_scsi and virtio interface types are currently supported). |The migrated VM will have a virtio disk if the source interface is not recognized.
+|The NIC interface type is not supported by OpenShift Virtualization (only e1000, rtl8139 and virtio interface types are currently supported).   |The migrated VM will have a virtio NIC if the source interface is not recognized.
+|The VM is using a vNIC profile configured for host device passthrough, which is not currently supported by OpenShift Virtualization.   |The migrated VM will have an SR-IOV NIC. The destination network must be set up correctly.
+|One or more of the VM's disks has an illegal or locked status condition.  |The migration will proceed but the disk transfer is likely to fail.
+|The VM has a disk with a storage type other than `image`, and this is not currently supported by OpenShift Virtualization.   |The migration will proceed but the disk transfer is likely to fail.
+|The VM has one or more snapshots with disks in ILLEGAL state. This is not currently supported by OpenShift Virtualization.   |The migration will proceed but the disk transfer is likely to fail.
+|The VM has USB support enabled, but USB devices are not currently supported by OpenShift Virtualization.  |The migrated VM will not have USB devices.
+|The VM is configured with a watchdog device, which is not currently supported by OpenShift Virtualization.   |The migrated VM will not have a watchdog device.
+|The VM's status is not `up` or `down`.  |The migration will proceed but it might hang if the VM cannot be powered off.
+|===
+
+.QEMU guest agent is not installed on migrated VMs
+
+The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[*BZ#2018062*])
+
+.Importer pod log is unavailable after warm migration
+
+Retaining the `importer` pod for debug purposes causes warm migration to hang during the precopy stage. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2016290[*BZ#2016290*])
+
+As a temporary workaround, the `importer` pod is removed at the end of the precopy stage so that the precopy succeeds. However, this means that the `importer` pod log is not retained after warm migration is complete. You can only view the `importer` pod log by using the `oc logs -f <cdi-importer_pod>` command during the precopy stage.
+
+This issue only affects the `importer` pod log and warm migration. Cold migration and the `virt-v2v` logs are not affected.
+
+.Deleting migration plan does not remove temporary resources.
+
+Deleting a migration plan does not remove temporary resources such as `importer` pods, `conversion` pods, config maps, secrets, failed VMs and data volumes. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[*BZ#2018974*]) You must archive a migration plan before deleting it in order to clean up the temporary resources.
+
+.Unclear error status message for VM with no operating system
+
+The error status message for a VM with no operating system on the *Migration plan details* page of the web console does not describe the reason for the failure. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[*BZ#2008846*])
+
+.Network, storage, and VM referenced by name in the Plan CR are not displayed in the web console.
+
+If a Plan CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-short} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
+
+.Log archive file includes logs of a deleted migration plan or VM
+
+If you delete a migration plan and then run a new migration plan with the same name or if you delete a migrated VM and then remigrate the source VM, the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[*BZ#2023764*])
