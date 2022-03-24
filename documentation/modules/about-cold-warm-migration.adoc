@@ -6,7 +6,7 @@
 [id="about-cold-warm-migration_{context}"]
 = About cold and warm migration
 
-{project-short} supports cold migration from {rhv-full} and warm migration from VMware vSphere.
+{project-short} supports cold migration from {rhv-full} ({rhv-short}) and warm migration from VMware vSphere and from {rhv-short}.
 
 [id="cold-migration_{context}"]
 == Cold migration

@@ -2,7 +2,6 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
 [id="migrating-virtual-machines-cli_{context}"]
 = Migrating virtual machines
 
@@ -240,7 +239,7 @@ spec:
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
-<2> VMware only: Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run. Warm migration is not supported for {rhv-short}.
+<2> Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
 <3> You can add multiple network mappings.
 <4> Specify the name of the `NetworkMap` CR.
 <5> Specify the name of the `StorageMap` CR.
