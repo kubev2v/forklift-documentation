@@ -4,9 +4,9 @@
 
 :_content-type: PROCEDURE
 [id="adding-virt-provider_{context}"]
-= Adding {a-virt} destination provider
+= Adding {a-virt} provider
 
-You can add {a-virt} destination provider to the {project-short} web console in addition to the default {virt} destination provider, which is the provider where you installed {project-short}.
+You can add {a-virt} provider to the {project-short} web console in addition to the default {virt} provider, which is the provider where you installed {project-short}.
 
 .Prerequisites
 
