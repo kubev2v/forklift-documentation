@@ -14,7 +14,13 @@ The release notes describe technical changes, new features and enhancements, and
 
 This release has the following technical changes:
 
+.Setting the VddkInitImage URL is part of the procedure of adding provider.
 
+In the web console, you enter the VddkInitImage URL when adding a VMware provider. Alternatively, from the CLI, you add the VddkInitImage URL to the `Provider` CR for VMware migrations.
+
+.The `StorageProfile` resourse needs to be updated for a non-provisioner storage class
+
+You must update the `StorageProfile` resourse with `accessModes` and `volumeMode` for non-provisioner storage classes such as NFS. The documentation includes a link to the relevant procedure.
 
 [id="new-features-and-enhancements-22_{context}"]
 == New features and enhancements
@@ -25,20 +31,30 @@ This release has the following features and improvements:
 
 You can use warm migration to migrate VMs from both VMware and {rhv-short}.
 
+.The minimal sufficient set of privileges for VMware users is established
+
+VMware users do not have to have full `cluster-admin` privileges to perform a VM migration. The minimal sufficient set of user's privileges is established and documented.
+
+.{project-short} documentation is updated with instructions on using hooks
+
+{project-short} documentation includes instructions on adding hooks to migration plans and running hooks on VMs.
 
 [id="known-issues-22_{context}"]
 == Known issues
 
 This release has the following known issues:
 
+.Some warm migrations from {rhv-short} might fail
+
+When you run a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.
+
 .Snapshots are not deleted after warm migration
 
-The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You must delete the snapshots manually. link:https://bugzilla.redhat.com/show_bug.cgi?id=2062570[(*BZ#2062570*)]
+The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You can link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-deleting-vm-snapshot-web_virt-managing-vm-snapshots[delete the snapshots manually]. link:https://bugzilla.redhat.com/show_bug.cgi?id=2062570[(*BZ#2062570*)]
 
-.Migration from {rhv-short} fails during precopy or cutover if a ??? snapshot operation is executed on the source VM
+.Migration from {rhv-short} fails during precopy or cutover if a snapshot operation is performed on the source VM
 
-If ??? performs another snapshot operation on the source VM during the precopy or cutover step of a warm migration, the migration fails. 
-
+If the user performs another snapshot operation on the source VM during the precopy or cutover stage of a warm migration, the migration fails instead of waiting for the snapshot operation to finish.link:https://bugzilla.redhat.com/show_bug.cgi?id=2062575[(*BZ#2062575*)]
 
 .Certain Validation service issues do not block migration
 
