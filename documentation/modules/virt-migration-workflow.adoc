@@ -24,7 +24,7 @@ The workflow describes the following steps:
 *For each VM disk:*
 
 . The `Containerized Data Importer (CDI) Controller` service creates a persistent volume claim (PVC) based on the parameters specified in the `DataVolume` CR.  
-. If the `StorageClass` of your VM has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the `StorageClass` provisioner.
+. If the `StorageClass` of your VM disk has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the `StorageClass` provisioner.
 . The `CDI Controller` service creates an `importer` pod.
 . The `importer` pod streams the VM disk to the PV.
 +
