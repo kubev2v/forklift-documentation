@@ -121,7 +121,5 @@ spec:
 EOF
 ----
 <1> Allowed values are `ovirt` and `vsphere`.
-<2> Specify the API end point URL, for example, `https://<fqdn>/sdk` for vSphere or `https://<fqdn>/ovirt-engine/api/` for {rhv-short}.
-<3> Specify the name of provider `Secret` CR.
-
-You must update the rules version after creating a custom rule so that the `Inventory` service detects the changes and validates the VMs.
+<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere or `https://<RHV engine host>/ovirt-engine/api/` for {rhv-short}.
+<3> Specify the name of the provider `Secret` CRHV engine host. You must update the rules version after creating a custom rule so that the `Inventory` service detects the changes and validates the VMs.

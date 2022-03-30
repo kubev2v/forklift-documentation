@@ -132,7 +132,7 @@ $ GET https://<inventory_service_route>/providers/<provider>/<UUID>/workloads/<v
                 "id": "domain-c26"
             },
             "revision": 1,
-            "name": "fqdn",
+            "name": "IP address or host name of the vCenter host or RHV Engine host",
             "selfLink": "providers/vsphere/c872d364-d62b-46f0-bd42-16799f40324e/hosts/host-29",
             "status": "green",
             "inMaintenance": false,
