@@ -18,14 +18,15 @@ The `must-gather` tool collects the following logs and CR files in an archive fi
 ** `DataVolume` CR: Represents a disk mounted on a migrated VM.
 ** `VirtualMachine` CR: Represents a migrated VM.
 ** `Plan` CR: Defines the VMs and storage and network mapping.
+** `Job` CR: Optional: Represents a pre-migration hook, a post-migration hook, or both.
 
 * Logs:
 ** `importer` pod: Disk-to-data-volume conversion log. The `importer` pod naming convention is `importer-<migration_plan>-<vm_id><5_char_id>`, for example, `importer-mig-plan-ed90dfc6-9a17-4a8btnfh`, where `ed90dfc6-9a17-4a8` is a truncated {rhv-short} VM ID and `btnfh` is the generated 5-character ID.
 ** `conversion` pod: VM conversion log. The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the VM. The `conversion` pod naming convention is `<migration_plan>-<vm_id><5_char_id>`.
-
 ** `virt-launcher` pod: VM launcher log. When a migrated VM is powered on, the `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 ** `forklift-controller` pod: The log is filtered for the migration plan, virtual machine, or namespace specified by the `must-gather` command.
 ** `forklift-must-gather-api` pod: The log is filtered for the migration plan, virtual machine, or namespace specified by the `must-gather` command.
+** `hook-job` pod: The log is filtered for hook jobs. The `hook-job` naming convention is`<migration_plan>-<vm_id><5_char_id>`, for example, `plan2j-vm-3696-posthook-4mx85` or `plan2j-vm-3696-prehook-mwqnl`.
 +
 [NOTE]
 ====
