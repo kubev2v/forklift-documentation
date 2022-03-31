@@ -36,12 +36,13 @@ type: Opaque
 stringData:
   user: <user> <1>
   password: <password> <2>
-  cacert: <{rhv-short}_ca_certificate> <3>
+  cacert: | <3>
+    <{rhv-short}_ca_certificate>
   thumbprint: <vcenter_fingerprint> <4>
 EOF
 ----
-<1> Specify the base64-encoded vCenter admin user or the {rhv-short} {manager} user.
-<2> Specify the base64-encoded password.
+<1> Specify the vCenter user or the {rhv-short} {manager} user.
+<2> Specify the user password.
 <3> {rhv-short} only: Specify the base64-encoded CA certificate of the {manager}. You can retrieve it at `https://<{rhv-short}_engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
 <4> VMware only: Specify the vCenter SHA-1 fingerprint.
 
