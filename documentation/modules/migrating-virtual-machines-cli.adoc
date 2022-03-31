@@ -58,7 +58,7 @@ EOF
 ----
 <1> Specify the base64-encoded vCenter admin user or the {rhv-short} {manager} user.
 <2> Specify the base64-encoded password.
-<3> {rhv-short} only: Specify the base64-encoded CA certificate of the {manager}. You can retrieve it at `https://<www.example.com>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
+<3> {rhv-short} only: Specify the base64-encoded CA certificate of the {manager}. You can retrieve it at `https://<{rhv-short}_engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
 <4> VMware only: Specify the vCenter SHA-1 fingerprint.
 
 . Create a `Provider` manifest for the source provider:
@@ -80,7 +80,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ovirt` and `vsphere`.
-<2> Specify the API end point URL, for example, `https://<www.example.com>/sdk` for vSphere or `https://<www.example.com>/ovirt-engine/api/` for {rhv-short}.
+<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere or `https://<{rhv-short}_engine_host>/ovirt-engine/api/` for {rhv-short}.
 <3> Specify the name of provider `Secret` CR.
 
 . VMware only: Create a `Host` manifest:
