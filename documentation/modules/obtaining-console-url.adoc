@@ -18,7 +18,7 @@ You can get the {project-short} web console URL by using either the {ocp} web co
 .Procedure
 endif::[]
 ifeval::[{context} != "mtv"]
-. Get the web console URL:
+Now you can get the web console URL:
 endif::[]
 * If you are using the {ocp} web console, follow these steps:
 +
