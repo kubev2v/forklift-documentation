@@ -4,20 +4,19 @@
 
 :_content-type: PROCEDURE
 [id="obtaining-console-url_{context}"]
+ifeval::[{context} == "mtv"]
 = Getting the {project-short} web console URL
 
 You can get the {project-short} web console URL by using either the {ocp} web console, or the command line.
 
-ifeval::[{context} == "mtv"]
 .Prerequisites
 
 * You must have the {virt} Operator installed.
 * You must have the {operator-name} installed.
 * You must be logged in as a user with `cluster-admin` privileges.
-endif::[]
 
 .Procedure
-
+endif::[]
 * If you are using the {ocp} web console, follow these steps:
 . Log in to the {ocp} web console.
 . Click *Networking* -> *Routes*.
