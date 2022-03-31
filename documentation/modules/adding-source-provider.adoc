@@ -24,23 +24,6 @@ endif::[]
 
 .Procedure
 
-ifdef::vmware[]
-. Add the VDDK image to the `HyperConverged` CR:
-+
-[source,yaml,subs="attributes+"]
-----
-$ cat << EOF | {oc} apply -f -
-apiVersion: hco.kubevirt.io/v1beta1
-kind: HyperConverged
-metadata:
-  name: kubevirt-hyperconverged
-  namespace: openshift-cnv
-spec:
-  vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <1>
-EOF
-----
-<1> Specify the VDDK image that you created.
-endif::[]
 . In the {project-short} web console, click *Providers*.
 . Click *Add provider*.
 ifdef::vmware[]
@@ -51,6 +34,7 @@ ifdef::vmware[]
 * *Hostname or IP address*: vCenter host name or IP address
 * *Username*: vCenter user, for example, `user@vsphere.local`
 * *Password*: vCenter user password
+* *VDDK init image*: VDDKInitImage path
 * Click *Verify certificate*.
 * Select the *I trust the authenticity of this certificate* checkbox.
 endif::[]

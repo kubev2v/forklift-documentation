@@ -22,22 +22,6 @@ You must specify both a name and a namespace for namespace-scoped CRs.
 
 .Procedure
 
-. VMware only: Add the VDDK image to the `HyperConverged` CR:
-+
-[source,yaml,subs="attributes+"]
-----
-$ cat << EOF | {oc} apply -f -
-apiVersion: hco.kubevirt.io/v1beta1
-kind: HyperConverged
-metadata:
-  name: kubevirt-hyperconverged
-  namespace: openshift-cnv
-spec:
-  vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <1>
-EOF
-----
-<1> Specify the VDDK image that you created.
-
 . Create a `Secret` manifest for the source provider credentials:
 +
 [source,yaml,subs="attributes+"]
@@ -74,14 +58,17 @@ metadata:
 spec:
   type: <provider_type> <1>
   url: <api_end_point> <2>
+  settings:
+    vddkInitImage: <registry_route_or_server_path>/vddk: (3)
   secret:
-    name: <secret> <3>
+    name: <secret> <4>
     namespace: {namespace}
 EOF
 ----
 <1> Allowed values are `ovirt` and `vsphere`.
 <2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere or `https://<{rhv-short}_engine_host>/ovirt-engine/api/` for {rhv-short}.
-<3> Specify the name of provider `Secret` CR.
+<3> VMware only: Specify the VDDK image that you created.
+<4> Specify the name of provider `Secret` CR.
 
 . VMware only: Create a `Host` manifest:
 +
