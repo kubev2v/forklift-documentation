@@ -56,6 +56,10 @@ The Migration Controller service does not delete snapshots automatically after a
 
 If the user performs another snapshot operation on the source VM during the precopy or cutover stage of a warm migration, the migration fails instead of waiting for the snapshot operation to finish.link:https://bugzilla.redhat.com/show_bug.cgi?id=2062575[(*BZ#2062575*)]
 
+.Importer pod restarts during a {rhv-short} warm migration
+
+link:https://bugzilla.redhat.com/show_bug.cgi?id=2062573[(*BZ#2062573*)]
+
 .QEMU guest agent is not installed on migrated VMs
 
 The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[*BZ#2018062*])
