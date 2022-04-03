@@ -54,7 +54,7 @@ The Migration Controller service does not delete snapshots automatically after a
 
 .Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM
 
-If the user performs another snapshot operation on the source VM during the precopy or cutover stage of a {rhv-short} warm migration, the migration fails instead of waiting for the snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(*BZ#2057459*)]
+If, at the time when a migration snapshot is scheduled, the user performs another snapshot operation on the source VM, the migration fails instead of waiting for the user's snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(*BZ#2057459*)]
 
 .During a {rhv-short} warm migration, the status of the target VM becomes DataVolumeError
 
