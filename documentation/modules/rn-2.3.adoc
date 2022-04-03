@@ -54,11 +54,11 @@ The Migration Controller service does not delete snapshots automatically after a
 
 .Migration from {rhv-short} fails during precopy or cutover if a snapshot operation is performed on the source VM
 
-If the user performs another snapshot operation on the source VM during the precopy or cutover stage of a warm migration, the migration fails instead of waiting for the snapshot operation to finish.link:https://bugzilla.redhat.com/show_bug.cgi?id=2062575[(*BZ#2062575*)]
+If the user performs another snapshot operation on the source VM during the precopy or cutover stage of a warm migration, the migration fails instead of waiting for the snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2062575[(*BZ#2062575*)]
 
-.Importer pod restarts during a {rhv-short} warm migration
+.During a {rhv-short} warm migration, the status of a VM becomes DataVolumeError
 
-link:https://bugzilla.redhat.com/show_bug.cgi?id=2062573[(*BZ#2062573*)]
+During the precopy and cutover stages of a warm migration from {rhv-short}, the migration status of each VM becomes *DataVolumeError*. The cause is a restart of the `importer` pod. This does not affect the migration. link:https://bugzilla.redhat.com/show_bug.cgi?id=2055201[(*BZ#2055201*)]
 
 .QEMU guest agent is not installed on migrated VMs
 
@@ -82,7 +82,7 @@ The error status message for a VM with no operating system on the *Migration pla
 
 .Network, storage, and VM referenced by name in the Plan CR are not displayed in the web console.
 
-If a Plan CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-short} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
+If a `Plan` CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-short} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
 
 .Log archive file includes logs of a deleted migration plan or VM
 
