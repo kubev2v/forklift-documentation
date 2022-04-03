@@ -1,0 +1,89 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-23_{context}"]
+= {project-full} 2.3
+
+You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
+
+The release notes describe technical changes, new features and enhancements, and known issues.
+
+[id="technical-changes-22_{context}"]
+== Technical changes
+
+This release has the following technical changes:
+
+.Setting the VddkInitImage path is part of the procedure of adding VMware provider.
+
+In the web console, you enter the VddkInitImage path when adding a VMware provider. Alternatively, from the CLI, you add the VddkInitImage path to the `Provider` CR for VMware migrations.
+
+.The StorageProfile resource needs to be updated for a non-provisioner storage class
+
+You must update the `StorageProfile` resource with `accessModes` and `volumeMode` for non-provisioner storage classes such as NFS. The documentation includes a link to the relevant procedure.
+
+[id="new-features-and-enhancements-22_{context}"]
+== New features and enhancements
+
+This release has the following features and improvements:
+
+.{project-short} {project-version} supports warm migration from {rhv-short}
+
+You can use warm migration to migrate VMs from both VMware and {rhv-short}.
+
+.The minimal sufficient set of privileges for VMware users is established
+
+VMware users do not have to have full `cluster-admin` privileges to perform a VM migration. The minimal sufficient set of user's privileges is established and documented.
+
+.{project-short} documentation is updated with instructions on using hooks
+
+{project-short} documentation includes instructions on adding hooks to migration plans and running hooks on VMs.
+
+[id="known-issues-22_{context}"]
+== Known issues
+
+This release has the following known issues:
+
+.Some warm migrations from {rhv-short} might fail
+
+When you run a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.
+
+.Snapshots are not deleted after warm migration
+
+The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You can link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-deleting-vm-snapshot-web_virt-managing-vm-snapshots[delete the snapshots manually]. link:https://bugzilla.redhat.com/show_bug.cgi?id=2053183[(*BZ#22053183*)]
+
+.Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM
+
+If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user's snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(*BZ#2057459*)]
+
+.During a {rhv-short} warm migration, the status of the target VM becomes DataVolumeError
+
+During a warm migration from {rhv-short}, the status of the target VM might become *DataVolumeError*. The cause is a restart of the `importer` pod. This does not affect the migration. link:https://bugzilla.redhat.com/show_bug.cgi?id=2055201[(*BZ#2055201*)]
+
+.QEMU guest agent is not installed on migrated VMs
+
+The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[*BZ#2018062*])
+
+.Importer pod log is unavailable after warm migration
+
+Retaining the `importer` pod for debug purposes causes warm migration to hang during the precopy stage. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2016290[*BZ#2016290*])
+
+As a temporary workaround, the `importer` pod is removed at the end of the precopy stage so that the precopy succeeds. However, this means that the `importer` pod log is not retained after warm migration is complete. You can only view the `importer` pod log by using the `oc logs -f <cdi-importer_pod>` command during the precopy stage.
+
+This issue only affects the `importer` pod log and warm migration. Cold migration and the `virt-v2v` logs are not affected.
+
+.Deleting migration plan does not remove temporary resources.
+
+Deleting a migration plan does not remove temporary resources such as `importer` pods, `conversion` pods, config maps, secrets, failed VMs and data volumes. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[*BZ#2018974*]) You must archive a migration plan before deleting it in order to clean up the temporary resources.
+
+.Unclear error status message for VM with no operating system
+
+The error status message for a VM with no operating system on the *Migration plan details* page of the web console does not describe the reason for the failure. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[*BZ#2008846*])
+
+.Network, storage, and VM referenced by name in the Plan CR are not displayed in the web console.
+
+If a `Plan` CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-short} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
+
+.Log archive file includes logs of a deleted migration plan or VM
+
+If you delete a migration plan and then run a new migration plan with the same name or if you delete a migrated VM and then remigrate the source VM, the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[*BZ#2023764*])
