@@ -49,7 +49,7 @@ To create a new storage mapping:
 . Click *Next*.
 . Select a migration type and click *Next*.
 * Cold migration: The source VMs are stopped while the data is copied.
-* Warm migration: The source VMs run while the data is copied incrementally. Later, you will run the cutover, which stops the VMs and copies the remaining VM data and metadata. Warm migration is not supported for {rhv-full}.
+* Warm migration: The source VMs run while the data is copied incrementally. Later, you will run the cutover, which stops the VMs and copies the remaining VM data and metadata.
 
 . Optional: You can create a migration hook to run an Ansible playbook before or after migration:
 .. Click *Add hook*.
