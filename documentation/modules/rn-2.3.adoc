@@ -56,9 +56,9 @@ The Migration Controller service does not delete snapshots automatically after a
 
 If the user performs another snapshot operation on the source VM during the precopy or cutover stage of a warm migration, the migration fails instead of waiting for the snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2062575[(*BZ#2062575*)]
 
-.During a {rhv-short} warm migration, the status of a VM becomes DataVolumeError
+.During a {rhv-short} warm migration, the status of the target VM becomes DataVolumeError
 
-During the precopy and cutover stages of a warm migration from {rhv-short}, the migration status of each VM becomes *DataVolumeError*. The cause is a restart of the `importer` pod. This does not affect the migration. link:https://bugzilla.redhat.com/show_bug.cgi?id=2055201[(*BZ#2055201*)]
+During a warm migration from {rhv-short}, the migration status of the target VM might become *DataVolumeError*. The cause is a restart of the `importer` pod. This does not affect the migration. link:https://bugzilla.redhat.com/show_bug.cgi?id=2055201[(*BZ#2055201*)]
 
 .QEMU guest agent is not installed on migrated VMs
 
