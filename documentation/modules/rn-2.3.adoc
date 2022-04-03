@@ -18,7 +18,7 @@ This release has the following technical changes:
 
 In the web console, you enter the VddkInitImage path when adding a VMware provider. Alternatively, from the CLI, you add the VddkInitImage path to the `Provider` CR for VMware migrations.
 
-.The `StorageProfile` resource needs to be updated for a non-provisioner storage class
+.The StorageProfile resource needs to be updated for a non-provisioner storage class
 
 You must update the `StorageProfile` resource with `accessModes` and `volumeMode` for non-provisioner storage classes such as NFS. The documentation includes a link to the relevant procedure.
 
@@ -50,11 +50,11 @@ When you run a migration plan for warm migration of multiple VMs from {rhv-short
 
 .Snapshots are not deleted after warm migration
 
-The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You can link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-deleting-vm-snapshot-web_virt-managing-vm-snapshots[delete the snapshots manually]. link:https://bugzilla.redhat.com/show_bug.cgi?id=2062570[(*BZ#2062570*)]
+The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You can link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-deleting-vm-snapshot-web_virt-managing-vm-snapshots[delete the snapshots manually]. link:https://bugzilla.redhat.com/show_bug.cgi?id=2053183[(*BZ#22053183*)]
 
-.Migration from {rhv-short} fails during precopy or cutover if a snapshot operation is performed on the source VM
+.Warm migration from {rhv-short} fails during precopy or cutover if a snapshot operation is performed on the source VM
 
-If the user performs another snapshot operation on the source VM during the precopy or cutover stage of a warm migration, the migration fails instead of waiting for the snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(*BZ#2057459*)]
+If the user performs another snapshot operation on the source VM during the precopy or cutover stage of a {rhv-short} warm migration, the migration fails instead of waiting for the snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(*BZ#2057459*)]
 
 .During a {rhv-short} warm migration, the status of the target VM becomes DataVolumeError
 
