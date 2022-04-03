@@ -43,7 +43,7 @@ EOF
 ----
 <1> Specify the vCenter user or the {rhv-short} {manager} user.
 <2> Specify the user password.
-<3> {rhv-short} only: Specify the base64-encoded CA certificate of the {manager}. You can retrieve it at `https://<{rhv-short}_engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
+<3> {rhv-short} only: Specify the CA certificate of the {manager}. You can retrieve it at `https://<{rhv-short}_engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
 <4> VMware only: Specify the vCenter SHA-1 fingerprint.
 
 . Create a `Provider` manifest for the source provider:
