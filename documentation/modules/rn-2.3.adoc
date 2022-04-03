@@ -52,7 +52,7 @@ When you run a migration plan for warm migration of multiple VMs from {rhv-short
 
 The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You can link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-deleting-vm-snapshot-web_virt-managing-vm-snapshots[delete the snapshots manually]. link:https://bugzilla.redhat.com/show_bug.cgi?id=2053183[(*BZ#22053183*)]
 
-.Warm migration from {rhv-short} fails during precopy or cutover if a snapshot operation is performed on the source VM
+.Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM
 
 If the user performs another snapshot operation on the source VM during the precopy or cutover stage of a {rhv-short} warm migration, the migration fails instead of waiting for the snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(*BZ#2057459*)]
 
