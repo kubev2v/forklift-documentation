@@ -1,0 +1,17 @@
+ifdef::cli[]
+. Get the Forklift web console URL with the following command:
+endif::[]
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} get route virt -n {namespace} \
+  -o custom-columns=:.spec.host
+----
++
+The URL for the `forklift-ui` service that opens the login page for the {project-short} web console is displayed.
++
+.Example output
+[source,terminal,subs="attributes+"]
+----
+https://virt-{namespace}.apps.cluster.openshift.com.
+----

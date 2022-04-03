@@ -42,7 +42,11 @@ include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
+:context: prereqs
+:prereqs:
 include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+3]
+:context: mtv
+:mtv:
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
 
 [id="installing-the-operator"]
@@ -55,18 +59,15 @@ You can install the {operator-name} by using the {ocp} web console or the comman
 :web:
 include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
-[discrete]
-include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :!web:
 :context: cli
 :cli:
 include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
-[discrete]
-include::modules/obtaining-console-url.adoc[leveloffset=+3]
 :!cli:
 :context: mtv
 :mtv:
+include::modules/obtaining-console-url.adoc[leveloffset=+2]
 
 [id="migrating-vms-web-console"]
 == Migrating virtual machines by using the {project-short} web console
@@ -127,7 +128,7 @@ You can migrate virtual machines to {virt} from the command line.
 ====
 *  You must be logged in as a user with `cluster-admin` privileges.
 
-*  VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
+//*  VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 
 *  VMware only: You must have the xref:obtaining-vmware-fingerprint_{context}[vCenter SHA-1 fingerprint].
 

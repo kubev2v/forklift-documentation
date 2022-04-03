@@ -40,6 +40,7 @@ endif::[]
 . Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
 . Click *Create*.
 . Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.
+include::snippet_getting_web_console_url_web.adoc[]
 endif::[]
 ifdef::cli[]
 
@@ -142,4 +143,5 @@ forklift-controller-788bdb4c69-mw268  2/2    Running  0         2m
 forklift-operator-6bf45b8d8-qps9v     1/1    Running  0         5m
 forklift-ui-7cdf96d8f6-xnw5n          1/1    Running  0         2m
 ----
+include::snippet_getting_web_console_url_cli.adoc[]
 endif::[]
