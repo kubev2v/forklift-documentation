@@ -9,7 +9,7 @@ You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {vir
 
 The release notes describe technical changes, new features and enhancements, and known issues.
 
-[id="technical-changes-22_{context}"]
+[id="technical-changes-23_{context}"]
 == Technical changes
 
 This release has the following technical changes:
@@ -22,7 +22,7 @@ In the web console, you enter the VddkInitImage path when adding a VMware provid
 
 You must update the `StorageProfile` resource with `accessModes` and `volumeMode` for non-provisioner storage classes such as NFS. The documentation includes a link to the relevant procedure.
 
-[id="new-features-and-enhancements-22_{context}"]
+[id="new-features-and-enhancements-23_{context}"]
 == New features and enhancements
 
 This release has the following features and improvements:
@@ -39,7 +39,7 @@ VMware users do not have to have full `cluster-admin` privileges to perform a VM
 
 {project-short} documentation includes instructions on adding hooks to migration plans and running hooks on VMs.
 
-[id="known-issues-22_{context}"]
+[id="known-issues-23_{context}"]
 == Known issues
 
 This release has the following known issues:
