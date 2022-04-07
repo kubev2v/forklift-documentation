@@ -30,6 +30,15 @@ You can migrate virtual machines from VMware vSphere or {rhv-full} to {virt} wit
 
 include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 
+[id="architecture"]
+== Architecture
+
+This section describes {project-short} custom resources, services, and workflows.
+
+include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
+include::modules/mtv-workflow.adoc[leveloffset=+3]
+include::modules/virt-migration-workflow.adoc[leveloffset=+3]
+
 [id="prerequisites"]
 == Prerequisites
 
@@ -176,15 +185,6 @@ This section provides information for troubleshooting common migration issues.
 
 include::modules/error-messages.adoc[leveloffset=+2]
 include::modules/using-must-gather.adoc[leveloffset=+2]
-
-[id="architecture"]
-=== Architecture
-
-This section describes {project-short} custom resources, services, and workflows.
-
-include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
-include::modules/mtv-workflow.adoc[leveloffset=+3]
-include::modules/virt-migration-workflow.adoc[leveloffset=+3]
 
 [id="logs-and-crs_{context}"]
 === Logs and custom resources
