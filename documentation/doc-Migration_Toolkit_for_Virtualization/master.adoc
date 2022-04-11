@@ -88,13 +88,16 @@ You can add providers by using the {project-short} web console.
 :vmware:
 include::modules/adding-source-provider.adoc[leveloffset=+3]
 :vmware!:
+:context: mtv
+:mtv:
+include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+3]
+:mtv!:
 :context: rhv
 :rhv:
 include::modules/adding-source-provider.adoc[leveloffset=+3]
 :rhv!:
 :context: mtv
 :mtv:
-include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+3]
 include::modules/adding-virt-provider.adoc[leveloffset=+3]
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+3]
 
