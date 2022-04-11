@@ -96,13 +96,16 @@ You can add {a-rhv} source provider or a VMware source provider by using the {pr
 :vmware:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :vmware!:
+:context: mtv
+:mtv:
+include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+4]
+:mtv!:
 :context: rhv
 :rhv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :rhv!:
 :context: mtv
 :mtv:
-include::modules/selecting-migration-network-for-source-provider.adoc[leveloffset=+4]
 
 [id="adding-destination-providers"]
 ==== Adding destination providers
