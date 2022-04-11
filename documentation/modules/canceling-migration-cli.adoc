@@ -12,7 +12,7 @@ You can cancel an entire migration or individual virtual machines (VMs) while a 
 
 * Delete the `Migration` CR:
 +
-[source,shell,subs="attributes+"]
+[source,terminal,subs="attributes+"]
 ----
 $ {oc} delete migration <migration> -n {namespace} <1>
 ----
@@ -44,7 +44,7 @@ The value of the `id` key is the _managed object reference_, for a VMware VM, or
 
 . Retrieve the `Migration` CR to monitor the progress of the remaining VMs:
 +
-[source,shell,subs="attributes+"]
+[source,terminal,subs="attributes+"]
 ----
 $ {oc} get migration/<migration> -n {namespace} -o yaml
 ----
