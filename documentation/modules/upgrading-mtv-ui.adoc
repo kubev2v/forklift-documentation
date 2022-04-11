@@ -32,9 +32,8 @@ endif::[]
 +
 [source,shell,subs="attributes+"]
 ----
-$ {oc} get pod -n openshift-marketplace | grep <catalog_source> <1>
+$ {oc} get pod -n openshift-marketplace | grep <catalog_source>
 ----
-<1> Specify the catalog source, for example, `redhat-operators`.
 
 ..  Delete the pod:
 +
