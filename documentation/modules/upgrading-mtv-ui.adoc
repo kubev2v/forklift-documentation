@@ -30,14 +30,14 @@ endif::[]
 ..  Note the catalog source, for example, `redhat-operators`.
 ..  From the command line, retrieve the catalog source pod:
 +
-[source,shell,subs="attributes+"]
+[source,terminal,subs="attributes+"]
 ----
 $ {oc} get pod -n openshift-marketplace | grep <catalog_source>
 ----
 
 ..  Delete the pod:
 +
-[source,shell,subs=attributes+]
+[source,terminal,subs=attributes+]
 ----
 $ {oc} delete pod -n openshift-marketplace <catalog_source_pod>
 ----
@@ -57,7 +57,7 @@ endif::[]
 
 . Verify that the `forklift-ui` pod is in a `Ready` state before you log in to the web console:
 +
-[source,shell,subs="attributes+"]
+[source,terminal,subs="attributes+"]
 ----
 $ {oc} get pods -n {namespace}
 ----
