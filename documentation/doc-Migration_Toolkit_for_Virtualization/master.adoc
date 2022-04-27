@@ -78,6 +78,8 @@ You can migrate virtual machines (VMs) to {virt} by using the {project-short} we
 ====
 You must ensure that all xref:prerequisites[prerequisites] are met.
 
+VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
+
 VMware only: You must create a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image.
 ====
 
