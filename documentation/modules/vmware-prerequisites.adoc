@@ -7,7 +7,7 @@
 
 The following prerequisites apply to VMware migrations:
 
-* You must be logged in as a user with at least the minimal set of xref:vmware-privileges_{context}[VMware privileges].
+* You must be logged in as a user with at least the minimal set of xref:vmware-privileges_{context}[VMware privileges]. 
 * You must install link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] on all source virtual machines (VMs).
 * If you are running a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
 * You must create a VMware Virtual Disk Development Kit (VDDK) image.
