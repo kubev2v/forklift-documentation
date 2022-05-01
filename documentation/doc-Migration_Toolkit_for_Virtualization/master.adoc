@@ -98,7 +98,7 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 :vmware!:
 :context: mtv
 :mtv:
-include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
 :mtv!:
 :context: rhv
 :rhv:
