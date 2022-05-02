@@ -124,7 +124,7 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 [id="migrating-virtual-machines-from-cli"]
 == Migrating virtual machines from the command line
 
-You can migrate virtual machines to {virt} from the command line. 
+You can migrate virtual machines to {virt} from the command line.
 
 [IMPORTANT]
 ====
