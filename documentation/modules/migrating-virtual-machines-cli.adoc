@@ -36,7 +36,7 @@ stringData:
   user: <user> <1>
   password: <password> <2>
   cacert: | <3>
-    <{rhv_ca_certificate>
+    <engine_ca_certificate>
   thumbprint: <vcenter_fingerprint> <4>
 EOF
 ----
@@ -66,7 +66,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ovirt` and `vsphere`.
-<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere or `https://<engine_host>/ovirt-engine/api/` for {rhv-short}.
+<2> s, `https://<vCenter_host>/sdk` for vSphere or `https://<engine_host>/ovirt-engine/api/` for {rhv-short}.
 <3> VMware only: Specify the VDDK image that you created.
 <4> Specify the name of provider `Secret` CR.
 
