@@ -42,7 +42,7 @@ $ GET https://<inventory_service_route>/providers/<provider>/<UUID>/workloads/<v
 ----
 +
 .Example output
-[source,yaml]
+[source,yaml,subs="attributes+"]]
 ----
 {
     "input": {
