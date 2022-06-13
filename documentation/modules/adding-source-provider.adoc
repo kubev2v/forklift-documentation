@@ -11,6 +11,7 @@ You can add a VMware source provider by using the {project-short} web console.
 
 .Prerequisites
 
+* You must have VMware admin privileges.
 * vCenter SHA-1 fingerprint.
 * VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
 endif::[]
