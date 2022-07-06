@@ -46,7 +46,7 @@ This release has the following known issues:
 
 .Some warm migrations from {rhv-short} might fail
 
-When you run a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.
+When you run a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run. link:https://bugzilla.redhat.com/show_bug.cgi?id=2063884[(*BZ#2063884*)]
 
 .Snapshots are not deleted after warm migration
 
