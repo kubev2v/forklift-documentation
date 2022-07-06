@@ -64,14 +64,6 @@ During a warm migration from {rhv-short}, the status of the target VM might beco
 
 The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[*BZ#2018062*])
 
-.Importer pod log is unavailable after warm migration
-
-Retaining the `importer` pod for debug purposes causes warm migration to hang during the precopy stage. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2016290[*BZ#2016290*])
-
-As a temporary workaround, the `importer` pod is removed at the end of the precopy stage so that the precopy succeeds. However, this means that the `importer` pod log is not retained after warm migration is complete. You can only view the `importer` pod log by using the `oc logs -f <cdi-importer_pod>` command during the precopy stage.
-
-This issue only affects the `importer` pod log and warm migration. Cold migration and the `virt-v2v` logs are not affected.
-
 .Deleting migration plan does not remove temporary resources.
 
 Deleting a migration plan does not remove temporary resources such as `importer` pods, `conversion` pods, config maps, secrets, failed VMs and data volumes. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[*BZ#2018974*]) You must archive a migration plan before deleting it in order to clean up the temporary resources.
@@ -79,10 +71,6 @@ Deleting a migration plan does not remove temporary resources such as `importer`
 .Unclear error status message for VM with no operating system
 
 The error status message for a VM with no operating system on the *Migration plan details* page of the web console does not describe the reason for the failure. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[*BZ#2008846*])
-
-.Network, storage, and VM referenced by name in the Plan CR are not displayed in the web console.
-
-If a `Plan` CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the {project-short} web console. The migration plan cannot be edited or duplicated. (link:https://bugzilla.redhat.com/show_bug.cgi?id=1986020[*BZ#1986020*])
 
 .Log archive file includes logs of a deleted migration plan or VM
 
