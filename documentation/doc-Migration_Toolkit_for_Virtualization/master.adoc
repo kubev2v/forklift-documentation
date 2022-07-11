@@ -35,7 +35,11 @@ include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 
 Review the following prerequisites to ensure that your environment is prepared for migration.
 
-include::modules/compatibility-guidelines.adoc[leveloffset=+2]
+[id="software-requirements"]
+=== Software requirements
+
+You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
+
 include::modules/storage-support.adoc[leveloffset=+2]
 include::modules/network-prerequisites.adoc[leveloffset=+2]
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
@@ -48,6 +52,7 @@ include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+3]
 :context: mtv
 :mtv:
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
+include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 [id="installing-the-operator"]
 == Installing the {operator-name}

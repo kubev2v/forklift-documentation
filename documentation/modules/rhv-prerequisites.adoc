@@ -8,6 +8,7 @@
 
 The following prerequisites apply to {rhv-full} migrations:
 
+* You must use a xref:compatibility-guidelines_{context}[compatible version] of {rhv-full}.
 * You must have the CA certificate of the {manager}.
 +
 You can obtain the CA certificate by navigating to `https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA` in a browser.
