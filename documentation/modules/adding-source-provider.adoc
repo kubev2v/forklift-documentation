@@ -20,6 +20,7 @@ You can add {a-rhv} source provider by using the {project-short} web console.
 .Prerequisites
 
 * CA certificate of the {manager}.
+* Apache CA certificate of the {manager}, in case the {manager} Apache CA certificate was replaced with a third-party CA certificate.
 endif::[]
 
 .Procedure
@@ -46,7 +47,7 @@ ifdef::rhv[]
 * *Hostname or IP address*: {manager} host name or IP address
 * *Username*: {manager} user
 * *Password*: {manager} password
-* *CA certificate*: CA certificate of the {manager}
+* *CA certificate*: CA certificate of the {manager}. If the {manager} Apache CA certificate was replaced with a third-party CA certificate, both CA certificates need to be specified.
 endif::[]
 
 . Click *Add* to add and save the provider.
