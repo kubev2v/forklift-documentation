@@ -71,3 +71,9 @@ The error status message for a VM with no operating system on the *Migration pla
 .Log archive file includes logs of a deleted migration plan or VM
 
 If you delete a migration plan and then run a new migration plan with the same name or if you delete a migrated VM and then remigrate the source VM, the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[*BZ#2023764*])
+
+.Migration of virtual machines with encrypted partitions fails during conversion
+The problem occurs for both vSphere and {rhv-short} migrations.
+
+.{project-short} 2.3.4 only: When the source provider is {rhv-short}, duplicating a migration plan fails in either the network mapping stage or the storage mapping stage.
+Possible workaround: Delete cache in the browser or restart the browser. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2143191[*BZ#2143191*])
