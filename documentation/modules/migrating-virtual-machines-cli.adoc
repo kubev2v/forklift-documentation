@@ -59,7 +59,7 @@ spec:
   type: <provider_type> <1>
   url: <api_end_point> <2>
   settings:
-    vddkInitImage: <registry_route_or_server_path>/vddk: (3)
+    vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <3>
   secret:
     name: <secret> <4>
     namespace: {namespace}
