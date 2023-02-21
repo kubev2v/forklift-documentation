@@ -22,6 +22,12 @@ If the {virt} storage does not support link:https://access.redhat.com/documentat
 See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-customizing-storage-profile_virt-creating-data-volumes[Enabling a statically-provisioned storage class] for details on editing the storage profile.
 ====
 
+[NOTE]
+====
+If your migration uses block storage and persistent volumes created with an EXT4 file system, increase the file system overhead in CDI to be more than 10%. The default overhead that is assumed by CDI does not completely include the reserved place for the root partition. If you do not increase the file system overhead in CDI by this amount, your migration might fail.
+====
+
+
 .Default volume and access modes
 [cols="1,1,1", options="header"]
 |===
