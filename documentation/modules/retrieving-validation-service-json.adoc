@@ -12,6 +12,13 @@ You can create a validation rule based on any attribute in the `"input"` key, fo
 
 .Procedure
 
+. Retrieve the routes for the project:
++
+[source,terminal]
+----
+oc get route -n openshift-mtv
+----
+
 . Retrieve the `Inventory` service route:
 +
 [source,terminal,subs="attributes+"]
@@ -19,11 +26,25 @@ You can create a validation rule based on any attribute in the `"input"` key, fo
 $ {oc} get route <inventory_service> -n {namespace}
 ----
 
+. Retrieve the access token:
++
+[source,terminal]
+----
+$ TOKEN=$(oc whoami -t)
+----
+
+. Trigger an HTTP GET request (for example, using Curl):
++
+[source,terminal]
+----
+$ curl -H "Authorization: Bearer $TOKEN" https://<inventory_service_route>/providers -k
+----
+
 . Retrieve the `UUID` of a provider:
 +
 [source,terminal]
 ----
-$ GET https://<inventory_service_route>/providers/<provider> <1>
+$ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/<provider> -k <1>
 ----
 <1> Allowed values for the provider are `vsphere` and `ovirt`.
 
@@ -31,14 +52,14 @@ $ GET https://<inventory_service_route>/providers/<provider> <1>
 +
 [source,terminal]
 ----
-$ GET https://<inventory_service_route>/providers/<provider>/<UUID>/vms
+$ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/<provider>/<UUID>/vms -k
 ----
 
 . Retrieve the details of a VM:
 +
 [source,terminal]
 ----
-$ GET https://<inventory_service_route>/providers/<provider>/<UUID>/workloads/<vm>
+$ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/<provider>/<UUID>/workloads/<vm> -k
 ----
 +
 .Example output
