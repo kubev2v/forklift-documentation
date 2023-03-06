@@ -15,6 +15,11 @@ The following prerequisites apply to VMware migrations:
 * You must obtain the SHA-1 fingerprint of the vCenter host.
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the NFC service memory of the host.
 
+[NOTE]
+====
+Neither {project-first} nor OpenShift Virtualization support conversion of Btrfs for migrating VMs from VMWare.
+====
+
 [discrete]
 [id="vmware-privileges_{context}"]
 == VMware privileges
