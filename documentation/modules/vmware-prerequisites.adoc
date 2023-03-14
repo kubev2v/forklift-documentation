@@ -14,10 +14,16 @@ The following prerequisites apply to VMware migrations:
 * You must create a VMware Virtual Disk Development Kit (VDDK) image.
 * You must obtain the SHA-1 fingerprint of the vCenter host.
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the NFC service memory of the host.
+* It is strongly recommended to disable hibernation because {project-first} does not support migrating hibernated VMs.
+
+[IMPORTANT]
+====
+In the event of a power outage, data might be lost for a VM with disabled hibernation. However, if hibernation is not disabled, migration will fail
+====
 
 [NOTE]
 ====
-Neither {project-first} nor OpenShift Virtualization support conversion of Btrfs for migrating VMs from VMWare.
+Neither {project-short} nor OpenShift Virtualization support conversion of Btrfs for migrating VMs from VMWare.
 ====
 
 [discrete]
