@@ -59,6 +59,8 @@ include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 You can install the {operator-name} by using the {ocp} web console or the command line interface (CLI).
 
+In {project-first} version 4.2 and later, the {operator-name} includes the {project-short} web console.
+
 :!mtv:
 :context: web
 :web:
