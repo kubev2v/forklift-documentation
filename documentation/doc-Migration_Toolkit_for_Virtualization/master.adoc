@@ -111,6 +111,10 @@ include::modules/selecting-migration-network-for-vmware-source-provider.adoc[lev
 :rhv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :rhv!:
+:context: osh
+:osh:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:osh!:
 :context: mtv
 :mtv:
 

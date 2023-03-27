@@ -22,6 +22,18 @@ You can add {a-rhv} source provider by using the {project-short} web console.
 * CA certificate of the {manager}.
 * Apache CA certificate of the {manager}, in case the {manager} Apache CA certificate was replaced with a third-party CA certificate.
 endif::[]
+ifdef::osh[]
+= Adding an {osh} source provider
+
+You can add an {osh} source provider by using the {project-short} web console.
+endif::[]
+
+.Prerequisites
+
+* CA certificate of the {manager}.
+* Apache CA certificate of the {manager}, in case the {manager} Apache CA certificate was replaced with a third-party CA certificate.
+
+
 
 .Procedure
 
@@ -41,6 +53,16 @@ ifdef::vmware[]
 endif::[]
 ifdef::rhv[]
 . Select *Red Hat Virtualization* from the *Type* list.
+. Fill in the following fields:
+
+* *Name*: Name to display in the list of providers
+* *Hostname or IP address*: {manager} host name or IP address
+* *Username*: {manager} user
+* *Password*: {manager} password
+* *CA certificate*: CA certificate of the {manager}. If the {manager} Apache CA certificate was replaced with a third-party CA certificate, both CA certificates need to be specified.
+endif::[]
+ifdef::osh[]
+. Select *OpenStack* from the *Type* list.
 . Fill in the following fields:
 
 * *Name*: Name to display in the list of providers
