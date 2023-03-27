@@ -11,6 +11,7 @@
 :operator: mtv-operator
 :operator-name-ui: Migration Tookit for Virtualization Operator
 :operator-name: MTV Operator
+:osh: OpenStack
 :project-full: Migration Toolkit for Virtualization
 :project-short: MTV
 :project-first: {project-full} ({project-short})
