@@ -91,12 +91,12 @@ VMware only: You must create a xref:creating-vddk-image_{context}[VMware Virtual
 [id="adding-providers"]
 === Adding providers
 
-You can add source providers and destination providers for a virtual machine migration by using the {project-short} web console.
+You can add source providers and destination providers for a virtual machine migration by using the {project-short} web console
 
 [id="adding-source-providers"]
 ==== Adding source providers
 
-You can add {a-rhv} source provider or a VMware source provider by using the {project-short} web console.
+You can add a VMware source provider,  {a-rhv} source provider, or an {osh} source provider by using the {project-short} web console.
 
 :mtv!:
 :context: vmware
