@@ -1,4 +1,5 @@
 build/*
+.idea/*
 */build/*
 documentation/*/build/*
 .jekyll-cache
