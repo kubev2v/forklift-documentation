@@ -12,6 +12,7 @@ ifeval::["{build}" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[]
 endif::[]
 
+include::modules/rn-2.4.adoc[leveloffset=+1]
 include::modules/rn-2.3.adoc[leveloffset=+1]
 include::modules/rn-2.2.adoc[leveloffset=+1]
 include::modules/rn-2.1.adoc[leveloffset=+1]
