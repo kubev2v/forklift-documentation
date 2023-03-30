@@ -12,5 +12,5 @@ You must install compatible software versions.
 .Compatible software versions
 |===
 |{project-full} |{ocp} |{virt} |VMware vSphere |{rhv-full}
-|2.3.3 |4.10 or later |4.10 or later |6.5 or later |4.4.9 or later
+|2.4.0 |4.11, 4.12 |4.11, 4.12 |6.5 or later |4.4.9 or later
 |===
