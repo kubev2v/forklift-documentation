@@ -11,6 +11,6 @@ You must install compatible software versions.
 [cols="1,1,1,1,1", options="header"]
 .Compatible software versions
 |===
-|{project-full} |{ocp} |{virt} |VMware vSphere |{rhv-full}
+|{project-full} |{ocp} |{virt} |VMware vSphere |{rhv-full}|OpenStack|
 |2.4.0 |4.11, 4.12 |4.11, 4.12 |6.5 or later |4.4.9 or later
-|===
+|?|===

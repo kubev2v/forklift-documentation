@@ -6,7 +6,7 @@
 :namespace: openshift-mtv
 :oc: oc
 :ocp: OpenShift Container Platform
-:ocp-version: 4.10
+:ocp-version: 4.11
 :ocp-short: OCP
 :operator: mtv-operator
 :operator-name-ui: Migration Tookit for Virtualization Operator
