@@ -5,7 +5,7 @@
 [id="rn-24_{context}"]
 = {project-full} 2.4
 
-You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
+You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first} and OpenStack.
 
 The release notes describe technical changes, new features and enhancements, and known issues.
 
@@ -14,26 +14,24 @@ The release notes describe technical changes, new features and enhancements, and
 
 This release has the following technical changes:
 
-.Technical change 1
+* Technical change 1
 
-Description 1
+  ** Description 1
 
-.Technical change 2
+* Technical change 2
 
-Description 2
+  ** Description 2
 
 [id="new-features-and-enhancements-24_{context}"]
 == New features and enhancements
 
 This release has the following features and improvements:
 
-.link:https://issues.redhat.com/browse/MTV-427[MTV-427] - OCP console plugin
+* link:https://issues.redhat.com/browse/MTV-427[MTV-427] - OCP console plugin. +
+  ** Updated UI (is this relevant?) +
+  ** UI of MTV integrated in *Migration* item in web console. +
 
-MTV Operator installed from CLI. +
-MTV web console URL.
-
-.link:https://issues.redhat.com/browse/MTV-426[MTV-426] - OpenStack migration
-
+* link:https://issues.redhat.com/browse/MTV-426[MTV-426] - OpenStack migration. +
 See new link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#rhv-prerequisites_mtv[prerequisites] for RHV and VMware migration, and link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#migrating-virtual-machines-cli_mtv[procedure] to migrate virtual machines.
 
 [id="known-issues-24_{context}"]
@@ -41,22 +39,19 @@ See new link:https://access.redhat.com/documentation/en-us/migration_toolkit_for
 
 This release has the following known issues:
 
-.link:https://issues.redhat.com/browse/MTV-505[MTV-505] - Power off OpenStack VM in cold migration
-
+* link:https://issues.redhat.com/browse/MTV-505[MTV-505] - Power off OpenStack VM in cold migration +
 This issue implements the following: +
+====
+`pkg/controller/plan/adapter/openstack/client.go` +
+`Power off the source VM.` +
+`func (c *Client) PowerOff(vmRef ref.Ref) error` +
+`{ return nil }`
+====
 
-` pkg/controller/plan/adapter/openstack/client.go` +
-` // Power off the source VM.` +
-` func (c *Client) PowerOff(vmRef ref.Ref) error` +
-` { return nil }`
+* link:https://issues.redhat.com/browse/MTV-349[MTV-349] - RHV snapshots are not deleted after a successful migration
 
-.link:https://issues.redhat.com/browse/MTV-349[MTV-349] - RHV snapshots are not deleted after a successful migration
-
-Issue description
-
-.link:https://issues.redhat.com/browse/MTV-456[MTV-456] - Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
-
-Warm migration fails, returning an error, when performing another snapshot operation (create/delete) on the RHV source VM.
+* link:https://issues.redhat.com/browse/MTV-456[MTV-456] - Migration fails during precopy/cutover while a snapshot operation is executed on the source VM. +
+Warm migration fails, returning an error, when performing another snapshot operation (create/delete) on the RHV source VM. +
 Workaround: Wait for the snapshot operation to complete before running the next precopy/cutover procedure.
 
 [id="resolved-issues-24_{context}"]
@@ -64,13 +59,13 @@ Workaround: Wait for the snapshot operation to complete before running the next 
 
 This release has the following resolved issue:
 
-.link:https://issues.redhat.com/browse/MTV-332[MTV-332] - Update virt-v2v container to el9
+* link:https://issues.redhat.com/browse/MTV-332[MTV-332] - Update virt-v2v container to el9
 
-* This fix enables conversion to RHEL9 (link:https://bugzilla.redhat.com/show_bug.cgi?id=2067171#c1[BZ-2067171])
-* A fix in virt-v2v causes it to install quem-ga within the converted guest (link:https://bugzilla.redhat.com/show_bug.cgi?id=2028764[BZ-2028764])
+** link:https://bugzilla.redhat.com/show_bug.cgi?id=2067171#c1[BZ-2067171]
+** A fix in virt-v2v causes it to install quem-ga within the converted guest (link:https://bugzilla.redhat.com/show_bug.cgi?id=2028764[BZ-2028764])
 
-link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#migrating-virtual-machines-cli_mtv[MTV-333] - Convert u440fx to q35 +
-i440fx chpset with PIOS is reverted to q35 bios.
+* link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#migrating-virtual-machines-cli_mtv[MTV-333] - Convert i440fx to q35 +
+i440fx chipset with BIOS is reverted to q35 BIOS.
 
-link:https://issues.redhat.com/browse/MTV-345[MTV-345] - Map IDE to SATA +
+* link:https://issues.redhat.com/browse/MTV-345[MTV-345] - Map IDE to SATA +
 CNV does not support IDE disk interface, so the disks are mapped to SATA.
