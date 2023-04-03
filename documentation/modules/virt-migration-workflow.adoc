@@ -19,7 +19,9 @@ You can use the detailed migration workflow to troubleshoot a failed migration.
 
 The workflow describes the following steps:
 
-. When you create a `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service  creates a `VirtualMachine` CR for each source virtual machine (VM) and a `DataVolume` CR for each source VM disk.
+*Warm Migration or migration to a remote OCP cluster:*
+
+. When you create a `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates a `DataVolume` CR for each source VM disk.
 +
 *For each VM disk:*
 
@@ -30,10 +32,53 @@ The workflow describes the following steps:
 +
 *After the VM disks are transferred:*
 
-. The `Migration Controller` service creates a `conversion` pod with the PVCs attached to it.
+. The `Migration Controller` service creates a `conversion` pod with the PVCs attached to it when importing from VMWare.
 +
 The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the target VM.
++
+. The `Migration Controller` service creates a `VirtualMachine` CR for each source virtual machine (VM), connected to the PVCs.
 
-. When the target VM is powered on, the `KubeVirt Controller` service creates a `virt-launcher` pod and a `VirtualMachineInstance` CR.
+. If the VM was running on the source environment, the `Migration Controller` powers on the VM, the `KubeVirt Controller` service creates a `virt-launcher` pod and a `VirtualMachineInstance` CR.
 +
 The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
+
+*Cold migration from {rhv-short} or {osp} to the local OCP cluster:*
+
+. When you create a `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates for each source VM disk a `PersistentVolumeClaim` CR, and a `OvirtVolumePopulator` when the source is {rhv-short}, or a `OpenstackVolumePopulator` CR  when the source is {osp}.
++
+*For each VM disk:*
+
+. The `Populator Controller` service creates a temporarily persistent volume claim (PVC).
+. If the `StorageClass` has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the `StorageClass` provisioner.
+- The `Migration Controller` service creates a dummy pod to bind *all PVCs*, the name of the pod contains `pvcinit`.
+. The `Populator Controller` service creates a `populator` pod.
+. The `populator` pod transfers the disk data to the PV.
++
+*After the VM disks are transferred:*
+. The temporary PVC is deleted, and the initial PVC will point to the PV with the data.
+. The `Migration Controller` service creates a `VirtualMachine` CR for each source virtual machine (VM), connected to the PVCs.
+. If the VM was running on the source environment, the `Migration Controller` powers on the VM, the `KubeVirt Controller` service creates a `virt-launcher` pod and a `VirtualMachineInstance` CR.
++
+The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
+
+*Cold migration from VMWare to the local OCP cluster:*
+
+. When you create a `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates a `DataVolume` CR for each source VM disk.
++
+*For each VM disk:*
+
+. The `Containerized Data Importer (CDI) Controller` service creates a blank persistent volume claim (PVC) based on the parameters specified in the `DataVolume` CR.  
+. If the `StorageClass` has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the `StorageClass` provisioner.
+
+*For all VM disks:*
+
+. The `Migration Controller` service creates a dummy pod to bind *all PVCs*, the name of the pod contains `pvcinit`.
+. The `Migration Controller` service creates a `conversion` pod for *all PVCs*.
+. The `conversion` pod runs `virt-v2v`, which transfers the disks data to the PVs and converts the disk to the KVM hypervisor.
++
+*After the VM disks are transferred:*
+. The `Migration Controller` service creates a `VirtualMachine` CR for each source virtual machine (VM), connected to the PVCs.
+. If the VM was running on the source environment, the `Migration Controller` powers on the VM, the `KubeVirt Controller` service creates a `virt-launcher` pod and a `VirtualMachineInstance` CR.
++
+The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
+
