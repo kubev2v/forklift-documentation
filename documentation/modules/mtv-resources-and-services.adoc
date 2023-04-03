@@ -13,7 +13,6 @@
 * `Provider` CR stores attributes that enable {project-short} to connect to and interact with the source and target providers.
 * `NetworkMapping` CR maps the networks of the source and target providers.
 * `StorageMapping` CR maps the storage of the source and target providers.
-* `Provisioner` CR stores the configuration of the storage provisioners, such as supported volume and access modes.
 * `Plan` CR contains a list of VMs with the same migration parameters and associated network and storage mappings.
 * `Migration` CR runs a migration plan.
 +
@@ -28,9 +27,6 @@ Only one `Migration` CR per migration plan can run at a given time. You can crea
 ** Runs the `Validation` service if a VM configuration change is detected.
 
 * The `Validation` service checks the suitability of a VM for migration by applying rules.
-* The `User Interface` service performs the following actions:
-** Enables you to create and configure {project-short} CRs.
-** Displays the status of the CRs and the progress of a migration.
 
 * The `Migration Controller` service orchestrates migrations.
 +
