@@ -2,8 +2,8 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-[id="rn-23_{context}"]
-= {project-full} 2.3
+[id="rn-24_{context}"]
+= {project-full} 2.4
 
 You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
 
