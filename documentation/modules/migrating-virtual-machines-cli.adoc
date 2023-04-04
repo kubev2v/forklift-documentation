@@ -35,15 +35,17 @@ type: Opaque
 stringData:
   user: <user> <1>
   password: <password> <2>
-  cacert: | <3>
+  insecureSkipVerify: <true/false> <3>
+  cacert: | <4>
     <engine_ca_certificate>
-  thumbprint: <vcenter_fingerprint> <4>
+  thumbprint: <vcenter_fingerprint> <5>
 EOF
 ----
 <1> Specify the vCenter user or the {rhv-short} {manager} user.
 <2> Specify the user password.
-<3> {rhv-short} only: Specify the CA certificate of the {manager}. You can retrieve it at `https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
-<4> VMware only: Specify the vCenter SHA-1 fingerprint.
+<3> Specify `<true>` to skip certificate verification, which proceeeds with an insecure migration. Specifying `<false>` verifies the certificate.
+<4> {rhv-short} only: Specify the CA certificate of the {manager}. You can retrieve it at `https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
+<5> VMware only: Specify the vCenter SHA-1 fingerprint.
 
 . Create a `Provider` manifest for the source provider:
 +
