@@ -74,7 +74,7 @@ The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 
 . The `Migration Controller` service creates a dummy pod to bind *all PVCs*, the name of the pod contains `pvcinit`.
 . The `Migration Controller` service creates a `conversion` pod for *all PVCs*.
-. The `conversion` pod runs `virt-v2v`, which transfers the disks data to the PVs and converts the disk to the KVM hypervisor.
+. The `conversion` pod runs `virt-v2v`, which transfers the disk's data to the PVs and converts the disk to the KVM hypervisor.
 +
 *After the VM disks are transferred:*
 . The `Migration Controller` service creates a `VirtualMachine` CR for each source virtual machine (VM), connected to the PVCs.
