@@ -91,7 +91,7 @@ Some warm migrations from RHV might fail. When running a migration plan for warm
 
 Warm migration from RHV fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(BZ#2057459)]
 
-.Cannot schedule migrated VM with multiple disks to more than one storage classes of typw hostpath
+.Cannot schedule migrated VM with multiple disks to more than one storage classes of type hostpath
 
 When migrating a VM with multiple disks to more than one storage classes of type hostpath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.
 
