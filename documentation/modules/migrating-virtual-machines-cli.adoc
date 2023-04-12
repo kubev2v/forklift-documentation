@@ -236,7 +236,7 @@ EOF
 <7> Specify the VMware VM MOR or {rhv-short} VM UUID.
 <8> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <9> Specify the name of the `Hook` CR.
-<10> Allowed values are `PreHook`, before the migation plan starts, or `PostHook`, after the migration is complete.
+<10> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 
 . Create a `Migration` manifest to run the `Plan` CR:
 +
