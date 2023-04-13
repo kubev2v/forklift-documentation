@@ -61,7 +61,7 @@ The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 +
 The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 
-*Cold migration from VMWare to the local OCP cluster:*
+*Cold migration from VMWare to the local {ocp-short} cluster:*
 
 . When you create a `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates a `DataVolume` CR for each source VM disk.
 +
