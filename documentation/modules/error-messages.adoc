@@ -12,10 +12,10 @@ This section describes error messages and how to resolve them.
 
 The `warm import retry limit reached` error message is displayed during a warm migration if a VMware virtual machine (VM) has reached the maximum number (28) of changed block tracking (CBT) snapshots during the precopy stage.
 
-To resolve this problem, delete some of the CBT snapshots from the VM and restart the migration plan.
+To resolve this issue, delete some of the CBT snapshots from the VM and restart the migration plan.
 
 .Unable to resize disk image to required size
 
-The `Unable to resize disk image to required size` error message is displayed when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage. The problem occurs because the default overhead that is assumed by CDI does not completely include the reserved place for the root partition.
+The `Unable to resize disk image to required size` error message is displayed when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage. The issue occurs because the default overhead that is assumed by CDI does not completely include the reserved place for the root partition.
 
-To resolve this problem, increase the file system overhead in CDI to be more than 10%.
+To resolve this issue, increase the file system overhead in CDI to be more than 10%.
