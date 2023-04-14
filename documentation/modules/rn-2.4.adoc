@@ -1,0 +1,136 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-24_{context}"]
+= {project-full} 2.4
+
+You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
+
+The release notes describe technical changes, new features and enhancements, and known issues.
+
+[id="technical-changes-24_{context}"]
+== Technical changes
+
+This release has the following technical changes:
+
+.Faster disk image migration without using virt-v2v
+
+IDisk images are not converted anymore using virt-v2v when migrating from RHV. This way, the migration is faster and not limited to guest operating systems that are supported by virt-v2v. link:https://github.com/kubev2v/forklift-controller/issues/403[(forklift-controller#403)]
+
+.Faster migration using conversion pod disk transfer
+
+vSphere to the local OCP cluster migration uses conversion pod instead of Containerized Data Importer (CDI), accelerating the migration.
+
+.Migrated virtual machines are not scheduled on the target OCP cluster
+
+The migrated virtual machines are no longer scheduled on the target OCP cluster. This enables migrating VMs that cannot start due to limit constraints at the migration time on the target.
+
+.StorageProfile resource needs to be updated for a non-provisioner storage class
+
+You must update the `StorageProfile` resource with `accessModes` and `volumeMode` for non-provisioner storage classes such as NFS. The documentation includes a link to the relevant procedure.
+
+[id="new-features-and-enhancements-24_{context}"]
+== New features and enhancements
+
+This release has the following features and improvements:
+
+.OCP console plugin
+
+This version of {project-full} has replaced the stand-alone UI with a UI that is integrated in the OCP Console. The new UI operates as an OCP Console plugin. It is implemented by default in version 2.4, disabling the old UI. You can enable the old UI by setting `feature_ui: true` in ForkliftController. link:https://issues.redhat.com/browse/MTV-427[(MTV-427)]
+
+.OpenStack migration
+
+See new link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#rhv-prerequisites_mtv[prerequisites] for RHV and VMware migration, and link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#migrating-virtual-machines-cli_mtv[procedure] to migrate virtual machines. link:https://issues.redhat.com/browse/MTV-426[(MTV-426)]
+
+.Skip certification option
+
+Skip certificate validation' option was added to VMware and RHV providers. If checked, the provider's certificate will not be validated and the UI will not ask for specifying a CA certificate.
+
+.Only third-party certificate required
+
+When defining a RHV provider that set with third-party certificate, only the third-party certificate needs to be specified and MTV would retrieve the Manager CA certificate automatically.
+
+.Conversion of VMs with RHEL9 guest operating system
+
+VM conversion with RHEL9 in virt-v2v installs `qemu-ga` within the converted guest. link:https://issues.redhat.com/browse/MTV-332[(MTV-332)]
+
+[id="known-issues-24_{context}"]
+== Known issues
+
+This release has the following known issues:
+
+.Deleting migration plan does not remove temporary resources
+
+Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. +
+You must archive a migration plan before deleting it in order to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
+
+.Unclear error status message for VM with no operating system
+
+The error status message for a VM with no operating system on the *Migration plan details* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
+
+.Log archive file includes logs of a deleted migration plan or VM
+
+If you delete a migration plan and then run a new migration plan with the same name or if you delete a migrated VM and then remigrate the source VM, the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
+
+.QEMU guest agent is not installed on migrated VMs
+
+The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[(BZ#2018062)]
+
+.Migration of virtual machines with encrypted partitions fails during conversion
+
+Occurs for vSphere: Migrations from RHV and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
+
+.RHV snapshots are not deleted after a successful migration
+
+The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You can link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-deleting-vm-snapshot-web_virt-managing-vm-snapshots[delete a virtual machine snapshot manually]. link:https://bugzilla.redhat.com/show_bug.cgi?id=2053183[(BZ#2053183)] link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
+
+.Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
+
+Some warm migrations from RHV might fail. When running a migration plan for warm migration of multiple VMs from RHV, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run. link:https://bugzilla.redhat.com/show_bug.cgi?id=2063531[(BZ#2063531)] link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+
+Warm migration from RHV fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(BZ#2057459)]
+
+.Cannot schedule migrated VM with multiple disks to more than one storage classes of type hostpath
+
+When migrating a VM with multiple disks to more than one storage classes of type hostpath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.
+
+.Deleting migrated VM does not remove PVC and PV
+
+When removing a VM that was migrated, its PVCs and PVs are not deleted. +
+Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-492[(MTV-492)]
+
+.PVC deletion hangs after archiving and deleting migration plan
+
+When archiving and deleting a migration plan that failed, its PVCs and PVs are not deleted. Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-493[(MTV-493)]
+
+.VM with multiple disks may boot from non-bootable disk after migration
+
+VM with multiple disks that was migrated may not be able to boot on the target OCP cluster. +
+Workaround: set the boot order appropriately to boot from the bootable disk. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
+
+.Non-supported guest operating systems in warm migrations
+
+Warm migrations and migrations to remote OCP clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local OCP cluster. It is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case. +
+See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
+
+
+[id="resolved-issues-24_{context}"]
+== Resolved issues
+
+This release has the following resolved issue:
+
+.Map IDE to SATA +
+CNV does not support IDE disk interface, so the disks are mapped to SATA. link:https://issues.redhat.com/browse/MTV-345[(MTV-345)]
+
+.Improve invalid/conflicting VM name handling
+
+Users can automate VM renaming during mogration, to fit RFC 1123. link:https://issues.redhat.com/browse/MTV-212[(MTV-212)]
+
+.Prevent locking user accounts due to incorrect credentials
+
+When a user specifies an incorrect password for RHV providers, he no longer gets locked in RHV. An error returns when the RHV manager is accessible when adding the provider. If the RHV manager is not accessible, the provider is added, but there would be not further attempt after failing, due to incorrect credentials. link:https://issues.redhat.com/browse/MTV-324[(MTV-324)]
+
+.Convert i440fx to q35
+
+BIOS of i440fx chipset is reverted to BIOS of q35. link:https://issues.redhat.com/browse/MTV-430[(MTV-430)]
