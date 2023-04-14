@@ -8,9 +8,9 @@
 
 You must install compatible software versions.
 
-[cols="1,1,1,1,1", options="header"]
+[cols="1,1,1,1,1,1", options="header"]
 .Compatible software versions
 |===
-|{project-full} |{ocp} |{virt} |VMware vSphere |{rhv-full}
-|2.3.3 |4.10 or later |4.10 or later |6.5 or later |4.4.9 or later
+|{project-full} |{ocp} |{virt} |VMware vSphere |{rhv-full}|OpenStack
+|2.3.3 |4.10 or later |4.10 or later |6.5 or later |4.4.9 or later|16.1 or later
 |===
