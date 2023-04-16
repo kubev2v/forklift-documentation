@@ -31,19 +31,23 @@ kind: Secret
 metadata:
   name: <secret>
   namespace: {namespace}
+  labels:
+    createdForProviderType: <provider_type> <1>
 type: Opaque
 stringData:
-  user: <user> <1>
-  password: <password> <2>
-  cacert: | <3>
-    <engine_ca_certificate>
-  thumbprint: <vcenter_fingerprint> <4>
+  user: <user> <2>
+  password: <password> <3>
+  cacert: | <4>
+    <ca_certificate>
+  url: <api_end_point>
+  thumbprint: <vcenter_fingerprint> <5>
 EOF
 ----
-<1> Specify the vCenter user or the {rhv-short} {manager} user.
-<2> Specify the user password.
-<3> {rhv-short} only: Specify the CA certificate of the {manager}. You can retrieve it at `https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA`.
-<4> VMware only: Specify the vCenter SHA-1 fingerprint.
+<1>  Specify the type of source provider. Allowed values are `ovirt` and `vsphere`. This label is needed to verify that the credentials are correct when the remote system is accessible and, for {rhv-short}, to retrieve the {manager} CA certificate when a third-party certificate is specified for `cacert`.
+<2> Specify the vCenter user or the {rhv-short} {manager} user.
+<3> Specify the user password.
+<4> {rhv-short} only: Specify the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, specify the {manager} Apache CA certificater. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
+<5> VMware only: Specify the vCenter SHA-1 fingerprint.
 
 . Create a `Provider` manifest for the source provider:
 +
