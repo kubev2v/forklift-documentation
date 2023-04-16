@@ -44,6 +44,7 @@ include::modules/storage-support.adoc[leveloffset=+2]
 include::modules/network-prerequisites.adoc[leveloffset=+2]
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
+include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
 :context: prereqs
