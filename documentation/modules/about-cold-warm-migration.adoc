@@ -8,6 +8,26 @@
 
 {project-short} supports cold migration from {rhv-full} ({rhv-short}) and warm migration from VMware vSphere and from {rhv-short}.
 
+As a Technology Preview, {project-short} supports cold migration using {osp} source providers.
+
+[IMPORTANT]
+====
+Migration using OpenStack source providers is a Technology Preview feature only. Technology Preview features
+are not supported with Red Hat production service level agreements (SLAs) and
+might not be functionally complete. Red Hat does not recommend using them
+in production. These features provide early access to upcoming product
+features, enabling customers to test functionality and provide feedback during
+the development process.
+
+For more information about the support scope of Red Hat Technology Preview
+features, see https://access.redhat.com/support/offerings/techpreview/.
+====
+
+[NOTE]
+====
+Migration using {osp} source providers only supports VMs that use only Cinder volumes.
+====
+
 [id="cold-migration_{context}"]
 == Cold migration
 
