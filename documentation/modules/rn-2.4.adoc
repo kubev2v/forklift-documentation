@@ -22,6 +22,10 @@ OpenStack is added as a source provider. Only cold migrations are supported as t
 
 Disk images are not converted anymore using virt-v2v when migrating from RHV. This way, the migration is faster and not limited to guest operating systems that are supported by virt-v2v. link:https://github.com/kubev2v/forklift-controller/issues/403[(forklift-controller#403)]
 
+.Faster disk transfers by ovirt-imageio client (ovirt-img)
+
+Disk transfers use ovirt-imageio client (ovirt-img) instead of Containerized Data Import (CDI) when migrating from RHV to the local OCP cluster, accelerating the migration.
+
 .Faster migration using conversion pod disk transfer
 
 When migrating from vSphere to the local OCP cluster, the conversion pod transfers the disk data instead of Containerized Data Importer (CDI), accelerating the migration.
