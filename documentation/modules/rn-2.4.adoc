@@ -53,7 +53,7 @@ When defining a RHV provider that set with third-party certificate, only the thi
 
 .Conversion of VMs with RHEL9 guest operating system
 
-VM conversion with RHEL9 in virt-v2v installs `qemu-ga` within the converted guest. link:https://issues.redhat.com/browse/MTV-332[(MTV-332)]
+"For cold migrations from vSphere to the local OCP cluster, we use virt-v2v on RHEL 9 that supports conversion of virtual machines with RHEL 9 as the guest operating system". link:https://issues.redhat.com/browse/MTV-332[(MTV-332)]
 
 [id="known-issues-24_{context}"]
 == Known issues
