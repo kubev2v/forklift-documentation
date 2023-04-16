@@ -134,4 +134,4 @@ When a user specifies an incorrect password for RHV providers, he no longer gets
 
 .Convert i440fx to q35
 
-BIOS of i440fx chipset is reverted to BIOS of q35. link:https://issues.redhat.com/browse/MTV-430[(MTV-430)]
+Migrations of virtual machines with i440fx chipset is now supported. The chipset is converted to q35 during the migration. link:https://issues.redhat.com/browse/MTV-430[(MTV-430)]
