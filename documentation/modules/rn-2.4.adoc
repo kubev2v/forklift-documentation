@@ -16,7 +16,7 @@ This release has the following technical changes:
 
 .OpenStack migration
 
-See new link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#rhv-prerequisites_mtv[prerequisites] for RHV and VMware migration, and link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#migrating-virtual-machines-cli_mtv[procedure] to migrate virtual machines. link:https://issues.redhat.com/browse/MTV-426[(MTV-426)]
+OpenStack is added as a source provider. Only cold migrations are supported as tech preview in this release.
 
 .Faster disk image migration from RHV
 
