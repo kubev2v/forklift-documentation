@@ -14,6 +14,10 @@ The release notes describe technical changes, new features and enhancements, and
 
 This release has the following technical changes:
 
+.OpenStack migration
+
+See new link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#rhv-prerequisites_mtv[prerequisites] for RHV and VMware migration, and link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#migrating-virtual-machines-cli_mtv[procedure] to migrate virtual machines. link:https://issues.redhat.com/browse/MTV-426[(MTV-426)]
+
 .Faster disk image migration without using virt-v2v
 
 Disk images are not converted anymore using virt-v2v when migrating from RHV. This way, the migration is faster and not limited to guest operating systems that are supported by virt-v2v. link:https://github.com/kubev2v/forklift-controller/issues/403[(forklift-controller#403)]
@@ -38,10 +42,6 @@ This release has the following features and improvements:
 .OCP console plugin
 
 This version of {project-full} has replaced the stand-alone UI with a UI that is integrated in the OCP Console. The new UI operates as an OCP Console plugin. It is implemented by default in version 2.4, disabling the old UI. You can enable the old UI by setting `feature_ui: true` in ForkliftController. link:https://issues.redhat.com/browse/MTV-427[(MTV-427)]
-
-.OpenStack migration
-
-See new link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#rhv-prerequisites_mtv[prerequisites] for RHV and VMware migration, and link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.3/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#migrating-virtual-machines-cli_mtv[procedure] to migrate virtual machines. link:https://issues.redhat.com/browse/MTV-426[(MTV-426)]
 
 .Skip certification option
 
