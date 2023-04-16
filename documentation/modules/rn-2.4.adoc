@@ -5,7 +5,7 @@
 [id="rn-24_{context}"]
 = {project-full} 2.4
 
-You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} to {virt} with {the-lc} {project-first}.
+You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} or {osp} to {virt} with {the-lc} {project-first}.
 
 The release notes describe technical changes, new features and enhancements, and known issues.
 
