@@ -122,12 +122,14 @@ This release has the following resolved issue:
 
 .Improve invalid/conflicting VM name handling
 
-Improve the automatic renaming of VMs during migration to fit RFC 1123. This feature that was introduced in 2.3.4 is enhanced to cover more special cases. 
-link:https://issues.redhat.com/browse/MTV-212[(MTV-212)]
+Improve the automatic renaming of VMs during migration to fit RFC 1123. This feature that was introduced in 2.3.4 is enhanced to cover more special cases. link:https://issues.redhat.com/browse/MTV-212[(MTV-212)]
 
 .Prevent locking user accounts due to incorrect credentials
 
 When a user specifies an incorrect password for RHV providers, he no longer gets locked in RHV. An error returns when the RHV manager is accessible when adding the provider. If the RHV manager is not accessible, the provider is added, but there would be no further attempt after failing, due to incorrect credentials. link:https://issues.redhat.com/browse/MTV-324[(MTV-324)]
+
+.Users without cluster-admin role can create new providers
+Previously, cluster-admin role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, networkmaps, storagemaps, hooks) can operate MTV without cluster-admin permissions. link:https://issues.redhat.com/browse/MTV-334[(MTV-334)]
 
 .Convert i440fx to q35
 
