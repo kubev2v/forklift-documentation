@@ -130,7 +130,7 @@ link:https://issues.redhat.com/browse/MTV-212[(MTV-212)]
 
 .Prevent locking user accounts due to incorrect credentials
 
-When a user specifies an incorrect password for RHV providers, he no longer gets locked in RHV. An error returns when the RHV manager is accessible when adding the provider. If the RHV manager is not accessible, the provider is added, but there would be not further attempt after failing, due to incorrect credentials. link:https://issues.redhat.com/browse/MTV-324[(MTV-324)]
+When a user specifies an incorrect password for RHV providers, he no longer gets locked in RHV. An error returns when the RHV manager is accessible when adding the provider. If the RHV manager is not accessible, the provider is added, but there would be no further attempt after failing, due to incorrect credentials. link:https://issues.redhat.com/browse/MTV-324[(MTV-324)]
 
 .Convert i440fx to q35
 
