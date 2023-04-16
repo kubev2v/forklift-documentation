@@ -20,7 +20,7 @@ Disk images are not converted anymore using virt-v2v when migrating from RHV. Th
 
 .Faster migration using conversion pod disk transfer
 
-vSphere to the local OCP cluster migration uses conversion pod instead of Containerized Data Importer (CDI), accelerating the migration.
+When migrating from vSphere to the local OCP cluster, the conversion pod transfers the disk data instead of Containerized Data Importer (CDI), accelerating the migration.
 
 .Migrated virtual machines are not scheduled on the target OCP cluster
 
