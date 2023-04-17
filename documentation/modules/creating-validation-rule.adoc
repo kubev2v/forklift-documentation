@@ -120,8 +120,8 @@ spec:
     namespace: {namespace}
 EOF
 ----
-<1> Allowed values are `ovirt` and `vsphere`.
-<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere or `https://<engine_host>/ovirt-engine/api/` for {rhv-short}.
+<1> Allowed values are `ovirt`, `vsphere`, and `openstack`.
+<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api/` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
 <3> Specify the name of the provider `Secret` CR.
 
 You must update the rules version after creating a custom rule so that the `Inventory` service detects the changes and validates the VMs.
