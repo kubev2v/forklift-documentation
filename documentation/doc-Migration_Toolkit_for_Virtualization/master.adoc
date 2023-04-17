@@ -97,7 +97,7 @@ You can add source providers and destination providers for a virtual machine mig
 [id="adding-source-providers"]
 ==== Adding source providers
 
-You can add {a-rhv} source provider or a VMware source provider by using the {project-short} web console.
+You can add a VMware source provider, {a-rhv} source provider, or an {osh} source provider by using the {project-short} web console.
 
 :mtv!:
 :context: vmware
@@ -114,6 +114,8 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 :rhv!:
 :context: mtv
 :mtv:
+
+include::modules/osh-adding-source-provider.adoc[leveloffset=+4]
 
 [id="adding-destination-providers"]
 ==== Adding destination providers

@@ -1,0 +1,47 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="osh-adding-source-provider_{context}"]
+= Adding an {osp} source provider
+
+You can add an {osp} source provider by using the {project-short} web console.
+
+[IMPORTANT]
+====
+Migration using {osp} source providers is a Technology Preview feature only. Technology Preview features
+are not supported with Red Hat production service level agreements (SLAs) and
+might not be functionally complete. Red Hat does not recommend using them
+in production. These features provide early access to upcoming product
+features, enabling customers to test functionality and provide feedback during
+the development process.
+For more information about the support scope of Red Hat Technology Preview
+features, see https://access.redhat.com/support/offerings/techpreview/.
+====
+
+[NOTE]
+====
+Migration using {osp} source providers only supports VMs that use only Cinder volumes.
+====
+
+.Procedure
+
+. In the {project-short} web console, click *Providers*.
+. Click *Add provider*.
+
+. Select *Red Hat OpenStack Platform* from the *Type* list.
+. Fill in the following fields:
+
+* *Name*: Name to display in the list of providers
+* *{osh} Identity (Keystone) URL*: {osh} Identity (Keystone) endpoint, for example, `http://controller:5000/v3`
+* *{osh} Identity (Keystone) username*: For example, `admin`
+* *{osh} Identity (Keystone) password*:
+* *Domanin*:
+* *Project*:
+* *Region*:
+
+.  To allow a migration without validating the provider's CA certificate, select the *Skip certificate validation* check box. By default, the checkbox is cleared, meaning that the certificate will be validated.
+. If you did not select *skip certificate validation*, the *CA certificate* field is visible. Drag the CA certificate used to connect to the source environment to the text box or browse for it and click *Select*.  If you did select the check box, the *CA certificate* text box is not visible.
+. Click *Create* to add and save the provider.
++
+The source provider appears in the list of providers.

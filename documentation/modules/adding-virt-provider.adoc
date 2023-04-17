@@ -17,13 +17,14 @@ You can add {a-virt} destination provider to the {project-short} web console in 
 . In the  {project-short}  web console, click *Providers*.
 . Click *Add provider*.
 . Select *{virt}* from the *Type* list.
-. Complete the following fields:
+. Fill in the following fields:
 
-* *Cluster name*: Specify the cluster name to display in the list of target providers.
+* *Name*: Specify the provider name to display in the list of target providers.
 * *URL*: Specify the API endpoint of the cluster.
 * *Service account token*: Specify the `cluster-admin` service account token.
++
+If both *URL* and *Service account token* are left blank, the local OpenShift cluster is used.
 
-. Click *Check connection* to verify the credentials.
-. Click *Add*.
+. Click *Create*.
 +
 The provider appears in the list of providers.

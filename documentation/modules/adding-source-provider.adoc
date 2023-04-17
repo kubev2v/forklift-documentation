@@ -31,24 +31,27 @@ ifdef::vmware[]
 . Fill in the following fields:
 
 * *Name*: Name to display in the list of providers
-* *Hostname or IP address*: vCenter host name or IP address
-* *Username*: vCenter user, for example, `user@vsphere.local`
-* *Password*: vCenter user password
+* *vCenter host name or IP address*: vCenter host name or IP address - if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate
+* *vCenter user name*: vCenter user, for example, `user@vsphere.local`
+* *vCenter password*: vCenter user password
 * *VDDK init image*: VDDKInitImage path
-* Click *Verify certificate*.
-* Select the *I trust the authenticity of this certificate* checkbox.
+
+. To allow a migration without validating the provider's CA certificate, select the *Skip certificate validation* check box. By default, the checkbox is cleared, meaning that the certificate will be validated.
+. Enter the *SHA-1 fingerprint*.
 endif::[]
 ifdef::rhv[]
 . Select *Red Hat Virtualization* from the *Type* list.
 . Fill in the following fields:
 
 * *Name*: Name to display in the list of providers
-* *Hostname or IP address*: {manager} host name or IP address
-* *Username*: {manager} user
-* *Password*: {manager} password
-* *CA certificate*: {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, specify the {manager} Apache CA certificate
+* *RHV Manager host name or IP address*: {manager} host name or IP address -  if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate
+* *RHV Manager user name*: {manager} user
+* *RHV Manager password*: {manager} password
+
+. To allow a migration without validating the provider's CA certificate, select the *Skip certificate validation* check box. By default, the checkbox is cleared, meaning that the certificate will be validated.
+. If you did not select *skip certificate validation*, the *CA certificate* field is visible. Drag the CA certificate to the text box or browse for it and click *Select*. Use the {manager} CA certificate or {manager} Apache CA certificate if the {manager} CA certificate was replaced by a third-party certificate on the Apache server. If you did select the check box, the *CA certificate* text box is not visible.
 endif::[]
 
-. Click *Add* to add and save the provider.
+. Click *Create* to add and save the provider.
 +
 The source provider appears in the list of providers.
