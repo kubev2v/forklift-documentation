@@ -49,7 +49,7 @@ This version of {project-full} has replaced the stand-alone UI with a UI that is
 
 .Skip certification option
 
-Skip certificate validation' option was added to VMware and RHV providers. If checked, the provider's certificate will not be validated and the UI will not ask for specifying a CA certificate.
+'Skip certificate validation' option was added to VMware and RHV providers. If checked, the provider's certificate will not be validated and the UI will not ask for specifying a CA certificate.
 
 .Only third-party certificate required
 
