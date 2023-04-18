@@ -50,7 +50,7 @@ The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 
 . The `Populator Controller` service creates a temporarily persistent volume claim (PVC).
 . If the `StorageClass` has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the `StorageClass` provisioner.
-- The `Migration Controller` service creates a dummy pod to bind *all PVCs*, the name of the pod contains `pvcinit`.
+- The `Migration Controller` service creates a dummy pod to bind *all PVCs*. The name of the pod contains `pvcinit`.
 . The `Populator Controller` service creates a `populator` pod.
 . The `populator` pod transfers the disk data to the PV.
 +
@@ -72,8 +72,8 @@ The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 
 *For all VM disks:*
 
-. The `Migration Controller` service creates a dummy pod to bind *all PVCs*, the name of the pod contains `pvcinit`.
-. The `Migration Controller` service creates a `conversion` pod for *all PVCs*.
+. The `Migration Controller` service creates a dummy pod to bind *all PVCs*. The name of the pod contains `pvcinit`.
+. The `Migration Controller` service creates a `conversion` pod for all PVCs.
 . The `conversion` pod runs `virt-v2v`, which converts the VM to the KVM hypervisor and transfers the disks' data to their corresponding PVs.
 +
 *After the VM disks are transferred:*
