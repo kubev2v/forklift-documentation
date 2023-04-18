@@ -91,7 +91,7 @@ The Migration Controller service does not delete snapshots that are created duri
 
 .RHV snapshots are not deleted after a successful migration
 
-The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You can link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-deleting-vm-snapshot-web_virt-managing-vm-snapshots[delete a virtual machine snapshot manually]. link:https://bugzilla.redhat.com/show_bug.cgi?id=2053183[(BZ#2053183)] link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
+The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. Workaround: Snapshots can be removed from RHV instead.
 
 .Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
 
