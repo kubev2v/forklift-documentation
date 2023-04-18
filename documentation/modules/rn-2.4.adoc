@@ -5,7 +5,7 @@
 [id="rn-24_{context}"]
 = {project-full} 2.4
 
-You can migrate virtual machines (VMs) from VMware vSphere or {rhv-full} or {osp} to {virt} with {the-lc} {project-first}.
+Migrate virtual machines (VMs) from VMware vSphere or {rhv-full} or {osp} to {virt} with {the-lc} {project-first}.
 
 The release notes describe technical changes, new features and enhancements, and known issues.
 
@@ -75,7 +75,7 @@ The error status message for a VM with no operating system on the *Migration pla
 
 .Log archive file includes logs of a deleted migration plan or VM
 
-If you delete a migration plan and then run a new migration plan with the same name or if you delete a migrated VM and then remigrate the source VM, the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
+If deleting a migration plan and then running a new migration plan with the same name or if deleting a migrated VM and then remigrate the source VM, the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
 
 .QEMU guest agent is not installed on migrated VMs
 
@@ -137,11 +137,11 @@ Improve the automatic renaming of VMs during migration to fit RFC 1123. This fea
 
 .Prevent locking user accounts due to incorrect credentials
 
-When a user specifies an incorrect password for RHV providers, he no longer gets locked in RHV. An error returns when the RHV manager is accessible when adding the provider. If the RHV manager is not accessible, the provider is added, but there would be no further attempt after failing, due to incorrect credentials. link:https://issues.redhat.com/browse/MTV-324[(MTV-324)]
+If a user specifies an incorrect password for RHV providers, they are no longer locked in RHV. An error returns when the RHV manager is accessible and adding the provider. If the RHV manager is not accessible, the provider is added, but there would be no further attempt after failing, due to incorrect credentials. link:https://issues.redhat.com/browse/MTV-324[(MTV-324)]
 
 .Users without cluster-admin role can create new providers
-Previously, cluster-admin role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, networkmaps, storagemaps, hooks) can operate MTV without cluster-admin permissions. link:https://issues.redhat.com/browse/MTV-334[(MTV-334)]
+Previously, the `cluster-admin` role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, networkmaps, storagemaps, hooks) can operate MTV without cluster-admin permissions. link:https://issues.redhat.com/browse/MTV-334[(MTV-334)]
 
 .Convert i440fx to q35
 
-Migrations of virtual machines with i440fx chipset is now supported. The chipset is converted to q35 during the migration. link:https://issues.redhat.com/browse/MTV-430[(MTV-430)]
+Migration of virtual machines with i440fx chipset is now supported. The chipset is converted to q35 during the migration. link:https://issues.redhat.com/browse/MTV-430[(MTV-430)]
