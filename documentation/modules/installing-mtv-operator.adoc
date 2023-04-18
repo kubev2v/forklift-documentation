@@ -34,13 +34,14 @@ The {operator-name} is a Community Operator. Red Hat does not support Community 
 ====
 endif::[]
 . Click *{operator-name-ui}* and then click *Install*.
-. On the *Install Operator* page, click *Install*.
-. Click *Operators* -> *Installed Operators* to verify that *{operator-name-ui}* appears in the *{namespace}* project with the status *Succeeded*.
-. Click *{operator-name-ui}*.
-. Under *Provided APIs*, locate the *ForkliftController*, and click *Create Instance*.
+. Click *Create ForkliftController* when the button becomes active.
 . Click *Create*.
++
+Your ForkliftController appears in the list that is displayed.
 . Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.
-include::snippet_getting_web_console_url_web.adoc[]
+. Click *Operators* -> *Installed Operators* to verify that *{operator-name-ui}* appears in the *{namespace}* project with the status *Succeeded*.
++
+When the plugin is ready you will be prompted to reload the page.  The  *Migration* menu item is automatically added to the navigation bar, displayed on the left of the {ocp} web console.
 endif::[]
 ifdef::cli[]
 
@@ -104,12 +105,12 @@ metadata:
   name: {operator}
   namespace: {namespace}
 spec:
-  channel: release-v{project-z-version}
+  channel: release-v{project-version}
   installPlanApproval: Automatic
   name: {operator}
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: "mtv-operator.{project-z-version}"
+  startingCSV: "mtv-operator.v{project-z-version}"
 EOF
 ----
 endif::[]
@@ -138,10 +139,13 @@ $ {oc} get pods -n {namespace}
 +
 .Example output
 ----
-NAME                                  READY  STATUS   RESTARTS  AGE
-forklift-controller-788bdb4c69-mw268  2/2    Running  0         2m
-forklift-operator-6bf45b8d8-qps9v     1/1    Running  0         5m
-forklift-ui-7cdf96d8f6-xnw5n          1/1    Running  0         2m
+NAME                                                    READY   STATUS    RESTARTS   AGE
+forklift-api-bb45b8db4-cpzlg                            1/1     Running   0          6m34s
+forklift-controller-7649db6845-zd25p                    2/2     Running   0          6m38s
+forklift-must-gather-api-78fb4bcdf6-h2r4m               1/1     Running   0          6m28s
+forklift-operator-59c87cfbdc-pmkfc                      1/1     Running   0          28m
+forklift-ui-plugin-5c5564f6d6-zpd85                     1/1     Running   0          6m24s
+forklift-validation-7d84c74c6f-fj9xg                    1/1     Running   0          6m30s
+forklift-volume-populator-controller-85d5cb64b6-mrlmc   1/1     Running   0          6m36s
 ----
-include::snippet_getting_web_console_url_cli.adoc[]
 endif::[]

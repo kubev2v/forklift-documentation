@@ -80,6 +80,8 @@ include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 You can install the {operator-name} by using the {ocp} web console or the command line interface (CLI).
 
+In {project-first} version 2.4 and later, the {operator-name} includes the {project-short} plugin for the {ocp} web console.
+
 :!mtv:
 :context: web
 :web:
@@ -89,11 +91,9 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 :context: cli
 :cli:
 include::modules/installing-mtv-operator.adoc[leveloffset=+2]
-
 :!cli:
 :context: mtv
 :mtv:
-include::modules/obtaining-console-url.adoc[leveloffset=+2]
 
 [id="migrating-vms-web-console"]
 == Migrating virtual machines by using the {ocp} web console
@@ -159,8 +159,6 @@ You can migrate virtual machines to {virt} from the command line.
 
 [IMPORTANT]
 ====
-*  You must be logged in as a user with `cluster-admin` privileges.
-
 *  VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 
 *  VMware only: You must have the xref:obtaining-vmware-fingerprint_{context}[vCenter SHA-1 fingerprint].

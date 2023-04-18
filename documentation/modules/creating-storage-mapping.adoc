@@ -6,7 +6,7 @@
 [id="creating-storage-mapping_{context}"]
 = Creating a storage mapping
 
-You can create a storage mapping by using the {project-short} web console to map source data stores to {virt} storage classes.
+You can create a storage mapping by using the {ocp} web console to map source data stores to {virt} storage classes.
 
 .Prerequisites
 

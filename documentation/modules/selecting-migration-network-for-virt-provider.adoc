@@ -6,7 +6,7 @@
 [id="selecting-migration-network-for-virt-provider_{context}"]
 = Selecting a migration network for {a-virt} provider
 
-You can select a default migration network for {a-virt} provider in the {project-short} web console to improve performance. The default migration network is used to transfer disks to the namespaces in which it is configured.
+You can select a default migration network for {a-virt} provider in the {ocp} web console to improve performance. The default migration network is used to transfer disks to the namespaces in which it is configured.
 
 If you do not select a migration network, the default migration network is the `pod` network, which might not be optimal for disk transfer.
 
@@ -17,7 +17,7 @@ You can override the default migration network of the provider by selecting a di
 
 .Procedure
 
-. In the {project-short} web console, click *Providers*.
+. In the {ocp} web console, click *Migration* -> *Providers for virtualization*..
 . Click the *{virt}* tab.
 . Select a provider and click *Select migration network*.
 . Select a network from the list of available networks and click *Select*.

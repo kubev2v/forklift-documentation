@@ -6,7 +6,7 @@
 [id="running-migration-plan_{context}"]
 = Running a migration plan
 
-You can run a migration plan and view its progress in the {project-short} web console.
+You can run a migration plan and view its progress in the {ocp} web console.
 
 .Prerequisites
 

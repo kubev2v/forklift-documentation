@@ -6,7 +6,7 @@
 [id="selecting-migration-network-for-vmware-source-provider_{context}"]
 = Selecting a migration network for a VMware source provider
 
-You can select a migration network in the {project-short} web console for a source provider to reduce risk to the source environment and to improve performance.
+You can select a migration network in the {ocp} web console for a source provider to reduce risk to the source environment and to improve performance.
 
 Using the default network for migration can result in poor performance because the network might not have sufficient bandwidth. This situation can have a negative effect on the source platform because the disk transfer operation might saturate the network.
 
@@ -24,7 +24,7 @@ The source virtual disks are copied by a pod that is connected to the pod networ
 
 .Procedure
 
-. In the {project-short} web console, click *Providers*
+. In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
 . Click the *VMware* tab.
 . Click the host number in the *Hosts* column beside a provider to view a list of hosts.
 . Select one or more hosts and click *Select migration network*.

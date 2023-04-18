@@ -36,7 +36,6 @@ Migration using {osp} source providers only supports VMs that use only Cinder vo
 
 .Prerequisites
 
-* You must be logged in as a user with `cluster-admin` privileges.
 * VMware only: You must have a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
 
 .Procedure
