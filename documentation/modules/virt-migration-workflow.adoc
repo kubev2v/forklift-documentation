@@ -38,7 +38,7 @@ The `conversion` pod runs `virt-v2v`, which installs and configures device drive
 +
 . The `Migration Controller` service creates a `VirtualMachine` CR for each source virtual machine (VM), connected to the PVCs.
 
-. If the VM was running on the source environment, the `Migration Controller` powers on the VM, the `KubeVirt Controller` service creates a `virt-launcher` pod and a `VirtualMachineInstance` CR.
+. If the VM ran on the source environment, the `Migration Controller` powers on the VM, the `KubeVirt Controller` service creates a `virt-launcher` pod and a `VirtualMachineInstance` CR.
 +
 The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 
