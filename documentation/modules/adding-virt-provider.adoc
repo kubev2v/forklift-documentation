@@ -6,7 +6,7 @@
 [id="adding-virt-provider_{context}"]
 = Adding {a-virt} destination provider
 
-You can add {a-virt} destination provider to the {project-short} web console in addition to the default {virt} destination provider, which is the provider where you installed {project-short}.
+You can add {a-virt} destination provider to the {ocp} web console in addition to the default {virt} destination provider, which is the provider where you installed {project-short}.
 
 .Prerequisites
 
