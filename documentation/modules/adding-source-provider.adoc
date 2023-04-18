@@ -15,7 +15,7 @@ endif::[]
 ifdef::rhv[]
 = Adding {a-rhv} source provider
 
-You can add {a-rhv} source provider by using the {project-short} web console.
+You can add {a-rhv} source provider by using the {ocp} web console.
 
 .Prerequisites
 
@@ -24,7 +24,7 @@ endif::[]
 
 .Procedure
 
-. In the {project-short} web console, click *Providers*.
+. In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
 . Click *Create provider*.
 ifdef::vmware[]
 . Select *VMware* from the *Provider type* list.
