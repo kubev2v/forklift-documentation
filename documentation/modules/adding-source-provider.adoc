@@ -6,7 +6,7 @@
 ifdef::vmware[]
 = Adding a VMware source provider
 
-You can add a VMware source provider by using the {project-short} web console.
+You can add a VMware source provider by using the {ocp} web console.
 
 .Prerequisites
 
