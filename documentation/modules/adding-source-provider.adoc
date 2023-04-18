@@ -25,7 +25,7 @@ endif::[]
 .Procedure
 
 . In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
-. Click *Create provider*.
+. Click *Create Provider*.
 ifdef::vmware[]
 . Select *VMware* from the *Provider type* list.
 . Fill in the following fields:
@@ -40,7 +40,7 @@ ifdef::vmware[]
 . Enter the *SHA-1 fingerprint*.
 endif::[]
 ifdef::rhv[]
-. Select *Red Hat Virtualization* from the *Provider Type* list.
+. Select *Red Hat Virtualization* from the *Provider type* list.
 . Fill in the following fields:
 
 * *Provider name*: Name to display in the list of providers

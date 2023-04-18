@@ -27,7 +27,7 @@ Migration using {osp} source providers only supports VMs that use only Cinder vo
 .Procedure
 
 . In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
-. Click *Create provider*.
+. Click *Create Provider*.
 
 . Select *Red Hat OpenStack Platform* from the *Provider type* list.
 . Fill in the following fields:
