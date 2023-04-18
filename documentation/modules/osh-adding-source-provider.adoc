@@ -5,7 +5,7 @@
 [id="osh-adding-source-provider_{context}"]
 = Adding an {osp} source provider
 
-You can add an {osp} source provider by using the {project-short} web console.
+You can add an {osp} source provider by using the {ocp} web console.
 
 [IMPORTANT]
 ====
