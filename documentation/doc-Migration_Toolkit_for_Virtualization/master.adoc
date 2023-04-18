@@ -96,9 +96,9 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 include::modules/obtaining-console-url.adoc[leveloffset=+2]
 
 [id="migrating-vms-web-console"]
-== Migrating virtual machines by using the {project-short} web console
+== Migrating virtual machines by using the {ocp} web console
 
-You can migrate virtual machines (VMs) to {virt} by using the {project-short} web console.
+You can migrate virtual machines (VMs) to {virt} by using the {ocp} web console.
 
 [IMPORTANT]
 ====
@@ -112,12 +112,12 @@ VMware only: You must create a xref:creating-vddk-image_{context}[VMware Virtual
 [id="adding-providers"]
 === Adding providers
 
-You can add source providers and destination providers for a virtual machine migration by using the {project-short} web console.
+You can add source providers and destination providers for a virtual machine migration by using the {ocp} web console.
 
 [id="adding-source-providers"]
 ==== Adding source providers
 
-You can add {a-rhv} source provider or a VMware source provider by using the {project-short} web console.
+You can add a VMware source provider, {a-rhv} source provider, or an {osp} source provider by using the {ocp} web console.
 
 :mtv!:
 :context: vmware
@@ -135,10 +135,12 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 :context: mtv
 :mtv:
 
+include::modules/osh-adding-source-provider.adoc[leveloffset=+4]
+
 [id="adding-destination-providers"]
 ==== Adding destination providers
 
-You can add  a {virt} destination provider by using the {project-short} web console.
+You can add  a {virt} destination provider by using the {ocp} web console.
 
 include::modules/adding-virt-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]

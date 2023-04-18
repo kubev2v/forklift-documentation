@@ -6,7 +6,7 @@
 [id="adding-virt-provider_{context}"]
 = Adding {a-virt} destination provider
 
-You can add {a-virt} destination provider to the {project-short} web console in addition to the default {virt} destination provider, which is the provider where you installed {project-short}.
+You can add {a-virt} destination provider to the {ocp} web console in addition to the default {virt} destination provider, which is the provider where you installed {project-short}.
 
 .Prerequisites
 
@@ -14,16 +14,17 @@ You can add {a-virt} destination provider to the {project-short} web console in 
 
 .Procedure
 
-. In the  {project-short}  web console, click *Providers*.
-. Click *Add provider*.
-. Select *{virt}* from the *Type* list.
-. Complete the following fields:
+. In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
+. Click *Create Provider*.
+. Select *{virt}* from the *Provider type* list.
+. Fill in the following fields:
 
-* *Cluster name*: Specify the cluster name to display in the list of target providers.
-* *URL*: Specify the API endpoint of the cluster.
+* *Provider name*: Specify the provider name to display in the list of target providers.
+* *Kubernetes API server URL*: Specify the {ocp} cluster API endpoint.
 * *Service account token*: Specify the `cluster-admin` service account token.
++
+If both *URL* and *Service account token* are left blank, the local {osp} cluster is used.
 
-. Click *Check connection* to verify the credentials.
-. Click *Add*.
+. Click *Create*.
 +
 The provider appears in the list of providers.
