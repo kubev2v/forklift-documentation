@@ -21,7 +21,7 @@ The workflow describes the following steps:
 
 *Warm Migration or migration to a remote {ocp-short} cluster:*
 
-. When you create a `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates a `DataVolume` CR for each source VM disk.
+. When you create the `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates a `DataVolume` CR for each source VM disk.
 +
 *For each VM disk:*
 
