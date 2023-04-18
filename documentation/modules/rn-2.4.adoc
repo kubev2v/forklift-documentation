@@ -85,6 +85,10 @@ The QEMU guest agent is not installed on migrated VMs. Workaround: Install the Q
 
 Occurs for vSphere: Migrations from RHV and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
 
+.Snapshots that are created during the migration in OpenStack are not deleted
+
+The Migration Controller service does not delete snapshots that are created during the migration for source virtual machines in OpenStack automatically. Workaround: the snapshots can be removed manually on OpenStack. 
+
 .RHV snapshots are not deleted after a successful migration
 
 The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. You can link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-deleting-vm-snapshot-web_virt-managing-vm-snapshots[delete a virtual machine snapshot manually]. link:https://bugzilla.redhat.com/show_bug.cgi?id=2053183[(BZ#2053183)] link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
