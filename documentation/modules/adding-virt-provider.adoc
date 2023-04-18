@@ -14,16 +14,16 @@ You can add {a-virt} destination provider to the {project-short} web console in 
 
 .Procedure
 
-. In the  {project-short}  web console, click *Providers*.
-. Click *Add provider*.
-. Select *{virt}* from the *Type* list.
+. In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
+. Click *Create provider*.
+. Select *{virt}* from the *Provider type* list.
 . Fill in the following fields:
 
-* *Name*: Specify the provider name to display in the list of target providers.
-* *URL*: Specify the API endpoint of the cluster.
+* *Provider name*: Specify the provider name to display in the list of target providers.
+* *Kubernetes API server URL*: Specify the {ocp} cluster API endpoint.
 * *Service account token*: Specify the `cluster-admin` service account token.
 +
-If both *URL* and *Service account token* are left blank, the local OpenShift cluster is used.
+If both *URL* and *Service account token* are left blank, the local {osp} cluster is used.
 
 . Click *Create*.
 +

@@ -25,12 +25,12 @@ endif::[]
 .Procedure
 
 . In the {project-short} web console, click *Providers*.
-. Click *Add provider*.
+. Click *Create provider*.
 ifdef::vmware[]
-. Select *VMware* from the *Type* list.
+. Select *VMware* from the *Provider type* list.
 . Fill in the following fields:
 
-* *Name*: Name to display in the list of providers
+* *Provider name*: Name to display in the list of providers
 * *vCenter host name or IP address*: vCenter host name or IP address - if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate
 * *vCenter user name*: vCenter user, for example, `user@vsphere.local`
 * *vCenter password*: vCenter user password
@@ -40,10 +40,10 @@ ifdef::vmware[]
 . Enter the *SHA-1 fingerprint*.
 endif::[]
 ifdef::rhv[]
-. Select *Red Hat Virtualization* from the *Type* list.
+. Select *Red Hat Virtualization* from the *Provider Type* list.
 . Fill in the following fields:
 
-* *Name*: Name to display in the list of providers
+* *Provider name*: Name to display in the list of providers
 * *RHV Manager host name or IP address*: {manager} host name or IP address -  if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate
 * *RHV Manager user name*: {manager} user
 * *RHV Manager password*: {manager} password
