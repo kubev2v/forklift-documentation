@@ -45,7 +45,7 @@ This release has the following features and improvements:
 
 .OCP console plugin
 
-This version of {project-full} has replaced the stand-alone UI with a UI that is integrated in the OCP Console. The new UI operates as an OCP Console plugin that adds the sub-menu `Migration` to the navigation bar. It is implemented in version 2.4, disabling the old UI. You can enable the old UI by setting `feature_ui: true` in ForkliftController. link:https://issues.redhat.com/browse/MTV-427[(MTV-427)]
+The {product-full} Operator now integrates the {product-short} web console into the {ocp} web console. The new UI operates as an OCP Console plugin that adds the sub-menu `Migration` to the navigation bar. It is implemented in version 2.4, disabling the old UI. You can enable the old UI by setting `feature_ui: true` in ForkliftController. link:https://issues.redhat.com/browse/MTV-427[(MTV-427)]
 
 .Skip certification option
 
