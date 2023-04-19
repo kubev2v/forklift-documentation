@@ -30,7 +30,7 @@ Migration using {osp} source providers only supports VMs that use only Cinder vo
 . Click *Create Provider*.
 
 . Select *Red Hat OpenStack Platform* from the *Provider type* list.
-. Fill in the following fields:
+. Specify the following fields:
 
 * *Provider name*: Name to display in the list of providers
 * *{osp} Identity server URL*: {osp} Identity (Keystone) endpoint, for example, `http://controller:5000/v3`

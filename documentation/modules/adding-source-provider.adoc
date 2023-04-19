@@ -28,7 +28,7 @@ endif::[]
 . Click *Create Provider*.
 ifdef::vmware[]
 . Select *VMware* from the *Provider type* list.
-. Fill in the following fields:
+. Specify the following fields:
 
 * *Provider name*: Name to display in the list of providers
 * *vCenter host name or IP address*: vCenter host name or IP address - if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate
@@ -41,7 +41,7 @@ ifdef::vmware[]
 endif::[]
 ifdef::rhv[]
 . Select *Red Hat Virtualization* from the *Provider type* list.
-. Fill in the following fields:
+. Specify the following fields:
 
 * *Provider name*: Name to display in the list of providers
 * *RHV Manager host name or IP address*: {manager} host name or IP address -  if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate
