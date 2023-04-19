@@ -53,7 +53,7 @@ The {product-full} Operator now integrates the {product-short} web console into 
 
 .Only third-party certificate required
 
-When defining a RHV provider that set with third-party certificate, only the third-party certificate needs to be specified and MTV would retrieve the Manager CA certificate automatically.
+Only the third-party certificate needs to be specified when defining a RHV provider that sets with the Manager CA certificate.
 
 .Conversion of VMs with RHEL9 guest operating system
 
