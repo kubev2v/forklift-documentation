@@ -20,7 +20,7 @@ Disk images are not converted anymore using virt-v2v when migrating from RHV. Th
 
 .Faster disk transfers by ovirt-imageio client (ovirt-img)
 
-Disk transfers use ovirt-imageio client (ovirt-img) instead of Containerized Data Import (CDI) when migrating from RHV to the local OCP cluster, accelerating the migration.
+Disk transfers use `ovirt-imageio` client (ovirt-img) instead of Containerized Data Import (CDI) when migrating from RHV to the local OpenShift Container Platform cluster, accelerating the migration.
 
 .Faster migration using conversion pod disk transfer
 
