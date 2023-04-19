@@ -113,8 +113,7 @@ When archiving and deleting a migration plan that failed, its PVCs and PVs are n
 
 .VM with multiple disks may boot from non-bootable disk after migration
 
-VM with multiple disks that was migrated may not be able to boot on the target OCP cluster. +
-Workaround: set the boot order appropriately to boot from the bootable disk. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
+VM with multiple disks that was migrated might not be able to boot on the target OCP cluster. Workaround: set the boot order appropriately to boot from the bootable disk. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
 
 .Non-supported guest operating systems in warm migrations
 
