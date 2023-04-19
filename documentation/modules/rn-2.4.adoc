@@ -28,7 +28,7 @@ When migrating from vSphere to the local OpenShift Container Platform cluster, t
 
 .Migrated virtual machines are not scheduled on the target OCP cluster
 
-The migrated virtual machines are no longer scheduled on the target OpenShift Container Platform cluster. This enables migrating VMs that cannot start due to limit constraints at the migration time on the target.
+The migrated virtual machines are no longer scheduled on the target OpenShift Container Platform cluster. This enables migrating VMs that cannot start due to limit constraints on the target at migration time.
 
 .StorageProfile resource needs to be updated for a non-provisioner storage class
 
