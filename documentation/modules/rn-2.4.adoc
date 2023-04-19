@@ -41,7 +41,7 @@ This release has the following features and improvements:
 
 .OpenStack migration
 
-OpenStack is added as a source provider. Only cold migrations are supported as tech preview in this release.
+{product-short} now supports migrations with {scp} as a source provider. This feature is a provided as a Technology Preview and only supports cold migrations.
 
 .OCP console plugin
 
