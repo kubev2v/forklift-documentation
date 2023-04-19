@@ -82,7 +82,7 @@ The QEMU guest agent is not installed on migrated VMs. Workaround: Install the Q
 
 .Migration of virtual machines with encrypted partitions fails during conversion
 
-Occurs for vSphere: Migrations from RHV and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
+vSphere only: Migrations from RHV and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
 
 .Snapshots that are created during the migration in OpenStack are not deleted
 
