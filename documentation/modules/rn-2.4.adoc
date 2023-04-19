@@ -109,7 +109,7 @@ Workaround: remove the CDI importer pods and then remove the remaining PVCs and 
 
 .PVC deletion hangs after archiving and deleting migration plan
 
-When archiving and deleting a migration plan that failed, its PVCs and PVs are not deleted. Workaround: Remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-493[(MTV-493)]
+When a migration fails, its PVCs and PVs are not deleted as expected when its migration plan is archived and deleted. Workaround: Remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-493[(MTV-493)]
 
 .VM with multiple disks may boot from non-bootable disk after migration
 
