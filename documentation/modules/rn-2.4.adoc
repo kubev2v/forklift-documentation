@@ -57,7 +57,7 @@ Only the third-party certificate needs to be specified when defining a RHV provi
 
 .Conversion of VMs with RHEL9 guest operating system
 
-For cold migrations from vSphere to the local OCP cluster, we use virt-v2v on RHEL 9 that supports conversion of virtual machines with RHEL 9 as the guest operating system. link:https://issues.redhat.com/browse/MTV-332[(MTV-332)]
+Cold migrations from vSphere to a local Red Hat OpenShift cluster use virt-v2v on RHEL 9. link:https://issues.redhat.com/browse/MTV-332[(MTV-332)]
 
 [id="known-issues-24_{context}"]
 == Known issues
