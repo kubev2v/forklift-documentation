@@ -129,7 +129,7 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 [id="resolved-issues-24_{context}"]
 == Resolved issues
 
-This release has the following resolved issue:
+This release has the following resolved issues:
 
 .Improve invalid/conflicting VM name handling
 
