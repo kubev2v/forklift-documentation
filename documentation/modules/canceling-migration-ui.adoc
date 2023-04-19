@@ -6,11 +6,11 @@
 [id="canceling-migration-ui_{context}"]
 = Canceling a migration
 
-You can cancel the migration of some or all virtual machines (VMs) while a migration plan is in progress by using the {project-short} web console.
+You can cancel the migration of some or all virtual machines (VMs) while a migration plan is in progress by using the {ocp} web console.
 
 .Procedure
 
-. Click *Migration Plans*.
+. Click *Plans for virtualization*.
 . Click the name of a running migration plan to view the migration details.
 . Select one or more VMs and click *Cancel*.
 . Click *Yes, cancel* to confirm the cancellation.

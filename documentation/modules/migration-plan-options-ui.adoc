@@ -6,7 +6,7 @@
 [id="migration-plan-options-ui_{context}"]
 = Migration plan options
 
-On the *Migration plans* page of the {project-short} web console, you can click the {kebab} beside a migration plan to access the following options:
+On the *Plans for virtualization* page of the {ocp} web console, you can click the {kebab} beside a migration plan to access the following options:
 
 * *Edit*: Edit the details of a migration plan. You cannot edit a migration plan while it is running or after it has completed successfully.
 * *Duplicate*: Create a new migration plan with the same virtual machines (VMs), parameters, mappings, and hooks as an existing plan. You can use this feature for the following tasks:

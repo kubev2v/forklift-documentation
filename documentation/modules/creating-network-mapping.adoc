@@ -6,7 +6,7 @@
 [id="creating-network-mapping_{context}"]
 = Creating a network mapping
 
-You can create one or more network mappings by using the {project-short} web console to map source networks to {virt} networks.
+You can create one or more network mappings by using the {ocp} web console to map source networks to {virt} networks.
 
 .Prerequisites
 
@@ -15,18 +15,19 @@ You can create one or more network mappings by using the {project-short} web con
 
 .Procedure
 
-. Click *Mappings*.
-. Click the *Network* tab and then click *Create mapping*.
+. In the {ocp} web console, click *Migration* -> *NetworkMaps for virtualization*.
+. Click *Create NetworkMap*.
 . Complete the following fields:
 
 * *Name*: Enter a name to display in the network mappings list.
 * *Source provider*: Select a source provider.
 * *Target provider*: Select a target provider.
-* *Source networks*: Select a source network.
-* *Target namespaces/networks*: Select a target network.
++
+The *Source networks* and *Target namespaces/networks* text boxes become active.
 
+. Select a source network and a target namespace/network from the list.
 . Optional: Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
 . If you create an additional network mapping, select the network attachment definition as the target network.
 . Click *Create*.
 +
-The network mapping is displayed on the *Network mappings* screen.
+The network mapping is displayed on the *NetworkMaps* screen.

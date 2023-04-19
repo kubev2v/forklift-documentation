@@ -6,7 +6,7 @@
 [id="creating-migration-plan_{context}"]
 = Creating a migration plan
 
-You can create a migration plan by using the {project-short} web console.
+You can create a migration plan by using the {ocp} web console.
 
 A migration plan allows you to group virtual machines to be migrated together or with the same migration parameters, for example, a percentage of the members of a cluster or a complete application.
 
