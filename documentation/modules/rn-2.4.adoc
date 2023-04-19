@@ -70,7 +70,7 @@ Deleting a migration plan does not remove temporary resources such as importer p
 
 .Unclear error status message for VM with no operating system
 
-The error status message for a VM with no operating system on the *Migration plan details* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
+The error status message for a VM with no operating system on the *Plans* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
 
 .Log archive file includes logs of a deleted migration plan or VM
 
