@@ -6,24 +6,30 @@
 [id="creating-storage-mapping_{context}"]
 = Creating a storage mapping
 
-You can create a storage mapping by using the {ocp} web console to map source data stores to {virt} storage classes.
+You can create a storage mapping by using the {ocp} web console to map source disk storages to {virt} storage classes.
 
 .Prerequisites
 
-* Source and target providers added to the web console.
+* Source and target providers added to the {ocp} web console.
 * Local and shared persistent storage that support VM migration.
 
 .Procedure
 
-. Click *Mappings*.
-. Click the *Storage* tab and then click *Create mapping*.
-. Enter the *Name* of the storage mapping.
-. Select a *Source provider* and a *Target provider*.
-. If your source provider is VMware, select a *Source datastore* and a *Target storage class*.
+. In the {ocp} web console, click *Migration* -> *StorageMaps for virtualization*.
+. Click *Create StorageMap*.
+. Specify the following fields:
 
-. If your source provider is {rhv-full}, select a *Source storage domain* and a *Target storage class*.
+* *Name*: Enter a name to display in the storage mappings list.
+* *Source provider*: Select a source provider.
+* *Target provider*: Select a target provider.
 
-. Optional: Click *Add* to create additional storage mappings or to map multiple source data stores or storage domains to a single storage class.
+. Map source disk storages to target storage classes as follows:
+
+.. If your source provider is VMware, select a *Source datastore* and a *Target storage class*.
+.. If your source provider is {rhv-full}, select a *Source storage domain* and a *Target storage class*.
+.. If your source provider is {osp}, select a *Source* and a *Target storage class*.
+
+. Optional: Click *Add* to create additional storage mappings or to map multiple source disk storages to a single target storage class.
 . Click *Create*.
 +
-The mapping is displayed on the *Storage mappings* page.
+The mapping is displayed on the *StorageMaps* page.
