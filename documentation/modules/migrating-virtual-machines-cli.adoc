@@ -90,20 +90,23 @@ kind: Provider
 metadata:
   name: <provider>
   namespace: {namespace}
+  annotations:
+    forklift.konveyor.io/defaultTransferNetwork: <netwok_name> <1>
 spec:
-  type: <provider_type> <1>
-  url: <api_end_point> <2>
+  type: <provider_type> <2>
+  url: <api_end_point> <3>
   settings:
-    vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <3>
+    vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <4>
   secret:
-    name: <secret> <4>
+    name: <secret> <5>
     namespace: {namespace}
 EOF
 ----
-<1> Allowed values are `ovirt`, `vsphere`, and `openstack`.
-<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api/` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
-<3> VMware only: Specify the VDDK image that you created.
-<4> Specify the name of provider `Secret` CR.
+<1> OpenShift only: When using the web console, specify a default network for disk transfer.
+<2> Allowed values are `ovirt`, `vsphere`, and `openstack`.
+<3> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api/` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
+<4> VMware only: Specify the VDDK image that you created.
+<5> Specify the name of provider `Secret` CR.
 
 . VMware only: Create a `Host` manifest:
 +
