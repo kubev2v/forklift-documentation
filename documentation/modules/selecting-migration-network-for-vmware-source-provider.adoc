@@ -25,20 +25,14 @@ The source virtual disks are copied by a pod that is connected to the pod networ
 .Procedure
 
 . In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
-. Click the *VMware* tab.
 . Click the host number in the *Hosts* column beside a provider to view a list of hosts.
 . Select one or more hosts and click *Select migration network*.
-. Select a *Network*.
-+
-You can clear the selection by selecting the default network.
+. Specify the following fields:
 
-. If your source provider is VMware, complete the following fields:
-* *ESXi host admin username*: Specify the ESXi host admin user, for example, `root`.
-* *ESXi host admin password*: Specify the ESXi host admin password.
+* *Network*: Network name
+* *ESXi host admin username*: For example, `root`
+* *ESXi host admin password*: Password
 
-. If your source provider is {rhv-full}, complete the following fields:
-* *Username*: Specify the {manager} user.
-* *Password*: Specify the {manager} password.
 . Click *Save*.
 . Verify that the status of each host is *Ready*.
 +
