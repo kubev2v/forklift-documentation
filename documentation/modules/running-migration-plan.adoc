@@ -14,19 +14,26 @@ You can run a migration plan and view its progress in the {ocp} web console.
 
 .Procedure
 
-. Click *Migration plans*.
+. In the {ocp} web console, click *Migration* -> *Plans for virtualization*.
 +
-The *Migration plans* list displays the source and target providers, the number of virtual machines (VMs) being migrated, and the status of the plan.
+The *Plans* list displays the source and target providers, the number of virtual machines (VMs) being migrated, the status, and the description of each plan.
 
 . Click *Start* beside a migration plan to start the migration.
+. Click *Start* in the confirmation window that opens.
++
+The *Migration details by VM* screen opens, displaying the migration's progress
 +
 Warm migration only:
 
 * The precopy stage starts.
 * Click *Cutover* to complete the migration.
 
-. Expand a migration plan to view the migration details.
-+
-The migration details screen displays the migration start and end time, the amount of data copied, and a progress pipeline for each VM being migrated.
+. If the migration fails:
+.. Click *Get logs* to retrieve the migration logs.
+.. Click *Get logs* in the confirmation window that opens.
+.. Wait until *Get logs*  changes to *Download logs* and then click the button to download the logs.
 
-. Expand a VM to view the migration steps, elapsed time of each step, and its state.
+. Click a migration's *Status*, whether it failed or succeeded or is still ongoing, to view the details of the migration.
++
+The *Migration details by VM* screen opens, displaying the start and end times of the migration, the amount of data copied, and a progress pipeline for each VM being migrated.
+. Expand an individual VM to view its steps and the elapsed time and state of each step.
