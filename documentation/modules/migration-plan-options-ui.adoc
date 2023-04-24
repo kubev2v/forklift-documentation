@@ -8,6 +8,7 @@
 
 On the *Plans for virtualization* page of the {ocp} web console, you can click the {kebab} beside a migration plan to access the following options:
 
+* *Get logs*: Retrieves the logs of a migration. When you click *Get logs*, a confirmation window opens. After you click *Get logs* in the window, wait until *Get logs* changes to *Download logs* and then click the button to download the logs.
 * *Edit*: Edit the details of a migration plan. You cannot edit a migration plan while it is running or after it has completed successfully.
 * *Duplicate*: Create a new migration plan with the same virtual machines (VMs), parameters, mappings, and hooks as an existing plan. You can use this feature for the following tasks:
 
