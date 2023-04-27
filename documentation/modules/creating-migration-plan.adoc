@@ -18,43 +18,53 @@ You can configure a hook to run an Ansible playbook or custom container image du
 
 .Procedure
 
-. In the web console, click *Migration plans* and then click *Create migration plan*.
-. Complete the following fields:
+. In the {ocp} web console, click *Migration* -> *Plans for virtualization*.
+. Click *Create plan*.
+
+. Specify the following fields:
 
 * *Plan name*: Enter a migration plan name to display in the migration plan list.
 * *Plan description*: Optional: Brief description of the migration plan.
 * *Source provider*: Select a source provider.
 * *Target provider*: Select a target provider.
-* *Target namespace*: You can type to search for an existing target namespace or create a new namespace.
-* You can change the migration transfer network for this plan by clicking *Select a different network*, selecting a network from the list, and clicking *Select*.
+* *Target namespace*: Do one of the following:
+
+** Select a target namespace from the list
+** Create a target namespace by typing its name in the text box, and then clicking *create "<the_name_you_entered>"*
+
+* You can change the migration transfer network for this plan by clicking *Select a different network*, selecting a network from the list, and then clicking *Select*.
 +
-If you defined a migration transfer network for the {virt} provider and if the network is in the target namespace, that network is the default network for all migration plans. Otherwise, the `pod` network is used.
+If you defined a migration transfer network for the {virt} provider and if the network is in the target namespace, the network that you defined is the default network for all migration plans. Otherwise, the `pod` network is used.
 
 . Click *Next*.
 . Select options to filter the list of source VMs and click *Next*.
 . Select the VMs to migrate and then click *Next*.
 . Select an existing network mapping or create a new network mapping.
+. . Optional: Click *Add* to add an additional network mapping.
 +
 To create a new network mapping:
 
 * Select a target network for each source network.
-* Optional: Select *Save mapping to use again* and enter a network mapping name.
+* Optional: Select *Save current mapping as a template* and enter a name for the network mapping.
 . Click *Next*.
-. Select an existing storage mapping or create a new storage mapping.
+. Select an existing storage mapping, which you can modify, or create a new storage mapping.
 +
 To create a new storage mapping:
 
-* Select a target storage class for each VMware data store or {rhv-full} storage domain.
-* Optional: Select *Save mapping to use again* and enter a storage mapping name.
+.. If your source provider is VMware, select a *Source datastore* and a *Target storage class*.
+.. If your source provider is {rhv-full}, select a *Source storage domain* and a *Target storage class*.
+.. If your source provider is {osp}, select a *Source* and a *Target storage class*.
+
+. Optional: Select *Save current mapping as a template* and enter a name for the storage mapping.
 . Click *Next*.
 . Select a migration type and click *Next*.
 * Cold migration: The source VMs are stopped while the data is copied.
 * Warm migration: The source VMs run while the data is copied incrementally. Later, you will run the cutover, which stops the VMs and copies the remaining VM data and metadata.
-
+.  Click *Next*.
 . Optional: You can create a migration hook to run an Ansible playbook before or after migration:
 .. Click *Add hook*.
-.. Select the step when the hook will run.
-.. Select a hook definition:
+.. Select the *Step when the hook will be run*: pre-migration or post-migration.
+.. Select a *Hook definition*:
 * *Ansible playbook*: Browse to the Ansible playbook or paste it into the field.
 * *Custom container image*: If you do not want to use the default `hook-runner` image, enter the image path: `<registry_path>/<image_name>:<tag>`.
 +
@@ -66,6 +76,6 @@ The registry must be accessible to your {ocp} cluster.
 . Click *Next*.
 . Review your migration plan and click *Finish*.
 +
-The migration plan is saved in the migration plan list.
-
-. Click the {kebab} of the migration plan and select *View details* to verify the migration plan details.
+The migration plan is saved on the *Plans* page.
++
+You can click the {kebab} of the migration plan and select *View details* to verify the migration plan details.
