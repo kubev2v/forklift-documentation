@@ -27,7 +27,7 @@ You can create a storage mapping by using the {ocp} web console to map source di
 
 .. If your source provider is VMware, select a *Source datastore* and a *Target storage class*.
 .. If your source provider is {rhv-full}, select a *Source storage domain* and a *Target storage class*.
-.. If your source provider is {osp}, select a *Source* and a *Target storage class*.
+.. If your source provider is {osp}, select a *Source volume type* and a *Target storage class*.
 
 . Optional: Click *Add* to create additional storage mappings or to map multiple source disk storages to a single target storage class.
 . Click *Create*.
