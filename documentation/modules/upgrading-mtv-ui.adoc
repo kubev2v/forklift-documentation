@@ -7,11 +7,6 @@
 
 You can upgrade the {operator-name} by using the {ocp} web console to install the new version.
 
-[NOTE]
-====
-You must upgrade to the next release without skipping a release, for example, from 2.0 to 2.1 or from 2.1 to 2.2.
-====
-
 .Procedure
 
 . In the {ocp} web console, click *Operators* -> *Installed Operators* -> *{operator-name-ui}* -> *Subscription*.
@@ -55,21 +50,6 @@ ifeval::["{build}" == "downstream"]
 See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/operators/administrator-tasks#olm-approving-pending-upgrade_olm-upgrading-operators[Manually approving a pending upgrade] in the {ocp} documentation.
 endif::[]
 
-. Verify that the `forklift-ui` pod is in a `Ready` state before you log in to the web console:
-+
-[source,terminal,subs="attributes+"]
-----
-$ {oc} get pods -n {namespace}
-----
-+
-.Example output
-----
-NAME                                  READY  STATUS   RESTARTS  AGE
-forklift-controller-788bdb4c69-mw268  2/2    Running  0         2m
-forklift-operator-6bf45b8d8-qps9v     1/1    Running  0         5m
-forklift-ui-7cdf96d8f6-xnw5n          1/1    Running  0         2m
-----
-+
-. If you added VMware source providers to {project-short} 2.2, upgrading to {project-short} 2.3 changes the state of any VMware providers to Critical. To fix this problem, edit the VMwhere provider by adding a VDDK `init` image and verifying the certificate of the VMware provider. For more information see link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.2/html/installing_and_using_the_migration_toolkit_for_virtualization/migrating-vms-web-console#adding-source-provider_vmware[Addding a VMSphere source provider].
+. If you are upgrading from {project-short} 2.2 and have defined VMware source providers, edit the VMware provider by adding a VDDK `init` image. Otherwise, the update will change the state of any VMware providers to `Critical`. For more information, see link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.4/html/installing_and_using_the_migration_toolkit_for_virtualization/migrating-vms-web-console#adding-source-provider_vmware[Addding a VMSphere source provider].
 
-. If you mapped to NFS on the {ocp} destination provider in {project-short} 2.2, upgrading to {project-short} 2.3 invalidates the NFS mapping. To fix this problem, edit the `AccessModes` and `VolumeMode` parameters in the NFS storage profile. For more information, see link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-customizing-storage-profile_virt-creating-data-volumes[Customizing the storage profile].
+. If you mapped to NFS on the {ocp} destination provider in {project-short} 2.2, edit the `AccessModes` and `VolumeMode` parameters in the NFS storage profile. Otherwise, the upgrade will invalidate the NFS mapping. For more information, see link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-customizing-storage-profile_virt-creating-data-volumes[Customizing the storage profile].
