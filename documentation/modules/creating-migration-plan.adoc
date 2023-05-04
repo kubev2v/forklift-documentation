@@ -53,7 +53,7 @@ To create a new storage mapping:
 
 .. If your source provider is VMware, select a *Source datastore* and a *Target storage class*.
 .. If your source provider is {rhv-full}, select a *Source storage domain* and a *Target storage class*.
-.. If your source provider is {osp}, select a *Source* and a *Target storage class*.
+.. If your source provider is {osp}, select a *Source volume type* and a *Target storage class*.
 
 . Optional: Select *Save current mapping as a template* and enter a name for the storage mapping.
 . Click *Next*.
