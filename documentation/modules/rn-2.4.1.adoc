@@ -1,0 +1,57 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-241_{context}"]
+= {project-full} 2.4.1
+
+Migrate virtual machines (VMs) from VMware vSphere or {rhv-full} or {osp} to {virt} with {the-lc} {project-first}.
+
+The release notes describe technical changes, new features and enhancements, and known issues for MTV 2.4.1.
+
+[id="technical-changes-241_{context}"]
+== Technical changes
+
+This release has the following technical changes:
+
+
+[id="new-features-and-enhancements-241_{context}"]
+== New features and enhancements
+
+This release has the following features and improvements:
+
+
+
+[id="known-issues-241_{context}"]
+== Known issues
+
+This release has the following known issues:
+
+.Migration fails when target StorageProfile includes ReadWriteOncePod with other access modes
+
+link:https://issues.redhat.com/browse/MTV-520[(MTV-520)]
+
+
+.Chosen migration transfer network is not used by volume-populators
+
+link:https://issues.redhat.com/browse/MTV-519[(MTV-519)]
+
+.Upgrade from 2.3 to 2.4 fails
+
+link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
+
+.Incorrect title for source storage of OpenStack
+
+link:https://issues.redhat.com/browse/MTV-517[(MTV-517)]
+
+.Missing a way to set default "migration transfer network" for a provider in the UI
+
+link:https://issues.redhat.com/browse/MTV-516[MTV-516]
+
+
+
+[id="resolved-issues-241_{context}"]
+== Resolved issues
+
+This release has the following resolved issues:
+

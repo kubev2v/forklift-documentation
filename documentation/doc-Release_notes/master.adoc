@@ -3,7 +3,7 @@ include::modules/common-attributes.adoc[]
 = {rn-title}
 :toc:
 :toc-title:
-:toclevels: 2
+:toclevels: 3
 :compat-mode:
 :context: release-notes
 
@@ -13,6 +13,7 @@ include::modules/making-open-source-more-inclusive.adoc[]
 endif::[]
 
 include::modules/rn-2.4.adoc[leveloffset=+1]
+include::modules/rn-2.4.1.adoc[leveloffset=+2]
 include::modules/rn-2.3.adoc[leveloffset=+1]
 include::modules/rn-2.2.adoc[leveloffset=+1]
 include::modules/rn-2.1.adoc[leveloffset=+1]
