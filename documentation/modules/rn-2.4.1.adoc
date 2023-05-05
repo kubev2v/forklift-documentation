@@ -14,13 +14,10 @@ The release notes describe technical changes, new features and enhancements, and
 
 This release has the following technical changes:
 
-
 [id="new-features-and-enhancements-241_{context}"]
 == New features and enhancements
 
 This release has the following features and improvements:
-
-
 
 [id="known-issues-241_{context}"]
 == Known issues
@@ -40,15 +37,9 @@ link:https://issues.redhat.com/browse/MTV-519[(MTV-519)]
 
 link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
 
-.Incorrect title for source storage of OpenStack
-
-link:https://issues.redhat.com/browse/MTV-517[(MTV-517)]
-
 .Missing a way to set default "migration transfer network" for a provider in the UI
 
 link:https://issues.redhat.com/browse/MTV-516[MTV-516]
-
-
 
 [id="resolved-issues-241_{context}"]
 == Resolved issues
