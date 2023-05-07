@@ -20,4 +20,4 @@ You can override the default migration network of the provider by selecting a di
 . In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
 . On the right side of the provider, select *Select migration network* from the {kebab}.
 . Select a network from the list of available networks and click *Select*.
-. Click the network number in the *Networks* column beside the provider to verify that the selected network is the default migration network.
+//. Click the network number in the *Networks* column beside the provider to verify that the selected network is the default migration network.
