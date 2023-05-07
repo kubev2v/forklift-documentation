@@ -123,10 +123,6 @@ See link:https://access.redhat.com/articles/1351473[Converting virtual machines 
 
 When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in OpenShift Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
-.Selection of a migration transfer network does not apply to cold migrations to the local {ocp} instance
-
-Cold migrations from vSphere, {rhv-full} or {osp}, to the {ocp} instance that {project-full} runs on, does not necessarily transfer the disks on the selected migration transfer network.
-
 [id="resolved-issues-24_{context}"]
 == Resolved issues
 
