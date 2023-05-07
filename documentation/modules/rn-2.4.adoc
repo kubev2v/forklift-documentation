@@ -123,6 +123,10 @@ See link:https://access.redhat.com/articles/1351473[Converting virtual machines 
 
 When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in OpenShift Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
+.Upgrade from 2.4.0 fails
+
+When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment 'forklift-controller' is immutable. Workaround: remove the custom resource `forklift-controller` of type 'ForkliftController' from the installed namespace, and recreate it. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
+
 [id="resolved-issues-24_{context}"]
 == Resolved issues
 
