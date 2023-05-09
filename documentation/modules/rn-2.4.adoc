@@ -123,9 +123,9 @@ See link:https://access.redhat.com/articles/1351473[Converting virtual machines 
 
 When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in OpenShift Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
-.Selection of a migration transfer network does not apply to cold migrations to the local {ocp} instance
+.Upgrade from 2.4.0 fails
 
-Cold migrations from vSphere, {rhv-full} or {osp}, to the {ocp} instance that {project-full} runs on, does not necessarily transfer the disks on the selected migration transfer network.
+When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs in order to load the upgraded {product-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
 
 [id="resolved-issues-24_{context}"]
 == Resolved issues
