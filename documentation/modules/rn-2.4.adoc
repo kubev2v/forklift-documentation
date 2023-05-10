@@ -32,7 +32,7 @@ The migrated virtual machines are no longer scheduled on the target OpenShift Co
 
 .StorageProfile resource needs to be updated for a non-provisioner storage class
 
-You must update the `StorageProfile` resource with `accessModes` and `volumeMode` for non-provisioner storage classes such as NFS. 
+You must update the `StorageProfile` resource with `accessModes` and `volumeMode` for non-provisioner storage classes such as NFS.
 
 [id="new-features-and-enhancements-24_{context}"]
 == New features and enhancements
@@ -41,11 +41,11 @@ This release has the following features and improvements:
 
 .OpenStack migration
 
-{product-short} now supports migrations with {scp} as a source provider. This feature is a provided as a Technology Preview and only supports cold migrations.
+{project-short} now supports migrations with {scp} as a source provider. This feature is a provided as a Technology Preview and only supports cold migrations.
 
 .OCP console plugin
 
-The {product-full} Operator now integrates the {product-short} web console into the {ocp} web console. The new UI operates as an OCP Console plugin that adds the sub-menu `Migration` to the navigation bar. It is implemented in version 2.4, disabling the old UI. You can enable the old UI by setting `feature_ui: true` in ForkliftController. link:https://issues.redhat.com/browse/MTV-427[(MTV-427)]
+The {project-full} Operator now integrates the {project-short} web console into the {ocp} web console. The new UI operates as an OCP Console plugin that adds the sub-menu `Migration` to the navigation bar. It is implemented in version 2.4, disabling the old UI. You can enable the old UI by setting `feature_ui: true` in ForkliftController. link:https://issues.redhat.com/browse/MTV-427[(MTV-427)]
 
 .Skip certification option
 
@@ -86,7 +86,7 @@ vSphere only: Migrations from RHV and OpenStack don't fail, but the encryption k
 
 .Snapshots that are created during the migration in OpenStack are not deleted
 
-The Migration Controller service does not delete snapshots that are created during the migration for source virtual machines in OpenStack automatically. Workaround: the snapshots can be removed manually on OpenStack. 
+The Migration Controller service does not delete snapshots that are created during the migration for source virtual machines in OpenStack automatically. Workaround: the snapshots can be removed manually on OpenStack.
 
 .RHV snapshots are not deleted after a successful migration
 
@@ -125,7 +125,7 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 .Upgrade from 2.4.0 fails
 
-When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs in order to load the upgraded {product-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
+When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs in order to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
 
 [id="resolved-issues-24_{context}"]
 == Resolved issues
