@@ -23,7 +23,7 @@ You can add {a-virt} destination provider to the {ocp} web console in addition t
 * *Kubernetes API server URL*: Specify the {ocp} cluster API endpoint.
 * *Service account token*: Specify the `cluster-admin` service account token.
 +
-If both *URL* and *Service account token* are left blank, the local {osp} cluster is used.
+If both *URL* and *Service account token* are left blank, the local {ocp-short} cluster is used.
 
 . Click *Create*.
 +
