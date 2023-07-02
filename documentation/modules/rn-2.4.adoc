@@ -146,3 +146,7 @@ Previously, the `cluster-admin` role was required to browse and create providers
 .Convert i440fx to q35
 
 Migration of virtual machines with i440fx chipset is now supported. The chipset is converted to q35 during the migration. link:https://issues.redhat.com/browse/MTV-430[(MTV-430)]
+
+.Preserve the UUID setting in SMBIOS for a VM that is migrated from RHV
+
+The Universal Unique ID (UUID) number within the System Management BIOS (SMBIOS) doesn't change anymore for VMs that are migrated from RHV. This fix enables applications that run within the guest operating system and depend on this setting (e.g., for licensing) to operate on the target OCP cluster the same way as they did on RHV. link:https://issues.redhat.com/browse/MTV-597[(MTV-597)]
