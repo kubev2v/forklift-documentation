@@ -150,3 +150,7 @@ Migration of virtual machines with i440fx chipset is now supported. The chipset 
 .Preserve the UUID setting in SMBIOS for a VM that is migrated from RHV
 
 The Universal Unique ID (UUID) number within the System Management BIOS (SMBIOS) doesn't change anymore for VMs that are migrated from RHV. This fix enables applications that run within the guest operating system and depend on this setting (e.g., for licensing) to operate on the target OCP cluster the same way as they did on RHV. link:https://issues.redhat.com/browse/MTV-597[(MTV-597)]
+
+.Do not expose password for RHV in error messages
+
+Previously, the password that was specified for ovirt-engine appeared in error messages that were displayed in the web console and logs when faling to connect to RHV. In this release, error messages that are generated when failing to connect to RHV do not reveal the password for ovirt-engine.
