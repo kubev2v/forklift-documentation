@@ -34,6 +34,10 @@ The migrated virtual machines are no longer scheduled on the target OpenShift Co
 
 You must update the `StorageProfile` resource with `accessModes` and `volumeMode` for non-provisioner storage classes such as NFS.
 
+.VDDK 8 can be used in the VDDK image
+
+Previously, version 7 of VMware Virtual Disk Development Kit (VDDK) should have been used when creating the VDDK image. In this release, the VDDK image can also be created with version 8 of VDDK. VDDK 8 is recommended when migrating to OCP 4.13 or later. In order to migrate to OCP 4.12 or lower, VDDK 7 should be used.
+
 [id="new-features-and-enhancements-24_{context}"]
 == New features and enhancements
 
