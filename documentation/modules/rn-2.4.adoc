@@ -36,7 +36,10 @@ You must update the `StorageProfile` resource with `accessModes` and `volumeMode
 
 .VDDK 8 can be used in the VDDK image
 
-Previously, version 7 of VMware Virtual Disk Development Kit (VDDK) should have been used when creating the VDDK image. In this release, the VDDK image can also be created with version 8 of VDDK. VDDK 8 is recommended when migrating to OCP 4.13 or later. In order to migrate to OCP 4.12 or lower, VDDK 7 should be used.
+Previous versions of {project-short} supported only using VDDK version 7 for the VDDK image. {project-short} supports both versions 7 and 8, as follows:
+
+* If you are migrating to OCP 4.12 or earlier, use VDDK version 7.
+* If you are migrating to OCP 4.13 or later, use VDDK version 8.
 
 [id="new-features-and-enhancements-24_{context}"]
 == New features and enhancements
