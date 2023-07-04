@@ -19,7 +19,7 @@ You can use the detailed migration workflow to troubleshoot a failed migration.
 
 The workflow describes the following steps:
 
-*Warm Migration or migration to a remote {ocp-short} cluster:*
+*Warm Migration or migration to a remote OpenShift cluster:*
 
 . When you create the `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates a `DataVolume` CR for each source VM disk.
 +
