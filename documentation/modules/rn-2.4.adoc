@@ -81,7 +81,7 @@ The error status message for a VM with no operating system on the *Plans* page o
 
 .Log archive file includes logs of a deleted migration plan or VM
 
-If deleting a migration plan and then running a new migration plan with the same name, or if deleting a migrated VM and then remigrate the source VM. The log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
+If deleting a migration plan and then running a new migration plan with the same name, or if deleting a migrated VM and then remigrate the source VM, then the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
 
 .QEMU guest agent is not installed on migrated VMs
 
