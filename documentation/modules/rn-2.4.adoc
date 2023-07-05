@@ -161,5 +161,5 @@ The Universal Unique ID (UUID) number within the System Management BIOS (SMBIOS)
 
 .Do not expose password for {rhv-short} in error messages
 
-Previously, the password that was specified for ovirt-engine appeared in error messages that were displayed in the web console and logs when failing to connect to {rhv-short}. In this release, error messages that are generated when failing to connect to RHV do not reveal the password for ovirt-engine.
+Previously, the password that was specified for ovirt-engine appeared in error messages that were displayed in the web console and logs when failing to connect to {rhv-short}. In this release, error messages that are generated when failing to connect to {rhv-short} do not reveal the password for ovirt-engine.
 
