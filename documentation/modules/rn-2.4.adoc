@@ -16,7 +16,7 @@ This release has the following technical changes:
 
 .Faster disk image migration from {rhv-short}
 
-Disk images are not converted anymore using virt-v2v when migrating from RHV. This change speeds up migrations and also allows migration for guest operating systems that are not supported by virt-vsv. link:https://github.com/kubev2v/forklift-controller/issues/403[(forklift-controller#403)]
+Disk images are not converted anymore using virt-v2v when migrating from {rhv-short}. This change speeds up migrations and also allows migration for guest operating systems that are not supported by virt-vsv. link:https://github.com/kubev2v/forklift-controller/issues/403[(forklift-controller#403)]
 
 .Faster disk transfers by ovirt-imageio client (ovirt-img)
 
