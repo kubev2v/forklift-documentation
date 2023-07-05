@@ -111,7 +111,7 @@ When migrating a VM with multiple disks to more than one storage classes of type
 
 .Deleting migrated VM does not remove PVC and PV
 
-When removing a VM that was migrated, its persistent volume claims (PVCs)  and physical volumes (PV) are not deleted. Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-492[(MTV-492)]
+When removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) are not deleted. Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-492[(MTV-492)]
 
 .PVC deletion hangs after archiving and deleting migration plan
 
