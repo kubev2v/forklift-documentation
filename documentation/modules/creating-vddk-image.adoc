@@ -8,7 +8,7 @@
 
 {the} {project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks from VMware vSphere.
 
-You must download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry. You need the VDDK init image path in order to add a VMware source provider. 
+You must download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry. You need the VDDK init image path in order to add a VMware source provider.
 
 [NOTE]
 ====
@@ -30,8 +30,14 @@ Storing the VDDK image in a public registry might violate the VMware license ter
 $ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
 ----
 
-. In a browser, navigate to the link:https://developer.vmware.com/web/sdk/7.0/vddk[VMware VDDK version 7 download page].
-. Select version 7.0.3.2 and click *Download*.
+. In a browser, navigate to the link:https://developer.vmware.com/web/sdk/8.0/vddk[VMware VDDK version 8 download page].
+. Select version 8.0.1 and click *Download*.
+
+[NOTE]
+====
+In order to migrate to {virt} 4.12 or earlier, download VDDK version 7.0.3. from link:https://developer.vmware.com/web/sdk/7.0/vddk[VMware VDDK version 7 download page].
+====
+
 . Save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
 +
