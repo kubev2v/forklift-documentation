@@ -6,6 +6,7 @@
 :namespace: openshift-mtv
 :oc: oc
 :ocp: Red Hat OpenShift
+:ocp-name: OpenShift
 :ocp-short: OpenShift
 :ocp-version: 4.11
 :operator: mtv-operator
