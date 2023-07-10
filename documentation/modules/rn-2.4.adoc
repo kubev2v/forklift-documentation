@@ -149,7 +149,7 @@ If a user specifies an incorrect password for {rhv-short} providers, they are no
 
 .Users without cluster-admin role can create new providers
 
-Previously, the `cluster-admin` role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, NetworkMaps, storage maps, hooks) can operate MTV without cluster-admin permissions. link:https://issues.redhat.com/browse/MTV-334[(MTV-334)]
+Previously, the `cluster-admin` role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, NetworkMaps, StorageMaps, hooks) can operate MTV without cluster-admin permissions. link:https://issues.redhat.com/browse/MTV-334[(MTV-334)]
 
 .Convert i440fx to q35
 
