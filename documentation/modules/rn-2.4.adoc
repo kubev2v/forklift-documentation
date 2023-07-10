@@ -14,9 +14,9 @@ The release notes describe technical changes, new features and enhancements, and
 
 This release has the following technical changes:
 
-.Faster disk image migration from RHV
+.Faster disk image migration from {rhv-short}
 
-Disk images are not converted anymore using virt-v2v when migrating from RHV. This change makes migrations faster and also allows migration for guest operating systems that are not supported by virt-vsv. link:https://github.com/kubev2v/forklift-controller/issues/403[(forklift-controller#403)]
+Disk images are not converted anymore using virt-v2v when migrating from {rhv-short}. This change speeds up migrations and also allows migration for guest operating systems that are not supported by virt-vsv. link:https://github.com/kubev2v/forklift-controller/issues/403[(forklift-controller#403)]
 
 .Faster disk transfers by ovirt-imageio client (ovirt-img)
 
@@ -34,6 +34,13 @@ The migrated virtual machines are no longer scheduled on the target OpenShift Co
 
 You must update the `StorageProfile` resource with `accessModes` and `volumeMode` for non-provisioner storage classes such as NFS.
 
+.VDDK 8 can be used in the VDDK image
+
+Previous versions of {project-short} supported only using VDDK version 7 for the VDDK image. {project-short} supports both versions 7 and 8, as follows:
+
+* If you are migrating to OCP 4.12 or earlier, use VDDK version 7.
+* If you are migrating to OCP 4.13 or later, use VDDK version 8.
+
 [id="new-features-and-enhancements-24_{context}"]
 == New features and enhancements
 
@@ -49,11 +56,11 @@ The {project-full} Operator now integrates the {project-short} web console into 
 
 .Skip certification option
 
-'Skip certificate validation' option was added to VMware and RHV providers. If selected, the provider's certificate will not be validated and the UI will not ask for specifying a CA certificate.
+'Skip certificate validation' option was added to VMware and {rhv-short} providers. If selected, the provider's certificate will not be validated and the UI will not ask for specifying a CA certificate.
 
 .Only third-party certificate required
 
-Only the third-party certificate needs to be specified when defining a RHV provider that sets with the Manager CA certificate.
+Only the third-party certificate needs to be specified when defining a {rhv-short} provider that sets with the Manager CA certificate.
 
 .Conversion of VMs with RHEL9 guest operating system
 
@@ -66,7 +73,7 @@ This release has the following known issues:
 
 .Deleting migration plan does not remove temporary resources
 
-Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it in order to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
+Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
 
 .Unclear error status message for VM with no operating system
 
@@ -74,7 +81,7 @@ The error status message for a VM with no operating system on the *Plans* page o
 
 .Log archive file includes logs of a deleted migration plan or VM
 
-If deleting a migration plan and then running a new migration plan with the same name or if deleting a migrated VM and then remigrate the source VM, the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
+If deleting a migration plan and then running a new migration plan with the same name, or if deleting a migrated VM and then remigrate the source VM, then the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
 
 .QEMU guest agent is not installed on migrated VMs
 
@@ -82,29 +89,29 @@ The QEMU guest agent is not installed on migrated VMs. Workaround: Install the Q
 
 .Migration of virtual machines with encrypted partitions fails during conversion
 
-vSphere only: Migrations from RHV and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
+vSphere only: Migrations from {rhv-short} and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
 
 .Snapshots that are created during the migration in OpenStack are not deleted
 
 The Migration Controller service does not delete snapshots that are created during the migration for source virtual machines in OpenStack automatically. Workaround: the snapshots can be removed manually on OpenStack.
 
-.RHV snapshots are not deleted after a successful migration
+.{rhv-short} snapshots are not deleted after a successful migration
 
-The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. Workaround: Snapshots can be removed from RHV instead.
+The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. Workaround: Snapshots can be removed from {rhv-short} instead.
 
 .Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
 
-Some warm migrations from RHV might fail. When running a migration plan for warm migration of multiple VMs from RHV, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run. link:https://bugzilla.redhat.com/show_bug.cgi?id=2063531[(BZ#2063531)] link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+Some warm migrations from {rhv-short} might fail. When running a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run. link:https://bugzilla.redhat.com/show_bug.cgi?id=2063531[(BZ#2063531)] link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
-Warm migration from RHV fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(BZ#2057459)]
+Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(BZ#2057459)]
 
-.Cannot schedule migrated VM with multiple disks to more than one storage classes of type hostpath
+.Cannot schedule migrated VM with multiple disks to more than one storage classes of type hostPath
 
-When migrating a VM with multiple disks to more than one storage classes of type hostpath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.
+When migrating a VM with multiple disks to more than one storage classes of type hostPath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.
 
 .Deleting migrated VM does not remove PVC and PV
 
-When removing a VM that was migrated, its PVCs and PVs are not deleted. Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-492[(MTV-492)]
+When removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) are not deleted. Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-492[(MTV-492)]
 
 .PVC deletion hangs after archiving and deleting migration plan
 
@@ -125,7 +132,7 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 .Upgrade from 2.4.0 fails
 
-When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs in order to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
+When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
 
 [id="resolved-issues-24_{context}"]
 == Resolved issues
@@ -138,11 +145,21 @@ Improve the automatic renaming of VMs during migration to fit RFC 1123. This fea
 
 .Prevent locking user accounts due to incorrect credentials
 
-If a user specifies an incorrect password for RHV providers, they are no longer locked in RHV. An error returns when the RHV manager is accessible and adding the provider. If the RHV manager is not accessible, the provider is added, but there would be no further attempt after failing, due to incorrect credentials. link:https://issues.redhat.com/browse/MTV-324[(MTV-324)]
+If a user specifies an incorrect password for {rhv-short} providers, they are no longer locked in {rhv-short}. An error returns when the {rhv-short} manager is accessible and adding the provider. If the {rhv-short} manager is inaccessible, the provider is added, but there would be no further attempt after failing, due to incorrect credentials. link:https://issues.redhat.com/browse/MTV-324[(MTV-324)]
 
 .Users without cluster-admin role can create new providers
-Previously, the `cluster-admin` role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, networkmaps, storagemaps, hooks) can operate MTV without cluster-admin permissions. link:https://issues.redhat.com/browse/MTV-334[(MTV-334)]
+
+Previously, the `cluster-admin` role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, NetworkMaps, StorageMaps, hooks) can operate MTV without cluster-admin permissions. link:https://issues.redhat.com/browse/MTV-334[(MTV-334)]
 
 .Convert i440fx to q35
 
 Migration of virtual machines with i440fx chipset is now supported. The chipset is converted to q35 during the migration. link:https://issues.redhat.com/browse/MTV-430[(MTV-430)]
+
+.Preserve the UUID setting in SMBIOS for a VM that is migrated from {rhv-short}
+
+The Universal Unique ID (UUID) number within the System Management BIOS (SMBIOS) no longer changes for VMs that are migrated from {rhv-short}. This enhancement enables applications that operate within the guest operating system and rely on this setting, such as for licensing purposes, to operate on the target OCP cluster in a manner similar to that of {rhv-short}. link:https://issues.redhat.com/browse/MTV-597[(MTV-597)]
+
+.Do not expose password for {rhv-short} in error messages
+
+Previously, the password that was specified for {rhv-short} manager appeared in error messages that were displayed in the web console and logs when failing to connect to {rhv-short}. In this release, error messages that are generated when failing to connect to {rhv-short} do not reveal the password for {rhv-short} manager.
+
