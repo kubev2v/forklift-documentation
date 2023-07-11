@@ -83,10 +83,6 @@ The error status message for a VM with no operating system on the *Plans* page o
 
 If deleting a migration plan and then running a new migration plan with the same name, or if deleting a migrated VM and then remigrate the source VM, then the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
 
-.QEMU guest agent is not installed on migrated VMs
-
-The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[(BZ#2018062)]
-
 .Migration of virtual machines with encrypted partitions fails during conversion
 
 vSphere only: Migrations from {rhv-short} and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
@@ -97,13 +93,13 @@ The Migration Controller service does not delete snapshots that are created duri
 
 .{rhv-short} snapshots are not deleted after a successful migration
 
-The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. Workaround: Snapshots can be removed from {rhv-short} instead.
+The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. Workaround: Snapshots can be removed from {rhv-short} instead. link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
 
 .Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
 
-Some warm migrations from {rhv-short} might fail. When running a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run. link:https://bugzilla.redhat.com/show_bug.cgi?id=2063531[(BZ#2063531)] link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+Some warm migrations from {rhv-short} might fail. When running a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.
 
-Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://bugzilla.redhat.com/show_bug.cgi?id=2057459[(BZ#2057459)]
+Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
 .Cannot schedule migrated VM with multiple disks to more than one storage classes of type hostPath
 
@@ -163,3 +159,6 @@ The Universal Unique ID (UUID) number within the System Management BIOS (SMBIOS)
 
 Previously, the password that was specified for {rhv-short} manager appeared in error messages that were displayed in the web console and logs when failing to connect to {rhv-short}. In this release, error messages that are generated when failing to connect to {rhv-short} do not reveal the password for {rhv-short} manager.
 
+.QEMU guest agent is now installed on migrated VMs
+
+The QEMU guest agent is installed on VMs during cold migration from vSphere. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[(BZ#2018062)]
