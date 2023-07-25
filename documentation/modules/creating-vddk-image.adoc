@@ -35,7 +35,7 @@ $ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
 +
 [NOTE]
 ====
-In order to migrate to {virt} 4.12 or earlier, download VDDK version 7.0.3.2 from link:https://developer.vmware.com/web/sdk/7.0/vddk[VMware VDDK version 7 download page].
+In order to migrate to {virt} 4.12, download VDDK version 7.0.3.2 from the link:https://developer.vmware.com/web/sdk/7.0/vddk[VMware VDDK version 7 download page].
 ====
 . Save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
