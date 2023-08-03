@@ -16,7 +16,7 @@ This release has the following technical changes:
 
 
 [id="new-features-and-enhancements-25_{context}"]
-== New features and enhancements
+== New features and enhancements and junk
 
 This release has the following features and improvements:
 
