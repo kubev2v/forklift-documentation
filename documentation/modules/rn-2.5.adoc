@@ -25,6 +25,8 @@ This release has the following features and improvements:
 
 This release has the following known issues:
 
+link:https://issues.redhat.com/browse/MTV-562?filter=12418818[MTV 2.5.0 Known Issues]
+
 [id="resolved-issues-25_{context}"]
 == Resolved issues
 
