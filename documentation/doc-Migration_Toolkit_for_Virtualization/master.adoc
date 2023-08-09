@@ -217,7 +217,7 @@ include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
 include::modules/mtv-workflow.adoc[leveloffset=+3]
 include::modules/virt-migration-workflow.adoc[leveloffset=+3]
 
-[id="logs-and-crs_{context}"]
+[id="logs-and-crs"]
 === Logs and custom resources
 
 You can download logs and custom resource (CR) information for troubleshooting. For more information, see the xref:virt-migration-workflow_{context}[detailed migration workflow].
