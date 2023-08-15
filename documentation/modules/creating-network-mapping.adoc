@@ -17,15 +17,13 @@ You can create one or more network mappings by using the {ocp} web console to ma
 
 . In the {ocp} web console, click *Migration* -> *NetworkMaps for virtualization*.
 . Click *Create NetworkMap*.
-. Complete the following fields:
+. Specify the following fields:
 
 * *Name*: Enter a name to display in the network mappings list.
 * *Source provider*: Select a source provider.
 * *Target provider*: Select a target provider.
-+
-The *Source networks* and *Target namespaces/networks* text boxes become active.
 
-. Select a source network and a target namespace/network from the list.
+. Select a *Source network* and a *Target namespace/network*.
 . Optional: Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
 . If you create an additional network mapping, select the network attachment definition as the target network.
 . Click *Create*.

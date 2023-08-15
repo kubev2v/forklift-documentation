@@ -253,34 +253,39 @@ spec:
     destination:
       name: <destination_cluster>
       namespace: {namespace}
-  map:
-    network: <3>
-      name: <network_map> <4>
+  map: <3>
+    network: <4>
+      name: <network_map> <5>
       namespace: {namespace}
-    storage:
-      name: <storage_map> <5>
+    storage: <6>
+      name: <storage_map> <7>
       namespace: {namespace}
   targetNamespace: {namespace}
-  vms: <6>
-    - id: <source_vm> <7>
+  vms: <8>
+    - id: <source_vm> <9>
     - name: <source_vm>
-      hooks: <8>
+      namespace: {namespace} <10>
+      hooks: <11>
         - hook:
             namespace: {namespace}
-            name: <hook> <9>
-          step: <step> <10>
+            name: <hook> <12>
+          step: <step> <13>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
 <2> Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
-<3> You can add multiple network mappings.
-<4> Specify the name of the `NetworkMap` CR.
-<5> Specify the name of the `StorageMap` CR.
-<6> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
-<7> Specify the VMware VM MOR, {rhv-short} VM UUID or the {osp} VM UUID.
-<8> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<9> Specify the name of the `Hook` CR.
-<10> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<3> Specify only one network map and one storage map per plan.
+<4> Specify a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+<5> Specify the name of the `NetworkMap` CR.
+<6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+<7> Specify the name of the `StorageMap` CR.
+<8> For all source providers except for {virt}, you can use either the `id` _or_ the `name` parameter to specify the source VMs. +
+{virt} source provider only: You can use only the `name` parameter, not the `id.` parameter to specify the source VMs.
+<9> Specify the VMware VM MOR, {rhv-short} VM UUID or the {osp} VM UUID.
+<10> {virt} source provider only.
+<11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<12> Specify the name of the `Hook` CR.
+<13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 
 . Create a `Migration` manifest to run the `Plan` CR:
 +
