@@ -31,11 +31,6 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 
 include::modules/snippet_ova_tech_preview.adoc[]
 
-[NOTE]
-====
-Migration using {osp} source providers only supports VMs that use only Cinder volumes.
-====
-
 .Additional resources
 
 * link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].

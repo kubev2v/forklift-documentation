@@ -7,11 +7,6 @@
 
 You can add an {osp} source provider by using the {ocp} web console.
 
-[NOTE]
-====
-Migration using {osp} source providers only supports VMs that use only Cinder volumes.
-====
-
 .Procedure
 
 . In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
