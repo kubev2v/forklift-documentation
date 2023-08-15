@@ -37,9 +37,9 @@ ifdef::ostack[]
 
 You can add an {osp} source provider by using the {ocp} web console.
 
-[NOTE]
+[IMPORTANT]
 ====
-Migration using {osp} source providers only supports VMs that use only Cinder volumes.
+When you migrate an image-based VM from an {osp} provider, a snapshot is created for the image that is attached to the source VM and the data from the snapshot is copied over to the target VM. This means that the target VM will have the same state as that of the source VM at the time the snapshot was created.
 ====
 
 endif::[]

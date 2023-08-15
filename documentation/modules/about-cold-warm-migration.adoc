@@ -15,11 +15,6 @@
 
 {project-short} supports warm migration from VMware vSphere and from {rhv-short}.
 
-[NOTE]
-====
-Migration using {osp} source providers only supports VMs that use only Cinder volumes.
-====
-
 [id="cold-migration_{context}"]
 == Cold migration
 
