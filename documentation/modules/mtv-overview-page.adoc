@@ -1,0 +1,37 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="mtv-overview-page_{context}"]
+= The MTV Overview page
+
+The {project-first} *Overview* page displays system-wide information about migrations and a list of *Settings* you can change.
+
+If you have Administrator privileges, you can access the *Overview* page by clicking *Migration* -> *Overview* in the {ocp} web console.
+
+The *Overview* page displays the following information:
+
+* Migrations: The total number of migrations performed using {project-short}:
+
+** Total
+** Running
+** Failed
+** Succeeded
+** Canceled
+
+* Virtual Machine Migrations:  The total number of VMs migrated using {project-short}:
+
+** Total
+** Running
+** Failed
+** Succeeded
+** Canceled
+
+* Operator: The namespace on which the {project-short} Operator is deployed and the status of the Operator.
+
+* Conditions: Status of the {project-short} Operator:
+
+** Failure: Last failure. `False` indicates no failure since deployment.
+** Running: Whether the Operator is currently running and waiting for the next reconciliation.
+** Successful: Last successful reconciliation.
