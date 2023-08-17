@@ -24,10 +24,10 @@ This release has the following features and improvements:
 
 This release has the following known issues:
 
-//// ****
+////
 Adding 2.4 known issues as a start. i am not sure there is much point including the other sections
 please flag any known issues to be removed and any to be moved to resolved issues
-**** ////
+////
 
 
 .Deleting migration plan does not remove temporary resources
