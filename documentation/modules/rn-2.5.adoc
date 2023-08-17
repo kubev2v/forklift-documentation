@@ -24,6 +24,72 @@ This release has the following features and improvements:
 
 This release has the following known issues:
 
+//// ****
+Adding 2.4 known issues as a start. i am not sure there is much point including the other sections
+please flag any known issues to be removed and any to be moved to resolved issues
+**** ////
+
+
+.Deleting migration plan does not remove temporary resources
+
+Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
+
+.Unclear error status message for VM with no operating system
+
+The error status message for a VM with no operating system on the *Plans* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
+
+.Log archive file includes logs of a deleted migration plan or VM
+
+If deleting a migration plan and then running a new migration plan with the same name, or if deleting a migrated VM and then remigrate the source VM, then the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
+
+.Migration of virtual machines with encrypted partitions fails during conversion
+
+vSphere only: Migrations from {rhv-short} and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
+
+.Snapshots that are created during the migration in OpenStack are not deleted
+
+The Migration Controller service does not delete snapshots that are created during the migration for source virtual machines in OpenStack automatically. Workaround: the snapshots can be removed manually on OpenStack.
+
+.{rhv-short} snapshots are not deleted after a successful migration
+
+The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. Workaround: Snapshots can be removed from {rhv-short} instead. link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
+
+.Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
+
+Some warm migrations from {rhv-short} might fail. When running a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.
+
+Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+
+.Cannot schedule migrated VM with multiple disks to more than one storage classes of type hostPath
+
+When migrating a VM with multiple disks to more than one storage classes of type hostPath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.
+
+.Deleting migrated VM does not remove PVC and PV
+
+When removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) are not deleted. Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-492[(MTV-492)]
+
+.PVC deletion hangs after archiving and deleting migration plan
+
+When a migration fails, its PVCs and PVs are not deleted as expected when its migration plan is archived and deleted. Workaround: Remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-493[(MTV-493)]
+
+.VM with multiple disks may boot from non-bootable disk after migration
+
+VM with multiple disks that was migrated might not be able to boot on the target OCP cluster. Workaround: Set the boot order appropriately to boot from the bootable disk. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
+
+.Non-supported guest operating systems in warm migrations
+
+Warm migrations and migrations to remote OCP clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local OCP cluster. It is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case. +
+See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
+
+.VMs from vSphere with RHEL 9 guest operating system may start with network interfaces that are down
+
+When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in OpenShift Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
+
+.Upgrade from 2.4.0 fails
+
+When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
+
+
 
 [id="resolved-issues-25_{context}"]
 == Resolved issues
