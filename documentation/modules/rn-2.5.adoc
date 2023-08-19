@@ -94,5 +94,8 @@ For a complete list of all known issues in this release, see the list of link:ht
 [id="resolved-issues-25_{context}"]
 == Resolved issues
 
+// are there any resolved issues you want to highlight in this release?
+
+For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-433?filter=12419160[Resolved Issues] in Jira.
 This release has the following resolved issues:
 
