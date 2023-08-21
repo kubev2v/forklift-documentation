@@ -23,6 +23,10 @@ Migration using {osp} source providers only supports VMs that use only Cinder vo
 
 * VMware only: You must have a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
 
+* {rhv-full} ({rhv-short}) only: If you are migrating a virtual machine with a direct LUN disk, ensure that the nodes in the {virt} destination cluster that the VM is expected to run on can access the backend storage.
+
+include::snip-migrating-luns.adoc[]
+
 .Procedure
 
 . Create a `Secret` manifest for the source provider credentials:
