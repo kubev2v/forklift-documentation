@@ -19,6 +19,17 @@ This release has the following technical changes:
 
 This release has the following features and improvements:
 
+
+.Migration using OVA files that are compatible with VMware vSphere
+
+// i need to wait for this ticket to be merged to add a link
+In {project-short} {project-version}, you can migrate using Open Virtual Application (OVA) files that were created by or are compatible with VMware vSphere as source providers. Although OVA files created by vSphere are supported, it may also work with OVAs that are created by other systems and compatible with vSphere.
+
+.Migrating VMs between OCP clusters
+
+// i need to wait for this ticket to be merged to add a link
+
+
 [id="known-issues-25_{context}"]
 == Known issues
 
