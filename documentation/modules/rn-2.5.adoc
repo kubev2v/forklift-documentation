@@ -136,3 +136,7 @@ This release has the following resolved issues:
 
 // Is there anything else you want me to add?
 It is recommended to upgrade from {project-short} 2.4.2 to {project-short} {project-version}.
+
+.Upgrade from 2.4.0 fails
+
+When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
