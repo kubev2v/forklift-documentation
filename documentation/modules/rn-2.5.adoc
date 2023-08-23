@@ -46,13 +46,6 @@ If deleting a migration plan and then running a new migration plan with the same
 
 vSphere only: Migrations from {rhv-short} and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
 
-.Snapshots that are created during the migration in OpenStack are not deleted
-
-The Migration Controller service does not delete snapshots that are created during the migration for source virtual machines in OpenStack automatically. Workaround: the snapshots can be removed manually on OpenStack.
-
-.{rhv-short} snapshots are not deleted after a successful migration
-
-The Migration Controller service does not delete snapshots automatically after a successful warm migration of a {rhv-short} VM. Workaround: Snapshots can be removed from {rhv-short} instead. link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
 
 .Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
 
@@ -64,18 +57,6 @@ Warm migration from {rhv-short} fails if a snapshot operation is performed on th
 
 When migrating a VM with multiple disks to more than one storage classes of type hostPath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.
 
-.Deleting migrated VM does not remove PVC and PV
-
-When removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) are not deleted. Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-492[(MTV-492)]
-
-.PVC deletion hangs after archiving and deleting migration plan
-
-When a migration fails, its PVCs and PVs are not deleted as expected when its migration plan is archived and deleted. Workaround: Remove the CDI importer pods and then remove the remaining PVCs and PVs. link:https://issues.redhat.com/browse/MTV-493[(MTV-493)]
-
-.VM with multiple disks may boot from non-bootable disk after migration
-
-VM with multiple disks that was migrated might not be able to boot on the target OCP cluster. Workaround: Set the boot order appropriately to boot from the bootable disk. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
-
 .Non-supported guest operating systems in warm migrations
 
 Warm migrations and migrations to remote OCP clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local OCP cluster. It is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case. +
@@ -85,17 +66,62 @@ See link:https://access.redhat.com/articles/1351473[Converting virtual machines 
 
 When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in OpenShift Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
+////
+
+Going to move to a new section called UPGRADE NOTES
 .Upgrade from 2.4.0 fails
 
 When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
+////
 
-For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-562?filter=12419159[Known Issues] in Jira. 
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-562?filter=12419159[Known Issues] in Jira.
 
 [id="resolved-issues-25_{context}"]
 == Resolved issues
 
 // are there any resolved issues you want to highlight in this release?
 
+.Snapshots that are created during the migration in OpenStack are not deleted
+
+In previous releases of {project-short}, the Migration Controller service did not delete snapshots that were created during the migration for source virtual machines in OpenStack automatically.
+
+This issue is resolved in {project-short} {project-version}, all the snapshots created during the migration are removed after the migration has been completed successfully. link:https://issues.redhat.com/browse/MTV-620[MTV-620]
+
+.{rhv-short} snapshots are not deleted after a successful migration
+
+In previous releases of {project-short}, the Migration Controller service did not delete snapshots automatically after a successful warm migration of a {rhv-short} VM.
+
+This issue is resolved in {project-short} {project-version}, the snapshots generated during migration are removed after a successful migration, and the original snapshots are not removed after a successful migration. link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
+
+.Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
+
+In previous releases of {project-short}, sometimes warm migrations from {rhv-short} failed. When a migration plan for warm migration of multiple VMs was run from {rhv-short}, the migrations of some VMs failed during the cutover stage. Warm migration from {rhv-short} failed if a snapshot operation was performed on the source VM. If the user performed a snapshot operation on the source VM at the time when a migration snapshot was scheduled, the migration failed instead of waiting for the user’s snapshot operation to finish.
+
+This issue is resolved in {project-short} {project-version}, {project-short} waits for the snapshot operation to finish in order to run the next cutover. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+
+.Deleting migrated VM does not remove PVC and PV
+
+In previous releases of {project-short}, when removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) were not deleted.
+
+This issue is resolved in {project-short} {project-version}, PVC and PV are deleted when deleting migrated VM.link:https://issues.redhat.com/browse/MTV-492[(MTV-492)]
+
+.PVC deletion hangs after archiving and deleting migration plan
+
+In previous releases of {project-short}, when a migration failed, its PVCs and PVs were not deleted as expected when its migration plan was archived and deleted.
+
+This issue is resolved in {project-short} {project-version}, PVCs are deleted when archiving and deleting migration plan.link:https://issues.redhat.com/browse/MTV-493[(MTV-493)]
+
+.VM with multiple disks may boot from non-bootable disk after migration
+
+In previous releases of {project-short}, VM with multiple disks that was migrated might not have been able to boot on the target OCP cluster.
+
+This issue is resolved in {project-short} {project-version}, VM with multiple disks that are migrated are able to boot on the target OCP cluster. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
+
 For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-433?filter=12419160[Resolved Issues] in Jira.
 This release has the following resolved issues:
 
+[id="upgrade-notes-25_{context}"]
+== Resolved notes
+
+// Is there anything else you want me to add?
+It is recommended to upgrade from {project-short} 2.4.2 to {project-short} {project-version}.
