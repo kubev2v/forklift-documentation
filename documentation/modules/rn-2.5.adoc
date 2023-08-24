@@ -5,7 +5,13 @@
 [id="rn-2.5_{context}"]
 = {project-full} 2.5
 
-Migrate virtual machines (VMs) from VMware vSphere or {rhv-full} or {osp} to {virt} with {the-lc} {project-first}.
+You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* Remote {virt} clusters
 
 The release notes describe technical changes, new features and enhancements, and known issues.
 
@@ -14,11 +20,26 @@ The release notes describe technical changes, new features and enhancements, and
 
 This release has the following technical changes:
 
+.Migration using OpenStack
+
+In this version, migration using OpenStack source providers graduated from a Technology Preview feature to a fully-supported feature.
+
+.Disabling FIPS
+
+EMS enforcement is disabled for migrations with VMware vSphere source providers in order to enable migrations from versions of vSphere that are suppored by {project-full} but do not comply with the 2023 FIPS requirements.
+
+.Integration of the create/update provider dialog
+
+ The forms of create and update provider are replaced with native pages within the {ocp-name}(OCP) console.
+
+.Standalone UI
+
+The old UI of MTV 2.3 cannot be enabled by setting `feature_ui: true` in ForkliftController anymore.
+
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
 
 This release has the following features and improvements:
-
 
 .Migration using OVA files that are compatible with VMware vSphere
 
@@ -28,6 +49,29 @@ In {project-short} {project-version}, you can migrate using Open Virtual Applica
 .Migrating VMs between OCP clusters
 
 // i need to wait for this ticket to be merged to add a link
+// apologies, I meant to the doc ticket rather than https://issues.redhat.com/browse/MTV-336[Import VMware-compatible OVAs]
+// But let me add this as a placeholder 
+You can import Virtual Machine (VMs) without having access from Openshift to the source system the VMs were running on. The VMs are exported to a place that is accessible to Openshift, optionally accessible to the source system at the same time.
+
+.Migration of virtual machines with direct LUNs from RHV 
+
+During the migration from RHV, direct LUNs are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism doesn't work yet for Fibre Channel. link:https://issues.redhat.com/browse/MTV-329[MTV-329]
+
+.Additional authentication methods for OpenStack
+
+In addition to the standard password authentication, the following authentication methods are supported: Token authentication and Application credential authentication. link:https://issues.redhat.com/browse/MTV-539[MTV-539]
+
+.Validation rules for OpenStack
+
+The validation service includes default validation rules for virtual machines from OpenStack. link:https://issues.redhat.com/browse/MTV-508[MTV-508]
+
+.Import image-based virtual machines from OpenStack Migration
+
+The ability to import image-based virtual machines from OpenStack Migration using DSP source providers is no longer limited to VMs that use Cinder volume. link:https://issues.redhat.com/browse/MTV-644[MTV-644]
+
+.VDDK is now optional for VMware vSphere providers 
+
+The VMware vSphere source provider can now be created without specifying a VDDK `init` image. It is worth noting that disk transfers from vSphere are significantly faster when utilizing VDDK. link:https://issues.redhat.com/browse/MTV-330[MTV-330]
 
 
 [id="known-issues-25_{context}"]
