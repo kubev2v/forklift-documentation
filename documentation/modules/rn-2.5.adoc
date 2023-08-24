@@ -100,7 +100,7 @@ This issue is resolved in {project-short} {project-version}, all the snapshots c
 
 .{rhv-short} snapshots are not deleted after a successful migration
 
-In previous releases of {project-short}, the Migration Controller service did not delete snapshots automatically after a successful warm migration of a {rhv-short} VM.
+In previous releases of {project-short}, the Migration Controller service did not delete snapshots automatically after a successful warm migration of a VM from {rhv-short}.
 
 This issue is resolved in {project-short} {project-version}, the snapshots generated during migration are removed after a successful migration, and the original snapshots are not removed after a successful migration. link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
 
