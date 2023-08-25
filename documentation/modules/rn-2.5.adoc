@@ -22,11 +22,11 @@ This release has the following technical changes:
 
 .Migration using OpenStack
 
-In this version, migration using OpenStack source providers graduated from a Technology Preview feature to a fully-supported feature.
+In this version, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.
 
 .Disabling FIPS
 
-EMS enforcement is disabled for migrations with VMware vSphere source providers in order to enable migrations from versions of vSphere that are suppored by {project-full} but do not comply with the 2023 FIPS requirements.
+EMS enforcement is disabled for migrations with VMware vSphere source providers in order to enable migrations from versions of vSphere that are supported by {project-full} but do not comply with the 2023 FIPS requirements.
 
 .Integration of the create/update provider dialog
 
@@ -49,13 +49,13 @@ In {project-short} {project-version}, you can migrate using Open Virtual Applica
 .Migrating VMs between OCP clusters
 
 // i need to wait for this ticket to be merged to add a link
-// apologies, I meant to the doc ticket rather than https://issues.redhat.com/browse/MTV-336[Import VMware-compatible OVAs]
+// apologies, I meant link to output of the doc ticket rather than https://issues.redhat.com/browse/MTV-336[Import VMware-compatible OVAs]
 // But let me add this as a placeholder 
-You can import Virtual Machine (VMs) without having access from Openshift to the source system the VMs were running on. The VMs are exported to a place that is accessible to Openshift, optionally accessible to the source system at the same time.
+You can import Virtual Machine (VMs) without having access from {ocp-name} to the source system the VMs were running on. The VMs are exported to a place that is accessible to {ocp-name}, optionally accessible to the source system at the same time.
 
-.Migration of virtual machines with direct LUNs from RHV 
+.Migration of VMs with direct LUNs from RHV 
 
-During the migration from RHV, direct LUNs are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism doesn't work yet for Fibre Channel. link:https://issues.redhat.com/browse/MTV-329[MTV-329]
+During the migration from RHV, direct LUNs are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism does not work yet for Fibre Channel. link:https://issues.redhat.com/browse/MTV-329[MTV-329]
 
 .Additional authentication methods for OpenStack
 
@@ -79,12 +79,6 @@ The VMware vSphere source provider can now be created without specifying a VDDK 
 
 This release has the following known issues:
 
-////
-Adding 2.4 known issues as a start. i am not sure there is much point including the other sections
-please flag any known issues to be removed and any to be moved to resolved issues
-////
-
-
 .Deleting migration plan does not remove temporary resources
 
 Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
@@ -95,7 +89,7 @@ The error status message for a VM with no operating system on the *Plans* page o
 
 .Log archive file includes logs of a deleted migration plan or VM
 
-If deleting a migration plan and then running a new migration plan with the same name, or if deleting a migrated VM and then remigrate the source VM, then the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
+If deleting a migration plan and running a new migration plan with the same name, or if deleting a migrated VM and remigrating the source VM, then the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
 
 .Migration of virtual machines with encrypted partitions fails during conversion
 
@@ -108,7 +102,7 @@ Some warm migrations from {rhv-short} might fail. When running a migration plan 
 
 Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
-.Cannot schedule migrated VM with multiple disks to more than one storage classes of type hostPath
+.Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
 
 When migrating a VM with multiple disks to more than one storage classes of type hostPath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.
 
@@ -119,7 +113,7 @@ See link:https://access.redhat.com/articles/1351473[Converting virtual machines 
 
 .VMs from vSphere with RHEL 9 guest operating system may start with network interfaces that are down
 
-When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in OpenShift Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
+When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
 ////
 
@@ -168,7 +162,7 @@ This issue is resolved in {project-short} {project-version}, PVCs are deleted wh
 
 .VM with multiple disks may boot from non-bootable disk after migration
 
-In previous releases of {project-short}, VM with multiple disks that was migrated might not have been able to boot on the target OCP cluster.
+In previous releases of {project-short}, VM with multiple disks that were migrated might not have been able to boot on the target OCP cluster.
 
 This issue is resolved in {project-short} {project-version}, VM with multiple disks that are migrated are able to boot on the target OCP cluster. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
 
