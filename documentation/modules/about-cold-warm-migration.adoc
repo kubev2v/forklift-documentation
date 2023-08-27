@@ -6,22 +6,14 @@
 [id="about-cold-warm-migration_{context}"]
 = About cold and warm migration
 
-{project-short} supports cold migration from {rhv-full} ({rhv-short}) and warm migration from VMware vSphere and from {rhv-short}.
+{project-short} supports cold migration from:
 
-As a Technology Preview, {project-short} supports cold migration using {osp} source providers.
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Remote {virt} clusters
 
-[IMPORTANT]
-====
-Migration using OpenStack source providers is a Technology Preview feature only. Technology Preview features
-are not supported with Red Hat production service level agreements (SLAs) and
-might not be functionally complete. Red Hat does not recommend using them
-in production. These features provide early access to upcoming product
-features, enabling customers to test functionality and provide feedback during
-the development process.
-
-For more information about the support scope of Red Hat Technology Preview
-features, see https://access.redhat.com/support/offerings/techpreview/.
-====
+{project-short} supports warm migration from VMware vSphere and from {rhv-short}.
 
 [NOTE]
 ====
