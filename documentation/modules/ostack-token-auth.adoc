@@ -1,0 +1,95 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="openstack-token-authentication_{context}"]
+= Using token authentication with an {osp} source provider
+
+You can use token authentication, instead of username and password authentication, when you create an {osp} source provider.
+
+{project-short} supports both of the following types of token authentication:
+
+* Token with user ID
+* Token with user name
+
+For each type of token authentication, you need to use data from OpenStack to create a `Secret` manifest.
+
+.Prerequisites
+
+Have an {osp} account.
+
+.Procedure
+
+. In the dashboard of the {osp} web console, click *Project > API Access*.
+. Expand *Download OpenStack RC file* and click *OpenStack RC file*.
++
+The file that is downloaded, referred to here as `<openstack_rc_file>`, includes the following fields used for token authentication:
++
+[source, terminal]
+----
+OS_AUTH_URL
+OS_PROJECT_ID
+OS_PROJECT_NAME
+OS_DOMAIN_NAME
+OS_USERNAME
+----
+
+. To get the data needed for token authentication, run the following command:
++
+[source,terminal]
+----
+$ openstack token issue
+----
++
+The output, referred to here as `<openstack_token_output>`, includes the `token`, `userID`, and `projectID` that you need for authentication using a token with user ID.
+
+
+. Create a `Secret` manifest similar to the following:
+
+** For authentication using a token with user ID:
++
+[source,yaml]
+----
+cat << EOF | oc apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: openstack-secret-tokenid
+  namespace: openshift-mtv
+  labels:
+    createdForProviderType: openstack
+type: Opaque
+stringData:
+  authType: token
+  token: <token_from_openstack_token_output>
+  projectID: <projectID_from_openstack_token_output>
+  userID: <userID_from_openstack_token_output>
+  url: <OS_AUTH_URL_from_openstack_rc_file>
+EOF
+----
+
+** For authentication using a token with user name:
++
+[source,yaml]
+----
+cat << EOF | oc apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: openstack-secret-tokenname
+  namespace: openshift-mtv
+  labels:
+    createdForProviderType: openstack
+type: Opaque
+stringData:
+  authType: token
+  token: <token_from_openstack_token_output>
+  domainName: <OS_DOMAIN_NAME_from_openstack_rc_file>
+  projectName: <OS_PROJECT_NAME_from_openstack_rc_file>
+  username: <OS_USERNAME_from_openstack_rc_file>
+  url: <OS_AUTH_URL_from_openstack_rc_file>
+EOF
+----
+
+. Continue migrating your virtual machine according to the procedure in xref:migrating-virtual-machines-from-cli[Migrating virtual machines], starting with step 2, "Create a `Provider` manifest for the source provider."

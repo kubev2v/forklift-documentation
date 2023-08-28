@@ -56,6 +56,19 @@ include::modules/network-prerequisites.adoc[leveloffset=+2]
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
+
+==== Additional authentication methods for migrations with {osp} source providers
+
+{project-short} versions 2.5 and later support the following authentication methods for migrations with {osp} source providers in addition to the standard username and password credential set:
+
+* Token authentication
+* Application credential authentication
+
+You can use these methods to migrate virtual machines with {osp} source providers using the CLI the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
+
+include::modules/ostack-token-auth.adoc[leveloffset=+4]
+include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
+
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
 :context: prereqs
@@ -108,9 +121,29 @@ You can add source providers and destination providers for a virtual machine mig
 [id="adding-source-providers"]
 ==== Adding source providers
 
-You can add a VMware source provider, {a-rhv} source provider, or an {osp} source provider by using the {ocp} web console.
+You can use {project-short} to migrate VMs from the following source providers:
+
+* {virt}
+* {osp}
+* {rhv-full}
+* VMware vSphere
+* Open Virtual Appliances (OVAs) that originate from or are compatible with VMware vSphere.
+
+You can add a source provider by using the {ocp} web console.
 
 :mtv!:
+:context: cnv
+:cnv:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:cnv!:
+:context: ostack
+:ostack:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:ostack!:
+:context: rhv
+:rhv:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:rhv!:
 :context: vmware
 :vmware:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
@@ -119,14 +152,11 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 :mtv:
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
 :mtv!:
-:context: rhv
-:rhv:
+:context: ova
+:ova:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
-:rhv!:
+:ova!:
 :context: mtv
-:mtv:
-
-include::modules/osh-adding-source-provider.adoc[leveloffset=+4]
 
 [id="adding-destination-providers"]
 ==== Adding destination providers
@@ -161,6 +191,8 @@ You can migrate virtual machines to {virt} from the command line.
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+2]
+
+
 include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 [id="advanced-migration-options"]
