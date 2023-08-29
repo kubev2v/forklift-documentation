@@ -6,7 +6,7 @@
 [id="openstack-application-credential-authentication_{context}"]
 = Using application credential authentication with an {osp} source provider
 
-You can use application credential authentication, instead of username and password authentication, when you use create an {osp} source provider.
+You can use application credential authentication, instead of username and password authentication, when you create an {osp} source provider.
 
 {project-short} supports both of the following types of application credential authentication:
 
