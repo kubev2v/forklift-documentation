@@ -98,6 +98,8 @@ ifdef::rhv[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
++
+include::snip-provider-names.adoc[]
 * *URL*: API endpoint of the {rhv-short} Manager on which the source VM is mounted
 * *Username*: Username
 * *Password*: Password
@@ -115,13 +117,17 @@ ifdef::ova[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
++
+include::snip-provider-names.adoc[]
 * *URL*: URL of the NFS file share that serves the OVA
 endif::[]
 ifdef::ostack[]
 . Click *OpenStack*.
 . Specify the following fields:
 
-* *Provider resource name*: Name of the source provider.
+* *Provider resource name*: Name of the source provider
++
+include::snip-provider-names.adoc[]
 * *URL*: {osp} Identity (Keystone) endpoint, for example, `http://controller:5000/v3`.
 * *Authentication type*: Choose one of the following methods of authentication and supply the information related to your choice. For example, if you choose *Application credential ID* as the authentication type, the *Application credential ID* and the *Application credential secret* fields become active, and you need to supply the ID and the secret.
 
@@ -165,6 +171,8 @@ ifdef::cnv[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
++
+include::snip-provider-names.adoc[]
 * *URL*: Endpoint of the API server
 * *Service account bearer token*: Token for a service account with `cluster-admin` privileges
 +
@@ -175,6 +183,8 @@ ifdef::cnv2[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
++
+include::snip-provider-names.adoc[]
 * *URL*: Endpoint of the API server
 * *Service account bearer token*: Token for a service account with `cluster-admin` privileges
 +
