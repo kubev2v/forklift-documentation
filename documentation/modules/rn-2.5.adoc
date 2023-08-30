@@ -30,7 +30,7 @@ EMS enforcement is disabled for migrations with VMware vSphere source providers 
 
 .Integration of the create/update provider dialog
 
- The forms of create and update provider are replaced with native pages within the {ocp-name}(OCP) console.
+Reworked the forms of create and update providers so that they will align with the typical look and feel within the OCP console and ensure the up-to-date data is displayed.
 
 .Standalone UI
 
