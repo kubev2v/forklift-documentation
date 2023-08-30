@@ -71,7 +71,7 @@ The ability to import image-based virtual machines from OpenStack Migration usin
 
 .VDDK is now optional for VMware vSphere providers 
 
-The VMware vSphere source provider can now be created without specifying a VDDK `init` image. It is worth noting that disk transfers from vSphere are significantly faster when utilizing VDDK. link:https://issues.redhat.com/browse/MTV-330[MTV-330]
+The VMware vSphere source provider can now be created without specifying a VDDK `init` image. It is strongly recommended to create a VDDK `init` image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image]. 
 
 
 [id="known-issues-25_{context}"]
