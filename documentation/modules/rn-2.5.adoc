@@ -129,6 +129,11 @@ For a complete list of all known issues in this release, see the list of link:ht
 == Resolved issues
 
 // are there any resolved issues you want to highlight in this release?
+.Ensure up-to-date data is displayed in the create and update provider form
+
+In previous releases of {project-short}, the create and update provider forms could have presented stale data.
+
+This issue is resolved in {project-short} {project-version}, the new forms of create and update provider display up-to-date properties of the provider. link:https://issues.redhat.com/browse/MTV-603[MTV-603]
 
 .Snapshots that are created during the migration in OpenStack are not deleted
 
