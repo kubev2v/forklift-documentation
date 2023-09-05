@@ -95,11 +95,12 @@ If deleting a migration plan and running a new migration plan with the same name
 
 vSphere only: Migrations from {rhv-short} and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
 
+//inclusive language - cannot use execute
+.Migration fails during precopy/cutover while a snapshot operation is performed on the source VM
 
-.Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
-
+////
 Some warm migrations from {rhv-short} might fail. When running a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.
-
+////
 Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
 .Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
@@ -115,13 +116,7 @@ See link:https://access.redhat.com/articles/1351473[Converting virtual machines 
 
 When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
-////
 
-Going to move to a new section called UPGRADE NOTES
-.Upgrade from 2.4.0 fails
-
-When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
-////
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-562?filter=12419159[Known Issues] in Jira.
 
@@ -153,6 +148,12 @@ In previous releases of {project-short}, sometimes warm migrations from {rhv-sho
 
 This issue is resolved in {project-short} {project-version}, {project-short} waits for the snapshot operation to finish in order to run the next cutover. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
+.Warm migration fails when cutover conflicts with precopy
+
+In previous releases of {project-short}, the cutover operation failed when it was triggered while precopy was being performed. The VM was locked in {rhv-short} and therefore the `ovirt-engine` rejected the snapshot creation, or disk transfer, operation.
+
+This issue is resolved in {project-short} {project-version}, the cutover operation is triggered, but it is not performed that time because the VM is locked. Once the precopy operation completes, the cutover operation is triggered. link:https://issues.redhat.com/browse/MTV-686[MTV-686]
+
 .Deleting migrated VM does not remove PVC and PV
 
 In previous releases of {project-short}, when removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) were not deleted.
@@ -175,7 +176,7 @@ For a complete list of all resolved issues in this release, see the list of link
 This release has the following resolved issues:
 
 [id="upgrade-notes-25_{context}"]
-== Resolved notes
+== Upgrade notes
 
 // Is there anything else you want me to add?
 It is recommended to upgrade from {project-short} 2.4.2 to {project-short} {project-version}.
