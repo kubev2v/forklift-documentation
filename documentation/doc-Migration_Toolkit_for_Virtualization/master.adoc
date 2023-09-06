@@ -29,6 +29,8 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 * Open Virtual Appliances (OVAs) that were created by VMware vSphere
 * Remote {virt} clusters
 
+include::modules/snippet_ova_tech_preview.adoc[]
+
 [NOTE]
 ====
 Migration using {osp} source providers only supports VMs that use only Cinder volumes.
@@ -77,6 +79,7 @@ include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+3]
 :context: mtv
 :mtv:
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
+include::modules/ova-prerequisites.adoc[leveloffset=+2]
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 [id="installing-the-operator"]
@@ -127,7 +130,7 @@ You can use {project-short} to migrate VMs from the following source providers:
 * {osp}
 * {rhv-full}
 * VMware vSphere
-* Open Virtual Appliances (OVAs) that originate from or are compatible with VMware vSphere.
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere.
 
 You can add a source provider by using the {ocp} web console.
 
@@ -153,6 +156,7 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
 :mtv!:
 :context: ova
+
 :ova:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :ova!:
