@@ -14,7 +14,7 @@ You can cancel an entire migration or individual virtual machines (VMs) while a 
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} delete migration <migration> -n {namespace} <1>
+$ {oc} delete migration <migration> -n <namespace> <1>
 ----
 <1> Specify the name of the `Migration` CR.
 
@@ -29,7 +29,7 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: Migration
 metadata:
   name: <migration>
-  namespace: {namespace}
+  namespace: <namespace>
 ...
 spec:
   cancel:
@@ -46,5 +46,5 @@ The value of the `id` key is the _managed object reference_, for a VMware VM, or
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} get migration/<migration> -n {namespace} -o yaml
+$ {oc} get migration/<migration> -n <namespace> -o yaml
 ----
