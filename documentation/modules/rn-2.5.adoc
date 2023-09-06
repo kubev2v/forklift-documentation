@@ -154,6 +154,13 @@ In previous releases of {project-short}, the cutover operation failed when it wa
 
 This issue is resolved in {project-short} {project-version}, the cutover operation is triggered, but it is not performed that time because the VM is locked. Once the precopy operation completes, the cutover operation is triggered. link:https://issues.redhat.com/browse/MTV-686[MTV-686]
 
+.Warm migration fails when VM is locked
+
+In previous release of {project-short}, when triggering warm migration while there was an ongoing operation in {rhv-short} that locked the VM. The migration failed because the snapshot creation could not be triggered. 
+
+This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-686[MTV-686] 
+
+
 .Deleting migrated VM does not remove PVC and PV
 
 In previous releases of {project-short}, when removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) were not deleted.
