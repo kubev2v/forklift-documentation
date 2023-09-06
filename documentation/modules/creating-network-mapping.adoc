@@ -26,6 +26,7 @@ You can create one or more network mappings by using the {ocp} web console to ma
 The *Source networks* and *Target namespaces/networks* text boxes become active.
 
 . Select a source network and a target namespace/network from the list.
+. Optional: To save your mapping as a template, select *Save current mapping as a template* and enter a name for your mapping.
 . Optional: Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
 . If you create an additional network mapping, select the network attachment definition as the target network.
 . Click *Create*.
