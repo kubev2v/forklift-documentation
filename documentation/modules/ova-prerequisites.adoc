@@ -1,0 +1,35 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: REFERENCE
+[id="ova-prerequisites_{context}"]
+= Open Virtual Appliance (OVA) prerequisites
+
+The following prerequisites apply to Open Virtual Appliance (OVA) file migrations:
+
+* All OVA files are created by VMware vSphere.
+
+[NOTE]
+====
+Migration of OVA files that were not created by VMware vSphere but are compatible with vSphere might succeed. However, migration of such files is not supported by {project-short}. {project-short} supports only OVA files created by VMware vSphere.
+====
+
+* The OVA files are in one or more folders under an NFS shared directory in one of the following structures:
+
+** In one or more compressed Open Virtualization Format (OVF) packages that hold all the VM information.
++
+The filenames of the compressed packages *must* have `.ova` extensions. Several packages can be stored either in the same folder or in individual folders:
++
+`<nfs_shared_directory>/folder1/vm1.ova` +
+`<nfs_shared_directory>/folder1/vm2.ova` (`vm1.ova` and `vm2.ova` in `folder1`)
++
+_or_
++
+`<nfs_shared_directory>/folder1/vm1.ova` +
+`<nfs_shared_directory>/folder2/vm2.ova` (`vm1.ova` in `folder1`, `vm2.ova` in `folder2`)
+
+** In extracted OVF packages, each package being an individual folder:
++
+`<nfs_shared_directory>/vm1/` +
+`<nfs_shared_directory>/vm2/`
