@@ -116,6 +116,10 @@ VMware only: You must have the minimal set of xref:vmware-privileges_{context}[V
 VMware only: You must create a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image.
 ====
 
+include::modules/mtv-ui.adoc[leveloffset=+2]
+include::modules/mtv-overview-page.adoc[leveloffset=+2]
+include::modules/mtv-settings.adoc[leveloffset=+2]
+
 [id="adding-providers"]
 === Adding providers
 

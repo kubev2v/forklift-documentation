@@ -1,0 +1,46 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="mtv-settings_{context}"]
+= Configuring MTV settings
+
+If you have Administrator privileges, you can access the *Overview* page and change the following settings in it:
+
+[cols="1,1,1",options="header"]
+.{project-short} settings
+|===
+|Setting |Description |Default value
+
+|Max concurrent virtual machine migrations
+|The maximum number of VMs per plan that can be migrated simultaneously
+|20
+
+|Must gather cleanup after (hours)
+|The duration for retaining `must gather` reports before they are automatically deleted
+|Disabled.
+
+|Controller main container CPU limit
+|The CPU limit allocated to the main controller container
+|500 m
+
+|Controller main container Memory limit
+|The memory limit allocated to the main controller container
+|800 Mi
+
+|Precopy internal (minutes)
+|The interval at which a new snapshot is requested before initiating a warm migration
+|60
+
+|Snapshot polling interval (seconds)
+|The frequency with which the system checks the status of snapshot creation or removal during warm migration
+|10
+|===
+
+.Procedure
+
+. In the {ocp} web console, click *Migration* -> *Overview*. The *Settings* list is on the right-hand side of the page.
+. In the *Settings* list, click the Edit icon of the setting you want to change.
+. Choose a setting from the list.
+. Click *Save*.
