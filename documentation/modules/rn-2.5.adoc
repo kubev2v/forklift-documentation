@@ -118,7 +118,7 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 .Import OVA: ConnectionTestFailed message appears when adding OVA provider
 
-When adding an OVA provider, the error message `ConnectionTestFailed` appears, although the provider is created successfully. After a few seconds, this message disappears. link:https://issues.redhat.com/browse/MTV-671[MTV-671]
+When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If after a few minutes, the message does not disappear and the provider status does not move to `ready` condition, the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[MTV-671]
 
 .OVA migration with multiple disks is not functioning
 
