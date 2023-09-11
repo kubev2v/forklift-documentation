@@ -116,7 +116,13 @@ See link:https://access.redhat.com/articles/1351473[Converting virtual machines 
 
 When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
+.Import OVA: ConnectionTestFailed message appears when adding OVA provider
 
+When adding an OVA provider, the error message `ConnectionTestFailed` appears, although the provider is created successfully. After a few seconds, this message disappears. link:https://issues.redhat.com/browse/MTV-671[MTV-671]
+
+.OVA migration with multiple disks is not functioning
+
+OVA migration with multiple disks is not functioning as expected. When trying to migrate an OVA VM, with more than one disk, the migration becomes stuck at the `allocate disks` phase. link:https://issues.redhat.com/browse/MTV-676[MTV-676]
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-562?filter=12419159[Known Issues] in Jira.
 
