@@ -1,0 +1,72 @@
+:_content-type: CONCEPT
+
+[id="non-admin-permissions_{context}"]
+= Permissions needed by non-administrators to work with migration plan components
+
+If you are an administrator, you can work with all components of migration plans (for example, providers, network mappings, and migration plans).
+
+By default, non-administrators have limited ability to work with migration plans and their components. As an administrator, you can modify their roles to allow them full access to all components, or you can give them limited permissions.
+
+For example, administrators can assign non-administrators one or more of the following cluster roles for migration plans:
+
+[cols="2", options="header"]
+.Example migration plan roles and their privileges
+|===
+|Role | Description
+
+| `plans.forklift.konveyor.io-v1beta1-view`
+| Can view migration plans but not to create, delete or modify them
+
+| `plans.forklift.konveyor.io-v1beta1-edit`
+| Can create, delete or modify (all parts of `edit` permissions) individual migration plans
+
+| `plans.forklift.konveyor.io-v1beta1-admin`
+| All `edit` privileges and the ability to delete the entire collection of migration plans
+|===
+
+Note that pre-defined cluster roles include a resource (`plans`), an API group (`forklift.konveyor.io-v1beta1`) and an action (for example, `view`, `edit`).
+
+As a more comprehensive example, you can grant non-administrators the following set of permissions per namespace:
+
+* Create and modify storage maps, network maps, and migration plans for the namespaces they have access to
+* Attach providers created by administrators to storage maps, network maps, and migration plans
+* Not be able to create providers or to change system settings
+
+[cols="3", options="header"]
+.Example permissions required for non-adminstrators to work with migration plan components but not create providers
+|===
+|Actions |API group |Resource
+
+|`get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
+|`forklift.konveyer.io`
+|`plans`
+
+| `get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
+|`forklift.konveyer.io`
+|`migrations`
+
+|`get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
+|`forklift.konveyer.io`
+|`hooks`
+
+|`get`, `list`, `watch`
+|`forklift.konveyer.io`
+|`providers`
+
+|`get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
+|`forklift.konveyer.io`
+|`networkmaps`
+
+| `get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
+|`forklift.konveyer.io`
+|`storagemaps`
+
+|`get`, `list`, `watch`
+|`forklift.konveyer.io`
+|`forkliftcontrollers`
+|===
+
+[NOTE]
+====
+Non-administrators need to have the `create` permissions that are part of `edit` roles for network maps and for storage maps to create migration plans, even when using a template for a network map or a storage map.
+====

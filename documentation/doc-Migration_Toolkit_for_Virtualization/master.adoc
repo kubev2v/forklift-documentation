@@ -113,7 +113,7 @@ You must ensure that all xref:prerequisites[prerequisites] are met.
 
 VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 
-VMware only: You must create a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image.
+VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 ====
 
 include::modules/mtv-ui.adoc[leveloffset=+2]
@@ -192,10 +192,16 @@ You can migrate virtual machines to {virt} from the command line.
 
 *  VMware only: You must have the xref:obtaining-vmware-fingerprint_{context}[vCenter SHA-1 fingerprint].
 
-*  VMware only: You must create a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image.
+*  VMware only:  Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 
 *  You must ensure that all xref:prerequisites[prerequisites] are met.
 ====
+
+:mtv!:
+:context: cli
+include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
+:cli!:
+:context: mtv
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+2]
