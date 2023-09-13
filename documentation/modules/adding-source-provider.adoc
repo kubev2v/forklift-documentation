@@ -26,37 +26,169 @@ You can add {a-rhv} source provider by using the {ocp} web console.
 
 * {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, specify the {manager} Apache CA certificate
 endif::[]
+ifdef::ova[]
+= Adding an Open Virtual Appliance (OVA) source provider
+
+You can add Open Virtual Appliance (OVA) files that were created by VMware vSphere as a source provider by using the {ocp} web console.
+
+include::snippet_ova_tech_preview.adoc[]
+endif::[]
+ifdef::ostack[]
+= Adding an {osp} source provider
+
+You can add an {osp} source provider by using the {ocp} web console.
+
+[NOTE]
+====
+Migration using {osp} source providers only supports VMs that use only Cinder volumes.
+====
+endif::[]
+ifdef::cnv[]
+= Adding a Red Hat {virt} source provider
+
+You can use a Red Hat {virt} provider as both a source provider and destination provider.
+
+Specifically, the host cluster that is automatically added as a {virt} provider can be used as both a source provider and a destination provider.
+
+You can migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
+
+endif::[]
+ifdef::cnv2[]
+= Adding {a-virt} destination provider
+
+You can use a Red Hat {virt} provider as both a source provider and destination provider.
+
+Specifically, the host cluster that is automatically added as a {virt} provider can be used as both a source provider and a destination provider.
+
+You can also add another {virt} destination provider to the {ocp} web console in addition to the default {virt} destination provider, which is the cluster where you installed {project-short}.
+
+You can migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
+
+.Prerequisites
+
+* You must have {a-virt} link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/authentication_and_authorization/using-service-accounts[service account token] with `cluster-admin` privileges.
+endif::[]
 
 .Procedure
 
 . In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
 . Click *Create Provider*.
 ifdef::vmware[]
-. Select *VMware* from the *Provider type* list.
+. Click *vSphere*.
 . Specify the following fields:
 
-* *Provider name*: Name to display in the list of providers
-* *vCenter host name or IP address*: vCenter host name or IP address - if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate
-* *vCenter user name*: vCenter user, for example, `user@vsphere.local`
-* *vCenter password*: vCenter user password
-* *VDDK init image*: VDDKInitImage path
+* *Provider resource name*: Name of the source provider.
+* *URL*: vCenter host name or IP address - if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
+* *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
+* *Username*: vCenter user, for example, `user@vsphere.local`.
+* *Password*: vCenter user password.
+* *SHA-1 fingerprint*: The provider currently requires the SHA-1 fingerprint of the vCenter Server's TLS certificate in all circumstances. vSphere calls this the server's thumbprint.
++
 
-. To allow a migration without validating the provider's CA certificate, select the *Skip certificate validation* check box. By default, the checkbox is cleared, meaning that the certificate will be validated.
-. Enter the *SHA-1 fingerprint*.
+. Choose one of the following options for validating CA certificates:
+
+** *Skip certificate validation* : Migrate without validating a CA certificate.
+** *Use the system CA certificates*: Migrate after validating the system CA certificates.
+
+.. To skip certificate validation, select the *Skip certificate validation* check box.
+.. To validate the system CA certificates, leave the *Skip certificate validation* check box cleared.
 endif::[]
 ifdef::rhv[]
-. Select *Red Hat Virtualization* from the *Provider type* list.
+. Click *Red Hat Virtualization*
 . Specify the following fields:
 
-* *Provider name*: Name to display in the list of providers
-* *RHV Manager host name or IP address*: {manager} host name or IP address -  if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate
-* *RHV Manager user name*: {manager} user
-* *RHV Manager password*: {manager} password
+* *Provider resource name*: Name of the source provider
+* *URL*: API endpoint of the {rhv-short} Manager on which the source VM is mounted
+* *Username*: Username
+* *Password*: Password
 
-. To allow a migration without validating the provider's CA certificate, select the *Skip certificate validation* check box. By default, the checkbox is cleared, meaning that the certificate will be validated.
-. If you did not select *skip certificate validation*, the *CA certificate* field is visible. Drag the CA certificate to the text box or browse for it and click *Select*. Use the {manager} CA certificate or {manager} Apache CA certificate if the {manager} CA certificate was replaced by a third-party certificate on the Apache server. If you did select the check box, the *CA certificate* text box is not visible.
+. Choose one of the following options for validating CA certificates:
+
+** *Skip certificate validation* : Migrate without validating a CA certificate.
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+
+.. To skip certificate validation, select the *Skip certificate validation* check box.
+.. To validate a custom CA certificate, leave the *Skip certificate validation* check box cleared and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+endif::[]
+ifdef::ova[]
+. Click *Open Virtual Appliance (OVA)*.
+. Specify the following fields:
+
+* *Provider resource name*: Name of the source provider
+* *URL*: URL of the NFS file share that serves the OVA
+endif::[]
+ifdef::ostack[]
+. Click *OpenStack*.
+. Specify the following fields:
+
+* *Provider resource name*: Name of the source provider.
+* *URL*: {osp} Identity (Keystone) endpoint, for example, `http://controller:5000/v3`.
+* *Authentication type*: Choose one of the following methods of authentication and supply the information related to your choice. For example, if you choose *Application credential ID* as the authentication type, the *Application credential ID* and the *Application credential secret* fields become active, and you need to supply the ID and the secret.
+
+** *Application credential ID*
+*** *Application credential ID*: {osp} application credential ID
+*** *Application credential secret*: {osp} https://github.com/kubev2v/forklift-documentation/pull/402pplication credential `Secret`
+
+** *Application credential name*
+*** *Application credential name*: {osp} application credential name
+*** *Application credential secret*: : {osp} application credential `Secret`
+*** *Username*: {osp} username
+*** *Domain*: {osp} domain name
+
+** *Token with user ID*
+*** *Token*: {osp} token
+*** *User ID*: {osp} user ID
+*** *Project ID*:  {osp} project ID
+
+** *Token with user Name*
+*** *Token*: {osp} token
+*** *Username*: {osp} username
+*** *Project*: {osp} project
+*** *Domain name*: {osp} domain name
+
+** *Password*
+*** *Username*: {osp} username
+*** *Password*: {osp} password
+*** *Project*: {osp} project
+*** *Domain*: {osp} domain name
+
+. Choose one of the following options for validating CA certificates:
+
+** *Skip certificate validation* : Migrate without validating a CA certificate.
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+
+.. To skip certificate validation, select the *Skip certificate validation* check box.
+.. To validate a custom CA certificate, leave the *Skip certificate validation* check box cleared and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+endif::[]
+ifdef::cnv[]
+. Click *{virt}*.
+. Specify the following fields:
+
+* *Provider resource name*: Name of the source provider
+* *URL*: Endpoint of the API server
+* *Service account bearer token*: Token for a service account with `cluster-admin` privileges
++
+If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
+endif::[]
+ifdef::cnv2[]
+. Click *{virt}*.
+. Specify the following fields:
+
+* *Provider resource name*: Name of the source provider
+* *URL*: Endpoint of the API server
+* *Service account bearer token*: Token for a service account with `cluster-admin` privileges
++
+If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
 endif::[]
 
 . Click *Create* to add and save the provider.
 +
-The source provider appears in the list of providers.
+The provider appears in the list of providers.
+
+ifdef::ova[]
++
+[NOTE]
+====
+An error message might appear that states that an error has occurred. You can ignore this message.
+====
+endif::[]

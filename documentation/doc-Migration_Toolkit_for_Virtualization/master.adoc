@@ -130,40 +130,36 @@ You can add source providers and destination providers for a virtual machine mig
 
 You can use {project-short} to migrate VMs from the following source providers:
 
-* {virt}
-* {osp}
-* {rhv-full}
 * VMware vSphere
-* Open Virtual Appliances (OVAs) that were created by VMware vSphere.
+* {rhv-full}
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* {virt}
 
 You can add a source provider by using the {ocp} web console.
 
 :mtv!:
-:context: cnv
-:cnv:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
-:cnv!:
-:context: ostack
-:ostack:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
-:ostack!:
-:context: rhv
-:rhv:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
-:rhv!:
 :context: vmware
 :vmware:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :vmware!:
-:context: mtv
-:mtv:
-include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
-:mtv!:
+:context: rhv
+:rhv:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:rhv!:
+:context: ostack
+:ostack:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:ostack!:
 :context: ova
 
 :ova:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :ova!:
+:context: cnv
+:cnv:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:cnv!:
 :context: mtv
 
 [id="adding-destination-providers"]
@@ -171,7 +167,13 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 
 You can add  a {virt} destination provider by using the {ocp} web console.
 
-include::modules/adding-virt-provider.adoc[leveloffset=+4]
+:mtv!:
+:context: cnv2
+:cnv2:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:cnv!:
+:context: mtv
+
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
 
 include::modules/creating-network-mapping.adoc[leveloffset=+2]
