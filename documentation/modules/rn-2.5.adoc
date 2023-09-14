@@ -127,7 +127,7 @@ For a complete list of all known issues in this release, see the list of link:ht
 == Resolved issues
 
 // are there any resolved issues you want to highlight in this release?
-.Ensure up-to-date data is displayed in the create and update provider form
+.Ensure up-to-date data is displayed in the create and update provider forms
 
 In previous releases of {project-short}, the create and update provider forms could have presented stale data.
 
