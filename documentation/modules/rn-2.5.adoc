@@ -1,0 +1,202 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-2.5_{context}"]
+= {project-full} 2.5
+
+You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* Remote {virt} clusters
+
+The release notes describe technical changes, new features and enhancements, and known issues.
+
+[id="technical-changes-25_{context}"]
+== Technical changes
+
+This release has the following technical changes:
+
+.Migration from OpenStack moves to being a fully supported feature
+
+In this version, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.
+
+.Disabling FIPS
+
+EMS enforcement is disabled for migrations with VMware vSphere source providers in order to enable migrations from versions of vSphere that are supported by {project-full} but do not comply with the 2023 FIPS requirements.
+
+.Integration of the create/update provider dialog
+
+Reworked the forms of create and update providers so that they will align with the typical look and feel within the OCP console and ensure the up-to-date data is displayed.
+
+.Standalone UI
+
+The old UI of MTV 2.3 cannot be enabled by setting `feature_ui: true` in ForkliftController anymore.
+
+[id="new-features-and-enhancements-25_{context}"]
+== New features and enhancements
+
+This release has the following features and improvements:
+
+.Migration using OVA files that are compatible with VMware vSphere
+
+// i need to wait for this ticket to be merged to add a link
+In {project-short} {project-version}, you can migrate using Open Virtual Application (OVA) files that were created by VMware vSphere as source providers. It may also work with OVAs that are created by other systems and compatible with vSphere. link:https://issues.redhat.com/browse/MTV-336[MTV-336]
+
+.Migrating VMs between OCP clusters
+
+// i need to wait for this ticket to be merged to add a link
+// apologies, I meant link to output of the doc ticket rather than https://issues.redhat.com/browse/MTV-336[Import VMware-compatible OVAs]
+// But let me add this as a placeholder 
+In {project-short} {project-version}, you can also use Red Hat {virt} provider as a source provider. You can migrate VMs from the cluster that MTV is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on. link:https://issues.redhat.com/browse/MTV-571[MTV-571]
+
+.Migration of VMs with direct LUNs from RHV 
+
+During the migration from RHV, direct LUNs are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism does not work yet for Fibre Channel. link:https://issues.redhat.com/browse/MTV-329[MTV-329]
+
+.Additional authentication methods for OpenStack
+
+In addition to the standard password authentication, the following authentication methods are supported: Token authentication and Application credential authentication. Workaround: The `regionName` property needs to be added manually to the provider secret when these new authentication methods are configured from the UI. link:https://issues.redhat.com/browse/MTV-539[MTV-539]
+
+.Validation rules for OpenStack
+
+The validation service includes default validation rules for virtual machines from OpenStack. link:https://issues.redhat.com/browse/MTV-508[MTV-508]
+
+
+.VDDK is now optional for VMware vSphere providers 
+
+The VMware vSphere source provider can now be created without specifying a VDDK `init` image. It is strongly recommended to create a VDDK `init` image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image]. 
+
+
+[id="known-issues-25_{context}"]
+== Known issues
+
+This release has the following known issues:
+
+.Deleting migration plan does not remove temporary resources
+
+Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
+
+.Unclear error status message for VM with no operating system
+
+The error status message for a VM with no operating system on the *Plans* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
+
+.Log archive file includes logs of a deleted migration plan or VM
+
+If deleting a migration plan and running a new migration plan with the same name, or if deleting a migrated VM and remigrating the source VM, then the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
+
+.Migration of virtual machines with encrypted partitions fails during conversion
+
+vSphere only: Migrations from {rhv-short} and OpenStack don't fail, but the encryption key may be missing on the target OCP cluster.
+
+//inclusive language - cannot use execute
+.Migration fails during precopy/cutover while a snapshot operation is performed on the source VM
+
+////
+Some warm migrations from {rhv-short} might fail. When running a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.
+////
+Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+
+.Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
+
+When migrating a VM with multiple disks to more than one storage classes of type hostPath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.
+
+.Non-supported guest operating systems in warm migrations
+
+Warm migrations and migrations to remote OCP clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local OCP cluster. It is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case. +
+See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
+
+.VMs from vSphere with RHEL 9 guest operating system may start with network interfaces that are down
+
+When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
+
+.Import OVA: ConnectionTestFailed message appears when adding OVA provider
+
+When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If after a few minutes, the message does not disappear and the provider status does not move to `ready` condition, the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[MTV-671]
+
+.OVA migration with multiple disks is not functioning
+
+OVA migration with multiple disks is not functioning as expected. When trying to migrate an OVA VM, with more than one disk, the migration becomes stuck at the `allocate disks` phase. link:https://issues.redhat.com/browse/MTV-676[MTV-676]
+
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-562?filter=12419159[Known Issues] in Jira.
+
+[id="resolved-issues-25_{context}"]
+== Resolved issues
+
+// are there any resolved issues you want to highlight in this release?
+.Ensure up-to-date data is displayed in the create and update provider forms
+
+In previous releases of {project-short}, the create and update provider forms could have presented stale data.
+
+This issue is resolved in {project-short} {project-version}, the new forms of create and update provider display up-to-date properties of the provider. link:https://issues.redhat.com/browse/MTV-603[MTV-603]
+
+.Snapshots that are created during the migration in OpenStack are not deleted
+
+In previous releases of {project-short}, the Migration Controller service did not delete snapshots that were created during the migration of source virtual machines in OpenStack automatically.
+
+This issue is resolved in {project-short} {project-version}, all the snapshots created during the migration are removed after the migration has been completed. link:https://issues.redhat.com/browse/MTV-620[MTV-620]
+
+.{rhv-short} snapshots are not deleted after a successful migration
+
+In previous releases of {project-short}, the Migration Controller service did not delete snapshots automatically after a successful warm migration of a VM from {rhv-short}.
+
+This issue is resolved in {project-short} {project-version}, the snapshots generated during migration are removed after a successful migration, and the original snapshots are not removed after a successful migration. link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
+
+
+.Warm migration fails when cutover conflicts with precopy
+
+In previous releases of {project-short}, the cutover operation failed when it was triggered while precopy was being performed. The VM was locked in {rhv-short} and therefore the `ovirt-engine` rejected the snapshot creation, or disk transfer, operation.
+
+This issue is resolved in {project-short} {project-version}, the cutover operation is triggered, but it is not performed that time because the VM is locked. Once the precopy operation completes, the cutover operation is triggered. link:https://issues.redhat.com/browse/MTV-686[MTV-686]
+
+.Warm migration fails when VM is locked
+
+In previous release of {project-short}, when triggering warm migration while there was an ongoing operation in {rhv-short} that locked the VM. The migration failed because the snapshot creation could not be triggered. 
+
+This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-687[MTV-687] 
+
+
+.Deleting migrated VM does not remove PVC and PV
+
+In previous releases of {project-short}, when removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) were not deleted.
+
+This issue is resolved in {project-short} {project-version}, PVC and PV are deleted when deleting migrated VM.link:https://issues.redhat.com/browse/MTV-492[(MTV-492)]
+
+.PVC deletion hangs after archiving and deleting migration plan
+
+In previous releases of {project-short}, when a migration failed, its PVCs and PVs were not deleted as expected when its migration plan was archived and deleted.
+
+This issue is resolved in {project-short} {project-version}, PVCs are deleted when archiving and deleting migration plan.link:https://issues.redhat.com/browse/MTV-493[(MTV-493)]
+
+.VM with multiple disks may boot from non-bootable disk after migration
+
+In previous releases of {project-short}, VM with multiple disks that were migrated might not have been able to boot on the target OCP cluster.
+
+This issue is resolved in {project-short} {project-version}, VM with multiple disks that are migrated are able to boot on the target OCP cluster. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
+
+For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-433?filter=12419160[Resolved Issues] in Jira.
+This release has the following resolved issues:
+
+[id="upgrade-notes-25_{context}"]
+== Upgrade notes
+
+// Is there anything else you want me to add?
+It is recommended to upgrade from {project-short} 2.4.2 to {project-short} {project-version}.
+
+.Upgrade from 2.4.0 fails
+
+When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
+
+[NOTE]
+====
+There is an issue with upgrading from 2.4.1 or 2.4.2. 
+When upgrading from 2.4 (2.4.z), after the 2.5 operator starts, the `mutatingwebhookconfiguration` and `validatingwebhookconfiguration` named `forklift-api` should be removed:
+
+* `oc -n openshift-mtv delete mutatingwebhookconfiguration forklift-api`
+* `oc -n openshift-mtv delete validatingwebhookconfiguration forklift-api`
+
+And restart the {project-short} operator.
+====
