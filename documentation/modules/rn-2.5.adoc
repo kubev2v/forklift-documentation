@@ -192,9 +192,11 @@ When upgrading from MTV 2.4.0 to a later version, the operation fails with an er
 
 [NOTE]
 ====
-There is an issue with upgradings from 2.4.1 or 2.4.2. 
+There is an issue with upgrading from 2.4.1 or 2.4.2. 
 When upgrading from 2.4 (2.4.z), after the 2.5 operator starts, the `mutatingwebhookconfiguration` and `validatingwebhookconfiguration` named `forklift-api` should be removed:
 
 * `oc -n openshift-mtv delete mutatingwebhookconfiguration forklift-api`
 * `oc -n openshift-mtv delete validatingwebhookconfiguration forklift-api`
+
+And restart the {project-short} operator.
 ====
