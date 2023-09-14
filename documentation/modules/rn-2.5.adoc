@@ -20,7 +20,7 @@ The release notes describe technical changes, new features and enhancements, and
 
 This release has the following technical changes:
 
-.Migration using OpenStack
+.Migration using OpenStack moves to being a fully supported feature
 
 In this version, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.
 
