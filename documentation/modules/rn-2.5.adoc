@@ -44,14 +44,14 @@ This release has the following features and improvements:
 .Migration using OVA files that are compatible with VMware vSphere
 
 // i need to wait for this ticket to be merged to add a link
-In {project-short} {project-version}, you can migrate using Open Virtual Application (OVA) files that were created by VMware vSphere as source providers. It may also work with OVAs that are created by other systems and compatible with vSphere.
+In {project-short} {project-version}, you can migrate using Open Virtual Application (OVA) files that were created by VMware vSphere as source providers. It may also work with OVAs that are created by other systems and compatible with vSphere. link:https://issues.redhat.com/browse/MTV-336[MTV-336]
 
 .Migrating VMs between OCP clusters
 
 // i need to wait for this ticket to be merged to add a link
 // apologies, I meant link to output of the doc ticket rather than https://issues.redhat.com/browse/MTV-336[Import VMware-compatible OVAs]
 // But let me add this as a placeholder 
-In {project-short} {project-version}, you can also use Red Hat OpenShift Virtualization provider as a source provider. You can migrate VMs from the cluster that MTV is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
+In {project-short} {project-version}, you can also use Red Hat OpenShift Virtualization provider as a source provider. You can migrate VMs from the cluster that MTV is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on. link:https://issues.redhat.com/browse/MTV-571[MTV-571]
 
 .Migration of VMs with direct LUNs from RHV 
 
