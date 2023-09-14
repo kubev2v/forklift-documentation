@@ -140,7 +140,7 @@ This issue is resolved in {project-short} {project-version}, the new forms of cr
 
 In previous releases of {project-short}, the Migration Controller service did not delete snapshots that were created during the migration for source virtual machines in OpenStack automatically.
 
-This issue is resolved in {project-short} {project-version}, all the snapshots created during the migration are removed after the migration has been completed successfully. link:https://issues.redhat.com/browse/MTV-620[MTV-620]
+This issue is resolved in {project-short} {project-version}, all the snapshots created during the migration are removed after the migration has been completed. link:https://issues.redhat.com/browse/MTV-620[MTV-620]
 
 .{rhv-short} snapshots are not deleted after a successful migration
 
