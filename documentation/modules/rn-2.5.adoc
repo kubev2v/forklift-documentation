@@ -145,11 +145,6 @@ In previous releases of {project-short}, the Migration Controller service did no
 
 This issue is resolved in {project-short} {project-version}, the snapshots generated during migration are removed after a successful migration, and the original snapshots are not removed after a successful migration. link:https://issues.redhat.com/browse/MTV-349[(MTV-349)]
 
-.Migration fails during precopy/cutover while a snapshot operation is executed on the source VM
-
-In previous releases of {project-short}, sometimes warm migrations from {rhv-short} failed. When a migration plan for warm migration of multiple VMs was run from {rhv-short}, the migrations of some VMs failed during the cutover stage. Warm migration from {rhv-short} failed if a snapshot operation was performed on the source VM. If the user performed a snapshot operation on the source VM at the time when a migration snapshot was scheduled, the migration failed instead of waiting for the user’s snapshot operation to finish.
-
-This issue is resolved in {project-short} {project-version}, {project-short} waits for the snapshot operation to finish in order to run the next cutover. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
 .Warm migration fails when cutover conflicts with precopy
 
@@ -194,3 +189,12 @@ It is recommended to upgrade from {project-short} 2.4.2 to {project-short} {proj
 .Upgrade from 2.4.0 fails
 
 When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
+
+[NOTE]
+====
+There is an issue with upgradings from 2.4.1 or 2.4.2. 
+When upgrading from 2.4 (2.4.z), after the 2.5 operator starts, the `mutatingwebhookconfiguration` and `validatingwebhookconfiguration` named `forklift-api` should be removed:
+
+* `oc -n openshift-mtv delete mutatingwebhookconfiguration forklift-api`
+* `oc -n openshift-mtv delete validatingwebhookconfiguration forklift-api`
+====
