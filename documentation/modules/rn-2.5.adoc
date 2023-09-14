@@ -51,7 +51,7 @@ In {project-short} {project-version}, you can migrate using Open Virtual Applica
 // i need to wait for this ticket to be merged to add a link
 // apologies, I meant link to output of the doc ticket rather than https://issues.redhat.com/browse/MTV-336[Import VMware-compatible OVAs]
 // But let me add this as a placeholder 
-You can import Virtual Machine (VMs) without having access from {ocp-name} to the source system the VMs were running on. The VMs are exported to a place that is accessible to {ocp-name}, optionally accessible to the source system at the same time.
+In {project-short} {project-version}, you can also use Red Hat OpenShift Virtualization provider as a source provider. You can migrate VMs from the cluster that MTV is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
 
 .Migration of VMs with direct LUNs from RHV 
 
