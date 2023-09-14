@@ -164,7 +164,7 @@ This issue is resolved in {project-short} {project-version}, the cutover operati
 
 In previous release of {project-short}, when triggering warm migration while there was an ongoing operation in {rhv-short} that locked the VM. The migration failed because the snapshot creation could not be triggered. 
 
-This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-686[MTV-686] 
+This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-687[MTV-687] 
 
 
 .Deleting migrated VM does not remove PVC and PV
