@@ -65,9 +65,6 @@ In addition to the standard password authentication, the following authenticatio
 
 The validation service includes default validation rules for virtual machines from OpenStack. link:https://issues.redhat.com/browse/MTV-508[MTV-508]
 
-.Import image-based virtual machines from OpenStack Migration
-
-The ability to import image-based virtual machines from OpenStack Migration using DSP source providers is no longer limited to VMs that use Cinder volume. link:https://issues.redhat.com/browse/MTV-644[MTV-644]
 
 .VDDK is now optional for VMware vSphere providers 
 
