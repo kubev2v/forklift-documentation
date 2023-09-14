@@ -59,7 +59,7 @@ During the migration from RHV, direct LUNs are detached from the source virtual 
 
 .Additional authentication methods for OpenStack
 
-In addition to the standard password authentication, the following authentication methods are supported: Token authentication and Application credential authentication. link:https://issues.redhat.com/browse/MTV-539[MTV-539]
+In addition to the standard password authentication, the following authentication methods are supported: Token authentication and Application credential authentication. Workaround: The `regionName` property needs to be added manually to the provider secret when these new authentication methods are configured from the UI. link:https://issues.redhat.com/browse/MTV-539[MTV-539]
 
 .Validation rules for OpenStack
 
