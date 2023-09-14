@@ -50,10 +50,10 @@ In {project-short} {project-version}, you can migrate using Open Virtual Applica
 
 // i need to wait for this ticket to be merged to add a link
 // apologies, I meant link to output of the doc ticket rather than https://issues.redhat.com/browse/MTV-336[Import VMware-compatible OVAs]
-// But let me add this as a placeholder 
+// But let me add this as a placeholder
 In {project-short} {project-version}, you can also use Red Hat {virt} provider as a source provider. You can migrate VMs from the cluster that MTV is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on. link:https://issues.redhat.com/browse/MTV-571[MTV-571]
 
-.Migration of VMs with direct LUNs from RHV 
+.Migration of VMs with direct LUNs from RHV
 
 During the migration from RHV, direct LUNs are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism does not work yet for Fibre Channel. link:https://issues.redhat.com/browse/MTV-329[MTV-329]
 
@@ -66,9 +66,9 @@ In addition to the standard password authentication, the following authenticatio
 The validation service includes default validation rules for virtual machines from OpenStack. link:https://issues.redhat.com/browse/MTV-508[MTV-508]
 
 
-.VDDK is now optional for VMware vSphere providers 
+.VDDK is now optional for VMware vSphere providers
 
-The VMware vSphere source provider can now be created without specifying a VDDK `init` image. It is strongly recommended to create a VDDK `init` image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image]. 
+The VMware vSphere source provider can now be created without specifying a VDDK `init` image. It is strongly recommended to create a VDDK `init` image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
 
 
 [id="known-issues-25_{context}"]
@@ -154,9 +154,9 @@ This issue is resolved in {project-short} {project-version}, the cutover operati
 
 .Warm migration fails when VM is locked
 
-In previous release of {project-short}, when triggering warm migration while there was an ongoing operation in {rhv-short} that locked the VM. The migration failed because the snapshot creation could not be triggered. 
+In previous release of {project-short}, when triggering warm migration while there was an ongoing operation in {rhv-short} that locked the VM. The migration failed because the snapshot creation could not be triggered.
 
-This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-687[MTV-687] 
+This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-687[MTV-687]
 
 
 .Deleting migrated VM does not remove PVC and PV
@@ -192,7 +192,7 @@ When upgrading from MTV 2.4.0 to a later version, the operation fails with an er
 
 [NOTE]
 ====
-There is an issue with upgrading from 2.4.1 or 2.4.2. 
+There is an issue with upgrading from 2.4.1 or 2.4.2.
 When upgrading from 2.4 (2.4.z), after the 2.5 operator starts, the `mutatingwebhookconfiguration` and `validatingwebhookconfiguration` named `forklift-api` should be removed:
 
 * `oc -n openshift-mtv delete mutatingwebhookconfiguration forklift-api`
