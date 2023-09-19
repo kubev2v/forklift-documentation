@@ -19,7 +19,7 @@ If you have Administrator privileges, you can access the *Overview* page and cha
 
 |Must gather cleanup after (hours)
 |The duration for retaining `must gather` reports before they are automatically deleted
-|Disabled.
+|Disabled
 
 |Controller main container CPU limit
 |The CPU limit allocated to the main controller container
