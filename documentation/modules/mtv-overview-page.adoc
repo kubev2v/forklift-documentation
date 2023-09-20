@@ -12,7 +12,7 @@ If you have Administrator privileges, you can access the *Overview* page by clic
 
 The *Overview* page displays the following information:
 
-* Migrations: The total number of migrations performed using {project-short}:
+* Migrations: The number of migrations performed using {project-short}:
 
 ** Total
 ** Running
@@ -20,7 +20,7 @@ The *Overview* page displays the following information:
 ** Succeeded
 ** Canceled
 
-* Virtual Machine Migrations:  The total number of VMs migrated using {project-short}:
+* Virtual Machine Migrations:  The number of VMs migrated using {project-short}:
 
 ** Total
 ** Running

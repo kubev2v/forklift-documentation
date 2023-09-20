@@ -24,7 +24,7 @@ For example, administrators can assign non-administrators one or more of the fol
 | All `edit` privileges and the ability to delete the entire collection of migration plans
 |===
 
-Note that pre-defined cluster roles include a resource (`plans`), an API group (`forklift.konveyor.io-v1beta1`) and an action (for example, `view`, `edit`).
+Note that pre-defined cluster roles include a resource (for example, `plans`), an API group (for example, `forklift.konveyor.io-v1beta1`) and an action (for example, `view`, `edit`).
 
 As a more comprehensive example, you can grant non-administrators the following set of permissions per namespace:
 

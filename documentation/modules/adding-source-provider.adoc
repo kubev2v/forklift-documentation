@@ -125,7 +125,7 @@ ifdef::ostack[]
 . Click *OpenStack*.
 . Specify the following fields:
 
-* *Provider resource name*: Name of the source provider
+* *Provider resource name*: Name of the source provider.
 +
 include::snip-provider-names.adoc[]
 * *URL*: {osp} Identity (Keystone) endpoint, for example, `http://controller:5000/v3`.
