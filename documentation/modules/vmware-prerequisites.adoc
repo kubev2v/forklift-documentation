@@ -5,6 +5,8 @@
 [id="vmware-prerequisites_{context}"]
 = VMware prerequisites
 
+It is strongly recommended to create a VDDK image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
+
 The following prerequisites apply to VMware migrations:
 
 * You must use a xref:compatibility-guidelines_{context}[compatible version] of VMware vSphere.
@@ -16,6 +18,7 @@ The following prerequisites apply to VMware migrations:
 * You must obtain the SHA-1 fingerprint of the vCenter host.
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the NFC service memory of the host.
 * It is strongly recommended to disable hibernation because {project-first} does not support migrating hibernated VMs.
+
 
 [IMPORTANT]
 ====
