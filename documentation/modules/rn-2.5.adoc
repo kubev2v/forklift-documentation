@@ -66,7 +66,7 @@ During the migration from RHV, direct LUNs are detached from the source virtual 
 
 .Additional authentication methods for OpenStack
 
-In addition to standard password authentication, the following authentication methods are supported: Token authentication and Application credential authentication. Usage note: The `regionName` property needs to be added manually to the provider secret when these new authentication methods are configured from the UI. link:https://issues.redhat.com/browse/MTV-539[(MTV-539)]
+In addition to standard password authentication, the following authentication methods are supported: Token authentication and Application credential authentication. link:https://issues.redhat.com/browse/MTV-539[(MTV-539)]
 
 .Validation rules for OpenStack
 
@@ -124,10 +124,6 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
-.OVA migration with multiple disks does not function as expected
-
-OVA migration with multiple disks does not function as expected. When trying to migrate an OVA VM with more than one disk, the migration becomes stuck at the `allocate disks` phase. link:https://issues.redhat.com/browse/MTV-676[(MTV-676)]
-
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-562?filter=12419159[Known Issues] in Jira.
 
 [id="resolved-issues-25_{context}"]
@@ -135,7 +131,7 @@ For a complete list of all known issues in this release, see the list of link:ht
 
 This release has the following resolved issues:
 
-// are there any resolved issues you want to highlight in this release?
+
 .Ensure up-to-date data is displayed in the create and update provider forms
 
 In previous releases of {project-short}, the create and update provider forms could have presented stale data.
@@ -196,18 +192,13 @@ It is recommended to upgrade from {project-short} 2.4.2 to {project-short} {proj
 
 When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: Remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. Refresh the {ocp} console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
 
-[NOTE]
-====
-There is an issue with upgrading from 2.4.1 or 2.4.2.
-When upgrading from 2.4 (2.4.z), after the 2.5 operator starts
+////
+[id="deprecated-features-25_{context}"]
+== Deprecated features
 
-. Remove the `mutatingwebhookconfiguration` named `forklift-api` by running the following command:
-+
-`$ oc -n openshift-mtv delete mutatingwebhookconfiguration forklift-api`
+This release has the following deprecated feature:
 
-. Remove the `validatingwebhookconfiguration` named `forklift-api` by running the following command:
-+
-`$ oc -n openshift-mtv delete validatingwebhookconfiguration forklift-api`
+.Migration from {rhv-full} 4.3
 
-. Restart the {project-short} operator.
-====
+Migration from {rhv-full} 4.3 has been deprecated in {project-short} {project-version}.
+////
