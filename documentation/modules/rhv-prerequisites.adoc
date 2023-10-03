@@ -9,8 +9,8 @@
 The following prerequisites apply to {rhv-full} migrations:
 
 * You must have one of the following:
-** {rhv-short} admin permissions. These permissions allows you to migrate any virtual machine in the system.
-** `DiskCreator` and `UserVmManager` permissions: These permissions have to be granted by an `admin` user to you individually per each individual virtual machine that you want to migrate.
+** {rhv-short} admin permissions. These permissions allow you to migrate any virtual machine in the system.
+** `DiskCreator` and `UserVmManager` permissions: These permissions have to be granted to you individually by an `admin` user per each individual virtual machine that you want to migrate.
 * You must use a xref:compatibility-guidelines_{context}[compatible version] of {rhv-full}.
 * You must have the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, specify the {manager} Apache CA certificate.
 +
