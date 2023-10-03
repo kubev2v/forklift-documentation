@@ -1,7 +1,0 @@
-:_content-type: SNIPPET
-
-[NOTE]
-====
-Provider names must start with an alphabetic character and cannot include the following character: +
-`.`
-====

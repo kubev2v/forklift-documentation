@@ -73,7 +73,7 @@ EOF
 <8> {osp} only: Specify the project name.
 <9> {osp} only: Specify the name of the {osp} region.
 <10> {rhv-short} and {osp} only: For {rhv-short}, enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA. For {osp}, enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`.
-<11> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api/` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
+<11> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
 <12> VMware only: Specify the vCenter SHA-1 fingerprint.
 +
 [NOTE]
@@ -110,7 +110,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ovirt`, `vsphere`, and `openstack`.
-<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api/` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
+<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
 <3> VMware only: Specify the VDDK image that you created.
 <4> Specify the name of provider `Secret` CR.
 

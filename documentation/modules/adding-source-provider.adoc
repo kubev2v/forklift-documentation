@@ -78,9 +78,9 @@ ifdef::vmware[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider.
-* *URL*: vCenter host name or IP address - if a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
+* *URL*: URL of the SDK endpoint of the vCenter on which the source VM is mounted. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
 * *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
-* *Username*: vCenter user, for example, `user@vsphere.local`.
+* *Username*: vCenter user. For example, `user@vsphere.local`.
 * *Password*: vCenter user password.
 * *SHA-1 fingerprint*: The provider currently requires the SHA-1 fingerprint of the vCenter Server's TLS certificate in all circumstances. vSphere calls this the server's thumbprint.
 +
@@ -97,12 +97,10 @@ ifdef::rhv[]
 . Click *Red Hat Virtualization*
 . Specify the following fields:
 
-* *Provider resource name*: Name of the source provider
-+
-include::snip-provider-names.adoc[]
-* *URL*: API endpoint of the {rhv-short} Manager on which the source VM is mounted
-* *Username*: Username
-* *Password*: Password
+* *Provider resource name*: Name of the source provider.
+* *URL*: URL of the API endpoint of the {rhv-full} Manager (RHVM) on which the source VM is mounted. Ensure that the URL includes the path leading to the RHVM API server, usually `/ovirt-engine/api`. For example, `https://rhv-host-example.com/ovirt-engine/api`.
+* *Username*: Username.
+* *Password*: Password.
 
 . Choose one of the following options for validating CA certificates:
 
@@ -117,8 +115,6 @@ ifdef::ova[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
-+
-include::snip-provider-names.adoc[]
 * *URL*: URL of the NFS file share that serves the OVA
 endif::[]
 ifdef::ostack[]
@@ -126,9 +122,7 @@ ifdef::ostack[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider.
-+
-include::snip-provider-names.adoc[]
-* *URL*: {osp} Identity (Keystone) endpoint, for example, `http://controller:5000/v3`.
+* *URL*: URL of the {osp} Identity (Keystone) endpoint. For example, `http://controller:5000/v3`.
 * *Authentication type*: Choose one of the following methods of authentication and supply the information related to your choice. For example, if you choose *Application credential ID* as the authentication type, the *Application credential ID* and the *Application credential secret* fields become active, and you need to supply the ID and the secret.
 
 ** *Application credential ID*
@@ -171,9 +165,7 @@ ifdef::cnv[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
-+
-include::snip-provider-names.adoc[]
-* *URL*: Endpoint of the API server
+* *URL*: URL of the endpoint of the API server
 * *Service account bearer token*: Token for a service account with `cluster-admin` privileges
 +
 If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
@@ -183,9 +175,7 @@ ifdef::cnv2[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
-+
-include::snip-provider-names.adoc[]
-* *URL*: Endpoint of the API server
+* *URL*: URL of the endpoint of the API server
 * *Service account bearer token*: Token for a service account with `cluster-admin` privileges
 +
 If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
