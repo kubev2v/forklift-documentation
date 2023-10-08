@@ -12,5 +12,11 @@ You must install compatible software versions.
 .Compatible software versions
 |===
 |{project-full} |{ocp} |{virt} |VMware vSphere |{rhv-full}|OpenStack
-|2.5.0 |4.12 or later |4.12 or later |6.5 or later |4.4.9 or later|16.1 or later
+|2.5.1 |4.12 or later |4.12 or later |6.5 or later |4.4 SP1 or later|16.1 or later
 |===
+
+[NOTE] 
+.Migration from {rhv-full} 4.3
+==== 
+MTV 2.5 was tested only with {rhv-full} (RHV) 4.4 SP1. 
+====
