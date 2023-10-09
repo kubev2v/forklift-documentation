@@ -19,17 +19,22 @@ Migration of OVA files that were not created by VMware vSphere but are compatibl
 
 ** In one or more compressed Open Virtualization Format (OVF) packages that hold all the VM information.
 +
-The filenames of the compressed packages *must* have `.ova` extensions. Several packages can be stored either in the same folder or in individual folders:
+The filename of each compressed package *must* have the `.ova` extension. Several compressed packages can be stored in the same folder.
 +
-`<nfs_shared_directory>/folder1/vm1.ova` +
-`<nfs_shared_directory>/folder1/vm2.ova` (`vm1.ova` and `vm2.ova` in `folder1`)
+When this structure is used, {project-short} scans the root folder and the first-level subfolders for compressed packages.
 +
-_or_
-+
-`<nfs_shared_directory>/folder1/vm1.ova` +
-`<nfs_shared_directory>/folder2/vm2.ova` (`vm1.ova` in `folder1`, `vm2.ova` in `folder2`)
+For example, if the NFS share is, `/nfs`, then: +
+The folder `/nfs` is scanned. +
+The folder `/nfs/subfolder1` is scanned. +
+But, `/nfs/subfolder1/subfolder2` is not scanned.
 
-** In extracted OVF packages, each package being an individual folder:
+** In extracted OVF packages.
 +
-`<nfs_shared_directory>/vm1/` +
-`<nfs_shared_directory>/vm2/`
+When this structure is used, {project-short} scans the root folder, first-level subfolders, and second-level subfolders for extracted OVF packages.
+However, there can be only one `.ovf` file in a folder. Otherwise, the migration will fail.
++
+For example, if the NFS share is, `/nfs`, then: +
+The OVF file `/nfs/vm.ovf` is scanned. +
+The OVF file `/nfs/subfolder1/vm.ovf` is scanned. +
+The OVF file `/nfs/subfolder1/subfolder2/vm.ovf` is scanned. +
+But, the OVF file `/nfs/subfolder1/subfolder2/subfolder3/vm.ovf` is not scanned.
