@@ -15,8 +15,15 @@ You must install compatible software versions.
 |2.5.1 |4.12 or later |4.12 or later |6.5 or later |4.4 SP1 or later|16.1 or later
 |===
 
-[NOTE] 
+[NOTE]
 .Migration from {rhv-full} 4.3
-==== 
-MTV 2.5 was tested only with {rhv-full} (RHV) 4.4 SP1. 
+====
+MTV 2.5 was tested only with {rhv-full} (RHV) 4.4 SP1.
+Migration from {rhv-full} ({rhv-short}) 4.3 has not been tested with {project-short} {project-version}.
+
+As {rhv-short} 4.3 lacks the improvements that were introduced in {rhv-short} 4.4 for {project-short}, and new features were not tested with {rhv-short} 4.3, migrations from {rhv-short} 4.3 may not function at the same level as migrations from {rhv-short} 4.4, with some functionality may be missing.
+
+Therefore, it is recommended to upgrade {rhv-short} to the supported version above before the migration to {virt}.
+
+However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3, and may work in practice in many environments using {project-short} {project-version}. In this case, we advise upgrading {rhv-full} Manager (RHVM) to the previously mentioned supported version before the migration to {virt}.
 ====
