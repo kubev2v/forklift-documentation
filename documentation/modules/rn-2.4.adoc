@@ -137,7 +137,7 @@ This release has the following resolved issues:
 
 .Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)
 
-A flaw was found in handling multiplexed streams in the HTTP/2 protocol. In previous releases of MTV, the HTTP/2 protocol allowed a denial of service (server resource consumption) because request cancellation could be reset multiple streams quickly. The server had to set up and tear down the streams while not hitting any server-side limit for the maximum number of active streams per connection, which resulted in a denial of service due to server resource consumption.
+A flaw was found in handling multiplexed streams in the HTTP/2 protocol. In previous releases of MTV, the HTTP/2 protocol allowed a denial of service (server resource consumption) because request cancellation could reset multiple streams quickly. The server had to set up and tear down the streams while not hitting any server-side limit for the maximum number of active streams per connection, which resulted in a denial of service due to server resource consumption.
 
 This issue has been resolved in MTV 2.4.3 and 2.5.2. It is advised to update to one of these versions of MTV or later.
 
