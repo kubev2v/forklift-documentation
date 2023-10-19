@@ -131,6 +131,48 @@ For a complete list of all known issues in this release, see the list of link:ht
 
 This release has the following resolved issues:
 
+.Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)
+
+A flaw was found in handling multiplexed streams in the HTTP/2 protocol. In previous releases of MTV, the HTTP/2 protocol allowed a denial of service (server resource consumption) because request cancellation could be reset multiple streams quickly. The server had to set up and tear down the streams while not hitting any server-side limit for the maximum number of active streams per connection, which resulted in a denial of service due to server resource consumption.
+
+This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
+
+// as the following Jira tickets are all set to "Security Level:Red Hat Employee (Red Hat Employee and Contractors only)"
+// unless the security level is changed, i would probably remove but will defer.
+The following issues have been listed under this issue:
+
+* link:https://issues.redhat.com/browse/MTV-750[CVE-2023-44487 mtv-console-plugin-container: HTTP/2: Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (MTV-750)]
+* link:https://issues.redhat.com/browse/MTV-758[CVE-2023-39325 CVE-2023-44487 mtv-api-container: various flaws (MTV-758)]
+* link:https://issues.redhat.com/browse/MTV-762[CVE-2023-39325 mtv-must-gather-api-container: golang: net/http, x/net/http2: rapid stream resets can cause excessive work (MTV-762)]
+* link:https://issues.redhat.com/browse/MTV-764[mtv-validation-container: golang: net/http, x/net/http2: rapid stream resets can cause excessive work (MTV-764)]
+
+For more information, see link:https://access.redhat.com/security/cve/cve-2023-44487[CVE-2023-44487 (Rapid Reset Attack)] and link:https://access.redhat.com/security/cve/cve-2023-39325[CVE-2023-39325 (Rapid Reset Attack)].
+
+.Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function
+
+A flaw was found in the Gin-Gonic Gin Web Framework. The filename parameter of the `Context.FileAttachment` function was not properly sanitized. This flaw in the package could allow a remote attacker to bypass security restrictions caused by improper input validation by the filename parameter of the `Context.FileAttachment` function.  A maliciously created filename could cause the `Content-Disposition` header to be sent with an unexpected filename value, or otherwise modify the `Content-Disposition` header.
+
+
+This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
+
+The following issues have been listed under this issue:
+
+* link:https://issues.redhat.com/browse/MTV-600[CVE-2023-29401 mtv-controller-container: golang-github-gin-gonic-gin: Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function]
+* link:https://issues.redhat.com/browse/MTV-601[CVE-2023-29401 mtv-must-gather-api-container: golang-github-gin-gonic-gin: Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function]
+* link:https://bugzilla.redhat.com/show_bug.cgi?id=2203776[CVE-2023-26125 mtv-controller-container: golang-github-gin-gonic-gin: Improper Input Validation]
+* link:https://bugzilla.redhat.com/show_bug.cgi?id=2203777[ CVE-2023-26125 mtv-must-gather-api-container: golang-github-gin-gonic-gin: Improper Input Validation]
+
+For more information, see link:https://access.redhat.com/security/cve/cve-2023-44487[CVE-2023-44487 (Rapid Reset Attack)] and link:https://access.redhat.com/security/cve/CVE-2023-26125[CVE-2023-26125]
+
+
+.CVE-2023-26144 mtv-console-plugin-container: graphql: Insufficient checks in the OverlappingFieldsCanBeMergedRule.ts
+
+A flaw was found in the package GraphQL from 16.3.0 and before 16.8.1. This flaw means MTV 2.5 versions before MTV 2.5.2 are vulnerable to Denial of Service (DoS) due to insufficient checks in the `OverlappingFieldsCanBeMergedRule.ts` file when parsing large queries. This issue may allow an attacker to degrade system performance. link:https://issues.redhat.com/browse/MTV-712[(MTV-712)]
+
+This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
+
+For more information, see link:https://access.redhat.com/security/cve/CVE-2023-26144[CVE-2023-26144]
+
 
 .Ensure up-to-date data is displayed in the create and update provider forms
 
