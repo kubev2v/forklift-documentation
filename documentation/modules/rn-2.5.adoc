@@ -137,15 +137,6 @@ A flaw was found in handling multiplexed streams in the HTTP/2 protocol. In prev
 
 This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
 
-// as the following Jira tickets are all set to "Security Level:Red Hat Employee (Red Hat Employee and Contractors only)"
-// unless the security level is changed, i would probably remove but will defer.
-The following issues have been listed under this issue:
-
-* link:https://issues.redhat.com/browse/MTV-750[CVE-2023-44487 mtv-console-plugin-container: HTTP/2: Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (MTV-750)]
-* link:https://issues.redhat.com/browse/MTV-758[CVE-2023-39325 CVE-2023-44487 mtv-api-container: various flaws (MTV-758)]
-* link:https://issues.redhat.com/browse/MTV-762[CVE-2023-39325 mtv-must-gather-api-container: golang: net/http, x/net/http2: rapid stream resets can cause excessive work (MTV-762)]
-* link:https://issues.redhat.com/browse/MTV-764[mtv-validation-container: golang: net/http, x/net/http2: rapid stream resets can cause excessive work (MTV-764)]
-
 For more information, see link:https://access.redhat.com/security/cve/cve-2023-44487[CVE-2023-44487 (Rapid Reset Attack)] and link:https://access.redhat.com/security/cve/cve-2023-39325[CVE-2023-39325 (Rapid Reset Attack)].
 
 .Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function
@@ -154,13 +145,6 @@ A flaw was found in the Gin-Gonic Gin Web Framework. The filename parameter of t
 
 
 This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
-
-The following issues have been listed under this issue:
-
-* link:https://issues.redhat.com/browse/MTV-600[CVE-2023-29401 mtv-controller-container: golang-github-gin-gonic-gin: Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function]
-* link:https://issues.redhat.com/browse/MTV-601[CVE-2023-29401 mtv-must-gather-api-container: golang-github-gin-gonic-gin: Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function]
-* link:https://bugzilla.redhat.com/show_bug.cgi?id=2203776[CVE-2023-26125 mtv-controller-container: golang-github-gin-gonic-gin: Improper Input Validation]
-* link:https://bugzilla.redhat.com/show_bug.cgi?id=2203777[ CVE-2023-26125 mtv-must-gather-api-container: golang-github-gin-gonic-gin: Improper Input Validation]
 
 For more information, see link:https://access.redhat.com/security/cve/cve-2023-44487[CVE-2023-44487 (Rapid Reset Attack)] and link:https://access.redhat.com/security/cve/CVE-2023-26125[CVE-2023-26125]
 
