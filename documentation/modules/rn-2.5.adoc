@@ -146,7 +146,7 @@ A flaw was found in the Gin-Gonic Gin Web Framework. The filename parameter of t
 
 This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
 
-For more information, see link:https://access.redhat.com/security/cve/cve-2023-29401[CVE-2023-29401 (Gin-Gonic Gin Web Framework)] and link:https://access.redhat.com/security/cve/CVE-2023-26125[CVE-2023-26125]
+For more information, see link:https://access.redhat.com/security/cve/cve-2023-29401[CVE-2023-29401 (Gin-Gonic Gin Web Framework)] and link:https://access.redhat.com/security/cve/CVE-2023-26125[CVE-2023-26125].
 
 
 .CVE-2023-26144 mtv-console-plugin-container: graphql: Insufficient checks in the OverlappingFieldsCanBeMergedRule.ts
@@ -155,7 +155,7 @@ A flaw was found in the package GraphQL from 16.3.0 and before 16.8.1. This flaw
 
 This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
 
-For more information, see link:https://access.redhat.com/security/cve/CVE-2023-26144[CVE-2023-26144]
+For more information, see link:https://access.redhat.com/security/cve/CVE-2023-26144[CVE-2023-26144].
 
 
 .Ensure up-to-date data is displayed in the create and update provider forms
