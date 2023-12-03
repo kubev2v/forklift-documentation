@@ -34,7 +34,7 @@ If you have Administrator privileges, you can access the *Overview* page and cha
 |60
 
 |Snapshot polling interval (seconds)
-|The frequency with which the system checks the status of snapshot creation or removal during warm migration
+|The frequency with which the system checks the status of snapshot creation or removal during a warm migration
 |10
 |===
 

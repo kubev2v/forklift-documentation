@@ -1,0 +1,67 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="configuring-mtv-operator_{context}"]
+= Configuring the {operator-name}
+
+You can configure the following settings of the {operator-name} using either the CLI or the user interface.
+
+* Maximum number of virtual machines (VMs) per plan that can be migrated simultaneously
+* How long `must gather` reports are retained before being automatically deleted
+* CPU limit allocated to the main controller container
+* Memory limit allocated to the main controller container
+* Interval at which a new snapshot is requested before initiating a warm migration
+* Frequency with which the system checks the status of snapshot creation or removal during a warm migration
+* Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem` (CLI only)
+
+These settings are configured by changing the default of the appropriate parameter in the `spec` part of the `forklift-controller` CR.
+
+The procedure for configuring these settings using the user interface is presented in xref:mtv-overview-page_{context}[Configuring MTV settings]. The procedure for configuring these settings using the CLI is presented following.
+
+.Procedure
+
+* Change a parameter's value in  the `spec` portion of the `forklift-controller` CR by adding the label and value as follows:
+[source, YAML]
+----
+spec:
+  label: value <1>
+----
+<1> Labels you can configure using the CLI are shown in the table that follows, along with a description of each label and its default value.
+
+.{operator-name} labels
+[cols="1,1,1",options="header"]
+|===
+|Label |Description |Default value
+
+|`controller_max_vm_in_flight`
+|The maximum number of VMs per plan that can be migrated simultaneously.
+|`20`
+
+|`must_gather_api_cleanup_max_age`
+|The duration in hours for retaining `must gather` reports before they are automatically deleted.
+|`-1` (disabled)
+
+|`controller_container_limits_cpu`
+|The CPU limit allocated to the main controller container.
+|`500m`
+
+|`controller_container_limits_memory`
+|The memory limit allocated to the main controller container.
+|`800Mi`
+
+|`controller_precopy_interval`
+|The interval in minutes at which a new snapshot is requested before initiating a warm migration.
+|`60`
+
+|`controller_snapshot_status_check_rate_seconds`
+|The frequency in seconds with which the system checks the status of snapshot creation or removal during a warm migration.
+|`10`
+
+|`controller_filesystem_overhead`
+|Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem`. Note, this label can only be changed using the CLI
+|`10`
+|===
+
+
