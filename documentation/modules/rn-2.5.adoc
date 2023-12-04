@@ -13,7 +13,7 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 * Open Virtual Appliances (OVAs) that were created by VMware vSphere
 * Remote {virt} clusters
 
-The release notes describe technical changes, new features and enhancements, and known issues.
+The release notes describe technical changes, new features and enhancements, and known issues for {project-full}.
 
 [id="technical-changes-25_{context}"]
 == Technical changes
@@ -22,11 +22,11 @@ This release has the following technical changes:
 
 .Migration from OpenStack moves to being a fully supported feature
 
-In this version, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.
+In this version of {project-short}, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.
 
 .Disabling FIPS
 
-EMS enforcement is disabled for migrations with VMware vSphere source providers to enable migrations from versions of vSphere that are supported by {project-full} but do not comply with the 2023 FIPS requirements.
+EMS enforcement is disabled for migrations with VMware vSphere source providers to enable migrations from versions of vSphere that are supported by {project-short} but do not comply with the 2023 FIPS requirements.
 
 .Integration of the create and update provider user interface
 
@@ -35,6 +35,11 @@ The user interface of create and update providers now aligns with the look and f
 .Standalone UI
 
 The old UI of MTV 2.3 cannot be enabled by setting `feature_ui: true` in ForkliftController anymore.
+
+.Errors logged in populator pods are improved
+
+// thanks Arik.
+In previous releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
@@ -55,9 +60,6 @@ include::snippet_ova_tech_preview.adoc[]
 
 .Migrating VMs between {ocp} clusters
 
-// i need to wait for this ticket to be merged to add a link
-// apologies, I meant link to output of the doc ticket rather than https://issues.redhat.com/browse/MTV-336[Import VMware-compatible OVAs]
-// But let me add this as a placeholder
 In {project-short} {project-version}, you can now use Red Hat {virt} provider as a source provider as well as a destination provider. You can migrate VMs from the cluster that MTV is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on. link:https://issues.redhat.com/browse/MTV-571[(MTV-571)]
 
 .Migration of VMs with direct LUNs from RHV
@@ -77,6 +79,13 @@ The validation service includes default validation rules for virtual machines fr
 
 The VMware vSphere source provider can now be created without specifying a VDDK `init` image. It is strongly recommended to create a VDDK `init` image to accelerate migrations.
 
+.Deployment on OKE enabled
+
+// adding the link to the "About OKE" docs as it is better than nothing
+In {project-short} 2.5.3, deployment on OpenShift Kubernetes Engine (OKE) has been enabled. For more information, see link:https://docs.openshift.com/container-platform/4.14/welcome/oke_about.html[About OpenShift Kubernetes Engine].
+
+link:https://issues.redhat.com/browse/MTV-803[(MTV-803)]
+
 
 [id="known-issues-25_{context}"]
 == Known issues
@@ -91,20 +100,13 @@ Deleting a migration plan does not remove temporary resources such as importer p
 
 The error status message for a VM with no operating system on the *Plans* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
 
-.Log archive file includes logs of a deleted migration plan or VM
-
-If deleting a migration plan and running a new migration plan with the same name, or if deleting a migrated VM and remigrating the source VM, then the log archive file created by the {project-short} web console might include the logs of the deleted migration plan or VM. link:https://bugzilla.redhat.com/show_bug.cgi?id=2023764[(BZ#2023764)]
-
 .Migration of virtual machines with encrypted partitions fails during conversion
 
 vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the encryption key may be missing on the target {ocp} cluster.
 
-//inclusive language - cannot use execute
+
 .Migration fails during precopy/cutover while a snapshot operation is performed on the source VM
 
-////
-Some warm migrations from {rhv-short} might fail. When running a migration plan for warm migration of multiple VMs from {rhv-short}, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.
-////
 Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If a user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
 .Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
@@ -124,38 +126,115 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
-For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-562?filter=12419159[Known Issues] in Jira.
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-740?filter=12424645[Known Issues] in Jira.
+
 
 [id="resolved-issues-25_{context}"]
 == Resolved issues
 
 This release has the following resolved issues:
 
+
 .Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)
 
-A flaw was found in handling multiplexed streams in the HTTP/2 protocol. In previous releases of MTV, the HTTP/2 protocol allowed a denial of service (server resource consumption) because request cancellation could reset multiple streams quickly. The server had to set up and tear down the streams while not hitting any server-side limit for the maximum number of active streams per connection, which resulted in a denial of service due to server resource consumption.
+A flaw was found in handling multiplexed streams in the HTTP/2 protocol. In previous releases of {project-short}, the HTTP/2 protocol allowed a denial of service (server resource consumption) because request cancellation could reset multiple streams quickly. The server had to set up and tear down the streams while not hitting any server-side limit for the maximum number of active streams per connection, which resulted in a denial of service due to server resource consumption.
 
-This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
+This issue has been resolved in {project-short} 2.5.2. It is advised to update to this version of MTV or later.
 
 For more information, see link:https://access.redhat.com/security/cve/cve-2023-44487[CVE-2023-44487 (Rapid Reset Attack)] and link:https://access.redhat.com/security/cve/cve-2023-39325[CVE-2023-39325 (Rapid Reset Attack)].
 
+
 .Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function
 
-A flaw was found in the Gin-Gonic Gin Web Framework. The filename parameter of the `Context.FileAttachment` function was not properly sanitized. This flaw in the package could allow a remote attacker to bypass security restrictions caused by improper input validation by the filename parameter of the `Context.FileAttachment` function.  A maliciously created filename could cause the `Content-Disposition` header to be sent with an unexpected filename value, or otherwise modify the `Content-Disposition` header.
+A flaw was found in the Gin-Gonic Gin Web Framework, used by {project-short}. The filename parameter of the `Context.FileAttachment` function was not properly sanitized. This flaw in the package could allow a remote attacker to bypass security restrictions caused by improper input validation by the filename parameter of the `Context.FileAttachment` function.  A maliciously created filename could cause the `Content-Disposition` header to be sent with an unexpected filename value, or otherwise modify the `Content-Disposition` header.
 
 
-This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
+This issue has been resolved in {project-short} 2.5.2. It is advised to update to this version of {project-short} or later.
 
 For more information, see link:https://access.redhat.com/security/cve/cve-2023-29401[CVE-2023-29401 (Gin-Gonic Gin Web Framework)] and link:https://access.redhat.com/security/cve/CVE-2023-26125[CVE-2023-26125].
 
 
-.CVE-2023-26144 mtv-console-plugin-container: graphql: Insufficient checks in the OverlappingFieldsCanBeMergedRule.ts
+.CVE-2023-26144: mtv-console-plugin-container: graphql: Insufficient checks in the OverlappingFieldsCanBeMergedRule.ts
 
-A flaw was found in the package GraphQL from 16.3.0 and before 16.8.1. This flaw means MTV 2.5 versions before MTV 2.5.2 are vulnerable to Denial of Service (DoS) due to insufficient checks in the `OverlappingFieldsCanBeMergedRule.ts` file when parsing large queries. This issue may allow an attacker to degrade system performance. link:https://issues.redhat.com/browse/MTV-712[(MTV-712)]
+A flaw was found in the package GraphQL from 16.3.0 and before 16.8.1. This flaw means {project-short}  versions before {project-short} 2.5.2 are vulnerable to Denial of Service (DoS) due to insufficient checks in the `OverlappingFieldsCanBeMergedRule.ts` file when parsing large queries. This issue may allow an attacker to degrade system performance. link:https://issues.redhat.com/browse/MTV-712[(MTV-712)]
 
-This issue has been resolved in MTV 2.5.2. It is advised to update to this version of MTV or later.
+This issue has been resolved in {project-short} 2.5.2. It is advised to update to this version of {project-short} or later.
 
 For more information, see link:https://access.redhat.com/security/cve/CVE-2023-26144[CVE-2023-26144].
+
+
+.CVE-2023-45142: Memory leak found in the otelhttp handler of open-telemetry
+
+A flaw was found in `otelhttp handler` of OpenTelemetry-Go. This flaw means {project-short} versions before {project-short} 2.5.3 are vulnerable to a memory leak caused by `http.user_agent` and `http.method` having unbound cardinality, which could allow a remote, unauthenticated attacker to exhaust the server's memory by sending many malicious requests, affecting the availability. link:https://issues.redhat.com/browse/MTV-795[(MTV-795)]
+
+This issue has been resolved in {project-short} 2.5.3. It is advised to update to this version of {project-short} or later.
+
+For more information, see link:https://access.redhat.com/security/cve/CVE-2023-45142[CVE-2023-45142].
+
+
+.CVE-2023-39322: QUIC connections do not set an upper bound on the amount of data buffered when reading post-handshake messages
+
+A flaw was found in Golang. This flaw means {project-short} versions before {project-short} 2.5.3 are vulnerable to QUIC connections not setting an upper bound on the amount of data buffered when reading post-handshake messages, allowing a malicious QUIC connection to cause unbounded memory growth. With the fix, connections now consistently reject messages larger than 65KiB in size. link:https://issues.redhat.com/browse/MTV-708[(MTV-708)]
+
+This issue has been resolved in {project-short} 2.5.3. It is advised to update to this version of {project-short} or later.
+
+For more information, see link:https://access.redhat.com/security/cve/CVE-2023-39322[CVE-2023-39322].
+
+
+.CVE-2023-39321: Processing an incomplete post-handshake message for a QUIC connection can cause a panic
+
+A flaw was found in Golang. This flaw means {project-short} versions before {project-short} 2.5.3 are vulnerable to processing an incomplete post-handshake message for a QUIC connection, which causes a panic. link:https://issues.redhat.com/browse/MTV-693[(MTV-693)]
+
+This issue has been resolved in {project-short} 2.5.3. It is advised to update to this version of {project-short} or later.
+
+For more information, see link:https://access.redhat.com/security/cve/CVE-2023-39321[CVE-2023-39321].
+
+
+.CVE-2023-39319: Flaw in html/template package
+
+A flaw was found in the Golang `html/template` package used in {project-short}. This flaw means {project-short} versions before {project-short} 2.5.3 are vulnerable, as the `html/template` package did not properly handle occurrences of `<script`, `<!--`, and `</script` within JavaScript literals in `<script>` contexts. This flaw could cause the template parser to improperly consider script contexts to be terminated early, causing actions to be improperly escaped, which could be leveraged to perform an `XSS` attack. link:https://issues.redhat.com/browse/MTV-693[(MTV-693)]
+
+This issue has been resolved in {project-short} 2.5.3. It is advised to update to this version of {project-short} or later.
+
+For more information, see link:https://access.redhat.com/security/cve/CVE-2023-39319[CVE-2023-39319].
+
+
+.CVE-2023-39318: Flaw in html/template package
+
+A flaw was found in the Golang `html/template` package used in {project-short}. This flaw means {project-short} versions before {project-short} 2.5.3 are vulnerable as the `html/template` package did not properly handle HMTL-like `""` comment tokens, nor hashbang `\#!` comment tokens. This flaw could cause the template parser to improperly interpret the contents of `<script>` contexts, causing actions to be improperly escaped, which could be leveraged to perform an `XSS` attack. link:https://issues.redhat.com/browse/MTV-693[(MTV-693)]
+
+This issue has been resolved in {project-short} 2.5.3. It is advised to update to this version of {project-short} or later.
+
+For more information, see link:https://access.redhat.com/security/cve/CVE-2023-39318[CVE-2023-39318].
+
+.Logs archive file downloaded from UI includes logs related to deleted migration plan/VM
+
+In previous releases of {project-short} {project-version}, the log files downloaded from UI could contain logs that are related to a previous migration plan. link:https://issues.redhat.com/browse/MTV-783[(MTV-783)]
+
+This issue has been resolved in {project-short} 2.5.3.
+
+.Extending a VM disk in RHV is not reflected in the MTV inventory
+
+In previous releases of {project-short} {project-version}, the size of disks that are extended in RHV was not adequately monitored. This resulted in the inability to migrate virtual machines with extended disks from a RHV provider. link:https://issues.redhat.com/browse/MTV-830[(MTV-830)]
+
+This issue has been resolved in {project-short} 2.5.3.
+
+
+.Filesystem overhead configurable
+
+In previous releases of {project-short} {project-version}, the filesystem overhead for new persistent volumes was hard-coded to 10%. The overhead was insufficient for certain filesystem types, resulting in failures during cold-migrations from RHV and OSP to the cluster where {project-short} is deployed.  In other filesystem types, the hard-coded overhead was too high, resulting in excessive storage consumption.
+
+In {project-short} 2.5.3, the filesystem overhead can be configured and is no longer hard-coded. If your migration allocates persistent volumes without CDI, you can adjust the file system overhead. You adjust the file system overhead by adding the following label and value to the `spec` portion of the `forklift-controller ` CR`:
+
+[source, YAML]
+----
+spec:
+  `controller_filesystem_overhead: <percentage>` <1>
+----
+<1> The percentage of overhead. If this label is not added, the default value of 10% is used. This setting is valid only if the `storageclass` is `filesystem`.
+====
+
+link:https://issues.redhat.com/browse/MTV-699[(MTV-699)]
 
 
 .Ensure up-to-date data is displayed in the create and update provider forms
@@ -206,7 +285,7 @@ In previous releases of {project-short}, VM with multiple disks that were migrat
 
 This issue is resolved in {project-short} {project-version}, VM with multiple disks that are migrated are able to boot on the target {ocp} cluster. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
 
-For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-433?filter=12419160[Resolved Issues] in Jira.
+For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-666?filter=12424644[Resolved Issues] in Jira.
 
 [id="upgrade-notes-25_{context}"]
 == Upgrade notes
