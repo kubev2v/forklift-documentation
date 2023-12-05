@@ -82,9 +82,7 @@ The VMware vSphere source provider can now be created without specifying a VDDK 
 .Deployment on OKE enabled
 
 // adding the link to the "About OKE" docs as it is better than nothing
-In {project-short} 2.5.3, deployment on OpenShift Kubernetes Engine (OKE) has been enabled. For more information, see link:https://docs.openshift.com/container-platform/4.14/welcome/oke_about.html[About OpenShift Kubernetes Engine].
-
-link:https://issues.redhat.com/browse/MTV-803[(MTV-803)]
+In {project-short} 2.5.3, deployment on OpenShift Kubernetes Engine (OKE) has been enabled. For more information, see link:https://docs.openshift.com/container-platform/4.14/welcome/oke_about.html[About OpenShift Kubernetes Engine]. link:https://issues.redhat.com/browse/MTV-803[(MTV-803)]
 
 
 [id="known-issues-25_{context}"]
@@ -231,10 +229,7 @@ In {project-short} 2.5.3, the filesystem overhead can be configured and is no lo
 spec:
   `controller_filesystem_overhead: <percentage>` <1>
 ----
-<1> The percentage of overhead. If this label is not added, the default value of 10% is used. This setting is valid only if the `storageclass` is `filesystem`.
-
-
-link:https://issues.redhat.com/browse/MTV-699[(MTV-699)]
+<1> The percentage of overhead. If this label is not added, the default value of 10% is used. This setting is valid only if the `storageclass` is `filesystem`. link:https://issues.redhat.com/browse/MTV-699[(MTV-699)]
 
 
 .Ensure up-to-date data is displayed in the create and update provider forms
