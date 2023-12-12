@@ -83,11 +83,13 @@ include::modules/ova-prerequisites.adoc[leveloffset=+2]
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 [id="installing-the-operator"]
-== Installing the {operator-name}
+== Installing and configuring the {operator-name}
 
 You can install the {operator-name} by using the {ocp} web console or the command line interface (CLI).
 
 In {project-first} version 2.4 and later, the {operator-name} includes the {project-short} plugin for the {ocp} web console.
+
+After you install the {operator-name} by using either the {ocp} web console or the CLI, you can configure the Operator.
 
 :!mtv:
 :context: web
@@ -101,6 +103,8 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 :!cli:
 :context: mtv
 :mtv:
+
+include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 
 [id="migrating-vms-web-console"]
 == Migrating virtual machines by using the {ocp} web console
