@@ -61,10 +61,11 @@ stringData: <3>
     <ca_certificate>
   url: <api_end_point> <11>
   thumbprint: <vcenter_fingerprint> <12>
+  token: <service_account_bearer_token> <13>
 EOF
 ----
 <1> The `ownerReferences` section is optional.
-<2> Specify the type of source provider. Allowed values are `ovirt`, `vsphere`, `openstack`, and `ova`. This label is needed to verify the credentials are correct when the remote system is accessible and, for {rhv-short}, to retrieve the {manager} CA certificate when a third-party certificate is specified.
+<2> Specify the type of source provider. Allowed values are `ovirt`, `vsphere`, `openstack`, `ova`, and `openshift`. This label is needed to verify the credentials are correct when the remote system is accessible and, for {rhv-short}, to retrieve the {manager} CA certificate when a third-party certificate is specified.
 <3> The `stringData` section for OVA is different and is described in a note that follows the description of the `Secret` manifest.
 <4> Specify the vCenter user, the {rhv-short} {manager} user, or the {osp} user.
 <5> Specify the user password.
@@ -75,6 +76,7 @@ EOF
 <10> {rhv-short} and {osp} only: For {rhv-short}, enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA. For {osp}, enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`.
 <11> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
 <12> VMware only: Specify the vCenter SHA-1 fingerprint.
+<13> {ocp-short} only:  Token for a service account with `cluster-admin` privileges.
 +
 [NOTE]
 ====
@@ -109,7 +111,7 @@ spec:
     namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ovirt`, `vsphere`, and `openstack`.
+<1> Specify the type of source provider. Allowed values are `ovirt`, `vsphere`, `openstack`, `ova`, and `openshift`.
 <2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
 <3> VMware only: Specify the VDDK image that you created.
 <4> Specify the name of provider `Secret` CR.
@@ -159,8 +161,9 @@ spec:
         namespace: <network_attachment_definition_namespace> <5>
         type: multus
       source:
-        id: <source_network_id>
-        name: <source_network_name>
+        name: <network_attachment_definition> <6>
+        namespace: <network_attachment_definition_namespace> <7>
+        type: multus <8>
   provider:
     source:
       name: <source_provider>
@@ -175,6 +178,9 @@ EOF
 <3> Specify the VMware network MOR, the {rhv-short} network UUID, or the {osp} network UUID.
 <4> Specify a network attachment definition for each additional {virt} network.
 <5> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+<6> Specify a network attachment definition for each additional {virt} network.
+<7> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
+<8> {ocp-short} only.
 
 . Create a `StorageMap` manifest to map source and destination storage:
 +
@@ -209,6 +215,11 @@ EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the VMware data storage MOR, the {rhv-short} storage domain UUID, or the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
++
+[NOTE]
+====
+For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>".
+====
 
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
