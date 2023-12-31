@@ -74,16 +74,19 @@ In addition to standard password authentication, the following authentication me
 
 The validation service includes default validation rules for virtual machines from OpenStack. link:https://issues.redhat.com/browse/MTV-508[(MTV-508)]
 
-
 .VDDK is now optional for VMware vSphere providers
 
 The VMware vSphere source provider can now be created without specifying a VDDK `init` image. It is strongly recommended to create a VDDK `init` image to accelerate migrations.
 
 .Deployment on OKE enabled
 
-// adding the link to the "About OKE" docs as it is better than nothing
 In {project-short} 2.5.3, deployment on OpenShift Kubernetes Engine (OKE) has been enabled. For more information, see link:https://docs.openshift.com/container-platform/4.14/welcome/oke_about.html[About OpenShift Kubernetes Engine]. link:https://issues.redhat.com/browse/MTV-803[(MTV-803)]
 
+.Migration of VMs to destination storage classes with encrypted RBD now supported
+
+In {project-short} 2.5.4, migration of VMs to destination storage classes that have encrypted RADOS Block Devices (RBD) destination storage classes is now supported.
+
+To make use of this new feature, set the value of the parameter `controller_block_overhead` to `1Gi`, following the procedure in link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.5/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#configuring-mtv-operator_mtv[Configuring the MTV Operator]. link:https://issues.redhat.com/browse/MTV-851[(MTV-851)]
 
 [id="known-issues-25_{context}"]
 == Known issues
@@ -279,6 +282,11 @@ This issue is resolved in {project-short} {project-version}, PVCs are deleted wh
 In previous releases of {project-short}, VM with multiple disks that were migrated might not have been able to boot on the target {ocp} cluster.
 
 This issue is resolved in {project-short} {project-version}, VM with multiple disks that are migrated are able to boot on the target {ocp} cluster. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
+
+
+.Transfer network not taken into account for cold migrations from vSphere
+In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the local cluster on which {project-short} was deployed did not take a specified transfer network into account. This issue is resolved in  {project-short} 2.5.4.  link:https://issues.redhat.com/browse/MTV-846[(MTV-846)]
+
 
 For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-666?filter=12424644[Resolved Issues] in Jira.
 

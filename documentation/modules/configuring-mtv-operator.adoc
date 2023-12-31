@@ -60,8 +60,12 @@ spec:
 |`10`
 
 |`controller_filesystem_overhead`
-|Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem`. Note, this label can only be changed using the CLI
+|Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem`. Note, this setting can only be changed using the CLI.
 |`10`
+
+|`controller_block_overhead`
+|Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based. It can be used when data, such as encryption headers, is written to the persistent volumes in addition to the content of the virtual disk. Note, this setting can only be changed using the CLI.
+|`0`
 |===
 
 
