@@ -27,3 +27,8 @@ Therefore, it is recommended to upgrade {rhv-short} to the supported version abo
 
 However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3, and may work in practice in many environments using {project-short} {project-version}. In this case, we advise upgrading {rhv-full} Manager (RHVM) to the previously mentioned supported version before the migration to {virt}.
 ====
+
+[NOTE]
+====
+Deployment of MTV 2.5.3 and later is enabled on OpenShift Kubernetes Engine (OKE). For more information, see link:https://docs.openshift.com/container-platform/4.14/welcome/oke_about.html[About OpenShift Kubernetes Engine].
+====
