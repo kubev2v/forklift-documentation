@@ -84,7 +84,7 @@ In {project-short} 2.5.3, deployment on OpenShift Kubernetes Engine (OKE) has be
 
 .Migration of VMs to destination storage classes with encrypted RBD now supported
 
-In {project-short} 2.5.4, migration of VMs to destination storage classes that have encrypted RADOS Block Devices (RBD) destination storage classes is now supported.
+In {project-short} 2.5.4, migration of VMs to destination storage classes that have encrypted RADOS Block Devices (RBD) volumes is now supported.
 
 To make use of this new feature, set the value of the parameter `controller_block_overhead` to `1Gi`, following the procedure in link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.5/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#configuring-mtv-operator_mtv[Configuring the MTV Operator]. link:https://issues.redhat.com/browse/MTV-851[(MTV-851)]
 
