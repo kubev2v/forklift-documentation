@@ -33,7 +33,7 @@ However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3
 Deployment of MTV 2.5.3 and later is enabled on OpenShift Kubernetes Engine (OKE). For more information, see link:https://docs.openshift.com/container-platform/4.14/welcome/oke_about.html[About OpenShift Kubernetes Engine].
 ====
 
-[openshift-operator-life-cycles]
+[id="openshift-operator-life-cycles"]
 == OpenShift Operator Life Cycles
 
 For more information about the software maintenance Life Cycle classifications for Operators shipped by Red Hat for use with OpenShift Container Platform, see link:https://access.redhat.com/support/policy/updates/openshift_operators#platform-agnostic[OpenShift Operator Life Cycles].
