@@ -6,9 +6,11 @@
 [id="creating-vddk-image_{context}"]
 = Creating a VDDK image
 
-{the} {project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to transfer virtual disks from VMware vSphere.
+{the} {project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to accelerate transferring virtual disks from VMware vSphere. Therefore, creating a VDDK image, although optional, is highly recommended.
 
-You must download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry. You need the VDDK init image path in order to add a VMware source provider.
+To make use of this feature, you download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry.
+
+The VDDK package contains symbolic links, therefore, the procedure of creating a VDDK image must be performed on a file system that preserves symbolic links (symlinks).
 
 [NOTE]
 ====
@@ -19,6 +21,7 @@ Storing the VDDK image in a public registry might violate the VMware license ter
 
 * link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/registry/setting-up-and-configuring-the-registry#configuring-registry-storage-baremetal[{ocp} image registry].
 * `podman` installed.
+* You are working on a file system that preserves symbolic links (symlinks).
 * If you are using an external registry, {virt} must be able to access it.
 
 .Procedure
