@@ -203,14 +203,26 @@ include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
 :cli!:
 :context: mtv
 
+[id="migrating-virtual-machines-cli"]
+=== Migrating virtual machines
+
+You migrate virtual machines (VMs) from the command line (CLI) by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
+
+[IMPORTANT]
+====
+You must specify a name for cluster-scoped CRs.
+
+You must specify both a name and a namespace for namespace-scoped CRs.
+====
+
 :mtv!:
 :context: vmware
 :vmware:
-include::modules/26-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :vmware!:
 :context: rhv
 :rhv:
-include::modules/26-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :rhv!:
 :context: mtv
 

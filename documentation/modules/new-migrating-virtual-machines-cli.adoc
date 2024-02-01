@@ -2,17 +2,8 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="migrating-virtual-machines-cli_{context}"]
-= Migrating virtual machines
-
-You migrate virtual machines (VMs) from the command line (CLI) by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
-
-[IMPORTANT]
-====
-You must specify a name for cluster-scoped CRs.
-
-You must specify both a name and a namespace for namespace-scoped CRs.
-====
+:_content-type: PROCEDURE
+[id="new-migrating-virtual-machines-cli_{context}"]
 
 ifdef::vmware[]
 = Migrating a VMware vSphere source provider
