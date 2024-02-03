@@ -43,7 +43,7 @@ Migration using {osp} source providers only supports VMs that use only Cinder vo
 
 include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 
-[id="prerequisites"]
+[id="prerequisites_{context}"]
 == Prerequisites
 
 Review the following prerequisites to ensure that your environment is prepared for migration.
@@ -113,7 +113,7 @@ You can migrate virtual machines (VMs) to {virt} by using the {ocp} web console.
 
 [IMPORTANT]
 ====
-You must ensure that all xref:prerequisites[prerequisites] are met.
+You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
 
 VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 
@@ -194,7 +194,7 @@ You can migrate virtual machines to {virt} from the command line.
 
 [IMPORTANT]
 ====
-You must ensure that all xref:prerequisites[prerequisites] are met.
+You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
 ====
 
 :mtv!:
