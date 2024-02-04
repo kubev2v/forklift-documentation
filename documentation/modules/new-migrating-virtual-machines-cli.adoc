@@ -11,6 +11,7 @@ ifdef::vmware[]
 Before you can migrate a VMware vSphere source provider using the CLI, you must obtain the SHA-1 fingerprint of a vCenter host, as described in the procedure that follows.
 
 endif::[]
+
 ifdef::rhv[]
 = Migrating a {rhv-full} source provider
 
@@ -22,6 +23,7 @@ You can migrate a {rhv-full} ({rhv-short}) source provider using the CLI.
 
 include::snip-migrating-luns.adoc[]
 endif::[]
+
 ifdef::ova[]
 = Migrating an Open Virtual Appliance (OVA) source provider
 
@@ -29,6 +31,7 @@ You can migrate Open Virtual Appliance (OVA) files that were created by VMware v
 
 include::snippet_ova_tech_preview.adoc[]
 endif::[]
+
 ifdef::ostack[]
 = Migrating an {osp} source provider
 
@@ -39,6 +42,7 @@ You can migrate an {osp} source provider using the CLI.
 Migration using {osp} source providers only supports VMs that use only Cinder volumes.
 ====
 endif::[]
+
 ifdef::cnv[]
 = Migrating a Red Hat {virt} source provider
 
@@ -49,9 +53,9 @@ Specifically, the host cluster that is automatically added as a {virt} provider 
 You can use the CLI to migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
 endif::[]
 
-.Procedure
-. Create a `Secret` manifest for the source provider credentials:
-+
+//.Procedure
+//. Create a `Secret` manifest for the source provider credentials:
+//+
 ifdef::vmware[]
 [source,yaml,subs="attributes+"]
 ----
@@ -120,6 +124,7 @@ EOF
 <5> Enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
 <6> Specify the API end point URL, for example, `https://<engine_host>/ovirt-engine/api`.
 endif::[]
+
 ifdef::ova[]
 [source,yaml,subs="attributes+"]
 ----
@@ -217,8 +222,8 @@ EOF
 <5> Specify the API end point URL.
 endif::[]
 
-. Create a `Provider` manifest for the source provider:
-+
+//. Create a `Provider` manifest for the source provider:
+//+
 ifdef::vmware[]
 [source,yaml,subs="attributes+"]
 ----
@@ -347,8 +352,10 @@ spec:
 EOF
 ----
 
+[id="test1_{context}"]
+== test
 
-. Create a `NetworkMap` manifest to map the source and destination networks:
+.Create a `NetworkMap` manifest to map the source and destination networks:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -391,6 +398,9 @@ EOF
 <6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
 <7> {ocp-short} only.
 
+[id="test2_{context}"]
+== test
+
 . Create a `StorageMap` manifest to map source and destination storage:
 +
 [source,yaml,subs="attributes+"]
@@ -429,6 +439,9 @@ EOF
 ====
 For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>".
 ====
+
+[id="test3_{context}"]
+== test
 
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
@@ -506,6 +519,10 @@ EOF
 <12> Specify the name of the `Hook` CR.
 <13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 
+
+[id="test4_{context}"]
+== test
+
 . Create a `Migration` manifest to run the `Plan` CR:
 +
 [source,yaml,subs="attributes+"]
@@ -535,3 +552,4 @@ You can associate multiple `Migration` CRs with a single `Plan` CR. If a migrati
 ----
 $ {oc} get migration/<migration> -n <namespace> -o yaml
 ----
+
