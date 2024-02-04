@@ -52,9 +52,77 @@ endif::[]
 .Procedure
 ifdef::vmware[]
 
-
-
+. Create a `Secret` manifest for the source provider credentials:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+  ownerReferences: <1>
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: <provider_name>
+      uid: <provider_uid>
+  labels:
+    createdForProviderType: vsphere
+    createdForResourceType: providers
+type: Opaque
+stringData:
+  user: <user> <2>
+  password: <password> <3>
+  insecureSkipVerify: <true/false> <4>
+  url: <api_end_point> <5>
+  thumbprint: <vcenter_fingerprint> <6>
+EOF
+----
+<1> The `ownerReferences` section is optional.
+<2> Specify the vCenter user
+<3> Specify the user password.
+<6> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<5> Specify the API end point URL, for example, `https://<vCenter_host>/sdk`.
+<6> VMware only: Specify the vCenter SHA-1 fingerprint.
 endif::[]
+ifdef::rhv[]
+. Create a `Secret` manifest for the source provider credentials:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+  ownerReferences: <1>
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: <provider_name>
+      uid: <provider_uid>
+  labels:
+    createdForProviderType: ovirt
+    createdForResourceType: providers
+type: Opaque
+stringData:
+  user: <user> <2>
+  password: <password> <3>
+  insecureSkipVerify: <true/false> <4>
+  cacert: | <5>
+    <ca_certificate>
+  url: <api_end_point> <6>
+EOF
+----
+<1> The `ownerReferences` section is optional.
+<2> Specify the {rhv-short} {manager} user.
+<3> Specify the user password.
+<4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<5> Enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
+<6> Specify the API end point URL, for example, `https://<engine_host>/ovirt-engine/api`.
+endif::[]
+
 
 . Create a `Secret` manifest for the source provider credentials:
 +
