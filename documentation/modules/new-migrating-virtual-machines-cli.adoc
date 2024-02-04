@@ -50,10 +50,9 @@ You can use the CLI to migrate VMs from the cluster that {project-short} is depl
 endif::[]
 
 .Procedure
-ifdef::vmware[]
-
 . Create a `Secret` manifest for the source provider credentials:
 +
+ifdef::vmware[]
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -80,15 +79,14 @@ stringData:
 EOF
 ----
 <1> The `ownerReferences` section is optional.
-<2> Specify the vCenter user
+<2> Specify the vCenter user.
 <3> Specify the user password.
-<6> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
 <5> Specify the API end point URL, for example, `https://<vCenter_host>/sdk`.
-<6> VMware only: Specify the vCenter SHA-1 fingerprint.
+<6> Specify the vCenter SHA-1 fingerprint.
 endif::[]
+
 ifdef::rhv[]
-. Create a `Secret` manifest for the source provider credentials:
-+
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -122,10 +120,7 @@ EOF
 <5> Enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
 <6> Specify the API end point URL, for example, `https://<engine_host>/ovirt-engine/api`.
 endif::[]
-
-
-. Create a `Secret` manifest for the source provider credentials:
-+
+ifdef::ova[]
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -140,52 +135,91 @@ metadata:
       name: <provider_name>
       uid: <provider_uid>
   labels:
-    createdForProviderType: <provider_type> <2>
+    createdForProviderType: ova
     createdForResourceType: providers
 type: Opaque
-stringData: <3>
-  user: <user> <4>
-  password: <password> <5>
-  insecureSkipVerify: <true/false> <6>
-  domainName: <domain_name> <7>
-  projectName: <project_name> <8>
-  regionName: <region name> <9>
-  cacert: | <10>
-    <ca_certificate>
-  url: <api_end_point> <11>
-  thumbprint: <vcenter_fingerprint> <12>
-  token: <service_account_bearer_token> <13>
+stringData:
+  url: <nfs_server:/nfs_path> <2>
 EOF
 ----
 <1> The `ownerReferences` section is optional.
-<2> Specify the type of source provider. Allowed values are `ovirt`, `vsphere`, `openstack`, `ova`, and `openshift`. This label is needed to verify the credentials are correct when the remote system is accessible and, for {rhv-short}, to retrieve the {manager} CA certificate when a third-party certificate is specified.
-<3> The `stringData` section for OVA is different and is described in a note that follows the description of the `Secret` manifest.
-<4> Specify the vCenter user, the {rhv-short} {manager} user, or the {osp} user.
-<5> Specify the user password.
-<6> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
-<7> {osp} only: Specify the domain name.
-<8> {osp} only: Specify the project name.
-<9> {osp} only: Specify the name of the {osp} region.
-<10> {rhv-short} and {osp} only: For {rhv-short}, enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA. For {osp}, enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`.
-<11> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
-<12> VMware only: Specify the vCenter SHA-1 fingerprint.
-<13> {ocp-short} only:  Token for a service account with `cluster-admin` privileges.
-+
-[NOTE]
-====
-The `stringData` section for an OVA `Secret` manifest is as follows:
+<2> where: `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
+endif::[]
+
+ifdef::ostack[]
 [source,yaml,subs="attributes+"]
 ----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+  ownerReferences: <1>
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: <provider_name>
+      uid: <provider_uid>
+  labels:
+    createdForProviderType: openstack
+    createdForResourceType: providers
+type: Opaque
 stringData:
-  url: <nfs_server:/nfs_path>
+  user: <user> <2>
+  password: <password> <3>
+  insecureSkipVerify: <true/false> <4>
+  domainName: <domain_name>
+  projectName: <project_name>
+  regionName: <region name> <5>
+  cacert: | <6>
+    <ca_certificate>
+  url: <api_end_point> <7>
+EOF
 ----
-where: +
-`nfs_server`: An IP or hostname of the server where the share was created. +
-`nfs_path` : The path on the server where the OVA files are stored.
-====
+<1> The `ownerReferences` section is optional.
+<2> Specify the {osp} user.
+<3> Specify the user password.
+<4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<5> Specify the name of the {osp} region.
+<6> Enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`.
+<7> Specify the API end point URL, for example, `https://<identity_service>/v3`.
+endif::[]
+
+ifdef::cnv[]
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+  ownerReferences: <1>
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: <provider_name>
+      uid: <provider_uid>
+  labels:
+    createdForProviderType: openshift
+    createdForResourceType: providers
+type: Opaque
+stringData:
+  user: <user> <2>
+  password: <password> <3>
+  insecureSkipVerify: <true/false> <4>
+  url: <api_end_point> <5>
+EOF
+----
+<1> The `ownerReferences` section is optional.
+<2> Specify the {virt} user.
+<3> Specify the user password.
+<4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<5> Specify the API end point URL.
+endif::[]
 
 . Create a `Provider` manifest for the source provider:
 +
+ifdef::vmware[]
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -195,21 +229,106 @@ metadata:
   name: <source_provider>
   namespace: <namespace>
 spec:
-  type: <provider_type> <1>
-  url: <api_end_point> <2>
+  type: vmware
+  url: <api_end_point> <1>
   settings:
-    vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <3>
+    vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <2>
   secret:
-    name: <secret> <4>
+    name: <secret> <3>
     namespace: <namespace>
 EOF
 ----
-<1> Specify the type of source provider. Allowed values are `ovirt`, `vsphere`, `openstack`, `ova`, and `openshift`.
-<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
-<3> VMware only: Specify the VDDK image that you created.
-<4> Specify the name of provider `Secret` CR.
+<1> Specify the API end point URL, for example, `https://<vCenter_host>/sdk`.
+<2> Specify the VDDK image that you created.
+<3> Specify the name of provider `Secret` CR.
+endif::[]
 
-. VMware only: Create a `Host` manifest:
+ifdef::rhv[]
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: ovirt
+  url: <api_end_point> <1>
+  secret:
+    name: <secret> <2>
+    namespace: <namespace>
+EOF
+----
+<1> Specify the API end point URL, for example, `https://<engine_host>/ovirt-engine/api`.
+<2> Specify the name of provider `Secret` CR.
+endif::[]
+
+ifdef::ova[]
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: ova
+  url: <api_end_point> <1>
+  secret:
+    name: <secret> <2>
+    namespace: <namespace>
+EOF
+----
+<1> Specify the API end point URL.
+<2> Specify the name of provider `Secret` CR.
+endif::[]
+
+ifdef::ostack[]
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: openstack
+  url: <api_end_point> <1>
+  secret:
+    name: <secret> <2>
+    namespace: <namespace>
+EOF
+----
+<1> Specify the API end point URL, for example, `https://<identity_service>/v3`.
+<2> Specify the name of provider `Secret` CR.
+endif::[]
+
+ifdef::cnv[]
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: openshift
+  url: <api_end_point> <1>
+  secret:
+    name: <secret> <2>
+    namespace: <namespace>
+EOF
+----
+<1> Specify the API end point URL.
+<2> Specify the name of provider `Secret` CR.
+endif::[]
+
+
+. Create a `Host` manifest:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -222,14 +341,12 @@ metadata:
 spec:
   provider:
     namespace: <namespace>
-    name: <source_provider> <1>
-  id: <source_host_mor> <2>
-  ipAddress: <source_network_ip> <3>
+    name: <source_provider>
+  id: <source_host_mor>
+  ipAddress: <source_network_ip>
 EOF
 ----
-<1> Specify the name of the VMware `Provider` CR.
-<2> Specify the managed object reference (MOR) of the VMware host.
-<3> Specify the IP address of the VMware migration network.
+
 
 . Create a `NetworkMap` manifest to map the source and destination networks:
 +
@@ -246,17 +363,17 @@ spec:
     - destination:
         name: <network_name>
         type: pod <1>
-      source: <2>
-        id: <source_network_id> <3>
+      source:
+        id: <source_network_id> <2>
         name: <source_network_name>
     - destination:
-        name: <network_attachment_definition> <4>
-        namespace: <network_attachment_definition_namespace> <5>
+        name: <network_attachment_definition> <3>
+        namespace: <network_attachment_definition_namespace> <4>
         type: multus
       source:
-        name: <network_attachment_definition> <6>
-        namespace: <network_attachment_definition_namespace> <7>
-        type: multus <8>
+        name: <network_attachment_definition> <5>
+        namespace: <network_attachment_definition_namespace> <6>
+        type: multus <7>
   provider:
     source:
       name: <source_provider>
@@ -267,13 +384,12 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` _or_ the `name` parameter to specify the source network.
-<3> Specify the VMware network MOR, the {rhv-short} network UUID, or the {osp} network UUID.
-<4> Specify a network attachment definition for each additional {virt} network.
-<5> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<6> Specify a network attachment definition for each additional {virt} network.
-<7> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
-<8> {ocp-short} only.
+<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the VMware network MOR, the {rhv-short} network UUID, or the {osp} network UUID.
+<3> Specify a network attachment definition for each additional {virt} network.
+<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+<5> Specify a network attachment definition for each additional {virt} network.
+<6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
+<7> {ocp-short} only.
 
 . Create a `StorageMap` manifest to map source and destination storage:
 +
