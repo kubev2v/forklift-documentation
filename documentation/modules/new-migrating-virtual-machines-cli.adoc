@@ -21,6 +21,7 @@ You can migrate a {rhv-full} ({rhv-short}) source provider using the CLI.
  If you are migrating a virtual machine with a direct LUN disk, ensure that the nodes in the {virt} destination cluster that the VM is expected to run on can access the backend storage.
 
 include::snip-migrating-luns.adoc[]
+
 endif::[]
 ifdef::ova[]
 = Migrating an Open Virtual Appliance (OVA) source provider
@@ -48,7 +49,6 @@ Specifically, the host cluster that is automatically added as a {virt} provider 
 
 You can use the CLI to migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
 endif::[]
-+
 
 .Procedure
 . Create a `Secret` manifest for the source provider credentials:
@@ -215,6 +215,7 @@ EOF
 <4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
 <5> Specify the API end point URL.
 endif::[]
++
 
 . Create a `Provider` manifest for the source provider:
 +
@@ -325,6 +326,7 @@ EOF
 <1> Specify the API end point URL.
 <2> Specify the name of provider `Secret` CR.
 endif::[]
++
 
 ifdef::vmware[]
 . Create a `Host` manifest:
@@ -739,7 +741,6 @@ EOF
 <2> Specify the TBD.
 endif::[]
 +
-
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
 [source,yaml,subs="attributes+"]
@@ -751,8 +752,8 @@ metadata:
   name: <hook>
   namespace: <namespace>
 spec:
-  image: quay.io/konveyor/hook-runner <1>
-  playbook: | <2>
+  image: quay.io/konveyor/hook-runner
+  playbook: |
     LS0tCi0gbmFtZTogTWFpbgogIGhvc3RzOiBsb2NhbGhvc3QKICB0YXNrczoKICAtIG5hbWU6IExv
     YWQgUGxhbgogICAgaW5jbHVkZV92YXJzOgogICAgICBmaWxlOiAiL3RtcC9ob29rL3BsYW4ueW1s
     IgogICAgICBuYW1lOiBwbGFuCiAgLSBuYW1lOiBMb2FkIFdvcmtsb2FkCiAgICBpbmNsdWRlX3Zh
@@ -760,8 +761,15 @@ spec:
     bG9hZAoK
 EOF
 ----
-<1> You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
-<2> Optional: Base64-encoded Ansible playbook. If you specify a playbook, the `image` must be `hook-runner`.
++
+where:
++
+`playbook` refers to an optional Base64-encoded Ansible playbook. If you specify a playbook, the `image` must be `hook-runner`.
++
+[NOTE]
+====
+You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+====
 +
 
 . Create a `Plan` manifest for the migration:
@@ -916,6 +924,7 @@ EOF
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 
+
 ifdef::ostack[]
 [source,yaml,subs="attributes+"]
 ----
@@ -965,6 +974,7 @@ EOF
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
+
 
 ifdef::cnv[]
 [source,yaml,subs="attributes+"]
@@ -1016,7 +1026,7 @@ EOF
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
-+
+
 
 . Create a `Migration` manifest to run the `Plan` CR:
 +
@@ -1026,24 +1036,19 @@ $ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Migration
 metadata:
-  name: <migration> <1>
+  name: <name_of_migration_cr>
   namespace: <namespace>
 spec:
   plan:
-    name: <plan> <2>
+    name: <name_of_plan_cr>
     namespace: <namespace>
-  cutover: <cutover_time> <3>
+  cutover: <optional_cutover_time>
 EOF
 ----
-<1> Specify the name of the `Migration` CR.
-<2> Specify the name of the `Plan` CR that you are running. The `Migration` CR creates a `VirtualMachine` CR for each VM that is migrated.
-<3> Optional: Specify a cutover time according to the ISO 8601 format with the UTC time offset, for example, `2021-04-04T01:23:45.678+09:00`.
 +
-You can associate multiple `Migration` CRs with a single `Plan` CR. If a migration does not complete, you can create a new `Migration` CR, without changing the `Plan` CR, to migrate the remaining VMs.
+[NOTE]
+====
+If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
+====
 
-. Retrieve the `Migration` CR to monitor the progress of the migration:
-+
-[source,terminal,subs="attributes+"]
-----
-$ {oc} get migration/<migration> -n <namespace> -o yaml
-----
+
