@@ -48,6 +48,7 @@ Specifically, the host cluster that is automatically added as a {virt} provider 
 
 You can use the CLI to migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
 endif::[]
++
 
 .Procedure
 . Create a `Secret` manifest for the source provider credentials:
@@ -348,9 +349,7 @@ EOF
 <2> Specify the managed object reference (MOR) of the VMware host.
 <3> Specify the IP address of the VMware migration network.
 endif::[]
-
-[id="test1_{context}"]
-== test
++
 
 . Create a `NetworkMap` manifest to map the source and destination networks:
 +
@@ -559,9 +558,7 @@ EOF
 <5> Specify a network attachment definition for each additional {virt} network.
 <6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
 endif::[]
-
-[id="test2_{context}"]
-== test
++
 
 . Create a `StorageMap` manifest to map source and destination storage:
 +
@@ -741,9 +738,7 @@ EOF
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the TBD.
 endif::[]
-
-[id="test3_{context}"]
-== test
++
 
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
@@ -767,9 +762,7 @@ EOF
 ----
 <1> You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
 <2> Optional: Base64-encoded Ansible playbook. If you specify a playbook, the `image` must be `hook-runner`.
-
-[id="test4_{context}"]
-== test
++
 
 . Create a `Plan` manifest for the migration:
 +
@@ -1023,8 +1016,7 @@ EOF
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
-
-any text
++
 
 . Create a `Migration` manifest to run the `Plan` CR:
 +
