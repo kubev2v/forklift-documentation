@@ -52,7 +52,7 @@ EOF
 ----
 ====
 
-. Create a hook CR YAML file:
+. Create a Hook CR:
 +
 [source,yaml]
 ----
@@ -143,7 +143,7 @@ The playbook encoded here runs the following:
       mode: 0644
 ----
 
-. Create the plan using the hook
+. Create a Plan CR using the hook:
 
 [source,yaml]
 ----
