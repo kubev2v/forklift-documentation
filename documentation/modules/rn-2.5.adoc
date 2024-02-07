@@ -137,7 +137,7 @@ This release has the following resolved issues:
 
 .Flaw was found in jsrsasign package which is vulnerable to Observable Discrepancy
 
-Versions of the package `jsrsasign` before 11.0.0, used in previous releases of {project-short}, are vulnerable to Observable Discrepancy via the RSA PKCS1.5 or RSAOAEP decryption process. An attacker can decrypt ciphertexts by exploiting this vulnerability. Exploiting this vulnerability requires the attacker to have access to a large number of ciphertexts encrypted with the same key. Workaround This vulnerability can be mitigated by finding and replacing RSA and RSAOAEP decryption with another crypto library. This issue has been resolved in MTV 2.5.5.
+Versions of the package `jsrsasign` before 11.0.0, used in previous releases of {project-short}, are vulnerable to Observable Discrepancy via the RSA PKCS1.5 or RSAOAEP decryption process. An attacker can decrypt ciphertexts by exploiting this vulnerability. Exploiting this vulnerability requires the attacker to have access to a large number of ciphertexts encrypted with the same key. One proposed workaround is to find and replace RSA and RSAOAEP decryption with another crypto library. This issue has been resolved in {project-short} 2.5.5.
 
 
 .Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)
