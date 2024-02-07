@@ -4,7 +4,7 @@
 
 :_content-type: PROCEDURE
 [id="migration-migrating-applications-api_{context}"]
-= Adding hook CRs to a VM migration by using the {project-short} API
+= Adding Hook CRs to a VM migration by using the {project-short} API
 
 You can add a `PreHook` or a `PostHook` Hook CR when you migrate an application from the command line by using the {project-full} API. A `PreHook` runs before a migration, a `PostHook`, after.
 
