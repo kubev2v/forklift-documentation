@@ -10,8 +10,7 @@ You can add hooks to a migration plan from the command line by using the {projec
 
 [discrete]
 == Default hook image
-The default hook image for an {project-short} hook is `quay.io/konveyor/hook-runner:latest`. The image is based on the Ansible Runner image with the addition of `python-openshift` to provide Ansible Kubernetes resources and a recent `oc` binary.
-// The most recent?
+The default hook image for an {project-short} hook is `registry.redhat.io/rhmtc/openshift-migration-hook-runner-rhel8:v1.8.2-2`. The image is based on the Ansible Runner image with the addition of `python-openshift` to provide Ansible Kubernetes resources and a recent `oc` binary.
 
 [discrete]
 == Hook execution
