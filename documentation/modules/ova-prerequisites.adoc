@@ -1,0 +1,40 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: REFERENCE
+[id="ova-prerequisites_{context}"]
+= Open Virtual Appliance (OVA) prerequisites
+
+The following prerequisites apply to Open Virtual Appliance (OVA) file migrations:
+
+* All OVA files are created by VMware vSphere.
+
+[NOTE]
+====
+Migration of OVA files that were not created by VMware vSphere but are compatible with vSphere might succeed. However, migration of such files is not supported by {project-short}. {project-short} supports only OVA files created by VMware vSphere.
+====
+
+* The OVA files are in one or more folders under an NFS shared directory in one of the following structures:
+
+** In one or more compressed Open Virtualization Format (OVF) packages that hold all the VM information.
++
+The filename of each compressed package *must* have the `.ova` extension. Several compressed packages can be stored in the same folder.
++
+When this structure is used, {project-short} scans the root folder and the first-level subfolders for compressed packages.
++
+For example, if the NFS share is, `/nfs`, then: +
+The folder `/nfs` is scanned. +
+The folder `/nfs/subfolder1` is scanned. +
+But, `/nfs/subfolder1/subfolder2` is not scanned.
+
+** In extracted OVF packages.
++
+When this structure is used, {project-short} scans the root folder, first-level subfolders, and second-level subfolders for extracted OVF packages.
+However, there can be only one `.ovf` file in a folder. Otherwise, the migration will fail.
++
+For example, if the NFS share is, `/nfs`, then: +
+The OVF file `/nfs/vm.ovf` is scanned. +
+The OVF file `/nfs/subfolder1/vm.ovf` is scanned. +
+The OVF file `/nfs/subfolder1/subfolder2/vm.ovf` is scanned. +
+But, the OVF file `/nfs/subfolder1/subfolder2/subfolder3/vm.ovf` is not scanned.

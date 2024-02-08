@@ -1,0 +1,95 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="openstack-application-credential-authentication_{context}"]
+= Using application credential authentication with an {osp} source provider
+
+You can use application credential authentication, instead of username and password authentication, when you create an {osp} source provider.
+
+{project-short} supports both of the following types of application credential authentication:
+
+* Application credential ID
+* Application credential name
+
+For each type of application credential authentication, you need to use data from OpenStack to create a `Secret` manifest.
+
+.Prerequisites
+
+You have an {osp} account.
+
+.Procedure
+
+. In the dashboard of the {osp} web console, click *Project* > *API Access*.
+. Expand *Download OpenStack RC file* and click *OpenStack RC file*.
++
+The file that is downloaded, referred to here as `<openstack_rc_file>`, includes the following fields used for application credential authentication:
++
+[source, terminal]
+----
+OS_AUTH_URL
+OS_PROJECT_ID
+OS_PROJECT_NAME
+OS_DOMAIN_NAME
+OS_USERNAME
+----
+
+. To get the data needed for application credential authentication, run the following command:
++
+[source,terminal]
+----
+$ openstack application credential create --role member --role reader --secret redhat forklift
+----
++
+The output, referred to here as `<openstack_credential_output>`, includes:
++
+* The `id`  and `secret` that you need for authentication using an application credential ID
+* The `name` and `secret` that you need for authentication using an application credential name
+
+. Create a `Secret` manifest similar to the following:
+
+** For authentication using the application credential ID:
++
+[source,yaml]
+----
+cat << EOF | oc apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: openstack-secret-appid
+  namespace: openshift-mtv
+  labels:
+    createdForProviderType: openstack
+type: Opaque
+stringData:
+  authType: applicationcredential
+  applicationCredentialID: <id_from_openstack_credential_output>
+  applicationCredentialSecret: <secret_from_openstack_credential_output>
+  url: <OS_AUTH_URL_from_openstack_rc_file>
+EOF
+----
+
+** For authentication using the application credential name:
++
+----
+cat << EOF | oc apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: openstack-secret-appname
+  namespace: openshift-mtv
+  labels:
+    createdForProviderType: openstack
+type: Opaque
+stringData:
+  authType: applicationcredential
+  applicationCredentialName: <name_from_openstack_credential_output>
+  applicationCredentialSecret: <secret_from_openstack_credential_output>
+  domainName: <OS_DOMAIN_NAME_from_openstack_rc_file>
+  username: <OS_USERNAME_from_openstack_rc_file>
+  url: <OS_AUTH_URL_from_openstack_rc_file>
+EOF
+----
+
+. Continue migrating your virtual machine according to the procedure in xref:migrating-virtual-machines-from-cli[Migrating virtual machines], starting with step 2, "Create a `Provider` manifest for the source provider."

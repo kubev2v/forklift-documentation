@@ -14,20 +14,7 @@ You must specify a name for cluster-scoped CRs.
 You must specify both a name and a namespace for namespace-scoped CRs.
 ====
 
-As a Technology Preview, {project-short} supports migrations using OpenStack source providers.
-
-[IMPORTANT]
-====
-Migration using OpenStack source providers is a Technology Preview feature only. Technology Preview features
-are not supported with Red Hat production service level agreements (SLAs) and
-might not be functionally complete. Red Hat does not recommend using them
-in production. These features provide early access to upcoming product
-features, enabling customers to test functionality and provide feedback during
-the development process.
-
-For more information about the support scope of Red Hat Technology Preview
-features, see https://access.redhat.com/support/offerings/techpreview/.
-====
+include::snippet_ova_tech_preview.adoc[]
 
 [NOTE]
 ====
@@ -37,6 +24,10 @@ Migration using {osp} source providers only supports VMs that use only Cinder vo
 .Prerequisites
 
 * VMware only: You must have a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
+
+* {rhv-full} ({rhv-short}) only: If you are migrating a virtual machine with a direct LUN disk, ensure that the nodes in the {virt} destination cluster that the VM is expected to run on can access the backend storage.
+
+include::snip-migrating-luns.adoc[]
 
 .Procedure
 
@@ -49,7 +40,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: <secret>
-  namespace: {namespace}
+  namespace: <namespace>
   ownerReferences: <1>
     - apiVersion: forklift.konveyor.io/v1beta1
       kind: Provider
@@ -57,31 +48,48 @@ metadata:
       uid: <provider_uid>
   labels:
     createdForProviderType: <provider_type> <2>
+    createdForResourceType: providers
 type: Opaque
-stringData:
-  user: <user> <3>
-  password: <password> <4>
-  insecureSkipVerify: <true/false> <5>
-  domainName: <domain_name> <6>
-  projectName: <project_name> <7>
-  regionName: <region name> <8>
-  cacert: | <9>
+stringData: <3>
+  user: <user> <4>
+  password: <password> <5>
+  insecureSkipVerify: <true/false> <6>
+  domainName: <domain_name> <7>
+  projectName: <project_name> <8>
+  regionName: <region name> <9>
+  cacert: | <10>
     <ca_certificate>
-  url: <api_end_point> <10>
-  thumbprint: <vcenter_fingerprint> <11>
+  url: <api_end_point> <11>
+  thumbprint: <vcenter_fingerprint> <12>
+  token: <service_account_bearer_token> <13>
 EOF
 ----
 <1> The `ownerReferences` section is optional.
-<2>  Specify the type of source provider. Allowed values are `ovirt`, `vsphere`, and `openstack`. This label is needed to verify the credentials are correct when the remote system is accessible and, for {rhv-short}, to retrieve the {manager} CA certificate when a third-party certificate is specified.
-<3> Specify the vCenter user, the {rhv-short} {manager} user, or the {osp} user.
-<4> Specify the user password.
-<5> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
-<6> {osp} only: Specify the domain name.
-<7> {osp} only: Specify the project name.
-<8> {osp} only: Specify the name of the {osp} region.
-<9> {rhv-short} and {osp} only: For {rhv-short}, enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA. For {osp}, enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`.
-<10> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api/` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
-<11> VMware only: Specify the vCenter SHA-1 fingerprint.
+<2> Specify the type of source provider. Allowed values are `ovirt`, `vsphere`, `openstack`, `ova`, and `openshift`. This label is needed to verify the credentials are correct when the remote system is accessible and, for {rhv-short}, to retrieve the {manager} CA certificate when a third-party certificate is specified.
+<3> The `stringData` section for OVA is different and is described in a note that follows the description of the `Secret` manifest.
+<4> Specify the vCenter user, the {rhv-short} {manager} user, or the {osp} user.
+<5> Specify the user password.
+<6> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<7> {osp} only: Specify the domain name.
+<8> {osp} only: Specify the project name.
+<9> {osp} only: Specify the name of the {osp} region.
+<10> {rhv-short} and {osp} only: For {rhv-short}, enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA. For {osp}, enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`.
+<11> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
+<12> VMware only: Specify the vCenter SHA-1 fingerprint.
+<13> {ocp-short} only:  Token for a service account with `cluster-admin` privileges.
++
+[NOTE]
+====
+The `stringData` section for an OVA `Secret` manifest is as follows:
+[source,yaml,subs="attributes+"]
+----
+stringData:
+  url: <nfs_server:/nfs_path>
+----
+where: +
+`nfs_server`: An IP or hostname of the server where the share was created. +
+`nfs_path` : The path on the server where the OVA files are stored.
+====
 
 . Create a `Provider` manifest for the source provider:
 +
@@ -91,8 +99,8 @@ $ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
-  name: <provider>
-  namespace: {namespace}
+  name: <source_provider>
+  namespace: <namespace>
 spec:
   type: <provider_type> <1>
   url: <api_end_point> <2>
@@ -100,11 +108,11 @@ spec:
     vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <3>
   secret:
     name: <secret> <4>
-    namespace: {namespace}
+    namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ovirt`, `vsphere`, and `openstack`.
-<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api/` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
+<1> Specify the type of source provider. Allowed values are `ovirt`, `vsphere`, `openstack`, `ova`, and `openshift`.
+<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
 <3> VMware only: Specify the VDDK image that you created.
 <4> Specify the name of provider `Secret` CR.
 
@@ -117,10 +125,10 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: Host
 metadata:
   name: <vmware_host>
-  namespace: {namespace}
+  namespace: <namespace>
 spec:
   provider:
-    namespace: {namespace}
+    namespace: <namespace>
     name: <source_provider> <1>
   id: <source_host_mor> <2>
   ipAddress: <source_network_ip> <3>
@@ -139,12 +147,11 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: NetworkMap
 metadata:
   name: <network_map>
-  namespace: {namespace}
+  namespace: <namespace>
 spec:
   map:
     - destination:
-        name: <pod>
-        namespace: {namespace}
+        name: <network_name>
         type: pod <1>
       source: <2>
         id: <source_network_id> <3>
@@ -154,22 +161,26 @@ spec:
         namespace: <network_attachment_definition_namespace> <5>
         type: multus
       source:
-        id: <source_network_id>
-        name: <source_network_name>
+        name: <network_attachment_definition> <6>
+        namespace: <network_attachment_definition_namespace> <7>
+        type: multus <8>
   provider:
     source:
       name: <source_provider>
-      namespace: {namespace}
+      namespace: <namespace>
     destination:
-      name: <destination_cluster>
-      namespace: {namespace}
+      name: <destination_provider>
+      namespace: <namespace>
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
 <2> You can use either the `id` _or_ the `name` parameter to specify the source network.
 <3> Specify the VMware network MOR, the {rhv-short} network UUID, or the {osp} network UUID.
 <4> Specify a network attachment definition for each additional {virt} network.
-<5> Specify the namespace of the {virt} network attachment definition.
+<5> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+<6> Specify a network attachment definition for each additional {virt} network.
+<7> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
+<8> {ocp-short} only.
 
 . Create a `StorageMap` manifest to map source and destination storage:
 +
@@ -180,7 +191,7 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: StorageMap
 metadata:
   name: <storage_map>
-  namespace: {namespace}
+  namespace: <namespace>
 spec:
   map:
     - destination:
@@ -196,14 +207,19 @@ spec:
   provider:
     source:
       name: <source_provider>
-      namespace: {namespace}
+      namespace: <namespace>
     destination:
-      name: <destination_cluster>
-      namespace: {namespace}
+      name: <destination_provider>
+      namespace: <namespace>
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the VMware data storage MOR, the {rhv-short} storage domain UUID, or the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
++
+[NOTE]
+====
+For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>".
+====
 
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
@@ -214,7 +230,7 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: Hook
 metadata:
   name: <hook>
-  namespace: {namespace}
+  namespace: <namespace>
 spec:
   image: quay.io/konveyor/hook-runner <1>
   playbook: | <2>
@@ -237,44 +253,49 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
 metadata:
   name: <plan> <1>
-  namespace: {namespace}
+  namespace: <namespace>
 spec:
   warm: true <2>
   provider:
     source:
       name: <source_provider>
-      namespace: {namespace}
+      namespace: <namespace>
     destination:
-      name: <destination_cluster>
-      namespace: {namespace}
-  map:
-    network: <3>
-      name: <network_map> <4>
-      namespace: {namespace}
-    storage:
-      name: <storage_map> <5>
-      namespace: {namespace}
-  targetNamespace: {namespace}
-  vms: <6>
-    - id: <source_vm> <7>
+      name: <destination_provider>
+      namespace: <namespace>
+  map: <3>
+    network: <4>
+      name: <network_map> <5>
+      namespace: <namespace>
+    storage: <6>
+      name: <storage_map> <7>
+      namespace: <namespace>
+  targetNamespace: <target_namespace>
+  vms: <8>
+    - id: <source_vm> <9>
     - name: <source_vm>
-      hooks: <8>
+      namespace: <namespace> <10>
+      hooks: <11>
         - hook:
-            namespace: {namespace}
-            name: <hook> <9>
-          step: <step> <10>
+            namespace: <namespace>
+            name: <hook> <12>
+          step: <step> <13>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
 <2> Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
-<3> You can add multiple network mappings.
-<4> Specify the name of the `NetworkMap` CR.
-<5> Specify the name of the `StorageMap` CR.
-<6> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
-<7> Specify the VMware VM MOR, {rhv-short} VM UUID or the {osp} VM UUID.
-<8> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<9> Specify the name of the `Hook` CR.
-<10> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<3> Specify only one network map and one storage map per plan.
+<4> Specify a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+<5> Specify the name of the `NetworkMap` CR.
+<6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+<7> Specify the name of the `StorageMap` CR.
+<8> For all source providers except for {virt}, you can use either the `id` _or_ the `name` parameter to specify the source VMs. +
+{virt} source provider only: You can use only the `name` parameter, not the `id.` parameter to specify the source VMs.
+<9> Specify the VMware VM MOR, {rhv-short} VM UUID or the {osp} VM UUID.
+<10> {virt} source provider only.
+<11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<12> Specify the name of the `Hook` CR.
+<13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 
 . Create a `Migration` manifest to run the `Plan` CR:
 +
@@ -285,11 +306,11 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: Migration
 metadata:
   name: <migration> <1>
-  namespace: {namespace}
+  namespace: <namespace>
 spec:
   plan:
     name: <plan> <2>
-    namespace: {namespace}
+    namespace: <namespace>
   cutover: <cutover_time> <3>
 EOF
 ----
@@ -303,5 +324,5 @@ You can associate multiple `Migration` CRs with a single `Plan` CR. If a migrati
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} get migration/<migration> -n {namespace} -o yaml
+$ {oc} get migration/<migration> -n <namespace> -o yaml
 ----
