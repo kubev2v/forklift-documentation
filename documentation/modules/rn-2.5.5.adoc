@@ -16,14 +16,14 @@ This release has the following technical changes:
 
 .[technical_change1]
 
-technical change 1. link:https://github.com/kubev2v/forklift-controller/issues/[technical_change1][(forklift-controller#___)]
+technical change 1. link:https://github.com/kubev2v/forklift-controller/issues[(forklift-controller#___)]
 
 [id="new-features-and-enhancements-255_{context}"]
 == New features and enhancements
 
 This release has the following features and improvements:
 
-.[mew_feature1]
+.[מew_feature1]
 
 {project-short} [new_feature1]. link:https://issues.redhat.com/browse/MTV-427[(MTV-427)]
 
