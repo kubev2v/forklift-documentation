@@ -180,7 +180,7 @@ EOF
 <3> Specify the user password.
 <4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
 <5> Specify the name of the {osp} region.
-<6> Enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`. Note that if you set `insecureSkipVerify` to `false` and you do not set  `cacert`, {pr} attempts to use the system CA.
+<6> Enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`. Note that if you set `insecureSkipVerify` to `false` and you do not set  `cacert`, {project-short} attempts to use the system CA.
 <7> Specify the API end point URL, for example, `https://<identity_service>/v3`.
 endif::[]
 
