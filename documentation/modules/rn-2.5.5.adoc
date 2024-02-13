@@ -12,43 +12,17 @@ The release notes describe technical changes, new features and enhancements, and
 [id="technical-changes-255_{context}"]
 == Technical changes
 
-This release has the following technical changes:
-
-.[technical_change1]
-
-technical change 1. link:https://github.com/kubev2v/forklift-controller/issues[(forklift-controller#___)]
+This releae of {product-full} does not have any technical changes.
 
 [id="new-features-and-enhancements-255_{context}"]
 == New features and enhancements
-
-This release has the following features and improvements:
-
-.[מew_feature1]
-
-{project-short} [new_feature1]. link:https://issues.redhat.com/browse/MTV-427[(MTV-427)]
-
-.Skip certification option
-
-'Skip certificate validation' option was added to VMware and {rhv-short} providers. If selected, the provider's certificate will not be validated and the UI will not ask for specifying a CA certificate.
-
-.Only third-party certificate required
-
-Only the third-party certificate needs to be specified when defining a {rhv-short} provider that sets with the Manager CA certificate.
-
-.Conversion of VMs with RHEL9 guest operating system
-
-Cold migrations from vSphere to a local Red Hat OpenShift cluster use virt-v2v on RHEL 9. link:https://issues.redhat.com/browse/MTV-332[(MTV-332)]
+ 
+This releae of {product-full} does not have any new features.
 
 [id="known-issues-255_{context}"]
 == Known issues
 
 This release has the following known issues:
-
-.Cancelling and deleting a failed migration plan does not clean up _populate_ pods and PVC
-
-A migration plan reates a PVC and spawns _populate_ pods. Cancelling and deleting a failed migration plan does not clean up the PVC and _populate_ pods. After cancelling and deleting a failed migration, you must remove the PVC and populate pods manually. link:https://issues.redhat.com/browse/MTV-678[(MTV-678)]
-
-. CVE-2023-39326 
 
 link:https://issues.redhat.com/browse/MTV-850[(MTV-850)]
 
@@ -57,30 +31,6 @@ link:https://issues.redhat.com/browse/MTV-850[(MTV-850)]
 
 This release has the following resolved issues:
 
-.Improve invalid/conflicting VM name handling
+.CV-2024-21484 Improper Input Validation due to the improper handling of URLs
 
-Improve the automatic renaming of VMs during migration to fit RFC 1123. This feature that was introduced in 2.3.4 is enhanced to cover more special cases. link:https://issues.redhat.com/browse/MTV-212[(MTV-212)]
-
-.Prevent locking user accounts due to incorrect credentials
-
-If a user specifies an incorrect password for {rhv-short} providers, they are no longer locked in {rhv-short}. An error returns when the {rhv-short} manager is accessible and adding the provider. If the {rhv-short} manager is inaccessible, the provider is added, but there would be no further attempt after failing, due to incorrect credentials. link:https://issues.redhat.com/browse/MTV-324[(MTV-324)]
-
-.Users without cluster-admin role can create new providers
-
-Previously, the `cluster-admin` role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, NetworkMaps, StorageMaps, hooks) can operate MTV without cluster-admin permissions. link:https://issues.redhat.com/browse/MTV-334[(MTV-334)]
-
-.Convert i440fx to q35
-
-Migration of virtual machines with i440fx chipset is now supported. The chipset is converted to q35 during the migration. link:https://issues.redhat.com/browse/MTV-430[(MTV-430)]
-
-.Preserve the UUID setting in SMBIOS for a VM that is migrated from {rhv-short}
-
-The Universal Unique ID (UUID) number within the System Management BIOS (SMBIOS) no longer changes for VMs that are migrated from {rhv-short}. This enhancement enables applications that operate within the guest operating system and rely on this setting, such as for licensing purposes, to operate on the target OCP cluster in a manner similar to that of {rhv-short}. link:https://issues.redhat.com/browse/MTV-597[(MTV-597)]
-
-.Do not expose password for {rhv-short} in error messages
-
-Previously, the password that was specified for {rhv-short} manager appeared in error messages that were displayed in the web console and logs when failing to connect to {rhv-short}. In this release, error messages that are generated when failing to connect to {rhv-short} do not reveal the password for {rhv-short} manager.
-
-.QEMU guest agent is now installed on migrated VMs
-
-The QEMU guest agent is installed on VMs during cold migration from vSphere. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018062[(BZ#2018062)]
+. link:https://issues.redhat.com/browse/MTV-861[(MTV-861)]
