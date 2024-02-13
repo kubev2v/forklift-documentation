@@ -129,6 +129,7 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
+// update filter
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-740?filter=12424645[Known Issues] in Jira.
 
 
@@ -293,7 +294,7 @@ This issue is resolved in {project-short} {project-version}, VM with multiple di
 .Transfer network not taken into account for cold migrations from vSphere
 In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the local cluster on which {project-short} was deployed did not take a specified transfer network into account. This issue is resolved in  {project-short} 2.5.4.  link:https://issues.redhat.com/browse/MTV-846[(MTV-846)]
 
-
+// update filter
 For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-666?filter=12424644[Resolved Issues] in Jira.
 
 [id="upgrade-notes-25_{context}"]
