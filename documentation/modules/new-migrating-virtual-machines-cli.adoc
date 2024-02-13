@@ -180,7 +180,7 @@ EOF
 <3> Specify the user password.
 <4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
 <5> Specify the name of the {osp} region.
-<6> Enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`.
+<6> Enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`. Note that if you set `insecureSkipVerify` to `false` and you do not set  `cacert`, {pr} attempts to use the system CA.
 <7> Specify the API end point URL, for example, `https://<identity_service>/v3`.
 endif::[]
 
@@ -275,13 +275,13 @@ metadata:
   namespace: <namespace>
 spec:
   type: ova
-  url: <api_end_point> <1>
+  url:  <nfs_server:/nfs_path> <1>
   secret:
     name: <secret> <2>
     namespace: <namespace>
 EOF
 ----
-<1> Specify the API end point URL.
+<1>  where: `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
 <2> Specify the name of provider `Secret` CR.
 endif::[]
 
@@ -452,15 +452,14 @@ spec:
         name: <network_name>
         type: pod <1>
       source:
-        id: <source_network_id> <2>
-        name: <source_network_name>
+        id: <source_network_id>
     - destination:
-        name: <network_attachment_definition> <3>
-        namespace: <network_attachment_definition_namespace> <4>
+        name: <network_attachment_definition> <2>
+        namespace: <network_attachment_definition_namespace> <3>
         type: multus
       source:
-        name: <network_attachment_definition> <5>
-        namespace: <network_attachment_definition_namespace> <6>
+        name: <network_attachment_definition> <4>
+        namespace: <network_attachment_definition_namespace> <5>
   provider:
     source:
       name: <source_provider>
@@ -471,11 +470,10 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the TBD.
-<3> Specify a network attachment definition for each additional {virt} network.
-<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<5> Specify a network attachment definition for each additional {virt} network.
-<6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
+<2> Specify a network attachment definition for each additional {virt} network.
+<3> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+<4> Specify a network attachment definition for each additional {virt} network.
+<5> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
 endif::[]
 
 ifdef::ostack[]
@@ -652,12 +650,12 @@ spec:
         storageClass: <storage_class>
         accessMode: <access_mode> <1>
       source:
-        id: <source_datastore> <2>
+        name: <source_datastore> <2>
     - destination:
         storageClass: <storage_class>
         accessMode: <access_mode>
       source:
-        id: <source_datastore>
+        name: <source_datastore>
   provider:
     source:
       name: <source_provider>
@@ -670,7 +668,6 @@ EOF
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the TBD.
 endif::[]
-
 
 ifdef::ostack[]
 [source,yaml,subs="attributes+"]
