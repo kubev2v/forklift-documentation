@@ -31,7 +31,7 @@ RH-SDL. link:https://issues.redhat.com/browse/MTV-801[(MTV-801)]
 
 .OCP Provider
 
-OCP provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
+OCP (OpenShift Container Platform) provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
 
 .Console Plugin
 
