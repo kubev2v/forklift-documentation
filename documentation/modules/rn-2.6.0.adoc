@@ -25,6 +25,21 @@ This release has the following features and improvements:
 
 Cross-provider features. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
 
+.RH-SDL
+
+RH-SDL. link:https://issues.redhat.com/browse/MTV-801[(MTV-801)]
+
+.OCP Provider
+
+OCP provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
+
+.Console Plugin
+
+Console plugin. link:https://issues.redhat.com/browse/MTV-736[(MTV-736)]
+
+.OVA Provider
+
+OVA provider. link:https://issues.redhat.com/browse/MTV-690[(MTV-690)]
 
 [id="known-issues-26_{context}"]
 == Known issues
