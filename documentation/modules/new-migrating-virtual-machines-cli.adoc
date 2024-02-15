@@ -735,7 +735,6 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the TBD.
 endif::[]
 +
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
