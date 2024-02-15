@@ -12,8 +12,13 @@ The release notes describe technical changes, new features and enhancements, and
 [id="technical-changes-26_{context}"]
 == Technical changes
 
-{project-short} {project-z-version} is a maintenance release. There are no technical changes.
+// {project-short} {project-z-version} is a maintenance release. There are no technical changes.
+
 This release has the following technical changes:
+
+.Technical change
+
+Technical change
 
 [id="new-features-and-enhancements-26_{context}"]
 == New features and enhancements
@@ -53,3 +58,6 @@ For
 
 This release has the following resolved issues:
 
+.CVE-2024021484 jsrsasign package vulnerable to Observable Discrepancy
+
+The *jsrsasign* package is vulnerable to an Observable Discrepancy when precessed by RSA PKCS 1.5 or RSAOAEP decryption process. This vulnerability allows an attacker to decrypt cyphertexts, which gives the attacker access to cyphertexts encrypted with the same key.
