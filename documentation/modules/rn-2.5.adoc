@@ -128,7 +128,6 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
-// update filter
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-740?filter=12424645[Known Issues] in Jira.
 
 
