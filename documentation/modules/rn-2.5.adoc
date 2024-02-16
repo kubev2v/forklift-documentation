@@ -39,7 +39,6 @@ The old UI of MTV 2.3 cannot be enabled by setting `feature_ui: true` in Forklif
 
 .Errors logged in populator pods are improved
 
-// thanks Arik.
 In previous releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
 [id="new-features-and-enhancements-25_{context}"]
@@ -48,6 +47,7 @@ In previous releases of {project-short} {project-version}, populator pods were a
 This release has the following features and improvements:
 
 .Migration using OVA files created by VMware vSphere
+
 
 // i need to wait for this ticket to be merged to add a link
 In {project-short} {project-version}, you can migrate using Open Virtual Appliance (OVA) files that were created by VMware vSphere as source providers. link:https://issues.redhat.com/browse/MTV-336[(MTV-336)]
@@ -127,6 +127,7 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 .Import OVA: ConnectionTestFailed message appears when adding OVA provider
 
 When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
+
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-740?filter=12424645[Known Issues] in Jira.
 
