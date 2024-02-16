@@ -154,7 +154,6 @@ For more information, see link:https://access.redhat.com/security/cve/cve-2023-4
 
 A flaw was found in the Gin-Gonic Gin Web Framework, used by {project-short}. The filename parameter of the `Context.FileAttachment` function was not properly sanitized. This flaw in the package could allow a remote attacker to bypass security restrictions caused by improper input validation by the filename parameter of the `Context.FileAttachment` function. A maliciously created filename could cause the `Content-Disposition` header to be sent with an unexpected filename value, or otherwise modify the `Content-Disposition` header.
 
-
 This issue has been resolved in {project-short} 2.5.2. It is advised to update to this version of {project-short} or later.
 
 For more information, see link:https://access.redhat.com/security/cve/cve-2023-29401[CVE-2023-29401 (Gin-Gonic Gin Web Framework)] and link:https://access.redhat.com/security/cve/CVE-2023-26125[CVE-2023-26125].
