@@ -291,7 +291,7 @@ This issue is resolved in {project-short} {project-version}, VM with multiple di
 .Transfer network not taken into account for cold migrations from vSphere
 In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the local cluster on which {project-short} was deployed did not take a specified transfer network into account. This issue is resolved in  {project-short} 2.5.4.  link:https://issues.redhat.com/browse/MTV-846[(MTV-846)]
 
-For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-666?filter=12424644[Resolved Issues] in Jira.
+For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12424644[Resolved Issues] in Jira.
 
 [id="upgrade-notes-25_{context}"]
 == Upgrade notes
