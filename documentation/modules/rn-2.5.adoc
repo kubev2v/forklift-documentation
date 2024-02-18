@@ -137,7 +137,7 @@ This release has the following resolved issues:
 
 .Flaw was found in jsrsasign package which is vulnerable to Observable Discrepancy
 
-Versions of the package `jsrsasign` before 11.0.0, used in previous releases of {project-short}, are vulnerable to Observable Discrepancy in the RSA PKCS1.5 or RSA-OAEP decryption process. This discrepancy means an attacker could decrypt ciphertexts by exploiting this vulnerability. However, exploiting this vulnerability requires the attacker to have access to a large number of ciphertexts encrypted with the same key. This issue has been resolved in {project-short} 2.5.5 by upgrading the package 'jsrasign` to version 11.0.0.
+Versions of the package `jsrsasign` before 11.0.0, used in previous releases of {project-short}, are vulnerable to Observable Discrepancy in the RSA PKCS1.5 or RSA-OAEP decryption process. This discrepancy means an attacker could decrypt ciphertexts by exploiting this vulnerability. However, exploiting this vulnerability requires the attacker to have access to a large number of ciphertexts encrypted with the same key. This issue has been resolved in {project-short} 2.5.5 by upgrading the package `jsrasign` to version 11.0.0.
 
 For more information, see link:https://access.redhat.com/security/cve/CVE-2024-21484[CVE-2024-21484].
 
