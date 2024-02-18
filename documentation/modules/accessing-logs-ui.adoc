@@ -10,7 +10,7 @@ You can download logs and information about custom resources (CRs) for a complet
 
 .Procedure
 
-. In the web console, click *Migration plans*.
+. In the {ocp} web console, click *Migration* -> *Plans for virtualization*.
 . Click *Get logs* beside a migration plan name.
 . In the *Get logs* window, click *Get logs*.
 +

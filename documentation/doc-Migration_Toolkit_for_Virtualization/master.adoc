@@ -21,22 +21,15 @@ endif::[]
 [id="about-mtv"]
 == About {the-lc} {project-full}
 
-You can migrate virtual machines from VMware vSphere, {rhv-full}, or {osp} source providers to {virt} with {the-lc} {project-first}.
+You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
 
-Migration using OpenStack source providers is a Technology Preview.
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* Remote {virt} clusters
 
-[IMPORTANT]
-====
-Migration using OpenStack source providers is a Technology Preview feature only. Technology Preview features
-are not supported with Red Hat production service level agreements (SLAs) and
-might not be functionally complete. Red Hat does not recommend using them
-in production. These features provide early access to upcoming product
-features, enabling customers to test functionality and provide feedback during
-the development process.
-
-For more information about the support scope of Red Hat Technology Preview
-features, see https://access.redhat.com/support/offerings/techpreview/.
-====
+include::modules/snippet_ova_tech_preview.adoc[]
 
 [NOTE]
 ====
@@ -65,6 +58,19 @@ include::modules/network-prerequisites.adoc[leveloffset=+2]
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
+
+==== Additional authentication methods for migrations with {osp} source providers
+
+{project-short} versions 2.5 and later support the following authentication methods for migrations with {osp} source providers in addition to the standard username and password credential set:
+
+* Token authentication
+* Application credential authentication
+
+You can use these methods to migrate virtual machines with {osp} source providers using the CLI the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
+
+include::modules/ostack-token-auth.adoc[leveloffset=+4]
+include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
+
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
 :context: prereqs
@@ -73,14 +79,17 @@ include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+3]
 :context: mtv
 :mtv:
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
+include::modules/ova-prerequisites.adoc[leveloffset=+2]
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 [id="installing-the-operator"]
-== Installing the {operator-name}
+== Installing and configuring the {operator-name}
 
 You can install the {operator-name} by using the {ocp} web console or the command line interface (CLI).
 
 In {project-first} version 2.4 and later, the {operator-name} includes the {project-short} plugin for the {ocp} web console.
+
+After you install the {operator-name} by using either the {ocp} web console or the CLI, you can configure the Operator.
 
 :!mtv:
 :context: web
@@ -95,6 +104,8 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 :context: mtv
 :mtv:
 
+include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
+
 [id="migrating-vms-web-console"]
 == Migrating virtual machines by using the {ocp} web console
 
@@ -106,8 +117,12 @@ You must ensure that all xref:prerequisites[prerequisites] are met.
 
 VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 
-VMware only: You must create a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image.
+VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 ====
+
+include::modules/mtv-ui.adoc[leveloffset=+2]
+include::modules/mtv-overview-page.adoc[leveloffset=+2]
+include::modules/mtv-settings.adoc[leveloffset=+2]
 
 [id="adding-providers"]
 === Adding providers
@@ -117,32 +132,52 @@ You can add source providers and destination providers for a virtual machine mig
 [id="adding-source-providers"]
 ==== Adding source providers
 
-You can add a VMware source provider, {a-rhv} source provider, or an {osp} source provider by using the {ocp} web console.
+You can use {project-short} to migrate VMs from the following source providers:
+
+* VMware vSphere
+* {rhv-full}
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* {virt}
+
+You can add a source provider by using the {ocp} web console.
 
 :mtv!:
 :context: vmware
 :vmware:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :vmware!:
-:context: mtv
-:mtv:
-include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
-:mtv!:
 :context: rhv
 :rhv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :rhv!:
-:context: mtv
-:mtv:
+:context: ostack
+:ostack:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:ostack!:
+:context: ova
 
-include::modules/osh-adding-source-provider.adoc[leveloffset=+4]
+:ova:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:ova!:
+:context: cnv
+:cnv:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:cnv!:
+:context: mtv
 
 [id="adding-destination-providers"]
 ==== Adding destination providers
 
 You can add  a {virt} destination provider by using the {ocp} web console.
 
-include::modules/adding-virt-provider.adoc[leveloffset=+4]
+:mtv!:
+:context: cnv2
+:cnv2:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+:cnv!:
+:context: mtv
+
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
 
 include::modules/creating-network-mapping.adoc[leveloffset=+2]
@@ -163,13 +198,21 @@ You can migrate virtual machines to {virt} from the command line.
 
 *  VMware only: You must have the xref:obtaining-vmware-fingerprint_{context}[vCenter SHA-1 fingerprint].
 
-*  VMware only: You must create a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image.
+*  VMware only:  Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 
 *  You must ensure that all xref:prerequisites[prerequisites] are met.
 ====
 
+:mtv!:
+:context: cli
+include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
+:cli!:
+:context: mtv
+
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+2]
+
+
 include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 [id="advanced-migration-options"]
@@ -217,7 +260,7 @@ include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
 include::modules/mtv-workflow.adoc[leveloffset=+3]
 include::modules/virt-migration-workflow.adoc[leveloffset=+3]
 
-[id="logs-and-crs_{context}"]
+[id="logs-and-crs"]
 === Logs and custom resources
 
 You can download logs and custom resource (CR) information for troubleshooting. For more information, see the xref:virt-migration-workflow_{context}[detailed migration workflow].

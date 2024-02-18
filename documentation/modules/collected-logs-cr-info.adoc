@@ -26,7 +26,7 @@ The `must-gather` tool collects the following logs and CR files in an archive fi
 ** `virt-launcher` pod: VM launcher log. When a migrated VM is powered on, the `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 ** `forklift-controller` pod: The log is filtered for the migration plan, virtual machine, or namespace specified by the `must-gather` command.
 ** `forklift-must-gather-api` pod: The log is filtered for the migration plan, virtual machine, or namespace specified by the `must-gather` command.
-** `hook-job` pod: The log is filtered for hook jobs. The `hook-job` naming convention is`<migration_plan>-<vm_id><5_char_id>`, for example, `plan2j-vm-3696-posthook-4mx85` or `plan2j-vm-3696-prehook-mwqnl`.
+** `hook-job` pod: The log is filtered for hook jobs. The `hook-job` naming convention is `<migration_plan>-<vm_id><5_char_id>`, for example, `plan2j-vm-3696-posthook-4mx85` or `plan2j-vm-3696-prehook-mwqnl`.
 +
 [NOTE]
 ====
