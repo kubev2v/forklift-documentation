@@ -38,7 +38,6 @@ The old UI of MTV 2.3 cannot be enabled by setting `feature_ui: true` in Forklif
 
 .Errors logged in populator pods are improved
 
-// thanks Arik.
 In previous releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
 [id="new-features-and-enhancements-25_{context}"]
@@ -47,6 +46,7 @@ In previous releases of {project-short} {project-version}, populator pods were a
 This release has the following features and improvements:
 
 .Migration using OVA files created by VMware vSphere
+
 
 // i need to wait for this ticket to be merged to add a link
 In {project-short} {project-version}, you can migrate using Open Virtual Appliance (OVA) files that were created by VMware vSphere as source providers. link:https://issues.redhat.com/browse/MTV-336[(MTV-336)]
@@ -127,7 +127,7 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
-For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-740?filter=12424645[Known Issues] in Jira.
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12424645[Known Issues] in Jira.
 
 
 [id="resolved-issues-25_{context}"]
@@ -135,6 +135,11 @@ For a complete list of all known issues in this release, see the list of link:ht
 
 This release has the following resolved issues:
 
+.Flaw was found in jsrsasign package which is vulnerable to Observable Discrepancy
+
+Versions of the package `jsrsasign` before 11.0.0, used in previous releases of {project-short}, are vulnerable to Observable Discrepancy in the RSA PKCS1.5 or RSA-OAEP decryption process. This discrepancy means an attacker could decrypt ciphertexts by exploiting this vulnerability. However, exploiting this vulnerability requires the attacker to have access to a large number of ciphertexts encrypted with the same key. This issue has been resolved in {project-short} 2.5.5 by upgrading the package `jsrasign` to version 11.0.0.
+
+For more information, see link:https://access.redhat.com/security/cve/CVE-2024-21484[CVE-2024-21484].
 
 .Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)
 
@@ -147,8 +152,7 @@ For more information, see link:https://access.redhat.com/security/cve/cve-2023-4
 
 .Gin Web Framework does not properly sanitize filename parameter of Context.FileAttachment function
 
-A flaw was found in the Gin-Gonic Gin Web Framework, used by {project-short}. The filename parameter of the `Context.FileAttachment` function was not properly sanitized. This flaw in the package could allow a remote attacker to bypass security restrictions caused by improper input validation by the filename parameter of the `Context.FileAttachment` function.  A maliciously created filename could cause the `Content-Disposition` header to be sent with an unexpected filename value, or otherwise modify the `Content-Disposition` header.
-
+A flaw was found in the Gin-Gonic Gin Web Framework, used by {project-short}. The filename parameter of the `Context.FileAttachment` function was not properly sanitized. This flaw in the package could allow a remote attacker to bypass security restrictions caused by improper input validation by the filename parameter of the `Context.FileAttachment` function. A maliciously created filename could cause the `Content-Disposition` header to be sent with an unexpected filename value, or otherwise modify the `Content-Disposition` header.
 
 This issue has been resolved in {project-short} 2.5.2. It is advised to update to this version of {project-short} or later.
 
@@ -225,7 +229,7 @@ This issue has been resolved in {project-short} 2.5.3.
 
 In previous releases of {project-short} {project-version}, the filesystem overhead for new persistent volumes was hard-coded to 10%. The overhead was insufficient for certain filesystem types, resulting in failures during cold-migrations from RHV and OSP to the cluster where {project-short} is deployed.  In other filesystem types, the hard-coded overhead was too high, resulting in excessive storage consumption.
 
-In {project-short} 2.5.3, the filesystem overhead can be configured and is no longer hard-coded. If your migration allocates persistent volumes without CDI, you can adjust the file system overhead. You adjust the file system overhead by adding the following label and value to the `spec` portion of the `forklift-controller ` CR`:
+In {project-short} 2.5.3, the filesystem overhead can be configured and is no longer hard-coded. If your migration allocates persistent volumes without CDI, you can adjust the file system overhead. You adjust the file system overhead by adding the following label and value to the `spec` portion of the `forklift-controller ` CR`:
 
 [source, YAML]
 ----
@@ -257,13 +261,13 @@ This issue is resolved in {project-short} {project-version}, the snapshots gener
 
 In previous releases of {project-short}, the cutover operation failed when it was triggered while precopy was being performed. The VM was locked in {rhv-short} and therefore the `ovirt-engine` rejected the snapshot creation, or disk transfer, operation.
 
-This issue is resolved in {project-short} {project-version}, the cutover operation is triggered, but it is not performed at that time because the VM is locked. Once the precopy operation completes, the cutover operation is triggered. link:https://issues.redhat.com/browse/MTV-686[(MTV-686)]
+This issue is resolved in {project-short} {project-version}, the cutover operation is triggered, but it is not performed at that time because the VM is locked. Once the precopy operation completes, the cutover operation is triggered. link:https://issues.redhat.com/browse/MTV-686[(MTV-686)]
 
 .Warm migration fails when VM is locked
 
 In previous releases of {project-short}, triggering a warm migration while there was an ongoing operation in {rhv-short} that locked the VM caused the migration to fail because the snapshot creation could not be triggered.
 
-This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-687[(MTV-687)]
+This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-687[(MTV-687)]
 
 .Deleting migrated VM does not remove PVC and PV
 
@@ -287,8 +291,7 @@ This issue is resolved in {project-short} {project-version}, VM with multiple di
 .Transfer network not taken into account for cold migrations from vSphere
 In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the local cluster on which {project-short} was deployed did not take a specified transfer network into account. This issue is resolved in  {project-short} 2.5.4.  link:https://issues.redhat.com/browse/MTV-846[(MTV-846)]
 
-
-For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/browse/MTV-666?filter=12424644[Resolved Issues] in Jira.
+For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12424644[Resolved Issues] in Jira.
 
 [id="upgrade-notes-25_{context}"]
 == Upgrade notes
