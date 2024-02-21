@@ -78,20 +78,21 @@ ifdef::vmware[]
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider.
+* *Endpoint type*: Select the vSphere provider endpoint type. Options: *vSphere* or *ESXi*.
 * *URL*: URL of the SDK endpoint of the vCenter on which the source VM is mounted. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
 * *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
 * *Username*: vCenter user. For example, `user@vsphere.local`.
 * *Password*: vCenter user password.
-* *SHA-1 fingerprint*: The provider currently requires the SHA-1 fingerprint of the vCenter Server's TLS certificate in all circumstances. vSphere calls this the server's thumbprint.
+// * *SHA-1 fingerprint*: The provider currently requires the SHA-1 fingerprint of the vCenter Server's TLS certificate in all circumstances. vSphere calls this the server's thumbprint.
 +
 
 . Choose one of the following options for validating CA certificates:
 
 ** *Skip certificate validation* : Migrate without validating a CA certificate.
-** *Use the system CA certificates*: Migrate after validating the system CA certificates.
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
 
 .. To skip certificate validation, select the *Skip certificate validation* check box.
-.. To validate the system CA certificates, leave the *Skip certificate validation* check box cleared.
+.. To validate a custom CA certificate, leave the *Skip certificate validation* check box cleared and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
 endif::[]
 ifdef::rhv[]
 . Click *Red Hat Virtualization*
