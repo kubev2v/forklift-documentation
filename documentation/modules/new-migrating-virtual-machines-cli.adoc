@@ -8,7 +8,7 @@
 ifdef::vmware[]
 = Migrating a VMware vSphere source provider
 
-Before you can migrate a VMware vSphere source provider using the CLI, you must obtain the SHA-1 fingerprint of a vCenter host, as described in the procedure that follows.
+You can migrate a VMware vSphere source provider using the CLI.
 
 endif::[]
 ifdef::rhv[]
@@ -76,15 +76,13 @@ stringData:
   password: <password> <3>
   insecureSkipVerify: <true/false> <4>
   url: <api_end_point> <5>
-  thumbprint: <vcenter_fingerprint> <6>
 EOF
 ----
 <1> The `ownerReferences` section is optional.
 <2> Specify the vCenter user.
 <3> Specify the user password.
-<4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5> Specify the API end point URL, for example, `https://<vCenter_host>/sdk`.
-<6> Specify the vCenter SHA-1 fingerprint.
 endif::[]
 ifdef::rhv[]
 [source,yaml,subs="attributes+"]
@@ -116,7 +114,7 @@ EOF
 <1> The `ownerReferences` section is optional.
 <2> Specify the {rhv-short} {manager} user.
 <3> Specify the user password.
-<4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5> Enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
 <6> Specify the API end point URL, for example, `https://<engine_host>/ovirt-engine/api`.
 endif::[]
@@ -178,7 +176,7 @@ EOF
 <1> The `ownerReferences` section is optional.
 <2> Specify the {osp} user.
 <3> Specify the user password.
-<4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5> Specify the name of the {osp} region.
 <6> Enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`. Note that if you set `insecureSkipVerify` to `false` and you do not set  `cacert`, {project-short} attempts to use the system CA.
 <7> Specify the API end point URL, for example, `https://<identity_service>/v3`.
@@ -212,7 +210,7 @@ EOF
 <1> The `ownerReferences` section is optional.
 <2> Specify the {virt} user.
 <3> Specify the user password.
-<4> Specify `<true>` to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying `<false>` verifies the certificate.
+<4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5> Specify the API end point URL.
 endif::[]
 +
@@ -631,11 +629,6 @@ EOF
 endif::[]
 
 ifdef::ova[]
-[NOTE]
-====
-For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>".
-====
-+
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -650,7 +643,7 @@ spec:
         storageClass: <storage_class>
         accessMode: <access_mode> <1>
       source:
-        name: <source_datastore> <2>
+        name:  <"Dummy storage for source provider <provider_name>"> <2>
     - destination:
         storageClass: <storage_class>
         accessMode: <access_mode>
@@ -666,7 +659,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the TBD.
+<2> For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>".
 endif::[]
 
 ifdef::ostack[]
