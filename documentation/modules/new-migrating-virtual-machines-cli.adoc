@@ -5,12 +5,14 @@
 :_content-type: PROCEDURE
 [id="new-migrating-virtual-machines-cli_{context}"]
 
+// VMware
 ifdef::vmware[]
 = Migrating a VMware vSphere source provider
 
 You can migrate a VMware vSphere source provider using the CLI.
 
 endif::[]
+// rhv
 ifdef::rhv[]
 = Migrating a {rhv-full} source provider
 
@@ -23,6 +25,7 @@ You can migrate a {rhv-full} ({rhv-short}) source provider using the CLI.
 include::snip-migrating-luns.adoc[]
 
 endif::[]
+// ova
 ifdef::ova[]
 = Migrating an Open Virtual Appliance (OVA) source provider
 
@@ -30,6 +33,7 @@ You can migrate Open Virtual Appliance (OVA) files that were created by VMware v
 
 include::snippet_ova_tech_preview.adoc[]
 endif::[]
+// OpenStack
 ifdef::ostack[]
 = Migrating an {osp} source provider
 
@@ -40,6 +44,7 @@ You can migrate an {osp} source provider using the CLI.
 Migration using {osp} source providers only supports VMs that use only Cinder volumes.
 ====
 endif::[]
+// CNV
 ifdef::cnv[]
 = Migrating a Red Hat {virt} source provider
 
@@ -50,9 +55,14 @@ Specifically, the host cluster that is automatically added as a {virt} provider 
 You can use the CLI to migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
 endif::[]
 
+
 .Procedure
 . Create a `Secret` manifest for the source provider credentials:
-+
+// line break force
+
+
+// VMware
+
 ifdef::vmware[]
 [source,yaml,subs="attributes+"]
 ----
@@ -87,6 +97,8 @@ EOF
 <5> Enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
 <6> Specify the API end point URL, for example, `https://<vCenter_host>/sdk`.
 endif::[]
+// rhv
+
 ifdef::rhv[]
 [source,yaml,subs="attributes+"]
 ----
@@ -121,6 +133,8 @@ EOF
 <5> Enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
 <6> Specify the API end point URL, for example, `https://<engine_host>/ovirt-engine/api`.
 endif::[]
+//ova
+
 ifdef::ova[]
 [source,yaml,subs="attributes+"]
 ----
@@ -146,6 +160,8 @@ EOF
 <1> The `ownerReferences` section is optional.
 <2> where: `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
 endif::[]
+// OpenStack
+
 ifdef::ostack[]
 [source,yaml,subs="attributes+"]
 ----
@@ -184,6 +200,7 @@ EOF
 <6> Enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`. Note that if you set `insecureSkipVerify` to `false` and you do not set  `cacert`, {project-short} attempts to use the system CA.
 <7> Specify the API end point URL, for example, `https://<identity_service>/v3`.
 endif::[]
+// CNV
 
 ifdef::cnv[]
 [source,yaml,subs="attributes+"]
@@ -219,10 +236,12 @@ EOF
 <5> Enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
 <6> Specify the URL of the end point of the API server.
 endif::[]
-+
-
+[start=2]
 . Create a `Provider` manifest for the source provider:
-+
+// line break force
+
+
+// VMware
 ifdef::vmware[]
 [source,yaml,subs="attributes+"]
 ----
@@ -248,7 +267,7 @@ EOF
 <3> Options: `vcenter` or `esxi`.
 <4> Specify the name of the provider `Secret` CR.
 endif::[]
-
+// RHV
 ifdef::rhv[]
 [source,yaml,subs="attributes+"]
 ----
@@ -269,7 +288,7 @@ EOF
 <1> Specify the API end point URL, for example, `https://<engine_host>/ovirt-engine/api`.
 <2> Specify the name of provider `Secret` CR.
 endif::[]
-
+// OVA
 ifdef::ova[]
 [source,yaml,subs="attributes+"]
 ----
@@ -290,7 +309,7 @@ EOF
 <1>  where: `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
 <2> Specify the name of provider `Secret` CR.
 endif::[]
-
+// OpenStack
 ifdef::ostack[]
 [source,yaml,subs="attributes+"]
 ----
@@ -311,7 +330,7 @@ EOF
 <1> Specify the API end point URL, for example, `https://<identity_service>/v3`.
 <2> Specify the name of provider `Secret` CR.
 endif::[]
-
+// CNV
 ifdef::cnv[]
 [source,yaml,subs="attributes+"]
 ----
@@ -332,10 +351,14 @@ EOF
 <1> Specify the URL of the end point of the API server.
 <2> Specify the name of provider `Secret` CR.
 endif::[]
-+
+// line break force
 
+// VMware
 ifdef::vmware[]
+[start=3]
 . Create a `Host` manifest:
+// line break force
+
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -356,12 +379,15 @@ EOF
 <1> Specify the name of the VMware `Provider` CR.
 <2> Specify the managed object reference (MOR) of the VMware host.
 <3> Specify the IP address of the VMware migration network.
-endif::[]
-+
-
+// endif::[]
+[start=4]
 . Create a `NetworkMap` manifest to map the source and destination networks:
+// line break force
+
+// VMware
+// ifdef::vmware[]
+
 +
-ifdef::vmware[]
 [source,yaml,subs="attributes+"]
 ----
 $  cat << EOF | {oc} apply -f -
@@ -401,8 +427,12 @@ EOF
 <5> Specify a network attachment definition for each additional {virt} network.
 <6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
 endif::[]
-
+// RHV
 ifdef::rhv[]
+[start=3]
+. Create a `NetworkMap` manifest to map the source and destination networks:
+
++
 [source,yaml,subs="attributes+"]
 ----
 $  cat << EOF | {oc} apply -f -
@@ -442,8 +472,12 @@ EOF
 <5> Specify a network attachment definition for each additional {virt} network.
 <6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
 endif::[]
-
+// OVA
 ifdef::ova[]
+[start=3]
+. Create a `NetworkMap` manifest to map the source and destination networks:
+
++
 [source,yaml,subs="attributes+"]
 ----
 $  cat << EOF | {oc} apply -f -
@@ -481,8 +515,12 @@ EOF
 <4> Specify a network attachment definition for each additional {virt} network.
 <5> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
 endif::[]
-
+// OpenStack
 ifdef::ostack[]
+[start=3]
+. Create a `NetworkMap` manifest to map the source and destination networks:
+
++
 [source,yaml,subs="attributes+"]
 ----
 $  cat << EOF | {oc} apply -f -
@@ -522,8 +560,12 @@ EOF
 <5> Specify a network attachment definition for each additional {virt} network.
 <6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
 endif::[]
-
+// CNV
 ifdef::cnv[]
+[start=3]
+. Create a `NetworkMap` manifest to map the source and destination networks:
+
++
 [source,yaml,subs="attributes+"]
 ----
 $  cat << EOF | {oc} apply -f -
@@ -564,11 +606,17 @@ EOF
 <5> Specify a network attachment definition for each additional {virt} network.
 <6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
 endif::[]
-+
 
-. Create a `StorageMap` manifest to map source and destination storage:
-+
+//. Create a `StorageMap` manifest to map source and destination storage:
+
+
+//VMware
 ifdef::vmware[]
+[start=5]
+. Create a `StorageMap` manifest to map source and destination storage:
+// line break force
+
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -601,8 +649,13 @@ EOF
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the VMware data storage MOR. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
-
+// RHV
 ifdef::rhv[]
+[start=4]
+. Create a `StorageMap` manifest to map source and destination storage:
+// line break force
+
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -635,8 +688,13 @@ EOF
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the {rhv-short} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
-
+// OpenStack
 ifdef::ova[]
+[start=4]
+. Create a `StorageMap` manifest to map source and destination storage:
+// line break force
+
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -669,8 +727,13 @@ EOF
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>".
 endif::[]
-
+// OpenStack
 ifdef::ostack[]
+[start=4]
+. Create a `StorageMap` manifest to map source and destination storage:
+// line break force
+
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -703,9 +766,13 @@ EOF
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
-
-
+// CNV
 ifdef::cnv[]
+[start=4]
+. Create a `StorageMap` manifest to map source and destination storage:
+// line break force
+
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -737,8 +804,9 @@ EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 endif::[]
-+
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
+// line break force
+
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -768,10 +836,13 @@ where:
 You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
 ====
 +
-
+[start=2]
 . Create a `Plan` manifest for the migration:
-+
+// line break force
+
 ifdef::vmware[]
+//VMware
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -820,7 +891,7 @@ EOF
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
-
+// RHV
 ifdef::rhv[]
 [source,yaml,subs="attributes+"]
 ----
@@ -872,7 +943,7 @@ EOF
 <12> Specify the name of the `Hook` CR.
 <13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
-
+// OVA
 ifdef::ova[]
 [source,yaml,subs="attributes+"]
 ----
@@ -922,8 +993,7 @@ EOF
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
-
-
+// OpenStack
 ifdef::ostack[]
 [source,yaml,subs="attributes+"]
 ----
@@ -973,8 +1043,7 @@ EOF
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
-
-
+// CNV
 ifdef::cnv[]
 [source,yaml,subs="attributes+"]
 ----
@@ -1022,8 +1091,10 @@ EOF
 <9> Specify the name of the `Hook` CR.
 <10> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
-
+[start=2]
 . Create a `Migration` manifest to run the `Plan` CR:
+// line break force
+
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -1040,7 +1111,7 @@ spec:
   cutover: <optional_cutover_time>
 EOF
 ----
-+
+
 [NOTE]
 ====
 If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
