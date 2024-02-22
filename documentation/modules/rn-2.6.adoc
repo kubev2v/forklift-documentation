@@ -16,9 +16,42 @@ The release notes describe technical changes, new features and enhancements, and
 
 This release has the following technical changes:
 
-.Technical change
+.Migration from OpenStack moves to being a fully supported feature
 
-Technical change
+In this version of {project-short}, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.
+
+.Disabling FIPS
+
+EMS enforcement is disabled for migrations with VMware vSphere source providers to enable migrations from versions of vSphere that are supported by {project-short} but do not comply with the 2023 FIPS requirements.
+
+.Integration of the create and update provider user interface
+
+The user interface of create and update providers now aligns with the look and feel of the {ocp} web console and displays up-to-date data.
+
+.Standalone UI
+
+The old UI of MTV 2.3 cannot be enabled by setting `feature_ui: true` in ForkliftController anymore.
+
+.Errors logged in populator pods are improved
+
+In previous releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
+
+.`VirtualMachineClusterFlavor`and `VirtualMachineClusterFlavor` CRDs replace OpenShift templates
+
+Virtual Machine Flavor API will replace OpenShift templates. MTV currently fall back to using OpenShift templates when a relevant preference is not available.
+
+.Full support for migration from OVA moves
+
+{project-short} {project-version} supports migration from OVA moves.
+
+.OpenShift Console `Create/Edit` pages replace Forms and Wizards
+
+Forms and Wizards that use @migtools/lib-ui` have not worked properly when running inside the plugin. The migtool library was built fo a standalone application. The `Create` and `Edit` pages in the OpenShift Console replace them. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
+
+.Scan OVA files in the root folder of an NFS share
+
+Files held directly on the NFS share are scanned, not requiring a folder. link:https://issues.redhat.com/browse/MTV-680[(MTV-680)]
+
 
 [id="new-features-and-enhancements-26_{context}"]
 == New features and enhancements
