@@ -1023,7 +1023,6 @@ EOF
 <10> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 
-
 . Create a `Migration` manifest to run the `Plan` CR:
 +
 [source,yaml,subs="attributes+"]
