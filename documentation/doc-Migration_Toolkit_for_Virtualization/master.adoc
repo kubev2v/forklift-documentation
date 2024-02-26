@@ -73,11 +73,6 @@ include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
 
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
-:context: prereqs
-:prereqs:
-include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+3]
-:context: mtv
-:mtv:
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
 include::modules/ova-prerequisites.adoc[leveloffset=+2]
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
@@ -156,7 +151,6 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :ostack!:
 :context: ova
-
 :ova:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :ova!:
@@ -196,8 +190,6 @@ You can migrate virtual machines to {virt} from the command line.
 ====
 *  VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 
-*  VMware only: You must have the xref:obtaining-vmware-fingerprint_{context}[vCenter SHA-1 fingerprint].
-
 *  VMware only:  Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 
 *  You must ensure that all xref:prerequisites[prerequisites] are met.
@@ -210,9 +202,6 @@ include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
 :context: mtv
 
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
-include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+2]
-
-
 include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 [id="advanced-migration-options"]
