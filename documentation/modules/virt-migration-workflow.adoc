@@ -9,8 +9,8 @@
 You can use the detailed migration workflow to troubleshoot a failed migration.
 
 // ifeval::["{build}" == "downstream"]
-// .Detailed {virt} migration workflow
-// image::136_OpenShift_Migration_Toolkit_0121_virt-workflow.svg[{virt} workflow]
+.Detailed {virt} migration workflow
+image::136_OpenShift_Migration_Toolkit_0121_virt-workflow.png[{virt} workflow]
 // endif::[]
 // ifeval::["{build}" == "upstream"]
 // .Detailed {virt} migration workflow

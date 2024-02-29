@@ -9,8 +9,8 @@
 The high-level workflow shows the migration process from the point of view of the user:
 
 // ifeval::["{build}" == "downstream"]
-// .High-level workflow
-// image::136_OpenShift_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
+.High-level workflow
+image::136_OpenShift_Migration_Toolkit_0121_mtv-workflow.png[{project-short} workflow]
 // endif::[]
 // ifeval::["{build}" == "upstream"]
 // .High-level workflow
