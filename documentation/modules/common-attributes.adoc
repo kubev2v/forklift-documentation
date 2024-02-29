@@ -16,8 +16,8 @@
 :project-full: Migration Toolkit for Virtualization
 :project-short: MTV
 :project-first: {project-full} ({project-short})
-:project-version: 2.4
-:project-z-version: 2.4.2
+:project-version: 2.5
+:project-z-version: 2.5.5
 :the: The
 :the-lc: the
 :virt: OpenShift Virtualization
