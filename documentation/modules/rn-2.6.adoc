@@ -90,3 +90,5 @@ For
 == Resolved issues
 
 This release has the following resolved issues:
+
+// empty comment
