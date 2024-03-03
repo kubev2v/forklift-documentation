@@ -8,13 +8,16 @@
 
 You can configure the following settings of the {operator-name} using either the CLI or the user interface.
 
-* Maximum number of virtual machines (VMs) per plan that can be migrated simultaneously
-* How long `must gather` reports are retained before being automatically deleted
-* CPU limit allocated to the main controller container
-* Memory limit allocated to the main controller container
-* Interval at which a new snapshot is requested before initiating a warm migration
-* Frequency with which the system checks the status of snapshot creation or removal during a warm migration
-* Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem` (CLI only)
+* Maximum number of virtual machines (VMs) per plan that can be migrated simultaneously.
+* How long `must gather` reports are retained before being automatically deleted.
+* CPU limit allocated to the main controller container.
+* Memory limit allocated to the main controller container.
+* Interval at which a new snapshot is requested before initiating a warm migration.
+* Frequency with which the system checks the status of snapshot creation or removal during a warm migration.
+* Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem` (CLI only).
+* Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based (CLI only).
+* Configuration map for vSphere source providers (CLI only).
+* Configuration map for {rhv-full} ({rhv-short}) source providers (CLI only).
 
 These settings are configured by changing the default of the appropriate parameter in the `spec` part of the `forklift-controller` CR.
 
@@ -66,6 +69,23 @@ spec:
 |`controller_block_overhead`
 |Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based. It can be used when data, such as encryption headers, is written to the persistent volumes in addition to the content of the virtual disk. Note, this setting can only be changed using the CLI.
 |`0`
+
+
+|`vsphere_osmap_configmap_name`
+|Configuration map for vSphere source providers. This configuration map maps the incoming operating system of the incoming VM to a {virt} preference name. This configuration map needs to be in the namespace where `forklift` is deployed, that is, where `forklift-controller` is running.
+
+To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* -> *Preferences*.
+
+An authorized user can overwrite, add, or delete values from the default settings. Note, this setting can only be changed using the CLI.
+|`forklift-vsphere-osmap`
+
+|`ovirt_osmap_configmap_name`
+|Configuration map for {rhv-short} source providers. This configuration map maps the incoming operating system of the incoming VM to a {virt} preference name. This configuration map needs to be in the namespace where `forklift` is deployed, that is, where `forklift-controller` is running.
+
+To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* -> *Preferences*.
+
+An authorized user can overwrite, add, or delete values from the default settings. Note, this setting can only be changed using the CLI.
+|`forklift-ovirt-osmap`
 |===
 
 
