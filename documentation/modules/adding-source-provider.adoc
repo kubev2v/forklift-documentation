@@ -40,7 +40,7 @@ You can add an {osp} source provider by using the {ocp} web console.
 
 [IMPORTANT]
 ====
-when you migrate an image-based VM that has an {osp} source provider, both the original VM and an identical copy of it appear in the destination provider, so you must delete one of them.
+When you migrate an image-based VM that has an {osp} source provider, both the original VM and an identical copy of it are migrated to the destination provider, so you must delete one of them.
 ====
 
 endif::[]
