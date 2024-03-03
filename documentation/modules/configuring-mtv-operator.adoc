@@ -6,23 +6,24 @@
 [id="configuring-mtv-operator_{context}"]
 = Configuring the {operator-name}
 
-You can configure the following settings of the {operator-name} using either the CLI or the user interface.
+You can configure all of the following settings of the {operator-name} by modifying the `ForkliftController` CR, or in the *Settings* section of the *Overview* page, unless otherwise indicated.
 
-* Maximum number of virtual machines (VMs) per plan that can be migrated simultaneously
-* How long `must gather` reports are retained before being automatically deleted
-* CPU limit allocated to the main controller container
-* Memory limit allocated to the main controller container
-* Interval at which a new snapshot is requested before initiating a warm migration
-* Frequency with which the system checks the status of snapshot creation or removal during a warm migration
-* Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem` (CLI only)
+* Maximum number of virtual machines (VMs) per plan that can be migrated simultaneously.
+* How long `must gather` reports are retained before being automatically deleted.
+* CPU limit allocated to the main controller container.
+* Memory limit allocated to the main controller container.
+* Interval at which a new snapshot is requested before initiating a warm migration.
+* Frequency with which the system checks the status of snapshot creation or removal during a warm migration.
+* Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem` (`ForkliftController` CR only).
+* Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based (`ForkliftController` CR only).
+* Configuration map of operating systems to preferences for vSphere source providers (`ForkliftController` CR only).
+* Configuration map of operating systems to preferences for {rhv-full} ({rhv-short}) source providers (`ForkliftController` CR only).
 
-These settings are configured by changing the default of the appropriate parameter in the `spec` part of the `forklift-controller` CR.
-
-The procedure for configuring these settings using the user interface is presented in xref:mtv-overview-page_{context}[Configuring MTV settings]. The procedure for configuring these settings using the CLI is presented following.
+The procedure for configuring these settings using the user interface is presented in xref:mtv-overview-page_{context}[Configuring MTV settings]. The procedure for configuring these settings by modifying the `ForkliftController` CR is presented following.
 
 .Procedure
 
-* Change a parameter's value in  the `spec` portion of the `forklift-controller` CR by adding the label and value as follows:
+* Change a parameter's value in  the `spec` portion of the `ForkliftController` CR by adding the label and value as follows:
 [source, YAML]
 ----
 spec:
@@ -60,12 +61,36 @@ spec:
 |`10`
 
 |`controller_filesystem_overhead`
-|Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem`. Note, this setting can only be changed using the CLI.
+|Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem`.
+
+`ForkliftController` CR only.
 |`10`
 
 |`controller_block_overhead`
-|Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based. It can be used when data, such as encryption headers, is written to the persistent volumes in addition to the content of the virtual disk. Note, this setting can only be changed using the CLI.
+|Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based. It can be used when data, such as encryption headers, is written to the persistent volumes in addition to the content of the virtual disk.
+
+`ForkliftController` CR only.
 |`0`
+
+|`vsphere_osmap_configmap_name`
+|Configuration map for vSphere source providers. This configuration map maps the operating system of the incoming VM to a {virt} preference name. This configuration map needs to be in the namespace where the {project-short} Operator is deployed.
+
+To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* -> *Preferences*.
+
+You can add values to the configuration map when this label has the default value, `forklift-vsphere-osmap.` In order to override or delete values, specify a configuration map that is different from `forklift-vsphere-osmap`.
+
+`ForkliftController` CR only.
+|`forklift-vsphere-osmap`
+
+|`ovirt_osmap_configmap_name`
+|Configuration map for {rhv-short} source providers. This configuration map maps the operating system of the incoming VM to a {virt} preference name. This configuration map needs to be in the namespace where the {project-short} Operator is deployed.
+
+To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* -> *Preferences*.
+
+You can add values to the configuration map when this label has the default value, `forklift-ovirt-osmap.` In order to override or delete values, specify a configuration map that is different from `forklift-ovirt-osmap`.
+
+`ForkliftController` CR only.
+|`forklift-ovirt-osmap`
 |===
 
 
