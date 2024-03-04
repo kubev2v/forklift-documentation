@@ -64,6 +64,10 @@ As a more comprehensive example, you can grant non-administrators the following 
 |`get`, `list`, `watch`
 |`forklift.konveyer.io`
 |`forkliftcontrollers`
+
+|`create`, `patch`, `delete`
+|`forklift.konveyer.io`
+|`secrets`
 |===
 
 [NOTE]
