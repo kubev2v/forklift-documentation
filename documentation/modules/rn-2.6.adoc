@@ -97,11 +97,24 @@ The {project-short} web console shows the name and migration status of each VM. 
 
 .OCP Provider
 
-OCP (OpenShift Container Platform) provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
+This is a collection of new features for OCP (OpenShift Container Platform) provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
+// 
+// .. Block Migrations from OpenShift versions before 4.13
+// 
+// This does not look like a feature. Is this a resolved issue?
+
+.. Secure connections to remote OpenShift clusters
+
+Connections to remote OpenShift clusters can be secures with CA certificates. link:https://issues.redhat.com/browse/MTV-728[MTV-728]
+
+// Is this a feature or Resolved issue?
+// .. Source and storage endpoints are not selected automatically
+// 
+// Source network and source storage anre not seleted automatically when creating an OCP to OCP plan. link:https://issues.redhat.com/browse/MTV-729[MTV729] 
 
 .Console Plugin
 
-Console plugin. link:https://issues.redhat.com/browse/MTV-736[(MTV-736)]
+This is a collection of new features for the {project-short} Console plugin. link:https://issues.redhat.com/browse/MTV-736[(MTV-736)]
 
 .OVA Provider
 
