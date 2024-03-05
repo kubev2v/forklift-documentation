@@ -19,10 +19,10 @@ This release has the following technical changes:
 .Migration from OpenStack moves to being a fully supported feature
 
 In this version of {project-short}, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.
-
-.Disabling FIPS
-
-EMS enforcement is disabled for migrations with VMware vSphere source providers to enable migrations from versions of vSphere that are supported by {project-short} but do not comply with the 2023 FIPS requirements.
+// 
+// .Disabling FIPS
+// 
+// EMS enforcement is disabled for migrations with VMware vSphere source providers to enable migrations from versions of vSphere that are supported by {project-short} but do not comply with the 2023 FIPS requirements.
 
 .Integration of the create and update provider user interface
 
@@ -61,7 +61,27 @@ This release has the following features and improvements:
 
 .Cross-Provider Features
 
-Cross-provider features. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
+This is a collection of new features that provide functionality across different cloud profiders. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
+
+..Replace templates with falvors
+
+Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` CDIs. These are meant to replace Template, which is only available on OpenShift. link::https://issues.redhat.com/browse/MTV-206[MTV-206]
+
+..Integrate volume populators in remote migrations
+
+Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` intop a CDI to migrate remote OCP clusters. link::https://issues.redhat.com/browse/MTV-721[MTV-721]
+
+..VM posted with `Running` state
+
+{project-short} shows the VM's migration `Running` state during the migration. link::https://issues.redhat.com/browse/MTV-794[MTV-794]
+
+..Review and configure migrated VMs
+
+The {project-short} web console shows the name and migration status of each VM. link::https://issues.redhat.com/browse/MTV-843[MTV-843]
+// 
+// ..CNV InstanceTypes
+// 
+// This looks like it repeats MTV-206 above
 
 .RH-SDL
 
@@ -84,7 +104,41 @@ OVA provider. link:https://issues.redhat.com/browse/MTV-690[(MTV-690)]
 
 This release has the following known issues:
 
-For 
+.Deleting migration plan does not remove temporary resources
+
+Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
+
+.Unclear error status message for VM with no operating system
+
+The error status message for a VM with no operating system on the *Plans* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
+
+.Migration of virtual machines with encrypted partitions fails during conversion
+
+vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the encryption key may be missing on the target {ocp} cluster.
+
+
+.Migration fails during precopy/cutover while a snapshot operation is performed on the source VM
+
+Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If a user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+
+.Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
+
+When migrating a VM with multiple disks to more than one storage classes of type `hostPath`, it might happen that a VM cannot be scheduled. Workaround: Use shared storage on the target {ocp} cluster.
+
+.Non-supported guest operating systems in warm migrations
+
+Warm migrations and migrations to remote {ocp} clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local {ocp} cluster. This is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case. +
+See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
+
+.VMs from vSphere with RHEL 9 guest operating system may start with network interfaces that are down
+
+When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, the network interfaces of the VMs could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
+
+.Import OVA: ConnectionTestFailed message appears when adding OVA provider
+
+When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
+
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12424645[Known Issues] in Jira. 
 
 [id="resolved-issues-26_{context}"]
 == Resolved issues
@@ -92,3 +146,4 @@ For
 This release has the following resolved issues:
 
 // empty comment
+
