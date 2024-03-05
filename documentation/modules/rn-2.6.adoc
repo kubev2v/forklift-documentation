@@ -95,7 +95,6 @@ The {project-short} web console shows the name and migration status of each VM. 
 // * link:https://gitlab.cee.redhat.com/users/auth/geo/sign_in[Closed link]
 // * link:https://docs.engineering.redhat.com/display/PRODSEC/Secure+Development+training[Secure Development Training]
 
-
 .OCP Provider
 
 OCP (OpenShift Container Platform) provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
