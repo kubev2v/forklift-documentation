@@ -19,10 +19,6 @@ This release has the following technical changes:
 .Migration from OpenStack moves to being a fully supported feature
 
 In this version of {project-short}, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.
-// 
-// .Disabling FIPS
-// 
-// EMS enforcement is disabled for migrations with VMware vSphere source providers to enable migrations from versions of vSphere that are supported by {project-short} but do not comply with the 2023 FIPS requirements.
 
 .Integration of the create and update provider user interface
 
