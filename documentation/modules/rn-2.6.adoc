@@ -5,7 +5,7 @@
 [id="rn-26_{context}"]
 = {project-full} 2.6
 
-Migrate virtual machines (VMs) from VMware vSphere or {rhv-full} or {osp} to {virt} with {the-lc} {project-first}.
+Migrate virtual machines (VMs) from VMware vSphere, {rhv-full}, or {osp} to {virt} with {the-lc} {project-first}.
 
 The release notes describe technical changes, new features and enhancements, and known issues.
 
@@ -30,15 +30,15 @@ The user interface of create and update providers now aligns with the look and f
 
 .Standalone UI
 
-The old UI of MTV 2.3 cannot be enabled by setting `feature_ui: true` in ForkliftController anymore.
+The old UI of MTV 2.3 cannot run by setting `feature_ui: true` in ForkliftController anymore.
 
-.Errors logged in populator pods are improved
+.Improved errors logged in populator pods
 
-In previous releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
+In earlier releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. {project-short} 2.5.3 has a maximum number of three restarts of populator pods. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
 .`VirtualMachineClusterFlavor`and `VirtualMachineClusterFlavor` CRDs replace OpenShift templates
 
-Virtual Machine Flavor API will replace OpenShift templates. MTV currently fall back to using OpenShift templates when a relevant preference is not available.
+Virtual Machine Flavor API will replace OpenShift templates. MTV currently falls back to using OpenShift templates when a relevant preference is not available.
 
 .Full support for migration from OVA moves
 
@@ -61,11 +61,11 @@ This release has the following features and improvements:
 
 .Cross-Provider Features
 
-This is a collection of new features that provide functionality across different cloud profiders. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
+This is a collection of new features that provide functionality across different cloud providers. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
 
-..Replace templates with falvors
+..Replace templates with flavors
 
-Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` CDIs. These are meant to replace Template, which is only available on OpenShift. link:https://issues.redhat.com/browse/MTV-206[MTV-206]
+Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` CDIs. Flavors are meant to replace Template, which is only available on OpenShift. link:https://issues.redhat.com/browse/MTV-206[MTV-206]
 
 ..Integrate volume populators in remote migrations
 
@@ -73,7 +73,7 @@ Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` o
 
 ..VM posted with `Running` state
 
-{project-short} shows the VM's migration `Running` state during the migration. link:https://issues.redhat.com/browse/MTV-794[MTV-794]
+{project-short} shows each VM's migration `Running` state during the migration. link:https://issues.redhat.com/browse/MTV-794[MTV-794]
 
 ..Review and configure migrated VMs
 
@@ -116,6 +116,8 @@ Connections to remote OpenShift clusters can be secures with CA certificates. li
 
 This is a collection of new features for the {project-short} Console plugin. link:https://issues.redhat.com/browse/MTV-736[(MTV-736)]
 
+.. 
+
 .OVA Provider
 
 OVA provider. link:https://issues.redhat.com/browse/MTV-690[(MTV-690)]
@@ -151,13 +153,13 @@ When migrating a VM with multiple disks to more than one storage classes of type
 Warm migrations and migrations to remote {ocp} clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local {ocp} cluster. This is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case. +
 See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
 
-.VMs from vSphere with RHEL 9 guest operating system may start with network interfaces that are down
+.VMs from vSphere with RHEL 9 guest operating system might start with network interfaces that are down
 
 When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, the network interfaces of the VMs could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
 .Import OVA: ConnectionTestFailed message appears when adding OVA provider
 
-When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
+When adding an OVA provider, the error message `ConnectionTestFailed` can instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12424645[Known Issues] in Jira. 
 
@@ -165,6 +167,3 @@ For a complete list of all known issues in this release, see the list of link:ht
 == Resolved issues
 
 This release has the following resolved issues:
-
-// empty comment
-
