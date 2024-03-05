@@ -167,3 +167,5 @@ For a complete list of all known issues in this release, see the list of link:ht
 == Resolved issues
 
 This release has the following resolved issues:
+
+// comment
