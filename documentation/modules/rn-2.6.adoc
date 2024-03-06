@@ -229,6 +229,7 @@ A VM migrated from OpenStack does not start automatically when the source VM is 
 .MTV-829
 
 .MTV-702
+
 // 
 // .Migration fails when a vSphere Datacenter is nested inside a folder
 // 
