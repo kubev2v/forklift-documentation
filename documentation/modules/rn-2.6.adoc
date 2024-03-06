@@ -112,11 +112,67 @@ Connections to remote OpenShift clusters can be secures with CA certificates. li
 
 This is a collection of new features for the {project-short} Console plugin. link:https://issues.redhat.com/browse/MTV-736[(MTV-736)]
 
-.. 
+..MTV-615
+
+..MTV-737
+
+..MTV-245
+
+..MTV-365
+
+..MTV-449
+
+..MTV-616
+
+..MTV-773
+
+..MTV-724
+
+..MTV-766
+
+..MTV-768
+
+..MTV-770
+
+..MTV-772
+
+..MTV-775
+
+..MTV-779
+
+..MTV-792
+
+..MTV-793
+
+..MTV-797
+
+..MTV-867
 
 .OVA Provider
 
 OVA provider. link:https://issues.redhat.com/browse/MTV-690[(MTV-690)]
+
+..MTV-759
+
+..MTV-848
+
+..MTV-624
+
+..MTV-681
+
+..MTV-680
+
+..MTV-689
+
+..MTV-733
+
+..MTV-669
+
+..MTV-715
+
+..MTV-714
+
+..MTV-696
 
 [id="known-issues-26_{context}"]
 == Known issues
