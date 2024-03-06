@@ -165,11 +165,75 @@ An earlier failed migration can leave an outdated `ovirtvolumepopulator` in the 
 
 The migration fails to build the PVC when the destination storage class does not have a configured storage profile. The error logs lack clear information to identify the reason for failure. link:https://issues.redhat.com/browse/MTV-928([MTV-928])
 
-For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12424645[Known Issues] in Jira. 
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430275[Known Issues] in Jira. 
 
 [id="resolved-issues-26_{context}"]
 == Resolved issues
 
 This release has the following resolved issues:
+
+.Adding an OVA provider raises a `ConnectionTestFailed` error message
+
+When adding an OVA provider, a `The provider is not ready - ConnectionTestFailed` error message appears, although it eventually creates the provider. The message diasappears after a few seconds. link:https://issues.redhat.com/browse/MTV-671([MTV671])
+
+.Canceling and deleting a failed migration plan does not clean up the `populate` pods and PVC
+
+When a user cancels and deletes a failed migration plan after creating a PVC and spawning the `populate` pods, the `populate` pods and PVC are not deleted. You must dete the pods and PVC manually. link:https://issues.redhat.com/browse/MTV-678([MTV-678])
+
+.OCP to OCP migrations require the cluster version to be 4.13 or later
+
+When migrating from OCP to OCP, the source provider cluster must be 4.13 or newer. link:https://issues.redhat.com/browse/MTV-809([MTV-809])
+
+.Restricted OVA provider namespace 
+
+You can only create an OVA provider under Forklift/MTV namespace, for use by the forklift-controller SA. This should be extended to all namespaces.link:https://issues.redhat.com/browse/MTV-681([MTV-681])
+
+.Can only scan OVA files in NFS share root folder
+
+Only the files placed under the NFS share root folder can be scanned. The fix allows placing files directly on the share and two sublevels from the root folder of the extracted OVA. link:https://issues.redhat.com/browse/MTV-680([MTV-680])
+
+.Migration from an OVA provider to a restricted namespace fails
+
+Migrating from an OVA provider to a restricted namespace fails at the step `Convert image to kubevirt`, raising an error. link:https://issues.redhat.com/browse/MTV-689([MTV-689])
+
+.Migration with multiple disks fails
+
+When migrating an OVA VM with more than one disk, the migration gets stuck in the allocate disk phase. link:https://issues.redhat.com/browse/MTV-676([MTV-676])
+
+.Hyper-V Enlightenments are not added to the converted Windows VMs
+
+Source RHV VM with Hyper-V Enlightenments fails to convert the enlightenments after converting to OpenShift Vitualization. When converting RHV VMs to Windows VMs, the Hyper-V Enlightenments do not convert, causing significan performance issues. link:https://issues.redhat.com/browse/MTV-791([MTV-791])
+
+.Operator fails on timeout when callin `provider-validate` webhook
+
+The operator fails when it calls `forklift-api.openshift-mtv.svc:443/provider-validate?timeout=10s`. Changing the webhooks timeout to 30s seems to avoid this error. link:https://issues.redhat.com/browse/MTV-718([MTV-718])
+
+.Migrated VM from OpenStack has different power state when source VM is running
+
+A VM migrated from OpenStack does not start automatically when the source VM is running. link:https://issues.redhat.com/browse/MTV-677([MTV-677])
+
+.MTV-701
+
+.MTV-704
+
+.MTV-725
+
+.MTV-835
+
+.MTV-868
+
+.MTV-852
+
+.MTV-740
+
+.MTV-829
+
+.MTV-702
+// 
+// .Migration fails when a vSphere Datacenter is nested inside a folder
+// 
+// Migrating a vSphere Datacenter succeeds when it is directly under the `/vcenter`, but fails when it is stores inside a folder. The migration raises an error. link:([MTV-796])
+
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430274[Resolved Issues] in Jira.
 
 // comment
