@@ -42,7 +42,7 @@ Virtual Machine Flavor API will replace OpenShift templates. MTV currently falls
 
 .OpenShift Console `Create/Edit` pages replace Forms and Wizards
 
-Forms and Wizards that use @migtools/lib-ui` have not worked properly when running inside the plugin. The migtool library was built fo a standalone application. The `Create` and `Edit` pages in the OpenShift Console replace them. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
+Forms and Wizards that use @migtools/lib-ui` have not worked properly when running inside the plugin. The migtool library was built for a standalone application. The `Create` and `Edit` pages in the OpenShift Console replace them. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
 
 .Scan OVA files in the root folder of an NFS share
 
@@ -65,7 +65,7 @@ Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor`
 
 ..Integrate volume populators in remote migrations
 
-Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` intop a CDI to migrate remote OCP clusters. link::https://issues.redhat.com/browse/MTV-721[MTV-721]
+Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote OCP clusters. link::https://issues.redhat.com/browse/MTV-721[MTV-721]
 
 ..VM posted with `Running` state
 
@@ -174,11 +174,11 @@ This release has the following resolved issues:
 
 .Adding an OVA provider raises a `ConnectionTestFailed` error message
 
-When adding an OVA provider, a `The provider is not ready - ConnectionTestFailed` error message appears, although it eventually creates the provider. The message diasappears after a few seconds. link:https://issues.redhat.com/browse/MTV-671([MTV671])
+When adding an OVA provider, a `The provider is not ready - ConnectionTestFailed` error message appears, although it eventually creates the provider. The message disappears after a few seconds. link:https://issues.redhat.com/browse/MTV-671([MTV671])
 
 .Canceling and deleting a failed migration plan does not clean up the `populate` pods and PVC
 
-When a user cancels and deletes a failed migration plan after creating a PVC and spawning the `populate` pods, the `populate` pods and PVC are not deleted. You must dete the pods and PVC manually. link:https://issues.redhat.com/browse/MTV-678([MTV-678])
+When a user cancels and deletes a failed migration plan after creating a PVC and spawning the `populate` pods, the `populate` pods and PVC are not deleted. You must delete the pods and PVC manually. link:https://issues.redhat.com/browse/MTV-678([MTV-678])
 
 .OCP to OCP migrations require the cluster version to be 4.13 or later
 
@@ -204,7 +204,7 @@ When migrating an OVA VM with more than one disk, the migration gets stuck in th
 
 Source RHV VM with Hyper-V Enlightenments fails to convert the enlightenments after converting to OpenShift Vitualization. When converting RHV VMs to Windows VMs, the Hyper-V Enlightenments do not convert, causing significan performance issues. link:https://issues.redhat.com/browse/MTV-791([MTV-791])
 
-.Operator fails on timeout when callin `provider-validate` webhook
+.Operator fails on timeout when calling `provider-validate` webhook
 
 The operator fails when it calls `forklift-api.openshift-mtv.svc:443/provider-validate?timeout=10s`. Changing the webhooks timeout to 30s seems to avoid this error. link:https://issues.redhat.com/browse/MTV-718([MTV-718])
 
@@ -236,5 +236,3 @@ A VM migrated from OpenStack does not start automatically when the source VM is 
 // Migrating a vSphere Datacenter succeeds when it is directly under the `/vcenter`, but fails when it is stores inside a folder. The migration raises an error. link:([MTV-796])
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430274[Resolved Issues] in Jira.
-
-// comment
