@@ -106,7 +106,11 @@ include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 [id="migrating-vms-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
 
-You can migrate virtual machines (VMs) to {virt} by using the {ocp} web console.
+You can migrate virtual machines (VMs) by using the {ocp} web console to:
+
+. xref:adding-source-providers[Create source providers]
+. xref:adding-destination-providers[Create destination providers]
+. xref:creating-migration-plans-ui[Create migration plans]
 
 [IMPORTANT]
 ====
@@ -121,12 +125,12 @@ include::modules/mtv-ui.adoc[leveloffset=+2]
 include::modules/mtv-overview-page.adoc[leveloffset=+2]
 include::modules/mtv-settings.adoc[leveloffset=+2]
 
-[id="adding-providers_{context}"]
+[id="adding-providers"]
 === Adding providers
 
 You can add source providers and destination providers for a virtual machine migration by using the {ocp} web console.
 
-[id="adding-source-providers_{context}"]
+[id="adding-source-providers"]
 ==== Adding source providers
 
 You can use {project-short} to migrate VMs from the following source providers:
@@ -162,7 +166,7 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 :cnv!:
 :context: mtv
 
-[id="adding-destination-providers_{context}"]
+[id="adding-destination-providers"]
 ==== Adding destination providers
 
 You can add a {virt} destination provider by using the {ocp} web console.
@@ -178,8 +182,19 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 
 include::modules/creating-network-mapping.adoc[leveloffset=+2]
 include::modules/creating-storage-mapping.adoc[leveloffset=+2]
-include::modules/creating-migration-plan.adoc[leveloffset=+2]
+
+[id="creating-migration-plans-ui"]
+=== Creating migration plans
+
+You can create a migration plan by using the {ocp} web console to specify a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
+
+For your convenience, there are two procedures to create migration plans based on source provider and VMs, one begins on the  xref:creating-migration-quick-plan-vm_{context}[*Providers for virtualization* page] and the other begins on the xref:creating-migration-quick-plan-existing-source_{context}[*Plans for virtualization* page].
+
+include::modules/creating-migration-quick-plan-vm.adoc[leveloffset=+3]
+include::modules/creating-migration-quick-plan-existing-source.adoc[leveloffset=+3]
+
 include::modules/running-migration-plan.adoc[leveloffset=+2]
+
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
