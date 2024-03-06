@@ -124,6 +124,14 @@ include::modules/mtv-ui.adoc[leveloffset=+2]
 include::modules/mtv-overview-page.adoc[leveloffset=+2]
 include::modules/mtv-settings.adoc[leveloffset=+2]
 
+[id="ways-to-create-migration-plans-ui"]
+=== Ways to create migration plans and components using the {ocp-short} web console
+
+There are two ways to create migration plans and components using the {ocp-short} web console:
+
+* The _step-by-step_ method in which you create plans components - such as providers and network mappings - and then, combine them into a migration plan. Although do not have to create the components in a definite order, the steps are listed below in the recommended order of work.
+* The _quick plan_ method in which you combine previously-defined components into a migration plan. This method is described in its own section, which follows the procedures for all of the steps in creating a migration plan.
+
 [id="adding-providers"]
 === Adding providers
 
@@ -184,6 +192,7 @@ include::modules/creating-network-mapping.adoc[leveloffset=+2]
 include::modules/creating-storage-mapping.adoc[leveloffset=+2]
 include::modules/creating-migration-plan.adoc[leveloffset=+2]
 include::modules/running-migration-plan.adoc[leveloffset=+2]
+include::modules/creating-and-running-a-migration-quick-plan.adoc[leveloffset=+2]
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
