@@ -157,6 +157,14 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 When adding an OVA provider, the error message `ConnectionTestFailed` can instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
+.Left over `ovirtvolumepopulator` from failed migration causes plan to stop indefinitely in `CopyDisks` phase.
+
+An earlier failed migration can leave an outdated `ovirtvolumepopulator` in the namespace of a new plan for the same VM. The `CreateDataVolumes` phase does not create populator PVCs when transitioning to `CopyDisks`, causing the `CopyDisks` phase to stay indefinitely. link:https://issues.redhat.com/browse/MTV-929([MTV-929])
+
+.Unclear error message when Forklift fails to build/create a PVC
+
+The migration fails to build the PVC when the destination storage class does not have a configured storage profile. The error logs lack clear information to identify the reason for failure. link:https://issues.redhat.com/browse/MTV-928([MTV-928])
+
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12424645[Known Issues] in Jira. 
 
 [id="resolved-issues-26_{context}"]
