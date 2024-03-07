@@ -129,8 +129,8 @@ include::modules/mtv-settings.adoc[leveloffset=+2]
 
 There are two ways to create migration plans and components using the {ocp-short} web console:
 
-* The _step-by-step_ method in which you create plans components - such as providers and network mappings - and then, combine them into a migration plan. Although do not have to create the components in a definite order, the steps are listed below in the recommended order of work.
-* The _quick plan_ method in which you combine previously-defined components into a migration plan. This method is described in its own section, which follows the procedures for all of the steps in creating a migration plan.
+* The _step-by-step_ method, in which you create plans components - such as providers and network mappings - and then combine them into a migration plan. Although you do not have to create the components in a definite order, the steps are listed below in the recommended order of work.
+* The _quick plan_ method, in which you choose a previously-defined source and target and {project-short} suggests a network mapping and a storage mapping, both of which you can edit. This method saves you time and effort. It is described in its own section, which follows the procedures for all of the steps in creating a migration plan.
 
 [id="adding-providers"]
 === Adding providers

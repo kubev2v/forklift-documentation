@@ -6,16 +6,16 @@
 [id="creating-running-migration0-quick-plan_{context}"]
 = Creating and running a migration quick plan
 
-You can create a migration _quick plan_ after you have created least at one of each of the components of a migration plan. After you select the virtual machines (VMs) you want to migrate, {project-first} suggests other plan components, such as network and storage mapping, based on the components you have created. Although you are always free to reject a suggested quick plan, this feature can save you time and effort.
+You can create a migration _quick plan_ after you have created least at one source provider and one target provider. After you select these providers, {project-first} suggests a network mapping and a storage mapping, based on the providers you selected. Although you are always free to reject these suggestions, this feature can save you time and effort.
 
 .Procedure
 
-. In the {ocp} web console, click *Providers for virtualization* and then click the *VMs* column of the provider whose virtual machhines (VMs) you want to migrate.
+. In the {ocp} web console, click *Providers for virtualization* and then click the *VMs* column of the source provider whose virtual machines (VMs) you want to migrate.
 +
 The *Provider Details* page opens.
 . Select the VMs you want to migrate and then click *Migrate*.
 +
-The *Create migration plan* page opens, with suggestions for a plan name, a target provider and namesapce, a network map, and a storage map.
+The *Create migration plan* page opens, with suggestions for a plan name, a target provider and namespace, a network map, and a storage map.
 . Make any desired changes to the editable items. Click *Add mapping* to edit a suggested network mapping, edit a storage mapping, or to add additional mappings.
 . Click *Create migration plan*.
 +
