@@ -127,7 +127,15 @@ When migrating VMs that are installed with RHEL 9 as guest operating system from
 
 When adding an OVA provider, the error message `ConnectionTestFailed` may instantly appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the `ova server pod creation` has failed. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
-For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12424645[Known Issues] in Jira.
+.Left over `ovirtvolumepopulator` from failed migration causes plan to stay indefinitely in `CopyDisks` phase
+
+An outdated `ovirtvolumepopulator` in the namespace the is left over from an earlier failed migration causes a new plan of the same VM to stop when it transitions to `CopyDisks` phase. The plan remains in that phase indefinitely. link:https://issues.redhat.com/browse/MTV-929[(MTV-929)]
+
+.Unclear error message when Forklift fails to build/create a PVC
+
+The migration fails to build a PVC when the destination storage class does not have a configured storage profile. The error logs do not provide enough information to identify the reason for failure.
+
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430968[Known Issues] in Jira.
 
 
 [id="resolved-issues-25_{context}"]
@@ -291,7 +299,7 @@ This issue is resolved in {project-short} {project-version}, VM with multiple di
 .Transfer network not taken into account for cold migrations from vSphere
 In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the local cluster on which {project-short} was deployed did not take a specified transfer network into account. This issue is resolved in  {project-short} 2.5.4.  link:https://issues.redhat.com/browse/MTV-846[(MTV-846)]
 
-For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12424644[Resolved Issues] in Jira.
+For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12431371[Resolved Issues] in Jira.
 
 [id="upgrade-notes-25_{context}"]
 == Upgrade notes
