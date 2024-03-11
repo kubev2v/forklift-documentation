@@ -272,7 +272,7 @@ This issue is resolved in {project-short} {project-version}, the cutover operati
 
 .Warm migration fails when VM is locked
 
-In earlier releases of {project-short}, triggering a warm migration while there was an ongoing operation in {rhv-short} that locked the VM caused the migration to fail because the it could not trigger the snapshot creation.
+In earlier releases of {project-short}, triggering a warm migration while there was an ongoing operation in {rhv-short} that locked the VM caused the migration to fail because that it could not trigger the snapshot creation.
 
 This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-687[(MTV-687)]
 
