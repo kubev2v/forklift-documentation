@@ -311,6 +311,10 @@ It is recommended to upgrade from {project-short} 2.4.2 to {project-short} {proj
 
 When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: Remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. Refresh the {ocp} console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
 
+.UEFI is imported as BIOS
+
+When migrating OVA of VMware VM ith EFI firmware, migrated VM is created with BIOS firmware instead of UEFI, causing a boot failure for the VM. Manually changing the BIOS type to UEFI avoids this problem. link:https://issues.redhat.com/browse/MTV-666[MTV-666]
+
 ////
 [id="deprecated-features-25_{context}"]
 == Deprecated features
