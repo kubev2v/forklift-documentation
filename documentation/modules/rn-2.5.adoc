@@ -129,14 +129,13 @@ When adding an OVA provider, the error message `ConnectionTestFailed` may instan
 
 .Left over `ovirtvolumepopulator` from failed migration causes plan to stay indefinitely in `CopyDisks` phase
 
-An outdated `ovirtvolumepopulator` in the namespace the is left over from an earlier failed migration causes a new plan of the same VM to stop when it transitions to `CopyDisks` phase. The plan remains in that phase indefinitely. link:https://issues.redhat.com/browse/MTV-929[(MTV-929)]
+An outdated `ovirtvolumepopulator` in the namespace, left over from an earlier failed migration, stops a new plan of the same VM when it transitions to `CopyDisks` phase. The plan remains in that phase indefinitely. link:https://issues.redhat.com/browse/MTV-929[(MTV-929)]
 
-.Unclear error message when Forklift fails to build/create a PVC
+.Unclear error message when Forklift fails to build a PVC
 
-The migration fails to build a PVC when the destination storage class does not have a configured storage profile. The error logs do not provide enough information to identify the reason for failure.
+The migration fails to build the Persistent Volume Claim (PVC) if the destination storage class does not have a configured storage profile. The Forklift-controller raises an error message without a clear reason for not creating a PVC. link:https://issues.redhat.com/browse/MTV-928[MTV-928]
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430968[Known Issues] in Jira.
-
 
 [id="resolved-issues-25_{context}"]
 == Resolved issues
@@ -295,7 +294,6 @@ In previous releases of {project-short}, VM with multiple disks that were migrat
 
 This issue is resolved in {project-short} {project-version}, VM with multiple disks that are migrated are able to boot on the target {ocp} cluster. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
 
-
 .Transfer network not taken into account for cold migrations from vSphere
 In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the local cluster on which {project-short} was deployed did not take a specified transfer network into account. This issue is resolved in  {project-short} 2.5.4.  link:https://issues.redhat.com/browse/MTV-846[(MTV-846)]
 
@@ -310,10 +308,6 @@ It is recommended to upgrade from {project-short} 2.4.2 to {project-short} {proj
 .Upgrade from 2.4.0 fails
 
 When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: Remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. Refresh the {ocp} console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
-
-.UEFI is imported as BIOS
-
-When migrating OVA of VMware VM ith EFI firmware, migrated VM is created with BIOS firmware instead of UEFI, causing a boot failure for the VM. Manually changing the BIOS type to UEFI avoids this problem. link:https://issues.redhat.com/browse/MTV-666[MTV-666]
 
 ////
 [id="deprecated-features-25_{context}"]
