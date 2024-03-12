@@ -10,14 +10,31 @@ You can create a migration _quick plan_ after you have created least at one sour
 
 .Procedure
 
-. In the {ocp} web console, click *Providers for virtualization* and then click the *VMs* column of the source provider whose virtual machines (VMs) you want to migrate.
+. In the {ocp} web console, click *Plans for virtualization* and then click *Create plans*.
 +
-The *Provider Details* page opens.
-. Select the VMs you want to migrate and then click *Migrate*.
+The *Select source provider* page opens.
+. Select the source provider of the VMs you want to migrate and then click *Netx*.
 +
+[NOTE]
+=====
+
+==== 
 The *Create migration plan* page opens, with suggestions for a plan name, a target provider and namespace, a network map, and a storage map.
 . Make any desired changes to the editable items. Click *Add mapping* to edit a suggested network mapping, edit a storage mapping, or to add additional mappings.
 . Click *Create migration plan*.
 +
 The *Plans* page opens with your migration plan listed.
+
+
+//. In the {ocp} web console, click *Providers for virtualization* and then click the *VMs* column of the source provider whose virtual machines (VMs) you want to migrate.
+//+
+//The *Provider Details* page opens.
+//. Select the VMs you want to migrate and then click *Migrate*.
+//+
+//The *Create migration plan* page opens, with suggestions for a plan name, a target provider and namespace, a network map, and a storage map.
+//. Make any desired changes to the editable items. Click *Add mapping* to edit a suggested network mapping, edit a storage mapping, or to add additional mappings.
+//. Click *Create migration plan*.
+//+
+// The *Plans* page opens with your migration plan listed./
+
 
