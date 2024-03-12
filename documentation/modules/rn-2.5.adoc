@@ -40,6 +40,12 @@ The old UI of {project-short} 2.3 cannot be enabled by setting `feature_ui: true
 
 In previous releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
+.`isPublic()` function executes code arbitrarily
+
+The Node.js Package Manager (npm) IP package has a vulnerability that allows an attacker to arbitrarily run code and obtain sensitive information. The attack induces a Server-Side Request Forgery (SSRF) attack by using the `isPublic()` function to obtain access to resources that are normally protected.
+
+For more information, see link:https://bugzilla.redhat.com/show_bug.cgi?id=2265161[CVE-2023-42282]
+
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
 
