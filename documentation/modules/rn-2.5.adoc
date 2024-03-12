@@ -46,6 +46,10 @@ The Node.js Package Manager (npm) IP package has a vulnerability that allows an 
 
 For more information, see link:https://bugzilla.redhat.com/show_bug.cgi?id=2265161[CVE-2023-42282]
 
+.Missing match property in Console 4.15
+
+OpenShift Console removed the `match` property in earlier versions. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)] 
+
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
 
