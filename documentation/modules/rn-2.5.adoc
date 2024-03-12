@@ -38,17 +38,17 @@ The old UI of {project-short} 2.3 cannot be enabled by setting `feature_ui: true
 
 .Errors logged in populator pods are improved
 
-In previous releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
+In earlier releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
 .`isPublic()` function executes code arbitrarily
 
-The Node.js Package Manager (npm) IP package has a vulnerability that allows an attacker to arbitrarily run code and obtain sensitive information. The attack induces a Server-Side Request Forgery (SSRF) attack by using the `isPublic()` function to obtain access to resources that are normally protected.
+The Node.js Package Manager (npm) IP package has a vulnerability that allows an attacker to arbitrarily run code and obtain sensitive information. This vulnerability can allow a Server-Side Request Forgery (SSRF) attack, by using the `isPublic()` function to obtain access to resources that are normally protected.
 
 For more information, see link:https://bugzilla.redhat.com/show_bug.cgi?id=2265161[CVE-2023-42282]
 
 .Missing match property in Console 4.15
 
-OpenShift Console removed the `match` property in earlier versions. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)] 
+OpenShift Console removed the `match` property in earlier versions. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
 
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
@@ -307,6 +307,10 @@ This issue is resolved in {project-short} {project-version}, VM with multiple di
 .Transfer network not taken into account for cold migrations from vSphere
 
 In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the local cluster on which {project-short} was deployed did not take a specified transfer network into account. This issue is resolved in  {project-short} 2.5.4.  link:https://issues.redhat.com/browse/MTV-846[(MTV-846)]
+
+.`--root first` virt-v2v additional argument to support multi-boot 
+
+The virt-v2v arguments include `–root first`, which mitigates an issue with multi-boot VMs where the pod fails. Adding this argument back to the entrypoint will resolve the issue. Link:https://issues.redhat.com/browse/MTV-968[(MTV-968)]
 
 For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12431371[Resolved Issues] in Jira.
 
