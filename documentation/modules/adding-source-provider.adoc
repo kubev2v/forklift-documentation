@@ -52,6 +52,10 @@ Specifically, the host cluster that is automatically added as a {virt} provider 
 
 You can migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
 
+[NOTE]
+====
+The {ocp} cluster version of the source provider must be 4.13 or later.
+====
 endif::[]
 ifdef::cnv2[]
 = Adding {a-virt} destination provider
