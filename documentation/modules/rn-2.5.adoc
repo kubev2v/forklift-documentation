@@ -26,7 +26,7 @@ In this version of {project-short}, migration using OpenStack source providers g
 
 .Disabling FIPS
 
-ith VMware vSphere source providers, Enterprise Master Secret (EMS) enforcement is disabled for migrations W to enable migrations from versions of vSphere that are supported by {project-short} but do not meet the 2023 FIPS requirements.
+With VMware vSphere source providers, Enterprise Master Secret (EMS) enforcement is disabled for migrations to enable migrations from versions of vSphere that are supported by {project-short} but do not meet the 2023 FIPS requirements.
 
 .Integration of the create and update provider user interface
 
