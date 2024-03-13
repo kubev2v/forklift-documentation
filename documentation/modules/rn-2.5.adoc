@@ -46,7 +46,9 @@ For more information, see link:https://bugzilla.redhat.com/show_bug.cgi?id=22651
 
 .Missing match property in Console 4.15
 
-OpenShift Console removed the `match` property in earlier versions. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
+OpenShift Console removed the `match` property in earlier versions. This impacted pages that passed parameters through the URL, preventing users from creating a migration plan in MTV Console. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
+
+This issue has benn resolved in MTV 2.5.6.
 
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
