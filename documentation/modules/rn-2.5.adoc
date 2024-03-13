@@ -116,7 +116,7 @@ vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the enc
 
 .Migration fails during precopy/cutover while performing a snapshot operation on the source VM
 
-Warm migration from {rhv-short} fails if the user performs a snapshot operation on the source VM. The migration does not wait for a snapshot operation on the source VM to finish when it is scheduled at the same time as the migration. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+Warm migration from {rhv-short} fails if a snapshot operation is triggered on the source VM. The migration fails if it is scheduled to beging when a snapshot operation is running. The migration does not wait for the snapshot operation to end. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
 .Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
 
