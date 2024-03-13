@@ -130,7 +130,12 @@ include::modules/mtv-settings.adoc[leveloffset=+2]
 There are two ways to create migration plans and components using the {ocp-short} web console:
 
 * The _step-by-step_ method, in which you create plans components - such as providers and network mappings - and then combine them into a migration plan. Although you do not have to create the components in a definite order, the steps are listed below in the recommended order of work.
-* The _quick plan_ method, in which you choose a previously-defined source and target and {project-short} suggests a network mapping and a storage mapping, both of which you can edit. This method saves you time and effort. It is described in its own section, which follows the procedures for all of the steps in creating a migration plan.
+* The _quick plan_ method, in which you create or choose a source provider, and {project-short} suggests a target provider, network mapping and a storage mapping, all of which you can edit. This method saves you time and effort. The quick plan method is described in its own section, after the procedures for all of the steps in creating a migration plan.
+
+[NOTE]
+====
+Creating a quick plan requires a user-created destination provider.
+====
 
 [id="adding-providers"]
 === Adding providers
@@ -192,7 +197,17 @@ include::modules/creating-network-mapping.adoc[leveloffset=+2]
 include::modules/creating-storage-mapping.adoc[leveloffset=+2]
 include::modules/creating-migration-plan.adoc[leveloffset=+2]
 include::modules/running-migration-plan.adoc[leveloffset=+2]
-include::modules/creating-and-running-a-migration-quick-plan.adoc[leveloffset=+2]
+
+[id=creating-running-migration-quick-plan]
+=== Creating and running a quick plan
+
+You can create a migration _quick plan_ after your system has at least one user-defined destination provider and you either create or choose a source provider for the migration. After you specify the source provider, {project-short} suggests a destination provider, network mapping and a storage mapping, all of which you can edit.
+
+Thr procedure for creating a source provider as part of creating a quick plan differs somewhat from the procedure for creating a quick plan using an existing source provider.
+
+include::modules/creating-migration-quick-plan-new-source.adoc[leveloffset=+3]
+include::modules/creating-migration-quick-plan-existing-source.adoc[leveloffset=+3]
+
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 

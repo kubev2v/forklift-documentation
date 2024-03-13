@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-migration-quick-plan-existing-source_{context}"]
+= Creating a and running a migration quick plan using an existing source provider
+
+You can create a migration _quick plan_ after your system has at least one user-defined source provider and one user-defined destination provider.
+
+
+
+After you select these providers, {project-first} suggests a network mapping and a storage mapping, based on the providers you selected. Although you are always free to reject these suggestions, this feature can save you time and effort.
+
+.Procedure
+
+. In the {ocp} web console, click *Plans for virtualization* and then click *Create plans*.
++
+The *Select source provider* page opens.
+. Select the source provider of the VMs you want to migrate and then click *Next*.
++
+The *Select virtual machines* page opens.
+. Select the VMs you want to migrate and click *Next*.
++
+The *Create migration plan* page opens. It includes the source provider's name and suggestions for a plan name, a target provider and namespace, a network map, and a storage map.
+. Make any desired changes to the editable items. Click *Add mapping* to edit a suggested network mapping, edit a storage mapping, or to add additional mappings.
+. Click *Create migration plan*.
++
+{project-short} validates the migration plan and the *Plan detail* page opens,
+ indicating whether the plan is ready for use or contains an error. In all cases, the details of the plan are listed and you can edit the items you filled in on the previous page. If you make any changes, {project-short} again validates the plan.
+. If the plan is valid,
+.. You can run the plan now by clicking *Start migration*.
+.. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in "Running Migration Plans" TBD..

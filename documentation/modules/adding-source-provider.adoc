@@ -190,6 +190,14 @@ endif::[]
 +
 The provider appears in the list of providers.
 
+ifdef::vmware[]
++
+[NOTE]
+====
+It might take a few minutes for the provider to appear in the list.
+====
+endif::[]
+
 ifdef::ova[]
 +
 [NOTE]
