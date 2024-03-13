@@ -26,7 +26,7 @@ In this version of {project-short}, migration using OpenStack source providers g
 
 .Disabling FIPS
 
-Enterprise Master Secret (EMS) enforcement is disabled for migrations with VMware vSphere source providers to enable migrations from versions of vSphere that are supported by {project-short} but do not comply with the 2023 FIPS requirements.
+ith VMware vSphere source providers, Enterprise Master Secret (EMS) enforcement is disabled for migrations W to enable migrations from versions of vSphere that are supported by {project-short} but do not meet the 2023 FIPS requirements.
 
 .Integration of the create and update provider user interface
 
@@ -40,7 +40,7 @@ The old UI of {project-short} 2.3 cannot be enabled by setting `feature_ui: true
 
 A vulnerability in Node.js Package Manager (npm) IP package that allowed an attacker to arbitrarily run code and obtain sensitive information. The operator was fixed on OpenShift 4.15, enabling MTV 2.5.6 to deploy the `match` property in the UI.
 
-This issue has been resolved in MTV 2.5.6 by upgrading the package node-ip to version 2.0.1
+This issue has been resolved in MTV 2.5.6 by upgrading the package `node-ip` to version 2.0.1
 
 For more information, see link:https://bugzilla.redhat.com/show_bug.cgi?id=2265161[CVE-2023-42282]
 
