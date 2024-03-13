@@ -36,7 +36,6 @@ The user interface of create and update providers now aligns with the look and f
 
 The old UI of {project-short} 2.3 cannot be enabled by setting `feature_ui: true` in ForkliftController anymore.
 
-.`isPublic()` function executes code arbitrarily
 .Support deployment on OpenShift 4.15
 
 A vulnerability in Node.js Package Manager (npm) IP package that allowed an attacker to arbitrarily run code and obtain sensitive information. The operator was fixed on OpenShift 4.15, enabling MTV 2.5.6 to deploy the `match` property in the UI.
