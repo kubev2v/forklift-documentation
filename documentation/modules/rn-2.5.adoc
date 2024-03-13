@@ -36,13 +36,12 @@ The user interface of create and update providers now aligns with the look and f
 
 The old UI of {project-short} 2.3 cannot be enabled by setting `feature_ui: true` in ForkliftController anymore.
 
-.Errors logged in populator pods are improved
-
-In earlier releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
-
 .`isPublic()` function executes code arbitrarily
+.Support deployment on OpenShift 4.15
 
-The Node.js Package Manager (npm) IP package has a vulnerability that allows an attacker to arbitrarily run code and obtain sensitive information. This failure to identify certain private IP addresses in uncommon formats as `private` can lead to security issues, such as Server-Side Request Forgery (SSRF), if `isPublic()` is used to protect sensitive code paths when passed user input.
+A vulnerability in Node.js Package Manager (npm) IP package that allowed an attacker to arbitrarily run code and obtain sensitive information. The operator was fixed on OpenShift 4.15, enabling MTV 2.5.6 to deploy the `match` property in the UI.
+
+This issue has been resolved in MTV 2.5.6 by upgrading the package node-ip to version 2.0.1
 
 For more information, see link:https://bugzilla.redhat.com/show_bug.cgi?id=2265161[CVE-2023-42282]
 
@@ -55,8 +54,7 @@ OpenShift Console removed the `match` property in earlier versions. link:https:/
 
 This release has the following features and improvements:
 
-.Migration uses OVA files created by VMware vSphere
-
+.Migration of OVA files from VMware vSphere
 
 // i need to wait for this ticket to be merged to add a link
 In {project-short} {project-version}, you can migrate using Open Virtual Appliance (OVA) files that were created by VMware vSphere as source providers. link:https://issues.redhat.com/browse/MTV-336[(MTV-336)]
@@ -311,6 +309,10 @@ In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the loc
 .`--root first` virt-v2v additional argument to support multi-boot 
 
 The virt-v2v arguments include `–root first`, which mitigates an issue with multi-boot VMs where the pod fails. Adding this argument back to the entrypoint will resolve the issue. Link:https://issues.redhat.com/browse/MTV-968[(MTV-968)]
+
+.Errors logged in populator pods are improved
+
+In earlier releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
 For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12431371[Resolved Issues] in Jira.
 
