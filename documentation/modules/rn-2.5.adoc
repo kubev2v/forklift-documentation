@@ -40,7 +40,7 @@ The old UI of {project-short} 2.3 cannot be enabled by setting `feature_ui: true
 
 A vulnerability in Node.js Package Manager (npm) IP package allowed an attacker to run code and obtain sensitive information. This issue has been resolved in {project-short} 2.5.6 by upgrading the package `node-ip` to version 2.0.1
 
-For more information, see link:https://bugzilla.redhat.com/show_bug.cgi?id=2265161[CVE-2023-42282]
+For more information, see link:https://access.redhat.com/security/cve/cve-2023-42282[CVE-2023-42282]
 
 .Missing match property in Console 4.15
 
@@ -69,7 +69,7 @@ In {project-short} {project-version}, you can now use Red Hat {virt} provider as
 
 .Migration of VMs with direct LUNs from RHV
 
-During the migration from Red Hat Virtualization (RHV), direct Logical Units (LUNs) are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism does not work yet for Fibre Channel. link:https://issues.redhat.com/browse/MTV-329[(MTV-329)]
+During the migration from {rhv-full} {rhv-short}, direct Logical Units (LUNs) are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism does not work yet for Fibre Channel. link:https://issues.redhat.com/browse/MTV-329[(MTV-329)]
 
 .Additional authentication methods for OpenStack
 
@@ -113,7 +113,7 @@ vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the enc
 
 .Migration fails during precopy/cutover while performing a snapshot operation on the source VM
 
-Warm migration from {rhv-short} fails if a snapshot operation is triggered and running on the source VM at the same the migration is scheduled. The migration does not wait for the snapshot operation to end. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+Warm migration from {rhv-short} fails if a snapshot operation is triggered and running on the source VM at the same the migration is scheduled. The migration does not wait for the snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
 .Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
 
@@ -303,7 +303,7 @@ This issue is resolved in {project-short} {project-version}, VM with multiple di
 
 In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the local cluster on which {project-short} was deployed did not take a specified transfer network into account. This issue is resolved in  {project-short} 2.5.4.  link:https://issues.redhat.com/browse/MTV-846[(MTV-846)]
 
-.`--root first` virt-v2v additional argument to support multi-boot 
+.Fix migration of VMs with multi-boot guest operating system from vSphere 
 
 The virt-v2v arguments include `–root first`, which mitigates an issue with multi-boot VMs where the pod fails. Adding this argument back to the entrypoint will resolve the issue. Link:https://issues.redhat.com/browse/MTV-968[(MTV-968)]
 
