@@ -15,7 +15,7 @@ You can create a new source proider as part of creating a migration _quick plan_
 .Procedure
 
 . In the {ocp} web console, click *Providers for virtualization* and then click *Create Provider*.
-. Create a source provider following the instructions in "Adding Source providers" TBD
+. Create a source provider following the instructions in Adding Source providers.
 +
 The *Provider details* page opens in the *Details* tab. This might take a few minutes for a vSphere source provider.
 . Click the *Virtual Machines* tab.
@@ -29,6 +29,6 @@ The *Create migration plan* page opens. It includes the source provider's name a
 indicating whether the plan is ready for use or contains an error. In all cases, the details of the plan are listed and you can edit the items you filled in on the previous page. If you make any changes, {project-short} again validates the plan.
 . If the plan is valid,
 .. You can run the plan now by clicking *Start migration*.
-.. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in "Running Migration Plans" TBD.
+.. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in xref:running-migration-plan_mtv[Running Migration Plans TBD].
 
 
