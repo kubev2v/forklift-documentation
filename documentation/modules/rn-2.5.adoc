@@ -38,17 +38,13 @@ The old UI of {project-short} 2.3 cannot be enabled by setting `feature_ui: true
 
 .Support deployment on OpenShift 4.15
 
-A vulnerability in Node.js Package Manager (npm) IP package that allowed an attacker to arbitrarily run code and obtain sensitive information. The operator was fixed on OpenShift 4.15, enabling MTV 2.5.6 to deploy the `match` property in the UI.
-
-This issue has been resolved in MTV 2.5.6 by upgrading the package `node-ip` to version 2.0.1
+A vulnerability in Node.js Package Manager (npm) IP package allowed an attacker to run code and obtain sensitive information. This issue has been resolved in This issue has been resolved in {prod-short} 2.5.6 by upgrading the package `node-ip` to version 2.0.1
 
 For more information, see link:https://bugzilla.redhat.com/show_bug.cgi?id=2265161[CVE-2023-42282]
 
 .Missing match property in Console 4.15
 
-OpenShift Console removed the `match` property in earlier versions. This impacted pages that passed parameters through the URL, preventing users from creating a migration plan in MTV Console. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
-
-This issue has benn resolved in MTV 2.5.6.
+OpenShift Web Console removed the `match` property in earlier versions. This removal impacted pages that passed parameters through the URL, thereby preventing users from creating a migration plan in {prod-short} Web Console. This issue has been resolved in {prod-short} 2.5.6. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
 
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
