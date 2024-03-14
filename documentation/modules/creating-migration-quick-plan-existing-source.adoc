@@ -30,4 +30,4 @@ The *Create migration plan* page opens. It includes the source provider's name a
  indicating whether the plan is ready for use or contains an error. In all cases, the details of the plan are listed and you can edit the items you filled in on the previous page. If you make any changes, {project-short} again validates the plan.
 . If the plan is valid,
 .. You can run the plan now by clicking *Start migration*.
-.. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in "Running Migration Plans" TBD..
+.. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in "Running Migration Plans" TBD.
