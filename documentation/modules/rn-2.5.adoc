@@ -53,7 +53,6 @@ This release has the following features and improvements:
 
 .Migration of OVA files from VMware vSphere
 
-// i need to wait for this ticket to be merged to add a link
 In {project-short} {project-version}, you can migrate using Open Virtual Appliance (OVA) files that were created by VMware vSphere as source providers. link:https://issues.redhat.com/browse/MTV-336[(MTV-336)]
 
 [NOTE]
