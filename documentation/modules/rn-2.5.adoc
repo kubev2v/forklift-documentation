@@ -26,7 +26,7 @@ In this version of {project-short}, migration using OpenStack source providers g
 
 .Disabling FIPS
 
-{project-short} 2.5.6 enables migrations from vSphere source providers by not enforcing Enterprise Master Secret (EMS). This enables migrating from all vSphere versions that {project-short} supports, including migrations that do not meet 2023 FIPS requirements.
+{project-short} enables migrations from vSphere source providers by not enforcing Enterprise Master Secret (EMS). This enables migrating from all vSphere versions that {project-short} supports, including migrations that do not meet 2023 FIPS requirements.
 
 .Integration of the create and update provider user interface
 
@@ -304,7 +304,7 @@ In earlier releases of {project-short} {project-version}, populator pods were al
 
 .npm IP package vulnerability
 
-A vulnerability found in the Node.js Package Manager (npm) IP Package can allow an attacker to obtain sensitive information and obtain access to normally inaccessible resources.
+A vulnerability found in the Node.js Package Manager (npm) IP Package can allow an attacker to obtain sensitive information and obtain access to normally inaccessible resources. linK:https://issues.redhat.com/browse/MTV-941[MTV-942]
 
 This issue has been resolved in {project-short} 2.5.6.
 
