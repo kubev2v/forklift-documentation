@@ -26,7 +26,7 @@ In this version of {project-short}, migration using OpenStack source providers g
 
 .Disabling FIPS
 
-With VMware vSphere source providers, Enterprise Master Secret (EMS) enforcement is disabled for migrations to enable migrations from versions of vSphere that are supported by {project-short} but do not meet the 2023 FIPS requirements.
+{project-short} 2.5.6 enables migrations from vSphere source providers by not enforcing Enterprise Master Secret (EMS). This enables migrating from all vSphere versions that {project-short} supports, including migrations that do not meet 2023 FIPS requirements.
 
 .Integration of the create and update provider user interface
 
@@ -42,9 +42,9 @@ A vulnerability in the Node.js Package Manager (npm) IP package could allow an a
 
 For more information, see link:https://access.redhat.com/security/cve/cve-2023-42282[CVE-2023-42282]
 
-.Missing match property in Console 4.15
+.Support deployment on OpenShift 4.15
 
-OpenShift Web Console removed the `match` property in earlier versions. This removal impacted pages that passed parameters through the URL, thereby preventing users from creating a migration plan in {project-short} Web Console. This issue has been resolved in {project-short} 2.5.6. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
+{project-short} 2.5.6 can be deployed on OpenShift 4.15 clusters. The operator includes a temporary fix for link:https://issues.redhat.com/browse/OCPBUGS-30095[Forklift operator fails on OpenShift 4.15]. The console plugin includes a fix for the `match` property that was removed in OpenShift Web Console. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
 
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
@@ -68,7 +68,7 @@ In {project-short} {project-version}, you can now use Red Hat {virt} provider as
 
 .Migration of VMs with direct LUNs from RHV
 
-During the migration from {rhv-full} {rhv-short}, direct Logical Units (LUNs) are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism does not work yet for Fibre Channel. link:https://issues.redhat.com/browse/MTV-329[(MTV-329)]
+During the migration from {rhv-full} ({rhv-short}), direct Logical Units (LUNs) are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism does not work yet for Fibre Channel. link:https://issues.redhat.com/browse/MTV-329[(MTV-329)]
 
 .Additional authentication methods for OpenStack
 
@@ -304,7 +304,7 @@ In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the loc
 
 .Fix migration of VMs with multi-boot guest operating system from vSphere 
 
-The virt-v2v arguments include `–root first`, which mitigates an issue with multi-boot VMs where the pod fails. Adding this argument back to the entrypoint will resolve the issue. Link:https://issues.redhat.com/browse/MTV-968[(MTV-968)]
+In {project-short} 2.5.6, the virt-v2v arguments include `–root first`, which mitigates an issue with multi-boot VMs where the pod fails. This is a fix for a regression that was introduced in {project-short} 2.4, in which the '--root' argument was dropped. Link:https://issues.redhat.com/browse/MTV-968[(MTV-968)]
 
 .Errors logged in populator pods are improved
 
