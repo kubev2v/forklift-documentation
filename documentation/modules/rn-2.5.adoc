@@ -25,7 +25,7 @@ This release has the following technical changes:
 In this version of {project-short}, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.
 
 .Disabling FIPS
-g
+
 {project-short} 2.5.6 enables migrations from vSphere source providers by not enforcing Enterprise Master Secret (EMS). This enables migrating from all vSphere versions that {project-short} supports, including migrations that do not meet 2023 FIPS requirements.
 
 .Integration of the create and update provider user interface
@@ -229,7 +229,6 @@ In earlier releases of {project-short} {project-version}, the size of disks that
 
 This issue has been resolved in {project-short} 2.5.3.
 
-
 .Filesystem overhead configurable
 
 In earlier releases of {project-short} {project-version}, the filesystem overhead for new persistent volumes was hard-coded to 10%. The overhead was insufficient for certain filesystem types, resulting in failures during cold-migrations from RHV and OSP to the cluster where {project-short} is deployed. In other filesystem types, the hard-coded overhead was too high, resulting in excessive storage consumption.
@@ -242,7 +241,6 @@ spec:
   `controller_filesystem_overhead: <percentage>` <1>
 ----
 <1> The percentage of overhead. If this label is not added, the default value of 10% is used. This setting is valid only if the `storageclass` is `filesystem`. link:https://issues.redhat.com/browse/MTV-699[(MTV-699)]
-
 
 .Ensure up-to-date data is displayed in the create and update provider forms
 
@@ -304,9 +302,11 @@ In {project-short} 2.5.6, the virt-v2v arguments include `–root first`, which 
 
 In earlier releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In {project-short} 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by `must-gather` and by `forklift-controller` to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
-.Support deployment on OpenShift 4.15
+.npm IP package vulnerability
 
-{project-short} 2.5.6 can be deployed on OpenShift 4.15 clusters. The operator includes a temporary fix for link:https://issues.redhat.com/browse/OCPBUGS-30095[Forklift operator fails on OpenShift 4.15]. The console plugin includes a fix for the `match` property that was removed in OpenShift Web Console. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
+A vulnerability found in the Node.js Package Manager (npm) IP Package can allow an attacker to obtain sensitive information and obtain access to normally inaccessible resources.
+
+This issue has been resolved in {project-short} 2.5.6.
 
 For more information, see link:https://access.redhat.com/security/cve/cve-2023-42282[CVE-2023-42282]
 
