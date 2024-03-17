@@ -36,9 +36,9 @@ The user interface of create and update providers now aligns with the look and f
 
 The old UI of {project-short} 2.3 cannot be enabled by setting `feature_ui: true` in ForkliftController anymore.
 
-.Support deployment on OpenShift 4.15
+.Support deployment on {ocp-name} 4.15
 
-{project-short} 2.5.6 can be deployed on OpenShift 4.15 clusters. The operator includes a temporary fix for link:https://issues.redhat.com/browse/OCPBUGS-30095[Forklift operator fails on OpenShift 4.15]. The console plugin includes a fix for the `match` property that was removed in OpenShift Web Console. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
+{project-short} 2.5.6 can be deployed on {ocp-name} 4.15 clusters. The operator includes a temporary fix for link:https://issues.redhat.com/browse/OCPBUGS-30095[Forklift operator fails on {ocp-name} 4.15]. The console plugin includes a fix for the `match` property that was removed in {ocp-name} Web Console. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
 
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
@@ -78,7 +78,7 @@ You can now create the VMware vSphere source provider without specifying a VMwar
 
 .Deployment on OKE enabled
 
-In {project-short} 2.5.3, deployment on OpenShift Kubernetes Engine (OKE) has been enabled. For more information, see link:https://docs.openshift.com/container-platform/4.14/welcome/oke_about.html[About OpenShift Kubernetes Engine]. link:https://issues.redhat.com/browse/MTV-803[(MTV-803)]
+In {project-short} 2.5.3, deployment on {ocp-name} Kubernetes Engine (OKE) has been enabled. For more information, see link:https://docs.openshift.com/container-platform/4.14/welcome/oke_about.html[About {ocp-name} Kubernetes Engine]. link:https://issues.redhat.com/browse/MTV-803[(MTV-803)]
 
 .Migration of VMs to destination storage classes with encrypted RBD now supported
 
