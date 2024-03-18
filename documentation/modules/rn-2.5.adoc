@@ -271,7 +271,7 @@ This issue is resolved in {project-short} {project-version}, the cutover operati
 
 .Warm migration fails when VM is locked
 
-In earlier releases of {project-short}, triggering a warm migration while there was an ongoing operation in {rhv-short} that locked the VM caused the migration to fail, because it could not trigger the snapshot creation.
+In earlier releases of {project-short}, triggering a warm migration while there was an ongoing operation in {rhv-short} that locked the VM caused the migration to fail because it could not trigger the snapshot creation.
 
 This issue is resolved in {project-short} {project-version}, warm migration does not fail when an operation that locks the VM is performed in {rhv-short}. The migration does not fail, but starts when the VM is unlocked. link:https://issues.redhat.com/browse/MTV-687[(MTV-687)]
 
@@ -291,7 +291,7 @@ This issue is resolved in {project-short} {project-version}, PVCs are deleted wh
 
 In earlier releases of {project-short}, VM with multiple disks that were migrated might not have been able to boot on the target {ocp} cluster.
 
-This issue is resolved in {project-short} {project-version}, VM with multiple disks that are migrated are able to boot on the target {ocp} cluster. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
+This issue is resolved in {project-short} {project-version}, VM with multiple disks that are migrated can boot on the target {ocp} cluster. link:https://issues.redhat.com/browse/MTV-433[(MTV-433)]
 
 .Transfer network not taken into account for cold migrations from vSphere
 
@@ -318,20 +318,8 @@ For a complete list of all resolved issues in this release, see the list of link
 [id="upgrade-notes-25_{context}"]
 == Upgrade notes
 
-// Is there anything else you want me to add?
 It is recommended to upgrade from {project-short} 2.4.2 to {project-short} {project-version}.
 
 .Upgrade from 2.4.0 fails
 
 When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment `forklift-controller` is immutable. Workaround: Remove the custom resource `forklift-controller` of type `ForkliftController` from the installed namespace, and recreate it. Refresh the {ocp} console once the `forklift-console-plugin` pod runs to load the upgraded {project-short} web console. link:https://issues.redhat.com/browse/MTV-518[(MTV-518)]
-
-////
-[id="deprecated-features-25_{context}"]
-== Deprecated features
-
-This release has the following deprecated feature:
-
-.Migration from {rhv-full} 4.3
-
-Migration from {rhv-full} 4.3 has been deprecated in {project-short} {project-version}.
-////
