@@ -41,7 +41,6 @@ The old UI of {project-short} 2.3 cannot be enabled by setting `feature_ui: true
 {project-short} 2.5.6 can be deployed on {ocp-name} 4.15 clusters. 
 
 * The Forklift operator includes a fix for the link:https://issues.redhat.com/browse/OCPBUGS-30095[Forklift operator failing on {ocp-name} 4.15]. 
-* The console plugin includes a fix for the `match` property that was removed in {ocp-name} Web Console. link:https://issues.redhat.com/browse/MTV-952[(MTV-952)]
 
 [id="new-features-and-enhancements-25_{context}"]
 == New features and enhancements
