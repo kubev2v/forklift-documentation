@@ -296,7 +296,7 @@ In {project-short} releases 2.4.0-2.5.3, cold migrations from vSphere to the loc
 
 .Fix migration of VMs with multi-boot guest operating system from vSphere 
 
-In {project-short} 2.5.6, the virt-v2v arguments include `–root first`, which mitigates an issue with multi-boot VMs where the pod fails. This is a fix for a regression that was introduced in {project-short} 2.4, in which the '--root' argument was dropped. Link:https://issues.redhat.com/browse/MTV-968[(MTV-968)]
+In {project-short} 2.5.6, the virt-v2v arguments include `–root first`, which mitigates an issue with multi-boot VMs where the pod fails. This is a fix for a regression that was introduced in {project-short} 2.4, in which the '--root' argument was dropped. link:https://issues.redhat.com/browse/MTV-968[(MTV-968)]
 
 .Errors logged in populator pods are improved
 
