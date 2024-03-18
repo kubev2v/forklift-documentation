@@ -58,7 +58,7 @@ include::snippet_ova_tech_preview.adoc[]
 
 .Migrating VMs between {ocp} clusters
 
-In {project-short} {project-version}, you can now use Red Hat {virt} provider as a source provider and destination provider. You can migrate VMs from the cluster that MTV is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on. link:https://issues.redhat.com/browse/MTV-571[(MTV-571)]
+In {project-short} {project-version}, you can now use Red Hat {virt} provider as a source provider and a destination provider. You can migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on. link:https://issues.redhat.com/browse/MTV-571[(MTV-571)]
 
 .Migration of VMs with direct LUNs from RHV
 
