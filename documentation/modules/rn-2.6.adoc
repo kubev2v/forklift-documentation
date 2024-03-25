@@ -22,7 +22,7 @@ In this version of {project-short}, migration using OpenStack source providers g
 
 .Integration of the create and update provider user interface
 
-The user interface of create and update providers now aligns with the look and feel of the {ocp} web console and displays up-to-date data.
+The user interface of the source providers and destination providers now aligns with the look and feel of the {ocp} web console and displays current data.
 
 .Standalone UI
 
@@ -32,9 +32,9 @@ The old UI of MTV 2.3 cannot run by setting `feature_ui: true` in ForkliftContro
 
 In earlier releases of {project-short} {project-version}, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. {project-short} 2.5.3 has a maximum number of three restarts of populator pods. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by must-gather and by forklift-controller to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
-.`VirtualMachineClusterFlavor`and `VirtualMachineClusterFlavor` CRDs replace OpenShift templates
+.The `VirtualMachineClusterFlavor` CRDs replace OpenShift templates
 
-Virtual Machine Flavor API will replace OpenShift templates. MTV currently falls back to using OpenShift templates when a relevant preference is not available.
+The Virtual Machine Flavor API replaces OpenShift templates. MTV currently falls back to using OpenShift templates when a relevant preference is not available.
 
 .Full support for migration from OVA moves
 
@@ -42,17 +42,16 @@ Virtual Machine Flavor API will replace OpenShift templates. MTV currently falls
 
 .OpenShift Console `Create/Edit` pages replace Forms and Wizards
 
-Forms and Wizards that use @migtools/lib-ui` have not worked properly when running inside the plugin. The migtool library was built for a standalone application. The `Create` and `Edit` pages in the OpenShift Console replace them. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
+Forms and Wizards that use @migtools/lib-ui` do not function as expected when running inside the plugin. The migtool library was built for a standalone application. The `Create` and `Edit` pages in the OpenShift Console replace the Forms and Wizards. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
 
 .Scan OVA files in the root folder of an NFS share
 
-Files held directly on the NFS share are scanned, not requiring a folder. link:https://issues.redhat.com/browse/MTV-680[(MTV-680)]
+Migration scans the files directly to the NFS share folder, not to a separate folder. link:https://issues.redhat.com/browse/MTV-680[(MTV-680)]
 
 
 [id="new-features-and-enhancements-26_{context}"]
 == New features and enhancements
 
-// {project-short} {project-z-version} is a maitenance release. There are no new features.
 This release has the following features and improvements:
 
 .Cross-Provider Features
@@ -81,7 +80,7 @@ The {project-short} web console shows the name and migration status of each VM. 
 
 .RH-SDL
 
-{project-short} conforms with the Red Hat Secure Development Lifecycle (RH-SDL) for users to follow an implementation plan that adopts security controls during the product lifecycle. link:https://issues.redhat.com/browse/MTV-801[(MTV-801)]
+{project-short} conforms with the Red Hat Secure Development Lifecycle (RH-SDL) that allows users to follow an implementation plan that adopts security controls during the product lifecycle. link:https://issues.redhat.com/browse/MTV-801[(MTV-801)]
 // Do we have public links to these documents?
 // Additional RH-SDL resources:
 // * link:https://docs.google.com/document/d/1QMrM5ac2sbecmy7lYHA8S6p8L8ivVwHlgdcspy-Z4VE/edit#heading=h.66y4kqbj468a[Red Hat Secure Development Lifecycle Implementation Plan]
@@ -93,7 +92,7 @@ The {project-short} web console shows the name and migration status of each VM. 
 
 .OCP Provider
 
-This is a collection of new features for OCP (OpenShift Container Platform) provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
+This is a collection of new features for {ocp-name} (OCP) provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
 // 
 // .. Block Migrations from OpenShift versions before 4.13
 // 
@@ -101,7 +100,7 @@ This is a collection of new features for OCP (OpenShift Container Platform) prov
 
 .. Secure connections to remote OpenShift clusters
 
-Connections to remote OpenShift clusters can be secures with CA certificates. link:https://issues.redhat.com/browse/MTV-728[MTV-728]
+Connections to remote OpenShift clusters can be secured with CA certificates. link:https://issues.redhat.com/browse/MTV-728[MTV-728]
 
 // Is this a feature or Resolved issue?
 // .. Source and storage endpoints are not selected automatically
@@ -181,7 +180,7 @@ This release has the following known issues:
 
 .Deleting migration plan does not remove temporary resources
 
-Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
+Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs, and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
 
 .Unclear error status message for VM with no operating system
 
@@ -194,20 +193,20 @@ vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the enc
 
 .Migration fails during precopy/cutover while a snapshot operation is performed on the source VM
 
-Warm migration from {rhv-short} fails if a snapshot operation is performed on the source VM. If a user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+Warm migrations from {rhv-short} fail if a snapshot operation is performed on the source VM. If a user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
 .Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
 
-When migrating a VM with multiple disks to more than one storage classes of type `hostPath`, it might happen that a VM cannot be scheduled. Workaround: Use shared storage on the target {ocp} cluster.
+When migrating a VM with multiple disks to more than one storage classes of type `hostPath`, a VM migh not be scheduled. Workaround: Use shared storage on the target {ocp} cluster.
 
 .Non-supported guest operating systems in warm migrations
 
-Warm migrations and migrations to remote {ocp} clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local {ocp} cluster. This is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case. +
+Warm migrations and migrations to remote {ocp} clusters from vSphere do not support the same guest operating systems that are supported in cold migrations and migrations to the local {ocp} cluster. RHEL 8 and RHEL 9 may cause this limitation. +
 See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
 
 .VMs from vSphere with RHEL 9 guest operating system might start with network interfaces that are down
 
-When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, the network interfaces of the VMs could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
+When migrating VMs that are installed with RHEL 9 as a guest operating system from vSphere, the network interfaces of the VMs could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
 .Import OVA: ConnectionTestFailed message appears when adding OVA provider
 
@@ -238,11 +237,11 @@ When a user cancels and deletes a failed migration plan after creating a PVC and
 
 .OCP to OCP migrations require the cluster version to be 4.13 or later
 
-When migrating from OCP to OCP, the source provider cluster must be 4.13 or newer. link:https://issues.redhat.com/browse/MTV-809([MTV-809])
+When migrating from OCP to OCP, the version of the source provider cluster must be OCP version 4.13 or later. link:https://issues.redhat.com/browse/MTV-809([MTV-809])
 
 .Restricted OVA provider namespace 
 
-You can only create an OVA provider under Forklift/MTV namespace, for use by the forklift-controller SA. This should be extended to all namespaces.link:https://issues.redhat.com/browse/MTV-681([MTV-681])
+You can only create an OVA provider under the Forklift/MTV namespace, for use by the forklift-controller SA. This should be extended to all namespaces.link:https://issues.redhat.com/browse/MTV-681([MTV-681])
 
 .Can only scan OVA files in NFS share root folder
 
@@ -258,13 +257,13 @@ When migrating an OVA VM with more than one disk, the migration gets stuck in th
 
 .Hyper-V Enlightenments are not added to the converted Windows VMs
 
-Source RHV VM with Hyper-V Enlightenments fails to convert the enlightenments after converting to OpenShift Vitualization. When converting RHV VMs to Windows VMs, the Hyper-V Enlightenments do not convert, causing significan performance issues. link:https://issues.redhat.com/browse/MTV-791([MTV-791])
+Source RHV VM with Hyper-V Enlightenments fails to convert the enlightenments after converting to OpenShift Virtualization. When converting RHV VMs to Windows VMs, the Hyper-V Enlightenments do not convert, causing significant performance issues. link:https://issues.redhat.com/browse/MTV-791([MTV-791])
 
 .Operator fails on timeout when calling `provider-validate` webhook
 
-The operator fails when it calls `forklift-api.openshift-mtv.svc:443/provider-validate?timeout=10s`. Changing the webhooks timeout to 30s seems to avoid this error. link:https://issues.redhat.com/browse/MTV-718([MTV-718])
+The operator can fail when it calls `provider-validate`. It is advised to change the webhooks timeout to 30s resolves this issue. link:https://issues.redhat.com/browse/MTV-718([MTV-718])
 
-.Migrated VM from OpenStack has different power state when source VM is running
+.Migrated VM from OpenStack has different power states when source VM is running
 
 A VM migrated from OpenStack does not start automatically when the source VM is running. link:https://issues.redhat.com/browse/MTV-677([MTV-677])
 
