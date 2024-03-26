@@ -16,11 +16,6 @@ You must specify both a name and a namespace for namespace-scoped CRs.
 
 include::snippet_ova_tech_preview.adoc[]
 
-[NOTE]
-====
-Migration using {osp} source providers only supports VMs that use only Cinder volumes.
-====
-
 .Prerequisites
 
 * VMware only: You must have a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.
