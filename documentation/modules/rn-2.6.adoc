@@ -289,5 +289,9 @@ A VM migrated from OpenStack does not start automatically when the source VM is 
 // 
 // Migrating a vSphere Datacenter succeeds when it is directly under the `/vcenter`, but fails when it is stores inside a folder. The migration raises an error. link:([MTV-796])
 
+.Fail to migrate a VM with NVME disks from vSphere 
+
+When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Cosole shows that the `Convert image to kubvirt` stage is 'running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963([MTV-963])
+
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430274[Resolved Issues] in Jira.
 
