@@ -293,5 +293,9 @@ A VM migrated from OpenStack does not start automatically when the source VM is 
 
 When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Cosole shows that the `Convert image to kubvirt` stage is 'running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963([MTV-963])
 
+.Fail to migrate image-based VM from OSP to `default` namespace
+
+The migration process fails when migrating an image-based VM from {osp} to the `default` namespace. The migration does not have a `RunAsUser` and `FSGroup`. link:https://issues.redhat.com/browse/MTV-964([MTV-964])
+
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430274[Resolved Issues] in Jira.
 
