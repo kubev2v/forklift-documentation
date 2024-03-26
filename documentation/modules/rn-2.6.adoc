@@ -188,7 +188,7 @@ The error status message for a VM with no operating system on the *Plans* page o
 
 .Migration of virtual machines with encrypted partitions fails during conversion
 
-vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the encryption key may be missing on the target {ocp} cluster.
+vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the encryption key might be missing on the target {ocp} cluster.
 
 
 .Migration fails during precopy/cutover while a snapshot operation is performed on the source VM
@@ -197,11 +197,11 @@ Warm migrations from {rhv-short} fail if a snapshot operation is performed on th
 
 .Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
 
-When migrating a VM with multiple disks to more than one storage classes of type `hostPath`, a VM migh not be scheduled. Workaround: Use shared storage on the target {ocp} cluster.
+When migrating a VM with multiple disks to more than one storage classes of type `hostPath`, a VM might not be scheduled. Workaround: Use shared storage on the target {ocp} cluster.
 
 .Non-supported guest operating systems in warm migrations
 
-Warm migrations and migrations to remote {ocp} clusters from vSphere do not support the same guest operating systems that are supported in cold migrations and migrations to the local {ocp} cluster. RHEL 8 and RHEL 9 may cause this limitation. +
+Warm migrations and migrations to remote {ocp} clusters from vSphere do not support the same guest operating systems that are supported in cold migrations and migrations to the local {ocp} cluster. RHEL 8 and RHEL 9 might cause this limitation. +
 See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
 
 .VMs from vSphere with RHEL 9 guest operating system might start with network interfaces that are down
@@ -235,9 +235,9 @@ When adding an OVA provider, a `The provider is not ready - ConnectionTestFailed
 
 When a user cancels and deletes a failed migration plan after creating a PVC and spawning the `populate` pods, the `populate` pods and PVC are not deleted. You must delete the pods and PVC manually. link:https://issues.redhat.com/browse/MTV-678([MTV-678])
 
-.OCP to OCP migrations require the cluster version to be 4.13 or later
+.{ocp} to {ocp} migrations require the cluster version to be 4.13 or later
 
-When migrating from OCP to OCP, the version of the source provider cluster must be OCP version 4.13 or later. link:https://issues.redhat.com/browse/MTV-809([MTV-809])
+When migrating from {ocp} to {ocp}, the version of the source provider cluster must be OCP version 4.13 or later. link:https://issues.redhat.com/browse/MTV-809([MTV-809])
 
 .Restricted OVA provider namespace 
 
