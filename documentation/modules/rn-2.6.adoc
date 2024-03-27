@@ -64,15 +64,15 @@ Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor`
 
 ..Integrate volume populators in remote migrations
 
-Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote OCP clusters. link::https://issues.redhat.com/browse/MTV-721[MTV-721]
+Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote OCP clusters. link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
 
 ..VM posted with `Running` state
 
-{project-short} shows each VM's migration `Running` state during the migration. link:https://issues.redhat.com/browse/MTV-794[MTV-794]
+{project-short} shows each VM's migration `Running` state during the migration. link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
 
 ..Review and configure migrated VMs
 
-The {project-short} web console shows the name and migration status of each VM. link:https://issues.redhat.com/browse/MTV-843[MTV-843]
+The {project-short} web console shows the name and migration status of each VM. link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
 // 
 // ..CNV InstanceTypes
 // 
@@ -137,11 +137,11 @@ The UI plugin uses a dynamic plugin for SDK REST API when using the `fetch` meth
 
 ..Improved cell renderers in list of provider VMs
 
-The table listing providers and their VMs has been remapped and improved to show the relevant fields for each provider. list:https://issues.redhat.com/browse/MTV-773[(MTV-773)]
+The table listing providers and their VMs has been remapped and improved to show the relevant fields for each provider. link:https://issues.redhat.com/browse/MTV-773[(MTV-773)]
 
 ..Date filter
 
-Lists of CRS can be filtered by different criteria, including creation date. list:https://issues.redhat.com/browse/MTV-724[(MTV-724)]
+Lists of CRS can be filtered by different criteria, including creation date. link:https://issues.redhat.com/browse/MTV-724[(MTV-724)]
 
 ..Improved explanations in providers form
 
