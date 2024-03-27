@@ -267,7 +267,9 @@ The operator can fail when it calls `provider-validate`. It is advised to change
 
 A VM migrated from OpenStack does not start automatically when the source VM is running. link:https://issues.redhat.com/browse/MTV-677([MTV-677])
 
-.MTV-701
+.Provider with application credential or user token authentication type remains in `staging` status
+
+When migrating a VM with an application credential or user token authentication type, the migration gets stuck in the `staging` status, without continuing and finishing in the `Ready` status. link:https://issues.redhat.com/browse/MTV-701([MTV-701])
 
 .MTV-704
 
