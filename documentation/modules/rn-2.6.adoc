@@ -237,11 +237,11 @@ When a user cancels and deletes a failed migration plan after creating a PVC and
 
 .{ocp} to {ocp} migrations require the cluster version to be 4.13 or later
 
-When migrating from {ocp} to {ocp}, the version of the source provider cluster must be OCP version 4.13 or later. link:https://issues.redhat.com/browse/MTV-809([MTV-809])
+When migrating from {ocp} to {ocp}, the version of the source provider cluster must be {ocp} version 4.13 or later. link:https://issues.redhat.com/browse/MTV-809([MTV-809])
 
 .Restricted OVA provider namespace 
 
-You can only create an OVA provider under the Forklift/MTV namespace, for use by the forklift-controller SA. This should be extended to all namespaces.link:https://issues.redhat.com/browse/MTV-681([MTV-681])
+You can only create an OVA provider under the Forklift or MTV namespace, for use by the forklift-controller SA. This should be extended to all namespaces.link:https://issues.redhat.com/browse/MTV-681([MTV-681])
 
 .Can only scan OVA files in NFS share root folder
 
@@ -271,21 +271,43 @@ A VM migrated from OpenStack does not start automatically when the source VM is 
 
 When migrating a VM with an application credential or user token authentication type, the migration gets stuck in the `staging` status, without continuing and finishing in the `Ready` status. link:https://issues.redhat.com/browse/MTV-701([MTV-701])
 
-.MTV-704
+.Forklift-controller crashes when creating a plan for a VM with 2 NICs
 
-.MTV-725
+When creating an {ocp} to {ocp} migration plan for a VM with 2 NICs, it creates a plan of `Unknown` status, causing the `forklift-controller` to fail. link:https://issues.redhat.com/browse/MTV-704([MTV-704])
 
-.MTV-835
+.Difficult to capture errors logged in populator pods from customers
 
-.MTV-868
+When `ovirt-img` fails to download the image, the reason for the failure does not appear in the populator controller or any events log. The pod keeps restarting after each failure, so customer populator pod error logs can only show where the reason for failure if they happen to log exactly when the pod is in error state. link:(https://issues.redhat.com/browse/MTV-725([MTV-725])
 
-.MTV-852
+.Conversion pod does not use the transfer network
 
-.MTV-740
+When creating a migration plan using the `transferNetwork`, the `virt-v2v` pod uses the default pod network instead of the transfer network. link:https://issues.redhat.com/browse/MTV-835([MTV-835])
 
-.MTV-829
+.Creating a host secret requires validating the secret before creating the host
 
-.MTV-702
+When creating a host secret, you must validate the secret before creating the host. The order for creating a host secret:
+
+. Create a secret
+. Create a host
+. Update the host owner reference
+
+link:https://issues.redhat.com/browse/MTV-868([MTV-868])
+
+.Migrating VMs from RHV to OpenShift Virtualization does not work with an encrypted RBD
+
+Migrating a VM from RHV to OpenShift Virtualization fails during `qemu-img create`, returning a `Cannot grow device files` error. The pod sees a smaller file. link:https://github.com/kubev2v/forklift-console-plugin/issues/852([MTV-852])
+
+.RHV provider `ConnectionTestSucceeded` True response from wrong URL
+
+The `ConnectionTestSucceeded` process produces a `True` result even when the wrong URL is entered. link:https://issues.redhat.com/browse/MTV-740([MTV-740])
+
+.MTV Inventory does not show extended volume of VM disk in RHV
+
+The extended volume of a VM disk does not appear in the MTV Inventory for an RHV provider after it is already connected. The connected RHV provider does not update the volume of the VM disk. link:https://issues.redhat.com/browse/MTV-829([MTV-829])
+
+.`ForkliftController` status shows `Failure` after upgrading from MTV 2.4.2 to MTV 2.5.0
+
+After upgrading MTV from version 2.4.2 to 2.5.0, the `ForkliftController` returns a `Failure` status and an error message. link:https://issues.redhat.com/browse/MTV-702([MTV-702])
 // 
 // .Migration fails when a vSphere Datacenter is nested inside a folder
 // 
@@ -293,11 +315,10 @@ When migrating a VM with an application credential or user token authentication 
 
 .Fail to migrate a VM with NVME disks from vSphere 
 
-When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Cosole shows that the `Convert image to kubvirt` stage is 'running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963([MTV-963])
+When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubvirt` stage is 'running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963([MTV-963])
 
 .Fail to migrate image-based VM from OSP to `default` namespace
 
 The migration process fails when migrating an image-based VM from {osp} to the `default` namespace. The migration does not have a `RunAsUser` and `FSGroup`. link:https://issues.redhat.com/browse/MTV-964([MTV-964])
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430274[Resolved Issues] in Jira.
-
