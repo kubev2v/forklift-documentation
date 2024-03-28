@@ -109,7 +109,11 @@ include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 [id="migrating-vms-web-console"]
 == Migrating virtual machines by using the {ocp} web console
 
-You can migrate virtual machines (VMs) to {virt} by using the {ocp} web console.
+You can migrate virtual machines (VMs) to {virt} by using the {ocp} web console to:
+
+. xref:adding-source-providers[Create source providers]
+. xref:adding-destination-providers[Create destination providers]
+. xref:creating-migration-plans-ui[Create migration plans]
 
 [IMPORTANT]
 ====
@@ -123,6 +127,16 @@ VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk D
 include::modules/mtv-ui.adoc[leveloffset=+2]
 include::modules/mtv-overview-page.adoc[leveloffset=+2]
 include::modules/mtv-settings.adoc[leveloffset=+2]
+
+
+
+
+// There are two ways to create migration plans and components using the {ocp-short} web console:
+
+// * The _step-by-step_ method, in which you create plans components - such as providers and network mappings - and then combine them into a migration plan. Although you do not have to create the components in a definite order, the steps are listed below in the recommended order of work.
+// * The _quick plan_ method, in which you create or choose a source provider, and {project-short} suggests a target provider, network mapping and a storage mapping, all of which you can edit. This method saves you time and effort. The quick plan method is described in its own section, after the procedures for all of the steps in creating a migration plan.
+
+
 
 [id="adding-providers"]
 === Adding providers
@@ -182,8 +196,20 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 
 include::modules/creating-network-mapping.adoc[leveloffset=+2]
 include::modules/creating-storage-mapping.adoc[leveloffset=+2]
-include::modules/creating-migration-plan.adoc[leveloffset=+2]
+
+[id="creating-migration-plans-ui"]
+=== Creating migration plans
+
+You can create a migration plan by using the {ocp} web console by specifying a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
+
+For your convenience, there are two procedures to create migration plans based on source provider and VMs, one begins on the  xref:creating-migration-quick-plan-vm_{context}[*Providers for virtualization* page] and the other begins on the xref:creating-migration-quick-plan-existing-source_{context}[*Plans for virtualization* page].
+
+// include::modules/creating-migration-plan.adoc[leveloffset=+2]
+include::modules/creating-migration-quick-plan-vm.adoc[leveloffset=+3]
+include::modules/creating-migration-quick-plan-existing-source.adoc[leveloffset=+3]
+
 include::modules/running-migration-plan.adoc[leveloffset=+2]
+
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
