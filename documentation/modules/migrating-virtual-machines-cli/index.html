@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2024-03-27 19:33:49 -0500" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/modules/migrating-virtual-machines-cli/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="migrating-virtual-machines-cli_forklift">Migrating virtual machines</h1>
+<div class="paragraph">
+<p>You migrate virtual machines (VMs) from the command line (CLI) by creating Forklift custom resources (CRs).</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You must specify a name for cluster-scoped CRs.</p>
+</div>
+<div class="paragraph">
+<p>You must specify both a name and a namespace for namespace-scoped CRs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in migrating-virtual-machines-cli.adoc - include::snippet_ova_tech_preview.adoc[]</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Migration using {osp} source providers only supports VMs that use only Cinder volumes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>VMware only: You must have a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters.</p>
+</li>
+<li>
+<p>oVirt (oVirt) only: If you are migrating a virtual machine with a direct LUN disk, ensure that the nodes in the KubeVirt destination cluster that the VM is expected to run on can access the backend storage.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in migrating-virtual-machines-cli.adoc - include::snip-migrating-luns.adoc[]</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Create a <code>Secret</code> manifest for the source provider credentials:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$ cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: &lt;secret&gt;
+  namespace: &lt;namespace&gt;
+  ownerReferences: <b class="conum">(1)</b>
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: &lt;provider_name&gt;
+      uid: &lt;provider_uid&gt;
+  labels:
+    createdForProviderType: &lt;provider_type&gt; <b class="conum">(2)</b>
+    createdForResourceType: providers
+type: Opaque
+stringData: <b class="conum">(3)</b>
+  user: &lt;user&gt; <b class="conum">(4)</b>
+  password: &lt;password&gt; <b class="conum">(5)</b>
+  insecureSkipVerify: &lt;true/false&gt; <b class="conum">(6)</b>
+  domainName: &lt;domain_name&gt; <b class="conum">(7)</b>
+  projectName: &lt;project_name&gt; <b class="conum">(8)</b>
+  regionName: &lt;region name&gt; <b class="conum">(9)</b>
+  cacert: | <b class="conum">(10)</b>
+    &lt;ca_certificate&gt;
+  url: &lt;api_end_point&gt; <b class="conum">(11)</b>
+  thumbprint: &lt;vcenter_fingerprint&gt; <b class="conum">(12)</b>
+  token: &lt;service_account_bearer_token&gt; <b class="conum">(13)</b>
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>ownerReferences</code> section is optional.</p>
+</li>
+<li>
+<p>Specify the type of source provider. Allowed values are <code>ovirt</code>, <code>vsphere</code>, <code>openstack</code>, <code>ova</code>, and <code>openshift</code>. This label is needed to verify the credentials are correct when the remote system is accessible and, for oVirt, to retrieve the Engine CA certificate when a third-party certificate is specified.</p>
+</li>
+<li>
+<p>The <code>stringData</code> section for OVA is different and is described in a note that follows the description of the <code>Secret</code> manifest.</p>
+</li>
+<li>
+<p>Specify the vCenter user, the oVirt Engine user, or the {osp} user.</p>
+</li>
+<li>
+<p>Specify the user password.</p>
+</li>
+<li>
+<p>Specify <code>&lt;true&gt;</code> to skip certificate verification, which proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed. Specifying <code>&lt;false&gt;</code> verifies the certificate.</p>
+</li>
+<li>
+<p>{osp} only: Specify the domain name.</p>
+</li>
+<li>
+<p>{osp} only: Specify the project name.</p>
+</li>
+<li>
+<p>{osp} only: Specify the name of the {osp} region.</p>
+</li>
+<li>
+<p>oVirt and {osp} only: For oVirt, enter the Engine CA certificate unless it was replaced by a third-party certificate, in which case, enter the Engine Apache CA certificate. You can retrieve the Engine CA certificate at <a href="https://&lt;engine_host&gt;/ovirt-engine/services/pki-resource?resource=ca-certificate&amp;format=X509-PEM-CA" class="bare">https://&lt;engine_host&gt;/ovirt-engine/services/pki-resource?resource=ca-certificate&amp;format=X509-PEM-CA</a>. For {osp}, enter the CA certificate for connecting to the source environment. The certificate is not used when <code>insecureSkipVerify</code> is set to <code>&lt;true&gt;</code>.</p>
+</li>
+<li>
+<p>Specify the API end point URL, for example, <code><a href="https://&lt;vCenter_host&gt;/sdk" class="bare">https://&lt;vCenter_host&gt;/sdk</a></code> for vSphere, <code><a href="https://&lt;engine_host&gt;/ovirt-engine/api" class="bare">https://&lt;engine_host&gt;/ovirt-engine/api</a></code> for oVirt, or <code><a href="https://&lt;identity_service&gt;/v3" class="bare">https://&lt;identity_service&gt;/v3</a></code> for {osp}.</p>
+</li>
+<li>
+<p>VMware only: Specify the vCenter SHA-1 fingerprint.</p>
+</li>
+<li>
+<p>OKD only:  Token for a service account with <code>cluster-admin</code> privileges.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>stringData</code> section for an OVA <code>Secret</code> manifest is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">stringData:
+  url: &lt;nfs_server:/nfs_path&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where:<br>
+<code>nfs_server</code>: An IP or hostname of the server where the share was created.<br>
+<code>nfs_path</code> : The path on the server where the OVA files are stored.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create a <code>Provider</code> manifest for the source provider:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$ cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: &lt;source_provider&gt;
+  namespace: &lt;namespace&gt;
+spec:
+  type: &lt;provider_type&gt; <b class="conum">(1)</b>
+  url: &lt;api_end_point&gt; <b class="conum">(2)</b>
+  settings:
+    vddkInitImage: &lt;registry_route_or_server_path&gt;/vddk:&lt;tag&gt; <b class="conum">(3)</b>
+  secret:
+    name: &lt;secret&gt; <b class="conum">(4)</b>
+    namespace: &lt;namespace&gt;
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Specify the type of source provider. Allowed values are <code>ovirt</code>, <code>vsphere</code>, <code>openstack</code>, <code>ova</code>, and <code>openshift</code>.</p>
+</li>
+<li>
+<p>Specify the API end point URL, for example, <code><a href="https://&lt;vCenter_host&gt;/sdk" class="bare">https://&lt;vCenter_host&gt;/sdk</a></code> for vSphere, <code><a href="https://&lt;engine_host&gt;/ovirt-engine/api" class="bare">https://&lt;engine_host&gt;/ovirt-engine/api</a></code> for oVirt, or <code><a href="https://&lt;identity_service&gt;/v3" class="bare">https://&lt;identity_service&gt;/v3</a></code> for {osp}.</p>
+</li>
+<li>
+<p>VMware only: Specify the VDDK image that you created.</p>
+</li>
+<li>
+<p>Specify the name of provider <code>Secret</code> CR.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>VMware only: Create a <code>Host</code> manifest:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$ cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Host
+metadata:
+  name: &lt;vmware_host&gt;
+  namespace: &lt;namespace&gt;
+spec:
+  provider:
+    namespace: &lt;namespace&gt;
+    name: &lt;source_provider&gt; <b class="conum">(1)</b>
+  id: &lt;source_host_mor&gt; <b class="conum">(2)</b>
+  ipAddress: &lt;source_network_ip&gt; <b class="conum">(3)</b>
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Specify the name of the VMware <code>Provider</code> CR.</p>
+</li>
+<li>
+<p>Specify the managed object reference (MOR) of the VMware host.</p>
+</li>
+<li>
+<p>Specify the IP address of the VMware migration network.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create a <code>NetworkMap</code> manifest to map the source and destination networks:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$  cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: &lt;network_map&gt;
+  namespace: &lt;namespace&gt;
+spec:
+  map:
+    - destination:
+        name: &lt;network_name&gt;
+        type: pod <b class="conum">(1)</b>
+      source: <b class="conum">(2)</b>
+        id: &lt;source_network_id&gt; <b class="conum">(3)</b>
+        name: &lt;source_network_name&gt;
+    - destination:
+        name: &lt;network_attachment_definition&gt; <b class="conum">(4)</b>
+        namespace: &lt;network_attachment_definition_namespace&gt; <b class="conum">(5)</b>
+        type: multus
+      source:
+        name: &lt;network_attachment_definition&gt; <b class="conum">(6)</b>
+        namespace: &lt;network_attachment_definition_namespace&gt; <b class="conum">(7)</b>
+        type: multus <b class="conum">(8)</b>
+  provider:
+    source:
+      name: &lt;source_provider&gt;
+      namespace: &lt;namespace&gt;
+    destination:
+      name: &lt;destination_provider&gt;
+      namespace: &lt;namespace&gt;
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Allowed values are <code>pod</code> and <code>multus</code>.</p>
+</li>
+<li>
+<p>You can use either the <code>id</code> <em>or</em> the <code>name</code> parameter to specify the source network.</p>
+</li>
+<li>
+<p>Specify the VMware network MOR, the oVirt network UUID, or the {osp} network UUID.</p>
+</li>
+<li>
+<p>Specify a network attachment definition for each additional KubeVirt network.</p>
+</li>
+<li>
+<p>Required only when <code>type</code> is <code>multus</code>. Specify the namespace of the KubeVirt network attachment definition.</p>
+</li>
+<li>
+<p>Specify a network attachment definition for each additional KubeVirt network.</p>
+</li>
+<li>
+<p>Required only when <code>type</code> is <code>multus</code>. Here, <code>namespace</code> can either be specified using the namespace property or with a name built as follows: <code>&lt;network_namespace&gt;/&lt;network_name&gt;</code>.</p>
+</li>
+<li>
+<p>OKD only.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create a <code>StorageMap</code> manifest to map source and destination storage:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$ cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: &lt;storage_map&gt;
+  namespace: &lt;namespace&gt;
+spec:
+  map:
+    - destination:
+        storageClass: &lt;storage_class&gt;
+        accessMode: &lt;access_mode&gt; <b class="conum">(1)</b>
+      source:
+        id: &lt;source_datastore&gt; <b class="conum">(2)</b>
+    - destination:
+        storageClass: &lt;storage_class&gt;
+        accessMode: &lt;access_mode&gt;
+      source:
+        id: &lt;source_datastore&gt;
+  provider:
+    source:
+      name: &lt;source_provider&gt;
+      namespace: &lt;namespace&gt;
+    destination:
+      name: &lt;destination_provider&gt;
+      namespace: &lt;namespace&gt;
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Allowed values are <code>ReadWriteOnce</code> and <code>ReadWriteMany</code>.</p>
+</li>
+<li>
+<p>Specify the VMware data storage MOR, the oVirt storage domain UUID, or the {osp} <code>volume_type</code> UUID. For example, <code>f2737930-b567-451a-9ceb-2887f6207009</code>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For OVA, the <code>StorageMap</code> can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider &lt;provider_name&gt;".</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Optional: Create a <code>Hook</code> manifest to run custom code on a VM during the phase specified in the <code>Plan</code> CR:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$  cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Hook
+metadata:
+  name: &lt;hook&gt;
+  namespace: &lt;namespace&gt;
+spec:
+  image: quay.io/konveyor/hook-runner <b class="conum">(1)</b>
+  playbook: | <b class="conum">(2)</b>
+    LS0tCi0gbmFtZTogTWFpbgogIGhvc3RzOiBsb2NhbGhvc3QKICB0YXNrczoKICAtIG5hbWU6IExv
+    YWQgUGxhbgogICAgaW5jbHVkZV92YXJzOgogICAgICBmaWxlOiAiL3RtcC9ob29rL3BsYW4ueW1s
+    IgogICAgICBuYW1lOiBwbGFuCiAgLSBuYW1lOiBMb2FkIFdvcmtsb2FkCiAgICBpbmNsdWRlX3Zh
+    cnM6CiAgICAgIGZpbGU6ICIvdG1wL2hvb2svd29ya2xvYWQueW1sIgogICAgICBuYW1lOiB3b3Jr
+    bG9hZAoK
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>You can use the default <code>hook-runner</code> image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.</p>
+</li>
+<li>
+<p>Optional: Base64-encoded Ansible playbook. If you specify a playbook, the <code>image</code> must be <code>hook-runner</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create a <code>Plan</code> manifest for the migration:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$ cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+metadata:
+  name: &lt;plan&gt; <b class="conum">(1)</b>
+  namespace: &lt;namespace&gt;
+spec:
+  warm: true <b class="conum">(2)</b>
+  provider:
+    source:
+      name: &lt;source_provider&gt;
+      namespace: &lt;namespace&gt;
+    destination:
+      name: &lt;destination_provider&gt;
+      namespace: &lt;namespace&gt;
+  map: <b class="conum">(3)</b>
+    network: <b class="conum">(4)</b>
+      name: &lt;network_map&gt; <b class="conum">(5)</b>
+      namespace: &lt;namespace&gt;
+    storage: <b class="conum">(6)</b>
+      name: &lt;storage_map&gt; <b class="conum">(7)</b>
+      namespace: &lt;namespace&gt;
+  targetNamespace: &lt;target_namespace&gt;
+  vms: <b class="conum">(8)</b>
+    - id: &lt;source_vm&gt; <b class="conum">(9)</b>
+    - name: &lt;source_vm&gt;
+      namespace: &lt;namespace&gt; <b class="conum">(10)</b>
+      hooks: <b class="conum">(11)</b>
+        - hook:
+            namespace: &lt;namespace&gt;
+            name: &lt;hook&gt; <b class="conum">(12)</b>
+          step: &lt;step&gt; <b class="conum">(13)</b>
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Specify the name of the <code>Plan</code> CR.</p>
+</li>
+<li>
+<p>Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the <code>cutover</code> parameter in the <code>Migration</code> manifest, only the precopy stage will run.</p>
+</li>
+<li>
+<p>Specify only one network map and one storage map per plan.</p>
+</li>
+<li>
+<p>Specify a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.</p>
+</li>
+<li>
+<p>Specify the name of the <code>NetworkMap</code> CR.</p>
+</li>
+<li>
+<p>Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.</p>
+</li>
+<li>
+<p>Specify the name of the <code>StorageMap</code> CR.</p>
+</li>
+<li>
+<p>For all source providers except for KubeVirt, you can use either the <code>id</code> <em>or</em> the <code>name</code> parameter to specify the source VMs.<br>
+KubeVirt source provider only: You can use only the <code>name</code> parameter, not the <code>id.</code> parameter to specify the source VMs.</p>
+</li>
+<li>
+<p>Specify the VMware VM MOR, oVirt VM UUID or the {osp} VM UUID.</p>
+</li>
+<li>
+<p>KubeVirt source provider only.</p>
+</li>
+<li>
+<p>Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.</p>
+</li>
+<li>
+<p>Specify the name of the <code>Hook</code> CR.</p>
+</li>
+<li>
+<p>Allowed values are <code>PreHook</code>, before the migration plan starts, or <code>PostHook</code>, after the migration is complete.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Create a <code>Migration</code> manifest to run the <code>Plan</code> CR:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$ cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Migration
+metadata:
+  name: &lt;migration&gt; <b class="conum">(1)</b>
+  namespace: &lt;namespace&gt;
+spec:
+  plan:
+    name: &lt;plan&gt; <b class="conum">(2)</b>
+    namespace: &lt;namespace&gt;
+  cutover: &lt;cutover_time&gt; <b class="conum">(3)</b>
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Specify the name of the <code>Migration</code> CR.</p>
+</li>
+<li>
+<p>Specify the name of the <code>Plan</code> CR that you are running. The <code>Migration</code> CR creates a <code>VirtualMachine</code> CR for each VM that is migrated.</p>
+</li>
+<li>
+<p>Optional: Specify a cutover time according to the ISO 8601 format with the UTC time offset, for example, <code>2021-04-04T01:23:45.678+09:00</code>.</p>
+<div class="paragraph">
+<p>You can associate multiple <code>Migration</code> CRs with a single <code>Plan</code> CR. If a migration does not complete, you can create a new <code>Migration</code> CR, without changing the <code>Plan</code> CR, to migrate the remaining VMs.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Retrieve the <code>Migration</code> CR to monitor the progress of the migration:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">$ kubectl get migration/&lt;migration&gt; -n &lt;namespace&gt; -o yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>
