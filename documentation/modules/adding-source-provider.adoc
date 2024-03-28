@@ -92,9 +92,9 @@ ifdef::vmware[]
 
 . Choose one of the following options for validating CA certificates:
 +
-** *Skip certificate validation* : Migrate without validating a CA certificate.
-** *Use the system CA certificate*: Migrate after validating the system CA certificate.
 ** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
 +
 .. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
 .. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
