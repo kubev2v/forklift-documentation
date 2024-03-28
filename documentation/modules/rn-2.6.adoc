@@ -111,27 +111,27 @@ Connections to remote OpenShift clusters can be secured with CA certificates. li
 
 This is a collection of new features for the {project-short} Console plugin. link:https://issues.redhat.com/browse/MTV-736[(MTV-736)]
 
-..Replaced Forms and Wizards with OpenShift Console Create and Edit pages
+.* Replaced Forms and Wizards with OpenShift Console Create and Edit pages
 
 The Create and Edit pages in the OpenShift Console have replaced the Forms and Wizards that ran on the migtool library UI application. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
 
-..Restored vSphere Verify certificate functionality
+.* Restored vSphere Verify certificate functionality
 
 The vSphere Verify certificate option in the `add-provider` dialog has been restored. It was removed in the transition to {ocp} console. link:https://issues.redhat.com/browse/MTV-737[(MTV-737)]
 
-..Tooltip explains the select migration network button
+.* Tooltip explains the select migration network button
 
 A tooltip was added to the `select migration network` button, which explains the purpose of this network. link:https://issues.redhat.com/browse/MTV-245[(MTV-245)]
 
-..OpenShift Console native SDK fetch, post, and delete calls
+.* OpenShift Console native SDK fetch, post, and delete calls
 
 The `fetch`, `post`, and `delete` calls in the Forklift UI are now native to the OpenShift API. link:https://issues.redhat.com/browse/MTV-365[(MTV-365)]
 
-..Removed Cancel icon during Cutover stage
+.* Removed Cancel icon during Cutover stage
 
 In a warm migration, the Cancel icon appears during the Precopy stage, but does not appear during the Cutover stage. link:https://issues.redhat.com/browse/MTV-449[(MTV-449)]
 
-..{product-short} UI plugin uses only a dynamic plugin for SDK REST API fetch methods
+.* {product-short} UI plugin uses only a dynamic plugin for SDK REST API fetch methods
 
 The UI plugin uses a dynamic plugin for SDK REST API when using the `fetch` method. link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
 
@@ -151,41 +151,53 @@ The `providers` form runs a validation to verify the text entered in each field 
 
 Fields in the `create provider` form include hint icons to explain the required information for each field. link:https://issues.redhat.com/browse/MTV-768[(MTV-768)]
 
-..Migration success status bar chart 
+.* Migration success status bar chart 
 
 A bar chart shows the number of migrations and their status - `startes`, `finished`, and `failed`. link:https://issues.redhat.com/browse/MTV-770[(MTV-770)]
 
-..Improved list of VMs in the detailed view of each provider
+.* Improved list of VMs in the detailed view of each provider
 
 The detailed view of each provider includes specific information relevant to the VMs of that provider. link:https://issues.redhat.com/browse/MTV-772[(MTV-772)]
 
-..Automated kubevit types
+.* Automated kubevit types
 
 The process of generating `kubevit` types has been automated. link:https://issues.redhat.com/browse/MTV-775[(MTV-775)]
 
-..Edit plans that failed to migrate VMs
+.* Edit plans that failed to migrate VMs
 
 Plans that have failed to migrate any VMs can be edited. Some plans fail or are canceled because the network and storage mappings are wrong. These plans can be edited until they succeed. link:https://issues.redhat.com/browse/MTV-779[(MTV-779)]
 
-..Specify ESX provider
+.* Specify ESX provider
 
 An ESX can be imported directly from vSphere without going through vCenter. In the provider screen, the user can enter a URL that points to vCenter or to a specific ESX. link:https://issues.redhat.com/browse/MTV-792[(MTV-792)]
 
-..MTV-793
+.* ESXi provider host configuration
 
-..MTV-797
+ESXi as a vSphere provider does not need credentials in its setup. The credentials requirements field is removed from ESX settings. link:https://issues.redhat.com/browse/MTV-793[(MTV-793)]
 
-..MTV-867
+.* Link to VM details page
+
+The OpenShift Console, provider VM list includes a link to the details page for each VM. link:https://issues.redhat.com/browse/MTV-797[(MTV-797)]
+
+.* Host secrets labels include mandatory `createForRsources` label
+
+The `createForResources` label is mandatory, enabling the setting network for Host machine creation of Host objects [(MTV-867)]
 
 .OVA Provider
 
-OVA provider. link:https://issues.redhat.com/browse/MTV-690[(MTV-690)]
+This is a collection of new features for the {project-short} OVA provider. link:https://issues.redhat.com/browse/MTV-690[(MTV-690)]
 
-..MTV-759
+.* Get firmware detection by virt-v2v
 
-..MTV-848
+A `virt-v2v` that converts a guest also produces an OFV with configuration based on the virtual disk, such as driver or firmware. `forklift-controller` processes the produced OFV's status of the conversion pod. link:https://issues.redhat.com/browse/MTV-759[(MTV-759)]
 
-..MTV-624
+.* Delete PV when provider is deleted
+
+Each OVA provider has an attached PV and PVC. The PVC deletes automatically when the provider is deleted. {product-short} now also deletes the PV when the provider is deleted. link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
+
+.* End to end test for import OVA
+
+The {product-short} process performs an end to end test of the imported OVA. link:https://issues.redhat.com/browse/MTV-624[(MTV-624)]
 
 ..MTV-681
 
