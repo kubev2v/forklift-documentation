@@ -96,11 +96,11 @@ ifdef::vmware[]
 ** *Use the system CA certificate*: Migrate after validating the system CA certificate.
 ** *Skip certificate validation* : Migrate without validating a CA certificate.
 +
-.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
-.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
 .. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
 +
-. Optional:  Fetch the CA certificate from the provider's API endpoint URL and confirm the validity of the certificate manually. Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+. Optional, if you use a custom CA certificate or the system certificate: Fetch the CA certificate from the provider's API endpoint URL and confirm the validity of the certificate manually. Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 +
 .. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
 .. If the details are correct, select the *I trust the authenticity of this certificate* checkbox, and then, click *Confirm*. If not, click *Cancel*, and then, enter the correct certificate information manually.
