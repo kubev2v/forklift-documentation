@@ -11,7 +11,7 @@
 . In the {ocp} web console, click *Plans for virtualization* and then click *Create Plan*.
 +
 The  *Create migration plan* wizard opens to the *Select source provider* interface.
-. Select the source provider of the VMs you want to migrate and then click *Next*.
+. Select the source provider of the VMs you want to migrate.
 +
 The *Select virtual machines* interface opens.
 . Select the VMs you want to migrate and click *Next*.
