@@ -200,12 +200,14 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 [id="creating-migration-plans-ui"]
 === Creating migration plans
 
+You can create a migration plan by using the {ocp} web console by specifying a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
 
+For your convenience, there are two procedures to create migration plans based on source provider and VMs, one begins on the  xref:creating-migration-quick-plan-vm_{context}[*Providers for virtualization* page] and the other begins on the xref:creating-migration-quick-plan-existing-source_{context}[*Plans for virtualization* page].
 
 // include::modules/creating-migration-plan.adoc[leveloffset=+2]
-
-include::modules/creating-migration-quick-plan-existing-source.adoc[leveloffset=+3]
 include::modules/creating-migration-quick-plan-vm.adoc[leveloffset=+3]
+include::modules/creating-migration-quick-plan-existing-source.adoc[leveloffset=+3]
+
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]

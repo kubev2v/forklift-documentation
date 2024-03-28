@@ -4,21 +4,19 @@
 
 :_content-type: PROCEDURE
 [id="creating-migration-quick-plan-existing-source_{context}"]
-= Creating and running a migration plan based on a source provider
-
-Once you have a source provider and a destination provider, you can create and run a migration plan.
+= Creating and running a migration plan starting on Plans for virtualization
 
 .Procedure
 
 . In the {ocp} web console, click *Plans for virtualization* and then click *Create Plan*.
 +
-The *Select source provider* page opens.
+The  *Create migration plan* wizard opens to the *Select source provider* interface.
 . Select the source provider of the VMs you want to migrate and then click *Next*.
 +
-The *Select virtual machines* page opens.
+The *Select virtual machines* interface opens.
 . Select the VMs you want to migrate and click *Next*.
 +
-The *Create migration plan* page opens. It includes the source provider's name and suggestions for a plan name, a target provider and namespace, a network map, and a storage map.
+The *Create migration plan* pane opens. It displays the source provider's name and suggestions for a plan name, a target provider and namespace, a network map, and a storage map.
 . Make any desired changes to the editable items.
 . Click *Add mapping* to edit a suggested network mapping or a storage mapping, or to add one or more additional mappings.
 . Click *Create migration plan*.
@@ -28,7 +26,3 @@ The *Create migration plan* page opens. It includes the source provider's name a
 .. You can run the plan now by clicking *Start migration*.
 .. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in xref:running-migration-plan_{context}[Running a migration plan].
 
-[TIP]
-====
-If you already know the specific virtual machines you want to migrate, follow the shorter procedure in xref:creating-migration-quick-plan-vm_{context}[Creating and running a migration plan based on VMs].
-====
