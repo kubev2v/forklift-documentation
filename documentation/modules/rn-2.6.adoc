@@ -71,7 +71,7 @@ See descriptions for the following features that are included under Cross-Provid
 Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` CDIs. Flavors are meant to replace Template, which is only available on {ocp-name}. link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
 
 .Integrate volume populators in remote migrations
-
+// Arik, please check and explain
 Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
 
 .VM posted with `Running` state
@@ -286,7 +286,7 @@ This release has the following known issues:
 
 .Deleting migration plan does not remove temporary resources
 
-Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs, and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
+Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs, and data volumes. You must archive a migration plan before deleting it, so you can clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
 
 .Unclear error status message for VM with no operating system
 
@@ -382,12 +382,12 @@ A VM migrated from OpenStack does not start automatically when the source VM is 
 When migrating a VM with an application credential or user token authentication type, the migration gets stuck in the `staging` status, without continuing and finishing in the `Ready` status. link:https://issues.redhat.com/browse/MTV-701[(MTV-701)]
 
 .Forklift-controller crashes when creating a plan for a VM with 2 NICs
-
-When creating an {ocp} to {ocp} migration plan for a VM with 2 NICs, it creates a plan of `Unknown` status, causing the `forklift-controller` to fail. link:https://issues.redhat.com/browse/MTV-704[(MTV-704)]
+// What is NIC?
+When creating an {ocp} to {ocp} migration plan for a VM with 2 NICs, it creates a plan with an `Unknown` status. This status causes the `forklift-controller` to fail. link:https://issues.redhat.com/browse/MTV-704[(MTV-704)]
 
 .Difficult to capture errors logged in populator pods from customers
 
-When `ovirt-img` fails to download the image, the reason for the failure does not appear in the populator controller or any events log. The pod keeps restarting after each failure, so customer populator pod error logs can only show where the reason for failure if they happen to log exactly when the pod is in error state. link:(https://issues.redhat.com/browse/MTV-725[(MTV-725)]
+When `ovirt-img` fails to download the image, the reason for the failure does not appear in the populator controller or any events log. The pod keeps restarting after each failure, so customer populator pod error logs can only show the reason for failure if they happen to log exactly when the pod is in an error state. link:(https://issues.redhat.com/browse/MTV-725[(MTV-725)]
 
 .Conversion pod does not use the transfer network
 
@@ -395,7 +395,7 @@ When creating a migration plan using the `transferNetwork`, the `virt-v2v` pod u
 
 .Creating a host secret requires validating the secret before creating the host
 
-When creating a host secret, you must validate the secret before creating the host. The order for creating a host secret:
+When creating a host secret, you must validate the secret before creating the host. The procedure for creating a host secret is as follows:
 
 . Create a secret
 . Create a host
