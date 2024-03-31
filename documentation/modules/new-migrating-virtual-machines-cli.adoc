@@ -944,7 +944,7 @@ EOF
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
 <8> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
-<9> Specify the TBD.
+<9> Specify the OVA VM UUID.
 <10> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
