@@ -12,8 +12,6 @@ The release notes describe technical changes, new features and enhancements, and
 [id="technical-changes-26_{context}"]
 == Technical changes
 
-// {project-short} {project-z-version} is a maintenance release. There are no technical changes.
-
 This release has the following technical changes:
 
 .Migration from OpenStack moves to being a fully supported feature
@@ -54,28 +52,53 @@ Migration scans the files directly to the NFS share folder, not to a separate fo
 
 This release has the following features and improvements:
 
-.Cross-Provider Features
+Cross-Provider Features
 
 This is a collection of new features that provide functionality across different cloud providers. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
 
-..Replace templates with flavors
+See descriptions for the following features that are included under Cross-Provider Features:
+* Replace templates with flavors link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
+* Validate permissions on source providers link:https://issues.redhat.com/browse/MTV-273[(MTV-273)]
+* Validation for RHEL 6 link:https://issues.redhat.com/browse/MTV-413[(MTV-413)]
+* Integrate volume populators in remote migrations link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
+* Cutom mapping of instance type preferences link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
+* VM posted with `Running` state link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
+* Review and configure migrated VMs link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
+* Default Virt storage class link:https://issues.redhat.com/browse/MTV-855[(MTV-855)]
 
-Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` CDIs. Flavors are meant to replace Template, which is only available on OpenShift. link:https://issues.redhat.com/browse/MTV-206[MTV-206]
+.Replace templates with flavors
 
-..Integrate volume populators in remote migrations
+Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` CDIs. Flavors are meant to replace Template, which is only available on OpenShift. link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
+
+.Integrate volume populators in remote migrations
 
 Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote OCP clusters. link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
 
-..VM posted with `Running` state
+.VM posted with `Running` state
 
 {project-short} shows each VM's migration `Running` state during the migration. link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
 
-..Review and configure migrated VMs
+.Review and configure migrated VMs
 
 The {project-short} web console shows the name and migration status of each VM. link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
+
+.Default virt storage class
+
+For requests that do no specify an explicit storage class, the `is-default-virt-class` replaces the k8s default storage class. link:https://issues.redhat.com/browse/MTV-855[(MTV-855)]
+
+.Validate permissions on source providers
+
+When migrating a VM with an RHEV user with restricted permissions, {product-short} validates user permissions and the migration pod reports where the process fails. link:https://issues.redhat.com/browse/MTV-273[(MTV-273)]
+
+.Validation for RHEL 6
+
+Enterpise Linux 9 does not support CNV to provide RHEL 6 templates. This restriction is no longer relevant because `VirtualMachineClusterFlavor` CRDs replaced template. link:https://issues.redhat.com/browse/MTV-413[(MTV413)]
+
+.Cutom mapping of instance type preferences
+
+{product-short} enables users to add Customer Virtual Machine Mapping, which are custom templates that configured to specific migrations, VMs, and users. link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
 // 
-// ..CNV InstanceTypes
-// 
+// .CNV InstanceTypes [MTV-919]
 // This looks like it repeats MTV-206 above
 
 .RH-SDL
@@ -199,21 +222,27 @@ Each OVA provider has an attached PV and PVC. The PVC deletes automatically when
 
 The {product-short} process performs an end to end test of the imported OVA. link:https://issues.redhat.com/browse/MTV-624[(MTV-624)]
 
-..MTV-681
+.Create OVA provider under all namespaces
 
-..MTV-680
+The OVA provider can be created under all namespaces, not only under the foklift or MTV namespace. link:https://issues.redhat.com/browse/MTV-681[(MTV-681,] link:https://issues.redhat.com/browse/MTV-715[MTV-715)]
 
-..MTV-689
+.* Scan files directly in share directory and down two sub-levels
 
-..MTV-733
+{product-short} scans files directly in the share directory and down two sub-levels. link:https://issues.redhat.com/browse/MTV-680[(MTV-680)]
 
-..MTV-669
+.* Migrate from OVA provider to a restricted namespace
 
-..MTV-715
+Migration from OVA provider to a restricted namespace succeeds past the `kubevirt` step. link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
 
-..MTV-714
+.* OVA inventory watcher detects deleted files
 
-..MTV-696
+OVA inventory watcher detects changes in files, including that have been deleted. The information from the `ova-provider-server` is updated and sent every five minutes, and is then handled by the forklift invetory. link:https://issues.redhat.com/browse/MTV-733[(MTV-733)]
+
+.* Migration from OVA validation rules
+
+VM migrations from OVA are vlidated according to vSphere. The migration can use a similar structure and inventory variable names as vSphere, which the OVA model is a subset. The rules do not apply to clusters, hosts or running state of the VMs, or any configuration that is not relevant for OVA VMs. link:https://issues.redhat.com/browse/MTV-669[(MTV-669)]
+
+.* [(MTV-696)]
 
 [id="known-issues-26_{context}"]
 == Known issues
@@ -287,7 +316,7 @@ You can only create an OVA provider under the Forklift or MTV namespace, for use
 
 .Can only scan OVA files in NFS share root folder
 
-Only the files placed under the NFS share root folder can be scanned. The fix allows placing files directly on the share and two sublevels from the root folder of the extracted OVA. link:https://issues.redhat.com/browse/MTV-680[(MTV-680)]
+Only the files placed under the NFS share root folder can be scanned. The fix allows placing files directly on the share and two sublevels from the root folder of the extracted OVA. link:https://issues.redhat.com/browse/MTV-680[(MTV-680,] link:https://issues.redhat.com/browse/MTV-696[MTV-696)]
 
 .Migration from an OVA provider to a restricted namespace fails
 
