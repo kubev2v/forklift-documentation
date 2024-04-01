@@ -32,7 +32,7 @@ In earlier releases of {project-short} {project-version}, populator pods were al
 
 .The `VirtualMachineClusterFlavor` CRDs replace {ocp-name} templates
 
-The Virtual Machine Flavor API replaces {ocp-name} templates. MTV currently falls back to using {ocp-name} templates when a relevant preference is not available.
+The Virtual Machine Flavor API replaces {ocp-name} templates. {project-short} currently falls back to using {ocp-name} templates when a relevant preference is not available.
 
 .Full support for migration from OVA
 
@@ -79,6 +79,7 @@ See descriptions for the following features that are included under Cross-Provid
 Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` CDIs. Flavors are meant to replace Template, which is only available on {ocp-name}. link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
 
 .Integrate volume populators in remote migrations
+
 // Arik, please check and explain
 Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
 
@@ -104,7 +105,7 @@ Enterprise Linux 9 does not support CNV to provide RHEL 6 templates. This restri
 
 .Custom mapping of instance type preferences
 
-{project-short} enables users to add Customer Virtual Machine Mapping, which are custom templates that configured to specific migrations, VMs, and users. link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
+{project-short} enables users to add Customer Virtual Machine Mapping, which are custom templates that configured for specific migrations, VMs, and users. link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
 // 
 // .CNV InstanceTypes [MTV-919]
 // This looks like it repeats MTV-206 above
@@ -459,7 +460,7 @@ After upgrading {project-short} from version 2.4.2 to 2.5.0, the `ForkliftContro
 
 .Fail to migrate a VM with NVME disks from vSphere 
 
-When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubvirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
+When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubevirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
 
 .Fail to migrate image-based VM from {osp} to `default` namespace
 
