@@ -305,7 +305,7 @@ OVA inventory watcher detects changes in files, including that have been deleted
 
 VM migrations from OVA are validated according to vSphere. The migration can use a similar structure and inventory variable names as vSphere, which the OVA model is a subset. The rules do not apply to clusters, hosts or running state of the VMs, or any configuration that is not relevant for OVA VMs. link:https://issues.redhat.com/browse/MTV-669[(MTV-669)]
 
-. VM cannot find the bootable disk when source VMware provider uses VDDK 8
+.VM cannot find the bootable disk when source VMware provider uses VDDK 8
 
 When migrating from a source provider that uses VDDK (VMware Virtual Disk Development Kit) version 8, the migration completes successfully, but the converted guest cannot boot. The guest cannot find the boot disk. 
 
@@ -459,7 +459,7 @@ After upgrading {project-short} from version 2.4.2 to 2.5.0, the `ForkliftContro
 
 .Fail to migrate a VM with NVME disks from vSphere 
 
-When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubvirt` stage is 'running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
+When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubvirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
 
 .Fail to migrate image-based VM from {osp} to `default` namespace
 
