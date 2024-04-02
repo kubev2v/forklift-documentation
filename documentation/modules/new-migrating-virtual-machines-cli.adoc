@@ -82,7 +82,7 @@ EOF
 <2> Specify the vCenter user or the ESX/ESXi user.
 <3> Specify the password of the vCenter user or the ESX/ESXi user.
 <4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
-<5> Enter the CA certificate for the server that serves the SDK, either vCenter or ESXi, depending on the configuration of the provider.
+<5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 <6>  Specify the API endpoint URL of the vCenter or the ESX/ESX, for example, `https://<vCenter_host>/sdk`.
 endif::[]
 ifdef::rhv[]
@@ -116,7 +116,7 @@ EOF
 <2> Specify the {rhv-short} {manager} user.
 <3> Specify the user password.
 <4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
-<5> Enter the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
+<5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 <6> Specify the API endpoint URL, for example, `https://<engine_host>/ovirt-engine/api`.
 endif::[]
 ifdef::ova[]
@@ -168,21 +168,19 @@ stringData:
   insecureSkipVerify: <true/false> <4>
   domainName: <domain_name>
   projectName: <project_name>
-  regionName: <region name> <5>
-  cacert: | <6>
+  regionName: <region_name>
+  cacert: | <5>
     <ca_certificate>
-  url: <api_end_point> <7>
+  url: <api_end_point> <6>
 EOF
 ----
 <1> The `ownerReferences` section is optional.
 <2> Specify the {osp} user.
-<3> Specify the user password.
+<3> Specify the user {osp} password.
 <4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
-<5> Specify the name of the {osp} region.
-<6> Enter the CA certificate for connecting to the source environment. Note that if you set `insecureSkipVerify` to `false` and you do not set  `cacert`, {project-short} attempts to use the system CA.
-<7> Specify the API endpoint URL, for example, `https://<identity_service>/v3`.
+<5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
+<6> Specify the API endpoint URL, for example, `https://<identity_service>/v3`.
 endif::[]
-
 ifdef::cnv[]
 [source,yaml,subs="attributes+"]
 ----
@@ -214,7 +212,7 @@ EOF
 <2> Specify the {virt} user.
 <3> Specify the user password.
 <4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
-<5> Enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case, enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
+<5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 <6> Specify the URL of the endpoint of the API server.
 endif::[]
 
@@ -234,7 +232,7 @@ spec:
   type: vsphere
   url: <api_end_point> <1>
   settings:
-    vddkInitImage: <registry_route_or_server_path>/vddk:<tag> <2>
+    vddkInitImage: <VDDK_image> <2>
     sdkEndpoint: <3>
   secret:
     name: <secret> <4>
@@ -242,7 +240,7 @@ spec:
 EOF
 ----
 <1> Specify the URL of the API endpoint, for example, `https://<vCenter_host>/sdk`.
-<2> Optional, but it is strongly recommended to accelerate migrations. Specify the VDDK image you created.
+<2> Optional, but it is strongly recommended to create a VDDK image to accelerate migrations. Follow OpenShift documentation to specify the VDDK image you created.
 <3> Options: `vcenter` or `esxi`.
 <4> Specify the name of the provider `Secret` CR.
 endif::[]
@@ -306,6 +304,7 @@ spec:
     namespace: <namespace>
 EOF
 ----
+endif[]
 
 ifdef::cnv[]
 [source,yaml,subs="attributes+"]
@@ -348,9 +347,9 @@ spec:
   ipAddress: <source_network_ip> <3>
 EOF
 ----
-<1> Specify the name of the VMware `Provider` CR.
-<2> Specify the managed object reference (MOR) of the VMware host.
-<3> Specify the IP address of the VMware migration network.
+<1> Specify the name of the VMware vSphere `Provider` CR.
+<2> Specify the managed object reference (MOR) of the VMware vSphere host.
+<3> Specify the IP address of the VMware vSphere migration network.
 
 [start=4]
 . Create a `NetworkMap` manifest to map the source and destination networks:
@@ -368,16 +367,16 @@ spec:
     - destination:
         name: <network_name>
         type: pod <1>
-      source:
-        id: <source_network_id> <2>
+      source: <2>
+        id: <source_network_id>
         name: <source_network_name>
     - destination:
         name: <network_attachment_definition> <3>
         namespace: <network_attachment_definition_namespace> <4>
         type: multus
-      source:
-        name: <network_attachment_definition> <5>
-        namespace: <network_attachment_definition_namespace> <6>
+      source: <5>
+        id: <source_network_id>
+        name: <source_network_name>
   provider:
     source:
       name: <source_provider>
@@ -388,11 +387,10 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the VMware network MOR.
+<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network MOR.
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<5> Specify a network attachment definition for each additional {virt} network.
-<6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
+<5> Same as `source` above.
 endif::[]
 
 ifdef::rhv[]
@@ -412,16 +410,16 @@ spec:
     - destination:
         name: <network_name>
         type: pod <1>
-      source:
-        id: <source_network_id> <2>
+      source: <2>
+        id: <source_network_id>
         name: <source_network_name>
     - destination:
         name: <network_attachment_definition> <3>
         namespace: <network_attachment_definition_namespace> <4>
         type: multus
-      source:
-        name: <network_attachment_definition> <5>
-        namespace: <network_attachment_definition_namespace> <6>
+      source: <5>
+        id: <source_network_id>
+        name: <source_network_name>
   provider:
     source:
       name: <source_provider>
@@ -435,8 +433,7 @@ EOF
 <2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the {rhv-short} network UUID.
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<5> Specify a network attachment definition for each additional {virt} network.
-<6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
+<5> Same as `source` above.
 endif::[]
 
 ifdef::ova[]
@@ -463,8 +460,7 @@ spec:
         namespace: <network_attachment_definition_namespace> <3>
         type: multus
       source:
-        name: <network_attachment_definition> <4>
-        namespace: <network_attachment_definition_namespace> <5>
+        id: <source_network_id>
   provider:
     source:
       name: <source_provider>
@@ -477,8 +473,6 @@ EOF
 <1> Allowed values are `pod` and `multus`.
 <2> Specify a network attachment definition for each additional {virt} network.
 <3> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<4> Specify a network attachment definition for each additional {virt} network.
-<5> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
 endif::[]
 
 ifdef::ostack[]
@@ -498,16 +492,16 @@ spec:
     - destination:
         name: <network_name>
         type: pod <1>
-      source:
-        id: <source_network_id> <2>
+      source:<2>
+        id: <source_network_id>
         name: <source_network_name>
     - destination:
         name: <network_attachment_definition> <3>
         namespace: <network_attachment_definition_namespace> <4>
         type: multus
-      source:
-        name: <network_attachment_definition> <5>
-        namespace: <network_attachment_definition_namespace> <6>
+      source:<5>
+        id: <source_network_id>
+        name: <source_network_name>
   provider:
     source:
       name: <source_provider>
@@ -521,8 +515,7 @@ EOF
 <2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the {osp} network UUID.
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<5> Specify a network attachment definition for each additional {virt} network.
-<6> Required only when `type` is `multus`. Here, `namespace` can either be specified using the namespace property or with a name built as follows: `<network_namespace>/<network_name>`.
+<5> Same as `source` above.
 endif::[]
 
 ifdef::cnv[]
@@ -542,8 +535,8 @@ spec:
     - destination:
         name: <network_name>
         type: pod <1>
-      source:
-        id: <source_network_id> <2>
+      source: <2>
+        id: <source_network_id>
         name: <source_network_name>
     - destination:
         name: <network_attachment_definition> <3>
@@ -563,7 +556,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the virtual machine.
+<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify a pod network that is similar to the destination.
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 <5> Specify a network attachment definition for each additional {virt} network.
@@ -589,11 +582,6 @@ spec:
         accessMode: <access_mode> <1>
       source:
         id: <source_datastore> <2>
-    - destination:
-        storageClass: <storage_class>
-        accessMode: <access_mode>
-      source:
-        id: <source_datastore>
   provider:
     source:
       name: <source_provider>
@@ -604,9 +592,8 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware data storage MOR. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+<2> Specify the VMware vSphere data storage MOR. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
-
 ifdef::rhv[]
 [start=4]
 . Create a `StorageMap` manifest to map source and destination storage:
@@ -626,11 +613,6 @@ spec:
         accessMode: <access_mode> <1>
       source:
         id: <source_datastore> <2>
-    - destination:
-        storageClass: <storage_class>
-        accessMode: <access_mode>
-      source:
-        id: <source_datastore>
   provider:
     source:
       name: <source_provider>
@@ -663,11 +645,6 @@ spec:
         accessMode: <access_mode> <1>
       source:
         name:  Dummy storage for source provider <provider_name> <2>
-    - destination:
-        storageClass: <storage_class>
-        accessMode: <access_mode>
-      source:
-        name: <source_datastore>
   provider:
     source:
       name: <source_provider>
@@ -700,11 +677,6 @@ spec:
         accessMode: <access_mode> <1>
       source:
         id: <source_datastore> <2>
-    - destination:
-        storageClass: <storage_class>
-        accessMode: <access_mode>
-      source:
-        id: <source_datastore>
   provider:
     source:
       name: <source_provider>
@@ -735,11 +707,6 @@ spec:
     - destination:
         storageClass: <storage_class>
         accessMode: <access_mode> <1>
-      source:
-        name: <source_class>
-    - destination:
-        storageClass: <storage_class>
-        accessMode: <access_mode>
       source:
         name: <storage_class>
   provider:
@@ -831,7 +798,7 @@ EOF
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
 <8> You can use either the `id` _or_ the `name` parameter to specify the source VMs. +
-<9> Specify the VMware VM MOR..
+<9> Specify the VMware vSphere VM MOR..
 <10> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
@@ -878,7 +845,7 @@ spec:
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
-<2> Keeps stuff
+<2> See note below.
 <3> Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
 <4> Specify only one network map and one storage map per plan.
 <5> Specify a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
@@ -890,6 +857,15 @@ EOF
 <11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <12> Specify the name of the `Hook` CR.
 <13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+[NOTE]
+====
+* If the migrated machines are set with a custom CPU model, they will be set with that CPU model in the destination cluster, not matter what the setting of `preserveClusterCpuModel` is.
+
+* If the migrated machine are _not_ set with a custom CPU model:
+
+** If `preserveClusterCpuModel` is set to 'true`, {project-short} checks the CPU model of the VM when it runs in {rhv-short}, based on the cluster's configuration, and then sets the migrated VM with that CPU model.
+** If `preserveClusterCpuModel` is set to 'false`, {project-short} does not set a CPU type and the VMs are set with the default CPU model of the destination cluster.
+====
 endif::[]
 
 ifdef::ova[]
@@ -905,7 +881,6 @@ metadata:
   name: <plan> <1>
   namespace: <namespace>
 spec:
-  warm: false <2>
   provider:
     source:
       name: <source_provider>
@@ -913,36 +888,35 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: <3>
-    network: <4>
-      name: <network_map> <5>
+  map: <2>
+    network: <3>
+      name: <network_map> <4>
       namespace: <namespace>
-    storage: <6>
-      name: <storage_map> <7>
+    storage: <5>
+      name: <storage_map> <6>
       namespace: <namespace>
   targetNamespace: <target_namespace>
-  vms: <8>
-    - id: <source_vm> <9>
+  vms: <7>
+    - id: <source_vm> <8>
     - name: <source_vm>
-      hooks: <10>
+      hooks: <9>
         - hook:
             namespace: <namespace>
-            name: <hook> <11>
-          step: <step> <12>
+            name: <hook> <10>
+          step: <step> <11>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
-<2> Specify whether the migration is warm - `true` - or cold - `false`. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
-<3> Specify only one network map and one storage map per plan.
-<4> Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
-<5> Specify the name of the `NetworkMap` CR.
-<6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
-<7> Specify the name of the `StorageMap` CR.
-<8> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
-<9> Specify the OVA VM UUID.
-<10> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<11> Specify the name of the `Hook` CR.
-<12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<2> Specify only one network map and one storage map per plan.
+<3> Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+<4> Specify the name of the `NetworkMap` CR.
+<5> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+<6> Specify the name of the `StorageMap` CR.
+<7> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
+<8> Specify the OVA VM UUID.
+<9> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<10> Specify the name of the `Hook` CR.
+<11> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 
 ifdef::ostack[]
@@ -958,7 +932,6 @@ metadata:
   name: <plan> <1>
   namespace: <namespace>
 spec:
-  warm: false <2>
   provider:
     source:
       name: <source_provider>
@@ -966,36 +939,35 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: <3>
-    network: <4>
-      name: <network_map> <5>
+  map: <2>
+    network: <3>
+      name: <network_map> <4>
       namespace: <namespace>
-    storage: <6>
-      name: <storage_map> <7>
+    storage: <5>
+      name: <storage_map> <6>
       namespace: <namespace>
   targetNamespace: <target_namespace>
-  vms: <8>
-    - id: <source_vm> <9>
+  vms: <7>
+    - id: <source_vm> <6>
     - name: <source_vm>
-      hooks: <10>
+      hooks: <9>
         - hook:
             namespace: <namespace>
-            name: <hook> <11>
-          step: <step> <12>
+            name: <hook> <10>
+          step: <step> <11>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
-<2> Specify whether the migration is warm - `true` - or cold - `false`. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
-<3> Specify only one network map and one storage map per plan.
-<4> Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
-<5> Specify the name of the `NetworkMap` CR.
-<6> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
-<7> Specify the name of the `StorageMap` CR.
-<8> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
-<9> Specify the {osp} VM UUID.
-<10> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<11> Specify the name of the `Hook` CR.
-<12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<2> Specify only one network map and one storage map per plan.
+<3> Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+<4> Specify the name of the `NetworkMap` CR.
+<5> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+<6> Specify the name of the `StorageMap` CR.
+<7> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
+<8> Specify the {osp} VM UUID.
+<9> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<10> Specify the name of the `Hook` CR.
+<11> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 
 ifdef::cnv[]
@@ -1011,7 +983,6 @@ metadata:
   name: <plan> <1>
   namespace: <namespace>
 spec:
-  warm: false <2>
   provider:
     source:
       name: <source_provider>
@@ -1019,34 +990,33 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: <3>
-    network: <4>
-      name: <network_map> <5>
+  map: <2>
+    network: <3>
+      name: <network_map> <4>
       namespace: <namespace>
-    storage: <6>
-      name: <storage_map> <7>
+    storage: <5>
+      name: <storage_map> <6>
       namespace: <namespace>
   targetNamespace: <target_namespace>
   vms:
     - name: <source_vm>
       namespace: <namespace>
-      hooks: <8>
+      hooks: <7>
         - hook:
             namespace: <namespace>
-            name: <hook> <9>
-          step: <step> <10>
+            name: <hook> <8>
+          step: <step> <9>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
-<2> Specify whether the migration is warm - `true` - or cold - `false`. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
-<3> Specify only one network map and one storage map per plan.
-<4> Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
-<5> Specify the name of the `NetworkMap` CR.
-<6> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
-<7> Specify the name of the `StorageMap` CR.
-<8> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<9> Specify the name of the `Hook` CR.
-<10> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<2> Specify only one network map and one storage map per plan.
+<3> Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+<4> Specify the name of the `NetworkMap` CR.
+<5> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+<6> Specify the name of the `StorageMap` CR.
+<7> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<8> Specify the name of the `Hook` CR.
+<9> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 +
 . Create a `Migration` manifest to run the `Plan` CR:
