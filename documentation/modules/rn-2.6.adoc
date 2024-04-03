@@ -40,7 +40,7 @@ The Virtual Machine Flavor API replaces {ocp-name} templates. {project-short} cu
 
 .{ocp-name} Console `Create/Edit` pages replace Forms and Wizards
 
-Forms and Wizards that use @migtools/lib-ui` do not function as expected when running inside the plugin. The migtool library was built as a standalone application. The `Create` and `Edit` pages in the {ocp-name} Console replace the Forms and Wizards. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
+Forms and Wizards that use `@migtools/lib-ui` do not function as expected when running inside the plugin. The migtool library was built as a standalone application. The `Create` and `Edit` pages in the {ocp-name} Console replace the Forms and Wizards. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
 
 .Scan OVA files in the root folder of an NFS share
 
