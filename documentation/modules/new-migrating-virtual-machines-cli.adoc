@@ -28,7 +28,6 @@ ifdef::ova[]
 
 You can migrate Open Virtual Appliance (OVA) files that were created by VMware vSphere as a source provider using the CLI.
 
-include::snippet_ova_tech_preview.adoc[]
 endif::[]
 ifdef::ostack[]
 = Migrating from an {osp} source provider

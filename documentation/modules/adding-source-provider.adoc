@@ -31,7 +31,6 @@ ifdef::ova[]
 
 You can add Open Virtual Appliance (OVA) files that were created by VMware vSphere as a source provider by using the {ocp} web console.
 
-include::snippet_ova_tech_preview.adoc[]
 endif::[]
 ifdef::ostack[]
 = Adding an {osp} source provider

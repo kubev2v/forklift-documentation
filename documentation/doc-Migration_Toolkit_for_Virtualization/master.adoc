@@ -29,8 +29,6 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 * Open Virtual Appliances (OVAs) that were created by VMware vSphere
 * Remote {virt} clusters
 
-include::modules/snippet_ova_tech_preview.adoc[]
-
 [NOTE]
 ====
 Migration using {osp} source providers only supports VMs that use only Cinder volumes.
