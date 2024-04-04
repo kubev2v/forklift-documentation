@@ -92,4 +92,4 @@ stringData:
 EOF
 ----
 
-. Continue migrating your virtual machine according to the procedure in xref:new-migrating-virtual-machines-cli_{context}[Migrating virtual machines], starting with step 2, "Create a `Provider` manifest for the source provider."
+// . Continue migrating your virtual machine according to the procedure in xref:new-migrating-virtual-machines-cli_{context}[Migrating virtual machines], starting with step 2, "Create a `Provider` manifest for the source provider."

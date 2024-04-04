@@ -180,6 +180,7 @@ EOF
 <5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 <6> Specify the API endpoint URL, for example, `https://<identity_service>/v3`.
 endif::[]
+
 ifdef::cnv[]
 [source,yaml,subs="attributes+"]
 ----
@@ -593,6 +594,7 @@ EOF
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 <2> Specify the VMware vSphere data storage MOR. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
+
 ifdef::rhv[]
 [start=4]
 . Create a `StorageMap` manifest to map source and destination storage:
@@ -856,8 +858,9 @@ EOF
 <11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <12> Specify the name of the `Hook` CR.
 <13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+
 [NOTE]
-====
+ ====
 * If the migrated machines are set with a custom CPU model, they will be set with that CPU model in the destination cluster, not matter what the setting of `preserveClusterCpuModel` is.
 
 * If the migrated machine are _not_ set with a custom CPU model:
@@ -865,6 +868,7 @@ EOF
 ** If `preserveClusterCpuModel` is set to 'true`, {project-short} checks the CPU model of the VM when it runs in {rhv-short}, based on the cluster's configuration, and then sets the migrated VM with that CPU model.
 ** If `preserveClusterCpuModel` is set to 'false`, {project-short} does not set a CPU type and the VMs are set with the default CPU model of the destination cluster.
 ====
+
 endif::[]
 
 ifdef::ova[]
@@ -1040,5 +1044,4 @@ EOF
 ====
 If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
 ====
-
 

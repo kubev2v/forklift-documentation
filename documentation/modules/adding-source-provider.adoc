@@ -41,6 +41,7 @@ You can add an {osp} source provider by using the {ocp} web console.
 ====
 Migration using {osp} source providers only supports VMs that use only Cinder volumes.
 ====
+
 endif::[]
 ifdef::cnv[]
 = Adding a Red Hat {virt} source provider
