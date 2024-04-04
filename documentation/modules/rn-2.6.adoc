@@ -58,7 +58,7 @@ KubeVirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor`
 
 .Integrate volume populators in remote migrations
 
-// Arik, please check and explain
+// Arik, please check and explain - `el9` > "Red Hat Enterprise Linux 9"?
 Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
 
 .VM posted with `Running` state
@@ -125,7 +125,7 @@ CA certificates can secure connections to remote {ocp-name} clusters. link:https
 
 .Source and storage endpoints are not selected automatically
 
-Source network and source storage are not selected automatically when creating an {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
+Source network and source storage are not selected automatically when creating a {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
 
 [id="console-plugin-26_{context}"]
 === Console Plugin
@@ -174,7 +174,7 @@ Fields in the `create provider` form include hint icons to explain the required 
 
 .Migration success status bar chart 
 
-A bar chart shows the number of migrations and their status - `startes`, `finished`, and `failed`. link:https://issues.redhat.com/browse/MTV-770[(MTV-770)]
+A bar chart shows the number of migrations and their status - `starts`, `finished`, and `failed`. link:https://issues.redhat.com/browse/MTV-770[(MTV-770)]
 
 .Improved list of VMs in the detailed view of each provider
 
@@ -354,7 +354,7 @@ When migrating a VM with an application credential or user token authentication 
 .Forklift-controller crashes when creating a plan for a VM with 2 NICs
 
 // What is NIC?
-When creating an {ocp} to {ocp} migration plan for a VM with 2 NICs, it creates a plan with an `Unknown` status. This status causes the `forklift-controller` to fail. link:https://issues.redhat.com/browse/MTV-704[(MTV-704)]
+When creating a {ocp} to {ocp} migration plan for a VM with 2 NICs, it creates a plan with an `Unknown` status. This status causes the `forklift-controller` to fail. link:https://issues.redhat.com/browse/MTV-704[(MTV-704)]
 
 .Difficult to capture errors logged in populator pods from customers
 
