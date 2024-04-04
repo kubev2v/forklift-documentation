@@ -28,7 +28,7 @@ The old UI of {project-short} 2.3 cannot run by setting `feature_ui: true` in Fo
 
 .Improved errors logged in populator pods
 
-In earlier releases of {project-short} {project-version}, populator pods were always restarted on failure. This made gathering logs from the failed pods difficult. {project-short} 2.5.3 has a maximum number of three restarts of populator pods. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by `must-gather` and by `forklift-controller`, to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
+In earlier releases of {project-short} {project-version}, populator pods were always restarted on failure. This made gathering logs from the failed pods difficult. {project-short} 2.5.3 has a maximum number of three restarts of populator pods. On the third and final time, the populator pod remains in the fail status, and its logs can then be easily gathered by `must-gather` and by `forklift-controller`, to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
 
 .The `VirtualMachineClusterFlavor` CRDs replace {ocp-name} templates
 
@@ -56,7 +56,7 @@ This release has the following features and improvements:
 
 This is a collection of new features that provide functionality across different cloud providers. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
 
-See descriptions for the following features that are included under Cross-Provider Features:
+See the following descriptions for the new features that are included under Cross-Provider Features:
 
 * Replace templates with flavors link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
 
@@ -76,7 +76,7 @@ See descriptions for the following features that are included under Cross-Provid
 
 .Replace templates with flavors
 
-Kubevirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` CDIs. Flavors are meant to replace Template, which is only available on {ocp-name}. link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
+KubeVirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` Containerized Data Importers(CDIs). Flavors are meant to replace the Templates, which are only available on {ocp-name}. link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
 
 .Integrate volume populators in remote migrations
 
@@ -98,15 +98,15 @@ For requests that do not specify an explicit storage class, the `is-default-virt
 
 .Validate permissions on source providers
 
-When migrating a VM with an RHEV user with restricted permissions, {project-short} validates user permissions and the migration pod reports where the process fails. link:https://issues.redhat.com/browse/MTV-273[(MTV-273)]
+When migrating a VM with an Red Hat Enterprise Virtualization (RHEV) user with restricted permissions, {project-short} validates the user permissions and the migration pod reports where the process fails. link:https://issues.redhat.com/browse/MTV-273[(MTV-273)]
 
 .Validation for RHEL 6
 
-Enterprise Linux 9 does not support CNV to provide RHEL 6 templates. This restriction is no longer relevant because `VirtualMachineClusterFlavor` CRDs replaced template. link:https://issues.redhat.com/browse/MTV-413[(MTV413)]
+Red Hat Enterprise Linux (RHEL) 9 does not support CNV to provide RHEL 6 Templates. This restriction is no longer relevant because `VirtualMachineClusterFlavor` CRDs have replaced the templates. link:https://issues.redhat.com/browse/MTV-413[(MTV413)]
 
 .Custom mapping of instance type preferences
 
-{project-short} enables users to add Customer Virtual Machine Mapping, which are custom templates that configured for specific migrations, VMs, and users. link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
+{project-short} enables users to add Customer Virtual Machine Mapping, which are custom templates that are configured for specific migrations, VMs, and users. link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
 
 .RH-SDL
 
@@ -128,6 +128,7 @@ Enterprise Linux 9 does not support CNV to provide RHEL 6 templates. This restri
 // * link:https://docs.engineering.redhat.com/display/PRODSEC/Secure+Development+training[Secure Development Training]
 
 .{ocp} Provider
+// any more information?
 
 This is a collection of new features for {ocp-name} (OCP) provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
 
@@ -137,29 +138,29 @@ VM manifestations were introduced in {ocp-name} 4.13, so source provider cluster
 
 .Secure connections to remote {ocp-name} clusters
 
-Connections to remote {ocp-name} clusters can be secured with CA certificates. link:https://issues.redhat.com/browse/MTV-728[MTV-728]
+CA certificates can secure connections to remote {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-728[MTV-728]
 
 .Source and storage endpoints are not selected automatically
 
-Source network and source storage are not seleted automatically when creating an {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
+Source network and source storage are not selected automatically when creating an {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
 
 .Console Plugin
 
 This is a collection of new features for the {project-short} Console plugin. link:https://issues.redhat.com/browse/MTV-736[(MTV-736)]
 
-See descriptions for the following features that are included under Cross-Provider Features:
+See descriptions for the following features that are included under the *Console Plugin* features:
 
-* Replaced Forms and Wizards with {ocp-name} Console Create and Edit pages link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
+* Replaced Forms and Wizards with the {ocp-name} Console Create and Edit pages link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
 
 * Restored vSphere Verify certificate functionality link:https://issues.redhat.com/browse/MTV-737[(MTV-737)]
 
-* Tooltip explains the select migration network button link:https://issues.redhat.com/browse/MTV-245[(MTV-245)]
+* A *Tooltip* has been added to explain the *Select migration network* button link:https://issues.redhat.com/browse/MTV-245[(MTV-245)]
 
 * {ocp-name} Console native SDK fetch, post, and delete calls link:https://issues.redhat.com/browse/MTV-365[(MTV-365)]
 
-* Removed the Cancel icon during the Cutover stage link:https://issues.redhat.com/browse/MTV-449[(MTV-449)]
+* The Cancel icon during the Cutover stage has been removed link:https://issues.redhat.com/browse/MTV-449[(MTV-449)]
 
-* {project-short} UI plugin uses only a dynamic plugin for SDK REST API fetch methods link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
+* {project-short} UI plugin uses only a dynamic plugin for the SDK REST API `fetch` methods link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
 
 * Improved cell renderers in the list of provider VMs link:https://issues.redhat.com/browse/MTV-773[(MTV-773)]
 
@@ -185,7 +186,7 @@ See descriptions for the following features that are included under Cross-Provid
 
 * Host secrets labels include a mandatory `createForRsources` label link:https://issues.redhat.com/browse/MTV-867[(MTV-867)]
 
-.Replaced Forms and Wizards with {ocp-name} Console Create and Edit pages
+.Replaced Forms and Wizards with the {ocp-name} Console Create and Edit pages
 
 The Create and Edit pages in the {ocp-name} Console have replaced the Forms and Wizards that ran on the migtool library UI application. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
 
@@ -193,7 +194,7 @@ The Create and Edit pages in the {ocp-name} Console have replaced the Forms and 
 
 The vSphere Verify certificate option in the `add-provider` dialog has been restored. It was removed in the transition to {ocp} console. link:https://issues.redhat.com/browse/MTV-737[(MTV-737)]
 
-.Tooltip explains the select migration network button
+.A *Tooltip* has been added to explain the *Select migration network* button
 
 A tooltip was added to the `select migration network` button, which explains the purpose of this network. link:https://issues.redhat.com/browse/MTV-245[(MTV-245)]
 
@@ -201,13 +202,13 @@ A tooltip was added to the `select migration network` button, which explains the
 
 The `fetch`, `post`, and `delete` calls in the Forklift UI are now native to the {ocp-name} API. link:https://issues.redhat.com/browse/MTV-365[(MTV-365)]
 
-.Removed the Cancel icon during the Cutover stage
+.The Cancel icon during the Cutover stage has been removed
 
 In a warm migration, the Cancel icon appears during the Precopy stage, but does not appear during the Cutover stage. link:https://issues.redhat.com/browse/MTV-449[(MTV-449)]
 
-.{project-short} UI plugin uses only a dynamic plugin for SDK REST API fetch methods
+.{project-short} UI plugin uses only a dynamic plugin for the SDK REST API `fetch` methods
 
-The UI plugin uses a dynamic plugin for SDK REST API when using the `fetch` method. link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
+The UI plugin uses a dynamic plugin for the SDK REST API when using the `fetch` method. link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
 
 .Improved cell renderers in the list of provider VMs
 
@@ -243,7 +244,7 @@ Plans that have failed to migrate any VMs can be edited. Some plans fail or are 
 
 .Specify the ESXi provider
 
-An ESX can be imported directly from vSphere without going through vCenter. In the provider screen, the user can enter a URL that points to vCenter or to a specific ESX. link:https://issues.redhat.com/browse/MTV-792[(MTV-792)]
+An ESXi can be imported directly from vSphere without going through vCenter. In the provider screen, the user can enter a URL that points to vCenter or to a specific ESX. link:https://issues.redhat.com/browse/MTV-792[(MTV-792)]
 
 .ESXi provider host configuration
 
