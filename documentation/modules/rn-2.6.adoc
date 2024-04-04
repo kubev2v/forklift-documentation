@@ -52,28 +52,6 @@ Migration scans the files directly to the NFS share folder, not to a separate fo
 
 This release has the following features and improvements:
 
-.Cross-Provider Features
-
-This is a collection of new features that provide functionality across different cloud providers. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
-
-See the following descriptions for the new features that are included under Cross-Provider Features:
-
-* Replace templates with flavors link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
-
-* Validate permissions on source providers link:https://issues.redhat.com/browse/MTV-273[(MTV-273)]
-
-* Validation for RHEL 6 link:https://issues.redhat.com/browse/MTV-413[(MTV-413)]
-
-* Integrate volume populators in remote migrations link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
-
-* Custom mapping of instance type preferences link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
-
-* VM posted with `Running` state link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
-
-* Review and configure migrated VMs link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
-
-* Default virt storage class link:https://issues.redhat.com/browse/MTV-855[(MTV-855)]
-
 .Replace templates with flavors
 
 KubeVirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` Containerized Data Importers(CDIs). Flavors are meant to replace the Templates, which are only available on {ocp-name}. link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
@@ -127,6 +105,11 @@ Red Hat Enterprise Linux (RHEL) 9 does not support CNV to provide RHEL 6 Templat
 
 // * link:https://docs.engineering.redhat.com/display/PRODSEC/Secure+Development+training[Secure Development Training]
 
+[id="cross-provider-features-26_{context}"]
+=== Cross-Provider Features
+
+This is a collection of new features that provide functionality across different cloud providers. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
+
 .{ocp} Provider
 // any more information?
 
@@ -144,47 +127,10 @@ CA certificates can secure connections to remote {ocp-name} clusters. link:https
 
 Source network and source storage are not selected automatically when creating an {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
 
-.Console Plugin
+[id="console-plugin-26_{context}"]
+=== Console Plugin
 
 This is a collection of new features for the {project-short} Console plugin. link:https://issues.redhat.com/browse/MTV-736[(MTV-736)]
-
-See descriptions for the following features that are included under the *Console Plugin* features:
-
-* Replaced Forms and Wizards with the {ocp-name} Console Create and Edit pages link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
-
-* Restored vSphere Verify certificate functionality link:https://issues.redhat.com/browse/MTV-737[(MTV-737)]
-
-* A *Tooltip* has been added to explain the *Select migration network* button link:https://issues.redhat.com/browse/MTV-245[(MTV-245)]
-
-* {ocp-name} Console native SDK fetch, post, and delete calls link:https://issues.redhat.com/browse/MTV-365[(MTV-365)]
-
-* The Cancel icon during the Cutover stage has been removed link:https://issues.redhat.com/browse/MTV-449[(MTV-449)]
-
-* {project-short} UI plugin uses only a dynamic plugin for the SDK REST API `fetch` methods link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
-
-* Improved cell renderers in the list of provider VMs link:https://issues.redhat.com/browse/MTV-773[(MTV-773)]
-
-* Date filter link:https://issues.redhat.com/browse/MTV-724[(MTV-724)]
-
-* Improved explanations in providers form link:https://issues.redhat.com/browse/MTV-766[(MTV-766)]
-
-* Create provider form includes an information hint link:https://issues.redhat.com/browse/MTV-768[(MTV-768)]
-
-* Migration success status bar chart link:https://issues.redhat.com/browse/MTV-770[(MTV-770)]
-
-* Improved list of VMs in the detailed view of each provider link:https://issues.redhat.com/browse/MTV-772[(MTV-772)]
-
-* Automated kubevirt types link:https://issues.redhat.com/browse/MTV-775[(MTV-775)]
-
-* Edit plans that failed to migrate VMs link:https://issues.redhat.com/browse/MTV-779[(MTV-779)]
-
-* Specify the ESXi provider link:https://issues.redhat.com/browse/MTV-792[(MTV-792)]
-
-* ESXi provider host configuration link:https://issues.redhat.com/browse/MTV-793[(MTV-793)]
-
-* Link to VM details page link:https://issues.redhat.com/browse/MTV-797[(MTV-797)]
-
-* Host secrets labels include a mandatory `createForRsources` label link:https://issues.redhat.com/browse/MTV-867[(MTV-867)]
 
 .Replaced Forms and Wizards with the {ocp-name} Console Create and Edit pages
 
@@ -208,7 +154,7 @@ In a warm migration, the Cancel icon appears during the Precopy stage, but does 
 
 .{project-short} UI plugin uses only a dynamic plugin for the SDK REST API `fetch` methods
 
-The UI plugin uses a dynamic plugin for the SDK REST API when using the `fetch` method. link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
+The UI plugin uses a dynamic plugin for the SDK REST API when using the `fetch` methods. link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
 
 .Improved cell renderers in the list of provider VMs
 
@@ -258,25 +204,10 @@ The {ocp-name} Console, provider VM list includes a link to the details page for
 
 The `createdForResources` label is mandatory, enabling the setting network for Host machine creation of Host objects. link:https://issues.redhat.com/browse/MTV-867[(MTV-867)]
 
-.OVA Provider
+[id="ova-provider-26_{context}"]
+=== OVA Provider
 
 This is a collection of new features for the {project-short} OVA provider. link:https://issues.redhat.com/browse/MTV-690[(MTV-690)]
-
-* Get firmware detection by virt-v2v link:https://issues.redhat.com/browse/MTV-759[(MTV-759)]
-
-* Delete PV when provider is deleted link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
-
-* End to end test for import OVA link:https://issues.redhat.com/browse/MTV-624[(MTV-624)]
-
-* Create OVA provider under all namespaces link:https://issues.redhat.com/browse/MTV-681[(MTV-681,] link:https://issues.redhat.com/browse/MTV-715[MTV-715)]
-
-* Scan files directly in share directory and down two sub-levels link:https://issues.redhat.com/browse/MTV-680[(MTV-680)]
-
-* Migrate from OVA provider to a restricted namespace link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
-
-* OVA inventory watcher detects deleted files link:https://issues.redhat.com/browse/MTV-733[(MTV-733)]
-
-* Migration from OVA validation rules link:https://issues.redhat.com/browse/MTV-669[(MTV-669)]
 
 .Get firmware detection by virt-v2v
 
