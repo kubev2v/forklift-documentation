@@ -221,9 +221,9 @@ Each OVA provider has an attached PV and PVC. The PVC deletes automatically when
 
 The {project-short} process performs an end to end test of the imported OVA. link:https://issues.redhat.com/browse/MTV-624[(MTV-624)]
 
-.Create OVA provider under all namespaces
+.Create OVA provider under all projects
 
-The OVA provider can be created under all namespaces, not only under the forklift or MTV namespace. link:https://issues.redhat.com/browse/MTV-681[(MTV-681,] link:https://issues.redhat.com/browse/MTV-715[MTV-715)]
+The OVA provider can be created under all projects, not only under the forklift or MTV namespace. link:https://issues.redhat.com/browse/MTV-681[(MTV-681,] link:https://issues.redhat.com/browse/MTV-715[MTV-715)]
 
 .Scan files directly in share directory and down two sub-levels
 
@@ -244,8 +244,6 @@ VM migrations from OVA are validated according to vSphere. The migration can use
 .VM cannot find the bootable disk when source VMware provider uses VDDK 8
 
 When migrating from a source provider that uses VDDK (VMware Virtual Disk Development Kit) version 8, the migration completes successfully, but the converted guest cannot boot. The guest cannot find the boot disk. 
-
-Migrating a VM using VDDK 7 enables finding the boot disk. link:https://issues.redhat.com/browse/MTV-969[(MTV-696)]
 
 For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430274[Resolved Issues] in Jira.
 
@@ -305,7 +303,7 @@ This release has the following resolved issues:
 // Has this been resolved?
 .Possible data loss when migrating VMware VMs with snapshots
 
-When migrating a VMware VM that has a snapshot, the VM that is created in {ocp-name} Virtualization contains the data in the snapshot, but not in the running VM that was migrated. [(MTV-447)]
+In previous versions of {product-short}, when migrating a VMware VM that had a snapshot, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot, but not in the running VM that was migrated. This has been resolved in {product-short} 2.6.0 [(MTV-447)]
 
 .Adding an OVA provider raises a `ConnectionTestFailed` error message
 
@@ -321,7 +319,7 @@ When migrating from {ocp} to {ocp}, the version of the source provider cluster m
 
 .Restricted OVA provider namespace 
 
-You can only create an OVA provider under the Forklift or MTV namespace, for use by the forklift-controller SA. This should be extended to all namespaces.link:https://issues.redhat.com/browse/MTV-681[(MTV-681)]
+You can only create an OVA provider under the Forklift or MTV project, for use by the forklift-controller SA. This should be extended to all projects.link:https://issues.redhat.com/browse/MTV-681[(MTV-681)]
 
 .Can only scan OVA files in NFS share root folder
 
@@ -398,7 +396,7 @@ Migrating a vSphere Datacenter succeeds when it is directly under the `/vcenter`
 
 When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubevirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
 
-.Fail to migrate image-based VM from {osp} to `default` namespace
+.Fail to migrate image-based VM from {osp} to `default` project
 
 The migration process fails when migrating an image-based VM from {osp} to the `default` project. The conversion of a virtual machine snapshot as part of the migration runs with non-root privileges, and {name-ocp} does not automatically pick a non-root user for the pod that starts on the `default` project. link:https://issues.redhat.com/browse/MTV-964[(MTV-964)]
 
