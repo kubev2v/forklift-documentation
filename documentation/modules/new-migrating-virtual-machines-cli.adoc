@@ -323,6 +323,7 @@ spec:
 EOF
 ----
 <1> Specify the URL of the endpoint of the API server.
+// Add an inline anchor, which will use in an xref
 <2> [[anchor-point]]Specify the name of provider `Secret` CR.
 endif::[]
 
