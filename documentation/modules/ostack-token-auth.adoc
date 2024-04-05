@@ -92,4 +92,5 @@ stringData:
 EOF
 ----
 . Continue migrating your virtual machine according to the procedure in xref:new-migrating-virtual-machines-cli_ostack[Migrating virtual machines], starting with step 2, "Create a `Provider` manifest for the source provider."
+// as this module will be included in the same assembly, we can create an xref using the ID of the inline anchor
 . Test xref xref:anchor-point[Testing our anchor]
