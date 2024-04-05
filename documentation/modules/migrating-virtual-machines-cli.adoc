@@ -14,8 +14,6 @@ You must specify a name for cluster-scoped CRs.
 You must specify both a name and a namespace for namespace-scoped CRs.
 ====
 
-include::snippet_ova_tech_preview.adoc[]
-
 [NOTE]
 ====
 Migration using {osp} source providers only supports VMs that use only Cinder volumes.
