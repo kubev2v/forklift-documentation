@@ -265,7 +265,6 @@ EOF
 <1> Specify the URL of the API endpoint, for example, `https://<engine_host>/ovirt-engine/api`.
 <2> Specify the name of provider `Secret` CR.
 endif::[]
-
 ifdef::ova[]
 [source,yaml,subs="attributes+"]
 ----
