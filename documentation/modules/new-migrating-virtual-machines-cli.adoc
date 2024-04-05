@@ -324,7 +324,7 @@ spec:
 EOF
 ----
 <1> Specify the URL of the endpoint of the API server.
-<2> Specify the name of provider `Secret` CR.
+<2> [[anchor-point]]Specify the name of provider `Secret` CR.
 endif::[]
 
 ifdef::vmware[]
@@ -950,7 +950,7 @@ spec:
       namespace: <namespace>
   targetNamespace: <target_namespace>
   vms: <7>
-    - id: <source_vm> <6>
+    - id: <source_vm> <8>
     - name: <source_vm>
       hooks: <9>
         - hook:
