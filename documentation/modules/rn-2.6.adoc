@@ -42,7 +42,6 @@ The user interface `Create` and `Edit` elements for migration plans now align wi
 
 {project-short} shows each VM's migration `Running` state during the migration. This single `Ronning` operation replaces two previous operations, `Create/Post VM` and Run VM`.  link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
 
-
 [id="new-features-and-enhancements-26_{context}"]
 == New features and enhancements
 
@@ -96,7 +95,7 @@ The `Export API` in {ocp-name} Virtualization exposes VM manifests from {ocp-nam
 
 .Source and storage endpoints are not selected automatically
 
-Source network and source storage are not selected automatically when creating a {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
+Source network and source storage are not selected automatically when creating an {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
 
 [id="console-plugin-26_{context}"]
 === Console Plugin
@@ -117,7 +116,7 @@ The `fetch`, `post`, and `delete` calls in the Forklift UI are now native to the
 
 .The Cancel icon during the Cutover stage has been removed
 
-In a warm migration, the Cancel icon appears during the Precopy stage, but does not appear during the Cutover stage. link:https://issues.redhat.com/browse/MTV-449[(MTV-449)]
+In a warm migration, the Cancel icon appears during the Precopy stage but does not appear during the Cutover stage. link:https://issues.redhat.com/browse/MTV-449[(MTV-449)]
 
 .{project-short} UI plugin uses only a dynamic plugin for the SDK REST API `fetch` methods
 
@@ -163,7 +162,7 @@ An ESXi can be imported directly from vSphere without going through vCenter. In 
 
 ESXi, as a vSphere provider, does not need credentials in its setup. The credentials requirements field is removed from ESX settings. link:https://issues.redhat.com/browse/MTV-793[(MTV-793)]
 
-.Link to VM details page
+.Link to the VM details page
 
 The {ocp-name} Console, provider VM list includes a link to the details page for each VM. link:https://issues.redhat.com/browse/MTV-797[(MTV-797)]
 
@@ -180,11 +179,11 @@ This is a collection of new features for the {project-short} OVA provider. link:
 
 A `virt-v2v` that converts a guest also produces an OFV with configuration based on the virtual disk, such as driver or firmware. `forklift-controller` processes the produced OFV's status of the conversion pod. link:https://issues.redhat.com/browse/MTV-759[(MTV-759)]
 
-.Delete PV when provider is deleted
+.Delete PV when the provider is deleted
 
 Each OVA provider has an attached PV and PVC. The PVC deletes automatically when the provider is deleted. {project-short} now also deletes the PV when the provider is deleted. link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
 
-.End to end test for import OVA
+.End-to-end test for import OVA
 
 The {project-short} process performs an end to end test of the imported OVA. link:https://issues.redhat.com/browse/MTV-624[(MTV-624)]
 
@@ -196,17 +195,17 @@ The OVA provider can be created under all projects, not only under the forklift 
 
 {project-short} scans files directly in the share directory and down two sub-levels. link:https://issues.redhat.com/browse/MTV-680[(MTV-680)]
 
-.Migrate from OVA provider to a restricted project
+.Migrate from an OVA provider to a restricted project
 
 Migration from OVA provider to a restricted project succeeds past the `kubevirt` step. link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
 
 .OVA inventory watcher detects deleted files
 
-OVA inventory watcher detects changes in files, including that have been deleted. The information from the `ova-provider-server` is updated and sent every five minutes, and is then handled by the forklift inventory. link:https://issues.redhat.com/browse/MTV-733[(MTV-733)]
+The OVA inventory watcher detects changes in files, including those that have been deleted. Updates from the `ova-provider-server` pod are sent every five minutes to the `forklift-controller` pod that updates the inventory. link:https://issues.redhat.com/browse/MTV-733[(MTV-733)]
 
 .Migration from OVA validation rules
 
-VM migrations from OVA are validated according to vSphere. The migration can use a similar structure and inventory variable names as vSphere, which the OVA model is a subset. The rules do not apply to clusters, hosts or running state of the VMs, or any configuration that is not relevant for OVA VMs. link:https://issues.redhat.com/browse/MTV-669[(MTV-669)]
+VM migrations from OVA are validated according to vSphere. The migration can use a similar structure and inventory variable names as vSphere, of which the OVA model is a subset. The rules do not apply to clusters, hosts, the running state of the VMs, or any configuration that is not relevant for the OVA VMs. link:https://issues.redhat.com/browse/MTV-669[(MTV-669)]
 
 .VM cannot find the bootable disk when source VMware provider uses VDDK 8
 
@@ -219,7 +218,7 @@ For a complete list of all resolved issues in this release, see the list of link
 
 This release has the following known issues:
 
-.Deleting migration plan does not remove temporary resources
+.Deleting a migration plan does not remove temporary resources
 
 Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs, and data volumes. You must archive a migration plan before deleting it, so you can clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
 
@@ -235,9 +234,9 @@ vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the enc
 
 Warm migrations from {rhv-short} fail if a snapshot operation is performed on the source VM. If a user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
 
-.Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath
+.Unable to schedule migrated VM with multiple disks to more than one storage class of type hostPath
 
-When migrating a VM with multiple disks to more than one storage classes of type `hostPath`, a VM might not be scheduled. Workaround: Use shared storage on the target {ocp} cluster.
+When migrating a VM with multiple disks to more than one storage classes of the type `hostPath`, a VM might not be scheduled. Workaround: Use shared storage on the target {ocp} cluster.
 
 .Non-supported guest operating systems in warm migrations
 
@@ -258,7 +257,7 @@ An earlier failed migration can leave an outdated `ovirtvolumepopulator` in the 
 
 .Unclear error message when Forklift fails to build/create a PVC
 
-The migration fails to build the PVC when the destination storage class does not have a configured storage profile. The error logs lack clear information to identify the reason for failure. link:https://issues.redhat.com/browse/MTV-928[(MTV-928)]
+The migration fails to build the PVC when the destination storage class does not have a configured storage profile. The error logs lack clear information to identify the reason for the failure. link:https://issues.redhat.com/browse/MTV-928[(MTV-928)]
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430275[Known Issues] in Jira. 
 
@@ -286,7 +285,7 @@ When migrating from {ocp} to {ocp}, the version of the source provider cluster m
 
 .Restricted OVA provider project 
 
-You can only create an OVA provider under the Forklift or MTV project, for use by the forklift-controller SA. This should be extended to all projects.link:https://issues.redhat.com/browse/MTV-681[(MTV-681)]
+You can only create an OVA provider under the Forklift or MTV project, for use by the `forklift-controller` SA. This is extended to all projects.link:https://issues.redhat.com/browse/MTV-681[(MTV-681)]
 
 .Can only scan OVA files in NFS share root folder
 
@@ -341,13 +340,13 @@ link:https://issues.redhat.com/browse/MTV-868[(MTV-868)]
 
 .Migrating VMs from RHV to {ocp-name} Virtualization does not work with an encrypted RBD
 
-Migrating a VM from RHV to {ocp-name} Virtualization fails during `qemu-img create`, returning a `Cannot grow device files` error. The pod sees a smaller file. link:https://github.com/kubev2v/forklift-console-plugin/issues/852[(MTV-852)]
+Migrating a VM from RHV to {ocp-name} Virtualization fails during `qemu-img create`, returning a `Cannot grow device files` error. The pod sees a smaller file. link:https://issues.redhat.com/browse/MTV-852[(MTV-852)]
 
-.RHV provider `ConnectionTestSucceeded` True response from wrong URL
+.RHV provider `ConnectionTestSucceeded` True response from the wrong URL
 
 The `ConnectionTestSucceeded` process produces a `True` result even when the wrong URL is entered. link:https://issues.redhat.com/browse/MTV-740[(MTV-740)]
 
-.MTV Inventory does not show extended volume of VM disk in RHV
+.MTV Inventory does not show extended volume of the VM disk in RHV
 
 The extended volume of a VM disk does not appear in the MTV Inventory for an RHV provider after it is already connected. The connected RHV provider does not update the volume of the VM disk. link:https://issues.redhat.com/browse/MTV-829[(MTV-829)]
 
