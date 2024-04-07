@@ -5,7 +5,13 @@
 [id="rn-26_{context}"]
 = {project-full} 2.6
 
-Migrate virtual machines (VMs) from VMware vSphere, {rhv-full}, or {osp} to {virt} with {the-lc} {project-first}.
+You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* Remote {virt} clusters
 
 The release notes describe technical changes, new features and enhancements, known issues, and resolved issues.
 
@@ -14,37 +20,27 @@ The release notes describe technical changes, new features and enhancements, kno
 
 This release has the following technical changes:
 
-.Migration from OpenStack moves to being a fully supported feature
+.Improved migration plan in the console
 
-In this version of {project-short}, migration using {osp} source providers graduated from a Technology Preview feature to a fully supported feature.
+The user interface console has improved the process of creating a migration plan.
 
-.Integration of the create and update provider user interface
+.`instance type` and `instance type preferences` have replaced {ocp-name} templates
 
-The user interface of the source providers and destination providers now aligns with the look and feel of the {ocp} web console and displays the current data.
+The `instance type` and `instance type preferences` have replaced {ocp-name} templates. {project-short} currently falls back to using {ocp-name} templates when a relevant preference is not available.
 
-.Standalone UI
-
-The old UI of {project-short} 2.3 cannot run by setting `feature_ui: true` in ForkliftController anymore.
-
-.Improved errors logged in populator pods
-
-In earlier releases of {project-short} {project-version}, populator pods were always restarted on failure. This made gathering logs from the failed pods difficult. {project-short} 2.5.3 has a maximum number of three restarts of populator pods. On the third and final time, the populator pod remains in the fail status, and its logs can then be easily gathered by `must-gather` and by `forklift-controller`, to know this step has failed. link:https://issues.redhat.com/browse/MTV-818[(MTV-818)]
-
-.The `VirtualMachineClusterFlavor` CRDs replace {ocp-name} templates
-
-The Virtual Machine Flavor API replaces {ocp-name} templates. {project-short} currently falls back to using {ocp-name} templates when a relevant preference is not available.
+Customer Virtual Machine Mapping are custom templates that you can configure for specific migrations, VMs, and users.
 
 .Full support for migration from OVA
 
-{project-short} {project-version} supports migration from OVA.
+{project-short} supports migration from OVA.
 
-.{ocp-name} Console `Create` and `Edit` pages replace Forms and Wizards
+.Integration of the `Create` and `Edit` migration plans
 
-Forms and Wizards that use `@migtools/lib-ui` do not function as expected when running inside the plugin. The migtool library was built as a standalone application. The `Create` and `Edit` pages in the {ocp-name} Console replace the Forms and Wizards. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
+The user interface `Create` and `Edit` elements for migration plans now align with the look and feel of the {ocp} web console and displays up-to-date data. These elements now replace Forms and Wizards. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
 
-.Scan OVA files in the root folder of an NFS share
+.VM posted with `Running` state
 
-Migration scans the files directly to the NFS share folder, not to a separate folder. link:https://issues.redhat.com/browse/MTV-680[(MTV-680)]
+{project-short} shows each VM's migration `Running` state during the migration. This single `Ronning` operation replaces two previous operations, `Create/Post VM` and Run VM`.  link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
 
 
 [id="new-features-and-enhancements-26_{context}"]
@@ -52,64 +48,38 @@ Migration scans the files directly to the NFS share folder, not to a separate fo
 
 This release has the following features and improvements:
 
-.Replace templates with flavors
-
-KubeVirt API introduces `VirtualMachineClusterFlavor` and `VirtualMachineFlavor` Containerized Data Importers(CDIs). Flavors are meant to replace the Templates, which are only available on {ocp-name}. link:https://issues.redhat.com/browse/MTV-206[(MTV-206,] link:https://issues.redhat.com/browse/MTV-919[MTV-919)]
-
-.Integrate volume populators in remote migrations
+// .Integrate volume populators in remote migrations
 
 // Arik, please check and explain - `el9` > "Red Hat Enterprise Linux 9"?
-Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
-
-.VM posted with `Running` state
-
-{project-short} shows each VM's migration `Running` state during the migration. link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
+// Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
 
 .Review and configure migrated VMs
 
 The {project-short} web console shows the name and migration status of each VM. link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
 
-.Default virt storage class
-// change to virtual?
+//.Default virt storage class
+// change to virtual? Moved to 2.7.0
+// 
+// For requests that do not specify an explicit storage class, the `is-default-virt-class` replaces the Kubernetes default storage class. link:https://issues.redhat.com/browse/MTV-855[(MTV-855)]
 
-For requests that do not specify an explicit storage class, the `is-default-virt-class` replaces the Kubernetes default storage class. link:https://issues.redhat.com/browse/MTV-855[(MTV-855)]
-
-.Validate permissions on source providers
-
-When migrating a VM with an Red Hat Enterprise Virtualization (RHEV) user with restricted permissions, {project-short} validates the user permissions and the migration pod reports where the process fails. link:https://issues.redhat.com/browse/MTV-273[(MTV-273)]
+// Moved to 2.7.0
+//.Validate permissions on source providers
+// 
+//When migrating a VM with an Red Hat Enterprise Virtualization (RHEV) user with restricted permissions, {project-short} validates the user permissions and the migration pod reports where the process fails. link:https://issues.redhat.com/browse/MTV-273[(MTV-273)]
 
 .Validation for RHEL 6
 
-Red Hat Enterprise Linux (RHEL) 9 does not support CNV to provide RHEL 6 Templates. This restriction is no longer relevant because `VirtualMachineClusterFlavor` CRDs have replaced the templates. link:https://issues.redhat.com/browse/MTV-413[(MTV413)]
+Red Hat Enterprise Linux (RHEL) 9 does not support RHEL 6 as a guest operating system, and therefore RHEL 6 is not supported in {ocp-name} Virtualization. A validation of RHEL 6 guest operating system was added. link:https://issues.redhat.com/browse/MTV-413[(MTV413)]
 
-.Custom mapping of instance type preferences
+// .Custom mapping of instance type preferences
+// 
+// {project-short} enables users to add Customer Virtual Machine Mapping, which are custom templates that are configured for specific migrations, VMs, and users. link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
 
-{project-short} enables users to add Customer Virtual Machine Mapping, which are custom templates that are configured for specific migrations, VMs, and users. link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
-
-.RH-SDL
-
-{project-short} conforms with the Red Hat Secure Development Lifecycle (RH-SDL). This allows users to follow an implementation plan that adopts security controls during the product lifecycle. link:https://issues.redhat.com/browse/MTV-801[(MTV-801)]
-// Do we have public links to these documents?
-
-// Additional RH-SDL resources:
-
-// * link:https://docs.google.com/document/d/1QMrM5ac2sbecmy7lYHA8S6p8L8ivVwHlgdcspy-Z4VE/edit#heading=h.66y4kqbj468a[Red Hat Secure Development Lifecycle Implementation Plan]
-
-// * link:https://docs.google.com/presentation/d/1CnIq-MHgEoq_1QgaFU5uoOfZ7ZOnNzxPk9OdDUe4Me8/edit#slide=id.g1a5a54f838a_0_1509[Red Hat Secure Development Lifecycle Introduction]
-
-// * Link:https://docs.google.com/presentation/d/19H3tSzZ1pSGGwhSoZn3CFgyLQcBWbePAK0_5J4NHUGw/edit#slide=id.g22dc74ad918_0_740[Red Hat Secure Development Lifecycle Planning and Schedule]
-
-// * link:https://docs.google.com/presentation/d/1DOxSd5hpwNntypX5DUd3JRmP8wIJL_RVxOJfDo0Nxck/edit#slide=id.g13028f60288_0_0[Secure Development - Introduction to SSML]
-
-// * link:https://gitlab.cee.redhat.com/users/auth/geo/sign_in[Closed link]
-
-// * link:https://docs.engineering.redhat.com/display/PRODSEC/Secure+Development+training[Secure Development Training]
-
-[id="cross-provider-features-26_{context}"]
+// [id="cross-provider-features-26_{context}"]
 === Cross-Provider Features
-
-This is a collection of new features that provide functionality across different cloud providers. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
-
+// 
+// This is a collection of new features that provide functionality across different cloud providers. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
+// 
 .{ocp} Provider
 // any more information?
 
@@ -117,11 +87,12 @@ This is a collection of new features for {ocp-name} (OCP) provider. link:https:/
 
 .Block migrations from {ocp-name} versions before 4.13
 
-VM manifestations were introduced in {ocp-name} 4.13, so source provider clusters must be version 4.13 or later. link:https://issues.redhat.com/browse/MTV-734[(MTV-734)]
+The `Export API` in {ocp-name} Virtualization exposes VM manifests from {ocp-name} 4.13, so source {ocp} clusters must be version 4.13 or later. link:https://issues.redhat.com/browse/MTV-734[(MTV-734)]
 
-.Secure connections to remote {ocp-name} clusters
-
-CA certificates can secure connections to remote {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-728[MTV-728]
+// Pushed to 2.7
+// .Secure connections to remote {ocp-name} clusters
+// 
+// CA certificates can be specified when creating {ocp} providers. The certificate is used to validate the connection to the {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-728[MTV-728]
 
 .Source and storage endpoints are not selected automatically
 
@@ -131,10 +102,6 @@ Source network and source storage are not selected automatically when creating a
 === Console Plugin
 
 This is a collection of new features for the {project-short} Console plugin. link:https://issues.redhat.com/browse/MTV-736[(MTV-736)]
-
-.Replaced Forms and Wizards with the {ocp-name} Console Create and Edit pages
-
-The Create and Edit pages in the {ocp-name} Console have replaced the Forms and Wizards that ran on the migtool library UI application. link:https://issues.redhat.com/browse/MTV-615[(MTV-615)]
 
 .Restored vSphere Verify certificate functionality
 
@@ -223,15 +190,15 @@ The {project-short} process performs an end to end test of the imported OVA. lin
 
 .Create OVA provider under all projects
 
-The OVA provider can be created under all projects, not only under the forklift or MTV namespace. link:https://issues.redhat.com/browse/MTV-681[(MTV-681,] link:https://issues.redhat.com/browse/MTV-715[MTV-715)]
+The OVA provider can be created under all projects, not only under the forklift or MTV project. link:https://issues.redhat.com/browse/MTV-681[(MTV-681,] link:https://issues.redhat.com/browse/MTV-715[MTV-715)]
 
 .Scan files directly in share directory and down two sub-levels
 
 {project-short} scans files directly in the share directory and down two sub-levels. link:https://issues.redhat.com/browse/MTV-680[(MTV-680)]
 
-.Migrate from OVA provider to a restricted namespace
+.Migrate from OVA provider to a restricted project
 
-Migration from OVA provider to a restricted namespace succeeds past the `kubevirt` step. link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
+Migration from OVA provider to a restricted project succeeds past the `kubevirt` step. link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
 
 .OVA inventory watcher detects deleted files
 
@@ -287,7 +254,7 @@ When adding an OVA provider, the error message `ConnectionTestFailed` can instan
 
 .Left over `ovirtvolumepopulator` from failed migration causes plan to stop indefinitely in `CopyDisks` phase.
 
-An earlier failed migration can leave an outdated `ovirtvolumepopulator` in the namespace of a new plan for the same VM. The `CreateDataVolumes` phase does not create populator PVCs when transitioning to `CopyDisks`, causing the `CopyDisks` phase to stay indefinitely. link:https://issues.redhat.com/browse/MTV-929[(MTV-929)]
+An earlier failed migration can leave an outdated `ovirtvolumepopulator` in the project of a new plan for the same VM. The `CreateDataVolumes` phase does not create populator PVCs when transitioning to `CopyDisks`, causing the `CopyDisks` phase to stay indefinitely. link:https://issues.redhat.com/browse/MTV-929[(MTV-929)]
 
 .Unclear error message when Forklift fails to build/create a PVC
 
@@ -303,11 +270,11 @@ This release has the following resolved issues:
 // Has this been resolved?
 .Possible data loss when migrating VMware VMs with snapshots
 
-In previous versions of {product-short}, when migrating a VMware VM that had a snapshot, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot, but not in the running VM that was migrated. This has been resolved in {product-short} 2.6.0 [(MTV-447)]
+In previous versions of {product-short}, when migrating a VMware VM that had a snapshot, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot, but not in the running VM that was migrated. This has been resolved in {product-short} 2.6.0. [(MTV-447)]
 
 .Adding an OVA provider raises a `ConnectionTestFailed` error message
 
-When adding an OVA provider, a `The provider is not ready - ConnectionTestFailed` error message appears, although it eventually creates the provider. The message disappears after a few seconds. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
+In previous versions of {product-short}, when adding an OVA provider, a `The provider is not ready - ConnectionTestFailed` error message appears, although it eventually creates the provider. The message disappears after a few seconds. This has been resolved in {product-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
 .Canceling and deleting a failed migration plan does not clean up the `populate` pods and PVC
 
@@ -317,7 +284,7 @@ When a user cancels and deletes a failed migration plan after creating a PVC and
 
 When migrating from {ocp} to {ocp}, the version of the source provider cluster must be {ocp} version 4.13 or later. link:https://issues.redhat.com/browse/MTV-809[(MTV-809)]
 
-.Restricted OVA provider namespace 
+.Restricted OVA provider project 
 
 You can only create an OVA provider under the Forklift or MTV project, for use by the forklift-controller SA. This should be extended to all projects.link:https://issues.redhat.com/browse/MTV-681[(MTV-681)]
 
@@ -325,9 +292,9 @@ You can only create an OVA provider under the Forklift or MTV project, for use b
 
 Only the files placed under the NFS share root folder can be scanned. The fix allows placing files directly on the share and two sublevels from the root folder of the extracted OVA. link:https://issues.redhat.com/browse/MTV-680[(MTV-680,] link:https://issues.redhat.com/browse/MTV-696[MTV-696)]
 
-.Migration from an OVA provider to a restricted namespace fails
+.Migration from an OVA provider to a restricted project fails
 
-Migrating from an OVA provider to a restricted namespace fails at the step `Convert image to kubevirt`, raising an error. link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
+Migrating from an OVA provider to a restricted project fails at the step `Convert image to kubevirt`, raising an error. link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
 
 .Migration with multiple disks fails
 
