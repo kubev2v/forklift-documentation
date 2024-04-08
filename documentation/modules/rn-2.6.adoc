@@ -42,6 +42,10 @@ The user interface `Create` and `Edit` elements for migration plans now align wi
 
 {project-short} shows each VM's migration `Running` state during the migration. This single `Ronning` operation replaces two previous operations, `Create/Post VM` and Run VM`.  link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
 
+.Can download `must-gather` logs only using the CLI
+
+The {product-short} web console can no longer download logs from the Must Gather operator. Every `mist-gather` log image download must be preformed using CLI commands. See link:https://github.com/openshift/must-gather-operator[Must Gather Operator] for more information.
+
 [id="new-features-and-enhancements-26_{context}"]
 == New features and enhancements
 
