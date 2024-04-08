@@ -259,6 +259,10 @@ An earlier failed migration can leave an outdated `ovirtvolumepopulator` in the 
 
 The migration fails to build the PVC when the destination storage class does not have a configured storage profile. The error logs lack clear information to identify the reason for the failure. link:https://issues.redhat.com/browse/MTV-928[(MTV-928)]
 
+.Fail to migrate a VM with NVME disks from vSphere 
+
+When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubevirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
+
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430275[Known Issues] in Jira. 
 
 [id="resolved-issues-26_{context}"]
@@ -357,10 +361,6 @@ After upgrading {project-short} from version 2.4.2 to 2.5.0, the `ForkliftContro
 .Migration fails when a vSphere Datacenter is nested inside a folder
  
 Migrating a vSphere Datacenter succeeds when it is directly under the `/vcenter`, but fails when it is stores inside a folder. The migration raises an error. link:https://issues.redhat.com/browse/MTV-796([MTV-796])
-
-.Fail to migrate a VM with NVME disks from vSphere 
-
-When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubevirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
 
 .Fail to migrate image-based VM from {osp} to `default` project
 
