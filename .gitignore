@@ -6,3 +6,5 @@ documentation/*/build/*
 _site
 Gemfile.lock
 .DS_Store
+*/master.html
+
