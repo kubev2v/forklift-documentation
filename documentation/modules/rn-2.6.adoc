@@ -1,0 +1,7 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-2.6_{context}"]
+= {project-full} 2.6
+
