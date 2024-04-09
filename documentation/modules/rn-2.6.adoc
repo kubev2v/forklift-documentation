@@ -26,7 +26,7 @@ The user interface console has improved the process of creating a migration plan
 
 .`instance type` and `instance type preferences` have replaced {ocp-name} templates
 
-The `instance type` and `instance type preferences` have replaced {ocp-name} templates. {project-short} currently falls back to using {ocp-name} templates when a relevant preference is not available.
+The `instance type preferences` have replaced {ocp-name} templates. {project-short} currently falls back to using {ocp-name} templates when a relevant preference is not available.
 
 Customer Virtual Machine Mapping are custom templates that you can configure for specific migrations, VMs, and users.
 
@@ -44,7 +44,7 @@ The user interface `Create` and `Edit` elements for migration plans now align wi
 
 .Can download `must-gather` logs only using the CLI
 
-The {product-short} web console can no longer download logs from the Must Gather operator. Every `mist-gather` log image download must be preformed using CLI commands. See link:https://github.com/openshift/must-gather-operator[Must Gather Operator] for more information.
+The {product-short} web console can no longer download logs. Every `must-gather` log image download must be preformed using CLI commands. See link:https://github.com/openshift/must-gather-operator[Must Gather Operator] for more information.
 
 .Review and configure migrated VMs
 
@@ -74,28 +74,9 @@ This release has the following features and improvements:
 
 Red Hat Enterprise Linux (RHEL) 9 does not support RHEL 6 as a guest operating system, and therefore RHEL 6 is not supported in {ocp-name} Virtualization. A validation of RHEL 6 guest operating system was added. link:https://issues.redhat.com/browse/MTV-413[(MTV413)]
 
-// .Custom mapping of instance type preferences
-// 
-// {project-short} enables users to add Customer Virtual Machine Mapping, which are custom templates that are configured for specific migrations, VMs, and users. link:https://issues.redhat.com/browse/MTV-453[(MTV-453)]
-
-// [id="cross-provider-features-26_{context}"]
-=== Cross-Provider Features
-// 
-// This is a collection of new features that provide functionality across different cloud providers. link:https://issues.redhat.com/browse/MTV-802[(MTV-802)]
-// 
-.{ocp} Provider
-// any more information?
-
-This is a collection of new features for {ocp-name} (OCP) provider. link:https://issues.redhat.com/browse/MTV-739[(MTV-739)]
-
 .Block migrations from {ocp-name} versions before 4.13
 
 The `Export API` in {ocp-name} Virtualization exposes VM manifests from {ocp-name} 4.13, so source {ocp} clusters must be version 4.13 or later. link:https://issues.redhat.com/browse/MTV-734[(MTV-734)]
-
-// Pushed to 2.7
-// .Secure connections to remote {ocp-name} clusters
-// 
-// CA certificates can be specified when creating {ocp} providers. The certificate is used to validate the connection to the {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-728[MTV-728]
 
 .Source and storage endpoints are not selected automatically
 
@@ -267,6 +248,10 @@ The migration fails to build the PVC when the destination storage class does not
 
 When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubevirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
 
+.Import image-based VMs
+
+Migrating an image-based VM without a `virtual_size` field can fail on a block mode storage class. link:https://issues.redhat.com/browse/MTV-946[(MTV-644)]
+
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430275[Known Issues] in Jira. 
 
 [id="resolved-issues-26_{context}"]
@@ -352,7 +337,7 @@ Migrating a VM from RHV to {ocp-name} Virtualization fails during `qemu-img crea
 
 .RHV provider `ConnectionTestSucceeded` True response from the wrong URL
 
-The `ConnectionTestSucceeded` process produces a `True` result even when the wrong URL is entered. link:https://issues.redhat.com/browse/MTV-740[(MTV-740)]
+The `ConnectionTestSucceeded` condition is set to `True` even when the URL is is different than the API endpoint for the RHV Manager. link:https://issues.redhat.com/browse/MTV-740[(MTV-740)]
 
 .MTV Inventory does not show extended volume of the VM disk in RHV
 
@@ -364,7 +349,7 @@ After upgrading {project-short} from version 2.4.2 to 2.5.0, the `ForkliftContro
 
 .Migration fails when a vSphere Datacenter is nested inside a folder
  
-Migrating a vSphere Datacenter succeeds when it is directly under the `/vcenter`, but fails when it is stores inside a folder. The migration raises an error. link:https://issues.redhat.com/browse/MTV-796([MTV-796])
+Migrating a vSphere Datacenter succeeds when it is directly under the `/vcenter`, but fails when it is stores inside a folder. The migration raises an error. This issue was resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-796([MTV-796])
 
 .Fail to migrate image-based VM from {osp} to `default` project
 
