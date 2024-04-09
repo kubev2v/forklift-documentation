@@ -40,7 +40,7 @@ The user interface `Create` and `Edit` elements for migration plans now align wi
 
 .VM posted with `Running` state
 
-{project-short} shows each VM's migration `Running` state during the migration. This single `Ronning` operation replaces two previous operations, `Create/Post VM` and Run VM`.  link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
+{project-short} shows each VM's migration `Running` state during the migration. This single `Running` operation replaces two previous operations, `Create/Post VM` and Run VM`.  link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
 
 .Can download `must-gather` logs only using the CLI
 
@@ -65,7 +65,7 @@ The `Export API` in {ocp-name} Virtualization exposes VM manifests from {ocp-nam
 
 .Source and storage endpoints are not selected automatically
 
-Source network and source storage are not selected automatically when creating an {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
+Source network and source storage are not selected automatically when creating a {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
 
 .Restored vSphere Verify certificate functionality
 
@@ -202,7 +202,7 @@ In previous versions of {product-short}, when migrating a VMware VM that had a s
 
 .Adding an OVA provider raises a `ConnectionTestFailed` error message
 
-In previous versions of {product-short}, when adding an OVA provider, a `The provider is not ready - ConnectionTestFailed` error message appears, although it eventually creates the provider. The message disappears after a few seconds. This has been resolved in {product-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
+In previous versions of {product-short}, when adding an OVA provider, showing the error message `The provider is not ready - ConnectionTestFailed`, although it eventually creates the provider. The message disappears after a few seconds. This has been resolved in {product-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
 .Canceling and deleting a failed migration plan does not clean up the `populate` pods and PVC
 
@@ -273,19 +273,19 @@ Migrating a VM from RHV to {ocp-name} Virtualization fails during `qemu-img crea
 
 .RHV provider `ConnectionTestSucceeded` True response from the wrong URL
 
-The `ConnectionTestSucceeded` condition is set to `True` even when the URL is is different than the API endpoint for the RHV Manager. link:https://issues.redhat.com/browse/MTV-740[(MTV-740)]
+The `ConnectionTestSucceeded` condition is set to `True` even when the URL is is different than the API endpoint for the RHV Manager. This issue has been resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-740[(MTV-740)]
 
 .MTV Inventory does not show extended volume of the VM disk in RHV
 
-The extended volume of a VM disk does not appear in the MTV Inventory for an RHV provider after it is already connected. The connected RHV provider does not update the volume of the VM disk. link:https://issues.redhat.com/browse/MTV-829[(MTV-829)]
+The extended volume of a VM disk does not appear in the MTV Inventory for an RHV provider after it is already connected. The connected RHV provider does not update the volume of the VM disk. This issue has been resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-829[(MTV-829)]
 
 .`ForkliftController` status shows `Failure` after upgrading from {project-short} 2.4.2 to {project-short} 2.5.0
 
-After upgrading {project-short} from version 2.4.2 to 2.5.0, the `ForkliftController` returns a `Failure` status and an error message. link:https://issues.redhat.com/browse/MTV-702[(MTV-702)]
+After upgrading {project-short} from version 2.4.2 to 2.5.0, the `ForkliftController` returns a `Failure` status and an error message. This issue has been resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-702[(MTV-702)]
 
 .Migration fails when a vSphere Datacenter is nested inside a folder
  
-Migrating a vSphere Datacenter succeeds when it is directly under the `/vcenter`, but fails when it is stores inside a folder. The migration raises an error. This issue was resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-796([MTV-796])
+Migrating a vSphere Datacenter succeeds when it is directly under the `/vcenter`, but fails when it is stores inside a folder. The migration raises an error. This issue was resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-796[(MTV-796)]
 
 .Fail to migrate image-based VM from {osp} to `default` project
 
