@@ -61,7 +61,7 @@ include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 
 ==== Additional authentication methods for migrations with {osp} source providers
 
-{project-short} versions 2.5 and later support the following authentication methods for migrations with {osp} source providers in addition to the standard username and password credential set:
+{project-short} versions 2.6 and later support the following authentication methods for migrations with {osp} source providers in addition to the standard username and password credential set:
 
 * Token authentication
 * Application credential authentication
