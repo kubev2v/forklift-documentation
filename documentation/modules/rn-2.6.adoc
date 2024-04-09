@@ -46,6 +46,10 @@ The user interface `Create` and `Edit` elements for migration plans now align wi
 
 The {product-short} web console can no longer download logs from the Must Gather operator. Every `mist-gather` log image download must be preformed using CLI commands. See link:https://github.com/openshift/must-gather-operator[Must Gather Operator] for more information.
 
+.Review and configure migrated VMs
+
+The {project-short} web console shows the name and migration status of each VM. The migrated VMs are labeled `app: <vmname>` to help further changes in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
+
 [id="new-features-and-enhancements-26_{context}"]
 == New features and enhancements
 
@@ -55,10 +59,6 @@ This release has the following features and improvements:
 
 // Arik, please check and explain - `el9` > "Red Hat Enterprise Linux 9"?
 // Integrate volume populator for `oVirt` and OpenStack, together with `virt-v2v` on `el9` into a CDI to migrate remote {ocp-name} clusters. link:https://issues.redhat.com/browse/MTV-721[(MTV-721)]
-
-.Review and configure migrated VMs
-
-The {project-short} web console shows the name and migration status of each VM. link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
 
 //.Default virt storage class
 // change to virtual? Moved to 2.7.0
