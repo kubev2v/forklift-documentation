@@ -10,7 +10,3 @@ The following prerequisites apply to {osp} migrations:
 
 * You must use a xref:compatibility-guidelines_{context}[compatible version] of {osp}.
 
-[NOTE]
-====
-Migration using {osp} source providers only supports VMs that use only Cinder volumes.
-====
