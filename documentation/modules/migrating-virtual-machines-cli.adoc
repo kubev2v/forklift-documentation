@@ -52,8 +52,7 @@ stringData: <3>
   cacert: | <10>
     <ca_certificate>
   url: <api_end_point> <11>
-  thumbprint: <vcenter_fingerprint> <12>
-  token: <service_account_bearer_token> <13>
+  token: <service_account_bearer_token> <12>
 EOF
 ----
 <1> The `ownerReferences` section is optional.
@@ -67,8 +66,7 @@ EOF
 <9> {osp} only: Specify the name of the {osp} region.
 <10> {rhv-short} and {osp} only: For {rhv-short}, enter the {manager} CA certificate unless it was replaced by a third-party certificate, in which case, enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA. For {osp}, enter the CA certificate for connecting to the source environment. The certificate is not used when `insecureSkipVerify` is set to `<true>`.
 <11> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
-<12> VMware only: Specify the vCenter SHA-1 fingerprint.
-<13> {ocp-short} only:  Token for a service account with `cluster-admin` privileges.
+<12> {ocp-short} only:  Token for a service account with `cluster-admin` privileges.
 +
 [NOTE]
 ====
