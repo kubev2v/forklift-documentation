@@ -91,5 +91,4 @@ stringData:
   url: <OS_AUTH_URL_from_openstack_rc_file>
 EOF
 ----
-
-. Continue migrating your virtual machine according to the procedure in xref:migrating-virtual-machines-from-cli[Migrating virtual machines], starting with step 2, "Create a `Provider` manifest for the source provider."
+. Continue migrating your virtual machine according to the procedure in xref:new-migrating-virtual-machines-cli_ostack[Migrating virtual machines], starting with step 2, "Create a `Provider` manifest for the source provider."
