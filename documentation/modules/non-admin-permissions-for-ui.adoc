@@ -38,32 +38,36 @@ As a more comprehensive example, you can grant non-administrators the following 
 |Actions |API group |Resource
 
 |`get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
-|`forklift.konveyer.io`
+|`forklift.konveyor.io`
 |`plans`
 
 | `get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
-|`forklift.konveyer.io`
+|`forklift.konveyor.io`
 |`migrations`
 
 |`get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
-|`forklift.konveyer.io`
+|`forklift.konveyor.io`
 |`hooks`
 
 |`get`, `list`, `watch`
-|`forklift.konveyer.io`
+|`forklift.konveyor.io`
 |`providers`
 
 |`get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
-|`forklift.konveyer.io`
+|`forklift.konveyor.io`
 |`networkmaps`
 
 | `get`, `list`, `watch`, `create`, `update`, `patch`, `delete`
-|`forklift.konveyer.io`
+|`forklift.konveyor.io`
 |`storagemaps`
 
 |`get`, `list`, `watch`
-|`forklift.konveyer.io`
+|`forklift.konveyor.io`
 |`forkliftcontrollers`
+
+|`create`, `patch`, `delete`
+| Empty string
+|`secrets`
 |===
 
 [NOTE]
