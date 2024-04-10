@@ -10,7 +10,34 @@ The {project-first} *Overview* page displays system-wide information about migra
 
 If you have Administrator privileges, you can access the *Overview* page by clicking *Migration* -> *Overview* in the {ocp} web console.
 
-The *Overview* page displays the following information:
+The *Overview* page has 3 tabs:
+
+* Overview
+* YAML
+* Metrics
+
+[id="overview-tab_{context}"]
+== Overview tab
+
+The *Overview* tab lets you see:
+
+* Operator: The namespace on which the {project-short} Operator is deployed and the status of the Operator
+* Pods: The name, status, and creation time of each pod that was deployed by the {project-short} Operator
+* Conditions: Status of the {project-short} Operator:
+
+** Failure: Last failure. `False` indicates no failure since deployment.
+** Running: Whether the Operator is currently running and waiting for the next reconciliation.
+** Successful: Last successful reconciliation.
+
+[id="yaml-tab_{context}"]
+== YAML tab
+
+The custom resource ForkliftController that defines the operation of the {project-short} Operator. You can modify the custom resource from this tab.
+
+[id="metrics-tab_{context}"]
+== Metrics tab
+
+The *Metrics* tab lets you see:
 
 * Migrations: The number of migrations performed using {project-short}:
 
@@ -28,10 +55,15 @@ The *Overview* page displays the following information:
 ** Succeeded
 ** Canceled
 
-* Operator: The namespace on which the {project-short} Operator is deployed and the status of the Operator.
+[NOTE]
+====
+Since a single migration might involve many virtual machines, the number of migrations performed using {project-short} might vary significantly from the number of virtual machines that have been migrated using {project-short}.
+====
 
-* Conditions: Status of the {project-short} Operator:
+* Chart showing the number of running, failed, and succeeded migrations performed using {project-short} for each of the last 7 days
 
-** Failure: Last failure. `False` indicates no failure since deployment.
-** Running: Whether the Operator is currently running and waiting for the next reconciliation.
-** Successful: Last successful reconciliation.
+* Chart showing the number of running, failed, and succeeded virtual machine migrations performed using {project-short} for each of the last 7 days
+
+
+
+
