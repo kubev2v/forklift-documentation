@@ -90,14 +90,7 @@ ifdef::vmware[]
 * *Password*: vCenter user password or ESXi user password.
 * *SHA-1 fingerprint*: The provider currently requires the SHA-1 fingerprint of the vCenter Server's TLS certificate in all circumstances. vSphere calls this the server's thumbprint.
 +
-
-. Choose one of the following options for validating CA certificates:
-
-** *Skip certificate validation* : Migrate without validating a CA certificate.
-** *Use the system CA certificates*: Migrate after validating the system CA certificates.
-
-.. To skip certificate validation, select the *Skip certificate validation* check box.
-.. To validate the system CA certificates, leave the *Skip certificate validation* check box cleared.
+include::snip-certificate-options.adoc[]
 endif::[]
 ifdef::rhv[]
 . Click *Red Hat Virtualization*
@@ -107,14 +100,8 @@ ifdef::rhv[]
 * *URL*: URL of the API endpoint of the {rhv-full} Manager (RHVM) on which the source VM is mounted. Ensure that the URL includes the path leading to the RHVM API server, usually `/ovirt-engine/api`. For example, `https://rhv-host-example.com/ovirt-engine/api`.
 * *Username*: Username.
 * *Password*: Password.
-
-. Choose one of the following options for validating CA certificates:
-
-** *Skip certificate validation* : Migrate without validating a CA certificate.
-** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
-
-.. To skip certificate validation, select the *Skip certificate validation* check box.
-.. To validate a custom CA certificate, leave the *Skip certificate validation* check box cleared and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
++
+include::snip-certificate-options.adoc[]
 endif::[]
 ifdef::ova[]
 . Click *Open Virtual Appliance (OVA)*.
@@ -157,14 +144,8 @@ ifdef::ostack[]
 *** *Password*: {osp} password
 *** *Project*: {osp} project
 *** *Domain*: {osp} domain name
-
-. Choose one of the following options for validating CA certificates:
-
-** *Skip certificate validation* : Migrate without validating a CA certificate.
-** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
-
-.. To skip certificate validation, select the *Skip certificate validation* check box.
-.. To validate a custom CA certificate, leave the *Skip certificate validation* check box cleared and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
++
+include::snip-certificate-options.adoc[]
 endif::[]
 ifdef::cnv[]
 . Click *{virt}*.
@@ -175,6 +156,8 @@ ifdef::cnv[]
 * *Service account bearer token*: Token for a service account with `cluster-admin` privileges
 +
 If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
++
+include::snip-certificate-options.adoc[]
 endif::[]
 ifdef::cnv2[]
 . Click *{virt}*.
@@ -185,9 +168,11 @@ ifdef::cnv2[]
 * *Service account bearer token*: Token for a service account with `cluster-admin` privileges
 +
 If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
++
+include::snip-certificate-options.adoc[]
 endif::[]
 
-. Click *Create* to add and save the provider.
+. Click *Create provider* to add and save the provider.
 +
 The provider appears in the list of providers.
 
