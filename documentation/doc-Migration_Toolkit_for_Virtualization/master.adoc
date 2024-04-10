@@ -254,7 +254,7 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 include::modules/changing-precopy-intervals.adoc[leveloffset=+2]
 
-[id="creating-custom-rules-for-validation-service_{context}"]
+[id="creating-custom-rules-for-validation-service"]
 === Creating custom rules for the Validation service
 
 The `Validation` service uses Open Policy Agent (OPA) policy rules to check the suitability of each virtual machine (VM) for migration. The `Validation` service generates a list of _concerns_ for each VM, which are stored in the `Provider Inventory` service as VM attributes. The web console displays the concerns for each VM in the provider inventory.
@@ -266,6 +266,14 @@ include::modules/accessing-default-validation-rules.adoc[leveloffset=+3]
 include::modules/retrieving-validation-service-json.adoc[leveloffset=+3]
 include::modules/creating-validation-rule.adoc[leveloffset=+3]
 include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
+
+[id="adding-hooks-migration-plan-using-api"]
+=== Adding hooks to a migration plan
+You can add hooks a migration plan from the command line by using the {project-full} API.
+
+include::modules/about-hook-crs-for-migration-plans-api.adoc[leveloffset=+3]
+
+include::modules/adding-hook-crs-to-migration-plans-api.adoc[leveloffset=+3]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 
