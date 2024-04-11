@@ -224,6 +224,8 @@ You migrate virtual machines (VMs) from the command line (CLI) by creating {proj
 You must specify a name for cluster-scoped CRs.
 
 You must specify both a name and a namespace for namespace-scoped CRs.
+
+In order to migrate to or from an {ocp-short} cluster that is different than the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
 ====
 
 :mtv!:

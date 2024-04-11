@@ -193,7 +193,7 @@ metadata:
     createdForResourceType: providers
 type: Opaque
 stringData:
-  user: <user> <2>
+  token: <token> <2>
   password: <password> <3>
   insecureSkipVerify: <true/false> <4>
   cacert: | <5>
@@ -202,7 +202,7 @@ stringData:
 EOF
 ----
 <1> The `ownerReferences` section is optional.
-<2> Specify the {virt} user.
+<2> Specify a token for a service account with `cluster-admin` privileges. If both `token` and `url` are left blank, the local {ocp-short} cluster is used.
 <3> Specify the user password.
 <4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
@@ -341,7 +341,7 @@ spec:
 EOF
 ----
 <1> Specify the name of the VMware vSphere `Provider` CR.
-<2> Specify the managed object reference (MOR) of the VMware vSphere host.
+<2> Specify the Managed Object Reference (MoRef) of the VMware vSphere host.
 <3> Specify the IP address of the VMware vSphere migration network.
 
 [start=4]
@@ -380,7 +380,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network MOR.
+<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (MoRef).
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
@@ -422,7 +422,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the {rhv-short} network UUID.
+<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the {rhv-short} network Universal Unique ID (UUID).
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
@@ -445,10 +445,10 @@ spec:
         name: <network_name>
         type: pod <1>
       source:
-        id: <source_network_id>
+        id: <source_network_id> <2>
     - destination:
-        name: <network_attachment_definition> <2>
-        namespace: <network_attachment_definition_namespace> <3>
+        name: <network_attachment_definition> <3>
+        namespace: <network_attachment_definition_namespace> <4>
         type: multus
       source:
         id: <source_network_id>
@@ -462,8 +462,9 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> Specify a network attachment definition for each additional {virt} network.
-<3> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+<2> Specify the OVA network Universal Unique ID (UUID).
+<3> Specify a network attachment definition for each additional {virt} network.
+<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
 
 ifdef::ostack[]
@@ -580,7 +581,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware vSphere data storage MOR. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+<2> Specify the VMware vSphere data storage MoRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
 
 ifdef::rhv[]
@@ -787,7 +788,7 @@ EOF
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
 <8> You can use either the `id` _or_ the `name` parameter to specify the source VMs. +
-<9> Specify the VMware vSphere VM MOR..
+<9> Specify the VMware vSphere VM MoRef.
 <10> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
