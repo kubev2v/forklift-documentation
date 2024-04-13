@@ -237,14 +237,18 @@ include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :rhv:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :rhv!:
-:context: ova
-:ova:
-include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
-:ova!:
 :context: ostack
 :ostack:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :ostack!:
+:context: ova
+:ova:
+//include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+//:ova!:
+//:context: ostack
+//:ostack:
+include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+:ova!:
 :context: cnv
 :cnv:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
