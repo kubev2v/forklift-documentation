@@ -180,8 +180,8 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
 
-include::modules/creating-network-mapping.adoc[leveloffset=+2]
-include::modules/creating-storage-mapping.adoc[leveloffset=+2]
+// include::modules/creating-network-mapping.adoc[leveloffset=+2]
+// include::modules/creating-storage-mapping.adoc[leveloffset=+2]
 
 [id="creating-migration-plans-ui"]
 === Creating migration plans
