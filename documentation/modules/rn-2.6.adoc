@@ -143,7 +143,7 @@ See link:https://access.redhat.com/articles/1351473[Converting virtual machines 
 
 .VMs from vSphere with RHEL 9 guest operating system might start with network interfaces that are down
 
-When migrating VMs that are installed with RHEL 9 as a guest operating system from vSphere, the network interfaces of the VMs could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
+When migrating virtual machines (VMs) with Red Hat Enterprise Linux (RHEL) 9 installed as a guest operating system from vSphere, the network interfaces of these VMs could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
 .Import OVA: ConnectionTestFailed message appears when adding OVA provider
 
