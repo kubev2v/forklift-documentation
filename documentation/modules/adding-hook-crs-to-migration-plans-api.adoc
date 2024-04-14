@@ -29,7 +29,6 @@ metadata:
   namespace: konveyor-forklift
 type: Opaque
 ----
-
 . Encode your playbook by conncatenating a file and piping it for base64, for example:
 +
 [source,shell]
@@ -40,7 +39,7 @@ $ cat playbook.yml | base64 -w0
 [NOTE]
 ====
 You can also use a here document to encode a playbook:
-+
+
 [source,shell]
 ----
 $ cat << EOF | base64 -w0
@@ -71,7 +70,6 @@ spec:
 [NOTE]
 ====
 To decode an attached playbook retrieve the resource with custom output and pipe it to base64. For example:
-
 [source,shell]
 ----
  oc get -n konveyor-forklift hook playbook -o \
@@ -144,7 +142,7 @@ The playbook encoded here runs the following:
 ----
 
 . Create a Plan CR using the hook:
-
++
 [source,yaml]
 ----
 kind: Plan
@@ -177,3 +175,8 @@ spec:
           step: PreHook <1>
 ----
 <1> Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration.
+
+[IMPORTANT]
+====
+In order for a PreHook to run on a VM, the VM must be started and available via SSH.
+====

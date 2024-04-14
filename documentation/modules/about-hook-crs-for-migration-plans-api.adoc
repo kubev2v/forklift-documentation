@@ -22,6 +22,11 @@ You specify hooks per VM and you can run each as a _PreHook_ or a _PostHook_. In
 
 When you add a hook, you must specify the namespace where the hook CR is located, the name of the hook, and specify whether the hook is a PreHook or PostHook.
 
+[IMPORTANT]
+====
+In order for a PreHook to run on a VM, the VM must be started and available via SSH.
+====
+
 .Example PreHook:
 
 [source,yaml]
@@ -40,3 +45,5 @@ spec:
             name: playbook
           step: PreHook
 ----
+
+
