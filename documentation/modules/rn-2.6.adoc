@@ -58,7 +58,7 @@ link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
 
 This part provides features and enhancements introduced in {project-full} 2.6:
 
-.Validation for RHEL 6 guest operating system is no available
+.Validation for RHEL 6 guest operating system is now available when migrating VMs with RHEL 6 guest operating system
 
 Red Hat Enterprise Linux (RHEL) 9 does not support RHEL 6 as a guest operating system. Therefore, RHEL 6 is not supported in {ocp-name} Virtualization. With this update, a validation of RHEL 6 guest operating system was added to {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-413[(MTV413)]
 
