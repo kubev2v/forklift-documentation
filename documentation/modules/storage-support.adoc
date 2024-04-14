@@ -81,7 +81,7 @@ If your migration uses block storage and persistent volumes created with an EXT4
 ====
 When migrating from OpenStack or running a cold-migration from RHV to the OCP cluster that MTV is deployed on, the migration allocates persistent volumes without CDI. In these cases, you might need to adjust the file system overhead.
 
-If the configured file system overhead, which has a default value of 10%, is too low, the disk transfer will fail due to lack of space. In such a case, you would want to increase to increase the file system overhead.
+If the configured file system overhead, which has a default value of 10%, is too low, the disk transfer will fail due to lack of space. In such a case, you would want to increase the file system overhead.
 
 In some cases, however, you might want to decrease the file system overhead to reduce storage consumption.
 
