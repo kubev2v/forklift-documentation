@@ -83,9 +83,6 @@ The UI plugin now uses a dynamic plugin for the SDK REST API when using the `fet
 
 With this update, you can edit plans that have failed to migrate any VMs. Some plans fail or are canceled because of incorrect network and storage mappings. You can now edit these plans until they succeed. link:https://issues.redhat.com/browse/MTV-779[(MTV-779)]
 
-.Removed credentials from ESXi provider host configuration
-
-ESXi, as a vSphere provider, does not need credentials in its setup. This update removed the credentials requirements field from ESX settings. link:https://issues.redhat.com/browse/MTV-793[(MTV-793)]
 
 [id="ova-provider-26_{context}"]
 === Open Virtual Appliance Provider
