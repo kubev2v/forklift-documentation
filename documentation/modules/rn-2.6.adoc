@@ -223,9 +223,6 @@ Migrating from an OVA provider to a restricted project fails at the step `Conver
 
 Source RHV VM with Hyper-V Enlightenments fails to convert the enlightenments after converting to {ocp-name} Virtualization. When converting RHV VMs to Windows VMs, the Hyper-V Enlightenments do not convert, causing significant performance issues. link:https://issues.redhat.com/browse/MTV-791[(MTV-791)]
 
-.Operator fails on timeout when calling `provider-validate` webhook
-
-The operator can fail when it calls `provider-validate`. It is advised to change the webhooks timeout to 30 seconds resolves this issue. link:https://issues.redhat.com/browse/MTV-718[(MTV-718)]
 
 .Migrated VM from OpenStack has different power states when source VM is running
 
