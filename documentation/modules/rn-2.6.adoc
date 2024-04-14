@@ -99,10 +99,6 @@ The OVA inventory watcher detects changes in files, including deleted files. Upd
 
 The validation service includes default validation rules for virtual machines from the Open Virtual Appliance (OVA).
 
-.VM cannot find the bootable disk when source VMware provider uses VDDK 8
-
-When migrating from a source provider that uses VDDK (VMware Virtual Disk Development Kit) version 8, the migration completes successfully, but the converted guest cannot boot. The guest cannot find the boot disk. 
-
 
 [id="known-issues-26_{context}"]
 == Known issues
