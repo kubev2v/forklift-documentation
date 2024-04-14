@@ -43,7 +43,7 @@ Custom mappings of guest operating system type to virtual machine preference can
 
 .The `must-gather` logs can now be loaded only by using the CLI
 
-The {product-short} web console can no longer download logs. With this update, you must download every `must-gather` log image by using CLI commands. for more information, see link:https://github.com/openshift/must-gather-operator[Must Gather Operator].
+The {product-short} web console can no longer download logs. With this update, you must download `must-gather` logs by using CLI commands. for more information, see link:https://github.com/openshift/must-gather-operator[Must Gather Operator].
 
 .Migrated VMs can now be reviewed and configured
 
