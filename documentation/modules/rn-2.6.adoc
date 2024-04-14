@@ -274,9 +274,6 @@ Migrating a VM from RHV to {ocp-name} Virtualization fails during `qemu-img crea
 
 The `ConnectionTestSucceeded` condition was set to `True` even when the URL was different than the API endpoint for the RHV Manager. This issue has been resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-740[(MTV-740)]
 
-.MTV Inventory now shows extended volume of the VM disk in RHV
-
-The extended volume of a VM disk did not appear in the MTV Inventory for an RHV provider after it was already connected. The connected RHV provider did not update the volume of the VM disk. This issue has been resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-829[(MTV-829)]
 
 .`ForkliftController` status shows `Failure` after upgrading from {project-short} 2.4.2 to {project-short} 2.5.0
 
