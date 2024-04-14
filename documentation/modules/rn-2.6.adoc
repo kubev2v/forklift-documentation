@@ -67,7 +67,8 @@ The `Export API` function in {ocp-name} Virtualization now exposes VM manifests 
 
 .Automatic retrieval of CA certificates for the provider's URL in the console
 
-The ability to retrieve CA certificates, which was available in previous versions, has been restortes. The `vSphere Verify certificate` option is in the `add-provider` dialog. This option was removed in the transition to {ocp} console, and has now been added to the console. link:https://issues.redhat.com/browse/MTV-737[(MTV-737)]
+The ability to retrieve CA certificates, which was available in previous versions, has been restortes. The `vSphere Verify certificate` option is in the `add-provider` dialog. This option was removed in the transition to {ocp} console, and has now been added to the console. This functionality is also available for RHV, OpenStack and OpenShift providers now
+link:https://issues.redhat.com/browse/MTV-737[(MTV-737)]
 
 
 .{project-short} UI plugin now uses only a dynamic plugin for the SDK REST API `fetch` methods
