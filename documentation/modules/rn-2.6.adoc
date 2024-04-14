@@ -97,9 +97,6 @@ A `virt-v2v` that converts a guest also produces an OFV with configuration based
 
 Each OVA provider has an attached PV and PVC. The PVC is deleted automatically when the provider is deleted. {project-short} now also deletes the PV when the provider is deleted. link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
 
-.End-to-end test for imported OVA
-
-The {project-short} process now performs an end-to-end test of the imported OVA. link:https://issues.redhat.com/browse/MTV-624[(MTV-624)]
 
 .The OVA provider can now be created under all projects
 
