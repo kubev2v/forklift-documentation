@@ -266,9 +266,6 @@ When creating a host secret, you must validate the secret before creating the ho
 
 link:https://issues.redhat.com/browse/MTV-868[(MTV-868)]
 
-.Migrating VMs from RHV to {ocp-name} Virtualization does not work with an encrypted RBD
-
-Migrating a VM from RHV to {ocp-name} Virtualization fails during `qemu-img create`, returning a `Cannot grow device files` error. The pod sees a smaller file. link:https://issues.redhat.com/browse/MTV-852[(MTV-852)]
 
 .RHV provider `ConnectionTestSucceeded` True response from the wrong URL
 
