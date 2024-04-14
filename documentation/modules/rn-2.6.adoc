@@ -204,9 +204,6 @@ When a user cancels and deletes a failed migration plan after creating a PVC and
 When migrating from {ocp} to {ocp}, the version of the source provider cluster must be {ocp} version 4.13 or later. link:https://issues.redhat.com/browse/MTV-809[(MTV-809)]
 
 
-.Can only scan OVA files in NFS share root folder
-
-Only the files placed under the NFS share root folder can be scanned. The fix allows placing files directly on the share and two sublevels from the root folder of the extracted OVA. link:https://issues.redhat.com/browse/MTV-680[(MTV-680,] link:https://issues.redhat.com/browse/MTV-696[MTV-696)]
 
 .Migration from an OVA provider to a restricted project fails
 
