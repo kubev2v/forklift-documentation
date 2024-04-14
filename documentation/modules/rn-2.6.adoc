@@ -145,9 +145,6 @@ See link:https://access.redhat.com/articles/1351473[Converting virtual machines 
 
 When migrating virtual machines (VMs) with Red Hat Enterprise Linux (RHEL) 9 installed as a guest operating system from vSphere, the network interfaces of these VMs could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
 
-.Import OVA: ConnectionTestFailed message appears when adding OVA provider
-
-When adding an OVA provider, the error message `ConnectionTestFailed` can instantly appear, although the provider has been created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the provider has not been created successfully. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
 .Leftover `ovirtvolumepopulator` from failed migration causes the plan to stop in the `CopyDisks` phase
 
