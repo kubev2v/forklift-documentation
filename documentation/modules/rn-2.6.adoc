@@ -47,7 +47,9 @@ The {product-short} web console can no longer download logs. With this update, y
 
 .Migrated VMs can now be reviewed and configured
 
-The {project-short} web console now displays the name and migration status of each virtual machine (VM). The migrated VMs have the `app: <vmname>` label to help further changes in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
+The {project-short} web console now displays the name and migration status of each virtual machine (VM). The migrated VMs have the `app: <vmname>` label to help further changes in {ocp-name} Virtualization.
+ the console displayed those details also before this change. the only difference here is that the VM is set with the `app: <vmname>` labels that makes it easier to make further configurations related to the VM on the target cluster
+link:https://issues.redhat.com/browse/MTV-843[(MTV-843)]
 
 
 
