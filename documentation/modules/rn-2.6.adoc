@@ -203,9 +203,6 @@ When a user cancels and deletes a failed migration plan after creating a PVC and
 
 When migrating from {ocp} to {ocp}, the version of the source provider cluster must be {ocp} version 4.13 or later. link:https://issues.redhat.com/browse/MTV-809[(MTV-809)]
 
-.Restricted OVA provider project 
-
-You can only create an OVA provider under the Forklift or MTV project, for use by the `forklift-controller` SA. This is extended to all projects.link:https://issues.redhat.com/browse/MTV-681[(MTV-681)]
 
 .Can only scan OVA files in NFS share root folder
 
