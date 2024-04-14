@@ -211,10 +211,6 @@ When migrating from {ocp} to {ocp}, the version of the source provider cluster m
 
 
 
-.Forklift-controller crashes when creating a plan for a VM with 2 NICs
-
-// What is NIC?
-When creating a {ocp} to {ocp} migration plan for a VM with 2 NICs, it creates a plan with an `Unknown` status. This status causes the `forklift-controller` to fail. link:https://issues.redhat.com/browse/MTV-704[(MTV-704)]
 
 
 
