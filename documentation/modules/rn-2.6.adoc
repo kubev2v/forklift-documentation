@@ -96,7 +96,9 @@ The OVA inventory watcher detects changes in files, including deleted files. Upd
 
 .Migration from OVA validation rules
 
-VM migrations from OVA are validated according to vSphere. The migration can use a similar structure and inventory variable names as vSphere, of which the OVA model is a subset. The rules do not apply to clusters, hosts, the running state of the VMs, or any configuration that is not relevant for the OVA VMs. link:https://issues.redhat.com/browse/MTV-669[(MTV-669)]
+.Validation rules are now available for OVA
+
+The validation service includes default validation rules for virtual machines from the Open Virtual Appliance (OVA).
 
 .VM cannot find the bootable disk when source VMware provider uses VDDK 8
 
