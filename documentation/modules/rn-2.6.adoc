@@ -149,7 +149,7 @@ When migrating virtual machines (VMs) with Red Hat Enterprise Linux (RHEL) 9 ins
 
 When adding an OVA provider, the error message `ConnectionTestFailed` can instantly appear, although the provider has been created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the provider has not been created successfully. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
-.Left over `ovirtvolumepopulator` from failed migration causes plan to stop indefinitely in `CopyDisks` phase.
+.Leftover `ovirtvolumepopulator` from failed migration causes the plan to stop in the `CopyDisks` phase
 
 An earlier failed migration can leave an outdated `ovirtvolumepopulator` in the project of a new plan for the same VM. The `CreateDataVolumes` phase does not create populator PVCs when transitioning to `CopyDisks`, causing the `CopyDisks` phase to stay indefinitely. link:https://issues.redhat.com/browse/MTV-929[(MTV-929)]
 
