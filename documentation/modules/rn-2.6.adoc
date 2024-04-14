@@ -186,6 +186,10 @@ For a complete list of all known issues in this release, see the list of link:ht
 
 This release has the following resolved issues:
 
+.Deleting a provider automatically also deletes the PV
+
+Each OVA provider has an attached PV and PVC. The PVC is deleted automatically when the provider is deleted. {project-short} now also deletes the PV when the provider is deleted. link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
+
 .Data loss is no longer possible when migrating VMware VMs with snapshots
 
 In the previous versions of {product-short}, when migrating a VMware VM that had a snapshot, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot, but not in the running VM that was migrated. This has been resolved in {product-short} 2.6.0. [(MTV-447)]
