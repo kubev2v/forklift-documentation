@@ -89,13 +89,6 @@ With this update, you can edit plans that have failed to migrate any VMs. Some p
 
 The following are new features for the {project-short} Open Virtual Appliance (OVA) provider. link:https://issues.redhat.com/browse/MTV-690[(MTV-690)]
 
-.Get firmware detection by virt-v2v
-
-A `virt-v2v` that converts a guest also produces an OFV with configuration based on the virtual disk, such as driver or firmware. `forklift-controller` processes the produced OFV's status of the conversion pod. link:https://issues.redhat.com/browse/MTV-759[(MTV-759)]
-
-
-
-
 
 .OVA inventory watcher detects deleted files
 
