@@ -298,8 +298,8 @@ After upgrading {project-short} from version 2.4.2 to 2.5.0, the `ForkliftContro
  
 Previously, migrating a vSphere Datacenter succeeded when it was directly under the `/vcenter`, but failed when it was stored inside a folder. As a result, the migration raised an error. This issue was resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-796[(MTV-796)]
 
-.Fail to migrate image-based VM from {osp} to `default` project
+.Migration of image-based VM from {osp} to `default` project no longer fails
 
-The migration process fails when migrating an image-based VM from {osp} to the `default` project. The conversion of a virtual machine snapshot as part of the migration runs with non-root privileges, and {name-ocp} does not automatically pick a non-root user for the pod that starts on the `default` project. link:https://issues.redhat.com/browse/MTV-964[(MTV-964)]
+The migration process now succeeds when migrating an image-based VM from {osp} to the `default` project. The conversion of a virtual machine snapshot as part of the migration runs with non-root privileges, and {name-ocp} does not automatically pick a non-root user for the pod that starts on the `default` project. This issue has been resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-964[(MTV-964)]
 
 For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430274[Resolved Issues] in Jira.
