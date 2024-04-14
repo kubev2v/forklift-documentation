@@ -222,9 +222,6 @@ Migrating from an OVA provider to a restricted project fails at the step `Conver
 
 
 
-.Provider with application credential or user token authentication type remains in `staging` status
-
-When migrating a VM with an application credential or user token authentication type, the migration gets stuck in the `staging` status, without continuing and finishing in the `Ready` status. link:https://issues.redhat.com/browse/MTV-701[(MTV-701)]
 
 .Forklift-controller crashes when creating a plan for a VM with 2 NICs
 
