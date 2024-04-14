@@ -139,7 +139,7 @@ To clean up the the temporary resources, you must archive a migration plan befor
 
 The error status message for a VM with no operating system on the *Plans* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
 
-.Migration of virtual machines with encrypted partitions fails during a conversion
+.Migration of virtual machines with encrypted partitions fails during a conversion (vSphere only)
 
 vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the encryption key might be missing on the target {ocp} cluster.
 
