@@ -247,9 +247,6 @@ When creating a {ocp} to {ocp} migration plan for a VM with 2 NICs, it creates a
 
 When `ovirt-img` fails to download the image, the reason for the failure does not appear in the populator controller or any events log. The pod keeps restarting after each failure, so customer populator pod error logs can only show the reason for failure if they happen to log exactly when the pod is in an error state. link:(https://issues.redhat.com/browse/MTV-725[(MTV-725)]
 
-.Conversion pod does not use the transfer network
-
-When creating a migration plan using the `transferNetwork`, the `virt-v2v` pod uses the default pod network instead of the transfer network. link:https://issues.redhat.com/browse/MTV-835[(MTV-835)]
 
 .Creating a host secret requires validating the secret before creating the host
 
