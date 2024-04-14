@@ -109,7 +109,6 @@ VM migrations from OVA are validated according to vSphere. The migration can use
 
 When migrating from a source provider that uses VDDK (VMware Virtual Disk Development Kit) version 8, the migration completes successfully, but the converted guest cannot boot. The guest cannot find the boot disk. 
 
-For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430274[Resolved Issues] in Jira.
 
 [id="known-issues-26_{context}"]
 == Known issues
