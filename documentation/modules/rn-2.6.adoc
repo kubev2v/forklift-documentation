@@ -154,9 +154,9 @@ An earlier failed migration can leave an outdated `ovirtvolumepopulator` in the 
 
 The migration fails to build the PVC when the destination storage class does not have a configured storage profile. The error logs lack clear information to identify the reason for the failure. link:https://issues.redhat.com/browse/MTV-928[(MTV-928)]
 
-.Fail to migrate a VM with NVME disks from vSphere 
+.Migration of a VM with NVME disks from vSphere fails
 
-When migrating a VM with NVME disks from vSphere, the migration process fails and the Web Console shows that the `Convert image to kubevirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
+When migrating a virtual machine (VM) with NVME disks from vSphere, the migration process fails, and the Web Console shows that the `Convert image to kubevirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
 
 .Import image-based VMs can fail
 
