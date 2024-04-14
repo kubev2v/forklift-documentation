@@ -64,7 +64,7 @@ type: Opaque
 stringData:
   user: <user> <2>
   password: <password> <3>
-  insecureSkipVerify: <true/false> <4>
+  insecureSkipVerify: <"true"/"false"> <4>
   cacert: | <5>
     <ca_certificate>
   url: <api_end_point> <6>
@@ -98,7 +98,7 @@ type: Opaque
 stringData:
   user: <user> <2>
   password: <password> <3>
-  insecureSkipVerify: <true/false> <4>
+  insecureSkipVerify: <"true"/"false"> <4>
   cacert: | <5>
     <ca_certificate>
   url: <api_end_point> <6>
@@ -157,7 +157,7 @@ type: Opaque
 stringData:
   user: <user> <2>
   password: <password> <3>
-  insecureSkipVerify: <true/false> <4>
+  insecureSkipVerify: <"true"/"false"> <4>
   domainName: <domain_name>
   projectName: <project_name>
   regionName: <region_name>
@@ -195,7 +195,7 @@ type: Opaque
 stringData:
   token: <token> <2>
   password: <password> <3>
-  insecureSkipVerify: <true/false> <4>
+  insecureSkipVerify: <"true"/"false"> <4>
   cacert: | <5>
     <ca_certificate>
   url: <api_end_point> <6>
