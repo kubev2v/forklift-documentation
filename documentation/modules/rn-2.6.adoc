@@ -136,7 +136,7 @@ When migrating a VM with multiple disks to more than one storage classes of the 
 
 To enable migrating a VM with multiple disks, use a shared storage on the target {ocp} cluster.
 
-.Non-supported guest operating systems in warm migrations
+.Warm migrations do not support guest operating systems
 
 Warm migrations and migrations to remote {ocp} clusters from vSphere do not support the same guest operating systems that are supported in cold migrations and migrations to the local {ocp} cluster. RHEL 8 and RHEL 9 might cause this limitation. +
 See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
