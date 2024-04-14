@@ -189,7 +189,7 @@ Each OVA provider has an attached PV and PVC. The PVC is deleted automatically w
 
 .Data loss is no longer possible when migrating VMware VMs with snapshots
 
-In the previous versions of {product-short}, when migrating a VMware VM that had a snapshot, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot, but not in the running VM that was migrated. This has been resolved in {product-short} 2.6.0. [(MTV-447)]
+In the previous versions of {product-short}, when migrating a VMware VM that had a snapshot, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot, but not in the running VM that was migrated. This has been resolved in {product-short} 2.6.0.  link:https://issues.redhat.com/browse/MTV-447[(MTV-447)]
 
 .Adding an OVA provider no longer displays the `ConnectionTestFailed` error message
 
