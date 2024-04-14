@@ -205,9 +205,6 @@ When migrating from {ocp} to {ocp}, the version of the source provider cluster m
 
 
 
-.Migration from an OVA provider to a restricted project fails
-
-Migrating from an OVA provider to a restricted project fails at the step `Convert image to kubevirt`, raising an error. link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
 
 
 
