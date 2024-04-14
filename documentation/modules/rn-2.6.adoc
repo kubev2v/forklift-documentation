@@ -150,7 +150,7 @@ When migrating virtual machines (VMs) with Red Hat Enterprise Linux (RHEL) 9 ins
 
 An earlier failed migration can leave an outdated `ovirtvolumepopulator` in the project of a new plan for the same VM. The `CreateDataVolumes` phase does not create populator PVCs when transitioning to `CopyDisks`, causing the `CopyDisks` phase to stay indefinitely. link:https://issues.redhat.com/browse/MTV-929[(MTV-929)]
 
-.Unclear error message when Forklift fails to build/create a PVC
+.Unclear error message when Forklift fails to build or create a PVC
 
 The migration fails to build the PVC when the destination storage class does not have a configured storage profile. The error logs lack clear information to identify the reason for the failure. link:https://issues.redhat.com/browse/MTV-928[(MTV-928)]
 
