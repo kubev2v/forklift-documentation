@@ -64,9 +64,6 @@ Red Hat Enterprise Linux (RHEL) 9 does not support RHEL 6 as a guest operating s
 
 The `Export API` function in {ocp-name} Virtualization now exposes VM manifests from {ocp-name} 4.13. Therefore, source {ocp} clusters must be version 4.13 or later. link:https://issues.redhat.com/browse/MTV-734[(MTV-734)]
 
-.Source and storage endpoints are now not selected automatically
-
-Source network and source storage are now not selected automatically when creating a {ocp} to {ocp} plan. link:https://issues.redhat.com/browse/MTV-729[MTV729]
 
 .Automatic retrieval of CA certificates for the provider's URL in the console
 
