@@ -225,9 +225,6 @@ Migrating from an OVA provider to a restricted project fails at the step `Conver
 // What is NIC?
 When creating a {ocp} to {ocp} migration plan for a VM with 2 NICs, it creates a plan with an `Unknown` status. This status causes the `forklift-controller` to fail. link:https://issues.redhat.com/browse/MTV-704[(MTV-704)]
 
-.Difficult to capture errors logged in populator pods from customers
-
-When `ovirt-img` fails to download the image, the reason for the failure does not appear in the populator controller or any events log. The pod keeps restarting after each failure, so customer populator pod error logs can only show the reason for failure if they happen to log exactly when the pod is in an error state. link:(https://issues.redhat.com/browse/MTV-725[(MTV-725)]
 
 
 .Creating a host secret requires validating the secret before creating the host
