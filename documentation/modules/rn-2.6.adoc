@@ -94,7 +94,6 @@ The following are new features for the {project-short} Open Virtual Appliance (O
 
 The OVA inventory watcher detects changes in files, including deleted files. Updates from the `ova-provider-server` pod are now sent every five minutes to the `forklift-controller` pod that updates the inventory. link:https://issues.redhat.com/browse/MTV-733[(MTV-733)]
 
-.Migration from OVA validation rules
 
 .Validation rules are now available for OVA
 
