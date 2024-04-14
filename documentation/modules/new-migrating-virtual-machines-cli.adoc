@@ -862,7 +862,7 @@ EOF
 +
 [NOTE]
 ====
-* If the migrated machines are set with a custom CPU model, they will be set with that CPU model in the destination cluster, regardless of the setting of `preserveClusterCpuModel`.
+* If the migrated machines is set with a custom CPU model, it will be set with that CPU model in the destination cluster, regardless of the setting of `preserveClusterCpuModel`.
 
 * If the migrated machine is _not_ set with a custom CPU model:
 
