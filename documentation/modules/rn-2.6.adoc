@@ -218,9 +218,6 @@ Only the files placed under the NFS share root folder can be scanned. The fix al
 
 Migrating from an OVA provider to a restricted project fails at the step `Convert image to kubevirt`, raising an error. link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
 
-.Migration with multiple disks fails
-
-When migrating an OVA VM with more than one disk, the migration gets stuck in the allocate disk phase. link:https://issues.redhat.com/browse/MTV-676[(MTV-676)]
 
 .Hyper-V Enlightenments are not added to the converted Windows VMs
 
