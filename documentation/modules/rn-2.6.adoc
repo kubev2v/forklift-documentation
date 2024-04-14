@@ -221,9 +221,6 @@ Migrating from an OVA provider to a restricted project fails at the step `Conver
 
 
 
-.Migrated VM from OpenStack has different power states when source VM is running
-
-A VM migrated from OpenStack does not start automatically when the source VM is running. link:https://issues.redhat.com/browse/MTV-677[(MTV-677)]
 
 .Provider with application credential or user token authentication type remains in `staging` status
 
