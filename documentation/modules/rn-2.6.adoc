@@ -262,7 +262,7 @@ When creating a host secret, you must validate the secret before creating the ho
 
 . Create a secret
 . Create a host
-. Update the host owner reference
+. Update the secret owner reference
 
 link:https://issues.redhat.com/browse/MTV-868[(MTV-868)]
 
