@@ -93,9 +93,6 @@ The following are new features for the {project-short} Open Virtual Appliance (O
 
 A `virt-v2v` that converts a guest also produces an OFV with configuration based on the virtual disk, such as driver or firmware. `forklift-controller` processes the produced OFV's status of the conversion pod. link:https://issues.redhat.com/browse/MTV-759[(MTV-759)]
 
-.Deleting a provider automatically also deletes the PV
-
-Each OVA provider has an attached PV and PVC. The PVC is deleted automatically when the provider is deleted. {project-short} now also deletes the PV when the provider is deleted. link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
 
 
 .The OVA provider can now be created under all projects
