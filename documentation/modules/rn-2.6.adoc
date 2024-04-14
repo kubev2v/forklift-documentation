@@ -69,9 +69,6 @@ The `Export API` function in {ocp-name} Virtualization now exposes VM manifests 
 
 The ability to retrieve CA certificates, which was available in previous versions, has been restortes. The `vSphere Verify certificate` option is in the `add-provider` dialog. This option was removed in the transition to {ocp} console, and has now been added to the console. link:https://issues.redhat.com/browse/MTV-737[(MTV-737)]
 
-.{ocp-name} Console SDK `fetch`, `post`, and `delete` calls are now available
-
-The `fetch`, `post`, and `delete` calls in the Forklift UI are now native to the {ocp-name} API. link:https://issues.redhat.com/browse/MTV-365[(MTV-365)]
 
 .{project-short} UI plugin now uses only a dynamic plugin for the SDK REST API `fetch` methods
 
