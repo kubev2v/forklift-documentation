@@ -74,9 +74,6 @@ The ability to retrieve CA certificates, which was available in previous version
 
 The UI plugin now uses a dynamic plugin for the SDK REST API when using the `fetch` methods. link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
 
-.Migration success status bar chart 
-
-With this update, a migration success status bar chart the number of migrations and displays their status - `starts`, `finished`, or `failed`. link:https://issues.redhat.com/browse/MTV-770[(MTV-770)]
 
 .Improved list of VMs in the detailed view of each provider
 
