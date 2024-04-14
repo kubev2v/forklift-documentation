@@ -75,9 +75,6 @@ The ability to retrieve CA certificates, which was available in previous version
 The UI plugin now uses a dynamic plugin for the SDK REST API when using the `fetch` methods. link:https://issues.redhat.com/browse/MTV-616[(MTV-616)]
 
 
-.Improved list of VMs in the detailed view of each provider
-
-The detailed view of each provider includes specific information relevant to the VMs of that provider. link:https://issues.redhat.com/browse/MTV-772[(MTV-772)]
 
 .Plans that failed to migrate VMs can now be edited
 
