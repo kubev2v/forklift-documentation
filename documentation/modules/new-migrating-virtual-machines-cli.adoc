@@ -64,7 +64,7 @@ type: Opaque
 stringData:
   user: <user> <2>
   password: <password> <3>
-  insecureSkipVerify: <true/false> <4>
+  insecureSkipVerify: <"true"/"false"> <4>
   cacert: | <5>
     <ca_certificate>
   url: <api_end_point> <6>
@@ -73,7 +73,7 @@ EOF
 <1> The `ownerReferences` section is optional.
 <2> Specify the vCenter user or the ESX/ESXi user.
 <3> Specify the password of the vCenter user or the ESX/ESXi user.
-<4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+<4> Specify `"true"` to skip certificate verification, specify `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 <6>  Specify the API endpoint URL of the vCenter or the ESX/ESX, for example, `https://<vCenter_host>/sdk`.
 endif::[]
@@ -98,7 +98,7 @@ type: Opaque
 stringData:
   user: <user> <2>
   password: <password> <3>
-  insecureSkipVerify: <true/false> <4>
+  insecureSkipVerify: <"true"/"false"> <4>
   cacert: | <5>
     <ca_certificate>
   url: <api_end_point> <6>
@@ -107,7 +107,7 @@ EOF
 <1> The `ownerReferences` section is optional.
 <2> Specify the {rhv-short} {manager} user.
 <3> Specify the user password.
-<4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+<4> Specify `"true"` to skip certificate verification, specify `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5>  Enter the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
 <6> Specify the API endpoint URL, for example, `https://<engine_host>/ovirt-engine/api`.
 endif::[]
@@ -157,7 +157,7 @@ type: Opaque
 stringData:
   user: <user> <2>
   password: <password> <3>
-  insecureSkipVerify: <true/false> <4>
+  insecureSkipVerify: <"true"/"false"> <4>
   domainName: <domain_name>
   projectName: <project_name>
   regionName: <region_name>
@@ -169,7 +169,7 @@ EOF
 <1> The `ownerReferences` section is optional.
 <2> Specify the {osp} user.
 <3> Specify the user {osp} password.
-<4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+<4> Specify `"true"` to skip certificate verification, specify `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 <6> Specify the API endpoint URL, for example, `https://<identity_service>/v3`.
 endif::[]
@@ -195,7 +195,7 @@ type: Opaque
 stringData:
   token: <token> <2>
   password: <password> <3>
-  insecureSkipVerify: <true/false> <4>
+  insecureSkipVerify: <"true"/"false"> <4>
   cacert: | <5>
     <ca_certificate>
   url: <api_end_point> <6>
@@ -204,7 +204,7 @@ EOF
 <1> The `ownerReferences` section is optional.
 <2> Specify a token for a service account with `cluster-admin` privileges. If both `token` and `url` are left blank, the local {ocp-short} cluster is used.
 <3> Specify the user password.
-<4> Specify `<true>` to skip certificate verification, specify `false` to verify the certificate. Defaults to `false` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+<4> Specify `"true"` to skip certificate verification, specify `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 <6> Specify the URL of the endpoint of the API server.
 endif::[]
