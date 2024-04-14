@@ -95,9 +95,6 @@ A `virt-v2v` that converts a guest also produces an OFV with configuration based
 
 
 
-.The OVA provider can now be created under all projects
-
-The OVA provider can be created under all projects, not only under the forklift or MTV project. link:https://issues.redhat.com/browse/MTV-681[(MTV-681,] link:https://issues.redhat.com/browse/MTV-715[MTV-715)]
 
 
 .OVA inventory watcher detects deleted files
