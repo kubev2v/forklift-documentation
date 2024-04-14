@@ -209,6 +209,9 @@ When creating a host secret, you must validate the secret before creating the ho
 
 link:https://issues.redhat.com/browse/MTV-868[(MTV-868)]
 
+.When adding OVA provider a `ConnectionTestFailed` message appears
+
+When adding an OVA provider, the error message `ConnectionTestFailed` can instantly appear, although the provider has been created successfully. If the message does not disappear after a few minutes and the provider status does not move to `Ready`, this means that the provider has not been created successfully. link:https://issues.redhat.com/browse/MTV-671[(MTV-671)]
 
 .RHV provider `ConnectionTestSucceeded` True response from the wrong URL
 
