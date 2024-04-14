@@ -124,7 +124,7 @@ The error status message for a VM with no operating system on the *Plans* page o
 
 .Migration of virtual machines with encrypted partitions fails during a conversion (vSphere only)
 
-vSphere only: Migrations from {rhv-short} and OpenStack do not fail, but the encryption key might be missing on the target {ocp} cluster.
+vSphere only: Migrations from {rhv-short} and {osp} do not fail, but the encryption key might be missing on the target {ocp} cluster.
 
 .Migration fails during precopy and cutover while a snapshot operation is performed on the source VM
 
