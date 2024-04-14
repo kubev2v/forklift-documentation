@@ -180,8 +180,8 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
 
-include::modules/creating-network-mapping.adoc[leveloffset=+2]
-include::modules/creating-storage-mapping.adoc[leveloffset=+2]
+// include::modules/creating-network-mapping.adoc[leveloffset=+2]
+// include::modules/creating-storage-mapping.adoc[leveloffset=+2]
 
 [id="creating-migration-plans-ui"]
 === Creating migration plans
@@ -237,14 +237,18 @@ include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :rhv:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :rhv!:
-:context: ova
-:ova:
-include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
-:ova!:
 :context: ostack
 :ostack:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :ostack!:
+:context: ova
+:ova:
+//include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+//:ova!:
+//:context: ostack
+//:ostack:
+include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+:ova!:
 :context: cnv
 :cnv:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
@@ -315,5 +319,7 @@ You can download logs and custom resource (CR) information for troubleshooting. 
 include::modules/collected-logs-cr-info.adoc[leveloffset=+3]
 include::modules/accessing-logs-ui.adoc[leveloffset=+3]
 include::modules/accessing-logs-cli.adoc[leveloffset=+3]
+
+// comment to create PR
 
 :mtv!:

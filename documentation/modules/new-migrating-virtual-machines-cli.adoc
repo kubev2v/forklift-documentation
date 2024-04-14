@@ -42,8 +42,9 @@ endif::[]
 
 .Procedure
 . Create a `Secret` manifest for the source provider credentials:
-+
+
 ifdef::vmware[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -78,6 +79,7 @@ EOF
 <6>  Specify the API endpoint URL of the vCenter or the ESX/ESX, for example, `https://<vCenter_host>/sdk`.
 endif::[]
 ifdef::rhv[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -112,6 +114,7 @@ EOF
 <6> Specify the API endpoint URL, for example, `https://<engine_host>/ovirt-engine/api`.
 endif::[]
 ifdef::ova[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -137,6 +140,7 @@ EOF
 <2> where: `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
 endif::[]
 ifdef::ostack[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -175,6 +179,7 @@ EOF
 endif::[]
 
 ifdef::cnv[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -213,6 +218,7 @@ endif::[]
 . Create a `Provider` manifest for the source provider:
 +
 ifdef::vmware[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -239,6 +245,7 @@ EOF
 endif::[]
 
 ifdef::rhv[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -260,6 +267,7 @@ EOF
 endif::[]
 
 ifdef::ova[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -281,6 +289,7 @@ EOF
 endif::[]
 
 ifdef::ostack[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
@@ -297,9 +306,12 @@ spec:
     namespace: <namespace>
 EOF
 ----
+<1> Specify the URL of the API endpoint.
+<2> Specify the name of provider `Secret` CR.
 endif::[]
 
 ifdef::cnv[]
++
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
