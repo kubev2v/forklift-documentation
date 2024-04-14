@@ -37,7 +37,7 @@ Custom mappings of guest operating system type to virtual machine preference can
 
 {project-short} migration from OVA is now a fully supported feature, and no longer Technical Preview.
 
-.The VM `Running` state is displayed during the migration
+.The VM is posted with its desired `Running` state
 
 {project-short} shows each VM's migration `Running` state during the migration. This single `Running` operation replaces two previous operations, `Create/Post VM` and Run VM`.  link:https://issues.redhat.com/browse/MTV-794[(MTV-794)]
 
