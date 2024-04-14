@@ -102,9 +102,6 @@ Each OVA provider has an attached PV and PVC. The PVC is deleted automatically w
 
 The OVA provider can be created under all projects, not only under the forklift or MTV project. link:https://issues.redhat.com/browse/MTV-681[(MTV-681,] link:https://issues.redhat.com/browse/MTV-715[MTV-715)]
 
-.Migrate from an OVA provider to a restricted project
-
-Migration from OVA provider to a restricted project can now succeed past the `kubevirt` step. link:https://issues.redhat.com/browse/MTV-689[(MTV-689)]
 
 .OVA inventory watcher detects deleted files
 
