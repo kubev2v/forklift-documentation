@@ -204,13 +204,9 @@ When a user cancels and deletes a failed migration plan after creating a PVC and
 When migrating from {ocp} to {ocp}, the version of the source provider cluster must be {ocp} version 4.13 or later. link:https://issues.redhat.com/browse/MTV-809[(MTV-809)]
 
 
+.Get firmware detection by virt-v2v
 
-
-
-
-
-
-
+A `virt-v2v` that converts a guest also produces an OFV with configuration based on the virtual disk, such as driver or firmware. `forklift-controller` processes the produced OFV's status of the conversion pod. link:https://issues.redhat.com/browse/MTV-759[(MTV-759)]
 
 
 
