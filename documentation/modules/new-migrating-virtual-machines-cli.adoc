@@ -862,12 +862,12 @@ EOF
 +
 [NOTE]
 ====
-* If the migrated machines are set with a custom CPU model, they will be set with that CPU model in the destination cluster, regardless of the setting of `preserveClusterCpuModel`.
+* If the migrated machines is set with a custom CPU model, it will be set with that CPU model in the destination cluster, regardless of the setting of `preserveClusterCpuModel`.
 
-* If the migrated machine are _not_ set with a custom CPU model:
+* If the migrated machine is _not_ set with a custom CPU model:
 
 ** If `preserveClusterCpuModel` is set to 'true`, {project-short} checks the CPU model of the VM when it runs in {rhv-short}, based on the cluster's configuration, and then sets the migrated VM with that CPU model.
-** If `preserveClusterCpuModel` is set to 'false`, {project-short} does not set a CPU type and the VMs are set with the default CPU model of the destination cluster.
+** If `preserveClusterCpuModel` is set to 'false`, {project-short} does not set a CPU type and the VM is set with the default CPU model of the destination cluster.
 ====
 endif::[]
 
