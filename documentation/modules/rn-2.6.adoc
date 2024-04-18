@@ -112,19 +112,6 @@ The validation service includes default validation rules for virtual machines fr
 
 This release has the following known issues:
 
-.Deleting a migration plan does not remove temporary resources
-
-Deleting a migration plan does not remove temporary resources.
-
-* Importer pods
-* Conversion pods
-* Config maps
-* Secrets
-* Failed VMs
-* Data volumes.
-
-To clean up the the temporary resources, you must archive a migration plan before deleting it. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
-
 .Unclear error status message for VM with no operating system
 
 The error status message for a VM with no operating system on the *Plans* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
