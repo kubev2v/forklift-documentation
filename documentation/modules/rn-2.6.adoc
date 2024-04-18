@@ -46,7 +46,7 @@ Migration from OVA moves from being a Technical Preview and is now a fully suppo
 
 .The `must-gather` logs can now be loaded only by using the CLI
 
-The {product-short} web console can no longer download logs. With this update, you must download `must-gather` logs by using CLI commands. For more information, see link:https://github.com/openshift/must-gather-operator[Must Gather Operator].
+The {project-short} web console can no longer download logs. With this update, you must download `must-gather` logs by using CLI commands. For more information, see link:https://github.com/openshift/must-gather-operator[Must Gather Operator].
 
 .{project-short} no longer runs `pvc-init` pods when migrating from vSphere
 
@@ -176,7 +176,7 @@ When the time to transfer the disks of a VM exceeds the timeout of the Export AP
 
 When vSphere does not receive updates about the guest operating system from the VMware tools, it considers the information about the guest operating system to be outdated and ceases to report it. When this occurs, {project-short} is unaware of the guest operating system of the VM and is unable to associate it with the appropriate virtual machine preference or {ocp-name} template. link:https://issues.redhat.com/browse/MTV-1046[(MTV-1046)]
 
-.{product-short} forklift-controller pod crashes when receiving a disk without a datastore
+.{project-short} forklift-controller pod crashes when receiving a disk without a datastore
 
 In some rare cases, the VM may be configured with a disk that is placed on a datastore that is no longer available in vSphere. MTV gets such disks without their datastore. Previously, the `forklift-controller` crashed in this situation, rendering {project-short} unusable. In {project-short} 2.6.0, {project-short} presents a critical validation for VMs with such disks, and the `forklift-controller` no longer crashes. link:https://issues.redhat.com/browse/MTV-1029[(MTV-1029)]
 
@@ -193,11 +193,11 @@ This release has the following resolved issues:
 
 .Deleting an OVA provider automatically also deletes the PV
 
-In the earlier versions of {product-short}, the PV was not removed when the OVA provider was deleted. This has been resolved in {product-short} 2.6.0, and the PV is automatically deleted when the OVA provider is deleted. link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
+In the earlier versions of {product-short}, the PV was not removed when the OVA provider was deleted. This has been resolved in {project-short} 2.6.0, and the PV is automatically deleted when the OVA provider is deleted. link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
 
 .Fix for data being lost when migrating VMware VMs with snapshots
 
-In the earlier versions of {product-short}, when migrating a VM that has a snapshot from VMware, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot but not the latest data of the VM. This has been resolved in {product-short} 2.6.0.  link:https://issues.redhat.com/browse/MTV-447[(MTV-447)]
+In the earlier versions of {product-short}, when migrating a VM that has a snapshot from VMware, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot but not the latest data of the VM. This has been resolved in {project-short} 2.6.0.  link:https://issues.redhat.com/browse/MTV-447[(MTV-447)]
 
 .Canceling and deleting a failed migration plan does not clean up the `populate` pods and PVC
 
