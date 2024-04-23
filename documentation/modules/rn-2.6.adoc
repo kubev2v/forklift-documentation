@@ -74,13 +74,13 @@ You can now specify a CA certificate that can be used to authenticate the API se
 
 {project-short} supports the migration of VMs that were created from images in {osp}. link:https://issues.redhat.com/browse/MTV-644[(MTV-644)]
 
-.Migration of VMs with Fibre Channel LUNs from {rhv}
+.Migration of VMs with Fibre Channel LUNs from {rhv-short}
 
-{project-short} supports migrations of VMs that are set with Fibre Channel (FC) LUNs from {rhv}. As with other LUN disks, you need to ensure the {ocp-name} nodes have access to the FC LUNs. During the migrations, the FC LUNs are detached from the source VMs in {rhv} and attached to the migrated VMs in {ocp-name}. link:https://issues.redhat.com/browse/MTV-659[(MTV-659)]
+{project-short} supports migrations of VMs that are set with Fibre Channel (FC) LUNs from {rhv-short}. As with other LUN disks, you need to ensure the {ocp-name} nodes have access to the FC LUNs. During the migrations, the FC LUNs are detached from the source VMs in {rhv-short} and attached to the migrated VMs in {ocp-name}. link:https://issues.redhat.com/browse/MTV-659[(MTV-659)]
 
-.Preserve CPU types of VMs that are migrated from {rhv}
+.Preserve CPU types of VMs that are migrated from {rhv-short}
 
-{project-short} sets the CPU type of migrated VMs in {ocp-name} with their custom CPU type in {rhv}. In addition, a new option was added to migration plans that are set with {rhv} as a source provider to preserve the original CPU types of source VMs. When this option is selected, {project-short} identifies the CPU type based on the cluster configuration and sets this CPU type for the migrated VMs, for which the source VMs are not set with a custom CPU. link:https://issues.redhat.com/browse/MTV-547[(MTV-547)]
+{project-short} sets the CPU type of migrated VMs in {ocp-name} with their custom CPU type in {rhv-short}. In addition, a new option was added to migration plans that are set with {rhv-short} as a source provider to preserve the original CPU types of source VMs. When this option is selected, {project-short} identifies the CPU type based on the cluster configuration and sets this CPU type for the migrated VMs, for which the source VMs are not set with a custom CPU. link:https://issues.redhat.com/browse/MTV-547[(MTV-547)]
 
 .Validation for RHEL 6 guest operating system is now available when migrating VMs with RHEL 6 guest operating system
 
@@ -96,7 +96,7 @@ The ability to retrieve CA certificates, which was available in previous version
 
 .Add a warning and partial support for TPM
 
-{project-short} presents a warning when attempting to migrate a VM that is set with a TPM device from {rhv} or vSphere. The migrated VM in {ocp-name} would be set with a TPM device but without the content of the TPM device on the source environment. link:https://issues.redhat.com/browse/MTV-378[(MTV-378)]
+{project-short} presents a warning when attempting to migrate a VM that is set with a TPM device from {rhv-short} or vSphere. The migrated VM in {ocp-name} would be set with a TPM device but without the content of the TPM device on the source environment. link:https://issues.redhat.com/browse/MTV-378[(MTV-378)]
 
 .Plans that failed to migrate VMs can now be edited
 
