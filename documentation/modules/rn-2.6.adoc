@@ -1,4 +1,4 @@
-FF// Module included in the following assemblies:
+// Module included in the following assemblies:
 //
 // * documentation/doc-Release_notes/master.adoc
 
