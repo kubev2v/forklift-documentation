@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_mod_docs_content-type: PROCEDURE
 [id="migrating-virtual-machines-cli_{context}"]
 = Migrating virtual machines
 
@@ -135,7 +136,7 @@ spec:
 EOF
 ----
 <1> Specify the name of the VMware `Provider` CR.
-<2> Specify the managed object reference (MOR) of the VMware host.
+<2> Specify the managed object reference (moRef) of the VMware host. To retrieve the moRef, see xref:retrieving-vmware-moref_{context}[Retrieving a VMware vSphere moRef].
 <3> Specify the IP address of the VMware migration network.
 
 . Create a `NetworkMap` manifest to map the source and destination networks:
@@ -175,7 +176,7 @@ EOF
 ----
 <1> Allowed values are `pod` and `multus`.
 <2> You can use either the `id` _or_ the `name` parameter to specify the source network.
-<3> Specify the VMware network MOR, the {rhv-short} network UUID, or the {osp} network UUID.
+<3> Specify the VMware network moRef, the {rhv-short} network UUID, or the {osp} network UUID. To retrieve the moRef, see xref:retrieving-vmware-moref_{context}[Retrieving a VMware vSphere moRef].
 <4> Specify a network attachment definition for each additional {virt} network.
 <5> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 <6> Specify a network attachment definition for each additional {virt} network.
@@ -214,7 +215,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware data storage MOR, the {rhv-short} storage domain UUID, or the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+<2> Specify the VMware datastore moRef, the {rhv-short} storage domain UUID, or the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_{context}[Retrieving a VMware vSphere moRef].
 +
 [NOTE]
 ====
@@ -242,7 +243,7 @@ spec:
 EOF
 ----
 <1> You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
-<2> Optional: Base64-encoded Ansible playbook. If you specify a playbook, the `image` must be `hook-runner`.
+<2> Optional: Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must be `hook-runner`.
 
 . Create a `Plan` manifest for the migration:
 +
@@ -291,7 +292,7 @@ EOF
 <7> Specify the name of the `StorageMap` CR.
 <8> For all source providers except for {virt}, you can use either the `id` _or_ the `name` parameter to specify the source VMs. +
 {virt} source provider only: You can use only the `name` parameter, not the `id.` parameter to specify the source VMs.
-<9> Specify the VMware VM MOR, {rhv-short} VM UUID or the {osp} VM UUID.
+<9> Specify the VMware VM moRef, {rhv-short} VM UUID or the {osp} VM UUID. To retrieve the moRef, see xref:retrieving-vmware-moref_{context}[Retrieving a VMware vSphere moRef].
 <10> {virt} source provider only.
 <11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <12> Specify the name of the `Hook` CR.

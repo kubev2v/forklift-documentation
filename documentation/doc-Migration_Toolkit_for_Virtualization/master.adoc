@@ -209,6 +209,8 @@ include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
 :cli!:
 :context: mtv
 
+include::modules/retrieving-vmware-moref.adoc[leveloffset=+2]
+
 include::modules/migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/obtaining-vmware-fingerprint.adoc[leveloffset=+2]
 
@@ -229,9 +231,10 @@ You can create custom rules to extend the default ruleset of the `Validation` se
 
 include::modules/about-rego-files.adoc[leveloffset=+3]
 include::modules/accessing-default-validation-rules.adoc[leveloffset=+3]
-include::modules/retrieving-validation-service-json.adoc[leveloffset=+3]
 include::modules/creating-validation-rule.adoc[leveloffset=+3]
 include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
+
+include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 
