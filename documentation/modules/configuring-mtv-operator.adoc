@@ -35,7 +35,7 @@ spec:
 |===
 |Label |Description |Default value
 
-|`controller_max_vm_in_flight`
+|`controller_max_vm_inflight`
 |The maximum number of VMs per plan that can be migrated simultaneously.
 |`20`
 
