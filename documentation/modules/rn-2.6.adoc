@@ -155,21 +155,14 @@ Deleting a migration plan does not remove temporary resources such as importer p
 
 Migrating VMs with independent persistent disks from VMware to OCP-V fails. link:https://issues.redhat.com/browse/MTV-993[(MTV-993)]
 
-.Migrating VMs from one OCP-V cluster to another using timeouts and fails
-
-When the time to transfer the disks of a VM exceeds the timeout of the Export API in {ocp-name} the migration fails. The timeout of the Export API in {ocp-name} is set to 2 hours by default. You can increase the timeout to resolve this issue. link:https://issues.redhat.com/browse/MTV-1052[(MTV-1052)]
-
 .Guest operating system from vSphere might be missing
 
 When vSphere does not receive updates about the guest operating system from the VMware tools, it considers the information about the guest operating system to be outdated and ceases to report it. When this occurs, {project-short} is unaware of the guest operating system of the VM and is unable to associate it with the appropriate virtual machine preference or {ocp-name} template. link:https://issues.redhat.com/browse/MTV-1046[(MTV-1046)]
 
-.{project-short} forklift-controller pod crashes when receiving a disk without a datastore
-
-In some rare cases, the VM may be configured with a disk that is placed on a datastore that is no longer available in vSphere. MTV gets such disks without their datastore. Previously, the `forklift-controller` crashed in this situation, rendering {project-short} unusable. In {project-short} 2.6.0, {project-short} presents a critical validation for VMs with such disks, and the `forklift-controller` no longer crashes. link:https://issues.redhat.com/browse/MTV-1029[(MTV-1029)]
-
 .Failure to migrate an image-based VM from {osp} to the `default` project
 
 The migration process fails when migrating an image-based VM from {osp} to the `default` project. link:https://issues.redhat.com/browse/MTV-964[(MTV-964)]
+
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430275[Known Issues] in Jira.
 
 
@@ -177,6 +170,18 @@ For a complete list of all known issues in this release, see the list of link:ht
 == Resolved issues
 
 This release has the following resolved issues:
+
+.VMs migrated from vSphere and OVa files are not being fully copied
+
+In {project-short} 2.6.0, there was a problem copying VMs from VMware vSphere and from OVA files, resulting in the failure of migrations using these source providers. The problem was resolved in {project-short} 2.6.1. link:https://issues.redhat.com/browse/MTV-1067[(MTV-1067)]
+
+.Migrating VMs from one OCP-V cluster to another fails due to a timeout
+
+In {project-short} 2.6.0, migrations from one OCP-V cluster to another failed when the time to transfer the disks of a VM exceeded the timeout of the Export API in {ocp-name}, which was set to 2 hours by default. The problem was resolved in version 2.6.1 by setting the default value of the API to 12 hours, which greatly reduces the possibility of a timeout. Additionally, you can increase or decrease the the timeout as needed. link:https://issues.redhat.com/browse/MTV-1052[(MTV-1052)]
+
+.{project-short} forklift-controller pod crashes when receiving a disk without a datastore
+
+In some rare cases, the VM may be configured with a disk that is placed on a datastore that is no longer available in vSphere. MTV gets such disks without their datastore. Previously, the `forklift-controller` crashed in this situation, rendering {project-short} unusable. In {project-short} 2.6.1, {project-short} presents a critical validation for VMs with such disks, and the `forklift-controller` no longer crashes. link:https://issues.redhat.com/browse/MTV-1029[(MTV-1029)]
 
 .Deleting an OVA provider automatically also deletes the PV
 
