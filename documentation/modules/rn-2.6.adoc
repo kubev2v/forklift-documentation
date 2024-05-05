@@ -163,7 +163,7 @@ When vSphere does not receive updates about the guest operating system from the 
 
 The migration process fails when migrating an image-based VM from {osp} to the `default` project. link:https://issues.redhat.com/browse/MTV-964[(MTV-964)]
 
-For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430275[Known Issues] in Jira.
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12435571[Known Issues] in Jira.
 
 
 [id="resolved-issues-26_{context}"]
@@ -171,13 +171,13 @@ For a complete list of all known issues in this release, see the list of link:ht
 
 This release has the following resolved issues:
 
-.VMs migrated from vSphere and OVa files are not being fully copied
+.VMs migrated from vSphere and OVA files are not being fully copied
 
 In {project-short} 2.6.0, there was a problem copying VMs from VMware vSphere and from OVA files, resulting in the failure of migrations using these source providers. The problem was resolved in {project-short} 2.6.1. link:https://issues.redhat.com/browse/MTV-1067[(MTV-1067)]
 
 .Migrating VMs from one OCP-V cluster to another fails due to a timeout
 
-In {project-short} 2.6.0, migrations from one OCP-V cluster to another failed when the time to transfer the disks of a VM exceeded the timeout of the Export API in {ocp-name}, which was set to 2 hours by default. The problem was resolved in version 2.6.1 by setting the default value of the API to 12 hours, which greatly reduces the possibility of a timeout. Additionally, you can increase or decrease the the timeout as needed. link:https://issues.redhat.com/browse/MTV-1052[(MTV-1052)]
+In {project-short} 2.6.0, migrations from one OCP-V cluster to another failed when the time to transfer the disks of a VM exceeded the timeout of the Export API in {ocp-name}, which was set to 2 hours by default. The problem was resolved in version 2.6.1 by setting the default value of the API to 12 hours, which greatly reduces the possibility of a timeout. Additionally, you can increase or decrease the timeout as needed. link:https://issues.redhat.com/browse/MTV-1052[(MTV-1052)]
 
 .{project-short} forklift-controller pod crashes when receiving a disk without a datastore
 
@@ -236,4 +236,4 @@ In earlier releases of {project-short}, the error logs lacked clear information 
 In earlier releases of {project-short}, an earlier failed migration could have left an outdated `ovirtvolumepopulator`. When starting a new plan for the same VM to the same project,  the `CreateDataVolumes` phase did not create populator PVCs when transitioning to `CopyDisks`, causing the `CopyDisks` phase to stay indefinitely. This issue was resolved in {project-short} 2.6.0. link:https://issues.redhat.com/browse/MTV-929[(MTV-929)]
 
 
-For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430274[Resolved Issues] in Jira.
+For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12435572[Resolved Issues] in Jira.
