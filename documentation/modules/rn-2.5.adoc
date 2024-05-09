@@ -134,7 +134,9 @@ An outdated `ovirtvolumepopulator` in the namespace, left over from an earlier f
 
 The migration fails to build the Persistent Volume Claim (PVC) if the destination storage class does not have a configured storage profile. The `forklift-controller` raises an error message without a clear reason for failing to create a PVC. link:https://issues.redhat.com/browse/MTV-928[(MTV-928)]
 
-For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12430968[Known Issues] in Jira.
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12435632[Known Issues] in Jira.
+
+
 
 [id="resolved-issues-25_{context}"]
 == Resolved issues
@@ -317,7 +319,7 @@ A flaw was found in the versions of the Golang `net/http/internal` package, that
 
 For more information, see link:https://access.redhat.com/security/cve/cve-2023-39326[CVE-2023-39326].
 
-For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12431371[Resolved Issues] in Jira.
+For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12435633[Resolved Issues] in Jira.
 
 [id="upgrade-notes-25_{context}"]
 == Upgrade notes
