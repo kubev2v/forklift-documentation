@@ -18,4 +18,4 @@ To resolve this problem, delete some of the CBT snapshots from the VM and restar
 
 The `Unable to resize disk image to required size` error message is displayed when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage. The problem occurs because the default overhead that is assumed by CDI does not completely include the reserved place for the root partition.
 
-To resolve this problem, increase the file system overhead in CDI to be more than 10%.
+To resolve this problem, increase the file system overhead in CDI to more than 10%.
