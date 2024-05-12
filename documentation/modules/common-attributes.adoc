@@ -8,7 +8,7 @@
 :ocp: Red Hat OpenShift
 :ocp-name: OpenShift
 :ocp-short: OpenShift
-:ocp-version: 4.14
+:ocp-version: 4.12
 :operator: mtv-operator
 :operator-name-ui: Migration Toolkit for Virtualization Operator
 :operator-name: MTV Operator
@@ -16,8 +16,8 @@
 :project-full: Migration Toolkit for Virtualization
 :project-short: MTV
 :project-first: {project-full} ({project-short})
-:project-version: 2.6
-:project-z-version: 2.6.1
+:project-version: 2.5
+:project-z-version: 2.5.7
 :the: The
 :the-lc: the
 :virt: OpenShift Virtualization
