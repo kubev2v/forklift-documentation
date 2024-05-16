@@ -165,11 +165,23 @@ The migration process fails when migrating an image-based VM from {osp} to the `
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12435571[Known Issues] in Jira.
 
+// Andy, please insert the correct filter.
+
 
 [id="resolved-issues-26_{context}"]
 == Resolved issues
 
 This release has the following resolved issues:
+
+// Andy, please insert the CVE issues here.
+
+.ImageConversion does not run when target storage is set with wait-for-first-consumer
+
+In earlier releases of {project-short}, migration of VMs failed because the migration was stuck in the `AllocateDisks` phase. As a result of being stuck, the migration did not progress, and PVCs were not bound. The root cause of the problem was that `ImageConversion` did not run when target storage was set for `wait-for-first-consumer`. The problem was resolved in {project-short} 2.6.2. link:https://issues.redhat.com/browse/MTV-1126[(MTV-1126)]
+
+.forklift-controller panics when importing VMs with direct LUNs
+
+In earlier releases of {project-short}, `forklift-controller` panicked when a user attempted to import VMs that had direct LUNs. The problem was resolved in {project-short} 2.6.2. link:https://issues.redhat.com/browse/MTV-1134[(MTV-1134)]
 
 .VMs with multiple disks that are migrated from vSphere and OVA files are not being fully copied
 
@@ -237,3 +249,5 @@ In earlier releases of {project-short}, an earlier failed migration could have l
 
 
 For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12435572[Resolved Issues] in Jira.
+
+// Andy, please insert the correct filter.
