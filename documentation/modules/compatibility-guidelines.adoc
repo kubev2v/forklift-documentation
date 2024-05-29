@@ -18,8 +18,8 @@ You must install compatible software versions.
 [NOTE]
 .Migration from {rhv-full} 4.3
 ====
-MTV 2.5 was tested only with {rhv-full} (RHV) 4.4 SP1.
-Migration from {rhv-full} ({rhv-short}) 4.3 has not been tested with {project-short} {project-version}.
+{project-short} {project-version} was tested only with {rhv-full} (RHV) 4.4 SP1.
+Migration from {rhv-full} ({rhv-short}) 4.3 has not been tested with {project-short} {project-version}. While not supported, basic migrations from RHV 4.3 are expected to work.
 
 As {rhv-short} 4.3 lacks the improvements that were introduced in {rhv-short} 4.4 for {project-short}, and new features were not tested with {rhv-short} 4.3, migrations from {rhv-short} 4.3 may not function at the same level as migrations from {rhv-short} 4.4, with some functionality may be missing.
 
