@@ -63,7 +63,7 @@ $ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/prov
 ----
 +
 .Example output
-[source,yaml,subs="attributes+"]]
+[source,yaml,subs="attributes+"]
 ----
 {
     "input": {
