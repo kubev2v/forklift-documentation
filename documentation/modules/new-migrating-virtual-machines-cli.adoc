@@ -216,7 +216,7 @@ endif::[]
 
 [start=2]
 . Create a `Provider` manifest for the source provider:
-+
+
 ifdef::vmware[]
 +
 [source,yaml,subs="attributes+"]

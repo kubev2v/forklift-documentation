@@ -17,7 +17,7 @@ ifeval::["{build}" == "downstream"]
 [discrete]
 include::modules/making-open-source-more-inclusive.adoc[leveloffset=+1]
 endif::[]
-:_content-type: ASSEMBLY
+:_mod-docs-content-type: ASSEMBLY
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
 
@@ -189,14 +189,29 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 
 You can create a migration plan by using the {ocp} web console to specify a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
 
-For your convenience, there are two procedures to create migration plans based on source provider and VMs, one begins on the  xref:creating-migration-quick-plan-vm_{context}[*Providers for virtualization* page] and the other begins on the xref:creating-migration-quick-plan-existing-source_{context}[*Plans for virtualization* page].
+For your convenience, there are two procedures to create migration plans, starting with either a source provider or with specific VMs:
 
-include::modules/creating-migration-quick-plan-vm.adoc[leveloffset=+3]
-include::modules/creating-migration-quick-plan-existing-source.adoc[leveloffset=+3]
+* To start with a source provider, see xref:creating-migration-plan-2-6-3_provider[Creating a migration plan starting with a source provider].
+* To start with specific VMs, see xref:creating-migration-plan-2-6-3_vms[Creating a migration plan starting with specific VMs].
+
+:mtv!:
+:context: provider
+:provider:
+
+include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+
+:provider!:
+:context: vms
+:vms:
+include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+
+:vms!:
+:context: mtv
+:mtv:
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
-
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines-from-the-command-line_{context}"]
@@ -226,7 +241,7 @@ You must specify a name for cluster-scoped CRs.
 
 You must specify both a name and a namespace for namespace-scoped CRs.
 
-In order to migrate to or from an {ocp-short} cluster that is different than the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
+To migrate to or from an {ocp-short} cluster that is different from the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
 ====
 
 :mtv!:
