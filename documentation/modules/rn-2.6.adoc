@@ -64,15 +64,15 @@ You can now preserve static IPs of VMs that are installed with a Windows operati
 
 .Support for migrating LUKS-encrypted devices in migrations from vSphere
 
-You can now migrate devices that have been encrypted by Linux Unified Key Setup (LUKS) when you create a vSphere migration plan. link:https://issues.redhat.com/browse/MTV-831[(MTV-831)]
+ You can now perform cold migrations from a vSphere provider of VMs whose virtual disks are encrypted by Linux Unified Key Setup (LUKS). link:https://issues.redhat.com/browse/MTV-831[(MTV-831)]
 
 .Specifying the primary disk when migrating from vSphere
 
-You can now specify the primary disk when you migrate VMs from vSphere which have more than one single bootable disk. This avoids {project-short} automatically attempting to convert the first bootable disk that it detects while it examines all the disks in a migration plan. This feature is needed because the first bootable disk is not necessarily the disk that the VM is expected to boot from in {virt}. link:https://issues.redhat.com/browse/MTV-1079[(MTV-1079)]
+You can now specify the primary disk when you migrate VMs from vSphere with more than one bootable disk. This avoids {project-short} automatically attempting to convert the first bootable disk that it detects while it examines all the disks of a virtual machine. This feature is needed because the first bootable disk is not necessarily the disk that the VM is expected to boot from in {virt}. link:https://issues.redhat.com/browse/MTV-1079[(MTV-1079)]
 
-.Providing a link to a remote provider UI
+.Links to remote provider UIs
 
-You can now add a link to the UI of a remote cluster when you create a source provider. For example, if the provider is a remote {rhv-full} {rhv-short} cluster, you can add a link to the remote {rhv-short} web console when you define the provider. link:https://issues.redhat.com/browse/MTV-1054[(MTV-1054)]
+You can now remotely access the UI of a remote cluster when you create a source provider. For example, if the provider is a remote {rhv-full} {rhv-short} cluster, {project-short} adds a link to the remote {rhv-short} web console when you define the provider. This feature makes it easier for you to manage and debug a migration from remote clusters. link:https://issues.redhat.com/browse/MTV-1054[(MTV-1054)]
 
 .Migration from vSphere over a secure connection
 
