@@ -12,7 +12,7 @@ You can create a migration plan by starting with the source provider you want to
 
 . In the {ocp} web console, click *Providers for virtualization*.
 . In the row of the appropriate source provider, click *VMs*.
-+.
++
 The *Virtual Machines* tab opens.
 . Select the VMs you want to migrate and click *Create migration plan*.
 +
