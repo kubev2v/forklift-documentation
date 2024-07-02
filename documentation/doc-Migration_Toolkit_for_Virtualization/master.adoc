@@ -195,8 +195,8 @@ include::modules/creating-migration-quick-plan-vm.adoc[leveloffset=+3]
 include::modules/creating-migration-quick-plan-existing-source.adoc[leveloffset=+3]
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
-
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines-from-the-command-line_{context}"]
