@@ -1,0 +1,15 @@
+<title>{user-guide-title}</title>
+<productname>{project-full}</productname>
+<productnumber>{project-version}</productnumber>
+<subtitle>{subtitle}</subtitle>
+<abstract>
+    <para>{abstract}</para>
+</abstract>
+<authorgroup id="Author_Group">
+        <author>
+                <firstname>Red Hat Modernization and Migration</firstname>
+                <surname>Documentation Team</surname>
+                <email>ccs-mms-docs@redhat.com</email>
+        </author>
+</authorgroup>
+<xi:include href="Common_Content/Legal_Notice.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
