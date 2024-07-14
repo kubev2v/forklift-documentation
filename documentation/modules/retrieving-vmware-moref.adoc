@@ -1,0 +1,80 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="retrieving-vmware-moref_{context}"]
+= Retrieving a VMware vSphere moRef
+
+When you migrate VMs with a VMware vSphere source provider using {project-first} from the CLI, you need to know the managed object reference (moRef) of certain entities in vSphere, such as datastores, networks, and VMs.
+
+You can retrieve the moRef of one or more vSphere entities from the Inventory service. You can then use each moRef as a reference for retrieving the moRef of another entity.
+
+.Procedure
+
+. Retrieve the routes for the project:
++
+[source,terminal]
+----
+oc get route -n openshift-mtv
+----
+
+. Retrieve the `Inventory` service route:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} get route <inventory_service> -n {namespace}
+----
+
+. Retrieve the access token:
++
+[source,terminal]
+----
+$ TOKEN=$(oc whoami -t)
+----
+
+. Retrieve the moRef of a VMware vSphere provider:
++
+[source,terminal]
+----
+$ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/vsphere -k
+----
+
+. Retrieve the datastores of a VMware vSphere source provider:
++
+[source,terminal]
+----
+$ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/vsphere/<provider id>/datastores/ -k
+----
++
+.Example output
+[source,terminal]
+----
+[
+  {
+    "id": "datastore-11",
+    "parent": {
+      "kind": "Folder",
+      "id": "group-s5"
+    },
+    "path": "/Datacenter/datastore/v2v_general_porpuse_ISCSI_DC",
+    "revision": 46,
+    "name": "v2v_general_porpuse_ISCSI_DC",
+    "selfLink": "providers/vsphere/01278af6-e1e4-4799-b01b-d5ccc8dd0201/datastores/datastore-11"
+  },
+  {
+    "id": "datastore-730",
+    "parent": {
+      "kind": "Folder",
+      "id": "group-s5"
+    },
+    "path": "/Datacenter/datastore/f01-h27-640-SSD_2",
+    "revision": 46,
+    "name": "f01-h27-640-SSD_2",
+    "selfLink": "providers/vsphere/01278af6-e1e4-4799-b01b-d5ccc8dd0201/datastores/datastore-730"
+  },
+ ...
+----
+
+In this example, the moRef of the datastore `v2v_general_porpuse_ISCSI_DC` is `datastore-11` and the moRef of the datastore `f01-h27-640-SSD_2` is `datastore-730`.
+

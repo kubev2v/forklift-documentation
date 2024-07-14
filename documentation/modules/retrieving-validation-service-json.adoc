@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="retrieving-validation-service-json_{context}"]
 = Retrieving the Inventory service JSON
 
@@ -63,7 +63,7 @@ $ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/prov
 ----
 +
 .Example output
-[source,yaml,subs="attributes+"]]
+[source,yaml,subs="attributes+"]
 ----
 {
     "input": {
