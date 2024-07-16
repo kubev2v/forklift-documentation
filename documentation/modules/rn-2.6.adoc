@@ -64,7 +64,7 @@ You can now preserve static IPs of VMs that are installed with a Windows operati
 
 .Support for migrating LUKS-encrypted devices in migrations from vSphere
 
- You can now perform cold migrations from a vSphere provider of VMs whose virtual disks are encrypted by Linux Unified Key Setup (LUKS). link:https://issues.redhat.com/browse/MTV-831[(MTV-831)]
+You can now perform cold migrations from a vSphere provider of VMs whose virtual disks are encrypted by Linux Unified Key Setup (LUKS). link:https://issues.redhat.com/browse/MTV-831[(MTV-831)]
 
 .Specifying the primary disk when migrating from vSphere
 
