@@ -58,22 +58,6 @@ The {project-short} web console can no longer download logs. With this update, y
 
 This part provides features and enhancements introduced in {project-full} 2.6:
 
-.Preservation of static IPs in migrations from vSphere
-
-You can now preserve static IPs of VMs that are installed with a Windows operating system and are migrated from vSphere. link:https://issues.redhat.com/browse/MTV-1148[(MTV-1148)]
-
-.Support for migrating LUKS-encrypted devices in migrations from vSphere
-
- You can now perform cold migrations from a vSphere provider of VMs whose virtual disks are encrypted by Linux Unified Key Setup (LUKS). link:https://issues.redhat.com/browse/MTV-831[(MTV-831)]
-
-.Specifying the primary disk when migrating from vSphere
-
-You can now specify the primary disk when you migrate VMs from vSphere with more than one bootable disk. This avoids {project-short} automatically attempting to convert the first bootable disk that it detects while it examines all the disks of a virtual machine. This feature is needed because the first bootable disk is not necessarily the disk that the VM is expected to boot from in {virt}. link:https://issues.redhat.com/browse/MTV-1079[(MTV-1079)]
-
-.Links to remote provider UIs
-
-You can now remotely access the UI of a remote cluster when you create a source provider. For example, if the provider is a remote {rhv-full} {rhv-short} cluster, {project-short} adds a link to the remote {rhv-short} web console when you define the provider. This feature makes it easier for you to manage and debug a migration from remote clusters. link:https://issues.redhat.com/browse/MTV-1054[(MTV-1054)]
-
 .Migration from vSphere over a secure connection
 
 You can now specify a CA certificate that can be used to authenticate the server that runs vCenter or ESXi, depending on the specified SDK endpoint of the vSphere provider. link:https://issues.redhat.com/browse/MTV-530[(MTV-530)]
@@ -181,36 +165,11 @@ The migration process fails when migrating an image-based VM from {osp} to the `
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12436209[Known Issues] in Jira.
 
+
 [id="resolved-issues-26_{context}"]
 == Resolved issues
 
 This release has the following resolved issues:
-
-.CVE-2024-24788: `golang: net` malformed DNS message can cause infinite loop
-
-A flaw was discovered in the `stdlib` package of the Go programming language, which impacts previous versions of {project-short}. This vulnerability primarily threatens web-facing applications and services that rely on Go for DNS queries. This flaw has been resolved in {project-short} 2.6.3.
-
-For more details, see link:https://access.redhat.com/security/cve/cve-2024-24788[(CVE-2024-24788)].
-
-.Migration scheduling does not take into account that `virt-v2v` copies disks sequentially (vSphere only)
-
-In earlier releases of {project-short}, there was a problem with the way {project-short} interpreted the `controller_max_vm_inflight` setting for vSphere to schedule migrations. This issue has been resolved in {project-short} 2.6.3. link:https://issues.redhat.com/browse/MTV-1191[(MTV-1191)]
-
-.Cold migrations fail after changing the ESXi network (vSphere only)
-
-In earlier versions of {project-short}, cold migrations from a vSphere provider with an ESXi SDK endpoint failed if any network was used except for the default network for disk transfers. This issue has been resolved in {project-short} 2.6.3. link:https://issues.redhat.com/browse/MTV-1180[(MTV-1180)]
-
-.Warm migrations over an ESXi network are stuck in `DiskTransfer` state (vSphere only)
-
-In earlier versions of {project-short}, warm migrations over an ESXi network from a vSphere provider with a vCenter SDK endpoint were stuck in `DiskTransfer` state because {project-short} was unable to locate image snapshots. This issue has been resolved in {project-short} 2.6.3. link:https://issues.redhat.com/browse/MTV-1161[(MTV-1161)]
-
-.Leftover PVCs are in `Lost` state after cold migrations
-
-In earlier versions of {project-short}, after cold migrations, there were leftover PVCs that had a status of `Lost` instead of being deleted, even after the migration plan that created them was archived and deleted. Investigation showed that this was because importer pods were retained after copying, by default, rather than in only specific cases. This issue has been resolved in {project-short} 2.6.3. link:https://issues.redhat.com/browse/MTV-1095[(MTV-1095)]
-
-.Guest operating system from vSphere might be missing (vSphere only)
-
-In earlier versions of {project-short}, some VMs that were imported from vSphere were not mapped to a template in {ocp-short} while other VMs, with the same guest operating system, were mapped to the corresponding template. Investigations indicated that this was because vSphere stopped reporting the operating system after not receiving updates from VMware tools for some time. This issue has been resolved in {project-short} 2.6.3 by taking the value of the operating system from the output of the investigation that `virt-v2v` performs on the disks. link:https://issues.redhat.com/browse/MTV-1046[(MTV-1046)]
 
 .CVE-2023-45288: Golang `net/http, x/net/http2`: unlimited number of `CONTINUATION` frames can cause a denial-of-service (DoS) attack
 
@@ -261,15 +220,15 @@ In {project-short} 2.6.0,  migrations from one {ocp} cluster to another failed w
 
 .{project-short} forklift-controller pod crashes when receiving a disk without a datastore
 
-In earlier releases of {project-short}, if a VM was configured with a disk that was on a datastore that was no longer available in vSphere at the time a migration was attempted, the `forklift-controller` crashed, rendering {project-short} unusable. In {project-short} 2.6.1, {project-short} presents a critical validation for VMs with such disks, informing users of the problem, and the `forklift-controller` no longer crashes, although it cannot transfer the disk. link:https://issues.redhat.com/browse/MTV-1029[(MTV-1029)]
+Previously, if a VM was configured with a disk that was on a datastore that was no longer available in vSphere at the time a migration was attempted, the `forklift-controller` crashed, rendering {project-short} unusable. In {project-short} 2.6.1, {project-short} presents a critical validation for VMs with such disks, informing users of the problem, and the `forklift-controller` no longer crashes, although it cannot transfer the disk. link:https://issues.redhat.com/browse/MTV-1029[(MTV-1029)]
 
 .Deleting an OVA provider automatically also deletes the PV
 
-In earlier releases of {project-short}, the PV was not removed when the OVA provider was deleted. This has been resolved in {project-short} 2.6.0, and the PV is automatically deleted when the OVA provider is deleted. link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
+In the earlier versions of {project-short}, the PV was not removed when the OVA provider was deleted. This has been resolved in {project-short} 2.6.0, and the PV is automatically deleted when the OVA provider is deleted. link:https://issues.redhat.com/browse/MTV-848[(MTV-848)]
 
 .Fix for data being lost when migrating VMware VMs with snapshots
 
-In earlier releases of {project-short}, when migrating a VM that has a snapshot from VMware, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot but not the latest data of the VM. This has been resolved in {project-short} 2.6.0.  link:https://issues.redhat.com/browse/MTV-447[(MTV-447)]
+In the earlier versions of {project-short}, when migrating a VM that has a snapshot from VMware, the VM that was created in {ocp-name} Virtualization contained the data in the snapshot but not the latest data of the VM. This has been resolved in {project-short} 2.6.0.  link:https://issues.redhat.com/browse/MTV-447[(MTV-447)]
 
 .Canceling and deleting a failed migration plan does not clean up the `populate` pods and PVC
 
