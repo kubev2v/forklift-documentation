@@ -41,6 +41,7 @@ The following minimal set of VMware privileges is required to migrate virtual ma
 2+|`Virtual machine.Interaction` privileges:
 |`Virtual machine.Interaction.Power Off`   |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
 |`Virtual machine.Interaction.Power On`  |Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
+|`Virtual machine.Guest operating system management by VIX API`  |Allows managing a virtual machine by the VMware VIX API.
 2+a|`Virtual machine.Provisioning` privileges:
 [NOTE]
 ====
@@ -79,4 +80,12 @@ All `Virtual machine.Provisioning` privileges are required.
 2+|`Virtual machine.Snapshot management` privileges:
 |`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine’s current state.
 |`Virtual machine.Snapshot management.Remove Snapshot`   |Allows removal of a snapshot from the snapshot history.
+2+|`Datastore` privileges:
+|`Datastore.Browse datastore` |Allows exploring the contents of a datastore.
+|`Datastore.Low level file operations` |Allows performing low-level file operations - read, write, delete, and rename - in a datastore.
+2+|`Sessions` privileges:
+|`Sessions.Validate session` |Allows verification of the validity of a session.
+2+|`Cryptographic` privileges:
+|`Cryptographic.Decrypt` |Allows decryption of an encrypted virtual machine.
+|`Cryptographic.Direct access` |Allows access to encrypted resources.
 |===
