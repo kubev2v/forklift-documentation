@@ -2,19 +2,19 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="new-migrating-virtual-machines-cli_{context}"]
 
 ifdef::vmware[]
 = Migrating from a VMware vSphere source provider
 
-You can migrate from a VMware vSphere source provider using the CLI.
+You can migrate from a VMware vSphere source provider by using the CLI.
 
 endif::[]
 ifdef::rhv[]
 = Migrating from a {rhv-full} source provider
 
-You can migrate from a {rhv-full} ({rhv-short}) source provider using the CLI.
+You can migrate from a {rhv-full} ({rhv-short}) source provider by using the CLI.
 
 .Prerequisites
 
@@ -26,18 +26,18 @@ endif::[]
 ifdef::ova[]
 = Migrating from an Open Virtual Appliance (OVA) source provider
 
-You can migrate from Open Virtual Appliance (OVA) files that were created by VMware vSphere as a source provider using the CLI.
+You can migrate from Open Virtual Appliance (OVA) files that were created by VMware vSphere as a source provider by using the CLI.
 
 endif::[]
 ifdef::ostack[]
 = Migrating from an {osp} source provider
 
-You can migrate from an {osp} source provider using the CLI.
+You can migrate from an {osp} source provider by using the CLI.
 endif::[]
 ifdef::cnv[]
 = Migrating from a Red Hat {virt} source provider
 
-You can use a Red Hat {virt} provider as a source provider as well as a destination provider.
+You can use a Red Hat {virt} provider as either a source provider or as a destination provider.
 endif::[]
 
 .Procedure
@@ -76,7 +76,7 @@ EOF
 <3> Specify the password of the vCenter user or the ESX/ESXi user.
 <4> Specify `"true"` to skip certificate verification, specify `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 <5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
-<6>  Specify the API endpoint URL of the vCenter or the ESX/ESX, for example, `https://<vCenter_host>/sdk`.
+<6>  Specify the API endpoint URL of the vCenter or the ESX/ESXi, for example, `https://<vCenter_host>/sdk`.
 endif::[]
 ifdef::rhv[]
 +
@@ -353,10 +353,8 @@ spec:
 EOF
 ----
 <1> Specify the name of the VMware vSphere `Provider` CR.
-<2> Specify the Managed Object Reference (MoRef) of the VMware vSphere host.
-<3> Specify the IP address of the VMware vSphere migration network
-
-include::snip_vmware_esxi_nfc.adoc[]
+<2> Specify the Managed Object Reference (moRef) of the VMware vSphere host. To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
+<3> Specify the IP address of the VMware vSphere migration network.
 
 [start=4]
 . Create a `NetworkMap` manifest to map the source and destination networks:
@@ -394,7 +392,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (MoRef).
+<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
@@ -595,7 +593,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware vSphere data storage MoRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
 endif::[]
 
 ifdef::rhv[]
@@ -748,7 +746,7 @@ EOF
 +
 where:
 +
-`playbook` refers to an optional Base64-encoded Ansible playbook. If you specify a playbook, the `image` must be `hook-runner`.
+`playbook` refers to an optional Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must be `hook-runner`.
 +
 [NOTE]
 ====
@@ -802,7 +800,7 @@ EOF
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
 <8> You can use either the `id` _or_ the `name` parameter to specify the source VMs. +
-<9> Specify the VMware vSphere VM MoRef.
+<9> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
 <10> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <11> Specify the name of the `Hook` CR.
 <12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.

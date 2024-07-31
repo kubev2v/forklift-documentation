@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: REFERENCE
+:_mod-docs-content-type: REFERENCE
 [id="rhv-prerequisites_{context}"]
 = {rhv-full} prerequisites
 
@@ -23,7 +23,7 @@ You must keep the `UserRole` and `ReadOnlyAdmin` roles until the virtual machine
 ** You must use a xref:compatibility-guidelines_{context}[compatible version] of {rhv-full}.
 ** You must have the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, specify the {manager} Apache CA certificate.
 +
-You can obtain the {manager}  CA certificate by navigating to https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA in a browser.
+You can obtain the {manager} CA certificate by navigating to https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA in a browser.
 
 ** If you are migrating a virtual machine with a direct LUN disk, ensure that the nodes in the {virt} destination cluster that the VM is expected to run on can access the backend storage.
 
