@@ -137,6 +137,8 @@ EOF
 <1> Specify the name of the VMware `Provider` CR.
 <2> Specify the managed object reference (MOR) of the VMware host.
 <3> Specify the IP address of the VMware migration network.
++
+include::snip_vmware_esxi_nfc.adoc[]
 
 . Create a `NetworkMap` manifest to map the source and destination networks:
 +

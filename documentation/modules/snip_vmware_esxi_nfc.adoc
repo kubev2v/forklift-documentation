@@ -1,0 +1,6 @@
+:_content-type: SNIPPET
+
+[NOTE]
+====
+You can also control the network from which disks are transferred from a host by using the Network File Copy (NFC) service in vSphere.
+====
