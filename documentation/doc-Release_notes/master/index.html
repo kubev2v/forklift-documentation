@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Release notes | Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2024-08-08 19:40:07 -0500" >
+    <meta name="twitter:title" content="Release notes | Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Release notes | Forklift Documentation</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Release notes" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Release notes" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Release notes","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/doc-Release_notes/master/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="Release notes">Release notes</h1>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#rn-26_forklift">Forklift 2.6</a>
+<ul class="sectlevel2">
+<li><a href="#technical-changes-26_forklift">Technical changes</a></li>
+<li><a href="#new-features-and-enhancements-26_forklift">New features and enhancements</a></li>
+<li><a href="#known-issues-26_forklift">Known issues</a></li>
+<li><a href="#resolved-issues-26_forklift">Resolved issues</a></li>
+</ul>
+</li>
+<li><a href="#rn-2.5_forklift">Forklift 2.5</a>
+<ul class="sectlevel2">
+<li><a href="#technical-changes-25_forklift">Technical changes</a></li>
+<li><a href="#new-features-and-enhancements-25_forklift">New features and enhancements</a></li>
+<li><a href="#known-issues-25_forklift">Known issues</a></li>
+<li><a href="#resolved-issues-25_forklift">Resolved issues</a></li>
+<li><a href="#upgrade-notes-25_forklift">Upgrade notes</a></li>
+</ul>
+</li>
+<li><a href="#rn-24_forklift">Forklift 2.4</a>
+<ul class="sectlevel2">
+<li><a href="#technical-changes-24_forklift">Technical changes</a></li>
+<li><a href="#new-features-and-enhancements-24_forklift">New features and enhancements</a></li>
+<li><a href="#known-issues-24_forklift">Known issues</a></li>
+<li><a href="#resolved-issues-24_forklift">Resolved issues</a></li>
+</ul>
+</li>
+<li><a href="#rn-23_forklift">Forklift 2.3</a>
+<ul class="sectlevel2">
+<li><a href="#technical-changes-23_forklift">Technical changes</a></li>
+<li><a href="#new-features-and-enhancements-23_forklift">New features and enhancements</a></li>
+<li><a href="#known-issues-23_forklift">Known issues</a></li>
+</ul>
+</li>
+<li><a href="#rn-22_forklift">Forklift 2.2</a>
+<ul class="sectlevel2">
+<li><a href="#technical-changes-22_forklift">Technical changes</a></li>
+<li><a href="#new-features-and-enhancements-22_forklift">New features and enhancements</a></li>
+<li><a href="#known-issues-22_forklift">Known issues</a></li>
+</ul>
+</li>
+<li><a href="#rn-21_forklift">Forklift 2.1</a>
+<ul class="sectlevel2">
+<li><a href="#technical-changes-21_forklift">Technical changes</a></li>
+<li><a href="#new-features-and-enhancements-21_forklift">New features and enhancements</a></li>
+<li><a href="#known-issues-21_forklift">Known issues</a></li>
+</ul>
+</li>
+<li><a href="#rn-20_forklift">Forklift 2.0</a>
+<ul class="sectlevel2">
+<li><a href="#new-features-and-enhancements-20_forklift">New features and enhancements</a></li>
+<li><a href="#known-issues-20_forklift">Known issues</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="rn-26_forklift">Forklift 2.6</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use  Forklift to migrate virtual machines from the following source providers to KubeVirt destination providers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>VMware vSphere</p>
+</li>
+<li>
+<p>oVirt (oVirt)</p>
+</li>
+<li>
+<p>OpenStack</p>
+</li>
+<li>
+<p>Open Virtual Appliances (OVAs) that were created by VMware vSphere</p>
+</li>
+<li>
+<p>Remote KubeVirt clusters</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The release notes describe technical changes, new features and enhancements, known issues, and resolved issues.</p>
+</div>
+<div class="sect2">
+<h3 id="technical-changes-26_forklift">Technical changes</h3>
+<div class="paragraph">
+<p>This release has the following technical changes:</p>
+</div>
+<div class="paragraph">
+<div class="title">Simplified the creation of vSphere providers</div>
+<p>In earlier releases of Forklift, users had to specify a fingerprint when creating a vSphere provider. This required users to retrieve the fingerprint from the server that vCenter runs on. Forklift no longer requires this fingerprint as an input, but rather computes it from the specified certificate in the case of a secure connection or automatically retrieves it from the server that runs vCenter/ESXi in the case of an insecure connection.</p>
+</div>
+<div class="paragraph">
+<div class="title">Redesigned the migration plan creation dialog</div>
+<p>The user interface console has improved the process of creating a migration plan. The new migration plan dialog enables faster creation of migration plans.</p>
+</div>
+<div class="paragraph">
+<p>It includes only the minimal settings that are required, while you can confirgure advanced settings separately. The new dialog also provides defaults for network and storage mappings, where applicable. The new dialog can also be invoked from the the <code>Provider</code> &gt; <code>Virtual Machines</code> tab, after selecting the virtual machines to migrate. It also better aligns with the user experience in the OCP console.</p>
+</div>
+<div class="paragraph">
+<div class="title"><code>virtual machine preferences</code> have replaced OpenShift templates</div>
+<p>The <code>virtual machine preferences</code> have replaced OpenShift templates. Forklift currently falls back to using OpenShift templates when a relevant preference is not available.</p>
+</div>
+<div class="paragraph">
+<p>Custom mappings of guest operating system type to virtual machine preference can be configured using <code>config</code> maps. This is in order to use custom virtual machine preferences, or to support more guest operating system types.</p>
+</div>
+<div class="paragraph">
+<div class="title">Full support for migration from OVA</div>
+<p>Migration from OVA moves from being a Technical Preview and is now a fully supported feature.</p>
+</div>
+<div class="paragraph">
+<div class="title">The VM is posted with its desired <code>Running</code> state</div>
+<p>Forklift creates the VM with its desired <code>Running</code> state on the target provider, instead of creating the VM and then running it as an additional operation. <a href="https://issues.redhat.com/browse/MTV-794">(MTV-794)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">The <code>must-gather</code> logs can now be loaded only by using the CLI</div>
+<p>The Forklift web console can no longer download logs. With this update, you must download <code>must-gather</code> logs by using CLI commands. For more information, see <a href="https://github.com/openshift/must-gather-operator">Must Gather Operator</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Forklift no longer runs <code>pvc-init</code> pods when migrating from vSphere</div>
+<p>Forklift no longer runs <code>pvc-init</code> pods during cold migration from a vSphere provider to the OpenShift cluster that Forklift is deployed on. However, in other flows where data volumes are used, they are set with the <code>cdi.kubevirt.io/storage.bind.immediate.requested</code> annotation, and CDI runs first-consume pods for storage classes with volume binding mode <code>WaitForFirstConsumer</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-features-and-enhancements-26_forklift">New features and enhancements</h3>
+<div class="paragraph">
+<p>This part provides features and enhancements introduced in Forklift 2.6:</p>
+</div>
+<div class="paragraph">
+<div class="title">Preservation of static IPs in migrations from vSphere</div>
+<p>You can now preserve static IPs of VMs that are installed with a Windows operating system and are migrated from vSphere. <a href="https://issues.redhat.com/browse/MTV-1148">(MTV-1148)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Support for migrating LUKS-encrypted devices in migrations from vSphere</div>
+<p>You can now perform cold migrations from a vSphere provider of VMs whose virtual disks are encrypted by Linux Unified Key Setup (LUKS). <a href="https://issues.redhat.com/browse/MTV-831">(MTV-831)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Specifying the primary disk when migrating from vSphere</div>
+<p>You can now specify the primary disk when you migrate VMs from vSphere with more than one bootable disk. This avoids Forklift automatically attempting to convert the first bootable disk that it detects while it examines all the disks of a virtual machine. This feature is needed because the first bootable disk is not necessarily the disk that the VM is expected to boot from in KubeVirt. <a href="https://issues.redhat.com/browse/MTV-1079">(MTV-1079)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Links to remote provider UIs</div>
+<p>You can now remotely access the UI of a remote cluster when you create a source provider. For example, if the provider is a remote oVirt oVirt cluster, Forklift adds a link to the remote oVirt web console when you define the provider. This feature makes it easier for you to manage and debug a migration from remote clusters. <a href="https://issues.redhat.com/browse/MTV-1054">(MTV-1054)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration from vSphere over a secure connection</div>
+<p>You can now specify a CA certificate that can be used to authenticate the server that runs vCenter or ESXi, depending on the specified SDK endpoint of the vSphere provider. <a href="https://issues.redhat.com/browse/MTV-530">(MTV-530)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration to or from a remote OpenShift over a secure connection</div>
+<p>You can now specify a CA certificate that can be used to authenticate the API server of a remote OpenShift cluster. <a href="https://issues.redhat.com/browse/MTV-728">(MTV-728)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration from an ESXi server without going through vCenter</div>
+<p>Forklift enables the configuration of vSphere providers with the SDK of ESXi. You need to select ESXi as the Endpoint type of the vSphere provider and specify the URL of the SDK of the ESXi server. <a href="https://issues.redhat.com/browse/MTV-514">(MTV-514)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of image-based VMs from OpenStack</div>
+<p>Forklift supports the migration of VMs that were created from images in OpenStack. <a href="https://issues.redhat.com/browse/MTV-644">(MTV-644)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of VMs with Fibre Channel LUNs from oVirt</div>
+<p>Forklift supports migrations of VMs that are set with Fibre Channel (FC) LUNs from oVirt. As with other LUN disks, you need to ensure the OpenShift nodes have access to the FC LUNs. During the migrations, the FC LUNs are detached from the source VMs in oVirt and attached to the migrated VMs in OpenShift. <a href="https://issues.redhat.com/browse/MTV-659">(MTV-659)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Preserve CPU types of VMs that are migrated from oVirt</div>
+<p>Forklift sets the CPU type of migrated VMs in OpenShift with their custom CPU type in oVirt. In addition, a new option was added to migration plans that are set with oVirt as a source provider to preserve the original CPU types of source VMs. When this option is selected, Forklift identifies the CPU type based on the cluster configuration and sets this CPU type for the migrated VMs, for which the source VMs are not set with a custom CPU. <a href="https://issues.redhat.com/browse/MTV-547">(MTV-547)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Validation for RHEL 6 guest operating system is now available when migrating VMs with RHEL 6 guest operating system</div>
+<p>Red Hat Enterprise Linux (RHEL) 9 does not support RHEL 6 as a guest operating system. Therefore, RHEL 6 is not supported in OpenShift Virtualization. With this update, a validation of RHEL 6 guest operating system was added to OpenShift Virtualization. <a href="https://issues.redhat.com/browse/MTV-413">(MTV413)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Automatic retrieval of CA certificates for the provider&#8217;s URL in the console</div>
+<p>The ability to retrieve CA certificates, which was available in previous versions, has been restored. The <code>vSphere Verify certificate</code> option is in the <code>add-provider</code> dialog. This option was removed in the transition to the OKD console and has now been added to the console. This functionality is also available for oVirt, OpenStack, and OpenShift providers now. <a href="https://issues.redhat.com/browse/MTV-737">(MTV-737)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Validation of a specified VDDK image</div>
+<p>Forklift validates the availability of a VDDK image that is specified for a vSphere provider on the target OpenShift name as part of the validation of a migration plan. Forklift also checks whether the <code>libvixDiskLib.so</code> symbolic link (symlink) exists within the image. If the validation fails, the migration plan cannot be started. <a href="https://issues.redhat.com/browse/MTV-618">(MTV-618)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Add a warning and partial support for TPM</div>
+<p>Forklift presents a warning when attempting to migrate a VM that is set with a TPM device from oVirt or vSphere. The migrated VM in OpenShift would be set with a TPM device but without the content of the TPM device on the source environment. <a href="https://issues.redhat.com/browse/MTV-378">(MTV-378)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Plans that failed to migrate VMs can now be edited</div>
+<p>With this update, you can edit plans that have failed to migrate any VMs. Some plans fail or are canceled because of incorrect network and storage mappings. You can now edit these plans until they succeed. <a href="https://issues.redhat.com/browse/MTV-779">(MTV-779)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Validation rules are now available for OVA</div>
+<p>The validation service includes default validation rules for virtual machines from the Open Virtual Appliance (OVA). <a href="https://issues.redhat.com/browse/MTV-669">(MTV-669)</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="known-issues-26_forklift">Known issues</h3>
+<div class="paragraph">
+<p>This release has the following known issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">Unclear error status message for VM with no operating system</div>
+<p>The error status message for a VM with no operating system on the <strong>Plans</strong> page of the web console does not describe the reason for the failure. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2008846">(BZ#22008846)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of virtual machines with encrypted partitions fails during a conversion (vSphere only)</div>
+<p>vSphere only: Migrations from oVirt and OpenStack do not fail, but the encryption key might be missing on the target OKD cluster.</p>
+</div>
+<div class="paragraph">
+<div class="title">Migration fails during precopy/cutover while performing a snapshot operation on the source VM</div>
+<p>Warm migration from oVirt fails if a snapshot operation is triggered and running on the source VM at the same time as the migration is scheduled. The migration does not wait for the snapshot operation to finish. <a href="https://issues.redhat.com/browse/MTV-456">(MTV-456)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Unable to schedule migrated VM with multiple disks to more than one storage class of type <code>hostPath</code></div>
+<p>When migrating a VM with multiple disks to more than one storage class of type <code>hostPath</code>, it might happen that a VM cannot be scheduled. Workaround: Use shared storage on the target OKD cluster.</p>
+</div>
+<div class="paragraph">
+<div class="title">Non-supported guest operating systems in warm migrations</div>
+<p>Warm migrations and migrations to remote OKD clusters from vSphere do not support the same guest operating systems that are supported in cold migrations and migrations to the local OKD cluster. RHEL 8 and RHEL 9 might cause this limitation.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="https://access.redhat.com/articles/1351473">Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9</a> for the list of supported guest operating systems.</p>
+</div>
+<div class="paragraph">
+<div class="title">VMs from vSphere with RHEL 9 guest operating system can start with network interfaces that are down</div>
+<p>When migrating VMs that are installed with RHEL 9 as a guest operating system from vSphere, the network interfaces of the VMs could be disabled when they start in OpenShift Virtualization. <a href="https://issues.redhat.com/browse/MTV-491">(MTV-491)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of a VM with NVME disks from vSphere fails</div>
+<p>When migrating a virtual machine (VM) with NVME disks from vSphere, the migration process fails, and the Web Console shows that the <code>Convert image to kubevirt</code> stage is <code>running</code> but did not finish successfully. <a href="https://issues.redhat.com/browse/MTV-963">(MTV-963)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Importing image-based VMs can fail</div>
+<p>Migrating an image-based VM without the <code>virtual_size</code> field can fail on a block mode storage class. <a href="https://issues.redhat.com/browse/MTV-946">(MTV-946)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting a migration plan does not remove temporary resources</div>
+<p>Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs, and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018974">(BZ#2018974)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migrating VMs with independent persistent disks from VMware to OCP-V fails</div>
+<p>Migrating VMs with independent persistent disks from VMware to OCP-V fails. <a href="https://issues.redhat.com/browse/MTV-993">(MTV-993)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Guest operating system from vSphere might be missing</div>
+<p>When vSphere does not receive updates about the guest operating system from the VMware tools, it considers the information about the guest operating system to be outdated and ceases to report it. When this occurs, Forklift is unaware of the guest operating system of the VM and is unable to associate it with the appropriate virtual machine preference or OpenShift template. <a href="https://issues.redhat.com/browse/MTV-1046">(MTV-1046)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Failure to migrate an image-based VM from OpenStack to the <code>default</code> project</div>
+<p>The migration process fails when migrating an image-based VM from OpenStack to the <code>default</code> project. <a href="https://issues.redhat.com/browse/MTV-964">(MTV-964)</a></p>
+</div>
+<div class="paragraph">
+<p>For a complete list of all known issues in this release, see the list of <a href="https://issues.redhat.com/issues/?filter=12436209">Known Issues</a> in Jira.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resolved-issues-26_forklift">Resolved issues</h3>
+<div class="paragraph">
+<p>This release has the following resolved issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2024-24788: <code>golang: net</code> malformed DNS message can cause infinite loop</div>
+<p>A flaw was discovered in the <code>stdlib</code> package of the Go programming language, which impacts previous versions of Forklift. This vulnerability primarily threatens web-facing applications and services that rely on Go for DNS queries. This flaw has been resolved in Forklift 2.6.3.</p>
+</div>
+<div class="paragraph">
+<p>For more details, see <a href="https://access.redhat.com/security/cve/cve-2024-24788">(CVE-2024-24788)</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Migration scheduling does not take into account that <code>virt-v2v</code> copies disks sequentially (vSphere only)</div>
+<p>In earlier releases of Forklift, there was a problem with the way Forklift interpreted the <code>controller_max_vm_inflight</code> setting for vSphere to schedule migrations. This issue has been resolved in Forklift 2.6.3. <a href="https://issues.redhat.com/browse/MTV-1191">(MTV-1191)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Cold migrations fail after changing the ESXi network (vSphere only)</div>
+<p>In earlier versions of Forklift, cold migrations from a vSphere provider with an ESXi SDK endpoint failed if any network was used except for the default network for disk transfers. This issue has been resolved in Forklift 2.6.3. <a href="https://issues.redhat.com/browse/MTV-1180">(MTV-1180)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migrations over an ESXi network are stuck in <code>DiskTransfer</code> state (vSphere only)</div>
+<p>In earlier versions of Forklift, warm migrations over an ESXi network from a vSphere provider with a vCenter SDK endpoint were stuck in <code>DiskTransfer</code> state because Forklift was unable to locate image snapshots. This issue has been resolved in Forklift 2.6.3. <a href="https://issues.redhat.com/browse/MTV-1161">(MTV-1161)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Leftover PVCs are in <code>Lost</code> state after cold migrations</div>
+<p>In earlier versions of Forklift, after cold migrations, there were leftover PVCs that had a status of <code>Lost</code> instead of being deleted, even after the migration plan that created them was archived and deleted. Investigation showed that this was because importer pods were retained after copying, by default, rather than in only specific cases. This issue has been resolved in Forklift 2.6.3. <a href="https://issues.redhat.com/browse/MTV-1095">(MTV-1095)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Guest operating system from vSphere might be missing (vSphere only)</div>
+<p>In earlier versions of Forklift, some VMs that were imported from vSphere were not mapped to a template in OKD while other VMs, with the same guest operating system, were mapped to the corresponding template. Investigations indicated that this was because vSphere stopped reporting the operating system after not receiving updates from VMware tools for some time. This issue has been resolved in Forklift 2.6.3 by taking the value of the operating system from the output of the investigation that <code>virt-v2v</code> performs on the disks. <a href="https://issues.redhat.com/browse/MTV-1046">(MTV-1046)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2023-45288: Golang <code>net/http, x/net/http2</code>: unlimited number of <code>CONTINUATION</code> frames can cause a denial-of-service (DoS) attack</div>
+<p>A flaw was discovered with the implementation of the <code>HTTP/2</code> protocol in the Go programming language, which impacts previous versions of Forklift. There were insufficient limitations on the number of CONTINUATION frames sent within a single stream. An attacker could potentially exploit this to cause a denial-of-service (DoS) attack. This flaw has been resolved in Forklift 2.6.2.</p>
+</div>
+<div class="paragraph">
+<p>For more details, see <a href="https://access.redhat.com/security/cve/cve-2023-45288">(CVE-2023-45288)</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2024-24785: <code>mtv-api-container</code>: Golang <code>html/template: errors</code> returned from <code>MarshalJSON</code> methods may break template escaping</div>
+<p>A flaw was found in the <code>html/template</code> Golang standard library package, which impacts previous versions of Forklift. If errors returned from <code>MarshalJSON</code> methods contain user-controlled data, they may be used to break the contextual auto-escaping behavior of the HTML/template package, allowing subsequent actions to inject unexpected content into the templates. This flaw has been resolved in Forklift 2.6.2.</p>
+</div>
+<div class="paragraph">
+<p>For more details, see <a href="https://access.redhat.com/security/cve/cve-2024-24785">(CVE-2024-24785)</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2024-24784: <code>mtv-validation-container</code>: Golang <code>net/mail</code>: comments in display names are incorrectly handled</div>
+<p>A flaw was found in the <code>net/mail</code> Golang standard library package, which impacts previous versions of Forklift. The <code>ParseAddressList</code> function incorrectly handles comments, text in parentheses, and display names. As this is a misalignment with conforming address parsers, it can result in different trust decisions being made by programs using different parsers. This flaw has been resolved in Forklift 2.6.2.</p>
+</div>
+<div class="paragraph">
+<p>For more details, see <a href="https://access.redhat.com/security/cve/cve-2024-24784">(CVE-2024-24784)</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2024-24783: <code>mtv-api-container</code>: Golang <code>crypto/x509</code>: Verify panics on certificates with an unknown public key algorithm</div>
+<p>A flaw was found in the <code>crypto/x509</code> Golang standard library package, which impacts previous versions of Forklift. Verifying a certificate chain that contains a certificate with an unknown public key algorithm causes <code>Certificate.Verify</code> to panic. This affects all <code>crypto/tls</code> clients and servers that set <code>Config.ClientAuth</code> to <code>VerifyClientCertIfGiven</code> or <code>RequireAndVerifyClientCert</code>. The default behavior is for TLS servers to not verify client certificates. This flaw has been resolved in Forklift 2.6.2.</p>
+</div>
+<div class="paragraph">
+<p>For more details, see <a href="https://access.redhat.com/security/cve/cve-2024-24783">(CVE-2024-24783)</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2023-45290: <code>mtv-api-container</code>: Golang <code>net/http</code> memory exhaustion in <code>Request.ParseMultipartForm</code></div>
+<p>A flaw was found in the <code>net/http</code> Golang standard library package, which impacts previous versions of Forklift. When parsing a <code>multipart</code> form, either explicitly with <code>Request.ParseMultipartForm</code> or implicitly with <code>Request.FormValue</code>, <code>Request.PostFormValue</code>, or <code>Request.FormFile</code>, limits on the total size of the parsed form are not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing long lines to cause the allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. This flaw has been resolved in Forklift 2.6.2.</p>
+</div>
+<div class="paragraph">
+<p>For more details, see <a href="https://access.redhat.com/security/cve/cve-2023-45290">(CVE-2023-45290)</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">ImageConversion does not run when target storage is set with wait-for-first-consumer</div>
+<p>In earlier releases of Forklift, migration of VMs failed because the migration was stuck in the <code>AllocateDisks</code> phase. As a result of being stuck, the migration did not progress, and PVCs were not bound. The root cause of the problem was that <code>ImageConversion</code> did not run when target storage was set for <code>wait-for-first-consumer</code>. The problem was resolved in Forklift 2.6.2. <a href="https://issues.redhat.com/browse/MTV-1126">(MTV-1126)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">forklift-controller panics when importing VMs with direct LUNs</div>
+<p>In earlier releases of Forklift, <code>forklift-controller</code> panicked when a user attempted to import VMs that had direct LUNs. The problem was resolved in Forklift 2.6.2. <a href="https://issues.redhat.com/browse/MTV-1134">(MTV-1134)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">VMs with multiple disks that are migrated from vSphere and OVA files are not being fully copied</div>
+<p>In Forklift 2.6.0, there was a problem in copying VMs with multiple disks from VMware vSphere and from OVA files. The migrations appeared to succeed but all the disks were transferred to the same PV in the target environment while other disks were empty. In some cases, bootable disks were overridden, so the VM could not boot. In other cases, data from the other disks was missing. The problem was resolved in Forklift 2.6.1. <a href="https://issues.redhat.com/browse/MTV-1067">(MTV-1067)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migrating VMs from one OKD cluster to another fails due to a timeout</div>
+<p>In Forklift 2.6.0,  migrations from one OKD cluster to another failed when the time to transfer the disks of a VM exceeded the time to live (TTL) of the Export API in OpenShift, which was set to 2 hours by default. The problem was resolved in Forklift 2.6.1 by setting the default TTL of the Export API to 12 hours, which greatly reduces the possibility of an expiration of the Export API. Additionally, you can increase or decrease the TTL setting as needed. <a href="https://issues.redhat.com/browse/MTV-1052">(MTV-1052)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Forklift forklift-controller pod crashes when receiving a disk without a datastore</div>
+<p>In earlier releases of Forklift, if a VM was configured with a disk that was on a datastore that was no longer available in vSphere at the time a migration was attempted, the <code>forklift-controller</code> crashed, rendering Forklift unusable. In Forklift 2.6.1, Forklift presents a critical validation for VMs with such disks, informing users of the problem, and the <code>forklift-controller</code> no longer crashes, although it cannot transfer the disk. <a href="https://issues.redhat.com/browse/MTV-1029">(MTV-1029)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting an OVA provider automatically also deletes the PV</div>
+<p>In earlier releases of Forklift, the PV was not removed when the OVA provider was deleted. This has been resolved in Forklift 2.6.0, and the PV is automatically deleted when the OVA provider is deleted. <a href="https://issues.redhat.com/browse/MTV-848">(MTV-848)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Fix for data being lost when migrating VMware VMs with snapshots</div>
+<p>In earlier releases of Forklift, when migrating a VM that has a snapshot from VMware, the VM that was created in OpenShift Virtualization contained the data in the snapshot but not the latest data of the VM. This has been resolved in Forklift 2.6.0.  <a href="https://issues.redhat.com/browse/MTV-447">(MTV-447)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Canceling and deleting a failed migration plan does not clean up the <code>populate</code> pods and PVC</div>
+<p>In earlier releases of Forklift, when you canceled and deleted a failed migration plan, and after creating a PVC and spawning the <code>populate</code> pods, the <code>populate</code> pods and PVC were not deleted. You had to delete the pods and PVC manually. This issue has been resolved in Forklift 2.6.0. <a href="https://issues.redhat.com/browse/MTV-678">(MTV-678)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">OKD to OKD migrations require the cluster version to be 4.13 or later</div>
+<p>In earlier releases of Forklift, when migrating from OKD to OKD, the version of the source provider cluster had to be OKD version 4.13 or later. This issue has been resolved in Forklift 2.6.0, with validation being shown when migrating from versions of OpenShift before 4.13. <a href="https://issues.redhat.com/browse/MTV-734">(MTV-734)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Multiple storage domains from RHV were always mapped to a single storage class</div>
+<p>In earlier releases of Forklift, multiple disks from different storage domains were always mapped to a single storage class, regardless of the storage mapping that was configured. This issue has been resolved in Forklift 2.6.0. <a href="https://issues.redhat.com/browse/MTV-1008">(MTV-1008)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Firmware detection by virt-v2v</div>
+<p>In earlier releases of Forklift, a VM that was migrated from an OVA that did not include the firmware type in its OVF configuration was set with UEFI. This was incorrect for VMs that were configured with BIOS. This issue has been resolved in Forklift 2.6.0, as Forklift now consumes the firmware that is detected by <code>virt-v2v</code> during the conversion of the disks. <a href="https://issues.redhat.com/browse/MTV-759">(MTV-759)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Creating a host secret requires validation of the secret before creation of the host</div>
+<p>In earlier releases of Forklift, when configuring a transfer network for vSphere hosts, the console plugin created the <code>Host</code> CR before creating its secret. The secret should be specified first in order to validate it before the <code>Host</code> CR is posted. This issue has been resolved in Forklift 2.6.0. <a href="https://issues.redhat.com/browse/MTV-868">(MTV-868)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">When adding OVA provider a <code>ConnectionTestFailed</code> message appears</div>
+<p>In earlier releases of Forklift, when adding an OVA provider, the error message <code>ConnectionTestFailed</code> instantly appeared, although the provider had been created successfully. This issue has been resolved in Forklift 2.6.0. <a href="https://issues.redhat.com/browse/MTV-671">(MTV-671)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">RHV provider <code>ConnectionTestSucceeded</code> True response from the wrong URL</div>
+<p>In earlier releases of Forklift, the <code>ConnectionTestSucceeded</code> condition was set to <code>True</code> even when the URL was different than the API endpoint for the RHV Manager. This issue has been resolved in Forklift 2.6.0. <a href="https://issues.redhat.com/browse/MTV-740">(MTV-740)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration does not fail when a vSphere Data Center is nested inside a folder</div>
+<p>In earlier releases of Forklift, migrating a VM that is placed in a Data Center that is stored directly under the <code>/vcenter</code> in vSphere succeeded. However, it failed when the Data Center was stored inside a folder. This issue was resolved in Forklift 2.6.0. <a href="https://issues.redhat.com/browse/MTV-796">(MTV-796)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">The OVA inventory watcher detects deleted files</div>
+<p>The OVA inventory watcher detects files changes, including deleted files. Updates from the <code>ova-provider-server</code> pod are now sent every five minutes to the <code>forklift-controller</code> pod that updates the inventory. <a href="https://issues.redhat.com/browse/MTV-733">(MTV-733)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Unclear error message when Forklift fails to build or create a PVC</div>
+<p>In earlier releases of Forklift, the error logs lacked clear information to identify the reason for a failure to create a PV on a destination storage class that does not have a configured storage profile. This issue was resolved in Forklift 2.6.0. <a href="https://issues.redhat.com/browse/MTV-928">(MTV-928)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Plans stay indefinitely in the <code>CopyDisks</code> phase when there is an outdated ovirtvolumepopulator</div>
+<p>In earlier releases of Forklift, an earlier failed migration could have left an outdated <code>ovirtvolumepopulator</code>. When starting a new plan for the same VM to the same project,  the <code>CreateDataVolumes</code> phase did not create populator PVCs when transitioning to <code>CopyDisks</code>, causing the <code>CopyDisks</code> phase to stay indefinitely. This issue was resolved in Forklift 2.6.0. <a href="https://issues.redhat.com/browse/MTV-929">(MTV-929)</a></p>
+</div>
+<div class="paragraph">
+<p>For a complete list of all resolved issues in this release, see the list of <a href="https://issues.redhat.com/issues/?filter=12436210">Resolved Issues</a> in Jira.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rn-2.5_forklift">Forklift 2.5</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use  Forklift to migrate virtual machines from the following source providers to KubeVirt destination providers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>VMware vSphere</p>
+</li>
+<li>
+<p>oVirt (oVirt)</p>
+</li>
+<li>
+<p>OpenStack</p>
+</li>
+<li>
+<p>Open Virtual Appliances (OVAs) that were created by VMware vSphere</p>
+</li>
+<li>
+<p>Remote KubeVirt clusters</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The release notes describe technical changes, new features and enhancements, and known issues for Forklift.</p>
+</div>
+<div class="sect2">
+<h3 id="technical-changes-25_forklift">Technical changes</h3>
+<div class="paragraph">
+<p>This release has the following technical changes:</p>
+</div>
+<div class="paragraph">
+<div class="title">Migration from OpenStack moves to being a fully supported feature</div>
+<p>In this version of Forklift, migration using OpenStack source providers graduated from a Technology Preview feature to a fully supported feature.</p>
+</div>
+<div class="paragraph">
+<div class="title">Disabling FIPS</div>
+<p>Forklift enables migrations from vSphere source providers by not enforcing Enterprise Master Secret (EMS). This enables migrating from all vSphere versions that Forklift supports, including migrations that do not meet 2023 FIPS requirements.</p>
+</div>
+<div class="paragraph">
+<div class="title">Integration of the create and update provider user interface</div>
+<p>The user interface of the create and update providers now aligns with the look and feel of the OKD web console and displays up-to-date data.</p>
+</div>
+<div class="paragraph">
+<div class="title">Standalone UI</div>
+<p>The old UI of Forklift 2.3 cannot be enabled by setting <code>feature_ui: true</code> in ForkliftController anymore.</p>
+</div>
+<div class="paragraph">
+<div class="title">Support deployment on OpenShift 4.15</div>
+<p>Forklift 2.5.6 can be deployed on OpenShift 4.15 clusters.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-features-and-enhancements-25_forklift">New features and enhancements</h3>
+<div class="paragraph">
+<p>This release has the following features and improvements:</p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of OVA files from VMware vSphere</div>
+<p>In Forklift 2.3, you can migrate using Open Virtual Appliance (OVA) files that were created by VMware vSphere as source providers. <a href="https://issues.redhat.com/browse/MTV-336">(MTV-336)</a></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Migration of OVA files that were not created by VMware vSphere but are compatible with vSphere might succeed. However, migration of such files is not supported by Forklift. Forklift supports only OVA files created by VMware vSphere.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Migration using one or more Open Virtual Appliance (OVA) files as a source provider is a Technology Preview.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Migration using one or more Open Virtual Appliance (OVA) files as a source provider is a Technology Preview feature only. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product
+features, enabling customers to test functionality and provide feedback during the development process.</p>
+</div>
+<div class="paragraph">
+<p>For more information about the support scope of Red Hat Technology Preview
+features, see <a href="https://access.redhat.com/support/offerings/techpreview/" class="bare">https://access.redhat.com/support/offerings/techpreview/</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<div class="title">Migrating VMs between OKD clusters</div>
+<p>In Forklift 2.3, you can now use Red Hat KubeVirt provider as a source provider and a destination provider. You can migrate VMs from the cluster that Forklift is deployed on to another cluster, or from a remote cluster to the cluster that Forklift is deployed on. <a href="https://issues.redhat.com/browse/MTV-571">(MTV-571)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of VMs with direct LUNs from RHV</div>
+<p>During the migration from oVirt (oVirt), direct Logical Units (LUNs) are detached from the source virtual machines and attached to the target virtual machines. Note that this mechanism does not work yet for Fibre Channel. <a href="https://issues.redhat.com/browse/MTV-329">(MTV-329)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Additional authentication methods for OpenStack</div>
+<p>In addition to standard password authentication, Forklift supports the following authentication methods: Token authentication and Application credential authentication. <a href="https://issues.redhat.com/browse/MTV-539">(MTV-539)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Validation rules for OpenStack</div>
+<p>The validation service includes default validation rules for virtual machines from OpenStack. <a href="https://issues.redhat.com/browse/MTV-508">(MTV-508)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">VDDK is now optional for VMware vSphere providers</div>
+<p>You can now create the VMware vSphere source provider without specifying a VMware Virtual Disk Development Kit (VDDK) <code>init</code> image. It is strongly recommended you create a VDDK <code>init</code> image to accelerate migrations.</p>
+</div>
+<div class="paragraph">
+<div class="title">Deployment on OKE enabled</div>
+<p>In Forklift 2.5.3, deployment on OpenShift Kubernetes Engine (OKE) has been enabled. For more information, see <a href="https://docs.openshift.com/container-platform/4.15/welcome/oke_about.html">About OpenShift Kubernetes Engine</a>. <a href="https://issues.redhat.com/browse/MTV-803">(MTV-803)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of VMs to destination storage classes with encrypted RBD now supported</div>
+<p>In Forklift 2.5.4, migration of VMs to destination storage classes that have encrypted RADOS Block Devices (RBD) volumes is now supported.</p>
+</div>
+<div class="paragraph">
+<p>To make use of this new feature, set the value of the parameter <code>controller_block_overhead</code> to <code>1Gi</code>, following the procedure in <a href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.5/html-single/installing_and_using_the_migration_toolkit_for_virtualization/index#configuring-mtv-operator_mtv">Configuring the MTV Operator</a>. <a href="https://issues.redhat.com/browse/MTV-851">(MTV-851)</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="known-issues-25_forklift">Known issues</h3>
+<div class="paragraph">
+<p>This release has the following known issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting migration plan does not remove temporary resources</div>
+<p>Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018974">(BZ#2018974)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Unclear error status message for VM with no operating system</div>
+<p>The error status message for a VM with no operating system on the <strong>Plans</strong> page of the web console does not describe the reason for the failure. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2008846">(BZ#22008846)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of virtual machines with encrypted partitions fails during conversion</div>
+<p>vSphere only: Migrations from oVirt and OpenStack do not fail, but the encryption key may be missing on the target OKD cluster.</p>
+</div>
+<div class="paragraph">
+<div class="title">Migration fails during precopy/cutover while performing a snapshot operation on the source VM</div>
+<p>Warm migration from oVirt fails if a snapshot operation is triggered and running on the source VM at the same time as the migration is scheduled. The migration does not wait for the snapshot operation to finish. <a href="https://issues.redhat.com/browse/MTV-456">(MTV-456)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Unable to schedule migrated VM with multiple disks to more than one storage classes of type hostPath</div>
+<p>When migrating a VM with multiple disks to more than one storage classes of type <code>hostPath</code>, it might happen that a VM cannot be scheduled. Workaround: Use shared storage on the target OKD cluster.</p>
+</div>
+<div class="paragraph">
+<div class="title">Non-supported guest operating systems in warm migrations</div>
+<p>Warm migrations and migrations to remote OKD clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local OKD cluster. This is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case.<br>
+See <a href="https://access.redhat.com/articles/1351473">Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9</a> for the list of supported guest operating systems.</p>
+</div>
+<div class="paragraph">
+<div class="title">VMs from vSphere with RHEL 9 guest operating system can start with network interfaces that are down</div>
+<p>When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, the network interfaces of the VMs could be disabled when they start in OpenShift Virtualization. <a href="https://issues.redhat.com/browse/MTV-491">(MTV-491)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Import OVA: ConnectionTestFailed message appears when adding OVA provider</div>
+<p>When adding an OVA provider, the error message <code>ConnectionTestFailed</code> can appear, although the provider is created successfully. If the message does not disappear after a few minutes and the provider status does not move to <code>Ready</code>, this means that the <code>ova server pod creation</code> has failed. <a href="https://issues.redhat.com/browse/MTV-671">(MTV-671)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Left over <code>ovirtvolumepopulator</code> from failed migration causes plan to stay indefinitely in <code>CopyDisks</code> phase</div>
+<p>An outdated <code>ovirtvolumepopulator</code> in the namespace, left over from an earlier failed migration, stops a new plan of the same VM when it transitions to <code>CopyDisks</code> phase. The plan remains in that phase indefinitely. <a href="https://issues.redhat.com/browse/MTV-929">(MTV-929)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Unclear error message when Forklift fails to build a PVC</div>
+<p>The migration fails to build the Persistent Volume Claim (PVC) if the destination storage class does not have a configured storage profile. The <code>forklift-controller</code> raises an error message without a clear reason for failing to create a PVC. <a href="https://issues.redhat.com/browse/MTV-928">(MTV-928)</a></p>
+</div>
+<div class="paragraph">
+<p>For a complete list of all known issues in this release, see the list of <a href="https://issues.redhat.com/issues/?filter=12430968">Known Issues</a> in Jira.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resolved-issues-25_forklift">Resolved issues</h3>
+<div class="paragraph">
+<p>This release has the following resolved issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">Flaw was found in jsrsasign package which is vulnerable to Observable Discrepancy</div>
+<p>Versions of the package <code>jsrsasign</code> before 11.0.0, used in earlier releases of Forklift, are vulnerable to Observable Discrepancy in the RSA PKCS1.5 or RSA-OAEP decryption process. This discrepancy means an attacker could decrypt ciphertexts by exploiting this vulnerability. However, exploiting this vulnerability requires the attacker to have access to a large number of ciphertexts encrypted with the same key. This issue has been resolved in Forklift 2.5.5 by upgrading the package <code>jsrasign</code> to version 11.0.0.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/CVE-2024-21484">CVE-2024-21484</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)</div>
+<p>A flaw was found in handling multiplexed streams in the HTTP/2 protocol. In previous releases of Forklift, the HTTP/2 protocol allowed a denial of service (server resource consumption) because request cancellation could reset multiple streams quickly. The server had to set up and tear down the streams while not hitting any server-side limit for the maximum number of active streams per connection, which resulted in a denial of service due to server resource consumption.</p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.2. It is advised to update to this version of MTV or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/cve-2023-44487">CVE-2023-44487 (Rapid Reset Attack)</a> and <a href="https://access.redhat.com/security/cve/cve-2023-39325">CVE-2023-39325 (Rapid Reset Attack)</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Gin Web Framework does not properly sanitize filename parameter of <code>Context.FileAttachment</code> function</div>
+<p>A flaw was found in the Gin-Gonic Gin Web Framework, used by Forklift. The filename parameter of the <code>Context.FileAttachment</code> function was not properly sanitized. This flaw in the package could allow a remote attacker to bypass security restrictions caused by improper input validation by the filename parameter of the <code>Context.FileAttachment</code> function. A maliciously created filename could cause the <code>Content-Disposition</code> header to be sent with an unexpected filename value, or otherwise modify the <code>Content-Disposition</code> header.</p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.2. It is advised to update to this version of Forklift or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/cve-2023-29401">CVE-2023-29401 (Gin-Gonic Gin Web Framework)</a> and <a href="https://access.redhat.com/security/cve/CVE-2023-26125">CVE-2023-26125</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2023-26144: mtv-console-plugin-container: graphql: Insufficient checks in the OverlappingFieldsCanBeMergedRule.ts</div>
+<p>A flaw was found in the package GraphQL from 16.3.0 and before 16.8.1. This flaw means Forklift  versions before Forklift 2.5.2 are vulnerable to Denial of Service (DoS) due to insufficient checks in the <code>OverlappingFieldsCanBeMergedRule.ts</code> file when parsing large queries. This issue may allow an attacker to degrade system performance. <a href="https://issues.redhat.com/browse/MTV-712">(MTV-712)</a></p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.2. It is advised to update to this version of Forklift or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/CVE-2023-26144">CVE-2023-26144</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2023-45142: Memory leak found in the otelhttp handler of open-telemetry</div>
+<p>A flaw was found in <code>otelhttp handler</code> of OpenTelemetry-Go. This flaw means Forklift versions before Forklift 2.5.3 are vulnerable to a memory leak caused by <code>http.user_agent</code> and <code>http.method</code> having unbound cardinality, which could allow a remote, unauthenticated attacker to exhaust the server&#8217;s memory by sending many malicious requests, affecting the availability. <a href="https://issues.redhat.com/browse/MTV-795">(MTV-795)</a></p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.3. It is advised to update to this version of Forklift or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/CVE-2023-45142">CVE-2023-45142</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2023-39322: QUIC connections do not set an upper bound on the amount of data buffered when reading post-handshake messages</div>
+<p>A flaw was found in Golang. This flaw means Forklift versions before Forklift 2.5.3 are vulnerable to QUIC connections not setting an upper bound on the amount of data buffered when reading post-handshake messages, allowing a malicious QUIC connection to cause unbounded memory growth. With the fix, connections now consistently reject messages larger than 65KiB in size. <a href="https://issues.redhat.com/browse/MTV-708">(MTV-708)</a></p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.3. It is advised to update to this version of Forklift or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/CVE-2023-39322">CVE-2023-39322</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2023-39321: Processing an incomplete post-handshake message for a QUIC connection can cause a panic</div>
+<p>A flaw was found in Golang. This flaw means Forklift versions before Forklift 2.5.3 are vulnerable to processing an incomplete post-handshake message for a QUIC connection, which causes a panic. <a href="https://issues.redhat.com/browse/MTV-693">(MTV-693)</a></p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.3. It is advised to update to this version of Forklift or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/CVE-2023-39321">CVE-2023-39321</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2023-39319: Flaw in html/template package</div>
+<p>A flaw was found in the Golang <code>html/template</code> package used in Forklift. This flaw means Forklift versions before Forklift 2.5.3 are vulnerable, as the <code>html/template</code> package did not properly handle occurrences of <code>&lt;script</code>, <code>&lt;!--</code>, and <code>&lt;/script</code> within JavaScript literals in <code>&lt;script&gt;</code> contexts. This flaw could cause the template parser to improperly consider script contexts to be terminated early, causing actions to be improperly escaped, which could be leveraged to perform an <code>XSS</code> attack. <a href="https://issues.redhat.com/browse/MTV-693">(MTV-693)</a></p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.3. It is advised to update to this version of Forklift or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/CVE-2023-39319">CVE-2023-39319</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">CVE-2023-39318: Flaw in html/template package</div>
+<p>A flaw was found in the Golang <code>html/template</code> package used in Forklift. This flaw means Forklift versions before Forklift 2.5.3 are vulnerable as the <code>html/template</code> package did not properly handle HMTL-like <code>""</code> comment tokens, nor hashbang <code>\#!</code> comment tokens. This flaw could cause the template parser to improperly interpret the contents of <code>&lt;script&gt;</code> contexts, causing actions to be improperly escaped, which could be leveraged to perform an <code>XSS</code> attack. <a href="https://issues.redhat.com/browse/MTV-693">(MTV-693)</a></p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.3. It is advised to update to this version of Forklift or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/CVE-2023-39318">CVE-2023-39318</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Logs archive file downloaded from UI includes logs related to deleted migration plan/VM</div>
+<p>In earlier releases of Forklift 2.3, the log files downloaded from UI could contain logs that are related to an earlier migration plan. <a href="https://issues.redhat.com/browse/MTV-783">(MTV-783)</a></p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.3.</p>
+</div>
+<div class="paragraph">
+<div class="title">Extending a VM disk in RHV is not reflected in the MTV inventory</div>
+<p>In earlier releases of Forklift 2.3, the size of disks that are extended in RHV was not adequately monitored. This resulted in the inability to migrate virtual machines with extended disks from a RHV provider. <a href="https://issues.redhat.com/browse/MTV-830">(MTV-830)</a></p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.3.</p>
+</div>
+<div class="paragraph">
+<div class="title">Filesystem overhead configurable</div>
+<p>In earlier releases of Forklift 2.3, the filesystem overhead for new persistent volumes was hard-coded to 10%. The overhead was insufficient for certain filesystem types, resulting in failures during cold-migrations from oVirt and OSP to the cluster where Forklift is deployed. In other filesystem types, the hard-coded overhead was too high, resulting in excessive storage consumption.</p>
+</div>
+<div class="paragraph">
+<p>In Forklift 2.5.3, the filesystem overhead can be configured, as it is no longer hard-coded. If your migration allocates persistent volumes without CDI, you can adjust the file system overhead. You adjust the file system overhead by adding the following label and value to the <code>spec</code> portion of the <code>forklift-controller</code> CR:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-YAML" data-lang="YAML">spec:
+  `controller_filesystem_overhead: &lt;percentage&gt;` <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The percentage of overhead. If this label is not added, the default value of 10% is used. This setting is valid only if the <code>storageclass</code> is <code>filesystem</code>. <a href="https://issues.redhat.com/browse/MTV-699">(MTV-699)</a></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<div class="title">Ensure up-to-date data is displayed in the create and update provider forms</div>
+<p>In earlier releases of Forklift, the create and update provider forms could have presented stale data.</p>
+</div>
+<div class="paragraph">
+<p>This issue is resolved in Forklift 2.3, the new forms of create and update provider display up-to-date properties of the provider. <a href="https://issues.redhat.com/browse/MTV-603">(MTV-603)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Snapshots that are created during a migration in OpenStack are not deleted</div>
+<p>In earlier releases of Forklift, the <code>Migration Controller</code> service did not delete snapshots that were created during a migration of source virtual machines in OpenStack automatically.</p>
+</div>
+<div class="paragraph">
+<p>This issue is resolved in Forklift 2.3, all the snapshots created during the migration are removed after the migration has been completed. <a href="https://issues.redhat.com/browse/MTV-620">(MTV-620)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">oVirt snapshots are not deleted after a successful migration</div>
+<p>In earlier releases of Forklift, the <code>Migration Controller</code> service did not delete snapshots automatically after a successful warm migration of a VM from oVirt.</p>
+</div>
+<div class="paragraph">
+<p>This issue is resolved in Forklift 2.3, the snapshots generated during migration are removed after a successful migration, and the original snapshots are not removed after a successful migration. <a href="https://issues.redhat.com/browse/MTV-349">(MTV-349)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migration fails when cutover conflicts with precopy</div>
+<p>In earlier releases of Forklift, the cutover operation failed when it was triggered while precopy was being performed. The VM was locked in oVirt and therefore the <code>ovirt-engine</code> rejected the snapshot creation, or disk transfer, operation.</p>
+</div>
+<div class="paragraph">
+<p>This issue is resolved in Forklift 2.3, the cutover operation is triggered, but it is not performed at that time because the VM is locked. Once the precopy operation completes, the cutover operation is triggered. <a href="https://issues.redhat.com/browse/MTV-686">(MTV-686)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migration fails when VM is locked</div>
+<p>In earlier releases of Forklift, triggering a warm migration while there was an ongoing operation in oVirt that locked the VM caused the migration to fail because it could not trigger the snapshot creation.</p>
+</div>
+<div class="paragraph">
+<p>This issue is resolved in Forklift 2.3, warm migration does not fail when an operation that locks the VM is performed in oVirt. The migration does not fail, but starts when the VM is unlocked. <a href="https://issues.redhat.com/browse/MTV-687">(MTV-687)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting migrated VM does not remove PVC and PV</div>
+<p>In earlier releases of Forklift, when removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) were not deleted.</p>
+</div>
+<div class="paragraph">
+<p>This issue is resolved in Forklift 2.3, PVCs and PVs are deleted when deleting migrated VM.<a href="https://issues.redhat.com/browse/MTV-492">(MTV-492)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">PVC deletion hangs after archiving and deleting migration plan</div>
+<p>In earlier releases of Forklift, when a migration failed, its PVCs and PVs were not deleted as expected when its migration plan was archived and deleted.</p>
+</div>
+<div class="paragraph">
+<p>This issue is resolved in Forklift 2.3, PVCs are deleted when archiving and deleting migration plan.<a href="https://issues.redhat.com/browse/MTV-493">(MTV-493)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">VM with multiple disks can boot from a non-bootable disk after migration</div>
+<p>In earlier releases of Forklift, VM with multiple disks that were migrated might not have been able to boot on the target OKD cluster.</p>
+</div>
+<div class="paragraph">
+<p>This issue is resolved in Forklift 2.3, VM with multiple disks that are migrated can boot on the target OKD cluster. <a href="https://issues.redhat.com/browse/MTV-433">(MTV-433)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Transfer network not taken into account for cold migrations from vSphere</div>
+<p>In Forklift releases 2.4.0-2.5.3, cold migrations from vSphere to the local cluster on which Forklift was deployed did not take a specified transfer network into account. This issue is resolved in  Forklift 2.5.4.  <a href="https://issues.redhat.com/browse/MTV-846">(MTV-846)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Fix migration of VMs with multi-boot guest operating system from vSphere</div>
+<p>In Forklift 2.5.6, the virt-v2v arguments include <code>–root first</code>, which mitigates an issue with multi-boot VMs where the pod fails. This is a fix for a regression that was introduced in Forklift 2.4, in which the <em>--root</em> argument was dropped. <a href="https://issues.redhat.com/browse/MTV-987">(MTV-987)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Errors logged in populator pods are improved</div>
+<p>In earlier releases of Forklift 2.3, populator pods were always restarted on failure. This made it difficult to gather the logs from the failed pods. In Forklift 2.5.3, the number of restarts of populator pods is limited to three times. On the third and final time, the populator pod remains in the fail status and its logs can then be easily gathered by <code>must-gather</code> and by <code>forklift-controller</code> to know this step has failed. <a href="https://issues.redhat.com/browse/MTV-818">(MTV-818)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">npm IP package vulnerability</div>
+<p>A vulnerability found in the Node.js Package Manager (npm) IP Package can allow an attacker to obtain sensitive information and obtain access to normally inaccessible resources. <a href="https://issues.redhat.com/browse/MTV-941">MTV-941</a></p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in Forklift 2.5.6.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/cve-2023-42282">CVE-2023-42282</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Flaw was found in the Golang net/http/internal package</div>
+<p>A flaw was found in the versions of the Golang <code>net/http/internal</code> package, that were used in earlier releases of Forklift. This flaw could allow a malicious user to send an HTTP request and cause the receiver to read more bytes from the network than are in the body (up to 1GiB), causing the receiver to fail reading the response, possibly leading to a Denial of Service (DoS). This issue has been resolved in Forklift 2.5.6.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/cve-2023-39326">CVE-2023-39326</a>.</p>
+</div>
+<div class="paragraph">
+<p>For a complete list of all resolved issues in this release, see the list of <a href="https://issues.redhat.com/issues/?filter=12431371">Resolved Issues</a> in Jira.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrade-notes-25_forklift">Upgrade notes</h3>
+<div class="paragraph">
+<p>It is recommended to upgrade from Forklift 2.4.2 to Forklift 2.3.</p>
+</div>
+<div class="paragraph">
+<div class="title">Upgrade from 2.4.0 fails</div>
+<p>When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field <em>spec.selector</em> of deployment <code>forklift-controller</code> is immutable. Workaround: Remove the custom resource <code>forklift-controller</code> of type <code>ForkliftController</code> from the installed namespace, and recreate it. Refresh the OKD console once the <code>forklift-console-plugin</code> pod runs to load the upgraded Forklift web console. <a href="https://issues.redhat.com/browse/MTV-518">(MTV-518)</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rn-24_forklift">Forklift 2.4</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Migrate virtual machines (VMs) from VMware vSphere or oVirt or OpenStack to KubeVirt with  Forklift.</p>
+</div>
+<div class="paragraph">
+<p>The release notes describe technical changes, new features and enhancements, and known issues.</p>
+</div>
+<div class="sect2">
+<h3 id="technical-changes-24_forklift">Technical changes</h3>
+<div class="paragraph">
+<p>This release has the following technical changes:</p>
+</div>
+<div class="paragraph">
+<div class="title">Faster disk image migration from oVirt</div>
+<p>Disk images are not converted anymore using virt-v2v when migrating from oVirt. This change speeds up migrations and also allows migration for guest operating systems that are not supported by virt-vsv. <a href="https://github.com/kubev2v/forklift-controller/issues/403">(forklift-controller#403)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Faster disk transfers by ovirt-imageio client (ovirt-img)</div>
+<p>Disk transfers use <code>ovirt-imageio</code> client (ovirt-img) instead of Containerized Data Import (CDI) when migrating from RHV to the local OpenShift Container Platform cluster, accelerating the migration.</p>
+</div>
+<div class="paragraph">
+<div class="title">Faster migration using conversion pod disk transfer</div>
+<p>When migrating from vSphere to the local OpenShift Container Platform cluster, the conversion pod transfers the disk data instead of Containerized Data Importer (CDI), accelerating the migration.</p>
+</div>
+<div class="paragraph">
+<div class="title">Migrated virtual machines are not scheduled on the target OCP cluster</div>
+<p>The migrated virtual machines are no longer scheduled on the target OpenShift Container Platform cluster. This enables migrating VMs that cannot start due to limit constraints on the target at migration time.</p>
+</div>
+<div class="paragraph">
+<div class="title">StorageProfile resource needs to be updated for a non-provisioner storage class</div>
+<p>You must update the <code>StorageProfile</code> resource with <code>accessModes</code> and <code>volumeMode</code> for non-provisioner storage classes such as NFS.</p>
+</div>
+<div class="paragraph">
+<div class="title">VDDK 8 can be used in the VDDK image</div>
+<p>Previous versions of Forklift supported only using VDDK version 7 for the VDDK image. Forklift supports both versions 7 and 8, as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you are migrating to OCP 4.12 or earlier, use VDDK version 7.</p>
+</li>
+<li>
+<p>If you are migrating to OCP 4.13 or later, use VDDK version 8.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-features-and-enhancements-24_forklift">New features and enhancements</h3>
+<div class="paragraph">
+<p>This release has the following features and improvements:</p>
+</div>
+<div class="paragraph">
+<div class="title">OpenStack migration</div>
+<p>Forklift now supports migrations with OpenStack as a source provider. This feature is a provided as a Technology Preview and only supports cold migrations.</p>
+</div>
+<div class="paragraph">
+<div class="title">OCP console plugin</div>
+<p>The Forklift Operator now integrates the Forklift web console into the OKD web console. The new UI operates as an OCP Console plugin that adds the sub-menu <code>Migration</code> to the navigation bar. It is implemented in version 2.4, disabling the old UI. You can enable the old UI by setting <code>feature_ui: true</code> in ForkliftController. <a href="https://issues.redhat.com/browse/MTV-427">(MTV-427)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Skip certification option</div>
+<p><em>Skip certificate validation</em> option was added to VMware and oVirt providers. If selected, the provider&#8217;s certificate will not be validated and the UI will not ask for specifying a CA certificate.</p>
+</div>
+<div class="paragraph">
+<div class="title">Only third-party certificate required</div>
+<p>Only the third-party certificate needs to be specified when defining a oVirt provider that sets with the Manager CA certificate.</p>
+</div>
+<div class="paragraph">
+<div class="title">Conversion of VMs with RHEL9 guest operating system</div>
+<p>Cold migrations from vSphere to a local Red Hat OpenShift cluster use virt-v2v on RHEL 9. <a href="https://issues.redhat.com/browse/MTV-332">(MTV-332)</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="known-issues-24_forklift">Known issues</h3>
+<div class="paragraph">
+<p>This release has the following known issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting migration plan does not remove temporary resources</div>
+<p>Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018974">(BZ#2018974)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Unclear error status message for VM with no operating system</div>
+<p>The error status message for a VM with no operating system on the <strong>Plans</strong> page of the web console does not describe the reason for the failure. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2008846">(BZ#22008846)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Log archive file includes logs of a deleted migration plan or VM</div>
+<p>If deleting a migration plan and then running a new migration plan with the same name, or if deleting a migrated VM and then remigrate the source VM, then the log archive file created by the Forklift web console might include the logs of the deleted migration plan or VM. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2023764">(BZ#2023764)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of virtual machines with encrypted partitions fails during conversion</div>
+<p>vSphere only: Migrations from oVirt and OpenStack don&#8217;t fail, but the encryption key may be missing on the target OCP cluster.</p>
+</div>
+<div class="paragraph">
+<div class="title">Snapshots that are created during the migration in OpenStack are not deleted</div>
+<p>The Migration Controller service does not delete snapshots that are created during the migration for source virtual machines in OpenStack automatically. Workaround: the snapshots can be removed manually on OpenStack.</p>
+</div>
+<div class="paragraph">
+<div class="title">oVirt snapshots are not deleted after a successful migration</div>
+<p>The Migration Controller service does not delete snapshots automatically after a successful warm migration of a oVirt VM. Workaround: Snapshots can be removed from oVirt instead. <a href="https://issues.redhat.com/browse/MTV-349">(MTV-349)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration fails during precopy/cutover while a snapshot operation is executed on the source VM</div>
+<p>Some warm migrations from oVirt might fail. When running a migration plan for warm migration of multiple VMs from oVirt, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.</p>
+</div>
+<div class="paragraph">
+<p>Warm migration from oVirt fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. <a href="https://issues.redhat.com/browse/MTV-456">(MTV-456)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Cannot schedule migrated VM with multiple disks to more than one storage classes of type hostPath</div>
+<p>When migrating a VM with multiple disks to more than one storage classes of type hostPath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.</p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting migrated VM does not remove PVC and PV</div>
+<p>When removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) are not deleted. Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. <a href="https://issues.redhat.com/browse/MTV-492">(MTV-492)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">PVC deletion hangs after archiving and deleting migration plan</div>
+<p>When a migration fails, its PVCs and PVs are not deleted as expected when its migration plan is archived and deleted. Workaround: Remove the CDI importer pods and then remove the remaining PVCs and PVs. <a href="https://issues.redhat.com/browse/MTV-493">(MTV-493)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">VM with multiple disks may boot from non-bootable disk after migration</div>
+<p>VM with multiple disks that was migrated might not be able to boot on the target OCP cluster. Workaround: Set the boot order appropriately to boot from the bootable disk. <a href="https://issues.redhat.com/browse/MTV-433">(MTV-433)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Non-supported guest operating systems in warm migrations</div>
+<p>Warm migrations and migrations to remote OCP clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local OCP cluster. It is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case.<br>
+See <a href="https://access.redhat.com/articles/1351473">Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9</a> for the list of supported guest operating systems.</p>
+</div>
+<div class="paragraph">
+<div class="title">VMs from vSphere with RHEL 9 guest operating system may start with network interfaces that are down</div>
+<p>When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in OpenShift Virtualization. <a href="https://issues.redhat.com/browse/MTV-491">(MTV-491)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Upgrade from 2.4.0 fails</div>
+<p>When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field <em>spec.selector</em> of deployment <code>forklift-controller</code> is immutable. Workaround: remove the custom resource <code>forklift-controller</code> of type <code>ForkliftController</code> from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the <code>forklift-console-plugin</code> pod runs to load the upgraded Forklift web console. <a href="https://issues.redhat.com/browse/MTV-518">(MTV-518)</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="resolved-issues-24_forklift">Resolved issues</h3>
+<div class="paragraph">
+<p>This release has the following resolved issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)</div>
+<p>A flaw was found in handling multiplexed streams in the HTTP/2 protocol. In previous releases of MTV, the HTTP/2 protocol allowed a denial of service (server resource consumption) because request cancellation could reset multiple streams quickly. The server had to set up and tear down the streams while not hitting any server-side limit for the maximum number of active streams per connection, which resulted in a denial of service due to server resource consumption.</p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in MTV 2.4.3 and 2.5.2. It is advised to update to one of these versions of MTV or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/cve-2023-44487">CVE-2023-44487 (Rapid Reset Attack)</a> and <a href="https://access.redhat.com/security/cve/cve-2023-39325">CVE-2023-39325 (Rapid Reset Attack)</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Improve invalid/conflicting VM name handling</div>
+<p>Improve the automatic renaming of VMs during migration to fit RFC 1123. This feature that was introduced in 2.3.4 is enhanced to cover more special cases. <a href="https://issues.redhat.com/browse/MTV-212">(MTV-212)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Prevent locking user accounts due to incorrect credentials</div>
+<p>If a user specifies an incorrect password for oVirt providers, they are no longer locked in oVirt. An error returns when the oVirt manager is accessible and adding the provider. If the oVirt manager is inaccessible, the provider is added, but there would be no further attempt after failing, due to incorrect credentials. <a href="https://issues.redhat.com/browse/MTV-324">(MTV-324)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Users without cluster-admin role can create new providers</div>
+<p>Previously, the <code>cluster-admin</code> role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, NetworkMaps, StorageMaps, hooks) can operate MTV without cluster-admin permissions. <a href="https://issues.redhat.com/browse/MTV-334">(MTV-334)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Convert i440fx to q35</div>
+<p>Migration of virtual machines with i440fx chipset is now supported. The chipset is converted to q35 during the migration. <a href="https://issues.redhat.com/browse/MTV-430">(MTV-430)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Preserve the UUID setting in SMBIOS for a VM that is migrated from oVirt</div>
+<p>The Universal Unique ID (UUID) number within the System Management BIOS (SMBIOS) no longer changes for VMs that are migrated from oVirt. This enhancement enables applications that operate within the guest operating system and rely on this setting, such as for licensing purposes, to operate on the target OCP cluster in a manner similar to that of oVirt. <a href="https://issues.redhat.com/browse/MTV-597">(MTV-597)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Do not expose password for oVirt in error messages</div>
+<p>Previously, the password that was specified for oVirt manager appeared in error messages that were displayed in the web console and logs when failing to connect to oVirt. In this release, error messages that are generated when failing to connect to oVirt do not reveal the password for oVirt manager.</p>
+</div>
+<div class="paragraph">
+<div class="title">QEMU guest agent is now installed on migrated VMs</div>
+<p>The QEMU guest agent is installed on VMs during cold migration from vSphere. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018062">(BZ#2018062)</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rn-23_forklift">Forklift 2.3</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can migrate virtual machines (VMs) from VMware vSphere or oVirt to KubeVirt with  Forklift.</p>
+</div>
+<div class="paragraph">
+<p>The release notes describe technical changes, new features and enhancements, and known issues.</p>
+</div>
+<div class="sect2">
+<h3 id="technical-changes-23_forklift">Technical changes</h3>
+<div class="paragraph">
+<p>This release has the following technical changes:</p>
+</div>
+<div class="paragraph">
+<div class="title">Setting the VddkInitImage path is part of the procedure of adding VMware provider.</div>
+<p>In the web console, you enter the VddkInitImage path when adding a VMware provider. Alternatively, from the CLI, you add the VddkInitImage path to the <code>Provider</code> CR for VMware migrations.</p>
+</div>
+<div class="paragraph">
+<div class="title">The StorageProfile resource needs to be updated for a non-provisioner storage class</div>
+<p>You must update the <code>StorageProfile</code> resource with <code>accessModes</code> and <code>volumeMode</code> for non-provisioner storage classes such as NFS. The documentation includes a link to the relevant procedure.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-features-and-enhancements-23_forklift">New features and enhancements</h3>
+<div class="paragraph">
+<p>This release has the following features and improvements:</p>
+</div>
+<div class="paragraph">
+<div class="title">Forklift 2.3 supports warm migration from oVirt</div>
+<p>You can use warm migration to migrate VMs from both VMware and oVirt.</p>
+</div>
+<div class="paragraph">
+<div class="title">The minimal sufficient set of privileges for VMware users is established</div>
+<p>VMware users do not have to have full <code>cluster-admin</code> privileges to perform a VM migration. The minimal sufficient set of user&#8217;s privileges is established and documented.</p>
+</div>
+<div class="paragraph">
+<div class="title">Forklift documentation is updated with instructions on using hooks</div>
+<p>Forklift documentation includes instructions on adding hooks to migration plans and running hooks on VMs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="known-issues-23_forklift">Known issues</h3>
+<div class="paragraph">
+<p>This release has the following known issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">Some warm migrations from oVirt might fail</div>
+<p>When you run a migration plan for warm migration of multiple VMs from oVirt, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2063531">(<strong>BZ#2063531</strong>)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Snapshots are not deleted after warm migration</div>
+<p>The Migration Controller service does not delete snapshots automatically after a successful warm migration of a oVirt VM. You can <a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-deleting-vm-snapshot-web_virt-managing-vm-snapshots">delete the snapshots manually</a>. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2053183">(<strong>BZ#22053183</strong>)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migration from oVirt fails if a snapshot operation is performed on the source VM</div>
+<p>If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user&#8217;s snapshot operation to finish. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2057459">(<strong>BZ#2057459</strong>)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">QEMU guest agent is not installed on migrated VMs</div>
+<p>The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018062"><strong>BZ#2018062</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting migration plan does not remove temporary resources.</div>
+<p>Deleting a migration plan does not remove temporary resources such as <code>importer</code> pods, <code>conversion</code> pods, config maps, secrets, failed VMs and data volumes. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018974"><strong>BZ#2018974</strong></a>) You must archive a migration plan before deleting it in order to clean up the temporary resources.</p>
+</div>
+<div class="paragraph">
+<div class="title">Unclear error status message for VM with no operating system</div>
+<p>The error status message for a VM with no operating system on the <strong>Migration plan details</strong> page of the web console does not describe the reason for the failure. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2008846"><strong>BZ#2008846</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Log archive file includes logs of a deleted migration plan or VM</div>
+<p>If you delete a migration plan and then run a new migration plan with the same name or if you delete a migrated VM and then remigrate the source VM, the log archive file created by the Forklift web console might include the logs of the deleted migration plan or VM. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2023764"><strong>BZ#2023764</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of virtual machines with encrypted partitions fails during conversion</div>
+<p>The problem occurs for both vSphere and oVirt migrations.</p>
+</div>
+<div class="paragraph">
+<div class="title">Forklift 2.3.4 only: When the source provider is oVirt, duplicating a migration plan fails in either the network mapping stage or the storage mapping stage.</div>
+<p>Possible workaround: Delete cache in the browser or restart the browser. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2143191"><strong>BZ#2143191</strong></a>)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rn-22_forklift">Forklift 2.2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can migrate virtual machines (VMs) from VMware vSphere or oVirt to KubeVirt with  Forklift.</p>
+</div>
+<div class="paragraph">
+<p>The release notes describe technical changes, new features and enhancements, and known issues.</p>
+</div>
+<div class="sect2">
+<h3 id="technical-changes-22_forklift">Technical changes</h3>
+<div class="paragraph">
+<p>This release has the following technical changes:</p>
+</div>
+<div class="paragraph">
+<div class="title">Setting the precopy time interval for warm migration</div>
+<p>You can set the time interval between snapshots taken during the precopy stage of warm migration.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-features-and-enhancements-22_forklift">New features and enhancements</h3>
+<div class="paragraph">
+<p>This release has the following features and improvements:</p>
+</div>
+<div class="paragraph">
+<div class="title">Creating validation rules</div>
+<p>You can create custom validation rules to check the suitability of VMs for migration. Validation rules are based on the VM attributes collected by the <code>Provider Inventory</code> service and written in <a href="https://www.openpolicyagent.org/docs/latest/policy-language/">Rego</a>, the Open Policy Agent native query language.</p>
+</div>
+<div class="paragraph">
+<div class="title">Downloading logs by using the web console</div>
+<p>You can download logs for a migration plan or a migrated VM by using the Forklift web console.</p>
+</div>
+<div class="paragraph">
+<div class="title">Duplicating a migration plan by using the web console</div>
+<p>You can duplicate a migration plan by using the web console, including its VMs, mappings, and hooks, in order to edit the copy and run as a new migration plan.</p>
+</div>
+<div class="paragraph">
+<div class="title">Archiving a migration plan by using the web console</div>
+<p>You can archive a migration plan by using the MTV web console. Archived plans can be viewed or duplicated. They cannot be run, edited, or unarchived.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="known-issues-22_forklift">Known issues</h3>
+<div class="paragraph">
+<p>This release has the following known issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">Certain Validation service issues do not block migration</div>
+<p>Certain <code>Validation</code> service issues, which are marked as <code>Critical</code> and display the assessment text, <code>The VM will not be migrated</code>, do not block migration. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2025977"><strong>BZ#2025977</strong></a>)</p>
+</div>
+<div class="paragraph">
+<p>The following <code>Validation</code> service assessments do not block migration:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Issues that do not block migration</caption>
+<colgroup>
+<col style="width: 66.6666%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Assessment</th>
+<th class="tableblock halign-left valign-top">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The disk interface type is not supported by OpenShift Virtualization (only sata, virtio_scsi and virtio interface types are currently supported).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The migrated VM will have a virtio disk if the source interface is not recognized.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The NIC interface type is not supported by OpenShift Virtualization (only e1000, rtl8139 and virtio interface types are currently supported).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The migrated VM will have a virtio NIC if the source interface is not recognized.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The VM is using a vNIC profile configured for host device passthrough, which is not currently supported by OpenShift Virtualization.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The migrated VM will have an SR-IOV NIC. The destination network must be set up correctly.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One or more of the VM&#8217;s disks has an illegal or locked status condition.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The migration will proceed but the disk transfer is likely to fail.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The VM has a disk with a storage type other than <code>image</code>, and this is not currently supported by OpenShift Virtualization.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The migration will proceed but the disk transfer is likely to fail.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The VM has one or more snapshots with disks in ILLEGAL state. This is not currently supported by OpenShift Virtualization.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The migration will proceed but the disk transfer is likely to fail.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The VM has USB support enabled, but USB devices are not currently supported by OpenShift Virtualization.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The migrated VM will not have USB devices.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The VM is configured with a watchdog device, which is not currently supported by OpenShift Virtualization.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The migrated VM will not have a watchdog device.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The VM&#8217;s status is not <code>up</code> or <code>down</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The migration will proceed but it might hang if the VM cannot be powered off.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<div class="title">QEMU guest agent is not installed on migrated VMs</div>
+<p>The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018062"><strong>BZ#2018062</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Missing resource causes error message in current.log file</div>
+<p>If a resource does not exist, for example, if the <code>virt-launcher</code> pod does not exist because the migrated VM is powered off, its log is unavailable.</p>
+</div>
+<div class="paragraph">
+<p>The following error appears in the missing resource&#8217;s <code>current.log</code> file when it is downloaded from the web console or created with the <code>must-gather</code> tool: <code>error: expected 'logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]'.</code> (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2023260"><strong>BZ#2023260</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Importer pod log is unavailable after warm migration</div>
+<p>Retaining the <code>importer</code> pod for debug purposes causes warm migration to hang during the precopy stage. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2016290"><strong>BZ#2016290</strong></a>)</p>
+</div>
+<div class="paragraph">
+<p>As a temporary workaround, the <code>importer</code> pod is removed at the end of the precopy stage so that the precopy succeeds. However, this means that the <code>importer</code> pod log is not retained after warm migration is complete. You can only view the <code>importer</code> pod log by using the <code>oc logs -f &lt;cdi-importer_pod&gt;</code> command during the precopy stage.</p>
+</div>
+<div class="paragraph">
+<p>This issue only affects the <code>importer</code> pod log and warm migration. Cold migration and the <code>virt-v2v</code> logs are not affected.</p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting migration plan does not remove temporary resources.</div>
+<p>Deleting a migration plan does not remove temporary resources such as <code>importer</code> pods, <code>conversion</code> pods, config maps, secrets, failed VMs and data volumes. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018974"><strong>BZ#2018974</strong></a>) You must archive a migration plan before deleting it in order to clean up the temporary resources.</p>
+</div>
+<div class="paragraph">
+<div class="title">Unclear error status message for VM with no operating system</div>
+<p>The error status message for a VM with no operating system on the <strong>Migration plan details</strong> page of the web console does not describe the reason for the failure. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2008846"><strong>BZ#2008846</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Network, storage, and VM referenced by name in the <code>Plan</code> CR are not displayed in the web console.</div>
+<p>If a Plan CR references storage, network, or VMs by name instead of by ID, the resources do not appear in the Forklift web console. The migration plan cannot be edited or duplicated. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=1986020"><strong>BZ#1986020</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Log archive file includes logs of a deleted migration plan or VM</div>
+<p>If you delete a migration plan and then run a new migration plan with the same name or if you delete a migrated VM and then remigrate the source VM, the log archive file created by the Forklift web console might include the logs of the deleted migration plan or VM. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2023764"><strong>BZ#2023764</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">If a target VM is deleted during migration, its migration status is <code>Succeeded</code> in the <code>Plan</code> CR</div>
+<p>If you delete a target <code>VirtualMachine</code> CR during the <em>Convert image to kubevirt</em> step of the migration, the <strong>Migration details</strong> page of the web console displays the state of the step as <code>VirtualMachine CR not found</code>. However, the status of the VM migration is <code>Succeeded</code> in the <code>Plan</code> CR file and in the web console. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2031529"><strong>BZ#2031529</strong></a>)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rn-21_forklift">Forklift 2.1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can migrate virtual machines (VMs) from VMware vSphere or oVirt to KubeVirt with  Forklift.</p>
+</div>
+<div class="paragraph">
+<p>The release notes describe new features and enhancements, known issues, and technical changes.</p>
+</div>
+<div class="sect2">
+<h3 id="technical-changes-21_forklift">Technical changes</h3>
+<div class="paragraph">
+<div class="title">VDDK image added to <code>HyperConverged</code> custom resource</div>
+<p>The VMware Virtual Disk Development Kit (VDDK) SDK image must be added to the <code>HyperConverged</code> custom resource. Before this release, it was referenced in the <code>v2v-vmware</code> config map.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-features-and-enhancements-21_forklift">New features and enhancements</h3>
+<div class="paragraph">
+<p>This release adds the following features and improvements.</p>
+</div>
+<div class="paragraph">
+<div class="title">Cold migration from oVirt</div>
+<p>You can perform a cold migration of VMs from oVirt.</p>
+</div>
+<div class="paragraph">
+<div class="title">Migration hooks</div>
+<p>You can create migration hooks to run Ansible playbooks or custom code before or after migration.</p>
+</div>
+<div class="paragraph">
+<div class="title">Filtered <code>must-gather</code> data collection</div>
+<p>You can specify options for the <code>must-gather</code> tool that enable you to filter the data by namespace, migration plan, or VMs.</p>
+</div>
+<div class="paragraph">
+<div class="title">SR-IOV network support</div>
+<p>You can migrate VMs with a single root I/O virtualization (SR-IOV) network interface if the KubeVirt environment has an SR-IOV network.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="known-issues-21_forklift">Known issues</h3>
+<div class="paragraph">
+<div class="title">QEMU guest agent is not installed on migrated VMs</div>
+<p>The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018062"><strong>BZ#2018062</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Disk copy stage does not progress</div>
+<p>The disk copy stage of a oVirt VM does not progress and the Forklift web console does not display an error message. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1990596">(<strong>BZ#1990596</strong>)</a></p>
+</div>
+<div class="paragraph">
+<p>The cause of this problem might be one of the following conditions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The storage class does not exist on the target cluster.</p>
+</li>
+<li>
+<p>The VDDK image has not been added to the <code>HyperConverged</code> custom resource.</p>
+</li>
+<li>
+<p>The VM does not have a disk.</p>
+</li>
+<li>
+<p>The VM disk is locked.</p>
+</li>
+<li>
+<p>The VM time zone is not set to UTC.</p>
+</li>
+<li>
+<p>The VM is configured for a USB device.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To disable USB devices, see <a href="https://access.redhat.com/documentation/en-us/red_hat_virtualization/4.4/html-single/virtual_machine_management_guide/index#sect-Configuring_USB_Devices">Configuring USB Devices</a> in the Red Hat Virtualization documentation.</p>
+</div>
+<div class="paragraph">
+<p>To determine the cause:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click <strong>Workloads</strong> &#8594; <strong>Virtualization</strong> in the OKD web console.</p>
+</li>
+<li>
+<p>Click the <strong>Virtual Machines</strong> tab.</p>
+</li>
+<li>
+<p>Select a virtual machine to open the <strong>Virtual Machine Overview</strong> screen.</p>
+</li>
+<li>
+<p>Click <strong>Status</strong> to view the status of the virtual machine.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">VM time zone must be UTC with no offset</div>
+<p>The time zone of the source VMs must be UTC with no offset. You can set the time zone to <code>GMT Standard Time</code> after first assessing the potential impact on the workload. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1993259">(<strong>BZ#1993259</strong>)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">oVirt resource UUID causes a "Provider not found" error</div>
+<p>If a oVirt resource UUID is used in a <code>Host</code>, <code>NetworkMap</code>, <code>StorageMap</code>, or <code>Plan</code> custom resource (CR), a "Provider not found" error is displayed.</p>
+</div>
+<div class="paragraph">
+<p>You must use the resource name. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1994037">(<strong>BZ#1994037</strong>)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Same oVirt resource name in different data centers causes ambiguous reference</div>
+<p>If a oVirt resource name is used in a <code>NetworkMap</code>, <code>StorageMap</code>, or <code>Plan</code> custom resource (CR) and if the same resource name exists in another data center, the <code>Plan</code> CR displays a critical "Ambiguous reference" condition. You must rename the resource or use the resource UUID in the CR.</p>
+</div>
+<div class="paragraph">
+<p>In the web console, the resource name appears twice in the same list without a data center reference to distinguish them. You must rename the resource. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1993089">(<strong>BZ#1993089</strong>)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Snapshots are not deleted after warm migration</div>
+<p>Snapshots are not deleted automatically after a successful warm migration of a VMware VM. You must delete the snapshots manually in VMware vSphere. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2001270"><strong>BZ#2001270</strong></a>)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rn-20_forklift">Forklift 2.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can migrate virtual machines (VMs) from VMware vSphere with  Forklift.</p>
+</div>
+<div class="paragraph">
+<p>The release notes describe new features and enhancements, known issues, and technical changes.</p>
+</div>
+<div class="sect2">
+<h3 id="new-features-and-enhancements-20_forklift">New features and enhancements</h3>
+<div class="paragraph">
+<p>This release adds the following features and improvements.</p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migration</div>
+<p>Warm migration reduces downtime by copying most of the VM data during a precopy stage while the VMs are running. During the cutover stage, the VMs are stopped and the rest of the data is copied.</p>
+</div>
+<div class="paragraph">
+<div class="title">Cancel migration</div>
+<p>You can cancel an entire migration plan or individual VMs while a migration is in progress. A canceled migration plan can be restarted in order to migrate the remaining VMs.</p>
+</div>
+<div class="paragraph">
+<div class="title">Migration network</div>
+<p>You can select a migration network for the source and target providers for improved performance. By default, data is copied using the VMware administration network and the OKD pod network.</p>
+</div>
+<div class="paragraph">
+<div class="title">Validation service</div>
+<p>The validation service checks source VMs for issues that might affect migration and flags the VMs with concerns in the migration plan.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The validation service is a Technology Preview feature only. Technology Preview features
+are not supported with Red Hat production service level agreements (SLAs) and
+might not be functionally complete. Red Hat does not recommend using them
+in production. These features provide early access to upcoming product
+features, enabling customers to test functionality and provide feedback during
+the development process.</p>
+</div>
+<div class="paragraph">
+<p>For more information about the support scope of Red Hat Technology Preview
+features, see <a href="https://access.redhat.com/support/offerings/techpreview/" class="bare">https://access.redhat.com/support/offerings/techpreview/</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="known-issues-20_forklift">Known issues</h3>
+<div class="paragraph">
+<p>This section describes known issues and mitigations.</p>
+</div>
+<div class="paragraph">
+<div class="title">QEMU guest agent is not installed on migrated VMs</div>
+<p>The QEMU guest agent is not installed on migrated VMs. Workaround: Install the QEMU guest agent with a post-migration hook. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018062"><strong>BZ#2018062</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Network map displays a "Destination network not found" error</div>
+<p>If the network map remains in a <code>NotReady</code> state and the <code>NetworkMap</code> manifest displays a <code>Destination network not found</code> error, the cause is a missing network attachment definition. You must create a <a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html/virtualization/virtual-machines#virt-creating-network-attachment-definition">network attachment definition</a> for each additional destination network before you create the network map. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=1971259"><strong>BZ#1971259</strong></a>)</p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migration gets stuck during third precopy</div>
+<p>Warm migration uses changed block tracking snapshots to copy data during the precopy stage. The snapshots are created at one-hour intervals by default. When a snapshot is created, its contents are copied to the destination cluster. However, when the third snapshot is created, the first snapshot is deleted and the block tracking is lost. (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=1969894"><strong>BZ#1969894</strong></a>)</p>
+</div>
+<div class="paragraph">
+<p>You can do one of the following to mitigate this issue:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Start the cutover stage no more than one hour after the precopy stage begins so that only one internal snapshot is created.</p>
+</li>
+<li>
+<p>Increase the snapshot interval in the <code>vm-import-controller-config</code> config map to <code>720</code> minutes:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">$ kubectl patch configmap/vm-import-controller-config \
+  -n openshift-cnv -p '{"data": \
+  {"warmImport.intervalMinutes": "720"}}'</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>
