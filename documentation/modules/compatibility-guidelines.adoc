@@ -33,7 +33,7 @@ However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3
 
 For more information about the software maintenance Life Cycle classifications for Operators shipped by Red Hat for use with OpenShift Container Platform, see link:https://access.redhat.com/support/policy/updates/openshift_operators#platform-agnostic[OpenShift Operator Life Cycles].
 
-[width="100%",cols="11%,4%,19%,22%,19%,17%,8%",options="header",]
+[width="100%",cols="10%,10%,15%,20%,20%,15%,10%",options="header",]
 .{project-short} Operator life cycle
 |===
 |Version
