@@ -33,3 +33,53 @@ However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3
 
 For more information about the software maintenance Life Cycle classifications for Operators shipped by Red Hat for use with OpenShift Container Platform, see link:https://access.redhat.com/support/policy/updates/openshift_operators#platform-agnostic[OpenShift Operator Life Cycles].
 
+[width="100%",cols="11%,4%,19%,22%,19%,17%,8%",options="header",]
+.{project-short} Operator life cycle
+|===
+|Version
+|Tier
+|OpenShift Version
+|General availability
+|Full support ends
+|Maintenance ends |EUS ends
+
+|2.6
+|N/A
+|N/A
+|23 Apr 2024
+|N/A
+|N/A
+|N/A
+
+|2.5
+|N/A
+|N/A
+|14 Sep 2023
+|23 Apr 2024
+|N/A
+|N/A
+
+|2.4
+|N/A
+|N/A
+|18 Apr 2023
+|14 Sep 2023
+|23 Apr 2024
+|N/A
+
+|2.3
+|N/A
+|N/A
+|04 Apr 2022
+|18 Apr 2023
+|14 Sep 2023
+|N/A
+
+|2.2
+|N/A
+|N/A
+|09 Dec 2021
+|04 Apr 2022
+|18 Apr 2023
+|N/A
+|===
