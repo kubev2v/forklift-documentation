@@ -148,6 +148,7 @@ You can add a source provider by using the {ocp} web console.
 :vmware:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
+include::modules/vmware-issues.adoc[leveloffset=+5]
 :!vmware:
 :context: rhv
 :rhv:
