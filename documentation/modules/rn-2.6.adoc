@@ -56,28 +56,41 @@ The {project-short} web console can no longer download logs. With this update, y
 [id="new-features-and-enhancements-26_{context}"]
 == New features and enhancements
 
-This part provides features and enhancements introduced in {project-full} 2.6:
+This section provides features and enhancements introduced in {project-full} 2.6.
 
+
+[id="new-features-and-enhancements-26-3_{context}"]
+=== New features and enhancements 2.6.3
+
+////
+****Removed as a resolved issue in 2.6.4****
 .Preservation of static IPs in migrations from vSphere
 
 You can now preserve static IPs of VMs that are installed with a Windows operating system and are migrated from vSphere. link:https://issues.redhat.com/browse/MTV-1148[(MTV-1148)]
+////
 
 .Support for migrating LUKS-encrypted devices in migrations from vSphere
 
 You can now perform cold migrations from a vSphere provider of VMs whose virtual disks are encrypted by Linux Unified Key Setup (LUKS). link:https://issues.redhat.com/browse/MTV-831[(MTV-831)]
 
+//2.6.3
 .Specifying the primary disk when migrating from vSphere
 
 You can now specify the primary disk when you migrate VMs from vSphere with more than one bootable disk. This avoids {project-short} automatically attempting to convert the first bootable disk that it detects while it examines all the disks of a virtual machine. This feature is needed because the first bootable disk is not necessarily the disk that the VM is expected to boot from in {virt}. link:https://issues.redhat.com/browse/MTV-1079[(MTV-1079)]
 
+//2.6.3
 .Links to remote provider UIs
 
 You can now remotely access the UI of a remote cluster when you create a source provider. For example, if the provider is a remote {rhv-full} {rhv-short} cluster, {project-short} adds a link to the remote {rhv-short} web console when you define the provider. This feature makes it easier for you to manage and debug a migration from remote clusters. link:https://issues.redhat.com/browse/MTV-1054[(MTV-1054)]
 
+[id="new-features-and-enhancements-26-0_{context}"]
+=== New features and enhancements 2.6.0
+// 2.6.0
 .Migration from vSphere over a secure connection
 
 You can now specify a CA certificate that can be used to authenticate the server that runs vCenter or ESXi, depending on the specified SDK endpoint of the vSphere provider. link:https://issues.redhat.com/browse/MTV-530[(MTV-530)]
 
+// 2.6.0
 .Migration to or from a remote {ocp-name} over a secure connection
 
 You can now specify a CA certificate that can be used to authenticate the API server of a remote {ocp-name} cluster. link:https://issues.redhat.com/browse/MTV-728[(MTV-728)]
@@ -123,72 +136,35 @@ With this update, you can edit plans that have failed to migrate any VMs. Some p
 The validation service includes default validation rules for virtual machines from the Open Virtual Appliance (OVA). link:https://issues.redhat.com/browse/MTV-669[(MTV-669)]
 
 
-[id="known-issues-26_{context}"]
-== Known issues
-
-This release has the following known issues:
-
-.Unclear error status message for VM with no operating system
-
-The error status message for a VM with no operating system on the *Plans* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
-
-.Migration of virtual machines with encrypted partitions fails during a conversion (vSphere only)
-
-vSphere only: Migrations from {rhv-short} and {osp} do not fail, but the encryption key might be missing on the target {ocp} cluster.
-
-.Migration fails during precopy/cutover while performing a snapshot operation on the source VM
-
-Warm migration from {rhv-short} fails if a snapshot operation is triggered and running on the source VM at the same time as the migration is scheduled. The migration does not wait for the snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
-
-.Unable to schedule migrated VM with multiple disks to more than one storage class of type `hostPath`
-
-When migrating a VM with multiple disks to more than one storage class of type `hostPath`, it might happen that a VM cannot be scheduled. Workaround: Use shared storage on the target {ocp} cluster.
-
-.Non-supported guest operating systems in warm migrations
-
-Warm migrations and migrations to remote {ocp} clusters from vSphere do not support the same guest operating systems that are supported in cold migrations and migrations to the local {ocp} cluster. RHEL 8 and RHEL 9 might cause this limitation.
-
-See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
-
-.VMs from vSphere with RHEL 9 guest operating system can start with network interfaces that are down
-
-When migrating VMs that are installed with RHEL 9 as a guest operating system from vSphere, the network interfaces of the VMs could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
-
-
-.Migration of a VM with NVME disks from vSphere fails
-
-When migrating a virtual machine (VM) with NVME disks from vSphere, the migration process fails, and the Web Console shows that the `Convert image to kubevirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
-
-.Importing image-based VMs can fail
-
-Migrating an image-based VM without the `virtual_size` field can fail on a block mode storage class. link:https://issues.redhat.com/browse/MTV-946[(MTV-946)]
-
-.Deleting a migration plan does not remove temporary resources
-
-Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs, and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
-
-.Migrating VMs with independent persistent disks from VMware to OCP-V fails
-
-Migrating VMs with independent persistent disks from VMware to OCP-V fails. link:https://issues.redhat.com/browse/MTV-993[(MTV-993)]
-
-.Guest operating system from vSphere might be missing
-
-When vSphere does not receive updates about the guest operating system from the VMware tools, it considers the information about the guest operating system to be outdated and ceases to report it. When this occurs, {project-short} is unaware of the guest operating system of the VM and is unable to associate it with the appropriate virtual machine preference or {ocp-name} template. link:https://issues.redhat.com/browse/MTV-1046[(MTV-1046)]
-
-.Failure to migrate an image-based VM from {osp} to the `default` project
-
-The migration process fails when migrating an image-based VM from {osp} to the `default` project. link:https://issues.redhat.com/browse/MTV-964[(MTV-964)]
-
-For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12436209[Known Issues] in Jira.
-
 [id="resolved-issues-26_{context}"]
 == Resolved issues
 
 This release has the following resolved issues:
 
+[id="resolved-issues-26-4_{context}"]
+=== Resolved issues 2.6.4
+
+.Disks and drives are offline after migrating Windows virtual machines from RHV or VMware to OCP
+
+Windows (Windows 2022) VMs configured with multiple disks, which are *Online* before the migration, are *Offline* after a successful migration from {rhv-short} or VMware to {ocp}, using {project-short}. Only the `C:\` primary disk is *Online*. This issue has been resolved for basic disks in {project-short} 2.6.4. link:https://issues.redhat.com/browse/MTV-1299[(MTV-1299)]
+
+For details of the known issue of dynamic disks being *Offline* in Windows Server 2022 after cold and warm migrations from vSphere to container-native virtualization (CNV) with Ceph RADOS Block Devices (RBD), using the storage class `ocs-storagecluster-ceph-rbd`, see xref:mtv-1344[(MTV-1344)].
+
+.Preserve IP option for Windows does not preserve all settings
+
+In earlier releases of {project-short}, while migrating a Windows 2022 Server with a static IP address assigned, and selecting the *Preserve static IPs* option, after a successful Windows migration, while the node started and the IP address was preserved, the subnet mask, gateway, and DNS servers were not preserved. This resulted in an incomplete migration, and the customer was forced to log in locally from the console to fully configure the network. This issue has been resolved in {project-short} 2.6.4. link:https://issues.redhat.com/browse/MTV-1286[(MTV-1286)]
+
+.`qemu-guest-agent` not being installed at first boot in Windows Server 2022
+
+After a successful Windows 2022 server guest migration using {project-short} 2.6.1, the `qemu-guest-agent` is not completely installed. The Windows Scheduled task is being created, however it is being set to run 4 hours in the future instead of the intended 2 minutes in the future. link:https://issues.redhat.com/browse/MTV-1325[(MTV-1325)]
+
+
+[id="resolved-issues-26-3_{context}"]
+=== Resolved issues 2.6.3
+
 .CVE-2024-24788: `golang: net` malformed DNS message can cause infinite loop
 
-A flaw was discovered in the `stdlib` package of the Go programming language, which impacts previous versions of {project-short}. This vulnerability primarily threatens web-facing applications and services that rely on Go for DNS queries. This flaw has been resolved in {project-short} 2.6.3.
+In earlier releases of {project-short}, there was a flaw was discovered in the `stdlib` package of the Go programming language, which impacts previous versions of {project-short}. This vulnerability primarily threatens web-facing applications and services that rely on Go for DNS queries. This issue has been resolved in {project-short} 2.6.3.
 
 For more details, see link:https://access.redhat.com/security/cve/cve-2024-24788[(CVE-2024-24788)].
 
@@ -212,6 +188,10 @@ In earlier versions of {project-short}, after cold migrations, there were leftov
 
 In earlier versions of {project-short}, some VMs that were imported from vSphere were not mapped to a template in {ocp-short} while other VMs, with the same guest operating system, were mapped to the corresponding template. Investigations indicated that this was because vSphere stopped reporting the operating system after not receiving updates from VMware tools for some time. This issue has been resolved in {project-short} 2.6.3 by taking the value of the operating system from the output of the investigation that `virt-v2v` performs on the disks. link:https://issues.redhat.com/browse/MTV-1046[(MTV-1046)]
 
+
+[id="resolved-issues-26-2_{context}"]
+=== Resolved issues 2.6.2
+
 .CVE-2023-45288: Golang `net/http, x/net/http2`: unlimited number of `CONTINUATION` frames can cause a denial-of-service (DoS) attack
 
 A flaw was discovered with the implementation of the `HTTP/2` protocol in the Go programming language, which impacts previous versions of {project-short}. There were insufficient limitations on the number of CONTINUATION frames sent within a single stream. An attacker could potentially exploit this to cause a denial-of-service (DoS) attack. This flaw has been resolved in {project-short} 2.6.2.
@@ -230,7 +210,6 @@ A flaw was found in the `net/mail` Golang standard library package, which impact
 
 For more details, see link:https://access.redhat.com/security/cve/cve-2024-24784[(CVE-2024-24784)].
 
-
 .CVE-2024-24783: `mtv-api-container`: Golang `crypto/x509`: Verify panics on certificates with an unknown public key algorithm
 
 A flaw was found in the `crypto/x509` Golang standard library package, which impacts previous versions of {project-short}. Verifying a certificate chain that contains a certificate with an unknown public key algorithm causes `Certificate.Verify` to panic. This affects all `crypto/tls` clients and servers that set `Config.ClientAuth` to `VerifyClientCertIfGiven` or `RequireAndVerifyClientCert`. The default behavior is for TLS servers to not verify client certificates. This flaw has been resolved in {project-short} 2.6.2.
@@ -243,13 +222,17 @@ A flaw was found in the `net/http` Golang standard library package, which impact
 
 For more details, see link:https://access.redhat.com/security/cve/cve-2023-45290[(CVE-2023-45290)].
 
-.ImageConversion does not run when target storage is set with wait-for-first-consumer
+.ImageConversion does not run when target storage is set with WaitForFirstConsumer (WFFC)
 
-In earlier releases of {project-short}, migration of VMs failed because the migration was stuck in the `AllocateDisks` phase. As a result of being stuck, the migration did not progress, and PVCs were not bound. The root cause of the problem was that `ImageConversion` did not run when target storage was set for `wait-for-first-consumer`. The problem was resolved in {project-short} 2.6.2. link:https://issues.redhat.com/browse/MTV-1126[(MTV-1126)]
+In earlier releases of {project-short}, migration of VMs failed because the migration was stuck in the `AllocateDisks` phase. As a result of being stuck, the migration did not progress, and PVCs were not bound. The root cause of the issue was that `ImageConversion` did not run when target storage was set for `wait-for-first-consumer`. The problem was resolved in {project-short} 2.6.2. link:https://issues.redhat.com/browse/MTV-1126[(MTV-1126)]
+
 
 .forklift-controller panics when importing VMs with direct LUNs
 
 In earlier releases of {project-short}, `forklift-controller` panicked when a user attempted to import VMs that had direct LUNs. The problem was resolved in {project-short} 2.6.2. link:https://issues.redhat.com/browse/MTV-1134[(MTV-1134)]
+
+[id="resolved-issues-26-1_{context}"]
+=== Resolved issues 2.6.1
 
 .VMs with multiple disks that are migrated from vSphere and OVA files are not being fully copied
 
@@ -262,6 +245,9 @@ In {project-short} 2.6.0,  migrations from one {ocp} cluster to another failed w
 .{project-short} forklift-controller pod crashes when receiving a disk without a datastore
 
 In earlier releases of {project-short}, if a VM was configured with a disk that was on a datastore that was no longer available in vSphere at the time a migration was attempted, the `forklift-controller` crashed, rendering {project-short} unusable. In {project-short} 2.6.1, {project-short} presents a critical validation for VMs with such disks, informing users of the problem, and the `forklift-controller` no longer crashes, although it cannot transfer the disk. link:https://issues.redhat.com/browse/MTV-1029[(MTV-1029)]
+
+[id="resolved-issues-26-0_{context}"]
+=== Resolved issues 2.6.0
 
 .Deleting an OVA provider automatically also deletes the PV
 
@@ -317,3 +303,65 @@ In earlier releases of {project-short}, an earlier failed migration could have l
 
 
 For a complete list of all resolved issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12436210[Resolved Issues] in Jira.
+
+[id="known-issues-26_{context}"]
+== Known issues
+
+This release has the following known issues:
+
+.[[mtv-1344]]Dynamic disks are offline in Windows Server 2022 after migration from vSphere to CNV with `ceph-rbd`
+
+The dynamic disks are *Offline* in Windows Server 2022 after cold and warm migrations from vSphere to container-native virtualization (CNV) with Ceph RADOS Block Devices (RBD), using the storage class `ocs-storagecluster-ceph-rbd`. link:https://issues.redhat.com/browse/MTV-1344[(MTV-1344)]
+
+.Unclear error status message for VM with no operating system
+
+The error status message for a VM with no operating system on the *Plans* page of the web console does not describe the reason for the failure. link:https://bugzilla.redhat.com/show_bug.cgi?id=2008846[(BZ#22008846)]
+
+.Migration of virtual machines with encrypted partitions fails during a conversion (vSphere only)
+
+vSphere only: Migrations from {rhv-short} and {osp} do not fail, but the encryption key might be missing on the target {ocp} cluster.
+
+.Migration fails during precopy/cutover while performing a snapshot operation on the source VM
+
+Warm migration from {rhv-short} fails if a snapshot operation is triggered and running on the source VM at the same time as the migration is scheduled. The migration does not wait for the snapshot operation to finish. link:https://issues.redhat.com/browse/MTV-456[(MTV-456)]
+
+.Unable to schedule migrated VM with multiple disks to more than one storage class of type `hostPath`
+
+When migrating a VM with multiple disks to more than one storage class of type `hostPath`, it might happen that a VM cannot be scheduled. Workaround: Use shared storage on the target {ocp} cluster.
+
+.Non-supported guest operating systems in warm migrations
+
+Warm migrations and migrations to remote {ocp} clusters from vSphere do not support the same guest operating systems that are supported in cold migrations and migrations to the local {ocp} cluster. RHEL 8 and RHEL 9 might cause this limitation.
+
+See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
+
+.VMs from vSphere with RHEL 9 guest operating system can start with network interfaces that are down
+
+When migrating VMs that are installed with RHEL 9 as a guest operating system from vSphere, the network interfaces of the VMs could be disabled when they start in {ocp-name} Virtualization. link:https://issues.redhat.com/browse/MTV-491[(MTV-491)]
+
+
+.Migration of a VM with NVME disks from vSphere fails
+
+When migrating a virtual machine (VM) with NVME disks from vSphere, the migration process fails, and the Web Console shows that the `Convert image to kubevirt` stage is `running` but did not finish successfully. link:https://issues.redhat.com/browse/MTV-963[(MTV-963)]
+
+.Importing image-based VMs can fail
+
+Migrating an image-based VM without the `virtual_size` field can fail on a block mode storage class. link:https://issues.redhat.com/browse/MTV-946[(MTV-946)]
+
+.Deleting a migration plan does not remove temporary resources
+
+Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs, and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[(BZ#2018974)]
+
+.Migrating VMs with independent persistent disks from VMware to OCP-V fails
+
+Migrating VMs with independent persistent disks from VMware to OCP-V fails. link:https://issues.redhat.com/browse/MTV-993[(MTV-993)]
+
+.Guest operating system from vSphere might be missing
+
+When vSphere does not receive updates about the guest operating system from the VMware tools, it considers the information about the guest operating system to be outdated and ceases to report it. When this occurs, {project-short} is unaware of the guest operating system of the VM and is unable to associate it with the appropriate virtual machine preference or {ocp-name} template. link:https://issues.redhat.com/browse/MTV-1046[(MTV-1046)]
+
+.Failure to migrate an image-based VM from {osp} to the `default` project
+
+The migration process fails when migrating an image-based VM from {osp} to the `default` project. link:https://issues.redhat.com/browse/MTV-964[(MTV-964)]
+
+For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12436209[Known Issues] in Jira.
