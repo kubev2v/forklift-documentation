@@ -1,0 +1,157 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="mtv-performance-addendum_{context}"]
+= {project-short} performance addendum
+
+[id="mtv-single-esxi-performance_{context}"]
+== Single ESXi performance
+
+Test migration using the same ESXi host.
+
+In each iteration, the total VMs are increased, to display the impact of concurrent migration on the duration.
+
+The results show that migration time is linear when increasing the total VMs (Utilization 70%).
+
+The optimal number of VMs per ESXi is 10.
+
+.Single ESXi tests
+[width="100%",cols="45%,7%,7%,15%,13%,13%",options="header",]
+|===
+| Test Case Description
+| MTV
+| VDDK
+| max_vm inflight
+| Migration Type
+| Total Duration
+
+
+|cold migration , 10 VMs , ESX 02-03 , Private Network footnoteref:[note1,Private Network refers to a non -Management network]
+|2.6
+|7.0.3
+|100
+|cold
+|0:21:39
+
+|cold migration , 20 VMs , ESX 02-03 , Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|0:41:16
+
+|cold migration , 30 VMs , ESX 02-03 , Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|1:00:59
+
+|cold migration , 40 VMs , ESX 02-03 , Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|1:23:02
+
+|cold migration , 50 VMs , ESX 02-03 , Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|1:46:24
+
+|cold migration , 80 VMs , ESX 02-03 , Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|2:42:49
+
+|cold migration , 100 VMs , ESX 02-03 , Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|3:25:15
+|===
+
+
+[id="mtv-different-migration-network_{context}"]
+== Different migration network performance
+
+Each iteration the `Migration Network`  was changed, using the *Provider*, to find the fastest network for migration.
+
+The results show that there is no degradation using management compared to non-managment networks when all interfaces and network speeds are the same.
+
+
+.Different migration network tests
+[width="100%",cols="45%,9%,9%,13%,12%,12%",options="header",]
+|===
+|Test Case Description
+|MTV
+|VDDK
+|max_vm inflight
+|Migration Type
+|Total Duration
+
+|cold migration , 10 VMs , ESX 02-03 , MGMT Network
+|2.6
+|7.0.3
+|100
+|cold
+|0:21:30
+
+|cold migration , 10 VMs , ESX 01-03 , Private Network footnoteref:[note2,Private Network refers to a non-Management network]
+|2.6
+|7.0.3
+|20
+|cold
+|0:21:20
+
+|cold migration , 10 VMs , 1 ESX (0203) , Default Network
+|2.6.2
+|7.0.3
+|20
+|cold
+|0:21:30
+|===
+
+[id="mtv-multi-esxi-single-datastore_{context}"]
+== Multi ESXi hosts and single data store
+
+In each iteration, the number of ESXi hosts were increased, to show that increasing the number of ESXi hosts improves the migration time.
+
+.Multi ESXi hosts and single data store
+[width="100%",cols="45%,9%,9%,13%,12%,12%",options="header",]
+|===
+|Test Case Description
+|MTV
+|VDDK
+|Max_vm inflight
+|Migration Type
+|Total Duration
+
+|cold migration , 100 VMs , ESX 02-03 , Private Network footnoteref:[note3,Private Network refers to a non-Management network]
+|2.6
+|7.0.3
+|100
+|cold
+|3:25:15
+
+|cold migration , 100 VMs , 4 ESXs (25 VMs per ESX) , Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|1:22:27
+
+|cold migration , 100 VMs , 5 ESXs (20 VMs per ESX) , Private Network , 1 DataStore
+|2.6
+|7.0.3
+|100
+|cold
+|1:04:57
+|===
