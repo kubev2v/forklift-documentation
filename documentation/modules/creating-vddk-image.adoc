@@ -6,7 +6,12 @@
 [id="creating-vddk-image_{context}"]
 = Creating a VDDK image
 
-{the} {project-first} uses the VMware Virtual Disk Development Kit (VDDK) SDK to accelerate transferring virtual disks from VMware vSphere. Therefore, creating a VDDK image, although optional, is highly recommended.
+{the} {project-first} can use the VMware Virtual Disk Development Kit (VDDK) SDK to accelerate transferring virtual disks from VMware vSphere. 
+
+[NOTE]
+====
+Creating a VDDK image, although optional, is highly recommended.
+====
 
 To make use of this feature, you download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry.
 
