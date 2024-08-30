@@ -22,7 +22,7 @@ include::snip_vmware_esxi_nfc.adoc[]
 The source virtual disks are copied by a pod that is connected to the pod network of the target namespace.
 ====
 
-* The migration network must have jumbo frames enabled.
+* The migration network should have jumbo frames enabled.
 
 .Procedure
 
