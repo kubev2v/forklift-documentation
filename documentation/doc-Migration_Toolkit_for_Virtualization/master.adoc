@@ -196,7 +196,7 @@ For your convenience, there are two procedures to create migration plans, starti
 
 [WARNING]
 ====
-The administrator must ensure that no data consistency issues arise when a guest initiates storage connections independently, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts.
+Virtual machines with guest initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts, are not handled by {project-short} and could require additional planning before or reconfiguration after the migration.
 
 This is to ensure that no issues arise due to the addition or newly migrated VM accessing this storage.
 ====
