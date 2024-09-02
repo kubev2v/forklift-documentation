@@ -194,6 +194,13 @@ For your convenience, there are two procedures to create migration plans, starti
 * To start with a source provider, see xref:creating-migration-plan-2-6-3_provider[Creating a migration plan starting with a source provider].
 * To start with specific VMs, see xref:creating-migration-plan-2-6-3_vms[Creating a migration plan starting with specific VMs].
 
+[IMPORTANT]
+====
+The administrator must ensure that no data consistency issues arise when a guest initiates storage connections independently, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts.
+
+This is to ensure that no issues arise due to the addition or newly migrated VM accessing this storage.
+====
+
 :mtv!:
 :context: provider
 :provider:
