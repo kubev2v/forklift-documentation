@@ -146,10 +146,7 @@ This release has the following resolved issues:
 
 .VMware Linux interface name changes during migration
 
-In earlier releases of {project-short}, 
-
-during the migration of Rocky 8, CentOS 7.2+, and Ubuntu 22 virtual machines (VM) from VMware to {ocp} 
-(OCP) version 4.13, the name of the network interfaces is modified, and the static IP configuration for the VM is no longer functional. This issue has been resolved for static IPs in {project-short} 2.6.5. link:https://issues.redhat.com/browse/MTV-595[(MTV-595)]
+In earlier releases of {project-short}, during the migration of Rocky 8, CentOS 7.2+, and Ubuntu 22 virtual machines (VM) from VMware to {ocp} (OCP) version 4.13, the name of the network interfaces is modified, and the static IP configuration for the VM is no longer functional. This issue has been resolved for static IPs in {project-short} 2.6.5. link:https://issues.redhat.com/browse/MTV-595[(MTV-595)]
 
 [id="resolved-issues-26-4_{context}"]
 === Resolved issues 2.6.4
