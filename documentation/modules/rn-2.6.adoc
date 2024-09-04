@@ -141,6 +141,13 @@ The validation service includes default validation rules for virtual machines fr
 
 This release has the following resolved issues:
 
+[id="resolved-issues-26-5_{context}"]
+=== Resolved issues 2.6.5
+
+.VMware Linux interface name changes during migration
+
+In earlier releases of {project-short}, during the migration of Rocky Linux 8, CentOS 7.2 and later, and Ubuntu 22 virtual machines (VM) from VMware to {ocp} (OCP), the name of the network interfaces is modified, and the static IP configuration for the VM is no longer functional. This issue has been resolved for static IPs in Rocky Linux 8, Centos 7.2 and later, Ubuntu 22 in {project-short} 2.6.5. link:https://issues.redhat.com/browse/MTV-595[(MTV-595)]
+
 [id="resolved-issues-26-4_{context}"]
 === Resolved issues 2.6.4
 
@@ -308,6 +315,10 @@ For a complete list of all resolved issues in this release, see the list of link
 == Known issues
 
 This release has the following known issues:
+
+.Migrating older Linux distributions from VMware to {ocp}, the name of the network interfaces changes
+
+When migrating older Linux distributions, such as CentOS 7.0 and 7.1, virtual machines (VMs) from VMware to {ocp}, the name of the network interfaces changes, and the static IP configuration for the VM no longer functions. This issue is caused by RHEL 7.0 and 7.1 still requiring `virtio-transitional`. Workaround: Manually update the guest to RHEL 7.2 or update the VM specification post-migration to use transitional. link:https://issues.redhat.com/browse/MTV-1382[(MTV-1382)]
 
 .[[mtv-1344]]Dynamic disks are offline in Windows Server 2022 after migration from vSphere to CNV with `ceph-rbd`
 
