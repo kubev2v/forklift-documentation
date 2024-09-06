@@ -141,6 +141,21 @@ The validation service includes default validation rules for virtual machines fr
 
 This release has the following resolved issues:
 
+[id="resolved-issues-26-6_{context}"]
+=== Resolved issues 2.6.6
+
+.Runtime error: invalid memory address or nil pointer dereference
+
+In earlier releases of {project-short}, there was a runtime error of `invalid memory address` or `nil pointer dereference` caused by a pointer that was nil, and there was an attempt to access the value that it points to. This issue has been resolved in {project-short} 2.6.6. link:https://issues.redhat.com/browse/MTV-1353[(MTV-1353)]
+
+.All Plan and Migration pods scheduled to same node causing the node to crash
+
+In earlier releases of {project-short}, the scheduler could place all migration pods on a single node. When this happened, the node ran out of the resources. This issue has been resolved in {project-short} 2.6.6. link:https://issues.redhat.com/browse/MTV-1354[(MTV-1354)]
+
+.Empty bearer token is sufficient for authentication
+
+In earlier releases of {project-short}, an empty bearer token was sufficient for authentication. This issue has been resolved in {project-short} 2.6.6. link:https://issues.redhat.com/browse/MTV-1377[(MTV-1377)]
+
 [id="resolved-issues-26-5_{context}"]
 === Resolved issues 2.6.5
 
