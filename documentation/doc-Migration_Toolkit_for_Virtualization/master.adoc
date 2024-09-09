@@ -201,6 +201,8 @@ Virtual machines with guest initiated storage connections, such as Internet Smal
 This is to ensure that no issues arise due to the addition or newly migrated VM accessing this storage.
 ====
 
+include::modules/snip_plan-limits.adoc[]
+
 :mtv!:
 :context: provider
 :provider:
@@ -230,6 +232,8 @@ You can migrate virtual machines to {virt} from the command line.
 ====
 You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
 ====
+
+include::modules/snip_plan-limits.adoc[]
 
 :mtv!:
 :context: cli
