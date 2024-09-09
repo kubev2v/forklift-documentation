@@ -141,6 +141,23 @@ The validation service includes default validation rules for virtual machines fr
 
 This release has the following resolved issues:
 
+[id="resolved-issues-26-6_{context}"]
+=== Resolved issues 2.6.6
+
+.Runtime error: invalid memory address or nil pointer dereference
+
+In earlier releases of {project-short}, there was a runtime error of `invalid memory address` or `nil pointer dereference` caused by a pointer that was nil, and there was an attempt to access the value that it points to. This issue has been resolved in {project-short} 2.6.6. link:https://issues.redhat.com/browse/MTV-1353[(MTV-1353)]
+
+.All Plan and Migration pods scheduled to same node causing the node to crash
+
+In earlier releases of {project-short}, the scheduler could place all migration pods on a single node. When this happened, the node ran out of the resources. This issue has been resolved in {project-short} 2.6.6. link:https://issues.redhat.com/browse/MTV-1354[(MTV-1354)]
+
+.Empty bearer token is sufficient for authentication
+
+In earlier releases of {project-short}, a vulnerability was found in the Forklift Controller.  There is no verification against the authorization header, except to ensure it uses bearer authentication. Without an authorization header and a bearer token, a `401` error occurs. The presence of a token value provides a 200 response with the requested information. This issue has been resolved in {project-short} 2.6.6. 
+
+For more details, see link:https://access.redhat.com/security/cve/cve-2024-8509[(CVE-2024-8509)].
+
 [id="resolved-issues-26-5_{context}"]
 === Resolved issues 2.6.5
 
@@ -315,6 +332,12 @@ For a complete list of all resolved issues in this release, see the list of link
 == Known issues
 
 This release has the following known issues:
+
+[WARNING] 
+.Warm migration and remote migration flows are impacted by multiple bugs
+====
+Warm migration and remote migration flows are impacted by multiple bugs. It is strongly recommended to fall back to cold migration until this issue is resolved. link:https://issues.redhat.com/browse/MTV-1366[(MTV-1366)]
+====
 
 .Migrating older Linux distributions from VMware to {ocp}, the name of the network interfaces changes
 
