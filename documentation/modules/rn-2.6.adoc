@@ -154,7 +154,9 @@ In earlier releases of {project-short}, the scheduler could place all migration 
 
 .Empty bearer token is sufficient for authentication
 
-In earlier releases of {project-short}, an empty bearer token was sufficient for authentication. This issue has been resolved in {project-short} 2.6.6. link:https://issues.redhat.com/browse/MTV-1377[(MTV-1377)]
+In earlier releases of {project-short}, a vulnerability was found in the Forklift Controller.  There is no verification against the authorization header, except to ensure it uses bearer authentication. Without an authorization header and a bearer token, a `401` error occurs. The presence of a token value provides a 200 response with the requested information. This issue has been resolved in {project-short} 2.6.6. 
+
+For more details, see link:https://access.redhat.com/security/cve/cve-2024-8509[(CVE-2024-8509)].
 
 [id="resolved-issues-26-5_{context}"]
 === Resolved issues 2.6.5
