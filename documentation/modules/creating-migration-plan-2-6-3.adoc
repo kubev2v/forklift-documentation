@@ -42,7 +42,7 @@ The *Create migration plan* pane opens. It displays the source provider's name a
 
 . VMware source providers only (All optional):
 
-* *Preserving static IPs of Windows VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. This results in vNICs that are set with a static IP in vSphere losing their IP. To avoid this by preserving static IPs of Windows VMs, click the Edit icon next to *Preserve static IPs*, and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
+* *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. This results in vNICs that are set with a static IP in vSphere losing their IP. To avoid this by preserving static IPs of VMs, click the Edit icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
 +
 {project-short} then issues a warning message about any VMs with a Windows operating system for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 
