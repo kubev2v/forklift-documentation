@@ -144,7 +144,7 @@ This release has the following resolved issues:
 [id="resolved-issues-26-7_{context}"]
 === Resolved issues 2.6.7
 
-.Incorrect handling of double quotes in ifcfg files
+.Incorrect handling of quotes in ifcfg files
 
 In earlier releases of {project-short}, there was an issue with the incorrect handling of double quotes in interface configuration (ifcfg) files, which control the software interfaces for individual network devices. This issue has been resolved in {project-short} 2.6.7, in order to cover additional IP configurations on Red Hat Enterprise Linux, CentOS, Rocky Linux and similar distributions. link:https://issues.redhat.com/browse/MTV-1439[(MTV-1439)]
 
