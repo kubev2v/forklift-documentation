@@ -152,7 +152,7 @@ In earlier releases of {project-short}, there was an issue with the incorrect ha
 
 In earlier releases of {project-short}, there was an issue with the preservation of netplan-based network configurations. This issue has been resolved in {project-short} 2.6.7, so that static IP configurations are preserved if netplan (netplan.io) is used by using the netplan configuration files to generate udev rules for known mac-address and `ifname` tuples. link:https://issues.redhat.com/browse/MTV-1440[(MTV-1440)]
 
-.Error messages corrupt in udev .rules files
+.Error messages are written into udev .rules files
 
 In earlier releases of {project-short}, there was an issue with the accidental leakage of error messages into udev .rules files. This issue has been resolved in {project-short} 2.6.7, with a static IP persistence script added to the udev rule file. link:link:https://issues.redhat.com/browse/MTV-1441[(MTV-1441)]
 
