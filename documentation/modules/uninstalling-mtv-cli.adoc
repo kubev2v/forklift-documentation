@@ -6,7 +6,12 @@
 [id="uninstalling-mtv-cli_{context}"]
 = Uninstalling {project-short} from the command line interface
 
-You can uninstall {project-first} from the command line interface (CLI) by deleting the +{namespace}+ project and the `forklift.konveyor.io` custom resource definitions (CRDs).
+You can uninstall {project-first} from the command line interface (CLI).
+
+[NOTE]
+====
+This action does not remove resources managed by the Operator, including custom resource definitions (CRDs) and custom resources (CRs). To remove these after uninstalling the Operator, you might need to manually delete the Operator CRDs.
+====
 
 .Prerequisites
 
@@ -14,23 +19,44 @@ You can uninstall {project-first} from the command line interface (CLI) by delet
 
 .Procedure
 
-. Delete the project:
+. Delete the `forklift` controller by running the following command:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} delete project {namespace}
+$ oc delete ForkliftController --all -n openshift-mtv
 ----
 
-. Delete the CRDs:
+. Delete the subscription to the {project-short} Operator by running the following command:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} get crd -o name | grep 'forklift' | xargs {oc} delete
+$ oc get subscription -o name|grep 'mtv-operator'| xargs oc delete
 ----
 
-. Delete the OAuthClient:
+. Delete the `clusterserviceversion` for the {project-short} Operator by running the following command:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} delete oauthclient/forklift-ui
+$ oc get clusterserviceversion -o name|grep 'mtv-operator'| xargs oc delete
+----
+
+. Delete the plugin console CR by running the following command:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc delete ConsolePlugin forklift-console-plugin
+----
+
+. Optional: Delete the custom resource definitions (CRDs) by running the following command:
++
+[source,terminal,subs="attributes+"]
+----
+{oc} get crd -o name | grep 'forklift.konveyor.io' | xargs {oc} delete
+----
+
+. Optional: Perform cleanup by deleting the {project-short} project by running the following command:
++
+[source,terminal,subs="attributes+"]
+----
+oc delete project openshift-mtv
 ----
