@@ -141,6 +141,21 @@ The validation service includes default validation rules for virtual machines fr
 
 This release has the following resolved issues:
 
+[id="resolved-issues-26-7_{context}"]
+=== Resolved issues 2.6.7
+
+.Incorrect handling of quotes in ifcfg files
+
+In earlier releases of {project-short}, there was an issue with the incorrect handling of single and double quotes in interface configuration (ifcfg) files, which control the software interfaces for individual network devices. This issue has been resolved in {project-short} 2.6.7, in order to cover additional IP configurations on Red Hat Enterprise Linux, CentOS, Rocky Linux and similar distributions. link:https://issues.redhat.com/browse/MTV-1439[(MTV-1439)]
+
+.Failure to preserve netplan based network configuration
+
+In earlier releases of {project-short}, there was an issue with the preservation of netplan-based network configurations. This issue has been resolved in {project-short} 2.6.7, so that static IP configurations are preserved if netplan (netplan.io) is used by using the netplan configuration files to generate udev rules for known mac-address and `ifname` tuples. link:https://issues.redhat.com/browse/MTV-1440[(MTV-1440)]
+
+.Error messages are written into udev .rules files
+
+In earlier releases of {project-short}, there was an issue with the accidental leakage of error messages into udev .rules files. This issue has been resolved in {project-short} 2.6.7, with a static IP persistence script added to the udev rule file. link:link:https://issues.redhat.com/browse/MTV-1441[(MTV-1441)]
+
 [id="resolved-issues-26-6_{context}"]
 === Resolved issues 2.6.6
 
@@ -154,7 +169,7 @@ In earlier releases of {project-short}, the scheduler could place all migration 
 
 .Empty bearer token is sufficient for authentication
 
-In earlier releases of {project-short}, a vulnerability was found in the Forklift Controller.  There is no verification against the authorization header, except to ensure it uses bearer authentication. Without an authorization header and a bearer token, a `401` error occurs. The presence of a token value provides a 200 response with the requested information. This issue has been resolved in {project-short} 2.6.6. 
+In earlier releases of {project-short}, a vulnerability was found in the Forklift Controller.  There is no verification against the authorization header, except to ensure it uses bearer authentication. Without an authorization header and a bearer token, a `401` error occurs. The presence of a token value provides a 200 response with the requested information. This issue has been resolved in {project-short} 2.6.6.
 
 For more details, see link:https://access.redhat.com/security/cve/cve-2024-8509[(CVE-2024-8509)].
 
@@ -333,7 +348,7 @@ For a complete list of all resolved issues in this release, see the list of link
 
 This release has the following known issues:
 
-[WARNING] 
+[WARNING]
 .Warm migration and remote migration flows are impacted by multiple bugs
 ====
 Warm migration and remote migration flows are impacted by multiple bugs. It is strongly recommended to fall back to cold migration until this issue is resolved. link:https://issues.redhat.com/browse/MTV-1366[(MTV-1366)]
