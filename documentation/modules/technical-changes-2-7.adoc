@@ -1,0 +1,8 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="technical-changes-2-7_{context}"]
+= Technical changes
+
+{project-first} 2.7 has the following technical changes:

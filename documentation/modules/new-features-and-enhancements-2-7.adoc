@@ -1,0 +1,9 @@
+
+[id="new-features-and-enhancements-2-7_{context}"]
+= New features and enhancements
+
+{project-first} 2.7 introduces the following features and enhancements:
+
+
+[id="new-features-and-enhancements-2-7-0_{context}"]
+== New features and enhancements 2.7.0

@@ -1,0 +1,11 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-27-resolved-issues_{context}"]
+= Resolved issues
+
+{project-first} 2.7 has the following resolved issues:
+
+[id="resolved-issues-2-7-0_{context}"]
+== Resolved issues 2.7.0
