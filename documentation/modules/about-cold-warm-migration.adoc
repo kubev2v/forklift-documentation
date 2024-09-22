@@ -31,7 +31,7 @@ Then the VMs are shut down and the remaining data is copied during the _cutover_
 
 The VMs are not shut down during the precopy stage.
 
-The VM disks are copied incrementally using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment.
+The VM disks are copied incrementally by using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment.
 
 [IMPORTANT]
 ====
@@ -47,3 +47,72 @@ The precopy stage runs until the cutover stage is started manually or is schedul
 The VMs are shut down during the cutover stage and the remaining data is migrated. Data stored in RAM is not migrated.
 
 You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` manifest.
+
+
+[id="warm-migration-versus-cold-migration"_{context}]
+== Advantages and disadvantages of cold and warm migrations
+
+[id="warm-cold-migration-overview_{context}"]
+=== Overview
+
+include::snip_cold-warm-comparison-table.adoc[]
+
+[id="warm-cold-migration-detailed_{context}"]
+=== Detailed description
+
+The table that follows offers a more detailed description of the advantages and disadvantages of each type of migration. It assumes that you have installed Red Hat Enterprise Linux (RHEL) 9 on the {ocp} platform on which you installed {project-short}.
+
+[cols="1,1,1",options="header"]
+.Detailed description of advantages and disadvantages
+
+|===
+| |Cold migration |Warm migration
+
+|*Fail fast*
+|Each VM is converted to be compatible with {ocp-short} and, if the conversion is successful, the VM is transferred. If a VM cannot be converted, the migration fails immediately.
+|For each VM, {project-short} creates a snapshot and transfers it to {ocp}. When you start the cutover, {project-short} creates the last snapshot, transfers it, and then converts the VM.
+
+|*Tools*
+|{project-short} only.
+|{project-short} and CDI from {virt}.
+
+|*Parallelism*
+|Disks must be transferred sequentially.
+|Disks can be transferred in parallel, using different pods.
+|===
+
+[NOTE]
+====
+The preceding table describes the situation for VMs that are running, because the main benefit of warm migration is the reduced downtime, and there is no reason to initiate warm migration for VMs that are down. However, performing warm migration for VMs that are down is not the same as cold migration, even when {project-short} uses `virt-v2v` and RHEL 9. For VMs that are down, {project-short} transfers the disks using CDI, unlike in cold migration.
+====
+
+[NOTE]
+====
+When importing from VMware, there are additional factors which impact the migration speed such as limits related to ESXi, vSphere. or VDDK.
+====
+
+=== Conclusions
+
+Based on the preceding information, we can draw the following conclusions about cold migration vs. warm migration:
+
+* The shortest downtime of VMs can be achieved by using warm migration.
+* The shortest duration for VMs with a large amount of data on a single disk can be achieved by using cold migration.
+* The shortest duration for VMs with a large amount of data that is spread evenly across multiple disks can be achieved by using warm migration.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
