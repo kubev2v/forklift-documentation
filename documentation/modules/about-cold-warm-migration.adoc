@@ -49,14 +49,35 @@ The VMs are shut down during the cutover stage and the remaining data is migrate
 You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` manifest.
 
 [id="warm-migration-versus-cold-migration"_{context}]
-== Cold migration vs. warm migration: Which is right for your migration?
+== Advantages and disadvantages of cold and warm migrations
 
-Both warm migration and cold migration have advantages and limitations. In general, warm migrations can take longer than cold migrations, but warm migrations involve less downtime than cold migrations.
+[id="warm-cold-migration-overview_{context}"]
+=== Overview
 
-The table that follows describes the advantages and limitations of each type of migration. It assumes that you have installed Red Hat Enterprise Linux (RHEL) 9 on the {ocp} platform on which you installed {project-short}.
+Both cold migration and warm migration have advantages and disadvantages, as described in the table that follows:
 
 [cols="1,1,1",options="header"]
-.Advantages and limitations of cold and warm migrations
+.Advantages and disadvantages of cold and warm migrations
+
+|===
+| |Duration |VM downtime
+
+|Cold migration
+|Minimal
+|High
+
+|Warm migration
+|Longer and variable
+|Minimal
+|===
+
+[id="warm-cold-migration-detailed_{context}"]
+=== Detailed description
+
+The table that follows offers a more detailed description of the advantages and disadvantages of each type of migration. It assumes that you have installed Red Hat Enterprise Linux (RHEL) 9 on the {ocp} platform on which you installed {project-short}.
+
+[cols="1,1,1",options="header"]
+.Detailed description of advantages and disadvantages
 
 |===
 | |Cold migration |Warm migration
@@ -70,12 +91,12 @@ The table that follows describes the advantages and limitations of each type of 
 | All blocks are transferred before any are converted. This means that it takes longer for a warm migration to fail than a cold migration, because a cold migration fails before all blocks are transferred.
 
 |*Tools*
-| RHEL 9 and `virt-v2v` in all cases.
-| RHEL 9 and `virt-v2v` for all migrations except those that use the Containerized Data Importer (CDI).
+| {project-short} only.
+| {project-short} and CDI from {virt}
 
 |*VM downtime*
 | Longer than with a warm migration because in a cold migration, all the source VMs are shut down and then the data is transferred.
-| Shorter than with a cold migration, because the disks are transferred, and hen shut down before being converted.
+| Shorter than with a cold migration, because the disks are transferred, and then shut down before being converted.
 
 |*Parallelism*
 | Disks must be transferred sequentially.
@@ -84,7 +105,7 @@ The table that follows describes the advantages and limitations of each type of 
 
 [NOTE]
 ====
-The table above describes the situation for VMs that are running, because the main benefit of warm migration is the reduced downtime, and there is no reason to initiate warm migration for VMs that are down. However, performing warm migration for VMs that are down is not the same as cold migration, even when {project-short} uses `virt-v2v` and RHEL 9. For VMs that are down, {project-short} transfers the disks using CDI, unlike in cold migration.
+The preceding table describes the situation for VMs that are running, because the main benefit of warm migration is the reduced downtime, and there is no reason to initiate warm migration for VMs that are down. However, performing warm migration for VMs that are down is not the same as cold migration, even when {project-short} uses `virt-v2v` and RHEL 9. For VMs that are down, {project-short} transfers the disks using CDI, unlike in cold migration.
 ====
 
 
