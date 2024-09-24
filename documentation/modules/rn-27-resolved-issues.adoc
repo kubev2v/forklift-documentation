@@ -9,3 +9,20 @@
 
 [id="resolved-issues-2-7-0_{context}"]
 == Resolved issues 2.7.0
+
+.Import fails with special characters in VMX file
+
+In earlier releases of {project-short},
+Import fails with special characters in VMX file
+
+.Status condition indicating a falied mapping resource of a plan is not added to the plan
+
+In earlier releases of {project-short}, a status condition indicating a failed mapping resource of a plan was not added to the plan. This issue has been resolved in {project-short} 2.7.0, with a status condition indicating the failed mapping being added. link:https://issues.redhat.com/browse/MTV-1461[(MTV-1461)]
+
+.ifcfg files with HWaddr directive cause the NIC name to change
+
+In earlier releases of {project-short}, interface configuration (ifcfg) files with a hardware address (HWaddr) of the ethernet interface caused the name of the network interface controller (NIC) to change. This isssue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1463[(MTV-1463)]
+
+.Warm migration is missing arguments
+
+In earlier releases of {project-short}, `virt-v2v-in-place` for the warm migration was missing arguments that were available in `virt-v2v` for the cold migration. This isssue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1495[(MTV-1495)]
