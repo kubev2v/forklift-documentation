@@ -1,0 +1,6 @@
+:_content-type: SNIPPET
+
+[IMPORTANT]
+====
+A plan cannot contain more than 500 VMs or 500 disks.
+====
