@@ -10,18 +10,3 @@
 
 * In {project-short} 2.7.0, warm migration has been enhanced.
 
-+
-[cols="1,1,1",options="header"]
-.Advantages and disadvantages of cold and warm migrations
-
-|===
-| |Duration |VM downtime
-
-|Cold migration
-|Minimal
-|High
-
-|Warm migration
-|Longer and variable
-|Minimal
-|===
