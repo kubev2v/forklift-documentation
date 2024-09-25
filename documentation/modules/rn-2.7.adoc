@@ -15,4 +15,3 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 
 The release notes describe technical changes, new features and enhancements, known issues, and resolved issues.
 
-
