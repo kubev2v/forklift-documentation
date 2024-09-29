@@ -88,8 +88,8 @@ In {project-short} 2.6, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, reg
 
 * `MAX_VM_INFLIGHT = 20` and 2 ESXi hosts defined in the provider mean each host can transfer 20 VMs.
 
-[id="mtv-performance-multiple-hosts_{context}"]
-== Migrations complete faster using multiple hosts.
+[id="mtv-performance-multiple-vms-concurrently_{context}"]
+== Migrations complete faster when migrating multiple VMs concurrently
 
 Migrations complete faster when migrating multiple VMs concurrently. 
 
@@ -112,6 +112,26 @@ It is possible to increase concurrent migration to more than 10 virtual machines
 From the aforementioned examples, it is evident that the migration of 10 virtual machines simultaneously is three times faster than the migration of identical virtual machines in a sequential manner.
 
 The migration rate was almost the same when moving 20 virtual machines simultaneously.
+====
+
+[id="mtv-performance-multiple-hosts_{context}"]
+== Migrations complete faster using multiple hosts.
+
+Using multiple hosts with registered VMs equally distributed among the ESXi hosts used for migrations leads to faster migration times.
+
+Testing showed that when transferring more than 10 single disk VMS, each containing 35 GiB of data out of a total of 50G total, using an additional host can reduce migration time.
+
+.Example
+
+* 80 single disk VMs, containing 35 GiB of data each, using a single host took 2 hours and 43 minutes, with a migration rate of 294 MiB/s.
+
+* 80 single disk VMs, containing 35 GiB of data each, using 8 ESXi hosts took 41 minutes, with a migration rate of 1,173 MiB/s.
+
+[NOTE]
+====
+From the aforementioned examples, it is evident that migrating 80 VMs from 8 ESXi hosts, 10 from each host, concurrently is four times faster than running the same VMs from a single ESXi host. 
+
+Migrating a larger number of VMs from more than 8 ESXi hosts concurrently could potentially show increased performance. However, it was not tested and therefore not recommended.
 ====
 
 [id="mtv-performance-bios-profile_{context}"]
