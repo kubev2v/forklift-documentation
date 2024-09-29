@@ -91,7 +91,6 @@ In {project-short} 2.6, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, reg
 [id="mtv-performance-multiple-vms-concurrently_{context}"]
 == Migrations complete faster when migrating multiple VMs concurrently
 
-Migrations complete faster when migrating multiple VMs concurrently. 
 
 When multiple VMs from a specific ESXi host are to be migrated, starting concurrent migrations for multiple VMs leads to faster migration times. 
 
