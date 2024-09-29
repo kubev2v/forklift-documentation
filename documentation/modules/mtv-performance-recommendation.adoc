@@ -28,7 +28,6 @@ Ensure fast storage and network speeds, both for VMware and {ocp} (OCP) environm
 [id="mtv-performance-datastore-read_{context}"]
 == Ensure fast datastore read speeds to ensure efficient and performant migrations.
 
-
 Datastores read rates impact the total transfer times, so it is essential to ensure fast reads are possible from the ESXi datastore to the ESXi host.  
 
 
@@ -92,16 +91,28 @@ In {project-short} 2.6, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, reg
 [id="mtv-performance-multiple-hosts_{context}"]
 == Migrations complete faster using multiple hosts.
 
-Using multiple hosts with registered VMs equally distributed among the ESXi hosts used for migrations leads to faster migration times.
+Migrations complete faster when migrating multiple VMs concurrently. 
 
+When multiple VMs from a specific ESXi host are to be migrated, starting concurrent migrations for multiple VMs leads to faster migration times. 
 
-Testing showed that when transferring more than 10 single disk VMS, each containing 35 GiB of data out of a total of 50G total, using an additional host can reduce migration time.
+Testing demonstrated that migrating 10 VMs (each containing 35 GiB of data, with a total size of 50 GiB) from a single host is significantly faster than migrating the same number of VMs sequentially, one after another. 
+
+It is possible to increase concurrent migration to more than 10 virtual machines from a single host, but it does not show a significant improvement. 
 
 .Example
 
-* 80 single disk VMs, containing 35 GiB of data each, using a single host took 2 hours and 43 minutes, with a migration rate of 294 MiB/s.
+* 1 single disk VMs took 6 minutes, with migration rate of 100 MiB/s
 
-* 80 single disk VMs, containing 35 GiB of data each, using 8 ESXi hosts took 41 minutes, with a migration rate of 1,173 MiB/s.
+* 10 single disk VMs took 22 minutes, with migration rate of 272 MiB/s
+
+* 20 single disk VMs took 42 minutes, with migration rate of 284 MiB/s
+
+[NOTE]
+====
+From the aforementioned examples, it is evident that the migration of 10 virtual machines simultaneously is three times faster than the migration of identical virtual machines in a sequential manner.
+
+The migration rate was almost the same when moving 20 virtual machines simultaneously.
+====
 
 [id="mtv-performance-bios-profile_{context}"]
 == Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance
@@ -130,13 +141,15 @@ Testing showed that by breaking one single large plan into multiple moderately s
 
 * Maximum number of ESXi hosts tested: 8
 * Maximum number of VMs in a single migration plan: 500
-* Maximum number of VMs migrated: 5000
+* Maximum number of VMs migrated in a single test: 5000
 * Maximum number of migration plans performed concurrently: 40
 * Maximum single disk size migrated: 6 T disks, which contained 3 Tb of data
 * Maximum number of disks on a single VM migrated: 50
 * Highest observed single datastore read rate from a single ESXi server:  312 MiB/second
 * Highest observed multi-datastore read rate using eight ESXi servers and two datastores: 1,242 MiB/second
 * Highest observed virtual NIC transfer rate to an {ocp-name} worker: 327 MiB/second
-* Maximum migration transfer rate of a single disk: 162 MiB/second (rate observed when transferring 1.5Tb of non-zero data)
+* Maximum migration transfer rate of a single disk: 162 MiB/second (rate observed when transferring 1.5Tb case/time using utilized data)
+* Maximum cold migration transfer rate of the multiple VMs (single disk) from a single ESXi host: 294 MiB/s (concurrent migration of 30 VMs, 35/50 GiB used, from Single ESXi)
+* Maximum cold migration transfer rate of the multiple VMs (single disk) from multiple ESXi hosts: 1173MB/s (concurrent migration of 80 VMs, 35/50 GiB used, from 8 ESXi servers, 10 VMs from each ESXi)
 
 For additional details on performance, see xref:mtv-performance-addendum_mtv[{project-short} performance addendum]
