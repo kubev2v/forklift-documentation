@@ -8,7 +8,7 @@
 
 The purpose of this section is to share recommendations for efficient and effective migration of virtual machines (VMs) using {project-first}, based on findings observed through testing.
 
-This document also aims to share key findings of what was observed through testing, and the summarized results of those tests, as shown by recommendations.
+include::snip_performance.adoc[]
 
 [id="mtv-performance-storage-network_{context}"]
 == Ensure fast storage and network speeds
