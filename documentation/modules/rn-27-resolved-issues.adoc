@@ -25,7 +25,6 @@ In earlier releases of {project-short}, interface configuration (ifcfg) files wi
 .Import fails with special characters in VMX file
 
 In earlier releases of {project-short}, imports failed when there were special characters in the parameters of the VMX file. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1472[(MTV-1472)]
-Import fails with special characters in VMX file
 
 .Observed `invalid memory address or nil pointer dereference` panic
 
