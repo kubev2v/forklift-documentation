@@ -6,8 +6,12 @@
 [id="mtv-performance-addendum_{context}"]
 = {project-short} performance addendum
 
-[id="mtv-single-esxi-performance_{context}"]
-== Single ESXi performance
+include::snip_performance.adoc[]
+
+[id="mtv-esxi-performance_{context}"]
+== ESXi performance
+
+.Single ESXi performance
 
 Test migration using the same ESXi host.
 
@@ -78,6 +82,43 @@ The optimal number of VMs per ESXi is 10.
 |3:25:15
 |===
 
+.Multi ESXi hosts and single data store
+
+In each iteration, the number of ESXi hosts were increased, to show that increasing the number of ESXi hosts improves the migration time.
+
+.Multi ESXi hosts and single data store
+[width="100%",cols="45%,9%,9%,13%,12%,12%",options="header",]
+|===
+|Test Case Description
+|MTV
+|VDDK
+|Max_vm inflight
+|Migration Type
+|Total Duration
+
+|cold migration , 100 VMs , ESX 02-03 , Private Network footnoteref:[note3,Private Network refers to a non-Management network]
+|2.6
+|7.0.3
+|100
+|cold
+|3:25:15
+
+|cold migration , 100 VMs , 4 ESXs (25 VMs per ESX) , Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|1:22:27
+
+|cold migration , 100 VMs , 5 ESXs (20 VMs per ESX) , Private Network , 1 DataStore
+|2.6
+|7.0.3
+|100
+|cold
+|1:04:57
+|===
+
+
 
 [id="mtv-different-migration-network_{context}"]
 == Different migration network performance
@@ -117,41 +158,4 @@ The results show that there is no degradation using management compared to non-m
 |20
 |cold
 |0:21:30
-|===
-
-[id="mtv-multi-esxi-single-datastore_{context}"]
-== Multi ESXi hosts and single data store
-
-In each iteration, the number of ESXi hosts were increased, to show that increasing the number of ESXi hosts improves the migration time.
-
-.Multi ESXi hosts and single data store
-[width="100%",cols="45%,9%,9%,13%,12%,12%",options="header",]
-|===
-|Test Case Description
-|MTV
-|VDDK
-|Max_vm inflight
-|Migration Type
-|Total Duration
-
-|cold migration , 100 VMs , ESX 02-03 , Private Network footnoteref:[note3,Private Network refers to a non-Management network]
-|2.6
-|7.0.3
-|100
-|cold
-|3:25:15
-
-|cold migration , 100 VMs , 4 ESXs (25 VMs per ESX) , Private Network
-|2.6
-|7.0.3
-|100
-|cold
-|1:22:27
-
-|cold migration , 100 VMs , 5 ESXs (20 VMs per ESX) , Private Network , 1 DataStore
-|2.6
-|7.0.3
-|100
-|cold
-|1:04:57
 |===
