@@ -60,6 +60,14 @@ You can use the following ESXi command, which designates interface `vmk2` for NB
 esxcli network ip interface tag add -t vSphereBackupNFC -i vmk2
 ----
 
+[id="mtv-performance-bios-profile_{context}"]
+== Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance
+
+Where possible, ensure that hosts used to perform migrations are set with BIOS profiles related to maximum performance.  Hosts which use Host Power Management controlled within vSphere should check that `High Performance` is set.
+
+Testing showed that when transferring more than 10 VMs with both BIOS and host power management set accordingly, migrations had an increase of 15 MiB in the average datastore read rate.
+
+
 [id="mtv-performance-network-loads_{context}"]
 == Avoid additional network load on VMware networks
 
@@ -98,13 +106,15 @@ Testing demonstrated that migrating 10 VMs (each containing 35 GiB of data, with
 
 It is possible to increase concurrent migration to more than 10 virtual machines from a single host, but it does not show a significant improvement. 
 
+[IMPORTANT]
 .Examples
-
+====
 * 1 single disk VMs took 6 minutes, with migration rate of 100 MiB/s
 
 * 10 single disk VMs took 22 minutes, with migration rate of 272 MiB/s
 
 * 20 single disk VMs took 42 minutes, with migration rate of 284 MiB/s
+====
 
 [NOTE]
 ====
@@ -132,13 +142,6 @@ From the aforementioned examples, it is evident that migrating 80 VMs from 8 ES
 
 Migrating a larger number of VMs from more than 8 ESXi hosts concurrently could potentially show increased performance. However, it was not tested and therefore not recommended.
 ====
-
-[id="mtv-performance-bios-profile_{context}"]
-== Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance
-
-Where possible, ensure that hosts used to perform migrations are set with BIOS' profiles related to maximum performance.  Hosts which use Host Power Management controlled within vSphere should check that ‘High Performance’ is set.
-
-Testing showed that when transferring more than 10 VMs with both BIOS and host power management set accordingly, migrations had an increase of 15 MiB in the average datastore read rate.
 
 [id="mtv-performance-multiple-migration-plans_{context}"]
 == Multiple migration plans compared to a single large migration plan
