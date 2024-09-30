@@ -84,7 +84,7 @@ The optimal number of VMs per ESXi is 10.
 
 .Multi ESXi hosts and single data store
 
-In each iteration, the number of ESXi hosts were increased, to show that increasing the number of ESXi hosts improves the migration time.
+In each iteration, the number of ESXi hosts were increased, to show that increasing the number of ESXi hosts improves the migration time (50 GiB disk, Utilization 70%).
 
 .Multi ESXi hosts and single data store
 [width="100%",cols="45%,9%,9%,13%,12%,12%",options="header",]
