@@ -32,7 +32,7 @@ The optimal number of VMs per ESXi is 10.
 | Total Duration
 
 
-|cold migration , 10 VMs , ESX 02-03 , Private Network footnoteref:[note1,Private Network refers to a non -Management network]
+|cold migration , 10 VMs , Single ESX , Private Network footnoteref:[note1,Private Network refers to a non -Management network]
 |2.6
 |7.0.3
 |100
