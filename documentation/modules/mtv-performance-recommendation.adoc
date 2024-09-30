@@ -167,7 +167,7 @@ Testing showed that by breaking one single large plan into multiple moderately s
 * Highest observed single datastore read rate from a single ESXi server:  312 MiB/second
 * Highest observed multi-datastore read rate using eight ESXi servers and two datastores: 1,242 MiB/second
 * Highest observed virtual NIC transfer rate to an {ocp-name} worker: 327 MiB/second
-* Maximum migration transfer rate of a single disk: 162 MiB/second (rate observed when transferring 1.5Tb case/time using utilized data)
+* Maximum migration transfer rate of a single disk: 162 MiB/second (rate observed when transferring nonconcurrent migration of 1.5 Tb utilized data)
 * Maximum cold migration transfer rate of the multiple VMs (single disk) from a single ESXi host: 294 MiB/s (concurrent migration of 30 VMs, 35/50 GiB used, from Single ESXi)
 * Maximum cold migration transfer rate of the multiple VMs (single disk) from multiple ESXi hosts: 1173MB/s (concurrent migration of 80 VMs, 35/50 GiB used, from 8 ESXi servers, 10 VMs from each ESXi)
 
