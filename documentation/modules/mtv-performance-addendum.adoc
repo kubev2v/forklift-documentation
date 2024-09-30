@@ -152,7 +152,7 @@ The results show that there is no degradation using management compared to non-m
 |cold
 |0:21:20
 
-|cold migration , 10 VMs , 1 ESXi(0203) , Default Network
+|cold migration , 10 VMs , Single ESXi , Default Network
 |2.6.2
 |7.0.3
 |20
