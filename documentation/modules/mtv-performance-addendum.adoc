@@ -17,7 +17,7 @@ Test migration using the same ESXi host.
 
 In each iteration, the total VMs are increased, to display the impact of concurrent migration on the duration.
 
-The results show that migration time is linear when increasing the total VMs (Utilization 70%).
+The results show that migration time is linear when increasing the total VMs (50 GiB disk, Utilization 70%).
 
 The optimal number of VMs per ESXi is 10.
 
