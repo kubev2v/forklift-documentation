@@ -98,7 +98,7 @@ Testing demonstrated that migrating 10 VMs (each containing 35 GiB of data, with
 
 It is possible to increase concurrent migration to more than 10 virtual machines from a single host, but it does not show a significant improvement. 
 
-.Example
+.Examples
 
 * 1 single disk VMs took 6 minutes, with migration rate of 100 MiB/s
 
