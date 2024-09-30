@@ -110,7 +110,7 @@ It is possible to increase concurrent migration to more than 10 virtual machines
 ====
 From the aforementioned examples, it is evident that the migration of 10 virtual machines simultaneously is three times faster than the migration of identical virtual machines in a sequential manner.
 
-The migration rate was almost the same when moving 20 virtual machines simultaneously.
+The migration rate was almost the same when moving 10 or 20 virtual machines simultaneously.
 ====
 
 [id="mtv-performance-multiple-hosts_{context}"]
