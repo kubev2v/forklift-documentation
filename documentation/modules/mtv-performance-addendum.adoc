@@ -145,7 +145,7 @@ The results show that there is no degradation using management compared to non-m
 |cold
 |0:21:30
 
-|cold migration , 10 VMs , ESXi 01-03 , Private Network footnoteref:[note2,Private Network refers to a non-Management network]
+|cold migration , 10 VMs , Single ESXi , Private Network footnoteref:[note2,Private Network refers to a non-Management network]
 |2.6
 |7.0.3
 |20
