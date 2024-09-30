@@ -32,49 +32,49 @@ The optimal number of VMs per ESXi is 10.
 | Total Duration
 
 
-|cold migration , 10 VMs , Single ESXi, Private Network footnoteref:[note1,Private Network refers to a non -Management network]
+|cold migration, 10 VMs, Single ESXi, Private Network footnoteref:[note1,Private Network refers to a non -Management network]
 |2.6
 |7.0.3
 |100
 |cold
 |0:21:39
 
-|cold migration , 20 VMs , Single ESXi , Private Network
+|cold migration, 20 VMs, Single ESXi, Private Network
 |2.6
 |7.0.3
 |100
 |cold
 |0:41:16
 
-|cold migration , 30 VMs , Single ESXi , Private Network
+|cold migration, 30 VMs, Single ESXi, Private Network
 |2.6
 |7.0.3
 |100
 |cold
 |1:00:59
 
-|cold migration , 40 VMs , Single ESXi , Private Network
+|cold migration, 40 VMs, Single ESXi, Private Network
 |2.6
 |7.0.3
 |100
 |cold
 |1:23:02
 
-|cold migration , 50 VMs , Single ESXi , Private Network
+|cold migration, 50 VMs, Single ESXi, Private Network
 |2.6
 |7.0.3
 |100
 |cold
 |1:46:24
 
-|cold migration , 80 VMs , Single ESXi , Private Network
+|cold migration, 80 VMs, Single ESXi, Private Network
 |2.6
 |7.0.3
 |100
 |cold
 |2:42:49
 
-|cold migration , 100 VMs , Single ESXi , Private Network
+|cold migration, 100 VMs, Single ESXi, Private Network
 |2.6
 |7.0.3
 |100
@@ -96,21 +96,21 @@ In each iteration, the number of ESXi hosts were increased, to show that increas
 |Migration Type
 |Total Duration
 
-|cold migration , 100 VMs , Single ESXi , Private Network footnoteref:[note3,Private Network refers to a non-Management network]
+|cold migration, 100 VMs, Single ESXi, Private Network footnoteref:[note3,Private Network refers to a non-Management network]
 |2.6
 |7.0.3
 |100
 |cold
 |3:25:15
 
-|cold migration , 100 VMs , 4 ESXs (25 VMs per ESX) , Private Network
+|cold migration, 100 VMs, 4 ESXs (25 VMs per ESX), Private Network
 |2.6
 |7.0.3
 |100
 |cold
 |1:22:27
 
-|cold migration , 100 VMs , 5 ESXs (20 VMs per ESX) , Private Network , 1 DataStore
+|cold migration, 100 VMs, 5 ESXs (20 VMs per ESX), Private Network, 1 DataStore
 |2.6
 |7.0.3
 |100
@@ -138,21 +138,21 @@ The results show that there is no degradation using management compared to non-m
 |Migration Type
 |Total Duration
 
-|cold migration , 10 VMs , Single ESXi , MGMT Network
+|cold migration, 10 VMs, Single ESXi, MGMT Network
 |2.6
 |7.0.3
 |100
 |cold
 |0:21:30
 
-|cold migration , 10 VMs , Single ESXi , Private Network footnoteref:[note2,Private Network refers to a non-Management network]
+|cold migration, 10 VMs, Single ESXi, Private Network footnoteref:[note2,Private Network refers to a non-Management network]
 |2.6
 |7.0.3
 |20
 |cold
 |0:21:20
 
-|cold migration , 10 VMs , Single ESXi , Default Network
+|cold migration, 10 VMs, Single ESXi, Default Network
 |2.6.2
 |7.0.3
 |20
