@@ -84,7 +84,7 @@ Warm migrations use snapshots to compare and migrate only the differences betwee
 
 In {project-short} 2.6, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, regardless of current migration activity for a specific snapshot or the number of disks that belong to a single vm. The total set by `MAX_VM_INFLIGHT` is used to indicate how many concurrent VM tranfers per ESXi host is allowed.
 
-.Example
+.Examples
 
 * `MAX_VM_INFLIGHT = 20` and 2 ESXi hosts defined in the provider mean each host can transfer 20 VMs.
 
@@ -120,7 +120,7 @@ Using multiple hosts with registered VMs equally distributed among the ESXi host
 
 Testing showed that when transferring more than 10 single disk VMS, each containing 35 GiB of data out of a total of 50G total, using an additional host can reduce migration time.
 
-.Example
+.Examples
 
 * 80 single disk VMs, containing 35 GiB of data each, using a single host took 2 hours and 43 minutes, with a migration rate of 294 MiB/s.
 
