@@ -1,0 +1,22 @@
+
+:_content-type: SNIPPET
+
+Both cold migration and warm migration have advantages and disadvantages, as described in the table that follows:
+
+[cols="1,1,1",options="header"]
+.Advantages and disadvantages of cold and warm migrations
+|===
+| |Cold migration |Warm migration
+
+|*Duration*
+|Correlates to the amount of data on the disks
+|Correlates to the amount of data on the disks and VM utilization
+
+|*Data transferred*
+|Approximate sum of all disks
+|Approximate sum of all disks and VM utilization
+
+|*VM downtime*
+|High
+|Low
+|===
