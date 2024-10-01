@@ -83,7 +83,7 @@ The table that follows offers a more detailed description of the advantages and 
 
 [NOTE]
 ====
-The preceding table describes the situation for VMs that are running, because the main benefit of warm migration is the reduced downtime, and there is no reason to initiate warm migration for VMs that are down. However, performing warm migration for VMs that are down is not the same as cold migration, even when {project-short} uses `virt-v2v` and RHEL 9. For VMs that are down, {project-short} transfers the disks using CDI, unlike in cold migration.
+The preceding table describes the situation for VMs that are running because the main benefit of warm migration is the reduced downtime, and there is no reason to initiate warm migration for VMs that are down. However, performing warm migration for VMs that are down is not the same as cold migration, even when {project-short} uses `virt-v2v` and RHEL 9. For VMs that are down, {project-short} transfers the disks using CDI, unlike in cold migration.
 ====
 
 [NOTE]
