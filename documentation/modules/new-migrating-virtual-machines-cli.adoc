@@ -781,15 +781,16 @@ spec:
     storage: <6>
       name: <storage_map> <7>
       namespace: <namespace>
+  preserveStaticIPs: <8>
   targetNamespace: <target_namespace>
-  vms: <8>
-    - id: <source_vm> <9>
+  vms: <9>
+    - id: <source_vm> <10>
     - name: <source_vm>
-      hooks: <10>
+      hooks: <11>
         - hook:
             namespace: <namespace>
-            name: <hook> <11>
-          step: <step> <12>
+            name: <hook> <12>
+          step: <step> <13>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
@@ -799,11 +800,16 @@ EOF
 <5> Specify the name of the `NetworkMap` CR.
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
-<8> You can use either the `id` _or_ the `name` parameter to specify the source VMs. +
-<9> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
-<10> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<11> Specify the name of the `Hook` CR.
-<12> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP.
+To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
+<9> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
+<10> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
+<11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<12> Specify the name of the `Hook` CR.
+<13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
++
+[discrete]
+include::snip_vmware-name-change.adoc[]
 endif::[]
 
 ifdef::rhv[]
