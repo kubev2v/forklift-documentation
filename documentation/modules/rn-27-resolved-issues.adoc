@@ -1,0 +1,43 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-27-resolved-issues_{context}"]
+= Resolved issues
+
+{project-first} 2.7 has the following resolved issues:
+
+[id="resolved-issues-2-7-0_{context}"]
+== Resolved issues 2.7.0
+
+.Change `.` to `-` in names of VMs that are migrated
+
+In earlier releases of {project-short}, if the name of the virtual machines (VMs) contained `.`, this was changed to `-` when they were migrated. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1292[(MTV-1292)]
+
+.Status condition indicating a failed mapping resource of a plan is not added to the plan
+
+In earlier releases of {project-short}, a status condition indicating a failed mapping resource of a plan was not added to the plan. This issue has been resolved in {project-short} 2.7.0, with a status condition indicating the failed mapping being added. link:https://issues.redhat.com/browse/MTV-1461[(MTV-1461)]
+
+.ifcfg files with HWaddr cause the NIC name to change
+
+In earlier releases of {project-short}, interface configuration (ifcfg) files with a hardware address (HWaddr) of the Ethernet interface, caused the name of the network interface controller (NIC) to change. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1463[(MTV-1463)]
+
+.Import fails with special characters in VMX file
+
+In earlier releases of {project-short}, imports failed when there were special characters in the parameters of the VMX file. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1472[(MTV-1472)]
+
+.Observed `invalid memory address or nil pointer dereference` panic
+
+In earlier releases of {project-short}, an `invalid memory address or nil pointer dereference` panic was observed, which was caused by a refactor and could be triggered when there was a problem with the inventory pod. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1482[(MTV-1482)]
+
+.Static IPv4 changed after warm migrating win2022/2019 VMs
+
+In earlier releases of {project-short}, the static Internet Protocol version 4 (IPv4) address was changed after a warm migration of Windows Server 2022 and Windows Server 2019 VMs. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1491[(MTV-1491)]
+
+.Warm migration is missing arguments
+
+In earlier releases of {project-short}, `virt-v2v-in-place` for the warm migration was missing arguments that were available in `virt-v2v` for the cold migration. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1495[(MTV-1495)]
+
+.Default gateway settings changed after migrating Windows Server 2022 VMs with `preserve static IPs`
+
+In earlier releases of {project-short}, the default gateway settings were changed after migrating Windows Server 2022 VMs with the `preserve static IPs` setting. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1497[(MTV-1497)]

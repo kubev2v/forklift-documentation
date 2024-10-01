@@ -1,0 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="known-issues-2-7_{context}"]
+= Known issues
+
+{project-first} 2.7 has has the following known issues:
+
+.`Select Migration Network` from endpoint type `ESXi` displays multiple incorrect networks
+
+When you choose `Select Migration Network`, from endpoint type of `ESXi`, multiple incorrect networks are displayed. link:https://issues.redhat.com/browse/MTV-1291[(MTV-1291)]
