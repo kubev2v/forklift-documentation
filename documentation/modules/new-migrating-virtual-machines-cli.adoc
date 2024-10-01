@@ -808,7 +808,6 @@ To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warni
 <12> Specify the name of the `Hook` CR.
 <13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 +
-[discrete]
 include::snip_vmware-name-change.adoc[]
 endif::[]
 
