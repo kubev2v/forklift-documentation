@@ -103,6 +103,7 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
 include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 
+
 [id="migrating-vms-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
 
@@ -323,6 +324,8 @@ You can uninstall {the-lc} {project-first} by using the {ocp} web console or the
 include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
 include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 
+include::modules/mtv-performance-recommendation.adoc[leveloffset=+1]
+
 [id="troubleshooting_{context}"]
 == Troubleshooting
 
@@ -350,5 +353,9 @@ include::modules/accessing-logs-ui.adoc[leveloffset=+3]
 include::modules/accessing-logs-cli.adoc[leveloffset=+3]
 
 // comment to create PR
+
+== Additional information
+
+include::modules/mtv-performance-addendum.adoc[leveloffset=+2]
 
 :mtv!:
