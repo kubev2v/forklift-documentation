@@ -78,7 +78,7 @@ The table that follows offers a more detailed description of the advantages and 
 
 |*Parallelism*
 |Disks must be transferred sequentially.
-|Disks can be transferred in parallel, using different pods.
+|Disks can be transferred in parallel using different pods.
 |===
 
 [NOTE]
