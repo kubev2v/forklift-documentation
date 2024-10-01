@@ -1,0 +1,6 @@
+:_content-type: SNIPPET
+
+[IMPORTANT]
+====
+When you migrate a VMware 7 VM to an {ocp-short} 4.13+ platform that uses CentOS 7.9, the name of the network interfaces changes and the static IP configuration for the VM no longer works.
+====

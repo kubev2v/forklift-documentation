@@ -67,5 +67,4 @@ To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Setting
 .. You can run the plan now by clicking *Start migration*.
 .. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in xref:running-migration-plan_mtv[Running a migration plan].
 +
-[discrete]
 include::snip_vmware-name-change.adoc[]
