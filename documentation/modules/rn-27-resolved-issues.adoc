@@ -7,6 +7,11 @@
 
 {project-first} 2.7 has the following resolved issues:
 
+[id="resolved-issues-2-7-1_{context}"]
+== Resolved issues 2.7.1
+
+
+
 [id="resolved-issues-2-7-0_{context}"]
 == Resolved issues 2.7.0
 
