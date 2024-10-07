@@ -6,7 +6,7 @@
 [id="about-storage_{context}"]
 = Storage support and default modes
 
-{project-short} uses the following default volume and access modes for supported storage.
+{project-first} uses the following default volume and access modes for supported storage.
 
 .Default volume and access modes
 [cols="1,1,1", options="header"]
@@ -79,7 +79,7 @@ If your migration uses block storage and persistent volumes created with an EXT4
 
 [NOTE]
 ====
-When migrating from OpenStack or running a cold-migration from RHV to the OCP cluster that MTV is deployed on, the migration allocates persistent volumes without CDI. In these cases, you might need to adjust the file system overhead.
+When you migrate from {osp}, or when you run a cold migration from {rhv-full} to the {ocp} cluster that {project-short} is deployed on, the migration allocates persistent volumes without CDI. In these cases, you might need to adjust the file system overhead.
 
 If the configured file system overhead, which has a default value of 10%, is too low, the disk transfer will fail due to lack of space. In such a case, you would want to increase the file system overhead.
 
@@ -87,3 +87,6 @@ In some cases, however, you might want to decrease the file system overhead to r
 
 You can change the file system overhead by changing the value of the `controller_filesystem_overhead` in the `spec` portion of the `forklift-controller` CR, as described in xref:configuring-mtv-operator_{context}[Configuring the MTV Operator].
 ====
+
+
+
