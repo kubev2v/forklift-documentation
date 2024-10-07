@@ -116,11 +116,19 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 
 
-
-[id="migrating-vms-web-console_{context}"]
+[id="migrating-vms-ocp-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
 
-You can migrate virtual machines (VMs) by using the {ocp} web console to migrate VMs from the following providers:
+You can migrate virtual machines (VMs) by using the {project-short} user interface, which is located in the *Virtualization* section of the {ocp} web console.
+
+include::modules/mtv-ui.adoc[leveloffset=+2]
+include::modules/mtv-overview-page.adoc[leveloffset=+3]
+include::modules/mtv-settings.adoc[leveloffset=+3]
+
+[id="migrating-vms-mtv-ui_{context}"]
+=== Migrating virtual machines using the MTV user interface
+
+You can use the {project-short} user interface to migrate VMs from the following providers:
 
 * VMware vSphere
 * {rhv-full} ({rhv-short})
@@ -128,11 +136,7 @@ You can migrate virtual machines (VMs) by using the {ocp} web console to migrate
 * Open Virtual Appliances (OVAs) that were created by VMware vSphere
 * Remote {virt} clusters
 
-
-
-. xref:adding-source-providers[Create source providers]
-. xref:adding-destination-providers[Create destination providers]
-. xref:creating-migration-plans-ui[Create migration plans]
+For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
 
 [IMPORTANT]
 ====
@@ -143,67 +147,71 @@ VMware only: You must have the minimal set of xref:vmware-privileges_{context}[V
 VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 ====
 
-include::modules/mtv-ui.adoc[leveloffset=+2]
-include::modules/mtv-overview-page.adoc[leveloffset=+2]
-include::modules/mtv-settings.adoc[leveloffset=+2]
-
-[id="migrating-vmware-ui"]
-=== Adding providers
-
-You can add source providers and destination providers for a virtual machine migration by using the {ocp} web console.
-
-[id="adding-source-providers"]
-==== Adding source providers
-//cut to vmware
-
-
-
-
-
-
-You can add a source provider by using the {ocp} web console.
-//VM and check procedure
 :!mtv:
 :context: vmware
 :vmware:
+
+[id="migrating-vmware-ui"]
+==== Migrating virtual machines from VMvSphere
+
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
 :!vmware:
-//RHV
+:context: dest_vwmware
+:dest_vmware:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_vmware:
+
+==== Migrating virtual machines from RHV
+
 :context: rhv
 :rhv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :!rhv:
-//Ostack
+:context: dest_rhv
+:dest_rhv:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_rhv:
+
+==== Migrating virtual machines from OStack
+
 :context: ostack
 :ostack:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :!ostack:
-//OVA
+:context: dest_ostack
+:dest_ostack:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_ostack:
+
+==== Migrating virtual machines from OVA
+
 :context: ova
 :ova:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :!ova:
-//CNV prov
+:context: dest_ova
+:dest_ova:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!cnv_dest_ova:
+
+==== Migrating virtual machines from CNV
+
 :context: cnv
 :cnv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
-:cnv!:
-:context: mtv
-
-[id="adding-destination-providers"]
-==== Adding destination providers
-//Add to all
-You can add a {virt} destination provider by using the {ocp} web console.
-
-:mtv!:
-:context: cnv2
-:cnv2:
+:!cnv:
+:context: dest_cnv
+:dest_cnv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
-:cnv!:
-:context: mtv
-
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_cnv:
+
+
 
 // include::modules/creating-network-mapping.adoc[leveloffset=+2]
 // include::modules/creating-storage-mapping.adoc[leveloffset=+2]

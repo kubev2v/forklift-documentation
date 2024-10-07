@@ -58,7 +58,7 @@ The {ocp} cluster version of the source provider must be 4.13 or later.
 ====
 
 endif::[]
-ifdef::cnv2[]
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 = Adding {a-virt} destination provider
 
 You can use a Red Hat {virt} provider as both a source provider and destination provider.
