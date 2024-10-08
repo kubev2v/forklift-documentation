@@ -40,7 +40,7 @@ If your Operator configured off-cluster resources, these will continue to run an
 ====
 . Click *Uninstall*.
 +
-The *Installed Operators* page opens and the {project-full} Operator is removed from the list of installed Operators.
+The *Installed Operators* page opens, and the {project-full} Operator is removed from the list of installed Operators.
 . Click *Home > Overview*.
 . In the *Status* section of the page, click *Dynamic Plugins*.
 +
