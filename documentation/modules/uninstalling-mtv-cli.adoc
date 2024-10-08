@@ -10,7 +10,7 @@ You can uninstall {project-first} from the command line interface (CLI).
 
 [NOTE]
 ====
-This action does not remove resources managed by the Operator, including custom resource definitions (CRDs) and custom resources (CRs). To remove these after uninstalling the Operator, you might need to manually delete the Operator CRDs.
+This action does not remove resources managed by the {project-short} Operator, including custom resource definitions (CRDs) and custom resources (CRs). To remove these after uninstalling the {project-short} Operator, you might need to manually delete the {project-short} Operator CRDs.
 ====
 
 .Prerequisites
