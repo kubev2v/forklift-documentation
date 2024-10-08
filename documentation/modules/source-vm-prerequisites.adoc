@@ -26,3 +26,5 @@ The following prerequisites apply to all migrations:
 
 This feature allows a migration to proceed smoothly even if someone entered a VM name that does not follow the rules.
 ====
+
+include::snip_secure_boot_issue.adoc[]
