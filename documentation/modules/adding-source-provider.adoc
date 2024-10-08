@@ -41,7 +41,6 @@ You can add an {osp} source provider by using the {ocp} web console.
 ====
 When you migrate an image-based VM from an {osp} provider, a snapshot is created for the image that is attached to the source VM and the data from the snapshot is copied over to the target VM. This means that the target VM will have the same state as that of the source VM at the time the snapshot was created.
 ====
-
 endif::[]
 ifdef::cnv[]
 = Adding a Red Hat {virt} source provider
@@ -56,9 +55,8 @@ You can migrate VMs from the cluster that {project-short} is deployed on to anot
 ====
 The {ocp} cluster version of the source provider must be 4.13 or later.
 ====
-
 endif::[]
-ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova[]
 = Adding {a-virt} destination provider
 
 You can use a Red Hat {virt} provider as both a source provider and destination provider.
@@ -167,7 +165,7 @@ If both *URL* and *Service account bearer token* are left blank, the local {ocp-
 +
 include::snip-certificate-options.adoc[]
 endif::[]
-ifdef::cnv2[]
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 . Click *{virt}*.
 . Specify the following fields:
 
