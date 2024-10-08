@@ -6,7 +6,7 @@
 [id="uninstalling-mtv-ui_{context}"]
 = Uninstalling {project-short} by using the {ocp} web console
 
-You can uninstall {project-first} by using the {ocp} web console to delete the +{namespace}+ project and custom resource definitions (CRDs).
+You can uninstall {project-first} by using the {ocp} web console.
 
 .Prerequisites
 
@@ -14,10 +14,44 @@ You can uninstall {project-first} by using the {ocp} web console to delete the +
 
 .Procedure
 
-. Click *Home* -> *Projects*.
-. Locate the *{namespace}* project.
-. On the right side of the project, select *Delete Project* from the {kebab}.
-. In the *Delete Project* pane, enter the project name and click *Delete*.
-. Click *Administration* -> *CustomResourceDefinitions*.
-. Enter `forklift` in the *Search* field to locate the CRDs in the `forklift.konveyor.io` group.
-. On the right side of each CRD, select *Delete CustomResourceDefinition* from the {kebab}.
+. In the {ocp} web console, click *Operators > Installed Operators*.
+. Click *{project-full} Operator*.
++
+The *Operator Details* page opens in the *Details* tab.
+. Click the *ForkliftController* tab.
+. Click *Actions* and select *Delete ForkLiftController*.
++
+A confirmation window opens.
+. Click *Delete*.
++
+The controller is removed.
+. Open the *Details* tab.
++
+The *Create ForkliftController* button appears instead of the controller you deleted. There is no need to click it.
+
+. On the upper-right side of the page, click *Actions* and select *Uninstall Operator*.
++
+A confirmation window opens, displaying any operand instances.
+. To delete all instances, select the *Delete all operand instances for this operator* checkbox. By default, the checkbox is cleared.
++
+[IMPORTANT]
+====
+If your Operator configured off-cluster resources, these will continue to run and will require manual cleanup.
+====
+. Click *Uninstall*.
++
+The *Installed Operators* page opens, and the {project-full} Operator is removed from the list of installed Operators.
+. Click *Home > Overview*.
+. In the *Status* section of the page, click *Dynamic Plugins*.
++
+The *Dynamic Plugins* popup opens, listing *forklift-console-plugin* as a failed plugin. If the *forklift-console-plugin* does not appear as a failed plugin, refresh the web console.
+. Click *forklift-console-plugin*.
++
+The *ConsolePlugin details* page opens in the *Details* tab.
+. On the upper right-hand side of the page, click *Actions* and select *Delete ConsolePlugin* from the list.
++
+A confirmation window opens.
+. Click *Delete*.
++
+The plugin is removed from the list of *Dynamic plugins* on the *Overview* page. If the plugin still appears, restart the *Overview* page.
+
