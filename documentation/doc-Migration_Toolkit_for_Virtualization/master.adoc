@@ -41,15 +41,27 @@ include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 
 Review the following prerequisites to ensure that your environment is prepared for migration.
 
-[id="software-requirements_{context}"]
+[id="mtv-software-requirements_{context}"]
 === Software requirements
+
+{product-first} has software requirements for all providers as well as specific software requirements per provider.
+
+[id="mtv-software-requirements-all-providers_{context}"]
+==== Software requirements for all providers
 
 You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
 
+// ANDY: I printed out a hard copy of the manual so I could see which sections of which files belong to which provider. There are notes buried in modules that relate to one provider. I've added comments noting the respective providers. I have left everything before and after section 4 alone for now.
+
+//inc. Ostack and RHV
 include::modules/storage-support.adoc[leveloffset=+2]
+//inc. VM and RHV
 include::modules/network-prerequisites.adoc[leveloffset=+2]
+//all
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
+//RHV
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
+//Ostack
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 
 [id="additional-authentication-for-osp_{context}"]
@@ -72,11 +84,13 @@ include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
 :!ostack:
 :context: mtv
 :mtv:
-
+//VM
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
+//OVA
 include::modules/ova-prerequisites.adoc[leveloffset=+2]
+//all
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 [id="installing-the-operator_{context}"]
@@ -103,97 +117,134 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
 include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 
-
-[id="migrating-vms-web-console_{context}"]
+// ANDY: Section 4 begins here. I changed the intro a bit. I'm not sure if differentiating between OCP and MTv interfaces is helpful yo users. I wanted to avoid using the same title twice.
+[id="migrating-vms-ocp-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
 
-You can migrate virtual machines (VMs) by using the {ocp} web console to:
+You can migrate virtual machines (VMs) by using the {project-short} user interface, which is located in the *Virtualization* section of the {ocp} web console.
 
-. xref:adding-source-providers[Create source providers]
-. xref:adding-destination-providers[Create destination providers]
-. xref:creating-migration-plans-ui[Create migration plans]
+include::modules/mtv-ui.adoc[leveloffset=+2]
+include::modules/mtv-overview-page.adoc[leveloffset=+3]
+include::modules/mtv-settings.adoc[leveloffset=+3]
 
+
+
+[id="migrating-vms-mtv-ui_{context}"]
+=== Migrating virtual machines using the MTV user interface
+
+You can use the {project-short} user interface to migrate VMs from the following providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* Remote {virt} clusters
+
+// ANDY: Replaces the linked bulleted list of components.
+For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
+
+// ANDY: When I create the VMware prerequisites subsection, I'll move the VM prerequisites out of here.
 [IMPORTANT]
 ====
 You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
-
+//VM
 VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 
 VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 ====
 
-include::modules/mtv-ui.adoc[leveloffset=+2]
-include::modules/mtv-overview-page.adoc[leveloffset=+2]
-include::modules/mtv-settings.adoc[leveloffset=+2]
-
-[id="adding-providers"]
-=== Adding providers
-
-You can add source providers and destination providers for a virtual machine migration by using the {ocp} web console.
-
-[id="adding-source-providers"]
-==== Adding source providers
-
-You can use {project-short} to migrate VMs from the following source providers:
-
-* VMware vSphere
-* {rhv-full}
-* {osp}
-* Open Virtual Appliances (OVAs) that were created by VMware vSphere
-* {virt}
-
-You can add a source provider by using the {ocp} web console.
-
+// ANDY: Now we start the new VMware A-Z section.
 :!mtv:
 :context: vmware
 :vmware:
+
+[id="migrating-vmware-ui"]
+==== Migrating virtual machines from VMvSphere
+// ANDY: VM Prerequisites will go here.
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
 :!vmware:
+// The destination provider is the same for every vendor and is really the same procedure as the source provider, which uses conditional text. But we need a new context per vendor.
+:context: dest_vwmware
+:dest_vmware:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_vmware:
+
+// ANDY: Now RHV
+==== Migrating virtual machines from RHV
+
 :context: rhv
 :rhv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :!rhv:
+:context: dest_rhv
+:dest_rhv:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_rhv:
+
+// ANDY: Now OpenStack
+==== Migrating virtual machines from OpenStack
+
 :context: ostack
 :ostack:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :!ostack:
+:context: dest_ostack
+:dest_ostack:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_ostack:
+
+// ANDY: Now OVA
+==== Migrating virtual machines from OVA
+
 :context: ova
 :ova:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :!ova:
+:context: dest_ova
+:dest_ova:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_ova:
+
+// ANDY: Now CNV
+==== Migrating virtual machines from CNV
+
 :context: cnv
 :cnv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
-:cnv!:
-:context: mtv
-
-[id="adding-destination-providers"]
-==== Adding destination providers
-
-You can add a {virt} destination provider by using the {ocp} web console.
-
-:mtv!:
-:context: cnv2
-:cnv2:
+:!cnv:
+:context: dest_cnv
+:dest_cnv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
-:cnv!:
-:context: mtv
-
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_cnv:
+
+// ANDY: That's it for this PR.
+// The Next PR will add "Creating migration plans". As we discussed, I will only include "Staring from VMs" because the user will have just created a source provider.
+// This will avoid me having to do a very messy context shift from "<provider>" to "provider_start" to "<provider>" to <vms_start>" to "<provider>" for each of the five providers (look below).
+
+
+:context: mtv
+:mtv:
+
+// ANDY: Last note in this file -- AFAIK, the network mapping and storage mapping pages are still broken, so they remain commented out.
 
 // include::modules/creating-network-mapping.adoc[leveloffset=+2]
 // include::modules/creating-storage-mapping.adoc[leveloffset=+2]
 
-[id="creating-migration-plans-ui"]
+[id="creating-migration-plans-ui_{context}"]
 === Creating migration plans
 
 You can create a migration plan by using the {ocp} web console to specify a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
 
 For your convenience, there are two procedures to create migration plans, starting with either a source provider or with specific VMs:
 
-* To start with a source provider, see xref:creating-migration-plan-2-6-3_provider[Creating a migration plan starting with a source provider].
-* To start with specific VMs, see xref:creating-migration-plan-2-6-3_vms[Creating a migration plan starting with specific VMs].
+* To start with a source provider, see xref:creating-migration-plan-2-8_provider[Creating a migration plan starting with a source provider].
+* To start with specific VMs, see xref:creating-migration-plan-2-8_vms[Creating a migration plan starting with specific VMs].
 
 [WARNING]
 ====
@@ -201,19 +252,19 @@ Virtual machines with guest initiated storage connections, such as Internet Smal
 
 This is to ensure that no issues arise due to the addition or newly migrated VM accessing this storage.
 ====
-
+// all but separate VM and RHV
 include::modules/snip_plan-limits.adoc[]
 
 :mtv!:
 :context: provider
 :provider:
 
-include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
 
 :provider!:
 :context: vms
 :vms:
-include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
 
 :vms!:
 :context: mtv
@@ -273,10 +324,6 @@ include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :ostack!:
 :context: ova
 :ova:
-//include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
-//:ova!:
-//:context: ostack
-//:ostack:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :ova!:
 :context: cnv
@@ -352,7 +399,6 @@ include::modules/collected-logs-cr-info.adoc[leveloffset=+3]
 include::modules/accessing-logs-ui.adoc[leveloffset=+3]
 include::modules/accessing-logs-cli.adoc[leveloffset=+3]
 
-// comment to create PR
 
 == Additional information
 
