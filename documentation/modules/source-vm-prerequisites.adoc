@@ -10,9 +10,9 @@ The following prerequisites apply to all migrations:
 
 * ISO/CDROM disks must be unmounted.
 * Each NIC must contain one IPv4 and/or one IPv6 address.
-* The VM operating system must be certified and supported for use as a link:https://access.redhat.com/articles/973163#ocpvirt[guest operating system with {virt}].
-* VM names must contain only lowercase letters (`a-z`), numbers (`0-9`), or hyphens (`-`), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (`.`), or special characters.
-* VM names must not duplicate the name of a VM in the {virt} environment.
+* The operating system of a VM must be certified and supported as a link:https://access.redhat.com/articles/973163#ocpvirt[guest operating system with {virt}].
+* The name of a VM must not contain a period (`.`). {project-first} changes any period in a VM name to a dash (`-`).
+* The name of a VM must not be the same as any other VM in the {virt} environment.
 +
 [NOTE]
 ====
@@ -24,7 +24,7 @@ The following prerequisites apply to all migrations:
 * Uppercase letters are switched to lowercase letters.
 * Any underscore (`_`) is changed to a dash (`-`).
 
-This feature allows a migration to proceed smoothly even if someone entered a VM name that does not follow the rules.
+This feature allows a migration to proceed smoothly even if someone enters a VM name that does not follow the rules.
 ====
 
 include::snip_secure_boot_issue.adoc[]
