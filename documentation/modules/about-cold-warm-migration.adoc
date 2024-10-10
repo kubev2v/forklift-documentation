@@ -20,6 +20,15 @@
 
 Cold migration is the default migration type. The source virtual machines are shut down while the data is copied.
 
+[NOTE]
+====
+VMware only: In cold migrations, in situations in which a package manager cannot be used during the migration, {project-short} does not install the daemon `qemu-guest-agent` on the migrated VMs. This has some impact on the functionality of the migrated VMs, but overall, they are still expected to function.
+
+To enable {project-short} to automatically install `qemu-guest-agent` on the migrated VMs, ensure your package manager can install the daemon.
+
+Fallback options: Use your preferred automated or manual procedure to install `qemu-guest-agent` manually.
+====
+
 [id="warm-migration_{context}"]
 == Warm migration
 
