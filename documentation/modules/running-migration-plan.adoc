@@ -21,12 +21,29 @@ The *Plans* list displays the source and target providers, the number of virtual
 . Click *Start* beside a migration plan to start the migration.
 . Click *Start* in the confirmation window that opens.
 +
-The *Migration details by VM* screen opens, displaying the migration's progress
+The *Migration details by VM* screen opens, displaying the migration's progress.
 +
 Warm migration only:
 
 * The precopy stage starts.
 * Click *Cutover* to complete the migration.
+
+. To view your migration's logs, either as it is running or after it is completed,
+
+.. Click the *Virtual Machines* tab.
+.. Click the arrow (*>*) to the left of the virtual machine whose migration progress you want to check.
++
+The VM's details are displayed.
++
+.. In the *Pods* section, in the *Pod links* column, click the *Logs* link. If the
++
+The *Logs* tab opens.
+
+
+
+Instead, we currently support viewing the logs via the UI per a VM migration in a plan by navigating to a plan -> 'virtual machines' tab -> expending a vm details -> going to the 'Pods' section  (if exists) -> clicking the 'pod logs' column.
+
+BUMP
 
 . If the migration fails:
 .. Click *Get logs* to retrieve the migration logs.
