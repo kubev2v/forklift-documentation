@@ -20,6 +20,11 @@
 
 Cold migration is the default migration type. The source virtual machines are shut down while the data is copied.
 
+[NOTE]
+====
+include::snip_qemu-guest-agent.adoc[]
+====
+
 [id="warm-migration_{context}"]
 == Warm migration
 
