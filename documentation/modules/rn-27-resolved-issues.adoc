@@ -7,12 +7,45 @@
 
 {project-first} 2.7 has the following resolved issues:
 
-[id="resolved-issues-2-7-1_{context}"]
-== Resolved issues 2.7.1
+[id="resolved-issues-2-7-2_{context}"]
+== Resolved issues 2.7.2
 
-.Disk transfer tasks are not completed although the migration is successful
+.VMNetworksNotMapped error occurs after creating a plan from the UI with the source provider set to OpenShift Virtualization
 
-In earlier releases of {project-short}, when migrating vSphere or OVA virtual machines (VMs), the disk transfer phase was completed successfully, but the individual tasks were not. This happened because the logs from virt-v2v did not fully scan and therefore missed the last indication that the copy phase was done. link:https://issues.redhat.com/browse/MTV-1310[(MTV-1310)]
+In earlier releases of {project-short}, after creating a plan with an OpenShift Virtualization source provider, the Migration Plan failed with the error `The plan is not ready - VMNetworksNotMapped`. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1201[(MTV-1201)]
+
+.Migration Plan for OCPv to OCPv missing the source namespace causing VMNetworkNotMapped error
+
+In earlier releases of {project-short}, when creating a Migration Plan for an OCPv to OCPv migration using the Plan Creation Form, the network map generated was missing the source namespace, which caused a `VMNetworkNotMapped` error on the plan. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1297[(MTV-1297)]
+
+.DV, PVC and PV are not cleanuped and removed if migration plan is Archived and Deleted
+
+In earlier releases of {project-short}, the DataVolume (DV), PersistentVolumeClaim (PVC), and PersistentVolume (PV) continued to exist after the migration plan was archived and deleted. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1477[(MTV-1477)]
+
+.Other migrations halted from starting as the scheduler is waiting for the whole VM to get transferred
+
+In earlier releases of {project-short}, when warm migrating a virtual machine (VM) that has several disks, you had to wait for the whole VM to get migrated, and the scheduler was halted until all the disks finished before the migration would be started. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1537[(MTV-1537)]
+
+.Warm migration is not functioning as expected
+
+In earlier releases of {project-short}, warm migration did not function as expected. When running the warm migration with VMs larger than the MaxInFlight disks, the VMs over this number did not start the migration until the cutover. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1543[(MTV-1543)]
+
+.Migration hanging due to error: virt-v2v: error: -i libvirt: expecting a libvirt guest name
+
+In earlier releases of {project-short}, when attempting to migrate a VMware VM with a non-compliant Kubernetes name, the Openshift console returned a warning that the VM would be renamed. However, after starting the Migration Plan, it hangs since the migration pod is in an `Error` state. This issue has been resolved in {project-short} 2.7.2. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1555[(MTV-1555)]
+
+.virt-v2v guest conversion the plan does not fail if the conversion pod fails
+
+In earlier releases of {project-short}, when running the `virt-v2v` guest conversion, the plan did not fail if the conversion pod failed because the error was skipped. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1569[(MTV-1569)]
+
+.VM are not migrated if it has more disks than MAX_VM_INFLIGHT
+
+In earlier releases of {project-short}, when migrating the VM using the warm migration, if there are more disks than the `MAX_VM_INFLIGHT` the VM was not scheduled and the migration was not started. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1573[(MTV-1573)]
+
+.Migration Plan returns an Error even when Changed Block Tracking (CBT) is enabled
+
+In earlier releases of {project-short}, when running a VM in VMware, if the  CBT flag was enabled while the VM was running by adding both `ctkEnabled=TRUE` and `scsi0:0.ctkEnabled=TRUE` parameters, an error message `Danger alert:The plan is not ready - VMMissingChangedBlockTracking` was returned, and the migration plan was prevented from working. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1576[(MTV-1576)]
+
 
 [id="resolved-issues-2-7-0_{context}"]
 == Resolved issues 2.7.0
