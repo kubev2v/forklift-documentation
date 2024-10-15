@@ -21,7 +21,7 @@ The *Plans* list displays the source and target providers, the number of virtual
 . Click *Start* beside a migration plan to start the migration.
 . Click *Start* in the confirmation window that opens.
 +
-The plan's *Status* changes to *Running* and migration's progress is displayed.
+The plan's *Status* changes to *Running*, and the migration's progress is displayed.
 +
 Warm migration only:
 
@@ -30,7 +30,7 @@ Warm migration only:
 
 . Click the links in the migration's *Status* to see its overall status and the status of each VM:
 
-** The link on the left indicates whether the migration failed, succeeded, or is ongoing and reports the number of VMs whose migration succeeded, failed, or was canceled.
+** TThe link on the left indicates whether the migration failed, succeeded, or is ongoing. It also reports the number of VMs whose migration succeeded, failed, or was canceled.
 ** The link on the right opens the *Virtual Machines* tab of the *Plan Details* page. For each VM, the tab displays the name of the VM, the start and end times of the migration, the amount of data copied, and a progress pipeline for its migration.
 
 . To view your migration's logs, either as it is running or after it is completed:
@@ -46,7 +46,7 @@ The *Logs* tab opens.
 +
 [NOTE]
 ====
-Logs are not always available. The most common reasons for this are:
+Logs are not always available. The following are common reasons for logs not being available:
 
 * The migration is from {virt} to {virt}. In this case, `virt-v2v` is not involved, so no pod is required.
 * No pod was created.

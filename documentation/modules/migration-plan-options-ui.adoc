@@ -10,7 +10,7 @@ On the *Plans for virtualization* page of the {ocp} web console, you can click t
 
 * *Edit Plan*: Edit the details of a migration plan. You cannot edit a migration plan while it is running or after it has completed successfully.
 * *Start migration*: Active only if relevant.
-* *Restart migration* Restarts a migration that was interrupted. Before choosing this option, make sure there are no error messages. If there are, you need to edit the plan.
+* *Restart migration*: Restarts a migration that was interrupted. Before choosing this option, make sure there are no error messages. If there are, you need to edit the plan.
 * *Cutover*: Warm migrations only. Active only if relevant.
 * *Cancel scheduled cutover*: Cancel a scheduled cutover migration for a warm migration plan. Active only if relevant.
 
@@ -33,7 +33,7 @@ On the *Plans for virtualization* page of the {ocp} web console, you can click t
 ====
 *Delete Plan* is irreversible.
 
-Deleting a migration plan does not remove temporary resources. It is recommended to archive the plan first before deleting it, in order to remove temporary resources.
+Deleting a migration plan does not remove temporary resources. To remove temporary resources, archive the plan first before deleting it.
 ====
 
 
