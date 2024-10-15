@@ -34,7 +34,6 @@ In earlier releases of {project-short}, warm migration did not function as expec
 
 In earlier releases of {project-short}, when attempting to migrate a VMware VM with a non-compliant Kubernetes name, the Openshift console returned a warning that the VM would be renamed. However, after starting the Migration Plan, it hangs since the migration pod is in an `Error` state. This issue has been resolved in {project-short} 2.7.2. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1555[(MTV-1555)]
 
-.virt-v2v guest conversion the plan does not fail if the conversion pod fails
 
 In earlier releases of {project-short}, when running the `virt-v2v` guest conversion, the plan did not fail if the conversion pod failed because the error was skipped. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1569[(MTV-1569)]
 
