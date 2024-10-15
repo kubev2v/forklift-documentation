@@ -28,12 +28,18 @@ Warm migration only:
 * The precopy stage starts.
 * Click *Cutover* to complete the migration.
 
-. Click the links in the migration's *Status* to see its overall status and the status of each VM:
+. Optional: Click the links in the migration's *Status* to see its overall status and the status of each VM:
 
-** TThe link on the left indicates whether the migration failed, succeeded, or is ongoing. It also reports the number of VMs whose migration succeeded, failed, or was canceled.
-** The link on the right opens the *Virtual Machines* tab of the *Plan Details* page. For each VM, the tab displays the name of the VM, the start and end times of the migration, the amount of data copied, and a progress pipeline for its migration.
+** The link on the left indicates whether the migration failed, succeeded, or is ongoing. It also reports the number of VMs whose migration succeeded, failed, or was canceled.
+** The link on the right opens the *Virtual Machines* tab of the *Plan Details* page.
+For each VM, the tab displays the following data:
++
+*** The name of the VM
+*** The start and end times of the migration
+*** The amount of data copied
+*** A progress pipeline for the VM's migration
 
-. To view your migration's logs, either as it is running or after it is completed:
+. Optional: To view your migration's logs, either as it is running or after it is completed, perform the following actions:
 
 .. Click the *Virtual Machines* tab.
 .. Click the arrow (*>*) to the left of the virtual machine whose migration progress you want to check.
