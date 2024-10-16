@@ -18,7 +18,7 @@ In earlier releases of {project-short}, after creating a plan with an {virt} sou
 
 In earlier releases of {project-short}, when creating a Migration Plan for an {virt} to {virt} migration using the Plan Creation Form, the network map generated was missing the source namespace, which caused a `VMNetworkNotMapped` error on the plan. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1297[(MTV-1297)]
 
-.DV, PVC and PV are not cleanuped and removed if migration plan is Archived and Deleted
+.DV, PVC and PV are not cleaned up and removed if migration plan is Archived and Deleted
 
 In earlier releases of {project-short}, the DataVolume (DV), PersistentVolumeClaim (PVC), and PersistentVolume (PV) continued to exist after the migration plan was archived and deleted. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1477[(MTV-1477)]
 
