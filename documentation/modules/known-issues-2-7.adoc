@@ -9,7 +9,7 @@
 
 .`Select Migration Network` from the endpoint type `ESXi` displays multiple incorrect networks
 
-When you choose `Select Migration Network`, from endpoint type of `ESXi`, multiple incorrect networks are displayed. link:https://issues.redhat.com/browse/MTV-1291[(MTV-1291)]
+When you choose `Select Migration Network`, from the endpoint type of `ESXi`, multiple incorrect networks are displayed. link:https://issues.redhat.com/browse/MTV-1291[(MTV-1291)]
 
 // secure boot issue - (MTV-1548)
 include::snip_secure_boot_issue.adoc[]
