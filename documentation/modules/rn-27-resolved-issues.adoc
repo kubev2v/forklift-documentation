@@ -62,7 +62,7 @@ In earlier releases of {project-short}, when running a VM in VMware, if the  CBT
 
 In earlier releases of {project-short}, if the name of the virtual machines (VMs) contained `.`, this was changed to `-` when they were migrated. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1292[(MTV-1292)]
 
-.Status condition indicating a failed mapping resource of a plan is not added to the plan
+.Status condition indicating a failed mapping resource in a plan is not added to the plan
 
 In earlier releases of {project-short}, a status condition indicating a failed mapping resource of a plan was not added to the plan. This issue has been resolved in {project-short} 2.7.0, with a status condition indicating the failed mapping being added. link:https://issues.redhat.com/browse/MTV-1461[(MTV-1461)]
 
