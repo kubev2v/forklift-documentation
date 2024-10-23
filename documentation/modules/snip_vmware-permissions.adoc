@@ -7,5 +7,5 @@ There is an issue with the `forklift-controller` consistently failing to reconci
 
 In {project-short}, you need to add permissions at the datacenter level, which includes storage, networks, switches, and so on, which are used by the VM. You must then propagate the permissions to the child elements.
 
-If you do want to add this level of permissions, you must manually add the permissions to each object on the VM host required.
+If you do not want to add this level of permissions, you must manually add the permissions to each object on the VM host required.
 ====
