@@ -258,10 +258,12 @@ You must specify both a name and a namespace for namespace-scoped CRs.
 To migrate to or from an {ocp-short} cluster that is different from the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
 ====
 
+
 :mtv!:
 :context: vmware
 :vmware:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+include::modules/snip_vmware-permissions.adoc[]
 :vmware!:
 :context: rhv
 :rhv:
