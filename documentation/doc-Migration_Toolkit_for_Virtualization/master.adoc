@@ -239,6 +239,7 @@ include::modules/snip_plan-limits.adoc[]
 :mtv!:
 :context: cli
 include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
+include::modules/snip_vmware-permissions.adoc[]
 :cli!:
 :context: mtv
 
