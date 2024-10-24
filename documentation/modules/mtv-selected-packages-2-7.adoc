@@ -1,0 +1,62 @@
+
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: PROCEDURE
+[id="mtv-selected-packages-2-7_{context}"]
+= {project-short} selected packages
+
+.Selected {project-short} packages
+[width="100%",cols="42%,29%,29%",options="header",]
+|===
+|Package a|{project-short} 2.7.0 a|{project-short} 2.7.2
+
+|SSH-based configuration management, deployment, and task execution system
+|ansible-2.9.27-1.el8ae.noarch
+|ansible-2.9.27-1.el8ae.noarch
+
+|The skeleton package which defines a simple Red Hat Enterprise Linux system
+|basesystem-11-13.el9.noarch
+|basesystem-11-13.el9.noarch
+
+|The GNU Bourne Again shell
+|bash-4.4.20-5.el8.x86_64
+|bash-4.4.20-5.el8.x86_64
+
+|The Mozilla CA root certificate bundle
+|ca-certificates-2024.2.69_v8.0.303-80.0.el8_10.noarch
+|ca-certificates-2024.2.69_v8.0.303-80.0.el8_10.noarch
+
+|Core kernel modules to match the core kernel
+|kernel-modules-core-5.14.0-427.35.1.el9_4.x86_64
+|kernel-modules-core-5.14.0-427.37.1.el9_4.x86_64
+
+|The Linux kernel
+|kernel-core-5.14.0-427.35.1.el9_4.x86_64
+|kernel-core-5.14.0-427.37.1.el9_4.x86_64
+
+|Client side utilities of the libvirt library
+|libvirt-client-10.0.0-6.7.el9_4.x86_64
+|libvirt-client-10.0.0-6.7.el9_4.x86_64
+
+|Client side libraries
+|libvirt-libs-10.0.0-6.7.el9_4.x86_64
+|libvirt-libs-10.0.0-6.7.el9_4.x86_64
+
+|NBD server
+|nbdkit-1.36.2-1.el9.x86_64
+|nbdkit-1.36.2-1.el9.x86_64
+
+|VMware VDDK plugin for nbdkit
+|nbdkit-vddk-plugin-1.36.2-1.el9.x86_64
+|nbdkit-vddk-plugin-1.36.2-1.el9.x86_64
+
+|Red Hat Enterprise Linux release file
+|redhat-release-9.4-0.5.el9.x86_64
+|redhat-release-9.4-0.5.el9.x86_64
+
+|Convert a virtual machine to run on KVM
+|virt-v2v-2.4.0-4.el9_4.x86_64
+|virt-v2v-2.4.0-4.el9_4.x86_64
+|===
