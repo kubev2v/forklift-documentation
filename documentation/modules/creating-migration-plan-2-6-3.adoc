@@ -56,6 +56,12 @@ To specify a different root device, in the *Settings* section, click the Edit ic
 +
 If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by looking at the conversion pod logs.
 
+* *{ocp-short} transfer network*: You can configure an {ocp-short} network in the ocp-short} web console by clicking *Networking > NetworkAttachmentDefinitions*.
++
+To learn more about the different types of networks {ocp-short} supports, see https://docs.openshift.com/container-platform/4.16/networking/multiple_networks/understanding-multiple-networks.html#additional-networks-provided [Additional Networks In OpenShift Container Program].
++
+If you want to change the MTU of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+
 . {rhv-short} source providers only (Optional):
 
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
