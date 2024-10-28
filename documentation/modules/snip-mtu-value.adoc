@@ -1,0 +1,6 @@
+:_content-type: SNIPPET
+
+[NOTE]
+====
+If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-migration-plan-2-7_provider[Creating a migration plan starting with a source provider] or xref:creating-migration-plan-2-7_vms[Creating a migration plan starting with specific VMs].
+====

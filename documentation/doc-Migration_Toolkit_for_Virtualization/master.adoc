@@ -195,8 +195,8 @@ You can create a migration plan by using the {ocp} web console to specify a sour
 
 For your convenience, there are two procedures to create migration plans, starting with either a source provider or with specific VMs:
 
-* To start with a source provider, see xref:creating-migration-plan-2-6-3_provider[Creating a migration plan starting with a source provider].
-* To start with specific VMs, see xref:creating-migration-plan-2-6-3_vms[Creating a migration plan starting with specific VMs].
+* To start with a source provider, see xref:creating-migration-plan-2-7_provider[Creating a migration plan starting with a source provider].
+* To start with specific VMs, see xref:creating-migration-plan-2-7_vms[Creating a migration plan starting with specific VMs].
 
 [WARNING]
 ====
@@ -211,12 +211,12 @@ include::modules/snip_plan-limits.adoc[]
 :context: provider
 :provider:
 
-include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+include::modules/creating-migration-plan-2-7.adoc[leveloffset=+3]
 
 :provider!:
 :context: vms
 :vms:
-include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+include::modules/creating-migration-plan-2-7.adoc[leveloffset=+3]
 
 :vms!:
 :context: mtv
@@ -359,8 +359,6 @@ You can download logs and custom resource (CR) information for troubleshooting. 
 include::modules/collected-logs-cr-info.adoc[leveloffset=+3]
 include::modules/accessing-logs-ui.adoc[leveloffset=+3]
 include::modules/accessing-logs-cli.adoc[leveloffset=+3]
-
-// comment to create PR
 
 == Additional information
 
