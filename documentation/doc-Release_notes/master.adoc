@@ -12,6 +12,22 @@ ifeval::["{build}" == "downstream"]
 include::modules/making-open-source-more-inclusive.adoc[]
 endif::[]
 
+include::modules/rn-2.7.adoc[leveloffset=+1]
+
+// Technical changes by x-stream release
+include::modules/technical-changes-2-7.adoc[leveloffset=+2]
+
+// New features and enhancements by z-stream release
+include::modules/new-features-and-enhancements-2-7.adoc[leveloffset=+2]
+
+// Resolved issues by z-stream release
+include::modules/rn-27-resolved-issues.adoc[leveloffset=+2]
+
+// Known issues by x-stream release
+include::modules/known-issues-2-7.adoc[leveloffset=+2]
+
+
+////
 include::modules/rn-2.6.adoc[leveloffset=+1]
 include::modules/rn-2.5.adoc[leveloffset=+1]
 include::modules/rn-2.4.adoc[leveloffset=+1]
@@ -19,3 +35,4 @@ include::modules/rn-2.3.adoc[leveloffset=+1]
 include::modules/rn-2.2.adoc[leveloffset=+1]
 include::modules/rn-2.1.adoc[leveloffset=+1]
 include::modules/rn-2.0.adoc[leveloffset=+1]
+////

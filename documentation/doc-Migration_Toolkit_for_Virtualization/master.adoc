@@ -17,7 +17,7 @@ ifeval::["{build}" == "downstream"]
 [discrete]
 include::modules/making-open-source-more-inclusive.adoc[leveloffset=+1]
 endif::[]
-:_content-type: ASSEMBLY
+:_mod-docs-content-type: ASSEMBLY
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
 
@@ -102,6 +102,7 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 :mtv:
 
 include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
+
 
 [id="migrating-vms-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
@@ -189,14 +190,38 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 
 You can create a migration plan by using the {ocp} web console to specify a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
 
-For your convenience, there are two procedures to create migration plans based on source provider and VMs, one begins on the  xref:creating-migration-quick-plan-vm_{context}[*Providers for virtualization* page] and the other begins on the xref:creating-migration-quick-plan-existing-source_{context}[*Plans for virtualization* page].
+For your convenience, there are two procedures to create migration plans, starting with either a source provider or with specific VMs:
 
-include::modules/creating-migration-quick-plan-vm.adoc[leveloffset=+3]
-include::modules/creating-migration-quick-plan-existing-source.adoc[leveloffset=+3]
+* To start with a source provider, see xref:creating-migration-plan-2-6-3_provider[Creating a migration plan starting with a source provider].
+* To start with specific VMs, see xref:creating-migration-plan-2-6-3_vms[Creating a migration plan starting with specific VMs].
+
+[WARNING]
+====
+Virtual machines with guest initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts, are not handled by {project-short} and could require additional planning before or reconfiguration after the migration.
+
+This is to ensure that no issues arise due to the addition or newly migrated VM accessing this storage.
+====
+
+include::modules/snip_plan-limits.adoc[]
+
+:mtv!:
+:context: provider
+:provider:
+
+include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+
+:provider!:
+:context: vms
+:vms:
+include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+
+:vms!:
+:context: mtv
+:mtv:
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
-
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines-from-the-command-line_{context}"]
@@ -209,11 +234,15 @@ You can migrate virtual machines to {virt} from the command line.
 You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
 ====
 
+include::modules/snip_plan-limits.adoc[]
+
 :mtv!:
 :context: cli
 include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
 :cli!:
 :context: mtv
+
+include::modules/retrieving-vmware-moref.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines_{context}"]
 === Migrating virtual machines
@@ -226,7 +255,7 @@ You must specify a name for cluster-scoped CRs.
 
 You must specify both a name and a namespace for namespace-scoped CRs.
 
-In order to migrate to or from an {ocp-short} cluster that is different than the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
+To migrate to or from an {ocp-short} cluster that is different from the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
 ====
 
 :mtv!:
@@ -273,9 +302,9 @@ You can create custom rules to extend the default ruleset of the `Validation` se
 
 include::modules/about-rego-files.adoc[leveloffset=+3]
 include::modules/accessing-default-validation-rules.adoc[leveloffset=+3]
-include::modules/retrieving-validation-service-json.adoc[leveloffset=+3]
 include::modules/creating-validation-rule.adoc[leveloffset=+3]
 include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
+include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
 [id="adding-hooks-migration-plan-using-api"]
 === Adding hooks to a migration plan
@@ -294,6 +323,8 @@ You can uninstall {the-lc} {project-first} by using the {ocp} web console or the
 
 include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
 include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
+
+include::modules/mtv-performance-recommendation.adoc[leveloffset=+1]
 
 [id="troubleshooting_{context}"]
 == Troubleshooting
@@ -322,5 +353,9 @@ include::modules/accessing-logs-ui.adoc[leveloffset=+3]
 include::modules/accessing-logs-cli.adoc[leveloffset=+3]
 
 // comment to create PR
+
+== Additional information
+
+include::modules/mtv-performance-addendum.adoc[leveloffset=+2]
 
 :mtv!:

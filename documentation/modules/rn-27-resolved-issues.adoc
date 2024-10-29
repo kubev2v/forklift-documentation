@@ -1,0 +1,79 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-27-resolved-issues_{context}"]
+= Resolved issues
+
+{project-first} 2.7 has the following resolved issues:
+
+[id="resolved-issues-2-7-2_{context}"]
+== Resolved issues 2.7.2
+
+.VMNetworksNotMapped error occurs after creating a plan from the UI with the source provider set to {virt}
+
+In earlier releases of {project-short}, after creating a plan with an {virt} source provider, the Migration Plan failed with the error `The plan is not ready - VMNetworksNotMapped`. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1201[(MTV-1201)]
+
+.Migration Plan for {virt} to {virt} missing the source namespace causing VMNetworkNotMapped error
+
+In earlier releases of {project-short}, when creating a Migration Plan for an {virt} to {virt} migration using the Plan Creation Form, the network map generated was missing the source namespace, which caused a `VMNetworkNotMapped` error on the plan. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1297[(MTV-1297)]
+
+.DV, PVC, and PV are not cleaned up and removed if the migration plan is Archived and Deleted
+
+In earlier releases of {project-short}, the DataVolume (DV), PersistentVolumeClaim (PVC), and PersistentVolume (PV) continued to exist after the migration plan was archived and deleted. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1477[(MTV-1477)]
+
+.Other migrations are halted from starting as the scheduler is waiting for the complete VM to get transferred
+
+In earlier releases of {project-short}, when warm migrating a virtual machine (VM) that has several disks, you had to wait for the complete VM to get migrated, and the scheduler was halted until all the disks finished before the migration would be started. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1537[(MTV-1537)]
+
+.Warm migration is not functioning as expected
+
+In earlier releases of {project-short}, warm migration did not function as expected. When running the warm migration with VMs larger than the MaxInFlight disks, the VMs over this number did not start the migration until the cutover. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1543[(MTV-1543)]
+
+.Migration hanging due to error: virt-v2v: error: -i libvirt: expecting a libvirt guest name
+
+In earlier releases of {project-short}, when attempting to migrate a VMware VM with a non-compliant Kubernetes name, the Openshift console returned a warning that the VM would be renamed. However, after starting the Migration Plan, it hangs since the migration pod is in an `Error` state. This issue has been resolved in {project-short} 2.7.2. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1555[(MTV-1555)]
+
+.VMs are not migrated if they have more disks than MAX_VM_INFLIGHT
+
+In earlier releases of {project-short}, when migrating the VM using the warm migration, if there were more disks than the `MAX_VM_INFLIGHT` the VM was not scheduled and the migration was not started. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1573[(MTV-1573)]
+
+.Migration Plan returns an error even when Changed Block Tracking (CBT) is enabled
+
+In earlier releases of {project-short}, when running a VM in VMware, if the  CBT flag was enabled while the VM was running by adding both `ctkEnabled=TRUE` and `scsi0:0.ctkEnabled=TRUE` parameters, an error message `Danger alert:The plan is not ready - VMMissingChangedBlockTracking` was returned, and the migration plan was prevented from working. This issue has been resolved in {project-short} 2.7.2. link:https://issues.redhat.com/browse/MTV-1576[(MTV-1576)]
+
+
+[id="resolved-issues-2-7-0_{context}"]
+== Resolved issues 2.7.0
+
+.Change `.` to `-` in the names of VMs that are migrated
+
+In earlier releases of {project-short}, if the name of the virtual machines (VMs) contained `.`, this was changed to `-` when they were migrated. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1292[(MTV-1292)]
+
+.Status condition indicating a failed mapping resource of a plan is not added to the plan
+
+In earlier releases of {project-short}, a status condition indicating a failed mapping resource of a plan was not added to the plan. This issue has been resolved in {project-short} 2.7.0, with a status condition indicating the failed mapping being added. link:https://issues.redhat.com/browse/MTV-1461[(MTV-1461)]
+
+.ifcfg files with HWaddr cause the NIC name to change
+
+In earlier releases of {project-short}, interface configuration (ifcfg) files with a hardware address (HWaddr) of the Ethernet interface caused the name of the network interface controller (NIC) to change. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1463[(MTV-1463)]
+
+.Import fails with special characters in VMX file
+
+In earlier releases of {project-short}, imports failed when there were special characters in the parameters of the VMX file. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1472[(MTV-1472)]
+
+.Observed `invalid memory address or nil pointer dereference` panic
+
+In earlier releases of {project-short}, an `invalid memory address or nil pointer dereference` panic was observed, which was caused by a refactor and could be triggered when there was a problem with the inventory pod. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1482[(MTV-1482)]
+
+.Static IPv4 changed after warm migrating win2022/2019 VMs
+
+In earlier releases of {project-short}, the static Internet Protocol version 4 (IPv4) address was changed after a warm migration of Windows Server 2022 and Windows Server 2019 VMs. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1491[(MTV-1491)]
+
+.Warm migration is missing arguments
+
+In earlier releases of {project-short}, `virt-v2v-in-place` for the warm migration was missing arguments that were available in `virt-v2v` for the cold migration. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1495[(MTV-1495)]
+
+.Default gateway settings changed after migrating Windows Server 2022 VMs with `preserve static IPs`
+
+In earlier releases of {project-short}, the default gateway settings were changed after migrating Windows Server 2022 VMs with the `preserve static IPs` setting. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1497[(MTV-1497)]

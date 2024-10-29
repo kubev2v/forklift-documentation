@@ -10,6 +10,8 @@ You can select a migration network in the {ocp} web console for a source provide
 
 Using the default network for migration can result in poor performance because the network might not have sufficient bandwidth. This situation can have a negative effect on the source platform because the disk transfer operation might saturate the network.
 
+include::snip_vmware_esxi_nfc.adoc[]
+
 .Prerequisites
 
 * The migration network must have sufficient throughput, minimum speed of 10 Gbps, for disk transfer.
@@ -20,7 +22,7 @@ Using the default network for migration can result in poor performance because t
 The source virtual disks are copied by a pod that is connected to the pod network of the target namespace.
 ====
 
-* The migration network must have jumbo frames enabled.
+* The migration network should have jumbo frames enabled.
 
 .Procedure
 
