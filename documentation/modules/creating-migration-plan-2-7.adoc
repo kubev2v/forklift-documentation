@@ -1,7 +1,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="creating-migration-plan_{context}"]
+[id="creating-migration-plan-2-7_{context}"]
 ifdef::provider[]
 = Creating a migration plan starting with a source provider
 
