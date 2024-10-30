@@ -28,5 +28,3 @@ The *Plan details* page opens.
 The *Edit migration plan transfer network* window opens.
 . Select a network from the list of available networks and click *Save*.
 //. Click the network number in the *Networks* column beside the provider to verify that the selected network is the default migration network.
-
-//Check above and ask about network for VM provider procedure. 
