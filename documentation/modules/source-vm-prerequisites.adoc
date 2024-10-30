@@ -28,3 +28,5 @@ This feature allows a migration to proceed smoothly even if someone enters a VM 
 ====
 
 include::snip_secure_boot_issue.adoc[]
+
+include::snip_measured_boot_windows_vm.adoc[]
