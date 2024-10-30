@@ -22,6 +22,10 @@ In earlier releases of {project-short}, having a large number of virtual machine
 
 In earlier releases of {project-short}, migration is failed if the module configuration file was available in the guest and `dhcp-client package` was not installed, returning a `dracut module 'network-legacy' will not be installed, because command 'dhclient' could not be found` error. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1615[(MTV-1615)]
 
+.`forklift-controller` crashing during OVA plan migration
+
+In earlier releases of {project-short}, the `forklift-controller` would crash during an OVA plan migration, returning a `runtime error: invalid memory address or nil pointer dereference` panic.  This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1577[(MTV-1577)]
+
 [id="resolved-issues-2-7-2_{context}"]
 == Resolved issues 2.7.2
 
