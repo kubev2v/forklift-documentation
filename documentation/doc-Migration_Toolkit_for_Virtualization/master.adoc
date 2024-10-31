@@ -105,7 +105,7 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 :mtv:
 
 include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
-
+include::modules/max-concurrent-vms.adoc[leveloffset=+3]
 
 [id="migrating-vms-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
