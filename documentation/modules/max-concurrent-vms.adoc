@@ -1,0 +1,16 @@
+
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="max-concurrent-vms_{context}"]
+= Configuring the controller_max_vm_inflight label
+
+For {rhv-full}, {osp}, VMware warm migrations _or_ remote cold migrations, the setting `controller_max_vm_inflight` (shown in the UI as *Max concurrent virtual machine migrations*) specifies the maximum number of _disks_ that {project-first} can transfer simultaneously. In these migrations, {project-short} migrates the disks in parallel. This means that if the combined number of disks that you want to migrate is greater than the value of the setting, additional disks must wait until the queue is free, without regard for whether a VM has finished being migrating.
+
+Example: If the value of the setting is 15, and VM A has 5 disks, VM B has 5 disks, and VM C has 6 disks, all the disks except for the 16th begin migrating at the same time. Once any of them has migrated, the 16th disk can be migrated, whether or not all the disks on VM A and VM B have finished migrating.
+
+However, for OVA or for local VMware local cold migrations, the setting specifies the maximum number of _VMs_ that {project-short} can migrate simultaneously, meaning that all additional disks must wait until at least one VM has been completely migrated.
+
+Example: If the value of the setting is 2, and VM A has 5 disks, VM B has 5 disks, and VM C has 6 disks, all the disks on VM C must wait until either all the disks on VM A or on VM B have finished migrating.
