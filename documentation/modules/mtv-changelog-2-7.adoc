@@ -8,7 +8,7 @@
 
 The following changelog for {project-first} includes a full list of packages used in the {project-short} 2.7 releases.
 
-[id="mtv-virt-v2v-container_{context}"]
+[id="mtv-container-packages_{context}"]
 == mtv-virt-v2v-container packages
 
 .{project-short} packages
