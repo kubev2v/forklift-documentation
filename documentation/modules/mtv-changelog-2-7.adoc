@@ -12,7 +12,7 @@ The following changelog for {project-first} includes a full list of packages use
 == {project-short} 2.7 packages
 
 .{project-short} packages
-[width="100%",cols="34%,33%,33%",options="header
+[width="100%",cols="34%,33%,33%",options="header",]
 |===
  a|{project-short} 2.7.0 a|{project-short} 2.7.2 a|{project-short} 2.7.3
 
