@@ -14,7 +14,7 @@ The following changelog for {project-first} includes a full list of packages use
 .{project-short} packages
 [width="100%",cols="33%,33%,33%",options="header
 |===
-|MTV 2.7.0 |MTV 2.7.2 |MTV 2.7.3
+ a|{project-short} 2.7.0 a|{project-short} 2.7.2 a|{project-short} 2.7.3
 
 |abattis-cantarell-fonts-0.301-4.el9.noarch
 |abattis-cantarell-fonts-0.301-4.el9.noarch
