@@ -70,6 +70,7 @@
 |NBD proxy / forward plugin for nbdkit
 |nbdkit-nbd-plugin-1.36.2-1.el9.x86_64
 |nbdkit-nbd-plugin-1.36.2-1.el9.x86_64
+|nbdkit-nbd-plugin-1.36.2-1.el9.x86_64
 
 |Python 3 plugin for nbdkit
 |nbdkit-python-plugin-1.36.2-1.el9.x86_64
