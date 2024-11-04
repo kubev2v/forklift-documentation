@@ -22,7 +22,7 @@ In earlier releases of {project-short}, having a large number of virtual machine
 .Migration fails with module `network-legacy` configured in RHEL guests
 
 In earlier releases of {project-short}, migration is failed if the module configuration file was available in the guest and `dhcp-client package` was not installed, returning a `dracut module 'network-legacy' will not be installed, because command 'dhclient' could not be found` error. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1615[(MTV-1615)]
-///
+////
 
 .VM selection disappears when selecting multiple VMs in the Migration Plan
 
