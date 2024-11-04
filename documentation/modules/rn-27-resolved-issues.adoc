@@ -18,9 +18,15 @@ In earlier releases of {project-short}, when running the `virt-v2v` guest conver
 
 In earlier releases of {project-short}, having a large number of virtual machines (VMs) in the inventory could cause the inventory controller to panic and return a `concurrent write to websocket connection` warning. This issue was caused by the concurrent write to the WebSocket connection and has been addressed by the addition of a lock, so the Go `routine` *waits* before sending the response from the server. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1220[(MTV-1220)]
 
+///
 .Migration fails with module `network-legacy` configured in RHEL guests
 
 In earlier releases of {project-short}, migration is failed if the module configuration file was available in the guest and `dhcp-client package` was not installed, returning a `dracut module 'network-legacy' will not be installed, because command 'dhclient' could not be found` error. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1615[(MTV-1615)]
+///
+
+.VM selection disappears when selecting multiple VMs in the Migration Plan
+
+In earlier releases of {project-short}, *VM selection* checkbox disappeared after selecting multiple VMs in the Migration Plan. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1546[(MTV-1546)]
 
 .`forklift-controller` crashing during OVA plan migration
 
