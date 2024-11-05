@@ -14,6 +14,8 @@ When you choose `Select Migration Network`, from the endpoint type of `ESXi`, mu
 // secure boot issue - (MTV-1548)
 include::snip_secure_boot_issue.adoc[]
 
+include::snip_measured_boot_windows_vm.adoc[]
+
 .Network and Storage maps in the UI are not correct when created from the command line
 
 When creating *Network* and *Storage* maps from the UI, the correct names are not shown in the UI. link:https://issues.redhat.com/browse/MTV-1421[(MTV-1421)]

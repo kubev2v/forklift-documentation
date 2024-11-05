@@ -1,0 +1,7 @@
+:_content-type: SNIPPET
+
+.Windows VMs which are using `Measured Boot` cannot be migrated
+
+Microsoft Windows virtual machines (VMs), which are using the link:https://learn.microsoft.com/en-us/windows/compatibility/measured-boot[Measured Boot] feature, cannot be migrated because Measured Boot is a mechanism to prevent any kind of device changes, by checking each start-up component, including the firmware, all the way to the boot driver.
+
+The alternative to migration is to re-create the Windows VM directly on {virt}.
