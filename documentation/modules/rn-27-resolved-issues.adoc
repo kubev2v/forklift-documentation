@@ -14,7 +14,7 @@
 
 In earlier releases of {project-short}, the secondary network of Open Virtual Network (OVN) did not function as expected with the Multus default network override. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1645[(MTV-1645)]
 
-.Secure Boot enabled VM migration resulted in a VM with Secure Boot disabled
+.Migration of a VM with Secure Boot enabled VM migration results in a VM with Secure Boot disabled
 
 In earlier releases of {project-short}, when migrating a virtual machine (VM) with *Secure Boot* enabled, the VM had *Secure Boot* was disabled after being migrated. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1632[(MTV-1632)]
 
