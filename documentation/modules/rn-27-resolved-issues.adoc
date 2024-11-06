@@ -7,6 +7,27 @@
 
 {project-first} 2.7 has the following resolved issues:
 
+[id="resolved-issues-2-7-4_{context}"]
+== Resolved issues 2.7.4
+
+.OVN secondary network is not functioning as expected with the Multus default network override
+
+In earlier releases of {project-short}, the secondary network of Open Virtual Network (OVN) did not function as expected with the Multus default network override. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1645[(MTV-1645)]
+
+.Secure Boot enabled VM migration resulted in a VM with Secure Boot disabled
+
+In earlier releases of {project-short}, when migrating a virtual machine (VM) with *Secure Boot* enabled, the VM had *Secure Boot* was disabled after being migrated. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1632[(MTV-1632)]
+
+.VMware warm migration is stuck with the error `No new block status data at offset 6806175744`
+
+In earlier releases of {project-short}, a warm VM migration from VMware could become stuck for an extended period, logging the same message repeatedly: `No new block status data at offset 6806175744`. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1629[(MTV-1629)]
+
+
+.Error `Did not find CDI importer pod for DataVolume` is recorded in the `forklift-controller` logs during the `CopyDisks` phase
+
+In earlier releases of {project-short}, the `forklift-controller` incorrectly logged an error `Did not find CDI importer pod for DataVolume` during the `CopyDisks` phase. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1627[(MTV-1627)]
+
+
 [id="resolved-issues-2-7-3_{context}"]
 == Resolved issues 2.7.3
 
@@ -20,7 +41,7 @@ In earlier releases of {project-short}, having a large number of virtual machine
 
 .VM selection disappears when selecting multiple VMs in the Migration Plan
 
-In earlier releases of {project-short}, *VM selection* checkbox disappeared after selecting multiple VMs in the Migration Plan. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1546[(MTV-1546)]
+In earlier releases of {project-short}, the *VM selection* checkbox disappeared after selecting multiple VMs in the Migration Plan. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1546[(MTV-1546)]
 
 .`forklift-controller` crashing during OVA plan migration
 
