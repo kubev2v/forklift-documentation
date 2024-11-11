@@ -1,0 +1,18 @@
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: REFERENCE
+[id="mtv-telemetry_{context}"]
+= Telemetry
+
+Red Hat uses telemetry to collect anonymous usage data from {project-first} installations to help us improve the usability and efficiency of {project-short}.
+
+{project-short} collects the following data:
+
+* Migration plan status: number of migrations by status - failed, succeeded, or were canceled
+* Provider: number of migrations per provider - {rhv-full}, vSphere, {osp}, OVA, or {virt}
+* Mode: number of migrations by mode - cold or warm
+* Target: number of migrations by target - local or remote
+* Plan ID
+
+Metrics are calculated every 10 seconds, and are currently reported with the following granularity: per week, per month, and per year.
