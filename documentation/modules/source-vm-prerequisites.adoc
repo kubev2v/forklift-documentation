@@ -10,7 +10,9 @@ The following prerequisites apply to all migrations:
 
 * ISO/CDROM disks must be unmounted.
 * Each NIC must contain one IPv4 and/or one IPv6 address.
-* The operating system of a VM must be certified and supported as a link:https://access.redhat.com/articles/973163#ocpvirt[guest operating system with {virt}].
+* The operating system of a VM must be certified and supported as one of the "Supported guest operating systems for conversions" used for link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9].
++
+RHEL 8 is used with MTV 2.6._z_ and RHEL 9 is used with MTV 2.7._z_.
 * The name of a VM must not contain a period (`.`). {project-first} changes any period in a VM name to a dash (`-`).
 * The name of a VM must not be the same as any other VM in the {virt} environment.
 +
