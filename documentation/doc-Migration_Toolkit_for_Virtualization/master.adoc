@@ -106,87 +106,68 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
 include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 
+[id="migrating-vms-mtv-ui_{context}"]
+=== Migrating virtual machines using the MTV user interface
 
-[id="migrating-vms-web-console_{context}"]
-== Migrating virtual machines by using the {ocp} web console
-
-You can migrate virtual machines (VMs) by using the {ocp} web console to:
-
-. xref:adding-source-providers[Create source providers]
-. xref:adding-destination-providers[Create destination providers]
-. xref:creating-migration-plans-ui[Create migration plans]
-
-[IMPORTANT]
-====
-You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
-
-VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
-
-VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
-====
-
-include::modules/mtv-ui.adoc[leveloffset=+2]
-include::modules/mtv-overview-page.adoc[leveloffset=+2]
-include::modules/mtv-settings.adoc[leveloffset=+2]
-
-[id="adding-providers"]
-=== Adding providers
-
-You can add source providers and destination providers for a virtual machine migration by using the {ocp} web console.
-
-[id="adding-source-providers"]
-==== Adding source providers
-
-You can use {project-short} to migrate VMs from the following source providers:
+You can use the {project-short} user interface to migrate VMs from the following providers:
 
 * VMware vSphere
-* {rhv-full}
+* {rhv-full} ({rhv-short})
 * {osp}
 * Open Virtual Appliances (OVAs) that were created by VMware vSphere
-* {virt}
+* Remote {virt} clusters
 
-You can add a source provider by using the {ocp} web console.
+====
 
+// ANDY: Now we continue with the provider A-Z sections
 :!mtv:
 :context: vmware
 :vmware:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
-include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
-:!vmware:
+
+[id="migrating-vmware-ui"]
+==== Migrating virtual machines from VMvSphere
+// ANDY: VM prerequisites and provider instructions will go here
+
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
+
+:vmware:
+
+// ANDY: Now RHV
+==== Migrating virtual machines from RHV
+
 :context: rhv
 :rhv:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 :!rhv:
+
+// ANDY: Now OpenStack
+==== Migrating virtual machines from OpenStack
+
 :context: ostack
 :ostack:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 :!ostack:
+
+// ANDY: Now OVA
+==== Migrating virtual machines from OVA
+
 :context: ova
 :ova:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 :!ova:
+:context: dest_ova
+
+// ANDY: Now CNV
+==== Migrating virtual machines from CNV
+
 :context: cnv
 :cnv:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
-:cnv!:
-:context: mtv
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
+:!cnv:
 
-[id="adding-destination-providers"]
-==== Adding destination providers
 
-You can add a {virt} destination provider by using the {ocp} web console.
+// ANDY: That's it for this PR.
 
-:mtv!:
-:context: cnv2
-:cnv2:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
-:cnv!:
-:context: mtv
-
-include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
-
-// include::modules/creating-network-mapping.adoc[leveloffset=+2]
-// include::modules/creating-storage-mapping.adoc[leveloffset=+2]
 
 [id="creating-migration-plans-ui"]
 === Creating migration plans
@@ -195,8 +176,7 @@ You can create a migration plan by using the {ocp} web console to specify a sour
 
 For your convenience, there are two procedures to create migration plans, starting with either a source provider or with specific VMs:
 
-* To start with a source provider, see xref:creating-migration-plan-2-6-3_provider[Creating a migration plan starting with a source provider].
-* To start with specific VMs, see xref:creating-migration-plan-2-6-3_vms[Creating a migration plan starting with specific VMs].
+
 
 [WARNING]
 ====
@@ -211,12 +191,12 @@ include::modules/snip_plan-limits.adoc[]
 :context: provider
 :provider:
 
-include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
 
 :provider!:
 :context: vms
 :vms:
-include::modules/creating-migration-plan-2-6-3.adoc[leveloffset=+3]
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
 
 :vms!:
 :context: mtv
