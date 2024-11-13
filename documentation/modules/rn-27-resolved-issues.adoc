@@ -23,7 +23,7 @@ In earlier releases of {project-short}, when migrating a virtual machine (VM) wi
 
 .VMware warm migration is stuck with the error `No new block status data at offset 6806175744`
 
-In earlier releases of {project-short}, a warm VM migration from VMware could become stuck for an extended period, logging the same message repeatedly: `No new block status data at offset 6806175744`. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1629[(MTV-1629)]
+In earlier releases of {project-short}, a warm VM migration from VMware could become stuck for an extended period, logging the same message repeatedly: `No new block status data at offset 6806175744`. This issue has been resolved in {project-short} 2.7.4. link:https://issues.redhat.com/browse/MTV-1629[(MTV-1629)]
 
 
 .Error `Did not find CDI importer pod for DataVolume` is recorded in the `forklift-controller` logs during the `CopyDisks` phase
