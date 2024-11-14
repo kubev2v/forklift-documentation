@@ -106,6 +106,15 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 
 include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 
+[id="migrating-vms-ocp-web-console_{context}"]
+== Migrating virtual machines by using the {ocp} web console
+
+You can migrate virtual machines (VMs) by using the {project-short} user interface, which is located in the *Virtualization* section of the {ocp} web console.
+
+include::modules/mtv-ui.adoc[leveloffset=+2]
+include::modules/mtv-overview-page.adoc[leveloffset=+3]
+include::modules/mtv-settings.adoc[leveloffset=+3]
+
 [id="migrating-vms-mtv-ui_{context}"]
 === Migrating virtual machines using the MTV user interface
 
@@ -117,35 +126,53 @@ You can use the {project-short} user interface to migrate VMs from the following
 * Open Virtual Appliances (OVAs) that were created by VMware vSphere
 * Remote {virt} clusters
 
-====
-
 // ANDY: Now we continue with the provider A-Z sections
 :!mtv:
 :context: vmware
 :vmware:
 
 [id="migrating-vmware-ui"]
-==== Migrating virtual machines from VMvSphere
+==== Migrating virtual machines from VMware vSphere
 // ANDY: VM prerequisites and provider instructions will go here
 
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 
-:vmware:
+include::modules/running-migration-plan.adoc[leveloffset=+4]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+4]
+
+:!vmware:
 
 // ANDY: Now RHV
-==== Migrating virtual machines from RHV
+==== Migrating virtual machines from {rhv-full}
 
 :context: rhv
 :rhv:
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
+
+include::modules/running-migration-plan.adoc[leveloffset=+4]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+4]
+
 :!rhv:
 
 // ANDY: Now OpenStack
-==== Migrating virtual machines from OpenStack
+==== Migrating virtual machines from {ocp}
 
 :context: ostack
 :ostack:
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
+
+include::modules/running-migration-plan.adoc[leveloffset=+4]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+4]
+
 :!ostack:
 
 // ANDY: Now OVA
@@ -154,58 +181,39 @@ include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 :context: ova
 :ova:
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
+
+include::modules/running-migration-plan.adoc[leveloffset=+4]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+4]
+
 :!ova:
 :context: dest_ova
 
 // ANDY: Now CNV
-==== Migrating virtual machines from CNV
+==== Migrating virtual machines from {virt}
 
 :context: cnv
 :cnv:
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
+
+include::modules/running-migration-plan.adoc[leveloffset=+4]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+4]
+
 :!cnv:
 
 
 // ANDY: That's it for this PR.
 
 
-[id="creating-migration-plans-ui"]
-=== Creating migration plans
-
-You can create a migration plan by using the {ocp} web console to specify a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
-
-For your convenience, there are two procedures to create migration plans, starting with either a source provider or with specific VMs:
-
-
-
-[WARNING]
-====
-Virtual machines with guest initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts, are not handled by {project-short} and could require additional planning before or reconfiguration after the migration.
-
-This is to ensure that no issues arise due to the addition or newly migrated VM accessing this storage.
-====
-
-include::modules/snip_plan-limits.adoc[]
-
-:mtv!:
-:context: provider
-:provider:
-
-include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
-
-:provider!:
-:context: vms
-:vms:
-include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
-
-:vms!:
 :context: mtv
 :mtv:
 
-include::modules/running-migration-plan.adoc[leveloffset=+2]
-include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
-include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines-from-the-command-line_{context}"]
 == Migrating virtual machines from the command line
