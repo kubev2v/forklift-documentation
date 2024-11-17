@@ -1,0 +1,115 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="adding-migration-hook-via-cli_{context}"]
+= Adding a migration hook to a migration plan using the CLI
+
+You can use a `Hook` CR to add a pre-migration hook or a post-migration hook to an existing migration plan using the {project-first} CLI.
+
+For example, you can create a `Hook` CR to install the `cloud-init` service on a VM and write a file before migration.
+
+[NOTE]
+====
+You can run one pre-migration hook, one post-migration hook, or one of each per migration plan. Each hook needs its own `Hook` CR, but a `Plan` CR contains data for all the hooks it uses.
+====
+
+[NOTE]
+====
+You can retrieve additional information stored in a secret or in a `ConfigMap` by using a `k8s` module.
+====
+
+.Prerequisites
+
+* Migration plan
+* Migration hook image or the playbook containing the hook image
+* File containing the Secret for the source provider
+* {ocp} service account called by the hook and that has at least write access for the namespace you are working in
+* SSH access for VMs you want to migrate with the public key installed on the VMs
+* VMs running on Microsoft Server only: Remote Execution enabled
+
+.Additional resources
+For instructions for creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
+
+.Procedure
+. If needed, create a Secret with an SSH private key for the VM.
+.. Choose an existing key or generate a key pair.
+.. Install the public key on the VM.
+.. Encode the private key in the Secret to base64.
++
+[source,yaml]
+----
+apiVersion: v1
+data:
+  key: VGhpcyB3YXMgZ2Vu...
+kind: Secret
+metadata:
+  name: ssh-credentials
+  namespace: openshift-mtv
+type: Opaque
+----
+. Encode your playbook by concatenating a file and piping it for Base64 encoding, for example:
++
+[source,shell]
+----
+$ cat playbook.yml | base64 -w0
+----
+
+. Create a Hook CR:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Hook
+metadata:
+  name: <hook>
+  namespace: <namespace>
+spec:
+  image: quay.io/konveyor/hook-runner
+  serviceAccount:<service account> <1>
+  playbook: |
+    LS0tCi0gbm... <2>
+EOF
+----
+<1> (Optional) {ocp} service account. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
+<2> Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
++
+[NOTE]
+====
+You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+====
++
+[NOTE]
+====
+To decode an attached playbook, retrieve the resource with custom output and pipe it to base64. For example:
+[source,shell]
+----
+$ oc get -n konveyor-forklift hook playbook -o \
+    go-template='{{ .spec.playbook }}' | base64 -d
+----
+====
++
+. In the `Plan` CR of the migration, for each VM, add the following section to the end of the CR:
++
+[source,yaml]
+----
+  vms:
+    - id: <vm_id>
+      hooks:
+        - hook:
+            namespace: <namespace>
+            name: <name_of_hook>
+          step: <type_of_hook> <1>
+----
+<1> Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration.
+
+[IMPORTANT]
+====
+In order for a PreHook to run on a VM, the VM must be started and available via SSH.
+====
+
+include::snip_example-hook-for-migration-plans.adoc[]
+
+
