@@ -161,7 +161,7 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 :!rhv:
 
 // ANDY: Now OpenStack
-==== Migrating virtual machines from {ocp}
+==== Migrating virtual machines from {osp}
 
 :context: ostack
 :ostack:
