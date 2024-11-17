@@ -1,11 +1,19 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="creating-migration-plan-2-6-3_{context}"]
-ifdef::provider[]
-= Creating a migration plan starting with a source provider
+[id="creating-migration-plan-2-8_{context}"]
+= Creating a migration plan
 
-You can create a migration plan based on a source provider, starting on the *Plans for virtualization* page. Note the specific options for migrations from VMware or {rhv-short} providers.
+You can create a migration plan by using the {ocp} web console to specify a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
+
+[WARNING]
+====
+Virtual machines with guest initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts, are not handled by {project-short} and could require additional planning before or reconfiguration after the migration.
+
+This is to ensure that no issues arise due to the addition or newly migrated VM accessing this storage.
+====
+
+include::snip_plan-limits.adoc[]
 
 .Procedure
 
@@ -16,21 +24,6 @@ The *Create migration plan* wizard opens to the *Select source provider* interfa
 +
 The *Select virtual machines* interface opens.
 . Select the VMs you want to migrate and click *Next*.
-endif::[]
-
-ifdef::vms[]
-= Creating a migration plan starting with specific VMs
-
-You can create a migration plan based on specific VMs, starting on the *Providers for virtualization* page. Note the specific options for migrations from VMware or {rhv-short} providers.
-
-.Procedure
-
-. In the {ocp} web console, click *Providers for virtualization*.
-. In the row of the appropriate source provider, click *VMs*.
-+
-The *Virtual Machines* tab opens.
-. Select the VMs you want to migrate and click *Create migration plan*.
-endif::[]
 +
 The *Create migration plan* pane opens. It displays the source provider's name and suggestions for a target provider and namespace, a network map, and a storage map.
 . Enter the *Plan name*.
@@ -40,7 +33,11 @@ The *Create migration plan* pane opens. It displays the source provider's name a
 +
 {project-short} validates the migration plan and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error. The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, {project-short} validates the plan again.
 
-. VMware source providers only (All optional):
+ifdef::vmware[]
++
+[IMPORTANT]
+====
+Check the following VMware-specific items. All are optional, but need special attention:
 
 * *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process.  As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the Edit icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
 +
@@ -55,16 +52,26 @@ To specify a different root device, in the *Settings* section, click the Edit ic
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
 If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by looking at the conversion pod logs.
+====
 
-. {rhv-short} source providers only (Optional):
+endif::[]
+ifdef::rhv[]
++
+[IMPORTANT]
+====
+Check the following {rhv-short}-specific items. All are optional, but need special attention:
 
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
 By default, {project-short} sets the CPU model on the destination cluster as follows: {project-short} preserves custom CPU settings for VMs that have them, but, for VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
 +
 To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Settings* section, click the Edit icon next to *Preserve CPU model*. Toggle the *Whether to preserve the CPU model* switch, and then click *Save*.
+====
+endif::[]
 
-. If the plan is valid,
+. If your plan is valid:
 .. You can run the plan now by clicking *Start migration*.
-.. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in xref:running-migration-plan_mtv[Running a migration plan].
-+
+.. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in xref:running-migration-plan_{context}[Running a migration plan].
+
+ifdef::vmware[]
 include::snip_vmware-name-change.adoc[]
+endif::[]
