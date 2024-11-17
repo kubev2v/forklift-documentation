@@ -6,26 +6,30 @@
 [id="about-api-hooks-in-migration-plans_{context}"]
 = API-based hooks for {project-short} migration plans
 
-You can add hooks to a migration plan from the command line by using the {project-full} API.
+You can use migration hooks to either perform automated operations on a VM before or after you migrate it. Hooks that perform operations on VMs before migration are called _pre-migration_ hooks. Hooks that perform operations on VMs after migration are called _post-migration_ hooks. A pre-migration hook is performed om a VM that is located on the provider and prepare the VM for migration. A post-migration hook is performed on a VM after it has been migrated to {virt}.
 
-[discrete]
+You can add hooks to a migration plan using either the {project-first} CLI or the {project-short} UI.
+
+// You can add hooks to a migration plan from the command line by using the {project-full} API.
+
+[id="default-hook-image_{context}"]
 == Default hook image
 The default hook image for an {project-short} hook is `registry.redhat.io/rhmtc/openshift-migration-hook-runner-rhel8:v1.8.2-2`. The image is based on the Ansible Runner image with the addition of `python-openshift` to provide Ansible Kubernetes resources and a recent `oc` binary.
 
-[discrete]
+[id="hook-execution_{context}"]
 == Hook execution
 An Ansible playbook that is provided as part of a migration hook is mounted into the hook container as a `ConfigMap`. The hook container is run as a job on the desired cluster, using the default `ServiceAccount` in the `konveyor-forklift` namespace.
 
-[discrete]
-== PreHooks and PostHooks
-You specify hooks per VM and you can run each as a _PreHook_ or a _PostHook_. In this context, a PreHook is a hook that is run before a migration and a PostHook is a hook that is run after a migration.
 
-When you add a hook, you must specify the namespace where the hook CR is located, the name of the hook, and specify whether the hook is a PreHook or PostHook.
+When you add a hook, you must specify the namespace where the hook CR is located, the name of the hook, and specify whether the hook is a pre-migration hook or a post-migration hook.
 
 [IMPORTANT]
 ====
-In order for a PreHook to run on a VM, the VM must be started and available via SSH.
+In order for a hook to run on a VM, the VM must be started and available via SSH.
 ====
+
+
+////
 
 .Example PreHook:
 
@@ -45,5 +49,32 @@ spec:
             name: playbook
           step: PreHook
 ----
+////
+
+The illustration that follows shows the general process of using a migration hook. Specific procedures are described in TBD1 and TBD2.
+
+[Figure]
+
+
+Process:
+
+. Use SSH to switch VMs to *On*.
+. Input an Ansible prehook image, an Ansible posthook image, or non-Ansoible pre-hook or post-hook images, to the {project-short} controller using the CLI.
+. Input provider Secret using CLI.
+. The {project-short} controller creates the `configmap`, which contains:
+
+** `workload.yml`, which contains information about the VMs.
+** `playbook.yml`, the raw string playbook you want to execute.
+** `plan.yml`, which is the `Plan CR`.
+
+. The {project-short} controller also creates a job that contains the Ansible hook.
+. The Ansible hook imports the Secret that the user entered in step 3.
+. The job runs a prehook or a posthook as follows:
+
+** For a prehook, the job logs into the VMs on the source provider using SSH and runs the prehook.
+** For a posthook, the job logs into the VMs on {virt} using SSH and runs the posthook.
+
+
+
 
 
