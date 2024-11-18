@@ -234,16 +234,14 @@ You can migrate virtual machines to {virt} from the command line.
 You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
 ====
 
-include::modules/snip_plan-limits.adoc[]
-
 :mtv!:
 :context: cli
 include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
-include::modules/snip_vmware-permissions.adoc[]
+
 :cli!:
 :context: mtv
 
-include::modules/retrieving-vmware-moref.adoc[leveloffset=+2]
+// include::modules/retrieving-vmware-moref.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines_{context}"]
 === Migrating virtual machines
@@ -263,33 +261,37 @@ To migrate to or from an {ocp-short} cluster that is different from the one the 
 :mtv!:
 :context: vmware
 :vmware:
+// This snippet, if it still applies, applies to all VMware migrations, so it should be in a different PR
+// include::modules/snip_vmware-permissions.adoc[]
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
-include::modules/snip_vmware-permissions.adoc[]
+include::modules/retrieving-vmware-moref.adoc[leveloffset=+4]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
+
 :vmware!:
 :context: rhv
 :rhv:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :rhv!:
 :context: ostack
 :ostack:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :ostack!:
 :context: ova
 :ova:
-//include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
-//:ova!:
-//:context: ostack
-//:ostack:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :ova!:
 :context: cnv
 :cnv:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :cnv!:
 :context: mtv
 :mtv:
 
-include::modules/canceling-migration-cli.adoc[leveloffset=+2]
+// include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 [id="advanced-migration-options_{context}"]
 == Advanced migration options

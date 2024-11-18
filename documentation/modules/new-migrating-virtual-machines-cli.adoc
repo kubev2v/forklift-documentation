@@ -353,7 +353,7 @@ spec:
 EOF
 ----
 <1> Specify the name of the VMware vSphere `Provider` CR.
-<2> Specify the Managed Object Reference (moRef) of the VMware vSphere host. To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
+<2> Specify the Managed Object Reference (moRef) of the VMware vSphere host. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
 <3> Specify the IP address of the VMware vSphere migration network.
 
 [start=4]
@@ -392,7 +392,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
+<2> You can use either the `id` _or_ the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_{context}[Retrieving a VMware vSphere moRef].
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
@@ -593,7 +593,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
+<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
 endif::[]
 
 ifdef::rhv[]
@@ -803,7 +803,7 @@ EOF
 <8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP.
 To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 <9> You can use either the `id` _or_ the `name` parameter to specify the source VMs.
-<10> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_mtv[Retrieving a VMware vSphere moRef].
+<10> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
 <11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <12> Specify the name of the `Hook` CR.
 <13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
