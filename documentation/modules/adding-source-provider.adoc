@@ -83,7 +83,7 @@ ifdef::vmware[]
 . Specify the following fields:
 
 +
-*Provider Details*
+*Provider details*
 
 * *Provider resource name*: Name of the source provider.
 * *Endpoint type*: Select the vSphere provider endpoint type. Options: *vCenter* or *ESXi*. You can migrate virtual machines from vCenter, an ESX/ESXi server that is not managed by vCenter, or from an ESX/ESXi server that is managed by vCenter but does not go through vCenter.
