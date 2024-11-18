@@ -20,7 +20,7 @@ In earlier releases of {project-short}, having a large number of virtual machine
 
 .VM selection disappears when selecting multiple VMs in the Migration Plan
 
-In earlier releases of {project-short}, the *VM selection* checkbox disappeared after selecting multiple VMs in the Migration Plan. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1546[(MTV-1546)]
+In earlier releases of {project-short}, *VM selection* checkbox disappeared after selecting multiple VMs in the Migration Plan. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1546[(MTV-1546)]
 
 .`forklift-controller` crashing during OVA plan migration
 
