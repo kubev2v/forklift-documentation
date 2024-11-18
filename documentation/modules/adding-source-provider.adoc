@@ -39,7 +39,7 @@ You can add an {osp} source provider by using the {ocp} web console.
 
 [IMPORTANT]
 ====
-When you migrate an image-based VM from an {osp} provider, a snapshot is created for the image that is attached to the source VM and the data from the snapshot is copied over to the target VM. This means that the target VM will have the same state as that of the source VM at the time the snapshot was created.
+When you migrate an image-based VM from an {osp} provider, a snapshot is created for the image that is attached to the source VM and the data from the snapshot is copied over to the target VM. This means that the target VM will have the same state as that of the source VM at the time the snapadding-source-providershot was created.
 ====
 
 endif::[]
@@ -82,6 +82,7 @@ ifdef::vmware[]
 . Click *vSphere*.
 . Specify the following fields:
 
++
 *Provider Details*
 
 * *Provider resource name*: Name of the source provider.
@@ -89,12 +90,15 @@ ifdef::vmware[]
 * *URL*: URL of the SDK endpoint of the vCenter on which the source VM is mounted. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
 * *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
 
-*Provider details*
++
+*Provider credentials*
 
 * *Username*: vCenter user or ESXi user. For example, `user@vsphere.local`.
 * *Password*: vCenter user password or ESXi user password.
-+
+
+[start=5]
 include::snip-certificate-options.adoc[]
+
 endif::[]
 ifdef::rhv[]
 . Click *Red Hat Virtualization*
