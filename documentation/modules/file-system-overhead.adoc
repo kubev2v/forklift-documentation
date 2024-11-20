@@ -1,0 +1,20 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="file-system-overhead_{context}"]
+= File system overhead
+ifdef::rhv[]
+When you run a cold migration from {rhv-full} to the {ocp} cluster that {project-full} is deployed on, the migration allocates persistent volumes without Customized Data Importer (CDI). In these cases, for  volumes on a persistent volume claim that use the `volumeMode` file system, you might need to adjust the file system overhead.
+endif::[]
+
+
+ifdef::ostack[]
+When you migrate from {osp} to the {ocp} cluster that {project-full} is deployed on, the migration allocates persistent volumes without Customized Data Importer (CDI).In these cases, for  volumes on a persistent volume claim that use the `volumeMode` file system, you might need to adjust the file system overhead.
+endif::[]
+
+The configured file system overhead has a default value of 10%. If that is too low, the disk transfer fails due to lack of space. In this case, increase the file system overhead.
+
+You can change the file system overhead by changing the value of the `controller_filesystem_overhead` in the `spec` portion of the `forklift-controller` CR, as described in xref:configuring-mtv-operator_mtv[Configuring the MTV Operator].
+

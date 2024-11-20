@@ -1,0 +1,4 @@
+[NOTE]
+====
+The {ocp} cluster version of the source provider must be 4.13 or later.
+====

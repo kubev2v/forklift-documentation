@@ -91,7 +91,7 @@ ifdef::vmware[]
 * *Provider resource name*: Name of the source provider.
 * *Endpoint type*: Select the vSphere provider endpoint type. Options: *vCenter* or *ESXi*. You can migrate virtual machines from vCenter, an ESX/ESXi server that is not managed by vCenter, or from an ESX/ESXi server that is managed by vCenter but does not go through vCenter.
 * *URL*: URL of the SDK endpoint of the vCenter on which the source VM is mounted. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
-* *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
+* *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_vmware[Creating a VDDK image].
 
 
 +
