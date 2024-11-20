@@ -39,12 +39,15 @@ include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 [id="prerequisites_{context}"]
 == Prerequisites
 
-Review the following prerequisites to ensure that your environment is prepared for migration.
+Review the following prerequisites for to ensure that your environment is prepared for migration.
+
+These prerequisites apply to all migrations. Any source provider-specific prerequisites are discussed in the section dedicated to that source provider.
 
 [id="software-requirements_{context}"]
 === Software requirements
 
-You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
+
+include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 include::modules/storage-support.adoc[leveloffset=+2]
 include::modules/network-prerequisites.adoc[leveloffset=+2]
@@ -77,7 +80,7 @@ include::modules/vmware-prerequisites.adoc[leveloffset=+2]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
 include::modules/ova-prerequisites.adoc[leveloffset=+2]
-include::modules/compatibility-guidelines.adoc[leveloffset=+2]
+
 
 [id="installing-the-operator_{context}"]
 == Installing and configuring the {operator-name}
