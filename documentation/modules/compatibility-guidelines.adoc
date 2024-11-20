@@ -8,6 +8,8 @@
 
 You must install compatible software versions.
 
+You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
+
 [cols="1,1,1,1,1,1", options="header"]
 .Compatible software versions
 |===
