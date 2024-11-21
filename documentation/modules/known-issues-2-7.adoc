@@ -20,6 +20,10 @@ include::snip_measured_boot_windows_vm.adoc[]
 
 When migrating a virtual machine (VM) with *Secure Boot* enabled, the VM has *Secure Boot* as `disabled` after being migrated. link:https://issues.redhat.com/browse/MTV-1632[(MTV-1632)]
 
+.OVN secondary network is not functioning as expected with the Multus default network override
+
+The secondary network of Open Virtual Network (OVN) does not function as expected with the Multus default network override. link:https://issues.redhat.com/browse/MTV-1645[(MTV-1645)]
+
 .Network and Storage maps in the UI are not correct when created from the command line
 
 When creating *Network* and *Storage* maps from the UI, the correct names are not shown in the UI. link:https://issues.redhat.com/browse/MTV-1421[(MTV-1421)]
