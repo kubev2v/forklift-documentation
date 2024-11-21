@@ -37,3 +37,10 @@ Warm migration only:
 +
 The *Migration details by VM* screen opens, displaying the start and end times of the migration, the amount of data copied, and a progress pipeline for each VM being migrated.
 . Expand an individual VM to view its steps and the elapsed time and state of each step.
+
+
+[WARNING]
+====
+vMotion, including svMotion, and relocation must be disabled for VMs that are being imported to avoid data corruption.
+// Some backup solutions explicitly prevent vMotion, storage vMotion, and relocation during backups by adding an entry to the `VPX_DISABLED_METHODS` table in vCenter.
+====
