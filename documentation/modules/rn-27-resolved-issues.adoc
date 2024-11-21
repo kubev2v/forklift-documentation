@@ -9,6 +9,7 @@
 
 [id="resolved-issues-2-7-4_{context}"]
 == Resolved issues 2.7.4
+
 .XFS filesystem corruption after warm migration of VM from VMware
 
 In earlier releases of {project-short}, in some cases, the destination VMware virtual machine (VM) was observed to have XFS filesystem corruption after being migrated to {virt} using {project-short}. This issue has been resolved in {project-short} 2.7.4. link:https://issues.redhat.com/browse/MTV-1656[(MTV-1656)]
