@@ -7,6 +7,18 @@
 
 {project-first} 2.7 has the following resolved issues:
 
+[id="resolved-issues-2-7-4_{context}"]
+== Resolved issues 2.7.4
+
+.XFS filesystem corruption after warm migration of VM from VMware
+
+In earlier releases of {project-short}, in some cases, the destination VMware virtual machine (VM) was observed to have XFS filesystem corruption after being migrated to {virt} using {project-short}. This issue has been resolved in {project-short} 2.7.4. link:https://issues.redhat.com/browse/MTV-1656[(MTV-1656)]
+
+.Error `Did not find CDI importer pod for DataVolume` is recorded in the `forklift-controller` logs during the `CopyDisks` phase
+
+In earlier releases of {project-short}, the `forklift-controller` incorrectly logged an error `Did not find CDI importer pod for DataVolume` during the `CopyDisks` phase. This issue has been resolved in {project-short} 2.7.4. link:https://issues.redhat.com/browse/MTV-1627[(MTV-1627)]
+
+
 [id="resolved-issues-2-7-3_{context}"]
 == Resolved issues 2.7.3
 
@@ -20,7 +32,7 @@ In earlier releases of {project-short}, having a large number of virtual machine
 
 .VM selection disappears when selecting multiple VMs in the Migration Plan
 
-In earlier releases of {project-short}, *VM selection* checkbox disappeared after selecting multiple VMs in the Migration Plan. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1546[(MTV-1546)]
+In earlier releases of {project-short}, the *VM selection* checkbox disappeared after selecting multiple VMs in the Migration Plan. This issue has been resolved in {project-short} 2.7.3. link:https://issues.redhat.com/browse/MTV-1546[(MTV-1546)]
 
 .`forklift-controller` crashing during OVA plan migration
 
