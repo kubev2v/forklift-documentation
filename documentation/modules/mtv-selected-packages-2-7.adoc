@@ -9,11 +9,16 @@
 The following listed packages are from the `virt-v2v` guest conversion pod:
 
 .Selected {project-short} packages
-[width="100%",cols="40%,20%,20%,20%",options="header",]
+[width="100%",cols="39%,15%,15%,15%,15%",options="header",]
 |===
-|Package summary a|{project-short} 2.7.0 a|{project-short} 2.7.2 a|{project-short} 2.7.3
+|Package summary
+|MTV 2.7.0
+|MTV 2.7.2
+|MTV 2.7.3
+|MTV 2.7.4
 
 |The skeleton package which defines a simple Red Hat Enterprise Linux system
+|basesystem-11-13.el9.noarch
 |basesystem-11-13.el9.noarch
 |basesystem-11-13.el9.noarch
 |basesystem-11-13.el9.noarch
@@ -22,94 +27,113 @@ The following listed packages are from the `virt-v2v` guest conversion pod:
 |kernel-modules-core-5.14.0-427.35.1.el9_4.x86_64
 |kernel-modules-core-5.14.0-427.37.1.el9_4.x86_64
 |kernel-modules-core-5.14.0-427.40.1.el9_4.x86_64
+|kernel-modules-core-5.14.0-503.14.1.el9_5.x86_64
 
 |The Linux kernel
 |kernel-core-5.14.0-427.35.1.el9_4.x86_64
 |kernel-core-5.14.0-427.37.1.el9_4.x86_64
 |kernel-core-5.14.0-427.40.1.el9_4.x86_64
+|kernel-core-5.14.0-503.14.1.el9_5.x86_64
 
 |Access and modify virtual machine disk images
 |libguestfs-1.50.1-8.el9_4.x86_64
 |libguestfs-1.50.1-8.el9_4.x86_64
 |libguestfs-1.50.1-8.el9_4.x86_64
+|libguestfs-1.50.2-1.el9.x86_64
 
 |Client side utilities of the libvirt library
 |libvirt-client-10.0.0-6.7.el9_4.x86_64
 |libvirt-client-10.0.0-6.7.el9_4.x86_64
 |libvirt-client-10.0.0-6.7.el9_4.x86_64
+|libvirt-client-10.5.0-7.el9_5.x86_64
 
 |Libvirt libraries
 |libvirt-libs-10.0.0-6.7.el9_4.x86_64
 |libvirt-libs-10.0.0-6.7.el9_4.x86_64
 |libvirt-libs-10.0.0-6.7.el9_4.x86_64
+|libvirt-libs-10.5.0-7.el9_5.x86_64
 
 |QEMU driver plugin for the libvirtd daemon
 |libvirt-daemon-driver-qemu-10.0.0-6.7.el9_4.x86_64
 |libvirt-daemon-driver-qemu-10.0.0-6.7.el9_4.x86_64
 |libvirt-daemon-driver-qemu-10.0.0-6.7.el9_4.x86_64
+|libvirt-daemon-driver-qemu-10.5.0-7.el9_5.x86_64
 
 |NBD server
 |nbdkit-1.36.2-1.el9.x86_64
 |nbdkit-1.36.2-1.el9.x86_64
 |nbdkit-1.36.2-1.el9.x86_64
+|nbdkit-1.38.3-1.el9.x86_64
 
 |Basic filters for nbdkit
 |nbdkit-basic-filters-1.36.2-1.el9.x86_64
 |nbdkit-basic-filters-1.36.2-1.el9.x86_64
 |nbdkit-basic-filters-1.36.2-1.el9.x86_64
+|nbdkit-basic-filters-1.38.3-1.el9.x86_64
 
 |Basic plugins for nbdkit
 |nbdkit-basic-plugins-1.36.2-1.el9.x86_64
 |nbdkit-basic-plugins-1.36.2-1.el9.x86_64
 |nbdkit-basic-plugins-1.36.2-1.el9.x86_64
+|nbdkit-basic-plugins-1.38.3-1.el9.x86_64
 
 |HTTP/FTP (cURL) plugin for nbdkit
 |nbdkit-curl-plugin-1.36.2-1.el9.x86_64
 |nbdkit-curl-plugin-1.36.2-1.el9.x86_64
 |nbdkit-curl-plugin-1.36.2-1.el9.x86_64
+|nbdkit-curl-plugin-1.38.3-1.el9.x86_64
 
 |NBD proxy / forward plugin for nbdkit
 |nbdkit-nbd-plugin-1.36.2-1.el9.x86_64
 |nbdkit-nbd-plugin-1.36.2-1.el9.x86_64
 |nbdkit-nbd-plugin-1.36.2-1.el9.x86_64
+|nbdkit-nbd-plugin-1.38.3-1.el9.x86_64
 
 |Python 3 plugin for nbdkit
 |nbdkit-python-plugin-1.36.2-1.el9.x86_64
 |nbdkit-python-plugin-1.36.2-1.el9.x86_64
 |nbdkit-python-plugin-1.36.2-1.el9.x86_64
+|nbdkit-python-plugin-1.38.3-1.el9.x86_64
 
 |The nbdkit server
 |nbdkit-server-1.36.2-1.el9.x86_64
 |nbdkit-server-1.36.2-1.el9.x86_64
 |nbdkit-server-1.36.2-1.el9.x86_64
+|nbdkit-server-1.38.3-1.el9.x86_64
 
 |SSH plugin for nbdkit
 |nbdkit-ssh-plugin-1.36.2-1.el9.x86_64
 |nbdkit-ssh-plugin-1.36.2-1.el9.x86_64
 |nbdkit-ssh-plugin-1.36.2-1.el9.x86_64
+|nbdkit-ssh-plugin-1.38.3-1.el9.x86_64
 
 |VMware VDDK plugin for nbdkit
 |nbdkit-vddk-plugin-1.36.2-1.el9.x86_64
 |nbdkit-vddk-plugin-1.36.2-1.el9.x86_64
 |nbdkit-vddk-plugin-1.36.2-1.el9.x86_64
+|nbdkit-vddk-plugin-1.38.3-1.el9.x86_64
 
 |QEMU command line tool for manipulating disk images
 |qemu-img-8.2.0-11.el9_4.6.x86_64
 |qemu-img-8.2.0-11.el9_4.6.x86_64
 |qemu-img-8.2.0-11.el9_4.6.x86_64
+|qemu-img-9.0.0-10.el9_5.x86_64
 
 |QEMU common files needed by all QEMU targets
 |qemu-kvm-common-8.2.0-11.el9_4.6.x86_64
 |qemu-kvm-common-8.2.0-11.el9_4.6.x86_64
 |qemu-kvm-common-8.2.0-11.el9_4.6.x86_64
+|qemu-kvm-common-9.0.0-10.el9_5.x86_64
 
 a|`qemu-kvm` core components
 |qemu-kvm-core-8.2.0-11.el9_4.6.x86_64
 |qemu-kvm-core-8.2.0-11.el9_4.6.x86_64
 |qemu-kvm-core-8.2.0-11.el9_4.6.x86_64
+|qemu-kvm-core-9.0.0-10.el9_5.x86_64
 
 |Convert a virtual machine to run on KVM
 |virt-v2v-2.4.0-4.el9_4.x86_64
 |virt-v2v-2.4.0-4.el9_4.x86_64
 |virt-v2v-2.4.0-4.el9_4.x86_64
+|virt-v2v-2.5.6-7.el9_5.x86_64
 |===
