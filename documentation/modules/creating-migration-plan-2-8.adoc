@@ -4,7 +4,7 @@
 [id="creating-migration-plan-2-8_{context}"]
 = Creating a migration plan
 
-You can create a migration plan by using the {ocp} web console to specify a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
+Use the {ocp} web console to create a migration plan. Specify the source provider, the virtual machines (VMs) you want to migrate, and other plan details.
 
 [WARNING]
 ====
@@ -37,7 +37,7 @@ ifdef::vmware[]
 +
 [IMPORTANT]
 ====
-Check the following VMware-specific items. All are optional, but need special attention:
+Check the following optional items related to VMware:
 
 * *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process.  As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the Edit icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
 +
@@ -59,7 +59,7 @@ ifdef::rhv[]
 +
 [IMPORTANT]
 ====
-Check the following {rhv-short}-specific items. All are optional, but need special attention:
+Check the following optional items related to {rhv-short}.
 
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
 By default, {project-short} sets the CPU model on the destination cluster as follows: {project-short} preserves custom CPU settings for VMs that have them, but, for VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
@@ -68,9 +68,9 @@ To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Setting
 ====
 endif::[]
 
-. If your plan is valid:
-.. You can run the plan now by clicking *Start migration*.
-.. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in xref:running-migration-plan_{context}[Running a migration plan].
+. If your plan is valid, you can do one of the following:
+.. Run the plan now by clicking *Start migration*.
+.. Run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in xref:running-migration-plan_{context}[Running a migration plan].
 
 ifdef::vmware[]
 include::snip_vmware-name-change.adoc[]
