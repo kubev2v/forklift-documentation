@@ -109,7 +109,7 @@ include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 [id="migrating-vms-ocp-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
 
-You can migrate virtual machines (VMs) by using the {project-short} user interface, which is located in the *Virtualization* section of the {ocp} web console.
+Use the {project-short} user interface to migrate virtual machines (VMs). It is located in the *Virtualization* section of the {ocp} web console.
 
 include::modules/mtv-ui.adoc[leveloffset=+2]
 include::modules/mtv-overview-page.adoc[leveloffset=+3]
@@ -118,7 +118,7 @@ include::modules/mtv-settings.adoc[leveloffset=+3]
 [id="migrating-vms-mtv-ui_{context}"]
 === Migrating virtual machines using the MTV user interface
 
-You can use the {project-short} user interface to migrate VMs from the following providers:
+Use the {project-short} user interface to migrate VMs from the following providers:
 
 * VMware vSphere
 * {rhv-full} ({rhv-short})
