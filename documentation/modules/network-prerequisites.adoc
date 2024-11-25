@@ -4,9 +4,8 @@
 
 :_content-type: REFERENCE
 [id="network-prerequisites_{context}"]
-= Network prerequisites
 
-The following prerequisites apply to all migrations:
+= Network prerequisites
 
 * IP addresses, VLANs, and other network configuration settings must not be changed before or during migration. The MAC addresses of the virtual machines are preserved during migration.
 * The network connections between the source environment, the {virt} cluster, and the replication repository must be reliable and uninterrupted.
@@ -14,6 +13,8 @@ The following prerequisites apply to all migrations:
 
 [id="ports_{context}"]
 == Ports
+
+ifdef::vmware[]
 
 The firewalls must enable traffic over the following ports:
 
@@ -43,6 +44,10 @@ Disk transfer authentication
 |Disk transfer data copy
 |===
 
+
+endif::[]
+ifdef::rhv[]
+
 [cols="1,1,1,1,2a",options="header"]
 .Network ports required for migrating from {rhv-full}
 |===
@@ -68,3 +73,19 @@ Disk transfer authentication
 |{rhv-short} hosts
 |Disk transfer data copy
 |===
+endif::[]
+ifdef::ostack[]
+
+.Network ports required for migrating from {ocp}
+
+endif::[]
+ifdef::ova[]
+
+.Network ports required for migrating from OVA
+
+endif::[]
+ifdef::cnv[]
+
+.Network ports required for migrating from {virt}
+
+endif::[]
