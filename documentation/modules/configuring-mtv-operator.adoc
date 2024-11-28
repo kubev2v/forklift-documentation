@@ -39,9 +39,9 @@ spec:
 |`controller_max_vm_inflight`
 a|*Varies with provider as follows*:
 
-* {rhv-full}, {osp}, VMware warm migrations _or_ remote cold migrations: The maximum number of disks that {project-short} can transfer simultaneously.
+* {rhv-full} migrations, {osp} migrations, VMware warm migrations, _or_ cold VMware migrations to a remote {ocp} cluster: The maximum number of disks that {project-short} can transfer simultaneously.
 
-* OVA or VMware local cold migrations: The maximum number of VMs that {project-short} can migrate simultaneously.
+* OVA migrations or cold VMware migrations using `virt-v2v` to a local {ocp} cluster: The maximum number of VMs that {project-short} can migrate simultaneously.
 +
 See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight label] for a detailed explanation of this setting.
 |`20`
