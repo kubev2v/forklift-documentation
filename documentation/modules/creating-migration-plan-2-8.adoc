@@ -8,9 +8,9 @@ Use the {ocp} web console to create a migration plan. Specify the source provide
 
 [WARNING]
 ====
-Virtual machines with guest initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts, are not handled by {project-short} and could require additional planning before or reconfiguration after the migration.
+Do not include virtual machines with guest initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before a migration or reconfiguration after the migration
 
-This ensures that no issues arise when a newly added VM or a newly migrated VM accesses this storage.
+This prevents concurrent disk access to the storage the guest points to.
 ====
 
 include::snip_plan-limits.adoc[]
