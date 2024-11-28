@@ -10,7 +10,7 @@ Use the {ocp} web console to create a migration plan. Specify the source provide
 ====
 Virtual machines with guest initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts, are not handled by {project-short} and could require additional planning before or reconfiguration after the migration.
 
-This ensures that no issues arise when a newly added VM or a newly migrated VM accesses this storage..
+This ensures that no issues arise when a newly added VM or a newly migrated VM accesses this storage.
 ====
 
 include::snip_plan-limits.adoc[]
@@ -39,19 +39,19 @@ ifdef::vmware[]
 ====
 Check the following optional items related to VMware:
 
-* *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process.  As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the Edit icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
+* *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
 +
 {project-short} then issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 
-* *Entering a list of decryption passphrases for disks encrypted using Linux Unified Key Setup (LUKS)*: To enter a list of decryption passphrases for LUKS-encrypted devices, in the *Settings* section, click the Edit icon next to *Disk decryption passphrases*, enter the passphrases, and then click *Save*. You do not need to enter the passphrases in a specific order - for each LUKS-encrypted device, {project-short} tries each passphrase until one unlocks the device.
+* *Entering a list of decryption passphrases for disks encrypted using Linux Unified Key Setup (LUKS)*: To enter a list of decryption passphrases for LUKS-encrypted devices, in the *Settings* section, click the *Edit* icon next to *Disk decryption passphrases*, enter the passphrases, and then click *Save*. You do not need to enter the passphrases in a specific order. For each LUKS-encrypted device, {project-short} tries each passphrase until one unlocks the device.
 
 * *Specifying a root device*: Applies to multi-boot VM migrations only. By default, {project-short} uses the first bootable device detected as the root device.
 +
-To specify a different root device, in the *Settings* section, click the Edit icon next to *Root device* and choose a device from the list of commonly-used options, or enter a device in the text box.
+To specify a different root device, in the *Settings* section, click the *Edit* icon next to *Root device* and choose a device from the list of commonly-used options, or enter a device in the text box.
 +
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
-If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by looking at the conversion pod logs.
+If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by checking the conversion pod logs.
 ====
 
 endif::[]
@@ -62,9 +62,11 @@ ifdef::rhv[]
 Check the following optional items related to {rhv-short}.
 
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
-By default, {project-short} sets the CPU model on the destination cluster as follows: {project-short} preserves custom CPU settings for VMs that have them, but, for VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
+By default, {project-short} sets the CPU model on the destination cluster as follows:
+** {project-short} preserves custom CPU settings for VMs that have them.
+** For VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
 +
-To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Settings* section, click the Edit icon next to *Preserve CPU model*. Toggle the *Whether to preserve the CPU model* switch, and then click *Save*.
+To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Settings* section, click the *Edit* icon next to *Preserve CPU model*. Toggle the *Whether to preserve the CPU model* switch, and then click *Save*.
 ====
 endif::[]
 
