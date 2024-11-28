@@ -30,6 +30,10 @@ In earlier releases of {project-short}, cold migrating Windows Server 2019 VM 
 
 In earlier releases of {project-short}, when migrating a virtual machine (VM) with *Secure Boot* enabled, the VM had *Secure Boot* as `disabled` after being migrated. This issue has been resolved in {project-short} 2.7.5. link:https://issues.redhat.com/browse/MTV-1632[(MTV-1632)]
 
+.PreferredEfi applied when BIOS already enabled within VirtualMachineInstanceSpec
+
+In earlier releases of {project-short}, `PreferredUseEfi` was applied when the BIOS was already enabled within the `VirtualMachineInstanceSpec`. In MTV 2.7.5, `PreferredEfi` is only applied when a user has not provided their own EFI configuration and the BIOS is additionally not enabled. link:https://issues.redhat.com/browse/CNV-49381[(CNV-49381)]
+
 
 [id="resolved-issues-2-7-4_{context}"]
 == Resolved issues 2.7.4
