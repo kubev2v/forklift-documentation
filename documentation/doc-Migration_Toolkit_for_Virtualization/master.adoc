@@ -311,7 +311,7 @@ include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
 [id="adding-hooks-migration-plan-using-api"]
 === Adding hooks to a migration plan
-You can add hooks a migration plan from the command line by using the {project-full} API.
+You can add hooks a migration plan from the command line by using the {project-first} API.
 
 include::modules/about-hook-crs-for-migration-plans-api.adoc[leveloffset=+3]
 
