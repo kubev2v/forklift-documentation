@@ -44,7 +44,7 @@ Review the following prerequisites to ensure that your environment is prepared f
 [id="mtv-software-requirements_{context}"]
 === Software requirements
 
-{product-first} has software requirements for all providers as well as specific software requirements per provider.
+{project-first} has software requirements for all providers as well as specific software requirements per provider.
 
 [id="mtv-software-requirements-all-providers_{context}"]
 ==== Software requirements for all providers
@@ -121,7 +121,7 @@ include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 [id="migrating-vms-ocp-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
 
-You can migrate virtual machines (VMs) by using the {project-short} user interface, which is located in the *Virtualization* section of the {ocp} web console.
+You can migrate virtual machines (VMs) by using the {project-short} user interface, which is located in the *Migration* section of the {ocp} web console.
 
 include::modules/mtv-ui.adoc[leveloffset=+2]
 include::modules/mtv-overview-page.adoc[leveloffset=+3]
@@ -159,7 +159,7 @@ VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk D
 :vmware:
 
 [id="migrating-vmware-ui"]
-==== Migrating virtual machines from VMvSphere
+==== Migrating virtual machines from VMsphere
 // ANDY: VM Prerequisites will go here.
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
@@ -172,7 +172,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :!dest_vmware:
 
 // ANDY: Now RHV
-==== Migrating virtual machines from RHV
+==== Migrating virtual machines from {rhv-full}
 
 :context: rhv
 :rhv:
@@ -185,7 +185,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :!dest_rhv:
 
 // ANDY: Now OpenStack
-==== Migrating virtual machines from OpenStack
+==== Migrating virtual machines from {osp}
 
 :context: ostack
 :ostack:
@@ -211,7 +211,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :!dest_ova:
 
 // ANDY: Now CNV
-==== Migrating virtual machines from CNV
+==== Migrating virtual machines from {virt}
 
 :context: cnv
 :cnv:
