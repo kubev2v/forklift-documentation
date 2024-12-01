@@ -18,10 +18,6 @@ In earlier releases of {project-short}, virtual machines (VM) were presenting XF
 
 In earlier releases of {project-short}, after creating a migration plan for VMs with a NSX-T network attached from vSphere, the VM network mapping was missing, and also adding network mapping could not list NSX-T networks as source networks. This issue has been resolved in {project-short} 2.7.5. link:https://issues.redhat.com/browse/MTV-1695[(MTV-1695)] and link:https://issues.redhat.com/browse/MTV-1140[(MTV-1140)]
 
-.VMs with `/dev/disk/by-path` can not migrate successfully
-
-In earlier releases of {project-short}, VMs could not be migrated successfully. This issue was caused by SUSE Linux using `/dev/disk/by-path` by default in their `/etc/fstab/` entry, which caused `virt-v2v` migrations to fail with errors as such: `virt-v2v: error: mount: mount_stub: /dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0-part3: No such file or directory`. This issue has been resolved in {project-short} 2.7.5. link:https://issues.redhat.com/browse/MTV-1660[(MTV-1660)]
-
 .Failure to create Windows 2019 VM during Cold Migration
 
 In earlier releases of {project-short}, cold migrating Windows Server 2019 VM from {rhv-full} ({rhv-short}) to a remote cluster returned a `firmware.bootloader setting` error of `admission webhook "virtualmachine-validator.kubevirt.io" denied the request` during the *VirtualMachineCreation* phase. This issue has been resolved in {project-short} 2.7.5. link:https://issues.redhat.com/browse/MTV-1613[(MTV-1613)]
