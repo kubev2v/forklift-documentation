@@ -159,7 +159,7 @@ VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk D
 :vmware:
 
 [id="migrating-vmware-ui"]
-==== Migrating virtual machines from VMsphere
+==== Migrating virtual machines from VMware vSphere
 // ANDY: VM Prerequisites will go here.
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
