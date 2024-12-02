@@ -16,31 +16,53 @@ You can run a migration plan and view its progress in the {ocp} web console.
 
 . In the {ocp} web console, click *Migration* -> *Plans for virtualization*.
 +
-The *Plans* list displays the source and target providers, the number of virtual machines (VMs) being migrated, the status, and the description of each plan.
+The *Plans* list displays the source and target providers, the number of virtual machines (VMs) being migrated, the status, the date that the migration started, and the description of each plan.
 
 . Click *Start* beside a migration plan to start the migration.
 . Click *Start* in the confirmation window that opens.
 +
-The *Migration details by VM* screen opens, displaying the migration's progress
+The plan's *Status* changes to *Running*, and the migration's progress is displayed.
 +
 Warm migration only:
 
 * The precopy stage starts.
 * Click *Cutover* to complete the migration.
 
-. If the migration fails:
-.. Click *Get logs* to retrieve the migration logs.
-.. Click *Get logs* in the confirmation window that opens.
-.. Wait until *Get logs*  changes to *Download logs* and then click the button to download the logs.
+. Optional: Click the links in the migration's *Status* to see its overall status and the status of each VM:
 
-. Click a migration's *Status*, whether it failed or succeeded or is still ongoing, to view the details of the migration.
+** The link on the left indicates whether the migration failed, succeeded, or is ongoing. It also reports the number of VMs whose migration succeeded, failed, or was canceled.
+** The link on the right opens the *Virtual Machines* tab of the *Plan Details* page. For each VM, the tab displays the following data:
+
+*** The name of the VM
+*** The start and end times of the migration
+*** The amount of data copied
+*** A progress pipeline for the VM's migration
 +
-The *Migration details by VM* screen opens, displaying the start and end times of the migration, the amount of data copied, and a progress pipeline for each VM being migrated.
-. Expand an individual VM to view its steps and the elapsed time and state of each step.
-
-
 [WARNING]
 ====
 vMotion, including svMotion, and relocation must be disabled for VMs that are being imported to avoid data corruption.
-// Some backup solutions explicitly prevent vMotion, storage vMotion, and relocation during backups by adding an entry to the `VPX_DISABLED_METHODS` table in vCenter.
 ====
+
+. Optional: To view your migration's logs, either as it is running or after it is completed, perform the following actions:
+
+.. Click the *Virtual Machines* tab.
+.. Click the arrow (*>*) to the left of the virtual machine whose migration progress you want to check.
++
+The VM's details are displayed.
++
+.. In the *Pods* section, in the *Pod links* column, click the *Logs* link.
++
+The *Logs* tab opens.
++
+[NOTE]
+====
+Logs are not always available. The following are common reasons for logs not being available:
+
+* The migration is from {virt} to {virt}. In this case, `virt-v2v` is not involved, so no pod is required.
+* No pod was created.
+* The pod was deleted.
+* The migration failed before running the pod.
+====
+
+.. To see the raw logs, click the *Raw* link.
+.. To download the logs, click the *Download* link.

@@ -8,30 +8,37 @@
 
 On the *Plans for virtualization* page of the {ocp} web console, you can click the {kebab} beside a migration plan to access the following options:
 
-* *Get logs*: Retrieves the logs of a migration. When you click *Get logs*, a confirmation window opens. After you click *Get logs* in the window, wait until *Get logs* changes to *Download logs* and then click the button to download the logs.
-* *Edit*: Edit the details of a migration plan. You cannot edit a migration plan while it is running or after it has completed successfully.
-* *Duplicate*: Create a new migration plan with the same virtual machines (VMs), parameters, mappings, and hooks as an existing plan. You can use this feature for the following tasks:
+* *Edit Plan*: Edit the details of a migration plan. If the plan is running or has completed successfully, you cannot edit the following options:
+
+** All properties on the *Settings* section of the *Plan details* page. For example, warm or cold migration, target namespace, and preserved static IPs.
+** The plan's mapping on the *Mappings* tab.
+** The hooks listed on the *Hooks* tab.
+
+* *Start migration*: Active only if relevant.
+* *Restart migration*: Restart a migration that was interrupted. Before choosing this option, make sure there are no error messages. If there are, you need to edit the plan.
+* *Cutover*: Warm migrations only. Active only if relevant. Clicking *Cutover* opens the *Cutover* window, which supports the following options:
+
+** *Set cutover*: Set the date and time for a cutover.
+** *Remove cutover*: Cancel a scheduled cutover. Active only if relevant.
+
+* *Duplicate Plan*: Create a new migration plan with the same virtual machines (VMs), parameters, mappings, and hooks as an existing plan. You can use this feature for the following tasks:
 
 ** Migrate VMs to a different namespace.
 ** Edit an archived migration plan.
 ** Edit a migration plan with a different status, for example, failed, canceled, running, critical, or ready.
 
-* *Archive*: Delete the logs, history, and metadata of a migration plan. The plan cannot be edited or restarted. It can only be viewed.
+* *Archive Plan*: Delete the logs, history, and metadata of a migration plan. The plan cannot be edited or restarted. It can only be viewed, duplicated, or deleted.
 +
 [NOTE]
 ====
-The *Archive* option is irreversible. However, you can duplicate an archived plan.
+*Archive Plan* is irreversible. However, you can duplicate an archived plan.
 ====
 
-* *Delete*: Permanently remove a migration plan. You cannot delete a running migration plan.
+* *Delete Plan*: Permanently remove a migration plan. You cannot delete a running migration plan.
 +
 [NOTE]
 ====
-The *Delete* option is irreversible.
+*Delete Plan* is irreversible.
 
-Deleting a migration plan does not remove temporary resources such as `importer` pods, `conversion` pods, config maps, secrets, failed VMs, and data volumes. (link:https://bugzilla.redhat.com/show_bug.cgi?id=2018974[*BZ#2018974*]) You must archive a migration plan before deleting it in order to clean up the temporary resources.
+Deleting a migration plan does not remove temporary resources. To remove temporary resources, archive the plan first before deleting it.
 ====
-
-* *View details*: Display the details of a migration plan.
-* *Restart*: Restart a failed or canceled migration plan.
-* *Cancel scheduled cutover*: Cancel a scheduled cutover migration for a warm migration plan.
