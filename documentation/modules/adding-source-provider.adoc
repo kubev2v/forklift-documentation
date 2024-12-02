@@ -41,7 +41,6 @@ You can add an {osp} source provider by using the {ocp} web console.
 ====
 When you migrate an image-based VM from an {osp} provider, a snapshot is created for the image that is attached to the source VM and the data from the snapshot is copied over to the target VM. This means that the target VM will have the same state as that of the source VM at the time the snapshot was created.
 ====
-
 endif::[]
 ifdef::cnv[]
 = Adding a Red Hat {virt} source provider
@@ -56,9 +55,8 @@ You can migrate VMs from the cluster that {project-short} is deployed on to anot
 ====
 The {ocp} cluster version of the source provider must be 4.13 or later.
 ====
-
 endif::[]
-ifdef::cnv2[]
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova[]
 = Adding {a-virt} destination provider
 
 You can use a Red Hat {virt} provider as both a source provider and destination provider.
@@ -90,6 +88,7 @@ ifdef::vmware[]
 * *URL*: URL of the SDK endpoint of the vCenter on which the source VM is mounted. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
 * *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
 
+
 +
 *Provider credentials*
 
@@ -100,6 +99,7 @@ ifdef::vmware[]
 include::snip-certificate-options.adoc[]
 
 endif::[]
+
 ifdef::rhv[]
 . Click *Red Hat Virtualization*
 . Specify the following fields:
@@ -167,7 +167,7 @@ If both *URL* and *Service account bearer token* are left blank, the local {ocp-
 +
 include::snip-certificate-options.adoc[]
 endif::[]
-ifdef::cnv2[]
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 . Click *{virt}*.
 . Specify the following fields:
 
