@@ -27,17 +27,19 @@ The *Select virtual machines* interface opens.
 +
 The *Create migration plan* pane opens. It displays the source provider's name and suggestions for a target provider and namespace, a network map, and a storage map.
 . Enter the *Plan name*.
-. Make any needed changes to the editable items.
-. Click *Add mapping* to edit a suggested network mapping or a storage mapping, or to add one or more additional mappings.
+. To change the *Target provider*, the *Target namespace*, or elements of the *Network map* or the *Storage map*, select an item from the relevant list.
+> To add either a *Network map* or a *Storage map*, click the *+* sign anf add a mapping.
 . Click *Create migration plan*.
 +
-{project-short} validates the migration plan and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error. The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, {project-short} validates the plan again.
+{project-short} validates the migration plan and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error.
++
+The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, {project-short} validates the plan again.
 
 ifdef::vmware[]
-+
-[IMPORTANT]
-====
-Check the following optional items related to VMware:
+
+. Check the following items related to VMware. All are optional except for *Warm migration*.
+
+* *Warm migration* By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon, and select *Warm migration*.
 
 * *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
 +
@@ -52,14 +54,13 @@ To specify a different root device, in the *Settings* section, click the *Edit* 
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
 If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by checking the conversion pod logs.
-====
 
 endif::[]
 ifdef::rhv[]
-+
-[IMPORTANT]
-====
-Check the following optional items related to {rhv-short}.
+
+. Check the following items related to {rhv-short}.  All are optional except for *Warm migration*.
+
+* *Warm migration* By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon, and select *Warm migration*.
 
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
 By default, {project-short} sets the CPU model on the destination cluster as follows:
@@ -67,7 +68,6 @@ By default, {project-short} sets the CPU model on the destination cluster as fol
 ** For VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
 +
 To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Settings* section, click the *Edit* icon next to *Preserve CPU model*. Toggle the *Whether to preserve the CPU model* switch, and then click *Save*.
-====
 endif::[]
 
 . If your plan is valid, you can do one of the following:
