@@ -6,7 +6,7 @@
 [id="collected-logs-cr-info_{context}"]
 = Collected logs and custom resource information
 
-You can download logs and custom resource (CR) `yaml` files for the following targets by using the {ocp} web console or the command line interface (CLI):
+You can download logs and custom resource (CR) `yaml` files for the following targets by using the {ocp} web console or the command-line interface (CLI):
 
 * Migration plan: Web console or CLI.
 * Virtual machine: Web console or CLI.
