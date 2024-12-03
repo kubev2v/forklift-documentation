@@ -60,7 +60,7 @@ include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 * Token authentication
 * Application credential authentication
 
-You can use these methods to migrate virtual machines with {osp} source providers using the CLI the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
+You can use these methods to migrate virtual machines with {osp} source providers using the command-line interface (CLI) the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
 
 :!mtv:
 :context: ostack
@@ -82,7 +82,7 @@ include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 [id="installing-the-operator_{context}"]
 == Installing and configuring the {operator-name}
 
-You can install the {operator-name} by using the {ocp} web console or the command line interface (CLI).
+You can install the {operator-name} by using the {ocp} web console or the command-line interface (CLI).
 
 In {project-first} version 2.4 and later, the {operator-name} includes the {project-short} plugin for the {ocp} web console.
 
@@ -225,9 +225,9 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines-from-the-command-line_{context}"]
-== Migrating virtual machines from the command line
+== Migrating virtual machines using the command-line interface
 
-You can migrate virtual machines to {virt} from the command line.
+You can migrate virtual machines to {virt} using the command-line interface (CLI).
 
 [IMPORTANT]
 ====
@@ -245,7 +245,7 @@ include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
 [id="migrating-virtual-machines_{context}"]
 === Migrating virtual machines
 
-You migrate virtual machines (VMs) from the command line (CLI) by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
+You migrate virtual machines (VMs) using the command-line interface (CLI) by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
 
 [IMPORTANT]
 ====
@@ -310,7 +310,7 @@ include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
 [id="adding-hooks-migration-plan-using-api"]
 === Adding hooks to a migration plan
-You can add hooks a migration plan from the command line by using the {project-full} API.
+You can add hooks a migration plan using the command-line interface (CLI) by using the {project-full} API.
 
 include::modules/about-hook-crs-for-migration-plans-api.adoc[leveloffset=+3]
 
@@ -321,7 +321,7 @@ include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 [id="uninstalling-mtv_{context}"]
 == Uninstalling {the-lc} {project-full}
 
-You can uninstall {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
+You can uninstall {the-lc} {project-first} by using the {ocp} web console or the command-line interface (CLI).
 
 include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
 include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
