@@ -225,9 +225,9 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 [id="migrating-virtual-machines-from-the-command-line_{context}"]
-== Migrating virtual machines using the command-line interface
+== Migrating virtual machines from the command line
 
-You can migrate virtual machines to {virt} using the command-line interface (CLI).
+You can migrate virtual machines to {virt} from the command line.
 
 [IMPORTANT]
 ====
@@ -310,7 +310,7 @@ include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
 [id="adding-hooks-migration-plan-using-api"]
 === Adding hooks to a migration plan
-You can add hooks a migration plan using the command-line interface (CLI) by using the {project-full} API.
+You can add hooks a migration plan from the command line by using the {project-full} API.
 
 include::modules/about-hook-crs-for-migration-plans-api.adoc[leveloffset=+3]
 

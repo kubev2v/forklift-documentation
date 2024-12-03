@@ -4,7 +4,7 @@
 
 :_content-type: PROCEDURE
 [id="canceling-migration-cli_{context}"]
-= Canceling a migration using the command-line interface
+= Canceling a migration from the command-line interface
 
 You can use the command-line interface (CLI) to cancel either an entire migration or the migration of specific virtual machines (VMs) while a migration is in progress.
 
