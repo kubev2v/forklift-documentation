@@ -199,3 +199,20 @@ ifdef::ova[]
 An error message might appear that states that an error has occurred. You can ignore this message.
 ====
 endif::[]
+
+ifdef::vmware,rhv,ostack,cnv,cnv2[]
+. Optional: Add access to the UI of the provider:
+.. On the *Providers* page, click the provider.
++
+The *Provider details* page opens.
+.. Click the *Edit* icon under *External UI web link*.
+.. Enter the link and click *Save*.
++
+[NOTE]
+====
+If you do not enter a link, {project-short} attempts to calculate the correct link.
+
+* If {project-short} succeeds, the hyperlink of the field points to the calculated link.
+* If {project-short} does not succeed, the field remains empty.
+====
+endif::[]
