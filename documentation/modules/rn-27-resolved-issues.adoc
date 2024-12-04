@@ -7,6 +7,26 @@
 
 {project-first} 2.7 has the following resolved issues:
 
+[id="resolved-issues-2-7-5_{context}"]
+== Resolved issues 2.7.5
+
+.XFS filesystem corruption after warm migration of VM from VMware
+
+In earlier releases of {project-short}, virtual machines (VM) were presenting XFS filesystem and other data corruption after the warm migration from VMware to {virt} using {project-short}. This issue has been resolved in {project-short} 2.7.5. link:https://issues.redhat.com/browse/MTV-1679[(MTV-1679)]
+
+.Missing VM network-ID in the inventory
+
+In earlier releases of {project-short}, after creating a migration plan for VMs with a NSX-T network attached from vSphere, the VM network mapping was missing, and also adding network mapping could not list NSX-T networks as source networks. This issue has been resolved in {project-short} 2.7.5. link:https://issues.redhat.com/browse/MTV-1695[(MTV-1695)] and link:https://issues.redhat.com/browse/MTV-1140[(MTV-1140)]
+
+.Failure to create Windows 2019 VM during Cold Migration
+
+In earlier releases of {project-short}, cold migrating Windows Server 2019 VM from {rhv-full} ({rhv-short}) to a remote cluster returned a `firmware.bootloader setting` error of `admission webhook "virtualmachine-validator.kubevirt.io" denied the request` during the *VirtualMachineCreation* phase. This issue has been resolved in {project-short} 2.7.5. link:https://issues.redhat.com/browse/MTV-1613[(MTV-1613)]
+
+.PreferredEfi applied when BIOS already enabled within VirtualMachineInstanceSpec
+
+In earlier releases of {project-short}, `PreferredUseEfi` was applied when the BIOS was already enabled within the `VirtualMachineInstanceSpec`. In MTV 2.7.5, `PreferredEfi` is only applied when a user has not provided their own EFI configuration and the BIOS is additionally not enabled. link:https://issues.redhat.com/browse/CNV-49381[(CNV-49381)]
+
+
 [id="resolved-issues-2-7-4_{context}"]
 == Resolved issues 2.7.4
 
