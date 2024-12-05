@@ -22,26 +22,21 @@ There were several extensive tests, which were conducted across multiple configu
 * Single virtual machine (VM) compared to multiple VMs.
 
 [id="mtv-aio-buffer-key-findings_{context}"]
-=== Key Findings
+=== Key findings
 
-The highest migration performance was achieved with 10 VMs on a single ESXi host with the following values:
+The best migration performance was achieved by migrating using Multiple 10 VMs(10) on a single ESXi host with the following values:
 
 * `VixDiskLib.nfcAio.Session.BufSizeIn64KB=16`
 * `vixDiskLib.nfcAio.Session.BufCount=4`
-
-
-[id="mtv-aio-buffer-improvement_{context}"]
-=== Improvement:
 
 The following improvements were noted when using AIO buffer (Asynchronous Buffer Counts) settings:
 
 * Migration time was reduced by *31.1%*, from `0:24:32` to `0:16:54`.
 * Read rate was increased from `347.83MB/s` to `504.93MB/s`.
 
-[id="mtv-aio-buffer-observations_{context}"]
-== Observations
+There was no significant improvement observed when using AIO buffer settings with a single VM.
 
-When using AIO buffer settings for a single VM, there was no significant improvement observed.
+There was no significant improvement observed when using AIO buffer settings with multiple VMs from multiple hosts.
 
 [id="mtv-enable-aio-buffer_{context}"]
 == Enabling AIO buffer configuration
