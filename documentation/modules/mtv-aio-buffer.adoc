@@ -231,23 +231,6 @@ earlier:
 
 If needed, ensure the changes take effect by restarting the forklift-controller pod.
 
-[id="mtv-aio-buffer-comparison_{context}"]
-== AIO buffer comparisons
-
-[id="mtv-aio-buffer-comparison-single-vm_{context}"]
-=== One VM Migration with AIO (16/4) and without AIO
-
-.One VM Migration with AIO and without AIO
-[width="99%",cols="20%,12%,20%,16%,16%,16%",options="header",]
-|===
-|AIO Buffer values |MTV |VDDK |max_vm inflight |Migration type |Total
-duration
-|N/A
-|2.7.4
-|7.0.3
-|20
-|cold
-|00:08:12
 
 a|
 BufSizeIn64KN=16
