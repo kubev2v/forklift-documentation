@@ -231,47 +231,6 @@ earlier:
 
 If needed, ensure the changes take effect by restarting the forklift-controller pod.
 
-
-a|
-BufSizeIn64KN=16
-BufCount=4
-|2.7.4
-|7.0.3
-|20
-|cold
-|00:08:24
-|===
-
-[id="mtv-aio-buffer-comparison-ten-vms_{context}"]
-==== Ten VM Migration with AIO (16/4) and without AIO
-
-.10 VM Migration with AIO and without AIO
-[width="99%",cols="20%,12%,20%,16%,16%,16%",options="header",]
-|===
-|AIO Buffer values
-|MTV
-|VDDK
-|max_vm inflight
-|Migration type |Total
-duration
-
-|N/A
-|2.7.4
-|7.0.3
-|20
-|cold
-|00:24:32
-
-a|
-BufSizeIn64KN=16
-BufCount=4
-|2.7.4
-|7.0.3
-|20
-|cold
-|00:16:54
-|===
-
 [id="mtv-aio-buffer-key-requirements_{context}"]
 === Key requirements for AIO Buffer (Asynchronous Buffer Counts) support
 
