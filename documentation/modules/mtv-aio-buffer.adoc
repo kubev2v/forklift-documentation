@@ -16,37 +16,39 @@ The purpose of this document is to summarize the performance team's testing on t
 [id="mtv-aio-performance-results_{context}"]
 == Performance Testing Results
 
-Several extensive tests were conducted across multiple configurations.
+There were several extensive tests, which were conducted across multiple configurations:
 
-* Single ESXi server versus multiple ESXi servers.
-* Single VM versus multiple VMs.
+* Single VMware ESXi server compared to multiple ESXi servers.
+* Single virtual machine (VM) compared to multiple VMs.
 
 [id="mtv-aio-buffer-key-findings_{context}"]
 === Key Findings
 
-* The best migration performance was with 10 VMs on a single ESXi.
-host with the following values:
-** VixDiskLib.nfcAio.Session.BufSizeIn64KB=16
-** vixDiskLib.nfcAio.Session.BufCount=4
+The highest migration performance was achieved with 10 VMs on a single ESXi host with the following values:
+
+* `VixDiskLib.nfcAio.Session.BufSizeIn64KB=16`
+* `vixDiskLib.nfcAio.Session.BufCount=4`
+
 
 [id="mtv-aio-buffer-improvement_{context}"]
 === Improvement:
 
-* Migration time was reduced by *31.1%*, from `0:24:32` to
-`0:16:54`.
-* Read rate increased from `347.83MB/s` to `504.93MB/s`.
+The following improvements were noted when using AIO buffer (Asynchronous Buffer Counts) settings:
+
+* Migration time was reduced by *31.1%*, from `0:24:32` to `0:16:54`.
+* Read rate was increased from `347.83MB/s` to `504.93MB/s`.
 
 [id="mtv-aio-buffer-observations_{context}"]
 == Observations
 
-* No significant impact was observed when using AIO buffer settings with a single VM.
+When using AIO buffer settings for a single VM, there was no significant improvement observed.
 
 [id="mtv-enable-aio-buffer_{context}"]
 == Enabling AIO buffer configuration
 
 .Validating Controller Pod support for AIO values
 
-* Ensure that the forklift-controller pod in the `openshift-mtv` namespace supports the AIO buffer values. Check the environment variables of the pod by running:
+* Ensure that the `forklift-controller` pod in the `openshift-mtv` namespace supports the AIO buffer values. Check the environment variables of the pod by running:
 
 +
 [source,terminal]
@@ -67,7 +69,9 @@ oc get pod forklift-controller-5b45f66949-vgzhx -n openshift-mtv -o yaml
 
 .Editing ForkliftController Configuration
 
-* In the `openshift-mtv namespace`, edit the ForkliftController object to include the AIO buffer values. Add the following under the spec section:
+* In the `openshift-mtv namespace`, edit the `ForkliftController` object to include the AIO buffer values.
++
+Add the following under the spec section:
 +
 [source,termina]
 ----
