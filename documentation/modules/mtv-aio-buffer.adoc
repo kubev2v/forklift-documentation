@@ -6,7 +6,7 @@
 [id="mtv-aio-buffer_{context}"]
 = AIO buffer counts for customer usage
 
-The purpose of this document is to summarize the performance team's testing on the impact of changes to the AIO buffer (Asynchronous Buffer Counts) specifically to assess any effects on datastore read rates and overall migration time when using project-first.
+This document is intended to summarize the performance team's testing on the impact of changes to the AIO buffer count, specifically to assess any effects on datastore read rates and overall migration time when using the {project-first} product.
 
 .Additional information
 
