@@ -41,22 +41,6 @@ host with the following values:
 
 * No significant impact was observed when using AIO buffer settings with a single VM.
 
-[id="mtv-aio-buffer-environment_{context}"]
-=== Environment
-
-* The RDU2 scale lab utilizes metal OpenShift clusters and VMware vSphere servers, which employ dedicated hardware, isolated networking, and storage to eliminate external variables and guarantee consistent performance metrics.
-** *Vmware information*:
-*** vSphere Version: 7.0.3
-*** ESXi Version: 7.0.3
-*** DataStore : ISCSI & FC Luns, attached to netapp storage
-** *MTV information*:
-*** VDDK Version: 7.0.3
-*** MTV Version: 2.7.4
-*** Max VM Inflight: 20
-** *VM Specification*:
-*** *Network*: vSwitch with MTU 9000, 10 GbE ESXi interfaces.
-*** *Disks*: Single disk, 50GB size, 70% utilization.
-
 [id="mtv-enable-aio-buffer_{context}"]
 == Enabling AIO buffer configuration
 
