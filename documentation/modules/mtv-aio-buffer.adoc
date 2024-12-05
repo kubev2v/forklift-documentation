@@ -24,7 +24,7 @@ There were several extensive tests, which were conducted across multiple configu
 [id="mtv-aio-buffer-key-findings_{context}"]
 === Key findings
 
-* The best migration performance was achieved by migrating using Multiple 10 VMs(10) on a single ESXi host with the following values:
+* The best migration performance was achieved by migrating using multiple VMs (10) on a single ESXi host with the following values:
 ** `VixDiskLib.nfcAio.Session.BufSizeIn64KB=16`
 ** `vixDiskLib.nfcAio.Session.BufCount=4`
 
