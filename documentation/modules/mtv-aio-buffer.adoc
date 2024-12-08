@@ -13,16 +13,8 @@ This document describes how to change NBD transport NFC parameters for increased
 * link:https://docs.vmware.com/en/VMware-vSphere/7.0/vsphere-vddk-programming-guide/GUID-5D166ED1-7205-4110-8D72-0C51BB63CC3D.html[Best Practices for NBD Transport]
 * link:https://forums.veeam.com/vmware-vsphere-f24/solution-for-poor-nbd-performance-t93084.html[Solution for poor NBD performance]
 
-[id="mtv-aio-performance-results_{context}"]
-== Performance Testing Results
-
-There were several extensive tests, which were conducted across multiple configurations:
-
-* Single VMware ESXi server compared to multiple ESXi servers.
-* Single virtual machine (VM) compared to multiple VMs.
-
 [id="mtv-aio-buffer-key-findings_{context}"]
-=== Key findings
+== Key findings
 
 * The best migration performance was achieved by migrating using multiple VMs (10) on a single ESXi host with the following values:
 ** `VixDiskLib.nfcAio.Session.BufSizeIn64KB=16`
