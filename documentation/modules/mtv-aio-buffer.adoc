@@ -4,7 +4,7 @@
 
 :_content-type: CONCEPT
 [id="mtv-aio-buffer_{context}"]
-= AIO buffer counts for customer usage
+= Increasing asynchronous I/O (AIO) sizes and buffer counts for NBD transport mode
 
 This document is intended to summarize the performance team's testing on the impact of changes to the AIO buffer count, specifically to assess any effects on datastore read rates and overall migration time when using the {project-first} product.
 
