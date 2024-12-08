@@ -41,7 +41,9 @@ There were several extensive tests, which were conducted across multiple configu
 
 .Validating Controller Pod support for AIO values
 
-* Ensure that the `forklift-controller` pod in the `openshift-mtv` namespace supports the AIO buffer values. Check the environment variables of the pod by running:
+* Ensure that the `forklift-controller` pod in the `openshift-mtv` namespace supports the AIO buffer values.
++
+Since the pod name prefix is dynamic, check the pod name first by running the following command:
 
 +
 [source,terminal]
