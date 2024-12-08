@@ -48,6 +48,11 @@ Since the pod name prefix is dynamic, check the pod name first by running the fo
 +
 [source,terminal]
 ----
+oc get pods -n openshift-mtv | grep forklift-controller | awk '{print $1}'
+----
++
+[source,terminal]
+----
 oc get pod forklift-controller-5b45f66949-vgzhx -n openshift-mtv -o yaml
 ----
 +
