@@ -97,7 +97,7 @@ oc edit forkliftcontroller -n openshift-mtv`
 +
 [source,termina]
 ----
-virt_v2v_extra_conf_config_map: "`perf`"
+virt_v2v_extra_conf_config_map: "perf"
 ----
 
 .Creating a ConfigMap mamed perf
