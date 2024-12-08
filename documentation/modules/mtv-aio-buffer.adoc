@@ -6,7 +6,7 @@
 [id="mtv-aio-buffer_{context}"]
 = Increasing asynchronous I/O (AIO) sizes and buffer counts for NBD transport mode
 
-This document is intended to summarize the performance team's testing on the impact of changes to the AIO buffer count, specifically to assess any effects on datastore read rates and overall migration time when using the {project-first} product.
+This document describes how to change NBD transport NFC parameters for increased migration performance when using the {project-first} product.
 
 .Additional information
 
