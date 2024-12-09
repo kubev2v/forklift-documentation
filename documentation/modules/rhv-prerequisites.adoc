@@ -6,7 +6,7 @@
 [id="rhv-prerequisites_{context}"]
 = {rhv-full} prerequisites
 
-The following prerequisites apply to {rhv-full} migrations:
+The following prerequisites apply to {rhv-full} ({rhv-short}) migrations:
 
 * To create a source provider, you must have at least the `UserRole` and `ReadOnlyAdmin` roles assigned to you. These are the minimum required permissions, however, any other administrator or superuser permissions will also work.
 
