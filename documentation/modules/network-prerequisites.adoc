@@ -49,7 +49,7 @@ endif::[]
 ifdef::rhv[]
 
 [cols="1,1,1,1,2a",options="header"]
-.Network ports required for migrating from {rhv-full}
+.Network ports required for migrating from {rhv-full} {rhv-short}
 |===
 |Port |Protocol |Source |Destination |Purpose
 
