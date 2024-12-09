@@ -14,9 +14,9 @@
 [id="ports_{context}"]
 == Ports
 
-ifdef::vmware[]
-
 The firewalls must enable traffic over the following ports:
+
+ifdef::vmware[]
 
 [cols="1,1,1,1,2a",options="header"]
 .Network ports required for migrating from VMware vSphere
@@ -76,16 +76,22 @@ Disk transfer authentication
 endif::[]
 ifdef::ostack[]
 
-.Network ports required for migrating from {ocp}
+.Network ports required for migrating from OpenStack
+
+TBD
 
 endif::[]
 ifdef::ova[]
 
 .Network ports required for migrating from OVA
 
+TBD
+
 endif::[]
 ifdef::cnv[]
 
 .Network ports required for migrating from {virt}
+
+TBD
 
 endif::[]
