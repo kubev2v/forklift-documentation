@@ -39,7 +39,7 @@ include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 [id="prerequisites_{context}"]
 == Prerequisites
 
-Review the following prerequisites for to ensure that your environment is prepared for migration.
+Review the following prerequisites to ensure that your environment is prepared for migration.
 
 These prerequisites apply to all migrations. Prerequisites that apply only to a specific provider are discussed in the section dedicated to that source provider.
 
