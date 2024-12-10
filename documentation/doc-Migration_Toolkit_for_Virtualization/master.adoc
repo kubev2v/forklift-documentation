@@ -96,7 +96,7 @@ include::modules/network-prerequisites.adoc[leveloffset=+4]
 include::modules/snip_ocp_version_for_virt_source.adoc[]
 include::modules/network-prerequisites.adoc[leveloffset=+4]
 
-:!virt:
+:!cnv:
 :context: mtv
 :mtv:
 
