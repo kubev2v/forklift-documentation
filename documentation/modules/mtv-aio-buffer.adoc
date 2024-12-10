@@ -60,10 +60,6 @@ This is the pod name prefix from the example: `forklift-controller-667f57c8f8-ql
 ----
 oc get pod forklift-controller-667f57c8f8-qllnx -n openshift-mtv -o yaml
 ----
-+
-[source,terminal]
-----
-oc get pod forklift-controller-5b45f66949-vgzhx -n openshift-mtv -o yaml
 ----
 +
 * Check for the following lines in the output:
