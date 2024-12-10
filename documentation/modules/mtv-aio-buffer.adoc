@@ -84,7 +84,8 @@ Add the following under the spec section:
 +
 [source,termina]
 ----
-oc edit forkliftcontroller -n openshift-mtv`
+virt_v2v_extra_args: --vddk-config /mnt/extra-v2v-conf/input.conf
+virt_v2v_extra_conf_config_map: "perf"
 ----
 
 
