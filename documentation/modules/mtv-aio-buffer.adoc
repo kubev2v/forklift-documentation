@@ -237,7 +237,7 @@ oc delete cm perf -n openshift-mtv
 If needed, ensure the changes take effect by restarting the forklift-controller pod.
 
 [id="mtv-aio-buffer-key-requirements_{context}"]
-=== Key requirements for AIO Buffer (Asynchronous Buffer Counts) support
+== Key requirements for AIO Buffer (Asynchronous Buffer Counts) support
 
 .Key requirements for AIO Buffer support
 [width="100%",cols="54%,46%",options="header",]
