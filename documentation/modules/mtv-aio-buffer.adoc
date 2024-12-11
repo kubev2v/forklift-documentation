@@ -99,7 +99,7 @@ virt_v2v_extra_conf_config_map: "perf"
 oc -n openshift-mtv create cm perf`
 ----
 
-.Preparing the ConfigMap content*
+.Preparing the ConfigMap content
 
 * Convert the desired buffer configuration values to Base64. For example, for 16/4:
 +
