@@ -250,5 +250,9 @@ vSphere 6.7 Update 3 and later.
 Fully supported in vSphere 7.x versions, including 7.0.x.
 
 |VDDK Version
-Requires VDDK 6.7.3 or newer. The VDDK version typically aligns with the ESXi version installed on the vSphere host.
+a| Requires VDDK 6.7.3 or newer. 
+The VDDK version typically aligns with the ESXi version installed on the vSphere host.
+
+| For other  VDDK & vSpheres versions 
+a| Check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation]. 
 |===
