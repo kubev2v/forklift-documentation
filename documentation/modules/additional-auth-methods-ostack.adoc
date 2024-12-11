@@ -6,4 +6,4 @@
 * Token authentication
 * Application credential authentication
 
-You can use these methods to migrate virtual machines with {osp} source providers using the CLI the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
+You can use these methods to migrate virtual machines with {osp} source providers using the CLI the same way you migrate other virtual machines with one exception: You need to prepare the `Secret` manifest as described in xref:openstack-token-authentication_ostack[Using token authentication with an {osp} source provider] or xref:openstack-application-credential-authentication_ostack[Using application credential authentication with an {osp} source provider].

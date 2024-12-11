@@ -11,11 +11,11 @@ endif::[]
 
 
 ifdef::ostack[]
-When you migrate from {osp} to the {ocp} cluster that {project-full} is deployed on, the migration allocates persistent volumes without  Customized Data Importer (CDI). In these cases, you might need to adjust the file system overhead.
+When you migrate from {osp} to the {ocp} cluster that {project-full} is deployed on, the migration allocates persistent volumes without Customized Data Importer (CDI). In these cases, you might need to adjust the file system overhead.
 endif::[]
 
-If the configured file system overhead, which has a default value of 10%, is too low, the disk transfer will fail due to lack of space. In such a case, you would want to increase the file system overhead.
+The configured file system overhead has a default value of 10%. If that is too low, the disk transfer fails due to lack of space. In this case, increase the file system overhead.
 
-In some cases, however, you might want to decrease the file system overhead to reduce storage consumption.
+If you need to reduce storage consumption, decrease the file system overhead.
 
 You can change the file system overhead by changing the value of the `controller_filesystem_overhead` in the `spec` portion of the `forklift-controller` CR, as described in xref:configuring-mtv-operator_mtv[Configuring the MTV Operator].
