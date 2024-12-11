@@ -227,11 +227,12 @@ virt_v2v_extra_conf_config_map: "`perf`"
 . Delete the ConfigMap: Remove the perf ConfigMap that was created
 earlier:
 
-`oc delete cm perf -n openshift-mtv`
+[source,termina]
+----
+oc delete cm perf -n openshift-mtv
+----
 
-....
-  3\.	Restart the Forklift Controller Pod (Optional):
-....
+.	Restart the Forklift Controller Pod (Optional).
 
 If needed, ensure the changes take effect by restarting the forklift-controller pod.
 
