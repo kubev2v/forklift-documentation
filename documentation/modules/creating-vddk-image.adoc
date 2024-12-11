@@ -6,6 +6,7 @@
 [id="creating-vddk-image_{context}"]
 = Creating a VDDK image
 
+
 It is strongly recommended that {project-first} should be used with the VMware Virtual Disk Development Kit (VDDK) SDK when transferring virtual disks from VMware vSphere.
 
 [NOTE]
