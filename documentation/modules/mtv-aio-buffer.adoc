@@ -11,7 +11,7 @@ This document describes how to change NBD transport NFC parameters for increased
 [WARNING]
 .Cold Migration Only
 ====
-Using AIO buffering is only suitable for Cold Migration use cases. 
+Using AIO buffering is only suitable for Cold Migration use cases.
 ====
 
 .Additional information
@@ -247,12 +247,15 @@ If needed, ensure the changes take effect by restarting the forklift-controller 
 |vSphere Version
 a|
 vSphere 6.7 Update 3 and later.
+
 Fully supported in vSphere 7.x versions, including 7.0.x.
 
 |VDDK Version
-a| Requires VDDK 6.7.3 or newer. 
+a|
+Requires VDDK 6.7.3 or newer.
+
 The VDDK version typically aligns with the ESXi version installed on the vSphere host.
 
-| For other  VDDK & vSpheres versions 
-a| Check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation]. 
+| For other  VDDK & vSpheres versions
+a| Check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation].
 |===
