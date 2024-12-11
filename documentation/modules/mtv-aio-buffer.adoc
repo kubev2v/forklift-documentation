@@ -118,7 +118,7 @@ Vml4RGlza0xpYi5uZmNBaW8uU2Vzc2lvbi5CdWZTaXplSW42NEtCPTE2CnZpeERpc2tMaWIubmZjQWlv
 
 .Editing the ConfigMap
 
-Update the perf ConfigMap with the Base64 string under the binaryData section, for example:
+* Update the perf ConfigMap with the Base64 string under the binaryData section, for example:
 +
 [source,termina]
 ----
