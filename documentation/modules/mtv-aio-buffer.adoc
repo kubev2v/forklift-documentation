@@ -239,7 +239,7 @@ If needed, ensure the changes take effect by restarting the forklift-controller 
 [id="mtv-aio-buffer-key-requirements_{context}"]
 == Key requirements for AIO Buffer (Asynchronous Buffer Counts) support
 
-.VDDK /vSpheres Versions
+.VDDK and vSpheres Versions
 
 * vSphere : 7.0.3
 * VDDK : 7.0.3
