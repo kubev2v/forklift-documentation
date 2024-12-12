@@ -7,6 +7,34 @@
 
 {project-first} 2.7 has the following resolved issues:
 
+[id="resolved-issues-2-7-6_{context}"]
+== Resolved issues 2.7.6
+
+.Warning if preserve static IP is mapped to pod network
+
+In earlier releases of {project-short}, there was no warning message for preserving static IPs while using Pod networking. This issue has been resolved in {project-short} 2.7.6. link:https://issues.redhat.com/browse/MTV-1503[(MTV-1503)]
+
+.Schedule the cutover for an archived plan is not allowed
+
+In earlier releases of {project-short}, the option to schedule a cutover for an archived plan was currently available in the UI. This issue has been resolved in {project-short} 2.7.6 with the cutover action disabled for an archived plan. link:https://issues.redhat.com/browse/MTV-1729[(MTV-1729)]
+
+.*Next* button misplaced in *Create new plan* wizard
+
+In earlier releases of {project-short}, when creating a new Migration Plan with the *Create new plan* wizard, after filling in the form, the *Next* button was misplaced to the left of the *Back* option. This issue has been resolved in {project-short} 2.7.6. link:https://issues.redhat.com/browse/MTV-1732[(MTV-1732)]
+
+.Static IP address is not preserved for Debian-based VMs that use interfaces
+
+In earlier releases of {project-short}, all Debian-based operating systems could have the network configurations in the `/etc/network/interfaces`, but information was not fetched from these config files when creating the udev rule to set the interface name. This issue has been resolved in {project-short} 2.7.6.  link:https://issues.redhat.com/browse/MTV-1711[(MTV-1711)]
+
+.Editing of plan settings is enabled for all plan statuses
+
+In earlier releases of {project-short}, VMS were removed from archived or archiving plans. This issue has been resolved in {project-short} 2.7.6, and if a plan's status is either archiving or archived, the option to remove VMs for that plan is blocked. link:https://issues.redhat.com/browse/MTV-1713[(MTV-1713)] 
+
+.Warm migration fails to complete
+
+In earlier releases of {project-short}, after the first *Disk Transfer* step set was completed, the cutover was set. However, during the *Image Conversion* step, not all data volumes were completed, with some of them being stuck in the *import in progress* phase and *100% progress*. This issue has been resolved in {project-short} 2.7.6. link:https://issues.redhat.com/browse/MTV-1717[(MTV-1717)]
+
+
 [id="resolved-issues-2-7-5_{context}"]
 == Resolved issues 2.7.5
 
