@@ -12,6 +12,8 @@ This document describes how to change NBD transport NFC parameters for increased
 .Cold Migration Only
 ====
 Using AIO buffering is only suitable for Cold Migration use cases.
+
+* Disable AIO settings before initializing Warm Migration. For more details, see xref:mtv-disable-aio-buffer_mtv[Disabling AIO Buffer Configuration].
 ====
 
 .Additional information
@@ -224,15 +226,15 @@ oc edit forkliftcontroller -n openshift-mtv
 virt_v2v_extra_args: "`–vddk-config /mnt/extra-v2v-conf/input.conf`"
 virt_v2v_extra_conf_config_map: "`perf`"
 ----
-. Delete the ConfigMap: Remove the perf ConfigMap that was created
-earlier:
 
+* Delete the ConfigMap: Remove the perf ConfigMap that was created earlier:
++
 [source,termina]
 ----
 oc delete cm perf -n openshift-mtv
 ----
 
-.	Restart the Forklift Controller Pod (Optional).
+* Restart the Forklift Controller Pod (Optional).
 
 If needed, ensure the changes take effect by restarting the forklift-controller pod.
 
