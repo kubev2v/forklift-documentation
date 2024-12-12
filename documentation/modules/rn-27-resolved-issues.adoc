@@ -7,6 +7,30 @@
 
 {project-first} 2.7 has the following resolved issues:
 
+[id="resolved-issues-2-7-7_{context}"]
+== Resolved issues 2.7.7
+
+.{project-short} Controller waiting for snapshot creation
+
+In earlier releases of {project-short}, when performing a warm migration using 200 VMs, the {project-short} Controller could pause the migration during snapshot creation. This issue has been resolved in {project-short} 2.7.7. link:https://issues.redhat.com/browse/MTV-1775[(MTV-1775)]
+
+.Extended delay in time taken for VMs to start migration
+
+In earlier releases of {project-short}, in some situation there was an extended delay before all VMs started to migrate. This issue has been resolved in {project-short} 2.7.7.link:https://issues.redhat.com/browse/MTV-1774[(MTV-1774)]
+
+.Warm migration plan with multi-VMs from ESXi host provider fails in cutover phase
+
+In earlier releases of {project-short}, the migration plan with multi-VMs from ESXi host provider failed in cutover phase. This issue has been resolved in {project-short} 2.7.7. link:https://issues.redhat.com/browse/MTV-1753[(MTV-1753)]
+
+.SecureBoot enabled VM in migrated with SecureBoot disabled
+
+In earlier releases of {project-short}, when migrating a virtual machine (VM) with Secure Boot *enabled*, the VM had Secure Boot as *disabled* after being migrated. This issue has been resolved in {project-short} 2.7.7. link:https://issues.redhat.com/browse/MTV-1632[(MTV-1632)]
+
+.VDDK validator containers require requests and limits
+
+In earlier releases of {project-short}, after creating a migration plan from a VMware provider, the VDDK validation failed due to create a LimitRange not being provided to to add requests and limits to any container that do not define them. This issues has been resolved in {project-short} 2.7.7, with {project-short} setting limits by default in order to make it work out of the box. link:https://issues.redhat.com/browse/MTV-1493[(MTV-1493)]
+
+
 [id="resolved-issues-2-7-6_{context}"]
 == Resolved issues 2.7.6
 
