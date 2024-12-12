@@ -85,7 +85,7 @@ Add the following under the spec section:
 +
 [source,termina]
 ----
-virt_v2v_extra_args: --vddk-config /mnt/extra-v2v-conf/input.conf
+virt_v2v_extra_args: "--vddk-config /mnt/extra-v2v-conf/input.conf"
 virt_v2v_extra_conf_config_map: "perf"
 ----
 
@@ -96,7 +96,7 @@ virt_v2v_extra_conf_config_map: "perf"
 +
 [source,termina]
 ----
-oc -n openshift-mtv create cm perf`
+oc -n openshift-mtv create cm perf
 ----
 
 .Preparing the ConfigMap content
@@ -105,7 +105,7 @@ oc -n openshift-mtv create cm perf`
 +
 [source,termina]
 ----
-echo -e "`VixDiskLib.nfcAio.Session.BufSizeIn64KB=16\nvixDiskLib.nfcAio.Session.BufCount=4`" | base64`
+echo -e "VixDiskLib.nfcAio.Session.BufSizeIn64KB=16\nvixDiskLib.nfcAio.Session.BufCount=4" | base64
 ----
 
 +
@@ -178,7 +178,7 @@ The above logs were when using `debug_level = 4`
 +
 [source,termina]
 ----
-`cat /mnt/extra-v2v-conf/input.conf`
+cat /mnt/extra-v2v-conf/input.conf
 ----
 +
 The example output is as follows:
@@ -239,23 +239,8 @@ If needed, ensure the changes take effect by restarting the forklift-controller 
 [id="mtv-aio-buffer-key-requirements_{context}"]
 == Key requirements for AIO Buffer (Asynchronous Buffer Counts) support
 
-.Key requirements for AIO Buffer support
-[width="100%",cols="54%,46%",options="header",]
-|===
-|Version |Support
+.VDDK /vSpheres Versions
 
-|vSphere Version
-a|
-vSphere 6.7 Update 3 and later.
-
-Fully supported in vSphere 7.x versions, including 7.0.x.
-
-|VDDK Version
-a|
-Requires VDDK 6.7.3 or newer.
-
-The VDDK version typically aligns with the ESXi version installed on the vSphere host.
-
-| For other  VDDK & vSpheres versions
-a| Check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation].
-|===
+* vSphere : 7.0.3
+* VDDK : 7.0.3
+* For other VDDK and vSpheres versions please check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation].
