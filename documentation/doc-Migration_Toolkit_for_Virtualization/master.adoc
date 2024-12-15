@@ -329,6 +329,8 @@ include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 
 include::modules/mtv-performance-recommendation.adoc[leveloffset=+1]
 
+include::modules/mtv-aio-buffer.adoc[leveloffset=+2]
+
 [id="troubleshooting_{context}"]
 == Troubleshooting
 

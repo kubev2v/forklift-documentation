@@ -1,0 +1,255 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="mtv-aio-buffer_{context}"]
+= Increasing asynchronous I/O (AIO) sizes and buffer counts for NBD transport mode
+
+This document describes how to change NBD transport NFC parameters for increased migration performance when using the {project-first} product.
+
+[WARNING]
+.Cold Migration Only
+====
+Using AIO buffering is only suitable for Cold Migration use cases.
+
+* Disable AIO settings before initializing Warm Migration. For more details, see xref:mtv-disable-aio-buffer_mtv[Disabling AIO Buffer Configuration].
+====
+
+.Additional information
+
+* link:https://docs.vmware.com/en/VMware-vSphere/7.0/vsphere-vddk-programming-guide/GUID-5D166ED1-7205-4110-8D72-0C51BB63CC3D.html[Best Practices for NBD Transport]
+* link:https://forums.veeam.com/vmware-vsphere-f24/solution-for-poor-nbd-performance-t93084.html[Solution for poor NBD performance]
+
+[id="mtv-aio-buffer-key-findings_{context}"]
+== Key findings
+
+* The best migration performance was achieved by migrating using multiple VMs (10) on a single ESXi host with the following values:
+** `VixDiskLib.nfcAio.Session.BufSizeIn64KB=16`
+** `vixDiskLib.nfcAio.Session.BufCount=4`
+
+* The following improvements were noted when using AIO buffer (Asynchronous Buffer Counts) settings:
+** Migration time was reduced by *31.1%*, from `0:24:32` to `0:16:54`.
+** Read rate was increased from `347.83MB/s` to `504.93MB/s`.
+
+* There was no significant improvement observed when using AIO buffer settings with a single VM.
+
+* There was no significant improvement observed when using AIO buffer settings with multiple VMs from multiple hosts.
+
+[id="mtv-enable-aio-buffer_{context}"]
+== Enabling AIO buffer configuration
+
+.Validating Controller Pod support for AIO values
+
+* Ensure that the `forklift-controller` pod in the `openshift-mtv` namespace supports the AIO buffer values.
++
+Since the pod name prefix is dynamic, check the pod name first by running the following command:
++
+[source,terminal]
+----
+oc get pods -n openshift-mtv | grep forklift-controller | awk '{print $1}'
+----
++
+The example output is as follows:
++
+[source,termina]
+----
+forklift-controller-667f57c8f8-qllnx
+----
++
+[NOTE]
+====
+This is the pod name prefix from the example: `forklift-controller-667f57c8f8-qllnx`
+====
+
+* Check the environment variables of the pod by running:
++
+[source,termina]
+----
+oc get pod forklift-controller-667f57c8f8-qllnx -n openshift-mtv -o yaml
+----
++
+* Check for the following lines in the output:
++
+[source,termina]
+----
+...
+\- name: VIRT\_V2V\_EXTRA\_ARGS
+\- name: VIRT\_V2V\_EXTRA\_CONF\_CONFIG\_MAP
+...
+----
+
+.Editing ForkliftController Configuration
+
+* In the `openshift-mtv namespace`, edit the `ForkliftController` object to include the AIO buffer values, by running the following command:
++
+[source,termina]
+----
+oc edit forkliftcontroller -n openshift-mtv
+----
++
+Add the following under the spec section:
++
+[source,termina]
+----
+virt_v2v_extra_args: "--vddk-config /mnt/extra-v2v-conf/input.conf"
+virt_v2v_extra_conf_config_map: "perf"
+----
+
+
+.Creating a ConfigMap mamed perf
+
+* Create the required ConfigMap using the following command:
++
+[source,termina]
+----
+oc -n openshift-mtv create cm perf
+----
+
+.Preparing the ConfigMap content
+
+* Convert the desired buffer configuration values to Base64. For example, for 16/4:
++
+[source,termina]
+----
+echo -e "VixDiskLib.nfcAio.Session.BufSizeIn64KB=16\nvixDiskLib.nfcAio.Session.BufCount=4" | base64
+----
+
++
+The output will similar to this:
++
+[source,termina]
+----
+Vml4RGlza0xpYi5uZmNBaW8uU2Vzc2lvbi5CdWZTaXplSW42NEtCPTE2CnZpeERpc2tMaWIubmZjQWlvLlNlc3Npb24uQnVmQ291bnQ9NAo=
+----
+
+.Editing the ConfigMap
+
+* Update the perf ConfigMap with the Base64 string under the binaryData section, for example:
++
+[source,termina]
+----
+apiVersion: v1
+kind: ConfigMap
+binaryData:
+  input.conf: Vml4RGlza0xpYi5uZmNBaW8uU2Vzc2lvbi5CdWZTaXplSW42NEtCPTE2CnZpeERpc2tMaWIubmZjQWlvLlNlc3Npb24uQnVmQ291bnQ9NAo=
+metadata:
+  name: perf
+  namespace: openshift-mtv
+----
+
+.Restarting the Forklift Controller Pod
+
+* Restart the forklift-controller pod to apply the new configuration.
+
+* Ensure the `VIRT_V2V_EXTRA_ARGS` environment variable reflects the updated settings.
+
+.Verifying migration logs
+
+* Run a migration plan and check the logs of the migration pod. Confirm that the AIO buffer settings are passed as parameters, particularly the `--vddk-config value`.
++
+For example:
++
+[source,termina]
+----
+exec: /usr/bin/virt-v2v … --vddk-config /mnt/extra-v2v-conf/input.conf
+----
+
++
+Sample log excerpt:
++
+[source,termina]
+----
+Buffer size calc for 16 value:
+(16 * 64 * 1024 = 1048576)
+nbdkit: vddk[1]: debug: [NFC VERBOSE] NfcAio_OpenSession:
+Opening an AIO session.
+nbdkit: vddk[1]: debug: [NFC INFO] NfcAioInitSession:
+Disabling
+read-ahead buffer since the AIO buffer size of 1048576 is >=
+the read-ahead buffer size of 65536. Explicitly setting flag
+'`NFC_AIO_SESSION_NO_NET_READ_AHEAD`'
+nbdkit: vddk[1]: debug: [NFC VERBOSE] NfcAioInitSession: AIO Buffer Size is 1048576
+nbdkit: vddk[1]: debug: [NFC VERBOSE] NfcAioInitSession: AIO Buffer
+Count is 4
+----
++
+[NOTE]
+====
+The above logs were when using `debug_level = 4`
+====
+
+.Inspecting ConfigMap values Content are in the Migration Pod
+
+* Log in to the migration pod and verify the buffer settings using the following command:
++
+[source,termina]
+----
+cat /mnt/extra-v2v-conf/input.conf
+----
++
+The example output is as follows:
++
+[source,termina]
+----
+VixDiskLib.nfcAio.Session.BufSizeIn64KB=16
+vixDiskLib.nfcAio.Session.BufCount=4
+----
+
+.Enabling Debugging (optional)
+
+* To enable debug logs, convert the configuration to Base64, including a high log level:
++
+[source,termina]
+----
+echo -e
+"`VixDiskLib.nfcAio.Session.BufSizeIn64KB=16\nVixDiskLib.nfcAio.Session.BufCount=4\nVixDiskLib.nfc.LogLevel=4`"
+| base64
+----
++
+[NOTE]
+====
+Adding a high log level will degrade performance and is for debugging purposes only.
+====
+
+[id="mtv-disable-aio-buffer_{context}"]
+== Disabling AIO Buffer Configuration
+
+To disable the AIO buffer configuration, complete the following steps:
+
+* Edit the ForkliftController Object: Remove the previously added lines from the spec section in the ForkliftController object:
++
+[source,termina]
+----
+oc edit forkliftcontroller -n openshift-mtv
+----
+
+* Remove the following lines:
++
+[source,termina]
+----
+virt_v2v_extra_args: "`–vddk-config /mnt/extra-v2v-conf/input.conf`"
+virt_v2v_extra_conf_config_map: "`perf`"
+----
+
+* Delete the ConfigMap: Remove the perf ConfigMap that was created earlier:
++
+[source,termina]
+----
+oc delete cm perf -n openshift-mtv
+----
+
+* Restart the Forklift Controller Pod (Optional).
+
+If needed, ensure the changes take effect by restarting the forklift-controller pod.
+
+[id="mtv-aio-buffer-key-requirements_{context}"]
+== Key requirements for AIO Buffer (Asynchronous Buffer Counts) support
+
+.VDDK and vSphere Versions
+
+Support is based upon tests performed using the following versions:
+
+* vSphere : 7.0.3
+* VDDK : 7.0.3
+* For other VDDK and vSpheres versions please check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation].
