@@ -30,7 +30,7 @@ Using AIO buffering is only suitable for Cold Migration use cases.
 
 * The following improvements were noted when using AIO buffer (Asynchronous Buffer Counts) settings:
 ** Migration time was reduced by *31.1%*, from `0:24:32` to `0:16:54`.
-** Read rate was increased from `347.83MB/s` to `504.93MB/s`.
+** Read rate was increased from `347.83 MB/s` to `504.93 MB/s`.
 
 * There was no significant improvement observed when using AIO buffer settings with a single VM.
 
@@ -52,7 +52,7 @@ oc get pods -n openshift-mtv | grep forklift-controller | awk '{print $1}'
 +
 The example output is as follows:
 +
-[source,termina]
+[source,terminal]
 ----
 forklift-controller-667f57c8f8-qllnx
 ----
@@ -64,14 +64,14 @@ This is the pod name prefix from the example: `forklift-controller-667f57c8f8-ql
 
 * Check the environment variables of the pod by running:
 +
-[source,termina]
+[source,terminal]
 ----
 oc get pod forklift-controller-667f57c8f8-qllnx -n openshift-mtv -o yaml
 ----
 +
 * Check for the following lines in the output:
 +
-[source,termina]
+[source,terminal]
 ----
 ...
 \- name: VIRT\_V2V\_EXTRA\_ARGS
@@ -81,27 +81,27 @@ oc get pod forklift-controller-667f57c8f8-qllnx -n openshift-mtv -o yaml
 
 .Editing ForkliftController Configuration
 
-* In the `openshift-mtv namespace`, edit the `ForkliftController` object to include the AIO buffer values, by running the following command:
+* In the `openshift-mtv namespace`, edit the `ForkliftController` object to include the AIO buffer values by running the following command:
 +
-[source,termina]
+[source,terminal]
 ----
 oc edit forkliftcontroller -n openshift-mtv
 ----
 +
 Add the following under the spec section:
 +
-[source,termina]
+[source,terminal]
 ----
 virt_v2v_extra_args: "--vddk-config /mnt/extra-v2v-conf/input.conf"
 virt_v2v_extra_conf_config_map: "perf"
 ----
 
 
-.Creating a ConfigMap mamed perf
+.Creating a ConfigMap named `perf`
 
 * Create the required ConfigMap using the following command:
 +
-[source,termina]
+[source,terminal]
 ----
 oc -n openshift-mtv create cm perf
 ----
@@ -110,24 +110,24 @@ oc -n openshift-mtv create cm perf
 
 * Convert the desired buffer configuration values to Base64. For example, for 16/4:
 +
-[source,termina]
+[source,terminal]
 ----
 echo -e "VixDiskLib.nfcAio.Session.BufSizeIn64KB=16\nvixDiskLib.nfcAio.Session.BufCount=4" | base64
 ----
 
 +
-The output will similar to this:
+The output will be similar to the following:
 +
-[source,termina]
+[source,terminal]
 ----
 Vml4RGlza0xpYi5uZmNBaW8uU2Vzc2lvbi5CdWZTaXplSW42NEtCPTE2CnZpeERpc2tMaWIubmZjQWlvLlNlc3Npb24uQnVmQ291bnQ9NAo=
 ----
 
 .Editing the ConfigMap
 
-* Update the perf ConfigMap with the Base64 string under the binaryData section, for example:
+* Update the perf ConfigMap with the Base64 string under the `binaryData` section, for example:
 +
-[source,termina]
+[source,terminal]
 ----
 apiVersion: v1
 kind: ConfigMap
@@ -150,7 +150,7 @@ metadata:
 +
 For example:
 +
-[source,termina]
+[source,terminal]
 ----
 exec: /usr/bin/virt-v2v … --vddk-config /mnt/extra-v2v-conf/input.conf
 ----
@@ -158,7 +158,7 @@ exec: /usr/bin/virt-v2v … --vddk-config /mnt/extra-v2v-conf/input.conf
 +
 Sample log excerpt:
 +
-[source,termina]
+[source,terminal]
 ----
 Buffer size calc for 16 value:
 (16 * 64 * 1024 = 1048576)
@@ -183,14 +183,14 @@ The above logs were when using `debug_level = 4`
 
 * Log in to the migration pod and verify the buffer settings using the following command:
 +
-[source,termina]
+[source,terminal]
 ----
 cat /mnt/extra-v2v-conf/input.conf
 ----
 +
 The example output is as follows:
 +
-[source,termina]
+[source,terminal]
 ----
 VixDiskLib.nfcAio.Session.BufSizeIn64KB=16
 vixDiskLib.nfcAio.Session.BufCount=4
@@ -200,7 +200,7 @@ vixDiskLib.nfcAio.Session.BufCount=4
 
 * To enable debug logs, convert the configuration to Base64, including a high log level:
 +
-[source,termina]
+[source,terminal]
 ----
 echo -e
 "`VixDiskLib.nfcAio.Session.BufSizeIn64KB=16\nVixDiskLib.nfcAio.Session.BufCount=4\nVixDiskLib.nfc.LogLevel=4`"
@@ -219,14 +219,14 @@ To disable the AIO buffer configuration, complete the following steps:
 
 * Edit the ForkliftController Object: Remove the previously added lines from the spec section in the ForkliftController object:
 +
-[source,termina]
+[source,terminal]
 ----
 oc edit forkliftcontroller -n openshift-mtv
 ----
 
 * Remove the following lines:
 +
-[source,termina]
+[source,terminal]
 ----
 virt_v2v_extra_args: "`–vddk-config /mnt/extra-v2v-conf/input.conf`"
 virt_v2v_extra_conf_config_map: "`perf`"
@@ -234,7 +234,7 @@ virt_v2v_extra_conf_config_map: "`perf`"
 
 * Delete the ConfigMap: Remove the perf ConfigMap that was created earlier:
 +
-[source,termina]
+[source,terminal]
 ----
 oc delete cm perf -n openshift-mtv
 ----
@@ -252,4 +252,4 @@ Support is based upon tests performed using the following versions:
 
 * vSphere : 7.0.3
 * VDDK : 7.0.3
-* For other VDDK and vSpheres versions please check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation].
+* For other VDDK and vSphere versions, please check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation].
