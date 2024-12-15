@@ -82,7 +82,7 @@ oc get pod forklift-controller-667f57c8f8-qllnx -n openshift-mtv -o yaml
 .Editing ForkliftController Configuration
 
 * In the `openshift-mtv namespace`, edit the `ForkliftController` object to include the AIO buffer values, by running the following command:
-++
++
 [source,termina]
 ----
 oc edit forkliftcontroller -n openshift-mtv
