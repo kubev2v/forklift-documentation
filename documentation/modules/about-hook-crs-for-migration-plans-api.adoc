@@ -6,7 +6,7 @@
 [id="about-api-hooks-in-migration-plans_{context}"]
 = API-based hooks for {project-short} migration plans
 
-You can use migration hooks to either perform automated operations on a VM before or after you migrate it. Hooks that perform operations on VMs before migration are called _pre-migration_ hooks. Hooks that perform operations on VMs after migration are called _post-migration_ hooks. A pre-migration hook is performed om a VM that is located on the provider and prepare the VM for migration. A post-migration hook is performed on a VM after it has been migrated to {virt}.
+You can use migration hooks to perform automated operations on a VM either before or after you migrate it. Hooks that perform operations on VMs before migration are called _pre-migration_ hooks. Hooks that perform operations on VMs after migration are called _post-migration_ hooks. A pre-migration hook is performed om a VM that is located on the provider and prepare the VM for migration. A post-migration hook is performed on a VM after it has been migrated to {virt}.
 
 You can add hooks to a migration plan using either the {project-first} CLI or the {project-short} UI.
 
@@ -58,21 +58,40 @@ The illustration that follows shows the general process of using a migration hoo
 
 Process:
 
-. Use SSH to switch VMs to *On*.
-. Input an Ansible prehook image, an Ansible posthook image, or non-Ansoible pre-hook or post-hook images, to the {project-short} controller using the CLI.
-. Input provider Secret using CLI.
+
+. Input your Ansible hook and credentials.
+
+** Input an Ansible pre-migration hook image or an Ansible post-migration hook image to the {project-short} controller using the CLI. This step is always done using the CLI, whether the rest of the migration is done using the CLI or the UI.
+
+// Check text vs this content
+ can either specify the playbook in the Hook CRD or in the image itself. If the user specifies it in the image we use the playbook.yml and we set it to run it with the ansible-runner. Otherwise we keep it up to the users image what playbook is run but that needs to be specified in the image itself
+
+
+** If you need additional data to run the playbook inside the pod, create a Secret that contains credentials for the VM. The Secret is not mounted to the pod, but is called by the playbook.
+
 . The {project-short} controller creates the `configmap`, which contains:
 
 ** `workload.yml`, which contains information about the VMs.
 ** `playbook.yml`, the raw string playbook you want to execute.
 ** `plan.yml`, which is the `Plan CR`.
++
+The `configmap` contains the name of the VM and instructs the playbook what to do.
 
-. The {project-short} controller also creates a job that contains the Ansible hook.
-. The Ansible hook imports the Secret that the user entered in step 3.
+. The {project-short} controller does the following:
+
+** Creates a job that starts the user specified image.
+** Mounts the `coinfig` map to the container.
+
++
+The Ansible hook imports the Secret that the user previously
 . The job runs a prehook or a posthook as follows:
 
 ** For a prehook, the job logs into the VMs on the source provider using SSH and runs the prehook.
 ** For a posthook, the job logs into the VMs on {virt} using SSH and runs the posthook.
+
+// Next, 1 or 2 procedure modules based on the blog.
+
+
 
 
 
