@@ -8,7 +8,7 @@
 
 The {project-first} user interface is integrated into the {ocp-short} web console.
 
-In the left-hand panel, you can choose a page related to a component of the migration progress, for example, *Providers for Virtualization*, or, if you are an administrator, you can choose *Overview*, which contains information about migrations and lets you configure {project-short} settings.
+In the left-hand panel, you can choose a page related to a component of the migration progress, for example, *Providers for virtualization*, or, if you are an administrator, you can choose *Overview*, which contains information about migrations and lets you configure {project-short} settings.
 
 .{project-short} extension interface
 image::mtv-ui.png[{project-short} user interface]
