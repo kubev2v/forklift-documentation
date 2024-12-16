@@ -6,7 +6,11 @@
 [id="about-api-hooks-in-migration-plans_{context}"]
 = API-based hooks for {project-short} migration plans
 
-You can use migration hooks to perform automated operations on a VM either before or after you migrate it. Hooks that perform operations on VMs before migration are called _pre-migration_ hooks. Hooks that perform operations on VMs after migration are called _post-migration_ hooks. A pre-migration hook is performed om a VM that is located on the provider and prepare the VM for migration. A post-migration hook is performed on a VM after it has been migrated to {virt}.
+You can use migration hooks to perform automated operations on a VM either before or after you migrate it.
+
+* Hooks that perform operations on VMs before migration are called _pre-migration_ hooks.  A pre-migration hook is performed on a VM that is located on the provider and prepares the VM for migration.
+
+* Hooks that perform operations on VMs after migration are called _post-migration_ hooks. A post-migration hook is performed on a VM after it has been migrated to {virt}.
 
 You can add hooks to a migration plan using either the {project-first} CLI or the {project-short} UI.
 

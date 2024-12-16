@@ -1,0 +1,42 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="adding-migration-hook-via-cli_{context}"]
+= Adding a migration hook to a migration plan using the CLI
+
+You can a migration hook to an existing migration plan. Although you can complete part of the procedure for adding the hook to migration plan by using either the CLI or UI, one step must be done using the CLi.
+
+.Prerequisites
+
+* Migration plan
+* Migration hook image or file (discuss)
+* File containing the `Secret` for the source provider
+* {ocp} service account that has at least Write-access permission for the namespace you are working in
+* SSH access for VMs you want to migrate with the public key installed on the VMs
+* VMs running on Microsoft Server only: Remote Execution enabled
+
+
+.Procedure
+
+. Enter your hook by doing one of the following actions:
+
+.. UI-based migration:
+
+... In the {ocp} web console, click *Migration* > *Plans for virtualization* and then click the migration plan you want to add the hook to.
+... Click *Hooks*.
+... For a pre-migration hook, in the *Pre migration hook*, toggle the *Enable hook* switch.
+... Enter the *Hook runner image*. The default image is `quay.io/konveyor/hook-runner` and this value must be used if you are adding an Ansible playbook.
+... Paste your hook in *Ansible playbook*.
+... For a post-migration hook, follow the same steps in the *Post migration hook* section.
+... At the top of the tab, click *Update hooks*.
+... In a terminal, enter following command:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc -n openshift-mtv patch hook rhel8-01-plan-pre-hook \
+    -p '{"spec":{"serviceAccount":"forklift-hook"}}' --type merge
+----
+
+CLI
