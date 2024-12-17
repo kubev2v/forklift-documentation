@@ -14,11 +14,9 @@ You can use migration hooks to perform automated operations on a VM either befor
 
 You can add hooks to a migration plan using either the {project-first} CLI or the {project-short} UI.
 
-// You can add hooks to a migration plan from the command line by using the {project-full} API.
-
 [id="default-hook-image_{context}"]
 == Default hook image
-The default hook image for an {project-short} hook is `registry.redhat.io/rhmtc/openshift-migration-hook-runner-rhel8:v1.8.2-2`. The image is based on the Ansible Runner image with the addition of `python-openshift` to provide Ansible Kubernetes resources and a recent `oc` binary.
+The default hook image for an {project-short} hook is`quay.io/konveyor/hook-runner`. The image is based on the Ansible Runner image with the addition of `python-openshift` to provide Ansible Kubernetes resources and a recent `oc` binary.
 
 [id="hook-execution_{context}"]
 == Hook execution
@@ -32,46 +30,26 @@ When you add a hook, you must specify the namespace where the hook CR is located
 In order for a hook to run on a VM, the VM must be started and available via SSH.
 ====
 
-
-////
-
-.Example PreHook:
-
-[source,yaml]
-----
-kind: Plan
-apiVersion: forklift.konveyor.io/v1beta1
-metadata:
-  name: test
-  namespace: konveyor-forklift
-spec:
-  vms:
-    - id: vm-2861
-      hooks:
-        - hook:
-            namespace: konveyor-forklift
-            name: playbook
-          step: PreHook
-----
-////
-
 The illustration that follows shows the general process of using a migration hook. Specific procedures are described in TBD1 and TBD2.
 
-[Figure]
-
+Figure
 
 Process:
 
 
 . Input your Ansible hook and credentials.
 
-** Input an Ansible pre-migration hook image or an Ansible post-migration hook image to the {project-short} controller using the CLI. This step is always done using the CLI, whether the rest of the migration is done using the CLI or the UI.
+.. Input an Ansible hook image to the {project-short} controller using either the UI or the CLI.
++
+* In the UI, you specify the `ansible-runner` and enter the `playbook.yml` that contains the hook.
+* In the CLI, you input the hook image, which specifies the playbook that runs the hook.
 
-// Check text vs this content
- can either specify the playbook in the Hook CRD or in the image itself. If the user specifies it in the image we use the playbook.yml and we set it to run it with the ansible-runner. Otherwise we keep it up to the users image what playbook is run but that needs to be specified in the image itself
-
-
-** If you need additional data to run the playbook inside the pod, create a Secret that contains credentials for the VM. The Secret is not mounted to the pod, but is called by the playbook.
+.. If you need additional data to run the playbook inside the pod, such as SSH data, create a Secret that contains credentials for the VM. The Secret is not mounted to the pod, but is called by the playbook.
++
+[NOTE]
+====
+This Secret is not the same as the `Secret` CR that contains the credentials of your source provider.
+====
 
 . The {project-short} controller creates the `configmap`, which contains:
 
@@ -84,7 +62,7 @@ The `configmap` contains the name of the VM and instructs the playbook what to d
 . The {project-short} controller does the following:
 
 ** Creates a job that starts the user specified image.
-** Mounts the `coinfig` map to the container.
+** Mounts the `configmap` to the container.
 
 +
 The Ansible hook imports the Secret that the user previously
@@ -93,7 +71,6 @@ The Ansible hook imports the Secret that the user previously
 ** For a prehook, the job logs into the VMs on the source provider using SSH and runs the prehook.
 ** For a posthook, the job logs into the VMs on {virt} using SSH and runs the posthook.
 
-// Next, 1 or 2 procedure modules based on the blog.
 
 
 
