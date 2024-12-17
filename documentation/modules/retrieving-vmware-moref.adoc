@@ -6,7 +6,7 @@
 [id="retrieving-vmware-moref_{context}"]
 = Retrieving a VMware vSphere moRef
 
-When you migrate VMs with a VMware vSphere source provider using {project-first} from the CLI, you need to know the managed object reference (moRef) of certain entities in vSphere, such as datastores, networks, and VMs.
+When you migrate VMs with a VMware vSphere source provider using {project-first} from the command line, you need to know the managed object reference (moRef) of certain entities in vSphere, such as datastores, networks, and VMs.
 
 You can retrieve the moRef of one or more vSphere entities from the Inventory service. You can then use each moRef as a reference for retrieving the moRef of another entity.
 

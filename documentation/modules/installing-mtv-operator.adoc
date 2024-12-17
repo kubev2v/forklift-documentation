@@ -10,9 +10,9 @@ ifdef::web[]
 You can install the {operator-name} by using the {ocp} web console.
 endif::[]
 ifdef::cli[]
-= Installing the {operator-name} from the command line interface
+= Installing the {operator-name} by using the command-line interface
 
-You can install the {operator-name} from the command line interface (CLI).
+You can install the {operator-name} by using the command-line interface (CLI).
 endif::[]
 
 .Prerequisites
