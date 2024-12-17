@@ -49,4 +49,4 @@ $ oc -n openshift-mtv patch hook <name_of_hook> \
     -p '{"spec":{"serviceAccount":"<service_account>"}}' --type merge
 ----
 
-include::snip_example-hook-for-migration-plans.adoc
+include::snip_example-hook-for-migration-plans.adoc[]
