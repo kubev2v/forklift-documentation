@@ -312,7 +312,7 @@ include::modules/creating-validation-rule.adoc[leveloffset=+3]
 include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
 include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
-[id="adding-hooks-migration-plan-using-api"]
+[id="adding-hooks-mtv-migration-plan"]
 === Adding hooks to an MTV migration plan
 
 You can add hooks to an {project-first} migration plan to perform automated operations on a VM either before or after you migrate it.
