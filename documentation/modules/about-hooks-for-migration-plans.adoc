@@ -3,8 +3,8 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: CONCEPT
-[id="about-api-hooks-in-migration-plans_{context}"]
-= API-based hooks for {project-short} migration plans
+[id="about-hooks-for-migration-plans_{context}"]
+= About hooks for {project-short} migration plans
 
 You can use migration hooks to perform automated operations on a VM either before or after you migrate it.
 
@@ -32,17 +32,19 @@ In order for a hook to run on a VM, the VM must be started and available via SSH
 
 The illustration that follows shows the general process of using a migration hook. Specific procedures are described in TBD1 and TBD2.
 
-Figure
+// THE FIGURE WILL BE REPLACED
 
-Process:
+.Adding a hook to a migration plan
+image::updated_hooks_figure_from_martin_cropped.png[Adding a hook to migration plan]
 
+*Process:*
 
 . Input your Ansible hook and credentials.
 
 .. Input an Ansible hook image to the {project-short} controller using either the UI or the CLI.
 +
-* In the UI, you specify the `ansible-runner` and enter the `playbook.yml` that contains the hook.
-* In the CLI, you input the hook image, which specifies the playbook that runs the hook.
+* In the UI, specify the `ansible-runner` and enter the `playbook.yml` that contains the hook.
+* In the CLI, input the hook image, which specifies the playbook that runs the hook.
 
 .. If you need additional data to run the playbook inside the pod, such as SSH data, create a Secret that contains credentials for the VM. The Secret is not mounted to the pod, but is called by the playbook.
 +
@@ -59,17 +61,14 @@ This Secret is not the same as the `Secret` CR that contains the credentials of 
 +
 The `configmap` contains the name of the VM and instructs the playbook what to do.
 
-. The {project-short} controller does the following:
-
-** Creates a job that starts the user specified image.
-** Mounts the `configmap` to the container.
-
+. The {project-short} controller creates a job that starts the user specified image.
+.. Mounts the `configmap` to the container.
 +
-The Ansible hook imports the Secret that the user previously
+The Ansible hook imports the Secret that the user previously entered.
 . The job runs a prehook or a posthook as follows:
 
-** For a prehook, the job logs into the VMs on the source provider using SSH and runs the prehook.
-** For a posthook, the job logs into the VMs on {virt} using SSH and runs the posthook.
+.. For a pre-migration hook, the job logs into the VMs on the source provider using SSH and runs the hook.
+.. For a post-migration hook, the job logs into the VMs on {virt} using SSH and runs the hook.
 
 
 
