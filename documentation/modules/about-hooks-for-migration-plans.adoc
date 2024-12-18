@@ -21,14 +21,14 @@ The default hook image for an {project-short} hook is `quay.io/konveyor/hook-run
 An Ansible playbook that is provided as part of a migration hook is mounted into the hook container as a `configmap`. The hook container is run as a job on the desired cluster, using the default `ServiceAccount` in the `konveyor-forklift` namespace.
 
 
-When you add a hook, you must specify the namespace where the hook CR is located, the name of the hook, and specify whether the hook is a pre-migration hook or a post-migration hook.
+When you add a hook, you must specify the namespace where the `Hook` CR is located, the name of the hook, and specify whether the hook is a pre-migration hook or a post-migration hook.
 
 [IMPORTANT]
 ====
 In order for a hook to run on a VM, the VM must be started and available via SSH.
 ====
 
-The illustration that follows shows the general process of using a migration hook. Specific procedures are described in TBD1 and TBD2.
+The illustration that follows shows the general process of using a migration hook. Specific procedures are described in xref:adding-migration-hook-via-ui_{context}[Adding a migration hook to a migration plan using the {ocp} web console] and xref:adding-migration-hook-via-cli_{context}[Adding a migration hook to a migration plan using the CLI].
 
 // THE FIGURE WILL BE REPLACED
 
