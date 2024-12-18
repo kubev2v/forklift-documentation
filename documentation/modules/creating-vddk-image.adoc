@@ -14,9 +14,9 @@ It is strongly recommended that {project-first} should be used with the VMware V
 Creating a VDDK image, although optional, is highly recommended. Using {project-short} without VDDK is not recommended and could result in significantly lower migration speeds.
 ====
 
-To make use of this feature, you download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry.
+To make use of this feature, you download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to a secure registry that is accessible to all clusters.
 
-The VDDK package contains symbolic links, therefore, the procedure of creating a VDDK image must be performed on a file system that preserves symbolic links (symlinks).
+The VDDK package contains symbolic li nks, therefore, the procedure of creating a VDDK image must be performed on a file system that preserves symbolic links (symlinks).
 
 [NOTE]
 ====

@@ -17,17 +17,17 @@ The following prerequisites apply to VMware migrations:
 
 [IMPORTANT]
 ====
-In the event of a power outage, data might be lost for a VM with disabled hibernation. However, if hibernation is not disabled, migration will fail
+In the event of a power outage, data might be lost for a VM with disabled hibernation. However, if hibernation is not disabled, migration will fail.
 ====
 
 [NOTE]
 ====
-Neither {project-short} nor OpenShift Virtualization support conversion of Btrfs for migrating VMs from VMWare.
+Neither {project-short} nor {virt} support conversion of Btrfs for migrating VMs from VMWare.
 ====
 
-[TIP]
+[NOTE]
 ====
-To accelerate migration and reduce the risk of a migration plan failing, create a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters. If you are not using VDDK and a plan fails, then retry with VDDK installed. For more information, see xref:../master.adoc#creating-vddk-image_vmware[Creating a VDDK image].
+Creating a VDDK image, although optional, is highly recommended. Using {project-short} without VDDK is not recommended and could result in significantly lower migration speeds. If you are not using VDDK and a plan fails, then retry with VDDK installed. For more information, see xref:../master.adoc#creating-vddk-image_vmware[Creating a VDDK image].
 ====
 
 [TIP]
