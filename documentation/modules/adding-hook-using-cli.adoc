@@ -6,7 +6,7 @@
 [id="adding-migration-hook-via-cli_{context}"]
 = Adding a migration hook to a migration plan using the CLI
 
-You can a migration hook to an existing migration plan using the {project-first} CLI.
+You can add a migration hook to an existing migration plan using the {project-first} CLI.
 
 You can add a `PreHook` or a `PostHook` Hook CR when you migrate a virtual machine from the command line by using the {project-full} API. A `PreHook` runs before a migration, a `PostHook`, after.
 
@@ -46,7 +46,7 @@ metadata:
   namespace: konveyor-forklift
 type: Opaque
 ----
-. Encode your playbook by conncatenating a file and piping it for base64, for example:
+. Encode your playbook by concatenating a file and piping it for base64, for example:
 +
 [source,shell]
 ----
@@ -100,7 +100,7 @@ You can use the default `hook-runner` image or specify a custom image. If you sp
 +
 [NOTE]
 ====
-To decode an attached playbook retrieve the resource with custom output and pipe it to base64. For example:
+To decode an attached playbook, retrieve the resource with custom output and pipe it to base64. For example:
 [source,shell]
 ----
  oc get -n konveyor-forklift hook playbook -o \
