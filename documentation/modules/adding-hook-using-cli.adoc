@@ -8,6 +8,15 @@
 
 You can a migration hook to an existing migration plan using the {project-first} CLI.
 
+You can add a `PreHook` or a `PostHook` Hook CR when you migrate a virtual machine from the command line by using the {project-full} API. A `PreHook` runs before a migration, a `PostHook`, after.
+
+[NOTE]
+====
+You can retrieve additional information stored in a secret or in a `configMap` by using a `k8s` module.
+====
+
+For example, you can create a hook CR to install `cloud-init` on a VM and write a file before migration.
+
 .Prerequisites
 
 * Migration plan
@@ -17,15 +26,100 @@ You can a migration hook to an existing migration plan using the {project-first}
 * SSH access for VMs you want to migrate with the public key installed on the VMs
 * VMs running on Microsoft Server only: Remote Execution enabled
 
-
 .Procedure
-
-
+. If needed, create a secret with an SSH private key for the VM. You can either use an existing key or generate a key pair, install the public key on the VM, and base64 encode the private key in the secret.
 +
-[source,terminal,subs="attributes+"]
+[source,yaml]
 ----
-$ oc -n openshift-mtv patch hook rhel8-01-plan-pre-hook \
-    -p '{"spec":{"serviceAccount":"forklift-hook"}}' --type merge
+apiVersion: v1
+data:
+  key: VGhpcyB3YXMgZ2VuZXJhdGVkIHdpdGggc3NoLWtleWdlbiBwdXJlbHkgZm9yIHRoaXMgZXhhbXBsZS4KSXQgaXMgbm90IHVzZWQgYW55d2hlcmUuCi0tLS0tQkVHSU4gT1BFTlNTSCBQUklWQVRFIEtFWS0tLS0tCmIzQmxibk56YUMxclpYa3RkakVBQUFBQUJHNXZibVVBQUFBRWJtOXVaUUFBQUFBQUFBQUJBQUFCbHdBQUFBZHpjMmd0Y24KTmhBQUFBQXdFQUFRQUFBWUVBMzVTTFRReDBFVjdPTWJQR0FqcEsxK2JhQURTTVFuK1NBU2pyTGZLNWM5NGpHdzhDbnA4LwovRHErZHFBR1pxQkg2ZnAxYmVJM1BZZzVWVDk0RVdWQ2RrTjgwY3dEcEo0Z1R0NHFUQ1gzZUYvY2x5VXQyUC9zaTNjcnQ0CjBQdi9wVnZXU1U2TlhHaDJIZC93V0MwcGh5Z0RQOVc5SHRQSUF0OFpnZmV2ZnUwZHpraVl6OHNVaElWU2ZsRGpaNUFqcUcKUjV2TVVUaGlrczEvZVlCeTdiMkFFSEdzYU8xN3NFbWNiYUlHUHZuUFVwWmQrdjkyYU1JdWZoYjhLZkFSbzZ3Ty9ISW1VbQovdDdHWFBJUmxBMUhSV0p1U05odTQzZS9DY3ZYd3Z6RnZrdE9kYXlEQzBMTklHMkpVaURlNWd0UUQ1WHZXc1p3MHQvbEs1CklacjFrZXZRNUJsYWNISmViV1ZNYUQvdllpdFdhSFo4OEF1Y0czaGh2bjkrOGNSTGhNVExiVlFSMWh2UVpBL1JtQXN3eE0KT3VJSmRaUmtxTThLZlF4Z28zQThRNGJhQW1VbnpvM3Zwa0FWdC9uaGtIOTRaRE5rV2U2RlRhdThONStyYTJCZkdjZVA4VApvbjFEeTBLRlpaUlpCREVVRVc0eHdTYUVOYXQ3c2RDNnhpL1d5OURaQUFBRm1NRFBXeDdBejFzZUFBQUFCM056YUMxeWMyCkVBQUFHQkFOK1VpMDBNZEJGZXpqR3p4Z0k2U3RmbTJnQTBqRUova2dFbzZ5M3l1WFBlSXhzUEFwNmZQL3c2dm5hZ0JtYWcKUituNmRXM2lOejJJT1ZVL2VCRmxRblpEZk5ITUE2U2VJRTdlS2t3bDkzaGYzSmNsTGRqLzdJdDNLN2VORDcvNlZiMWtsTwpqVnhvZGgzZjhGZ3RLWWNvQXovVnZSN1R5QUxmR1lIM3IzN3RIYzVJbU0vTEZJU0ZVbjVRNDJlUUk2aGtlYnpGRTRZcExOCmYzbUFjdTI5Z0JCeHJHanRlN0JKbkcyaUJqNzV6MUtXWGZyL2RtakNMbjRXL0Nud0VhT3NEdnh5SmxKdjdleGx6eUVaUU4KUjBWaWJrallidU4zdnduTDE4TDh4YjVMVG5Xc2d3dEN6U0J0aVZJZzN1WUxVQStWNzFyR2NOTGY1U3VTR2E5WkhyME9RWgpXbkJ5WG0xbFRHZy83MklyVm1oMmZQQUxuQnQ0WWI1L2Z2SEVTNFRFeTIxVUVkWWIwR1FQMFpnTE1NVERyaUNYV1VaS2pQCkNuME1ZS053UEVPRzJnSmxKODZONzZaQUZiZjU0WkIvZUdRelpGbnVoVTJydkRlZnEydGdYeG5Iai9FNko5UTh0Q2hXV1UKV1FReEZCRnVNY0VtaERXcmU3SFF1c1l2MXN2UTJRQUFBQU1CQUFFQUFBR0JBSlZtZklNNjdDQmpXcU9KdnFua2EvakRrUwo4TDdpSE5mekg1TnRZWVdPWmRMTlk2L0lRa1pDeFcwTWtSKzlUK0M3QUZKZzBNV2Q5ck5PeUxJZDkxNjZoOVJsNG0xdFJjCnViZ1o2dWZCZ3hGVDlXS21mSEdCNm4zelh5b2pQOEFJTnR6ODVpaUVHVXFFRWtVRVdMd0RGSmdvcFllQ3l1VmZ2ZE92MUgKRm1WWmEwNVo0b3NQNkNENXVmc2djQ1RYQTR6VnZ5ZHVCYkxqdHN5RjdYZjNUdjZUQ1QxU0swZHErQk1OOXRvb0RZaXpwagpzbDh6NzlybXp3eUFyWFlVcnFUUkpsNmpwRkNrWHJLcy9LeG96MHhhbXlMY2RORk9hWE51LzlnTkpjRERsV2hPcFRqNHk4CkpkNXBuV1Jueis1RHJLRFdhY0loUW1CMUxVd2ZLWmQwbVFxaUpzMUMxcXZVUmlKOGExaThKUTI4bHFuWTFRRk9wbk13emcKWEpla2FndThpT1ExRFJlQkhaM0NkcVJUYnY3bVJZSGxramx0dXJmZGc4M3hvM0ErZ1JSR001eUVOcW5xSkplQjhJQVB5UwptMFp0dGdqbHNqNTJ2K1B1NmExMHoxZndKK1VML2N6dTRKeEpOYlp6WTFIMnpLODJBaVI1T3JYNmx2aUEvSWFSRVcwUUFBCkFNQndVeUJpcUc5bEZCUnltL2UvU1VORVMzdHpicUZNdTdIcy84WTV5SnAxKzR6OXUxNGtJR2ttV0Y5eE5HT3hrY3V0cWwKeHVUcndMbjFUaFNQTHQrTjUwTGhVdzR4ZjBhNUxqemdPbklPU0FRbm5HY1Nxa0dTRDlMR21obGE2WmpydFBHY29lQ3JHdAo5M1Vvcmx5YkxNRzFFRFAxWmpKS1RaZzl6OUMwdDlTTGd3ei9DbFhydW9UNXNQVUdKWnUrbHlIZXpSTDRtcHl6OEZMcnlOCkdNci9leVM5bWdISjNVVkZEYjNIZ3BaK1E1SUdBRU5rZVZEcHIwMGhCZXZndGd6YWtBQUFEQkFQVXQ1RitoMnBVby94V1YKenRkcVQvMzA4dFB5MXVMMU1lWFoydEJPQmRwSDJyd0JzdWt0aTIySGtWZUZXQjJFdUlFUXppMzY3MGc1UGdxR1p4Vng4dQpobEE0Rkg4ZXN1NTNQckZqVW9EeFJhb3d3WXBFcFh5Y2pnNUE1MStwR1VQcWljWjB0YjliaWlhc3BWWXZhWW5sdGlnVG5iClN0UExMY29nemNiL0dGcVYyaXlzc3lwTlMwKzBNRTUxcEtxWGNaS2swbi8vVHpZWWs4TW8vZzRsQ3pmUEZQUlZrVVM5blIKWU1pQzRlcEk0TERmbVdnM0xLQ2N1Zk85all3aWgwYlFBQUFNRUE2WEtldDhEMHNvc0puZVh5WFZGd0dyVyszNlhBVGRQTwpMWDdjaStjYzFoOGV1eHdYQWx3aTJJNFhxSmJBVjBsVEhuVGEycXN3Uy9RQlpJUUJWSkZlVjVyS1daZTc4R2F3d1pWTFZNCldETmNwdFFyRTFaM2pGNS9TdUVzdlVxSDE0Tkc5RUFXWG1iUkNzelE0Vlk3NzQrSi9sTFkvMnlDT1diNzlLYTJ5OGxvYUoKVXczWWVtSld3blp2R3hKNldsL3BmQ2xYN3lEVXlXUktLdGl0cWNjbmpCWVkyRE1tZURwdURDYy9ZdDZDc3dLRmRkMkJ1UwpGZGt5cDlZY3VMaDlLZEFBQUFIR3BoYzI5dVFFRlVMVGd3TWxVdWJXOXVkR3hsYjI0dWFXNTBjbUVCQWdNRUJRWT0KLS0tLS1FTkQgT1BFTlNTSCBQUklWQVRFIEtFWS0tLS0tCgo=
+kind: Secret
+metadata:
+  name: ssh-credentials
+  namespace: konveyor-forklift
+type: Opaque
 ----
+. Encode your playbook by conncatenating a file and piping it for base64, for example:
++
+[source,shell]
+----
+$ cat playbook.yml | base64 -w0
+----
++
+[NOTE]
+====
+You can also use a here document to encode a playbook:
 
-CLI
+[source,shell]
+----
+$ cat << EOF | base64 -w0
+- hosts: localhost
+  tasks:
+  - debug:
+      msg: test
+EOF
+----
+====
+
+. Create a Hook CR:
++
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Hook
+metadata:
+  name: <hook>
+  namespace: <namespace>
+spec:
+  image: quay.io/konveyor/hook-runner
+  playbook: |
+    LS0tCi0gbmFtZTogTWFpbgogIGhvc3RzOiBsb2NhbGhvc3QKICB0YXNrczoKICAtIG5hbWU6IExv
+    YWQgUGxhbgogICAgaW5jbHVkZV92YXJzOgogICAgICBmaWxlOiAiL3RtcC9ob29rL3BsYW4ueW1s
+    IgogICAgICBuYW1lOiBwbGFuCiAgLSBuYW1lOiBMb2FkIFdvcmtsb2FkCiAgICBpbmNsdWRlX3Zh
+    cnM6CiAgICAgIGZpbGU6ICIvdG1wL2hvb2svd29ya2xvYWQueW1sIgogICAgICBuYW1lOiB3b3Jr
+    bG9hZAoK
+EOF
+----
++
+where:
++
+`playbook` refers to an optional Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must be `hook-runner`.
++
+[NOTE]
+====
+You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+====
++
+[NOTE]
+====
+To decode an attached playbook retrieve the resource with custom output and pipe it to base64. For example:
+[source,shell]
+----
+ oc get -n konveyor-forklift hook playbook -o \
+   go-template='{{ .spec.playbook }}' | base64 -d
+----
+====
++
+
+
+. In the `Plan` CR of the migration, for each VM, add the following section to end of the CR:
++
+[source,yaml]
+----
+  vms:
+    - id: <vm_id>
+      hooks:
+        - hook:
+            namespace: <namespace>
+            name: <name_of_hook>
+          step: <type_of_hook> <1>
+----
+<1> Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration.
+
+[IMPORTANT]
+====
+In order for a PreHook to run on a VM, the VM must be started and available via SSH.
+====
