@@ -19,7 +19,7 @@ include::modules/technical-changes-2-7.adoc[leveloffset=+2]
 
 include::modules/mtv-selected-packages-2-7.adoc[leveloffset=+3]
 
-For a full list of packages in {project-short}, see xref:mtv-changelog-2-7_release-notes[{project-short} changelog].
+// For a full list of packages in {project-short}, see xref:mtv-changelog-2-7_release-notes[{project-short} changelog].
 
 // New features and enhancements by z-stream release
 include::modules/new-features-and-enhancements-2-7.adoc[leveloffset=+2]
