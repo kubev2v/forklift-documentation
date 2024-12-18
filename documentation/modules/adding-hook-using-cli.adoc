@@ -20,14 +20,20 @@ For example, you can create a hook CR to install `cloud-init` on a VM and write 
 .Prerequisites
 
 * Migration plan
-* Migration hook image or file (discuss)
+* Migration hook image or the playbook containing the hook image
+
+[NOTE]
+====
+You can run one pre-migration hook, one post-migration hook, or one of each, per migration plan.
+====
+
 * File containing the `Secret` for the source provider
-* {ocp} service account that has at least Write-access permission for the namespace you are working in
+* {ocp} service account that has at least write-access permission for the namespace you are working in
 * SSH access for VMs you want to migrate with the public key installed on the VMs
 * VMs running on Microsoft Server only: Remote Execution enabled
 
 .Procedure
-. If needed, create a secret with an SSH private key for the VM. You can either use an existing key or generate a key pair, install the public key on the VM, and base64 encode the private key in the secret.
+. If needed, create a Secret with an SSH private key for the VM. You can either use an existing key or generate a key pair, install the public key on the VM, and base64 encode the private key in the Secret.
 +
 [source,yaml]
 ----
@@ -49,7 +55,7 @@ $ cat playbook.yml | base64 -w0
 +
 [NOTE]
 ====
-You can also use a here document to encode a playbook:
+You can also use a `here` document to encode a playbook:
 
 [source,shell]
 ----
@@ -63,7 +69,6 @@ EOF
 ====
 
 . Create a Hook CR:
-+
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -103,9 +108,7 @@ To decode an attached playbook retrieve the resource with custom output and pipe
 ----
 ====
 +
-
-
-. In the `Plan` CR of the migration, for each VM, add the following section to end of the CR:
+. In the `Plan` CR of the migration, for each VM, add the following section to the end of the CR:
 +
 [source,yaml]
 ----
@@ -123,3 +126,5 @@ To decode an attached playbook retrieve the resource with custom output and pipe
 ====
 In order for a PreHook to run on a VM, the VM must be started and available via SSH.
 ====
+
+include::snip_example-hook-for-migration-plans.adoc[]

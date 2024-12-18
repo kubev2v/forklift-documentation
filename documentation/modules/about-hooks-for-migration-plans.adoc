@@ -6,21 +6,19 @@
 [id="about-hooks-for-migration-plans_{context}"]
 = About hooks for {project-short} migration plans
 
-You can use migration hooks to perform automated operations on a VM either before or after you migrate it.
+You can add hooks to a migration plan using either the {project-first} CLI or the {project-short} user interface, which is located in the {ocp} web console.
 
 * Hooks that perform operations on VMs before migration are called _pre-migration_ hooks.  A pre-migration hook is performed on a VM that is located on the provider and prepares the VM for migration.
 
 * Hooks that perform operations on VMs after migration are called _post-migration_ hooks. A post-migration hook is performed on a VM after it has been migrated to {virt}.
 
-You can add hooks to a migration plan using either the {project-first} CLI or the {project-short} UI.
-
 [id="default-hook-image_{context}"]
 == Default hook image
-The default hook image for an {project-short} hook is`quay.io/konveyor/hook-runner`. The image is based on the Ansible Runner image with the addition of `python-openshift` to provide Ansible Kubernetes resources and a recent `oc` binary.
+The default hook image for an {project-short} hook is `quay.io/konveyor/hook-runner`. The image is based on the Ansible Runner image with the addition of `python-openshift` to provide Ansible Kubernetes resources and a recent `oc` binary.
 
 [id="hook-execution_{context}"]
 == Hook execution
-An Ansible playbook that is provided as part of a migration hook is mounted into the hook container as a `ConfigMap`. The hook container is run as a job on the desired cluster, using the default `ServiceAccount` in the `konveyor-forklift` namespace.
+An Ansible playbook that is provided as part of a migration hook is mounted into the hook container as a `configmap`. The hook container is run as a job on the desired cluster, using the default `ServiceAccount` in the `konveyor-forklift` namespace.
 
 
 When you add a hook, you must specify the namespace where the hook CR is located, the name of the hook, and specify whether the hook is a pre-migration hook or a post-migration hook.
@@ -57,7 +55,7 @@ This Secret is not the same as the `Secret` CR that contains the credentials of 
 
 ** `workload.yml`, which contains information about the VMs.
 ** `playbook.yml`, the raw string playbook you want to execute.
-** `plan.yml`, which is the `Plan CR`.
+** `plan.yml`, which is the `Plan` CR.
 +
 The `configmap` contains the name of the VM and instructs the playbook what to do.
 
