@@ -63,15 +63,7 @@ The `configmap` contains the name of the VM and instructs the playbook what to d
 .. Mounts the `configmap` to the container.
 +
 The Ansible hook imports the Secret that the user previously entered.
-. The job runs a prehook or a posthook as follows:
+. The job runs a pre-migration hook or a post-migration hook as follows:
 
 .. For a pre-migration hook, the job logs into the VMs on the source provider using SSH and runs the hook.
 .. For a post-migration hook, the job logs into the VMs on {virt} using SSH and runs the hook.
-
-
-
-
-
-
-
-
