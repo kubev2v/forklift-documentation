@@ -14,6 +14,8 @@ The following prerequisites apply to all migrations:
 * The name of a VM must not contain a period (`.`). {project-first} changes any period in a VM name to a dash (`-`).
 * The name of a VM must not be the same as any other VM in the {virt} environment.
 +
+include::snip_dualboot_vm.adoc[]
++
 [NOTE]
 ====
 {project-full} automatically assigns a new name to a VM that does not comply with the rules.
