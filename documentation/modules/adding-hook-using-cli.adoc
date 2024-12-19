@@ -6,16 +6,19 @@
 [id="adding-migration-hook-via-cli_{context}"]
 = Adding a migration hook to a migration plan using the CLI
 
-You can add a migration hook to an existing migration plan using the {project-first} CLI.
+You can use a `Hook` CR to add a pre-migration hook or a post-migration hook to an existing migration plan using the {project-first} CLI.
 
-You can add a `PreHook` or a `PostHook` Hook CR when you migrate a virtual machine from the command line by using the {project-full} API. A `PreHook` runs before a migration, a `PostHook`, after.
+For example, you can create a `Hook` CR to install the `cloud-init` service on a VM and write a file before migration.
+
+[NOTE]
+====
+You can run one pre-migration hook, one post-migration hook, or one of each per migration plan. Each hook needs its own `Hook` needs its own CR, but a `Plan` CR contains data for all the hooks it uses.
+====
 
 [NOTE]
 ====
 You can retrieve additional information stored in a secret or in a `configMap` by using a `k8s` module.
 ====
-
-For example, you can create a hook CR to install `cloud-init` on a VM and write a file before migration.
 
 .Prerequisites
 
@@ -24,16 +27,19 @@ For example, you can create a hook CR to install `cloud-init` on a VM and write 
 
 [NOTE]
 ====
-You can run one pre-migration hook, one post-migration hook, or one of each, per migration plan.
+You can run one pre-migration hook, one post-migration hook, or one of each per migration plan.
 ====
 
-* File containing the `Secret` for the source provider
-* {ocp} service account that has at least write-access permission for the namespace you are working in
+* File containing the Secret for the source provider
+* {ocp} service account that has at least write access for the namespace you are working in
 * SSH access for VMs you want to migrate with the public key installed on the VMs
 * VMs running on Microsoft Server only: Remote Execution enabled
 
 .Procedure
-. If needed, create a Secret with an SSH private key for the VM. You can either use an existing key or generate a key pair, install the public key on the VM, and base64 encode the private key in the Secret.
+. If needed, create a Secret with an SSH private key for the VM.
+.. Choose an existing key or generate a key pair.
+.. Install the public key on the VM.
+.. Encode the private key in the Secret to base64.
 +
 [source,yaml]
 ----
@@ -55,7 +61,7 @@ $ cat playbook.yml | base64 -w0
 +
 [NOTE]
 ====
-You can also use a `here` document to encode a playbook:
+You can also use a `here` document to add instructions to encode a playbook inside a larger command:
 
 [source,shell]
 ----

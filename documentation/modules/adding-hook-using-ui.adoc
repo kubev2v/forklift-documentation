@@ -6,20 +6,20 @@
 [id="adding-migration-hook-via-ui_{context}"]
 = Adding a migration hook to a migration plan using the {ocp} web console
 
-You can add a migration hook to an existing migration plan using the {ocp} web console. Note that you will need to execute one command in the {project-first} CLI.
+You can add a migration hook to an existing migration plan using the {ocp} web console. Note that you need to run one command in the {project-first} CLI.
 
 .Prerequisites
 
 * Migration plan
-* Migration hook file, whose contents you will copy-paste into the web console.
+* Migration hook file, whose contents you copy and paste into the web console
 
 [NOTE]
 ====
-You can run one pre-migration hook, one post-migration hook, or one of each, per migration plan.
+You can run one pre-migration hook, one post-migration hook, or one of each per migration plan.
 ====
 
 * File containing the `Secret` for the source provider
-* {ocp} service account that has at least write-access permission for the namespace you are working in
+* {ocp} service account that has at least write access for the namespace you are working in
 * SSH access for VMs you want to migrate with the public key installed on the VMs
 * VMs running on Microsoft Server only: Remote Execution enabled
 
