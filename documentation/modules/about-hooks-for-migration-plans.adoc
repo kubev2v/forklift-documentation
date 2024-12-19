@@ -30,10 +30,8 @@ In order for a hook to run on a VM, the VM must be started and available via SSH
 
 The illustration that follows shows the general process of using a migration hook. Specific procedures are described in xref:adding-migration-hook-via-ui_{context}[Adding a migration hook to a migration plan using the {ocp} web console] and xref:adding-migration-hook-via-cli_{context}[Adding a migration hook to a migration plan using the CLI].
 
-// THE FIGURE WILL BE REPLACED
-
 .Adding a hook to a migration plan
-image::updated_hooks_figure_from_martin_cropped.png[Adding a hook to migration plan]
+image::migration_hook_process.png[Adding a hook to migration plan]
 
 *Process:*
 
