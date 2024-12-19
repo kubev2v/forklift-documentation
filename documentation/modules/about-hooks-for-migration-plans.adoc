@@ -18,14 +18,14 @@ The default hook image for an {project-short} hook is `quay.io/konveyor/hook-run
 
 [id="hook-execution_{context}"]
 == Hook execution
-An Ansible playbook that is provided as part of a migration hook is mounted into the hook container as a `configmap`. The hook container is run as a job on the desired cluster, using the default `ServiceAccount` in the `konveyor-forklift` namespace.
+An Ansible playbook that is provided as part of a migration hook is mounted into the hook container as a `ConfigMap`. The hook container is run as a job on the desired cluster, using the default `ServiceAccount` in the `konveyor-forklift` namespace.
 
 
 When you add a hook, you must specify the namespace where the `Hook` CR is located, the name of the hook, and whether the hook is a pre-migration hook or a post-migration hook.
 
 [IMPORTANT]
 ====
-In order for a hook to run on a VM, the VM must be started and available via SSH.
+In order for a hook to run on a VM, the VM must be started and available using SSH.
 ====
 
 The illustration that follows shows the general process of using a migration hook. For specific procedures, see xref:adding-migration-hook-via-ui_{context}[Adding a migration hook to a migration plan using the {ocp} web console] and xref:adding-migration-hook-via-cli_{context}[Adding a migration hook to a migration plan using the CLI].
@@ -49,16 +49,16 @@ image::migration_hook_process.png[Adding a hook to a migration plan]
 This Secret is not the same as the `Secret` CR that contains the credentials of your source provider.
 ====
 
-. The {project-short} controller creates the `configmap`, which contains:
+. The {project-short} controller creates the `ConfigMap`, which contains:
 
 ** `workload.yml`, which contains information about the VMs.
 ** `playbook.yml`, the raw string playbook you want to execute.
 ** `plan.yml`, which is the `Plan` CR.
 +
-The `configmap` contains the name of the VM and instructs the playbook what to do.
+The `ConfigMap` contains the name of the VM and instructs the playbook what to do.
 
 . The {project-short} controller creates a job that starts the user specified image.
-.. Mounts the `configmap` to the container.
+.. Mounts the `ConfigMap` to the container.
 +
 The Ansible hook imports the Secret that the user previously entered.
 . The job runs a pre-migration hook or a post-migration hook as follows:

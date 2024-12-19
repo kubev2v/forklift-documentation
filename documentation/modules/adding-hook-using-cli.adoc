@@ -17,7 +17,7 @@ You can run one pre-migration hook, one post-migration hook, or one of each per 
 
 [NOTE]
 ====
-You can retrieve additional information stored in a secret or in a `configMap` by using a `k8s` module.
+You can retrieve additional information stored in a secret or in a `ConfigMap` by using a `k8s` module.
 ====
 
 .Prerequisites
