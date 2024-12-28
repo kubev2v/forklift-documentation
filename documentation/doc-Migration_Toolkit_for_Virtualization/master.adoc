@@ -52,6 +52,9 @@ include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 
+// cold vs warm introduction
+include::modules/cold-warm-migration.adoc[leveloffset=+2]
+
 [id="additional-authentication-for-osp_{context}"]
 ==== Additional authentication methods for migrations with {osp} source providers
 

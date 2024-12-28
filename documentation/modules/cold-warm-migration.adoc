@@ -1,0 +1,75 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="mtv-cold-warm-migration_{context}"]
+= {project-short} cold migration and warm migration introduction
+
+Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a separate host. The VM is powered off, and there is no need for common shared storage.
+
+Warm migration is when a powered *_on_* VM is migrated to a separate host. A source host state is cloned to the destination host.
+
+.Warm migrations precopy stage
+
+. Create an initial snapshot of running VM disks.
+. Copy first snapshot to target: full-disk transfer, the largest amount of data copied.  It takes more time to complete.
+. Copy deltas: changed data, copying only data that has changed since the last snapshot was taken. It takes less time to complete.
+.. Create a new snapshot.
+.. Copy the delta between the previous snapshot and the new snapshot.
+.. Schedule the next snapshot, configurable by default, one hour after the last snapshot finished.
+. An arbitrary number of deltas can be copied.
+
+
+.Warm migration cutover stage
+
+. Scheduled time to finalize warm migration
+. Shut down the source VM.
+. Copy the final snapshot delta to the target.
+. Continue in the same way as cold migration
+.. Guest conversion
+.. Starting target VM (optional)
+
+
+.Cold and warm migration compared
+[width="100%",cols="20%,40%,40%",options="header",]
+|===
+|
+|Cold
+|Warm
+
+|Duration
+|Each block is copied once
+|Blocks may be copied multiple times
+
+|Fail fast
+|Convert and then transfer
+|Transfer and then convert
+
+|Tools
+a|`virt-v2v` (Red Hat Enterprise Linux 9), used to convert virtual machines from a foreign hypervisor to run on Kernel-based Virtual Machine (KVM).
+a|Containerized Data Importer (CDI), a persistent storage management add-on, and `virt-v2v` (Red Hat Enterprise Linux 9)
+
+|VM downtime
+|Shut down VM and then transfer disks
+|Disks are transferred in the background, the VM is shut down, and then cutover
+
+|Parallelism
+|Disks are transferred sequentially per VM. Concurrently across VMs.
+|Disks are transferred in parallel by different pods
+
+|Connection use
+|Keeps the connection to Source only during the transfer.
+|Takes the connection from for every snapshot transfer.
+|===
+
+[id="mtv-migration-speed-comparison_{context}"]
+== Migration speed comparison
+
+* The observed speeds for the warm migration single disk transfer and disk conversion are approximately the same as for the cold migration.
+
+* The benefit of warm migration is that the transfer of the snapshot is happening in the background while the VM is powered *_on_*.
+
+* The default snapshot time is taken every 60 minutes. If VMs change substantially, more data needs to be transferred than in cold migration when the VM is powered *_off_*.
+
+* The cutover time, meanng the shutdown of the VM and last snapshot transfer, is dependent on how much the VM has changed since the last snapshot.
