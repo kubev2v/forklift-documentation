@@ -1,0 +1,43 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="about-preparing-windows-vms-for-migration_{context}"]
+= How {project-short} prepares your Windows VMs for migration
+
+Before migration, your Windows VMs interact with your server’s hypervisor, for example, ESXi. In order to migrate your VMs, {project-short}  must first convert that hypervisor to a hypervisor that can communicate with {virt}, for example, Kernel-based Virtual Machine (KVM) or QEMU.
+
+{project-short} uses a file called `convert_windows.ml` to convert a Windows VM to be compatible with a new hypervisor.
+
+== Overview
+
+The `convert_windows.ml` file performs the following actions to prepare Windows VMs for migration. These actions are first described briefly, then in greater detail.
+
+. Initialization & Setup
++
+The script sets up the conversion environment, checks if the source VM is valid, and initializes necessary libraries.
+
+. Disk Image Identification
++
+The script identifies and works with the disk images associated with the Windows VM. The script can handle VMware Virtual Machine Disk (VMDK), Virtual Desktop Infrastructure (VDI), and other file formats.
+
+. Windows System Preparation
++
+The script ensures that the Windows operating system used by the VM are ready to be converted to a new hypervisor by performing the following actions:
+
+** Checking Windows version and architecture.
+** Installing necessary drivers or tools, for example, VirtIO drivers, into the Windows VM.
+
+. Data Transformation
++
+The script then converts the disk image of the VM into a format compatible with the destination hypervisor, for example Kernel-based Virtual machine (KVM), or QEMU. This step includes copying, converting, and modifying disk images and their contents to be compatible with the target hypervisor.
+
+. Reconfiguration & Final Adjustments
++
+Next, additional reconfiguration tasks are performed. For example, configuring the bootloader for the new hypervisor or making sure that network interfaces are correctly configured.
+
+. Output
++
+Finally, the script writes the transformed data into the output disk images and, if needed, into additional configuration files required by the new hypervisor.
+

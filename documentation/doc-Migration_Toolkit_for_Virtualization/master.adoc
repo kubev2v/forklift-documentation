@@ -350,6 +350,7 @@ This section describes {project-short} custom resources, services, and workflows
 include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
 include::modules/mtv-workflow.adoc[leveloffset=+3]
 include::modules/virt-migration-workflow.adoc[leveloffset=+3]
+include::modules/about-preparing-windows-vms-for-migration.adoc[leveloffset=+3]
 
 [id="logs-and-crs_{context}"]
 === Logs and custom resources
@@ -360,7 +361,7 @@ include::modules/collected-logs-cr-info.adoc[leveloffset=+3]
 include::modules/accessing-logs-ui.adoc[leveloffset=+3]
 include::modules/accessing-logs-cli.adoc[leveloffset=+3]
 
-// comment to create PR
+
 
 == Additional information
 
