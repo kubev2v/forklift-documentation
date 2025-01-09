@@ -10,23 +10,25 @@
 [id="resolved-issues-2-7-8_{context}"]
 == Resolved issues 2.7.8
 
-.Changing memory on VMs created by {project-short} does not correctly edit the VMs
+.{project-short} Not handling OVA NFS URL if it does not contain `:` char
 
-In earlier releases of {project-short}, when changing the memory on virtual machines (VMs) created by {project-short}, the VMs were not correctly edited. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1760[(MTV-1760)]
+In earlier releases of {project-short}, the character `:` in the NFS URL of OVAs was not handled, which created malformed URLs. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1856[(MTV-1856)]
 
-.Unable to update `Migration Network` in VMware Provider from Hosts view
+.Changing the host migration network returns an unexpected error
 
-In earlier releases of {project-short}, it was impossible to update the `Migration Network` in the *VMware Provider* when using the *Hosts view*. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1682[(MTV-1682)]
+In earlier releases of {project-short}, when changing the network from *VMkernel* to *Management network*, the migration network changed. However, an error message was returned that the request could not be completed `due to an incorrect user name or password`. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1862[(MTV-1862)]
 
+.Migrating RHEL VMs with LUKS disk fail at DiskTransferV2v stage
 
-.OVN secondary network is not working with Multus `default network` override
+In earlier releases of {project-short}, migrating Red Hat Enterprise Linux (RHEL) virtual machines (VMs) with disks encrypted with Linux Unified Key Setup (LUKS) enabled from VMWare fails at the *DiskTransferV2v* stage. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1864[(MTV-1864)]
 
-In earlier releases of {project-short}, the OVN (Open Virtual Network) secondary network does not function as expected with the Multus `default network` override. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1645[(MTV-1645)]
+.Q35 machine type is hard-coded during import from vSphere
 
-.`forklift-migration-precopy` snapshot remains on source after warm migration
+In earlier releases of {project-short}, VMs imported from vSphere always had the Q35 machine type set. However, the machine type is `floating`, and thus the VM application binary interface (ABI) can change between reboots. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1865[(MTV-1865)]
 
-In earlier releases of {project-short}, a `forklift-migration-precopy` snapshot remained on the source after warm migration. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1378[(MTV-1378)]
+.`memory.requests` and `memory.guest` are set during import from VMware
 
+In earlier releases of {project-short}, {project-short} imported VMs with the `requests.memory` field and the `memory.guest` field set. This was problematic as it prevented memory overcommit and caused unnecessary memory pressure on VMs that could lead to out-of-memory (OOM) errors. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1866[(MTV-1866)]
 
 [id="resolved-issues-2-7-7_{context}"]
 == Resolved issues 2.7.7
