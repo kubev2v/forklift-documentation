@@ -350,6 +350,7 @@ This section describes {project-short} custom resources, services, and workflows
 include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
 include::modules/mtv-workflow.adoc[leveloffset=+3]
 include::modules/virt-migration-workflow.adoc[leveloffset=+3]
+include::modules/virt-v2v-mtv.adoc[leveloffset=+3]
 
 [id="logs-and-crs_{context}"]
 === Logs and custom resources
