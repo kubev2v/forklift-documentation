@@ -8,6 +8,8 @@
 
 You must install compatible software versions.
 
+
+// check OCP version
 [cols="1,1,1,1,1,1", options="header"]
 .Compatible software versions
 |===
