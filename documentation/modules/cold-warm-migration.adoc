@@ -47,7 +47,7 @@ Warm migration is when a powered *_on_* VM is migrated to a separate host. A sou
 |Transfer and then convert
 
 |Tools
-a|`virt-v2v` (Red Hat Enterprise Linux 9), used to convert virtual machines from a foreign hypervisor to run on Kernel-based Virtual Machine (KVM).
+a|`virt-v2v` (Red Hat Enterprise Linux 9), used to convert virtual machines from a foreign hypervisor to run on Kernel-based Virtual Machines (KVMs).
 a|Containerized Data Importer (CDI), a persistent storage management add-on, and `virt-v2v` (Red Hat Enterprise Linux 9)
 
 |VM downtime
@@ -55,21 +55,11 @@ a|Containerized Data Importer (CDI), a persistent storage management add-on, and
 |Disks are transferred in the background, the VM is shut down, and then cutover
 
 |Parallelism
-|Disks are transferred sequentially per VM. Concurrently across VMs.
+|Disks are transferred sequentially for each VM. For remote migration, disks are transferred in parallel.
+footnoteref:[footnote1,Remote migration: Target environment that does not have MTV installed. Migration to a remote environment using CDI.]
 |Disks are transferred in parallel by different pods
 
 |Connection use
 |Keeps the connection to Source only during the transfer.
 |Takes the connection from for every snapshot transfer.
 |===
-
-[id="mtv-migration-speed-comparison_{context}"]
-== Migration speed comparison
-
-* The observed speeds for the warm migration single disk transfer and disk conversion are approximately the same as for the cold migration.
-
-* The benefit of warm migration is that the transfer of the snapshot is happening in the background while the VM is powered *_on_*.
-
-* The default snapshot time is taken every 60 minutes. If VMs change substantially, more data needs to be transferred than in cold migration when the VM is powered *_off_*.
-
-* The cutover time, meanng the shutdown of the VM and last snapshot transfer, is dependent on how much the VM has changed since the last snapshot.
