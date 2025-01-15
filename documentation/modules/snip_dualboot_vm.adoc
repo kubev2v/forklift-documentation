@@ -1,9 +1,10 @@
 :_content-type: SNIPPET
 
 [WARNING]
-.Migrating dual-boot operating system VMs is not supported
+.Migrating dual-boot operating system VMs has limited supported
 ====
-{project-short} does not support the migration of dual-boot operating system VMs.
+{project-short} has limited support for the migration of dual-boot operating system VMs.
 
-For example, attempting to migrate a VM with two disks with different operating systems installed (RHEL 9 and Fedora 40), which use the second HD as the root device, will cause the migration plan to result in a failed status.
+In the case of a dual-boot operating system VM, {project-short} will try to convert the first boot disk it finds.
+Alternatively the root device can be specified in the {project-short} UI.
 ====
