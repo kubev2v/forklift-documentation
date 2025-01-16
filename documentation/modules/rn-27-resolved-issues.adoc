@@ -30,6 +30,10 @@ In earlier releases of {project-short}, VMs imported from vSphere always had the
 
 In earlier releases of {project-short}, {project-short} imported VMs with the `requests.memory` field and the `memory.guest` field set. This was problematic as it prevented memory overcommit and caused unnecessary memory pressure on VMs that could lead to out-of-memory (OOM) errors. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1866[(MTV-1866)]
 
+.`virt-v2v` failure when converting dual-boot VM
+
+In earlier releases of {project-short}, there was an issue when attempting migration the migration of a VM with two disks with two different OS installed in a dual-boot configuration. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1877[(MTV-1877)] 
+
 [id="resolved-issues-2-7-7_{context}"]
 == Resolved issues 2.7.7
 
