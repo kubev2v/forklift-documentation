@@ -7,6 +7,33 @@
 
 {project-first} 2.7 has the following resolved issues:
 
+[id="resolved-issues-2-7-8_{context}"]
+== Resolved issues 2.7.8
+
+.{project-short} Not handling OVA NFS URL if it does not contain `:` char
+
+In earlier releases of {project-short}, the character `:` in the NFS URL of OVAs was not handled, which created malformed URLs. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1856[(MTV-1856)]
+
+.Changing the host migration network returns an unexpected error
+
+In earlier releases of {project-short}, when changing the network from *VMkernel* to *Management network*, the migration network changed. However, an error message was returned that the request could not be completed `due to an incorrect user name or password`. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1862[(MTV-1862)]
+
+.Migrating RHEL VMs with LUKS disk fail at DiskTransferV2v stage
+
+In earlier releases of {project-short}, migrating Red Hat Enterprise Linux (RHEL) virtual machines (VMs) with disks encrypted with Linux Unified Key Setup (LUKS) enabled from VMWare fails at the *DiskTransferV2v* stage. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1864[(MTV-1864)]
+
+.Q35 machine type is hard-coded during import from vSphere
+
+In earlier releases of {project-short}, VMs imported from vSphere always had the Q35 machine type set. However, the machine type is `floating`, and thus the VM application binary interface (ABI) can change between reboots. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1865[(MTV-1865)]
+
+.`memory.requests` and `memory.guest` are set during import from VMware
+
+In earlier releases of {project-short}, {project-short} imported VMs with the `requests.memory` field and the `memory.guest` field set. This was problematic as it prevented memory overcommit, memory hot-plug, and caused unnecessary memory pressure on VMs that could lead to out-of-memory (OOM) errors. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1866[(MTV-1866)]
+
+.`virt-v2v` failure when converting dual-boot VM
+
+In earlier releases of {project-short}, there was an issue when attempting migration the migration of a VM with two disks with two different OS installed in a dual-boot configuration. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1877[(MTV-1877)] 
+
 [id="resolved-issues-2-7-7_{context}"]
 == Resolved issues 2.7.7
 
