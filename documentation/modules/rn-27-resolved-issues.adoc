@@ -28,7 +28,7 @@ In earlier releases of {project-short}, VMs imported from vSphere always had the
 
 .`memory.requests` and `memory.guest` are set during import from VMware
 
-In earlier releases of {project-short}, {project-short} imported VMs with the `requests.memory` field and the `memory.guest` field set. This was problematic as it prevented memory overcommit and caused unnecessary memory pressure on VMs that could lead to out-of-memory (OOM) errors. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1866[(MTV-1866)]
+In earlier releases of {project-short}, {project-short} imported VMs with the `requests.memory` field and the `memory.guest` field set. This was problematic as it prevented memory overcommit, memory hot-plug, and caused unnecessary memory pressure on VMs that could lead to out-of-memory (OOM) errors. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1866[(MTV-1866)]
 
 .`virt-v2v` failure when converting dual-boot VM
 
