@@ -30,7 +30,8 @@ include::modules/rn-27-resolved-issues.adoc[leveloffset=+2]
 // Known issues by x-stream release
 include::modules/known-issues-2-7.adoc[leveloffset=+2]
 
-include::modules/mtv-changelog-2-7.adoc[leveloffset=+2]
+
+// include::modules/mtv-changelog-2-7.adoc[leveloffset=+2]
 
 
 ////
