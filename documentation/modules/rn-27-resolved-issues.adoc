@@ -10,7 +10,7 @@
 [id="resolved-issues-2-7-8_{context}"]
 == Resolved issues 2.7.8
 
-.{project-short} Not handling OVA NFS URL if it does not contain `:` char
+.{project-short} not handling OVA NFS URL if it does not contain `:` char
 
 In earlier releases of {project-short}, the character `:` in the NFS URL of OVAs was not handled, which created malformed URLs. This issue has been resolved in {project-short} 2.7.8. link:https://issues.redhat.com/browse/MTV-1856[(MTV-1856)]
 
