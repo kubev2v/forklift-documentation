@@ -37,11 +37,11 @@ The details of the plan are listed, and you can edit the items you filled in on 
 
 ifdef::vmware[]
 
-. Check the following items related to VMware. All are optional except for *Warm migration*.
+. Check the following items related to VMware.
 
 * *Warm migration* By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon, and select *Warm migration*.
 
-* *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
+* *Preserving static IPs of VMs* (Optional): By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
 +
 {project-short} then issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 
