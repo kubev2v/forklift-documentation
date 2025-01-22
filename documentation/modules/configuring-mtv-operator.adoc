@@ -8,7 +8,7 @@
 
 You can configure all of the following settings of the {operator-name} by modifying the `ForkliftController` CR, or in the *Settings* section of the *Overview* page, unless otherwise indicated.
 
-* Maximum number of virtual machines (VMs) per plan that can be migrated simultaneously.
+* Maximum number of virtual machines (VMs) or disks per plan that {project-first} can migrate simultaneously.
 * How long `must gather` reports are retained before being automatically deleted.
 * CPU limit allocated to the main controller container.
 * Memory limit allocated to the main controller container.
@@ -24,6 +24,7 @@ The procedure for configuring these settings using the user interface is present
 .Procedure
 
 * Change a parameter's value in  the `spec` portion of the `ForkliftController` CR by adding the label and value as follows:
++
 [source, YAML]
 ----
 spec:
@@ -37,7 +38,19 @@ spec:
 |Label |Description |Default value
 
 |`controller_max_vm_inflight`
-|The maximum number of VMs per plan that can be migrated simultaneously.
+a|Varies with provider as follows:
+
+* For all migrations except OVA or VMware migrations: The maximum number of disks that {project-short} can transfer simultaneously.
+* For OVA migrations: The maximum number of VMs that {project-short} can migrate simultaneously.
+*  For VMware migrations, the label has the following meanings:
+** Cold migration:
+
+*** To local {virt}: VMs for each ESXi host that can migrate simultaneously.
+*** To remote {virt}: Disks for each ESXi host that can migrate simultaneously.
+
+** Warm migration: Disks for each ESXi host that can migrate simultaneously.
++
+See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight label] for a detailed explanation of this label.
 |`20`
 
 |`must_gather_api_cleanup_max_age`

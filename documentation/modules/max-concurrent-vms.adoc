@@ -1,0 +1,27 @@
+
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="max-concurrent-vms_{context}"]
+= Configuring the controller_max_vm_inflight label
+
+The meaning of the `controller_max_vm_inflight` label, which is shown in the UI as *Max concurrent virtual machine migrations*, varies by the source provider of the migration
+
+* For all migrations except OVA or VMware migrations, the label specifies the maximum number of _disks_ that {project-first} can transfer simultaneously. In these migrations, {project-short} migrates the disks in parallel. This means that if the combined number of disks that you want to migrate is greater than the value of the setting, additional disks must wait until the queue is free, without regard for whether a VM has finished migrating.
++
+For example, if the value of the label is 15, and VM A has 5 disks, VM B has 5 disks, and VM C has 6 disks; all the disks except for the 16th disk start migrating at the same time. Once any of them has migrated, the 16th disk can be migrated, even though not all the disks on VM A and the disks on VM B have finished migrating.
+
+* For OVA migrations, the label specifies the maximum number of _VMs_ that {project-short} can migrate simultaneously, meaning that all additional disks must wait until at least one VM has been completely migrated.
++
+For example, if the value of the label is 2, and VM A has 5 disks, VM B has 5 disks, and VM C has 6 disks. All the disks on VM C must wait to migrate until either all the disks on VM A or on VM B finish migrating.
+
+* For VMware migrations, the label has the following meanings:
+
+** Cold migration:
+
+*** To local {virt}: VMs for each ESXi host that can migrate simultaneously.
+*** To remote {virt}: Disks for each ESXi host that can migrate simultaneously.
+
+** Warm migration: Disks for each ESXi host that can migrate simultaneously.
