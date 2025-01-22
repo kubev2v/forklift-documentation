@@ -34,14 +34,15 @@ The *Create migration plan* pane opens. It displays the source provider's name a
 {project-short} validates the migration plan and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error.
 +
 The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, {project-short} validates the plan again.
++
+. Check the following items in the *Settings* section of the page:
 
 ifdef::vmware[]
 
-. Check the following items related to VMware.
-
-* *Warm migration* By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon, and select *Warm migration*.
-
-* *Preserving static IPs of VMs* (Optional): By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
+* *Warm migration*: By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon, and select *Warm migration*.
+* *Transfer Network*: The network used to transfer the VMs to {virt}. By default... To edit the transfer network, click the *Edit* icon and...
+* *Target namespace*: Destination namespace, By default, this is the {virt} cluster you chose as your destination provider. To edit the namespace, click the *Edit* icon and...
+* *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
 +
 {project-short} then issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 
@@ -58,16 +59,21 @@ If the conversion fails because the boot device provided is incorrect, it is pos
 endif::[]
 ifdef::rhv[]
 
-. Check the following items related to {rhv-short}.  All are optional except for *Warm migration*.
-
 * *Warm migration* By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon, and select *Warm migration*.
-
+* *Transfer Network*: The network used to transfer the VMs to {virt}. By default... To edit the transfer network, click the *Edit* icon and...
+* *Target namespace*: Destination namespace, By default, this is the {virt} cluster you chose as your destination provider. To edit the namespace, click the *Edit* icon and...
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
 By default, {project-short} sets the CPU model on the destination cluster as follows:
 ** {project-short} preserves custom CPU settings for VMs that have them.
 ** For VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
 +
 To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Settings* section, click the *Edit* icon next to *Preserve CPU model*. Toggle the *Whether to preserve the CPU model* switch, and then click *Save*.
+endif::[]
+
+ifdef::ostack,ova,cnv[]
+* *Transfer Network*: The network used to transfer the VMs to {virt}. By default... To edit the transfer network, click the *Edit* icon and...
+
+* *Target namespace*: Destination namespace, By default, this is the {virt} cluster you chose as your destination provider. To edit the namespace, click the *Edit* icon and...
 endif::[]
 
 . If your plan is valid, you can do one of the following:
