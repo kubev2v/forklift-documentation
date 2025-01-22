@@ -124,7 +124,7 @@ Use the {project-short} user interface to migrate VMs from the following provide
 * {rhv-full} ({rhv-short})
 * {osp}
 * Open Virtual Appliances (OVAs) that were created by VMware vSphere
-* Remote {virt} clusters
+* {virt} clusters
 
 :!mtv:
 :context: vmware
