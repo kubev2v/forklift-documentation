@@ -19,7 +19,7 @@ You can configure all of the following settings of the {operator-name} by modify
 * Configuration map of operating systems to preferences for vSphere source providers (`ForkliftController` CR only).
 * Configuration map of operating systems to preferences for {rhv-full} ({rhv-short}) source providers (`ForkliftController` CR only).
 
-The procedure for configuring these settings using the user interface is presented in xref:mtv-overview-page_{context}[Configuring MTV settings]. The procedure for configuring these settings by modifying the `ForkliftController` CR is presented following.
+The procedure for configuring these settings using the user interface is presented in xref:mtv-settings_{context}[Configuring MTV settings]. The procedure for configuring these settings by modifying the `ForkliftController` CR is presented following.
 
 .Procedure
 
