@@ -16,7 +16,7 @@ In earlier releases of {project-short}, the `forklift-contoller` inventory conta
 
 .OVN secondary network not working with Multus default network override
 
-In earlier releases of {project-short}, the OVN secondary network was not working with Multus default network override. This issue caused the importer pod to become stuck, as they were created when there were multiple networks and the wrong default network override annotation was configured. This issue has been resolved in {project-short} 2.7.9. link:https://issues.redhat.com/browse/MTV-1645[(MTV-1645)]
+In earlier releases of {project-short}, the OVN secondary network was not working with Multus default network override. This issue caused the importer pod to become stuck, as the importer pod was created when there were multiple networks and the wrong default network override annotation was configured. This issue has been resolved in {project-short} 2.7.9. link:https://issues.redhat.com/browse/MTV-1645[(MTV-1645)]
 
 .{project-short} migration failed with module `network-legacy` configured in RHEL 8 guests
 
