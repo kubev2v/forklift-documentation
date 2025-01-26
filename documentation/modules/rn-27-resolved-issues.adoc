@@ -10,7 +10,7 @@
 [id="resolved-issues-2-7-9_{context}"]
 == Resolved issues 2.7.9
 
-.Forklift contoller panic in the inventory
+.Forklift controller panic in the inventory
 
 In earlier releases of {project-short}, the `forklift-contoller` inventory container would panic, and the VM would not be migrated. This issue has been resolved in {project-short} 2.7.9. link:https://issues.redhat.com/browse/MTV-1610[(MTV-1610)]
 
