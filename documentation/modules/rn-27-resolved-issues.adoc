@@ -23,9 +23,6 @@ In earlier releases of {project-short}, when migrating virtual machines (VMs) fr
 
 In earlier releases of {project-short}, the OVN secondary network was not working with Multus default network override. This issue caused the importer pod to become stuck, as the importer pod was created when there were multiple networks and the wrong default network override annotation was configured. This issue has been resolved in {project-short} 2.7.9. link:https://issues.redhat.com/browse/MTV-1645[(MTV-1645)]
 
-.{project-short} migration failed with module `network-legacy` configured in RHEL 8 guests
-
-In earlier releases of {project-short}, migration failed if the `dracut` module configuration file was available in the guest and the `dhcp-client` package was not installed. This issue has been resolved in {project-short} 2.7.9. link:https://issues.redhat.com/browse/MTV-1694[(MTV-1694)]
 ////
 
 
