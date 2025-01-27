@@ -18,31 +18,32 @@ You can configure all of the following settings of the {operator-name} by modify
 * Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based (`ForkliftController` CR only).
 * Configuration map of operating systems to preferences for vSphere source providers (`ForkliftController` CR only).
 * Configuration map of operating systems to preferences for {rhv-full} ({rhv-short}) source providers (`ForkliftController` CR only).
+* Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration (`ForkliftController` CR only).
 
 The procedure for configuring these settings using the user interface is presented in xref:mtv-settings_{context}[Configuring MTV settings]. The procedure for configuring these settings by modifying the `ForkliftController` CR is presented following.
 
 .Procedure
 
-* Change a parameter's value in  the `spec` portion of the `ForkliftController` CR by adding the label and value as follows:
+* Change a parameter's value in  the `spec` section of the `ForkliftController` CR by adding the parameter and value as follows:
 +
 [source, YAML]
 ----
 spec:
-  label: value <1>
+  parameter: value # <1>
 ----
-<1> Labels you can configure using the CLI are shown in the table that follows, along with a description of each label and its default value.
+<1> Parameters that you can configure using the CLI are shown in the table that follows, along with a description of each parameter and its default value.
 
-.{operator-name} labels
+.{operator-name} parameters
 [cols="1,1,1",options="header"]
 |===
-|Label |Description |Default value
+|Parameter |Description |Default value
 
 |`controller_max_vm_inflight`
 a|Varies with provider as follows:
 
 * For all migrations except OVA or VMware migrations: The maximum number of disks that {project-short} can transfer simultaneously.
 * For OVA migrations: The maximum number of VMs that {project-short} can migrate simultaneously.
-*  For VMware migrations, the label has the following meanings:
+*  For VMware migrations, the parameter has the following meanings:
 ** Cold migration:
 
 *** To local {virt}: VMs for each ESXi host that can migrate simultaneously.
@@ -50,7 +51,7 @@ a|Varies with provider as follows:
 
 ** Warm migration: Disks for each ESXi host that can migrate simultaneously.
 +
-See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight label] for a detailed explanation of this label.
+See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this parameter.
 |`20`
 
 |`must_gather_api_cleanup_max_age`
@@ -88,9 +89,9 @@ See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight
 |`vsphere_osmap_configmap_name`
 |Configuration map for vSphere source providers. This configuration map maps the operating system of the incoming VM to a {virt} preference name. This configuration map needs to be in the namespace where the {project-short} Operator is deployed.
 
-To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* -> *Preferences*.
+To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* > *Preferences*.
 
-You can add values to the configuration map when this label has the default value, `forklift-vsphere-osmap.` In order to override or delete values, specify a configuration map that is different from `forklift-vsphere-osmap`.
+Add values to the configuration map when this parameter has the default value, `forklift-vsphere-osmap.` To override or delete values, specify a configuration map that is different from `forklift-vsphere-osmap`.
 
 `ForkliftController` CR only.
 |`forklift-vsphere-osmap`
@@ -100,10 +101,17 @@ You can add values to the configuration map when this label has the default valu
 
 To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* -> *Preferences*.
 
-You can add values to the configuration map when this label has the default value, `forklift-ovirt-osmap.` In order to override or delete values, specify a configuration map that is different from `forklift-ovirt-osmap`.
+You can add values to the configuration map when this parameter has the default value, `forklift-ovirt-osmap.` In order to override or delete values, specify a configuration map that is different from `forklift-ovirt-osmap`.
 
 `ForkliftController` CR only.
 |`forklift-ovirt-osmap`
+
+|`controller_retain_precopy_importer_pods`
+|Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration.
+
+`ForkliftController` CR only.
+
+|`false`
 |===
 
 

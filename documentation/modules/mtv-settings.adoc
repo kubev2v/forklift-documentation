@@ -26,7 +26,7 @@ a|Varies with provider as follows:
 
 ** Warm migration: Disks for each ESXi host that can migrate simultaneously.
 +
-See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight label] for a detailed explanation of this setting.
+See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this setting.
 |20
 
 |Must gather cleanup after (hours)
@@ -52,7 +52,7 @@ See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight
 
 .Procedure
 
-. In the {ocp} web console, click *Migration* -> *Overview*. The *Settings* list is on the right-hand side of the page.
+. In the {ocp} web console, click *Migration* > *Overview*. The *Settings* list is on the right side of the page.
 . In the *Settings* list, click the Edit icon of the setting you want to change.
 . Choose a setting from the list.
 . Click *Save*.
