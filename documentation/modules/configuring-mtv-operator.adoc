@@ -18,12 +18,13 @@ You can configure all of the following settings of the {operator-name} by modify
 * Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based (`ForkliftController` CR only).
 * Configuration map of operating systems to preferences for vSphere source providers (`ForkliftController` CR only).
 * Configuration map of operating systems to preferences for {rhv-full} ({rhv-short}) source providers (`ForkliftController` CR only).
+* Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration (`ForkliftController` CR only).
 
 The procedure for configuring these settings using the user interface is presented in xref:mtv-settings_{context}[Configuring MTV settings]. The procedure for configuring these settings by modifying the `ForkliftController` CR is presented following.
 
 .Procedure
 
-* Change a parameter's value in  the `spec` portion of the `ForkliftController` CR by adding the label and value as follows:
+* Change a label's value in  the `spec` section of the `ForkliftController` CR by adding the label and value as follows:
 +
 [source, YAML]
 ----
@@ -104,6 +105,13 @@ You can add values to the configuration map when this label has the default valu
 
 `ForkliftController` CR only.
 |`forklift-ovirt-osmap`
+
+|`controller_retain_precopy_importer_pods`
+|Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration.
+
+`ForkliftController` CR only.
+
+|`false`
 |===
 
 
