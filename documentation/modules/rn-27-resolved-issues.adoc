@@ -16,7 +16,7 @@ In earlier releases of {project-short}, the `forklift-contoller` inventory conta
 
 .vCenter sessions keep on increasing during migration plan execution
 
-In earlier releases of {project-short}, when warm migrating virtual machines (VMs) from VMware vSphere 7 to {virt}, vCenter sessions kept increasing. This issue has been resolved in {project-short} 2.7.9. link:https://issues.redhat.com/browse/MTV-1929[(MTV-1929)]
+In earlier releases of {project-short}, when migrating virtual machines (VMs) from VMware vSphere 7 to {virt}, vCenter sessions kept increasing. This issue has been resolved in {project-short} 2.7.9. link:https://issues.redhat.com/browse/MTV-1929[(MTV-1929)]
 
 ////
 .OVN secondary network not working with Multus default network override
