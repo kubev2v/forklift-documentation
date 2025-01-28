@@ -26,7 +26,7 @@ Ensure fast storage and network speeds, both for VMware and {ocp} (OCP) environm
 ** For example, 200 to 325 MiB/s was the average network transfer rate from the `vmnic` for each ESXi host associated with transferring data to the OCP interface.
 
 [id="mtv-performance-datastore-read_{context}"]
-== Ensure fast datastore read speeds to ensure efficient and performant migrations.
+== Ensure fast datastore read speeds to ensure efficient and performant migrations
 
 Datastores read rates impact the total transfer times, so it is essential to ensure fast reads are possible from the ESXi datastore to the ESXi host.  
 
@@ -67,20 +67,19 @@ Where possible, ensure that hosts used to perform migrations are set with BIOS p
 
 Testing showed that when transferring more than 10 VMs with both BIOS and host power management set accordingly, migrations had an increase of 15 MiB in the average datastore read rate.
 
-
 [id="mtv-performance-network-loads_{context}"]
 == Avoid additional network load on VMware networks
 
 You can reduce the network load on VMware networks by selecting the migration network when using the ESXi endpoint.
 
-By incorporating a virtualization provider, {project-short} enables the selection of a specific network, which is accessible on the ESXi hosts, for the purpose of migrating virtual machines to OCP.  Selecting this migration network from the ESXi host in the {project-short} UI will ensure that the transfer is performed using the selected network as an ESXi endpoint..
+By incorporating a virtualization provider, {project-short} enables the selection of a specific network, which is accessible on the ESXi hosts, for the purpose of migrating virtual machines to OCP.  Selecting this migration network from the ESXi host in the {project-short} UI will ensure that the transfer is performed using the selected network as an ESXi endpoint.
 
 It is imperative to ensure that the network selected has connectivity to the OCP interface, has adequate bandwidth for migrations, and that the network interface is not saturated.
 
 In environments with fast networks, such as 10GbE networks, migration network impacts can be expected to match the rate of ESXi datastore reads.
 
 [id="mtv-performance-concurrent-disk_{context}"]
-== Control maximum concurrent disk migrations per ESXi host.
+== Control maximum concurrent disk migrations per ESXi host
 
 Set the `MAX_VM_INFLIGHT MTV` variable to control the maximum number of concurrent VMs transfers allowed for the ESXi host. 
 
@@ -98,7 +97,6 @@ In {project-short} 2.6, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, reg
 
 [id="mtv-performance-multiple-vms-concurrently_{context}"]
 == Migrations are completed faster when migrating multiple VMs concurrently
-
 
 When multiple VMs from a specific ESXi host are to be migrated, starting concurrent migrations for multiple VMs leads to faster migration times. 
 
@@ -122,19 +120,17 @@ The migration rate was almost the same when moving 10 or 20 virtual machines sim
 ====
 
 [id="mtv-performance-multiple-hosts_{context}"]
-== Migrations complete faster using multiple hosts.
+== Migrations complete faster using multiple hosts
 
 Using multiple hosts with registered VMs equally distributed among the ESXi hosts used for migrations leads to faster migration times.
 
 Testing showed that when transferring more than 10 single disk VMS, each containing 35 GiB of data out of a total of 50G total, using an additional host can reduce migration time.
-
 
 .Examples
 
 * *80 single disk VMs, containing 35 GiB of data each, using a single host took 2 hours and 43 minutes, with a migration rate of 294 MiB/s.*
 
 * *80 single disk VMs, containing 35 GiB of data each, using 8 ESXi hosts took 41 minutes, with a migration rate of 1,173 MiB/s.*
-
 
 [NOTE]
 ====
@@ -158,8 +154,8 @@ Comparing migrations of:
 
 Testing showed that by breaking one single large plan into multiple moderately sized plans, for example, 100 VMS per plan, the total migration time can be reduced.
 
-[id="mtv-performance-max-values_{context}"]
-== Maximum values tested
+[id="mtv-performance-max-values-cold_{context}"]
+== Maximum values tested for cold migrations
 
 * Maximum number of ESXi hosts tested: 8
 * Maximum number of VMs in a single migration plan: 500
@@ -174,4 +170,42 @@ Testing showed that by breaking one single large plan into multiple moderately s
 * *Maximum cold migration transfer rate of the multiple VMs (single disk) from a single ESXi host: 294 MiB/s (concurrent migration of 30 VMs, 35/50 GiB used, from Single ESXi)*
 * *Maximum cold migration transfer rate of the multiple VMs (single disk) from multiple ESXi hosts: 1173MB/s (concurrent migration of 80 VMs, 35/50 GiB used, from 8 ESXi servers, 10 VMs from each ESXi)*
 
-For additional details on performance, see xref:mtv-performance-addendum_mtv[{project-short} performance addendum]
+[id="mtv-warm-migration-recommendations_{context}"]
+== Warm migration recommendations
+
+The following recommendations are specific to warm migrations:
+
+[id="mtv-warm-migration-recommendations-disks-in-parallel_{context}"]
+=== Migrate up to 400 disks in parallel
+
+Testing involved migrating 200 VMs in parallel, with 2 disks each using 8 ESXi hosts, for a total of 400 disks. No tests were run on migration plans migrating over 400 disks in parallel, so it is not recommended to migrate over this number of disks in parallel.
+
+[id="mtv-warm-migration-recommendations-effects-of-precopy-speed_{context}"]
+=== Migrate up to 200 disks in parallel for the fastest rate
+
+Testing was successfully performed on parallel disk migrations with 200, 300, and 400 disks. There was a decrease in the precopy migration rate, approximately 25%, between the tests migrating 200 disks and those migrating 300 and 400 disks.
+
+Therefore, it is recommended to perform parallel disk migrations in groups of 200 or fewer, instead of 300 to 400 disks, unless a decline of 25% in precopy speed does not affect your cutover planning.
+
+[id="mtv-warm-migration-recommendations-set-cutover-time_{context}"]
+=== When possible, set cutover time to be immediately after a migration plan starts
+
+To reduce the overall time of warm migrations, it is recommended to set the cutover to occur immediately after the migration plan is started. This causes {project-short} to run *only one* precopy per VM. This recommendation is valid, no matter how many VMs are in the migration plan.
+
+[id="mtv-warm-migration-recommendations-increase-precopy-intevals_{context}"]
+=== Increase precopy intervals between snapshots
+
+If you are creating many migration plans with a single VM and have enough time between the migration start and the cutover, increase the value of the `controller_precopy_interval` parameter to between 120 and 240 minutes, inclusive. The longer setting will reduce the total number of snapshots and disk transfers per VM before the cutover.
+
+[id="mtv-performance-max-values-warm_{context}"]
+== Maximum values tested for warm migrations
+* Maximum number of ESXi hosts tested: 8
+* Maximum number of worker nodes: 12
+* Maximum number of VMs in a single migration plan: 200
+* Maximum number of total parallel disk transfers: 400, with 200 VMs, 6 ESXis, and a transfer rate of 667 MB/s
+* Maximum number of disks on a single VM migrated: 3
+* Maximum number of parallel disk transfers per ESXi host: 68
+* *Maximum transfer rate observed of a single disk with no concurrent migrations: 76.5 MB/s*
+* *Maximum transfer rate observed of multiple disks from a single ESXi host: 253 MB/s (concurrent migration of 10 VMs, 1 disk each, 35/50 GiB used per disk)*
+* *Total transfer rate observed of multiple disks (210) from 8 ESXi hosts: 802 MB/s (concurrent migration of 70 VMs, 3 disks each, 35/50 GiB used per disk)*
+
