@@ -67,7 +67,7 @@ If you want to adjust the maximum transmission unit (MTU) of the {ocp-short} tra
 . {rhv-short} source providers only (Optional):
 
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
-By default, {project-short} sets the CPU model on the destination cluster as follows: {project-short} preserves custom CPU settings for VMs that have them, but, for VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
+By default, {project-short} sets the CPU model on the destination cluster as follows: {project-short} preserves custom CPU settings for VMs that have them, but for VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
 +
 To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Settings* section, click the Edit icon next to *Preserve CPU model*. Toggle the *Whether to preserve the CPU model* switch, and then click *Save*.
 
