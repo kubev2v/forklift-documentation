@@ -360,7 +360,9 @@ include::modules/collected-logs-cr-info.adoc[leveloffset=+3]
 include::modules/accessing-logs-ui.adoc[leveloffset=+3]
 include::modules/accessing-logs-cli.adoc[leveloffset=+3]
 
-// comment to create PR
+== Telemetry
+
+include::modules/mtv-telemetry.adoc[leveloffset=+2]
 
 == Additional information
 
