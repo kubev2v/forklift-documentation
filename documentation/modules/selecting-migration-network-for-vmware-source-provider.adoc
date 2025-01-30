@@ -11,6 +11,7 @@ You can select a migration network in the {ocp} web console for a source provide
 Using the default network for migration can result in poor performance because the network might not have sufficient bandwidth. This situation can have a negative effect on the source platform because the disk transfer operation might saturate the network.
 
 include::snip_vmware_esxi_nfc.adoc[]
+include::snip-mtu-value.adoc[]
 
 .Prerequisites
 
