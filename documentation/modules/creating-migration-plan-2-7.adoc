@@ -38,7 +38,7 @@ The *Create migration plan* pane opens. It displays the source provider's name a
 . Click *Add mapping* to edit a suggested network mapping or a storage mapping, or to add one or more additional mappings.
 . Click *Create migration plan*.
 +
-{project-short} validates the migration plan and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error. The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, {project-short} validates the plan again.
+{project-short} validates the migration plan, and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error. The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, {project-short} validates the plan again.
 
 . VMware source providers only (All optional):
 
