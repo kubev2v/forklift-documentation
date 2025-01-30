@@ -60,7 +60,7 @@ If the conversion fails because the boot device provided is incorrect, it is pos
 +
 To learn more about the different types of networks {ocp-short} supports, see https://docs.openshift.com/container-platform/4.16/networking/multiple_networks/understanding-multiple-networks.html#additional-networks-provided [Additional Networks In OpenShift Container Program].
 +
-If you want to change the MTU of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+If you want to change the MTU of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 . {rhv-short} source providers only (Optional):
 
