@@ -31,7 +31,7 @@ You can run one pre-migration hook, one post-migration hook, or one of each per 
 . For a pre-migration hook, perform the following steps:
 
 .. In the *Pre migration hook* section, toggle the *Enable hook* switch to *Enable pre migration hook*.
-.. Enter the *Hook runner image*. The default image is `quay.io/konveyor/hook-runner` and this value must be used if you are adding an Ansible playbook.
+.. Enter the *Hook runner image*.  but if they specify the spec.playbook they need to provide us with image that has an ansible-runner.
 .. Paste your hook as a YAML file in the *Ansible playbook* text box.
 
 . For a post-migration hook, perform the following steps:

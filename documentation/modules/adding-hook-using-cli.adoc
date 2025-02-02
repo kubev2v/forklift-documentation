@@ -49,7 +49,7 @@ data:
 kind: Secret
 metadata:
   name: ssh-credentials
-  namespace: konveyor-forklift
+  namespace: openshift-mtv
 type: Opaque
 ----
 . Encode your playbook by concatenating a file and piping it for base64, for example:
