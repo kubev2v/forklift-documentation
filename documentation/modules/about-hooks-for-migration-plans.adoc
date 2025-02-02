@@ -18,8 +18,7 @@ The default hook image for an {project-short} hook is `quay.io/konveyor/hook-run
 
 [id="hook-execution_{context}"]
 == Hook execution
-An Ansible playbook that is provided as part of a migration hook is mounted into the hook container as a `ConfigMap`. The hook container is run as a job on the desired cluster, using the default `ServiceAccount` in the `konveyor-forklift` namespace.
-
+An Ansible playbook that is provided as part of a migration hook is mounted into the hook container as a `ConfigMap`. The hook container is run as a job on the desired cluster in the `openshift-mtv` namespace using the `ServiceAccount` you choose.
 
 When you add a hook, you must specify the namespace where the `Hook` CR is located, the name of the hook, and whether the hook is a pre-migration hook or a post-migration hook.
 
