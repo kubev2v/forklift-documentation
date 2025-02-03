@@ -39,6 +39,11 @@ image::migration_hook_process.png[Adding a hook to a migration plan]
 .. Input an Ansible hook image to the {project-short} controller using either the UI or the CLI.
 +
 * In the UI, specify the `ansible-runner` and enter the `playbook.yml` that contains the hook.
+
+ the spec.playbook they need to provide us with image that has an ansible-runner. So they don't need to be based on the hook-runner but only need the ansible-runner.
+
+
+
 * In the CLI, input the hook image, which specifies the playbook that runs the hook.
 
 .. If you need additional data to run the playbook inside the pod, such as SSH data, create a Secret that contains credentials for the VM. The Secret is not mounted to the pod, but is called by the playbook.

@@ -24,14 +24,14 @@ You can retrieve additional information stored in a secret or in a `ConfigMap` b
 
 * Migration plan
 * Migration hook image or the playbook containing the hook image
+* File containing the Secret for the source provider
+* {ocp} service account called by the hook and that has at least write access for the namespace you are working in
 
 [NOTE]
 ====
-You can run one pre-migration hook, one post-migration hook, or one of each per migration plan.
+For instructions for creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html
 ====
 
-* File containing the Secret for the source provider
-* {ocp} service account that has at least write access for the namespace you are working in
 * SSH access for VMs you want to migrate with the public key installed on the VMs
 * VMs running on Microsoft Server only: Remote Execution enabled
 
@@ -61,7 +61,9 @@ $ cat playbook.yml | base64 -w0
 +
 [NOTE]
 ====
-You can also use a `here` document to add instructions to encode a playbook inside a larger command:
+You can also use a `here` document - a file preceded and followed by `EOF` - to add instructions to encode a playbook inside a larger command:
+
+.Example
 
 [source,shell]
 ----
