@@ -8,18 +8,24 @@
 
 You can add a migration hook to an existing migration plan using the {ocp} web console. Note that you need to run one command in the {project-first} CLI.
 
-.Prerequisites
-
-* Migration plan
-* Migration hook file, whose contents you copy and paste into the web console
+For example, you can create a hook to install the `cloud-init` service on a VM and write a file before migration.
 
 [NOTE]
 ====
 You can run one pre-migration hook, one post-migration hook, or one of each per migration plan.
 ====
 
+.Prerequisites
+
+* Migration plan
+* Migration hook file, whose contents you copy and paste into the web console
 * File containing the `Secret` for the source provider
-* {ocp} service account that has at least write access for the namespace you are working in
+* {ocp} service account called by the hook and that has at least write access for the namespace you are working in
+
+[NOTE]
+====
+For instructions for creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html
+====
 * SSH access for VMs you want to migrate with the public key installed on the VMs
 * VMs running on Microsoft Server only: Remote Execution enabled
 
@@ -31,7 +37,7 @@ You can run one pre-migration hook, one post-migration hook, or one of each per 
 . For a pre-migration hook, perform the following steps:
 
 .. In the *Pre migration hook* section, toggle the *Enable hook* switch to *Enable pre migration hook*.
-.. Enter the *Hook runner image*.  but if they specify the spec.playbook they need to provide us with image that has an ansible-runner.
+.. Enter the *Hook runner image*. If you are specifying the `spec.playbook`, you need to use an image that has an `ansible-runner`.
 .. Paste your hook as a YAML file in the *Ansible playbook* text box.
 
 . For a post-migration hook, perform the following steps:
