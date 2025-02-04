@@ -34,6 +34,11 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 * link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
 * link:https://access.redhat.com/articles/6380311[Performance recommendations for migrating from Red Hat Virtualization to OpenShift Virtualization].
 
+// cold vs warm introduction
+include::modules/cold-warm-migration.adoc[leveloffset=+1]
+// cold vs warm migration speed comparison
+include::modules/mtv-migration-speed-comparison.adoc[leveloffset=+2]
+
 include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 
 [id="prerequisites_{context}"]
@@ -51,6 +56,7 @@ include::modules/network-prerequisites.adoc[leveloffset=+2]
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
+
 
 [id="additional-authentication-for-osp_{context}"]
 ==== Additional authentication methods for migrations with {osp} source providers
