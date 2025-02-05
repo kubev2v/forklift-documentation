@@ -8,7 +8,7 @@
 :ocp: Red Hat OpenShift
 :ocp-name: OpenShift
 :ocp-short: OpenShift
-// when udating the ocp-version, update the ocp-y-version
+// when updating the ocp-version, update the ocp-y-version
 :ocp-version: 4.17
 :ocp-y-version: 4.17, 4.16, 4.15
 :operator: mtv-operator
