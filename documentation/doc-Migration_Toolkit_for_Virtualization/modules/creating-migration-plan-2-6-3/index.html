@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-02-05 18:45:07 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/doc-Migration_Toolkit_for_Virtualization/modules/creating-migration-plan-2-6-3/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <div id="creating-migration-plan-2-6-3_forklift" class="paragraph">
+<p>+
+The <strong>Create migration plan</strong> pane opens. It displays the source provider&#8217;s name and suggestions for a target provider and namespace, a network map, and a storage map.
+. Enter the <strong>Plan name</strong>.
+. Make any needed changes to the editable items.
+. Click <strong>Add mapping</strong> to edit a suggested network mapping or a storage mapping, or to add one or more additional mappings.
+. Click <strong>Create migration plan</strong>.</p>
+</div>
+<div class="paragraph">
+<p>+
+Forklift validates the migration plan and the <strong>Plan details</strong> page opens, indicating whether the plan is ready for use or contains an error. The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, Forklift validates the plan again.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>VMware source providers only (All optional):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Preserving static IPs of VMs</strong>: By default, virtual network interface controllers (vNICs) change during the migration process.  As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the Edit icon next to <strong>Preserve static IPs</strong> and toggle the <strong>Whether to preserve the static IPs</strong> switch in the window that opens. Then click <strong>Save</strong>.</p>
+<div class="paragraph">
+<p>Forklift then issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to Forklift.</p>
+</div>
+</li>
+<li>
+<p><strong>Entering a list of decryption passphrases for disks encrypted using Linux Unified Key Setup (LUKS)</strong>: To enter a list of decryption passphrases for LUKS-encrypted devices, in the <strong>Settings</strong> section, click the Edit icon next to <strong>Disk decryption passphrases</strong>, enter the passphrases, and then click <strong>Save</strong>. You do not need to enter the passphrases in a specific order - for each LUKS-encrypted device, Forklift tries each passphrase until one unlocks the device.</p>
+</li>
+<li>
+<p><strong>Specifying a root device</strong>: Applies to multi-boot VM migrations only. By default, Forklift uses the first bootable device detected as the root device.</p>
+<div class="paragraph">
+<p>To specify a different root device, in the <strong>Settings</strong> section, click the Edit icon next to <strong>Root device</strong> and choose a device from the list of commonly-used options, or enter a device in the text box.</p>
+</div>
+<div class="paragraph">
+<p>Forklift uses the following format for disk location: <code>/dev/sd&lt;disk_identifier&gt;&lt;disk_partition&gt;</code>. For example, if the second disk is the root device and the operating system is on the disk&#8217;s second partition, the format would be: <code>/dev/sdb2</code>. After you enter the boot device, click <strong>Save</strong>.</p>
+</div>
+<div class="paragraph">
+<p>If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by looking at the conversion pod logs.</p>
+</div>
+</li>
+<li>
+<p><strong>OKD transfer network</strong>: You can configure an OKD network in the ocp-short} web console by clicking <strong>Networking &gt; NetworkAttachmentDefinitions</strong>.</p>
+<div class="paragraph">
+<p>To learn more about the different types of networks OKD supports, see <a href="https://docs.openshift.com/container-platform/4.16/networking/multiple_networks/understanding-multiple-networks.html#additional-networks-provided" class="bare">https://docs.openshift.com/container-platform/4.16/networking/multiple_networks/understanding-multiple-networks.html#additional-networks-provided</a> [Additional Networks In OpenShift Container Program].</p>
+</div>
+<div class="paragraph">
+<p>If you want to change the MTU of the OKD transfer network, you must also change the MTU of the VMware migration network. For more information, see <a href="#selecting-migration-network-for-vmware-source-provider_vmware">Selecting a migration network for a VMware source provider</a>.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>oVirt source providers only (Optional):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Preserving the CPU model of VMs that are migrated from oVirt</strong>: Generally, the CPU model (type) for oVirt VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
+By default, Forklift sets the CPU model on the destination cluster as follows: Forklift preserves custom CPU settings for VMs that have them, but, for VMs without custom CPU settings, Forklift does not set the CPU model. Instead, the CPU model is later set by KubeVirt.</p>
+<div class="paragraph">
+<p>To preserve the cluster-level CPU model of your oVirt VMs, in the <strong>Settings</strong> section, click the Edit icon next to <strong>Preserve CPU model</strong>. Toggle the <strong>Whether to preserve the CPU model</strong> switch, and then click <strong>Save</strong>.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the plan is valid,</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You can run the plan now by clicking <strong>Start migration</strong>.</p>
+</li>
+<li>
+<p>You can run the plan later by selecting it on the <strong>Plans for virtualization</strong> page and following the procedure in <a href="#running-migration-plan_mtv">Running a migration plan</a>.</p>
+<div class="paragraph">
+<p>Unresolved directive in creating-migration-plan-2-6-3.adoc - include::snip_vmware-name-change.adoc[]</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>
