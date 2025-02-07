@@ -10,3 +10,10 @@
 
 * In {project-short} 2.7.0, warm migration is now based on RHEL 9 inheriting features and bug fixes.
 
+// https://issues.redhat.com/browse/MTV-2039
+* In {project-short} 2.7.10, you can specify the `plan.spec.diskBus` which will be on all disks during the creation.
++
+Possible options are:
+* SCSI
+* SATA
+* VirtIO
