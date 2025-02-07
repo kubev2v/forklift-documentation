@@ -17,7 +17,7 @@ include::modules/rn-2.7.adoc[leveloffset=+1]
 // Technical changes by x-stream release
 include::modules/technical-changes-2-7.adoc[leveloffset=+2]
 
-include::modules/mtv-selected-packages-2-7.adoc[leveloffset=+3]
+//
 
 // For a full list of packages in {project-short}, see xref:mtv-changelog-2-7_release-notes[{project-short} changelog].
 
@@ -33,6 +33,10 @@ include::modules/known-issues-2-7.adoc[leveloffset=+2]
 
 // include::modules/mtv-changelog-2-7.adoc[leveloffset=+2]
 
+[id="release-notes-addendum_{context}"]
+== Release notes addendum
+
+include::modules/mtv-selected-packages-2-7.adoc[leveloffset=+3]
 
 ////
 include::modules/rn-2.6.adoc[leveloffset=+1]
