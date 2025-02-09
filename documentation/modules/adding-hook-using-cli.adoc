@@ -58,23 +58,6 @@ type: Opaque
 ----
 $ cat playbook.yml | base64 -w0
 ----
-+
-[NOTE]
-====
-You can also use a `here` document - a file preceded and followed by `EOF` - to add instructions to encode a playbook inside a larger command:
-
-.Example
-
-[source,shell]
-----
-$ cat << EOF | base64 -w0
-- hosts: localhost
-  tasks:
-  - debug:
-      msg: test
-EOF
-----
-====
 
 . Create a Hook CR:
 +
@@ -88,14 +71,13 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/konveyor/hook-runner
+  serviceAccount:<ervice account> <1>
   playbook: |
-    LS0tCi0gbm...
+    LS0tCi0gbm... <2>
 EOF
 ----
-+
-where:
-+
-`playbook` refers to an optional Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must be `hook-runner`.
+<1> (Optional) {ocp} service account. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
+<2> Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
 +
 [NOTE]
 ====
