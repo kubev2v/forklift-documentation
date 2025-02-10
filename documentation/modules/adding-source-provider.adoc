@@ -128,11 +128,11 @@ ifdef::ostack[]
 
 ** *Application credential ID*
 *** *Application credential ID*: {osp} application credential ID
-*** *Application credential secret*: {osp} https://github.com/kubev2v/forklift-documentation/pull/402pplication credential `Secret`
+*** *Application credential secret*: {osp} application credential `Secret`
 
 ** *Application credential name*
 *** *Application credential name*: {osp} application credential name
-*** *Application credential secret*: : {osp} application credential `Secret`
+*** *Application credential secret*: {osp} application credential `Secret`
 *** *Username*: {osp} username
 *** *Domain*: {osp} domain name
 
