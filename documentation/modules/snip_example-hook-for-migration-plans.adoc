@@ -31,7 +31,7 @@ The example migration hook that follows ensures that the VM can be accessed usin
       mode: 0600
 
   - add_host:
-      name: "{{ workload.vm.ipaddress }}"  # ALT "{{ workload.vm.guestnetworks[2].ip }}"
+      name: "{{ workload.vm.ipaddress }}"  # ALT "{{ .vm.guestnetworks[2].ip }}"
       ansible_user: root
       groups: vms
 
