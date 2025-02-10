@@ -12,7 +12,7 @@ For example, you can create a `Hook` CR to install the `cloud-init` service on a
 
 [NOTE]
 ====
-You can run one pre-migration hook, one post-migration hook, or one of each per migration plan. Each hook needs its own `Hook` needs its own CR, but a `Plan` CR contains data for all the hooks it uses.
+You can run one pre-migration hook, one post-migration hook, or one of each per migration plan. Each hook needs its own `Hook` CR, but a `Plan` CR contains data for all the hooks it uses.
 ====
 
 [NOTE]
@@ -26,14 +26,11 @@ You can retrieve additional information stored in a secret or in a `ConfigMap` b
 * Migration hook image or the playbook containing the hook image
 * File containing the Secret for the source provider
 * {ocp} service account called by the hook and that has at least write access for the namespace you are working in
-
-[NOTE]
-====
-For instructions for creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html
-====
-
 * SSH access for VMs you want to migrate with the public key installed on the VMs
 * VMs running on Microsoft Server only: Remote Execution enabled
+
+.Additional resources
+For instructions for creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts]
 
 .Procedure
 . If needed, create a Secret with an SSH private key for the VM.
@@ -52,7 +49,7 @@ metadata:
   namespace: openshift-mtv
 type: Opaque
 ----
-. Encode your playbook by concatenating a file and piping it for base64, for example:
+. Encode your playbook by concatenating a file and piping it for Base64 encoding, for example:
 +
 [source,shell]
 ----
@@ -71,7 +68,7 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/konveyor/hook-runner
-  serviceAccount:<ervice account> <1>
+  serviceAccount:<service account> <1>
   playbook: |
     LS0tCi0gbm... <2>
 EOF
@@ -115,4 +112,4 @@ In order for a PreHook to run on a VM, the VM must be started and available via 
 
 include::snip_example-hook-for-migration-plans.adoc[]
 
-// test 2
+
