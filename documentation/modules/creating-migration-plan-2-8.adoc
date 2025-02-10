@@ -8,7 +8,7 @@ Use the {ocp} web console to create a migration plan. Specify the source provide
 
 [WARNING]
 ====
-Do not include virtual machines with guest initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before a migration or reconfiguration after the migration
+Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
 
 This prevents concurrent disk access to the storage the guest points to.
 ====
@@ -28,10 +28,10 @@ The *Select virtual machines* interface opens.
 The *Create migration plan* pane opens. It displays the source provider's name and suggestions for a target provider and namespace, a network map, and a storage map.
 . Enter the *Plan name*.
 . To change the *Target provider*, the *Target namespace*, or elements of the *Network map* or the *Storage map*, select an item from the relevant list.
-> To add either a *Network map* or a *Storage map*, click the *+* sign anf add a mapping.
+. To add either a *Network map* or a *Storage map*, click the *+* sign anf add a mapping.
 . Click *Create migration plan*.
 +
-{project-short} validates the migration plan and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error.
+{project-short} validates the migration plan, and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error.
 +
 The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, {project-short} validates the plan again.
 +
@@ -39,7 +39,7 @@ The details of the plan are listed, and you can edit the items you filled in on 
 
 ifdef::vmware[]
 
-* *Warm migration*: By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon, and select *Warm migration*.
+* *Warm migration*: By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon and select *Warm migration*.
 * *Transfer Network*: The network used to transfer the VMs to {virt}. By default... To edit the transfer network, click the *Edit* icon and...
 * *Target namespace*: Destination namespace, By default, this is the {virt} cluster you chose as your destination provider. To edit the namespace, click the *Edit* icon and...
 * *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
