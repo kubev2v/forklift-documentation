@@ -132,7 +132,6 @@ Use the {project-short} user interface to migrate VMs from the following provide
 
 [id="migrating-vmware-ui"]
 ==== Migrating virtual machines from VMware vSphere
-// ANDY: VM prerequisites and provider instructions will go here
 
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 
@@ -144,7 +143,6 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 
 :!vmware:
 
-// ANDY: Now RHV
 ==== Migrating virtual machines from {rhv-full}
 
 :context: rhv
@@ -159,7 +157,6 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 
 :!rhv:
 
-// ANDY: Now OpenStack
 ==== Migrating virtual machines from {osp}
 
 :context: ostack
@@ -174,7 +171,6 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 
 :!ostack:
 
-// ANDY: Now OVA
 ==== Migrating virtual machines from OVA
 
 :context: ova
@@ -190,7 +186,6 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 :!ova:
 :context: dest_ova
 
-// ANDY: Now CNV
 ==== Migrating virtual machines from {virt}
 
 :context: cnv
@@ -205,14 +200,8 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 
 :!cnv:
 
-
-// ANDY: That's it for this PR.
-
-
 :context: mtv
 :mtv:
-
-
 
 [id="migrating-virtual-machines-from-the-command-line_{context}"]
 == Migrating virtual machines from the command line
@@ -266,10 +255,6 @@ include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :ostack!:
 :context: ova
 :ova:
-//include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
-//:ova!:
-//:context: ostack
-//:ostack:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :ova!:
 :context: cnv
@@ -346,8 +331,6 @@ You can download logs and custom resource (CR) information for troubleshooting. 
 include::modules/collected-logs-cr-info.adoc[leveloffset=+3]
 include::modules/accessing-logs-ui.adoc[leveloffset=+3]
 include::modules/accessing-logs-cli.adoc[leveloffset=+3]
-
-// comment to create PR
 
 == Additional information
 
