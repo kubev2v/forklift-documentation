@@ -4,9 +4,9 @@
 
 :_content-type: PROCEDURE
 [id="canceling-migration-cli_{context}"]
-= Canceling a migration
+= Canceling a migration from the command-line interface
 
-You can cancel an entire migration or individual virtual machines (VMs) while a migration is in progress from the command line interface (CLI).
+You can use the command-line interface (CLI) to cancel either an entire migration or the migration of specific virtual machines (VMs) while a migration is in progress.
 
 .Canceling an entire migration
 
@@ -18,10 +18,11 @@ $ {oc} delete migration <migration> -n <namespace> <1>
 ----
 <1> Specify the name of the `Migration` CR.
 
-.Canceling the migration of individual VMs
+.Canceling the migration of specific VMs
 
-. Add the individual VMs to the `spec.cancel` block of the `Migration` manifest:
+. Add the specific VMs to the `spec.cancel` block of the `Migration` manifest:
 +
+.Example YAML for canceling the migrations of two VMs
 [source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
