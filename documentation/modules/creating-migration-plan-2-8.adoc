@@ -41,7 +41,7 @@ ifdef::vmware[]
 
 * *Warm migration*: By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon and select *Warm migration*.
 * *Transfer Network*: The network used to transfer the VMs to {virt}, by default, this is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.To edit the transfer network, click the *Edit* icon, choose a different transfer network from the list in the window that opens, and click *Save*.
-* *Target namespace*: Ddestination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.
+* *Target namespace*: Destination namespace to be used by all the migrated VMs, by default, this is the currently active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.
 * *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then cl ick *Save*.
 +
 {project-short} then issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
