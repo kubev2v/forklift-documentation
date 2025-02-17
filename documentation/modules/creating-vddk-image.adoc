@@ -8,12 +8,7 @@
 
 It is strongly recommended that {project-first} should be used with the VMware Virtual Disk Development Kit (VDDK) SDK when transferring virtual disks from VMware vSphere.
 
-[NOTE]
-====
-Creating a VDDK image, although optional, is highly recommended. Using {project-short} without VDDK is not recommended and could result in significantly lower migration speeds.
-====
-
-To make use of this feature, you download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry.
+To make use of this feature, you download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to a secure registry that is accessible to all clusters.
 
 The VDDK package contains symbolic links, therefore, the procedure of creating a VDDK image must be performed on a file system that preserves symbolic links (symlinks).
 
@@ -40,14 +35,6 @@ $ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
 
 . In a browser, navigate to the link:https://developer.vmware.com/web/sdk/8.0/vddk[VMware VDDK version 8 download page].
 . Select version 8.0.1 and click *Download*.
-
-[NOTE]
-====
-In order to migrate to {virt} 4.12, download VDDK version 7.0.3.2 from the link:https://developer.vmware.com/web/sdk/7.0/vddk[VMware VDDK version 7 download page].
-====
-
-// On 17 January 2025, remove this note unless the OpenShift Container Platform's life cycle is extended.
-
 . Save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
 +

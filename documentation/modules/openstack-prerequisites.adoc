@@ -8,5 +8,5 @@
 
 The following prerequisites apply to {osp} migrations:
 
-* You must use a xref:compatibility-guidelines_{context}[compatible version] of {osp}.
+* You must use a xref:compatibility-guidelines_mtv[compatible version] of {osp}.
 
