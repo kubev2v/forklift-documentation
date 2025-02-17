@@ -1,7 +1,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="creating-migration-plan-2-7_{context}"]
+[id="creating-migration-plan-2-8_{context}"]
 ifdef::provider[]
 = Creating a migration plan starting with a source provider
 
@@ -38,31 +38,23 @@ The *Create migration plan* pane opens. It displays the source provider's name a
 . Click *Add mapping* to edit a suggested network mapping or a storage mapping, or to add one or more additional mappings.
 . Click *Create migration plan*.
 +
-{project-short} validates the migration plan, and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error. The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, {project-short} validates the plan again.
+{project-short} validates the migration plan and the *Plan details* page opens, indicating whether the plan is ready for use or contains an error. The details of the plan are listed, and you can edit the items you filled in on the previous page. If you make any changes, {project-short} validates the plan again.
 
 . VMware source providers only (All optional):
 
-* *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. This results in vNICs that are set with a static IP in vSphere losing their IP. To avoid this by preserving static IPs of VMs, click the Edit icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
+* *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process.  As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the Edit icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
 +
-{project-short} then issues a warning message about any VMs with a Windows operating system for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
+{project-short} then issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 
-* *Entering a list of decryption passphrases for disks encrypted using Linux Unified Key Setup (LUKS)*: To enter a list of decryption passphrases for LUKS-encrypted devices, in the *Settings* section, click the Edit icon next to *Disk decryption passphrases*, enter the passphrases, and then click *Save*.
-+
-You do not need to enter the passphrases in a specific order. For each LUKS-encrypted device, {project-short} tries each passphrase until one unlocks the device.
+* *Entering a list of decryption passphrases for disks encrypted using Linux Unified Key Setup (LUKS)*: To enter a list of decryption passphrases for LUKS-encrypted devices, in the *Settings* section, click the Edit icon next to *Disk decryption passphrases*, enter the passphrases, and then click *Save*. You do not need to enter the passphrases in a specific order - for each LUKS-encrypted device, {project-short} tries each passphrase until one unlocks the device.
 
 * *Specifying a root device*: Applies to multi-boot VM migrations only. By default, {project-short} uses the first bootable device detected as the root device.
 +
-To specify a different root device, in the *Settings* section, click the Edit icon next to *Root device* and select a device from the list of commonly used options, or enter a device in the text box.
+To specify a different root device, in the *Settings* section, click the Edit icon next to *Root device* and choose a device from the list of commonly used options, or enter a device in the text box.
 +
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
-If the conversation fails because the boot device is incorrect, review the conversation pod logs for the correct information.
-
-* *{ocp-short} transfer network*: You can configure an {ocp-short} network in the {ocp-short} web console by clicking *Networking > NetworkAttachmentDefinitions*.
-+
-To learn more about the different types of networks {ocp-short} supports, see link:https://docs.openshift.com/container-platform/{ocp-version}/networking/multiple_networks/understanding-multiple-networks.html#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
-+
-If you want to adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by looking at the conversion pod logs.
 
 . {rhv-short} source providers only (Optional):
 
@@ -74,3 +66,5 @@ To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Setting
 . If the plan is valid,
 .. You can run the plan now by clicking *Start migration*.
 .. You can run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in xref:running-migration-plan_mtv[Running a migration plan].
++
+include::snip_vmware-name-change.adoc[]
