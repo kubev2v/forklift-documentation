@@ -318,13 +318,14 @@ include::modules/creating-validation-rule.adoc[leveloffset=+3]
 include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
 include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
-[id="adding-hooks-migration-plan-using-api"]
-=== Adding hooks to a migration plan
-You can add hooks a migration plan from the command line by using the {project-full} API.
+[id="adding-hooks-mtv-migration-plan"]
+=== Adding hooks to an MTV migration plan
 
-include::modules/about-hook-crs-for-migration-plans-api.adoc[leveloffset=+3]
+You can add hooks to an {project-first} migration plan to perform automated operations on a VM, either before or after you migrate it.
 
-include::modules/adding-hook-crs-to-migration-plans-api.adoc[leveloffset=+3]
+include::modules/about-hooks-for-migration-plans.adoc[leveloffset=+3]
+include::modules/adding-hook-using-ui.adoc[leveloffset=+3]
+include::modules/adding-hook-using-cli.adoc[leveloffset=+3]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 
