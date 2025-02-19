@@ -735,18 +735,13 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/konveyor/hook-runner
+  serviceAccount:<ervice account> <1>
   playbook: |
-    LS0tCi0gbmFtZTogTWFpbgogIGhvc3RzOiBsb2NhbGhvc3QKICB0YXNrczoKICAtIG5hbWU6IExv
-    YWQgUGxhbgogICAgaW5jbHVkZV92YXJzOgogICAgICBmaWxlOiAiL3RtcC9ob29rL3BsYW4ueW1s
-    IgogICAgICBuYW1lOiBwbGFuCiAgLSBuYW1lOiBMb2FkIFdvcmtsb2FkCiAgICBpbmNsdWRlX3Zh
-    cnM6CiAgICAgIGZpbGU6ICIvdG1wL2hvb2svd29ya2xvYWQueW1sIgogICAgICBuYW1lOiB3b3Jr
-    bG9hZAoK
+    LS0tCi0gbm... <2>
 EOF
 ----
-+
-where:
-+
-`playbook` refers to an optional Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must be `hook-runner`.
+<1> (Optional) {ocp} service account. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
+<2> Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
 +
 [NOTE]
 ====
