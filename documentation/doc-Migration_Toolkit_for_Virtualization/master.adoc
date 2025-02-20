@@ -122,7 +122,6 @@ include::modules/max-concurrent-vms.adoc[leveloffset=+3]
 [id="migrating-vms-ocp-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
 
-<<<<<<< HEAD
 You can migrate virtual machines (VMs) by using the {project-short} user interface, which is located in the *Migration* section of the {ocp} web console.
 
 include::modules/mtv-ui.adoc[leveloffset=+2]
