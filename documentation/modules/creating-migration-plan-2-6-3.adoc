@@ -1,7 +1,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="creating-migration-plan-2-8_{context}"]
+[id="creating-migration-plan-2-6-3_{context}"]
 ifdef::provider[]
 = Creating a migration plan starting with a source provider
 
@@ -50,16 +50,22 @@ The *Create migration plan* pane opens. It displays the source provider's name a
 
 * *Specifying a root device*: Applies to multi-boot VM migrations only. By default, {project-short} uses the first bootable device detected as the root device.
 +
-To specify a different root device, in the *Settings* section, click the Edit icon next to *Root device* and choose a device from the list of commonly used options, or enter a device in the text box.
+To specify a different root device, in the *Settings* section, click the Edit icon next to *Root device* and choose a device from the list of commonly-used options, or enter a device in the text box.
 +
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
 If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by looking at the conversion pod logs.
 
+* *{ocp-short} transfer network*: You can configure an {ocp-short} network in the ocp-short} web console by clicking *Networking > NetworkAttachmentDefinitions*.
++
+To learn more about the different types of networks {ocp-short} supports, see https://docs.openshift.com/container-platform/4.16/networking/multiple_networks/understanding-multiple-networks.html#additional-networks-provided [Additional Networks In OpenShift Container Program].
++
+If you want to change the MTU of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+
 . {rhv-short} source providers only (Optional):
 
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
-By default, {project-short} sets the CPU model on the destination cluster as follows: {project-short} preserves custom CPU settings for VMs that have them, but for VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
+By default, {project-short} sets the CPU model on the destination cluster as follows: {project-short} preserves custom CPU settings for VMs that have them, but, for VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
 +
 To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Settings* section, click the Edit icon next to *Preserve CPU model*. Toggle the *Whether to preserve the CPU model* switch, and then click *Save*.
 
