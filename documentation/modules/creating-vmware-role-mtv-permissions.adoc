@@ -1,0 +1,19 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-vmware-role-mtv-permissions_{context}"]
+= Creating a VMware role to grant MTV privileges
+
+You can create a role in VMware to grant privileges for {project-first} and then grant those privileges to users with that role.  
+
+The procedure that follows explains how to do this in general. For detailed instructions, see VMware documentation.
+
+.Procedure
+
+. In the vCenter Server UI, create a role that includes the set of privileges described in the table in xref:vmware-prerequisites_mtv[VMware prerequisites].
+. In the vSphere inventory UI, grant privileges for users with this role to the appropriate vSphere logical objects at one of the following levels:
+
+.. At the user or group level: Assign privileges to the appropriate logical objects in the data center and use the *Propagate to child objects* option. 
+.. At the object level: Apply the same role individually to all the relevant vSphere logical objects involved in the migration, for example, hosts, vSphere clusters, data centers, or networks. 
