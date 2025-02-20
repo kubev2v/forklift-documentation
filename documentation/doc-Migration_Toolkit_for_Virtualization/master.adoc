@@ -88,6 +88,7 @@ include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
 :mtv:
 
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
+include::modules/creating-vmware-role-mtv-permissions.adoc[leveloffset=+3]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
 include::modules/vddk-validator-containers.adoc[leveloffset=+3]
