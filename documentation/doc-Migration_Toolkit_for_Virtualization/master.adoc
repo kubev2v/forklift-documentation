@@ -34,9 +34,8 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 * link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
 * link:https://access.redhat.com/articles/6380311[Performance recommendations for migrating from Red Hat Virtualization to OpenShift Virtualization].
 
-// cold vs warm introduction
+
 include::modules/cold-warm-migration.adoc[leveloffset=+1]
-// cold vs warm migration speed comparison
 include::modules/mtv-migration-speed-comparison.adoc[leveloffset=+2]
 
 include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
@@ -46,15 +45,24 @@ include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 
 Review the following prerequisites to ensure that your environment is prepared for migration.
 
-[id="software-requirements_{context}"]
+[id="mtv-software-requirements_{context}"]
 === Software requirements
+
+{project-first} has software requirements for all providers as well as specific software requirements per provider.
+
+[id="mtv-software-requirements-all-providers_{context}"]
+==== Software requirements for all providers
 
 You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
 
 include::modules/storage-support.adoc[leveloffset=+2]
+
 include::modules/network-prerequisites.adoc[leveloffset=+2]
+
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
+
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
+
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 
 
@@ -82,10 +90,9 @@ include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
-
 include::modules/vddk-validator-containers.adoc[leveloffset=+3]
-
 include::modules/ova-prerequisites.adoc[leveloffset=+2]
+
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 [id="installing-the-operator_{context}"]
@@ -113,14 +120,28 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
 include::modules/max-concurrent-vms.adoc[leveloffset=+3]
 
-[id="migrating-vms-web-console_{context}"]
+[id="migrating-vms-ocp-web-console_{context}"]
 == Migrating virtual machines by using the {ocp} web console
 
-You can migrate virtual machines (VMs) by using the {ocp} web console to:
+You can migrate virtual machines (VMs) by using the {project-short} user interface, which is located in the *Migration* section of the {ocp} web console.
 
-. xref:adding-source-providers[Create source providers]
-. xref:adding-destination-providers[Create destination providers]
-. xref:creating-migration-plans-ui[Create migration plans]
+include::modules/mtv-ui.adoc[leveloffset=+2]
+include::modules/mtv-overview-page.adoc[leveloffset=+3]
+include::modules/mtv-settings.adoc[leveloffset=+3]
+
+
+[id="migrating-vms-mtv-ui_{context}"]
+=== Migrating virtual machines using the MTV user interface
+
+You can use the {project-short} user interface to migrate VMs from the following providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* Remote {virt} clusters
+
+For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
 
 [IMPORTANT]
 ====
@@ -131,78 +152,89 @@ VMware only: You must have the minimal set of xref:vmware-privileges_{context}[V
 VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 ====
 
-include::modules/mtv-ui.adoc[leveloffset=+2]
-include::modules/mtv-overview-page.adoc[leveloffset=+2]
-include::modules/mtv-settings.adoc[leveloffset=+2]
-
-[id="adding-providers"]
-=== Adding providers
-
-You can add source providers and destination providers for a virtual machine migration by using the {ocp} web console.
-
-[id="adding-source-providers"]
-==== Adding source providers
-
-You can use {project-short} to migrate VMs from the following source providers:
-
-* VMware vSphere
-* {rhv-full}
-* {osp}
-* Open Virtual Appliances (OVAs) that were created by VMware vSphere
-* {virt}
-
-You can add a source provider by using the {ocp} web console.
-
 :!mtv:
 :context: vmware
 :vmware:
+
+[id="migrating-vmware-ui"]
+==== Migrating virtual machines from VMware vSphere
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
+
 :!vmware:
+:context: dest_vwmware
+:dest_vmware:
+
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_vmware:
+
+==== Migrating virtual machines from {rhv-full}
+
 :context: rhv
 :rhv:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :!rhv:
+:context: dest_rhv
+:dest_rhv:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_rhv:
+
+
+==== Migrating virtual machines from {osp}
+
 :context: ostack
 :ostack:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :!ostack:
+:context: dest_ostack
+:dest_ostack:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_ostack:
+
+==== Migrating virtual machines from OVA
+
 :context: ova
 :ova:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 :!ova:
+:context: dest_ova
+:dest_ova:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+:!dest_ova:
+
+==== Migrating virtual machines from {virt}
+
 :context: cnv
 :cnv:
+
 include::modules/adding-source-provider.adoc[leveloffset=+4]
-:cnv!:
-:context: mtv
+:!cnv:
+:context: dest_cnv
+:dest_cnv:
 
-[id="adding-destination-providers"]
-==== Adding destination providers
-
-You can add a {virt} destination provider by using the {ocp} web console.
-
-:mtv!:
-:context: cnv2
-:cnv2:
 include::modules/adding-source-provider.adoc[leveloffset=+4]
-:cnv!:
-:context: mtv
-
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+
+:!dest_cnv:
+:context: mtv
+:mtv:
 
 // include::modules/creating-network-mapping.adoc[leveloffset=+2]
 // include::modules/creating-storage-mapping.adoc[leveloffset=+2]
 
-[id="creating-migration-plans-ui"]
+[id="creating-migration-plans-ui_{context}"]
 === Creating migration plans
 
 You can create a migration plan by using the {ocp} web console to specify a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
 
 For your convenience, there are two procedures to create migration plans, starting with either a source provider or with specific VMs:
 
-* To start with a source provider, see xref:creating-migration-plan-2-7_provider[Creating a migration plan starting with a source provider].
-* To start with specific VMs, see xref:creating-migration-plan-2-7_vms[Creating a migration plan starting with specific VMs].
+* To start with a source provider, see xref:creating-migration-plan-2-8_provider[Creating a migration plan starting with a source provider].
+* To start with specific VMs, see xref:creating-migration-plan-2-8_vms[Creating a migration plan starting with specific VMs].
 
 [WARNING]
 ====
@@ -217,12 +249,12 @@ include::modules/snip_plan-limits.adoc[]
 :context: provider
 :provider:
 
-include::modules/creating-migration-plan-2-7.adoc[leveloffset=+3]
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
 
 :provider!:
 :context: vms
 :vms:
-include::modules/creating-migration-plan-2-7.adoc[leveloffset=+3]
+include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
 
 :vms!:
 :context: mtv
@@ -285,10 +317,6 @@ include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :ostack!:
 :context: ova
 :ova:
-//include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
-//:ova!:
-//:context: ostack
-//:ostack:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 :ova!:
 :context: cnv

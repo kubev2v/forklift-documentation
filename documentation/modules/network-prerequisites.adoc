@@ -17,6 +17,8 @@ The following prerequisites apply to all migrations:
 
 The firewalls must enable traffic over the following ports:
 
+// ANDY: The comments are for later, when I separate the ports by vendor.
+// ifdef::wmware[]
 [cols="1,1,1,1,2a",options="header"]
 .Network ports required for migrating from VMware vSphere
 |===
@@ -42,7 +44,9 @@ Disk transfer authentication
 |VMware ESXi hosts
 |Disk transfer data copy
 |===
+// endif::[]
 
+// ifdef::rhv[]
 [cols="1,1,1,1,2a",options="header"]
 .Network ports required for migrating from {rhv-full}
 |===
@@ -68,3 +72,4 @@ Disk transfer authentication
 |{rhv-short} hosts
 |Disk transfer data copy
 |===
+// endif::[]
