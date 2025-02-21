@@ -212,7 +212,7 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
 :!dest_rhv:
 
-==== Migrating virtual machines from OpenStack
+==== Migrating virtual machines from {osp}
 
 :context: ostack
 :ostack:
