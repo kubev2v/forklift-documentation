@@ -6,7 +6,7 @@
 [id="accessing-logs-ui_{context}"]
 = Downloading logs and custom resource information from the web console
 
-You can download logs and information about custom resources (CRs) for a completed, failed, or canceled migration plan or for migrated virtual machines (VMs) by using the {ocp} web console.
+You can download logs and information about custom resources (CRs) for a completed, failed, or canceled migration plan or for migrated virtual machines (VMs) from the {ocp} web console.
 
 .Procedure
 

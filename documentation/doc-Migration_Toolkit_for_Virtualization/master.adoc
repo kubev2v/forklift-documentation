@@ -74,7 +74,7 @@ include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 * Token authentication
 * Application credential authentication
 
-You can use these methods to migrate virtual machines with {osp} source providers using the CLI the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
+You can use these methods to migrate virtual machines with {osp} source providers using the command-line interface (CLI) the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
 
 :!mtv:
 :context: ostack
@@ -98,7 +98,7 @@ include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 [id="installing-the-operator_{context}"]
 == Installing and configuring the {operator-name}
 
-You can install the {operator-name} by using the {ocp} web console or the command line interface (CLI).
+You can install the {operator-name} by using the {ocp} web console or the command-line interface (CLI).
 
 In {project-first} version 2.4 and later, the {operator-name} includes the {project-short} plugin for the {ocp} web console.
 
@@ -275,21 +275,18 @@ You can migrate virtual machines to {virt} from the command line.
 You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
 ====
 
-include::modules/snip_plan-limits.adoc[]
-
 :mtv!:
 :context: cli
 include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
-include::modules/snip_vmware-permissions.adoc[]
 :cli!:
 :context: mtv
 
-include::modules/retrieving-vmware-moref.adoc[leveloffset=+2]
+
 
 [id="migrating-virtual-machines_{context}"]
 === Migrating virtual machines
 
-You migrate virtual machines (VMs) from the command line (CLI) by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
+You migrate virtual machines (VMs) using the command-line interface (CLI) by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
 
 [IMPORTANT]
 ====
@@ -304,29 +301,35 @@ To migrate to or from an {ocp-short} cluster that is different from the one the 
 :mtv!:
 :context: vmware
 :vmware:
+
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+// Do we want this snippet here?
 include::modules/snip_vmware-permissions.adoc[]
+include::modules/retrieving-vmware-moref.adoc[leveloffset=+4]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :vmware!:
 :context: rhv
 :rhv:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :rhv!:
 :context: ostack
 :ostack:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :ostack!:
 :context: ova
 :ova:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :ova!:
 :context: cnv
 :cnv:
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
+include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :cnv!:
 :context: mtv
 :mtv:
-
-include::modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 [id="advanced-migration-options_{context}"]
 == Advanced migration options
@@ -360,7 +363,7 @@ include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 [id="uninstalling-mtv_{context}"]
 == Uninstalling {the-lc} {project-full}
 
-You can uninstall {the-lc} {project-first} by using the {ocp} web console or the command line interface (CLI).
+You can uninstall {the-lc} {project-first} by using the {ocp} web console or the command-line interface (CLI).
 
 include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
 include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
