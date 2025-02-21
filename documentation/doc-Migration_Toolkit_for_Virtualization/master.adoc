@@ -136,6 +136,7 @@ include::modules/mtv-settings.adoc[leveloffset=+3]
 Use the {project-short} user interface to migrate virtual machines (VMs). It is located in the *Virtualization* section of the {ocp} web console.
 
 include::modules/mtv-ui.adoc[leveloffset=+2]
+
 include::modules/mtv-overview-page.adoc[leveloffset=+3]
 include::modules/mtv-settings.adoc[leveloffset=+3]
 
