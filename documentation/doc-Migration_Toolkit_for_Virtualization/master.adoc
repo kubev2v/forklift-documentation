@@ -170,8 +170,6 @@ VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk D
 [id="migrating-vmware-ui"]
 ==== Migrating virtual machines from VMware vSphere
 
-include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+5]
-
 :!vmware:
 :context: dest_vwmware
 :dest_vmware:
