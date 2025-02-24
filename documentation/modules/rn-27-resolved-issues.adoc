@@ -20,7 +20,7 @@ In earlier releases of project-short, it was difficult to understand the user in
 
 .Persistent TPM is always added to the Windows 2022 VM after conversion
 
-In earlier releases of project-short, when migrating a Windows Server 2022 VMware virtual machine (VM) to {virt}, the VMI had the Trusted Platform Module (TPM) module configured, even though the module was not configured in the original VM. This issue has been resolved in {project-short} 2.7.10. link:https://issues.redhat.com/browse/MTV-1939[(MTV-1939)]
+In earlier releases of {project-short}, when migrating a Windows Server 2022 VMware virtual machine (VM) to {virt}, the VMI had the Trusted Platform Module (TPM) module configured, even though the module was not configured in the original VM. This issue has been resolved in {project-short} 2.7.10. link:https://issues.redhat.com/browse/MTV-1939[(MTV-1939)]
 
 
 [id="resolved-issues-2-7-9_{context}"]
