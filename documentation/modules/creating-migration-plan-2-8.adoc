@@ -2,7 +2,7 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="creating-migration-plan-2-8_{context}"]
-= Creating migration plan
+= Creating a migration plan
 
 Use the {ocp} web console to create a migration plan. Specify the source provider, the virtual machines (VMs) you want to migrate, and other plan details.
 
