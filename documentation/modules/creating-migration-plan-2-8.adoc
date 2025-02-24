@@ -3,10 +3,6 @@
 :_mod-docs-content-type: PROCEDURE
 [id="creating-migration-plan-2-8_{context}"]
 
-ifdef::provider[]
-= Creating a migration plan starting with a source provider
-
-
 Use the {ocp} web console to create a migration plan. Specify the source provider, the virtual machines (VMs) you want to migrate, and other plan details.
 
 [WARNING]
@@ -44,7 +40,7 @@ ifdef::vmware[]
 
 * *Warm migration*: By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon and select *Warm migration*.
 * *Transfer Network*: The network used to transfer the VMs to {virt}, by default, this is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.To edit the transfer network, click the *Edit* icon, choose a different transfer network from the list in the window that opens, and click *Save*. 
-* *Target namespace*: Ddestination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.  
+* *Target namespace*: Destination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.  
 * *Preserving static IPs of VMs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP. To avoid this, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then cl ick *Save*.
 +
 {project-short} then issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
@@ -64,7 +60,7 @@ ifdef::rhv[]
 
 * *Warm migration* By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon, and select *Warm migration*.
 * *Transfer Network*: The network used to transfer the VMs to {virt}, by default, this is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.To edit the transfer network, click the *Edit* icon, choose a different transfer network from the list in the window that opens, and click *Save*. 
-* *Target namespace*: Ddestination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.  
+* *Target namespace*: Destination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.  
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level, but it can be set at the VM level, which is called a custom CPU model.
 By default, {project-short} sets the CPU model on the destination cluster as follows:
 ** {project-short} preserves custom CPU settings for VMs that have them.
@@ -75,7 +71,7 @@ endif::[]
 
 ifdef::ostack,ova,cnv[]
 * *Transfer Network*: The network used to transfer the VMs to {virt}, by default, this is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.To edit the transfer network, click the *Edit* icon, choose a different transfer network from the list in the window that opens, and click *Save*. 
-* *Target namespace*: Ddestination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.  
+* *Target namespace*: Destination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.  
 endif::[]
 
 . If your plan is valid, you can do one of the following:
