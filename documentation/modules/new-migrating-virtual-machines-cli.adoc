@@ -735,7 +735,7 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/konveyor/hook-runner
-  serviceAccount:<ervice account> <1>
+  serviceAccount:<service account> <1>
   playbook: |
     LS0tCi0gbm... <2>
 EOF

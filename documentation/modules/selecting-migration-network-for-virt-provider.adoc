@@ -15,7 +15,7 @@ If you do not select a migration network, the default migration network is the `
 You can override the default migration network of the provider by selecting a different network when you create a migration plan.
 ====
 
-include::snip-mtu-value.adoc[]
+
 
 .Procedure
 

@@ -129,17 +129,6 @@ include::modules/mtv-ui.adoc[leveloffset=+2]
 include::modules/mtv-overview-page.adoc[leveloffset=+3]
 include::modules/mtv-settings.adoc[leveloffset=+3]
 
-
-[id="migrating-vms-ocp-web-console_{context}"]
-== Migrating virtual machines by using the {ocp} web console
-
-Use the {project-short} user interface to migrate virtual machines (VMs). It is located in the *Virtualization* section of the {ocp} web console.
-
-include::modules/mtv-ui.adoc[leveloffset=+2]
-
-include::modules/mtv-overview-page.adoc[leveloffset=+3]
-include::modules/mtv-settings.adoc[leveloffset=+3]
-
 [id="migrating-vms-mtv-ui_{context}"]
 === Migrating virtual machines using the MTV user interface
 
@@ -167,8 +156,11 @@ VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk D
 :context: vmware
 :vmware:
 
-[id="migrating-vmware-ui"]
+[id="migrating-vmware"]
 ==== Migrating virtual machines from VMware vSphere
+
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+4]
 
 :!vmware:
 :context: dest_vwmware
@@ -176,9 +168,10 @@ VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk D
 
 include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
-:!dest_vmware:
 
-==== Migrating virtual machines from {rhv-full}
+:!dest_vmware:
+:context: vmware
+:vmware:
 
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 
@@ -190,11 +183,24 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 
 :!vmware:
 
-
-==== Migrating virtual machines from RHV
-
 :context: rhv
 :rhv:
+
+[id="migrating-rhv_{context}"]
+==== Migrating virtual machines from {rhv-full}
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+
+:!rhv:
+:context: dest_rhv
+:dest_rhv:
+
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+
+:!dest_rhv:
+:context: rhv
+:rhv:
+
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 
 include::modules/running-migration-plan.adoc[leveloffset=+4]
@@ -204,18 +210,25 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+4]
 include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 
 :!rhv:
-
-
-:context: dest_rhv
-:dest_rhv:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
-include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
-:!dest_rhv:
-
-==== Migrating virtual machines from {osp}
-
 :context: ostack
 :ostack:
+
+[id="migrating-osp_{context}"]
+==== Migrating virtual machines from {osp}
+
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+
+:!ostack:
+:context: dest_ostack
+:dest_ostack:
+
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+
+:!dest_ostack:
+:context: ostack
+:ostack:
+
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 
 include::modules/running-migration-plan.adoc[leveloffset=+4]
@@ -225,18 +238,24 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+4]
 include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 
 :!ostack:
-
-:context: dest_ostack
-:dest_ostack:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
-include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
-:!dest_ostack:
-
-
-==== Migrating virtual machines from OVA
-
 :context: ova
 :ova:
+
+[id="migrating-ova_{context}"]
+==== Migrating virtual machines from OVA
+
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+
+:!ova:
+:context: dest_ova
+:dest_ova:
+include::modules/adding-source-provider.adoc[leveloffset=+4]
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
+
+:!dest_ova:
+:context: ova
+:ova:
+
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 
 include::modules/running-migration-plan.adoc[leveloffset=+4]
@@ -246,20 +265,14 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+4]
 include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 
 :!ova:
-:context: dest_ova
-
-:dest_ova:
-include::modules/adding-source-provider.adoc[leveloffset=+4]
-include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
-:!dest_ova:
-
-
-==== Migrating virtual machines from {virt}
-
 :context: cnv
 :cnv:
 
+[id="migrating-virt_{context}"]
+==== Migrating virtual machines from {virt}
+
 include::modules/adding-source-provider.adoc[leveloffset=+4]
+
 :!cnv:
 :context: dest_cnv
 :dest_cnv:
@@ -268,15 +281,9 @@ include::modules/adding-source-provider.adoc[leveloffset=+4]
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+4]
 
 :!dest_cnv:
-:context: mtv
-:mtv:
-
-
-==== Migrating virtual machines from CNV
-
-
 :context: cnv
 :cnv:
+
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+4]
 
 include::modules/running-migration-plan.adoc[leveloffset=+4]
@@ -286,43 +293,6 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+4]
 include::modules/canceling-migration-ui.adoc[leveloffset=+4]
 
 :!cnv:
-
-
-[id="creating-migration-plans-ui_{context}"]
-=== Creating migration plans
-
-You can create a migration plan by using the {ocp} web console to specify a source provider, the virtual machines (VMs) you want to migrate, and other plan details.
-
-For your convenience, there are two procedures to create migration plans, starting with either a source provider or with specific VMs:
-
-* To start with a source provider, see xref:creating-migration-plan-2-8_provider[Creating a migration plan starting with a source provider].
-* To start with specific VMs, see xref:creating-migration-plan-2-8_vms[Creating a migration plan starting with specific VMs].
-
-
-[WARNING]
-====
-Virtual machines with guest initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts, are not handled by {project-short} and could require additional planning before or reconfiguration after the migration.
-
-This is to ensure that no issues arise due to the addition or newly migrated VM accessing this storage.
-====
-
-include::modules/snip_plan-limits.adoc[]
-
-:mtv!:
-:context: provider
-:provider:
-
-include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
-
-:provider!:
-:context: vms
-:vms:
-include::modules/creating-migration-plan-2-8.adoc[leveloffset=+3]
-
-:vms!:
-
-=======
->>>>>>> f8b824c (Cleanup master.adoc)
 :context: mtv
 :mtv:
 
@@ -338,10 +308,12 @@ You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
 
 :mtv!:
 :context: cli
+:cli:
+
 include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
 :cli!:
 :context: mtv
-
+:mtv:
 
 
 [id="migrating-virtual-machines_{context}"]
@@ -364,28 +336,35 @@ To migrate to or from an {ocp-short} cluster that is different from the one the 
 :vmware:
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
-// Do we want this snippet here?
 include::modules/snip_vmware-permissions.adoc[]
 include::modules/retrieving-vmware-moref.adoc[leveloffset=+4]
 include::modules/canceling-migration-cli.adoc[leveloffset=+4]
+
 :vmware!:
 :context: rhv
 :rhv:
+
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 include::modules/canceling-migration-cli.adoc[leveloffset=+4]
+
 :rhv!:
 :context: ostack
 :ostack:
+
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 include::modules/canceling-migration-cli.adoc[leveloffset=+4]
+
 :ostack!:
 :context: ova
 :ova:
+
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 include::modules/canceling-migration-cli.adoc[leveloffset=+4]
+
 :ova!:
 :context: cnv
 :cnv:
+
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+3]
 include::modules/canceling-migration-cli.adoc[leveloffset=+4]
 :cnv!:
