@@ -16,7 +16,8 @@ In earlier releases of {project-short}, the OVN secondary network was not worki
 
 .Retain IP field description misleading to customers
 
-In earlier releases of project-short, it was difficult to understand the user interface relating to the *Preserve IPs* from VM setting in the chosen setting mode. This issue has been resolved in {project-short} 2.7.10. link:https://issues.redhat.com/browse/MTV-1743[(MTV-1743)]
+
+In earlier releases of {project-short}, it was difficult to understand the user interface relating to the *Preserve IPs* VM setting in the chosen setting mode. This issue has been resolved in {project-short} 2.7.10. link:https://issues.redhat.com/browse/MTV-1743[(MTV-1743)]
 
 .Persistent TPM is always added to the Windows 2022 VM after conversion
 
