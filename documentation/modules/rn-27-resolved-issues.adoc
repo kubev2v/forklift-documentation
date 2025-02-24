@@ -7,6 +7,23 @@
 
 {project-first} 2.7 has the following resolved issues:
 
+[id="resolved-issues-2-7-10_{context}"]
+== Resolved issues 2.7.10
+
+.OVN secondary network not working with Multus default network override
+
+In earlier releases of {project-short}, the OVN secondary network was not working with Multus default network override. This issue caused the importer pod to become stuck, as the importer pod was created when there were multiple networks and the wrong default network override annotation was configured. This issue has been resolved in {project-short} 2.7.10. link:https://issues.redhat.com/browse/MTV-1645[(MTV-1645)]
+
+.Retain IP field description misleading to customers
+
+
+In earlier releases of {project-short}, it was difficult to understand the user interface relating to the *Preserve IPs* VM setting in the chosen setting mode. This issue has been resolved in {project-short} 2.7.10. link:https://issues.redhat.com/browse/MTV-1743[(MTV-1743)]
+
+.Persistent TPM is always added to the Windows 2022 VM after conversion
+
+In earlier releases of {project-short}, when migrating a Windows Server 2022 VMware virtual machine (VM) to {virt}, the VMI had the Trusted Platform Module (TPM) module configured, even though the module was not configured in the original VM. This issue has been resolved in {project-short} 2.7.10. link:https://issues.redhat.com/browse/MTV-1939[(MTV-1939)]
+
+
 [id="resolved-issues-2-7-9_{context}"]
 == Resolved issues 2.7.9
 
@@ -17,13 +34,6 @@ In earlier releases of {project-short}, the `forklift-contoller` inventory conta
 .vCenter sessions keep on increasing during migration plan execution
 
 In earlier releases of {project-short}, when migrating virtual machines (VMs) from VMware vSphere 7 to {virt}, vCenter sessions kept increasing. This issue has been resolved in {project-short} 2.7.9. link:https://issues.redhat.com/browse/MTV-1929[(MTV-1929)]
-
-////
-.OVN secondary network not working with Multus default network override
-
-In earlier releases of {project-short}, the OVN secondary network was not working with Multus default network override. This issue caused the importer pod to become stuck, as the importer pod was created when there were multiple networks and the wrong default network override annotation was configured. This issue has been resolved in {project-short} 2.7.9. link:https://issues.redhat.com/browse/MTV-1645[(MTV-1645)]
-
-////
 
 
 [id="resolved-issues-2-7-8_{context}"]
