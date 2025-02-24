@@ -4,7 +4,7 @@
 
 :_content-type: PROCEDURE
 [id="uninstalling-mtv-cli_{context}"]
-= Uninstalling {project-short} by from the command line
+= Uninstalling {project-short} from the command line
 
 You can uninstall {project-first} from the command line.
 
