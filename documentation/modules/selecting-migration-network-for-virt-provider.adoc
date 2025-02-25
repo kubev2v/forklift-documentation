@@ -9,7 +9,7 @@
 You can select a default migration network for {a-virt} provider in the {ocp} web console to improve performance. The default migration network is used to transfer disks to the namespaces in which it is configured.
 
 If you do not select a migration network, the default migration network is the `pod` network, which might not be optimal for disk transfer.
-
+s
 [NOTE]
 ====
 You can override the default migration network of the provider by selecting a different network when you create a migration plan.
@@ -19,12 +19,11 @@ You can override the default migration network of the provider by selecting a di
 
 .Procedure
 
-. In the {ocp} web console, click *Migration* -> *Plans for virtualization*.
-. Click the plan you want to work with.
+. In the {ocp} web console, click *Migration* > *Providers for virtualization*.
+. Click the {virt} provider whose migration network you want to change. 
 +
-The *Plan details* page opens.
-. In the *Settings* section, click the Edit icon next to the *Transfer network*.
-+
-The *Edit migration plan transfer network* window opens.
-. Select a network from the list of available networks and click *Save*.
-//. Click the network number in the *Networks* column beside the provider to verify that the selected network is the default migration network.
+When the *Providers detail* page opens:
+
+. Click the *Networks* tab.
+. Click *Set default transfer network*.
+. Select a default transfer network from the list and click *Save*.
