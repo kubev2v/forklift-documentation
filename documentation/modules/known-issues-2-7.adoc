@@ -31,3 +31,7 @@ When creating *Network* and *Storage* maps from the UI, the correct names are no
 .Migration fails with module `network-legacy` configured in RHEL guests
 
 Migration fails if the module configuration file is available in the guest and the `dhcp-client` package is not installed, returning a `dracut module 'network-legacy' will not be installed, because command 'dhclient' could not be found` error. link:https://issues.redhat.com/browse/MTV-1615[(MTV-1615)]
+
+.Harden grub2-mkconfig to avoid overwriting `/boot/efi/EFI/redhat/grub.cfg`
+
+In Red Hat Enterprise Linux (RHEL) 9, there has been a significant change in how GRUB is handled on UEFI systems. Previously, the GRUB configuration file, `/boot/efi/EFI/redhat/grub.cfg`, was used on UEFI systems. However, in RHEL 9, this file now serves as a stub that dynamically redirects to the GRUB configuration, located at `/boot/grub2/grub.cfg`. This behavior is expected in RHEL 9.4, but has been resolved in RHEL 9.5. link:https://issues.redhat.com/browse/RHEL-32099[(RHEL-32099)]
