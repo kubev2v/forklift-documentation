@@ -7,6 +7,14 @@
 
 {project-first} 2.8 has the following known issues:
 
-.Migration fails with module `network-legacy` configured in RHEL guests
+.Ubuntu 20.04 NIC name changes after MTV migration from VMware
 
-Migration fails if the module configuration file is available in the guest and the `dhcp-client` package is not installed, returning a `dracut module 'network-legacy' will not be installed, because command 'dhclient' could not be found` error. link:https://issues.redhat.com/browse/MTV-1615[(MTV-1615)]
+Migration fails if the module configuration file is available in the guest and the `dhcp-client` package is not installed, returning a `dracut module 'network-legacy' will not be installed, because command 'dhclient' could not be found` error. link:https://issues.redhat.com/browse/MTV-1607[(MTV-1607)]
+
+.VMNetworksNotMapped error occurs after creating a plan from the UI with the source provider set to OpenShift Virtualization
+
+abc. link:https://issues.redhat.com/browse/MTV-1201[(MTV-1201)]
+
+.Migration Plan for OCPv to OCPv missing the source namespace causing VMNetworkNotMapped
+
+def. link:https://issues.redhat.com/browse/MTV-1297[(MTV-1297)]
