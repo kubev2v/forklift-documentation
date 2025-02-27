@@ -6,7 +6,7 @@
 [id="vddk-validator-containers_{context}"]
 = VDDK validator containers need requests and limits
 
-If you have the link:https://docs.openshift.com/container-platform/{ocp-version}/applications/quotas/quotas-setting-per-project.html[cluster or project resource quotas set], you must ensure that you have a sufficient  quota for the {project-short} pods to perform the migration. 
+If you have the link:https://docs.openshift.com/container-platform/{ocp-version}/applications/quotas/quotas-setting-per-project.html[cluster or project resource quotas set], you must ensure that you have a sufficient quota for the {project-short} pods to perform the migration. 
 
 You can see the defaults, which you can override in the ForkliftController custom resource (CR), listed as follows. If necessary, you can adjust these defaults. 
 
