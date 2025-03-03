@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/doc-Migration_Toolkit_for_Virtualization/modules/vddk-validator-containers/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="vddk-validator-containers_forklift">VDDK validator containers need requests and limits</h1>
+<div class="paragraph">
+<p>If you have the <a href="https://docs.openshift.com/container-platform/4.10/applications/quotas/quotas-setting-per-project.html">cluster or project resource quotas set</a>, you must ensure that you have a sufficient quota for the Forklift pods to perform the migration. </p>
+</div>
+<div class="paragraph">
+<p>You can see the defaults, which you can override in the ForkliftController custom resource (CR), listed as follows. If necessary, you can adjust these defaults. </p>
+</div>
+<div class="paragraph">
+<p>These settings are highly dependent on your environment. If there are many migrations happening at once and the quotas are not set enough for the migrations, then the migrations can fail. This can also be correlated to the <code>MAX_VM_INFLIGHT</code> setting that determines how many VMs/disks are migrated at once.</p>
+</div>
+<div class="ulist">
+<div class="title">Defaults which can be overriden in the ForkliftController CR:</div>
+<ul>
+<li>
+<p>This affects both cold and warm migrations:</p>
+<div class="paragraph">
+<p>For cold migration, it is likely to be more resource intensive as it performs the disk copy. For warm migration, you could potentially reduce the requests.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>virt_v2v_container_limits_cpu: <code>4000m</code></p>
+</li>
+<li>
+<p>virt_v2v_container_limits_memory: <code>8Gi</code></p>
+</li>
+<li>
+<p>virt_v2v_container_requests_cpu: <code>1000m</code></p>
+</li>
+<li>
+<p>virt_v2v_container_requests_memory: <code>1Gi</code></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Cold and warm migration using <code>virt-v2v</code> can be resource-intensive. For more details, see <a href="https://libguestfs.org/virt-v2v.1.html#compute-power-and-ram">Compute power and RAM</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>This affects any migrations with hooks:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>hooks_container_limits_cpu: <code>1000m</code></p>
+</li>
+<li>
+<p>hooks_container_limits_memory: <code>1Gi</code></p>
+</li>
+<li>
+<p>hooks_container_requests_cpu: <code>100m</code></p>
+</li>
+<li>
+<p>hooks_container_requests_memory: <code>150Mi</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>This affects any OVA migrations:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ova_container_limits_cpu: <code>1000m</code></p>
+</li>
+<li>
+<p>ova_container_limits_memory: <code>1Gi</code></p>
+</li>
+<li>
+<p>ova_container_requests_cpu: <code>100m</code></p>
+</li>
+<li>
+<p>ova_container_requests_memory: <code>150Mi</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

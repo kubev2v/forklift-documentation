@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/modules/rn-27-resolved-issues/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="rn-27-resolved-issues_forklift">Resolved issues</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Forklift 2.7 has the following resolved issues:</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-10_forklift">Resolved issues 2.7.10</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">OVN secondary network not working with Multus default network override</div>
+<p>In earlier releases of Forklift, the OVN secondary network was not working with Multus default network override. This issue caused the importer pod to become stuck, as the importer pod was created when there were multiple networks and the wrong default network override annotation was configured. This issue has been resolved in Forklift 2.7.10. <a href="https://issues.redhat.com/browse/MTV-1645">(MTV-1645)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Retain IP field description misleading to customers</div>
+<p>In earlier releases of Forklift, it was difficult to understand the user interface relating to the <strong>Preserve IPs</strong> VM setting in the chosen setting mode. This issue has been resolved in Forklift 2.7.10. <a href="https://issues.redhat.com/browse/MTV-1743">(MTV-1743)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Persistent TPM is always added to the Windows 2022 VM after conversion</div>
+<p>In earlier releases of Forklift, when migrating a Windows Server 2022 VMware virtual machine (VM) to KubeVirt, the VMI had the Trusted Platform Module (TPM) module configured, even though the module was not configured in the original VM. This issue has been resolved in Forklift 2.7.10. <a href="https://issues.redhat.com/browse/MTV-1939">(MTV-1939)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-9_forklift">Resolved issues 2.7.9</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Forklift controller panic in the inventory</div>
+<p>In earlier releases of Forklift, the <code>forklift-contoller</code> inventory container would panic, and the VM would not be migrated. This issue has been resolved in Forklift 2.7.9. <a href="https://issues.redhat.com/browse/MTV-1610">(MTV-1610)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">vCenter sessions keep on increasing during migration plan execution</div>
+<p>In earlier releases of Forklift, when migrating virtual machines (VMs) from VMware vSphere 7 to KubeVirt, vCenter sessions kept increasing. This issue has been resolved in Forklift 2.7.9. <a href="https://issues.redhat.com/browse/MTV-1929">(MTV-1929)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-8_forklift">Resolved issues 2.7.8</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Forklift not handling OVA NFS URL if it does not contain <code>:</code> char</div>
+<p>In earlier releases of Forklift, the character <code>:</code> in the NFS URL of OVAs was not handled, which created malformed URLs. This issue has been resolved in Forklift 2.7.8. <a href="https://issues.redhat.com/browse/MTV-1856">(MTV-1856)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Changing the host migration network returns an unexpected error</div>
+<p>In earlier releases of Forklift, when changing the network from <strong>VMkernel</strong> to <strong>Management network</strong>, the migration network changed. However, an error message was returned that the request could not be completed <code>due to an incorrect user name or password</code>. This issue has been resolved in Forklift 2.7.8. <a href="https://issues.redhat.com/browse/MTV-1862">(MTV-1862)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migrating RHEL VMs with LUKS disk fail at DiskTransferV2v stage</div>
+<p>In earlier releases of Forklift, migrating Red Hat Enterprise Linux (RHEL) virtual machines (VMs) with disks encrypted with Linux Unified Key Setup (LUKS) enabled from VMWare fails at the <strong>DiskTransferV2v</strong> stage. This issue has been resolved in Forklift 2.7.8. <a href="https://issues.redhat.com/browse/MTV-1864">(MTV-1864)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Q35 machine type is hard-coded during import from vSphere</div>
+<p>In earlier releases of Forklift, VMs imported from vSphere always had the Q35 machine type set. However, the machine type is <code>floating</code>, and thus the VM application binary interface (ABI) can change between reboots. This issue has been resolved in Forklift 2.7.8. <a href="https://issues.redhat.com/browse/MTV-1865">(MTV-1865)</a></p>
+</div>
+<div class="paragraph">
+<div class="title"><code>memory.requests</code> and <code>memory.guest</code> are set during import from VMware</div>
+<p>In earlier releases of Forklift, Forklift imported VMs with the <code>requests.memory</code> field and the <code>memory.guest</code> field set. This was problematic as it prevented memory overcommit, memory hot-plug, and caused unnecessary memory pressure on VMs that could lead to out-of-memory (OOM) errors. This issue has been resolved in Forklift 2.7.8. <a href="https://issues.redhat.com/browse/MTV-1866">(MTV-1866)</a></p>
+</div>
+<div class="paragraph">
+<div class="title"><code>virt-v2v</code> failure when converting dual-boot VM</div>
+<p>In earlier releases of Forklift, there was an issue when attempting the migration of a VM with two disks with two different operating systems installed in a dual-boot configuration. This issue has been resolved in Forklift 2.7.8. <a href="https://issues.redhat.com/browse/MTV-1877">(MTV-1877)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-7_forklift">Resolved issues 2.7.7</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Forklift Controller waiting for snapshot creation</div>
+<p>In earlier releases of Forklift, when performing a warm migration using 200 VMs, the Forklift Controller could pause the migration during snapshot creation. This issue has been resolved in Forklift 2.7.7. <a href="https://issues.redhat.com/browse/MTV-1775">(MTV-1775)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Extended delay in time taken for VMs to start migration</div>
+<p>In earlier releases of Forklift, in some situations there was an extended delay before all VMs started to migrate. This issue has been resolved in Forklift 2.7.7. <a href="https://issues.redhat.com/browse/MTV-1774">(MTV-1774)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migration plan with multi-VMs from ESXi host provider fails in cutover phase</div>
+<p>In earlier releases of Forklift, the migration plan with multi-VMs from an ESXi host provider failed in the cutover phase. This issue has been resolved in Forklift 2.7.7. <a href="https://issues.redhat.com/browse/MTV-1753">(MTV-1753)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">SecureBoot enabled VM in migrated with SecureBoot disabled</div>
+<p>In earlier releases of Forklift, when migrating a virtual machine (VM) with Secure Boot <strong>enabled</strong>, the VM had Secure Boot <strong>disabled</strong> after being migrated. This issue has been resolved in Forklift 2.7.7. <a href="https://issues.redhat.com/browse/MTV-1632">(MTV-1632)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">VDDK validator fails to launch in environments with quota set</div>
+<p>In earlier releases of Forklift, after creating a migration plan from a VMware provider, the VDDK validation failed due to a <code>LimitRange</code> not being provided to add requests and limits to any container that do not define them. This issue has been resolved in Forklift 2.7.7, with Forklift setting limits by default to make the migration plan work out of the box. <a href="https://issues.redhat.com/browse/MTV-1493">(MTV-1493)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-6_forklift">Resolved issues 2.7.6</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Warning if preserve static IP is mapped to pod network</div>
+<p>In earlier releases of Forklift, there was no warning message for preserving static IPs while using Pod networking. This issue has been resolved in Forklift 2.7.6. <a href="https://issues.redhat.com/browse/MTV-1503">(MTV-1503)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Schedule the cutover for an archived plan is not allowed</div>
+<p>In earlier releases of Forklift, the option to schedule a cutover for an archived plan was currently available in the UI. This issue has been resolved in Forklift 2.7.6 with the cutover action disabled for an archived plan. <a href="https://issues.redhat.com/browse/MTV-1729">(MTV-1729)</a></p>
+</div>
+<div class="paragraph">
+<div class="title"><strong>Next</strong> button misplaced in <strong>Create new plan</strong> wizard</div>
+<p>In earlier releases of Forklift, when creating a new Migration Plan with the <strong>Create new plan</strong> wizard, after filling in the form, the <strong>Next</strong> button was misplaced to the left of the <strong>Back</strong> option. This issue has been resolved in Forklift 2.7.6. <a href="https://issues.redhat.com/browse/MTV-1732">(MTV-1732)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Static IP address is not preserved for Debian-based VMs that use interfaces</div>
+<p>In earlier releases of Forklift, all Debian-based operating systems could have the network configurations in the <code>/etc/network/interfaces</code>, but information was not fetched from these config files when creating the udev rule to set the interface name. This issue has been resolved in Forklift 2.7.6.  <a href="https://issues.redhat.com/browse/MTV-1711">(MTV-1711)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Editing of plan settings is enabled for all plan statuses</div>
+<p>In earlier releases of Forklift, VMS were removed from archived or archiving plans. This issue has been resolved in Forklift 2.7.6, and if a plan&#8217;s status is either archiving or archived, the option to remove VMs for that plan is blocked. <a href="https://issues.redhat.com/browse/MTV-1713">(MTV-1713)</a> </p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migration fails to complete</div>
+<p>In earlier releases of Forklift, after the first <strong>Disk Transfer</strong> step set was completed, the cutover was set. However, during the <strong>Image Conversion</strong> step, not all data volumes were completed, with some of them being stuck in the <strong>import in progress</strong> phase and <strong>100% progress</strong>. This issue has been resolved in Forklift 2.7.6. <a href="https://issues.redhat.com/browse/MTV-1717">(MTV-1717)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-5_forklift">Resolved issues 2.7.5</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">XFS filesystem corruption after warm migration of VM from VMware</div>
+<p>In earlier releases of Forklift, virtual machines (VM) were presenting XFS filesystem and other data corruption after the warm migration from VMware to KubeVirt using Forklift. This issue has been resolved in Forklift 2.7.5. <a href="https://issues.redhat.com/browse/MTV-1679">(MTV-1679)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Missing VM network-ID in the inventory</div>
+<p>In earlier releases of Forklift, after creating a migration plan for VMs with a NSX-T network attached from vSphere, the VM network mapping was missing, and also adding network mapping could not list NSX-T networks as source networks. This issue has been resolved in Forklift 2.7.5. <a href="https://issues.redhat.com/browse/MTV-1695">(MTV-1695)</a> and <a href="https://issues.redhat.com/browse/MTV-1140">(MTV-1140)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Failure to create Windows 2019 VM during Cold Migration</div>
+<p>In earlier releases of Forklift, cold migrating Windows Server 2019 VM from oVirt (oVirt) to a remote cluster returned a <code>firmware.bootloader setting</code> error of <code>admission webhook "virtualmachine-validator.kubevirt.io" denied the request</code> during the <strong>VirtualMachineCreation</strong> phase. This issue has been resolved in Forklift 2.7.5. <a href="https://issues.redhat.com/browse/MTV-1613">(MTV-1613)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">PreferredEfi applied when BIOS already enabled within VirtualMachineInstanceSpec</div>
+<p>In earlier releases of Forklift, <code>PreferredUseEfi</code> was applied when the BIOS was already enabled within the <code>VirtualMachineInstanceSpec</code>. In MTV 2.7.5, <code>PreferredEfi</code> is only applied when a user has not provided their own EFI configuration and the BIOS is additionally not enabled. <a href="https://issues.redhat.com/browse/CNV-49381">(CNV-49381)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-4_forklift">Resolved issues 2.7.4</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">XFS filesystem corruption after warm migration of VM from VMware</div>
+<p>In earlier releases of Forklift, in some cases, the destination VMware virtual machine (VM) was observed to have XFS filesystem corruption after being migrated to KubeVirt using Forklift. This issue has been resolved in Forklift 2.7.4. <a href="https://issues.redhat.com/browse/MTV-1656">(MTV-1656)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Error <code>Did not find CDI importer pod for DataVolume</code> is recorded in the <code>forklift-controller</code> logs during the <code>CopyDisks</code> phase</div>
+<p>In earlier releases of Forklift, the <code>forklift-controller</code> incorrectly logged an error <code>Did not find CDI importer pod for DataVolume</code> during the <code>CopyDisks</code> phase. This issue has been resolved in Forklift 2.7.4. <a href="https://issues.redhat.com/browse/MTV-1627">(MTV-1627)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-3_forklift">Resolved issues 2.7.3</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Migration plan does not fail when conversion pod fails</div>
+<p>In earlier releases of Forklift, when running the <code>virt-v2v</code> guest conversion, the migration plan did not fail if the conversion pod failed, as expected. This issue has been resolved in Forklift 2.7.3. <a href="https://issues.redhat.com/browse/MTV-1569">(MTV-1569)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Large number of VMs in the inventory can cause the inventory controller to panic</div>
+<p>In earlier releases of Forklift, having a large number of virtual machines (VMs) in the inventory could cause the inventory controller to panic and return a <code>concurrent write to websocket connection</code> warning. This issue was caused by the concurrent write to the WebSocket connection and has been addressed by the addition of a lock, so the Go <code>routine</code> <strong>waits</strong> before sending the response from the server. This issue has been resolved in Forklift 2.7.3. <a href="https://issues.redhat.com/browse/MTV-1220">(MTV-1220)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">VM selection disappears when selecting multiple VMs in the Migration Plan</div>
+<p>In earlier releases of Forklift, the <strong>VM selection</strong> checkbox disappeared after selecting multiple VMs in the Migration Plan. This issue has been resolved in Forklift 2.7.3. <a href="https://issues.redhat.com/browse/MTV-1546">(MTV-1546)</a></p>
+</div>
+<div class="paragraph">
+<div class="title"><code>forklift-controller</code> crashing during OVA plan migration</div>
+<p>In earlier releases of Forklift, the <code>forklift-controller</code> would crash during an OVA plan migration, returning a <code>runtime error: invalid memory address or nil pointer dereference</code> panic.  This issue has been resolved in Forklift 2.7.3. <a href="https://issues.redhat.com/browse/MTV-1577">(MTV-1577)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-2_forklift">Resolved issues 2.7.2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">VMNetworksNotMapped error occurs after creating a plan from the UI with the source provider set to KubeVirt</div>
+<p>In earlier releases of Forklift, after creating a plan with an KubeVirt source provider, the Migration Plan failed with the error <code>The plan is not ready - VMNetworksNotMapped</code>. This issue has been resolved in Forklift 2.7.2. <a href="https://issues.redhat.com/browse/MTV-1201">(MTV-1201)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration Plan for KubeVirt to KubeVirt missing the source namespace causing VMNetworkNotMapped error</div>
+<p>In earlier releases of Forklift, when creating a Migration Plan for an KubeVirt to KubeVirt migration using the Plan Creation Form, the network map generated was missing the source namespace, which caused a <code>VMNetworkNotMapped</code> error on the plan. This issue has been resolved in Forklift 2.7.2. <a href="https://issues.redhat.com/browse/MTV-1297">(MTV-1297)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">DV, PVC, and PV are not cleaned up and removed if the migration plan is Archived and Deleted</div>
+<p>In earlier releases of Forklift, the DataVolume (DV), PersistentVolumeClaim (PVC), and PersistentVolume (PV) continued to exist after the migration plan was archived and deleted. This issue has been resolved in Forklift 2.7.2. <a href="https://issues.redhat.com/browse/MTV-1477">(MTV-1477)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Other migrations are halted from starting as the scheduler is waiting for the complete VM to get transferred</div>
+<p>In earlier releases of Forklift, when warm migrating a virtual machine (VM) that has several disks, you had to wait for the complete VM to get migrated, and the scheduler was halted until all the disks finished before the migration would be started. This issue has been resolved in Forklift 2.7.2. <a href="https://issues.redhat.com/browse/MTV-1537">(MTV-1537)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migration is not functioning as expected</div>
+<p>In earlier releases of Forklift, warm migration did not function as expected. When running the warm migration with VMs larger than the MaxInFlight disks, the VMs over this number did not start the migration until the cutover. This issue has been resolved in Forklift 2.7.2. <a href="https://issues.redhat.com/browse/MTV-1543">(MTV-1543)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration hanging due to error: virt-v2v: error: -i libvirt: expecting a libvirt guest name</div>
+<p>In earlier releases of Forklift, when attempting to migrate a VMware VM with a non-compliant Kubernetes name, the Openshift console returned a warning that the VM would be renamed. However, after starting the Migration Plan, it hangs since the migration pod is in an <code>Error</code> state. This issue has been resolved in Forklift 2.7.2. This issue has been resolved in Forklift 2.7.2. <a href="https://issues.redhat.com/browse/MTV-1555">(MTV-1555)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">VMs are not migrated if they have more disks than MAX_VM_INFLIGHT</div>
+<p>In earlier releases of Forklift, when migrating the VM using the warm migration, if there were more disks than the <code>MAX_VM_INFLIGHT</code> the VM was not scheduled and the migration was not started. This issue has been resolved in Forklift 2.7.2. <a href="https://issues.redhat.com/browse/MTV-1573">(MTV-1573)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration Plan returns an error even when Changed Block Tracking (CBT) is enabled</div>
+<p>In earlier releases of Forklift, when running a VM in VMware, if the  CBT flag was enabled while the VM was running by adding both <code>ctkEnabled=TRUE</code> and <code>scsi0:0.ctkEnabled=TRUE</code> parameters, an error message <code>Danger alert:The plan is not ready - VMMissingChangedBlockTracking</code> was returned, and the migration plan was prevented from working. This issue has been resolved in Forklift 2.7.2. <a href="https://issues.redhat.com/browse/MTV-1576">(MTV-1576)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-2-7-0_forklift">Resolved issues 2.7.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Change <code>.</code> to <code>-</code> in the names of VMs that are migrated</div>
+<p>In earlier releases of Forklift, if the name of the virtual machines (VMs) contained <code>.</code>, this was changed to <code>-</code> when they were migrated. This issue has been resolved in Forklift 2.7.0. <a href="https://issues.redhat.com/browse/MTV-1292">(MTV-1292)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Status condition indicating a failed mapping resource in a plan is not added to the plan</div>
+<p>In earlier releases of Forklift, a status condition indicating a failed mapping resource of a plan was not added to the plan. This issue has been resolved in Forklift 2.7.0, with a status condition indicating the failed mapping being added. <a href="https://issues.redhat.com/browse/MTV-1461">(MTV-1461)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">ifcfg files with HWaddr cause the NIC name to change</div>
+<p>In earlier releases of Forklift, interface configuration (ifcfg) files with a hardware address (HWaddr) of the Ethernet interface caused the name of the network interface controller (NIC) to change. This issue has been resolved in Forklift 2.7.0. <a href="https://issues.redhat.com/browse/MTV-1463">(MTV-1463)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Import fails with special characters in VMX file</div>
+<p>In earlier releases of Forklift, imports failed when there were special characters in the parameters of the VMX file. This issue has been resolved in Forklift 2.7.0. <a href="https://issues.redhat.com/browse/MTV-1472">(MTV-1472)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Observed <code>invalid memory address or nil pointer dereference</code> panic</div>
+<p>In earlier releases of Forklift, an <code>invalid memory address or nil pointer dereference</code> panic was observed, which was caused by a refactor and could be triggered when there was a problem with the inventory pod. This issue has been resolved in Forklift 2.7.0. <a href="https://issues.redhat.com/browse/MTV-1482">(MTV-1482)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Static IPv4 changed after warm migrating win2022/2019 VMs</div>
+<p>In earlier releases of Forklift, the static Internet Protocol version 4 (IPv4) address was changed after a warm migration of Windows Server 2022 and Windows Server 2019 VMs. This issue has been resolved in Forklift 2.7.0. <a href="https://issues.redhat.com/browse/MTV-1491">(MTV-1491)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Warm migration is missing arguments</div>
+<p>In earlier releases of Forklift, <code>virt-v2v-in-place</code> for the warm migration was missing arguments that were available in <code>virt-v2v</code> for the cold migration. This issue has been resolved in Forklift 2.7.0. <a href="https://issues.redhat.com/browse/MTV-1495">(MTV-1495)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Default gateway settings changed after migrating Windows Server 2022 VMs with <code>preserve static IPs</code></div>
+<p>In earlier releases of Forklift, the default gateway settings were changed after migrating Windows Server 2022 VMs with the <code>preserve static IPs</code> setting. This issue has been resolved in Forklift 2.7.0. <a href="https://issues.redhat.com/browse/MTV-1497">(MTV-1497)</a></p>
+</div>
+</div>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

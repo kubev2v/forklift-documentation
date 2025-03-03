@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/modules/creating-validation-rule/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="creating-validation-rule_forklift">Creating a validation rule</h1>
+<div class="paragraph">
+<p>You create a validation rule by applying a config map custom resource (CR) containing the rule to the <code>Validation</code> service.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If you create a rule with the same <em>name</em> as an existing rule, the <code>Validation</code> service performs an <code>OR</code> operation with the rules.</p>
+</li>
+<li>
+<p>If you create a rule that contradicts a default rule, the <code>Validation</code> service will not start.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<div class="title">Validation rule example</div>
+<p>Validation rules are based on virtual machine (VM) attributes collected by the <code>Provider Inventory</code> service.</p>
+</div>
+<div class="paragraph">
+<p>For example, the VMware API uses this path to check whether a VMware VM has NUMA node affinity configured: <code>MOR:VirtualMachine.config.extraConfig["numa.nodeAffinity"]</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Provider Inventory</code> service simplifies this configuration and returns a testable attribute with a list value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">"numaNodeAffinity": [
+    "0",
+    "1"
+],</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You create a <a href="https://www.openpolicyagent.org/docs/latest/policy-language/">Rego</a> query, based on this attribute, and add it to the <code>forklift-validation-config</code> config map:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">`count(input.numaNodeAffinity) != 0`</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Create a config map CR according to the following example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$ cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: &lt;forklift-validation-config&gt;
+  namespace: konveyor-forklift
+data:
+  vmware_multiple_disks.rego: |-
+    package &lt;provider_package&gt; <b class="conum">(1)</b>
+
+    has_multiple_disks { <b class="conum">(2)</b>
+      count(input.disks) &gt; 1
+    }
+
+    concerns[flag] {
+      has_multiple_disks <b class="conum">(3)</b>
+        flag := {
+          "category": "&lt;Information&gt;", <b class="conum">(4)</b>
+          "label": "Multiple disks detected",
+          "assessment": "Multiple disks detected on this VM."
+        }
+    }
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Specify the provider package name. Allowed values are <code>io.konveyor.forklift.vmware</code> for VMware and <code>io.konveyor.forklift.ovirt</code> for oVirt.</p>
+</li>
+<li>
+<p>Specify the <code>concerns</code> name and Rego query.</p>
+</li>
+<li>
+<p>Specify the <code>concerns</code> name and <code>flag</code> parameter values.</p>
+</li>
+<li>
+<p>Allowed values are <code>Critical</code>, <code>Warning</code>, and <code>Information</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Stop the <code>Validation</code> pod by scaling the <code>forklift-controller</code> deployment to <code>0</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">$ kubectl scale -n konveyor-forklift --replicas=0 deployment/forklift-controller</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the <code>Validation</code> pod by scaling the <code>forklift-controller</code> deployment to <code>1</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">$ kubectl scale -n konveyor-forklift --replicas=1 deployment/forklift-controller</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Check the <code>Validation</code> pod log to verify that the pod started:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">$ kubectl logs -f &lt;validation_pod&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the custom rule conflicts with a default rule, the <code>Validation</code> pod will not start.</p>
+</div>
+</li>
+<li>
+<p>Remove the source provider:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">$ kubectl delete provider &lt;provider&gt; -n konveyor-forklift</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the source provider to apply the new rule:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">$ cat &lt;&lt; EOF | kubectl apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: &lt;provider&gt;
+  namespace: konveyor-forklift
+spec:
+  type: &lt;provider_type&gt; <b class="conum">(1)</b>
+  url: &lt;api_end_point&gt; <b class="conum">(2)</b>
+  secret:
+    name: &lt;secret&gt; <b class="conum">(3)</b>
+    namespace: konveyor-forklift
+EOF</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Allowed values are <code>ovirt</code>, <code>vsphere</code>, and <code>openstack</code>.</p>
+</li>
+<li>
+<p>Specify the API end point URL, for example, <code><a href="https://&lt;vCenter_host&gt;/sdk" class="bare">https://&lt;vCenter_host&gt;/sdk</a></code> for vSphere, <code><a href="https://&lt;engine_host&gt;/ovirt-engine/api" class="bare">https://&lt;engine_host&gt;/ovirt-engine/api</a></code> for oVirt, or <code><a href="https://&lt;identity_service&gt;/v3" class="bare">https://&lt;identity_service&gt;/v3</a></code> for {osp}.</p>
+</li>
+<li>
+<p>Specify the name of the provider <code>Secret</code> CR.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You must update the rules version after creating a custom rule so that the <code>Inventory</code> service detects the changes and validates the VMs.</p>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

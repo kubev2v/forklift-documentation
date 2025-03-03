@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/modules/storage-support/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="about-storage_forklift">Storage support and default modes</h1>
+<div class="paragraph">
+<p>Forklift uses the following default volume and access modes for supported storage.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Default volume and access modes</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Provisioner</th>
+<th class="tableblock halign-left valign-top">Volume mode</th>
+<th class="tableblock halign-left valign-top">Access mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kubernetes.io/aws-ebs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Block</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteOnce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kubernetes.io/azure-disk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Block</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteOnce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kubernetes.io/azure-file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filesystem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteMany</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kubernetes.io/cinder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Block</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteOnce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kubernetes.io/gce-pd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Block</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteOnce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kubernetes.io/hostpath-provisioner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filesystem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteOnce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manila.csi.openstack.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filesystem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteMany</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openshift-storage.cephfs.csi.ceph.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filesystem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteMany</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openshift-storage.rbd.csi.ceph.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Block</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteOnce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kubernetes.io/rbd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Block</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteOnce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kubernetes.io/vsphere-volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Block</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadWriteOnce</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the KubeVirt storage does not support <a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html/storage/dynamic-provisioning">dynamic provisioning</a>, you must apply the following settings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Filesystem</code> volume mode</p>
+<div class="paragraph">
+<p><code>Filesystem</code> volume mode is slower than <code>Block</code> volume mode.</p>
+</div>
+</li>
+<li>
+<p><code>ReadWriteOnce</code> access mode</p>
+<div class="paragraph">
+<p><code>ReadWriteOnce</code> access mode does not support live virtual machine migration.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See <a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html/virtualization/virtual-machines#virt-customizing-storage-profile_virt-creating-data-volumes">Enabling a statically-provisioned storage class</a> for details on editing the storage profile.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If your migration uses block storage and persistent volumes created with an EXT4 file system, increase the file system overhead in CDI to be more than 10%. The default overhead that is assumed by CDI does not completely include the reserved place for the root partition. If you do not increase the file system overhead in CDI by this amount, your migration might fail.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When you migrate from {osp}, or when you run a cold migration from oVirt to the OKD cluster that Forklift is deployed on, the migration allocates persistent volumes without CDI. In these cases, you might need to adjust the file system overhead.</p>
+</div>
+<div class="paragraph">
+<p>If the configured file system overhead, which has a default value of 10%, is too low, the disk transfer will fail due to lack of space. In such a case, you would want to increase the file system overhead.</p>
+</div>
+<div class="paragraph">
+<p>In some cases, however, you might want to decrease the file system overhead to reduce storage consumption.</p>
+</div>
+<div class="paragraph">
+<p>You can change the file system overhead by changing the value of the <code>controller_filesystem_overhead</code> in the <code>spec</code> portion of the <code>forklift-controller</code> CR, as described in <a href="#configuring-mtv-operator_forklift">Configuring the MTV Operator</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

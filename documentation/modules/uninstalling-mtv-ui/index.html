@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/modules/uninstalling-mtv-ui/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="uninstalling-mtv-ui_forklift">Uninstalling Forklift by using the OKD web console</h1>
+<div class="paragraph">
+<p>You can uninstall Forklift by using the OKD web console.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You must be logged in as a user with <code>cluster-admin</code> privileges.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In the OKD web console, click <strong>Operators &gt; Installed Operators</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Forklift Operator</strong>.</p>
+<div class="paragraph">
+<p>The <strong>Operator Details</strong> page opens in the <strong>Details</strong> tab.</p>
+</div>
+</li>
+<li>
+<p>Click the <strong>ForkliftController</strong> tab.</p>
+</li>
+<li>
+<p>Click <strong>Actions</strong> and select <strong>Delete ForkLiftController</strong>.</p>
+<div class="paragraph">
+<p>A confirmation window opens.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>Delete</strong>.</p>
+<div class="paragraph">
+<p>The controller is removed.</p>
+</div>
+</li>
+<li>
+<p>Open the <strong>Details</strong> tab.</p>
+<div class="paragraph">
+<p>The <strong>Create ForkliftController</strong> button appears instead of the controller you deleted. There is no need to click it.</p>
+</div>
+</li>
+<li>
+<p>On the upper-right side of the page, click <strong>Actions</strong> and select <strong>Uninstall Operator</strong>.</p>
+<div class="paragraph">
+<p>A confirmation window opens, displaying any operand instances.</p>
+</div>
+</li>
+<li>
+<p>To delete all instances, select the <strong>Delete all operand instances for this operator</strong> checkbox. By default, the checkbox is cleared.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If your Operator configured off-cluster resources, these will continue to run and will require manual cleanup.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Click <strong>Uninstall</strong>.</p>
+<div class="paragraph">
+<p>The <strong>Installed Operators</strong> page opens, and the Forklift Operator is removed from the list of installed Operators.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>Home &gt; Overview</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Status</strong> section of the page, click <strong>Dynamic Plugins</strong>.</p>
+<div class="paragraph">
+<p>The <strong>Dynamic Plugins</strong> popup opens, listing <strong>forklift-console-plugin</strong> as a failed plugin. If the <strong>forklift-console-plugin</strong> does not appear as a failed plugin, refresh the web console.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>forklift-console-plugin</strong>.</p>
+<div class="paragraph">
+<p>The <strong>ConsolePlugin details</strong> page opens in the <strong>Details</strong> tab.</p>
+</div>
+</li>
+<li>
+<p>On the upper right-hand side of the page, click <strong>Actions</strong> and select <strong>Delete ConsolePlugin</strong> from the list.</p>
+<div class="paragraph">
+<p>A confirmation window opens.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>Delete</strong>.</p>
+<div class="paragraph">
+<p>The plugin is removed from the list of <strong>Dynamic plugins</strong> on the <strong>Overview</strong> page. If the plugin still appears, restart the <strong>Overview</strong> page.</p>
+</div>
+</li>
+</ol>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

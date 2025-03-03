@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/doc-Migration_Toolkit_for_Virtualization/modules/rn-2.4/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="rn-24_forklift">Forklift 2.4</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Migrate virtual machines (VMs) from VMware vSphere or oVirt or {osp} to KubeVirt with  Forklift.</p>
+</div>
+<div class="paragraph">
+<p>The release notes describe technical changes, new features and enhancements, and known issues.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="technical-changes-24_forklift">Technical changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This release has the following technical changes:</p>
+</div>
+<div class="paragraph">
+<div class="title">Faster disk image migration from oVirt</div>
+<p>Disk images are not converted anymore using virt-v2v when migrating from oVirt. This change speeds up migrations and also allows migration for guest operating systems that are not supported by virt-vsv. <a href="https://github.com/kubev2v/forklift-controller/issues/403">(forklift-controller#403)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Faster disk transfers by ovirt-imageio client (ovirt-img)</div>
+<p>Disk transfers use <code>ovirt-imageio</code> client (ovirt-img) instead of Containerized Data Import (CDI) when migrating from RHV to the local OpenShift Container Platform cluster, accelerating the migration.</p>
+</div>
+<div class="paragraph">
+<div class="title">Faster migration using conversion pod disk transfer</div>
+<p>When migrating from vSphere to the local OpenShift Container Platform cluster, the conversion pod transfers the disk data instead of Containerized Data Importer (CDI), accelerating the migration.</p>
+</div>
+<div class="paragraph">
+<div class="title">Migrated virtual machines are not scheduled on the target OCP cluster</div>
+<p>The migrated virtual machines are no longer scheduled on the target OpenShift Container Platform cluster. This enables migrating VMs that cannot start due to limit constraints on the target at migration time.</p>
+</div>
+<div class="paragraph">
+<div class="title">StorageProfile resource needs to be updated for a non-provisioner storage class</div>
+<p>You must update the <code>StorageProfile</code> resource with <code>accessModes</code> and <code>volumeMode</code> for non-provisioner storage classes such as NFS.</p>
+</div>
+<div class="paragraph">
+<div class="title">VDDK 8 can be used in the VDDK image</div>
+<p>Previous versions of Forklift supported only using VDDK version 7 for the VDDK image. Forklift supports both versions 7 and 8, as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you are migrating to OCP 4.12 or earlier, use VDDK version 7.</p>
+</li>
+<li>
+<p>If you are migrating to OCP 4.13 or later, use VDDK version 8.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-features-and-enhancements-24_forklift">New features and enhancements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This release has the following features and improvements:</p>
+</div>
+<div class="paragraph">
+<div class="title">OpenStack migration</div>
+<p>Forklift now supports migrations with {osp} as a source provider. This feature is a provided as a Technology Preview and only supports cold migrations.</p>
+</div>
+<div class="paragraph">
+<div class="title">OCP console plugin</div>
+<p>The Forklift Operator now integrates the Forklift web console into the OKD web console. The new UI operates as an OCP Console plugin that adds the sub-menu <code>Migration</code> to the navigation bar. It is implemented in version 2.4, disabling the old UI. You can enable the old UI by setting <code>feature_ui: true</code> in ForkliftController. <a href="https://issues.redhat.com/browse/MTV-427">(MTV-427)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Skip certification option</div>
+<p>'Skip certificate validation' option was added to VMware and oVirt providers. If selected, the provider&#8217;s certificate will not be validated and the UI will not ask for specifying a CA certificate.</p>
+</div>
+<div class="paragraph">
+<div class="title">Only third-party certificate required</div>
+<p>Only the third-party certificate needs to be specified when defining a oVirt provider that sets with the Manager CA certificate.</p>
+</div>
+<div class="paragraph">
+<div class="title">Conversion of VMs with RHEL9 guest operating system</div>
+<p>Cold migrations from vSphere to a local Red Hat OpenShift cluster use virt-v2v on RHEL 9. <a href="https://issues.redhat.com/browse/MTV-332">(MTV-332)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="known-issues-24_forklift">Known issues</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This release has the following known issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting migration plan does not remove temporary resources</div>
+<p>Deleting a migration plan does not remove temporary resources such as importer pods, conversion pods, config maps, secrets, failed VMs and data volumes. You must archive a migration plan before deleting it to clean up the temporary resources. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018974">(BZ#2018974)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Unclear error status message for VM with no operating system</div>
+<p>The error status message for a VM with no operating system on the <strong>Plans</strong> page of the web console does not describe the reason for the failure. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2008846">(BZ#22008846)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Log archive file includes logs of a deleted migration plan or VM</div>
+<p>If deleting a migration plan and then running a new migration plan with the same name, or if deleting a migrated VM and then remigrate the source VM, then the log archive file created by the Forklift web console might include the logs of the deleted migration plan or VM. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2023764">(BZ#2023764)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration of virtual machines with encrypted partitions fails during conversion</div>
+<p>vSphere only: Migrations from oVirt and OpenStack don&#8217;t fail, but the encryption key may be missing on the target OCP cluster.</p>
+</div>
+<div class="paragraph">
+<div class="title">Snapshots that are created during the migration in OpenStack are not deleted</div>
+<p>The Migration Controller service does not delete snapshots that are created during the migration for source virtual machines in OpenStack automatically. Workaround: the snapshots can be removed manually on OpenStack.</p>
+</div>
+<div class="paragraph">
+<div class="title">oVirt snapshots are not deleted after a successful migration</div>
+<p>The Migration Controller service does not delete snapshots automatically after a successful warm migration of a oVirt VM. Workaround: Snapshots can be removed from oVirt instead. <a href="https://issues.redhat.com/browse/MTV-349">(MTV-349)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Migration fails during precopy/cutover while a snapshot operation is executed on the source VM</div>
+<p>Some warm migrations from oVirt might fail. When running a migration plan for warm migration of multiple VMs from oVirt, the migrations of some VMs might fail during the cutover stage. In that case, restart the migration plan and set the cutover time for the VM migrations that failed in the first run.</p>
+</div>
+<div class="paragraph">
+<p>Warm migration from oVirt fails if a snapshot operation is performed on the source VM. If the user performs a snapshot operation on the source VM at the time when a migration snapshot is scheduled, the migration fails instead of waiting for the user’s snapshot operation to finish. <a href="https://issues.redhat.com/browse/MTV-456">(MTV-456)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Cannot schedule migrated VM with multiple disks to more than one storage classes of type hostPath</div>
+<p>When migrating a VM with multiple disks to more than one storage classes of type hostPath, it may result in a VM that cannot be scheduled. Workaround: It is recommended to use shared storage on the target OCP cluster.</p>
+</div>
+<div class="paragraph">
+<div class="title">Deleting migrated VM does not remove PVC and PV</div>
+<p>When removing a VM that was migrated, its persistent volume claims (PVCs) and physical volumes (PV) are not deleted. Workaround: remove the CDI importer pods and then remove the remaining PVCs and PVs. <a href="https://issues.redhat.com/browse/MTV-492">(MTV-492)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">PVC deletion hangs after archiving and deleting migration plan</div>
+<p>When a migration fails, its PVCs and PVs are not deleted as expected when its migration plan is archived and deleted. Workaround: Remove the CDI importer pods and then remove the remaining PVCs and PVs. <a href="https://issues.redhat.com/browse/MTV-493">(MTV-493)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">VM with multiple disks may boot from non-bootable disk after migration</div>
+<p>VM with multiple disks that was migrated might not be able to boot on the target OCP cluster. Workaround: Set the boot order appropriately to boot from the bootable disk. <a href="https://issues.redhat.com/browse/MTV-433">(MTV-433)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Non-supported guest operating systems in warm migrations</div>
+<p>Warm migrations and migrations to remote OCP clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local OCP cluster. It is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case.<br>
+See <a href="https://access.redhat.com/articles/1351473">Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9</a> for the list of supported guest operating systems.</p>
+</div>
+<div class="paragraph">
+<div class="title">VMs from vSphere with RHEL 9 guest operating system may start with network interfaces that are down</div>
+<p>When migrating VMs that are installed with RHEL 9 as guest operating system from vSphere, their network interfaces could be disabled when they start in OpenShift Virtualization. <a href="https://issues.redhat.com/browse/MTV-491">(MTV-491)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Upgrade from 2.4.0 fails</div>
+<p>When upgrading from MTV 2.4.0 to a later version, the operation fails with an error that says the field 'spec.selector' of deployment <code>forklift-controller</code> is immutable. Workaround: remove the custom resource <code>forklift-controller</code> of type <code>ForkliftController</code> from the installed namespace, and recreate it. The user needs to refresh the OCP Console once the <code>forklift-console-plugin</code> pod runs to load the upgraded Forklift web console. <a href="https://issues.redhat.com/browse/MTV-518">(MTV-518)</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resolved-issues-24_forklift">Resolved issues</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This release has the following resolved issues:</p>
+</div>
+<div class="paragraph">
+<div class="title">Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)</div>
+<p>A flaw was found in handling multiplexed streams in the HTTP/2 protocol. In previous releases of MTV, the HTTP/2 protocol allowed a denial of service (server resource consumption) because request cancellation could reset multiple streams quickly. The server had to set up and tear down the streams while not hitting any server-side limit for the maximum number of active streams per connection, which resulted in a denial of service due to server resource consumption.</p>
+</div>
+<div class="paragraph">
+<p>This issue has been resolved in MTV 2.4.3 and 2.5.2. It is advised to update to one of these versions of MTV or later.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://access.redhat.com/security/cve/cve-2023-44487">CVE-2023-44487 (Rapid Reset Attack)</a> and <a href="https://access.redhat.com/security/cve/cve-2023-39325">CVE-2023-39325 (Rapid Reset Attack)</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Improve invalid/conflicting VM name handling</div>
+<p>Improve the automatic renaming of VMs during migration to fit RFC 1123. This feature that was introduced in 2.3.4 is enhanced to cover more special cases. <a href="https://issues.redhat.com/browse/MTV-212">(MTV-212)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Prevent locking user accounts due to incorrect credentials</div>
+<p>If a user specifies an incorrect password for oVirt providers, they are no longer locked in oVirt. An error returns when the oVirt manager is accessible and adding the provider. If the oVirt manager is inaccessible, the provider is added, but there would be no further attempt after failing, due to incorrect credentials. <a href="https://issues.redhat.com/browse/MTV-324">(MTV-324)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Users without cluster-admin role can create new providers</div>
+<p>Previously, the <code>cluster-admin</code> role was required to browse and create providers. In this release, users with sufficient permissions on MTV resources (providers, plans, migrations, NetworkMaps, StorageMaps, hooks) can operate MTV without cluster-admin permissions. <a href="https://issues.redhat.com/browse/MTV-334">(MTV-334)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Convert i440fx to q35</div>
+<p>Migration of virtual machines with i440fx chipset is now supported. The chipset is converted to q35 during the migration. <a href="https://issues.redhat.com/browse/MTV-430">(MTV-430)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Preserve the UUID setting in SMBIOS for a VM that is migrated from oVirt</div>
+<p>The Universal Unique ID (UUID) number within the System Management BIOS (SMBIOS) no longer changes for VMs that are migrated from oVirt. This enhancement enables applications that operate within the guest operating system and rely on this setting, such as for licensing purposes, to operate on the target OCP cluster in a manner similar to that of oVirt. <a href="https://issues.redhat.com/browse/MTV-597">(MTV-597)</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Do not expose password for oVirt in error messages</div>
+<p>Previously, the password that was specified for oVirt manager appeared in error messages that were displayed in the web console and logs when failing to connect to oVirt. In this release, error messages that are generated when failing to connect to oVirt do not reveal the password for oVirt manager.</p>
+</div>
+<div class="paragraph">
+<div class="title">QEMU guest agent is now installed on migrated VMs</div>
+<p>The QEMU guest agent is installed on VMs during cold migration from vSphere. <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2018062">(BZ#2018062)</a></p>
+</div>
+</div>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/modules/virt-migration-workflow/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="virt-migration-workflow_forklift">Detailed migration workflow</h1>
+<div class="paragraph">
+<p>You can use the detailed migration workflow to troubleshoot a failed migration.</p>
+</div>
+<div class="paragraph">
+<p>The workflow describes the following steps:</p>
+</div>
+<div class="paragraph">
+<p><strong>Warm Migration or migration to a remote {ocp-name} cluster:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When you create the <code>Migration</code> custom resource (CR) to run a migration plan, the <code>Migration Controller</code> service creates a <code>DataVolume</code> CR for each source VM disk.</p>
+<div class="paragraph">
+<p><strong>For each VM disk:</strong></p>
+</div>
+</li>
+<li>
+<p>The <code>Containerized Data Importer (CDI) Controller</code> service creates a persistent volume claim (PVC) based on the parameters specified in the <code>DataVolume</code> CR.  </p>
+</li>
+<li>
+<p>If the <code>StorageClass</code> has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the <code>StorageClass</code> provisioner.</p>
+</li>
+<li>
+<p>The <code>CDI Controller</code> service creates an <code>importer</code> pod.</p>
+</li>
+<li>
+<p>The <code>importer</code> pod streams the VM disk to the PV.</p>
+<div class="paragraph">
+<p><strong>After the VM disks are transferred:</strong></p>
+</div>
+</li>
+<li>
+<p>The <code>Migration Controller</code> service creates a <code>conversion</code> pod with the PVCs attached to it when importing from VMWare.</p>
+<div class="paragraph">
+<p>The <code>conversion</code> pod runs <code>virt-v2v</code>, which installs and configures device drivers on the PVCs of the target VM.</p>
+</div>
+</li>
+<li>
+<p>The <code>Migration Controller</code> service creates a <code>VirtualMachine</code> CR for each source virtual machine (VM), connected to the PVCs.</p>
+</li>
+<li>
+<p>If the VM ran on the source environment, the <code>Migration Controller</code> powers on the VM, the <code>KubeVirt Controller</code> service creates a <code>virt-launcher</code> pod and a <code>VirtualMachineInstance</code> CR.</p>
+<div class="paragraph">
+<p>The <code>virt-launcher</code> pod runs <code>QEMU-KVM</code> with the PVCs attached as VM disks.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Cold migration from oVirt or {osp} to the local {ocp-name} cluster:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When you create a <code>Migration</code> custom resource (CR) to run a migration plan, the <code>Migration Controller</code> service creates for each source VM disk a <code>PersistentVolumeClaim</code> CR, and an <code>OvirtVolumePopulator</code> when the source is oVirt, or an <code>OpenstackVolumePopulator</code> CR  when the source is {osp}.</p>
+<div class="paragraph">
+<p><strong>For each VM disk:</strong></p>
+</div>
+</li>
+<li>
+<p>The <code>Populator Controller</code> service creates a temporarily persistent volume claim (PVC).</p>
+</li>
+<li>
+<p>If the <code>StorageClass</code> has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the <code>StorageClass</code> provisioner.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>Migration Controller</code> service creates a dummy pod to bind <strong>all PVCs</strong>. The name of the pod contains <code>pvcinit</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The <code>Populator Controller</code> service creates a <code>populator</code> pod.</p>
+</li>
+<li>
+<p>The <code>populator</code> pod transfers the disk data to the PV.</p>
+<div class="paragraph">
+<p><strong>After the VM disks are transferred:</strong></p>
+</div>
+</li>
+<li>
+<p>The temporary PVC is deleted, and the initial PVC points to the PV with the data.</p>
+</li>
+<li>
+<p>The <code>Migration Controller</code> service creates a <code>VirtualMachine</code> CR for each source virtual machine (VM), connected to the PVCs.</p>
+</li>
+<li>
+<p>If the VM ran on the source environment, the <code>Migration Controller</code> powers on the VM, the <code>KubeVirt Controller</code> service creates a <code>virt-launcher</code> pod and a <code>VirtualMachineInstance</code> CR.</p>
+<div class="paragraph">
+<p>The <code>virt-launcher</code> pod runs <code>QEMU-KVM</code> with the PVCs attached as VM disks.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Cold migration from VMWare to the local {ocp-name} cluster:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When you create a <code>Migration</code> custom resource (CR) to run a migration plan, the <code>Migration Controller</code> service creates a <code>DataVolume</code> CR for each source VM disk.</p>
+<div class="paragraph">
+<p><strong>For each VM disk:</strong></p>
+</div>
+</li>
+<li>
+<p>The <code>Containerized Data Importer (CDI) Controller</code> service creates a blank persistent volume claim (PVC) based on the parameters specified in the <code>DataVolume</code> CR.  </p>
+</li>
+<li>
+<p>If the <code>StorageClass</code> has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the <code>StorageClass</code> provisioner.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>For all VM disks:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>Migration Controller</code> service creates a dummy pod to bind <strong>all PVCs</strong>. The name of the pod contains <code>pvcinit</code>.</p>
+</li>
+<li>
+<p>The <code>Migration Controller</code> service creates a <code>conversion</code> pod for all PVCs.</p>
+</li>
+<li>
+<p>The <code>conversion</code> pod runs <code>virt-v2v</code>, which converts the VM to the KVM hypervisor and transfers the disks' data to their corresponding PVs.</p>
+<div class="paragraph">
+<p><strong>After the VM disks are transferred:</strong></p>
+</div>
+</li>
+<li>
+<p>The <code>Migration Controller</code> service creates a <code>VirtualMachine</code> CR for each source virtual machine (VM), connected to the PVCs.</p>
+</li>
+<li>
+<p>If the VM ran on the source environment, the <code>Migration Controller</code> powers on the VM, the <code>KubeVirt Controller</code> service creates a <code>virt-launcher</code> pod and a <code>VirtualMachineInstance</code> CR.</p>
+<div class="paragraph">
+<p>The <code>virt-launcher</code> pod runs <code>QEMU-KVM</code> with the PVCs attached as VM disks.</p>
+</div>
+</li>
+</ol>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

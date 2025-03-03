@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/modules/virt-v2v-mtv/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="virt-v2v-mtv_forklift">How MTV uses the virt-v2v tool</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Forklift uses the <code>virt-v2v</code> tool to convert the disk image of a VM into a format compatible with KubeVirt. The tool makes migrations easier because it automatically performs the tasks needed to make your VMs work with KubeVirt, such as enabling paravirtualized VirtIO drivers in the converted virtual machine, if possible, and installing the QEMU guest agent.</p>
+</div>
+<div class="paragraph">
+<p><code>virt-v2v</code> is included in Red Hat Enterprise Linux (RHEL) versions 7 and later.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="main-functions-virt-v2v-mtv_forklift">Main functions of virt-v2v in MTV migrations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>During migration, Forklift uses <code>virt-v2v</code> to collect metadata about VMs, make necessary changes to VM disks, and copy the disks containing the VMs to KubeVirt.</p>
+</div>
+<div class="paragraph">
+<p><code>virt-v2v</code> makes the following changes to VM disks to prepare them for migration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Additions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Injection of VirtIO drivers, for example, network or disk drivers.</p>
+</li>
+<li>
+<p>Preparation of hypervisor-specific tools or agents, for example, a QEMU guest agent installation.</p>
+</li>
+<li>
+<p>Modification of boot configuration, for example, updated bootloader or boot entries.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Removals:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Unnecessary or former hypervisor-specific files, for example, VMware tools or VirtualBox additions.</p>
+</li>
+<li>
+<p>Old network driver configurations, for example, removing VMware-specific NIC drivers.</p>
+</li>
+<li>
+<p>Configuration settings that are incompatible with the target system, for example, old boot settings.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you are migrating from VMware or from OVA files, <code>virt-v2v</code> also sets their IP addresses either during the migration or during the first reboot of the VMs after migration.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can also run pre-defined Ansible hooks before or after a migration using Forklift. For more information, see <a href="../master.html#adding-hooks-mtv-migration-plan">Adding hooks to an MTV migration plan</a>.</p>
+</div>
+<div class="paragraph">
+<p>These hooks do not necessarily use <code>virt-v2v</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="customizing-removing-installing-virt-v2v_forklift">Customizing, removing, and installing files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Forklift uses <code>virt-v2v</code> to perform additional guest customizations during the conversion, such as the following actions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Customization to preserve IP addresses</p>
+</li>
+<li>
+<p>Customization to preserve drive letters</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For RHEL-based guests, <code>virt-v2v</code> attempts to install the guest agent from the Red Hat registry. If the migration is run in a detached environment, the installer will fail, and you must use hooks, or other automation, to install the guest agent.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For more information, see the man reference pages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://libguestfs.org/virt-v2v.1.html"><code>virt-v2v</code> - Convert a guest to use KVM</a></p>
+</li>
+<li>
+<p><a href="https://libguestfs.org/virt-customize.1.html"><code>virt-customize</code> - Customize a virtual machine</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="permissions-virt-v2v_forklift">Permissions and virt-v2v</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>virt-v2v</code> does not require permissions or access credentials for the guest operating system itself because <code>virt-v2v</code> is not run against a running VM, but only against the disks of a VM.</p>
+</div>
+</div>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

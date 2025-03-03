@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Upgrading  Forklift | Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Upgrading  Forklift | Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Upgrading Forklift | Forklift Documentation</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Upgrading Forklift" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Upgrading Forklift" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Upgrading Forklift","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/modules/upgrading-mtv-ui/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="upgrading-mtv-ui_forklift">Upgrading  Forklift</h1>
+<div class="paragraph">
+<p>You can upgrade the Forklift Operator by using the OKD web console to install the new version.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In the OKD web console, click <strong>Operators</strong> &#8594; <strong>Installed Operators</strong> &#8594; <strong>{operator-name-ui}</strong> &#8594; <strong>Subscription</strong>.</p>
+</li>
+<li>
+<p>Change the update channel to the correct release.</p>
+<div class="paragraph">
+<p>See <a href="https://docs.okd.io/latest/operators/admin/olm-upgrading-operators.html#olm-changing-update-channel_olm-upgrading-operators">Changing update channel</a> in the OKD documentation.</p>
+</div>
+</li>
+<li>
+<p>Confirm that <strong>Upgrade status</strong> changes from <strong>Up to date</strong> to <strong>Upgrade available</strong>. If it does not, restart the <code>CatalogSource</code> pod:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Note the catalog source, for example, <code>redhat-operators</code>.</p>
+</li>
+<li>
+<p>From the command line, retrieve the catalog source pod:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">$ kubectl get pod -n openshift-marketplace | grep &lt;catalog_source&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Delete the pod:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">$ kubectl delete pod -n openshift-marketplace &lt;catalog_source_pod&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Upgrade status</strong> changes from <strong>Up to date</strong> to <strong>Upgrade available</strong>.</p>
+</div>
+<div class="paragraph">
+<p>If you set <strong>Update approval</strong> on the <strong>Subscriptions</strong> tab to <strong>Automatic</strong>, the upgrade starts automatically.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>If you set <strong>Update approval</strong> on the <strong>Subscriptions</strong> tab to <strong>Manual</strong>, approve the upgrade.</p>
+<div class="paragraph">
+<p>See <a href="https://docs.okd.io/latest/operators/admin/olm-upgrading-operators.html#olm-approving-pending-upgrade_olm-upgrading-operators">Manually approving a pending upgrade</a> in the OKD documentation.</p>
+</div>
+</li>
+<li>
+<p>If you are upgrading from Forklift 2.2 and have defined VMware source providers, edit the VMware provider by adding a VDDK <code>init</code> image. Otherwise, the update will change the state of any VMware providers to <code>Critical</code>. For more information, see <a href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.4/html/installing_and_using_the_migration_toolkit_for_virtualization/migrating-vms-web-console#adding-source-provider_vmware">Adding a VMSphere source provider</a>.</p>
+</li>
+<li>
+<p>If you mapped to NFS on the OKD destination provider in Forklift 2.2, edit the <code>AccessModes</code> and <code>VolumeMode</code> parameters in the NFS storage profile. Otherwise, the upgrade will invalidate the NFS mapping. For more information, see <a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-customizing-storage-profile_virt-creating-data-volumes">Customizing the storage profile</a>.</p>
+</li>
+</ol>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/doc-Migration_Toolkit_for_Virtualization/modules/snip-certificate-options/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Choose one of the following options for validating CA certificates:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Use a custom CA certificate</strong>: Migrate after validating a custom CA certificate.</p>
+</li>
+<li>
+<p><strong>Use the system CA certificate</strong>: Migrate after validating the system CA certificate.</p>
+</li>
+<li>
+<p><strong>Skip certificate validation</strong> : Migrate without validating a CA certificate.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>To use a custom CA certificate, leave the <strong>Skip certificate validation</strong> switch toggled to left, and <em>either</em> drag the CA certificate to the text box <em>or</em> browse for it and click <strong>Select</strong>.</p>
+</li>
+<li>
+<p>To use the system CA certificate, leave the <strong>Skip certificate validation</strong> switch toggled to the left, and leave the <strong>CA certificate</strong> text box empty.</p>
+</li>
+<li>
+<p>To skip certificate validation, toggle the <strong>Skip certificate validation</strong> switch to the right.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Optional: Ask Forklift to fetch a custom CA certificate from the provider&#8217;s API endpoint URL.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <strong>Fetch certificate from URL</strong>. The <strong>Verify certificate</strong> window opens.</p>
+</li>
+<li>
+<p>If the details are correct, select the <strong>I trust the authenticity of this certificate</strong> checkbox, and then, click <strong>Confirm</strong>. If not, click <strong>Cancel</strong>, and then, enter the correct certificate information manually.</p>
+<div class="paragraph">
+<p>Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

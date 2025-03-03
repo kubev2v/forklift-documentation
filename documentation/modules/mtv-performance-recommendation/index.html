@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/modules/mtv-performance-recommendation/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="mtv-performance-recommendation_forklift">Forklift performance recommendations</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The purpose of this section is to share recommendations for efficient and effective migration of virtual machines (VMs) using Forklift, based on findings observed through testing.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in mtv-performance-recommendation.adoc - include::snip_performance.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-storage-network_forklift">Ensure fast storage and network speeds</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ensure fast storage and network speeds, both for VMware and OKD (OCP) environments.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To perform fast migrations, VMware must have fast read access to datastores.  Networking between VMware ESXi hosts should be fast, ensure a 10 GiB network connection, and avoid network bottlenecks.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Extend the VMware network to the OCP Workers Interface network environment.</p>
+</li>
+<li>
+<p>It is important to ensure that the VMware network offers high throughput (10 Gigabit Ethernet) and rapid networking to guarantee that the reception rates align with the read rate of the ESXi datastore.</p>
+</li>
+<li>
+<p>Be aware that the migration process uses significant network bandwidth and that the migration network is utilized. If other services utilize that network, it may have an impact on those services and their migration rates.</p>
+</li>
+<li>
+<p>For example, 200 to 325 MiB/s was the average network transfer rate from the <code>vmnic</code> for each ESXi host associated with transferring data to the OCP interface.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-datastore-read_forklift">Ensure fast datastore read speeds to ensure efficient and performant migrations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Datastores read rates impact the total transfer times, so it is essential to ensure fast reads are possible from the ESXi datastore to the ESXi host.  </p>
+</div>
+<div class="paragraph">
+<p>Example in numbers: 200 to 300 MiB/s was the average read rate for both vSphere and ESXi endpoints for a single ESXi server. When multiple ESXi servers are used, higher datastore read rates are possible.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-endpoint-types_forklift">Endpoint types </h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Forklift 2.6 allows for the following vSphere provider options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ESXi endpoint (inventory and disk transfers from ESXi), introduced in Forklift 2.6</p>
+</li>
+<li>
+<p>vCenter Server endpoint; no networks for the ESXi host (inventory and disk transfers from vCenter)</p>
+</li>
+<li>
+<p>vCenter endpoint and ESXi networks are available (inventory from vCenter, disk transfers from ESXi).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When transferring many VMs that are registered to multiple ESXi hosts, using the vCenter endpoint and ESXi network is suggested.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As of vSphere 7.0, ESXi hosts can label which network to use for NBD transport. This is accomplished by tagging the desired virtual network interface card (NIC) with the appropriate <code>vSphereBackupNFC</code> label.  When this is done, Forklift will be able to utilize the ESXi interface for network transfer to Openshift as long as the worker and ESXi host interfaces are reachable.  This is especially useful when migration users may not have access to the ESXi credentials yet would like to be able to control which ESXi interface is used for migration. </p>
+</div>
+<div class="paragraph">
+<p>For more details, see: <a href="https://issues.redhat.com/browse/MTV-1230">(Forklift-1230)</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can use the following ESXi command, which designates interface <code>vmk2</code> for NBD backup:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-terminal" data-lang="terminal">esxcli network ip interface tag add -t vSphereBackupNFC -i vmk2</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-bios-profile_forklift">Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Where possible, ensure that hosts used to perform migrations are set with BIOS profiles related to maximum performance.  Hosts which use Host Power Management controlled within vSphere should check that <code>High Performance</code> is set.</p>
+</div>
+<div class="paragraph">
+<p>Testing showed that when transferring more than 10 VMs with both BIOS and host power management set accordingly, migrations had an increase of 15 MiB in the average datastore read rate.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-network-loads_forklift">Avoid additional network load on VMware networks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can reduce the network load on VMware networks by selecting the migration network when using the ESXi endpoint.</p>
+</div>
+<div class="paragraph">
+<p>By incorporating a virtualization provider, Forklift enables the selection of a specific network, which is accessible on the ESXi hosts, for the purpose of migrating virtual machines to OCP.  Selecting this migration network from the ESXi host in the Forklift UI will ensure that the transfer is performed using the selected network as an ESXi endpoint.</p>
+</div>
+<div class="paragraph">
+<p>It is imperative to ensure that the network selected has connectivity to the OCP interface, has adequate bandwidth for migrations, and that the network interface is not saturated.</p>
+</div>
+<div class="paragraph">
+<p>In environments with fast networks, such as 10GbE networks, migration network impacts can be expected to match the rate of ESXi datastore reads.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-concurrent-disk_forklift">Control maximum concurrent disk migrations per ESXi host</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Set the <code>MAX_VM_INFLIGHT MTV</code> variable to control the maximum number of concurrent VMs transfers allowed for the ESXi host. </p>
+</div>
+<div class="paragraph">
+<p>Forklift allows for concurrency to be controlled using this variable; by default, it is set to 20.</p>
+</div>
+<div class="paragraph">
+<p>When setting <code>MAX_VM_INFLIGHT</code>, consider the number of maximum concurrent VMs transfers are required for ESXi hosts. It is important to consider the type of migration to be transferred concurrently. Warm  migrations, which are defined by migrations of a running VM that will be migrated over a scheduled time.</p>
+</div>
+<div class="paragraph">
+<p>Warm migrations use snapshots to compare and migrate only the differences between previous snapshots of the disk.  The migration of the differences between snapshots happens over specific intervals before a final cut-over of the running VM to OKD occurs. </p>
+</div>
+<div class="paragraph">
+<p>In Forklift 2.6, <code>MAX_VM_INFLIGHT</code> reserves one transfer slot per VM, regardless of current migration activity for a specific snapshot or the number of disks that belong to a single vm. The total set by <code>MAX_VM_INFLIGHT</code> is used to indicate how many concurrent VM tranfers per ESXi host is allowed.</p>
+</div>
+<div class="ulist">
+<div class="title">Examples</div>
+<ul>
+<li>
+<p><code>MAX_VM_INFLIGHT = 20</code> and 2 ESXi hosts defined in the provider mean each host can transfer 20 VMs.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-multiple-vms-concurrently_forklift">Migrations are completed faster when migrating multiple VMs concurrently</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When multiple VMs from a specific ESXi host are to be migrated, starting concurrent migrations for multiple VMs leads to faster migration times. </p>
+</div>
+<div class="paragraph">
+<p>Testing demonstrated that migrating 10 VMs (each containing 35 GiB of data, with a total size of 50 GiB) from a single host is significantly faster than migrating the same number of VMs sequentially, one after another. </p>
+</div>
+<div class="paragraph">
+<p>It is possible to increase concurrent migration to more than 10 virtual machines from a single host, but it does not show a significant improvement. </p>
+</div>
+<div class="ulist">
+<div class="title">Examples</div>
+<ul>
+<li>
+<p><strong>1 single disk VMs took 6 minutes, with migration rate of 100 MiB/s</strong></p>
+</li>
+<li>
+<p><strong>10 single disk VMs took 22 minutes, with migration rate of 272 MiB/s</strong></p>
+</li>
+<li>
+<p><strong>20 single disk VMs took 42 minutes, with migration rate of 284 MiB/s</strong></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>From the aforementioned examples, it is evident that the migration of 10 virtual machines simultaneously is three times faster than the migration of identical virtual machines in a sequential manner.</p>
+</div>
+<div class="paragraph">
+<p>The migration rate was almost the same when moving 10 or 20 virtual machines simultaneously.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-multiple-hosts_forklift">Migrations complete faster using multiple hosts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using multiple hosts with registered VMs equally distributed among the ESXi hosts used for migrations leads to faster migration times.</p>
+</div>
+<div class="paragraph">
+<p>Testing showed that when transferring more than 10 single disk VMS, each containing 35 GiB of data out of a total of 50G total, using an additional host can reduce migration time.</p>
+</div>
+<div class="ulist">
+<div class="title">Examples</div>
+<ul>
+<li>
+<p><strong>80 single disk VMs, containing 35 GiB of data each, using a single host took 2 hours and 43 minutes, with a migration rate of 294 MiB/s.</strong></p>
+</li>
+<li>
+<p><strong>80 single disk VMs, containing 35 GiB of data each, using 8 ESXi hosts took 41 minutes, with a migration rate of 1,173 MiB/s.</strong></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>From the aforementioned examples, it is evident that migrating 80 VMs from 8 ESXi hosts, 10 from each host, concurrently is four times faster than running the same VMs from a single ESXi host. </p>
+</div>
+<div class="paragraph">
+<p>Migrating a larger number of VMs from more than 8 ESXi hosts concurrently could potentially show increased performance. However, it was not tested and therefore not recommended.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-multiple-migration-plans_forklift">Multiple migration plans compared to a single large migration plan</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The maximum number of disks that can be referenced by a single migration plan is 500. For more details, see <a href="https://issues.redhat.com/browse/MTV-1203">(MTV-1203)</a>. </p>
+</div>
+<div class="paragraph">
+<p>When attempting to migrate many VMs in a single migration plan, it can take some time for all migrations to start.  By breaking up one migration plan into several migration plans, it is possible to start them at the same time.</p>
+</div>
+<div class="paragraph">
+<p>Comparing migrations of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>500 VMs using 8 ESXi hosts in 1 plan, <code>max_vm_inflight=100</code>, took 5 hours and 10 minutes.</p>
+</li>
+<li>
+<p>800 VMs using 8 ESXi hosts with 8 plans, <code>max_vm_inflight=100</code>, took 57 minutes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Testing showed that by breaking one single large plan into multiple moderately sized plans, for example, 100 VMS per plan, the total migration time can be reduced.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-max-values-cold_forklift">Maximum values tested for cold migrations</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Maximum number of ESXi hosts tested: 8</p>
+</li>
+<li>
+<p>Maximum number of VMs in a single migration plan: 500</p>
+</li>
+<li>
+<p>Maximum number of VMs migrated in a single test: 5000</p>
+</li>
+<li>
+<p>Maximum number of migration plans performed concurrently: 40</p>
+</li>
+<li>
+<p>Maximum single disk size migrated: 6 T disks, which contained 3 Tb of data</p>
+</li>
+<li>
+<p>Maximum number of disks on a single VM migrated: 50</p>
+</li>
+<li>
+<p>Highest observed single datastore read rate from a single ESXi server:  312 MiB/second</p>
+</li>
+<li>
+<p>Highest observed multi-datastore read rate using eight ESXi servers and two datastores: 1,242 MiB/second</p>
+</li>
+<li>
+<p>Highest observed virtual NIC transfer rate to an {ocp-name} worker: 327 MiB/second</p>
+</li>
+<li>
+<p><strong>Maximum migration transfer rate of a single disk: 162 MiB/second (rate observed when transferring nonconcurrent migration of 1.5 Tb utilized data)</strong></p>
+</li>
+<li>
+<p><strong>Maximum cold migration transfer rate of the multiple VMs (single disk) from a single ESXi host: 294 MiB/s (concurrent migration of 30 VMs, 35/50 GiB used, from Single ESXi)</strong></p>
+</li>
+<li>
+<p><strong>Maximum cold migration transfer rate of the multiple VMs (single disk) from multiple ESXi hosts: 1173MB/s (concurrent migration of 80 VMs, 35/50 GiB used, from 8 ESXi servers, 10 VMs from each ESXi)</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-warm-migration-recommendations_forklift">Warm migration recommendations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following recommendations are specific to warm migrations:</p>
+</div>
+<div class="sect2">
+<h3 id="mtv-warm-migration-recommendations-disks-in-parallel_forklift">Migrate up to 400 disks in parallel</h3>
+<div class="paragraph">
+<p>Testing involved migrating 200 VMs in parallel, with 2 disks each using 8 ESXi hosts, for a total of 400 disks. No tests were run on migration plans migrating over 400 disks in parallel, so it is not recommended to migrate over this number of disks in parallel.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mtv-warm-migration-recommendations-effects-of-precopy-speed_forklift">Migrate up to 200 disks in parallel for the fastest rate</h3>
+<div class="paragraph">
+<p>Testing was successfully performed on parallel disk migrations with 200, 300, and 400 disks. There was a decrease in the precopy migration rate, approximately 25%, between the tests migrating 200 disks and those migrating 300 and 400 disks.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, it is recommended to perform parallel disk migrations in groups of 200 or fewer, instead of 300 to 400 disks, unless a decline of 25% in precopy speed does not affect your cutover planning.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mtv-warm-migration-recommendations-set-cutover-time_forklift">When possible, set cutover time to be immediately after a migration plan starts</h3>
+<div class="paragraph">
+<p>To reduce the overall time of warm migrations, it is recommended to set the cutover to occur immediately after the migration plan is started. This causes Forklift to run <strong>only one</strong> precopy per VM. This recommendation is valid, no matter how many VMs are in the migration plan.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mtv-warm-migration-recommendations-increase-precopy-intevals_forklift">Increase precopy intervals between snapshots</h3>
+<div class="paragraph">
+<p>If you are creating many migration plans with a single VM and have enough time between the migration start and the cutover, increase the value of the <code>controller_precopy_interval</code> parameter to between 120 and 240 minutes, inclusive. The longer setting will reduce the total number of snapshots and disk transfers per VM before the cutover.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mtv-performance-max-values-warm_forklift">Maximum values tested for warm migrations</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Maximum number of ESXi hosts tested: 8</p>
+</li>
+<li>
+<p>Maximum number of worker nodes: 12</p>
+</li>
+<li>
+<p>Maximum number of VMs in a single migration plan: 200</p>
+</li>
+<li>
+<p>Maximum number of total parallel disk transfers: 400, with 200 VMs, 6 ESXis, and a transfer rate of 667 MB/s</p>
+</li>
+<li>
+<p>Maximum number of disks on a single VM migrated: 3</p>
+</li>
+<li>
+<p>Maximum number of parallel disk transfers per ESXi host: 68</p>
+</li>
+<li>
+<p><strong>Maximum transfer rate observed of a single disk with no concurrent migrations: 76.5 MB/s</strong></p>
+</li>
+<li>
+<p><strong>Maximum transfer rate observed of multiple disks from a single ESXi host: 253 MB/s (concurrent migration of 10 VMs, 1 disk each, 35/50 GiB used per disk)</strong></p>
+</li>
+<li>
+<p><strong>Total transfer rate observed of multiple disks (210) from 8 ESXi hosts: 802 MB/s (concurrent migration of 70 VMs, 3 disks each, 35/50 GiB used per disk)</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

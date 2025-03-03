@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/doc-Migration_Toolkit_for_Virtualization/modules/mtv-settings/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="mtv-settings_forklift">Configuring MTV settings</h1>
+<div class="paragraph">
+<p>If you have Administrator privileges, you can access the <strong>Overview</strong> page and change the following settings in it:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Forklift settings</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Setting</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Max concurrent virtual machine migrations</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Varies with provider as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For all migrations except OVA or VMware migrations: The maximum number of disks that Forklift can transfer simultaneously.</p>
+</li>
+<li>
+<p>For OVA migrations: The maximum number of VMs that Forklift can migrate simultaneously.</p>
+</li>
+<li>
+<p>For VMware migrations, the setting has the following meanings::</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Cold migration:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To local KubeVirt: VMs for each ESXi host that can migrate simultaneously.</p>
+</li>
+<li>
+<p>To remote KubeVirt: Disks for each ESXi host that can migrate simultaneously.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Warm migration: Disks for each ESXi host that can migrate simultaneously.</p>
+<div class="paragraph">
+<p>See <a href="#max-concurrent-vms_forklift">Configuring the controller_max_vm_inflight label</a> for a detailed explanation of this setting.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Must gather cleanup after (hours)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The duration for retaining <code>must gather</code> reports before they are automatically deleted.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controller main container CPU limit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The CPU limit allocated to the main controller container.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">500 m</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controller main container Memory limit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The memory limit allocated to the main controller container.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">800 Mi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Precopy internal (minutes)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The interval at which a new snapshot is requested before initiating a warm migration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Snapshot polling interval (seconds)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The frequency with which the system checks the status of snapshot creation or removal during a warm migration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In the OKD web console, click <strong>Migration</strong> &#8594; <strong>Overview</strong>. The <strong>Settings</strong> list is on the right-hand side of the page.</p>
+</li>
+<li>
+<p>In the <strong>Settings</strong> list, click the Edit icon of the setting you want to change.</p>
+</li>
+<li>
+<p>Choose a setting from the list.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

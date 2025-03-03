@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+    
+    <title>Forklift Documentation</title>
+    <!-- # Opengraph protocol properties: https://ogp.me/ -->
+    <meta name="author" content="Forklift documentation team" >
+    <meta property="og:type" content="article" >
+    <meta name="twitter:card" content="summary">
+    <meta name="keywords" content="" >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:article:author" content="Forklift documentation team" >
+    <meta property="og:article:published_time" content="2025-03-02 18:49:36 -0600" >
+    <meta name="twitter:title" content="Forklift Documentation">
+    <meta name="twitter:description" content="Migrating VMware virtual machines to KubeVirt">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forklift Documentation | Migrating VMware virtual machines to KubeVirt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Forklift Documentation" />
+<meta name="author" content="Forklift documentation team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:description" content="Migrating VMware virtual machines to KubeVirt" />
+<meta property="og:site_name" content="Forklift Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forklift Documentation" />
+<meta name="twitter:site" content="@konveyor_io" />
+<meta name="twitter:creator" content="@Forklift documentation team" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Forklift documentation team"},"description":"Migrating VMware virtual machines to KubeVirt","headline":"Forklift Documentation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/forklift-logo-darkbg.svg"},"name":"Forklift documentation team"},"url":"/documentation/doc-Release_notes/modules/creating-storage-mapping/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        
+          <a href="/"><img src="/assets/img/forklift-logo-darkbg.svg" alt="Forklift Documentation" width="200" /></a><br>
+        
+      
+        <a href="https://github.com/konveyor/forklift-documentation" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="creating-storage-mapping_forklift">Creating a storage mapping</h1>
+<div class="paragraph">
+<p>You can create a storage mapping by using the OKD web console to map source disk storages to KubeVirt storage classes.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Source and target providers added to the OKD web console.</p>
+</li>
+<li>
+<p>Local and shared persistent storage that support VM migration.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In the OKD web console, click <strong>Migration</strong> &#8594; <strong>StorageMaps for virtualization</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Create StorageMap</strong>.</p>
+</li>
+<li>
+<p>Specify the following fields:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong>: Enter a name to display in the storage mappings list.</p>
+</li>
+<li>
+<p><strong>Source provider</strong>: Select a source provider.</p>
+</li>
+<li>
+<p><strong>Target provider</strong>: Select a target provider.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>To create a storage mapping, click <strong>Add</strong> and map storage sources to target storage classes as follows:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If your source provider is VMware vSphere, select a <strong>Source datastore</strong> and a <strong>Target storage class</strong>.</p>
+</li>
+<li>
+<p>If your source provider is oVirt, select a <strong>Source storage domain</strong> and a <strong>Target storage class</strong>.</p>
+</li>
+<li>
+<p>If your source provider is {osp}, select a <strong>Source volume type</strong> and a <strong>Target storage class</strong>.</p>
+</li>
+<li>
+<p>If your source provider is a set of one or more OVA files, select a <strong>Source</strong> and a <strong>Target storage class</strong> for the dummy storage that applies to all virtual disks within the OVA files.</p>
+</li>
+<li>
+<p>If your storage provider is KubeVirt. select a <strong>Source storage class</strong> and a <strong>Target storage class</strong>.</p>
+</li>
+<li>
+<p>Optional: Click <strong>Add</strong> to create additional storage mappings, including mapping multiple storage sources to a single target storage class.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <strong>Create</strong>.</p>
+<div class="paragraph">
+<p>The mapping is displayed on the <strong>StorageMaps</strong> page.</p>
+</div>
+</li>
+</ol>
+</div>
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/konveyor/forklift-documentation">forklift-documentation</a> is maintained by <a href="https://github.com/konveyor">konveyor</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>
