@@ -1,0 +1,12 @@
+
+[id="new-features-and-enhancements-2-8_{context}"]
+= New features and enhancements
+
+{project-first} 2.8 introduces the following features and enhancements:
+
+
+[id="new-features-and-enhancements-2-8-0_{context}"]
+== New features and enhancements 2.8.0
+
+* In {project-short} 2.8.0, warm migration is now based on RHEL 9 inheriting features and bug fixes.
+
