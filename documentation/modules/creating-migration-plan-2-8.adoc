@@ -39,18 +39,13 @@ The details of the plan are listed, and you can edit the items you filled in on 
 
 ifdef::vmware[]
 
-* *Warm migration*: By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon and select *Warm migration*.
+* *Migration type*: Type of migration. By default, {project-short} sets the migration type to `cold`. For a warm migration, click the *Edit* icon and select *warm*.
 * *Transfer Network*: The network used to transfer the VMs to {virt}, by default, this is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.To edit the transfer network, click the *Edit* icon, choose a different transfer network from the list in the window that opens, and click *Save*.
 +
 You can configure an {ocp-short} network in the {ocp-short} web console by clicking *Networking > NetworkAttachmentDefinitions*.
 +
-ifeval::[{ocp-version} == 4.17]
-To learn more about the different types of networks {ocp-short} supports, see link:https://docs.openshift.com/container-platform/{ocp-version}/networking/multiple_networks/understanding-multiple-networks.html#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
-endif::[]
-+
-ifeval::[{ocp-version} == 4.18]
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
-endif::[]
++
 If you want to adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 * *Target namespace*: Destination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.
@@ -62,7 +57,7 @@ If you want to adjust the maximum transmission unit (MTU) of the {ocp-short} tra
 
 * *Root device*: Applies to multi-boot VM migrations only. By default, {project-short} uses the first bootable device detected as the root device.
 +
-To specify a different root device, in the *Settings* section, click the *Edit icon* next to *Root device* and choose a device from the list of commonly-used options, or enter a device in the text box.
+To specify a different root device, in the *Settings* section, click the *Edit* icon next to *Root device* and choose a device from the list of commonly-used options, or enter a device in the text box.
 +
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
@@ -71,18 +66,13 @@ If the conversion fails because the boot device provided is incorrect, it is pos
 endif::[]
 ifdef::rhv[]
 
-* *Warm migration* By default, all migrations are cold migrations. For a warm migration, click the *Edit* icon, and select *Warm migration*.
+* *Migration type*: Type of migration. By default, {project-short} sets the migration type to `cold`. For a warm migration, click the *Edit* icon and select *warm*.
 * *Transfer Network*: The network used to transfer the VMs to {virt}, by default, this is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.To edit the transfer network, click the *Edit* icon, choose a different transfer network from the list in the window that opens, and click *Save*.
 +
 You can configure an {ocp-short} network in the {ocp-short} web console by clicking *Networking > NetworkAttachmentDefinitions*.
 +
-ifeval::[{ocp-version} == 4.17]
-To learn more about the different types of networks {ocp-short} supports, see link:https://docs.openshift.com/container-platform/{ocp-version}/networking/multiple_networks/understanding-multiple-networks.html#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
-endif::[]
-+
-ifeval::[{ocp-version} == 4.18]
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
-endif::[]
++
 If you want to adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 * *Target namespace*: Destination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.
@@ -99,13 +89,8 @@ ifdef::ostack,ova,cnv[]
 +
 You can configure an {ocp-short} network in the {ocp-short} web console by clicking *Networking > NetworkAttachmentDefinitions*.
 +
-ifeval::[{ocp-version} == 4.17]
-To learn more about the different types of networks {ocp-short} supports, see link:https://docs.openshift.com/container-platform/{ocp-version}/networking/multiple_networks/understanding-multiple-networks.html#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
-endif::[]
-+
-ifeval::[{ocp-version} == 4.18]
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
-endif::[]
++
 If you want to adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 * *Target namespace*: Destination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.
