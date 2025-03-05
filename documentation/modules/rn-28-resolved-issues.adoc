@@ -10,6 +10,5 @@
 [id="resolved-issues-2-8-0_{context}"]
 == Resolved issues 2.8.0
 
-.Default gateway settings changed after migrating Windows Server 2022 VMs with `preserve static IPs`
-
-In earlier releases of {project-short}, the default gateway settings were changed after migrating Windows Server 2022 VMs with the `preserve static IPs` setting. This issue has been resolved in {project-short} 2.7.0. link:https://issues.redhat.com/browse/MTV-1497[(MTV-1497)]
+.MTV does not preserve out of range gateway IP address 
+In earlier releases of {project-short}, the gateway IP address was not copied after migration when the gateway IP address of the network interface card (NIC) is out of the network interface subnet range. The issue affected migrations even if you enabled the `Preserve static IPs` setting. This issue has been resolved in MTV 2.8.0. link:https://issues.redhat.com/browse/MTV-2018[(MTV-2018)]

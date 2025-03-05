@@ -10,3 +10,4 @@
 
 * In {project-short} 2.8.0, warm migration is now based on RHEL 9 inheriting features and bug fixes.
 
+* 
