@@ -1,0 +1,257 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="mtv-shared-disks_{context}"]
+= Migrating virtual machines with shared disks
+
+You can migrate VMware virtual machines (VMs) with shared disks by using the {project-first}. This functionality is available for cold migrations only. 
+
+Shared disks are disks that are attached to more than one VM and that use the multi-writer option. As a result of these characteristics, shared disks are difficult to migrate. 
+ 
+In certain situations, applications in VMs require shared disks. Databases and clustered file systems are the primary use cases for shared disks.
+
+{project-short} version 2.7.11 or later includes a parameter named `migrateSharedDisks` in `Plan` custom resources (CRs) that instructs {project-short} to either migrate shared disks or to skip them during migration, as follows:
+
+* If set to `true`, {project-short} migrates the shared disks. {project-short} uses the regular cold migration flow using `virt-v2v` and labeling the shared persistent volume claims (PVCs). 
+
+* If set to `false`, {project-short} skips the shared disks. {project-short} uses the KubeVirt Containerized-Data-Importer (CDI) for disk transfer.
+
+After the disk transfer, {project-short} automatically attempts to locate the already shared PVCs and the already migrated shared disks and attach them to the VMs. 
+ 
+By default, `migrateSharedDisks` is set to `true`.
+
+To successfully migrate VMs with shared disks, create two `Plan` CRs as follows: 
+
+* In the first, set `migrateSharedDisks` to `true`.
++ 
+{project-short} migrates the following:
+
+** All shared disks.
+** For each shared disk, one of the VMs that is attached to it. If possible, choose VMs so that the plan does not contain any shared disks that are connected to more than one VM. See the following figures for further guidance.
+** All unshared disks attached to the VMs you choose for this plan. 
+
+* In the second, set `migrateSharedDisks` to `false`. 
++
+{project-short} migrates the following:
+
+** All other VMs.
+** The unshared disks of the VMs in the second `Plan` CR.
+
+When {project-short} migrates a VM that has a shared disk to it, it does not check if it has already migrated that shared disk. Therefore, it is important to allocate the VMs in each of the two so that each shared disk is migrated once and only once. 
+
+To understand how to assign VMs and shared disks to each of the `Plan` CRs, consider the two figures that follow. In both, `migrateSharedDisks` is set to `true` for `plan1` and set to `false` for `plan2`.
+
+In the first figure, the VMs and shared disks are assigned correctly:
+
+.Example of correctly assigned VMs and shared disks
+image::OK_shared_disks.png[Example successful migration]
+
+`plan1` migrates VMs 2 and 4, shared disks 1, 2, and 3, and the non-shared disks of VMs 2 and 4. VMs 2 and 4 are included in this plan, because they connect to all the shared disks once each. 
+
+`plan2` migrates VMs 1 and 3 and their non-shared disks. `plan2` does not migrate the shared disks connected to VMs 1 and 3 because `migrateSharedDisks` is set to `false`.
+
+{project-short} migrates each VMs and its disks as follows:
+
+. From `plan1`:
+
+.. VM 3, shared disks 1 and 2, and the non-shared disks attached to VM 3.
+.. VM 4, shared disk 3, and the non-shared disks attached to VM 4. 
+
+. From `plan2`:
+
+.. VM 1 and the non-shared disks attached to it.
+.. VM 2 and the non-shared disks attached to it.
+
+The result is that VMs 2 and 4, all the shared disks, and all the non-shared disks are migrated, but only once. {project-short} is able to reattach all VMs to their disks, including the shared disks. 
+
+In second figure, the VMs and shared disks are not assigned correctly:
+
+.Example of incorrectly assigned VMs and shared disks
+image::not_OK_shared_disks.png[Complex cyclic shared disk dependencies]
+ 
+
+In this case, {project-short} migrates each VMs and its disks as follows:
+
+. From `plan1`:
+
+.. VM 2, shared disks 1 and 2, and the non-shared disks attached to VM 2.
+.. VM 3, shared disks 2 and 3, and the non-shared disks attached to VM 3.
+
+. From `plan2`:
+
+.. VM 1 and the non-shared disks attached to it.
+.. VM 4 and the non-shared disks attached to it.
+
+This migration "succeeds", but it results in a problem: Shared disk 2 is migrated twice by the first `Plan` CR. You can resolve this problem by using one of the two workarounds that are discussed in the Known issues section, which follows the procedure.
+ 
+.Procedure 
+
+. In {project-short}, create a migration plan for the shared disks, the minimum number of VMs connected to them, and the unshared disk of those VMs. 
+. On the VMware cluster, power off all VMs attached to the shared disks.
+. In the {ocp} web console, click *Migration* > *Plans for virtualization*.
+. Select the desired plan.
++
+The *Plan details* page opens. 
+. Click the *YAML* tab of the plan. 
+. Verify that `migrateSharedDisks` is set to `true`.
++
+.Example Plan CR with `migrateSharedDisks` set to true 
++
+[source,yaml,subs="attributes+"]
+----
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+ name: transfer-shared-disks
+ namespace: openshift-mtv
+spec:
+ map:
+   network:
+     apiVersion: forklift.konveyor.io/v1beta1
+     kind: NetworkMap
+     name: vsphere-7gxbs
+     namespace: openshift-mtv
+     uid: a3c83db3-1cf7-446a-b996-84c618946362
+   storage:
+     apiVersion: forklift.konveyor.io/v1beta1
+     kind: StorageMap
+     name: vsphere-mqp7b
+     namespace: openshift-mtv
+     uid: 20b43d4f-ded4-4798-b836-7c0330d552a0
+ migrateSharedDisks: true
+ provider:
+   destination:
+     apiVersion: forklift.konveyor.io/v1beta1
+     kind: Provider
+     name: host
+     namespace: openshift-mtv
+     uid: abf4509f-1d5f-4ff6-b1f2-18206136922a
+   source:
+     apiVersion: forklift.konveyor.io/v1beta1
+     kind: Provider
+     name: vsphere
+     namespace: openshift-mtv
+     uid: be4dc7ab-fedd-460a-acae-a850f6b9543f
+ targetNamespace: openshift-mtv
+ vms:
+   - id: vm-69
+     name: vm-1-with-shared-disks
+----
+
+. Start the migration of the first plan and wait for it to finish.
+. Create a second `Plan` CR to migrate all the other VMs and their unshared disks to the same target namespace as the first.
+. In the *Plans for virtualization* page of the {ocp} web console, select the new plan.
++
+The *Plan details* page opens. 
+. Click the *YAML* tab of the plan. 
+. Set `migrateSharedDisks` to `false`.
++
+.Example Plan CR with `migrateSharedDisks` set to false 
++
+[source,yaml,subs="attributes+"]
+----
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+ name: skip-shared-disks
+ namespace: openshift-mtv
+spec:
+ map:
+   network:
+     apiVersion: forklift.konveyor.io/v1beta1
+     kind: NetworkMap
+     name: vsphere-7gxbs
+     namespace: openshift-mtv
+     uid: a3c83db3-1cf7-446a-b996-84c618946362
+   storage:
+     apiVersion: forklift.konveyor.io/v1beta1
+     kind: StorageMap
+     name: vsphere-mqp7b
+     namespace: openshift-mtv
+     uid: 20b43d4f-ded4-4798-b836-7c0330d552a0
+ migrateSharedDisks: false
+ provider:
+   destination:
+     apiVersion: forklift.konveyor.io/v1beta1
+     kind: Provider
+     name: host
+     namespace: openshift-mtv
+     uid: abf4509f-1d5f-4ff6-b1f2-18206136922a
+   source:
+     apiVersion: forklift.konveyor.io/v1beta1
+     kind: Provider
+     name: vsphere
+     namespace: openshift-mtv
+     uid: be4dc7ab-fedd-460a-acae-a850f6b9543f
+ targetNamespace: openshift-mtv
+ vms:
+   - id: vm-71
+     name: vm-2-with-shared-disks
+----
+
+. Start the migration of the second plan and wait for it to finish.
+. Verify that all shared disks are attached to the same VMs as they were before migration and that none are duplicated. In case of problems, see the discussion of known issues that follows. 
+
+[id="known-issues-shared-disks_{context}"]
+== Known issues
+
+[id="cyclic-shared-disk_{context}"]
+=== Cyclic shared disk dependencies
+
+Problem: VMs with cyclic shared disk dependencies cannot be migrated successfully.
+
+Explanation: When `migrateSharedDisks` is set to `true`, {project-short} migrates each VM in the plan, one by one, and any shared disks attached to it, without determining if a shared disk was already migrated. 
+
+In the case of 2 VMs sharing one disk, there is no problem. {project-short} transfers the shared disk and attaches the 2 VMs to the shared disk after the migration. 
+
+However, if there is a cyclic dependency of shared disks between 3 or more VMs, {project-short} either duplicates or omits one of the shared disks. The figure that follows illustrates the simplest version of this problem.
+
+.Simple example of cyclic shared disks
+image::simple-cyclic-shared-disks.png[Simple cyclic shared disk dependencies]
+
+In this case, the VMs and shared disks cannot be migrated in the same `Plan` CR. Although this problem could be solved using `migrateSharedDisks` and 2 `Plan` CRs, it illustrates the basic issue that must be avoided in migrating VMs with shared disks.
+
+[id="cyclic-shared-disk-workarounds_{context}"]
+=== Workarounds
+
+As discussed previously, it is important to try to create 2 `Plan` CRs in which each shared disk is migrated once. However, if your migration does result in a shared disk either duplicated or not being transferred, you can use one of the following workarounds:
+
+* Duplicate one of the shared disks
+* "Remove" one of the shared disks
+
+[id="duplicate-shared-disk_{context}"]
+==== Duplicate a shared disk
+
+In the figure that follows, VMs 2 and 3 are migrated with the shared disks in the first plan, and VM 1 is migrated in the second plan. Doing this breaks the cyclic dependencies, but this workaround has a drawback: It results in shared disk 3 being duplicated. The solution is to remove the duplicated PV and migrate VM 1 again.
+
+.Duplicated shared disk
+image::cyclic_workaround1.png[Duplicate a shared disk]
+
+Advantage:
+
+The source VMs are not affected.
+
+Disadvantage:
+
+One shared disk gets transferred twice, so you need to manually delete the duplicate disk and reconnect VM 3 to shared disk 3 in Red Hat OpenShift after the migration..
+
+[id="remove-shared-link_{context}"]
+==== "Remove" a shared disk
+
+The figure that follows shows a different solution: Remove the link to one of the shared disks from one source VM. Doing this breaks the cyclic dependencies. Note that in the current VMware UI, removing the link is referred to as "removing" the disk. 
+
+."Removed" shared disk
+image::draft_workaround2.png["Remove" a shared disk]
+
+In this case, VM 2 and 3 are migrated with the shared disks in the first plan, but the link between VM 3 and shared disk 3 is removed. As before, VM 1 is migrated in the second plan. 
+
+Doing this breaks the cyclic dependencies, but this workaround has a drawback: VM 3 is disconnected from shared disk 3 and remains disconnected after the migration. The solution is to manually reattach shared disk 3 to VM 3 after the migration finishes.
+
+Advantage:
+
+No disks are duplicated.
+
+Disadvantage:
+
+You need to modify VM 3 by removing its link to shared disk 3 before the migration, and you need to manually reconnect VM 3 to shared disk 3 in {ocp} after the migration. 
+ 
