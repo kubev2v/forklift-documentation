@@ -35,3 +35,17 @@ Migration fails if the module configuration file is available in the guest and t
 .Harden grub2-mkconfig to avoid overwriting `/boot/efi/EFI/redhat/grub.cfg`
 
 In Red Hat Enterprise Linux (RHEL) 9, there has been a significant change in how GRUB is handled on UEFI systems. Previously, the GRUB configuration file, `/boot/efi/EFI/redhat/grub.cfg`, was used on UEFI systems. However, in RHEL 9, this file now serves as a stub that dynamically redirects to the GRUB configuration, located at `/boot/grub2/grub.cfg`. This behavior is expected in RHEL 9.4, but has been resolved in RHEL 9.5. link:https://issues.redhat.com/browse/RHEL-32099[(RHEL-32099)]
+
+.Migration fails for VMs backed by vSAN without VDDK
+
+Migrations for virtual machines (VMs) that are backed by VMware vSAN must use a Virtual Disk Development Kit (VDDK) image. Without a VDDK image, these migrations fail. link:https://issues.redhat.com/browse/MTV-2203[(MTV-2203)]
+
+.Migrated VMs that use the diskBus:scsi option fail to boot
+
+VMs that are migrated in migration plans by using the `plan.spec.diskBus:scsi` option fail to boot after migration as follows:
+
+* All Windows VMs fail to boot.
+* Some Linux VMs fail to boot.
+
+VMs that use the `plan.spec.diskBus:sata` and `plan.spec.diskBus:virtio` options successfully boot after migration. link:https://issues.redhat.com/browse/MTV-2199[(MTV-2199)]
+
