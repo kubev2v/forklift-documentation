@@ -7,16 +7,6 @@
 
 {project-first} 2.8 has the following technical changes:
 
-.Metrics generated and forwarded as telemetry data
-
-To improve the efficiency of using {project-short}, RedHat collects the following metrics and generates reports every week, month, and year: 
-
-* Success and failure status of migration plans.
-* Number of migrations by provider, mode (warm and cold), and target (remote and local).
-* The number of migrations by guest operating systems.
-* The ID number assigned by MTV for a migration plan.
-link:https://issues.redhat.com/browse/MTV-1370[(MTV-1370)]
-
-.Shortened plan durations with scheduler optimizations
+.Shortened plan durations with scheduler optimizations in warm migrations
 
 When you start several warm migration plans concurrently, the scheduler is optimised to schedule the remaining migration plans while completing the migration plan that contains a large disk transfer. link:https://issues.redhat.com/browse/MTV-1574[(MTV-1574)]

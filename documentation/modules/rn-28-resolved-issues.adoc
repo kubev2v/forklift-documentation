@@ -11,4 +11,11 @@
 == Resolved issues 2.8.0
 
 .MTV does not preserve out of range gateway IP address 
-In earlier releases of {project-short}, the gateway IP address was not copied after migration when the gateway IP address of the network interface card (NIC) is out of the network interface subnet range. The issue affected migrations even if you enabled the `Preserve static IPs` setting. This issue has been resolved in MTV 2.8.0. link:https://issues.redhat.com/browse/MTV-2018[(MTV-2018)]
+In earlier releases of {project-short}, the gateway IP address was not copied after migration when the gateway IP address of the network interface card (NIC) is out of the network interface subnet range. The issue affected migrations even if you enabled the `Preserve static IPs` setting. This issue has been resolved in {project-short} 2.8.0. link:https://issues.redhat.com/browse/MTV-2018[(MTV-2018)]
+
+.MTV displays an error in the migration plan for guest virtual machines without static IP address
+In earlier releases of {project-short}, for migration plans with `Preserve static IPs` enabled, {project-short} displayed an error message if you did not configure a static IP address for the guest virtual machine. This issue has been resolved in {project-short} 2.8.0. link:https://issues.redhat.com/browse/MTV-1458[(MTV-458)]
+
+.MTV UI allows users to create two migrations for a migration plan 
+In earlier releases of {project-short} UI, users were able to start a migration plan twice resulting in a duplicate migration for a plan. In such cases, one migration was in running state and the duplicate migration was in ready state. If users set cutover, the cutover was applied only to the duplicate migration in ready state and not the migration in running state. This issue has been resolved in {project-short} 2.8.0.
+link:https://issues.redhat.com/browse/MTV-1901[(MTV-1901)]

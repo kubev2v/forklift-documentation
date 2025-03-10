@@ -7,12 +7,13 @@
 
 {project-first} 2.8 has the following known issues:
 
-.Ubuntu 20.04 NIC name mapped to VMware virtual machines changes after migration
+.Target VMware virtual machines lack connectivity as static IP address is not assigned to new network interface
 
-After migrating Ubuntu 20.04 VMware virtual machines (VM) to {virt} 4.15.6 using {project-short}, the  network interface card (NIC) name of the VMs is not preserved. This results in no network connectivity for the VM because the network interface gets a new name post migration to which the static IP address that you configured in the network plan is not assigned. link:https://issues.redhat.com/browse/MTV-1607[(MTV-1607)]
+After migrating Ubuntu 20.04 VMware virtual machines (VM) to {virt} 4.15.6 using {project-short}, the  network interface card (NIC) name of the guest VMs is not preserved. This results in lack of network connectivity for the VM because the network interface gets a new name post migration. The static IP address that you configured in the network plan is not assigned to the new network interface. link:https://issues.redhat.com/browse/MTV-1607[(MTV-1607)]
 
-.PVCs are populated by incorrect disks
-In cold migrations of virtual machines that have various bus interfaces (SATA, SCSI, IDE), the persistent volumes are not attached to the correct disk. This causes larger disks getting mapped to smaller persistent volumes. link:https://issues.redhat.com/browse/MTV-2093[(MTV-2093)]
+.Persistent Volume Claims are populated by incorrect disks
+In cold migrations of VMware virtual machines that have various bus interfaces (SATA, SCSI, IDE), the persistent volumes are not attached to the correct disk. This causes larger disks to be attached to smaller persistent volumes. link:https://issues.redhat.com/browse/MTV-2093[(MTV-2093)]
 
-.Error message says VM was not run, but it actually just does not have any static ip
-. link:https://issues.redhat.com/browse/MTV-1458[(MTV-458)]
+.Trusted Platform Module is added to BIOS-based Windows Server 2022 VMs after warm migration
+After warm migration of Windows Server 2022 virtual machine (VM) from vSphere to an {ocp-name} cluster, the TPM device is added in the target VM, even if the TPM configuration is non-persistent in the BIOS setting of the source Windows Server 2022 VM. This causes the target VM to not start. link:https://issues.redhat.com/browse/MTV-2049[(MTV-2049)]
+
