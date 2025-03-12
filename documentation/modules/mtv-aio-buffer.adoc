@@ -9,7 +9,6 @@
 This document describes how to change NBD transport NFC parameters for increased migration performance when using the {project-first} product.
 
 [WARNING]
-.Cold Migration Only
 ====
 Using AIO buffering is only suitable for Cold Migration use cases.
 

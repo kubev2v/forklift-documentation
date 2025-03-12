@@ -1,7 +1,6 @@
 :_content-type: SNIPPET
 
 [WARNING]
-.Migrating dual-boot operating system VMs has limited supported
 ====
 {project-short} has limited support for the migration of dual-boot operating system VMs.
 
