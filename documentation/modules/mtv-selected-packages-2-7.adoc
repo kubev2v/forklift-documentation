@@ -76,7 +76,6 @@ The following listed packages are from the `virt-v2v` guest conversion pod:
 |libguestfs-1.50.2-1.el9.x86_64
 |libguestfs-1.50.2-1.el9.x86_64
 
-
 |Client side utilities of the libvirt library
 |libvirt-client-10.0.0-6.7.el9_4.x86_64
 |libvirt-client-10.0.0-6.7.el9_4.x86_64
