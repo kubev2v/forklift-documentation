@@ -16,4 +16,3 @@ In cold migrations of VMware virtual machines that have various bus interfaces (
 
 .Trusted Platform Module is added to BIOS-based Windows Server 2022 VMs after warm migration
 After warm migration of Windows Server 2022 virtual machine (VM) from vSphere to an {ocp-name} cluster, the TPM device is added in the target VM, even if the TPM configuration is non-persistent in the BIOS setting of the source Windows Server 2022 VM. This prevents the target VM from starting. link:https://issues.redhat.com/browse/MTV-2049[(MTV-2049)]
-
