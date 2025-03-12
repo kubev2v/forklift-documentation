@@ -18,6 +18,9 @@ include::snip-mtu-value.adoc[]
 .Prerequisites
 
 * It is strongly recommended to create a VMware Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters. A VDDK image accelerates migration and reduces the risk of a plan failing. If you are not using VDDK and a plan fails, then please retry with VDDK installed. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
+
+include::snip-vsan.adoc[]
+
 endif::[]
 ifdef::rhv[]
 = Adding {a-rhv} source provider
