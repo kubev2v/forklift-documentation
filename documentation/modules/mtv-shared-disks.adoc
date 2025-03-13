@@ -8,19 +8,19 @@
 
 You can migrate VMware virtual machines (VMs) with shared disks using the {project-first}. This functionality is available for cold migrations only. 
 
-Shared disks are disks which are attached to multiple VMs and which use the multi-writer option. As a result of these characteristics, shared disks are difficult to migrate. 
+Shared disks are disks that are attached to multiple VMs and that use the multi-writer option. As a result of these characteristics, shared disks are difficult to migrate. 
  
-However, in certain situations, applications in VMs require shared disks. Databases and clustered file-systems are the primary use cases for shared disks.
+In certain situations, applications in VMs require shared disks. Databases and clustered file-systems are the primary use cases for shared disks.
 
 {project-short} version 2.7.11 or later includes a parameter named `migrateSharedDisks` in `Plan` CRs that instructs {project-short} to either migrate shared disks or to skip them during migration as follows:
 
-* If set to `true`, {project-short} uses the regular cold migration flow using `virt-v2v`` and labeling the shared PVC. This is the default setting. 
+* If set to `true`, {project-short} uses the regular cold migration flow using `virt-v2v` and labeling the shared PVC. This is the default setting. 
 
-* If set to 'false`, {project-short} uses the KubeVirt CDI for disk transfer, and skips the shared disks. After the disk transfer, {project-short} automatically attempts to locate the already shared PVCs and the already migrated shared PVCs and attach them to the VMs. 
+* If set to 'false`, {project-short} uses the KubeVirt CDI for disk transfer, and skips the shared disks. After the disk transfer, {project-short} automatically attempts to locate the already shared PVCs and the already migrated shared disks and attach them to the VMs. 
 
 By default, `migrateSharedDisks` is set to `true`.
 
-To successfully migrate VMs with shared disks, you create two `Plan` CRs as follows: 
+To successfully migrate VMs with shared disks, create two `Plan` CRs as follows: 
 
 * In the first, you set `migrateSharedDisks` to `true` and migrate the following:
 
@@ -28,7 +28,7 @@ To successfully migrate VMs with shared disks, you create two `Plan` CRs as foll
 ** For each shared disk, one of the VMs that is attached to it. If possible, choose VMs so that that plan does not contain any shared disks that are connected to more than one VM in the plan. See the figures below for further guidance.
 ** All unshared disks attached to the VMs you choose for this plan. 
 
-* In the second, you set `migrateSharedDisks` to 'false` and migrate the following:
+* In the second, set `migrateSharedDisks` to 'false` and migrate the following:
 
 ** All other VMs
 ** The unshared disks of the VMs in the second `Plan` CR
@@ -39,12 +39,12 @@ In the first figure, the first `Plan` CR migrates VMs 1 and 3, shared disks 1, 2
 
 The second `Plan` CR migrates VMs 2 and 4 and their non-shared disks. {project-short} is able to reattach all VMs to their disks, including the shared disks. 
 
-.Example of a correct divsion of shared disks, VMs, and unshared disks between the 2 Plan CRs
+.Example of a correct division of shared disks, VMs, and unshared disks between the 2 Plan CRs
 image::dummy_OK1.png[Example successful migration]
 
 In the second figure, VMs 2 and 3 and the disks they are connected to are migrated by the first `Plan` CR and the others are migrated by the second. Again, each shared VM is migrated once, despite being connected to two VMs. 
 
-.Additonnal example of a correct divsion of shared disks, VMs, and unshared disks between the 2 Plan CRs
+.Additional example of a correct division of shared disks, VMs, and unshared disks between the 2 Plan CRs
 image::dummy_OK2.png[Additional example successful migration]
 
 The third figure shows what to avoid when you divide the disks between the `Plan` CRs:
@@ -54,7 +54,7 @@ image::dummy_not_ok.png[Complex cyclic shared disk dependencies]
 
 In this case, in the first `Plan` CR, {project-short} first migrates VM 1, its unshared disks, and shared disks 1 and 2. It then migrates VM 2, its unshared disks, and shared disks 2 and 3. In the second `Plan` CR, {project-short} migrates the other VMs and their unshared disks. 
 
-This migration "succeeds", but it results in a problem: Shared disk 2 is migrated twice by the first `Plan` CR. There are two workarounds for this problem, which are discussed in the Known issues section that follows the procedure.
+This migration "succeeds", but it results in a problem: Shared disk 2 is migrated twice by the first `Plan` CR. There are two workarounds for this problem. These are discussed in the Known issues section that follows the procedure.
  
 .Procedure 
 
