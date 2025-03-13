@@ -1,0 +1,17 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="known-issues-2-8_{context}"]
+= Known issues
+
+{project-first} 2.8 has the following known issues:
+
+.Target VMware virtual machines lack connectivity because of unassigned static IP address
+After migrating Ubuntu 20.04 VMware virtual machines (VM) to {virt} 4.15.6 using {project-short}, the  network interface card (NIC) name of the source VM is not preserved. This results in a lack of network connectivity for the VM because the network interface gets a new name post migration. The static IP address that was configured in the network plan before migration is not assigned to the new network interface. link:https://issues.redhat.com/browse/MTV-1607[(MTV-1607)]
+
+.Persistent volume claims are populated by incorrect disks
+In cold migrations of VMware virtual machines that have various bus interfaces (SATA, SCSI, IDE), the persistent volume claim (PVC) is not attached to the correct disk. This causes larger disks to be attached to smaller PVCs. link:https://issues.redhat.com/browse/MTV-2093[(MTV-2093)]
+
+.Trusted Platform Module is added to BIOS-based Windows Server 2022 VMs after warm migration
+After warm migration of Windows Server 2022 virtual machine (VM) from vSphere to an {ocp-name} cluster, the Trusted Platform Module (TPM) device is added in the target VM, even if the TPM configuration is non-persistent in the BIOS setting of the source Windows Server 2022 VM. This prevents the target VM from starting. link:https://issues.redhat.com/browse/MTV-2049[(MTV-2049)]

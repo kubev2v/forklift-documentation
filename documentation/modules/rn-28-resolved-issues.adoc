@@ -1,0 +1,23 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-28-resolved-issues_{context}"]
+= Resolved issues
+
+{project-first} 2.8 has the following resolved issues:
+
+[id="resolved-issues-2-8-0_{context}"]
+== Resolved issues 2.8.0
+
+.MTV does not preserve out of range gateway IP address 
+In earlier releases of {project-short}, the gateway IP address of the virtual machine was not copied after migration if the IP address was out of network interface subnet range. The issue affected migrations even if you enabled the `Preserve static IPs` setting. This issue has been resolved in {project-short} 2.8.0. link:https://issues.redhat.com/browse/MTV-2018[(MTV-2018)]
+
+.MTV displays an error in the migration plan for virtual machines without a static IP address
+In earlier releases of {project-short}, for migration plans in which `Preserve static IPs` is enabled, {project-short} displayed an error message if you did not configure a static IP address for the guest virtual machine. This issue has been resolved in {project-short} 2.8.0. link:https://issues.redhat.com/browse/MTV-1458[(MTV-1458)]
+
+.Disk counter does not update progress while migrating virtual machine with multiple disks
+In earlier releases of {project-short}, the `Disk Counter`did not show real-time progress of disk transfer when migrating a virtual machine with multiple disks. This issue has been resolved in {project-short} 2.8.0.link:https://issues.redhat.com/browse/MTV-1718[(MTV-1718)]
+
+.Incomplete migration plan error for virtual machines with shared disks before cold migration
+In earlier releases of {project-short}, the migration plan for a virtual machine (VM) with shared disks showed an error that did not list all VMs to be powered off before the cold migration. This issue has been resolved in {project-short} 2.8.0. link:https://issues.redhat.com/browse/MTV-2206[(MTV-2206)]
