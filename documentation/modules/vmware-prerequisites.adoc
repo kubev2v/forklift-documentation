@@ -94,11 +94,15 @@ All `Virtual machine.Provisioning` privileges are required.
 
 [TIP]
 ==== 
-Create a role in VMware with the permissions described in the preceding table and then apply this role to the *Inventory* section, using one of two approaches:
+Create a role in VMware with the permissions described in the preceding table and then apply this role to the *Inventory* section, as described in xref:creating-vmware-role-mtv-permissions_{context}[Creating a VMware role to apply MTV permissions]
+====
+
+
+
+using one of two approaches:
 
 * At the user or group level: In the data center, use the role to apply permissions to relevant users or groups, using the *Propagate to children* option.
 
 * At the object level: Use the role to grant permissions to each relevant vSphere logical object, for example, host, vSphere cluster, data center, or network, involved in migration.
 
 For detailed instructions, see VMware documentation.
-====

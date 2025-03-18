@@ -1,0 +1,9 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="creating-vmware-role-mtv-permissions_{context}"]
+= Creating a VMware role to manage MTV permissions
+
+
+fred
