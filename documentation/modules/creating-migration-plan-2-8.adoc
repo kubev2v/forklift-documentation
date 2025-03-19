@@ -195,7 +195,6 @@ To learn more about the different types of networks {ocp-short} supports, see li
 
 ** To edit the namespace, click the *Edit* icon, select a different target namespace from the list in the window that opens, and click *Save*.
 * *Target namespace*: Destination namespace to be used by all the migrated VMs, by default, this is the current or active namespace. To edit the namespace, click the *Edit* icon, choose a different target namespace from the list in the window that opens, and click *Save*.
->>>>>>> 873f604e (draft of shared disk description)
 endif::ostack,ova,cnv[]
 
 . If your plan is valid, you can do one of the following:
