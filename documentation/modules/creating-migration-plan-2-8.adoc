@@ -41,60 +41,219 @@ ifdef::vmware[]
 
 * *Migration type*: Type of migration. By default, {project-short} sets the migration type to `cold`. 
 
-** For a warm migration, click the *Edit* icon and select *warm*.
+** For a warm migration, do the following:
+
+*** Click the *Edit* icon.
+*** Toggle the *Whether this is a warm migration* switch.
+*** Click *Save*.
 
 * *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace. 
 
-** To edit the transfer network, click the *Edit* icon, select a different transfer network from the list, and click *Save*.
+** To edit the transfer network, do the following:
 
-** (Optional): To configure an {ocp-short} network in the {ocp-short} web console by clicking *Networking > NetworkAttachmentDefinitions*.
+*** Click the *Edit* icon.
+*** Select a different transfer network from the list.
+*** Click *Save*.
+
+** (Optional): To configure an {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
 ** (Optional): To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
-* *Target namespace*: Destination namespace for all the migrated VMs. By default, this is the current or active namespace. 
+* *Target namespace*: Destination namespace for all the migrated VMs. By default, the destination namespace is the current or active namespace.
 
-** To edit the namespace, click the *Edit* icon, select a different target namespace from the list in the window that opens, and click *Save*.
+** To edit the namespace, do the following:
+
+*** Click the *Edit* icon.
+*** Select a different target namespace from the list in the window that opens.
+*** Click *Save*.
 
 * *Preserve static IPs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP during migration.
 
-** To preserve static IPs, click the *Edit* icon next to *Preserve static IPs* and toggle the *Whether to preserve the static IPs* switch in the window that opens. Then click *Save*.
+** To preserve static IPs, do the following:
+
+*** Click the *Edit* icon.
+*** Toggle the *Whether to preserve the static IPs* switch.
+*** Click *Save*.
 +
 {project-short} then issues a warning message about any VMs whose vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere. This causes the vNIC properties to be reported to {project-short}.
 
 * *Disk decryption passphrases*: For disks encrypted using Linux Unified Key Setup (LUKS). 
 
-** To enter a list of decryption passphrases for LUKS-encrypted devices, in the *Settings* section, click the *Edit* icon next to *Disk decryption passphrases*, enter the passphrases, and then click *Save*. You do not need to enter the passphrases in a specific order. For each LUKS-encrypted device, {project-short} tries each passphrase until one unlocks the device.
+** To enter a list of decryption passphrases for LUKS-encrypted devices, do the following:
+
+*** Click the *Edit* icon.
+*** Enter the passphrases.
+*** Click *Save*.
++
+You do not need to enter the passphrases in a specific order. For each LUKS-encrypted device, {project-short} tries each passphrase until one unlocks the device.
 
 * *Root device*: Applies to multi-boot VM migrations only. By default, {project-short} uses the first bootable device detected as the root device.
 
-** To specify a different root device, in the *Settings* section, click the *Edit* icon next to *Root device* and then either select a device from the list or enter a device in the text box.
+** To specify a different root device, do the following:
+
+*** Click the *Edit* icon next to *Root device*.
+*** Either select a device from the list or enter a device in the text box.
+*** Click *Save*.
 +
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
 If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by checking the conversion pod logs.
 
-endif::[]
+* *Shared disks*: Applies to cold migrations only. Shared disks are disks that are attached to multiple VMs and that use the multi-writer option. These characteristics make shared disks difficult to migrate. By default, {project-short} does not migrate shared disks.
++
+[NOTE]
+====
+Migrating shared disks might slow down the migration process.
+====
++
+** To migrate shared disks in the migration plan, do the following:
+
+*** Click the *Edit* icon.
+*** Toggle the *Migrate shared disks* switch.
+*** Click *Save*.
+
+* (Optional): *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan. 
++
+The template follows the Go template syntax and has access to the following variables:
+
+** `.VnName`: Name of the VM
+** `.PlanName`: Name of the migration plan
+** `.DiskIndex`: Initial volume index of the disk
+** `.RootDiskIndex`: Index of the root disk
++
+Examples
+
+** `"{{.VmName}}-disk-{{.DiskIndex}}"`
+** `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
++
+Variable names cannot exceed 63 characters.
++
+** To specify a PVC name template for all the VMs in your plan, do the following:
+
+*** Click the *Edit* icon.
+*** Click *Enter custom naming template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
+
+** To specify a PVC name template only for specific VMs, do the following:
+
+*** Click the *Virtual Machines* tab.
+*** Select the desired VMs.
+*** Click the {kebab} of the VM.
+*** Select *Edit PVC name template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
++
+[IMPORTANT]
+====
+Changes you make in the  *Virtual Machines* tab override any changes in the *Plan details* page.
+====
+
+* (Optional): *Volume name template*: Specifies a template for the volume interface name for the VMs in your plan.
++
+The template follows the Go template syntax and has access to the following variables:
+
+** `.PVCName`: Name of the PVC mounted to the VM using this volume
+** `.VolumeIndex`: Sequential index of the volume interface (0-based)
++
+Examples
+
+** `"disk-{{.VolumeIndex}}"`
+** `"pvc-{{.PVCName}}"`
++
+Variable names cannot exceed 63 characters
++
+** To specify a volume name template for all the VMs in your plan, do the following:
+
+*** Click the *Edit* icon.
+*** Click *Enter custom naming template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
+
+** To specify a different volume name template only for specific VMs, do the following:
+
+*** Click the *Virtual Machines* tab.
+*** Select the desired VMs.
+*** Click the {kebab} of the VM.
+*** Select *Edit Volume name template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
++
+[IMPORTANT]
+====
+Changes you make in the *Virtual Machines* tab override any changes in the *Plan details* page.
+====
+
+* (Optional): *Network name template*: Specifies a template for the network interface name for the VMs in your plan.
++
+The template follows the Go template syntax and has access to the following variables:
+
+** `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
+** `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
+** `.NetworkType`: Network type. Options: `multus` or `pod`.
+** `.NetworkIndex`: Sequential index of the network interface (0-based).
++
+Examples
+
+** `"net-{{.NetworkIndex}}"`
+** `{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
++
+Variable names cannot exceed 63 characters.
++
+** To specify a network name template for all the VMs in your plan, do the following:
+
+*** Click the *Edit* icon.
+*** Click *Enter custom naming template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
+
+** To specify a different network name template only for specific VMs, do the following:
+
+*** Click the *Virtual Machines* tab.
+*** Select the desired VMs.
+*** Click the {kebab} of the VM.
+*** Select *Edit Network name template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
++
+[IMPORTANT]
+====
+Changes you make in the  *Virtual Machines* tab override any changes in the *Plan details* page.
+====
+endif::[] 
 ifdef::rhv[]
 
-* *Migration type*: Type of migration. By default, {project-short} sets the migration type to `cold`. 
+* *Migration type*: Type of migration. By default, {project-short} sets the migration type to `cold`.
 
-** For a warm migration, click the *Edit* icon and select *warm*.
+** For a warm migration, do the following:
 
-* *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace. 
+*** Click the *Edit* icon.
+*** Toggle the *Whether this is a warm migration* switch.
+*** Click *Save*.
 
-** To edit the transfer network, click the *Edit* icon, select a different transfer network from the list, and click *Save*.
+* *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.
 
-** (Optional): To configure an {ocp-short} network in the {ocp-short} web console by clicking *Networking > NetworkAttachmentDefinitions*.
+** To edit the transfer network, do the following:
+
+*** Click the *Edit* icon.
+*** Select a different transfer network from the list.
+*** Click *Save*.
+
+** (Optional): To configure an {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
 ** (Optional): To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
-* *Target namespace*: Destination namespace for all the migrated VMs. By default, this is the current or active namespace. 
+* *Target namespace*: Destination namespace for all the migrated VMs. By default, the destination namespace is the current or active namespace.
 
-** To edit the namespace, click the *Edit* icon, select a different target namespace from the list in the window that opens, and click *Save*.
+** To edit the namespace, do the following:
+
+*** Click the *Edit* icon.
+*** Select a different target namespace from the list in the window that opens.
+*** Click *Save*.
 
 * *Preserving the CPU model of VMs that are migrated from {rhv-short}*: Generally, the CPU model (type) for {rhv-short} VMs is set at the cluster level. However, the CPU model can be set at the VM level, which is called a custom CPU model.
 +
@@ -102,23 +261,35 @@ By default, {project-short} sets the CPU model on the destination cluster as fol
 ** {project-short} preserves custom CPU settings for VMs that have them.
 ** For VMs without custom CPU settings, {project-short} does not set the CPU model. Instead, the CPU model is later set by {virt}.
 
-** To preserve the cluster-level CPU model of your {rhv-short} VMs, in the *Settings* section, click the *Edit* icon next to *Preserve CPU model*. Toggle the *Whether to preserve the CPU model* switch, and then click *Save*.
+** To preserve the cluster-level CPU model of your {rhv-short} VMs, do the following:
+
+*** Click the *Edit* icon.
+*** Toggle the *Whether to preserve the CPU model* switch.
+*** Click *Save*.
 endif::[]
 
 ifdef::ostack,ova,cnv[]
-* *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace. 
+* *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.
 
-** To edit the transfer network, click the *Edit* icon, select a different transfer network from the list, and click *Save*.
+** To edit the transfer network, do the following:
 
-** (Optional): To configure an {ocp-short} network in the {ocp-short} web console by clicking *Networking > NetworkAttachmentDefinitions*.
+*** Click the *Edit* icon.
+*** Select a different transfer network from the list.
+*** Click *Save*.
+
+** (Optional): To configure an {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
 ** (Optional): To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
-* *Target namespace*: Destination namespace for all the migrated VMs. By default, this is the current or active namespace. 
+* *Target namespace*: Destination namespace for all the migrated VMs. By default, the destination namespace is the current or active namespace.
 
-** To edit the namespace, click the *Edit* icon, select a different target namespace from the list in the window that opens, and click *Save*.
+** To edit the namespace, do the following:
+
+*** Click the *Edit* icon.
+*** Select a different target namespace from the list in the window that opens.
+*** Click *Save*.
 endif::ostack,ova,cnv[]
 
 . If your plan is valid, you can do one of the following:
