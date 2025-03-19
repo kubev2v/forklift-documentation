@@ -91,17 +91,17 @@ The template follows the Go template syntax and has access to the following vari
 ** `.DiskIndex`: Initial volume index of the disk
 ** `.RootDiskIndex`: Index of the root disk
 +  
-Examples:
+Examples
 
 ** `"{{.VmName}}-disk-{{.DiskIndex}}"`
 ** `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
 +
-Names can not exceed 63 characters, so keep variable names short. 
+Names cannot exceed 63 characters, so keep variable names short. 
 +
 ** To specify a different PVC name template, do the following:
 
 *** Click the *Edit* icon.
-*** Click *Enter custom namimg template*.
+*** Click *Enter custom naming template*.
 *** Enter the name of the template.
 *** Click *Save*.
 
@@ -110,19 +110,19 @@ Names can not exceed 63 characters, so keep variable names short.
 The template follows the Go template syntax and has access to the following variables:
 
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume
-** `.VolumeIndex: Sequential index of the volume interface (0-based)
+** `.VolumeIndex`: Sequential index of the volume interface (0-based)
 +
 Eaxmples
 
-`"disk-{{.VolumeIndex}}"`
-`"pvc-{{.PVCName}}"`
+** `"disk-{{.VolumeIndex}}"`
+** `"pvc-{{.PVCName}}"`
 +
-Names can not exceed 63 characters, so keep variable names short. 
+Names cannot exceed 63 characters, so keep variable names short. 
 +
 ** To specify a different volume name template, do the following:
 
 *** Click the *Edit* icon.
-*** Click *Enter custom namimg template*.
+*** Click *Enter custom naming template*.
 *** Enter the name of the template.
 *** Click *Save*.
 
@@ -135,16 +135,17 @@ The template follows the Go template syntax and has access to the following vari
 ** `.NetworkType`: Network type. Options: `multus` or `pod`.
 ** `.NetworkIndex`: Sequential index of the network interface (0-based).
 +
-Examples:
-`"net-{{.NetworkIndex}}"`
-`{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
+Examples
+
+** `"net-{{.NetworkIndex}}"`
+** `{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
 +
-Names can not exceed 63 characters, so keep variable names short. 
+Names cannot exceed 63 characters, so keep variable names short. 
 +
 ** To specify a different network name template, do the following:
 
 *** Click the *Edit* icon.
-*** Click *Enter custom namimg template*.
+*** Click *Enter custom naming template*.
 *** Enter the name of the template.
 *** Click *Save*.
 
