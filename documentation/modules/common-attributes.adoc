@@ -9,8 +9,8 @@
 :ocp-name: OpenShift
 :ocp-short: OpenShift
 // when updating the ocp-version, update the ocp-y-version
-:ocp-version: 4.17
-:ocp-y-version: 4.17, 4.16, 4.15
+:ocp-version: 4.18
+:ocp-y-version: 4.18, 4.17, 4.16
 :operator: mtv-operator
 :operator-name-ui: Migration Toolkit for Virtualization Operator
 :operator-name: MTV Operator
