@@ -77,9 +77,76 @@ If the conversion fails because the boot device provided is incorrect, it is pos
 
 * *Shared disks*: Applies to cold migrations only. Shared disks are disks that are attached to multiple VMs and that use the multi-writer option. As a result of these characteristics, shared disks are difficult to migrate.By default, {project-short} does not migrates shared disks. 
 +
-To migrate shared disks in the migration plan, click the *Edit* icon, toggle the *Migrate shared disks* switch, and click *Save*.
+** To migrate shared disks in the migration plan, click the *Edit* icon, toggle the *Migrate shared disks* switch, and click *Save*.
 +
 Note that migrating shared disks might slow down the migration process. 
+
+* *PVC name template*: The PVC name template is used to generate a persistent volume claim (PVC) name for a VM disk.
+You can use this setting to override the template set in the plan.
++
+The template follows the Go template syntax and has access to the following variables:
+
+** `.VnName`: Name of the VM
+** `.PlanName`: Name of the migration plan
+** `.DiskIndex`: Initial volume index of the disk
+** `.RootDiskIndex`: Index of the root disk
++  
+Examples:
+
+** `"{{.VmName}}-disk-{{.DiskIndex}}"`
+** `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
++
+Names can not exceed 63 characters, so keep variable names short. 
++
+** To specify a different PVC name template, do the following:
+
+*** Click the *Edit* icon.
+*** Click *Enter custom namimg template*.
+*** Enter the name of the template.
+*** Click *Save*.
+
+* *Volume name template*: The volume name template is used to generate a volume interface names in a target virtual machine. You can use this setting to override the template set in the plan.
++
+The template follows the Go template syntax and has access to the following variables:
+
+** `.PVCName`: Name of the PVC mounted to the VM using this volume
+** `.VolumeIndex: Sequential index of the volume interface (0-based)
++
+Eaxmples
+
+`"disk-{{.VolumeIndex}}"`
+`"pvc-{{.PVCName}}"`
++
+Names can not exceed 63 characters, so keep variable names short. 
++
+** To specify a different volume name template, do the following:
+
+*** Click the *Edit* icon.
+*** Click *Enter custom namimg template*.
+*** Enter the name of the template.
+*** Click *Save*.
+
+* *Network name template*: The network name template is used to generate a volume interface names in a target virtual machine. You can use this setting to override the template set in the plan.
++
+The template follows the Go template syntax and has access to the following variables:
+
+** `.NetworkName:` If the target network is `multus`, use the name of the Multus Network Attachment Definition. Otherwise, leave empty.
+** `.NetworkNamespace`: If the target network is `multus`, use the namespace where theMultus Network Attachment Definition is located.
+** `.NetworkType`: Network type. Options: `multus` or `pod`.
+** `.NetworkIndex`: Sequential index of the network interface (0-based).
++
+Examples:
+`"net-{{.NetworkIndex}}"`
+`{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
++
+Names can not exceed 63 characters, so keep variable names short. 
++
+** To specify a different network name template, do the following:
+
+*** Click the *Edit* icon.
+*** Click *Enter custom namimg template*.
+*** Enter the name of the template.
+*** Click *Save*.
 
 endif::[] 
 ifdef::rhv[]
