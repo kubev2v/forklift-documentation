@@ -800,15 +800,22 @@ spec:
       name: <storage_map> <7>
       namespace: <namespace>
   preserveStaticIPs: <8>
+  networkNameTemplate: <network_interface_template> <9>
+  pvcNameTemplate: <pvc_name_template> <10>
   targetNamespace: <target_namespace>
-  vms: <9>
-    - id: <source_vm> <10>
-    - name: <source_vm>
-      hooks: <11>
+  volumeNameTemplate: <volume_name_template> <11>
+  vms: <12>
+    - id: <source_vm1> <13>
+    - name: <source_vm2>
+      networkNameTemplate: <network_interface_template_for_this_vm> <14>
+      pvcNameTemplate:   <pvc_name_template_for_this_vm> <15> 
+      volumeNameTemplate:   <volume_name_template_for_this_vm> <16>
+      hooks: <17>
         - hook:
             namespace: <namespace>
-            name: <hook> <12>
-          step: <step> <13>
+            name: <hook> <18>
+          step: <step> <19>
+
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
@@ -818,13 +825,47 @@ EOF
 <5> Specify the name of the `NetworkMap` CR.
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
-<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP.
+<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address. +
 To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
-<9> You can use either the `id` or the `name` parameter to specify the source VMs.
-<10> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
-<11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<12> Specify the name of the `Hook` CR.
-<13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<9> [[callout9]]Optional. Specify a template for the network interface name for the VMs in your plan.
+The template follows the Go template syntax and has access to the following variables:
+* `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
+* `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
+* `.NetworkType`: Specifies the network type. Options: `multus` or `pod`.
+* `.NetworkIndex`: Sequential index of the network interface (0-based).
++
+*Examples*
+* `"net-{{.NetworkIndex}}"`
+* `{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
++
+Variable names cannot exceed 63 characters. This rule applies to a network name network template, a PVC name template, a VM name template, and a volume name template. 
+<10> [[callout10]]Optional. Specify a template for the persistent volume claim (PVC) name for a plan.
+The template follows the Go template syntax and has access to the following variables:
+* `.VnName`: Name of the VM.
+* `.PlanName`: Name of the migration plan.
+* `.DiskIndex`: Initial volume index of the disk.
+* `.RootDiskIndex`: Index of the root disk.
++
+*Examples*
+* `"{{.VmName}}-disk-{{.DiskIndex}}"`
+* `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
++
+<11> [[callout11]]Optional. Specify a template for the volume interface name for the VMs in your plan.
+The template follows the Go template syntax and has access to the following variables:
+** `.PVCName`: Name of the PVC mounted to the VM using this volume.
+** `.VolumeIndex`: Sequential index of the volume interface (0-based).
++
+*Examples*
+** `"disk-{{.VolumeIndex}}"`
+** `"pvc-{{.PVCName}}"`
+<12> You can use either the `id` or the `name` parameter to specify the source VMs.
+<13> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+<14> Optional. Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
+<15> Optional. Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10]. 
+<16> Optional. Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout11[callout 11].
+<17> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<18> Specify the name of the `Hook` CR.
+<19> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 +
 include::snip_vmware-name-change.adoc[]
 endif::[]
@@ -878,8 +919,8 @@ spec:
       namespace: <namespace>
   targetNamespace: <target_namespace>
   vms: <9>
-    - id: <source_vm> <10>
-    - name: <source_vm>
+    - id: <source_vm1> <10>
+    - name: <source_vm2>
       hooks: <11>
         - hook:
             namespace: <namespace>
@@ -959,8 +1000,8 @@ spec:
       namespace: <namespace>
   targetNamespace: <target_namespace>
   vms: <7>
-    - id: <source_vm> <8>
-    - name: <source_vm>
+    - id: <source_vm1> <8>
+    - name: <source_vm2>
       hooks: <9>
         - hook:
             namespace: <namespace>
@@ -1028,8 +1069,8 @@ spec:
       namespace: <namespace>
   targetNamespace: <target_namespace>
   vms: <7>
-    - id: <source_vm> <8>
-    - name: <source_vm>
+    - id: <source_vm1> <8>
+    - name: <source_vm2>
       hooks: <9>
         - hook:
             namespace: <namespace>
