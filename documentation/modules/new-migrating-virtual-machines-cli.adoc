@@ -776,16 +776,22 @@ spec:
     storage: <6>
       name: <storage_map> <7>
       namespace: <namespace>
-  preserveStaticIPs: <8>
+  networkNameTemplate: <"net-{{.NetworkIndex}}"> <8>
+  preserveStaticIPs: <9>
+  pvcNameTemplate: <"{{.VmName}}-disk-{{.DiskIndex}}"> <10>
   targetNamespace: <target_namespace>
-  vms: <9>
-    - id: <source_vm> <10>
-    - name: <source_vm>
-      hooks: <11>
+  vms:
+    - id: <source_vm> <11>
+      name: <source_vm> <12>
+      networkNameTemplate:   "{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}" <13>
+      pvcNameTemplate:   "{{.VmName}}-disk-{{.DiskIndex}}" <14> 
+      volumeNameTemplate:   "pvc-{{.PVCName}}" <15>
+      hooks: <16>
         - hook:
             namespace: <namespace>
-            name: <hook> <12>
-          step: <step> <13>
+            name: <hook> <17>
+          step: <step> <18>
+  volumeNameTemplate: <"disk-{{.VolumeIndex}}"> <19>
 EOF
 ----
 <1> Specify the name of the `Plan` CR.
@@ -795,13 +801,65 @@ EOF
 <5> Specify the name of the `NetworkMap` CR.
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
-<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP.
+<8> Generates a network interface name for a target VM that overrides the template set in the plan.
+The template follows the Go template syntax and has access to the following variables:
+* `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
+* `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
+* `.NetworkType`: Network type. Options: `multus` or `pod`.
+* `.NetworkIndex`: Sequential index of the network interface (0-based).
+Examples
+* `"net-{{.NetworkIndex}}"`
+* `{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
++
+Variable names cannot exceed 63 characters.
+<9> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP.
 To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
-<9> You can use either the `id` or the `name` parameter to specify the source VMs.
-<10> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
-<11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<12> Specify the name of the `Hook` CR.
-<13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<10> Generates a persistent volume claim (PVC) name for a VM disk that overrides the template set in the plan.
+The template follows the Go template syntax and has access to the following variables:
+* `.VnName`: Name of the VM
+* `.PlanName`: Name of the migration plan
+* `.DiskIndex`: Initial volume index of the disk
+* `.RootDiskIndex`: Index of the root disk
+Examples
+* `"{{.VmName}}-disk-{{.DiskIndex}}"`
+* `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
++
+Variable names cannot exceed 63 characters.
+<11> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+<12> Optional.
+<13> As stated in callout 8: +
+The template follows the Go template syntax and has access to the following variables:
+* `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
+* `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
+* `.NetworkType`: Network type. Options: `multus` or `pod`.
+* `.NetworkIndex`: Sequential index of the network interface (0-based).
++
+Variable names cannot exceed 63 characters.
+<14> As stated in callout 10: +
+The template follows the Go template syntax and has access to the following variables:
+* `.VnName`: Name of the VM
+* `.PlanName`: Name of the migration plan
+* `.DiskIndex`: Initial volume index of the disk
+* `.RootDiskIndex`: Index of the root disk
++
+Variable names cannot exceed 63 characters.
+<15> Generates a volume interface name for a target VM that overrides the template set in the plan.
+The template follows the Go template syntax and has access to the following variables:
+** `.PVCName`: Name of the PVC mounted to the VM using this volume
+** `.VolumeIndex`: Sequential index of the volume interface (0-based)
+Examples
+** `"disk-{{.VolumeIndex}}"`
+** `"pvc-{{.PVCName}}"`
++
+Variable names cannot exceed 63 characters
+<16> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<17> Specify the name of the `Hook` CR.
+<18> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<19> As stated in callout 15:
+** `.PVCName`: Name of the PVC mounted to the VM using this volume
+** `.VolumeIndex`: Sequential index of the volume interface (0-based)
++
+Variable names cannot exceed 63 characters. 
 +
 include::snip_vmware-name-change.adoc[]
 endif::[]
