@@ -112,7 +112,7 @@ The template follows the Go template syntax and has access to the following vari
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume
 ** `.VolumeIndex`: Sequential index of the volume interface (0-based)
 +
-Eaxmples
+Examples
 
 ** `"disk-{{.VolumeIndex}}"`
 ** `"pvc-{{.PVCName}}"`
