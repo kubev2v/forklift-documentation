@@ -30,7 +30,6 @@ In the event of a power outage, data might be lost for a VM with disabled hibern
 Neither {project-short} nor OpenShift Virtualization support conversion of Btrfs for migrating VMs from VMWare.
 ====
 
-[discrete]
 [id="vmware-privileges_{context}"]
 == VMware privileges
 
