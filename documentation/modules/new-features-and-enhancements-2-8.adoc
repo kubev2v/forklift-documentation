@@ -1,0 +1,17 @@
+
+[id="new-features-and-enhancements-2-8_{context}"]
+= New features and enhancements
+
+{project-first} 2.8 introduces the following features and enhancements:
+
+
+[id="new-features-and-enhancements-2-8-0_{context}"]
+== New features and enhancements 2.8.0
+
+* In {project-short} 2.8.0, you can provide custom names for the following attributes in the migration plan of VMware virtual machines (VMs):
++ 
+** Persistent volume claim (PVC) name template that is used to generate PVC names in the target VM. 
+** Volume name template that is used to generate volume interface names for the target VMs.
+** Network name template that is used to generate network interface names for the target VMs.
+
+* In {project-short} 2.8.0, VM names can contain periods, as described in link:https://datatracker.ietf.org/doc/html/rfc1123[(RFC-1123)]. This allows you to use Fully Qualified Domain Names in VM names after migration. 
