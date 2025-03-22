@@ -1,4 +1,4 @@
-include::modules/mtv-common-attributes.adoc[]
+include::modules/common-attributes.adoc[]
 [id="{rn-title}"]
 = {rn-title}
 :toc:
@@ -9,26 +9,26 @@ include::modules/mtv-common-attributes.adoc[]
 
 ifeval::["{build}" == "downstream"]
 [discrete]
-include::modules/mtv-making-open-source-more-inclusive.adoc[]
+include::modules/making-open-source-more-inclusive.adoc[]
 endif::[]
 
-include::modules/mtv-rn-2.7.adoc[leveloffset=+1]
+include::modules/rn-2.7.adoc[leveloffset=+1]
 
 // Technical changes by x-stream release
-include::modules/mtv-technical-changes-2-7.adoc[leveloffset=+2]
+include::modules/technical-changes-2-7.adoc[leveloffset=+2]
 
 //
 
 // For a full list of packages in {project-short}, see xref:mtv-changelog-2-7_release-notes[{project-short} changelog].
 
 // New features and enhancements by z-stream release
-include::modules/mtv-new-features-and-enhancements-2-7.adoc[leveloffset=+2]
+include::modules/new-features-and-enhancements-2-7.adoc[leveloffset=+2]
 
 // Resolved issues by z-stream release
-include::modules/mtv-rn-27-resolved-issues.adoc[leveloffset=+2]
+include::modules/rn-27-resolved-issues.adoc[leveloffset=+2]
 
 // Known issues by x-stream release
-include::modules/mtv-known-issues-2-7.adoc[leveloffset=+2]
+include::modules/known-issues-2-7.adoc[leveloffset=+2]
 
 
 // include::modules/mtv-changelog-2-7.adoc[leveloffset=+2]
