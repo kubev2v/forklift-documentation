@@ -136,7 +136,7 @@ Variable names cannot exceed 63 characters.
 *** Click *Enter custom naming template*.
 *** Enter the template according to the instructions.
 *** Click *Save*.
-*** Click the *Virtual Machines* tab,
+*** Click the *Virtual Machines* tab.
 *** Select the desired VMs.
 *** Click the {kebab} menu of the VM.
 *** Select *Edit PVC name template*.
@@ -163,7 +163,7 @@ Variable names cannot exceed 63 characters
 *** Click *Enter custom naming template*.
 *** Enter the template according to the instructions.
 *** Click *Save*.
-*** Click the *Virtual Machines* tab,
+*** Click the *Virtual Machines* tab.
 *** Select the desired VMs.
 *** Click the {kebab} menu of the VM.
 *** Select *Edit Volume name template*.
@@ -192,7 +192,7 @@ Variable names cannot exceed 63 characters.
 *** Click *Enter custom naming template*.
 *** Enter the template according to the instructions.
 *** Click *Save*.
-*** Click the *Virtual Machines* tab,
+*** Click the *Virtual Machines* tab.
 *** Select the desired VMs.
 *** Click the {kebab} menu of the VM.
 *** Select *Edit Network name template*.
