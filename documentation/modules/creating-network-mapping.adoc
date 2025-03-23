@@ -1,0 +1,31 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-network-mapping_{context}"]
+= Creating a network mapping
+
+You can create one or more network mappings by using the {ocp} web console to map source networks to {virt} networks.
+
+.Prerequisites
+
+* Source and target providers added to the {ocp} web console.
+* If you map more than one source and target network, each additional {virt} network requires its own link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-creating-network-attachment-definition[network attachment definition].
+
+.Procedure
+
+. In the {ocp} web console, click *Migration* -> *NetworkMaps for virtualization*.
+. Click *Create NetworkMap*.
+. Specify the following fields:
+
+* *Name*: Enter a name to display in the network mappings list.
+* *Source provider*: Select a source provider.
+* *Target provider*: Select a target provider.
+
+. Select a *Source network* and a *Target namespace/network*.
+. Optional: Click *Add* to create additional network mappings or to map multiple source networks to a single target network.
+. If you create an additional network mapping, select the network attachment definition as the target network.
+. Click *Create*.
++
+The network mapping is displayed on the *NetworkMaps* screen.
