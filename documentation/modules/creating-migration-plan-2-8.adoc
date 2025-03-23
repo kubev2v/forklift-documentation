@@ -134,7 +134,13 @@ Variable names cannot exceed 63 characters.
 
 *** Click the *Edit* icon.
 *** Click *Enter custom naming template*.
-*** Enter the name of the template.
+*** Enter the template according to the instructions.
+*** Click *Save*.
+*** Click the *Virtual Machines* tab,
+*** Select the desired VMs.
+*** Click the {kebab} menu of the VM.
+*** Select *Edit PVC name template*.
+*** Enter the template according to the instructions.
 *** Click *Save*.
 
 * *Volume name template*: Generates a volume interface name for a target VM that overrides the template set in the plan.
@@ -155,7 +161,13 @@ Variable names cannot exceed 63 characters
 
 *** Click the *Edit* icon.
 *** Click *Enter custom naming template*.
-*** Enter the name of the template.
+*** Enter the template according to the instructions.
+*** Click *Save*.
+*** Click the *Virtual Machines* tab,
+*** Select the desired VMs.
+*** Click the {kebab} menu of the VM.
+*** Select *Edit Volume name template*.
+*** Enter the template according to the instructions.
 *** Click *Save*.
 
 * *Network name template*: Generates a network interface name for a target VM that overrides the template set in the plan.
@@ -178,7 +190,13 @@ Variable names cannot exceed 63 characters.
 
 *** Click the *Edit* icon.
 *** Click *Enter custom naming template*.
-*** Enter the name of the template.
+*** Enter the template according to the instructions.
+*** Click *Save*.
+*** Click the *Virtual Machines* tab,
+*** Select the desired VMs.
+*** Click the {kebab} menu of the VM.
+*** Select *Edit Network name template*.
+*** Enter the template according to the instructions.
 *** Click *Save*.
 
 endif::[] 
