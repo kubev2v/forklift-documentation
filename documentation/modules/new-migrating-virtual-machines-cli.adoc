@@ -593,7 +593,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].name:
 endif::[]
 
 ifdef::rhv[]
@@ -805,14 +805,14 @@ EOF
 The template follows the Go template syntax and has access to the following variables:
 * `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
 * `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
-* `.NetworkType`: Network type. Options: `multus` or `pod`.
+* `.NetworkType`: Specifies the network type. Options: `multus` or `pod`.
 * `.NetworkIndex`: Sequential index of the network interface (0-based).
 Examples
 * `"net-{{.NetworkIndex}}"`
 * `{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
 +
-Variable names cannot exceed 63 characters.
-<9> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP.
+Variable names cannot exceed 63 characters. This rules to a network name network templat, a PVC name template, a VM name template, and to a volume name template. 
+<9> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address.
 To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 <10> Generates a persistent volume claim (PVC) name for a VM disk that overrides the template set in the plan.
 The template follows the Go template syntax and has access to the following variables:
@@ -894,9 +894,9 @@ spec:
       name: <storage_map> <8>
       namespace: <namespace>
   targetNamespace: <target_namespace>
-  vms: <9>
-    - id: <source_vm> <10>
-    - name: <source_vm>
+  vms: 
+    - id: <source_vm> <9>
+      name: <source_vm> <10>
       hooks: <11>
         - hook:
             namespace: <namespace>
@@ -912,8 +912,8 @@ EOF
 <6> Specify the name of the `NetworkMap` CR.
 <7> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <8> Specify the name of the `StorageMap` CR.
-<9> You can use either the `id` or the `name` parameter to specify the source VMs.
-<10> Specify the {rhv-short} VM UUID.
+<9> Specify the {rhv-short} VM UUID.
+<10> Optional.
 <11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <12> Specify the name of the `Hook` CR.
 <13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
@@ -957,9 +957,9 @@ spec:
       name: <storage_map> <6>
       namespace: <namespace>
   targetNamespace: <target_namespace>
-  vms: <7>
-    - id: <source_vm> <8>
-    - name: <source_vm>
+  vms:
+    - id: <source_vm> <7>
+      name: <source_vm> 8>
       hooks: <9>
         - hook:
             namespace: <namespace>
@@ -973,8 +973,8 @@ EOF
 <4> Specify the name of the `NetworkMap` CR.
 <5> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <6> Specify the name of the `StorageMap` CR.
-<7> You can use either the `id` or the `name` parameter to specify the source VMs.
-<8> Specify the OVA VM UUID.
+<7> Specify the OVA VM UUID.
+<8> Optional.
 <9> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <10> Specify the name of the `Hook` CR.
 <11> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
@@ -1008,9 +1008,9 @@ spec:
       name: <storage_map> <6>
       namespace: <namespace>
   targetNamespace: <target_namespace>
-  vms: <7>
-    - id: <source_vm> <8>
-    - name: <source_vm>
+  vms: 
+    - id: <source_vm> <7>
+      name: <source_vm> <8>
       hooks: <9>
         - hook:
             namespace: <namespace>
@@ -1024,8 +1024,8 @@ EOF
 <4> Specify the name of the `NetworkMap` CR.
 <5> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <6> Specify the name of the `StorageMap` CR.
-<7> You can use either the `id` or the `name` parameter to specify the source VMs.
-<8> Specify the {osp} VM UUID.
+<7> Specify the {osp} VM UUID.
+<8> Optional.
 <9> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <10> Specify the name of the `Hook` CR.
 <11> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
