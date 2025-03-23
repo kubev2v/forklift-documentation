@@ -122,7 +122,7 @@ The template follows the Go template syntax and has access to the following vari
 ** `.PlanName`: Name of the migration plan
 ** `.DiskIndex`: Initial volume index of the disk
 ** `.RootDiskIndex`: Index of the root disk
-+  
++
 Examples
 
 ** `"{{.VmName}}-disk-{{.DiskIndex}}"`
@@ -138,7 +138,7 @@ Variable names cannot exceed 63 characters.
 *** Click *Save*.
 *** Click the *Virtual Machines* tab.
 *** Select the desired VMs.
-*** Click the {kebab} menu of the VM.
+*** Click the {kebab} of the VM.
 *** Select *Edit PVC name template*.
 *** Enter the template according to the instructions.
 *** Click *Save*.
@@ -165,7 +165,7 @@ Variable names cannot exceed 63 characters
 *** Click *Save*.
 *** Click the *Virtual Machines* tab.
 *** Select the desired VMs.
-*** Click the {kebab} menu of the VM.
+*** Click the {kebab} of the VM.
 *** Select *Edit Volume name template*.
 *** Enter the template according to the instructions.
 *** Click *Save*.
@@ -194,7 +194,7 @@ Variable names cannot exceed 63 characters.
 *** Click *Save*.
 *** Click the *Virtual Machines* tab.
 *** Select the desired VMs.
-*** Click the {kebab} menu of the VM.
+*** Click the {kebab} of the VM.
 *** Select *Edit Network name template*.
 *** Enter the template according to the instructions.
 *** Click *Save*.
