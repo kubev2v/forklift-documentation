@@ -816,10 +816,10 @@ Variable names cannot exceed 63 characters. This rules to a network name network
 To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 <10> Generates a persistent volume claim (PVC) name for a VM disk that overrides the template set in the plan.
 The template follows the Go template syntax and has access to the following variables:
-* `.VnName`: Name of the VM
-* `.PlanName`: Name of the migration plan
-* `.DiskIndex`: Initial volume index of the disk
-* `.RootDiskIndex`: Index of the root disk
+* `.VnName`: Name of the VM.
+* `.PlanName`: Name of the migration plan.
+* `.DiskIndex`: Initial volume index of the disk.
+* `.RootDiskIndex`: Index of the root disk.
 Examples
 * `"{{.VmName}}-disk-{{.DiskIndex}}"`
 * `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
@@ -831,16 +831,14 @@ Variable names cannot exceed 63 characters.
 The template follows the Go template syntax and has access to the following variables:
 * `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
 * `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
-* `.NetworkType`: Network type. Options: `multus` or `pod`.
+* `.NetworkType`: Specifies the network type. Options: `multus` or `pod`.
 * `.NetworkIndex`: Sequential index of the network interface (0-based).
-+
-Variable names cannot exceed 63 characters.
 <14> As stated in callout 10: +
 The template follows the Go template syntax and has access to the following variables:
-* `.VnName`: Name of the VM
-* `.PlanName`: Name of the migration plan
-* `.DiskIndex`: Initial volume index of the disk
-* `.RootDiskIndex`: Index of the root disk
+* `.VnName`: Name of the VM.
+* `.PlanName`: Name of the migration plan.
+* `.DiskIndex`: Initial volume index of the disk.
+* `.RootDiskIndex`: Index of the root disk.
 +
 Variable names cannot exceed 63 characters.
 <15> Generates a volume interface name for a target VM that overrides the template set in the plan.
@@ -850,16 +848,12 @@ The template follows the Go template syntax and has access to the following vari
 Examples
 ** `"disk-{{.VolumeIndex}}"`
 ** `"pvc-{{.PVCName}}"`
-+
-Variable names cannot exceed 63 characters
 <16> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <17> Specify the name of the `Hook` CR.
 <18> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 <19> As stated in callout 15:
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume
 ** `.VolumeIndex`: Sequential index of the volume interface (0-based)
-+
-Variable names cannot exceed 63 characters. 
 +
 include::snip_vmware-name-change.adoc[]
 endif::[]
@@ -959,7 +953,7 @@ spec:
   targetNamespace: <target_namespace>
   vms:
     - id: <source_vm> <7>
-      name: <source_vm> 8>
+      name: <source_vm> <8>
       hooks: <9>
         - hook:
             namespace: <namespace>
