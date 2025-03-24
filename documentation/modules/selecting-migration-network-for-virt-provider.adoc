@@ -8,14 +8,14 @@
 
 You can select a default migration network for {a-virt} provider in the {ocp} web console to improve performance. The default migration network is used to transfer disks to the namespaces in which it is configured.
 
+After you select a transfer network, associate its network attachment definition (NAD) with the gateway to be used by this network. 
+
 If you do not select a migration network, the default migration network is the `pod` network, which might not be optimal for disk transfer.
 
 [NOTE]
 ====
 You can override the default migration network of the provider by selecting a different network when you create a migration plan.
 ====
-
-
 
 .Procedure
 
@@ -27,3 +27,21 @@ When the *Providers detail* page opens:
 . Click the *Networks* tab.
 . Click *Set default transfer network*.
 . Select a default transfer network from the list and click *Save*.
+. Configure a gateway in the network used for {project-short} migrations by completing the following steps:
+.. In the {ocp} web console, click *Networking* > *NetworkAttachmentDefinitions*.
+.. Select the appropriate default transfer network NAD.
+.. Click the *YAML* tab.
+.. Add `forklift.konveyor.io/route` to the metadata:annotations section of the YAML, as in the following example:
++
+[source,yaml,subs="attributes+"]
+----
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: localnet-network
+  namespace: mtv-test
+  annotations:
+    forklift.konveyor.io/route: <IP address> # <1>
+----
+<1> The `NetworkAttachmentDefinition` parameter is needed to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically. Configuring the IP address enables the interface to reach the configured gateway.
+.. Click *Save*.
