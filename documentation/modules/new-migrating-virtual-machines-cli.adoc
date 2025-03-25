@@ -10,6 +10,11 @@ ifdef::vmware[]
 
 You can migrate from a VMware vSphere source provider by using the command-line interface (CLI).
 
+[NOTE]
+====
+To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks]. 
+====
+
 endif::[]
 ifdef::rhv[]
 = Migrating from a {rhv-full} source provider
