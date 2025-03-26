@@ -1,0 +1,22 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-vmware-role-mtv-permissions_{context}"]
+= Creating a VMware role to apply MTV permissions
+
+You can create a role in VMware to apply permissions for {project-first}, using one of the following two approaches:
+
+* At the user or group level
+* At the object level
+
+For detailed instructions, see VMware documentation.
+
+.Procedure
+
+. Create a role that includes the set of permissions described in the table in https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.7/html/installing_and_using_the_migration_toolkit_for_virtualization/prerequisites_mtv#vmware-prerequisites_mtv[VMware prerequisites].
+. In the vSphere inventory UI, assign permissions for users with this role to the appropriate vSphere logical objects using one of the following two methods:
+
+.. At the user or group level: Assign permissions to the appropriate logical objects in the data center and use the *Propagate to children* option. 
+.. At the object level: Apply the same role individually to all of the relevant vSphere logical objects involved in the migration, for example, hosts, vSphere clusters, data centers, or networks. 

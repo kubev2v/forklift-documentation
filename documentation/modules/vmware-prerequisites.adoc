@@ -22,7 +22,7 @@ The following prerequisites apply to VMware migrations:
 
 [IMPORTANT]
 ====
-In the event of a power outage, data might be lost for a VM with disabled hibernation. However, if hibernation is not disabled, migration will fail
+In case of a power outage, data might be lost for a VM with disabled hibernation. However, if hibernation is not disabled, migration will fail.
 ====
 
 [NOTE]
@@ -90,3 +90,8 @@ All `Virtual machine.Provisioning` privileges are required.
 |`Cryptographic.Decrypt` |Allows decryption of an encrypted virtual machine.
 |`Cryptographic.Direct access` |Allows access to encrypted resources.
 |===
+
+[TIP]
+==== 
+Create a role in VMware with the permissions described in the preceding table and then apply this role to the *Inventory* section, as described in xref:creating-vmware-role-mtv-permissions_mtv[Creating a VMware role to apply MTV permissions]
+====
