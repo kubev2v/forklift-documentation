@@ -993,9 +993,9 @@ spec:
       name: <storage_map> <6>
       namespace: <namespace>
   targetNamespace: <target_namespace>
-  vms: 
-    - id: <source_vm> <7>
-      name: <source_vm> <8>
+  vms: <7>
+    - id: <source_vm> <8>
+    - name: <source_vm> 
       hooks: <9>
         - hook:
             namespace: <namespace>
@@ -1009,8 +1009,8 @@ EOF
 <4> Specify the name of the `NetworkMap` CR.
 <5> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <6> Specify the name of the `StorageMap` CR.
-<7> Specify the {osp} VM UUID.
-<8> Optional.
+<7> You can use either the `id` or the `name` parameter to specify the source VMs.
+<8> Specify the {osp} VM UUID.
 <9> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <10> Specify the name of the `Hook` CR.
 <11> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
