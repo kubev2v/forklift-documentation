@@ -783,7 +783,7 @@ spec:
   volumeNameTemplate: <"disk-{{.VolumeIndex}}"> <11>
   vms: <12>
     - id: <source_vm> <13>
-      name: <source_vm> 
+    - name: <source_vm> 
       networkNameTemplate:   "{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}" <14>
       pvcNameTemplate:   "{{.VmName}}-disk-{{.DiskIndex}}" <15> 
       volumeNameTemplate:   "pvc-{{.PVCName}}" <16>
@@ -881,7 +881,7 @@ spec:
   targetNamespace: <target_namespace>
   vms: <9>
     - id: <source_vm> <10>
-      name: <source_vm> 
+    - name: <source_vm> 
       hooks: <11>
         - hook:
             namespace: <namespace>
@@ -944,7 +944,7 @@ spec:
   targetNamespace: <target_namespace>
   vms: <7>
     - id: <source_vm> <8>
-      name: <source_vm> 
+    - name: <source_vm> 
       hooks: <9>
         - hook:
             namespace: <namespace>
