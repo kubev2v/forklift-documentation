@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="adding-hook-crs-migration-plans-api_{context}"]
 = Adding Hook CRs to a VM migration by using the {project-short} API
 

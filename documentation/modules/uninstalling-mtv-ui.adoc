@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="uninstalling-mtv-ui_{context}"]
 = Uninstalling {project-short} by using the {ocp} web console
 
