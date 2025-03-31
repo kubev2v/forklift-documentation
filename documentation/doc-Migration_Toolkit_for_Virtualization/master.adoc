@@ -340,6 +340,7 @@ To migrate to or from an {ocp-short} cluster that is different from the one the 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/snip_vmware-permissions.adoc[]
 include::modules/retrieving-vmware-moref.adoc[leveloffset=+3]
+include::modules/mtv-shared-disks.adoc[leveloffset=+3]
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :vmware!:
