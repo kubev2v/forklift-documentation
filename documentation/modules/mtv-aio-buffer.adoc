@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: CONCEPT
+:_content-type: context
 [id="mtv-aio-buffer_{context}"]
 = Increasing asynchronous I/O (AIO) sizes and buffer counts for NBD transport mode
 

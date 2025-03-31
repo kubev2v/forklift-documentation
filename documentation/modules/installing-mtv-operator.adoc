@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="installing-mtv-operator_{context}"]
 ifdef::web[]
 = Installing the {operator-name} by using the {ocp} web console

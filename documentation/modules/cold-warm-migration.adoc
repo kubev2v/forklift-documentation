@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_content-type: CONCEPT
+:_content-type: context
 [id="mtv-cold-warm-migration_{context}"]
 = {project-short} cold migration and warm migration introduction
 

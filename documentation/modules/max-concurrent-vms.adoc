@@ -3,7 +3,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="max-concurrent-vms_{context}"]
 = Configuring the controller_max_vm_inflight parameter
 
