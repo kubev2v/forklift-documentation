@@ -9,7 +9,7 @@
 The following listed packages are from the `virt-v2v` guest conversion pod:
 
 .Selected {project-short} packages
-[width="100%",cols="60%,20%,options="header",]
+[width="100%",cols="60%,40%,options="header",]
 |===
 |Package summary
 |MTV 2.8.0
