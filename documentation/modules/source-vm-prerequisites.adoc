@@ -24,6 +24,8 @@ You can check that the operating system is supported by referring to the table i
 +
 include::snip_dualboot_vm.adoc[]
 +
+include::snip_vmware-windows-vss.adoc[]
++
 [NOTE]
 ====
 {project-full} automatically assigns a new name to a VM that does not comply with the rules.

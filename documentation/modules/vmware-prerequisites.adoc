@@ -19,6 +19,7 @@ The following prerequisites apply to VMware migrations:
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the NFC service memory of the host.
 * It is strongly recommended to disable hibernation because {project-first} does not support migrating hibernated VMs.
 
+include::snip_vmware-windows-vss.adoc[]
 
 [IMPORTANT]
 ====
