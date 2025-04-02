@@ -87,6 +87,3 @@ In some cases, however, you might want to decrease the file system overhead to r
 
 You can change the file system overhead by changing the value of the `controller_filesystem_overhead` in the `spec` portion of the `forklift-controller` CR, as described in xref:configuring-mtv-operator_{context}[Configuring the MTV Operator].
 ====
-
-
-

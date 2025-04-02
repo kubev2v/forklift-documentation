@@ -4,9 +4,8 @@
 
 :_content-type: REFERENCE
 [id="network-prerequisites_{context}"]
-= Network prerequisites
 
-The following prerequisites apply to all migrations:
+= Network prerequisites
 
 * IP addresses, VLANs, and other network configuration settings must not be changed before or during migration. The MAC addresses of the virtual machines are preserved during migration.
 * The network connections between the source environment, the {virt} cluster, and the replication repository must be reliable and uninterrupted.
@@ -17,8 +16,8 @@ The following prerequisites apply to all migrations:
 
 The firewalls must enable traffic over the following ports:
 
-// ANDY: The comments are for later, when I separate the ports by vendor.
-// ifdef::wmware[]
+ifdef::wmware[]
+
 [cols="1,1,1,1,2a",options="header"]
 .Network ports required for migrating from VMware vSphere
 |===
@@ -44,11 +43,12 @@ Disk transfer authentication
 |VMware ESXi hosts
 |Disk transfer data copy
 |===
-// endif::[]
 
-// ifdef::rhv[]
+endif::[]
+ifdef::rhv[]
+
 [cols="1,1,1,1,2a",options="header"]
-.Network ports required for migrating from {rhv-full}
+.Network ports required for migrating from {rhv-full} {rhv-short}
 |===
 |Port |Protocol |Source |Destination |Purpose
 
@@ -72,4 +72,4 @@ Disk transfer authentication
 |{rhv-short} hosts
 |Disk transfer data copy
 |===
-// endif::[]
+endif::[]

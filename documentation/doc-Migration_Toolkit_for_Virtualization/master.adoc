@@ -52,22 +52,52 @@ Review the following prerequisites to ensure that your environment is prepared f
 
 [id="mtv-software-requirements-all-providers_{context}"]
 ==== Software requirements for all providers
+These prerequisites apply to all migrations. Prerequisites that apply only to a specific provider are discussed in the section dedicated to that source provider.
 
-You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
+include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 include::modules/storage-support.adoc[leveloffset=+2]
 
-include::modules/network-prerequisites.adoc[leveloffset=+2]
-
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 
-include::modules/rhv-prerequisites.adoc[leveloffset=+2]
+=== Provider-specific prerequisites
+:!mtv:
+:context: vmware
+:vmware:
 
-include::modules/openstack-prerequisites.adoc[leveloffset=+2]
+include::modules/vmware-prerequisites.adoc[leveloffset=+3]
+include::modules/creating-vddk-image.adoc[leveloffset=+4]
+include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+4]
+include::modules/vddk-validator-containers.adoc[leveloffset=+4]
+include::modules/network-prerequisites.adoc[leveloffset=+4]
 
+:!vmware:
+:context: rhv
+:rhv:
+
+include::modules/rhv-prerequisites.adoc[leveloffset=+3]
+include::modules/file-system-overhead.adoc[leveloffset=+4]
+include::modules/network-prerequisites.adoc[leveloffset=+4]
+
+:!rhv:
+:context: ostack
+:ostack:
+
+include::modules/openstack-prerequisites.adoc[leveloffset=+3]
+
+[NOTE]
+====
+When migrating from OpenStack or running a cold-migration from RHV to the OCP cluster that MTV is deployed on, the migration allocates persistent volumes without CDI. In these cases, you might need to adjust the file system overhead.
+
+If the configured file system overhead, which has a default value of 10%, is too low, the disk transfer will fail due to lack of space. In such a case, you would want to increase the file system overhead.
+
+In some cases, however, you might want to decrease the file system overhead to reduce storage consumption.
+
+You can change the file system overhead by changing the value of the `controller_filesystem_overhead` in the `spec` portion of the `forklift-controller` CR, as described in xref:configuring-mtv-operator_mtv[Configuring the MTV Operator].
+====
 
 [id="additional-authentication-for-osp_{context}"]
-==== Additional authentication methods for migrations with {osp} source providers
+===== Additional authentication methods for migrations with {osp} source providers
 
 {project-short} versions 2.6 and later support the following authentication methods for migrations with {osp} source providers in addition to the standard username and password credential set:
 
@@ -76,24 +106,29 @@ include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 
 You can use these methods to migrate virtual machines with {osp} source providers using the command-line interface (CLI) the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
 
-:!mtv:
-:context: ostack
-:ostack:
-
-include::modules/ostack-token-auth.adoc[leveloffset=+4]
-include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
+include::modules/ostack-token-auth.adoc[leveloffset=+5]
+include::modules/ostack-app-cred-auth.adoc[leveloffset=+5]
+include::modules/network-prerequisites.adoc[leveloffset=+4]
 
 :!ostack:
+:context: ova
+:ova:
+
+include::modules/ova-prerequisites.adoc[leveloffset=+3]
+include::modules/network-prerequisites.adoc[leveloffset=+4]
+
+:!ova:
+:context: cnv
+:cnv:
+
+==== {virt} prerequisites
+
+include::modules/snip_ocp_version_for_virt_source.adoc[]
+include::modules/network-prerequisites.adoc[leveloffset=+4]
+
+:!cnv:
 :context: mtv
 :mtv:
-
-include::modules/vmware-prerequisites.adoc[leveloffset=+2]
-include::modules/creating-vddk-image.adoc[leveloffset=+3]
-include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
-include::modules/vddk-validator-containers.adoc[leveloffset=+3]
-include::modules/ova-prerequisites.adoc[leveloffset=+2]
-
-include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
 [id="installing-the-operator_{context}"]
 == Installing and configuring the {operator-name}
@@ -147,9 +182,9 @@ For all migrations, you specify the source provider, the destination provider, a
 ====
 You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
 
-VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
+// VMware only: You must have the minimal set of xref:vmware-privileges[VMware privileges].
 
-VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
+// VMware only: Creating a xref:creating-vddk-image[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 ====
 
 

@@ -4,9 +4,9 @@
 
 :_content-type: REFERENCE
 [id="compatibility-guidelines_{context}"]
-= Software compatibility guidelines
+= Software compatibility requirements
 
-You must install compatible software versions.
+You must install compatible software versions of {ocp}, {virt}, and any software related to your source provider. The table that follows lists the correct software versions.
 
 
 // check OCP version
