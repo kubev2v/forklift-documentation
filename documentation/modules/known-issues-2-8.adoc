@@ -11,7 +11,7 @@
 After warm migration of Windows Server 2022 virtual machine (VM) from vSphere to an {ocp-name} cluster, the Trusted Platform Module (TPM) device is added to the target VMs, even if the TPM configuration is non-persistent in the BIOS setting of the source Windows Server 2022 VM. This prevents the target VM from starting. link:https://issues.redhat.com/browse/MTV-2049[(MTV-2049)]
 
 .Linux VM with clustered file systems are not supported
-Linux guest VMs with clustered file systems on a shared disk are not supported as these disks are not added to the guest conversion process. The `virt-v2v` tool does not update shared disks in the `fstab` configuration file. link:https://issues.redhat.com/browse/MTV-2145[(MTV-2145)]
+Linux guest VMs with clustered file systems on a shared disk are not supported, as these disks are not added to the guest conversion process. The `virt-v2v` tool does not update shared disks in the `fstab` configuration file. link:https://issues.redhat.com/browse/MTV-2145[(MTV-2145)]
 
-.Migrating shared boot disks is not supported
-{project-short} cannot migrate shared boot disks. link:https://issues.redhat.com/browse/MTV-2201[(MTV-2201)]
+.Migrating shared boot disks is not available
+Migrating shared boot disks by using {project-short} is not available. link:https://issues.redhat.com/browse/MTV-2201[(MTV-2201)]
