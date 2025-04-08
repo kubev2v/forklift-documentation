@@ -4,10 +4,6 @@
 
 {project-first} 2.8 introduces the following features and enhancements:
 
-
-[id="new-features-and-enhancements-2-8-0_{context}"]
-== New features and enhancements 2.8.0
-
 * In {project-short} 2.8.0, you can provide custom names for the following attributes in the migration plan of VMware virtual machines (VMs):
 + 
 ** Persistent volume claim (PVC) name template that is used to generate PVC names in the target VM. 
