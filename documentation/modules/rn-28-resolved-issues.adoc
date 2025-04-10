@@ -28,7 +28,7 @@ In earlier releases of {project-short}, if the migration of a virtual machine (V
 .MTV fails to migrate VMs with template names that contain multiple periods
 In earlier releases of {project-short}, a VM whose name contained multiple periods (for example, `vm...`) could not be migrated because its name did not comply with the application and support protocol RFC DNS1123. This issue has been resolved in {project-short} 2.8.1. Now, {project-short} automatically changes multiple periods in a VM name to a single period, making it compliant with RFC DNS1123. link:https://issues.redhat.com/browse/MTV-2308[(MTV-2308)]
 
-.UI displays incorrect "Invalid VM Name" message for a VM name containing a period
+.UI displays an incorrect "Invalid VM Name" message for a VM name containing a period
 In earlier releases of {project-short}, the UI displayed an "Invalid VM Name" message for a VM name containing a period, even though {project-short} supports such names. This issue has been resolved in {project-short} 2.8.1. link:https://issues.redhat.com/browse/MTV-2309[(MTV-2309)]
 
 [id="resolved-issues-2-8-0_{context}"]
