@@ -16,7 +16,7 @@ include::snip_no-nvme.adoc[]
 
 [NOTE]
 ====
-To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks]. 
+To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks].
 ====
 
 endif::[]
@@ -400,7 +400,7 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration. 
+<1> Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
 <2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
@@ -759,11 +759,11 @@ You can use the default `hook-runner` image or specify a custom image. If you sp
 
 ifdef::vmware[]
 [start=7]
-. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations. 
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
 +
-You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically. 
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
 +
-Configuring the IP address enables the interface to reach the configured gateway. 
+Configuring the IP address enables the interface to reach the configured gateway.
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -774,7 +774,7 @@ metadata:
   name: <name_of_transfer_network>
   namespace: <namespace>
   annotations:
-    forklift.konveyor.io/route: <IP_address> 
+    forklift.konveyor.io/route: <IP_address>
 ----
 
 . Create a `Plan` manifest for the migration:
@@ -813,7 +813,7 @@ spec:
     - id: <source_vm1> <14>
     - name: <source_vm2>
       networkNameTemplate: <network_interface_template_for_this_vm> <15>
-      pvcNameTemplate: <pvc_name_template_for_this_vm> <16> 
+      pvcNameTemplate: <pvc_name_template_for_this_vm> <16>
       volumeNameTemplate: <volume_name_template_for_this_vm> <17>
       targetName: <target_name> <18>
       hooks: <19>
@@ -831,8 +831,7 @@ EOF
 <5> Specify the name of the `NetworkMap` CR.
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
-<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address. +
-To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
+<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address. To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 <9> [[callout9]]Optional. Specify a template for the network interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 * `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
@@ -844,14 +843,14 @@ The template follows the Go template syntax and has access to the following vari
 * `"net-{{.NetworkIndex}}"`
 * `{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
 +
-Variable names cannot exceed 63 characters. This rule applies to a network name network template, a PVC name template, a VM name template, and a volume name template. 
+Variable names cannot exceed 63 characters. This rule applies to a network name network template, a PVC name template, a VM name template, and a volume name template.
 <10> [[callout10]]Optional. Specify a template for the persistent volume claim (PVC) name for a plan.
 The template follows the Go template syntax and has access to the following variables:
 * `.VnName`: Name of the VM.
 * `.PlanName`: Name of the migration plan.
 * `.DiskIndex`: Initial volume index of the disk.
 * `.RootDiskIndex`: Index of the root disk.
-* `.Shared`: Options: `true`, for a shared volume, `false`, for a non-shared volume. 
+* `.Shared`: Options: `true`, for a shared volume, `false`, for a non-shared volume.
 +
 *Examples*
 * `"{{.VmName}}-disk-{{.DiskIndex}}"`
@@ -859,7 +858,7 @@ The template follows the Go template syntax and has access to the following vari
 * `"{{if .Shared}}shared-{{end}}{{.VmName}}-{{.DiskIndex}}"`
 +
 <11> Optional:
-* When set to `true`, {project-short} adds one or more randonly generated alphanumeric characters to the name of the PVC in order to ensure all PVCs have unique names. 
+* When set to `true`, {project-short} adds one or more randonly generated alphanumeric characters to the name of the PVC in order to ensure all PVCs have unique names.
 * When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add such charchters to the name of the PVC.
 +
 include::snip_pvcNameTemplateUseGenerateName-warn.adoc[]
@@ -872,10 +871,11 @@ The template follows the Go template syntax and has access to the following vari
 *Examples*
 ** `"disk-{{.VolumeIndex}}"`
 ** `"pvc-{{.PVCName}}"`
+<<<<<<< HEAD
 <13> You can use either the `id` or the `name` parameter to specify the source VMs.
 <14> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
 <15> Optional: Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
-<16> Optional: Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10]. 
+<16> Optional: Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10].
 <17> Optional: Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout12[callout 12].
 <18> Optional: {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
 <19> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
@@ -887,11 +887,11 @@ endif::[]
 
 ifdef::rhv[]
 [start=6]
-. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations. 
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
 +
-You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically. 
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
 +
-Configuring the IP address enables the interface to reach the configured gateway. 
+Configuring the IP address enables the interface to reach the configured gateway.
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -902,7 +902,7 @@ metadata:
   name: <name_of_transfer_network>
   namespace: <namespace>
   annotations:
-    forklift.konveyor.io/route: <IP_address> 
+    forklift.konveyor.io/route: <IP_address>
 ----
 
 . Create a `Plan` manifest for the migration:
@@ -970,11 +970,11 @@ endif::[]
 
 ifdef::ova[]
 [start=6]
-. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations. 
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
 +
-You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically. 
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
 +
-Configuring the IP address enables the interface to reach the configured gateway. 
+Configuring the IP address enables the interface to reach the configured gateway.
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -985,7 +985,7 @@ metadata:
   name: <name_of_transfer_network>
   namespace: <namespace>
   annotations:
-    forklift.konveyor.io/route: <IP_address> 
+    forklift.konveyor.io/route: <IP_address>
 ----
 
 . Create a `Plan` manifest for the migration:
@@ -1039,11 +1039,11 @@ endif::[]
 
 ifdef::ostack[]
 [start=6]
-. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations. 
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
 +
-You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically. 
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
 +
-Configuring the IP address enables the interface to reach the configured gateway. 
+Configuring the IP address enables the interface to reach the configured gateway.
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -1054,7 +1054,7 @@ metadata:
   name: <name_of_transfer_network>
   namespace: <namespace>
   annotations:
-    forklift.konveyor.io/route: <IP_address> 
+    forklift.konveyor.io/route: <IP_address>
 ----
 
 . Create a `Plan` manifest for the migration:
@@ -1108,11 +1108,11 @@ endif::[]
 
 ifdef::cnv[]
 [start=6]
-. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations. 
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
 +
-You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically. 
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
 +
-Configuring the IP address enables the interface to reach the configured gateway. 
+Configuring the IP address enables the interface to reach the configured gateway.
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -1123,7 +1123,7 @@ metadata:
   name: <name_of_transfer_network>
   namespace: <namespace>
   annotations:
-    forklift.konveyor.io/route: <IP_address> 
+    forklift.konveyor.io/route: <IP_address>
 ----
 
 . Create a `Plan` manifest for the migration:
