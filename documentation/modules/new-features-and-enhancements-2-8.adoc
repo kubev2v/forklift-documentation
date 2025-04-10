@@ -12,6 +12,6 @@
 
 * In {project-short} 2.8.0, VM names can contain periods, as described in link:https://datatracker.ietf.org/doc/html/rfc1123[(RFC-1123)]. This allows you to use Fully Qualified Domain Names in VM names after migration. 
 
-* VMware and OVA only: In {project-short} 2.8.1, you can specify the name of a target VM for migrations done by using the CLI. The name you enter must be unique and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
+* VMware and OVA only: In {project-short} 2.8.1, you can specify the name of a target VM for migrations done by using the CLI. The name you enter must be unique, and it must also be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
 
 * In {project-short} 2.8.1, you can choose to avoid mapping a network when you create a migration plan. 
