@@ -808,13 +808,14 @@ spec:
     - id: <source_vm1> <13>
     - name: <source_vm2>
       networkNameTemplate: <network_interface_template_for_this_vm> <14>
-      pvcNameTemplate:   <pvc_name_template_for_this_vm> <15> 
-      volumeNameTemplate:   <volume_name_template_for_this_vm> <16>
-      hooks: <17>
+      pvcNameTemplate: <pvc_name_template_for_this_vm> <15> 
+      volumeNameTemplate: <volume_name_template_for_this_vm> <16>
+      targetName: <target_name> <17>
+      hooks: <18>
         - hook:
             namespace: <namespace>
-            name: <hook> <18>
-          step: <step> <19>
+            name: <hook> <19>
+          step: <step> <20>
 
 EOF
 ----
@@ -863,9 +864,10 @@ The template follows the Go template syntax and has access to the following vari
 <14> Optional. Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
 <15> Optional. Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10]. 
 <16> Optional. Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout11[callout 11].
-<17> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<18> Specify the name of the `Hook` CR.
-<19> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+<17> Optional: {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
+<18> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<19> Specify the name of the `Hook` CR.
+<20> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 +
 include::snip_vmware-name-change.adoc[]
 endif::[]
@@ -938,7 +940,7 @@ EOF
 <8> Specify the name of the `StorageMap` CR.
 <9> You can use either the `id` or the `name` parameter to specify the source VMs.
 <10> Specify the {rhv-short} VM UUID.
-<11> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<11> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <12> Specify the name of the `Hook` CR.
 <13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 +
@@ -1086,7 +1088,7 @@ EOF
 <6> Specify the name of the `StorageMap` CR.
 <7> You can use either the `id` or the `name` parameter to specify the source VMs.
 <8> Specify the {osp} VM UUID.
-<9> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<9> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <10> Specify the name of the `Hook` CR.
 <11> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
@@ -1153,7 +1155,7 @@ EOF
 <4> Specify the name of the `NetworkMap` CR.
 <5> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <6> Specify the name of the `StorageMap` CR.
-<7> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<7> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <8> Specify the name of the `Hook` CR.
 <9> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
