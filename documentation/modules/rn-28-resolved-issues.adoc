@@ -20,10 +20,10 @@ In earlier releases of {project-short}, the code base contained the deprecated v
 In earlier releases of {project-short}, migrations that used custom templates failed if a user-supplied was too long because it exceeded 63 characters. This issue has been resolved in {project-short} 2.8.1. Now {project-short} automatically truncates names that are too long. link:https://issues.redhat.com/browse/MTV-2244[(MTV-2244)]
 
 .User supplied template names are not validated against the RFC DNS1123 standard
-In earlier releases of {project-short}, user-supplied template names were not validated against the RFC DNS1123 standard. This caused migrations of VMs with template names that did not conform to RFC DNS1132 to fail. This issue has been resolved in {project-short} 2.8.1. link:https://issues.redhat.com/browse/MTV-2249[(MTV-2249)]
+In earlier releases of {project-short}, user-supplied template names were not validated against the RFC DNS1123 standard. This caused migrations of VMs with template names that did not conform to RFC DNS1123 to fail. This issue has been resolved in {project-short} 2.8.1. link:https://issues.redhat.com/browse/MTV-2249[(MTV-2249)]
 
 .Canceling the migration of a virtual machine causes the Plan controller to loop forever
-In earlier releases of {project-short}, if a the migration of a virtual machine (VM) was canceled, the scheduler of the Plan controller would endlessly reschedule it for migration. This issue has been resolved in {project-short} 2.8.1. link:https://issues.redhat.com/browse/MTV-2287[(MTV-2287)]
+In earlier releases of {project-short}, if the migration of a virtual machine (VM) was canceled, the scheduler of the Plan controller would endlessly reschedule it for migration. This issue has been resolved in {project-short} 2.8.1. link:https://issues.redhat.com/browse/MTV-2287[(MTV-2287)]
 
 .MTV fails to migrate VMs with template names that contain multiple periods
 In earlier releases of {project-short}, a VM whose name contained multiple periods (for example, `vm...` ) could not be migrated because its name did not comply with the application and support protocol RFC DNS1123. This issue has been resolved in {project-short} 2.8.1. Now, {project-short} automatically changes multiple periods in a VM name to a single period, making it compliant with RFC DNS1123. link:https://issues.redhat.com/browse/MTV-2308[(MTV-2308)]
