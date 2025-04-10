@@ -10,7 +10,7 @@
 [id="resolved-issues-2-8-1_{context}"]
 == Resolved issues 2.8.1
 
-.VMs with mutually exclsuive spec values as source VM and destination VM cannot be migrated
+.VMs with mutually exclusive spec values as source VM and destination VM cannot be migrated
 In earlier releases of {project-short}, it was possible for a VM to have the `spec` value `Running` as a source VM with the `spec` value `runStrategy` as a destination VM. This caused migrations to fail because `Running` and `runStrategy` are mutually exclusive. This issue has been resolved in {project-short} 2.8.1. link:https://issues.redhat.com/browse/MTV-2092[(MTV-2092)]
 
 .The code base of MTV contains a deprecated value for a parameter
