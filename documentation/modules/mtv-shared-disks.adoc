@@ -6,7 +6,7 @@
 [id="mtv-shared-disks_{context}"]
 = Migrating virtual machines with shared disks
 
-You can migrate VMware virtual machines (VMs) with shared disks by using the {project-first}. This functionality is available for cold migrations only. 
+You can migrate VMware virtual machines (VMs) with shared disks by using the {project-first}. This functionality is available only for cold migrations and is not available for shared boot disks. 
 
 Shared disks are disks that are attached to more than one VM and that use the multi-writer option. As a result of these characteristics, shared disks are difficult to migrate. 
  
