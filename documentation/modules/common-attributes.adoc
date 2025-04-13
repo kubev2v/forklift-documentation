@@ -19,7 +19,7 @@
 :project-short: MTV
 :project-first: {project-full} ({project-short})
 :project-version: 2.8
-:project-z-version: 2.8.0
+:project-z-version: 2.8.1
 :the: The
 :the-lc: the
 :virt: OpenShift Virtualization
