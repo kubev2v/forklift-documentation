@@ -14,4 +14,4 @@
 
 * VMware and OVA only: In {project-short} 2.8.1, you can specify the name of a target VM for migrations done by using the CLI. The name you enter must be unique, and it must also be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
 
-* In {project-short} 2.8.1, you can choose to avoid mapping a network when you create a migration plan. 
+* Migration using the CLI only: In {project-short} 2.8.1, you can choose to avoid mapping a network when you create a migration plan. 
