@@ -31,8 +31,8 @@ include::modules/known-issues-2-8.adoc[leveloffset=+2]
 
 // include::modules/mtv-changelog-2-7.adoc[leveloffset=+2]
 
-// [id="release-notes-addendum_{context}"]
-// == Release notes addendum
+[id="release-notes-addendum_{context}"]
+== Release notes addendum
 
-// include::modules/mtv-selected-packages-2-7.adoc[leveloffset=+2] 
+include::modules/mtv-selected-packages-2-8.adoc[leveloffset=+2]
 
