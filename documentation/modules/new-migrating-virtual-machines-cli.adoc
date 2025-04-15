@@ -396,7 +396,7 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `pod` and `multus`.
+<1> Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration. 
 <2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
