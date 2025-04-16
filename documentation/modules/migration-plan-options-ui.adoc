@@ -42,3 +42,12 @@ On the *Plans for virtualization* page of the {ocp} web console, you can click t
 
 Deleting a migration plan does not remove temporary resources. To remove temporary resources, archive the plan first before deleting it.
 ====
++
+[NOTE]
+====
+The results of archiving and then deleting a migration plan vary by whether you created the plan and its storage and network mappings using the CLI or the UI.
+
+* If you created them using the UI, then the migration plan and its mappings no longer appear in the UI.
+* If you created them using the CLI, then the mappings might still appear in the UI. This is because mappings in the CLI can be used by more than one migration plan, but mappings created in the UI can only be used in one migration plan.
+====
+
