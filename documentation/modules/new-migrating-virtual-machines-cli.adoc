@@ -853,8 +853,8 @@ The template follows the Go template syntax and has access to the following vari
 * `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
 +
 <11> Optional:
-* When set to `true`, {project-short} adds a random letter to the name of the PVC in order to ensure all PVCs have unique names. 
-* When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add a random letter to the name of the PVC.
+* When set to `true`, {project-short} adds one or more randonly generated alphanumeric characters to the name of the PVC in order to ensure all PVCs have unique names. 
+* When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add such charchters to the name of the PVC.
 +
 include::snip_pvcNameTemplateUseGenerateName-warn.adoc[]
 +
