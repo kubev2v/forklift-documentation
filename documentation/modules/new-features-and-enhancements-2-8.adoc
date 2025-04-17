@@ -15,3 +15,5 @@
 * VMware and OVA only: In {project-short} 2.8.1, you can specify the name of a target VM for migrations done by using the CLI. The name you enter must be unique, and it must also be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
 
 * Migration using the CLI only: In {project-short} 2.8.1, you can choose to avoid mapping a network when you create a migration plan. 
+
+* VMware only: By default, {project-short} adds one or more randomly generated alphanumeric characters to the names of PVCs to ensure that all PVCs have unique names. In {project-short} 2.8.2, you can instruct {project-short} to not add such suffixes. However, if you choose this option, you might have PVCs whose names are not unique, which could cause a migration to fail.    
