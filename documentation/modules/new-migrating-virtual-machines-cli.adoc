@@ -802,7 +802,7 @@ spec:
   preserveStaticIPs: <8>
   networkNameTemplate: <network_interface_template> <9>
   pvcNameTemplate: <pvc_name_template> <10>
-  PVCNameTemplateUseGenerateName: true <11>
+  pvcNameTemplateUseGenerateName: true <11>
   targetNamespace: <target_namespace>
   volumeNameTemplate: <volume_name_template> <12>
   vms: <13>
@@ -852,11 +852,13 @@ The template follows the Go template syntax and has access to the following vari
 * `"{{.VmName}}-disk-{{.DiskIndex}}"`
 * `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
 +
-<11> Optional. When set to `true`, {project-short} adds a `#` suffix to the name of a PVC in order to avoid name collisions. When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add the `#` suffix to the name of the PVC.
+<11> Optional:
+* When set to `true`, {project-short} adds a random letter to the name of the PVC in order to ensure all PVCs have unique names. 
+* When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add a random letter to the name of the PVC.
 +
-include::snip_PVCNameTemplateUseGenerateName-warn.adoc[]
+include::snip_pvcNameTemplateUseGenerateName-warn.adoc[]
 +
-<12> [[callout12]]Optional. Specify a template for the volume interface name for the VMs in your plan.
+<12> [[callout12]]Optional: Specify a template for the volume interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume.
 ** `.VolumeIndex`: Sequential index of the volume interface (0-based).
@@ -866,9 +868,9 @@ The template follows the Go template syntax and has access to the following vari
 ** `"pvc-{{.PVCName}}"`
 <13> You can use either the `id` or the `name` parameter to specify the source VMs.
 <14> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
-<15> Optional. Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
-<16> Optional. Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10]. 
-<17> Optional. Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout12[callout 12].
+<15> Optional: Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
+<16> Optional: Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10]. 
+<17> Optional: Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout12[callout 12].
 <18> Optional: {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
 <19> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <20> Specify the name of the `Hook` CR.

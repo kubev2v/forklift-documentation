@@ -1,6 +1,0 @@
-:_content-type: SNIPPET
-
-[WARNING]
-====
-If you set `PVCNameTemplateUseGenerateName` to `false`, the generated PVC name might not be unique and might cause conflicts.
-====
