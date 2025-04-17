@@ -853,10 +853,8 @@ The template follows the Go template syntax and has access to the following vari
 * `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
 +
 <11> Optional. When set to `true`, {project-short} adds a `#` suffix to the name of a PVC in order to avoid name collisions. When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add the `#` suffix to the name of the PVC.
-[WARNING]
-====
-If you set `PVCNameTemplateUseGenerateName` to `false`, the generated PVC name might not be unique and might cause conflicts.
-====
++
+include::snip_PVCNameTemplateUseGenerateName-warn.adoc[]
 +
 <12> [[callout12]]Optional. Specify a template for the volume interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
