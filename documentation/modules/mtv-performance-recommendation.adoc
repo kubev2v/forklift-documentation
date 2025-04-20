@@ -161,12 +161,12 @@ Testing showed that by breaking one single large plan into multiple moderately s
 * Maximum number of VMs in a single migration plan: 500
 * Maximum number of VMs migrated in a single test: 5000
 * Maximum number of migration plans performed concurrently: 40
-* Maximum single disk size migrated: 6 T disks, which contained 3 Tb of data
+* Maximum single disk size migrated: 6 TB disk, which contained 3 TB of data
 * Maximum number of disks on a single VM migrated: 50
 * Highest observed single datastore read rate from a single ESXi server:  312 MiB/second
 * Highest observed multi-datastore read rate using eight ESXi servers and two datastores: 1,242 MiB/second
 * Highest observed virtual NIC transfer rate to an {ocp-name} worker: 327 MiB/second
-* *Maximum migration transfer rate of a single disk: 162 MiB/second (rate observed when transferring nonconcurrent migration of 1.5 Tb utilized data)*
+* *Maximum migration transfer rate of a single disk: 162 MiB/second (rate observed when transferring nonconcurrent migration of 1.5 TB utilized data)*
 * *Maximum cold migration transfer rate of the multiple VMs (single disk) from a single ESXi host: 294 MiB/s (concurrent migration of 30 VMs, 35/50 GiB used, from Single ESXi)*
 * *Maximum cold migration transfer rate of the multiple VMs (single disk) from multiple ESXi hosts: 1173MB/s (concurrent migration of 80 VMs, 35/50 GiB used, from 8 ESXi servers, 10 VMs from each ESXi)*
 
@@ -203,9 +203,9 @@ If you are creating many migration plans with a single VM and have enough time b
 * Maximum number of worker nodes: 12
 * Maximum number of VMs in a single migration plan: 200
 * Maximum number of total parallel disk transfers: 400, with 200 VMs, 6 ESXis, and a transfer rate of 667 MB/s
+* Maximum single disk size migrated: 6 TB disk, which contained 3 TB of data
 * Maximum number of disks on a single VM migrated: 3
 * Maximum number of parallel disk transfers per ESXi host: 68
 * *Maximum transfer rate observed of a single disk with no concurrent migrations: 76.5 MB/s*
 * *Maximum transfer rate observed of multiple disks from a single ESXi host: 253 MB/s (concurrent migration of 10 VMs, 1 disk each, 35/50 GiB used per disk)*
 * *Total transfer rate observed of multiple disks (210) from 8 ESXi hosts: 802 MB/s (concurrent migration of 70 VMs, 3 disks each, 35/50 GiB used per disk)*
-
