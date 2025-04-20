@@ -215,7 +215,7 @@ If you are creating many migration plans with a single VM and have enough time b
 
 The following recommendations are suggested for VMs with data on disk totaling to 1 TB or greater for each individual disk:
 
-* Make sure that no other migration activities or other heavy network or storage activities run during those large virtual machine (VM) migrations, and treat them as a special case. During those migrations, prioritize {project-short} activities. You should plan to migrate those VMs to a time when there are fewer activities on those VMs and related datastore.
+* Check that no other migration activities or other heavy network or storage activities are run during those large virtual machine (VM) migrations. You should treat these large virtual machine migrations as a special case. During those migrations, prioritize {project-short} activities. Plan to migrate those VMs to a time when there are fewer activities on those VMs and related datastore.
 
 * Reduce the warm migration `controller_precopy_interval` to 15 minutes; the default is 60 minutes. Schedule the cut-over to be done at least 24 hours before the 3-hour maintenance window. Schedule the cut-over to the beginning of that maintenance window. This schedule should allow the last snapshots to be small enough, including only the changes from the last 15 minutes.
 
