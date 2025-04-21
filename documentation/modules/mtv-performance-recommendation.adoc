@@ -227,4 +227,3 @@ Schedule appropriate maintenance windows for migrating large disk virtual machin
 
 * If you have large database disks with continuous writes of large amounts of data, where downtime and VM snapshots are not possible, it may be necessary to consider database vendor-specific replication options of the database data to target these specific migrations outside {project-short}. Please consult the vendor-specific options of your database if this case applies.
 
-* Plan proper maintenance windows for large disk VM migrations, as they are sensitive operations, and scheduling migrations for downtime windows during less storage-intensive operations is essential.
