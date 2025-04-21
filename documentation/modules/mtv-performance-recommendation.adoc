@@ -215,7 +215,7 @@ If you are creating many migration plans with a single VM and have enough time b
 
 The following recommendations are suggested for VMs with data on disk totaling to 1 TB or greater for each individual disk:
 
-* Schedule appropriate maintenance windows for migrating large disk virtual machines (VMs). Such migrations are sensitive operations and may require careful planning of maintenance windows and downtime, especially during periods of lower storage and network activity.
+Schedule appropriate maintenance windows for migrating large disk virtual machines (VMs). Such migrations are sensitive operations and may require careful planning of maintenance windows and downtime, especially during periods of lower storage and network activity.
 
 * Check that no other migration activities or other heavy network or storage activities are run during those large virtual machine (VM) migrations. You should treat these large virtual machine migrations as a special case. During those migrations, prioritize {project-short} activities. Plan to migrate those VMs to a time when there are fewer activities on those VMs and related datastore.
 
