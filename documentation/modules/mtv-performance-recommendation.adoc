@@ -220,11 +220,6 @@ The following recommendations are suggested for VMs with data on disk totaling t
 * Check that no other migration activities or other heavy network or storage activities are run during those large virtual machine (VM) migrations. You should treat these large virtual machine migrations as a special case. During those migrations, prioritize {project-short} activities. Plan to migrate those VMs to a time when there are fewer activities on those VMs and related datastore.
 
 * For large VMs with a high churn rate, which means data is frequently changed in amounts of 100 GB or more between snapshots, consider reducing the warm migration `controller_precopy_interval` from the default, which is 60 minutes. It is important to ensure that this process is started at least 24 hours before the scheduled cut-over to allow for multiple successful precopy snapshots to complete. When scheduling the cut-over, ensure that the maintenance window allows for sufficient time for the last snapshot of changes to be copied over and that the cut-over process begins at the beginning of that maintenance window.
-
-** Reduce the warm migration `controller_precopy_interval` to 15 minutes. 
-** Schedule the cut-over to be done at least 24 hours before the maintenance window. 
-** Schedule the cut-over to the beginning of that maintenance window. 
-
 +
 This schedule should allow the last snapshots to be small enough, including only the changes from the last 15 minutes.
 
