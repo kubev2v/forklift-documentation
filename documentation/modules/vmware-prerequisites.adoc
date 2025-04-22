@@ -22,7 +22,7 @@ The following prerequisites apply to VMware migrations:
 
 [IMPORTANT]
 ====
-In the event of a power outage, data might be lost for a VM with disabled hibernation. However, if hibernation is not disabled, migration will fail.
+In the event of a power outage, data might be lost for a VM with disabled hibernation. However, if hibernation is not disabled, migration will fail
 ====
 
 [NOTE]
