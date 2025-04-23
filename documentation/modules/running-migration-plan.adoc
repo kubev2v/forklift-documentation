@@ -14,7 +14,7 @@ You can run a migration plan and view its progress in the {ocp} web console.
 
 .Procedure
 
-. In the {ocp} web console, click *Migration* -> *Plans for virtualization*.
+. In the {ocp} web console, click *Migration* > *Plans for virtualization*.
 +
 The *Plans* list displays the source and target providers, the number of virtual machines (VMs) being migrated, the status, the date that the migration started, and the description of each plan.
 
@@ -23,10 +23,17 @@ The *Plans* list displays the source and target providers, the number of virtual
 +
 The plan's *Status* changes to *Running*, and the migration's progress is displayed.
 +
+ifdef::vmware,rhv[]
 Warm migration only:
 
 * The precopy stage starts.
 * Click *Cutover* to complete the migration.
+endif::vmware,rhv[]
++
+[WARNING]
+====
+Do not take a snapshot of a VM after you start a migration. Taking a snaphot after a migration starts might cause the migration to fail. 
+====
 
 . Optional: Click the links in the migration's *Status* to see its overall status and the status of each VM:
 
