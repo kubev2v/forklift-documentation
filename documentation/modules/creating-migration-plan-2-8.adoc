@@ -55,11 +55,11 @@ ifdef::vmware[]
 *** Select a different transfer network from the list.
 *** Click *Save*.
 
-** (Optional): To configure an {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
+** Optional: To configure an {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
-** (Optional): To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+** Optional: To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 * *Target namespace*: Destination namespace for all the migrated VMs. By default, the destination namespace is the current or active namespace.
 
@@ -114,7 +114,7 @@ Migrating shared disks might slow down the migration process.
 *** Toggle the *Migrate shared disks* switch.
 *** Click *Save*.
 
-* (Optional): *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan. 
+* Optional: *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan. 
 +
 The template follows the Go template syntax and has access to the following variables:
 
@@ -151,7 +151,7 @@ Variable names cannot exceed 63 characters.
 Changes you make in the  *Virtual Machines* tab override any changes in the *Plan details* page.
 ====
 
-* (Optional): *Volume name template*: Specifies a template for the volume interface name for the VMs in your plan.
+* Optional: *Volume name template*: Specifies a template for the volume interface name for the VMs in your plan.
 +
 The template follows the Go template syntax and has access to the following variables:
 
@@ -186,7 +186,7 @@ Variable names cannot exceed 63 characters
 Changes you make in the *Virtual Machines* tab override any changes in the *Plan details* page.
 ====
 
-* (Optional): *Network name template*: Specifies a template for the network interface name for the VMs in your plan.
+* Optional: *Network name template*: Specifies a template for the network interface name for the VMs in your plan.
 +
 The template follows the Go template syntax and has access to the following variables:
 
@@ -241,11 +241,11 @@ ifdef::rhv[]
 *** Select a different transfer network from the list.
 *** Click *Save*.
 
-** (Optional): To configure an {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
+** Optional: To configure an {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
-** (Optional): To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+** Optional: To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 * *Target namespace*: Destination namespace for all the migrated VMs. By default, the destination namespace is the current or active namespace.
 
@@ -277,11 +277,11 @@ ifdef::ostack,ova,cnv[]
 *** Select a different transfer network from the list.
 *** Click *Save*.
 
-** (Optional): To configure an {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
+** Optional: To configure an {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
-** (Optional): To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+** Optional: To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 * *Target namespace*: Destination namespace for all the migrated VMs. By default, the destination namespace is the current or active namespace.
 
@@ -295,6 +295,11 @@ endif::ostack,ova,cnv[]
 . If your plan is valid, you can do one of the following:
 .. Run the plan now by clicking *Start migration*.
 .. Run the plan later by selecting it on the *Plans for virtualization* page and following the procedure in xref:running-migration-plan_{context}[Running a migration plan].
+
+[WARNING]
+====
+Do not take a snapshot of a VM after you start a migration. Taking a snaphot after a migration starts might cause the migration to fail. 
+====
 
 ifdef::vmware[]
 include::snip_vmware-name-change.adoc[]
