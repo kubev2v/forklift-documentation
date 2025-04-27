@@ -3,7 +3,7 @@ show_downloads: false
 title: "Forklift Documentation"
 description: "Migrating VMware virtual machines to KubeVirt"
 permalink: pretty
-repository: konveyor/forklift-documentation
+repository: kubev2v/forklift-documentation
 baseurl: /
 tags: "migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift"
 
@@ -35,7 +35,6 @@ asciidoctor:
   - a-virt=a KubeVirt
   - oc=kubectl
   - ocp=OKD
-  - ocp-version=4.10
   - ocp-short=OKD
   - user-guide-title=Installing and using Forklift
   - rn-title=Release notes
@@ -52,15 +51,13 @@ asciidoctor:
   - build=upstream
   - keywords=migration, virtual machines, kubevirt
   - imagesdir=../modules/images
-  - must-gather=quay.io/konveyor/forklift-must-gather:latest
+  - must-gather=quay.io/kubev2v/forklift-must-gather:latest
   - namespace=konveyor-forklift
   - operator=forklift-operator
   - operator-name=Forklift Operator
   - project-short=Forklift
   - project-full=Forklift
   - project-first=Forklift
-  - project-version=2.3
-  - project-z-version=2.3.0
   - the-lc=
   - the=
   - experimental

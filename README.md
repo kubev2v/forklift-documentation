@@ -19,7 +19,7 @@ You must have Podman installed.
 
 1. Clone the repository:
   ```console
-  $ git clone -b source https://github.com/konveyor/forklift-documentation.git && cd forklift-documentation
+  $ git clone -b source https://github.com/kubev2v/forklift-documentation.git && cd forklift-documentation
   ```
 2. Create `.jekyll-cache` and `_site` directories:
   ```console
