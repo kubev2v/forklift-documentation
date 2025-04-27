@@ -69,6 +69,16 @@ asciidoctor:
 exclude:
   - README.md
   - .history
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
 
 tag_page_layout: tag
 tag_page_dir: /tag/
