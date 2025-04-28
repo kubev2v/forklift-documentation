@@ -7,6 +7,12 @@
 
 {project-first} 2.7 has the following resolved issues:
 
+[id="resolved-issues-2-7-12_{context}"]
+== Resolved issues 2.7.12
+
+.The static route gateway of Windows VMs is passed as the default gateway during migration
+In earlier releases of {project-short}, the static route gateway of Windows virtual machines (VMs) was passed as the default gateway during migration instead of the actual default gateway. This caused VMs to be incorrectly configured. This issue has been resolved in {project-short} 2.7.12. link:https://issues.redhat.com/browse/MTV-2418[(MTV-2418)] 
+
 [id="resolved-issues-2-7-11_{context}"]
 == Resolved issues 2.7.11
 
