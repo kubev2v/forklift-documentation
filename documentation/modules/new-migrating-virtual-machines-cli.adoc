@@ -12,6 +12,8 @@ You can migrate from a VMware vSphere source provider by using the command-line 
 
 include::snip_anti-virus-warning.adoc[]
 
+include::snip_no-nvme.adoc[]
+
 [NOTE]
 ====
 To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks]. 

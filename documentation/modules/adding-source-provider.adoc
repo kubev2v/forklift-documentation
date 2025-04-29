@@ -14,6 +14,9 @@ EMS enforcement is disabled for migrations with VMware vSphere source providers 
 ====
 
 include::snip_anti-virus-warning.adoc[]
+
+include::snip_no-nvme.adoc[]
+
 include::snip-mtu-value.adoc[]
 
 .Prerequisites
