@@ -1,0 +1,6 @@
+:_content-type: SNIPPET
+
+[IMPORTANT]
+====
+{project-short} does not support migrating VMware non-volatile memory express (NVMe) disks.  
+====
