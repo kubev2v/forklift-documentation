@@ -13,6 +13,7 @@ You can migrate VMware vSphere VMs from VMware vCenter or from a VMWare ESX/ESXi
 EMS enforcement is disabled for migrations with VMware vSphere source providers in order to enable migrations from versions of vSphere that are supported by {project-full} but do not comply with the 2023 FIPS requirements. Therefore, users should consider whether migrations from vSphere source providers risk their compliance with FIPS. Supported versions of vSphere are specified in xref:../master.adoc#compatibility-guidelines_mtv[Software compatibility guidelines].
 ====
 
+include::snip_anti-virus-warning.adoc[]
 include::snip-mtu-value.adoc[]
 
 .Prerequisites
