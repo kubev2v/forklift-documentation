@@ -3,7 +3,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="mtv-selected-packages-2-7_{context}"]
 = {project-short} selected packages
 The following listed packages are from the `virt-v2v` guest conversion pod:

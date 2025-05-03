@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="increasing-nfc-memory-vmware-host_{context}"]
 = Increasing the NFC service memory of an ESXi host
 

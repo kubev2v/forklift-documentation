@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="openstack-application-credential-authentication_{context}"]
 = Using application credential authentication with an {osp} source provider
 

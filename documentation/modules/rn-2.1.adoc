@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_content-type: CONCEPT
+:_content-type: context
 [id="rn-21_{context}"]
 = {project-full} 2.1
 

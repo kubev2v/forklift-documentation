@@ -1,7 +1,7 @@
 // Module included in the following assemblies:
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="upgrading-mtv-ui_{context}"]
 = Upgrading {the-lc} {project-full}
 
