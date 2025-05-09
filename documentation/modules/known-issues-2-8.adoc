@@ -15,3 +15,6 @@ Linux guest VMs with clustered file systems on a shared disk are not supported, 
 
 .Migrating shared boot disks is not available
 Migrating shared boot disks by using {project-short} is not available. link:https://issues.redhat.com/browse/MTV-2201[(MTV-2201)]
+
+.Anti-virus software on VMware VMs can cause migrations to fail
+VMware only: Anti-virus software can cause VMware migrations to fail. It is strongly recommended to remove such software from source VMs before you start a migration. link:https://issues.redhat.com/browse/MTV-2145[(MTV-2145)]
