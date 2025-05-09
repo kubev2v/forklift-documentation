@@ -1,0 +1,13 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: REFERENCE
+[id="cnv-prerequisites_{context}"]
+= {virt} prerequisites
+
+The following prerequisites apply to {virt}-{virt} migrations:
+
+* The same version of {project-first} must be installed on both the source and target {virt} clusters. 
+* The version of the {virt} source provider cluster must be 4.16 or later.
+* The version of the {virt} source provider cluster must not be greater than the version of the {virt} destination provider cluster.
