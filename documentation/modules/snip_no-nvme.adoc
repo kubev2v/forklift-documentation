@@ -2,5 +2,5 @@
 
 [IMPORTANT]
 ====
-{project-short} does not support migrating VMware non-volatile memory express (NVMe) disks.  
+{project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.  
 ====
