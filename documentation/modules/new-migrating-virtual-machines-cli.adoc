@@ -747,7 +747,7 @@ spec:
     LS0tCi0gbm... <2>
 EOF
 ----
-<1> (Optional) {ocp} service account. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
+<1> Optional: {ocp} service account. Use the `serviceAccount` parameter to modify any cluster resources.
 <2> Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
 +
 [NOTE]
@@ -849,10 +849,12 @@ The template follows the Go template syntax and has access to the following vari
 * `.PlanName`: Name of the migration plan.
 * `.DiskIndex`: Initial volume index of the disk.
 * `.RootDiskIndex`: Index of the root disk.
+* `.Shared`: Options: `true`, for a shared volume, `false`, for a non-shared volume. 
 +
 *Examples*
 * `"{{.VmName}}-disk-{{.DiskIndex}}"`
 * `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
+* `"{{if .Shared}}shared-{{end}}{{.VmName}}-{{.DiskIndex}}"`
 +
 <11> Optional:
 * When set to `true`, {project-short} adds one or more randonly generated alphanumeric characters to the name of the PVC in order to ensure all PVCs have unique names. 
