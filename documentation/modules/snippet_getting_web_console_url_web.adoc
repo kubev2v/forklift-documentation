@@ -1,7 +1,0 @@
-. Log in to the {ocp} web console.
-. Click *Networking* -> *Routes*.
-. Select the +{namespace}+ project in the *Project:* list.
-+
-The URL for the `forklift-ui` service that opens the login page for the {project-short} web console is displayed.
-+
-Click the URL to navigate to the {project-short} web console.
