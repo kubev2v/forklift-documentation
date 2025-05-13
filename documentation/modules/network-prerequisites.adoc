@@ -60,12 +60,6 @@ Disk transfer authentication
 
 Disk transfer authentication
 
-|443
-|TCP
-|OpenShift nodes
-|{rhv-short} hosts
-|Disk transfer authentication
-
 |54322
 |TCP
 |OpenShift nodes
