@@ -1,0 +1,13 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: REFERENCE
+[id="cnv-prerequisites_{context}"]
+= {virt} prerequisites
+
+The following prerequisites apply to migrations from one {virt} cluster to another:
+
+* The same version of {project-first} must be installed on both the source and destination {virt} clusters. 
+* The version 0f {virt} of the {virt} source cluster must be 4.16 or later.
+* It is recommended that both clusters use the same version of {virt}. It is strongly recommended that the version of the target cluster be equal or later than the version of the source cluster. 
