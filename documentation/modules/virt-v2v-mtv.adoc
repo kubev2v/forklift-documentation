@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: CONCEPT
+:_content-type: context
 [id="virt-v2v-mtv_{context}"]
 = How MTV uses the virt-v2v tool
 

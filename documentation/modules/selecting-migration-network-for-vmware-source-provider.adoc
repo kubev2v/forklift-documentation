@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="selecting-migration-network-for-vmware-source-provider_{context}"]
 = Selecting a migration network for a VMware source provider
 

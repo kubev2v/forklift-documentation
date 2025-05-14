@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: CONCEPT
+:_content-type: context
 [id="about-hooks-for-migration-plans_{context}"]
 = About hooks for {project-short} migration plans
 
