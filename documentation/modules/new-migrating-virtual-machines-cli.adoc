@@ -871,7 +871,6 @@ The template follows the Go template syntax and has access to the following vari
 *Examples*
 ** `"disk-{{.VolumeIndex}}"`
 ** `"pvc-{{.PVCName}}"`
-<<<<<<< HEAD
 <13> You can use either the `id` or the `name` parameter to specify the source VMs.
 <14> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
 <15> Optional: Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
