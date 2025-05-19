@@ -7,6 +7,12 @@
 
 {project-first} 2.8 has the following resolved issues:
 
+[id="resolved-issues-2-8-4_{context}"]
+== Resolved issues 2.8.4
+
+.VMs whose names contain uppercase letters not found by the search function on the Plan details page
+In earlier releases of {project-short}, the search function of the *Plans details* page did not return VM names that contained uppercase letters. This issue has been resolved in {project-short} 2.8.4. link:https://issues.redhat.com/browse/MTV-2348[(MTV-2348)]
+
 [id="resolved-issues-2-8-3_{context}"]
 == Resolved issues 2.8.3
 
