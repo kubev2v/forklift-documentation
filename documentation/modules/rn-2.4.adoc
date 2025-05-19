@@ -119,7 +119,8 @@ VM with multiple disks that was migrated might not be able to boot on the target
 
 .Non-supported guest operating systems in warm migrations
 
-Warm migrations and migrations to remote OCP clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local OCP cluster. It is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case. +
+Warm migrations and migrations to remote OCP clusters from vSphere do not support all types of guest operating systems that are supported in cold migrations to the local OCP cluster. It is a consequence of using RHEL 8 in the former case and RHEL 9 in the latter case.
+
 See link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9] for the list of supported guest operating systems.
 
 .VMs from vSphere with RHEL 9 guest operating system may start with network interfaces that are down
