@@ -39,7 +39,7 @@ The details of the plan are listed, and you can edit the items you filled in on 
 
 ifdef::vmware[]
 
-* *Migration type*: Type of migration. By default, {project-short} sets the migration type to `cold`. 
+* *Migration type*: Type of migration. By default, {project-short} sets the migration type to `cold`.
 
 ** For a warm migration, do the following:
 
@@ -47,7 +47,7 @@ ifdef::vmware[]
 *** Toggle the *Whether this is a warm migration* switch.
 *** Click *Save*.
 
-* *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace. 
+* *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.
 
 ** To edit the transfer network, do the following:
 
@@ -79,7 +79,7 @@ To learn more about the different types of networks {ocp-short} supports, see li
 +
 {project-short} then issues a warning message about any VMs whose vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere. This causes the vNIC properties to be reported to {project-short}.
 
-* *Disk decryption passphrases*: For disks encrypted using Linux Unified Key Setup (LUKS). 
+* *Disk decryption passphrases*: For disks encrypted using Linux Unified Key Setup (LUKS).
 
 ** To enter a list of decryption passphrases for LUKS-encrypted devices, do the following:
 
@@ -114,11 +114,11 @@ Migrating shared disks might slow down the migration process.
 *** Toggle the *Migrate shared disks* switch.
 *** Click *Save*.
 
-* Optional: *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan. 
+* Optional: *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan.
 +
 The template follows the Go template syntax and has access to the following variables:
 
-** `.VnName`: Name of the VM
+** `.VmName`: Name of the VM
 ** `.PlanName`: Name of the migration plan
 ** `.DiskIndex`: Initial volume index of the disk
 ** `.RootDiskIndex`: Index of the root disk
@@ -222,7 +222,7 @@ Variable names cannot exceed 63 characters.
 ====
 Changes you make in the  *Virtual Machines* tab override any changes in the *Plan details* page.
 ====
-endif::[] 
+endif::[]
 ifdef::rhv[]
 
 * *Migration type*: Type of migration. By default, {project-short} sets the migration type to `cold`.
@@ -298,7 +298,7 @@ endif::ostack,ova,cnv[]
 
 [WARNING]
 ====
-Do not take a snapshot of a VM after you start a migration. Taking a snaphot after a migration starts might cause the migration to fail. 
+Do not take a snapshot of a VM after you start a migration. Taking a snaphot after a migration starts might cause the migration to fail.
 ====
 
 ifdef::vmware[]
