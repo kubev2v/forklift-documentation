@@ -118,7 +118,7 @@ Migrating shared disks might slow down the migration process.
 +
 The template follows the Go template syntax and has access to the following variables:
 
-** `.VnName`: Name of the VM
+** `.VmName`: Name of the VM
 ** `.PlanName`: Name of the migration plan
 ** `.DiskIndex`: Initial volume index of the disk
 ** `.RootDiskIndex`: Index of the root disk

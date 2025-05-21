@@ -847,7 +847,7 @@ The template follows the Go template syntax and has access to the following vari
 Variable names cannot exceed 63 characters. This rule applies to a network name network template, a PVC name template, a VM name template, and a volume name template. 
 <10> [[callout10]]Optional. Specify a template for the persistent volume claim (PVC) name for a plan.
 The template follows the Go template syntax and has access to the following variables:
-* `.VnName`: Name of the VM.
+* `.VmName`: Name of the VM.
 * `.PlanName`: Name of the migration plan.
 * `.DiskIndex`: Initial volume index of the disk.
 * `.RootDiskIndex`: Index of the root disk.
