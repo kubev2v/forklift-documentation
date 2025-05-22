@@ -177,6 +177,19 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 
 include::modules/creating-migration-plan-2-8.adoc[leveloffset=+2]
 
+:!vmware:
+
+:context: vmware_ui
+:vmware_ui:
+
+include::modules/about-storage-copy-offload.adoc[leveloffset=+2]
+include::modules/running-storage-copy-offload.adoc[leveloffset=+2]
+
+:!vmware_ui:
+
+:context: vmware
+:vmware:
+
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
@@ -342,6 +355,19 @@ include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 include::modules/snip_vmware-permissions.adoc[]
 include::modules/retrieving-vmware-moref.adoc[leveloffset=+3]
 include::modules/mtv-shared-disks.adoc[leveloffset=+3]
+
+:!vmware:
+
+:context: vmware_cli
+:vmware_cli:
+
+include::modules/about-storage-copy-offload.adoc[leveloffset=+3]
+include::modules/running-storage-copy-offload.adoc[leveloffset=+3]
+
+:!vmware_cli:
+:context: vmware
+:vmware: 
+
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :vmware!:

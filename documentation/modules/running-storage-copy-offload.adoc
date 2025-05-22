@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="running-storage-copy-offload_{context}"]
+= Migrating virtual machines by using storage copy offload
+
+Intro
+
+.Prerequisites:
+
+* 
+
+.Procedure
+
+
+ifdef::vmware_ui[]
+. Open Storage map, click *YAML* tab and enter the following:
+
+endif::[]
+
+ifdef::vmware_cli[]
+. In the `StorageMap` CR, enter the following:
+
+endif::[]
+
+. Continue on your merry way.
