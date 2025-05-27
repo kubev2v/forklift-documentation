@@ -7,6 +7,12 @@
 
 {project-first} 2.8 has the following resolved issues:
 
+[id="resolved-issues-2-8-5_{context}"]
+== Resolved issues 2.8.5
+
+.No IP address for Windows Server 2008 VMware VMs after migration
+VMware only: In earlier releases of {project-short}, the IP addresses of Windows Server 2008 VMware VMs were not included in the migration data. This issue has been resolved in {project-short} 2.8.5 by packing the relevant `virtio-win` ISO in the `virt-v2v` container used for the migration. link:https://issues.redhat.com/browse/MTV-1700[(MTV-1700)]
+
 [id="resolved-issues-2-8-4_{context}"]
 == Resolved issues 2.8.4
 
