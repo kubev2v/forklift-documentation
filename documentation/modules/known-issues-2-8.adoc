@@ -17,4 +17,10 @@ Linux guest VMs with clustered file systems on a shared disk are not supported, 
 Migrating shared boot disks by using {project-short} is not available. link:https://issues.redhat.com/browse/MTV-2201[(MTV-2201)]
 
 .Anti-virus software on VMware VMs can cause migrations to fail
-VMware only: Anti-virus software can cause VMware migrations to fail. It is strongly recommended to remove such software from source VMs before you start a migration. link:https://issues.redhat.com/browse/MTV-2145[(MTV-2145)]
+VMware only: Anti-virus software can cause VMware migrations to fail. It is strongly recommended to remove such software from source VMs before you start a migration. link:https://issues.redhat.com/browse/MTV-2452[(MTV-2452)]
+
+.User selections in the UI are cleared when MTV refreshes the Virtual machines page automatically
+When a user tries to create a migration plan from the Virtual machines page of the UI, their selections are cleared when {project-short} refreshes the page automatically. To avoid this problem, create the plan by completing the YAML in the *YAML* tab of the plan's *Plan details* page or create the plan by using the CLI. link:https://issues.redhat.com/browse/MTV-2621[(MTV-2621)]
+
+.Network configuration scripts do not work for Windows Server 2008 SP2
+VMware: Network configuration scripts do not work for Windows Server 2008 SP2 VMs. The scripts return a "missing expression" error. link:https://issues.redhat.com/browse/MTV-2664[(MTV-2664)]
