@@ -9,6 +9,8 @@ It is strongly recommended to create a VDDK image to accelerate migrations. For 
 
 include::snip-vsan.adoc[]
 
+include::snip_vmware-windows-vss.adoc[]
+
 The following prerequisites apply to VMware migrations:
 
 * You must use a xref:compatibility-guidelines_{context}[compatible version] of VMware vSphere.
