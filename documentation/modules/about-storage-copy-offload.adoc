@@ -1,0 +1,14 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="about-storage-copy-offload_{context}"]
+= About migrating virtual machines by using storage copy offload
+
+You can migrate VMware virtual machines (VMs) that are on a storage array more efficiently by using a method called _storage copy offload_.
+This method uses an `XCOPY` command to copy VMs from the storage array to {virt} and is faster than other migration methods.  
+
+This feature is available as a Development Preview for {project-first} 2.8.5 and is not available for shared disks. 
+
+// Create devewlopment preview snippet and insert here. 
