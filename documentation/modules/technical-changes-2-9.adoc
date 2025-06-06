@@ -1,0 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="technical-changes-2-9_{context}"]
+= Technical changes
+
+{project-first} 2.9 has the following technical changes:
+
+* Upgraded `kubevirt` version to v1.5.1
++
+{project-short} previously did not allow users to override the default preference for virtual Trusted Platform Module (vTPM) devices in virtual machines. In {project-short} 2.9.0, the `kubevirt` version is upgraded to v1.5.1, which introduces the `TPM.enabled` field. You can set the `TPM.enabled` field to `false` to disable vTPM for migrations of VMware VMs with UEFI settings. If the field is set to `false`, it overrides the default vTPM preference in VMs post migration. 
