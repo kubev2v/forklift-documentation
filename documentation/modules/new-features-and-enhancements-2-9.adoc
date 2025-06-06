@@ -1,0 +1,7 @@
+
+[id="new-features-and-enhancements-2-9_{context}"]
+= New features and enhancements
+
+{project-first} 2.9 introduces the following features and enhancements:
+
+*
