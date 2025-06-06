@@ -1,0 +1,9 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="rn-resolved-issues_{context}"]
+= Resolved issues
+
+{project-first} 2.9 has the following resolved issues:
+

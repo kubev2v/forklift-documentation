@@ -1,0 +1,10 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="resolved-issues-2-9-0_{context}"]
+= Resolved issues 2.9.0
+
+.MTV does not preserve the gateway IP address of an NIC from a different subnet
+In earlier releases of {project-short}, the gateway IP address of the virtual machine was not copied after migration if the IP address was out of the network interface subnet range. This issue affected migrations even if you enabled the `Preserve static IPs` setting. This issue has been resolved in {project-short} 2.8.0. link:https://issues.redhat.com/browse/MTV-2018[(MTV-2018)]
+
