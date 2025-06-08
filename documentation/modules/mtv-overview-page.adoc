@@ -6,64 +6,63 @@
 [id="mtv-overview-page_{context}"]
 = The MTV Overview page
 
-The {project-first} *Overview* page displays system-wide information about migrations and a list of *Settings* you can change.
-
 If you have Administrator privileges, you can access the *Overview* page by clicking *Migration for Virtualization > Overview* in the {ocp} web console.
 
-The *Overview* page has 3 tabs:
+The *Overview* page has 4 tabs:
 
 * Overview
 * YAML
 * Health
-* Settings
+* Settings 
 
 [id="overview-tab_{context}"]
 == Overview tab
 
-The *Overview* tab lets you see:
+The *Overview* tab is designed to let you create providers quickly and to make it easier for you to find system-wide information:
 
-* Operator: The namespace on which the {project-short} Operator is deployed and the status of the Operator
-* Pods: The name, status, and creation time of each pod that was deployed by the {project-short} Operator
-* Conditions: Status of the {project-short} Operator:
+* In the upper-right pane, foillowing the *Welcome* message, are buttons that let you open the *Create provider* UI for each vemdor ({vmw, {rhv-full}, OpenStack, OVA, and {virt}}).
 
-** Failure: Last failure. `False` indicates no failure since deployment.
-** Running: Whether the Operator is currently running and waiting for the next reconciliation.
-** Successful: Last successful reconciliation.
+* In the center-left pane is a "donut" chart named *Virtual machines*. This chart shows the number of running, failed, and succeeded virtual machine migrations that {project-short} ran in the interval that you use choose from the list in the upper-right corner of the pane. List options are: TBD.
 
-[id="yaml-tab_{context}"]
-== YAML tab
+* In the center-right pane is an area chart named *Migration history*. This chart shows the same data for each day of the interval that you use choose from the list in the upper-right corner of the pane. List options are: TBD.
 
-The custom resource ForkliftController that defines the operation of the {project-short} Operator. You can modify the custom resource from this tab.
-
-[id="metrics-tab_{context}"]
-== Metrics tab
-
-The *Metrics* tab lets you see:
-
-* Migrations: The number of migrations performed using {project-short}:
-
-** Total
-** Running
-** Failed
-** Succeeded
-** Canceled
-
-* Virtual Machine Migrations:  The number of VMs migrated using {project-short}:
-
-** Total
-** Running
-** Failed
-** Succeeded
-** Canceled
+* In the lower-left pane is a "donut" chart named *Migration plans*. By default, this chart shows the number of running, failed, and succeeded migration plans that {project-short} ran in the interval that you use choose from the list in the upper-right corner of the pane. List options are: TBD. You can also see the number of plans that were not started, cannot be started, are incomplete, or were archived by clicking the *Show all plans* link. 
 
 [NOTE]
 ====
-Since a single migration might involve many virtual machines, the number of migrations performed using {project-short} might vary significantly from the number of virtual machines that have been migrated using {project-short}.
+Since a single migration might involve many virtual machines, the number of migrations performed using {project-short} might vary significantly from the number of migrated virtual machines.
 ====
 
-* Chart showing the number of running, failed, and succeeded migrations performed using {project-short} for each of the last 7 days
+* in the lower-right pane is a table named *{project-short} health*. This table lists all of the {project-short} pods, starting with the most important one, `forklift-controller`. The remaining pods are listed in alphabetical order. If there are more pods than can be displayed, the *View all* link is active. Clicking the link opens the *Health* tab. For each pod, the status and creation time of the pod are listed and there is a link to the logs of the pod.  
 
-* Chart showing the number of running, failed, and succeeded virtual machine migrations performed using {project-short} for each of the last 7 days
+
+[id="overview-yaml-tab_{context}"]
+== YAML tab
+
+The *YAML* tab displays the `ForkliftController` custom resource (CR) that defines the operation of the {project-short} Operator. You can modify the CR in this tab.
+
+[id="overview-health-tab_{context}"]
+== Health tab
+
+The *Health* tab has two panes:
+
+* In the upper pane, there is a table named *MTV Health*. It lists all the {project-short} pods, starting with the most important one, `forklift-controller`. The remaining pods are listed in alphabetical order.  For each pod, the status and creation time of the pod are listed and there is a link to the logs of the pod.  
+
+* In the lower pane, is a table named *Conditions*. It lists the following possible statuses of the {project-short} Operator, whether the status is true or false, a brief description, and the last time the condition was updated. A green checkmark is used if a status is true, a red minus sign is used if it is false.
+
+** Failure: Last failure. A red minus sign means that no failure occured since deployment.
+** Running: Whether the Operator is currently running and waiting for the next reconciliation.
+** Success: Last successful reconciliation. 
+
+[id="overview-settings-tab_{context}"]
+== Settings tab
+
+add mtv.settings.adoc material , updated with pre-determined variables
+
+
+
+
+
 
 
 
