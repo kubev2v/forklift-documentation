@@ -8,12 +8,13 @@
 
 The {project-first} user interface is integrated into the {ocp-short} web console.
 
-In the left-hand panel, you can choose a page related to a component of the migration progress, for example, *Providers for virtualization*, or, if you are an administrator, you can choose *Overview*, which contains information about migrations and lets you configure {project-short} settings.
+// .{project-short} extension interface
+// image::mtv-ui.png[{project-short} user interface]
 
-.{project-short} extension interface
-image::mtv-ui.png[{project-short} user interface]
+// Add iamge of new overview page? Probably not
+// Check if the following previous text is still relevant 
 
-In pages related to components, you can click on the *Projects* list, which is in the upper-left portion of the page, and see which projects (namespaces) you are allowed to work with.
+// In pages related to components, you can click on the *Projects* list, which is in the upper-left portion of the page, and see which projects (namespaces) you are allowed to work with.
 
-* If you are an administrator, you can see all projects.
-* If you are a non-administrator, you can see only the projects that you have permissions to work with.
+// * If you are an administrator, you can see all projects.
+// * If you are a non-administrator, you can see only the projects that you have permissions to work with.
