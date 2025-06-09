@@ -129,7 +129,7 @@ Use the {project-short} user interface to migrate virtual machines (VMs). It is 
 
 include::modules/mtv-ui.adoc[leveloffset=+2]
 include::modules/mtv-overview-page.adoc[leveloffset=+3]
-include::modules/mtv-settings.adoc[leveloffset=+3]
+// include::modules/mtv-settings.adoc[leveloffset=+3]
 
 
 [id="migrating-vms-mtv-ui_{context}"]

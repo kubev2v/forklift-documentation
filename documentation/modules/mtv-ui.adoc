@@ -11,7 +11,7 @@ The {project-first} user interface is integrated into the {ocp-short} web consol
 // .{project-short} extension interface
 // image::mtv-ui.png[{project-short} user interface]
 
-// Add iamge of new overview page? Probably not
+// Add image of new overview page? Probably not
 // Check if the following previous text is still relevant 
 
 // In pages related to components, you can click on the *Projects* list, which is in the upper-left portion of the page, and see which projects (namespaces) you are allowed to work with.

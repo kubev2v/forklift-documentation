@@ -8,12 +8,12 @@
 
 If you have Administrator privileges, you can access the *Overview* page and change the following settings in it:
 
-[cols="1,1,1",options="header"]
+[cols="1,1,1,1",options="header"]
 .{project-short} settings
 |===
-|Setting |Description |Default value
+|Setting |Description |Default value |Additional values
 
-|Max concurrent virtual machine migrations
+|Maximum concurrent VM migrations
 a|Varies with provider as follows:
 
 * For all migrations except OVA or VMware migrations: The maximum number of disks that {project-short} can transfer simultaneously.
@@ -28,32 +28,38 @@ a|Varies with provider as follows:
 +
 See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this setting.
 |20
+|Adjustble by clicking the *+* and *-* keys to set a different value.
 
-|Must gather cleanup after (hours)
-|The duration for retaining `must gather` reports before they are automatically deleted.
-|Disabled
+|Controller CPU limit
+|The CPU limit allocated to the main controller container, in milliCPUs (m).
+|500 m.
+|Adjustable by choosing another value from the list. Options: 200 m, 500 m, 2000 m, 8000 m.
 
-|Controller main container CPU limit
-|The CPU limit allocated to the main controller container.
-|500 m
+|Controller memory limit
+|The memory limit allocated to the main controller container in Mi.
+|800 Mi.
+|Adjustable by choosing another value from the list. Options: 200 Mu, 500 Mi, 2000 Mi, 8000 Mi.
 
-|Controller main container Memory limit
-|The memory limit allocated to the main controller container.
-|800 Mi
+|Precopy internal
+|The interval in minutes at which a new snapshot is requested before initiating a warm migration.
+|60 minutes
+|Adjustable by choosing another value from the list. Options: 5 minutes, 30 minutes, 60 minutes, 60 minutes.
 
-|Precopy internal (minutes)
-|The interval at which a new snapshot is requested before initiating a warm migration.
-|60
+|Snapshot polling interval
+|The interval in seconds between which the system checks the status of snapshot creation or removal during a warm migration.
+|10 seconds
+|Adjustable by choosing another value from the list. Options: 1 second, 5 seconds, 10 seconds, 60 seconds.
 
-|Snapshot polling interval (seconds)
-|The frequency with which the system checks the status of snapshot creation or removal during a warm migration.
-|10
+// Not included in the mockup proided to me. Verifying its status.
+// |Must gather cleanup after (hours)
+// |The duration for retaining `must gather` reports before they are automatically deleted.
+// |Disabled
+
+
+
+
+
+
 |===
 
-.Procedure
-
-. In the {ocp} web console, click *Migration* > *Overview*. The *Settings* list is on the right side of the page.
-. In the *Settings* list, click the Edit icon of the setting you want to change.
-. Choose a setting from the list.
-. Click *Save*.
 
