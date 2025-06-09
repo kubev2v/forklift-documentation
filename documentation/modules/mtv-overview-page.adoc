@@ -13,7 +13,7 @@ The *Overview* page has 4 tabs:
 * Overview
 * YAML
 * Health
-* Settings 
+* Settings
 
 [id="overview-tab_{context}"]
 == Overview tab
@@ -28,14 +28,14 @@ The *Overview* tab is designed to let you create providers quickly and to make i
 * In the center-right pane is an area chart named *Migration history*. This chart shows the number of migrations that succeeded, failed, or were running during the interval shown in the title of the chart. You can choose a different interval by clicking the {kebab} in the upper-right corner of the pane. Options: 7 days, 31 days, 24 hours.
 
 //Confirm time and list or kebab
-* In the lower-left pane is a "donut" chart named *Migration plans*. By default, this chart shows the number of running, failed, succeeded, or canceled migration plans that {project-short} ran in the interval shown in the list in the upper-right corner of the pane. You can choose a different interval by clicking the list. List options are:  7 days, 31 days, 24 hours. You can also see the number of plans that were not started, cannot be started, are incomplete, archived, paused, or have an unknown status by clicking the *Show all plans* link. 
+* In the lower-left pane is a "donut" chart named *Migration plans*. By default, this chart shows the number of running, failed, succeeded, or canceled migration plans that {project-short} ran in the interval shown in the list in the upper-right corner of the pane. You can choose a different interval by clicking the list. List options are: 7 days, 31 days, 24 hours. You can also see the number of plans that were not started, cannot be started, are incomplete, archived, paused, or have an unknown status by clicking the *Show all plans* link.
 
 [NOTE]
 ====
 Since a single migration might involve many virtual machines, the number of migrations performed using {project-short} might vary significantly from the number of migrated virtual machines.
 ====
 
-* In the lower-right pane is a table named *{project-short} health*. This table lists all of the {project-short} pods, starting with the most important one, `forklift-controller`. The remaining pods are listed in alphabetical order. If there are more pods than can be displayed, the *View all* link is active. Clicking the link opens the *Health* tab. For each pod, the status and creation time of the pod are listed and there is a link to the logs of the pod.  
+* In the lower-right pane is a table named *{project-short} health*. This table lists all of the {project-short} pods, starting with the most important one, `forklift-controller`. The remaining pods are listed in alphabetical order. If there are more pods than can be displayed, the *View all* link is active. Clicking the link opens the *Health* tab. For each pod, the status and creation time of the pod are listed and there is a link to the logs of the pod.
 
 
 [id="overview-yaml-tab_{context}"]
@@ -48,18 +48,18 @@ The *YAML* tab displays the `ForkliftController` custom resource (CR) that defin
 
 The *Health* tab has two panes:
 
-* In the upper pane, there is a table named *MTV Health*. It lists all the {project-short} pods, starting with the most important one, `forklift-controller`. The remaining pods are listed in alphabetical order.  For each pod, the status and creation time of the pod are listed and there is a link to the logs of the pod.  
+* In the upper pane, there is a table named *MTV Health*. It lists all the {project-short} pods, starting with the most important one, `forklift-controller`. The remaining pods are listed in alphabetical order. For each pod, the status and creation time of the pod are listed and there is a link to the logs of the pod.
 
 * In the lower pane, is a table named *Conditions*. It lists the following possible statuses of the {project-short} Operator, whether the status is true or false, a brief description, and the last time the condition was updated. A green checkmark is used if a status is true, a red minus sign is used if it is false.
 
 ** Failure: Last failure. A red minus sign means that no failure occurred since deployment.
 ** Running: Whether the Operator is currently running and waiting for the next reconciliation.
-** Success: Last successful reconciliation. 
+** Success: Last successful reconciliation.
 
 [id="overview-settings-tab_{context}"]
 == Settings tab
 
-The table that follows describes the settings that are visible in the *Settings* tab, their default values, and other possible values which can be set or chosen, if needed. 
+The table that follows describes the settings that are visible in the *Settings* tab, their default values, and other possible values which can be set or chosen, if needed.
 
 [cols="1,1,1,1",options="header"]
 .{project-short} settings
@@ -71,7 +71,7 @@ a|Varies with provider as follows:
 
 * For all migrations except OVA or VMware migrations: The maximum number of disks that {project-short} can transfer simultaneously.
 * For OVA migrations: The maximum number of VMs that {project-short} can migrate simultaneously.
-*  For VMware migrations, the setting has the following meanings::
+* For VMware migrations, the setting has the following meanings:
 ** Cold migration:
 
 *** To local {virt}: VMs for each ESXi host that can migrate simultaneously.
