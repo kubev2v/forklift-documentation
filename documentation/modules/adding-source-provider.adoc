@@ -83,10 +83,16 @@ endif::[]
 
 .Procedure
 
-. In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
-. Click *Create Provider*.
 ifdef::vmware[]
-. Click *vSphere*.
+. Access the *Create VMware vSphere provider* interface by doing one of the following:
+
+.. In the {ocp} web console, click *Migration > Providers*.
+... Click *Create Provider*.
+... Click *vSphere*.
+
+.. In the {ocp} web console, click  *Migration > Overview*.
+... Click *vSphere*.
+
 . Specify the following fields:
 
 +
@@ -110,7 +116,16 @@ include::snip-certificate-options.adoc[]
 endif::[]
 
 ifdef::rhv[]
-. Click *Red Hat Virtualization*
+. Access the *Create {rhv-full} provider* interface by doing one of the following:
+
+.. In the {ocp} web console, click *Migration > Providers*.
+... Click *Create Provider*.
+... Click *{rhv-full}*.
+
+.. In the {ocp} web console, click  *Migration > Overview*.
+... Click *{rhv-full}*.
+
+
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider.
@@ -121,14 +136,31 @@ ifdef::rhv[]
 include::snip-certificate-options.adoc[]
 endif::[]
 ifdef::ova[]
-. Click *Open Virtual Appliance (OVA)*.
+. Access the *Create OVA provider* interface by doing one of the following:
+
+.. In the {ocp} web console, click *Migration > Providers*.
+... Click *Create Provider*.
+... Click *Open Virtual Appliance (OVA)*.
+
+.. In the {ocp} web console, click  *Migration > Overview*.
+... Click *Open Virtual Appliance (OVA)*.
+
+
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
 * *URL*: URL of the NFS file share that serves the OVA
 endif::[]
 ifdef::ostack[]
-. Click *OpenStack*.
+. Access the *Create {osp} provider* interface by doing one of the following:
+
+.. In the {ocp} web console, click *Migration > Providers*.
+... Click *Create Provider*.
+... Click *{osp}*.
+
+.. In the {ocp} web console, click  *Migration > Overview*.
+... Click *{osp}*.
+
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider.
@@ -165,7 +197,16 @@ ifdef::ostack[]
 include::snip-certificate-options.adoc[]
 endif::[]
 ifdef::cnv[]
-. Click *{virt}*.
+. Access the *Create {virt} provider* interface by doing one of the following:
+
+.. In the {ocp} web console, click *Migration > Providers*.
+... Click *Create Provider*.
+... Click *{virt}*.
+
+.. In the {ocp} web console, click  *Migration > Overview*.
+... Click *{virt}*.
+
+
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
@@ -177,7 +218,16 @@ If both *URL* and *Service account bearer token* are left blank, the local {ocp-
 include::snip-certificate-options.adoc[]
 endif::[]
 ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
-. Click *{virt}*.
+. Access the *Create {virt} provider* interface by doing one of the following:
+
+.. In the {ocp} web console, click *Migration > Providers*.
+... Click *Create Provider*.
+... Click *{virt}*.
+
+.. In the {ocp} web console, click  *Migration > Overview*.
+... Click *{virt}*.
+
+
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
