@@ -23,12 +23,12 @@ The *Overview* tab is designed to let you create providers quickly and to make i
 * In the upper-right pane, following the *Welcome* message, are buttons that let you open the *Create provider* UI for each vendor ({vmw}, {rhv-full}, OpenStack, OVA, and {virt}).
 
 //Confirm time and list or kebab
-* In the center-left pane is a "donut" chart named *Virtual machines*. This chart shows the number of running, failed, and succeeded virtual machine migrations that {project-short} ran in the interval shown in the list in the upper-right corner of the pane. You can choose a different interval by clicking the list. Options: 7 days, 31 days, 24 hours.
+* In the center-left pane is a "donut" chart named *Virtual machines*. This chart shows the number of running, failed, and succeeded virtual machine migrations that {project-short} ran for the time interval that you select. You can choose a different interval by clicking the list in the upper-right corner of the pane. You can choose a different interval by clicking the list. Options: 7 days, 31 days, 24 hours.
 
 * In the center-right pane is an area chart named *Migration history*. This chart shows the number of migrations that succeeded, failed, or were running during the interval shown in the title of the chart. You can choose a different interval by clicking the {kebab} in the upper-right corner of the pane. Options: 7 days, 31 days, 24 hours.
 
 //Confirm time and list or kebab
-* In the lower-left pane is a "donut" chart named *Migration plans*. By default, this chart shows the number of running, failed, succeeded, or canceled migration plans that {project-short} ran in the interval shown in the list in the upper-right corner of the pane. You can choose a different interval by clicking the list. List options are: 7 days, 31 days, 24 hours. You can also see the number of plans that were not started, cannot be started, are incomplete, archived, paused, or have an unknown status by clicking the *Show all plans* link.
+* In the lower-left pane is a "donut" chart named *Migration plans*. By default, this chart shows the number of running, failed, succeeded, or canceled migration plans that {project-short} ran for the time interval that you select. You can choose a different interval by clicking the list in the upper-right corner of the pane. List options are: 7 days, 31 days, 24 hours. You can also see the number of plans that were not started, cannot be started, are incomplete, archived, paused, or have an unknown status by clicking the *Show all plans* link.
 
 [NOTE]
 ====
@@ -89,18 +89,18 @@ See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight
 |Adjustable by choosing another value from the list. Options: 200 m, 500 m, 2000 m, 8000 m.
 
 |Controller memory limit
-|The memory limit that is allocated to the main controller container in Mi.
+|The memory limit that is allocated to the main controller container in mebibytes (Mi).
 |800 Mi.
-|Adjustable by choosing another value from the list. Options: 200 Mu, 500 Mi, 2000 Mi, 8000 Mi.
+|Adjustable by choosing another value from the list. Options: 200 Mi, 500 Mi, 2000 Mi, 8000 Mi.
 
 |Precopy internal
 |The interval in minutes at which a new snapshot is requested before initiating a warm migration.
-|60 minutes
+|60 minutes.
 |Adjustable by choosing another value from the list. Options: 5 minutes, 30 minutes, 60 minutes, 60 minutes.
 
 |Snapshot polling interval
 |The interval in seconds between which the system checks the status of snapshot creation or removal during a warm migration.
-|10 seconds
+|10 seconds.
 |Adjustable by choosing another value from the list. Options: 1 second, 5 seconds, 10 seconds, 60 seconds.
 
 // Not included in the mockup provided to me. Verifying its status.
