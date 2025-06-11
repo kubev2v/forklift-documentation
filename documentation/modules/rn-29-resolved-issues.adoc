@@ -10,13 +10,10 @@ VMware only: In earlier releases of {project-short}, after warm migration of Win
 
 //resolved or known issue?
 .{project-short} does not fully preserve VMware virtual machine UUID after migration
-In earlier releases of {project-short}, the UUID of VMware VMs were not fully preserved after migration to {ocp-short}. This issue has been resolved through a warning when you create a migration plan that VM UUIDs are truncated to 20 characters for `virtio` disks. link:https://issues.redhat.com/browse/MTV-1368[(MTV-1368)]
+In earlier releases of {project-short}, the UUID of VMware VMs were not fully preserved after migration to {ocp-short}. This issue has been resolved through a warning in migration plans to inform you that VM UUIDs are truncated to 20 characters for `virtio` disks. link:https://issues.redhat.com/browse/MTV-1368[(MTV-1368)]
 
 .{project-short} does not preserve host name of guest virtual machines after migration
-link:https://issues.redhat.com/browse/MTV-2364[(MTV-2364)]
+In earlier releases of {project-short}, after migrating a VMware guest VM running RHEL OS, the host name configured in the `/etc/hostname` setting was not preserved in the target VM. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2364[(MTV-2364)]
 
-.Cold migration of VMware ESXi virtual machines stalled due to IP address resolution failure
-link:https://issues.redhat.com/browse/MTV-2153[(MTV-2153)]
-
-.{project-short} displayed an internal log error
-link:https://issues.redhat.com/browse/MTV-2234[(MTV-2234)]
+.Cold migration of VMware ESXi virtual machines with IP address fail
+In earlier releases of {project-short}, cold migrations of ESXi VMs that were created with host IP address by using the vSphere provider failed because `virt-v2v` used the VM's host name instead of the IP address. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2153[(MTV-2153)]
