@@ -20,7 +20,7 @@ The *Overview* page has 4 tabs:
 
 The *Overview* tab is designed to let you create providers quickly and to make it easier for you to find system-wide information:
 
-* In the upper-right pane, following the *Welcome* message, are buttons that let you open the *Create provider* UI for each vendor ({vmw}, {rhv-full}, OpenStack, OVA, and {virt}).
+* In the upper-right pane, following the *Welcome* message, are buttons that let you open the *Create provider* UI for each vendor ({vmw}, Open Virtual Appliance, OpenStack, {rhv-full}, and {virt}).
 
 //Confirm time and list or kebab
 * In the center-left pane is a "donut" chart named *Virtual machines*. This chart shows the number of running, failed, and succeeded virtual machine migrations that {project-short} ran for the time interval that you select. You can choose a different interval by clicking the list in the upper-right corner of the pane. You can choose a different interval by clicking the list. Options: 7 days, 31 days, 24 hours.
