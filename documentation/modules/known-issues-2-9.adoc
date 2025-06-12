@@ -1,0 +1,8 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="known-issues-2-9_{context}"]
+= Known issues
+
+{project-first} 2.9 has the following known issues:

@@ -1,0 +1,9 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="technical-changes-2-9_{context}"]
+= Technical changes
+
+{project-first} 2.9 has the following technical changes:
+
