@@ -8,7 +8,10 @@
 .{project-short} enabled vTPM for source Windows Server 2022 virtual machines without vTPM device
 VMware only: In earlier releases of {project-short}, after warm migration of Windows Server 2022 VMs with UEFI settings, the virtual Trusted Platform Module (vTPM) device was added to the VMs even though the source VMs did not have the vTPM device. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2014[(MTV-2014)]
 
-//resolved or known issue?
+.{project-short} swapped the MAC addresses after migrating VMware virtual machines with multiple NICs
+In earlier releases of {project-short}, warm and cold migrations of a VMware VM with multiple network interface cards resulted in swapped MAC addresses for the NICs, if the order of network mapping were different in the migration plan than the network mappings in the source VM. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2025[(MTV-2025)]
+
+//resolved or known issue with a workaround?
 .{project-short} does not fully preserve VMware virtual machine UUID after migration
 In earlier releases of {project-short}, the UUID of VMware VMs were not fully preserved after migration to {ocp-short}. This issue has been resolved through a warning in migration plans to inform you that VM UUIDs are truncated to 20 characters for `virtio` disks. link:https://issues.redhat.com/browse/MTV-1368[(MTV-1368)]
 
