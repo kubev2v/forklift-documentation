@@ -166,7 +166,7 @@ include::modules/adding-source-provider.adoc[leveloffset=+2]
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+2]
 
 :!vmware:
-:context: dest_vwmware
+:context: dest_vmware
 :dest_vmware:
 
 include::modules/adding-source-provider.adoc[leveloffset=+2]
@@ -176,7 +176,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :context: vmware
 :vmware:
 
-include::modules/creating-migration-plan-2-8.adoc[leveloffset=+2]
+include::modules/creating-plan-wizard-290-vmware.adoc[leveloffset=+2]
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
