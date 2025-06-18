@@ -260,7 +260,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :context: ova
 :ova:
 
-include::modules/creating-migration-plan-2-8.adoc[leveloffset=+2]
+include::modules/creating-plan-wizard-290-ova.adoc[leveloffset=+2]
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 

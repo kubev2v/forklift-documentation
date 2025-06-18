@@ -4,17 +4,25 @@
 
 [id="creating-plan-wizard-290-vmware_{context}"]
 
-= Adding a VMware vSphere migration plan using the MTV wizard
+= Creating a VMware vSphere migration plan using the MTV wizard
 
 You can migrate :vmw: vSphere VMs from :vmw: vCenter or from a :vmw: ESX/ESXi server using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
+[WARNING]
+====
+Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
+
+This prevents concurrent disk access to the storage the guest points to.
+====
+
+include::snip_plan-limits.adoc[]
+
 [IMPORTANT]
 ====
 When you click *Create plan* in the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard itself, but are important. Be sure to read and follow the instructions for this page carefully even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
 ====
-
 
 .Prerequisites
 
@@ -44,13 +52,16 @@ The *Create migration plan* wizard opens.
 // Network map page
 . In the *Network map* page, choose one of the following options:
 
-* *Use an existing network map*: Select an existing network map from the list. These are network maps available for all plans. If you choose this option, a copy of this map will be attached to your plan and your plan will be the _owner_ of that copy. Any changes you make to your copy will not affect the original plan or any copies of it that other users have.
-* *Create a new network map*: Allows you to create a new network map by supplying the following data. This map will be attached to this plan, which will then be considered to be its owner.
+* *Use an existing network map*: Select an existing network map from the list.
++
+If you choose this option, a copy of this map is attached to your plan and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies of it that other users have.
+
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which will then be considered to be its owner.
 
 ** *Source network* : Select from the list.
 ** *Target network* : Select from the list.
 +
-If needed, click *+* to add an additional mapping.
+If needed, click the *+* sign to add an additional mapping.
 ** *Network map name*: Enter a name or let {project-short} automatically generate a name for the network map.
 
 . Click *Next*.
@@ -58,13 +69,16 @@ If needed, click *+* to add an additional mapping.
 // Storage map page
 . In the *Storage map* page, choose one of the following options:
 
-* *Use an existing storage map*: Select an existing storage map from the list. These are storage maps available for all plans. If you choose this option, a copy of this map will be attached to your plan and your plan will be the _owner_ of that copy. Any changes you make to your copy will not affect the original plan or any copies of it that other users have.
-* *Create a new storage map*: Allows you to create one or two new storage map by supplying the following data. This maps will be attached to this plan, which will then be considered to be their owner. For each map, specify the following.
+* *Use an existing storage map*: Select an existing storage map from the list.
++
+These are storage maps available for all plans. If you choose this option, a copy of this map is attached to your plan and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies of it that other users have.
+
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. For each map, specify the following.
 
 ** *Source storage* : Select from the list.
 ** *Target storage* : Select from the list.
 +
-If needed, click *+* to add an additional mapping.
+If needed, click the *+* sign to add an additional mapping.
 ** *Storage map name*: Enter a name or let {project-short} automatically generate a name for the network map.
 
 . Click *Next*.
@@ -73,7 +87,7 @@ If needed, click *+* to add an additional mapping.
 . In the *Migration type* page, choose one of the following:
 
 * *Cold migration* (default)
-* *Warm migration* 
+* *Warm migration*
 
 . Click *Next*.
 +
@@ -82,13 +96,15 @@ If needed, click *+* to add an additional mapping.
 
 * *Disk decryption passphrases*: For disks encrypted using Linux Unified Key Setup (LUKS).
 
-** Enter a decryption passphrase for a LUKS-encrypted device. 
-** To add another passphrase, click *Add passphrase* and add a passphrase. 
+** Enter a decryption passphrase for a LUKS-encrypted device.
+** To add another passphrase, click *Add passphrase* and add a passphrase.
 ** Repeat as needed.
 +
 You do not need to enter the passphrases in a specific order. For each LUKS-encrypted device, {project-short} tries each passphrase until one unlocks the device.
 
-* *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider. Verify that the transfer network is in the selected target namespace.
+* *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider.
+
+** Verify that the transfer network is in the selected target namespace.
 
 ** To choose a different transfer network, select a different transfer network from the list.
 ** Optional: To configure an additional {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
@@ -105,7 +121,7 @@ To learn more about the different types of networks {ocp-short} supports, see li
 
 * *Root device*: Applies to multi-boot VM migrations only. By default, {project-short} uses the first bootable device detected as the root device.
 
-** To specify a different root device, select a different device from the list. 
+** To specify a different root device, select a different device from the list.
 +
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
@@ -134,18 +150,20 @@ In the *Hooks (optional)* page, you can add a pre-migration hook, a post-migrati
 You cannot include more than one pre-migration hook or more than one post-migration hook in a migration plan.
 ====
 
-. Click *Next* 
+. Click *Next*.
 +
 // Review and create page
 . In the *Review and Create* page, review the information displayed.
 . Edit any item by doing the following:
 
 .. Click its *Edit step* link.
-+ The wizard opens to the page on which you defined the item.
++
+The wizard opens to the page on which you defined the item.
 .. Edit the item.
 .. Either click *Next* to advance to the next page of the wizard or click *Skip to review* to return directly to the *Review and create* page.
 
-. When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan. After you correct all problems, click *Skip to review* and then click *Create plan*.
+. When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan. 
+. After you correct all problems, click *Skip to review* and then click *Create plan*.
 +
 When your plan is validated, the *Plan details* page for your plan opens.
 +
@@ -165,7 +183,7 @@ Examples
 ** `"disk-{{.VolumeIndex}}"`
 ** `"pvc-{{.PVCName}}"`
 +
-Variable names cannot exceed 63 characters
+Variable names cannot exceed 63 characters.
 +
 ** To specify a volume name template for all the VMs in your plan, do the following:
 
@@ -268,6 +286,10 @@ Changes you make in the  *Virtual Machines* tab override any changes in the *Pla
 *** Click the *Edit* icon.
 *** Toggle the *Raw copy mode* switch.
 *** Click *Save*.
++
+{project-short} validates any changes you made on this page.
++
+Your plan appears in the table in the *Plans* page and you can run it from that page.
 
 // If needed:
 //* *Target namespace*: Destination namespace for all the migrated VMs. By default, the destination namespace is the current or active namespace.
