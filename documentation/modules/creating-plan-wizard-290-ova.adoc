@@ -6,7 +6,7 @@
 
 = Creating an Open Virtualization Appliance (OVA) migration plan by using the MTV wizard
 
-You can migrate Open Virtual Appliance (OVA) files that were created by {vmw} vSphere by using the {ocp} web console.using the {project-full} plan creation wizard.
+You can migrate Open Virtual Appliance (OVA) files that were created by {vmw} vSphere by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 

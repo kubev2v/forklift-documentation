@@ -2,11 +2,11 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="creating-plan-wizard-290-ostack_{context}"]
+[id="creating-plan-wizard-290-rhv_{context}"]
 
-= Creating an {osp} migration plan by using the MTV wizard
+= Creating an Red Hat Virtualization migration plan by using the MTV wizard
 
-You can migrate {osp} virtual machines (VMs) by using the {project-full} plan creation wizard.
+You can migrate {rhv-full} virtual machines (VMs) by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
@@ -14,7 +14,7 @@ The wizard is designed to lead you step-by-step in creating a migration plan.
 ====
 Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
 
-This prevents concurrent disk access to the storage the guest points to. by
+This prevents concurrent disk access to the storage the guest points to.
 ====
 
 include::snip_plan-limits.adoc[]
@@ -26,7 +26,7 @@ When you click *Create plan* in the *Review and create* page of the wizard, {pro
 
 .Prerequisites
 
-* Have an {osp} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_ostack[Adding an OpenStack source provider] or xref:adding-source-provider_dest_ostack[Adding {a-virt} destination provider].
+* Have an {rhv-full} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_rhv[Adding a {rhv-full} source provider] or xref:adding-source-provider_dest_rhv[Adding {a-virt} destination provider].
 
 .Procedure
 
@@ -44,7 +44,7 @@ The *Create migration plan* wizard opens.
 * *Target provider*: Select from the list.
 * *Target project*: Select from the list.
 
-.. Click *Next*.
+. Click *Next*.
 +
 // Virtual machines page
 . In the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
@@ -80,6 +80,14 @@ These are storage maps available for all plans. If you choose this option, a cop
 +
 If needed, click *Add mapping* to add an additional mapping.
 ** *Storage map name*: Enter a name or let {project-short} automatically generate a name for the network map.
+
+. Click *Next*.
++
+// Migration type page
+. In the *Migration type* page, choose one of the following:
+
+* *Cold migration* (default)
+* *Warm migration*
 
 . Click *Next*.
 +
@@ -128,3 +136,5 @@ You cannot include more than one pre-migration hook or more than one post-migrat
 When your plan is validated, the *Plan details* page for your plan opens.
 + 
 Your plan appears in the table in the *Plans* page and you can run it from that page.
+
+// WHEN YOU CAN CREATE A PLAN CHECK THE PLAN DETAILS PAGE
