@@ -2,11 +2,11 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-[id="creating-plan-wizard-290-ova_{context}"]
+[id="creating-plan-wizard-290-ostack_{context}"]
 
-= Creating an Open Virtualization Appliance (OVA) migration plan by using the MTV wizard
+= Creating an {osp} migration plan by using the MTV wizard
 
-You can migrate Open Virtual Appliance (OVA) files that were created by {vmw} vSphere by using the {ocp} web console.using the {project-full} plan creation wizard.
+You can migrate {osp} vurtual machines (VMs) by using the {ocp} web console.using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
@@ -14,7 +14,7 @@ The wizard is designed to lead you step-by-step in creating a migration plan.
 ====
 Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
 
-This prevents concurrent disk access to the storage the guest points to.
+This prevents concurrent disk access to the storage the guest points to. by
 ====
 
 include::snip_plan-limits.adoc[]
@@ -26,7 +26,7 @@ When you click *Create plan* in the *Review and create* page of the wizard, {pro
 
 .Prerequisites
 
-* Have an OVA source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider] or xref:adding-source-provider_dest_ova[Adding {a-virt} destination provider].
+* Have an {osp} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_ostack[Adding an OpenStack source provider] or xref:adding-source-provider_dest_ostack[Adding {a-virt} destination provider].
 
 .Procedure
 
@@ -44,7 +44,7 @@ The *Create migration plan* wizard opens.
 * *Target provider*: Select from the list.
 * *Target project*: Select from the list.
 
-. Click *Next*.
+.. Click *Next*.
 +
 // Virtual machines page
 . In the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.

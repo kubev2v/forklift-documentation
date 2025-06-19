@@ -4,9 +4,9 @@
 
 [id="creating-plan-wizard-290-vmware_{context}"]
 
-= Creating a VMware vSphere migration plan using the MTV wizard
+= Creating a VMware vSphere migration plan by using the MTV wizard
 
-You can migrate :vmw: vSphere VMs from :vmw: vCenter or from a :vmw: ESX/ESXi server using the {project-full} plan creation wizard.
+You can migrate :vmw: vSphere virtual machines (VMs) from :vmw: vCenter or from a :vmw: ESX/ESXi server by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
@@ -30,7 +30,7 @@ When you click *Create plan* in the *Review and create* page of the wizard, {pro
 
 .Procedure
 
-. In the {ocp} web console, click *Migration for Virtualization > *Plans*.
+. In the {ocp} web console, click *Migration for Virtualization > *Migration plans*.
 . Click *Create plan*.
 +
 The *Create migration plan* wizard opens.
@@ -61,7 +61,7 @@ If you choose this option, a copy of this map is attached to your plan and your 
 ** *Source network* : Select from the list.
 ** *Target network* : Select from the list.
 +
-If needed, click the *+* sign to add an additional mapping.
+If needed, click *Add mapping* to add an additional mapping.
 ** *Network map name*: Enter a name or let {project-short} automatically generate a name for the network map.
 
 . Click *Next*.
@@ -78,7 +78,7 @@ These are storage maps available for all plans. If you choose this option, a cop
 ** *Source storage* : Select from the list.
 ** *Target storage* : Select from the list.
 +
-If needed, click the *+* sign to add an additional mapping.
+If needed, click *Add mapping* to add an additional mapping.
 ** *Storage map name*: Enter a name or let {project-short} automatically generate a name for the network map.
 
 . Click *Next*.
