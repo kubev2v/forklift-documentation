@@ -47,12 +47,6 @@ ifdef::cnv[]
 = Migrating from a Red Hat {virt} source provider
 
 You can use a Red Hat {virt} provider as either a source provider or as a destination provider. You can migrate from an {virt} source provider by using the command-line interface (CLI).
-
-[NOTE]
-====
-The {ocp} cluster version of the source provider must be 4.16 or later.
-====
-
 endif::[]
 
 .Procedure

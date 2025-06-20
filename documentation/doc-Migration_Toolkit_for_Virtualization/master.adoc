@@ -93,7 +93,6 @@ include::modules/creating-vddk-image.adoc[leveloffset=+3]
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
 include::modules/vddk-validator-containers.adoc[leveloffset=+3]
 include::modules/ova-prerequisites.adoc[leveloffset=+2]
-include::modules/cnv-prerequisites.adoc[leveloffset=+2]
 
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
