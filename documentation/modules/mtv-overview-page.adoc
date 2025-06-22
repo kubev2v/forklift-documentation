@@ -20,15 +20,13 @@ The *Overview* page has 4 tabs:
 
 The *Overview* tab is designed to let you create providers quickly and to make it easier for you to find system-wide information:
 
-* In the upper-right pane, following the *Welcome* message, are buttons that let you open the *Create provider* UI for each vendor ({vmw}, Open Virtual Appliance, OpenStack, {rhv-full}, and {virt}).
+* In the upper-right pane, is the *Welcome* section, which includes buttons that let you open the *Create provider* UI for each vendor ({vmw}, Open Virtual Appliance, OpenStack, {rhv-full}, and {virt}). You can close this section by clicking the {kebab} in the upper-right corner and selecting *Hide from view*. You can reopen it, by clicking *Show the welcome card* in the upper-right corner.
 
-//Confirm time and list or kebab
-* In the center-left pane is a "donut" chart named *Virtual machines*. This chart shows the number of running, failed, and succeeded virtual machine migrations that {project-short} ran for the time interval that you select. You can choose a different interval by clicking the list in the upper-right corner of the pane. You can choose a different interval by clicking the list. Options: 7 days, 31 days, 24 hours.
+* In the center-left pane is a "donut" chart named *Virtual machines*. This chart shows the number of running, failed, and succeeded virtual machine migrations that {project-short} ran for the time interval that you select. You can choose a different interval by clicking the list in the upper-right corner of the pane. You can choose a different interval by clicking the list. Options: Last 24 hours, Last 7 days, Last 31 days, and All.
 
-* In the center-right pane is an area chart named *Migration history*. This chart shows the number of migrations that succeeded, failed, or were running during the interval shown in the title of the chart. You can choose a different interval by clicking the {kebab} in the upper-right corner of the pane. Options: 7 days, 31 days, 24 hours.
+* In the center-right pane is an area chart named *Migration history*. This chart shows the number of migrations that succeeded, failed, or were running during the interval shown in the title of the chart. You can choose a different interval by clicking the {kebab} in the upper-right corner of the pane. Options: Last 24 hours, Last 7 days, and Last 31 days.
 
-//Confirm time and list or kebab
-* In the lower-left pane is a "donut" chart named *Migration plans*. By default, this chart shows the number of running, failed, succeeded, or canceled migration plans that {project-short} ran for the time interval that you select. You can choose a different interval by clicking the list in the upper-right corner of the pane. List options are: 7 days, 31 days, 24 hours. You can also see the number of plans that were not started, cannot be started, are incomplete, archived, paused, or have an unknown status by clicking the *Show all plans* link.
+* In the lower-left pane is a "donut" chart named *Migration plans*. By default, this chart shows the current number of running, failed, succeeded, or canceled migration plans that {project-short} has run. You can also see the number of plans that were not started, cannot be started, are incomplete, archived, paused, or have an unknown status by clicking the *Show all plans* link.
 
 [NOTE]
 ====
@@ -50,9 +48,9 @@ The *Health* tab has two panes:
 
 * In the upper pane, there is a table named *MTV Health*. It lists all the {project-short} pods, starting with the most important one, `forklift-controller`. The remaining pods are listed in alphabetical order. For each pod, the status and creation time of the pod are listed and there is a link to the logs of the pod.
 
-* In the lower pane, is a table named *Conditions*. It lists the following possible statuses of the {project-short} Operator, whether the status is true or false, a brief description, and the last time the condition was updated. A green checkmark is used if a status is true, a red minus sign is used if it is false.
+* In the lower pane, is a table named *Conditions*. It lists the following possible types (states) of the {project-short} Operator, the status of the type, the last time the condition was updated, reason for the update, and a message about the condition,
 
-** Failure: Last failure. A red minus sign means that no failure occurred since deployment.
+** Failure: Last failure. 
 ** Running: Whether the Operator is currently running and waiting for the next reconciliation.
 ** Success: Last successful reconciliation.
 
@@ -66,7 +64,7 @@ The table that follows describes the settings that are visible in the *Settings*
 |===
 |Setting |Description |Default value |Additional values
 
-|Maximum concurrent VM migrations
+|Max concurrent virtual machine migrations
 a|Varies with provider as follows:
 
 * For all migrations except OVA or VMware migrations: The maximum number of disks that {project-short} can transfer simultaneously.
@@ -81,22 +79,27 @@ a|Varies with provider as follows:
 +
 See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this setting.
 |20
-|Adjustable by clicking the *+* and *-* keys to set a different value.
+|Adjustable by clicking the {kebab}, by either using the *+* and *-* keys to set a different value or by entering a value, and then clicking *Save*.
 
-|Controller CPU limit
+|Controller main container CPU limit
 |The CPU limit that is allocated to the main controller container, in milliCPUs (m).
 |500 m.
-|Adjustable by choosing another value from the list. Options: 200 m, 500 m, 2000 m, 8000 m.
+|Adjustable by clicking the {kebab}, choosing another value from the list, and then clicking *Save*. Options: 200 m, 500 m, 2000 m, 8000 m.
 
-|Controller memory limit
+|Controller main container memory limit
 |The memory limit that is allocated to the main controller container in mebibytes (Mi).
 |800 Mi.
-|Adjustable by choosing another value from the list. Options: 200 Mi, 500 Mi, 2000 Mi, 8000 Mi.
+|Adjustable by clicking the {kebab}, choosing another value from the list, and then clicking *Save*. Options: 200 Mi, 800 Mi, 2000 Mi, 8000 Mi.
 
-|Precopy internal
+|Controller inventory container memory limit
+|The memory limit that is allocated to the inventory controller container in mebibytes (Mi).
+|1000 Mi.
+|Adjustable by clicking the {kebab}, choosing another value from the list, and then clicking *Save*. Options: 400 Mi, 1000 Mi, 2000 Mi, 8000 Mi.
+
+|Precopy internal (minutes)
 |The interval in minutes at which a new snapshot is requested before initiating a warm migration.
 |60 minutes.
-|Adjustable by choosing another value from the list. Options: 5 minutes, 30 minutes, 60 minutes, 60 minutes.
+|Adjustable by clicking the {kebab}, choosing another value from the list, and then clicking *Save*. Options: 5 minutes, 30 minutes, 60 minutes, 120 minutes.
 
 |Snapshot polling interval
 |The interval in seconds between which the system checks the status of snapshot creation or removal during a warm migration.
