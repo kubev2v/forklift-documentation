@@ -8,11 +8,12 @@
 
 If you have Administrator privileges, you can access the *Overview* page by clicking *Migration for Virtualization > Overview* in the {ocp} web console.
 
-The *Overview* page has 4 tabs:
+The *Overview* page has 5 tabs:
 
 * Overview
 * YAML
 * Health
+* History
 * Settings
 
 [id="overview-tab_{context}"]
@@ -23,6 +24,11 @@ The *Overview* tab is designed to let you create providers quickly and to make i
 * In the upper-right pane, is the *Welcome* section, which includes buttons that let you open the *Create provider* UI for each vendor ({vmw}, Open Virtual Appliance, OpenStack, {rhv-full}, and {virt}). You can close this section by clicking the {kebab} in the upper-right corner and selecting *Hide from view*. You can reopen it, by clicking *Show the welcome card* in the upper-right corner.
 
 * In the center-left pane is a "donut" chart named *Virtual machines*. This chart shows the number of running, failed, and succeeded virtual machine migrations that {project-short} ran for the time interval that you select. You can choose a different interval by clicking the list in the upper-right corner of the pane. You can choose a different interval by clicking the list. Options: Last 24 hours, Last 7 days, Last 31 days, and All.
++
+[NOTE]
+====
+Data for this chart includes only the most recent run of a migration plan that was modified due to a failure. For example, if a plan with 3 VMs fails 4 times, then this chart shows that 3 VMs failed, not 12.
+====
 
 * In the center-right pane is an area chart named *Migration history*. This chart shows the number of migrations that succeeded, failed, or were running during the interval shown in the title of the chart. You can choose a different interval by clicking the {kebab} in the upper-right corner of the pane. Options: Last 24 hours, Last 7 days, and Last 31 days.
 
@@ -53,6 +59,15 @@ The *Health* tab has two panes:
 ** Failure: Last failure. 
 ** Running: Whether the Operator is currently running and waiting for the next reconciliation.
 ** Success: Last successful reconciliation.
+
+[id="overview-history-tab_{context}"]
+== History tab
+
+The *History* displays information about migrations.
+
+* In the upper-left of the page, there is a filter that you can use to display only migrations of a certain status, for example, *Succeeded*.
+
+* To the right of the filter is the *Recent plan migrations only* toggle switch, which lets you display either all migrations or those run recently.
 
 [id="overview-settings-tab_{context}"]
 == Settings tab
@@ -105,18 +120,4 @@ See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight
 |The interval in seconds between which the system checks the status of snapshot creation or removal during a warm migration.
 |10 seconds.
 |Adjustable by choosing another value from the list. Options: 1 second, 5 seconds, 10 seconds, 60 seconds.
-
-// Not included in the mockup provided to me. Verifying its status.
-// |Must gather cleanup after (hours)
-// |The duration for retaining `must gather` reports before they are automatically deleted.
-// |Disabled
 |===
-
-
-
-
-
-
-
-
-
