@@ -90,12 +90,14 @@ ifdef::vmware[]
 ... Click *Create Provider*.
 ... Click *{vmw}*.
 
-.. In the {ocp} web console, click  *Migration for Virtualization > Overview*.
-... Click *{vmw}*.
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{vmw}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{vmw}* when the *Welcome* pane opens.
 
 . Specify the following fields:
 
-+
++s
 *Provider details*
 
 * *Provider resource name*: Name of the source provider.
@@ -122,9 +124,10 @@ ifdef::rhv[]
 ... Click *Create Provider*.
 ... Click *{rhv-full}*.
 
-.. In the {ocp} web console, click  *Migration for Virtualization > Overview*.
-... Click *{rhv-full}*.
-
+.. If you have Administrator privileges, in the {ocp} web console, click  *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{rhv-full}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{rhv-full}* when the *Welcome* pane opens.
 
 . Specify the following fields:
 
@@ -142,9 +145,10 @@ ifdef::ova[]
 ... Click *Create Provider*.
 ... Click *Open Virtual Appliance*.
 
-.. In the {ocp} web console, click  *Migration for Virtualization > Overview*.
-... Click *Open Virtual Appliance*.
-
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *Open Virtual Appliance*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Open Virtual Appliance* when the *Welcome* pane opens.
 
 . Specify the following fields:
 
@@ -158,8 +162,10 @@ ifdef::ostack[]
 ... Click *Create Provider*.
 ... Click *{osp}*.
 
-.. In the {ocp} web console, click  *Migration for Virtualization > Overview*.
-... Click *{osp}*.
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{osp}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{osp}* when the *Welcome* pane opens.
 
 . Specify the following fields:
 
@@ -196,6 +202,7 @@ ifdef::ostack[]
 +
 include::snip-certificate-options.adoc[]
 endif::[]
+
 ifdef::cnv[]
 . Access the *Create provider* interface {virt} by doing one of the following:
 
@@ -203,8 +210,10 @@ ifdef::cnv[]
 ... Click *Create Provider*.
 ... Click *{virt}*.
 
-.. In the {ocp} web console, click  *Migration for Virtualization > Overview*.
-... Click *{virt}*.
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{virt}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
 
 
 . Specify the following fields:
@@ -217,6 +226,7 @@ If both *URL* and *Service account bearer token* are left blank, the local {ocp-
 +
 include::snip-certificate-options.adoc[]
 endif::[]
+
 ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 . Access the *Create {virt} provider* interface by doing one of the following:
 
@@ -224,8 +234,10 @@ ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 ... Click *Create Provider*.
 ... Click *{virt}*.
 
-.. In the {ocp} web console, click  *Migration for Virtualization > Overview*.
-... Click *{virt}*.
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{virt}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
 
 
 . Specify the following fields:
