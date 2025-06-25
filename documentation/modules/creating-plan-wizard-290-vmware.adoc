@@ -121,7 +121,7 @@ To learn more about the different types of networks {ocp-short} supports, see li
 
 * *Root device*: Applies to multi-boot VM migrations only. By default, {project-short} uses the first bootable device detected as the root device.
 
-** To specify a different root device, select a different device from the list.
+** To specify a different root device, enter it in the textbox.
 +
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
@@ -167,7 +167,7 @@ The wizard opens to the page on which you defined the item.
 +
 When your plan is validated, the *Plan details* page for your plan opens.
 +
-The *Plan settings* section of the page includes settings that you specified in the *Other settings (optional)* page and some additional optional settings. The steps below refer to the additional optional steps, but all of the settings can be edited.
+The *Plan settings* section of the page includes settings that you specified in the *Other settings (optional)* page and some additional optional settings. The steps below refer to the additional optional steps, but all of the settings can be edited by clicking the {kebab}, making the change, and then clicking *Save*.
 
 . Check the following items in the *Plan settings* section of the page:
 
@@ -290,12 +290,3 @@ Changes you make in the  *Virtual Machines* tab override any changes in the *Pla
 {project-short} validates any changes you made on this page.
 +
 Your plan appears in the table in the *Plans* page and you can run it from that page.
-
-// If needed:
-//* *Target namespace*: Destination namespace for all the migrated VMs. By default, the destination namespace is the current or active namespace.
-//
-// ** To edit the namespace, do the following:
-//
-// *** Click the *Edit* icon.
-// *** Select a different target namespace from the list in the window that opens.
-// *** Click *Save*.
