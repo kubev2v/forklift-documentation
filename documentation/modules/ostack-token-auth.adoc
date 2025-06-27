@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="openstack-token-authentication_{context}"]
 = Using token authentication with an {osp} source provider
 

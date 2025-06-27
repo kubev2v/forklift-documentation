@@ -18,7 +18,6 @@ You must install compatible software versions.
 |===
 
 [NOTE]
-.Migration from {rhv-full} 4.3
 ====
 {project-short} was tested only with {rhv-full} (RHV) 4.4 SP1.
 Migration from {rhv-full} ({rhv-short}) 4.3 has not been tested with {project-short} {project-version}. While not supported, basic migrations from {rhv-short} 4.3 are expected to work.

@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: steps
 [id="creating-validation-rule_{context}"]
 = Creating a validation rule
 

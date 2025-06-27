@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: CONCEPT
+:_content-type: context
 [id="mtv-performance-addendum_{context}"]
 = {project-short} performance addendum
 

@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: CONCEPT
+:_content-type: context
 [id="collected-logs-cr-info_{context}"]
 = Collected logs and custom resource information
 

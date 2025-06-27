@@ -1,4 +1,4 @@
-:_content-type: CONCEPT
+:_content-type: context
 
 [id="non-admin-permissions_{context}"]
 = Permissions needed by non-administrators to work with migration plan components
