@@ -837,8 +837,7 @@ EOF
 <5> Specify the name of the `NetworkMap` CR.
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
-<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address. +
-To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
+<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address. To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 <9> [[callout9]]Optional. Specify a template for the network interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 * `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
