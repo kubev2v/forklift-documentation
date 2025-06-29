@@ -86,12 +86,12 @@ endif::[]
 ifdef::vmware[]
 . Access the *Create provider* page for {vmw} by doing one of the following:
 
-.. In the {ocp} web console, click *Migration for Virtualization>Providers*.
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 ... Click *{vmw}*.
 
-.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization>Overview*.
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
 ... In the *Welcome* pane, click *{vmw}*.
 + 
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{vmw}* when the *Welcome* pane opens.
