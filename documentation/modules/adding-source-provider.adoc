@@ -96,8 +96,7 @@ ifdef::vmware[]
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{vmw}* when the *Welcome* pane opens.
 
 . Specify the following fields:
-
-+s
++
 *Provider details*
 
 * *Provider resource name*: Name of the source provider.
