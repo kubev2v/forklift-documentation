@@ -94,27 +94,27 @@ a|Varies with provider as follows:
 +
 See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this setting.
 |20
-|Adjustable by clicking the {kebab}, by either using the *+* and *-* keys to set a different value or by entering a value, and then clicking *Save*.
+|Adjustable by either using the *+* and *-* keys to set a different value or by entering a value.
 
 |Controller main container CPU limit
 |The CPU limit that is allocated to the main controller container, in milliCPUs (m).
 |500 m.
-|Adjustable by clicking the {kebab}, choosing another value from the list, and then clicking *Save*. Options: 200 m, 500 m, 2000 m, 8000 m.
+|Adjustable by selecting another value from the list. Options: 200 m, 500 m, 2000 m, 8000 m.
 
 |Controller main container memory limit
 |The memory limit that is allocated to the main controller container in mebibytes (Mi).
 |800 Mi.
-|Adjustable by clicking the {kebab}, choosing another value from the list, and then clicking *Save*. Options: 200 Mi, 800 Mi, 2000 Mi, 8000 Mi.
+|Adjustable by selecting another value from the list. Options: 200 Mi, 800 Mi, 2000 Mi, 8000 Mi.
 
 |Controller inventory container memory limit
 |The memory limit that is allocated to the inventory controller container in mebibytes (Mi).
 |1000 Mi.
-|Adjustable by clicking the {kebab}, choosing another value from the list, and then clicking *Save*. Options: 400 Mi, 1000 Mi, 2000 Mi, 8000 Mi.
+|Adjustable by selecting another value from the list. Options: 400 Mi, 1000 Mi, 2000 Mi, 8000 Mi.
 
 |Precopy internal (minutes)
 |The interval in minutes at which a new snapshot is requested before initiating a warm migration.
 |60 minutes.
-|Adjustable by clicking the {kebab}, choosing another value from the list, and then clicking *Save*. Options: 5 minutes, 30 minutes, 60 minutes, 120 minutes.
+|Adjustable by selecting another value from the list. Options: 5 minutes, 30 minutes, 60 minutes, 120 minutes.
 
 |Snapshot polling interval
 |The interval in seconds between which the system checks the status of snapshot creation or removal during a warm migration.
