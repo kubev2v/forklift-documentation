@@ -94,7 +94,7 @@ a|Varies with provider as follows:
 +
 See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this setting.
 |20
-|Adjustable by either using the *+* and *-* keys to set a different value or by entering a value.
+|Adjustable by either using the *+* and *-* keys to set a different value or by entering a new value.
 
 |Controller main container CPU limit
 |The CPU limit that is allocated to the main controller container, in milliCPUs (m).
