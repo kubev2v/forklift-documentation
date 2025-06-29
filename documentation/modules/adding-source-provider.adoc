@@ -86,14 +86,16 @@ endif::[]
 ifdef::vmware[]
 . Access the *Create provider* page for {vmw} by doing one of the following:
 
-.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+.. In the {ocp} web console, click *Migration for Virtualization>Providers*.
 ... Click *Create Provider*.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 ... Click *{vmw}*.
 
-.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization>Overview*.
 ... In the *Welcome* pane, click *{vmw}*.
-+
++ 
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{vmw}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 +
@@ -103,15 +105,13 @@ If the *Welcome* pane is not visible, click *Show the welcome card* in the upper
 * *Endpoint type*: Select the vSphere provider endpoint type. Options: *vCenter* or *ESXi*. You can migrate virtual machines from vCenter, an ESX/ESXi server that is not managed by vCenter, or from an ESX/ESXi server that is managed by vCenter but does not go through vCenter.
 * *URL*: URL of the SDK endpoint of the vCenter on which the source VM is mounted. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
 * *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
-
-
 +
 *Provider credentials*
 
 * *Username*: vCenter user or ESXi user. For example, `user@vsphere.local`.
 * *Password*: vCenter user password or ESXi user password.
 
-[start=5]
+[start=3]
 include::snip-certificate-options.adoc[]
 
 endif::[]
@@ -121,12 +121,14 @@ ifdef::rhv[]
 
 .. In the {ocp} web console, click *Migration for Virtualization > Providers*.
 ... Click *Create Provider*.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 ... Click *{rhv-full}*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click  *Migration for Virtualization > Overview*.
 ... In the *Welcome* pane, click *{rhv-full}*.
 +
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{rhv-full}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 
@@ -142,12 +144,14 @@ ifdef::ova[]
 
 .. In the {ocp} web console, click *Migration for Virtualization > Providers*.
 ... Click *Create Provider*.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 ... Click *Open Virtual Appliance*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
 ... In the *Welcome* pane, click *Open Virtual Appliance*.
 +
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Open Virtual Appliance* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 
@@ -159,12 +163,14 @@ ifdef::ostack[]
 
 .. In the {ocp} web console, click *Migration for Virtualization > Providers*.
 ... Click *Create Provider*.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 ... Click *{osp}*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
 ... In the *Welcome* pane, click *{osp}*.
 +
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{osp}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 
@@ -207,13 +213,14 @@ ifdef::cnv[]
 
 .. In the {ocp} web console, click *Migration for Virtualization > Providers*.
 ... Click *Create Provider*.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 ... Click *{virt}*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
 ... In the *Welcome* pane, click *{virt}*.
 +
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
-
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 
@@ -231,12 +238,14 @@ ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 
 .. In the {ocp} web console, click *Migration for Virtualization > Providers*.
 ... Click *Create Provider*.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 ... Click *{virt}*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
 ... In the *Welcome* pane, click *{virt}*.
 +
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project is `openshift-mtv`. If you have Administrator privileges, you can see all projects, otherwise you can see only the projects you are authorized to work with.
 
 
 . Specify the following fields:
