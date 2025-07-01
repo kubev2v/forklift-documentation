@@ -6,7 +6,7 @@
 
 = Creating a VMware vSphere migration plan by using the MTV wizard
 
-You can migrate :vmw: vSphere virtual machines (VMs) from :vmw: vCenter or from a :vmw: ESX/ESXi server by using the {project-full} plan creation wizard.
+You can migrate {vmw} vSphere virtual machines (VMs) from {vmw} vCenter or from a {vmw} ESX/ESXi server by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
@@ -104,7 +104,7 @@ You do not need to enter the passphrases in a specific order. For each LUKS-encr
 
 * *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider.
 
-** Verify that the transfer network is in the selected target namespace.
+** Verify that the transfer network is in the selected target project.
 
 ** To choose a different transfer network, select a different transfer network from the list.
 ** Optional: To configure another {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
@@ -163,7 +163,6 @@ The wizard opens to the page on which you defined the item.
 .. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
 
 . When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan. 
-. After you resolve all problems, click *Skip to review*, and then click *Create plan*.
 +
 When your plan is validated, the *Plan details* page for your plan opens.
 +

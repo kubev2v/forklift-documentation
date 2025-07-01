@@ -88,7 +88,7 @@ If needed, click *Add mapping* to add another mapping.
 +
 The transfer network is the network used to transfer the VMs to {virt}. This is the default transfer network of the provider. 
 
-** Verify that the transfer network is in the selected target namespace.
+** Verify that the transfer network is in the selected target project.
 
 ** To choose a different transfer network, select a different transfer network from the list.
 ** Optional: To configure another {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
@@ -124,7 +124,6 @@ The wizard opens to the page on which you defined the item.
 .. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
 
 . When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan. 
-. After you resolve all problems, click *Skip to review*, and then click *Create plan*.
 +
 When your plan is validated, the *Plan details* page for your plan opens.
 + 
