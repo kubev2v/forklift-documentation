@@ -21,7 +21,7 @@ include::snip_plan-limits.adoc[]
 
 [IMPORTANT]
 ====
-When you click *Create plan* in the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard itself, but are important. Be sure to read and follow the instructions for this page carefully even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
+When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard, but are important. Be sure to read and follow the instructions for this page carefully, even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
 ====
 
 .Prerequisites
@@ -30,13 +30,13 @@ When you click *Create plan* in the *Review and create* page of the wizard, {pro
 
 .Procedure
 
-. In the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
+. On the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
 . Click *Create plan*.
 +
 The *Create migration plan* wizard opens.
 +
 // General page
-. In the *General* page, specify the following fields:
+. On the *General* page, specify the following fields:
 
 * *Plan name*: Enter a name.
 * *Plan project*: Select from the list.
@@ -47,44 +47,44 @@ The *Create migration plan* wizard opens.
 . Click *Next*.
 +
 // Virtual machines page
-. In the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
+. On the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
 +
 // Network map page
-. In the *Network map* page, choose one of the following options:
+. On the *Network map* page, choose one of the following options:
 
 * *Use an existing network map*: Select an existing network map from the list.
 +
-If you choose this option, a copy of this map is attached to your plan and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies of it that other users have.
+These are network maps available for all plans. If you select this option, a copy of this map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
 
 * *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which will then be considered to be its owner.
 
-** *Source network* : Select from the list.
-** *Target network* : Select from the list.
+** *Source network*: Select from the list.
+** *Target network*: Select from the list.
 +
-If needed, click *Add mapping* to add an additional mapping.
+If needed, click *Add mapping* to add another mapping.
 ** *Network map name*: Enter a name or let {project-short} automatically generate a name for the network map.
 
 . Click *Next*.
 +
 // Storage map page
-. In the *Storage map* page, choose one of the following options:
+. On the *Storage map* page, choose one of the following options:
 
 * *Use an existing storage map*: Select an existing storage map from the list.
 +
-These are storage maps available for all plans. If you choose this option, a copy of this map is attached to your plan and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies of it that other users have.
+These are storage maps available for all plans. If you select this option, a copy of this map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
 
 * *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. For each map, specify the following.
 
-** *Source storage* : Select from the list.
-** *Target storage* : Select from the list.
+** *Source storage*: Select from the list.
+** *Target storage*: Select from the list.
 +
-If needed, click *Add mapping* to add an additional mapping.
+If needed, click *Add mapping* to add another mapping.
 ** *Storage map name*: Enter a name or let {project-short} automatically generate a name for the network map.
 
 . Click *Next*.
 +
 // Migration type page
-. In the *Migration type* page, choose one of the following:
+. On the *Migration type* page, choose one of the following:
 
 * *Cold migration* (default)
 * *Warm migration*
@@ -92,7 +92,7 @@ If needed, click *Add mapping* to add an additional mapping.
 . Click *Next*.
 +
 // Other settings page
-. In the *Other settings (optional)* page, specify any of the following settings that are appropriate for your plan. All are optional.
+. On the *Other settings (optional)* page, specify any of the following settings that are appropriate for your plan. All are optional.
 
 * *Disk decryption passphrases*: For disks encrypted using Linux Unified Key Setup (LUKS).
 
@@ -107,7 +107,7 @@ You do not need to enter the passphrases in a specific order. For each LUKS-encr
 ** Verify that the transfer network is in the selected target namespace.
 
 ** To choose a different transfer network, select a different transfer network from the list.
-** Optional: To configure an additional {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
+** Optional: To configure another {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
@@ -139,7 +139,7 @@ Migrating shared disks might slow down the migration process.
 . Click *Next*.
 +
 // Hooks page
-. In the *Hooks (optional)* page, you can add a pre-migration hook, a post-migration hook, or both types of migration hooks. All are optional.
+. On the *Hooks (optional)* page, you can add a pre-migration hook, a post-migration hook, or both types of migration hooks. All are optional.
 
 . To add a hook, select the appropriate *Enable hook* checkbox.
 . Enter the *Hook runner image*.
@@ -153,23 +153,23 @@ You cannot include more than one pre-migration hook or more than one post-migrat
 . Click *Next*.
 +
 // Review and create page
-. In the *Review and Create* page, review the information displayed.
+. On the *Review and Create* page, review the information displayed.
 . Edit any item by doing the following:
 
 .. Click its *Edit step* link.
 +
 The wizard opens to the page on which you defined the item.
 .. Edit the item.
-.. Either click *Next* to advance to the next page of the wizard or click *Skip to review* to return directly to the *Review and create* page.
+.. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
 
 . When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan. 
-. After you correct all problems, click *Skip to review* and then click *Create plan*.
+. After you resolve all problems, click *Skip to review*, and then click *Create plan*.
 +
 When your plan is validated, the *Plan details* page for your plan opens.
 +
 The *Plan settings* section of the page includes settings that you specified in the *Other settings (optional)* page and some additional optional settings. The steps below refer to the additional optional steps, but all of the settings can be edited by clicking the {kebab}, making the change, and then clicking *Save*.
 
-. Check the following items in the *Plan settings* section of the page:
+. Check the following items on the *Plan settings* section of the page:
 
 * *Volume name template*: Specifies a template for the volume interface name for the VMs in your plan.
 +
@@ -203,7 +203,7 @@ Variable names cannot exceed 63 characters.
 +
 [IMPORTANT]
 ====
-Changes you make in the *Virtual Machines* tab override any changes in the *Plan details* page.
+Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
 ====
 
 * *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan.
@@ -240,7 +240,7 @@ Variable names cannot exceed 63 characters.
 +
 [IMPORTANT]
 ====
-Changes you make in the  *Virtual Machines* tab override any changes in the *Plan details* page.
+Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
 ====
 
 * *Network name template*: Specifies a template for the network interface name for the VMs in your plan.
@@ -277,10 +277,10 @@ Variable names cannot exceed 63 characters.
 +
 [IMPORTANT]
 ====
-Changes you make in the  *Virtual Machines* tab override any changes in the *Plan details* page.
+Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
 ====
 
-* *Raw copy mode*: By default, during migration, virtual machines (VMs) are converted using a tool named `virt-v2v` that makes them compatible with {virt}. This conversion process is discussed in xref:virt-v2v-mtv_mtv[How MTV uses the virt-v2v tool]. _Raw copy mode_ copies VMs without converting them. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}.
+* *Raw copy mode*: By default, during migration, virtual machines (VMs) are converted using a tool named `virt-v2v` that makes them compatible with {virt}. This conversion process is discussed in xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. _Raw copy mode_ copies VMs without converting them. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}.
 
 ** To use raw copy mode for your migration plan, do the following:
 *** Click the *Edit* icon.
@@ -289,4 +289,4 @@ Changes you make in the  *Virtual Machines* tab override any changes in the *Pla
 +
 {project-short} validates any changes you made on this page.
 +
-Your plan appears in the table in the *Plans* page and you can run it from that page.
+Your plan appears in the table on the *Plans* page, and you can run it from that page.
