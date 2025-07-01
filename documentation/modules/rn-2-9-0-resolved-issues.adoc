@@ -8,10 +8,10 @@
 .{project-short} enabled vTPM for source Windows Server 2022 virtual machines without vTPM device
 VMware only: In earlier releases of {project-short}, after warm migration of Windows Server 2022 virtual machines (VMs) with UEFI settings, the virtual Trusted Platform Module (vTPM) device was added to the VMs even though the source VMs did not have the vTPM device. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2014[(MTV-2014)]
 
-.{project-short} failed to start virtual machine with non-aligned disk size after migration 
+.{project-short} failed to start virtual machine with non-aligned disk size after migration
 VMware only: In earlier releases of {project-short}, after migrating a VM with a disk size that did not align with the underlying storage, the VM failed to start. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2524[(MTV-2524)]
 
-.{project-short} does not refer to incorrect URL in VDDK error message
+.{project-short} does not refer to incorrect URL in the VDDK error message
 When you created a VMware provider with an incorrect VDDK URL and then created a migration plan, the plan displayed a `VDDK init image invalid` error message without a reference to the incorrect URL. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-1150[(MTV-1150)]
 
 .{project-short} swapped the MAC addresses after migrating VMware virtual machines with multiple NICs
@@ -23,9 +23,8 @@ In earlier releases of {project-short}, when you try to import Open Virtual Appl
 .{ocp-name} Container Platform to {ocp-name} Container Platform migration of VMware VM failed
 In earlier releases of {project-short}, after you successfully migrate a VMware virtual machine (VM) from {rhv-full} to an OCP cluster and then migrate the VM to another OCP cluster using {project-short}, the VM failed to start with a `No bootable device` error. This issue has been resolved in {project-short} 2.9.0 link:https://issues.redhat.com/browse/MTV-1544[(MTV-1544)]
 
-//new entry
-.{project-short} changed disk name of a virtual machine after migration from an OCP cluster to another OCP cluster
-After you migrate a VMware guest VM to an OCP 4.18 cluster and then migrate that VM to another local OCP 4.18 cluster by using {project-short}, the disk names were changed. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2367[(MTV-2367)]
+.{project-short} changed disk name of a virtual machine after migration from an {ocp-short} cluster to another {ocp-short} cluster
+After you migrate a VMware guest VM to an {ocp-short} 4.18 cluster and then migrate that VM to another local {ocp-short} 4.18 cluster by using {project-short}, the disk names were changed. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2367[(MTV-2367)]
 
 .{project-short} does not fully preserve VMware virtual machine UUID after migration
 In earlier releases of {project-short}, the Universally Unique Identifiers (UUID) of VMware VMs were not fully preserved after migration to {ocp-short}. This issue has been resolved through a warning in migration plans to inform you that VM UUIDs are truncated to 20 characters for `virtio` disks. link:https://issues.redhat.com/browse/MTV-1368[(MTV-1368)]

@@ -4,9 +4,9 @@
 
 {project-first} 2.9 introduces the following features and enhancements:
 
-* In the {project-short} {project-z-version} user interface, you can set the `skipGuestConversion` field to `true` in the migration plan to raw copy the disk of a VMware guest virtual machines (VM) to {rhv-full} during migration. If you raw copy the guest VM, it does not convert the guest VM, install virtio drivers, and preserve IP address. You can use this feature to migrate VMs that fail during migration because of unsupported guest operating systems. link:https://issues.redhat.com/browse/MTV-2001[(MTV-2001)]
+* In the {project-short} {project-z-version} user interface, you can set the `skipGuestConversion` field to `true` in the migration plan to raw copy the disk of a VMware guest virtual machines (VM) to {rhv-full} during migration. If you raw copy the guest VM, it does not convert the guest VM, install `virtio` drivers, and preserve the IP address. You can use this feature to migrate VMs that fail during migration because of unsupported guest operating systems. link:https://issues.redhat.com/browse/MTV-2001[(MTV-2001)]
 
-* {project-short} {project-z-version} is integrated with the storage offloading plugin to delegate the disk data copy process to the storage arrays. The disk data is copied by the storage array to a new Persistent Volume that is created on {ocp}. This PV can be used by the virtual machine. Since the data copy function is not carried over an IP-based network, the storage offloading helps to copy multi-terabyte data from single disk VMs without clogging the network, resulting in faster migrations. link:https://issues.redhat.com/browse/MTV-2241[(MTV-2241)]
+* {project-short} {project-z-version} is integrated with the storage offloading plugin to delegate the disk data copy process to the storage arrays. The disk data is copied by the storage array to a new persistent volume (PV) that is created on {ocp}. This PV can be used by the virtual machine. Since the data copy function is not carried over an IP-based network, the storage offloading helps to copy multi-terabyte data from single disk VMs without clogging the network, resulting in faster migrations. link:https://issues.redhat.com/browse/MTV-2241[(MTV-2241)]
 
 include::snip-developer-preview.adoc[leveloffset=+1]
 
@@ -18,11 +18,11 @@ include::snip-developer-preview.adoc[leveloffset=+1]
 
 * {project-short} {project-z-version} supports the `shared` disk property field in the Persistent Volume Claim (PVC) name template that allows you to customize the PVC name for shared disks. link:https://issues.redhat.com/browse/MTV-2337[(MTV-2337)]
 
-* {project-short} {project-z-version} now preserves the original VM name from the plan custom resource (CR) in the the migration CR. link:https://issues.redhat.com/browse/MTV-2075[(MTV-2075)]
+* {project-short} {project-z-version} now preserves the original VM name from the plan custom resource (CR) in the migration CR. link:https://issues.redhat.com/browse/MTV-2075[(MTV-2075)]
 
 * {project-short} {project-z-version} CLI allows you to add a `display-name` in the `annotations` field of the migration plan. The `display-name` you enter cannot be used for making API calls or CLI operations. link:https://issues.redhat.com/browse/MTV-2076[(MTV-2076)]
 
 * {project-short} {project-z-version} user interface has the following improvements:
 ** Access the `Create Provider` page for supported providers from the *Overview* page in the {project-full} menu. link:https://issues.redhat.com/browse/MTV-2210[(MTV-2210)]
 ** Access the `Health` and the `Settings` tabs from the *Overview* page. link:https://issues.redhat.com/browse/MTV-2210[(MTV-2210)]
-** Use the upgraded plan wizard page where the status of the plan depends on the statuses of the VM migrations. link:https://issues.redhat.com/browse/MTV-2547[(MTV-2547)]
+** Use the upgraded plan wizard page, where the status of the plan depends on the statuses of the VM migrations. link:https://issues.redhat.com/browse/MTV-2547[(MTV-2547)]
