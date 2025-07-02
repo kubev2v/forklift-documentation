@@ -162,7 +162,7 @@ The wizard opens to the page on which you defined the item.
 .. Edit the item.
 .. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
 
-. When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan. 
+. When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan.
 +
 When your plan is validated, the *Plan details* page for your plan opens.
 +

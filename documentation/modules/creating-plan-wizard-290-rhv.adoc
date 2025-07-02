@@ -92,9 +92,9 @@ If needed, click *Add mapping* to add another mapping.
 . Click *Next*.
 +
 // Other settings page
-. On the *Other settings (optional)* page, you have the option to change the *Transfer network* of your migration plan. 
+. On the *Other settings (optional)* page, you have the option to change the *Transfer network* of your migration plan.
 +
-The transfer network is the network used to transfer the VMs to {virt}. This is the default transfer network of the provider. 
+The transfer network is the network used to transfer the VMs to {virt}. This is the default transfer network of the provider.
 
 ** Verify that the transfer network is in the selected target project.
 
@@ -134,7 +134,17 @@ The wizard opens to the page on which you defined the item.
 . When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan. 
 +
 When your plan is validated, the *Plan details* page for your plan opens.
-+ 
-Your plan appears in the table on the *Plans* page, and you can run it from that page.
++
+The *Plan settings* section of the page includes settings that you specified in the *Other settings (optional)* page and some additional optional settings. The steps below refer to the additional optional steps, but all of the settings can be edited by clicking the {kebab}, making the change, and then clicking *Save*.
 
-// WHEN YOU CAN CREATE A PLAN CHECK THE PLAN DETAILS PAGE
+. Check the following item on the *Plan settings* section of the page:
+
+* Preserve CPU mode*: Generally, the CPU model (type) for RHV VMs is set at the cluster level. However, the CPU model can be set at the VM level, which is called a custom CPU model.
++
+By default, MTV sets the CPU model on the destination cluster as follows: MTV preserves custom CPU settings for VMs that have them. For VMs without custom CPU settings, MTV does not set the CPU model. Instead, the CPU model is later set by OpenShift Virtualization.
++
+To preserve the cluster-level CPU model of your RHV VMs, do the following:
+
+.. Click the {kebab}.
+.. Toggle the *Whether to preserve the CPU model* switch.
+.. Click Save.
