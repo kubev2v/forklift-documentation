@@ -135,7 +135,7 @@ Migrating shared disks might slow down the migration process.
 ====
 +
 ** To migrate shared disks in the migration plan, verify that *Shared disks* is selected in the checkbox. 
-** To avoid shared disks from being migrated, clear the *Shared disks* checkbox.
+** To avoid migrating shared disks, clear the *Shared disks* checkbox.
 
 . Click *Next*.
 +
