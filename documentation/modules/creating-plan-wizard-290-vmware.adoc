@@ -127,14 +127,15 @@ To learn more about the different types of networks {ocp-short} supports, see li
 +
 If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by checking the conversion pod logs.
 
-* *Shared disks*: Applies to cold migrations only. Shared disks are disks that are attached to multiple VMs and that use the multi-writer option. These characteristics make shared disks difficult to migrate. By default, {project-short} does not migrate shared disks.
+* *Shared disks*: Applies to cold migrations only. Shared disks are disks that are attached to multiple VMs and that use the multi-writer option. These characteristics make shared disks difficult to migrate. By default, {project-short} migrates shared disks.
 +
 [NOTE]
 ====
 Migrating shared disks might slow down the migration process.
 ====
 +
-** To migrate shared disks in the migration plan, select the *Shared disks* checkbox.
+** To migrate shared disks in the migration plan, verify that *Shared disks* is selected in the checkbox. 
+** To avoid shared disks from being migrated, clear the *Shared disks* checkbox.
 
 . Click *Next*.
 +
