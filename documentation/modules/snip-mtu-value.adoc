@@ -4,7 +4,7 @@ ifdef::vmware,dest_vwmware[]
 
 [NOTE]
 ====
-If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-migration-plan-2-8_vmware[Creating a migration plan].
+If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-plan-wizard-290-vmware_vmware[Creating a VMware vSphere migration plan using the {project-short} wizard].
 ====
 
 endif::[]
@@ -13,7 +13,7 @@ ifdef::dest_rhv[]
 
 [NOTE]
 ====
-If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-migration-plan-2-8_rhv[Creating a migration plan].
+If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-plan-wizard-290-rhv_rhv[Creating a {rhv-full} migration plan using the {project-short} wizard].
 ====
 
 endif::[]
@@ -22,7 +22,7 @@ ifdef::dest_ostack[]
 
 [NOTE]
 ====
-If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-migration-plan-2-8_ostack[Creating a migration plan].
+If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-plan-wizard-290-ostack_ostack[Creating an OpenStack migration plan by using the {project-short} wizard].
 ====
 
 endif::[]
@@ -31,7 +31,7 @@ ifdef::dest_ova[]
 
 [NOTE]
 ====
-If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-migration-plan-2-8_ostack[Creating a migration plan].
+If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-plan-wizard-290-ova_ova[Creating an Open Virtualization Appliance (OVA) migration plan by using the {project-short} wizard].
 ====
 
 endif::[]
@@ -40,7 +40,7 @@ ifdef::dest_cnv[]
 
 [NOTE]
 ====
-If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-migration-plan-2-8_cnv[Creating a migration plan].
+If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-plan-wizard-290-cnv_cnv[Creating an {virt} migration plan by using the {project-short} wizard].
 ====
 
 endif::[]

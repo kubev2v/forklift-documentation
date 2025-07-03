@@ -14,7 +14,7 @@ include::snip_vmware_esxi_nfc.adoc[]
 
 [NOTE]
 ====
-If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-migration-plan-2-8_{context}[Creating a migration plan].
+If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-plan-wizard-290-vmware_vmware[Creating a migration plan].
 ====
 
 .Prerequisites
