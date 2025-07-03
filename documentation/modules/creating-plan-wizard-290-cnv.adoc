@@ -58,7 +58,7 @@ The *Create migration plan* wizard opens.
 These are network maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
 
 * *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which will then be considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
-
++
 [NOTE]
 ====
 You can create an ownerless network map, which you and others can use for additional migration plans, in the *Network Maps* section of the UI.
@@ -80,6 +80,11 @@ If needed, click *Add mapping* to add another mapping.
 These are storage maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
 
 * *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. For each map, specify the following. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
++
+[NOTE]
+====
+You can create an ownerless storage map, which you and others can use for additional migration plans, in the *Storage Maps* section of the UI.
+====
 
 ** *Source storage*: Select from the list.
 ** *Target storage*: Select from the list.
