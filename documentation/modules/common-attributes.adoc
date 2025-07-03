@@ -30,6 +30,8 @@
 :a-rhv-short: a {rhv-short}
 :a-virt: an {virt}
 :manager: Manager
+:vmw: VMware
+
 
 // doc metadata
 :icons: font
