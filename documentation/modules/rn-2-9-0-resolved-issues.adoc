@@ -8,7 +8,7 @@
 .{project-short} enabled vTPM for source Windows Server 2022 virtual machines without vTPM device
 VMware only: In earlier releases of {project-short}, after warm migration of Windows Server 2022 virtual machines (VMs) with UEFI settings, the virtual Trusted Platform Module (vTPM) device was added to the VMs even though the source VMs did not have the vTPM device. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2014[(MTV-2014)]
 
-.{project-short} failed to start virtual machine with non-aligned disk size after migration
+.{project-short} failed to start the virtual machine with a non-aligned disk size after migration
 VMware only: In earlier releases of {project-short}, after migrating a VM with a disk size that did not align with the underlying storage, the VM failed to start. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2524[(MTV-2524)]
 
 .{project-short} does not refer to an incorrect URL in the VDDK error message
