@@ -10,7 +10,7 @@
 .Persistent volume claim name template does not support the `shared` field
 
 
-The persistent volume claim (PVC) name template in {project-short} user interface does not support the `shared` field to name volumes shared by multiple virtual machines. link:https://issues.redhat.com/browse/MTV-2721[(MTV-2721)]
+The persistent volume claim (PVC) name template in the {project-short} user interface does not support the `shared` field to name volumes shared by multiple virtual machines. link:https://issues.redhat.com/browse/MTV-2721[(MTV-2721)]
 
 .VMware guest virtual machines running Red Hat Enterprise Linux v6.0 cannot boot in {project-short}
 
