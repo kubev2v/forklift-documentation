@@ -17,8 +17,6 @@ VMware guest VMs running Red Hat Enterprise Linux (RHEL) v6.0 cannot boot into t
 When you select virtual machines (VMs) that use non-volatile memory express (NVMe) disks for creating a migration plan, the plan does not display an error but the migration stalls after the *DiskAllocation* phase because the migration of VMs with NVMe disks is not currently supported. link:https://issues.redhat.com/browse/MTV-2703[(MTV-2703)]
 
 .Source storage is not mapped in the {project-short} user interface for {ocp-short} to {ocp-short} migration
-
-
 When you select the storage mapping in the plan for a virtual machine for an {ocp-short} to {ocp-short} migration and update the source storage on the *Storage Maps* page, {project-short} displays a `SourceStorageNotValid` error. link:https://issues.redhat.com/browse/MTV-2784[(MTV-2784)]
 
 .Migration of VMware virtual machine from {ocp-short} to {ocp-short} cluster stalls due to changed name 
