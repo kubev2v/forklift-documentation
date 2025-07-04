@@ -22,7 +22,8 @@ When you select virtual machines (VMs) that use non-volatile memory express (NVM
 
 .Source storage is not mapped in the {project-short} user interface for {ocp-short} to {ocp-short} migration
 
-When you select the storage mapping in the plan for a virtual machine for an {ocp-short} to {ocp-short} migration, and update the source storage on the *Storage Maps* page, {project-short} displays a `SourceStorageNotValid` error. link:https://issues.redhat.com/browse/MTV-2784[(MTV-2784)]
+
+When you select the storage mapping in the plan for a virtual machine for an {ocp-short} to {ocp-short} migration and update the source storage on the *Storage Maps* page, {project-short} displays a `SourceStorageNotValid` error. link:https://issues.redhat.com/browse/MTV-2784[(MTV-2784)]
 
 .Migration of VMware virtual machine from {ocp-short} to {ocp-short} cluster stalls due to changed name 
 When you migrate a VMware virtual machine (VM) to an {ocp-short} cluster, the VM name is modified. When you try to migrate the VM again from the {ocp-short} cluster to another {ocp-short} cluster, the plan hangs with an `invalid value` error for the VM name. link:https://issues.redhat.com/browse/MTV-2810[(MTV-2810)]
