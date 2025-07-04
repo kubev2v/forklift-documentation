@@ -23,7 +23,6 @@ When you select the storage mapping in the plan for a virtual machine for an {oc
 When you migrate a VMware virtual machine (VM) to an {ocp-short} cluster, the VM name is modified. When you try to migrate the VM again from the {ocp-short} cluster to another {ocp-short} cluster, the plan hangs with an `invalid value` error for the VM name. link:https://issues.redhat.com/browse/MTV-2810[(MTV-2810)]
 
 .TPM device of a virtual machine uses a different persistent-state PVC after {ocp-short} to {ocp-short} migration 
-
 When you migrate a virtual machine (VM) with trusted platform module (TPM) from {ocp-short} to {ocp-short}, the VM uses a new persistent volume claim (PVC) that is created for the persistent-state TPM device after migration. link:https://issues.redhat.com/browse/MTV-2838[(MTV-2838)]
 
 For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
