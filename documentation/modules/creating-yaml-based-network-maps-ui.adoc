@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-yaml-based-network-maps-ui_{context}"]
+= Creating an ownerless network map in the {project-short} UI
+
+You can create one or more network mappings by using the {project-first} UI to map source networks to {virt} networks.
+
+.Prerequisites
+
+* Have a {vmw} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Network maps*.
+. Click *Create NetworkMap*.
++
+The *Create NetworkMap* page opens.
+. Enter the YAML or JSON definitions into the editor, or drag and drop a file into the editor.
+. Use the following YAML definitions:
+
+ifdef::vmware[]
+fred
+endif::[]
+
+
