@@ -199,7 +199,7 @@ You can create ownerless storage maps by using the {project-short} UI to map sou
 You can create this type of map by using one of the following methods:
 
 * *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 
 include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
@@ -251,7 +251,7 @@ You can create ownerless storage maps by using the {project-short} UI to map sou
 You can create this type of map by using one of the following methods:
 
 * *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
@@ -301,7 +301,7 @@ You can create ownerless storage maps by using the {project-short} UI to map sou
 You can create this type of map by using one of the following methods:
 
 * *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
@@ -350,7 +350,7 @@ You can create ownerless storage maps by using the {project-short} UI to map sou
 You can create this type of map by using one of the following methods:
 
 * *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
@@ -400,7 +400,7 @@ You can create ownerless storage maps by using the {project-short} UI to map sou
 You can create this type of map by using one of the following methods:
 
 * *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]

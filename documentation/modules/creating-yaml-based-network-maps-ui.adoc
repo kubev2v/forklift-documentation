@@ -210,14 +210,13 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod` and `multus`.
-<2> Specify a network attachment definition for each additional {virt} network. Specify the
-`namespace` either by using the `namespace property` or with a name built as follows: `<network_namespace>/<network_name>`.
+<2> Specify a network attachment definition for each additional {virt} network. Specify the `namespace` either by using the `namespace property` or with a name built as follows: `<network_namespace>/<network_name>`.
 <3> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
 
 [start=5]
 . Optional: To download your input, click *Download*.
-. Click *Create*. 
+. Click *Create*.
 +
-Your map appears in the list of network maps. 
+Your map appears in the list of network maps.
 

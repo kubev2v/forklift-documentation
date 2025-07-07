@@ -167,6 +167,6 @@ endif::[]
 
 [start=5]
 . Optional: To download your input, click *Download*.
-. Click *Create*. 
+. Click *Create*.
 +
-Your map appears in the list of storage maps. 
+Your map appears in the list of storage maps.
