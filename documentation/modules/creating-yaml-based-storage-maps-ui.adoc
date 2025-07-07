@@ -1,1 +1,172 @@
-barney
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-yaml-based-stoarge-maps-ui_{context}"]
+= Creating ownerless storage maps using YAML or JSON definitions in the {project-short} UI
+
+You can create ownerless storage maps by using YAML or JSON definitions in the {project-first} UI.
+
+.Prerequisites
+
+* Have a {vmw} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
+. Click *Create storage pap* > *Create with YAML*.
++
+The *Create StoragekMap* page opens.
+. Enter the YAML or JSON definitions into the editor, or drag and drop a file into the editor.
+. If you enter YAML definitions, use the following:
+
+ifdef::vmware[]
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode> <1>
+      source:
+        id: <source_datastore> <2>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+endif::[]
+
+ifdef::rhv[]
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode> <1>
+      source:
+        id: <source_storage_domain> <2>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+<2> Specify the {rhv-short} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+endif::[]
+
+ifdef::ova[]
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode> <1>
+      source:
+        name:  Dummy storage for source provider <provider_name> <2>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+<2> For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
+endif::[]
+
+ifdef::ostack[]
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode> <1>
+      source:
+        id: <source_volume_type> <2>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+<2> Specify the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+endif::[]
+
+ifdef::cnv[]
++[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode> <1>
+      source:
+        name: <storage_class>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+endif::[]
+
+[start=5]
+. Optional: To download your input, click *Download*.
+. Click *Create*. 
++
+Your map appears in the list of storage maps. 

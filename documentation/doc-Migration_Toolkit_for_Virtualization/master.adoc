@@ -191,6 +191,17 @@ include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
 === Storage maps in migration plans
 
 include::modules/about-storage-maps.adoc[leveloffset=+3]
+
+==== Creating ownerless storage maps in the {project-short} UI
+
+You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
+
+You can create this type of map by using one of the following methods:
+
+* *Create with form*, selecting items such as a source provider from lists
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+
+
 include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
@@ -223,6 +234,28 @@ include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
+=== Network maps in migration plans
+
+include::modules/about-network-maps.adoc[leveloffset=+3]
+
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
+
+=== Storage maps in migration plans
+
+include::modules/about-storage-maps.adoc[leveloffset=+3]
+
+==== Creating ownerless storage maps in the {project-short} UI
+
+You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
+
+You can create this type of map by using one of the following methods:
+
+* *Create with form*, selecting items such as a source provider from lists
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+
+include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
+
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 :!rhv:
@@ -251,6 +284,28 @@ include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
+=== Network maps in migration plans
+
+include::modules/about-network-maps.adoc[leveloffset=+3]
+
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
+
+=== Storage maps in migration plans
+
+include::modules/about-storage-maps.adoc[leveloffset=+3]
+
+==== Creating ownerless storage maps in the {project-short} UI
+
+You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
+
+You can create this type of map by using one of the following methods:
+
+* *Create with form*, selecting items such as a source provider from lists
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+
+include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
+
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 :!ostack:
@@ -277,6 +332,28 @@ include::modules/creating-migration-plan-2-8.adoc[leveloffset=+2]
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
+=== Network maps in migration plans
+
+include::modules/about-network-maps.adoc[leveloffset=+3]
+
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
+
+=== Storage maps in migration plans
+
+include::modules/about-storage-maps.adoc[leveloffset=+3]
+
+==== Creating ownerless storage maps in the {project-short} UI
+
+You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
+
+You can create this type of map by using one of the following methods:
+
+* *Create with form*, selecting items such as a source provider from lists
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+
+include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
@@ -305,6 +382,28 @@ include::modules/creating-migration-plan-2-8.adoc[leveloffset=+2]
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
+=== Network maps in migration plans
+
+include::modules/about-network-maps.adoc[leveloffset=+3]
+
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
+
+=== Storage maps in migration plans
+
+include::modules/about-storage-maps.adoc[leveloffset=+3]
+
+==== Creating ownerless storage maps in the {project-short} UI
+
+You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
+
+You can create this type of map by using one of the following methods:
+
+* *Create with form*, selecting items such as a source provider from lists
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.   
+
+include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 

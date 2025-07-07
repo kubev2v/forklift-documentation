@@ -6,7 +6,7 @@
 [id="about-network-maps_{context}"]
 = About network maps
 
-You can create network maps in {project-first} to map source networks to {virt} networks. You can create as many network maps as you need.
+You can create network maps in {project-first} to map source networks to {virt} networks. 
 
 There are two types of network maps: maps created for a specific migration plan and maps created for use by any migration plan. 
 

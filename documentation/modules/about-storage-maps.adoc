@@ -6,7 +6,7 @@
 [id="about-storage-maps_{context}"]
 = About storage maps
 
-You can create storage maps in {project-first} to specify the storage sources you want to use on both the source and target providers. You can create as many storage maps as you need.
+You can create storage maps in {project-first} to map source disk storages to {virt} storage classes. 
 
 There are two types of storage maps: maps created for a specific migration plan and maps created for use by any migration plan. 
 
