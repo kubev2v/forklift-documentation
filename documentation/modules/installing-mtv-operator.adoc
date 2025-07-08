@@ -17,7 +17,7 @@ endif::[]
 
 .Prerequisites
 
-* {ocp} {ocp-version} or later installed.
+* {ocp} {ocp-y-version} or later installed.
 * {virt} Operator installed on an OpenShift migration target cluster.
 * You must be logged in as a user with `cluster-admin` permissions.
 
