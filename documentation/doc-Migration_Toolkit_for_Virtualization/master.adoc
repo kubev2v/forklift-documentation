@@ -186,7 +186,7 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
 include::modules/about-network-maps.adoc[leveloffset=+3]
 
-include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
 === Storage maps in migration plans
 
@@ -202,7 +202,7 @@ You can create this type of map by using one of the following methods:
 * *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 
-include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
@@ -238,7 +238,7 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
 include::modules/about-network-maps.adoc[leveloffset=+3]
 
-include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
 === Storage maps in migration plans
 
@@ -253,7 +253,7 @@ You can create this type of map by using one of the following methods:
 * *Create with form*, selecting items such as a source provider from lists
 * *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
-include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-form-based-storage-maps-ui-rhv.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
@@ -288,7 +288,7 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
 include::modules/about-network-maps.adoc[leveloffset=+3]
 
-include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
 === Storage maps in migration plans
 
@@ -303,7 +303,7 @@ You can create this type of map by using one of the following methods:
 * *Create with form*, selecting items such as a source provider from lists
 * *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
-include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-form-based-storage-maps-ui-ostack.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
@@ -337,7 +337,7 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
 include::modules/about-network-maps.adoc[leveloffset=+3]
 
-include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
 === Storage maps in migration plans
 
@@ -352,7 +352,7 @@ You can create this type of map by using one of the following methods:
 * *Create with form*, selecting items such as a source provider from lists
 * *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
-include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-form-based-storage-maps-ui-ova.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
@@ -387,7 +387,7 @@ include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
 include::modules/about-network-maps.adoc[leveloffset=+3]
 
-include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
 === Storage maps in migration plans
 
@@ -402,7 +402,7 @@ You can create this type of map by using one of the following methods:
 * *Create with form*, selecting items such as a source provider from lists
 * *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
-include::modules/creating-form-based-storage-maps-ui.adoc[leveloffset=+4]
+include::modules/creating-form-based-storage-maps-ui-cnv.adoc[leveloffset=+4]
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]

@@ -8,10 +8,6 @@
 
 You can create ownerless storage maps by using YAML or JSON definitions in the {project-first} UI.
 
-.Prerequisites
-
-* Have a {vmw} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
-
 .Procedure
 
 . In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.

@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-form-based-storage-maps-ui-ostack_{context}"]
+= Creating ownerless storage maps using the form page of the {project-short} UI
+
+You can create ownerless storage maps by using the form page of the {project-short} UI.
+
+.Prerequisites
+
+* Have an {osp} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_cnv[Adding an {ocp} source provider] or xref:adding-source-provider_dest_cnv[Adding {a-virt} destination provider].
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
+. Click *Create storage map* > *Create with form*.
+. Specify the following:
+
+* *Map name*: Name of the storage map.
+* *Project*: Select from the list.
+* *Source provider*: Select from the list.
+* *Target provider*: Select from the list.
+* *Source storage*: Select from the list.
+* *Target storage*: Select from the list
+
+. Optional: Click *Add mapping* to create additional storage maps, including mapping multiple storage sources to a single target storage class.
+. Click *Create*.
++
+Your map appears in the list of storage maps.
+
+

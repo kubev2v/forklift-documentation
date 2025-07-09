@@ -8,10 +8,6 @@
 
 You can create ownerless network maps by using the {project-first} UI to map source networks to {virt} networks.
 
-.Prerequisites
-
-* Have a {vmw} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
-
 .Procedure
 
 . In the {ocp} web console, click *Migration for Virtualization* > *Network maps*.
@@ -219,4 +215,3 @@ endif::[]
 . Click *Create*.
 +
 Your map appears in the list of network maps.
-
