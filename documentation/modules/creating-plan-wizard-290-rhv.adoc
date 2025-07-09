@@ -161,7 +161,7 @@ The *Plan settings* section of the page includes settings that you specified in 
 
 . Check the following item on the *Plan settings* section of the page:
 
-* Preserve CPU mode*: Generally, the CPU model (type) for RHV VMs is set at the cluster level. However, the CPU model can be set at the VM level, which is called a custom CPU model.
+* *Preserve CPU mode*: Generally, the CPU model (type) for RHV VMs is set at the cluster level. However, the CPU model can be set at the VM level, which is called a custom CPU model.
 +
 By default, MTV sets the CPU model on the destination cluster as follows: MTV preserves custom CPU settings for VMs that have them. For VMs without custom CPU settings, MTV does not set the CPU model. Instead, the CPU model is later set by OpenShift Virtualization.
 +
