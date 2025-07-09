@@ -1,0 +1,21 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="about-storage-maps_{context}"]
+= About storage maps
+
+You can create storage maps in {project-first} to map source disk storages to {virt} storage classes.
+
+There are two types of storage maps: maps created for a specific migration plan and maps created for use by any migration plan.
+
+* Maps created for a specific plan are said to be _owned_ by that plan. You can create these kinds of maps in the *Storage maps* step of the *Plan creation wizard*.
+* Maps created for use by any migration plan are to said to be _ownerless_. You can create these kinds of maps in the *Storage maps* page of the *Migration for Virtualization* section of the {virt} web console.
++
+You, or anyone working in the same project, can use them when creating a migration plan in the *Plan creation wizard*. When you choose one of these unowned maps for a migration plan, {project-short} creates a copy of the map and defines your migration plan as the _owner of that copy_. Any changes you make to the copy do not affect the original map, nor do they apply to any other plan that uses a copy of the map.
+Both types of storage maps for a project are shown in the *Storage maps* page, but there is an important difference in the information displayed in the *Owner* column of that page for each:
+
+* Maps created in the *Storage maps* page of the *Migration for Virtualization* section of the {virt} web console are shown as having no owner.
+* Maps created in the *Storage maps* step of the *Plan creation wizard* are shown as being owned by the migration plan.
+

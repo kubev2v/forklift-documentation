@@ -1,0 +1,217 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-yaml-based-network-maps-ui_{context}"]
+= Creating ownerless network maps in the {project-short} UI
+
+You can create ownerless network maps by using the {project-first} UI to map source networks to {virt} networks.
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Network maps*.
+. Click *Create NetworkMap*.
++
+The *Create NetworkMap* page opens.
+. Enter the YAML or JSON definitions into the editor, or drag and drop a file into the editor.
+. If you enter YAML definitions, use the following:
+
+ifdef::vmware[]
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod <1>
+      source: <2>
+        id: <source_network_id>
+        name: <source_network_name>
+    - destination:
+        name: <network_attachment_definition> <3>
+        namespace: <network_attachment_definition_namespace> <4>
+        type: multus
+      source:
+        id: <source_network_id>
+        name: <source_network_name>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
+<2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+<3> Specify a network attachment definition for each additional {virt} network.
+<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+endif::[]
+
+ifdef::rhv[]
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod <1>
+      source: <2>
+        id: <source_network_id>
+        name: <source_network_name>
+    - destination:
+        name: <network_attachment_definition> <3>
+        namespace: <network_attachment_definition_namespace> <4>
+        type: multus
+      source:
+        id: <source_network_id>
+        name: <source_network_name>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `pod` and `multus`.
+<2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-short} network Universal Unique ID (UUID).
+<3> Specify a network attachment definition for each additional {virt} network.
+<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+endif::[]
+
+ifdef::ova[]
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod <1>
+      source:
+        id: <source_network_id> <2>
+    - destination:
+        name: <network_attachment_definition> <3>
+        namespace: <network_attachment_definition_namespace> <4>
+        type: multus
+      source:
+        id: <source_network_id>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `pod` and `multus`.
+<2> Specify the OVA network Universal Unique ID (UUID).
+<3> Specify a network attachment definition for each additional {virt} network.
+<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+endif::[]
+
+ifdef::ostack[]
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod <1>
+      source:<2>
+        id: <source_network_id>
+        name: <source_network_name>
+    - destination:
+        name: <network_attachment_definition> <3>
+        namespace: <network_attachment_definition_namespace> <4>
+        type: multus
+      source:
+        id: <source_network_id>
+        name: <source_network_name>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `pod` and `multus`.
+<2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {osp} network UUID.
+<3> Specify a network attachment definition for each additional {virt} network.
+<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+endif::[]
+
+ifdef::cnv[]
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod <1>
+      source:
+        name: <network_name>
+        type: pod
+    - destination:
+        name: <network_attachment_definition> <2>
+        namespace: <network_attachment_definition_namespace> <3>
+        type: multus
+      source:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
+<1> Allowed values are `pod` and `multus`.
+<2> Specify a network attachment definition for each additional {virt} network. Specify the `namespace` either by using the `namespace property` or with a name built as follows: `<network_namespace>/<network_name>`.
+<3> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+endif::[]
+
+[start=5]
+. Optional: To download your input, click *Download*.
+. Click *Create*.
++
+Your map appears in the list of network maps.

@@ -1,0 +1,44 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-form-based-storage-maps-ui-vmware_{context}"]
+= Creating ownerless storage maps using the form page of the {project-short} UI
+
+You can create ownerless storage maps by using the form page of the {project-short} UI.
+
+.Prerequisites
+
+* Have a {vmw} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
+. Click *Create storage map* > *Create with form*.
+. Specify the following:
+
+* *Map name*: Name of the storage map.
+* *Project*: Select from the list.
+* *Source provider*: Select from the list.
+* *Target provider*: Select from the list.
+* *Source storage*: Select from the list.
+* *Target storage*: Select from the list
+
+. Optional: If this is a storage map for a migration using storage copy offload, specify the following offload options:
+
+* *Offload plugin*: Select from the list.
+* *Storage secret*: Select from the list.
+* *Storage product*: Select from the list
++
+[IMPORTANT]
+====
+Storage copy offload is Developer Preview software only. Developer Preview software is not supported by Red{nbsp}Hat in any way and is not functionally complete or production-ready. Do not use Developer Preview software for production or business-critical workloads. Developer Preview software provides early access to upcoming product software in advance of its possible inclusion in a Red{nbsp}Hat product offering. Customers can use this software to test functionality and provide feedback during the development process. This software might not have any documentation, is subject to change or removal at any time, and has received limited testing. Red{nbsp}Hat might provide ways to submit feedback on Developer Preview software without an associated SLA.
+
+For more information about the support scope of Red{nbsp}Hat Developer Preview software, see link:https://access.redhat.com/support/offerings/devpreview/[Developer Preview Support Scope].
+====
+
+. Optional: Click *Add mapping* to create additional storage maps, including mapping multiple storage sources to a single target storage class.
+. Click *Create*.
++
+Your map appears in the list of storage maps.
