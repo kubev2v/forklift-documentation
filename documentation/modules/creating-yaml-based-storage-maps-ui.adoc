@@ -15,9 +15,9 @@ You can create ownerless storage maps by using YAML or JSON definitions in the {
 .Procedure
 
 . In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
-. Click *Create storage pap* > *Create with YAML*.
+. Click *Create storage map* > *Create with YAML*.
 +
-The *Create StoragekMap* page opens.
+The *Create StorageMap* page opens.
 . Enter the YAML or JSON definitions into the editor, or drag and drop a file into the editor.
 . If you enter YAML definitions, use the following:
 

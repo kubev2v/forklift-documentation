@@ -15,7 +15,7 @@ You can create ownerless storage maps by using the form page of the {project-sho
 .Procedure
 
 . In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
-. Click *Create storage pap* > *Create with form*.
+. Click *Create storage map* > *Create with form*.
 . Specify the following:
 
 * *Map name*: Name of the storage map.
