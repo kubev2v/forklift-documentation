@@ -1,0 +1,151 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="creating-plan-wizard-290-ostack_{context}"]
+
+= Creating an {osp} migration plan by using the MTV wizard
+
+You can migrate {osp} virtual machines (VMs) by using the {project-full} plan creation wizard.
+
+The wizard is designed to lead you step-by-step in creating a migration plan.
+
+[WARNING]
+====
+Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
+
+This prevents concurrent disk access to the storage the guest points to.
+====
+
+include::snip_plan-limits.adoc[]
+
+[IMPORTANT]
+====
+When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard, but are important. Be sure to read and follow the instructions for this page carefully, even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
+====
+
+.Prerequisites
+
+* Have an {osp} source provider and an {virt} destination provider. For more information, see xref:adding-source-provider_ostack[Adding an OpenStack source provider] or xref:adding-source-provider_dest_ostack[Adding {a-virt} destination provider].
+* If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
+. Click *Create plan*.
++
+The *Create migration plan* wizard opens.
++
+// General page
+. On the *General* page, specify the following fields:
+
+* *Plan name*: Enter a name.
+* *Plan project*: Select from the list.
+* *Source provider*: Select from the list.
+* *Target provider*: Select from the list.
+* *Target project*: Select from the list.
+
+.. Click *Next*.
++
+// Virtual machines page
+. On the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
++
+// Network map page
+. On the *Network map* page, choose one of the following options:
+
+* *Use an existing network map*: Select an existing network map from the list.
++
+These are network maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
++
+[NOTE]
+====
+If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
+====
+
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which will then be considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
++
+[NOTE]
+====
+You can create an ownerless network map, which you and others can use for additional migration plans, in the *Network Maps* section of the UI.
+====
+
+** *Source network*: Select from the list.
+** *Target network*: Select from the list.
++
+If needed, click *Add mapping* to add another mapping.
+** *Network map name*: Enter a name or let {project-short} automatically generate a name for the network map.
+
+. Click *Next*.
++
+// Storage map page
+. On the *Storage map* page, choose one of the following options:
+
+* *Use an existing storage map*: Select an existing storage map from the list.
++
+These are storage maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
++
+[NOTE]
+====
+If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
+====
+
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. For each map, specify the following. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
++
+[NOTE]
+====
+You can create an ownerless storage map, which you and others can use for additional migration plans, in the *Storage Maps* section of the UI.
+====
+
+** *Source storage*: Select from the list.
+** *Target storage*: Select from the list.
++
+If needed, click *Add mapping* to add another mapping.
+** *Storage map name*: Enter a name or let {project-short} automatically generate a name for the storage map.
+
+. Click *Next*.
++
+// Other settings page
+. On the *Other settings (optional)* page, you have the option to change the *Transfer network* of your migration plan.
++
+The transfer network is the network used to transfer the VMs to {virt}. This is the default transfer network of the provider.
+
+** Verify that the transfer network is in the selected target project.
+
+** To choose a different transfer network, select a different transfer network from the list.
+** Optional: To configure another {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
++
+To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
+
+** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+
+. Click *Next*.
++
+// Hooks page
+. On the *Hooks (optional)* page, you can add a pre-migration hook, a post-migration hook, or both types of migration hooks. All are optional.
+
+. To add a hook, select the appropriate *Enable hook* checkbox.
+. Enter the *Hook runner image*.
+. Enter the *Ansible playbook* of the hook in the window.
++
+[NOTE]
+====
+You cannot include more than one pre-migration hook or more than one post-migration hook in a migration plan.
+====
+
+. Click *Next*.
++
+// Review and create page
+. On the *Review and Create* page, review the information displayed.
+. Edit any item by doing the following:
+
+.. Click its *Edit step* link.
++ 
+The wizard opens to the page on which you defined the item.
+.. Edit the item.
+.. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
+
+. When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan.
++
+When your plan is validated, the *Plan details* page for your plan opens.
++ 
+Your plan appears in the table on the *Plans* page, and you can run it from that page.

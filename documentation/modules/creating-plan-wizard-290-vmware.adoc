@@ -1,0 +1,313 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+[id="creating-plan-wizard-290-vmware_{context}"]
+
+= Creating a VMware vSphere migration plan by using the MTV wizard
+
+You can migrate {vmw} vSphere virtual machines (VMs) from {vmw} vCenter or from a {vmw} ESX/ESXi server by using the {project-full} plan creation wizard.
+
+The wizard is designed to lead you step-by-step in creating a migration plan.
+
+[WARNING]
+====
+Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
+
+This prevents concurrent disk access to the storage the guest points to.
+====
+
+include::snip_plan-limits.adoc[]
+
+[IMPORTANT]
+====
+When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard, but are important. Be sure to read and follow the instructions for this page carefully, even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
+====
+
+.Prerequisites
+
+* Have a {vmw} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
+* If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
+
+.Procedure
+
+. On the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
+. Click *Create plan*.
++
+The *Create migration plan* wizard opens.
++
+// General page
+. On the *General* page, specify the following fields:
+
+* *Plan name*: Enter a name.
+* *Plan project*: Select from the list.
+* *Source provider*: Select from the list.
+* *Target provider*: Select from the list.
+* *Target project*: Select from the list.
+
+. Click *Next*.
++
+// Virtual machines page
+. On the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
++
+// Network map page
+. On the *Network map* page, choose one of the following options:
+
+* *Use an existing network map*: Select an existing network map from the list.
++
+These are network maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
++
+[NOTE]
+====
+If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
+====
+
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which will then be considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
++
+[NOTE]
+====
+You can create an ownerless network map, which you and others can use for additional migration plans, in the *Network Maps* section of the UI.
+====
+
+** *Source network*: Select from the list.
+** *Target network*: Select from the list.
++
+If needed, click *Add mapping* to add another mapping.
+** *Network map name*: Enter a name or let {project-short} automatically generate a name for the network map.
+
+. Click *Next*.
++
+// Storage map page
+. On the *Storage map* page, choose one of the following options:
+
+* *Use an existing storage map*: Select an existing storage map from the list.
++
+These are storage maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
++
+[NOTE]
+====
+If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
+====
+
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. For each map, specify the following. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
++
+[NOTE]
+====
+You can create an ownerless storage map, which you and others can use for additional migration plans, in the *Storage Maps* section of the UI.
+====
+
+** *Source storage*: Select from the list.
+** *Target storage*: Select from the list.
++
+If needed, click *Add mapping* to add another mapping.
+** *Storage map name*: Enter a name or let {project-short} automatically generate a name for the storage map.
+
+. Click *Next*.
++
+// Migration type page
+. On the *Migration type* page, choose one of the following:
+
+* *Cold migration* (default)
+* *Warm migration*
+
+. Click *Next*.
++
+// Other settings page
+. On the *Other settings (optional)* page, specify any of the following settings that are appropriate for your plan. All are optional.
+
+* *Disk decryption passphrases*: For disks encrypted using Linux Unified Key Setup (LUKS).
+
+** Enter a decryption passphrase for a LUKS-encrypted device.
+** To add another passphrase, click *Add passphrase* and add a passphrase.
+** Repeat as needed.
++
+You do not need to enter the passphrases in a specific order. For each LUKS-encrypted device, {project-short} tries each passphrase until one unlocks the device.
+
+* *Transfer Network*: The network used to transfer the VMs to {virt}. This is the default transfer network of the provider.
+
+** Verify that the transfer network is in the selected target project.
+
+** To choose a different transfer network, select a different transfer network from the list.
+** Optional: To configure another {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
++
+To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
+
+** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+
+* *Preserve static IPs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP during migration.
+
+** To preserve static IPs, select the *Preserve the static IPs* checkbox.
++
+{project-short} then issues a warning message about any VMs whose vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere. This causes the vNIC properties to be reported to {project-short}.
+
+* *Root device*: Applies to multi-boot VM migrations only. By default, {project-short} uses the first bootable device detected as the root device.
+
+** To specify a different root device, enter it in the textbox.
++
+{project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
++
+If the conversion fails because the boot device provided is incorrect, it is possible to get the correct information by checking the conversion pod logs.
+
+* *Shared disks*: Applies to cold migrations only. Shared disks are disks that are attached to multiple VMs and that use the multi-writer option. These characteristics make shared disks difficult to migrate. By default, {project-short} migrates shared disks.
++
+[NOTE]
+====
+Migrating shared disks might slow down the migration process.
+====
++
+** To migrate shared disks in the migration plan, verify that *Shared disks* is selected in the checkbox. 
+** To avoid migrating shared disks, clear the *Shared disks* checkbox.
+
+. Click *Next*.
++
+// Hooks page
+. On the *Hooks (optional)* page, you can add a pre-migration hook, a post-migration hook, or both types of migration hooks. All are optional.
+
+. To add a hook, select the appropriate *Enable hook* checkbox.
+. Enter the *Hook runner image*.
+. Enter the *Ansible playbook* of the hook in the window.
++
+[NOTE]
+====
+You cannot include more than one pre-migration hook or more than one post-migration hook in a migration plan.
+====
+
+. Click *Next*.
++
+// Review and create page
+. On the *Review and Create* page, review the information displayed.
+. Edit any item by doing the following:
+
+.. Click its *Edit step* link.
++
+The wizard opens to the page on which you defined the item.
+.. Edit the item.
+.. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
+
+. When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan.
++
+When your plan is validated, the *Plan details* page for your plan opens.
++
+The *Plan settings* section of the page includes settings that you specified in the *Other settings (optional)* page and some additional optional settings. The steps below refer to the additional optional steps, but all of the settings can be edited by clicking the {kebab}, making the change, and then clicking *Save*.
+
+. Check the following items on the *Plan settings* section of the page:
+
+* *Volume name template*: Specifies a template for the volume interface name for the VMs in your plan.
++
+The template follows the Go template syntax and has access to the following variables:
+
+** `.PVCName`: Name of the PVC mounted to the VM using this volume
+** `.VolumeIndex`: Sequential index of the volume interface (0-based)
++
+Examples
+
+** `"disk-{{.VolumeIndex}}"`
+** `"pvc-{{.PVCName}}"`
++
+Variable names cannot exceed 63 characters.
++
+** To specify a volume name template for all the VMs in your plan, do the following:
+
+*** Click the *Edit* icon.
+*** Click *Enter custom naming template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
+
+** To specify a different volume name template only for specific VMs, do the following:
+
+*** Click the *Virtual Machines* tab.
+*** Select the desired VMs.
+*** Click the {kebab} of the VM.
+*** Select *Edit Volume name template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
++
+[IMPORTANT]
+====
+Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
+====
+
+* *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan.
++
+The template follows the Go template syntax and has access to the following variables:
+
+** `.VmName`: Name of the VM
+** `.PlanName`: Name of the migration plan
+** `.DiskIndex`: Initial volume index of the disk
+** `.RootDiskIndex`: Index of the root disk
++
+Examples
+
+** `"{{.VmName}}-disk-{{.DiskIndex}}"`
+** `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
++
+Variable names cannot exceed 63 characters.
++
+** To specify a PVC name template for all the VMs in your plan, do the following:
+
+*** Click the *Edit* icon.
+*** Click *Enter custom naming template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
+
+** To specify a PVC name template only for specific VMs, do the following:
+
+*** Click the *Virtual Machines* tab.
+*** Select the desired VMs.
+*** Click the {kebab} of the VM.
+*** Select *Edit PVC name template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
++
+[IMPORTANT]
+====
+Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
+====
+
+* *Network name template*: Specifies a template for the network interface name for the VMs in your plan.
++
+The template follows the Go template syntax and has access to the following variables:
+
+** `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
+** `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
+** `.NetworkType`: Network type. Options: `multus` or `pod`.
+** `.NetworkIndex`: Sequential index of the network interface (0-based).
++
+Examples
+
+** `"net-{{.NetworkIndex}}"`
+** `{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
++
+Variable names cannot exceed 63 characters.
++
+** To specify a network name template for all the VMs in your plan, do the following:
+
+*** Click the *Edit* icon.
+*** Click *Enter custom naming template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
+
+** To specify a different network name template only for specific VMs, do the following:
+
+*** Click the *Virtual Machines* tab.
+*** Select the desired VMs.
+*** Click the {kebab} of the VM.
+*** Select *Edit Network name template*.
+*** Enter the template according to the instructions.
+*** Click *Save*.
++
+[IMPORTANT]
+====
+Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
+====
+
+* *Raw copy mode*: By default, during migration, virtual machines (VMs) are converted using a tool named `virt-v2v` that makes them compatible with {virt}. This conversion process is discussed in xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. _Raw copy mode_ copies VMs without converting them. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}.
+
+** To use raw copy mode for your migration plan, do the following:
+*** Click the *Edit* icon.
+*** Toggle the *Raw copy mode* switch.
+*** Click *Save*.
++
+{project-short} validates any changes you made on this page.
++
+Your plan appears in the table on the *Plans* page, and you can run it from that page.
