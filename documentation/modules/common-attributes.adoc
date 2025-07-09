@@ -30,7 +30,6 @@
 :a-rhv-short: a {rhv-short}
 :a-virt: an {virt}
 :manager: Manager
-:FeatureName: Storage Copy Offload
 
 // doc metadata
 :icons: font
