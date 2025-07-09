@@ -21,7 +21,7 @@ include::snip_plan-limits.adoc[]
 
 [IMPORTANT]
 ====
-When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard, but are imp ortant. Be sure to read and follow the instructions for this page carefully, even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
+When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard, but are important. Be sure to read and follow the instructions for this page carefully, even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
 ====
 
 .Prerequisites
