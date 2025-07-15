@@ -186,7 +186,7 @@ The wizard opens to the page on which you defined the item.
 
 . When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan.
 +
-When your plan is validated, the *Plan details* page for your plan opens.
+When your plan is validated, the *Plan details* page for your plan opens in the *Details* tab.
 +
 The *Plan settings* section of the page includes settings that you specified in the *Other settings (optional)* page and some additional optional settings. The steps below refer to the additional optional steps, but all of the settings can be edited by clicking the {kebab}, making the change, and then clicking *Save*.
 
@@ -309,5 +309,29 @@ Changes you make on the *Virtual Machines* tab override any changes on the *Plan
 *** Click *Save*.
 +
 {project-short} validates any changes you made on this page.
+
+. In addition to listing details based on your entries in the wizard, the *Plan details* tab includes the following two sections after the details of the plan:
 +
-Your plan appears in the table on the *Plans* page, and you can run it from that page.
+* *Migration history*: Details about successful and unsuccessful attempts to run the plan
+* *Conditions*: Any changes that need to be made to the plan so that it can run successfully
++
+. When you have fixed all conditions listed, you can run your plan from the *Plans* page.
++
+The *Plan details* page also includes five additional tabs, which are described in the table that follows:
++
+[cols="1,1,1,1,1",options="header"]
+.Tabs of the Plan details page
+|===
+|YAML
+|Virtual Machines
+|Resources
+|Mappings
+|Hooks
+
+|Editable YAML `Plan` manifest based on your plan's details including source provider, network and storage maps, VMs, and any issues with your VMs
+|The VMs the plan migrates
+|Calculated resources: VMs, CPUs, and total memory for both total VMs and running VMs
+|Editable specification of the network and storage maps used by your plan
+|Updatable specification of the hooks used by your plan, if any
+|===
+
