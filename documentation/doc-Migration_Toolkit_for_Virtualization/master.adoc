@@ -1,3 +1,8 @@
+include::modules/common-attributes.adoc[]
+ifeval::["{build}" == "downstream"]
+[id="installing-and-using-{title}"]
+= {user-guide-title}
+endif::[]
 
 :toc:
 :toc-title:
@@ -6,10 +11,8 @@
 :context: mtv
 :mtv:
 
-ifeval::["{build}" == "downstream"]
-
 include::modules/making-open-source-more-inclusive.adoc[leveloffset=+1]
-endif::[]
+
 :_mod-docs-content-type: ASSEMBLY
 [id="about-mtv_{context}"]
 == About {the-lc} {project-full}
