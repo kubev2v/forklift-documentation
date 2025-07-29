@@ -11,7 +11,7 @@
 == Resolved issues 2.8.6
 
 .Installing drivers on firstboot sometimes fail with PnP service not available
-In earlier releases of {project-short}, Plug and Play (PnP) service unavailability during driver installation caused device installation failure. As a consequence, users experienced installation failures. With this release, the driver package import issue has been resolved, allowing successful driver installation with the PnP service. As a result, users now experience successful device installation. link:https://issues.redhat.com/browse/MTV-3042[(MTV-3042)]
+In earlier releases of {project-short}, Plug and Play (PnP) service unavailability caused `virtio` driver installation failure while booting guest virtual machines that run Windows. As a consequence, users experienced boot failures of guest VMs. With this release, the driver package import issue has been resolved, allowing successful driver installation with the PnP service. As a result, users can now start guest VMs. link:https://issues.redhat.com/browse/MTV-3042[(MTV-3042)]
 
 [id="resolved-issues-2-8-5_{context}"]
 == Resolved issues 2.8.5
