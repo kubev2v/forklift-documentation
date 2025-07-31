@@ -1,0 +1,27 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+[id="resolved-issues-2-9-1_{context}"]
+= Resolved issues 2.9.1
+
+.{project-short} used only compatibility mode bus for virtual machines with raw copy mode
+
+In earlier releases, virtual machines (VMs) that enabled `skipGuestConversion` (raw copy mode) used only compatible mode bus and adapters: Serial Advanced Technology Attachment (SATA), E1000E, and USB (Universal Serial Bus). This issue has been resolved in {project-short} 2.9.1 by adding the `useCompatibilityMode` field. When set to `false`, the `useCompatibilityMode` field allows you to use `VirtIO` devices for VMs with raw copy mode. You must install `virtio` drivers to use the `VirtIO` devices before migration. The `useCompatibilityMode` field does not have an effect without enabling `skipGuestConversion`. 
+In case of a VM boot failure in the target cluster, you must switch to the compatible mode buses for the guest VMs. link:https://issues.redhat.com/browse/MTV-3009[(MTV-3009)]
+
+.Migration plans failed at the reconciliation stage if another plan referred to a deleted virtual machine 
+
+VMware only: In earlier releases, migration plans sometimes failed in the reconciliation phase of a warm migration by referring to a deleted virtual machine (VM) that is part of another plan. This issue has been resolved in {project-short} 2.9.1. As a result, VM deletion in one plan does not impact another running plan. link:https://issues.redhat.com/browse/MTV-2774[(MTV-2774)]
+
+.{project-short} listed archive plans when the `show archived` option was disabled
+
+In earlier releases, the {project-short} user interface listed archived plans when the `show archived` option was disabled. As a result, users could not track active plans easily. This issue has been resolved in {project-short} 2.9.1. Now, the archived plans are listed only when the `show archived` option is enabled. link:https://issues.redhat.com/browse/MTV-2955[(MTV-2955)]
+
+.{project-short} user interface displayed an `uncaught runtime` error when editing prehooks in plans
+
+In earlier releases, when you tried to update a prehook in a plan, the {project-short} user interface displayed an `uncaught runtime` error. Consequently, users could not edit prehooks in plans. This issue has been resolved in {project-short} 2.9.1. link:https://issues.redhat.com/browse/MTV-2791[(MTV-2791)]
+
+.{project-short} user interface did not update network and storage mappings in plans
+
+In earlier releases, an {project-short} user interface issue did not permit updates to the current network and storage mapping. This issue that prevented users from changing network and storage mappings in plans has been resolved in {project-short} 2.9.1. link:https://issues.redhat.com/browse/MTV-2789[(MTV-2789)]
