@@ -46,8 +46,6 @@ $ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
 In order to migrate to {virt} 4.12, download VDDK version 7.0.3.2 from the link:https://developer.vmware.com/web/sdk/7.0/vddk[VMware VDDK version 7 download page].
 ====
 
-// On 17 January 2025, remove this note unless the OpenShift Container Platform's life cycle is extended.
-
 . Save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
 +
