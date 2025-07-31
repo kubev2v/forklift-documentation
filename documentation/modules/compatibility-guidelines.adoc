@@ -8,8 +8,6 @@
 
 You must install compatible software versions.
 
-
-// check OCP version
 [cols="1,1,1,1,1,1", options="header"]
 .Compatible software versions
 |===
@@ -34,4 +32,3 @@ However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3
 == OpenShift Operator Life Cycles
 
 For more information about the software maintenance Life Cycle classifications for Operators shipped by Red Hat for use with OpenShift Container Platform, see link:https://access.redhat.com/support/policy/updates/openshift_operators#platform-agnostic[OpenShift Operator Life Cycles].
-

@@ -16,6 +16,7 @@ endif::[]
 ifeval::["{build}" == "downstream"]
 
 include::modules/making-open-source-more-inclusive.adoc[leveloffset=+1]
+
 endif::[]
 :_mod-docs-content-type: ASSEMBLY
 [id="about-mtv_{context}"]
@@ -32,10 +33,12 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 .Additional resources
 
 * link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
+
 * link:https://access.redhat.com/articles/6380311[Performance recommendations for migrating from Red Hat Virtualization to OpenShift Virtualization].
 
 
 include::modules/cold-warm-migration.adoc[leveloffset=+1]
+
 include::modules/mtv-migration-speed-comparison.adoc[leveloffset=+2]
 
 include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
@@ -81,6 +84,7 @@ You can use these methods to migrate virtual machines with {osp} source provider
 :ostack:
 
 include::modules/ostack-token-auth.adoc[leveloffset=+4]
+
 include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
 
 :!ostack:
@@ -88,11 +92,17 @@ include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
 :mtv:
 
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
+
 include::modules/creating-vmware-role-mtv-permissions.adoc[leveloffset=+3]
+
 include::modules/creating-vddk-image.adoc[leveloffset=+3]
+
 include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
+
 include::modules/vddk-validator-containers.adoc[leveloffset=+3]
+
 include::modules/ova-prerequisites.adoc[leveloffset=+2]
+
 include::modules/cnv-prerequisites.adoc[leveloffset=+2]
 
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
@@ -120,6 +130,7 @@ include::modules/installing-mtv-operator.adoc[leveloffset=+2]
 :mtv:
 
 include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
+
 include::modules/max-concurrent-vms.adoc[leveloffset=+3]
 
 [id="migrating-vms-ocp-web-console_{context}"]
@@ -128,9 +139,10 @@ include::modules/max-concurrent-vms.adoc[leveloffset=+3]
 Use the {project-short} user interface to migrate virtual machines (VMs). It is located in the *Virtualization* section of the {ocp} web console.
 
 include::modules/mtv-ui.adoc[leveloffset=+2]
-include::modules/mtv-overview-page.adoc[leveloffset=+3]
-include::modules/mtv-settings.adoc[leveloffset=+3]
 
+include::modules/mtv-overview-page.adoc[leveloffset=+3]
+
+include::modules/mtv-settings.adoc[leveloffset=+3]
 
 [id="migrating-vms-mtv-ui_{context}"]
 === Migrating virtual machines using the MTV user interface
@@ -163,6 +175,7 @@ VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk D
 == Migrating virtual machines from VMware vSphere
 
 include::modules/adding-source-provider.adoc[leveloffset=+2]
+
 include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+2]
 
 :!vmware:
@@ -170,6 +183,7 @@ include::modules/selecting-migration-network-for-vmware-source-provider.adoc[lev
 :dest_vmware:
 
 include::modules/adding-source-provider.adoc[leveloffset=+2]
+
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
 
 :!dest_vmware:
@@ -203,6 +217,7 @@ You can create this type of map by using one of the following methods:
 
 
 include::modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=+4]
+
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
@@ -222,6 +237,7 @@ include::modules/adding-source-provider.adoc[leveloffset=+2]
 :dest_rhv:
 
 include::modules/adding-source-provider.adoc[leveloffset=+2]
+
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
 
 :!dest_rhv:
@@ -254,6 +270,7 @@ You can create this type of map by using one of the following methods:
 * *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 include::modules/creating-form-based-storage-maps-ui-rhv.adoc[leveloffset=+4]
+
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
@@ -272,6 +289,7 @@ include::modules/adding-source-provider.adoc[leveloffset=+2]
 :dest_ostack:
 
 include::modules/adding-source-provider.adoc[leveloffset=+2]
+
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
 
 :!dest_ostack:
@@ -304,6 +322,7 @@ You can create this type of map by using one of the following methods:
 * *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 include::modules/creating-form-based-storage-maps-ui-ostack.adoc[leveloffset=+4]
+
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
@@ -320,7 +339,9 @@ include::modules/adding-source-provider.adoc[leveloffset=+2]
 :!ova:
 :context: dest_ova
 :dest_ova:
+
 include::modules/adding-source-provider.adoc[leveloffset=+2]
+
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
 
 :!dest_ova:
@@ -353,6 +374,7 @@ You can create this type of map by using one of the following methods:
 * *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 include::modules/creating-form-based-storage-maps-ui-ova.adoc[leveloffset=+4]
+
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
@@ -371,6 +393,7 @@ include::modules/adding-source-provider.adoc[leveloffset=+2]
 :dest_cnv:
 
 include::modules/adding-source-provider.adoc[leveloffset=+2]
+
 include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
 
 :!dest_cnv:
@@ -403,6 +426,7 @@ You can create this type of map by using one of the following methods:
 * *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
 
 include::modules/creating-form-based-storage-maps-ui-cnv.adoc[leveloffset=+4]
+
 include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-ui.adoc[leveloffset=+2]
@@ -426,6 +450,7 @@ You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
 :cli:
 
 include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
+
 :cli!:
 :context: mtv
 :mtv:
@@ -451,9 +476,13 @@ To migrate to or from an {ocp-short} cluster that is different from the one the 
 :vmware:
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
 include::modules/snip_vmware-permissions.adoc[]
+
 include::modules/retrieving-vmware-moref.adoc[leveloffset=+3]
+
 include::modules/mtv-shared-disks.adoc[leveloffset=+3]
+
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :vmware!:
@@ -461,6 +490,7 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 :rhv:
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :rhv!:
@@ -468,6 +498,7 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 :ostack:
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :ostack!:
@@ -475,6 +506,7 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 :ova:
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :ova!:
@@ -482,7 +514,9 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 :cnv:
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
 :cnv!:
 :context: mtv
 :mtv:
@@ -500,9 +534,13 @@ The `Validation` service uses Open Policy Agent (OPA) policy rules to check the 
 You can create custom rules to extend the default ruleset of the `Validation` service. For example, you can create a rule that checks whether a VM has multiple disks.
 
 include::modules/about-rego-files.adoc[leveloffset=+3]
+
 include::modules/accessing-default-validation-rules.adoc[leveloffset=+3]
+
 include::modules/creating-validation-rule.adoc[leveloffset=+3]
+
 include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
+
 include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
 [id="adding-hooks-mtv-migration-plan"]
@@ -511,7 +549,9 @@ include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 You can add hooks to an {project-first} migration plan to perform automated operations on a VM, either before or after you migrate it.
 
 include::modules/about-hooks-for-migration-plans.adoc[leveloffset=+3]
+
 include::modules/adding-hook-using-ui.adoc[leveloffset=+3]
+
 include::modules/adding-hook-using-cli.adoc[leveloffset=+3]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
@@ -522,6 +562,7 @@ include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 You can uninstall {the-lc} {project-first} by using the {ocp} web console or the command-line interface (CLI).
 
 include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
+
 include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
 
 include::modules/mtv-performance-recommendation.adoc[leveloffset=+1]
@@ -534,6 +575,7 @@ include::modules/mtv-aio-buffer.adoc[leveloffset=+2]
 This section provides information for troubleshooting common migration issues.
 
 include::modules/error-messages.adoc[leveloffset=+2]
+
 include::modules/using-must-gather.adoc[leveloffset=+2]
 
 [id="architecture_{context}"]
@@ -542,8 +584,11 @@ include::modules/using-must-gather.adoc[leveloffset=+2]
 This section describes {project-short} custom resources, services, and workflows.
 
 include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
+
 include::modules/mtv-workflow.adoc[leveloffset=+3]
+
 include::modules/virt-migration-workflow.adoc[leveloffset=+3]
+
 include::modules/virt-v2v-mtv.adoc[leveloffset=+3]
 
 [id="logs-and-crs_{context}"]
@@ -552,7 +597,9 @@ include::modules/virt-v2v-mtv.adoc[leveloffset=+3]
 You can download logs and custom resource (CR) information for troubleshooting. For more information, see the xref:virt-migration-workflow_{context}[detailed migration workflow].
 
 include::modules/collected-logs-cr-info.adoc[leveloffset=+3]
+
 include::modules/accessing-logs-ui.adoc[leveloffset=+3]
+
 include::modules/accessing-logs-cli.adoc[leveloffset=+3]
 
 [id="telemetry_{context}"]
