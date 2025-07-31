@@ -241,7 +241,7 @@ One shared disk gets transferred twice, so you need to manually delete the dupli
 The figure that follows shows a different solution: Remove the link to one of the shared disks from one source VM. Doing this breaks the cyclic dependencies. Note that in the current VMware UI, removing the link is referred to as "removing" the disk. 
 
 ."Removed" shared disk
-image::draft_workaround2.png["Remove" a shared disk]
+image::draft_workaround2.png[Remove a shared disk]
 
 In this case, VM 2 and 3 are migrated with the shared disks in the first plan, but the link between VM 3 and shared disk 3 is removed. As before, VM 1 is migrated in the second plan. 
 
