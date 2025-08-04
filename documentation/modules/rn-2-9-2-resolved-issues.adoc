@@ -5,9 +5,6 @@
 [id="resolved-issues-2-9-2_{context}"]
 = Resolved issues 2.9.2
 
+.{project-short} 2.9 does not work in disconnected enviroments
 
-////
-.{project-short} used only compatibility mode bus for virtual machines with raw copy mode
-
-In earlier releases, virtual machines (VMs) that enabled `skipGuestConversion` (raw copy mode) used only compatible mode bus and adapters: Serial Advanced Technology Attachment (SATA), E1000E, and USB (Universal Serial Bus). This issue has been resolved in {project-short} 2.9.1 by adding the `useCompatibilityMode` field. When set to `false`, the `useCompatibilityMode` field allows you to use `VirtIO` devices for VMs with raw copy mode. You must install `virtio` drivers to use the `VirtIO` devices before migration. The `useCompatibilityMode` field does not have an effect without enabling `skipGuestConversion`.
-In case of a VM boot failure in the target cluster, you must switch to the compatible mode buses for the guest VMs. link:https://issues.redhat.com/browse/MTV-3009[(MTV-3009)]
+In previous versions of {project-first} 2.9, the system was unable to effectively manage new catalog URLs in offline or disconnected environments, leading to malfunctions and a degraded user experience in such settings. With the introduction of this update, {project-short} 2.9.2 now offers support for offline environments, ensuring that it operates correctly in disconnected settings, thereby improving usability. link:https://issues.redhat.com/browse/MTV-3100[(MTV-3100)]
