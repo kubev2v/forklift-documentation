@@ -1,6 +1,6 @@
 :_content-type: SNIPPET
 
-ifdef::vmware,dest_vwmware[]
+ifdef::vmware,dest_vmware[]
 
 [NOTE]
 ====
