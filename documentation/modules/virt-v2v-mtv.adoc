@@ -33,7 +33,7 @@ If you are migrating from VMware or from OVA files, `virt-v2v` also sets their I
 
 [NOTE]
 ====
-You can also run pre-defined Ansible hooks before or after a migration using {project-short}. For more information, see xref:../master.adoc#adding-hooks-mtv-migration-plan[Adding hooks to an MTV migration plan].
+You can also run pre-defined Ansible hooks before or after a migration using {project-short}. For more information, see xref:adding-hooks-mtv-migration-plan[Adding hooks to an MTV migration plan].
 
 These hooks do not necessarily use `virt-v2v`.
 ====
