@@ -5,7 +5,7 @@
 [id="vmware-prerequisites_{context}"]
 = VMware prerequisites
 
-It is strongly recommended to create a VDDK image to accelerate migrations. For more information, see xref:../master.adoc#creating-vddk-image_mtv[Creating a VDDK image].
+It is strongly recommended to create a VDDK image to accelerate migrations. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
 
 include::snip-vsan.adoc[]
 
