@@ -7,4 +7,4 @@
 
 .{project-short} 2.9 does not work in disconnected enviroments
 
-In previous versions of {project-first} 2.9, the system was unable to effectively manage new catalog URLs in offline or disconnected environments, leading to malfunctions and a degraded user experience in such settings. With the introduction of this update, {project-short} 2.9.2 now offers support for offline environments, ensuring that it operates correctly in disconnected settings, thereby improving usability. link:https://issues.redhat.com/browse/MTV-3100[(MTV-3100)]
+In previous versions of {project-first} 2.9, the system was unable to effectively manage new catalog URLs in offline or disconnected environments, leading to malfunctions and a degraded user experience in such settings. With the introduction of this update, {project-short} 2.9.2 now offers support for offline environments, ensuring that it operates correctly in disconnected settings, thereby improving usability. link:https://issues.redhat.com/browse/MTV-3023[(MTV-3023)]
