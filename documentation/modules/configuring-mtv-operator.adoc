@@ -9,7 +9,7 @@
 You can configure all of the following settings of the {operator-name} by modifying the `ForkliftController` CR, or in the *Settings* section of the *Overview* page, unless otherwise indicated.
 
 * Maximum number of virtual machines (VMs) or disks per plan that {project-first} can migrate simultaneously.
-* How long `must gather` reports are retained before being automatically deleted.
+* How long `must gather` reports are retained before being automatically deleted (`ForkliftController` CR only). 
 * CPU limit allocated to the main controller container.
 * Memory limit allocated to the main controller container.
 * Interval at which a new snapshot is requested before initiating a warm migration.
@@ -20,7 +20,8 @@ You can configure all of the following settings of the {operator-name} by modify
 * Configuration map of operating systems to preferences for {rhv-full} ({rhv-short}) source providers (`ForkliftController` CR only).
 * Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration (`ForkliftController` CR only).
 
-The procedure for configuring these settings using the user interface is presented in xref:mtv-settings_{context}[Configuring MTV settings]. The procedure for configuring these settings by modifying the `ForkliftController` CR is presented following.
+The procedure for configuring these settings using the user interface is presented in xref:mtv-overview-page_{context}[Configuring MTV settings].
+The procedure for configuring these settings by modifying the `ForkliftController` CR is presented as follows.
 
 .Procedure
 

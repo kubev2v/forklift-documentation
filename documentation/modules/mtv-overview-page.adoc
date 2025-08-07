@@ -14,56 +14,105 @@ The *Overview* page has 3 tabs:
 
 * Overview
 * YAML
-* Metrics
+* Health
+* History
+* Settings
 
 [id="overview-tab_{context}"]
 == Overview tab
 
-The *Overview* tab lets you see:
+The *Overview* tab is to help you quickly create providers and find information about the whole system:
 
-* Operator: The namespace on which the {project-short} Operator is deployed and the status of the Operator
-* Pods: The name, status, and creation time of each pod that was deployed by the {project-short} Operator
-* Conditions: Status of the {project-short} Operator:
+* In the upper pane, is the *Welcome* section, which includes buttons that let you open the *Create provider* UI for each vendor ({vmw}, Open Virtual Appliance, OpenStack, {rhv-full}, and {virt}). You can close this section by clicking the {kebab} in the upper-right corner and selecting *Hide from view*. You can reopen it by clicking *Show the welcome card* in the upper-right corner.
 
-** Failure: Last failure. `False` indicates no failure since deployment.
-** Running: Whether the Operator is currently running and waiting for the next reconciliation.
-** Successful: Last successful reconciliation.
-
-[id="yaml-tab_{context}"]
-== YAML tab
-
-The custom resource ForkliftController that defines the operation of the {project-short} Operator. You can modify the custom resource from this tab.
-
-[id="metrics-tab_{context}"]
-== Metrics tab
-
-The *Metrics* tab lets you see:
-
-* Migrations: The number of migrations performed using {project-short}:
-
-** Total
-** Running
-** Failed
-** Succeeded
-** Canceled
-
-* Virtual Machine Migrations:  The number of VMs migrated using {project-short}:
-
-** Total
-** Running
-** Failed
-** Succeeded
-** Canceled
-
+* In the center-left pane is a "donut" chart named *Virtual machines*. This chart shows the number of running, failed, and successful virtual machine migrations that {project-short} ran for the time interval that you select. You can choose a different interval by clicking the list in the upper-right corner of the pane. You can select a different interval by clicking the list. The options are: Last 24 hours, Last 10 days, Last 31 days, and All. By clicking on each division of the chart, you can navigate to the *History* tab for information about the migrations.
++
 [NOTE]
 ====
-Since a single migration might involve many virtual machines, the number of migrations performed using {project-short} might vary significantly from the number of virtual machines that have been migrated using {project-short}.
+Data for this chart includes only the most recent run of a migration plan that was modified due to a failure. For example, if a plan with 3 VMs fails 4 times, then this chart shows that 3 VMs failed, not 12.
 ====
 
-* Chart showing the number of running, failed, and succeeded migrations performed using {project-short} for each of the last 7 days
+* In the center-right pane is an area chart named *Migration history*. This chart shows the number of migrations that succeeded, failed, or were running during the interval shown in the title of the chart. You can choose a different interval by clicking the {kebab} in the upper-right corner of the pane. The options are: Last 24 hours, Last 10 days, and Last 31 days. By clicking  on each division of the chart, you can navigate to the *History* tab for information about the migrations.
 
-* Chart showing the number of running, failed, and succeeded virtual machine migrations performed using {project-short} for each of the last 7 days
+* In the lower-left pane is a "donut" chart named *Migration plans*. This chart shows the current number of migration plans grouped by their status. This includes plans that were not started, cannot be started, are incomplete, archived, paused, or have an unknown status. By clicking the *Show all plans* link, you can quickly navigate to the *Migration plans* page.
++
+[NOTE]
+====
+Since a single migration might involve many virtual machines, the number of migrations performed using {project-short} might vary significantly from the number of migrated virtual machines.
+====
 
+* In the lower-right pane is a table named *{project-short} health*. This table lists all of the {project-short} pods. The most important one, `forklift-controller`, is first. The remaining pods are listed in alphabetical order. The *View all* link opens the *Health* tab. The status and creation time of each pod are listed.  There is also a link to the logs of each pod.
 
+[id="overview-yaml-tab_{context}"]
+== YAML tab
 
+The *YAML* tab displays the `ForkliftController` custom resource (CR) that defines the operation of the {project-short} Operator. You can modify the CR in this tab.
 
+[id="overview-health-tab_{context}"]
+== Health tab
+
+The *Health* tab has two panes:
+
+* In the upper pane, there is a table named *Health*. It lists all the {project-short} pods. The most important one, `forklift-controller`, is first. The remaining pods are listed in alphabetical order. For each pod, the status, and creation time of the pod are listed, and there is a link to the logs of the pod.
+
+* In the lower pane, there is a table named *Conditions*. It lists the following possible types (states) of the {project-short} Operator, the status of the type, the last time the condition was updated, the reason for the update, and a message about the condition.
+
+[id="overview-history-tab_{context}"]
+== History tab
+
+The *History* tab displays information about migrations.
+
+* In the upper-left of the page, there is a filter that you can use to display only migrations of a certain status, for example, *Succeeded*.
+
+* To the right of the filter is the *Group by plan* toggle switch, which lets you display either all migrations or view only the most recent migration run per plan within the specified time range.
+
+[id="overview-settings-tab_{context}"]
+== Settings tab
+
+The table that follows describes the settings that are visible in the *Settings* tab, their default values, and other possible values that can be set or chosen, if needed.
+
+[cols="1,1,1,1",options="header"]
+.{project-short} settings
+|===
+|Setting |Description |Default value |Additional values
+
+|Maximum concurrent VM migrations
+a|Varies with provider as follows:
+
+* For all migrations except OVA or VMware migrations: The maximum number of disks that {project-short} can transfer simultaneously.
+* For OVA migrations: The maximum number of VMs that {project-short} can migrate simultaneously.
+* For VMware migrations, the setting has the following meanings:
+** Cold migration:
+
+*** To local {virt}: VMs for each ESXi host that can migrate simultaneously.
+*** To remote {virt}: Disks for each ESXi host that can migrate simultaneously.
+** Warm migration: Disks for each ESXi host that can migrate simultaneously.
++
+See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this setting.
+|20.
+|Adjustable by either using the *+* and *-* keys to set a different value or by clicking the textbox and entering a new value.
+|Controller main container CPU limit
+|The CPU limit that is allocated to the main controller container, in milliCPUs (m).
+|500 m.
+|Adjustable by selecting another value from the list. Options: 200 m, 500 m, 2000 m, 8000 m.
+
+|Controller main container memory limit
+|The memory limit that is allocated to the main controller container in mebibytes (Mi).
+|800 Mi.
+|Adjustable by selecting another value from the list. Options: 200 Mi, 800 Mi, 2000 Mi, 8000 Mi.
+
+|Controller inventory container memory limit
+|The memory limit that is allocated to the inventory controller container in mebibytes (Mi).
+|1000 Mi.
+|Adjustable by selecting another value from the list. Options: 400 Mi, 1000 Mi, 2000 Mi, 8000 Mi.
+
+|Precopy internal (minutes)
+|The interval in minutes at which a new snapshot is requested before initiating a warm migration.
+|60 minutes.
+|Adjustable by selecting another value from the list. Options: 5 minutes, 30 minutes, 60 minutes, 120 minutes.
+
+|Snapshot polling interval
+|The interval in seconds between which the system checks the status of snapshot creation or removal during a warm migration.
+|10 seconds.
+|Adjustable by choosing another value from the list. Options: 1 second, 5 seconds, 10 seconds, 60 seconds.
+|===
