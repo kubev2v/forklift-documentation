@@ -142,7 +142,7 @@ include::modules/mtv-ui.adoc[leveloffset=+2]
 
 include::modules/mtv-overview-page.adoc[leveloffset=+3]
 
-include::modules/mtv-settings.adoc[leveloffset=+3]
+// include::modules/mtv-settings.adoc[leveloffset=+3]
 
 [id="migrating-vms-mtv-ui_{context}"]
 === Migrating virtual machines using the MTV user interface
