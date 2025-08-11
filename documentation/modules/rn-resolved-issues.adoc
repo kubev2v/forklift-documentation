@@ -2,8 +2,10 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="rn-resolved-issues_{context}"]
 = Resolved issues
 
+[role="_abstract"]
 {project-first} 2.9 has the following resolved issues:
 

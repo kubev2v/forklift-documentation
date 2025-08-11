@@ -1,7 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="new-features-and-enhancements-2-9_{context}"]
 = New features and enhancements
 
+[role="_abstract"]
 {project-first} 2.9 introduces the following features and enhancements:
 
 * In the {project-short} 2.9.0 user interface, you can set the `skipGuestConversion` field to `true` in the migration plan to raw copy the disk of a VMware guest virtual machines (VM) to {rhv-full} during migration. If you raw copy the guest VM, it does not convert the guest VM, install `virtio` drivers, and preserve the IP address. You can use this feature to migrate VMs that fail during migration because of unsupported guest operating systems. link:https://issues.redhat.com/browse/MTV-2001[(MTV-2001)]

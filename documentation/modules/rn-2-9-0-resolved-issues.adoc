@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="resolved-issues-2-9-0_{context}"]
 = Resolved issues 2.9.0
 
@@ -28,7 +29,7 @@ In earlier releases of {project-short}, when you tried to import an Open Virtual
 
 .{ocp-name} Container Platform to {ocp-name} Container Platform migration of VMware VM failed
 
-In earlier releases of {project-short}, after you successfully migrate a VMware virtual machine (VM) from {rhv-full} to an OCP cluster and then migrate the VM to another OCP cluster using {project-short}, the VM failed to start with a `No bootable device` error. This issue has been resolved in {project-short} 2.9.0 link:https://issues.redhat.com/browse/MTV-1544[(MTV-1544)]
+In earlier releases of {project-short}, after you successfully migrate a VMware virtual machine (VM) from {rhv-full} to a {virt} cluster and then migrate the VM to another {virt} cluster using {project-short}, the VM failed to start with a `No bootable device` error. This issue has been resolved in {project-short} 2.9.0 link:https://issues.redhat.com/browse/MTV-1544[(MTV-1544)]
 
 .{project-short} changed the disk name of a virtual machine after migration from an {ocp-short} cluster to another {ocp-short} cluster
 
