@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="resolved-issues-2-9-1_{context}"]
 = Resolved issues 2.9.1
 
@@ -10,7 +11,7 @@
 In earlier releases, virtual machines (VMs) that enabled `skipGuestConversion` (raw copy mode) used only compatible mode bus and adapters: Serial Advanced Technology Attachment (SATA), E1000E, and USB (Universal Serial Bus). This issue has been resolved in {project-short} 2.9.1 by adding the `useCompatibilityMode` field. When set to `false`, the `useCompatibilityMode` field allows you to use `VirtIO` devices for VMs with raw copy mode. You must install `virtio` drivers to use the `VirtIO` devices before migration. The `useCompatibilityMode` field does not have an effect without enabling `skipGuestConversion`. 
 In case of a VM boot failure in the target cluster, you must switch to the compatible mode buses for the guest VMs. link:https://issues.redhat.com/browse/MTV-3009[(MTV-3009)]
 
-.Migration plans failed at the reconciliation stage if another plan referred to a deleted virtual machine 
+.Migration plans failed at the reconciliation stage if another plan referred to a deleted virtual machine
 
 VMware only: In earlier releases, migration plans sometimes failed in the reconciliation phase of a warm migration by referring to a deleted virtual machine (VM) that is part of another plan. This issue has been resolved in {project-short} 2.9.1. As a result, VM deletion in one plan does not impact another running plan. link:https://issues.redhat.com/browse/MTV-2774[(MTV-2774)]
 

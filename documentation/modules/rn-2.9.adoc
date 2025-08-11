@@ -2,7 +2,9 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="rn-29_{context}"]
 = {project-full} 2.9
 
+[role="_abstract"]
 The release notes describe technical changes, new features and enhancements, known issues, and resolved issues.

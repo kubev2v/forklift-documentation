@@ -1,16 +1,15 @@
 include::modules/common-attributes.adoc[]
-[id="{rn-title}"]
-= {rn-title}
+[id="release_notes"]
+= Release notes
+:_mod-docs-content-type: ASSEMBLY
+
 :toc:
 :toc-title:
 :toclevels: 2
 :compat-mode:
 :context: release-notes
 
-ifeval::["{build}" == "downstream"]
-
 include::modules/making-open-source-more-inclusive.adoc[]
-endif::[]
 
 include::modules/rn-2.9.adoc[leveloffset=+1]
 
@@ -40,3 +39,4 @@ include::modules/known-issues-2-9.adoc[leveloffset=+2]
 // [id="release-notes-addendum_{context}"]
 // == Release notes addendum
 // include::modules/mtv-selected-packages-2-8.adoc[leveloffset=+2]
+
