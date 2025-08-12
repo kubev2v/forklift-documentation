@@ -6,6 +6,7 @@
 [id="creating-vmware-role-mtv-permissions_{context}"]
 = Creating a VMware role to grant MTV privileges
 
+[role="_abstract"]
 You can create a role in VMware to grant privileges for {project-first} and then grant those privileges to users with that role.  
 
 The procedure that follows explains how to do this in general. For detailed instructions, see VMware documentation.

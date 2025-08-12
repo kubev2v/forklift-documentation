@@ -6,6 +6,7 @@
 [id="cnv-prerequisites_{context}"]
 = {virt} prerequisites
 
+[role="_abstract"]
 The following prerequisites apply to migrations from one {virt} cluster to another:
 
 * Both the source and destination {virt} clusters must have the same version of {project-first} installed.

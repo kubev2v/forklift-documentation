@@ -2,9 +2,11 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: REFERENCE
 [id="vmware-prerequisites_{context}"]
 = VMware prerequisites
 
+[role="_abstract"]
 It is strongly recommended to create a VDDK image to accelerate migrations. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
 
 include::snip-vsan.adoc[]
@@ -66,7 +68,7 @@ All `Virtual machine.Provisioning` privileges are required.
 |`Virtual machine.Provisioning.Create template from virtual machine`
 |Allows creation of a new template from a virtual machine.
 |`Virtual machine.Provisioning.Customize guest`
-|Allows customization of a virtual machine’s guest operating system without moving the virtual machine.
+|Allows customization of a virtual machine's guest operating system without moving the virtual machine.
 |`Virtual machine.Provisioning.Deploy template`
 |Allows deployment of a virtual machine from a template.
 |`Virtual machine.Provisioning.Mark as template`
@@ -80,7 +82,7 @@ All `Virtual machine.Provisioning` privileges are required.
 |`Virtual machine.Provisioning.Read customization specifications`
 |Allows reading a customization specification.
 2+|`Virtual machine.Snapshot management` privileges:
-|`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine’s current state.
+|`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine's current state.
 |`Virtual machine.Snapshot management.Remove Snapshot`   |Allows removal of a snapshot from the snapshot history.
 2+|`Datastore` privileges:
 |`Datastore.Browse datastore` |Allows exploring the contents of a datastore.

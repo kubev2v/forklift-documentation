@@ -1,0 +1,16 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="status-vms-cold-migration_{context}"]
+= Power status of virtual machines during cold migrations
+
+[role="_abstract"]
+Cold migration is the default migration type. During cold migrations, the source virtual machines are shut down while the data is copied.
+
+[NOTE]
+====
+include::snip_qemu-guest-agent.adoc[]
+====
+

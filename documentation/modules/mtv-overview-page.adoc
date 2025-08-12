@@ -6,6 +6,7 @@
 [id="mtv-overview-page_{context}"]
 = The MTV Overview page
 
+[role="_abstract"]
 The {project-first} *Overview* page displays system-wide information about migrations and a list of *Settings* you can change.
 
 If you have Administrator privileges, you can access the *Overview* page by clicking *Migration* -> *Overview* in the {ocp} web console.
@@ -32,7 +33,7 @@ The *Overview* tab lets you see:
 [id="yaml-tab_{context}"]
 == YAML tab
 
-The custom resource ForkliftController that defines the operation of the {project-short} Operator. You can modify the custom resource from this tab.
+The *YAML* tab displays the `ForkliftController` custom resource (CR) that defines the operation of the {project-short} Operator. You can modify the CR from this tab.
 
 [id="metrics-tab_{context}"]
 == Metrics tab
