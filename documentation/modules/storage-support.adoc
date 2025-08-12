@@ -6,6 +6,7 @@
 [id="about-storage_{context}"]
 = Storage support and default modes
 
+[role="_abstract"]
 {project-first} uses the following default volume and access modes for supported storage.
 
 .Default volume and access modes

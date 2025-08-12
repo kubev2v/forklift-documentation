@@ -2,10 +2,11 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="creating-plan-wizard-290-vmware_{context}"]
-
 = Creating a VMware vSphere migration plan by using the MTV wizard
 
+[role="_abstract"]
 You can migrate {vmw} vSphere virtual machines (VMs) from {vmw} vCenter or from a {vmw} ESX/ESXi server by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
@@ -155,7 +156,7 @@ If the conversion fails because the boot device provided is incorrect, it is pos
 Migrating shared disks might slow down the migration process.
 ====
 +
-** To migrate shared disks in the migration plan, verify that *Shared disks* is selected in the checkbox. 
+** To migrate shared disks in the migration plan, verify that *Shared disks* is selected in the checkbox.
 ** To avoid migrating shared disks, clear the *Shared disks* checkbox.
 
 . Click *Next*.

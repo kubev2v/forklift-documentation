@@ -2,10 +2,12 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="adding-source-provider_{context}"]
 ifdef::vmware[]
 = Adding a VMware vSphere source provider
 
+[role="_abstract"] 
 You can migrate {vmw} vSphere VMs from {vmw} vCenter or from a {vmw} ESX/ESXi server, without going through vCenter.
 
 [IMPORTANT]
@@ -29,6 +31,7 @@ endif::[]
 ifdef::rhv[]
 = Adding {a-rhv} source provider
 
+[role="_abstract"] 
 You can add {a-rhv} source provider by using the {ocp} web console.
 
 .Prerequisites
@@ -38,12 +41,14 @@ endif::[]
 ifdef::ova[]
 = Adding an Open Virtual Appliance (OVA) source provider
 
+[role="_abstract"] 
 You can add Open Virtual Appliance (OVA) files that were created by {vmw} vSphere as a source provider by using the {ocp} web console.
 
 endif::[]
 ifdef::ostack[]
 = Adding an {osp} source provider
 
+[role="_abstract"] 
 You can add an {osp} source provider by using the {ocp} web console.
 
 [IMPORTANT]
@@ -54,6 +59,7 @@ endif::[]
 ifdef::cnv[]
 = Adding a Red Hat {virt} source provider
 
+[role="_abstract"] 
 You can use a Red Hat {virt} provider as both a source provider and destination provider.
 
 Specifically, the host cluster that is automatically added as a {virt} provider can be used as both a source provider and a destination provider.
@@ -68,6 +74,7 @@ endif::[]
 ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 = Adding {a-virt} destination provider
 
+[role="_abstract"] 
 You can use a Red Hat {virt} provider as both a source provider and destination provider.
 
 Specifically, the host cluster that is automatically added as a {virt} provider can be used as both a source provider and a destination provider.

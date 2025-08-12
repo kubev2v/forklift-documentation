@@ -6,6 +6,7 @@
 [id="changing-precopy-intervals_{context}"]
 = Changing precopy intervals for warm migration
 
+[role="_abstract"]
 You can change the snapshot interval by patching the `ForkliftController` custom resource (CR).
 
 .Procedure
