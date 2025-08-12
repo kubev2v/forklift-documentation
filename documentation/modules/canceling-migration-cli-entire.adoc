@@ -1,0 +1,21 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="canceling-migration-cli-entire_{context}"]
+= Canceling an entire migration from the command-line interface
+
+[role="_abstract"]
+You can use the command-line interface (CLI) to cancel an entire migration while a migration is in progress.
+
+.Procedure
+
+*  Delete the `Migration` CR:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} delete migration <migration> -n <namespace> <1>
+----
+<1> Specify the name of the `Migration` CR.
+

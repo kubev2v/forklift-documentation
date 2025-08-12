@@ -6,8 +6,9 @@
 [id="mtv-ui_{context}"]
 = The MTV user interface
 
+[role="_abstract"]
 The {project-first} user interface is integrated into the {ocp-short} web console.
 
-In the left-hand panel, you can choose a page related to a component of the migration progress, for example, *Providers*. Or, if you are an administrator, you can choose *Overview*, which contains information about migrations and lets you configure {project-short} settings.
+In the left panel, you can choose a page related to a component of the migration progress, for example, *Providers*. Or, if you are an administrator, you can choose *Overview*, which contains information about migrations and lets you configure {project-short} settings.
 
 In pages related to components, you can click on the *Projects* list, which is in the upper-left portion of the page, and see which projects (namespaces) you are allowed to work with.

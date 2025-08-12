@@ -2,6 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="rn-28_{context}"]
 = {project-full} 2.8
 

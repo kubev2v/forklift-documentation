@@ -6,20 +6,21 @@
 [id="creating-vddk-image_{context}"]
 = Creating a VDDK image
 
-It is strongly recommended that {project-first} should be used with the VMware Virtual Disk Development Kit (VDDK) SDK when transferring virtual disks from VMware vSphere.
+[role="_abstract"]
+It is strongly recommended that {project-first} should be used with the {vmw} Virtual Disk Development Kit (VDDK) SDK when transferring virtual disks from {vmw} vSphere.
 
 [NOTE]
 ====
 Creating a VDDK image, although optional, is highly recommended. Using {project-short} without VDDK is not recommended and could result in significantly lower migration speeds.
 ====
 
-To make use of this feature, you download the VMware Virtual Disk Development Kit (VDDK), build a VDDK image, and push the VDDK image to your image registry.
+To make use of this feature, you download the VDDK, build a VDDK image, and push the VDDK image to your image registry.
 
 The VDDK package contains symbolic links, therefore, the procedure of creating a VDDK image must be performed on a file system that preserves symbolic links (symlinks).
 
 [NOTE]
 ====
-Storing the VDDK image in a public registry might violate the VMware license terms.
+Storing the VDDK image in a public registry might violate the {vmw} license terms.
 ====
 
 .Prerequisites

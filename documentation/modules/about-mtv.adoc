@@ -1,0 +1,13 @@
+
+:_content-type: CONCEPT
+[id="about-mtv_{context}"]
+= About the {project-full}
+
+[role="_abstract"]
+You can use the {project-first} to migrate virtual machines (VMs) from the following source providers to {virt} destination providers:
+
+* {vmw} vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by {vmw} vSphere
+* Remote {virt} clusters

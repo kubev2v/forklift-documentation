@@ -6,7 +6,8 @@
 [id="compatibility-guidelines_{context}"]
 = Software compatibility guidelines
 
-You must install compatible software versions.
+[role="_abstract"]
+You must install compatible software versions. The table that follows lists the relevant software versions for this version of {project-first}.
 
 [cols="1,1,1,1,1,1", options="header"]
 .Compatible software versions
@@ -16,16 +17,17 @@ You must install compatible software versions.
 |===
 
 [NOTE]
-.Migration from {rhv-full} 4.3
 ====
-{project-short} was tested only with {rhv-full} (RHV) 4.4 SP1.
+Migration from {rhv-full} 4.3
+
+{project-short} was tested only with {rhv-full} 4.4 SP1.
 Migration from {rhv-full} ({rhv-short}) 4.3 has not been tested with {project-short} {project-version}. While not supported, basic migrations from {rhv-short} 4.3 are expected to work.
 
-Generally it is advised to upgrade {rhv-full} Manager (RHVM) to the previously mentioned supported version before the migration to {virt}.
+Generally it is advised to upgrade {rhv-full} Manager to the previously mentioned supported version before the migration to {virt}.
 
 Therefore, it is recommended to upgrade {rhv-short} to the supported version above before the migration to {virt}.
 
-However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3, and may work in practice in many environments using {project-short} {project-version}. In this case, we advise upgrading {rhv-full} Manager (RHVM) to the previously mentioned supported version before the migration to {virt}.
+However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3, and might work in practice in many environments using {project-short} {project-version}. In this case, it is recommended to upgrade {rhv-full} Manager to the previously mentioned supported version before the migration to {virt}.
 ====
 
 [id="openshift-operator-life-cycles"]

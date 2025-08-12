@@ -1,10 +1,15 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="new-features-and-enhancements-2-8_{context}"]
 = New features and enhancements
 
+[role="_abstract"]
 {project-first} 2.8 introduces the following features and enhancements:
 
-* In {project-short} 2.8.0, you can provide custom names for the following attributes in the migration plan of VMware virtual machines (VMs):
+* In {project-short} 2.8.0, you can provide custom names for the following attributes in the migration plan of {vmw} virtual machines (VMs):
 + 
 ** Persistent volume claim (PVC) name template that is used to generate PVC names in the target VM. 
 ** Volume name template that is used to generate volume interface names for the target VMs.
@@ -12,8 +17,8 @@
 
 * In {project-short} 2.8.0, VM names can contain periods, as described in link:https://datatracker.ietf.org/doc/html/rfc1123[(RFC-1123)]. This allows you to use Fully Qualified Domain Names in VM names after migration. 
 
-* VMware and OVA only: In {project-short} 2.8.1, you can specify the name of a target VM for migrations done by using the CLI. The name you enter must be unique, and it must also be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
+* {vmw} and OVA only: In {project-short} 2.8.1, you can specify the name of a target VM for migrations done by using the CLI. The name you enter must be unique, and it must also be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
 
 * Migration by using the CLI only: In {project-short} 2.8.1, you can avoid mapping a network when you create a migration plan. 
 
-* VMware only: By default, {project-short} adds one or more randomly generated alphanumeric characters to the names of PVCs to ensure that all PVCs have unique names. In {project-short} 2.8.2, you can instruct {project-short} to not add such suffixes. However, if you choose this option, the generated PVC names might not be unique, which could cause a migration to fail.    
+* {vmw} only: By default, {project-short} adds one or more randomly generated alphanumeric characters to the names of PVCs to ensure that all PVCs have unique names. In {project-short} 2.8.2, you can instruct {project-short} to not add such suffixes. However, if you choose this option, the generated PVC names might not be unique, which could cause a migration to fail.    

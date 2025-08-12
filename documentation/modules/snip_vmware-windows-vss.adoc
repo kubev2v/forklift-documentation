@@ -4,14 +4,14 @@
 ====
 For virtual machines (VMs) running Microsoft Windows, Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. 
 
-When performing a warm migration of a Microsoft Windows virtual machine from VMware, you must start VSS on the Windows guest OS in order for the snapshot and `Quiesce guest file system` to succeed.
+When performing a warm migration of a Microsoft Windows virtual machine from {vmw}, you must start VSS on the Windows guest operating system in order for the snapshot and `Quiesce guest file system` to succeed.
 
-If you do not start VSS on the Windows guest OS, the snapshot creation during the Warm migration fails with the following error:
+If you do not start VSS on the Windows guest operating system, the snapshot creation during the Warm migration fails with the following error:
 
 [source,terminal]
 ----
 An error occurred while taking a snapshot: Failed to restart the virtual machine
 ----
 
-If you set the VSS service to `Manual` and start a snapshot creation with `Quiesce guest file system = yes`. In the background, the VMware Snapshot provider service requests VSS to start the shadow copy.
+If you set the VSS service to `Manual` and start a snapshot creation with `Quiesce guest file system = yes`. In the background, the {vmw} Snapshot provider service requests VSS to start the shadow copy.
 ====
