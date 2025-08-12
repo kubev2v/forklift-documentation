@@ -6,6 +6,7 @@
 [id="migration-plan-options-ui_{context}"]
 = Migration plan options
 
+[role="_abstract"]
 On the *Plans for virtualization* page of the {ocp} web console, you can click the {kebab} beside a migration plan to access the following options:
 
 * *Edit Plan*: Edit the details of a migration plan. If the plan is running or has completed successfully, you cannot edit the following options:

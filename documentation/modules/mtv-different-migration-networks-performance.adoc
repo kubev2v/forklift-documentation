@@ -1,0 +1,46 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+
+[id="mtv-different-migration-network-performances_{context}"]
+= Performance using different migration networks
+
+[role="_abstract"]
+Each iteration the `Migration Network` was changed, by using the *Provider*, to find the fastest network for migration.
+
+The results indicate that there is no degradation by using management compared to non-management networks when all interfaces and network speeds are the same.
+
+.Different migration network tests
+[width="100%",cols="45%,9%,9%,13%,12%,12%",options="header",]
+|===
+|Test Case Description
+|MTV
+|VDDK
+|max_vm inflight
+|Migration Type
+|Total Duration
+
+|Cold migration, 10 VMs, Single ESXi, MGMT Network
+|2.6
+|7.0.3
+|100
+|cold
+|0:21:30
+
+|Cold migration, 10 VMs, Single ESXi, Private Network
+(non-management network)
+|2.6
+|7.0.3
+|20
+|cold
+|0:21:20
+
+|Cold migration, 10 VMs, Single ESXi, Default Network
+|2.6.2
+|7.0.3
+|20
+|cold
+|0:21:30
+|===

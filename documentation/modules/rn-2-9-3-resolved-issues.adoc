@@ -6,6 +6,9 @@
 [id="resolved-issues-2-9-3_{context}"]
 = Resolved issues 2.9.3
 
+[role="_abstract"]
+{project-first} 2.9.3 has the following resolved issues:
+
 .Guest migrations from secure ESXi provider on {project-short}, causing migration failures.
 
 In previous versions of {project-short}, the use of a wrong v2v command for migrating guests on Red Hat OpenShift Container Platform (OCP) 2.8.0 led to user migration failures from secure ESXi providers on {project-short}. This issue has been addressed by fixing the incorrect v2v command for ESXi migration on {project-short}. As a result, migration of guests from secure ESXi providers on {project-short} is now successful. link:https://issues.redhat.com/browse/MTV-2362[(MTV-2362)]
@@ -26,9 +29,9 @@ In previous versions of {project-short}, the `planNetworkMap` and `planStorageMa
 
 In previous versions of {project-short}, incorrect endpoint path formatting in the `useNetworks` hook led to repeated failed calls. This resulted in repeated failures when creating migration plans due to incorrect endpoint calls, particularly in the 'Virtual machines' section of the Migration plan creation wizard. With this release, we've fixed the repeated incorrect endpoint calls in the 'Virtual machines' section, improving the creation of migration plans by eliminating failed calls and ensuring a smoother user experience. link:https://issues.redhat.com/browse/MTV-2978[(MTV-2978)]
 
-.Users unable to match VMware file names with PVC names, causing inconsistency in resource identification
+.Users unable to match {vmw} file names with PVC names, causing inconsistency in resource identification
 
-In previous versions of {project-short}, users encountered an issue where they could not use VMware file names in Persistent Volume Claim (PVC) name templates, leading to inconsistent resource identification due to mismatched names. This problem stemmed from the inability to use VMware VMDK file names in PVC name templates. With this release, we have implemented the functionality to allow users to incorporate VMware VMDK file names into PVC name templates. As a result, users now have the ability to customize PVC names with VMware VMDK file names, thereby ensuring naming consistency. link:https://issues.redhat.com/browse/MTV-3091[(MTV-3091)]
+In previous versions of {project-short}, users encountered an issue where they could not use {vmw} file names in Persistent Volume Claim (PVC) name templates, leading to inconsistent resource identification due to mismatched names. This problem stemmed from the inability to use {vmw} VMDK file names in PVC name templates. With this release, we have implemented the functionality to allow users to incorporate {vmw} VMDK file names into PVC name templates. As a result, users now have the ability to customize PVC names with {vmw} VMDK file names, thereby ensuring naming consistency. link:https://issues.redhat.com/browse/MTV-3091[(MTV-3091)]
 
 .Migration plan failure due to incorrect namespace in NetworkMap for NAD
 
@@ -51,9 +54,9 @@ In previous versions of {project-short} 2.9, insufficient route timeout settings
 
 In previous versions of {project-short} 2.9, users were unable to control the power state of a VM after migration due to the lack of an option to specify it. With the release of {project-short} 2.9.3, a user-initiated option has been included to customize the VM power state after migration, thereby enhancing migration flexibility. link:https://issues.redhat.com/browse/MTV-3025[(MTV-3025)]
 
-.OVA downloaded from VMware lacks MAC addresses, causing MAC conflict during migration to OpenShift Virtualization.
+.OVA downloaded from {vmw} lacks MAC addresses, causing MAC conflict during migration to OpenShift Virtualization.
 
-In previous versions of {project-short} 2.9, {virt} encountered MAC conflicts during migration due to OVA files downloaded from VMware not having MAC addresses. This resulted in OVA migration failures due to empty MAC addresses. With the release of {project-short} 2.9.3, we have implemented a solution that disregards empty MAC addresses during OVA migration checks, thereby eliminating MAC conflict errors caused by empty MAC addresses, and thus improving OVA migration success rates. link:https://issues.redhat.com/browse/MTV-2476[(MTV-2476)]
+In previous versions of {project-short} 2.9, {virt} encountered MAC conflicts during migration due to OVA files downloaded from {vmw} not having MAC addresses. This resulted in OVA migration failures due to empty MAC addresses. With the release of {project-short} 2.9.3, we have implemented a solution that disregards empty MAC addresses during OVA migration checks, thereby eliminating MAC conflict errors caused by empty MAC addresses, and thus improving OVA migration success rates. link:https://issues.redhat.com/browse/MTV-2476[(MTV-2476)]
 
 .Incorrect v2v command on {project-short} 2.8.0 with RHEL8.9, causing guest migration failure
 

@@ -6,6 +6,7 @@
 [id="creating-validation-rule_{context}"]
 = Creating a validation rule
 
+[role="_abstract"]
 You create a validation rule by applying a config map custom resource (CR) containing the rule to the `Validation` service.
 
 [IMPORTANT]

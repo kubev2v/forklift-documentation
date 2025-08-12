@@ -14,23 +14,8 @@ endif::[]
 :mtv:
 
 :_mod-docs-content-type: ASSEMBLY
-[id="about-mtv_{context}"]
-== About {the-lc} {project-full}
 
-You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
-
-* VMware vSphere
-* {rhv-full} ({rhv-short})
-* {osp}
-* Open Virtual Appliances (OVAs) that were created by VMware vSphere
-* Remote {virt} clusters
-
-.Additional resources
-
-* link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
-
-* link:https://access.redhat.com/articles/6380311[Performance recommendations for migrating from Red Hat Virtualization to OpenShift Virtualization].
-
+include::modules/about-mtv.adoc[leveloffset=+1]
 
 include::modules/cold-warm-migration.adoc[leveloffset=+1]
 
@@ -38,18 +23,18 @@ include::modules/mtv-migration-speed-comparison.adoc[leveloffset=+2]
 
 include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 
-[id="prerequisites_{context}"]
-== Prerequisites
+include::modules/status-vms-cold-migration.adoc[leveloffset=+3]
 
-Review the following prerequisites to ensure that your environment is prepared for migration.
+include::modules/status-vms-warm-migration.adoc[leveloffset=+3]
 
-[id="mtv-software-requirements_{context}"]
-=== Software requirements
+include::modules/advantages-disadvantages-cold-warm-migrations.adoc[leveloffset=+3]
 
-{project-first} has software requirements for all providers as well as specific software requirements per provider.
+include::modules/conclusions-cold-warm-migrations.adoc[leveloffset=+3]
 
-[id="mtv-software-requirements-all-providers_{context}"]
-==== Software requirements for all providers
+[id="prerequisites-for-all-providers_{context}"]
+== Prerequisites and software requirements for all providers 
+
+Review the following prerequisites and software requirements to ensure that your environment is prepared for migration.
 
 You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
 
@@ -61,20 +46,26 @@ include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 
 include::modules/encryption-support.adoc[leveloffset=+2]
 
+[id="prerequisites-per-provider_{context}"]
+== Specific software requirements for each provider
+
+In addition to the prerequisites and software requirements that apply to all providers, there are specific requirements for each provider. 
+
+include::modules/vmware-prerequisites.adoc[leveloffset=+2]
+
+include::modules/creating-vmware-role-mtv-permissions.adoc[leveloffset=+3]
+
+include::modules/creating-vddk-image.adoc[leveloffset=+3]
+
+include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
+
+include::modules/vddk-validator-containers.adoc[leveloffset=+3]
+
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 
-
-[id="additional-authentication-for-osp_{context}"]
-==== Additional authentication methods for migrations with {osp} source providers
-
-{project-short} versions 2.6 and later support the following authentication methods for migrations with {osp} source providers in addition to the standard username and password credential set:
-
-* Token authentication
-* Application credential authentication
-
-You can use these methods to migrate virtual machines with {osp} source providers using the command-line interface (CLI) the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
+include::modules/additional-authentication-for-osp.adoc[leveloffset=+3] 
 
 :!mtv:
 :context: ostack
@@ -87,16 +78,6 @@ include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
 :!ostack:
 :context: mtv
 :mtv:
-
-include::modules/vmware-prerequisites.adoc[leveloffset=+2]
-
-include::modules/creating-vmware-role-mtv-permissions.adoc[leveloffset=+3]
-
-include::modules/creating-vddk-image.adoc[leveloffset=+3]
-
-include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
-
-include::modules/vddk-validator-containers.adoc[leveloffset=+3]
 
 include::modules/ova-prerequisites.adoc[leveloffset=+2]
 
@@ -139,27 +120,7 @@ include::modules/mtv-ui.adoc[leveloffset=+2]
 
 include::modules/mtv-overview-page.adoc[leveloffset=+3]
 
-[id="migrating-vms-mtv-ui_{context}"]
-=== Migrating virtual machines using the MTV user interface
-
-Use the {project-short} user interface to migrate VMs from the following providers:
-
-* VMware vSphere
-* {rhv-full} ({rhv-short})
-* {osp}
-* Open Virtual Appliances (OVAs) that were created by VMware vSphere
-* {virt} clusters
-
-For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
-
-[IMPORTANT]
-====
-You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
-
-VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
-
-VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
-====
+include::modules/migrating-vms-mtv-ui.adoc[leveloffset=+2]
 
 :!mtv:
 :context: vmware
@@ -190,25 +151,13 @@ include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
-=== Network maps in migration plans
-
-include::modules/about-network-maps.adoc[leveloffset=+3]
+include::modules/about-network-maps.adoc[leveloffset=+2]
 
 include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
-=== Storage maps in migration plans
+include::modules/about-storage-maps.adoc[leveloffset=+2]
 
-include::modules/about-storage-maps.adoc[leveloffset=+3]
-
-==== Creating ownerless storage maps in the {project-short} UI
-
-You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
-
-You can create this type of map by using one of the following methods:
-
-* *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
-
+include::modules/creating-ownerless-storage-maps-ui.adoc[leveloffset=+3]
 
 include::modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=+4]
 
@@ -244,24 +193,13 @@ include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
-=== Network maps in migration plans
-
-include::modules/about-network-maps.adoc[leveloffset=+3]
+include::modules/about-network-maps.adoc[leveloffset=+2]
 
 include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
-=== Storage maps in migration plans
+include::modules/about-storage-maps.adoc[leveloffset=+2]
 
-include::modules/about-storage-maps.adoc[leveloffset=+3]
-
-==== Creating ownerless storage maps in the {project-short} UI
-
-You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
-
-You can create this type of map by using one of the following methods:
-
-* *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
+include::modules/creating-ownerless-storage-maps-ui.adoc[leveloffset=+3]
 
 include::modules/creating-form-based-storage-maps-ui-rhv.adoc[leveloffset=+4]
 
@@ -296,24 +234,13 @@ include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
-=== Network maps in migration plans
-
-include::modules/about-network-maps.adoc[leveloffset=+3]
+include::modules/about-network-maps.adoc[leveloffset=+2]
 
 include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
-=== Storage maps in migration plans
+include::modules/about-storage-maps.adoc[leveloffset=+2]
 
-include::modules/about-storage-maps.adoc[leveloffset=+3]
-
-==== Creating ownerless storage maps in the {project-short} UI
-
-You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
-
-You can create this type of map by using one of the following methods:
-
-* *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
+include::modules/creating-ownerless-storage-maps-ui.adoc[leveloffset=+3]
 
 include::modules/creating-form-based-storage-maps-ui-ostack.adoc[leveloffset=+4]
 
@@ -348,24 +275,13 @@ include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
-=== Network maps in migration plans
-
-include::modules/about-network-maps.adoc[leveloffset=+3]
+include::modules/about-network-maps.adoc[leveloffset=+2]
 
 include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
-=== Storage maps in migration plans
+include::modules/about-storage-maps.adoc[leveloffset=+2]
 
-include::modules/about-storage-maps.adoc[leveloffset=+3]
-
-==== Creating ownerless storage maps in the {project-short} UI
-
-You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
-
-You can create this type of map by using one of the following methods:
-
-* *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
+include::modules/creating-ownerless-storage-maps-ui.adoc[leveloffset=+3]
 
 include::modules/creating-form-based-storage-maps-ui-ova.adoc[leveloffset=+4]
 
@@ -400,24 +316,13 @@ include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
-=== Network maps in migration plans
-
-include::modules/about-network-maps.adoc[leveloffset=+3]
+include::modules/about-network-maps.adoc[leveloffset=+2]
 
 include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
 
-=== Storage maps in migration plans
+include::modules/about-storage-maps.adoc[leveloffset=+2]
 
-include::modules/about-storage-maps.adoc[leveloffset=+3]
-
-==== Creating ownerless storage maps in the {project-short} UI
-
-You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
-
-You can create this type of map by using one of the following methods:
-
-* *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
+include::modules/creating-ownerless-storage-maps-ui.adoc[leveloffset=+3]
 
 include::modules/creating-form-based-storage-maps-ui-cnv.adoc[leveloffset=+4]
 
@@ -432,27 +337,6 @@ include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 [id="migrating-virtual-machines-from-the-command-line_{context}"]
 == Migrating virtual machines from the command line
 
-You can migrate virtual machines to {virt} from the command line.
-
-[IMPORTANT]
-====
-You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
-====
-
-:mtv!:
-:context: cli
-:cli:
-
-include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
-
-:cli!:
-:context: mtv
-:mtv:
-
-
-[id="migrating-virtual-machines_{context}"]
-=== Migrating virtual machines
-
 You migrate virtual machines (VMs) using the command-line interface (CLI) by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
 
 [IMPORTANT]
@@ -464,8 +348,18 @@ You must specify both a name and a namespace for namespace-scoped CRs.
 To migrate to or from an {ocp-short} cluster that is different from the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
 ====
 
+[IMPORTANT]
+====
+You must ensure that all xref:prerequisites-for-all-providers_mtv[Prerequisites and software requirements for all providers] and all xref:prerequisites-per-provider_mtv[Specific software requirements for each provider] are met.
+====
 
 :mtv!:
+:context: cli
+:cli:
+
+include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
+
+:cli!:
 :context: vmware
 :vmware:
 
@@ -477,7 +371,15 @@ include::modules/retrieving-vmware-moref.adoc[leveloffset=+3]
 
 include::modules/mtv-shared-disks.adoc[leveloffset=+3]
 
+include::modules/mtv-shared-disks-known-issues.adoc[leveloffset=+4]
+
+include::modules/mtv-shared-disks-workarounds.adoc[leveloffset=+4]
+
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-cli-entire.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 
 :vmware!:
 :context: rhv
@@ -487,6 +389,10 @@ include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
+include::modules/canceling-migration-cli-entire.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
+
 :rhv!:
 :context: ostack
 :ostack:
@@ -494,6 +400,10 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-cli-entire.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 
 :ostack!:
 :context: ova
@@ -503,6 +413,10 @@ include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
+include::modules/canceling-migration-cli-entire.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
+
 :ova!:
 :context: cnv
 :cnv:
@@ -510,6 +424,10 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-cli-entire.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 
 :cnv!:
 :context: mtv
@@ -520,12 +438,7 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 include::modules/changing-precopy-intervals.adoc[leveloffset=+2]
 
-[id="creating-custom-rules-for-validation-service"]
-=== Creating custom rules for the Validation service
-
-The `Validation` service uses Open Policy Agent (OPA) policy rules to check the suitability of each virtual machine (VM) for migration. The `Validation` service generates a list of _concerns_ for each VM, which are stored in the `Provider Inventory` service as VM attributes. The web console displays the concerns for each VM in the provider inventory.
-
-You can create custom rules to extend the default ruleset of the `Validation` service. For example, you can create a rule that checks whether a VM has multiple disks.
+include::modules/creating-custom-rules-for-validation-service.adoc[leveloffset=+2]
 
 include::modules/about-rego-files.adoc[leveloffset=+3]
 
@@ -536,11 +449,6 @@ include::modules/creating-validation-rule.adoc[leveloffset=+3]
 include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
 
 include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
-
-[id="adding-hooks-mtv-migration-plan"]
-=== Adding hooks to an MTV migration plan
-
-You can add hooks to an {project-first} migration plan to perform automated operations on a VM, either before or after you migrate it.
 
 include::modules/about-hooks-for-migration-plans.adoc[leveloffset=+3]
 
@@ -577,30 +485,30 @@ include::modules/error-messages.adoc[leveloffset=+2]
 include::modules/using-must-gather.adoc[leveloffset=+2]
 
 [id="architecture_{context}"]
-=== Architecture
+== Architecture
 
 This section describes {project-short} custom resources, services, and workflows.
 
-include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
+include::modules/mtv-resources-and-services.adoc[leveloffset=2]
 
-include::modules/mtv-workflow.adoc[leveloffset=+3]
+include::modules/mtv-workflow.adoc[leveloffset=+2]
 
-include::modules/virt-migration-workflow.adoc[leveloffset=+3]
+include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 
-include::modules/virt-v2v-mtv.adoc[leveloffset=+3]
+include::modules/virt-v2v-mtv.adoc[leveloffset=+2]
 
 include::modules/raw-copy-mode.adoc[leveloffset=+3]
 
 [id="logs-and-crs_{context}"]
-=== Logs and custom resources
+== Logs and custom resources
 
 You can download logs and custom resource (CR) information for troubleshooting. For more information, see the xref:virt-migration-workflow_{context}[detailed migration workflow].
 
-include::modules/collected-logs-cr-info.adoc[leveloffset=+3]
+include::modules/collected-logs-cr-info.adoc[leveloffset=+2]
 
-include::modules/accessing-logs-ui.adoc[leveloffset=+3]
+include::modules/accessing-logs-ui.adoc[leveloffset=+2]
 
-include::modules/accessing-logs-cli.adoc[leveloffset=+3]
+include::modules/accessing-logs-cli.adoc[leveloffset=+2]
 
 [id="telemetry_{context}"]
 == Telemetry
@@ -611,5 +519,9 @@ include::modules/mtv-telemetry.adoc[leveloffset=+2]
 == Additional information
 
 include::modules/mtv-performance-addendum.adoc[leveloffset=+2]
+
+include::modules/mtv-esxi-performance.adoc[leveloffset=+3]
+
+include::modules/mtv-different-migration-networks-performance.adoc[leveloffset=+3]
 
 :mtv!:

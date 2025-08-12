@@ -7,11 +7,13 @@
 ifdef::web[]
 = Installing the {operator-name} by using the {ocp} web console
 
+[role="_abstract"] 
 You can install the {operator-name} by using the {ocp} web console.
 endif::[]
 ifdef::cli[]
 = Installing the {operator-name} by using the command-line interface
 
+[role="_abstract"] 
 You can install the {operator-name} by using the command-line interface (CLI).
 endif::[]
 
@@ -137,7 +139,9 @@ EOF
 $ {oc} get pods -n {namespace}
 ----
 +
-.Example output
+The following is example output:
++
+.Example
 ----
 NAME                                                    READY   STATUS    RESTARTS   AGE
 forklift-api-bb45b8db4-cpzlg                            1/1     Running   0          6m34s

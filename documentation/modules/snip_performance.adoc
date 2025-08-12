@@ -1,6 +1,6 @@
 :_content-type: SNIPPET
 
-The data provided here was collected from testing in Red Hat Labs and is provided for reference only. 
+The data provided here was collected from testing in Red Hat labs and is provided for reference only. 
 
 Overall, these numbers should be considered to show the best-case scenarios.
 

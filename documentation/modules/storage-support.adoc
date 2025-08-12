@@ -6,6 +6,7 @@
 [id="about-storage_{context}"]
 = Storage support and default modes
 
+[role="_abstract"]
 {project-first} uses the following default volume and access modes for supported storage.
 
 .Default volume and access modes
@@ -74,7 +75,7 @@ See link:https://access.redhat.com/documentation/en-us/openshift_container_platf
 
 [NOTE]
 ====
-If your migration uses block storage and persistent volumes created with an EXT4 file system, increase the file system overhead in CDI to be more than 10%. The default overhead that is assumed by CDI does not completely include the reserved place for the root partition. If you do not increase the file system overhead in CDI by this amount, your migration might fail.
+If your migration uses block storage and persistent volumes created with an EXT4 file system, increase the file system overhead in the Containerized Data Importer (CDI) to be more than 10%. The default overhead that is assumed by CDI does not completely include the reserved place for the root partition. If you do not increase the file system overhead in CDI by this amount, your migration might fail.
 ====
 
 [NOTE]

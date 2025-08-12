@@ -1,7 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="new-features-and-enhancements-2-7_{context}"]
 = New features and enhancements
 
+[role="_abstract"]
 {project-first} 2.7 introduces the following features and enhancements:
 
 * In {project-short} 2.7.0, warm migration is now based on RHEL 9 inheriting features and bug fixes.

@@ -2,9 +2,11 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="known-issues-2-7_{context}"]
 = Known issues
 
+[role="_abstract"]
 {project-first} 2.7 has the following known issues:
 
 .`Select Migration Network` from the endpoint type `ESXi` displays multiple incorrect networks

@@ -6,6 +6,9 @@
 [id="resolved-issues-2-9-1_{context}"]
 = Resolved issues 2.9.1
 
+[role="_abstract"]
+{project-first} 2.9.1 has the following resolved issues:
+
 .{project-short} used only compatibility mode bus for virtual machines with raw copy mode
 
 In earlier releases, virtual machines (VMs) that enabled `skipGuestConversion` (raw copy mode) used only compatible mode bus and adapters: Serial Advanced Technology Attachment (SATA), E1000E, and USB (Universal Serial Bus). This issue has been resolved in {project-short} 2.9.1 by adding the `useCompatibilityMode` field. When set to `false`, the `useCompatibilityMode` field allows you to use `VirtIO` devices for VMs with raw copy mode. You must install `virtio` drivers to use the `VirtIO` devices before migration. The `useCompatibilityMode` field does not have an effect without enabling `skipGuestConversion`. 

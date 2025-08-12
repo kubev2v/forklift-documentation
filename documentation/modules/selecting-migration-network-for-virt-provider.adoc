@@ -6,9 +6,10 @@
 [id="selecting-migration-network-for-virt-provider_{context}"]
 = Selecting a migration network for {a-virt} provider
 
+[role="_abstract"]
 You can select a default migration network for {a-virt} provider in the {ocp} web console to improve performance. The default migration network is used to transfer disks to the namespaces in which it is configured.
 
-After you select a transfer network, associate its network attachment definition (NAD) with the gateway to be used by this network. 
+After you select a transfer network, associate its network attachment definition (NAD) with the gateway to be used by this network.
 
 If you do not select a migration network, the default migration network is the `pod` network, which might not be optimal for disk transfer.
 
@@ -20,7 +21,7 @@ You can override the default migration network of the provider by selecting a di
 .Procedure
 
 . In the {ocp} web console, click *Migration* > *Providers for virtualization*.
-. Click the {virt} provider whose migration network you want to change. 
+. Click the {virt} provider whose migration network you want to change.
 +
 When the *Providers detail* page opens:
 

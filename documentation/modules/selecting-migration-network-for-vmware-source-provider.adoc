@@ -6,6 +6,7 @@
 [id="selecting-migration-network-for-vmware-source-provider_{context}"]
 = Selecting a migration network for a VMware source provider
 
+[role="_abstract"]
 You can select a migration network in the {ocp} web console for a source provider to reduce risk to the source environment and to improve performance.
 
 Using the default network for migration can result in poor performance because the network might not have sufficient bandwidth. This situation can have a negative effect on the source platform because the disk transfer operation might saturate the network.
@@ -19,7 +20,7 @@ If you input any value of maximum transmission unit (MTU) besides the default va
 
 .Prerequisites
 
-* The migration network must have sufficient throughput, minimum speed of 10 Gbps, for disk transfer.
+* The migration network must have enough throughput, minimum speed of 10 Gbps, for disk transfer.
 * The migration network must be accessible to the {virt} nodes through the default gateway.
 +
 [NOTE]

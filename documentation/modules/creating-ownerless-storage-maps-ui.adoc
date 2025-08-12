@@ -1,0 +1,15 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="creating-ownerless-storage-maps-ui_{context}"]
+= Creating ownerless storage maps in the {project-short} UI
+
+[role="_abstract"]
+You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
+
+You can create this type of map by using one of the following methods:
+
+* *Create with form*, selecting items such as a source provider from lists.
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same.

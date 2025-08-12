@@ -2,9 +2,11 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="using-must-gather_{context}"]
 = Using the must-gather tool
 
+[role="_abstract"]
 You can collect logs and information about {project-short} custom resources (CRs) by using the `must-gather` tool. You must attach a `must-gather` data file to all customer cases.
 
 You can gather data for a specific namespace, migration plan, or virtual machine (VM) by using the filtering options.
@@ -19,7 +21,7 @@ If you specify a non-existent resource in the filtered `must-gather` command, no
 * You must be logged in to the {virt} cluster as a user with the `cluster-admin` role.
 * You must have the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[{ocp} CLI (`oc`)] installed.
 
-.Collecting logs and CR information
+.Procedure
 
 . Navigate to the directory where you want to store the `must-gather` data.
 . Run the `oc adm must-gather` command:

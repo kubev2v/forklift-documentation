@@ -2,9 +2,11 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="known-issues-2-8_{context}"]
 = Known issues
 
+[role="_abstract"]
 {project-first} 2.8 has the following known issues:
 
 .Trusted Platform Module is added to the BIOS of a Windows Server 2022 VM after warm migration

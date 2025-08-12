@@ -2,5 +2,5 @@
 
 [WARNING]
 ====
-Virtual machine (VM) migrations do not work without VDDK when a VM is backed by VMware vSAN.
+Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
 ====

@@ -6,6 +6,7 @@
 [id="mtv-performance-recommendation_{context}"]
 = {project-short} performance recommendations
 
+[role="_abstract"]
 The purpose of this section is to share recommendations for efficient and effective migration of virtual machines (VMs) using {project-first}, based on findings observed through testing.
 
 include::snip_performance.adoc[]
@@ -13,15 +14,15 @@ include::snip_performance.adoc[]
 [id="mtv-performance-storage-network_{context}"]
 == Ensure fast storage and network speeds
 
-Ensure fast storage and network speeds, both for VMware and {ocp} (OCP) environments.
+Ensure fast storage and network speeds, both for {vmw} and {ocp} (OCP) environments.
 
-* To perform fast migrations, VMware must have fast read access to datastores.  Networking between VMware ESXi hosts should be fast, ensure a 10 GiB network connection, and avoid network bottlenecks.
+* To perform fast migrations, {vmw} must have fast read access to datastores. Networking between {vmw} ESXi hosts should be fast, ensure a 10 GiB network connection, and avoid network bottlenecks.
 
-** Extend the VMware network to the OCP Workers Interface network environment.
+** Extend the {vmw} network to the OCP Workers Interface network environment.
 
-** It is important to ensure that the VMware network offers high throughput (10 Gigabit Ethernet) and rapid networking to guarantee that the reception rates align with the read rate of the ESXi datastore.
+** It is important to ensure that the {vmw} network offers high throughput (10 Gigabit Ethernet) and rapid networking to guarantee that the reception rates align with the read rate of the ESXi datastore.
 
-** Be aware that the migration process uses significant network bandwidth and that the migration network is utilized. If other services utilize that network, it may have an impact on those services and their migration rates.
+** Be aware that the migration process uses significant network bandwidth and that the migration network is utilized. If other services use that network, it might have an impact on those services and their migration rates.
 
 ** For example, 200 to 325 MiB/s was the average network transfer rate from the `vmnic` for each ESXi host associated with transferring data to the OCP interface.
 
@@ -29,7 +30,6 @@ Ensure fast storage and network speeds, both for VMware and {ocp} (OCP) environm
 == Ensure fast datastore read speeds to ensure efficient and performant migrations
 
 Datastores read rates impact the total transfer times, so it is essential to ensure fast reads are possible from the ESXi datastore to the ESXi host.  
-
 
 Example in numbers: 200 to 300 MiB/s was the average read rate for both vSphere and ESXi endpoints for a single ESXi server. When multiple ESXi servers are used, higher datastore read rates are possible.
 
@@ -48,7 +48,7 @@ When transferring many VMs that are registered to multiple ESXi hosts, using the
 
 [NOTE]
 ====
-As of vSphere 7.0, ESXi hosts can label which network to use for NBD transport. This is accomplished by tagging the desired virtual network interface card (NIC) with the appropriate `vSphereBackupNFC` label.  When this is done, {project-short} will be able to utilize the ESXi interface for network transfer to Openshift as long as the worker and ESXi host interfaces are reachable.  This is especially useful when migration users may not have access to the ESXi credentials yet would like to be able to control which ESXi interface is used for migration. 
+As of vSphere 7.0, ESXi hosts can label which network to use for Network Block Device (NBD) transport. This is accomplished by tagging the desired virtual network interface card (NIC) with the appropriate `vSphereBackupNFC` label. When this is done, {project-short} is able to use the ESXi interface for network transfer to {ocp-short} provided that the worker and ESXi host interfaces are reachable. This is especially useful when migration users might not have access to the ESXi credentials yet want to be able to control which ESXi interface is used for migration. 
 
 For more details, see: link:https://issues.redhat.com/browse/MTV-1230[({project-short}-1230)]
 ====
@@ -63,16 +63,16 @@ esxcli network ip interface tag add -t vSphereBackupNFC -i vmk2
 [id="mtv-performance-bios-profile_{context}"]
 == Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance
 
-Where possible, ensure that hosts used to perform migrations are set with BIOS profiles related to maximum performance.  Hosts which use Host Power Management controlled within vSphere should check that `High Performance` is set.
+Where possible, ensure that hosts used to perform migrations are set with BIOS profiles related to maximum performance. Hosts which use Host Power Management controlled within vSphere should check that `High Performance` is set.
 
 Testing showed that when transferring more than 10 VMs with both BIOS and host power management set accordingly, migrations had an increase of 15 MiB in the average datastore read rate.
 
 [id="mtv-performance-network-loads_{context}"]
-== Avoid additional network load on VMware networks
+== Avoid additional network load on {vmw} networks
 
-You can reduce the network load on VMware networks by selecting the migration network when using the ESXi endpoint.
+You can reduce the network load on {vmw} networks by selecting the migration network when using the ESXi endpoint.
 
-By incorporating a virtualization provider, {project-short} enables the selection of a specific network, which is accessible on the ESXi hosts, for the purpose of migrating virtual machines to OCP.  Selecting this migration network from the ESXi host in the {project-short} UI will ensure that the transfer is performed using the selected network as an ESXi endpoint.
+By incorporating a virtualization provider, {project-short} enables the selection of a specific network, which is accessible on the ESXi hosts, for the purpose of migrating virtual machines to {ocp-short}. Selecting this migration network from the ESXi host in the {project-short} UI ensures that the transfer is performed using the selected network as an ESXi endpoint.
 
 It is imperative to ensure that the network selected has connectivity to the OCP interface, has adequate bandwidth for migrations, and that the network interface is not saturated.
 
@@ -85,13 +85,13 @@ Set the `MAX_VM_INFLIGHT MTV` variable to control the maximum number of concurre
 
 {project-short} allows for concurrency to be controlled using this variable; by default, it is set to 20.
 
-When setting `MAX_VM_INFLIGHT`, consider the number of maximum concurrent VMs transfers are required for ESXi hosts. It is important to consider the type of migration to be transferred concurrently. Warm  migrations, which are defined by migrations of a running VM that will be migrated over a scheduled time.
+When setting `MAX_VM_INFLIGHT`, consider the number of maximum concurrent VMs transfers are required for ESXi hosts. It is important to consider the type of migration to be transferred concurrently. Warm migrations, which are defined by migrations of a running VM that will be migrated over a scheduled time.
 
-Warm migrations use snapshots to compare and migrate only the differences between previous snapshots of the disk.  The migration of the differences between snapshots happens over specific intervals before a final cut-over of the running VM to {ocp-short} occurs. 
+Warm migrations use snapshots to compare and migrate only the differences between previous snapshots of the disk. The migration of the differences between snapshots happens over specific intervals before a final cut-over of the running VM to {ocp-short} occurs. 
 
-In {project-short} 2.6, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, regardless of current migration activity for a specific snapshot or the number of disks that belong to a single vm. The total set by `MAX_VM_INFLIGHT` is used to indicate how many concurrent VM tranfers per ESXi host is allowed.
+In {project-short} 2.6, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, regardless of current migration activity for a specific snapshot or the number of disks that belong to a single VM. The total set by `MAX_VM_INFLIGHT` is used to indicate how many concurrent VM tranfers per ESXi host is allowed.
 
-.Examples
+.Example
 
 * `MAX_VM_INFLIGHT = 20` and 2 ESXi hosts defined in the provider mean each host can transfer 20 VMs.
 
@@ -144,7 +144,7 @@ Migrating a larger number of VMs from more than 8 ESXi hosts concurrently could 
 
 The maximum number of disks that can be referenced by a single migration plan is 500. For more details, see link:https://issues.redhat.com/browse/MTV-1203[(MTV-1203)]. 
 
-When attempting to migrate many VMs in a single migration plan, it can take some time for all migrations to start.  By breaking up one migration plan into several migration plans, it is possible to start them at the same time.
+When attempting to migrate many VMs in a single migration plan, it can take some time for all migrations to start. By breaking up one migration plan into several migration plans, it is possible to start them at the same time.
 
 Comparing migrations of:
 
@@ -152,7 +152,7 @@ Comparing migrations of:
 
 * 800 VMs using 8 ESXi hosts with 8 plans, `max_vm_inflight=100`, took 57 minutes.
 
-Testing showed that by breaking one single large plan into multiple moderately sized plans, for example, 100 VMS per plan, the total migration time can be reduced.
+Testing showed that by breaking one single large plan into multiple moderately sized plans, for example, by using 100 VMs per plan, the total migration time can be reduced.
 
 [id="mtv-performance-max-values-cold_{context}"]
 == Maximum values tested for cold migrations
@@ -175,25 +175,21 @@ Testing showed that by breaking one single large plan into multiple moderately s
 
 The following recommendations are specific to warm migrations:
 
-[id="mtv-warm-migration-recommendations-disks-in-parallel_{context}"]
-=== Migrate up to 400 disks in parallel
+* Migrate up to 400 disks in parallel
 
 Testing involved migrating 200 VMs in parallel, with 2 disks each using 8 ESXi hosts, for a total of 400 disks. No tests were run on migration plans migrating over 400 disks in parallel, so it is not recommended to migrate over this number of disks in parallel.
 
-[id="mtv-warm-migration-recommendations-effects-of-precopy-speed_{context}"]
-=== Migrate up to 200 disks in parallel for the fastest rate
+* Migrate up to 200 disks in parallel for the fastest rate
 
 Testing was successfully performed on parallel disk migrations with 200, 300, and 400 disks. There was a decrease in the precopy migration rate, approximately 25%, between the tests migrating 200 disks and those migrating 300 and 400 disks.
 
 Therefore, it is recommended to perform parallel disk migrations in groups of 200 or fewer, instead of 300 to 400 disks, unless a decline of 25% in precopy speed does not affect your cutover planning.
 
-[id="mtv-warm-migration-recommendations-set-cutover-time_{context}"]
-=== When possible, set cutover time to be immediately after a migration plan starts
+* When possible, set cutover time to be immediately after a migration plan starts
 
 To reduce the overall time of warm migrations, it is recommended to set the cutover to occur immediately after the migration plan is started. This causes {project-short} to run *only one* precopy per VM. This recommendation is valid, no matter how many VMs are in the migration plan.
 
-[id="mtv-warm-migration-recommendations-increase-precopy-intevals_{context}"]
-=== Increase precopy intervals between snapshots
+* Increase precopy intervals between snapshots
 
 If you are creating many migration plans with a single VM and have enough time between the migration start and the cutover, increase the value of the `controller_precopy_interval` parameter to between 120 and 240 minutes, inclusive. The longer setting will reduce the total number of snapshots and disk transfers per VM before the cutover.
 
@@ -216,15 +212,15 @@ If you are creating many migration plans with a single VM and have enough time b
 
 The following recommendations are suggested for VMs with data on disk totaling to 1 TB or greater for each individual disk:
 
-* Schedule appropriate maintenance windows for migrating large disk virtual machines (VMs). Such migrations are sensitive operations and may require careful planning of maintenance windows and downtime, especially during periods of lower storage and network activity.
+* Schedule appropriate maintenance windows for migrating large disk virtual machines (VMs). Such migrations are sensitive operations and might require careful planning of maintenance windows and downtime, especially during periods of lower storage and network activity.
 
 * Check that no other migration activities or other heavy network or storage activities are run during those large virtual machine (VM) migrations. You should treat these large virtual machine migrations as a special case. During those migrations, prioritize {project-short} activities. Plan to migrate those VMs to a time when there are fewer activities on those VMs and related datastore.
 
-* For large VMs with a high churn rate, which means data is frequently changed in amounts of 100 GB or more between snapshots, consider reducing the warm migration `controller_precopy_interval` from the default, which is 60 minutes. It is important to ensure that this process is started at least 24 hours before the scheduled cutover to allow for multiple successful precopy snapshots to complete. When scheduling the cutover, ensure that the maintenance window allows for sufficient time for the last snapshot of changes to be copied over and that the cutover process begins at the beginning of that maintenance window.
+* For large VMs with a high churn rate, which means data is frequently changed in amounts of 100 GB or more between snapshots, consider reducing the warm migration `controller_precopy_interval` from the default, which is 60 minutes. It is important to ensure that this process is started at least 24 hours before the scheduled cutover to allow for multiple successful precopy snapshots to complete. When scheduling the cutover, ensure that the maintenance window allows for enough time for the last snapshot of changes to be copied over and that the cutover process begins at the beginning of that maintenance window.
 
 * In cases of particularly large single-disk VMs, where some downtime is possible, select cold migrations rather than warm migrations, especially in the case of large VM snapshots.
 
 * Consider splitting data on particularly large disks to multiple disks, which enables parallel disk migration with {project-short} when warm migration is used.
 
-* If you have large database disks with continuous writes of large amounts of data, where downtime and VM snapshots are not possible, it may be necessary to consider database vendor-specific replication options of the database data to target these specific migrations outside {project-short}. Please consult the vendor-specific options of your database if this case applies.
+* If you have large database disks with continuous writes of large amounts of data, where downtime and VM snapshots are not possible, it might be necessary to consider database vendor-specific replication options of the database data to target these specific migrations outside {project-short}. Consult the vendor-specific options of your database if this case applies.
 

@@ -6,9 +6,10 @@
 [id="new-migrating-virtual-machines-cli_{context}"]
 
 ifdef::vmware[]
-= Migrating from a VMware vSphere source provider
+= Migrating from a {vmw} vSphere source provider
 
-You can migrate from a VMware vSphere source provider by using the command-line interface (CLI).
+[role="_abstract"]
+You can migrate from a {vmw} vSphere source provider by using the command-line interface (CLI).
 
 include::snip_anti-virus-warning.adoc[]
 
@@ -23,6 +24,7 @@ endif::[]
 ifdef::rhv[]
 = Migrating from a {rhv-full} source provider
 
+[role="_abstract"]
 You can migrate from a {rhv-full} ({rhv-short}) source provider by using the command-line interface (CLI).
 
 .Prerequisites
@@ -35,17 +37,20 @@ endif::[]
 ifdef::ova[]
 = Migrating from an Open Virtual Appliance (OVA) source provider
 
-You can migrate from Open Virtual Appliance (OVA) files that were created by VMware vSphere as a source provider by using the command-line interface (CLI).
+[role="_abstract"]
+You can migrate from Open Virtual Appliance (OVA) files that were created by {vmw} vSphere as a source provider by using the command-line interface (CLI).
 
 endif::[]
 ifdef::ostack[]
 = Migrating from an {osp} source provider
 
+[role="_abstract"]
 You can migrate from an {osp} source provider by using the command-line interface (CLI).
 endif::[]
 ifdef::cnv[]
 = Migrating from a Red Hat {virt} source provider
 
+[role="_abstract"]
 You can use a Red Hat {virt} provider as either a source provider or as a destination provider. You can migrate from an {virt} source provider by using the command-line interface (CLI).
 
 [NOTE]
@@ -367,9 +372,9 @@ spec:
   ipAddress: <source_network_ip> <3>
 EOF
 ----
-<1> Specify the name of the VMware vSphere `Provider` CR.
-<2> Specify the Managed Object Reference (moRef) of the VMware vSphere host. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
-<3> Specify the IP address of the VMware vSphere migration network.
+<1> Specify the name of the {vmw} vSphere `Provider` CR.
+<2> Specify the Managed Object Reference (moRef) of the {vmw} vSphere host. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+<3> Specify the IP address of the {vmw} vSphere migration network.
 
 [start=4]
 . Create a `NetworkMap` manifest to map the source and destination networks:
@@ -407,7 +412,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
-<2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+<2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {vmw} vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 <3> Specify a network attachment definition for each additional {virt} network.
 <4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
@@ -607,7 +612,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+<2> Specify the {vmw} vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 endif::[]
 
 ifdef::rhv[]
@@ -889,7 +894,7 @@ The template follows the Go template syntax and has access to the following vari
 ** `"disk-{{.VolumeIndex}}"`
 ** `"pvc-{{.PVCName}}"`
 <15> You can use either the `id` or the `name` parameter to specify the source VMs.
-<16> Specify the VMware vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+<16> Specify the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 <17> Optional: Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
 <18> Optional: Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10].
 <19> Optional: Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout14[callout 14].

@@ -6,6 +6,7 @@
 [id="accessing-logs-cli_{context}"]
 = Accessing logs and custom resource information from the command line
 
+[role="_abstract"]
 You can access logs and information about custom resources (CRs) from the command line by using the `must-gather` tool. You must attach a `must-gather` data file to all customer cases.
 
 You can gather data for a specific namespace, a completed, failed, or canceled migration plan, or a migrated virtual machine (VM) by using the filtering options.

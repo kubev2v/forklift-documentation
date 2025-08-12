@@ -6,10 +6,13 @@
 [id="mtv-migration-speed-comparison_{context}"]
 = Migration speed comparison
 
+[role="_abstract"]
+Comparing the migration speeds of cold and warm migrations, you can observe that:
+
 * The observed speeds for the warm migration single disk transfer and disk conversion are approximately the same as for the cold migration.
 
-* The benefit of warm migration is that the transfer of the snapshot is happening in the background while the VM is powered *_on_*.
+* The benefit of warm migration is that the transfer of the snapshot happens in the background while the VM is powered *_on_*.
 
 * The default snapshot time is taken every 60 minutes. If VMs change substantially, more data needs to be transferred than in cold migration when the VM is powered *_off_*.
 
-* The cutover time, meanng the shutdown of the VM and last snapshot transfer, is dependent on how much the VM has changed since the last snapshot.
+* The cutover time, meaning the shutdown of the VM and last snapshot transfer, depends on how much the VM has changed since the last snapshot.

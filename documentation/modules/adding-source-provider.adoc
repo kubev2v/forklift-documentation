@@ -2,11 +2,13 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="adding-source-provider_{context}"]
 ifdef::vmware[]
-= Adding a VMware vSphere source provider
+= Adding a {vmw} vSphere source provider
 
-You can migrate {vmw} vSphere VMs from {vmw} vCenter or from a {vmw} ESX/ESXi server, without going through vCenter.
+[role="_abstract"] 
+You can migrate {vmw} vSphere VMs from {vmw} vCenter or from a {vmw} ESX/ESXi server without going through vCenter.
 
 [IMPORTANT]
 ====
@@ -18,43 +20,40 @@ include::snip_anti-virus-warning.adoc[]
 include::snip_no-nvme.adoc[]
 
 include::snip-mtu-value.adoc[]
-
-.Prerequisites
-
-* It is strongly recommended to create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters. A VDDK image accelerates migration and reduces the risk of a plan failing. If you are not using VDDK and a plan fails, then please retry with VDDK installed. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
-
-include::snip-vsan.adoc[]
-
 endif::[]
+
 ifdef::rhv[]
 = Adding {a-rhv} source provider
 
+[role="_abstract"] 
 You can add {a-rhv} source provider by using the {ocp} web console.
-
-.Prerequisites
-
-* {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, specify the {manager} Apache CA certificate
 endif::[]
+
 ifdef::ova[]
 = Adding an Open Virtual Appliance (OVA) source provider
 
+[role="_abstract"] 
 You can add Open Virtual Appliance (OVA) files that were created by {vmw} vSphere as a source provider by using the {ocp} web console.
 
 endif::[]
+
 ifdef::ostack[]
 = Adding an {osp} source provider
 
+[role="_abstract"] 
 You can add an {osp} source provider by using the {ocp} web console.
 
 [IMPORTANT]
 ====
-When you migrate an image-based VM from an {osp} provider, a snapshot is created for the image that is attached to the source VM and the data from the snapshot is copied over to the target VM. This means that the target VM will have the same state as that of the source VM at the time the snapshot was created.
+When you migrate an image-based VM from an {osp} provider, a snapshot is created for the image that is attached to the source VM, and the data from the snapshot is copied over to the target VM. This means that the target VM will have the same state as that of the source VM at the time the snapshot was created.
 ====
 endif::[]
+
 ifdef::cnv[]
 = Adding a Red Hat {virt} source provider
 
-You can use a Red Hat {virt} provider as both a source provider and destination provider.
+[role="_abstract"] 
+You can use a Red Hat {virt} provider as both a source provider and a destination provider.
 
 Specifically, the host cluster that is automatically added as a {virt} provider can be used as both a source provider and a destination provider.
 
@@ -65,19 +64,35 @@ You can migrate VMs from the cluster that {project-short} is deployed on to anot
 The {ocp} cluster version of the source provider must be 4.16 or later.
 ====
 endif::[]
+
 ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 = Adding {a-virt} destination provider
 
-You can use a Red Hat {virt} provider as both a source provider and destination provider.
+[role="_abstract"] 
+You can use a Red Hat {virt} provider as both a source provider and a destination provider.
 
 Specifically, the host cluster that is automatically added as a {virt} provider can be used as both a source provider and a destination provider.
 
 You can also add another {virt} destination provider to the {ocp} web console in addition to the default {virt} destination provider, which is the cluster where you installed {project-short}.
 
-You can migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
+You can migrate VMs from the cluster that {project-short} is deployed on to another cluster or from a remote cluster to the cluster that {project-short} is deployed on.
+endif::[]
 
+ifdef::vmware,rhv,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 .Prerequisites
+endif::[]
 
+ifdef::vmware[]
+* It is strongly recommended to create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters. A VDDK image accelerates migration and reduces the risk of a plan failing. If you are not using VDDK and a plan fails, retry with VDDK installed. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
+
+include::snip-vsan.adoc[]
+endif::[]
+
+ifdef::rhv[]
+* {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, specify the {manager} Apache CA certificate
+endif::[]
+
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 * You must have {a-virt} link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/authentication_and_authorization/using-service-accounts[service account token] with `cluster-admin` privileges.
 endif::[]
 

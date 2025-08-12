@@ -6,6 +6,7 @@
 [id="creating-yaml-based-network-maps-ui_{context}"]
 = Creating ownerless network maps in the {project-short} UI
 
+[role="_abstract"]
 You can create ownerless network maps by using the {project-first} UI to map source networks to {virt} networks.
 
 .Procedure

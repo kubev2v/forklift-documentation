@@ -3,6 +3,7 @@
 [id="non-admin-permissions_{context}"]
 = Permissions needed by non-administrators to work with migration plan components
 
+[role="_abstract"]
 If you are an administrator, you can work with all components of migration plans (for example, providers, network mappings, and migration plans).
 
 By default, non-administrators have limited ability to work with migration plans and their components. As an administrator, you can modify their roles to allow them full access to all components, or you can give them limited permissions.
@@ -24,7 +25,10 @@ For example, administrators can assign non-administrators one or more of the fol
 | All `edit` privileges and the ability to delete the entire collection of migration plans
 |===
 
-Note that pre-defined cluster roles include a resource (for example, `plans`), an API group (for example, `forklift.konveyor.io-v1beta1`) and an action (for example, `view`, `edit`).
+[NOTE]
+====
+Predefined cluster roles include a resource (for example, `plans`), an API group (for example, `forklift.konveyor.io-v1beta1`) and an action (for example, `view`, `edit`).
+====
 
 As a more comprehensive example, you can grant non-administrators the following set of permissions per namespace:
 

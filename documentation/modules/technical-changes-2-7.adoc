@@ -2,9 +2,11 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="technical-changes-2-7_{context}"]
 = Technical changes
 
+[role="_abstract"]
 {project-first} 2.7 has the following technical changes:
 
 .Upgraded virt-v2v to RHEL9 for warm migrations
