@@ -6,6 +6,7 @@
 [id="accessing-default-validation-rules_{context}"]
 = Checking the default validation rules
 
+[role="_abstract"]
 Before you create a custom rule, you must check the default rules of the `Validation` service to ensure that you do not create a rule that redefines an existing default value.
 
 Example: If a default rule contains the line `default valid_input = false` and you create a custom rule that contains the line `default valid_input = true`, the `Validation` service will not start.

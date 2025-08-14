@@ -6,13 +6,14 @@
 [id="mtv-aio-buffer_{context}"]
 = Increasing asynchronous I/O (AIO) sizes and buffer counts for NBD transport mode
 
-This document describes how to change NBD transport NFC parameters for increased migration performance when using the {project-first} product.
+[role="_abstract"]
+You can change Network Block Device (NBD) transport Network File Copy (NFC) parameters for increased migration performance when using the {project-first} product.
 
 [WARNING]
 ====
-Using AIO buffering is only suitable for Cold Migration use cases.
-
-* Disable AIO settings before initializing Warm Migration. For more details, see xref:mtv-disable-aio-buffer_mtv[Disabling AIO Buffer Configuration].
+Using AIO buffering is only suitable for cold migration.
+ 
+Disable AIO settings before initializing Warm Migration. For more details, see xref:mtv-disable-aio-buffer_mtv[Disabling AIO Buffer Configuration].
 ====
 
 .Additional information
@@ -94,7 +95,6 @@ Add the following under the spec section:
 virt_v2v_extra_args: "--vddk-config /mnt/extra-v2v-conf/input.conf"
 virt_v2v_extra_conf_config_map: "perf"
 ----
-
 
 .Creating a ConfigMap named `perf`
 
@@ -251,4 +251,4 @@ Support is based upon tests performed using the following versions:
 
 * vSphere : 7.0.3
 * VDDK : 7.0.3
-* For other VDDK and vSphere versions, please check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation].
+* For other VDDK and vSphere versions, check the AIO buffer support in the link:https://docs.vmware.com/[official VMware documentation].
