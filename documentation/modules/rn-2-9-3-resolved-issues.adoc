@@ -1,0 +1,64 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-9-3_{context}"]
+= Resolved issues 2.9.3
+
+.Guest migrations from secure ESXi provider on {project-short}, causing migration failures.
+
+In previous versions of {project-short}, the use of a wrong v2v command for migrating guests on Red Hat OpenShift Container Platform (OCP) 2.8.0 led to user migration failures from secure ESXi providers on {project-short}. This issue has been addressed by fixing the incorrect v2v command for ESXi migration on {project-short}. As a result, migration of guests from secure ESXi providers on {project-short} is now successful. link:https://issues.redhat.com/browse/MTV-2362[(MTV-2362)]
+
+.VM migration failed due to more than one interface connected to a Pod Network
+
+In previous versions of {project-short}, VM migration failed due to having more than one interface connected to a Pod Network. As a result, users encountered migration failure when attempting to move a VM with multiple interfaces to a Pod, resulting in incomplete migration. With this release, the fix allows migration of VMs with many interfaces to a Pod target, preventing failure due to more than one interface connected to a pod network. As a result, end users can now successfully migrate VMs with many interfaces to Pod target, eliminating failure issues. link:https://issues.redhat.com/browse/MTV-2736[(MTV-2736)]
+
+.Missing Resources in OVA plans
+
+In previous versions of {project-short}, users who selected an open virtual appliancee (OVA) from the provider experienced an issue due to inaccurate conversion of resource units in the Open Virtualization Format (OVF) file. This led to the unavailability of the Virtual Machine (VM). In this release, we have corrected the calculation of resources in the OVA provider by updating CPU and memory calculations in the utils.ts file. As a result, end users can now correctly assign CPU and memory resources from the OVA provider. link:https://issues.redhat.com/browse/MTV-2893[(MTV-2893)]
+
+.Unable to edit the Plan Mapping
+
+In previous versions of {project-short}, the `planNetworkMap` and `planStorageMap` variables were incorrectly utilized in the code, leading to user edits of Plan Mapping not reflecting changes, causing inconsistencies in network configurations. As a consequence, users experienced difficulties with plan editing. With this release, Plan Mapping data is now correctly updated in the Plan, resolving plan editing issues and enabling smooth updates to Plan Mapping. As a result, users can expect consistent network configurations and seamless plan editing experiences. link:https://issues.redhat.com/browse/MTV-2902[(MTV-2902)]
+
+.Repeated failed calls to incorrect endpoints
+
+In previous versions of {project-short}, incorrect endpoint path formatting in the `useNetworks` hook led to repeated failed calls. This resulted in repeated failures when creating migration plans due to incorrect endpoint calls, particularly in the 'Virtual machines' section of the Migration plan creation wizard. With this release, we've fixed the repeated incorrect endpoint calls in the 'Virtual machines' section, improving the creation of migration plans by eliminating failed calls and ensuring a smoother user experience. link:https://issues.redhat.com/browse/MTV-2978[(MTV-2978)]
+
+.Users unable to match VMware file names with PVC names, causing inconsistency in resource identification
+
+In previous versions of {project-short}, users encountered an issue where they could not use VMware file names in Persistent Volume Claim (PVC) name templates, leading to inconsistent resource identification due to mismatched names. This problem stemmed from the inability to use VMware VMDK file names in PVC name templates. With this release, we have implemented the functionality to allow users to incorporate VMware VMDK file names into PVC name templates. As a result, users now have the ability to customize PVC names with VMware VMDK file names, thereby ensuring naming consistency. link:https://issues.redhat.com/browse/MTV-3091[(MTV-3091)]
+
+.Migration plan failure due to incorrect namespace in NetworkMap for NAD
+
+In previous versions of {project-short}, the migration plan failure was due to a wrong namespace in NetworkMap for Network Access Device (NAD). This mistake prevented users from mapping NAD to Virtual Machine (VM) network during migration. With this release, NetworkMap now references the correct namespace for Network Access Devices (NADs) in {project-short} 2.9.1 migration plans. As a result, migration plan success is guaranteed, eliminating failure errors. link:https://issues.redhat.com/browse/MTV-3112[(MTV-3112)]
+
+.Failed VMs were permanently deleted during archiving/deletion of migration plans
+
+In previous versions of {project-short}, failed Virtual Machines (VMs) were not retained during archiving or deletion of migration plans, leading to their permanent deletion. This resulted in a lack of data recovery in migration plans. With this release, the 'DeleteVmOnFailMigration' option has been added, allowing users to retain failed VMs during archiving or deletion. As a result, users can now keep failed VMs, ensuring data recovery in migration plans. link:https://issues.redhat.com/browse/MTV-3165[(MTV-3165)]
+
+.NetworkMap referencing incorrect namespace for NAD in migration plan
+
+In previous versions of {project-short} 2.9, the NetworkMap in {project-short} 2.9.1 incorrectly referenced a namespace for Network Address Determination (Network Address Determination System, or NADS) in migration plans. As a consequence, migration plans failed to complete. With the release of {project-short} 2.9.3, the NetworkMap now correctly references the NADS namespace, resolving migration plan failures. As a result, migration plans successfully map VM networks to NADS, enhancing the user's experience.
+// red hat employee only so not adding link
+
+.Timeouts while querying inventory due to insufficient route timeout setting
+
+In previous versions of {project-short} 2.9, insufficient route timeout settings during inventory querying led to timeouts, which in turn affected user experience by blocking migration progress. Therefore, users could not choose a VM to migrate because the inventory server timed out before they could choose a VM from the inventory, and they were unable to create a migration plan. With the release of {project-short} 2.9.3, for {project-short} deployment, the inventory route timeout has been actively set to 360 seconds to resolve VM migration timeouts, enabling seamless migration of VMs. link:https://issues.redhat.com/browse/MTV-3107[(MTV-3107)]
+
+.User requested to specify power state of VM after migration
+
+In previous versions of {project-short} 2.9, users were unable to control the power state of a VM after migration due to the lack of an option to specify it. With the release of {project-short} 2.9.3, a user-initiated option has been included to customize the VM power state after migration, thereby enhancing migration flexibility. link:https://issues.redhat.com/browse/MTV-3025[(MTV-3025)]
+
+.OVA downloaded from VMware lacks MAC addresses, causing MAC conflict during migration to OpenShift Virtualization.
+
+In previous versions of {project-short} 2.9, {virt} encountered MAC conflicts during migration due to OVA files downloaded from VMware not having MAC addresses. This resulted in OVA migration failures due to empty MAC addresses. With the release of {project-short} 2.9.3, we have implemented a solution that disregards empty MAC addresses during OVA migration checks, thereby eliminating MAC conflict errors caused by empty MAC addresses, and thus improving OVA migration success rates. link:https://issues.redhat.com/browse/MTV-2476[(MTV-2476)]
+
+.Incorrect v2v command on {project-short} 2.8.0 with RHEL8.9, causing guest migration failure
+
+In previous versions of {project-short}, a wrong v2v command on {project-short} 2.8.0 with RHEL8.9 on a secure ESXi provider led to guest migration failure, preventing users from migrating guests from secure ESXi. Consequently, failed migrations occurred. With the release of {project-short} 2.9.3, the issue with the ESXi migration command on MTV has been addressed, allowing MTV to correctly migrate guests from secure ESXi. This improvement enhances the efficiency of virtual machine migration.
+
+.{project-short} overwrites firstboot.bat with its own copy
+
+In previous versions of {project-short}, {project-short} overwrote the `firstboot.bat` script in Windows. Consequently, user experience was degraded. With this release, the redundant firstboot script is no longer overwritten. link:https://issues.redhat.com/browse/MTV-3093[(MTV-3093)]
