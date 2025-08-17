@@ -1,0 +1,40 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-9-3_{context}"]
+= Resolved issues 2.9.3
+
+.Users were unable to use the VMware file name when creating a PVC name template
+
+In previous versions of {project-first} 2.9, users encountered difficulties when using VMware file names to create PVC name templates, necessitating manual workarounds for PVC names with VMware vmdk file names. With the release of {project-short} 2.9.3, support for VMware vmdk file names in PVC name templates has been implemented. As a result, end users now have the ability to customize PVC names with VMware vmdk file names. link:https://issues.redhat.com/browse/MTV-3091[(MTV-3091)]
+
+.NetworkMap referencing incorrect namespace for NAD in migration plan
+
+In previous versions of {project-short} 2.9, the NetworkMap in {project-short} 2.9.1 incorrectly referenced a namespace for Network Address Determination (Network Address Determination System, or NADS) in migration plans. As a consequence, migration plans failed to complete. With the release of {project-short} 2.9.3, the NetworkMap now correctly references the NADS namespace, resolving migration plan failures. As a result, migration plans successfully map VM networks to NADS, enhancing the user's experience.
+// red hat employee only so not adding link
+
+.Timeouts while querying inventory due to insufficient route timeout setting
+
+In previous versions of {project-short} 2.9, insufficient route timeout setting during inventory querying led to timeouts, which in turn affected user experience by blocking migration progress. With the release of {project-short} 2.9.3, for {project-short} deployment, the inventory route timeout has been actively set to 360 seconds to resolve VM migration timeouts, enabling seamless migration of VMs. link:https://issues.redhat.com/browse/MTV-3107[(MTV-3107)]
+
+.User requested to specify power state of VM after migration
+
+In previous versions of {project-short} 2.9, users were unable to control the power state of a VM after migration due to the lack of an option to specify it. With the release of {project-short} 2.9.3, a user-initiated option has been included to customize the VM power state after migration, thereby enhancing migration flexibility. link:https://issues.redhat.com/browse/MTV-3025[(MTV-3025)]
+
+.OVA downloaded from VMware lack MAC addresses, causing MAC conflict during migration to OpenShift Virtualization.
+
+In previous versions of {project-short} 2.9, {virt} encountered MAC conflicts during migration due to OVA files downloaded from VMware not having MAC addresses. This resulted in OVA migration failures due to empty MAC addresses. With the release of {project-short} 2.9.3, we have implemented a solution that disregards empty MAC addresses during OVA migration checks, thereby eliminating MAC conflict errors caused by empty MAC addresses, and thus improving OVA migration success rates. link:https://issues.redhat.com/browse/MTV-2476[(MTV-2476)]
+
+.Incorrect v2v command on {project-short} 2.8.0 with RHEL8.9, causing guest migration failure
+
+In previous versions of {project-short}, a wrong v2v command on {project-short} 2.8.0 with RHEL8.9 on a secure ESXi provider led to guest migration failure, preventing users from migrating guests from secure ESXi. Consequently, failed migrations occurred. With the release of {project-short} 2.9.3, the issue with the ESXi migration command on MTV has been addressed, allowing MTV to correctly migrate guests from secure ESXi. This improvement enhances the efficiency of virtual machine migration.
+
+.When creating a plan with an RHV provider, network and storage maps values for selected VMs were not auto-calculated
+
+In previous versions of {project-short} 2.9, network and storage mapping values for selected Virtual Machines (VMs) were not automatically calculated and set when creating a plan with a {rhv-full} ({rhv-short}) provider due to a missing hook for oVirt Network Interface Card (NIC) profiles. As a result, users could not easily decide on network and storage mappings for VMs when creating a plan with the RHV provider, which could lead to potential mismatches and errors. With the release of {project-short} 2.9.3, network mapping values are now automatically calculated and set for RHV provider plans, reducing user guesswork when creating plans. link:https://issues.redhat.com/browse/MTV-2790[(MTV-2790)]
+
+.The plan was created with a "Ready for migration" status and the critical concerns were removed for the selected VMs
+
+In previous versions of {project-short} 2.9, the validation of PVC name templates was not enforced during the creation of a migration plan, leading to incorrect status and critical concerns being overlooked for selected VMs. This resulted in user confusion, as the "Ready for migration" status was inaccurate. With the release of {project-short} 2.9.3, we have corrected the issue to ensure that migration plans accurately reflect VM critical concerns, thereby enhancing user understanding. link:https://issues.redhat.com/browse/MTV-2942[(MTV-2942)]
