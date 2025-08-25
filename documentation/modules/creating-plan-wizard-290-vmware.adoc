@@ -142,7 +142,7 @@ To learn more about the different types of networks {ocp-short} supports, see li
 
 * *Root device*: Applies to multi-boot VM migrations only. By default, {project-short} uses the first bootable device detected as the root device.
 
-** To specify a different root device, enter it in the textbox.
+** To specify a different root device, enter it in the text box.
 +
 {project-short} uses the following format for disk location: `/dev/sd<disk_identifier><disk_partition>`. For example, if the second disk is the root device and the operating system is on the disk's second partition, the format would be: `/dev/sdb2`. After you enter the boot device, click *Save*.
 +
