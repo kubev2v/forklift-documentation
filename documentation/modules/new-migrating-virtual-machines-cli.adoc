@@ -8,6 +8,7 @@
 ifdef::vmware[]
 = Migrating from a VMware vSphere source provider
 
+[role="_abstract"]
 You can migrate from a VMware vSphere source provider by using the command-line interface (CLI).
 
 include::snip_anti-virus-warning.adoc[]
@@ -23,6 +24,7 @@ endif::[]
 ifdef::rhv[]
 = Migrating from a {rhv-full} source provider
 
+[role="_abstract"]
 You can migrate from a {rhv-full} ({rhv-short}) source provider by using the command-line interface (CLI).
 
 .Prerequisites
@@ -35,17 +37,20 @@ endif::[]
 ifdef::ova[]
 = Migrating from an Open Virtual Appliance (OVA) source provider
 
+[role="_abstract"]
 You can migrate from Open Virtual Appliance (OVA) files that were created by VMware vSphere as a source provider by using the command-line interface (CLI).
 
 endif::[]
 ifdef::ostack[]
 = Migrating from an {osp} source provider
 
+[role="_abstract"]
 You can migrate from an {osp} source provider by using the command-line interface (CLI).
 endif::[]
 ifdef::cnv[]
 = Migrating from a Red Hat {virt} source provider
 
+[role="_abstract"]
 You can use a Red Hat {virt} provider as either a source provider or as a destination provider. You can migrate from an {virt} source provider by using the command-line interface (CLI).
 
 [NOTE]
@@ -837,7 +842,7 @@ EOF
 <5> Specify the name of the `NetworkMap` CR.
 <6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <7> Specify the name of the `StorageMap` CR.
-<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address. +
+<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address.
 To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 <9> [[callout9]]Optional. Specify a template for the network interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
