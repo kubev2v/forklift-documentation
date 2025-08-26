@@ -7,6 +7,9 @@
 
 {project-first} 2.8 has the following known issues:
 
+.Failed to boot VM that needs legacy drivers after migrating from vSphere
+When migrating a virtual machine (VM) that requires legacy drivers, such as Windows Server 2008 R2, from vSphere to an {ocp} cluster, the migration plan succeeds, but the VM fails to boot. This is because `virt-v2v` does not include the necessary VirtIO drivers for the legacy Windows version. link:https://issues.redhat.com/browse/MTV-3227[(MTV-3227)]
+
 .Trusted Platform Module is added to the BIOS of a Windows Server 2022 VM after warm migration
 After warm migration of Windows Server 2022 virtual machine (VM) from vSphere to an {ocp-name} cluster, the Trusted Platform Module (TPM) device is added to the target VMs, even if the TPM configuration is non-persistent in the BIOS setting of the source Windows Server 2022 VM. This prevents the target VM from starting. link:https://issues.redhat.com/browse/MTV-2049[(MTV-2049)]
 
