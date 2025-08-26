@@ -575,7 +575,7 @@ EOF
 ----
 <1> Allowed values are `pod`, `ignored`, and `multus`. Use `ignored` to avoid attaching VMs to this network for this migration.
 <2> Specify a network attachment definition for each additional {virt} network. Specify the `namespace` either by using the `namespace property` , that is `namespace: <namespace>; name: <name>` (preferred method) or with a name as follows: `<network_namespace>/<network_name>`. 
-<3> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition, unless the source and destination are the same..
+<3> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition, unless the source and destination are the same.
 endif::[]
 
 ifdef::vmware[]
