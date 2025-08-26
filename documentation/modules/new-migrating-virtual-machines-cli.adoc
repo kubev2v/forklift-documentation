@@ -879,7 +879,7 @@ Raw copy mode copies VMs without converting them with `virt-v2v`. This allows fo
 +
 <13> Determines whether the migration uses VirtIO devices or compatibility devices (SATA bus, E1000E NIC) when `skipGuestConversion` is `true`, that is, when raw copy mode is used for the migration. The setting of `useCompatibilityMode` has no effect when `skipGuestConversion` is `false`, because `virt-v2v` conversion always uses VirtIO devices.
 * When set to `true`, the default setting, {project-short} uses compatibility devices (SATA bus, E1000E NIC) in the migration process to ensure that the VMs can be booted after migration.
-* When set to `false`, {project-short} uses high-performance VirtIO devices in the migration process and `virt-v2v` ensures that the VMs can be booted after migration.. Before using this option, verify that VirtIO drivers are already installed in the source VMs.
+* When set to `false`, {project-short} uses high-performance VirtIO devices in the migration process and `virt-v2v` ensures that the VMs can be booted after migration. Before using this option, verify that VirtIO drivers are already installed in the source VMs.
 <14> [[callout14]]Optional: Specify a template for the volume interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume.
