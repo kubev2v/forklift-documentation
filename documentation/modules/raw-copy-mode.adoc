@@ -1,0 +1,26 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="raw-copy-mode_{context}"]
+= Raw copy mode
+
+In regular cold and warm migrations, {project-first} uses a program called `virt-v2v` to prepare virtual machines (VMs) for migration to {virt} after the VMs have been copied from their source provider.
+
+The main function of `virt-v2v` is to  convert the disk image of a VM into a format compatible with {virt}. This program is described in detail in xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. What is important to note here is that although `virt-v2v` is compatible with major operating systems such as recent versions of Red Hat Enterprise Linux, Windows, and Windows Server, it is not compatible with macOS and some other operating systems.
+
+[NOTE]
+====
+For a list of the operating systems that `virt-v2v` supports, see link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9].
+====
+
+As a workaround for migrating VMs that use an operating system that `virt-v2v` does not support, {project-short} includes a feature called _raw copy mode_. Raw copy mode copies VMs without applying any tool to convert them for use with {virt}. The migrated VMs use emulated devices.
+
+This enables more robust migrations, enabling a wider range of operating systems and configurations. Examples are VMs with uncommon file systems, VMs with uncommon encryption technologies or without access to keys.
+
+However, VMs migrated using raw copy mode raw copy mode might not boot on {virt} or perform as well as VMs migrated in the regular way. VMs migrated using raw copy mode might not boot on {virt} or perform as well as VMs migrated in the regular way.
+
+Therefore, using raw copy mode is a tradeoff between being a more versatile migration option compared to increasing the risk of problems following migration.
+
+Because of this risk, users are asked to request that Red Hat support perform raw copy mode migrations.
