@@ -7,6 +7,13 @@
 
 {project-first} 2.8 has the following resolved issues:
 
+[id="resolved-issues-2-8-7_{context}"]
+== Resolved issues 2.8.7
+
+.{project-short} overwrites firstboot.bat with its own copy
+In previous versions of {project-short}, {project-short} overwrote the firstboot.bat script in Windows. Consequently, user experience was degraded. With this release, the redundant `firstboot` script is no longer overwritten. link:https://issues.redhat.com/browse/MTV-3218[(MTV-3218)]
+
+
 [id="resolved-issues-2-8-6_{context}"]
 == Resolved issues 2.8.6
 
