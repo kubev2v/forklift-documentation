@@ -233,7 +233,7 @@ The source VMs are not affected.
 
 Disadvantage:
 
-One shared disk gets transferred twice, so you need to manually delete the duplicate disk and reconnect VM 3 to shared disk 3 in Red Hat OpenShift after the migration..
+One shared disk gets transferred twice, so you need to manually delete the duplicate disk and reconnect VM 3 to shared disk 3 in Red Hat OpenShift after the migration.
 
 [id="remove-shared-link_{context}"]
 ==== "Remove" a shared disk
