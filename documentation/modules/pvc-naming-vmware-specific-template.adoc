@@ -99,7 +99,7 @@ restrictions on characters and length. {project-short} will validate the templat
 +
 The `"[^a-zA-Z0-9-]"` regular expression pattern matches any character that is not a lowercase letter (a-z), an uppercase letter (A-Z), a digit (0-9), or a hyphen (-).
 +
-"-": This is the replacement string. Any character that matches the pattern will be replaced with a hyphen.
+"-": This is the replacement string. Any character that matches the pattern is replaced with a hyphen.
 +
 If your VM is named `vm_name-with.dots`, the resulting PVC name will be `vm-name-with-dots`.
 
