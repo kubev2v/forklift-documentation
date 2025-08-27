@@ -6,6 +6,7 @@
 [id="mtv-performance-recommendation_{context}"]
 = {project-short} performance recommendations
 
+[role="_abstract"]
 The purpose of this section is to share recommendations for efficient and effective migration of virtual machines (VMs) using {project-first}, based on findings observed through testing.
 
 include::snip_performance.adoc[]
@@ -47,7 +48,7 @@ When transferring many VMs that are registered to multiple ESXi hosts, using the
 
 [NOTE]
 ====
-As of vSphere 7.0, ESXi hosts can label which network to use for NBD transport. This is accomplished by tagging the desired virtual network interface card (NIC) with the appropriate `vSphereBackupNFC` label. When this is done, {project-short} is able to use the ESXi interface for network transfer to Openshift provided that the worker and ESXi host interfaces are reachable. This is especially useful when migration users might not have access to the ESXi credentials yet want to be able to control which ESXi interface is used for migration. 
+As of vSphere 7.0, ESXi hosts can label which network to use for Network Block Device (NBD) transport. This is accomplished by tagging the desired virtual network interface card (NIC) with the appropriate `vSphereBackupNFC` label. When this is done, {project-short} is able to use the ESXi interface for network transfer to OpenShift provided that the worker and ESXi host interfaces are reachable. This is especially useful when migration users might not have access to the ESXi credentials yet want to be able to control which ESXi interface is used for migration. 
 
 For more details, see: link:https://issues.redhat.com/browse/MTV-1230[({project-short}-1230)]
 ====
@@ -71,7 +72,7 @@ Testing showed that when transferring more than 10 VMs with both BIOS and host p
 
 You can reduce the network load on VMware networks by selecting the migration network when using the ESXi endpoint.
 
-By incorporating a virtualization provider, {project-short} enables the selection of a specific network, which is accessible on the ESXi hosts, for the purpose of migrating virtual machines to OCP. Selecting this migration network from the ESXi host in the {project-short} UI will ensure that the transfer is performed using the selected network as an ESXi endpoint.
+By incorporating a virtualization provider, {project-short} enables the selection of a specific network, which is accessible on the ESXi hosts, for the purpose of migrating virtual machines to {ocp-short}. Selecting this migration network from the ESXi host in the {project-short} UI will ensure that the transfer is performed using the selected network as an ESXi endpoint.
 
 It is imperative to ensure that the network selected has connectivity to the OCP interface, has adequate bandwidth for migrations, and that the network interface is not saturated.
 
@@ -88,9 +89,9 @@ When setting `MAX_VM_INFLIGHT`, consider the number of maximum concurrent VMs tr
 
 Warm migrations use snapshots to compare and migrate only the differences between previous snapshots of the disk. The migration of the differences between snapshots happens over specific intervals before a final cut-over of the running VM to {ocp-short} occurs. 
 
-In {project-short} 2.6, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, regardless of current migration activity for a specific snapshot or the number of disks that belong to a single vm. The total set by `MAX_VM_INFLIGHT` is used to indicate how many concurrent VM tranfers per ESXi host is allowed.
+In {project-short} 2.6, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, regardless of current migration activity for a specific snapshot or the number of disks that belong to a single VM. The total set by `MAX_VM_INFLIGHT` is used to indicate how many concurrent VM tranfers per ESXi host is allowed.
 
-.Examples
+.Example
 
 * `MAX_VM_INFLIGHT = 20` and 2 ESXi hosts defined in the provider mean each host can transfer 20 VMs.
 
@@ -151,7 +152,7 @@ Comparing migrations of:
 
 * 800 VMs using 8 ESXi hosts with 8 plans, `max_vm_inflight=100`, took 57 minutes.
 
-Testing showed that by breaking one single large plan into multiple moderately sized plans, for example, 100 VMS per plan, the total migration time can be reduced.
+Testing showed that by breaking one single large plan into multiple moderately sized plans, for example, by using 100 VMs per plan, the total migration time can be reduced.
 
 [id="mtv-performance-max-values-cold_{context}"]
 == Maximum values tested for cold migrations

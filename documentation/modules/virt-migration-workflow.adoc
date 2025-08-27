@@ -33,7 +33,7 @@ The workflow describes the following steps:
 +
 *After the VM disks are transferred:*
 
-. The `Migration Controller` service creates a `conversion` pod with the PVCs attached to it when importing from VMWare.
+. The `Migration Controller` service creates a `conversion` pod with the PVCs attached to it when importing from {vmw}.
 +
 The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the PVCs of the target VM.
 +
@@ -62,7 +62,7 @@ The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 +
 The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 
-*Cold migration from VMWware to the local {ocp-name} cluster:*
+*Cold migration from {vmw} to the local {ocp-name} cluster:*
 
 . When you create a `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates a `DataVolume` CR for each source VM disk.
 +

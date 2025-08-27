@@ -53,7 +53,7 @@ This Secret is not the same as the `Secret` CR that contains the credentials of 
 . The {project-short} controller creates the `ConfigMap`, which contains:
 
 ** `workload.yml`, which contains information about the VMs.
-** `playbook.yml`, the raw string playbook you want to execute.
+** `playbook.yml`, the raw string playbook you want to run.
 ** `plan.yml`, which is the `Plan` CR.
 +
 The `ConfigMap` contains the name of the VM and instructs the playbook what to do.

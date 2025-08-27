@@ -6,6 +6,7 @@
 [id="known-issues-2-9_{context}"]
 = Known issues
 
+[role="_abstract"]
 {project-first} 2.9 has the following known issues:
 
 .Persistent volume claim name template does not support the `shared` field

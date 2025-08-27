@@ -6,10 +6,12 @@
 [id="resolved-issues-2-9-0_{context}"]
 = Resolved issues 2.9.0
 
+[role="_abstract"]
+{project-first} 2.9.0 has the following resolved issues:
+
 .{project-short} enabled vTPM for source Windows Server 2022 virtual machines without vTPM device
 
 VMware only: In earlier releases of {project-short}, after warm migration of Windows Server 2022 virtual machines (VMs) with UEFI settings, the virtual Trusted Platform Module (vTPM) device was added to the VMs even though the source VMs did not have the vTPM device. This issue has been resolved in {project-short} 2.9.0. link:https://issues.redhat.com/browse/MTV-2014[(MTV-2014)]
-
 
 .{project-short} failed to start the virtual machine with a non-aligned disk size after migration
 

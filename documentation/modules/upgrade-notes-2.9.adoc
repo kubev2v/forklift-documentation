@@ -7,6 +7,7 @@
 [id="mtv-upgrade-2-9-0_{context}"]
 = Upgrade notes {project-short} 2.9.0
 
+[role="_abstract"]
 To upgrade to {project-full} 2.9.0, you need to follow the manual upgrade process.
 
 The option to automatically upgrade to 2.9 from 2.8 is not yet available. However, automatic upgrades will be enabled in future releases.

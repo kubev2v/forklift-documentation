@@ -1,7 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
 
+:_content-type: CONCEPT
 [id="new-features-and-enhancements-2-8_{context}"]
 = New features and enhancements
 
+[role="_abstract"]
 {project-first} 2.8 introduces the following features and enhancements:
 
 * In {project-short} 2.8.0, you can provide custom names for the following attributes in the migration plan of VMware virtual machines (VMs):

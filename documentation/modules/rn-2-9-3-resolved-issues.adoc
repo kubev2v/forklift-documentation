@@ -6,6 +6,9 @@
 [id="resolved-issues-2-9-3_{context}"]
 = Resolved issues 2.9.3
 
+[role="_abstract"]
+{project-first} 2.9.3 has the following resolved issues:
+
 .Guest migrations from secure ESXi provider on {project-short}, causing migration failures.
 
 In previous versions of {project-short}, the use of a wrong v2v command for migrating guests on Red Hat OpenShift Container Platform (OCP) 2.8.0 led to user migration failures from secure ESXi providers on {project-short}. This issue has been addressed by fixing the incorrect v2v command for ESXi migration on {project-short}. As a result, migration of guests from secure ESXi providers on {project-short} is now successful. link:https://issues.redhat.com/browse/MTV-2362[(MTV-2362)]

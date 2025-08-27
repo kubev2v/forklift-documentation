@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Release_notes/master.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: CONCEPT
 [id="mtv-cold-warm-migration_{context}"]
@@ -13,7 +13,8 @@ Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a s
 
 Warm migration is when a powered *_on_* VM is migrated to a separate host. A source host state is cloned to the destination host.
 
-.Warm migrations precopy stage
+[id="mtv-cold-warm-migration-precopy_{context}"]
+== Warm migration precopy stage
 
 . Create an initial snapshot of running VM disks.
 . Copy first snapshot to target: full-disk transfer, the largest amount of data copied. It takes more time to complete.
@@ -23,7 +24,8 @@ Warm migration is when a powered *_on_* VM is migrated to a separate host. A sou
 .. Schedule the next snapshot, configurable by default, one hour after the last snapshot finished.
 . An arbitrary number of deltas can be copied.
 
-.Warm migration cutover stage
+[id="mtv-cold-warm-migration-cutover_{context}"]
+== Warm migration cutover stage
 
 . Scheduled time to finalize warm migration
 . Shut down the source VM.

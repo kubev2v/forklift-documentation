@@ -9,9 +9,10 @@
 [role="_abstract"]
 During warm migrations, most of the data is copied during the _precopy_ stage while the source virtual machines (VMs) are running.
 
-Then the VMs are shut down and the remaining data is copied during the _cutover_ stage.
+Then the VMs are shut down, and the remaining data is copied during the _cutover_ stage.
 
-.Precopy stage
+[id="status-vms-warm-migration-precopy_{context}"]
+== Precopy stage
 
 The VMs are not shut down during the precopy stage.
 
@@ -26,8 +27,9 @@ A VM can support up to 28 CBT snapshots. If the source VM has too many CBT snaps
 
 The precopy stage runs until the cutover stage is started manually or is scheduled to start.
 
-.Cutover stage
+[id="status-vms-warm-migration-cutover_{context}"]
+==Cutover stage
 
-The VMs are shut down during the cutover stage and the remaining data is migrated. Data stored in RAM is not migrated.
+The VMs are shut down during the cutover stage, and the remaining data is migrated. Data stored in RAM is not migrated.
 
-You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` manifest.
+You can start the cutover stage manually by using the {project-short} console, or you can schedule a cutover time in the `Migration` manifest.
