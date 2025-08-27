@@ -25,7 +25,7 @@ When defining a `Plan` Custom Resource (CR) for migrations, you can use the foll
 
 These variables are part of the `PVCNameTemplateData` structure, which also includes other fields like `VmName`, `PlanName`, `DiskIndex`, `RootDiskIndex`, and `Shared`.
 
-*Usage in a Migration Plan* These new variables can be used in the `pvcNameTemplate` field within your `Plan` CR. For example, you might define a template that incorporates the VM name and the disk’s filename.
+*Usage in a Migration Plan*: You can use these new variables in the `pvcNameTemplate` field within your `Plan` CR. For example, you might define a template that incorporates the VM name and the disk’s filename.
 
 This functionality extends to the volume populator flow, ensuring PVC name templates are respected during data import.
 
