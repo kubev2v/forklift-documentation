@@ -6,7 +6,7 @@
 [id="pvc-naming-vmware-specific-template_{context}"]
 = PVC naming with {vmw}-specific template variables
 
-The {project-first} provides additional template variables for defining custom Persistent Volume Claim (PVC) names in migration plans, enhancing the clarity and manageability of migrated VM disks. These new variables, primarily applicable to {vmw} vSphere source providers, allow for more granular control over PVC naming by incorporating details such as Microsoft Windows drive letters and VMDK filenames.
+The {project-first} provides additional template variables for defining custom Persistent Volume Claim (PVC) names in migration plans, enhancing the manageability of migrated VM disks. These new variables, primarily applicable to {vmw} vSphere source providers, allow for more granular control over PVC naming by incorporating details such as Microsoft Windows drive letters and VMDK filenames.
 
 [id="pvc-name-template-variables_{context}"]
 == PVC name template variables
