@@ -6,6 +6,7 @@
 [id="rhv-prerequisites_{context}"]
 = {rhv-full} prerequisites
 
+[role="_abstract"]
 The following prerequisites apply to {rhv-full} migrations:
 
 * To create a source provider, you must have at least the `UserRole` and `ReadOnlyAdmin` roles assigned to you. These are the minimum required permissions, however, any other administrator or superuser permissions will also work.
@@ -25,6 +26,6 @@ You must keep the `UserRole` and `ReadOnlyAdmin` roles until the virtual machine
 +
 You can obtain the {manager} CA certificate by navigating to https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA in a browser.
 
-** If you are migrating a virtual machine with a direct LUN disk, ensure that the nodes in the {virt} destination cluster that the VM is expected to run on can access the backend storage.
+** If you are migrating a virtual machine with a direct logical unit number (LUN) disk, ensure that the nodes in the {virt} destination cluster that the VM is expected to run on can access the backend storage.
 
 include::snip-migrating-luns.adoc[]

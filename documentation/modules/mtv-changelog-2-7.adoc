@@ -2,10 +2,11 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: REFERENCE
 [id="mtv-changelog-2-7_{context}"]
 = {project-short} changelog
 
+[role="_abstract"] 
 The following changelog for {project-first} includes a full list of packages used in the {project-short} 2.7 releases.
 
 [id="mtv-container-packages_{context}"]
