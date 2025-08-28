@@ -20,7 +20,7 @@ As a workaround for migrating VMs that use an operating system that `virt-v2v` d
 
 This enables more robust migrations, enabling a wider range of operating systems and configurations. Examples are VMs with uncommon file systems, VMs with uncommon encryption technologies or without access to keys.
 
-However, VMs migrated using raw copy mode raw copy mode might not boot on {virt} or perform as well as VMs migrated in the regular way. VMs migrated using raw copy mode might not boot on {virt} or perform as well as VMs migrated in the regular way.
+However, VMs migrated using raw copy mode might not boot on {virt} or perform as well as VMs migrated in the regular way. VMs migrated using raw copy mode might not boot on {virt} or perform as well as VMs migrated in the regular way.
 
 Therefore, using raw copy mode is a tradeoff between being a more versatile migration option compared to increasing the risk of problems following migration.
 
