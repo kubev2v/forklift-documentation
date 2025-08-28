@@ -574,7 +574,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `pod`, `ignored`, and `multus`. Use `ignored` to avoid attaching VMs to this network for this migration.
-<2> Specify a network attachment definition for each additional {virt} network. Specify the `namespace` either by using the `namespace property` , that is `namespace: <namespace>; name: <name>` (preferred method) or with a name as follows: `<network_namespace>/<network_name>`. 
+<2> Specify a network attachment definition for each additional {virt} network. Specify the `namespace` as follows: `namespace: <namespace>; name: <name>`.
 <3> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition, unless the source and destination are the same.
 endif::[]
 
@@ -880,7 +880,7 @@ Raw copy mode copies VMs without converting them with `virt-v2v`. This allows fo
 <13> Determines whether the migration uses VirtIO devices or compatibility devices (SATA bus, E1000E NIC) when `skipGuestConversion` is `true`, that is, when raw copy mode is used for the migration. The setting of `useCompatibilityMode` has no effect when `skipGuestConversion` is `false`, because `virt-v2v` conversion always uses VirtIO devices.
 * When set to `true`, the default setting, {project-short} uses compatibility devices (SATA bus, E1000E NIC) in the migration process to ensure that the VMs can be booted after migration.
 * When set to `false`, {project-short} uses high-performance VirtIO devices in the migration process and `virt-v2v` ensures that the VMs can be booted after migration. Before using this option, verify that VirtIO drivers are already installed in the source VMs.
-<14> [[callout14]]Optional: Specify a template for the volume interface name for the VMs in your plan.
+<14> [[callout14]]Optional: Specify a template for the volume name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume.
 ** `.VolumeIndex`: Sequential index of the volume interface (0-based).
