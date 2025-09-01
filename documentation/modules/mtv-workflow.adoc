@@ -8,17 +8,6 @@
 
 The high-level workflow shows the migration process from the point of view of the user:
 
-// ifeval::["{build}" == "downstream"]
-// .High-level workflow
-// image::136_OpenShift_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
-// endif::[]
-// ifeval::["{build}" == "upstream"]
-// .High-level workflow
-// image::136_Upstream_Migration_Toolkit_0121_mtv-workflow.svg[{project-short} workflow]
-// endif::[]
-
-// The workflow describes the following steps:
-
 . You create a source provider, a target provider, a network mapping, and a storage mapping.
 . You create a `Plan` custom resource (CR) that includes the following resources:
 
