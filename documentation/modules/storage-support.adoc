@@ -61,7 +61,7 @@
 
 [NOTE]
 ====
-If the {virt} storage does not support link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/storage/dynamic-provisioning[dynamic provisioning], you must apply the following settings:
+If the {virt} storage does not support {ocp-doc}/storage/dynamic-provisioning#dynamic-provisioning[dynamic provisioning], you must apply the following settings:
 
 * `Filesystem` volume mode
 +
@@ -70,7 +70,7 @@ If the {virt} storage does not support link:https://access.redhat.com/documentat
 +
 `ReadWriteOnce` access mode does not support live virtual machine migration.
 
-See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-customizing-storage-profile_virt-creating-data-volumes[Enabling a statically-provisioned storage class] for details on editing the storage profile.
+See {ocp-doc}/virtualization/storage#virt-configuring-storage-profile[Configuring storage profiles] for details on applying settings to a storage profile.
 ====
 
 [NOTE]

@@ -131,7 +131,7 @@ You do not need to enter the passphrases in a specific order. For each LUKS-encr
 ** To choose a different transfer network, select a different transfer network from the list.
 ** Optional: To configure another {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
 +
-To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
+To learn more about the different types of networks {ocp-short} supports, see {ocp-doc}/multiple_networks/understanding-multiple-networks#additional-networks-provided_understanding-multiple-networks[Secondary Networks in OpenShift Container Platform].
 
 ** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 

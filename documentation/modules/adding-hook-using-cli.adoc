@@ -31,7 +31,7 @@ You can retrieve additional information stored in a secret or in a `ConfigMap` b
 * VMs running on Microsoft Server only: Remote Execution enabled
 
 .Additional resources
-For instructions for creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
+For instructions for creating a service account, see {ocp-doc}/authentication_and_authorization/index#understanding-and-creating-service-accounts[Understanding and creating service accounts].
 
 .Procedure
 . If needed, create a Secret with an SSH private key for the VM.
