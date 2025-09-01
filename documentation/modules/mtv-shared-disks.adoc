@@ -66,7 +66,7 @@ image::OK_shared_disks.png[Example successful migration]
 
 The result is that VMs 2 and 4, all the shared disks, and all the non-shared disks are migrated, but only once. {project-short} is able to reattach all VMs to their disks, including the shared disks. 
 
-In second figure, the VMs and shared disks are not assigned correctly:
+In the second figure, the VMs and shared disks are not assigned correctly:
 
 .Example of incorrectly assigned VMs and shared disks
 image::not_OK_shared_disks.png[Complex cyclic shared disk dependencies]
