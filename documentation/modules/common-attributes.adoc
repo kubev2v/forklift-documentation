@@ -5,7 +5,8 @@
 // If namespace must be formatted with backticks, use + instead.
 :namespace: openshift-mtv
 :oc: oc
-:ocp: Red Hat OpenShift
+:ocp: Red Hat OpenShift 
+:ocp-doc: link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single
 :ocp-name: OpenShift
 :ocp-short: OpenShift
 // when updating the ocp-version, update the ocp-y-version
