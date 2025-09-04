@@ -59,6 +59,8 @@ include::modules/network-prerequisites.adoc[leveloffset=+2]
 
 include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
 
+include::modules/encryption-support.adoc[leveloffset=+2]
+
 include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
