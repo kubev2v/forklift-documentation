@@ -1,0 +1,31 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-9-4_{context}"]
+= Resolved issues 2.9.4
+
+.User operations are complicated due to loss of {vmw} disk name to Windows drive letter mapping in {virt} migration
+
+In this release, the inflexible persistent volume claim (PVC) name template previously causing {vmw} disk name mapping loss during {virt} migration has been addressed. This issue led to complex user operations due to the loss of {vmw} disk name to Windows drive letter mapping in {virt} migration. Now, with this release, the PVC name template supports {vmw} disk names for Windows drive letter mapping, resulting in PVC names mapping to Windows drive letters, thereby simplifying operations. https://issues.redhat.com/browse/MTV-2403[(MTV-2403)]
+
+.User unable to create a plan with `Pre-migration` hook on {ocp} 4.17 that requires manual plan recreation
+
+In previous versions of {project-short}, an issue occurred when users tried to create a plan with a `Pre-migration` hook on {ocp} 4.17.35, resulting in a failure during plan creation on {project-short} 2.9.0. Previously, manual plan recreation was necessary. With this release, the problem causing plan creation failure with Pre-migration hook in {project-short} 2.9.0 on {ocp-name} 4.17.35 has been rectified. Consequently, users can now effortlessly create migration plans with Pre-migration hooks on {ocp-name} 4.17.35, thereby eliminating the need for manual plan recreation. link:https://issues.redhat.com/browse/MTV-2918[(MTV-2918)]
+
+.User was unable to create a plan with `Pre-migration hooks` on {ocp} 4.17 that requires manual plan recreation
+
+In previous versions of {project-short}, an issue occurred with pre-migration hook creation, which was incompatible with {ocp} 4.17.35. This resulted in users being unable to create a plan with Pre-migration hooks, necessitating plan recreation. With this latest release, the Pre-migration hook issue in {project-short} 2.9.0 has been resolved, enabling plan creation without the need for recreation. As a consequence, users can now create migration plans with Pre-migration hooks without encountering errors on {ocp} 4.17.35. link:https://issues.redhat.com/browse/MTV-2942[(MTV-2942)]
+
+.User could not select specific storages from the picklist when creating a plan with {rhv-short} provider, causing difficulty in resource allocation
+
+In previous versions of {project-short}, reproducing a plan with {rhv-full} source provider previously resulted in an incorrect mapping selection, causing the *Storages used by the selected VMs* picklist to be empty. This issue made it challenging for users to select specific storages when creating a plan with {rhv-short} provider, affecting resource allocation. With this release, plan creation with {rhv-short} provider now correctly populates the *Storages used by the selected VMs* picklist, resulting in a more accurate storage mapping during plan creation, enhancing user experience. link:https://issues.redhat.com/browse/MTV-3185[(MTV-3185)]
+
+.User was unable to automatically determine network and storage maps for VMs in a plan with {rhv-short} provider, causing manual guesswork
+
+In previous versions of {project-short}, the auto-calculation and setting of network and storage map values for selected Virtual Machines (VMs) during plan creation with a {rhv-short} provider was not displayed, making it difficult for users to automatically determine network and storage maps for VMs in a plan with an RHV provider. This required manual guesswork. However, in this release, plan creation with {rhv-short} now automatically calculates and sets network and storage maps for selected VMs, enhancing the user experience. link:https://issues.redhat.com/browse/MTV-2790[(MTV-2790)]
+
+.User experienced empty VM list when network was slow, affecting VM management
+
+In previous versions of {project-short}, slow network conditions led to failures when listing provider VMs, resulting in an empty VM list for users managing VMs. Improved network performance for listing provider VMs in {rhv-short} has been implemented in this release. This release addresses that issue, improving the speed of VM listing on slow networks in a {rhv-short} provider. link:https://issues.redhat.com/browse/MTV-1575[(MTV-1575)]
