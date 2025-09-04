@@ -8,7 +8,7 @@
 
 .User operations are complicated due to loss of {vmw} disk name to Windows drive letter mapping in {virt} migration
 
-In this release, the inflexible persistent volume claim (PVC) name template previously causing {vmw} disk name mapping loss during {virt} migration has been addressed. This issue led to complex user operations due to the loss of {vmw} disk name to Windows drive letter mapping in {virt} migration. Now, with this release, the PVC name template supports {vmw} disk names for Windows drive letter mapping, resulting in PVC names mapping to Windows drive letters, thereby simplifying operations. link:https://issues.redhat.com/browse/MTV-2727[(https://issues.redhat.com/browse/MTV-2727)]
+In this release, the inflexible persistent volume claim (PVC) name template previously causing {vmw} disk name mapping loss during {virt} migration has been addressed. This issue led to complex user operations due to the loss of {vmw} disk name to Windows drive letter mapping in {virt} migration. Now, with this release, the PVC name template supports {vmw} disk names for Windows drive letter mapping, resulting in PVC names mapping to Windows drive letters, thereby simplifying operations. https://issues.redhat.com/browse/MTV-2403[(MTV-2403)]
 
 .User unable to create a plan with `Pre-migration` hook on {ocp} 4.17 that requires manual plan recreation
 
