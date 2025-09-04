@@ -155,7 +155,7 @@ If the conversion fails because the boot device provided is incorrect, it is pos
 Migrating shared disks might slow down the migration process.
 ====
 +
-** To migrate shared disks in the migration plan, verify that *Shared disks* is selected in the checkbox. 
+** To migrate shared disks in the migration plan, verify that *Shared disks* is selected in the checkbox.
 ** To avoid migrating shared disks, clear the *Shared disks* checkbox.
 
 . Click *Next*.
@@ -255,8 +255,8 @@ Variable names cannot exceed 63 characters.
 *** Click the *Virtual Machines* tab.
 *** Select the desired VMs.
 *** Click the {kebab} of the VM.
-*** Select *Edit PVC name template*.
-*** Enter the template according to the instructions.
+*** Select *Edit PVC name template*. For more details, see xref:pvc-naming-vmware-specific-template_vmware[PVC naming with {vmw}-specific template variables].
+*** *** Enter the template according to the instructions.
 *** Click *Save*.
 +
 [IMPORTANT]
@@ -334,4 +334,3 @@ The *Plan details* page also includes five additional tabs, which are described 
 |Editable specification of the network and storage maps used by your plan
 |Updatable specification of the hooks used by your plan, if any
 |===
-
