@@ -1,0 +1,43 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="mtv-disable-aio-buffer_{context}"]
+= Disabling AIO buffering
+
+[role="_abstract"]
+You can disable AIO buffering for a cold migration using {project-first}. You must disable AIO buffering for a warm migration using {project-short}.
+
+[NOTE]
+====
+The procedure that follows assumes the AIO buffering was enabled and configured according to the procedure in xref:mtv-enable-aio-buffer_mtv[Enabling and configuring AIO buffering].
+====
+
+.Procedure
+
+. In the `openshift-mtv namespace`, edit the `ForkliftController` custom resource (CR) by performing the following steps:
+
+.. Access the `ForkliftController` CR for editing by running the following command:
++
+[source,terminal]
+----
+oc edit forkliftcontroller -n openshift-mtv
+----
+
+.. Remove the following lines from the `spec` section of the `ForkliftController` CR:
++
+[source,terminal]
+----
+virt_v2v_extra_args: "`–vddk-config /mnt/extra-v2v-conf/input.conf`"
+virt_v2v_extra_conf_config_map: "`perf`"
+----
+
+. Delete the config map named `perf`:
++
+[source,terminal]
+----
+oc delete cm perf -n openshift-mtv
+----
+
+. Optional: Restart the `forklift-controller` pod to ensure that the changes took effect.

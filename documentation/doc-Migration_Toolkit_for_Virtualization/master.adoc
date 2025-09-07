@@ -563,6 +563,10 @@ include::modules/mtv-performance-recommendation.adoc[leveloffset=+1]
 
 include::modules/mtv-aio-buffer.adoc[leveloffset=+2]
 
+include::modules/mtv-enable-aio-buffer.adoc[leveloffset=+3]
+
+include::modules/mtv-disable-aio-buffer.adoc[leveloffset=+3]
+
 [id="troubleshooting_{context}"]
 == Troubleshooting
 
