@@ -1,0 +1,14 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: REFERENCE
+[id="encryption-support_{context}"]
+
+= {project-short} encryption support
+
+[role="_abstract"]
+{project-first} supports the following types of encryption for virtual machines (VMs):
+
+* For VMs that run on Linux: Linux Unified Key Setup (LUKS)
+* For VMs that run on Windows: BitLocker
