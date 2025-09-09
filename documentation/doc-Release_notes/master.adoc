@@ -9,8 +9,6 @@ include::modules/common-attributes.adoc[]
 :compat-mode:
 :context: release-notes
 
-include::modules/making-open-source-more-inclusive.adoc[]
-
 include::modules/rn-2.9.adoc[leveloffset=+1]
 
 // Technical changes by x-stream release
