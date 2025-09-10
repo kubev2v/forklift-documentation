@@ -25,7 +25,7 @@ The workflow describes the following steps:
 +
 *For each VM disk:*
 
-. The `Containerized Data Importer (CDI) Controller` service creates a persistent volume claim (PVC) based on the parameters specified in the `DataVolume` CR.  
+. The `Containerized Data Importer (CDI) Controller` service creates a persistent volume claim (PVC) based on the parameters specified in the `DataVolume` CR.
 . If the `StorageClass` has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the `StorageClass` provisioner.
 . The `CDI Controller` service creates an `importer` pod.
 . The `importer` pod streams the VM disk to the PV.
@@ -67,7 +67,7 @@ The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 +
 *For each VM disk:*
 
-. The `Containerized Data Importer (CDI) Controller` service creates a blank persistent volume claim (PVC) based on the parameters specified in the `DataVolume` CR.  
+. The `Containerized Data Importer (CDI) Controller` service creates a blank persistent volume claim (PVC) based on the parameters specified in the `DataVolume` CR.
 . If the `StorageClass` has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the `StorageClass` provisioner.
 
 *For all VM disks:*

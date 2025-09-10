@@ -123,7 +123,7 @@ The transfer network is the network used to transfer the VMs to {virt}. This is 
 ** To choose a different transfer network, select a different transfer network from the list.
 ** Optional: To configure another {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
 +
-To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
+To learn more about the different types of networks {ocp-short} supports, see {ocp-doc}/multiple_networks/understanding-multiple-networks#additional-networks-provided_understanding-multiple-networks[Secondary Networks in OpenShift Container Platform].
 
 ** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
@@ -161,11 +161,11 @@ The *Plan settings* section of the page includes settings that you specified in 
 
 . Check the following item on the *Plan settings* section of the page:
 
-* *Preserve CPU mode*: Generally, the CPU model (type) for RHV VMs is set at the cluster level. However, the CPU model can be set at the VM level, which is called a custom CPU model.
+* *Preserve CPU mode*: Generally, the CPU model (type) for {rhv-full} VMs is set at the cluster level. However, the CPU model can be set at the VM level, which is called a custom CPU model.
 +
 By default, MTV sets the CPU model on the destination cluster as follows: MTV preserves custom CPU settings for VMs that have them. For VMs without custom CPU settings, MTV does not set the CPU model. Instead, the CPU model is later set by OpenShift Virtualization.
 +
-To preserve the cluster-level CPU model of your RHV VMs, do the following:
+To preserve the cluster-level CPU model of your {rhv-full} VMs, do the following:
 
 .. Click the {kebab}.
 .. Toggle the *Whether to preserve the CPU model* switch.
