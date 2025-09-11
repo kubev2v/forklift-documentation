@@ -1,0 +1,37 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_mapping-networks-storage_{context}"]
+
+= Mapping networks and storage in migration plans
+
+//:context: mapping-networks-storage
+
+[role="_abstract"]
+
+You can create network maps and storage maps in the {project-first} to map source networks and disk storage to {virt} networks and storage classes.
+
+// About network maps
+include::../modules/about-network-maps.adoc[leveloffset=+1]
+
+//About storage maps
+include::../modules/about-storage-maps.adoc[leveloffset=+1]
+
+== Creating ownerless storage maps in the {project-short} UI
+
+You can create ownerless storage maps by using the {project-short} UI to map source disk storage to {virt} storage classes.
+
+You can create this type of map by using one of the following methods:
+
+* *Create with form*, selecting items such as a source provider from lists
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
+
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+

@@ -1,0 +1,56 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_planning-migration-osp_{context}"]
+
+= Planning migration of virtual machines from {osp}
+
+//:context: planning-osp
+
+[role="_abstract"]
+
+You prepare and create your {osp} migration plan by performing the following high-level steps in the MTV UI:
+
+- Create ownerless network maps.
+- Add an {osp} source provider.
+- Select a migration network for an {osp} provider.
+- Add an OpenShift Virtualization destination provider.
+- Select a migration network for an OpenShift Virtualization provider.
+- Create an {osp} migration plan.
+
+:context: ostack
+:ostack:
+
+include::../modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+1]
+
+include::../modules/creating-form-based-storage-maps-ui-ostack.adoc[leveloffset=+1]
+
+include::../modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+1]
+
+include::../modules/adding-source-provider.adoc[leveloffset=+1]
+
+:!ostack:
+:context: dest_ostack
+:dest_ostack:
+
+include::../modules/adding-source-provider.adoc[leveloffset=+1]
+
+include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
+
+:!dest_ostack:
+:context: ostack
+:ostack:
+
+include::../modules/creating-plan-wizard-290-ostack.adoc[leveloffset=+1]
+
+
+:!ostack:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+

@@ -1,0 +1,15 @@
+:_mod-docs-content-type: CONCEPT
+
+[id="con_planning-intro_{context}"]
+= Planning a migration
+
+[role="_abstract"]
+You can use the Migration Toolkit for Virtualization (MTV) to plan your migration of virtual machines from the
+following source providers to OpenShift Virtualization destination providers:
+
+* {vmw} vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by {vmw} vSphere
+* Remote {virt} clusters
+
