@@ -6,9 +6,10 @@
 [id="adding-migration-hook-via-cli_{context}"]
 = Adding a migration hook to a migration plan using the CLI
 
-You can use a `Hook` CR to add a pre-migration hook or a post-migration hook to an existing migration plan using the {project-first} CLI.
+[role="_abstract"]
+You can use a `Hook` CR to add a pre-migration hook or a post-migration hook to an existing migration plan by using the {project-first} CLI.
 
-For example, you can create a `Hook` CR to install the `cloud-init` service on a VM and write a file before migration.
+For example, you can create a `Hook` custom resource (CR) to install the `cloud-init` service on a VM and write a file before migration.
 
 [NOTE]
 ====

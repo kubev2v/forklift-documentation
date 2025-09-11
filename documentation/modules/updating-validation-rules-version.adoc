@@ -6,6 +6,7 @@
 [id="updating-inventory-rules-version_{context}"]
 = Updating the inventory rules version
 
+[role="_abstract"]
 You must update the inventory rules version each time you update the rules so that the `Provider Inventory` service detects the changes and triggers the `Validation` service.
 
 The rules version is recorded in a `rules_version.rego` file for each provider.

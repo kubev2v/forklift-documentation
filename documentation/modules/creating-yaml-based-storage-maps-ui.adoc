@@ -6,6 +6,7 @@
 [id="creating-yaml-based-stoarge-maps-ui_{context}"]
 = Creating ownerless storage maps using YAML or JSON definitions in the {project-short} UI
 
+[role="_abstract"]
 You can create ownerless storage maps by using YAML or JSON definitions in the {project-first} UI.
 
 .Procedure

@@ -4,7 +4,7 @@ ifdef::vmware,dest_vmware[]
 
 [NOTE]
 ====
-If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-plan-wizard-290-vmware_vmware[Creating a VMware vSphere migration plan using the {project-short} wizard].
+If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-plan-wizard-290-vmware_vmware[Creating a {vmw} vSphere migration plan using the {project-short} wizard].
 ====
 
 endif::[]

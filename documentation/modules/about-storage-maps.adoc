@@ -4,9 +4,10 @@
 
 :_content-type: CONCEPT
 [id="about-storage-maps_{context}"]
-= About storage maps
+= About storage maps in migration plans
 
-You can create storage maps in {project-first} to map source disk storages to {virt} storage classes.
+[role="_abstract"]
+You can create storage maps in {project-first} migration plans to map source disk storages to {virt} storage classes.
 
 There are two types of storage maps: maps created for a specific migration plan and maps created for use by any migration plan.
 
