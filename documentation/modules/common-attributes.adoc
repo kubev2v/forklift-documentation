@@ -42,5 +42,8 @@
 :keywords: migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift, Red Hat Virtualization, RHV
 :imagesdir: modules/images
 :abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere, {rhv-full}, or {osp} to {virt} running on {ocp}.
+:abstract-planning: Install the {project-first} Operator and configure {project-short} to plan a cold, warm, or live migration of virtual machines to Red Hat {virt} on an OpenShift platform. Map the source and destination infrastructure for your migration, including storage and networking, and create validation rules.
 :user-guide-title: Installing and using {the-lc} {project-full}
+:planning-guide-title: Planning your migration to Red Hat {virt} on an OpenShift platform
 :subtitle: Migrating from VMware vSphere or {rhv-full} to Red Hat {virt}
+:subtitle-planning: Planning your migration of virtual machines from VMware vSphere, {rhv-full} or {osp} platforms, or other platforms to Red Hat {virt} on an OpenShift platform.
