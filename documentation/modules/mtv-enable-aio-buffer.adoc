@@ -1,0 +1,155 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="mtv-enable-aio-buffer_{context}"]
+= Enabling and configuring AIO buffering
+
+[role="_abstract"]
+You can enable and configure Asynchronous Input/Output (AIO) buffering for use with the {project-first}.
+
+.Procedure
+
+. Ensure that the `forklift-controller` pod in the `openshift-mtv` namespace supports the AIO buffer values. Since the pod name prefix is dynamic, check the pod name by running the following command:
++
+[source,terminal]
+----
+oc get pods -n openshift-mtv | grep forklift-controller | awk '{print $1}'
+----
++
+For example, the output if the pod name prefix is "forklift-controller-667f57c8f8-qllnx" would be:
++
+[source,terminal]
+----
+forklift-controller-667f57c8f8-qllnx
+----
+
+. Check the environment variables of the pod by running the following command:
++
+[source,terminal]
+----
+oc get pod forklift-controller-667f57c8f8-qllnx -n openshift-mtv -o yaml
+----
++
+. Check for the following lines in the output:
++
+[source,terminal]
+----
+...
+\- name: VIRT\_V2V\_EXTRA\_ARGS
+\- name: VIRT\_V2V\_EXTRA\_CONF\_CONFIG\_MAP
+...
+----
+
+. In the `openshift-mtv namespace`, edit the `ForkliftController` custom resource (CR) by performing the following steps:
+
+.. Access the `ForkliftController` CR for editing by running the following command:
++
+[source,terminal]
+----
+oc edit forkliftcontroller -n openshift-mtv
+----
+
+.. Add the following lines to the `spec` section of the `ForkliftController` CR:
++
+[source,terminal]
+----
+virt_v2v_extra_args: "--vddk-config /mnt/extra-v2v-conf/input.conf"
+virt_v2v_extra_conf_config_map: "perf"
+----
+
+. Create the required config map `perf` by running the following command:
++
+[source,terminal]
+----
+oc -n openshift-mtv create cm perf
+----
+
+. Convert the desired buffer configuration values to Base64. For example, for 16/4, run the following command:
++
+[source,terminal]
+----
+echo -e "VixDiskLib.nfcAio.Session.BufSizeIn64KB=16\nvixDiskLib.nfcAio.Session.BufCount=4" | base64
+----
++
+The output will be similar to the following:
++
+[source,terminal]
+----
+Vml4RGlza0xpYi5uZmNBaW8uU2Vzc2lvbi5CdWZTaXplSW42NEtCPTE2CnZpeERpc2tMaWIubmZjQWlvLlNlc3Npb24uQnVmQ291bnQ9NAo=
+----
+
+. In the config map `perf`, enter the Base64 string in the `binaryData` section, for example:
++
+[source,terminal]
+----
+apiVersion: v1
+kind: ConfigMap
+binaryData:
+  input.conf: Vml4RGlza0xpYi5uZmNBaW8uU2Vzc2lvbi5CdWZTaXplSW42NEtCPTE2CnZpeERpc2tMaWIubmZjQWlvLlNlc3Npb24uQnVmQ291bnQ9NAo=
+metadata:
+  name: perf
+  namespace: openshift-mtv
+----
+
+. Restart the `forklift-controller` pod to apply the new configuration.
+
+. Ensure the `VIRT_V2V_EXTRA_ARGS` environment variable reflects the updated settings.
+
+. Run a migration plan and check the logs of the migration pod. Confirm that the AIO buffer settings are passed as parameters, particularly the `--vddk-config` value.
++
+For example, if you run the following command:
++
+[source,terminal]
+----
+exec: /usr/bin/virt-v2v … --vddk-config /mnt/extra-v2v-conf/input.conf
+----
++
+The logs include a section similar to the following, if `debug_level = 4`:
++
+[source,terminal]
+----
+Buffer size calc for 16 value:
+(16 * 64 * 1024 = 1048576)
+nbdkit: vddk[1]: debug: [NFC VERBOSE] NfcAio_OpenSession:
+Opening an AIO session.
+nbdkit: vddk[1]: debug: [NFC INFO] NfcAioInitSession:
+Disabling
+read-ahead buffer since the AIO buffer size of 1048576 is >=
+the read-ahead buffer size of 65536. Explicitly setting flag
+'`NFC_AIO_SESSION_NO_NET_READ_AHEAD`'
+nbdkit: vddk[1]: debug: [NFC VERBOSE] NfcAioInitSession: AIO Buffer Size is 1048576
+nbdkit: vddk[1]: debug: [NFC VERBOSE] NfcAioInitSession: AIO Buffer
+Count is 4
+----
+
+. Verify that the correct config map values are in the migration pod. Do this by logging into the migration pod and running the following command:
++
+[source,terminal]
+----
+cat /mnt/extra-v2v-conf/input.conf
+----
++
+Example output is as follows:
++
+[source,terminal]
+----
+VixDiskLib.nfcAio.Session.BufSizeIn64KB=16
+vixDiskLib.nfcAio.Session.BufCount=4
+----
+
+. Optional: Enable debug logs by running the following command. The command converts the configuration to Base64, including a high log level:
++
+[source,terminal]
+----
+echo -e
+"`VixDiskLib.nfcAio.Session.BufSizeIn64KB=16\nVixDiskLib.nfcAio.Session.BufCount=4\nVixDiskLib.nfc.LogLevel=4`"
+| base64
+----
++
+[NOTE]
+====
+Adding a high log level reduces performance and is for debugging purposes only.
+====
+
