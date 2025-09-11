@@ -22,3 +22,110 @@
 * {vmw} vSphere
 * {rhv-full}
 
+[id="cold-migration_{context}"]
+== Cold migration
+
+Cold migration is the default migration type. The source virtual machines are shut down while the data is copied.
+
+[NOTE]
+====
+include::snip_qemu-guest-agent.adoc[]
+====
+
+[id="warm-migration_{context}"]
+== Warm migration
+
+Most of the data is copied during the _precopy_ stage while the source virtual machines (VMs) are running.
+
+Then the VMs are shut down and the remaining data is copied during the _cutover_ stage.
+
+== Precopy stage
+
+The VMs are not shut down during the precopy stage.
+
+The VM disks are copied incrementally by using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment.
+
+[IMPORTANT]
+====
+You must enable CBT for each source VM and each VM disk.
+
+A VM can support up to 28 CBT snapshots. If the source VM has too many CBT snapshots and the `Migration Controller` service is not able to create a new snapshot, warm migration might fail. The `Migration Controller` service deletes each snapshot when the snapshot is no longer required.
+====
+
+The precopy stage runs until the cutover stage is started manually or is scheduled to start.
+
+== Cutover stage
+
+The VMs are shut down during the cutover stage and the remaining data is migrated. Data stored in RAM is not migrated.
+
+You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` manifest.
+
+include::../modules/cold-warm-migration.adoc[leveloffset=+1]
+
+[id="warm-migration-versus-cold-migration"_{context}]
+== Advantages and disadvantages of cold and warm migrations
+
+The table that follows offers a more detailed description of the advantages and disadvantages of cold migration and warm migration. It assumes that you have installed Red Hat Enterprise Linux (RHEL) 9 on the {ocp} platform on which you installed {project-short}:
+
+[cols="1,1,1",options="header"]
+.Detailed description of advantages and disadvantages
+
+[cols="1,1,1",options="header"]
+.Advantages and disadvantages of cold and warm migrations 
+|===
+|
+|*Cold migration*
+|*Warm migration*
+
+|*Duration*
+|Correlates to the amount of data on the disks. Each block is copied once.
+|Correlates to the amount of data on the disks and VM utilization. Blocks may be copied multiple times.
+
+|*Fail fast*
+|Convert and then transfer. Each VM is converted to be compatible with {ocp-short} and, if the conversion is successful, the VM is transferred. If a VM cannot be converted, the migration fails immediately.
+|Transfer and then convert. For each VM, {project-short} creates a snapshot and transfers it to {ocp}. When you start the cutover, {project-short} creates the last snapshot, transfers it, and then converts the VM.
+
+|*Tools*
+a|`virt-v2v` (Red Hat Enterprise Linux 9), used to convert virtual machines from a foreign hypervisor to run on Kernel-based Virtual Machines (KVMs).
+a|Containerized Data Importer (CDI), a persistent storage management add-on, and `virt-v2v` (Red Hat Enterprise Linux 9)
+
+|*Data transferred*
+|Approximate sum of all disks
+|Approximate sum of all disks and VM utilization
+
+|*VM downtime*
+|High: The VMs are shut down, and the disks are transferred.
+|Low: Disks are transferred in the background. The VMs are shut down during the cutover stage, and the remaining data is migrated. Data stored in RAM is not migrated.
+
+|*Parallelism*
+|Disks are transferred sequentially for each VM. For remote migration, disks are transferred in parallel.
+footnoteref:[footnote1,Remote migration: Target environment that does not have MTV installed. Migration to a remote environment using CDI.]
+|Disks are transferred in parallel by different pods.
+
+|*Connection use*
+|Keeps the connection to the Source only during the disk transfer.
+|Keeps the connection to the Source during the disk transfer, but the connection is released between snapshots.
+
+|*Tools*
+|{project-short} only.
+|{project-short} and CDI from {virt}.
+|===
+
+
+[NOTE]
+====
+The preceding table describes the situation for VMs that are running because the main benefit of warm migration is the reduced downtime, and there is no reason to initiate warm migration for VMs that are down. However, performing warm migration for VMs that are down is not the same as cold migration, even when {project-short} uses `virt-v2v` and RHEL 9. For VMs that are down, {project-short} transfers the disks using CDI, unlike in cold migration.
+====
+
+[NOTE]
+====
+When importing from VMware, there are additional factors which impact the migration speed such as limits related to ESXi, vSphere. or VDDK.
+====
+
+== Conclusions
+
+Based on the preceding information, we can draw the following conclusions about cold migration vs. warm migration:
+
+* The shortest downtime of VMs can be achieved by using warm migration.
+* The shortest duration for VMs with a large amount of data on a single disk can be achieved by using cold migration.
+* The shortest duration for VMs with a large amount of data that is spread evenly across multiple disks can be achieved by using warm migration.
