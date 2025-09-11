@@ -1,0 +1,248 @@
+include::modules/common-attributes.adoc[]
+ifeval::["{build}" == "downstream"]
+[id="installing-and-using-{title}"]
+= {migrating-guide-title}
+endif::[]
+ifeval::["{build}" == "upstream"]
+= {user-guide-title} {project-version}
+endif::[]
+:toc:
+:toc-title:
+:toclevels: 3
+:compat-mode:
+:context: mtv
+:mtv:
+
+:_mod-docs-content-type: ASSEMBLY
+[id="about-mtv_{context}"]
+== About {the-lc} {project-full}
+
+You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* Remote {virt} clusters
+
+//Add info and prerequisites that refer to the Planning guide before running a migration
+
+[id="migrating-vmware"]
+== Running a VMware vSphere migration plan
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+:!vmware:
+
+:context: rhv
+:rhv:
+
+[id="migrating-rhv_{context}"]
+== Running a {rhv-full} migration plan
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+:!rhv:
+:context: ostack
+:ostack:
+
+[id="migrating-osp_{context}"]
+== Running an {osp} migration plan
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+:!ostack:
+:context: ova
+:ova:
+
+[id="migrating-ova_{context}"]
+== Running an OVA migration plan
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+:!ova:
+:context: cnv
+:cnv:
+
+[id="migrating-virt_{context}"]
+== Running an {virt} migration plan
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+:!cnv:
+:context: mtv
+:mtv:
+
+[id="migrating-virtual-machines-from-the-command-line_{context}"]
+== Migrating virtual machines from the command line
+
+You can migrate virtual machines to {virt} from the command line.
+
+//Add info about prerequisites in the Planning guide
+
+:mtv!:
+:context: vmware
+:vmware:
+
+include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
+include::modules/snip_vmware-permissions.adoc[]
+
+include::modules/retrieving-vmware-moref.adoc[leveloffset=+3]
+
+include::modules/mtv-shared-disks.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
+:vmware!:
+:context: rhv
+:rhv:
+
+include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
+:rhv!:
+:context: ostack
+:ostack:
+
+include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
+:ostack!:
+:context: ova
+:ova:
+
+include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
+:ova!:
+:context: cnv
+:cnv:
+
+include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
+:cnv!:
+:context: mtv
+:mtv:
+
+[id="advanced-migration-options_{context}"]
+== Advanced migration options
+
+include::modules/changing-precopy-intervals.adoc[leveloffset=+2]
+
+[id="creating-custom-rules-for-validation-service"]
+=== Creating custom rules for the Validation service
+
+The `Validation` service uses Open Policy Agent (OPA) policy rules to check the suitability of each virtual machine (VM) for migration. The `Validation` service generates a list of _concerns_ for each VM, which are stored in the `Provider Inventory` service as VM attributes. The web console displays the concerns for each VM in the provider inventory.
+
+You can create custom rules to extend the default ruleset of the `Validation` service. For example, you can create a rule that checks whether a VM has multiple disks.
+
+include::modules/about-rego-files.adoc[leveloffset=+3]
+
+include::modules/accessing-default-validation-rules.adoc[leveloffset=+3]
+
+include::modules/creating-validation-rule.adoc[leveloffset=+3]
+
+include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
+
+include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
+
+[id="adding-hooks-mtv-migration-plan"]
+=== Adding hooks to an MTV migration plan
+
+You can add hooks to an {project-first} migration plan to perform automated operations on a VM, either before or after you migrate it.
+
+include::modules/about-hooks-for-migration-plans.adoc[leveloffset=+3]
+
+include::modules/adding-hook-using-ui.adoc[leveloffset=+3]
+
+include::modules/adding-hook-using-cli.adoc[leveloffset=+3]
+
+include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
+
+[id="uninstalling-mtv_{context}"]
+== Uninstalling {the-lc} {project-full}
+
+You can uninstall {the-lc} {project-first} by using the {ocp} web console or the command-line interface (CLI).
+
+include::modules/uninstalling-mtv-ui.adoc[leveloffset=+2]
+
+include::modules/uninstalling-mtv-cli.adoc[leveloffset=+2]
+
+include::modules/mtv-performance-recommendation.adoc[leveloffset=+1]
+
+include::modules/mtv-aio-buffer.adoc[leveloffset=+2]
+
+include::modules/mtv-enable-aio-buffer.adoc[leveloffset=+3]
+
+include::modules/mtv-disable-aio-buffer.adoc[leveloffset=+3]
+
+[id="troubleshooting_{context}"]
+== Troubleshooting
+
+This section provides information for troubleshooting common migration issues.
+
+include::modules/error-messages.adoc[leveloffset=+2]
+
+include::modules/using-must-gather.adoc[leveloffset=+2]
+
+[id="architecture_{context}"]
+=== Architecture
+
+This section describes {project-short} custom resources, services, and workflows.
+
+include::modules/mtv-resources-and-services.adoc[leveloffset=+3]
+
+include::modules/mtv-workflow.adoc[leveloffset=+3]
+
+include::modules/virt-migration-workflow.adoc[leveloffset=+3]
+
+include::modules/virt-v2v-mtv.adoc[leveloffset=+3]
+
+[id="logs-and-crs_{context}"]
+=== Logs and custom resources
+
+You can download logs and custom resource (CR) information for troubleshooting. For more information, see the xref:virt-migration-workflow_{context}[detailed migration workflow].
+
+include::modules/collected-logs-cr-info.adoc[leveloffset=+3]
+
+include::modules/accessing-logs-ui.adoc[leveloffset=+3]
+
+include::modules/accessing-logs-cli.adoc[leveloffset=+3]
+
+[id="telemetry_{context}"]
+== Telemetry
+
+include::modules/mtv-telemetry.adoc[leveloffset=+2]
+
+[id="additional-information_{context}"]
+== Additional information
+
+include::modules/mtv-performance-addendum.adoc[leveloffset=+2]
+
+:mtv!:
