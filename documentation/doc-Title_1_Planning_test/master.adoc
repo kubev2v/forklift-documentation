@@ -1,0 +1,366 @@
+include::modules/common-attributes.adoc[]
+ifeval::["{build}" == "downstream"]
+[id="planning-{title}"]
+= {planning-guide-title}
+endif::[]
+ifeval::["{build}" == "upstream"]
+= {planning-guide-title} {project-version}
+endif::[]
+:toc:
+:toc-title:
+:toclevels: 3
+:compat-mode:
+:context: mtv
+:mtv:
+
+:_mod-docs-content-type: ASSEMBLY
+[id="about-mtv_{context}"]
+== About {the-lc} {project-full}
+
+You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* Remote {virt} clusters
+
+.Additional resources
+
+* link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
+
+* link:https://access.redhat.com/articles/6380311[Performance recommendations for migrating from Red Hat Virtualization to OpenShift Virtualization].
+
+
+include::modules/cold-warm-migration.adoc[leveloffset=+1]
+
+include::modules/mtv-migration-speed-comparison.adoc[leveloffset=+2]
+
+include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
+
+[id="prerequisites_{context}"]
+== Prerequisites for migration
+
+Review the following prerequisites to ensure that your environment is prepared for migration.
+
+[id="mtv-software-requirements_{context}"]
+=== Software requirements
+
+{project-first} has software requirements for all providers as well as specific software requirements per provider.
+
+You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
+
+include::modules/storage-support.adoc[leveloffset=+2]
+
+include::modules/network-prerequisites.adoc[leveloffset=+2]
+
+include::modules/source-vm-prerequisites.adoc[leveloffset=+2]
+
+include::modules/encryption-support.adoc[leveloffset=+2]
+
+include::modules/rhv-prerequisites.adoc[leveloffset=+2]
+
+include::modules/openstack-prerequisites.adoc[leveloffset=+2]
+
+
+[id="additional-authentication-for-osp_{context}"]
+==== Additional authentication methods for migrations with {osp} source providers
+
+{project-short} versions 2.6 and later support the following authentication methods for migrations with {osp} source providers in addition to the standard username and password credential set:
+
+* Token authentication
+* Application credential authentication
+
+You can use these methods to migrate virtual machines with {osp} source providers using the command-line interface (CLI) the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
+
+:!mtv:
+:context: ostack
+:ostack:
+
+include::modules/ostack-token-auth.adoc[leveloffset=+4]
+
+include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
+
+:!ostack:
+:context: mtv
+:mtv:
+
+include::modules/vmware-prerequisites.adoc[leveloffset=+2]
+
+include::modules/creating-vmware-role-mtv-permissions.adoc[leveloffset=+3]
+
+include::modules/creating-vddk-image.adoc[leveloffset=+3]
+
+include::modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+3]
+
+include::modules/vddk-validator-containers.adoc[leveloffset=+3]
+
+include::modules/ova-prerequisites.adoc[leveloffset=+2]
+
+include::modules/cnv-prerequisites.adoc[leveloffset=+2]
+
+include::modules/compatibility-guidelines.adoc[leveloffset=+2]
+
+[id="installing-the-operator_{context}"]
+== Installing and configuring the {operator-name}
+
+You can install the {operator-name} by using the {ocp} web console or the command-line interface (CLI).
+
+In {project-first} version 2.4 and later, the {operator-name} includes the {project-short} plugin for the {ocp} web console.
+
+After you install the {operator-name} by using either the {ocp} web console or the CLI, you can configure the Operator.
+
+:!mtv:
+:context: web
+:web:
+include::modules/installing-mtv-operator.adoc[leveloffset=+2]
+
+:!web:
+:context: cli
+:cli:
+include::modules/installing-mtv-operator.adoc[leveloffset=+2]
+:!cli:
+:context: mtv
+:mtv:
+
+include::modules/configuring-mtv-operator.adoc[leveloffset=+2]
+
+include::modules/max-concurrent-vms.adoc[leveloffset=+3]
+
+[id="migrating-vms-ocp-web-console_{context}"]
+== Migrating virtual machines by using the {ocp} web console 
+
+Use the {project-short} user interface to migrate virtual machines (VMs). It is located in the *Virtualization* section of the {ocp} web console.
+
+include::modules/mtv-ui.adoc[leveloffset=+2]
+
+include::modules/mtv-overview-page.adoc[leveloffset=+2]
+
+[id="migrating-vms-mtv-ui_{context}"]
+=== Migrating virtual machines by using the MTV user interface
+
+Use the {project-short} user interface to migrate VMs from the following providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* {virt} clusters
+
+For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
+
+[IMPORTANT]
+====
+You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
+
+VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
+
+VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
+====
+
+[id="migrating-virtual-machines-from-the-command-line_{context}"]
+== Migrating virtual machines by using the command-line interface
+
+You can migrate virtual machines to {virt} from the command line.
+
+[IMPORTANT]
+====
+You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
+====
+
+:mtv!:
+:context: cli
+:cli:
+
+include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
+
+:cli!:
+:context: mtv
+:mtv:
+
+
+[id="migrating-virtual-machines_{context}"]
+=== Creating {project-short} custom resources
+
+You migrate virtual machines (VMs) using the command-line interface (CLI) by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
+
+[IMPORTANT]
+====
+You must specify a name for cluster-scoped CRs.
+
+You must specify both a name and a namespace for namespace-scoped CRs.
+
+To migrate to or from an {ocp-short} cluster that is different from the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
+====
+
+
+:!mtv:
+:context: vmware
+:vmware:
+
+[id="migrating-vmware"]
+== Planning migration of virtual machines from VMware vSphere
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+include::modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+2]
+
+:!vmware:
+:context: dest_vmware
+:dest_vmware:
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
+
+:!dest_vmware:
+:context: vmware
+:vmware:
+
+include::modules/creating-plan-wizard-290-vmware.adoc[leveloffset=+2]
+
+//In Title 2
+//include::modules/running-migration-plan.adoc[leveloffset=+2]
+//include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
+== Mapping networks and storage in migration plans
+
+=== Network maps in migration plans
+
+include::modules/about-network-maps.adoc[leveloffset=+3]
+
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
+
+=== Storage maps in migration plans
+
+include::modules/about-storage-maps.adoc[leveloffset=+3]
+
+==== Creating ownerless storage maps in the {project-short} UI
+
+You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
+
+You can create this type of map by using one of the following methods:
+
+* *Create with form*, selecting items such as a source provider from lists
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
+
+include::modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=+4]
+
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
+
+// In Title 2
+//include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+:!vmware:
+
+:context: rhv
+:rhv:
+
+[id="migrating-rhv_{context}"]
+== Planning a migration of virtual machines from {rhv-full}
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+:!rhv:
+:context: dest_rhv
+:dest_rhv:
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
+
+:!dest_rhv:
+:context: rhv
+:rhv:
+
+include::modules/creating-plan-wizard-290-rhv.adoc[leveloffset=+2]
+
+// In Title 2
+//include::modules/running-migration-plan.adoc[leveloffset=+2]
+//include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+//include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+:!rhv:
+:context: ostack
+:ostack:
+
+[id="migrating-osp_{context}"]
+== Planning a migration of virtual machines from {osp}
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+:!ostack:
+:context: dest_ostack
+:dest_ostack:
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
+
+:!dest_ostack:
+:context: ostack
+:ostack:
+
+include::modules/creating-plan-wizard-290-ostack.adoc[leveloffset=+2]
+
+//In Title 2
+//include::modules/running-migration-plan.adoc[leveloffset=+2]
+//include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+//include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+:!ostack:
+:context: ova
+:ova:
+
+[id="migrating-ova_{context}"]
+== Planning a migration of virtual machines from OVA
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+:!ova:
+:context: dest_ova
+:dest_ova:
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
+
+:!dest_ova:
+:context: ova
+:ova:
+
+include::modules/creating-plan-wizard-290-ova.adoc[leveloffset=+2]
+
+//In Title 2
+//include::modules/running-migration-plan.adoc[leveloffset=+2]
+//include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+//include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+:!ova:
+:context: cnv
+:cnv:
+
+[id="migrating-virt_{context}"]
+== Planning a migration of virtual machines from {virt}
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+:!cnv:
+:context: dest_cnv
+:dest_cnv:
+
+include::modules/adding-source-provider.adoc[leveloffset=+2]
+
+include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+2]
+
+:!dest_cnv:
+:context: cnv
+:cnv:
+
+include::modules/creating-plan-wizard-290-cnv.adoc[leveloffset=+2]
+
+//In Title 2
+//include::modules/running-migration-plan.adoc[leveloffset=+2]
+//include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
+//include::modules/canceling-migration-ui.adoc[leveloffset=+2]
+
