@@ -8,7 +8,7 @@
 
 The following prerequisites apply to all migrations:
 
-* IP addresses, VLANs, and other network configuration settings must not be changed before or during migration. The MAC addresses of the virtual machines are preserved during migration.
+* Do not change IP addresses, VLANs, and other network configuration settings during a migration. The MAC addresses of the virtual machines (VMs) are preserved during migration.
 * The network connections between the source environment, the {virt} cluster, and the replication repository must be reliable and uninterrupted.
 * If you are mapping more than one source and destination network, you must create a link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network.
 
@@ -17,8 +17,6 @@ The following prerequisites apply to all migrations:
 
 The firewalls must enable traffic over the following ports:
 
-// ANDY: The comments are for later, when I separate the ports by vendor.
-// ifdef::wmware[]
 [cols="1,1,1,1,2a",options="header"]
 .Network ports required for migrating from VMware vSphere
 |===
@@ -26,27 +24,25 @@ The firewalls must enable traffic over the following ports:
 
 |443
 |TCP
-|OpenShift nodes
-|VMware vCenter
-|VMware provider inventory
+|{ocp-short} nodes
+|{vmw} vCenter
+|{vmw} provider inventory
 
 Disk transfer authentication
 
 |443
 |TCP
-|OpenShift nodes
-|VMware ESXi hosts
+|{ocp-short} nodes
+|{vmw} ESXi hosts
 |Disk transfer authentication
 
 |902
 |TCP
-|OpenShift nodes
-|VMware ESXi hosts
+|{ocp-short} nodes
+|{vmw} ESXi hosts
 |Disk transfer data copy
 |===
-// endif::[]
 
-// ifdef::rhv[]
 [cols="1,1,1,1,2a",options="header"]
 .Network ports required for migrating from {rhv-full}
 |===
@@ -54,7 +50,7 @@ Disk transfer authentication
 
 |443
 |TCP
-|OpenShift nodes
+|{ocp-short} nodes
 |{rhv-short} Engine
 |{rhv-short} provider inventory
 
@@ -62,8 +58,82 @@ Disk transfer authentication
 
 |54322
 |TCP
-|OpenShift nodes
+|{ocp-short} nodes
 |{rhv-short} hosts
 |Disk transfer data copy
 |===
-// endif::[]
+
+[cols="1,1,1,1,2a",options="header"]
+.Network ports required for migrating from {osp}
+|===
+|Port |Protocol |Source |Destination |Purpose
+
+|8776
+|Cinder
+|{ocp-short} nodes
+|{osp} hosts
+|Block storage API
+
+|8774
+|Nova
+|{ocp-short} nodes
+|{osp} hosts
+|Virtualization API
+
+|5000
+|Keystone
+|{ocp-short} nodes
+|{osp} hosts
+|Authentication API
+
+|9696
+|Neutron
+|{ocp-short} nodes
+|{osp} hosts
+|Network API
+
+|9292
+|Glance
+|{ocp-short} nodes
+|{osp} hosts
+|Image service API
+|===
+
+[cols="1,1,1,1,2a",options="header"]
+.Network ports required for migrating from Open Virtual Appliance (OVA) files
+|===
+|Port |Protocol |Source |Destination |Purpose
+
+|2049
+|TCP
+|{ocp-short} nodes
+|Server containing the OVA files
+|NFS service
+
+|111
+|TCP or UCP
+|{ocp-short} nodes
+|Server containing the OVA files
+|RPC Portmapper, only needed for NFSv4.0
+|===
+
+[cols="1,1,1,1,2a",options="header"]
+.Network ports required for migrating from {virt}
+|===
+|Port |Protocol |Source |Destination |Purpose
+
+|6443
+|API
+|{ocp-short} nodes
+|{virt} host
+|Access API to get information from a VM's manifest
+
+|443
+|TCP
+|{ocp-short} nodes 
+|{virt} host
+|Download VM data using the `virtualMachineExport` resource
+|===
+
+
+
