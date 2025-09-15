@@ -186,6 +186,9 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 
 include::modules/creating-plan-wizard-290-vmware.adoc[leveloffset=+2]
 
+include::modules/about-storage-copy-offload.adoc[leveloffset=+2]
+include::modules/running-storage-copy-offload-ui.adoc[leveloffset=+2]
+
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
@@ -476,6 +479,12 @@ include::modules/snip_vmware-permissions.adoc[]
 include::modules/retrieving-vmware-moref.adoc[leveloffset=+3]
 
 include::modules/mtv-shared-disks.adoc[leveloffset=+3]
+
+include::modules/running-storage-copy-offload-cli.adoc[leveloffset=+3]
+
+:!vmware_cli:
+:context: vmware
+:vmware: 
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
