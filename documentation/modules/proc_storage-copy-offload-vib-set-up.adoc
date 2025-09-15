@@ -1,0 +1,85 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_storage-copy-offload-vib-set-up_{context}"]
+= Setting up storage copy offload using the VIB
+
+[role="_abstract"]
+You can set up storage copy offload using the vSphere Installation on Bundle (VIB). This is the default method for running storage copy offload migrations.
+
+[IMPORTANT]
+====
+If you use this method, you must install the VIB on every ESXi host that you use for copy-offload operations.
+====
+
+.Prerequisites
+
+* Podman or Docker installed on your local machine.
+* Root user SSH access to ESXi hosts.
+* SSH private key for ESXi authentication. This can be the same key as used for the SSH clone method, if you use both.
+* Optional: vSphere credentials. These allow you to auto-discovery ESXi hosts.
+
+.Procedure
+
+. Configure the VIB clone method in your `Provider` CR by setting `settings:exsiCloneMethod` to `"vib"`.
++
+.Example Provider CR
+[source,yaml,subs="attributes+"]
+----
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: my-vsphere-provider
+  namespace: openshift-mtv
+spec:
+  type: vsphere
+  url: https://vcenter.example.com
+  secret:
+    name: vsphere-credentials
+    namespace: openshift-mtv
+  settings:
+    esxiCloneMethod: "vib"
+----
+
+. Install the VIB by using the `vib-installer` utility included in the container image by running one of the following methods:
+
+.. Auto-discover ESXi hosts from vSphere and install the VIB by running the following commands:
++
+[source, terminal]
+----
+$ podman run -it --rm \
+  --entrypoint /bin/vib-installer \
+  -v $HOME/.ssh/id_rsa:/tmp/esxi_key:Z \
+  -e GOVMOMI_USERNAME='administrator@vsphere.local' \
+  -e GOVMOMI_PASSWORD='your-password' \
+  -e GOVMOMI_HOSTNAME='vcenter.example.com' \
+  -e GOVMOMI_INSECURE='true' \
+  $(oc get deployment forklift-volume-populator-controller  -n openshift-mtv -o jsonpath='{.spec.template.spec.containers[0].env[?(@.name == "VSPHERE_XCOPY_VOLUME_POPULATOR_IMAGE")].value}') \
+  --ssh-key-file /tmp/esxi_key \
+  --datacenter MyDatacenter
+
+----
+
+.. Or specify ESXi hosts manually and install the VIB by running the following commands:
++
+[source, terminal]
+----
+$ podman run -it --rm \
+  --entrypoint /bin/vib-installer \
+  -v $HOME/.ssh/id_rsa:/tmp/esxi_key:Z \
+  $(oc get deployment forklift-volume-populator-controller  -n openshift-mtv -o jsonpath='{.spec.template.spec.containers[0].env[?(@.name == "VSPHERE_XCOPY_VOLUME_POPULATOR_IMAGE")].value}') \
+  --ssh-key-file /tmp/esxi_key \
+  --esxi-hosts 'esxi1.example.com,esxi2.example.com,esxi3.example.com'
+----
+
+[NOTE]
+====
+Run `vib-installer --help` for a list of all available flags. Flags match the main populator naming conventions and support environment variables such as `SSH_KEY_FILE`, `ESXI_HOSTS`, and `GOVMOMI_USERNAME`.
+====
+
+[NOTE]
+====
+For alternative VIB installation methods using Ansible, see link:https://github.com/kubev2v/forklift/blob/main/cmd/vsphere-xcopy-volume-populator/vmkfstools-wrapper/README.md[Esxcli plugin that wraps vmkfstools].
+====

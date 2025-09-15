@@ -1,0 +1,392 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_storage-copy-offload-cli_{context}"]
+= Migrating {vmw} vSphere VMs in the CLI by using storage copy offload
+
+[role="_abstract"]
+You can use the storage copy offload feature of {project-first} to migrate {vmw} vSphere virtual machines (VMs) faster than by other methods.
+
+.Prerequisites
+
+In addition to the regular link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
+
+* A Hitachi Vantara or NetApp ONTAP storage system or one of the following:
+** A configured Dell PowerFlex Storage Data Client (SDC)
+** A configured Internet Small Computer System Interface (iSCSI) storage system
+** A configured Fibre Channel storage system
+* A working Container Storage Interface (CSI) driver connected to the above and to {virt}
+* A configured {vmw} vSphere provider
+* vSphere users must have a role that includes thw following privileges (suggested name: `StorgeOffloader`):
+
+** Global
+*** Settings
+** Datastore
+*** Browse datastore
+*** Low level file operations
+** Host Configuration
+*** Advanced settings
+*** Query patch
+*** Storage partition configuration
+
+.Procedure
+
+. In the {project-short} Operator, set the value of `feature_copy_offload` to `true` in `forklift-controller` by running the following command:
++
+[source, terminal]
+----
+oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type merge -p '{"spec": {"feature_copy_offload": "true"}}' -n openshift-mtv
+----
++
+. Create a `Secret` in the namespace in which the migration provider is set up, usually `openshift-mtv`. Include the credentials from the appropriate vendor in your `Secret`.
++
+[width="100%",cols="22%,48%,15%,15%",options="header",]
+.Credentials for a Hitachi storage copy offload Secret
+|===
+|Key| Description| Mandatory?| Default
+
+| `GOVMOMI_HOSTNAME`
+| hostname or URL of the vSphere API (string).
+| Yes.
+| NA.
+
+| `GOVMOMI_USERNAME`
+| User name of the vSphere API (string).
+| Yes.
+| NA.
+
+| `GOVMOMI_PASSWORD`
+| Password of the vSphere API (string).
+| Yes.
+| NA.
+
+| `STORAGE_HOSTNAME`
+| The hostname or URL of the storage vendor API (string).
+| Yes.
+| NA.
+
+| `STORAGE_USERNAME`
+| The username of the storage vendor API (string).
+| Yes.
+| NA.
+
+| `STORAGE_PASSWORD`
+| The password of the storage vendor API (string).
+| Yes.
+| NA.
+
+| `STORAGE_PORT`
+| The port of the storage vendor API (string).
+| Yes.
+| NA.
+
+| `STORAGE_ID`
+| Storage array serial number (string).
+| Yes.
+| NA.
+
+| `HOSTGROUP_ID_LIST`
+| List of IO ports and host group IDs, for example. `CL1-A,1:CL2-B,2:CL4-A,1:CL6-A,1`.
+| Yes.
+| NA.
+|===
++
+[width="100%",cols="22%,48%,15%,15%",options="header",]
+.Credentials for a NetApp ONTAP storage copy offload Secret
+|===
+|Key| Description| Mandatory?| Default
+
+| `STORAGE_HOSTNAME`
+| IP or URL of the host (string).
+| Yes.
+| NA.
+
+| `STORAGE_USERNAME`
+| The user's name (string).
+| Yes.
+| NA.
+
+| `STORAGE_PASSWORD`
+| The user's password (string).
+| Yes.
+| NA.
+
+| `STORAGE_SKIP_SSL_VERIFICATION`
+| If set to `true`, SSL verification is not performed (`true`, `false`).
+| No.
+|`false`.
+
+|`ONTAP_SVM`
+| The storage virtual machine (SVM) to use in all client interactions. Can be taken from `trident.netapp.io/v1/TridentBackend.config.ontap_config.svm` resource field.
+| Yes.
+| NA.
+|===
++
+[width="100%",cols="22%,48%,15%,15%",options="header",]
+.Credentials for a Pure FlashArray storage copy offload Secret
+|===
+|Key| Description| Mandatory?| Default
+
+| `STORAGE_HOSTNAME`
+| IP or URL of the host (string).
+| Yes.
+| NA.
+
+| `STORAGE_USERNAME`
+| The user's name (string).
+| Yes.
+| NA.
+
+| `STORAGE_PASSWORD`
+| The user's password (string).
+| Yes.
+| NA.
+
+| `STORAGE_SKIP_SSL_VERIFICATION`
+| If set to `true`, SSL verification is not performed (`true`, `false`).
+| No.
+|`false`
+
+|`PURE_CLUSTER_PREFIX`
+| The cluster prefix is set in the `StorageCluster` resource. Retrieve it by running `printf "px_%.8s" $(oc get storagecluster -A -o=jsonpath='{.items[?(@.spec.cloudStorage.provider=="pure")].status.clusterUid}')` in the CLI.
+| Yes.
+| NA.
+|===
++
+[width="100%",cols="22%,48%,15%,15%",options="header",]
+.Credentials for a Dell PowerMax storage copy offload Secret
+|===
+|Key| Description| Mandatory?| Default
+
+| `STORAGE_HOSTNAME`
+| IP or URL of the host (string).
+| Yes.
+| NA.include::snip_storage-copy-offload-secret-tables.adoc[]
+
+| `STORAGE_USERNAME`
+| The user's name (string).
+| Yes.
+| NA.
+
+| `STORAGE_PASSWORD`
+| The user's password (string).
+| Yes.
+| NA.
+
+| `STORAGE_SKIP_SSL_VERIFICATION`
+| If set to `true`, SSL verification is not performed (`true`, `false`).
+| No..
+|`false`
+
+| `POWERMAX_SYMMETRIX_ID`
+| The Symmetrix ID of the storage array. Can be taken from the config map under the 'powermax' namespace, which the CSI driver uses.
+| Yes.
+| NA.
+ 
+| `POWERMAX_PORT_GROUP_NAME`
+| The port group to use for masking view creation.
+| Yes.
+| NA.
+|===
++
+[width="100%",cols="22%,48%,15%,15%",options="header",]
+.Credentials for a Dell PowerFlex storage copy offload Secret
+|===
+|Key| Description| Mandatory?| Default
+
+| `STORAGE_HOSTNAME`
+| IP or URL of the host (string).
+| Yes.
+| NA.
+
+| `STORAGE_USERNAME`
+| The user's name (string).
+| Yes.
+| NA.
+
+| `STORAGE_PASSWORD`
+| The user's password (string).
+| Yes.
+| NA.
+
+| `STORAGE_SKIP_SSL_VERIFICATION`
+| If set to `true`, SSL verification is not performed (`true`, `false`).
+| No.
+|`false`.
+
+| `POWERFLEX_SYSTEM_ID`
+| The system ID of the storage array. Can be taken from `vxflexos-config`` from the `vxflexos`` namespace or from the `openshift-operators` namespace.
+| Yes.
+| NA.
+|===
++
+[width="100%",cols="22%,48%,15%,15%",options="header",]
+.Credentials for a Dell PowerStore storage copy offload Secret
+|===
+|Key| Description| Mandatory?| Default
+
+| `STORAGE_HOSTNAME`
+| IP or URL of the host (string)
+| Yes.
+| NA.
+
+| `STORAGE_USERNAME`
+| The user's name (string).
+| Yes.
+| NA.
+
+| `STORAGE_PASSWORD`
+| The user's password (string)
+| Yes
+| NA
+
+| `STORAGE_SKIP_SSL_VERIFICATION`
+| If set to `true`, SSL verification is not performed (`true`, `false`).
+| No
+|`false`
+|===
++
+[width="100%",cols="22%,48%,15%,15%",options="header",]
+.Credentials for an Infinidat InfiBox storage copy offload Secret
+|===
+|Key| Description| Mandatory?| Default
+
+| `STORAGE_HOSTNAME`
+| IP or URL of the host (string)
+| Yes
+| NA
+
+| `STORAGE_USERNAME`
+| The user's name (string)
+| Yes
+| NA
+
+| `STORAGE_PASSWORD`
+| The user's password (string)
+| Yes
+| NA
+
+| `STORAGE_SKIP_SSL_VERIFICATION`
+| If set to `true`, SSL verification is not performed (`true`, `false`).
+| No
+|`false`
+|===
++
+[width="100%",cols="22%,48%,15%,15%",options="header",]
+.Credentials for an IBM FlashSystem storage copy offload Secret
+|===
+|Key| Description| Mandatory?| Default
+
+| `STORAGE_HOSTNAME`
+| IP or URL of the host (string)
+| Yes
+| NA
+
+| `STORAGE_USERNAME`
+| The user's name (string)
+| Yes
+| NA
+
+| `STORAGE_PASSWORD`
+| The user's password (string)
+| Yes
+| NA
+
+| `STORAGE_SKIP_SSL_VERIFICATION`
+| If set to `true`, SSL verification is not performed (`true`, `false`).
+| No
+|`false`
+|===
++
+. In the CLI, complete the following steps:
+
+.. Create a `StorageMap` custom resource (CR) according to the following example:
++
+[source,yaml,subs="attributes+"]
+----
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: copy-offload
+  namespace: openshift-mtv
+spec:
+  map:
+  - destination:
+      accessMode: ReadWriteMany <1>
+      storageClass: <storage_class> <2>
+    offloadPlugin: 
+      vsphereXcopyConfig:
+        secretRef: <Secret_for_the_storage_vendor_product> <3>
+        storageVendorProduct: <storage_vendor_product> <4>
+    source:
+      id: <datastore_ID> <5>
+  provider:
+    destination:
+      apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: host
+      namespace: openshift-mtv
+      uid: <ID_of_provider_host>
+    source:
+      apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: <name_of_vSphere_provider>
+      namespace: openshift-mtv
+      uid: <ID_of_vSphere_provider>
+----
+<1> Optional label.
+<2> The storage class for the target Persistent Volume Claim (PVC) of the VM.
+<3> `Secret` that contains the storage provider credentials.
+<4> String that identifies the storage product. Valid strings are listed in the table that follows this CR.
+<5> Datastore ID as set by {vmw} vSphere.
++
+[cols="1,1",options="header"]
+.Supported storage vendors and their identifying strings in the CLI
+|===
+|Vendor
+|Identifying string (Value of `storageVendorProduct` label)
+
+|Hitachi Vantara
+|`vantara`
+
+|NetApp
+|`ontap`
+
+|Hewlett Packard Enterprise
+|`primera3par`
+
+|Pure Storage
+|`pureFlashArray`
+
+| Dell (PowerFlex)
+|`powerflex`
+
+| Dell (PowerMax)
+|`powermax`
+
+| Dell (PowerStore)
+|`powerstore`
+
+| Infinidat
+|`infinibox`
+
+| IBM
+|`flashsystem`
+|===
+
+.. Create a migration plan by using the procedure in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_migrating-from-vmware_mtv#proc_migrating-virtual-machines-cli_vmware[Running a {vmw} vSphere migration from the command-line].
+... In the `Plan` CR, modify the `spec:map:storage` portion of the CR as follows:
++
+[source,yaml,subs="attributes+"]
+----
+  spec:
+    map:
+      storage:
+        apiVersion: forklift.konveyor.io/v1beta1
+        kind: StorageMap
+        name: <storage_map_in_StorageMap_CR>
+        namespace: <namespace>
+----
+
