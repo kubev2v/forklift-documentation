@@ -15,7 +15,7 @@ endif::[]
 
 :_mod-docs-content-type: ASSEMBLY
 [id="about-mtv_{context}"]
-== About {the-lc} {project-full}
+== Planning a migration
 
 You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
 
@@ -30,7 +30,6 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 * link:https://access.redhat.com/articles/6242511[Performance recommendations for migrating from VMware vSphere to OpenShift Virtualization].
 
 * link:https://access.redhat.com/articles/6380311[Performance recommendations for migrating from Red Hat Virtualization to OpenShift Virtualization].
-
 
 include::modules/cold-warm-migration.adoc[leveloffset=+1]
 
@@ -193,6 +192,26 @@ You must specify both a name and a namespace for namespace-scoped CRs.
 To migrate to or from an {ocp-short} cluster that is different from the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
 ====
 
+== Mapping networks and storage in migration plans
+
+// About network maps
+include::modules/about-network-maps.adoc[leveloffset=+2]
+
+//About storage maps
+
+include::modules/about-storage-maps.adoc[leveloffset=+2]
+
+=== Creating ownerless storage maps in the {project-short} UI
+
+You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
+
+You can create this type of map by using one of the following methods:
+
+* *Create with form*, selecting items such as a source provider from lists
+* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
+
+// In Title 2
+//include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 :!mtv:
 :context: vmware
@@ -200,6 +219,12 @@ To migrate to or from an {ocp-short} cluster that is different from the one the 
 
 [id="migrating-vmware"]
 == Planning migration of virtual machines from VMware vSphere
+
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+2]
+
+include::modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=+2]
+
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+2]
 
 include::modules/adding-source-provider.adoc[leveloffset=+2]
 
@@ -223,33 +248,7 @@ include::modules/creating-plan-wizard-290-vmware.adoc[leveloffset=+2]
 //include::modules/running-migration-plan.adoc[leveloffset=+2]
 //include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
-== Mapping networks and storage in migration plans
 
-=== Network maps in migration plans
-
-include::modules/about-network-maps.adoc[leveloffset=+3]
-
-include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+3]
-
-=== Storage maps in migration plans
-
-include::modules/about-storage-maps.adoc[leveloffset=+3]
-
-==== Creating ownerless storage maps in the {project-short} UI
-
-You can create ownerless storage maps by using the {project-short} UI to map source disk storages to {virt} storage classes.
-
-You can create this type of map by using one of the following methods:
-
-* *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
-
-include::modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=+4]
-
-include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
-
-// In Title 2
-//include::modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 :!vmware:
 
@@ -258,6 +257,12 @@ include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+4]
 
 [id="migrating-rhv_{context}"]
 == Planning a migration of virtual machines from {rhv-full}
+
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+2]
+
+include::modules/creating-form-based-storage-maps-ui-rhv.adoc[leveloffset=+2]
+
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+2]
 
 include::modules/adding-source-provider.adoc[leveloffset=+2]
 
@@ -287,6 +292,13 @@ include::modules/creating-plan-wizard-290-rhv.adoc[leveloffset=+2]
 [id="migrating-osp_{context}"]
 == Planning a migration of virtual machines from {osp}
 
+
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+2]
+
+include::modules/creating-form-based-storage-maps-ui-ostack.adoc[leveloffset=+2]
+
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+2]
+
 include::modules/adding-source-provider.adoc[leveloffset=+2]
 
 :!ostack:
@@ -315,6 +327,12 @@ include::modules/creating-plan-wizard-290-ostack.adoc[leveloffset=+2]
 [id="migrating-ova_{context}"]
 == Planning a migration of virtual machines from OVA
 
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+2]
+
+include::modules/creating-form-based-storage-maps-ui-ova.adoc[leveloffset=+2]
+
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+2]
+
 include::modules/adding-source-provider.adoc[leveloffset=+2]
 
 :!ova:
@@ -342,6 +360,12 @@ include::modules/creating-plan-wizard-290-ova.adoc[leveloffset=+2]
 
 [id="migrating-virt_{context}"]
 == Planning a migration of virtual machines from {virt}
+
+include::modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+2]
+
+include::modules/creating-form-based-storage-maps-ui-cnv.adoc[leveloffset=+2]
+
+include::modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+2]
 
 include::modules/adding-source-provider.adoc[leveloffset=+2]
 
