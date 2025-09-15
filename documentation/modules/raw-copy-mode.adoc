@@ -9,7 +9,11 @@
 [role="_abstract"]
 In regular cold and warm migrations, {project-first} uses a program called `virt-v2v` to prepare virtual machines (VMs) for migration to {virt} after the VMs have been copied from their source provider.
 
-The main function of `virt-v2v` is to  convert the disk image of a VM into a format compatible with {virt}. This program is described in detail in xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. What is important to note here is that although `virt-v2v` is compatible with major operating systems such as recent versions of Red Hat Enterprise Linux, Windows, and Windows Server, it is not compatible with macOS and some other operating systems.
+The main function of `virt-v2v` is to convert the disk image of a VM into a format compatible with {virt}.
+
+This program is described in detail in xref:virt-v2v-mtv_{context}[How {project-short} uses the virt-v2v tool].
+
+What is important to note here is that although `virt-v2v` is compatible with major operating systems such as recent versions of Red Hat Enterprise Linux, Windows, and Windows Server, it is not compatible with macOS and some other operating systems.
 
 [NOTE]
 ====

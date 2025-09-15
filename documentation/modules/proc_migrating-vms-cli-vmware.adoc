@@ -202,6 +202,10 @@ spec:
     - destination:
         storageClass: <storage_class>
         accessMode: <access_mode>
+      offloadPlugin: 
+        vsphereXcopyConfig:
+          secretRef: <Secret_for_the_storage_vendor_product>
+          storageVendorProduct: <storage_vendor_product>
       source:
         id: <source_datastore>
   provider:
@@ -217,10 +221,55 @@ EOF
 where:
 
 `<access_mode>`::
-Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+Specifies the access mode. Optional for storage copy offload, required for other VMware migrations. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+
+`offloadPlugin`::
+Specifies labels and values used in storage copy migrations. This section, through and including `storageVendorProduct`, is only for storage copy offload migrations.
+
+`<Secret_for_the_storage_vendor_product>`::
+Specifies the `Secret` that contains the storage provider credentials.
+
+`<storage_vendor_product>`::
+Specifies the name of the storage product used in the migration. For example, `vantara` for Hitachi Vantara. Storage copy offload only. Valid strings are listed in the table that follows this CR.
++
+Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. This feature makes use of the command `vmkfstools` on the ESXi host, which invokes the `XCOPY` command on the storage array using an Internet Small Computer Systems Interface (iSCSI) or Fibre Channel (FC) connection. Storage copy offload lets you copy data inside a SAN more efficiently than copying the data over a network. Storage copy offload is available as a Technology Preview feature for {project-first} 2.10 for cold migration and as a Developer Preview feature for warm migration. For more information, see https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware#about-storage-copy-offload_vmware[Migrating {vmw} virtual machines by using storage copy offload]
 
 `<source_datastore>`::
 Specifies the {vmw} vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
++
+[cols="1,1",options="header"]
+.Storage copy offload only: Supported storage vendors and their identifying strings in the CLI
+|===
+|Vendor
+|Identifying string (Value of `storageVendorProduct` label)
+
+|Hitachi Vantara
+|`vantara`
+
+|NetApp
+|`ontap`
+
+|Hewlett Packard Enterprise
+|`primera3par`
+
+|Pure Storage
+|`pureFlashArray`
+
+| Dell (PowerFlex)
+|`powerflex`
+
+| Dell (PowerMax)
+|`powermax`
+
+| Dell (PowerStore)
+|`powerstore`
+
+| Infinidat
+|`infinibox`
+
+| IBM
+|`flashsystem`
+|===
 
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +

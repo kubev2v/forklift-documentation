@@ -1,0 +1,122 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_storage-copy-offload-manual-ssh-set-up_{context}"]
+= Setting up storage copy offload by using manually generated SSH keys
+
+[role="_abstract"]
+You can manually generate restricted SSH keys to use for storage copy offload migrations. After you generate the keys, you can then add the public key to your ESXi hosts.
+
+.Prerequisites
+
+* Ensure that SSH traffic is permitted from the {virt} network to the ESXis.
+* Ensure you have network access from your local machine to the ESXi host.
+
+.Procedure
+
+. Configure the SSH clone method in your `Provider` CR by setting `settings:exsiCloneMethod` to `"ssh"`.
++
+.Example Provider CR
+[source,yaml,subs="attributes+"]
+----
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: my-vsphere-provider
+  namespace: openshift-mtv
+spec:
+  type: vsphere
+  url: https://vcenter.example.com
+  secret:
+    name: vsphere-credentials
+    namespace: openshift-mtv
+  settings:
+    esxiCloneMethod: "ssh"
+----
+
+. Get the public key from the auto-generated secret by performing the following steps:
+
+.. Get a list of SSH key secrets by running the following command:
++
+[source,terminal]
+----
+$ oc get secrets -l app.kubernetes.io/component=ssh-keys -n <namespace_with_key>
+---- 
+
+.. Extract the public key you want by running the following command:
++
+[source,terminal]
+----
+$ oc get secret <your_public_key> \
+  -o jsonpath='{.data.public-key}' -n <namespace_with_key> | base64 -d > esxi_public_key.pub
+----
+
+.. View the public key by running the following command:
++
+[source,terminal]
+----
+$ cat esxi_public_key.pub
+----
+
+. Prepare the restricted key entry by performing the following steps:
+
+.. Prefix the public key with command restrictions by running the following command:
++
+[source,terminal]
+----
+$ echo 'command="python /vmfs/volumes/<datastore_name>/secure-vmkfstools-wrapper.sh",no-port-forwarding,no-agent-forwarding,no-X11-forwarding '$(cat esxi_public_key.pub) > restricted_key.pub
+----
++
+The command runs a script that adds the prefix.
+
+.. View the final restricted key by running the following command:
++
+[source,terminal]
+----
+$ cat restricted_key.pub
+----
+
+. Install the restricted key on the ESXI host directly by running the following command:
++
+[source,terminal]
+----
+$ cat restricted_key.pub | ssh root@<your_ESXi_host_IP> \
+  'cat >> /etc/ssh/keys-root/authorized_keys'
+----
+
+. Verify the installation by performing the following steps:
+
+.. Extract the private key from the Secret by running the following command:
++
+[source,terminal]
+----
+$ oc get secret <your_private_key> \
+  -o jsonpath='{.data.private-key}' -n <namespace_with_key> | base64 -d > esxi_private_key
+----
+
+.. Set the permissions of your private key by running the following command:
++
+[source,terminal]
+----
+$ chmod 600 esxi_private_key
+----
+
+.. Test the connection by running the following command:
++
+[source,terminal]
+----
+$ ssh -i esxi_private_key root@<your_ESXi_host_IP>
+----
++
+If the installation was successful, you are connected to the ESXi host with restricted commands.
+
+.. Run a test command that is restricted to the secure script to verify the connection.
+
+. Clean up the local key files by running the following command:
++
+[source,terminal]
+----
+$ rm -f esxi_public_key.pub restricted_key.pub esxi_private_key
+----
