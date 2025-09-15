@@ -5,7 +5,7 @@ ifdef::context[:parent-context: {context}]
 
 [id="assembly_planning-migration-osp_{context}"]
 
-= Planning migration of virtual machines from {osp}
+= Planning a migration of virtual machines from {osp}
 
 //:context: planning-osp
 

@@ -1,0 +1,19 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_storage-copy-offload-steps_{context}"]
+= Planning and running storage copy offload migrations 
+
+[role="_abstract"]
+You need to perform the following steps when you plan and run storage copy offload migrations: 
+
+.Procedure
+
+. Before your first migration, choose and implement a cloning method. This step is discussed in xref:con_copy-methods-sco_vmware[Cloning methods used by storage copy offload] and in the sections that follow it.
+
+. For each migration, follow the procedure in either xref:proc_storage-copy-offload-ui_vmware[Migrating {vmw} vSphere VMs in the UI by using storage copy offload] or link:{mtv-mig}assembly_migrating-from-vmware_mtv#proc_storage-copy-offload-ui_vmware[Migrating {vmw} vSphere VMs in the CLI by using storage copy offload].
+. If you encounter problems that are specific to storage copy offload, consult link:{mtv-mig}assembly_troubleshooting-migration_mtv#con_troubleshooting-storage-copy-offload_mtv[Troubleshooting storage copy offload].
+
+
