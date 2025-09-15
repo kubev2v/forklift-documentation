@@ -1,0 +1,10 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="running-storage-copy-offload-ui_{context}"]
+= Storage copy offload in the UI
+
+TBD
+
