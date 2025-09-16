@@ -14,10 +14,10 @@ endif::[]
 :mtv:
 
 :_mod-docs-content-type: ASSEMBLY
-[id="about-mtv_{context}"]
-== About {the-lc} {project-full}
+[id="migrating-mtv_{context}"]
+== Performing a migration
 
-You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
+When you have planned your migration by using {the-lc} {project-first}, you can migrate virtual machines from the following source providers to {virt} destination providers:
 
 * VMware vSphere
 * {rhv-full} ({rhv-short})
@@ -27,82 +27,18 @@ You can use {the-lc} {project-first} to migrate virtual machines from the follow
 
 //Add info and prerequisites that refer to the Planning guide before running a migration
 
-[id="migrating-vmware"]
-== Running a VMware vSphere migration plan
-
-include::modules/running-migration-plan.adoc[leveloffset=+2]
-
-include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
-
-include::modules/canceling-migration-ui.adoc[leveloffset=+2]
-
-:!vmware:
-
-:context: rhv
-:rhv:
-
-[id="migrating-rhv_{context}"]
-== Running a {rhv-full} migration plan
-
-include::modules/running-migration-plan.adoc[leveloffset=+2]
-
-include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
-
-include::modules/canceling-migration-ui.adoc[leveloffset=+2]
-
-:!rhv:
-:context: ostack
-:ostack:
-
-[id="migrating-osp_{context}"]
-== Running an {osp} migration plan
-
-include::modules/running-migration-plan.adoc[leveloffset=+2]
-
-include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
-
-include::modules/canceling-migration-ui.adoc[leveloffset=+2]
-
-:!ostack:
-:context: ova
-:ova:
-
-[id="migrating-ova_{context}"]
-== Running an OVA migration plan
-
-include::modules/running-migration-plan.adoc[leveloffset=+2]
-
-include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
-
-include::modules/canceling-migration-ui.adoc[leveloffset=+2]
-
-:!ova:
-:context: cnv
-:cnv:
-
-[id="migrating-virt_{context}"]
-== Running an {virt} migration plan
-
-include::modules/running-migration-plan.adoc[leveloffset=+2]
-
-include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
-
-include::modules/canceling-migration-ui.adoc[leveloffset=+2]
-
-:!cnv:
-:context: mtv
-:mtv:
-
-[id="migrating-virtual-machines-from-the-command-line_{context}"]
-== Migrating virtual machines from the command line
-
-You can migrate virtual machines to {virt} from the command line.
-
-//Add info about prerequisites in the Planning guide
-
-:mtv!:
 :context: vmware
 :vmware:
+
+[id="migrating-vmware"]
+//== Running a VMware vSphere migration plan
+== Migrating from VMware vSphere 
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
@@ -115,32 +51,73 @@ include::modules/mtv-shared-disks.adoc[leveloffset=+3]
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :vmware!:
+
 :context: rhv
 :rhv:
+
+[id="migrating-rhv_{context}"]
+== Migrating from {rhv-full} 
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :rhv!:
+
+
 :context: ostack
 :ostack:
+
+[id="migrating-osp_{context}"]
+== Migrating from {osp} 
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :ostack!:
+
 :context: ova
 :ova:
+
+[id="migrating-ova_{context}"]
+== Migrating from OVA migration
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
 :ova!:
+
 :context: cnv
 :cnv:
+
+[id="migrating-virt_{context}"]
+== Migrating from {virt} 
+
+include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/migration-plan-options-ui.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-ui.adoc[leveloffset=+3]
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
