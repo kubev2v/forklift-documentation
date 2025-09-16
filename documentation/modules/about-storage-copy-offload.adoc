@@ -31,9 +31,9 @@ This method can be slow and consume significant network and host resources. With
 +
 The storage array handles the cloning of the VM disk internally, often at a much higher speed than a network-based transfer.
 
-The Forklift project, a key component of MTV, includes a specialized `vsphere-xcopy-volume-populator` that directly interacts with VMware's VAAI. This allows MTV to trigger the high-speed, array-level data copy operation for supported storage systems.
+The Forklift project, a key component of {project-short}, includes a specialized `vsphere-xcopy-volume-populator` that directly interacts with {vmw}'s VAAI. This allows MTV to trigger the high-speed, array-level data copy operation for supported storage systems.
 
-You can use storage copy offload for migrating VMs by using either the UI or the CLI. 
+You can use storage copy offload for migrating VMs by using either the {project-short} UI or the {project-short} CLI. 
 
 [role="_additional-resources"]
 .Additional resources
