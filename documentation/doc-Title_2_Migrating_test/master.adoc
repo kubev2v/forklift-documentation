@@ -93,7 +93,7 @@ include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 :ova:
 
 [id="migrating-ova_{context}"]
-== Migrating from OVA migration
+== Migrating from OVA
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
