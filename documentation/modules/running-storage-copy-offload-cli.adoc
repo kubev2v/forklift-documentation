@@ -1,0 +1,9 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="running-storage-copy-offload-cli_{context}"]
+= Storage copy offload in the CLI
+
+TBD
