@@ -6,6 +6,7 @@
 [id="retrieving-validation-service-json_{context}"]
 = Retrieving the Inventory service JSON
 
+[role="_abstract"]
 You retrieve the `Inventory` service JSON by sending an `Inventory` service query to a virtual machine (VM). The output contains an `"input"` key, which contains the inventory attributes that are queried by the `Validation` service rules.
 
 You can create a validation rule based on any attribute in the `"input"` key, for example, `input.snapshot.kind`.

@@ -2,11 +2,12 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="creating-plan-wizard-290-vmware_{context}"]
-
 = Creating a VMware vSphere migration plan by using the MTV wizard
 
-You can migrate {vmw} vSphere virtual machines (VMs) from {vmw} vCenter or from a {vmw} ESX/ESXi server by using the {project-full} plan creation wizard.
+[role="_abstract"]
+You can migrate {vmw} vSphere virtual machines (VMs) from {vmw} vCenter or from a {vmw} ESX or ESXi server by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
@@ -155,7 +156,7 @@ If the conversion fails because the boot device provided is incorrect, it is pos
 Migrating shared disks might slow down the migration process.
 ====
 +
-** To migrate shared disks in the migration plan, verify that *Shared disks* is selected in the checkbox. 
+** To migrate shared disks in the migration plan, verify that *Shared disks* is selected in the checkbox.
 ** To avoid migrating shared disks, clear the *Shared disks* checkbox.
 
 . Click *Next*.
@@ -301,7 +302,7 @@ Variable names cannot exceed 63 characters.
 Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
 ====
 
-* *Raw copy mode*: By default, during migration, virtual machines (VMs) are converted using a tool named `virt-v2v` that makes them compatible with {virt}. This conversion process is discussed in xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. _Raw copy mode_ copies VMs without converting them. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}.
+* *Raw copy mode*: By default, during migration, virtual machines (VMs) are converted using a tool named `virt-v2v` that makes them compatible with {virt}. This conversion process is discussed in xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. _Raw copy mode_ copies VMs without converting them. This allows for faster conversions, migrating VMs running a wider range of operating systems, and supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}.
 
 ** To use raw copy mode for your migration plan, do the following:
 *** Click the *Edit* icon.

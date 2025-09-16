@@ -6,46 +6,5 @@
 [id="canceling-migration-cli_{context}"]
 = Canceling a migration from the command-line interface
 
+[role="_abstract"]
 You can use the command-line interface (CLI) to cancel either an entire migration or the migration of specific virtual machines (VMs) while a migration is in progress.
-
-.Canceling an entire migration
-
-* Delete the `Migration` CR:
-+
-[source,terminal,subs="attributes+"]
-----
-$ {oc} delete migration <migration> -n <namespace> <1>
-----
-<1> Specify the name of the `Migration` CR.
-
-.Canceling the migration of specific VMs
-
-. Add the specific VMs to the `spec.cancel` block of the `Migration` manifest:
-+
-.Example YAML for canceling the migrations of two VMs
-[source,yaml,subs="attributes+"]
-----
-$ cat << EOF | {oc} apply -f -
-apiVersion: forklift.konveyor.io/v1beta1
-kind: Migration
-metadata:
-  name: <migration>
-  namespace: <namespace>
-...
-spec:
-  cancel:
-  - id: vm-102 <1>
-  - id: vm-203
-    name: rhel8-vm
-EOF
-----
-<1> You can specify a VM by using the `id` key or the `name` key.
-+
-The value of the `id` key is the _managed object reference_, for a VMware VM, or the _VM UUID_, for a {rhv-short} VM.
-
-. Retrieve the `Migration` CR to monitor the progress of the remaining VMs:
-+
-[source,terminal,subs="attributes+"]
-----
-$ {oc} get migration/<migration> -n <namespace> -o yaml
-----

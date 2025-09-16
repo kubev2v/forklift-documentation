@@ -5,6 +5,7 @@
 [id="technical-changes-2-8_{context}"]
 = Technical changes
 
+[role="_abstract"]
 {project-first} 2.8 has the following technical changes:
 
 .Shortened plan durations with scheduler optimizations in warm migrations

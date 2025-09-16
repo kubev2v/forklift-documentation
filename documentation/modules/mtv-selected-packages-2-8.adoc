@@ -6,6 +6,8 @@
 :_content-type: PROCEDURE
 [id="mtv-selected-packages-2-8_{context}"]
 = {project-short} selected packages
+
+[role="_abstract"]
 The following listed packages are from the `virt-v2v` guest conversion pod:
 
 .Selected {project-short} packages

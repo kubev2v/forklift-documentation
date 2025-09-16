@@ -6,6 +6,7 @@
 [id="uninstalling-mtv-ui_{context}"]
 = Uninstalling {project-short} by using the {ocp} web console
 
+[role="_abstract"]
 You can uninstall {project-first} by using the {ocp} web console.
 
 .Prerequisites
@@ -44,11 +45,11 @@ The *Installed Operators* page opens, and the {project-full} Operator is removed
 . Click *Home > Overview*.
 . In the *Status* section of the page, click *Dynamic Plugins*.
 +
-The *Dynamic Plugins* popup opens, listing *forklift-console-plugin* as a failed plugin. If the *forklift-console-plugin* does not appear as a failed plugin, refresh the web console.
+The *Dynamic Plugins* pop-up opens, listing *forklift-console-plugin* as a failed plugin. If the *forklift-console-plugin* does not appear as a failed plugin, refresh the web console.
 . Click *forklift-console-plugin*.
 +
 The *ConsolePlugin details* page opens in the *Details* tab.
-. On the upper right-hand side of the page, click *Actions* and select *Delete ConsolePlugin* from the list.
+. On the upper right side of the page, click *Actions* and select *Delete ConsolePlugin* from the list.
 +
 A confirmation window opens.
 . Click *Delete*.

@@ -1,0 +1,35 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="status-vms-warm-migration_{context}"]
+= Power status of virtual machines during warm migrations
+
+[role="_abstract"]
+During warm migrations, most of the data is copied during the _precopy_ stage while the source virtual machines (VMs) are running.
+
+Then the VMs are shut down, and the remaining data is copied during the _cutover_ stage.
+
+[id="status-vms-warm-migration-precopy_{context}"]
+== Precopy stage
+
+The VMs are not shut down during the precopy stage.
+
+The VM disks are copied incrementally by using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment.
+
+[IMPORTANT]
+====
+You must enable CBT for each source VM and each VM disk.
+
+A VM can support up to 28 CBT snapshots. If the source VM has too many CBT snapshots and the `Migration Controller` service is not able to create a new snapshot, warm migration might fail. The `Migration Controller` service deletes each snapshot when the snapshot is no longer required.
+====
+
+The precopy stage runs until the cutover stage is started manually or is scheduled to start.
+
+[id="status-vms-warm-migration-cutover_{context}"]
+==Cutover stage
+
+The VMs are shut down during the cutover stage, and the remaining data is migrated. Data stored in RAM is not migrated.
+
+You can start the cutover stage manually by using the {project-short} console, or you can schedule a cutover time in the `Migration` manifest.

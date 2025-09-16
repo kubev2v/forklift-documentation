@@ -1,0 +1,121 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="mtv-esxi-performance_{context}"]
+= ESXi performance
+
+[role="_abstract"]
+ESXi performance can be measured for a single ESXI host or for multiple ESXi hosts.
+
+[id="mtv-single-esxi-host-performance_{context}"]
+== Single ESXi host performance
+
+Test migration by using the same ESXi host.
+
+In each iteration, the total VMs increase to display the impact of concurrent migration on the duration.
+
+The results show that migration time is linear when increasing the total VMs (50 GiB disk, Utilization 70%).
+
+The optimal number of VMs per ESXi is 10.
+
+.Single ESXi host tests
+[width="100%",cols="45%,9%,9%,13%,12%,12%",options="header",]
+|===
+| Test Case Description
+| MTV
+| VDDK
+| max_vm inflight
+| Migration Type
+| Total Duration
+
+
+|Cold migration, 10 VMs, Single ESXi, Private Network
+(non-management network)
+|2.6
+|7.0.3
+|100
+|cold
+|0:21:39
+
+|cold migration, 20 VMs, Single ESXi, Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|0:41:16
+
+|Cold migration, 30 VMs, Single ESXi, Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|1:00:59
+
+|Cold migration, 40 VMs, Single ESXi, Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|1:23:02
+
+|Cold migration, 50 VMs, Single ESXi, Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|1:46:24
+
+|Cold migration, 80 VMs, Single ESXi, Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|2:42:49
+
+|Cold migration, 100 VMs, Single ESXi, Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|3:25:15
+|===
+
+[id="mtv-multiple-esxi-host-performance_{context}"]
+== Multiple ESXi hosts and a single data store
+
+In each iteration, the number of ESXi hosts was increased, to show that increasing the number of ESXi hosts improves the migration time (50 GiB disk, Utilization 70%).
+
+.Multiple ESXi hosts and single data store
+[width="100%",cols="45%,9%,9%,13%,12%,12%",options="header",]
+|===
+|Test Case Description
+|MTV
+|VDDK
+|max_vm inflight
+|Migration Type
+|Total Duration
+
+|Cold migration, 100 VMs, Single ESXi, Private Network
+(non-management network)
+|2.6
+|7.0.3
+|100
+|cold
+|3:25:15
+
+|Cold migration, 100 VMs, 4 ESXs (25 VMs per ESX), Private Network
+|2.6
+|7.0.3
+|100
+|cold
+|1:22:27
+
+|Cold migration, 100 VMs, 5 ESXs (20 VMs per ESX), Private Network, 1 Data Store
+|2.6
+|7.0.3
+|100
+|cold
+|1:04:57
+|===

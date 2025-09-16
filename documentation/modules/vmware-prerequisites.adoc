@@ -2,21 +2,23 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: REFERENCE
 [id="vmware-prerequisites_{context}"]
-= VMware prerequisites
+= {vmw} prerequisites
 
+[role="_abstract"]
 It is strongly recommended to create a VDDK image to accelerate migrations. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
 
 include::snip-vsan.adoc[]
 
-The following prerequisites apply to VMware migrations:
+The following prerequisites apply to {vmw} migrations:
 
-* You must use a xref:compatibility-guidelines_{context}[compatible version] of VMware vSphere.
+* You must use a xref:compatibility-guidelines_{context}[compatible version] of {vmw} vSphere.
 * You must be logged in as a user with at least the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 * To access the virtual machine using a pre-migration hook, link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools] must be installed on the source virtual machine.
 * The VM operating system must be certified and supported for use as a link:https://access.redhat.com/articles/973163#ocpvirt[guest operating system with {virt}] _and_ for link:https://access.redhat.com/articles/1351473[conversion to KVM with `virt-v2v`].
 * If you are running a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
-* If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the NFC service memory of the host.
+* If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the Network File Copy (NFC) service memory of the host.
 * It is strongly recommended to disable hibernation because {project-first} does not support migrating hibernated VMs.
 
 include::snip_vmware-windows-vss.adoc[]
@@ -28,22 +30,22 @@ In case of a power outage, data might be lost for a VM with disabled hibernation
 
 [NOTE]
 ====
-Neither {project-short} nor OpenShift Virtualization support conversion of Btrfs for migrating VMs from VMWare.
+Neither {project-short} nor OpenShift Virtualization support conversion of Btrfs for migrating VMs from {vmw}.
 ====
 
 [id="vmware-privileges_{context}"]
-== VMware privileges
+== {vmw} privileges
 
-The following minimal set of VMware privileges is required to migrate virtual machines to {virt} with the {project-first}.
+The following minimal set of {vmw} privileges is required to migrate virtual machines to {virt} with the {project-first}.
 
 [cols="2", options="header"]
 .VMware privileges
 |===
 |Privilege |Description
 2+|`Virtual machine.Interaction` privileges:
-|`Virtual machine.Interaction.Power Off`   |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
-|`Virtual machine.Interaction.Power On`  |Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
-|`Virtual machine.Guest operating system management by VIX API`  |Allows managing a virtual machine by the VMware VIX API.
+|`Virtual machine.Interaction.Power Off` |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
+|`Virtual machine.Interaction.Power On` |Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
+|`Virtual machine.Guest operating system management by VIX API` |Allows managing a virtual machine by the {vmw} Virtual Infrastructure eXtension (VIX) API.
 2+a|`Virtual machine.Provisioning` privileges:
 [NOTE]
 ====
@@ -66,7 +68,7 @@ All `Virtual machine.Provisioning` privileges are required.
 |`Virtual machine.Provisioning.Create template from virtual machine`
 |Allows creation of a new template from a virtual machine.
 |`Virtual machine.Provisioning.Customize guest`
-|Allows customization of a virtual machine’s guest operating system without moving the virtual machine.
+|Allows customization of a virtual machine's guest operating system without moving the virtual machine.
 |`Virtual machine.Provisioning.Deploy template`
 |Allows deployment of a virtual machine from a template.
 |`Virtual machine.Provisioning.Mark as template`
@@ -80,8 +82,8 @@ All `Virtual machine.Provisioning` privileges are required.
 |`Virtual machine.Provisioning.Read customization specifications`
 |Allows reading a customization specification.
 2+|`Virtual machine.Snapshot management` privileges:
-|`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine’s current state.
-|`Virtual machine.Snapshot management.Remove Snapshot`   |Allows removal of a snapshot from the snapshot history.
+|`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine's current state.
+|`Virtual machine.Snapshot management.Remove Snapshot` |Allows removal of a snapshot from the snapshot history.
 2+|`Datastore` privileges:
 |`Datastore.Browse datastore` |Allows exploring the contents of a datastore.
 |`Datastore.Low level file operations` |Allows performing low-level file operations - read, write, delete, and rename - in a datastore.
@@ -94,5 +96,5 @@ All `Virtual machine.Provisioning` privileges are required.
 
 [TIP]
 ==== 
-Create a role in VMware with the permissions described in the preceding table and then apply this role to the *Inventory* section, as described in xref:creating-vmware-role-mtv-permissions_mtv[Creating a VMware role to apply MTV permissions]
+Create a role in {vmw} with the permissions described in the preceding table and then apply this role to the *Inventory* section, as described in xref:creating-vmware-role-mtv-permissions_mtv[Creating a {vmw} role to apply {project-short} permissions].
 ====

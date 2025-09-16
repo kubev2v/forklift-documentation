@@ -1,27 +1,31 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Release_notes/master.adoc
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: CONCEPT
 [id="mtv-cold-warm-migration_{context}"]
-= {project-short} cold migration and warm migration introduction
+= Cold migration and warm migration in {project-short}
+
+[role="_abstract"]
+{project-first} supports two types of migration, cold and warm.
 
 Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a separate host. The VM is powered off, and there is no need for common shared storage.
 
 Warm migration is when a powered *_on_* VM is migrated to a separate host. A source host state is cloned to the destination host.
 
-.Warm migrations precopy stage
+[id="mtv-cold-warm-migration-precopy_{context}"]
+== Warm migration precopy stage
 
 . Create an initial snapshot of running VM disks.
-. Copy first snapshot to target: full-disk transfer, the largest amount of data copied.  It takes more time to complete.
+. Copy first snapshot to target: full-disk transfer, the largest amount of data copied. It takes more time to complete.
 . Copy deltas: changed data, copying only data that has changed since the last snapshot was taken. It takes less time to complete.
 .. Create a new snapshot.
 .. Copy the delta between the previous snapshot and the new snapshot.
 .. Schedule the next snapshot, configurable by default, one hour after the last snapshot finished.
 . An arbitrary number of deltas can be copied.
 
-
-.Warm migration cutover stage
+[id="mtv-cold-warm-migration-cutover_{context}"]
+== Warm migration cutover stage
 
 . Scheduled time to finalize warm migration
 . Shut down the source VM.
@@ -29,39 +33,3 @@ Warm migration is when a powered *_on_* VM is migrated to a separate host. A sou
 . Continue in the same way as cold migration
 .. Guest conversion
 .. Starting target VM (optional)
-
-// will delete this table once the review is complete
-////
-.Cold and warm migration compared
-[width="100%",cols="20%,40%,40%",options="header",]
-|===
-|
-|Cold
-|Warm
-
-|Duration
-|Each block is copied once.
-|Blocks may be copied multiple times.
-
-|Fail fast
-|Convert and then transfer.
-|Transfer and then convert.
-
-|Tools
-a|`virt-v2v` (Red Hat Enterprise Linux 9), used to convert virtual machines from a foreign hypervisor to run on Kernel-based Virtual Machines (KVMs).
-a|Containerized Data Importer (CDI), a persistent storage management add-on, and `virt-v2v` (Red Hat Enterprise Linux 9)
-
-|VM downtime
-|The VMs are shut down, and the disks are transferred.
-|Disks are transferred in the background. The VMs are shut down during the cutover stage, and the remaining data is migrated. Data stored in RAM is not migrated.
-
-|Parallelism
-|Disks are transferred sequentially for each VM. For remote migration, disks are transferred in parallel.
-footnoteref:[footnote1,Remote migration: Target environment that does not have MTV installed. Migration to a remote environment using CDI.]
-|Disks are transferred in parallel by different pods.
-
-|Connection use
-|Keeps the connection to the Source only during the disk transfer.
-|Keeps the connection to the Source during the disk transfer, but the connection is released between snapshots.
-|===
-////

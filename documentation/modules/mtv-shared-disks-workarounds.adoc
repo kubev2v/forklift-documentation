@@ -1,0 +1,41 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="cyclic-shared-disk-workarounds_{context}"]
+= Workarounds for VMs with shared disk dependencies
+
+[role="_abstract"]
+As discussed previously, it is important to try to create 2 `Plan` CRs in which each shared disk is migrated once. However, if your migration does result in a shared disk either being duplicated or not being transferred, you can use one of the following workarounds:
+
+* Duplicate one of the shared disks
+* "Remove" one of the shared disks
+
+[id="duplicate-shared-disk_{context}"]
+== Duplicate a shared disk
+
+In the figure that follows, VMs 2 and 3 are migrated with the shared disks in the first plan, and VM 1 is migrated in the second plan. This eliminates the cyclic dependencies, but there is a disadvantage to this workaround: it duplicates shared disk 3. The solution is to remove the duplicated PV and migrate VM 1 again.
+
+.Duplicated shared disk
+image::cyclic_workaround1.png[Duplicate a shared disk]
+
+Advantage: The source VMs are not affected.
+
+Disadvantage: One shared disk gets transferred twice, so you need to manually delete the duplicate disk and reconnect VM 3 to shared disk 3 in Red Hat OpenShift after the migration.
+
+[id="remove-shared-link_{context}"]
+== "Remove" a shared disk
+
+The figure that follows shows an alternative solution: Remove the link to one of the shared disks from one source VM. Doing this breaks the cyclic dependencies. Note that in the current {vmw} UI, removing the link is referred to as "removing" the disk.
+
+."Removed" shared disk
+image::draft_workaround2.png[Remove a shared disk]
+
+In this case, VM 2 and 3 are migrated with the shared disks in the first plan, but the link between VM 3 and shared disk 3 is removed. As before, VM 1 is migrated in the second plan.
+
+Doing this breaks the cyclic dependencies, but this workaround has a drawback: VM 3 is disconnected from shared disk 3 and remains disconnected after the migration. The solution is to manually reattach shared disk 3 to VM 3 after the migration finishes.
+
+Advantage: No disks are duplicated.
+
+Disadvantage: You need to modify VM 3 by removing its link to shared disk 3 before the migration, and you need to manually reconnect VM 3 to shared disk 3 in {ocp} after the migration.

@@ -6,6 +6,7 @@
 [id="openstack-token-authentication_{context}"]
 = Using token authentication with an {osp} source provider
 
+[role="_abstract"]
 You can use token authentication, instead of username and password authentication, when you create an {osp} source provider.
 
 {project-short} supports both of the following types of token authentication:

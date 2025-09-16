@@ -10,6 +10,7 @@ You can create ownerless storage maps by using the form page of the {project-sho
 
 .Prerequisites
 
+[role="_abstract"]
 * Have a {rhv-full} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_rhv[Adding a {rhv-full} source provider] or xref:adding-source-provider_dest_cnv[Adding {a-virt} destination provider].
 
 .Procedure

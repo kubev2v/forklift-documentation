@@ -20,6 +20,7 @@
 :project-first: {project-full} ({project-short})
 :project-version: 2.9
 :project-z-version: 2.9.4
+:rhel-first: Red Hat Enterprise Linux (RHEL)
 :the: The
 :the-lc: the
 :virt: OpenShift Virtualization

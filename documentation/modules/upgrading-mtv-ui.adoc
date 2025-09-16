@@ -5,6 +5,7 @@
 [id="upgrading-mtv-ui_{context}"]
 = Upgrading {the-lc} {project-full}
 
+[role="_abstract"]
 You can upgrade the {operator-name} by using the {ocp} web console to install the new version.
 
 .Procedure

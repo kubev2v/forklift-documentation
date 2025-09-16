@@ -6,6 +6,7 @@
 [id="mtv-workflow_{context}"]
 = High-level migration workflow
 
+[role="_abstract"]
 The high-level workflow shows the migration process from the point of view of the user:
 
 // ifeval::["{build}" == "downstream"]

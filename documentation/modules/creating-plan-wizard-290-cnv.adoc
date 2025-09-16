@@ -2,10 +2,11 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="creating-plan-wizard-290-cnv_{context}"]
-
 = Creating an {virt} migration plan by using the MTV wizard
 
+[role="_abstract"]
 You can migrate {virt} virtual machines (VMs) by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.

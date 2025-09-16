@@ -7,9 +7,10 @@
 [id="max-concurrent-vms_{context}"]
 = Configuring the controller_max_vm_inflight parameter
 
+[role="_abstract"]
 The value of `controller_max_vm_inflight` parameter, which is shown in the UI as *Max concurrent virtual machine migrations*, varies by the source provider of the migration
 
-* For all migrations except OVA or VMware migrations, the parameter specifies the maximum number of _disks_ that {project-first} can transfer simultaneously. In these migrations, {project-short} migrates the disks in parallel. This means that if the combined number of disks that you want to migrate is greater than the value of the setting, additional disks must wait until the queue is free, without regard for whether a VM has finished migrating.
+* For all migrations except Open Virtual Appliance (OVA) or {vmw} migrations, the parameter specifies the maximum number of _disks_ that {project-first} can transfer simultaneously. In these migrations, {project-short} migrates the disks in parallel. This means that if the combined number of disks that you want to migrate is greater than the value of the setting, additional disks must wait until the queue is free, without regard for whether a VM has finished migrating.
 +
 For example, if the value of the parameter is 15, and VM A has 5 disks, VM B has 5 disks, and VM C has 6 disks, all the disks except for the 16th disk start migrating at the same time. Once any of them has migrated, the 16th disk can be migrated, even though not all the disks on VM A and the disks on VM B have finished migrating.
 

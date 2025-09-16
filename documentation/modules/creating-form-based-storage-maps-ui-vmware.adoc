@@ -4,8 +4,8 @@
 
 :_content-type: PROCEDURE
 [id="creating-form-based-storage-maps-ui-vmware_{context}"]
-= Creating ownerless storage maps using the form page of the {project-short} UI
 
+[role="_abstract"]
 You can create ownerless storage maps by using the form page of the {project-short} UI.
 
 .Prerequisites

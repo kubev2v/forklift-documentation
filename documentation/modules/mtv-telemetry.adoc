@@ -5,6 +5,7 @@
 [id="mtv-telemetry_{context}"]
 = Telemetry
 
+[role="_abstract"]
 Red Hat uses telemetry to collect anonymous usage data from {project-first} installations to help us improve the usability and efficiency of {project-short}.
 
 {project-short} collects the following data:

@@ -2,10 +2,11 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
+:_content-type: PROCEDURE
 [id="creating-plan-wizard-290-ova_{context}"]
-
 = Creating an Open Virtualization Appliance (OVA) migration plan by using the MTV wizard
 
+[role="_abstract"]
 You can migrate Open Virtual Appliance (OVA) files that were created by {vmw} vSphere by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
