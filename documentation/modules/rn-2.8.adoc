@@ -1,8 +1,0 @@
-// Module included in the following assemblies:
-//
-// * documentation/doc-Release_notes/master.adoc
-
-[id="rn-28_{context}"]
-= {project-full} 2.8
-
-The release notes describe technical changes, new features and enhancements, known issues, and resolved issues.
