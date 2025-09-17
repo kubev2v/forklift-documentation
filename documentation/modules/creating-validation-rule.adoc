@@ -40,7 +40,7 @@ You create a link:https://www.openpolicyagent.org/docs/latest/policy-language/[R
 
 .Procedure
 
-. Create a config map CR according to the following example:
+. Create a config map custom resource (CR) according to the following example:
 +
 [source,yaml,subs="attributes+"]
 ----

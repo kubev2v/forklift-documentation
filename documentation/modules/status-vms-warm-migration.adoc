@@ -28,7 +28,7 @@ A VM can support up to 28 CBT snapshots. If the source VM has too many CBT snaps
 The precopy stage runs until the cutover stage is started manually or is scheduled to start.
 
 [id="status-vms-warm-migration-cutover_{context}"]
-==Cutover stage
+== Cutover stage
 
 The VMs are shut down during the cutover stage, and the remaining data is migrated. Data stored in RAM is not migrated.
 

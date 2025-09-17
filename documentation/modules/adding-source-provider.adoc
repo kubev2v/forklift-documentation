@@ -93,7 +93,7 @@ ifdef::rhv[]
 endif::[]
 
 ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
-* You must have {a-virt} link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/authentication_and_authorization/using-service-accounts[service account token] with `cluster-admin` privileges.
+* You must have {a-virt} service account token with `cluster-admin` privileges. For more information on service account tokens, see {ocp-doc}/authentication_and_authorization/using-service-accounts#service-accounts-overview_using-service-accounts[Service accounts overview].
 endif::[]
 
 .Procedure
