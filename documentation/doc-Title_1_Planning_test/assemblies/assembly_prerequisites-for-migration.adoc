@@ -1,0 +1,80 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_prerequisites-for-migration_{context}"]
+
+= Prerequisites for migration
+
+:context: prerequisites
+
+[role="_abstract"]
+Review the following prerequisites to ensure that your environment is prepared for migration.
+
+[id="mtv-software-requirements_{context}"]
+== Software requirements
+
+{project-first} has software requirements for all providers as well as specific software requirements per provider.
+
+You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
+
+include::../modules/storage-support.adoc[leveloffset=+1]
+
+include::../modules/network-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/source-vm-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/encryption-support.adoc[leveloffset=+1]
+
+include::../modules/rhv-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/openstack-prerequisites.adoc[leveloffset=+1]
+
+
+[id="additional-authentication-for-osp_{context}"]
+== Additional authentication methods for migrations with {osp} source providers
+
+{project-short} versions 2.6 and later support the following authentication methods for migrations with {osp} source providers in addition to the standard username and password credential set:
+
+* Token authentication
+* Application credential authentication
+
+You can use these methods to migrate virtual machines with {osp} source providers using the command-line interface (CLI) the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
+
+:!mtv:
+:context: ostack
+:ostack:
+
+include::../modules/ostack-token-auth.adoc[leveloffset=+1]
+
+include::../modules/ostack-app-cred-auth.adoc[leveloffset=+1]
+
+:!ostack:
+:context: mtv
+:mtv:
+
+include::../modules/vmware-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/creating-vmware-role-mtv-permissions.adoc[leveloffset=+2]
+
+include::../modules/creating-vddk-image.adoc[leveloffset=+2]
+
+include::../modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+2]
+
+include::../modules/vddk-validator-containers.adoc[leveloffset=+2]
+
+include::../modules/ova-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/cnv-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/compatibility-guidelines.adoc[leveloffset=+1]
+
+:!mtv:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+
