@@ -13,17 +13,7 @@ endif::[]
 :context: mtv
 :mtv:
 
-:_mod-docs-content-type: ASSEMBLY
-[id="planning-mtv_{context}"]
-== Planning a migration
-
-You can use {the-lc} {project-first} to migrate virtual machines from the following source providers to {virt} destination providers:
-
-* VMware vSphere
-* {rhv-full} ({rhv-short})
-* {osp}
-* Open Virtual Appliances (OVAs) that were created by VMware vSphere
-* Remote {virt} clusters
+include::modules/concept_planning-intro.adoc[leveloffset=+1]
 
 include::assemblies/assembly_cold-warm-migration.adoc[leveloffset=+1]
 
