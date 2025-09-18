@@ -4,17 +4,11 @@
 
 :_content-type: CONCEPT
 [id="mtv-cold-warm-migration_{context}"]
-= Cold migration and warm migration in {project-short}
+= Warm migration precopy and cutover
 
-[role="_abstract"]
-{project-first} supports two types of migration, cold and warm.
+The following high-level steps describe the precopy and cutover stages of a warm migration.
 
-Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a separate host. The VM is powered off, and there is no need for common shared storage.
-
-Warm migration is when a powered *_on_* VM is migrated to a separate host. A source host state is cloned to the destination host.
-
-[id="mtv-cold-warm-migration-precopy_{context}"]
-== Warm migration precopy stage
+== Preparing the precopy stage for a warm migration
 
 . Create an initial snapshot of running VM disks.
 . Copy first snapshot to target: full-disk transfer, the largest amount of data copied. It takes more time to complete.
@@ -24,8 +18,8 @@ Warm migration is when a powered *_on_* VM is migrated to a separate host. A sou
 .. Schedule the next snapshot, configurable by default, one hour after the last snapshot finished.
 . An arbitrary number of deltas can be copied.
 
-[id="mtv-cold-warm-migration-cutover_{context}"]
-== Warm migration cutover stage
+
+== Preparing the cutover stage for a warm migration
 
 . Scheduled time to finalize warm migration
 . Shut down the source VM.
@@ -33,3 +27,5 @@ Warm migration is when a powered *_on_* VM is migrated to a separate host. A sou
 . Continue in the same way as cold migration
 .. Guest conversion
 .. Starting target VM (optional)
+
+
