@@ -46,4 +46,4 @@
 :user-guide-title: Installing and using {the-lc} {project-full}
 :planning-guide-title: Planning your migration to Red Hat {virt} by using the {project-full}
 :subtitle: Migrating from VMware vSphere or {rhv-full} to Red Hat {virt}
-:subtitle-planning: Planning your migration of virtual machines from VMware vSphere, {rhv-full} or {osp} platforms, or other platforms to Red Hat {virt} on an OpenShift platform.
+:subtitle-planning: Planning your migration of virtual machines from VMware vSphere, {rhv-full} or {osp} platforms, or other platforms to Red Hat {virt} on an OpenShift platform
