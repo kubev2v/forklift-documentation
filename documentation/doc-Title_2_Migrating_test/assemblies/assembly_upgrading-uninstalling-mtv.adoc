@@ -1,0 +1,27 @@
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_upgrading-uninstalling-mtv_{context}"]
+
+= Upgrading or uninstalling {the-lc} {project-full}
+
+:context: upgrading-uninstalling
+
+[role="_abstract"]
+You can upgrade or uninstall {the-lc} {project-first} by using the {ocp} web console or the command-line interface (CLI).
+
+:context: mtv
+:mtv:
+
+include::../modules/upgrading-mtv-ui.adoc[leveloffset=+1]
+
+include::../modules/uninstalling-mtv-ui.adoc[leveloffset=+1]
+
+include::../modules/uninstalling-mtv-cli.adoc[leveloffset=+1]
+
+:mtv!:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
