@@ -4,7 +4,6 @@
 
 = Performing a migration
 
-
 [role="_abstract"]
 
 When you have planned your migration by using {the-lc} {project-first}, you can migrate virtual machines from the following source providers to {virt} destination providers:
@@ -14,4 +13,3 @@ When you have planned your migration by using {the-lc} {project-first}, you can 
 * {osp}
 * Open Virtual Appliances (OVAs) that were created by VMware vSphere
 * Remote {virt} clusters
-
