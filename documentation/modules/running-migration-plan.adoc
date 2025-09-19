@@ -4,7 +4,7 @@
 
 :_content-type: PROCEDURE
 [id="running-migration-plan_{context}"]
-= Running a migration plan
+= Running a migration plan in the MTV UI
 
 [role="_abstract"]
 You can run a migration plan and view its progress in the {ocp} web console.

@@ -1,0 +1,35 @@
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_migrating-from-ova_{context}"]
+
+= Migrating from OVA
+
+:context: migrating-ova
+
+[role="_abstract"]
+Run your OVA migration plan from the MTV UI or from the command-line.
+
+== Prerequisites
+
+* You have planned your migration from OVA.
+
+:context: ova
+:ova:
+
+include::../modules/running-migration-plan.adoc[leveloffset=+1]
+
+include::../modules/migration-plan-options-ui.adoc[leveloffset=+2]
+
+include::../modules/canceling-migration-ui.adoc[leveloffset=+2]
+
+include::../modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+1]
+
+include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
+
+:ova!:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
