@@ -1,0 +1,40 @@
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_troubleshooting-migration_{context}"]
+
+= Troubleshooting migration
+
+:context: troubleshooting
+
+[role="_abstract"]
+Troubleshoot migration issues, navigate custom resources (CRs), services, and workflows, and download logs and CRs for troubleshooting information.
+
+:context: mtv
+:mtv:
+
+include::../modules/error-messages.adoc[leveloffset=+1]
+
+include::../modules/using-must-gather.adoc[leveloffset=+1]
+
+include::../modules/mtv-resources-and-services.adoc[leveloffset=+1]
+
+include::../modules/mtv-workflow.adoc[leveloffset=+1]
+
+include::../modules/virt-migration-workflow.adoc[leveloffset=+2]
+
+include::../modules/virt-v2v-mtv.adoc[leveloffset=+2]
+
+include::../modules/collected-logs-cr-info.adoc[leveloffset=+1]
+
+include::../modules/accessing-logs-ui.adoc[leveloffset=+2]
+
+include::../modules/accessing-logs-cli.adoc[leveloffset=+2]
+
+
+:mtv!:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
