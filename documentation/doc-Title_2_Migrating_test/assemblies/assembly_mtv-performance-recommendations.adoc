@@ -1,0 +1,31 @@
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_mtv-performance-recommendations_{context}"]
+
+= MTV performance recommendations
+
+:context: performance
+
+[role="_abstract"]
+Review recommendations for network and storage performance, cold and warm migrations, and multiple migrations or single migrations.
+
+:context: mtv
+:mtv:
+
+include::../modules/mtv-performance-recommendation.adoc[leveloffset=+1]
+
+include::../modules/mtv-aio-buffer.adoc[leveloffset=+2]
+
+include::../modules/mtv-enable-aio-buffer.adoc[leveloffset=+2]
+
+include::../modules/mtv-disable-aio-buffer.adoc[leveloffset=+2]
+
+include::../modules/mtv-performance-addendum.adoc[leveloffset=+1]
+
+:mtv!:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
