@@ -44,7 +44,8 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+// To retrieve the moRef, see xref:#retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
 endif::[]
 
 ifdef::rhv[]
