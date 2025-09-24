@@ -7,7 +7,7 @@ ifdef::context[:parent-context: {context}]
 
 = Planning migration of virtual machines from {osp}
 
-:context: planning-osp
+// :context: planning-osp
 
 [role="_abstract"]
 

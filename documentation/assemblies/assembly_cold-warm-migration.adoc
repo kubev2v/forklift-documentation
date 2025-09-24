@@ -5,9 +5,9 @@ ifdef::context[:parent-context: {context}]
 
 [id="assembly_cold-warm-migration_{context}"]
 
-= Cold and warm migration in {project-short} 
+= Cold and warm migration in {project-short}
 
-:context: cold-warm-migration
+// :context: cold-warm-migration
 
 [role="_abstract"]
 Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a separate host. The VM is powered off, and there is no need for common shared storage.
