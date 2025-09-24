@@ -1,0 +1,41 @@
+include::modules/common-attributes.adoc[]
+ifeval::["{build}" == "downstream"]
+[id="migrating-{title}"]
+= {migrating-guide-title}
+endif::[]
+ifeval::["{build}" == "upstream"]
+= {migrating-guide-title} {project-version}
+endif::[]
+:toc:
+:toc-title:
+:toclevels: 3
+:compat-mode:
+:context: mtv
+:mtv:
+
+
+include::modules/con_performing-migration-intro.adoc[leveloffset=+1]
+
+include::assemblies/assembly_migrating-from-vmware.adoc[leveloffset=+1]
+
+include::assemblies/assembly_migrating-from-rhv.adoc[leveloffset=+1]
+
+include::assemblies/assembly_migrating-from-osp.adoc[leveloffset=+1]
+
+include::assemblies/assembly_migrating-from-ova.adoc[leveloffset=+1]
+
+include::assemblies/assembly_migrating-from-cnv.adoc[leveloffset=+1]
+
+include::assemblies/assembly_advanced-migration-options.adoc[leveloffset=+1]
+
+include::assemblies/assembly_upgrading-uninstalling-mtv.adoc[leveloffset=+1]
+
+include::assemblies/assembly_troubleshooting-migration.adoc[leveloffset=+1]
+
+include::assemblies/assembly_mtv-performance-recommendations.adoc[leveloffset=+1]
+
+include::modules/mtv-telemetry.adoc[leveloffset=+1]
+
+
+
+:mtv!:
