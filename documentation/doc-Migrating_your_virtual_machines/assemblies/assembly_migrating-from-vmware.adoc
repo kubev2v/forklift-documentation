@@ -6,7 +6,7 @@ ifdef::context[:parent-context: {context}]
 
 = Migrating from VMware vSphere
 
-:context: migrating-vmware
+//:context: migrating-vmware
 
 [role="_abstract"]
 Run your VMware migration plan from the MTV UI or from the command-line.

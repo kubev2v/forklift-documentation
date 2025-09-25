@@ -6,7 +6,7 @@ ifdef::context[:parent-context: {context}]
 
 = Upgrading or uninstalling {the-lc} {project-full}
 
-:context: upgrading-uninstalling
+//:context: upgrading-uninstalling
 
 [role="_abstract"]
 You can upgrade or uninstall {the-lc} {project-first} by using the {ocp} web console or the command-line interface (CLI).
