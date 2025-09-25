@@ -1,7 +1,7 @@
 <title>{planning-guide-title}</title>
 <productname>{project-full}</productname>
 <productnumber>{project-version}</productnumber>
-<subtitle>subtitle-planning</subtitle>
+<subtitle>{subtitle-planning}</subtitle>
 <abstract>
     <para>{abstract-planning}</para>
 </abstract>
