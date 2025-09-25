@@ -6,7 +6,7 @@ ifdef::context[:parent-context: {context}]
 
 = Migrating from {virt} 
 
-:context: migrating-virt
+//:context: migrating-virt
 
 [role="_abstract"]
 Run your {virt} migration plan from the MTV UI or from the command-line.

@@ -6,7 +6,7 @@ ifdef::context[:parent-context: {context}]
 
 = Advanced migration options
 
-:context: advanced-migration-options
+//:context: advanced-migration-options
 
 [role="_abstract"]
 Perform advanced migration operations, such as changing precopy snapshot intervals for warm migration, creating custom rules for validation, or adding hooks to your migration plan.

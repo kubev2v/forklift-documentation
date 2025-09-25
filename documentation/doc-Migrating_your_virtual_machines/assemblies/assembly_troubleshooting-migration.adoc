@@ -6,7 +6,7 @@ ifdef::context[:parent-context: {context}]
 
 = Troubleshooting migration
 
-:context: troubleshooting
+//:context: troubleshooting
 
 [role="_abstract"]
 Troubleshoot migration issues, navigate custom resources (CRs), services, and workflows, and download logs and CRs for troubleshooting information.
