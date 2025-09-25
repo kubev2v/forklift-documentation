@@ -7,18 +7,18 @@ ifdef::context[:parent-context: {context}]
 
 = Cold and warm migration in {project-short} 
 
-:context: cold-warm-migration
+//:context: cold-warm-migration
 
 [role="_abstract"]
 Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a separate host. The VM is powered off, and there is no need for common shared storage.
 
 Warm migration is when a powered *_on_* VM is migrated to a separate host. A source host state is cloned to the destination host.
 
-include::../modules/cold-warm-migration.adoc[leveloffset=+1]
+include::../modules/about-cold-warm-migration.adoc[leveloffset=+1]
 
 include::../modules/mtv-migration-speed-comparison.adoc[leveloffset=+1]
 
-include::../modules/about-cold-warm-migration.adoc[leveloffset=+1]
+
 
 
 ifdef::parent-context[:context: {parent-context}]

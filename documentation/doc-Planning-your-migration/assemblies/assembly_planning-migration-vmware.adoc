@@ -7,7 +7,7 @@ ifdef::context[:parent-context: {context}]
 
 = Planning migration of virtual machines from VMware vSphere
 
-:context: planning-vmware
+//:context: planning-vmware
 
 [role="_abstract"]
 
