@@ -6,7 +6,7 @@ ifdef::context[:parent-context: {context}]
 
 = Migrating from {rhv-full}
 
-:context: migrating-rhv
+//:context: migrating-rhv
 
 [role="_abstract"]
 Run your {rhv-full} migration plan from the MTV UI or from the command-line.

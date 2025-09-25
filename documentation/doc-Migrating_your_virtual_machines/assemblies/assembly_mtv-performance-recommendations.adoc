@@ -6,7 +6,7 @@ ifdef::context[:parent-context: {context}]
 
 = MTV performance recommendations
 
-:context: performance
+//:context: performance
 
 [role="_abstract"]
 Review recommendations for network and storage performance, cold and warm migrations, and multiple migrations or single migrations.

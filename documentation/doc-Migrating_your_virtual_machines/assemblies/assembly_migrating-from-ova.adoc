@@ -2,21 +2,21 @@ ifdef::context[:parent-context: {context}]
 
 :_mod-docs-content-type: ASSEMBLY
 
-[id="assembly_migrating-from-osp_{context}"]
+[id="assembly_migrating-from-ova_{context}"]
 
-= Migrating from {osp}
+= Migrating from OVA
 
-:context: migrating-osp
+//:context: migrating-ova
 
 [role="_abstract"]
-Run your {osp} migration plan from the MTV UI or from the command-line.
+Run your OVA migration plan from the MTV UI or from the command-line.
 
 == Prerequisites
 
-* You have planned your migration from {osp}.
+* You have planned your migration from OVA.
 
-:context: ostack
-:ostack:
+:context: ova
+:ova:
 
 include::../modules/running-migration-plan.adoc[leveloffset=+1]
 
@@ -28,9 +28,8 @@ include::../modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+1]
 
 include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
 
-:ostack!:
+:ova!:
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
-
 

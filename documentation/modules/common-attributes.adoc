@@ -44,6 +44,6 @@
 :abstract: {The} {project-first} enables you to migrate virtual machines from VMware vSphere, {rhv-full}, or {osp} to {virt} running on {ocp}.
 :abstract-migrating: Run your migration plan by using either the {project-first} user interface in the Red Hat OpenShift web console or the command-line interface.
 :user-guide-title: Installing and using {the-lc} {project-full}
-:migrating-guide-title: Migrating your virtual machines to Red Hat {virt} by using the {project-full}
+:migrating-guide-title: Migrating your virtual machines to Red Hat {virt}
 :subtitle: Migrating from VMware vSphere or {rhv-full} to Red Hat {virt}
-:subtitle-migrating: Migrating virtual machines from VMware vSphere, {rhv-full} or {osp} platforms, or other platforms to Red Hat {virt} on an OpenShift platform
+:subtitle-migrating: Migrating virtual machines from VMware vSphere, {rhv-full} or {osp} platforms, or other platforms to Red Hat {virt} by using {the-lc} {project-full}
