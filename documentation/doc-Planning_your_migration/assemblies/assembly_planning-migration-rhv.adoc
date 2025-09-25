@@ -1,0 +1,55 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_planning-migration-rhv_{context}"]
+
+= Planning a migration of virtual machines from {rhv-full}
+
+//:context: planning-rhv
+
+[role="_abstract"]
+
+You prepare and create your {rhv-full} migration plan by performing the following high-level steps in the MTV UI:
+
+- Create ownerless network maps.
+- Add a {rhv-full} source provider.
+- Select a migration network for a VMware source provider.
+- Add an OpenShift Virtualization destination provider.
+- Select a migration network for an OpenShift Virtualization provider.
+- Create a {rhv-full} migration plan.
+
+:context: rhv
+:rhv:
+
+include::../modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+1]
+
+include::../modules/creating-form-based-storage-maps-ui-rhv.adoc[leveloffset=+1]
+
+include::../modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+1]
+
+include::../modules/adding-source-provider.adoc[leveloffset=+1]
+
+:!rhv:
+:context: dest_rhv
+:dest_rhv:
+
+include::../modules/adding-source-provider.adoc[leveloffset=+1]
+
+include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
+
+:!dest_rhv:
+:context: rhv
+:rhv:
+
+include::../modules/creating-plan-wizard-290-rhv.adoc[leveloffset=+1]
+
+:!rhv:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+

@@ -1,0 +1,55 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_planning-migration-ova_{context}"]
+
+= Planning a migration of virtual machines from OVA
+
+//:context: planning-ova
+
+[role="_abstract"]
+You prepare and create your OVA migration plan by performing the following high-level steps in the MTV UI:
+
+- Create ownerless network maps.
+- Add a OVA source provider.
+- Select a migration network for an OVA source provider.
+- Add an OpenShift Virtualization destination provider.
+- Select a migration network for an OpenShift Virtualization provider.
+- Create a OVA migration plan.
+
+:context: ova
+:ova:
+
+include::../modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+1]
+
+include::../modules/creating-form-based-storage-maps-ui-ova.adoc[leveloffset=+1]
+
+include::../modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+1]
+
+include::../modules/adding-source-provider.adoc[leveloffset=+1]
+
+:!ova:
+:context: dest_ova
+:dest_ova:
+
+include::../modules/adding-source-provider.adoc[leveloffset=+1]
+
+include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
+
+:!dest_ova:
+:context: ova
+:ova:
+
+include::../modules/creating-plan-wizard-290-ova.adoc[leveloffset=+1]
+
+
+:!ova:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+
