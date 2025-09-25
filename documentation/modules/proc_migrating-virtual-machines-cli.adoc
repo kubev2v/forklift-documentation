@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="new-migrating-virtual-machines-cli_{context}"]
+[id="proc_migrating-virtual-machines-cli_{context}"]
 
 ifdef::vmware[]
 = Running a VMware vSphere migration from the command-line
