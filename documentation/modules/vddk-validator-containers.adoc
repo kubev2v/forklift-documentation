@@ -4,40 +4,46 @@
 
 :_content-type: REFERENCE
 [id="vddk-validator-containers_{context}"]
-= VDDK validator containers need requests and limits
+= Requests and limits for VDDK validator containers 
 
-[role="_abstract"]
-If you have the link:https://docs.openshift.com/container-platform/{ocp-version}/applications/quotas/quotas-setting-per-project.html[cluster or project resource quotas set], you must ensure that you have a sufficient quota for the {project-short} pods to perform the migration. 
+When you set cluster or project resource quotas, be sure that you have a sufficient quota for the {project-short} pods to perform the migration. 
 
-You can see the defaults, which you can override in the `ForkliftController` custom resource (CR), listed as follows. If necessary, you can adjust these defaults. 
+For more information on creating, setting, and viewing quotas, see {ocp-doc}/building_applications/index#quotas[Quotas].
 
-These settings are highly dependent on your environment. If there are many migrations happening at once and the quotas are not set enough for the migrations, then the migrations can fail. This can also be correlated to the `MAX_VM_INFLIGHT` setting that determines how many VMs/disks are migrated at once.
+[id="defaults-that-can-be-overridden-in-forklift-controller_{context}"]
+== Defaults that can be overridden in the ForkliftController CR:
 
-The following defaults can be overriden in the `ForkliftController` CR:
+The defaults that are related to VDDK validator containers are listed as follows. You can override these defaults in the `ForkliftController` custom resource (CR).
 
-* Defaults that affect both cold and warm migrations:
+[NOTE]
+====
+These settings are highly dependent on your environment. If there are many migrations happening at once and the quotas are not set high enough for the migrations, then the migrations can fail. 
+
+Migration success or failure is also connected to the `MAX_VM_INFLIGHT` setting that determines how many VMs or disks are migrated at once.
+====
+
+* These defaults affect both cold and warm migrations:
 +
-For cold migration, it is likely to be more resource intensive as it performs the disk copy. For warm migration, you could potentially reduce the requests.
+Cold migration is likely to be more resource intensive because it copies the disks. For warm migration, you could potentially reduce the requests.
 
 ** virt_v2v_container_limits_cpu: `4000m`
 ** virt_v2v_container_limits_memory: `8Gi`
 ** virt_v2v_container_requests_cpu: `1000m`
 ** virt_v2v_container_requests_memory: `1Gi`
 +
-
 [NOTE]
 ====
 Cold and warm migration using `virt-v2v` can be resource-intensive. For more details, see link:https://libguestfs.org/virt-v2v.1.html#compute-power-and-ram[Compute power and RAM].
 ====
 
-* Defaults that affect any migrations with hooks:
+* These defaults affect all migrations with hooks:
 
 ** hooks_container_limits_cpu: `1000m`
 ** hooks_container_limits_memory: `1Gi`
 ** hooks_container_requests_cpu: `100m`
 ** hooks_container_requests_memory: `150Mi`
 
-* Defaults that affect any OVA migrations:
+* These defaults affect all Open Virtual Appliance (OVA) file migrations:
 
 ** ova_container_limits_cpu: `1000m`
 ** ova_container_limits_memory: `1Gi`

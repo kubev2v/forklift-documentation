@@ -20,7 +20,7 @@ Example: If a default rule contains the line `default valid_input = false` and y
 $ {oc} rsh <validation_pod>
 ----
 
-. Go to the OPA policies directory for your provider:
+. Go to the Open Policy Agent (OPA) policies directory for your provider:
 +
 [source,terminal]
 ----
