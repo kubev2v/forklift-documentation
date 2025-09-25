@@ -7,7 +7,7 @@ ifdef::context[:parent-context: {context}]
 
 = Mapping networks and storage in migration plans
 
-:context: mapping-networks-storage
+//:context: mapping-networks-storage
 
 [role="_abstract"]
 

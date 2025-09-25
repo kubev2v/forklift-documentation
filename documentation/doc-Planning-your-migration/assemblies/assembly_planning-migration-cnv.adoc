@@ -3,49 +3,49 @@ ifdef::context[:parent-context: {context}]
 
 :_mod-docs-content-type: ASSEMBLY
 
-[id="assembly_planning-migration-rhv_{context}"]
+[id="assembly_planning-migration-cnv_{context}"]
 
-= Planning a migration of virtual machines from {rhv-full}
+= Planning a migration of virtual machines from {virt}
 
-:context: planning-rhv
+//:context: planning-cnv
 
 [role="_abstract"]
-
-You prepare and create your {rhv-full} migration plan by performing the following high-level steps in the MTV UI:
+You prepare and create your {virt} migration plan by performing the following high-level steps in the MTV UI:
 
 - Create ownerless network maps.
-- Add a {rhv-full} source provider.
-- Select a migration network for a VMware source provider.
+- Add an {virt} source provider.
+- Select a migration network for an {virt} provider.
 - Add an OpenShift Virtualization destination provider.
 - Select a migration network for an OpenShift Virtualization provider.
-- Create a {rhv-full} migration plan.
+- Create a {virt} migration plan.
 
-:context: rhv
-:rhv:
+:context: cnv
+:cnv:
 
 include::../modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+1]
 
-include::../modules/creating-form-based-storage-maps-ui-rhv.adoc[leveloffset=+1]
+include::../modules/creating-form-based-storage-maps-ui-cnv.adoc[leveloffset=+1]
 
 include::../modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+1]
 
 include::../modules/adding-source-provider.adoc[leveloffset=+1]
 
-:!rhv:
-:context: dest_rhv
-:dest_rhv:
+:!cnv:
+:context: dest_cnv
+:dest_cnv:
 
 include::../modules/adding-source-provider.adoc[leveloffset=+1]
 
 include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
 
-:!dest_rhv:
-:context: rhv
-:rhv:
+:!dest_cnv:
+:context: cnv
+:cnv:
 
-include::../modules/creating-plan-wizard-290-rhv.adoc[leveloffset=+1]
+include::../modules/creating-plan-wizard-290-cnv.adoc[leveloffset=+1]
 
-:!rhv:
+:!cnv:
+
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]

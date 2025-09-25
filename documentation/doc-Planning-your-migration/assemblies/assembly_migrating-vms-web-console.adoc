@@ -7,7 +7,7 @@ ifdef::context[:parent-context: {context}]
 
 = Migrating virtual machines by using the {ocp} web console 
 
-:context: migrating-vms-web
+//:context: migrating-vms-web
 
 [role="_abstract"]
 
@@ -31,7 +31,7 @@ For all migrations, you specify the source provider, the destination provider, a
 
 [IMPORTANT]
 ====
-You must ensure that all xref:prerequisites_{context}[prerequisites] are met.
+You must ensure that all prerequisites are met. For more information, see xref:assembly_prerequisites-for-migration_{context}[Prerequisites for migration].
 
 VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 

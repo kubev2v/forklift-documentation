@@ -7,7 +7,7 @@ ifdef::context[:parent-context: {context}]
 
 = Prerequisites for migration
 
-:context: prerequisites
+//:context: prerequisites
 
 [role="_abstract"]
 Review the following prerequisites to ensure that your environment is prepared for migration.

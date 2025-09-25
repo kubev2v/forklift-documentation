@@ -7,7 +7,7 @@ ifdef::context[:parent-context: {context}]
 
 = Installing and configuring the {operator-name}
 
-:context: prerequisites
+//:context: prerequisites
 
 [role="_abstract"]
 

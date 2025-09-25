@@ -60,6 +60,7 @@ The VMs are shut down during the cutover stage and the remaining data is migrate
 
 You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` manifest.
 
+include::../modules/cold-warm-migration.adoc[leveloffset=+1]
 
 [id="warm-migration-versus-cold-migration"_{context}]
 == Advantages and disadvantages of cold and warm migrations
@@ -70,7 +71,7 @@ The table that follows offers a more detailed description of the advantages and 
 .Detailed description of advantages and disadvantages
 
 [cols="1,1,1",options="header"]
-.Advantages and disadvantages of cold and warm migrations
+.Advantages and disadvantages of cold and warm migrations 
 |===
 |
 |*Cold migration*
