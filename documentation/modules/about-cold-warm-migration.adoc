@@ -4,7 +4,7 @@
 
 :_content-type: CONCEPT
 [id="about-cold-warm-migration_{context}"]
-= About cold and warm migration
+= About cold, warm, and live migration
 
 [role="_abstract"]
 {project-first} supports cold and warm migration as follows:
@@ -22,3 +22,4 @@
 * {vmw} vSphere
 * {rhv-full}
 
+{project-short} supports live migration only for migrations between {virt} clusters.  
