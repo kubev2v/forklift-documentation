@@ -31,6 +31,8 @@ include::modules/advantages-disadvantages-cold-warm-migrations.adoc[leveloffset=
 
 include::modules/conclusions-cold-warm-migrations.adoc[leveloffset=+3]
 
+include::modules/about-live-migration.adoc[level0ffset=+3]
+
 [id="prerequisites-for-all-providers_{context}"]
 == Prerequisites and software requirements for all providers 
 

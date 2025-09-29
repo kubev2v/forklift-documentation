@@ -4,14 +4,17 @@
 
 :_content-type: CONCEPT
 [id="mtv-cold-warm-migration_{context}"]
-= Cold migration and warm migration in {project-short}
+= Cold migration, warm migration, and live migration in {project-short}
 
 [role="_abstract"]
-{project-first} supports two types of migration, cold and warm.
+{project-first} supports three types of migration, cold, warm, and live.
 
 Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a separate host. The VM is powered off, and there is no need for common shared storage.
 
 Warm migration is when a powered *_on_* VM is migrated to a separate host. A source host state is cloned to the destination host.
+
+Live migration is available only for {virt}. It migrates running VMs from one {virt} cluster to another without a noticeable service interruption. The VMs maintain their active state throughout the process. 
+// Add link. 
 
 [id="mtv-cold-warm-migration-precopy_{context}"]
 == Warm migration precopy stage
@@ -27,9 +30,9 @@ Warm migration is when a powered *_on_* VM is migrated to a separate host. A sou
 [id="mtv-cold-warm-migration-cutover_{context}"]
 == Warm migration cutover stage
 
-. Scheduled time to finalize warm migration
+. Scheduled time to finalize warm migration.
 . Shut down the source VM.
 . Copy the final snapshot delta to the target.
-. Continue in the same way as cold migration
-.. Guest conversion
-.. Starting target VM (optional)
+. Continue in the same way as cold migration.
+.. Guest conversion.
+.. Starting target VM (optional).
