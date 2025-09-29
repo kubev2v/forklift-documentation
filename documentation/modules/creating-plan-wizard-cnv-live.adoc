@@ -25,7 +25,7 @@ The *Create migration plan* wizard opens.
 
 * *Plan name*: Enter a name.
 * *Plan project*: Select from the list.
-* *Source provider*: Select from the list. You can use any {virt} provider. There is no need to create a new one for a live migration. 
+* *Source provider*: Select from the list. You can use any {virt} provider. You do not need to create a new one for a live migration. 
 * *Target provider*: Select from the list. Be sure to select the correct {virt} target provider.
 * *Target project*: Select from the list.
 
