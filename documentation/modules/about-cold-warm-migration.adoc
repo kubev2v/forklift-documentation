@@ -4,7 +4,7 @@
 
 :_content-type: CONCEPT
 [id="about-cold-warm-migration_{context}"]
-= About cold, warm, and live migration
+= About cold and warm migration
 
 [role="_abstract"]
 {project-first} supports cold and warm migration as follows:
@@ -129,4 +129,3 @@ Based on the preceding information, we can draw the following conclusions about 
 * The shortest downtime of VMs can be achieved by using warm migration.
 * The shortest duration for VMs with a large amount of data on a single disk can be achieved by using cold migration.
 * The shortest duration for VMs with a large amount of data that is spread evenly across multiple disks can be achieved by using warm migration.
-  
