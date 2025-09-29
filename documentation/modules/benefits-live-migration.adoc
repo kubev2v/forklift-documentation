@@ -1,0 +1,20 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+
+[id="benefits-live-migration_{context}"]
+= Benefits of live migration
+
+[role="_abstract"]
+The major advantage of live migration is that it significantly reduces the amount of downtime needed to perform migrations. As a result, you can perform migrations with minimal service interruption. This allows your end-users to continue using critical applications during migrations.
+
+Live migration also gives you the following benefits:
+
+* *Improved service continuity*: Live migration lets you quickly migrate VMs from one cluster to another, allowing you to eliminate the need for scheduled downtime during cluster maintenance or upgrades. This allows you to provide more consistent and reliable services.
+
+* *Greater operational flexibility*: Live migration allows your IT team to manage your infrastructure dynamically without harming business operations. Your team can respond to changing demands or perform necessary maintenance without complex, disruptive procedures.
+
+* *Enhanced performance and scalability*: Live migration gives you the ability to balance workloads across clusters. This helps ensure that applications have the resources they need, leading to better overall system performance and scalability.
+

@@ -1,0 +1,11 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="live-migration-mtv-cnv_{context}"]
+= Live migration, {project-short}, and {virt}
+
+[role="_abstract"]
+// TBD
+// This module will explain the roles of MTV and CNV in live migration. 
