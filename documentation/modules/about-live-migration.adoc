@@ -7,7 +7,7 @@
 = About live migration
 
 [role="_abstract"]
-You can use _live migration_ to migrate virtual machines (VMs) between {virt} clusters with very limited downtime. 
+You can use _live migration_ to migrate virtual machines (VMs) between {virt} clusters with extremely limited downtime. 
 
 Live migration is supported by {project-first} version 2.10.0 and later. It requires {virt} 2.20 or later on both your source and target clusters, 
 
