@@ -1,0 +1,47 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_migrating-vms-web-console_{context}"]
+
+= Migrating virtual machines by using the {ocp} web console 
+
+//:context: migrating-vms-web
+
+[role="_abstract"]
+
+Use the {project-short} user interface to migrate virtual machines (VMs). It is located in the *Virtualization* section of the {ocp} web console.
+
+include::../modules/mtv-ui.adoc[leveloffset=+1]
+
+include::../modules/mtv-overview-page.adoc[leveloffset=+1]
+
+== Migrating virtual machines by using the MTV user interface
+
+Use the {project-short} user interface to migrate VMs from the following providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* {virt} clusters
+
+For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
+
+[IMPORTANT]
+====
+You must ensure that all prerequisites are met. For more information, see xref:assembly_prerequisites-for-migration_{context}[Prerequisites for migration].
+
+VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
+
+VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
+====
+
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+

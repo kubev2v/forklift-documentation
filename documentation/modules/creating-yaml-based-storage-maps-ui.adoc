@@ -4,6 +4,7 @@
 
 :_content-type: PROCEDURE
 [id="creating-yaml-based-stoarge-maps-ui_{context}"]
+
 = Creating ownerless storage maps using YAML or JSON definitions in the {project-short} UI
 
 [role="_abstract"]
@@ -44,7 +45,7 @@ spec:
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a VMware vSphere moRef].
+<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. For more information about retrieving the moRef, see 'Retrieving a VMware vSphere moRef' in _Migrating your virtual machines to Red Hat {virt}_.
 endif::[]
 
 ifdef::rhv[]

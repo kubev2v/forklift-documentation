@@ -1,0 +1,45 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_migrating-vms-cli_{context}"]
+
+= Migrating virtual machines by using the command-line interface
+
+//:context: migrating-vms-cli
+
+[role="_abstract"]
+
+You migrate virtual machines (VMs) to {virt} from the command-line by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
+
+[IMPORTANT]
+====
+You must specify a name for cluster-scoped CRs.
+
+You must specify both a name and a namespace for namespace-scoped CRs.
+
+To migrate to or from an {ocp-short} cluster that is different from the one the migration plan is defined on, you must have an {virt} service account token with `cluster-admin` privileges.
+====
+
+[IMPORTANT]
+====
+You must ensure that all prerequisites are met. For more information, see xref:assembly_prerequisites-for-migration_{context}[Prerequisites for migration].
+====
+
+:mtv!:
+:context: cli
+:cli:
+
+include::../modules/non-admin-permissions-for-ui.adoc[leveloffset=+1]
+
+:cli!:
+:context: mtv
+:mtv:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+
