@@ -11,8 +11,7 @@
 You can perform a live migration between {virt} clusters by using the command-line interface (CLI). The procedure for live migration between {virt} clusters is identical to the procedure for other migrations between {virt} clusters except for the addition of the `type` label in the `Plan` CR. For a live migration, the `type` label must be set to `live`.
 
 .Prerequisites
-As described in the specific prerequisites for live migration between {virt} clusters.
-//Add link.
+As described in the specific prerequisites for live migration between {virt} clusters. For more information, see xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
 
 .Procedure
 . Create a `Secret` manifest for the source provider credentials:
