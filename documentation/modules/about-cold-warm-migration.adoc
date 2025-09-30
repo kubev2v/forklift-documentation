@@ -9,7 +9,7 @@
 [role="_abstract"]
 {project-first} supports cold and warm migration as follows:
 
-{project-short} supports cold migration from these source providers:
+{project-short} supports cold migration from the following source providers:
 
 * {vmw} vSphere
 * {rhv-full} ({rhv-short})
@@ -17,7 +17,8 @@
 * Open Virtual Appliances (OVAs) that were created by {vmw} vSphere
 * Remote {virt} clusters
 
-{project-short} supports warm migration from these source providers:
+{project-short} supports warm migration from the following source providers:
+
 * {vmw} vSphere
 * {rhv-full}
 
