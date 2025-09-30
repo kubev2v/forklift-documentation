@@ -11,8 +11,8 @@ You create a migration plan for a live migration of virtual machines (VMs) from 
 
 .Prerequisites
 
-As described in the specific prerequisites for live migration between {virt} clusters.
-//Add link.
+As described in xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
+
 
 .Procedure
 
@@ -90,10 +90,9 @@ If needed, click *Add mapping* to add another mapping.
 // Migration type page
 . On the *Migration type* page, choose *Live migration*.
 +
- If *Live migration* does not appear as an option, return to the *General* page and verify that both the source provider and target provider are {virt} clusters.
- +
- If they are both {virt} clusters, have someone with `admin-cluster` privileges ensure that the CNV-CNV prerequisites are met.
-// Add link.
+If *Live migration* does not appear as an option, return to the *General* page and verify that both the source provider and target provider are {virt} clusters.
++
+If they are both {virt} clusters, have someone with `admin-cluster` privileges ensure that the prerequisites for live migration between {virt} clusters are met. For more information, see xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
 
 . Click *Next*.
 +
