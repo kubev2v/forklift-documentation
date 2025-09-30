@@ -37,6 +37,8 @@ include::modules/benefits-live-migration.adoc[leveloffset=+3]
 
 include::modules/live-migration-mtv-cnv.adoc[leveloffset=+3]
 
+include::modules/live-migration-limitations.adoc[leveloffset=+3]
+
 include::modules/live-migration-workflow.adoc[leveloffset=+3]
 
 [id="prerequisites-for-all-providers_{context}"]
