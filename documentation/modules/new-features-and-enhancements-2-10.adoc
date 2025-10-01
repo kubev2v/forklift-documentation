@@ -19,7 +19,22 @@
 
 * In the {project-short} 2.10.0 UI, the Virtual Machines table in the Create migration plan wizard is enhanced to simplify navigation and provide a clearer view of selected VMs. With this update, you can bulk select VMs from the Virtual Machines table toolbar, switch between views of selected and unselected VMs, filter VMs by location, and manage columns. link:https://issues.redhat.com/browse/MTV-3058[(MTV-3058)]
 
-* In {project-short} 2.10.0, you can find the status of cutover dates for warm migrations in the MTV UI. The cutover button is an icon is the UI for your migration plan that changes state when you set the date for a cutover so that you can easily identify if a cutover date is set.
+* In {project-short} 2.10.0, you can find the status of cutover dates for warm migrations in the MTV UI. The cutover button is an icon in the UI for your migration plan that changes state when you set the date for a cutover so that you can easily identify if a cutover date is set.
 //link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
 
 * In {project-short} 2.10.0, the Migrations section on the Plan Details page is relabelled as Migration history. The Migration history section contains tooltips to provide contextual information and make the section more useful for migration monitoring and troubleshooting. 
+//link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+
+* {project-short} 2.10.0 introduces a formatting feature for VMware system serial numbers. System administrators can use the formatting feature for consistent and error-free system serial numbers and easier system identification during migrations and configurations. 
+//link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+
+* In {project-short} 2.10.0, you can customize the `nodeSelector` field and options for importer pods in the MTV UI, enhancing resource allocation, scheduling, and application performance. You can customize pod scheduling policies for importer pods to ensure that importer pods are scheduled on specific nodes for enhanced resource management and stability.
+//link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+
+* {project-short} 2.10.0 supports the migration of Linux Unified Key Setup (LUKS) encrypted VMs by using Network Bound Disk Encryption (NBDE) with Clevis. With this update, you can migrate LUKS-encrypted VMs without rebooting the VMs to obtain a decryption key from the Clevis server. The Clevis server must be accessible from OpenShift. link:https://issues.redhat.com/browse/MTV-3395[(MTV-3395)]
+
+* In {project-short} 2.10.0, the `insecureSkipVerify` flag is set by default for ESXi hosts in the MTV UI, simplifying migrations in environments with self-signed certificates. With this setting, the migration process bypasses SSL certificate validation, reducing potential errors caused by certificates while maintaining security.
+//link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+
+
+
