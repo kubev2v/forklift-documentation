@@ -1,0 +1,16 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-10-0_{context}"]
+= Resolved issues 2.10.0
+
+.User could not rename virtual machines to address naming conflicts before migration
+
+In previous versions of {project-short}, you could not rename virtual machines (VMs) from the source provider to address naming conflicts before the VMs were migrated to Red Hat OpenShift Virtualization. In this release of {project-short}, you can modify non-compliant VM names in the MTV UI during the migration process to address naming conflicts and ensure compatibility with OpenShift Virtualization naming conventions. link:https://issues.redhat.com/browse/MTV-2919[(MTV-2919)] 
+
+.User experience was interrupted when adding a new target project to a migration plan
+In previous versions of {project-short}, you had to close the Create migration plan wizard in the MTV UI to add a new target project to your migration plan. In this release of {project-short}, the option to create a new project as a target for VMs in your migration plan is available in the Target project dropdown list on the General page of the Create migration plan wizard.
+//link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)] 
+
