@@ -13,8 +13,6 @@ Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a s
 
 Warm migration is when a powered *_on_* VM is migrated to a separate host. A source host state is cloned to the destination host.
 
-// Should I add anything about warm migration here or leave this section as is?
-
 [id="mtv-cold-warm-migration-precopy_{context}"]
 == Warm migration precopy stage
 
