@@ -31,6 +31,16 @@ include::modules/advantages-disadvantages-cold-warm-migrations.adoc[leveloffset=
 
 include::modules/conclusions-cold-warm-migrations.adoc[leveloffset=+3]
 
+include::modules/about-live-migration.adoc[leveloffset=+1]
+
+include::modules/benefits-live-migration.adoc[leveloffset=+2]
+
+include::modules/live-migration-mtv-cnv.adoc[leveloffset=+2]
+
+include::modules/live-migration-limitations.adoc[leveloffset=+2]
+
+include::modules/live-migration-workflow.adoc[leveloffset=+2]
+
 [id="prerequisites-for-all-providers_{context}"]
 == Prerequisites and software requirements for all providers 
 
@@ -82,6 +92,8 @@ include::modules/ostack-app-cred-auth.adoc[leveloffset=+4]
 include::modules/ova-prerequisites.adoc[leveloffset=+2]
 
 include::modules/cnv-prerequisites.adoc[leveloffset=+2]
+
+include::modules/cnv-cnv-live-prerequisites.adoc[leveloffset=+3]
 
 include::modules/compatibility-guidelines.adoc[leveloffset=+2]
 
@@ -312,7 +324,11 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 
 include::modules/creating-plan-wizard-290-cnv.adoc[leveloffset=+2]
 
+include::modules/creating-plan-wizard-cnv-live.adoc[leveloffset=+3]
+
 include::modules/running-migration-plan.adoc[leveloffset=+2]
+
+include::modules/running-live-migration-plan.adoc[leveloffset=+3]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
@@ -422,6 +438,8 @@ include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 :cnv:
 
 include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
+include::modules/migrating-live-cnv-cnv-vms-cli.adoc[leveloffset=+3]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 

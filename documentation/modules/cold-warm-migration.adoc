@@ -4,7 +4,7 @@
 
 :_content-type: CONCEPT
 [id="mtv-cold-warm-migration_{context}"]
-= Cold migration and warm migration in {project-short}
+= About cold and warm migration
 
 [role="_abstract"]
 {project-first} supports two types of migration, cold and warm.
@@ -27,9 +27,9 @@ Warm migration is when a powered *_on_* VM is migrated to a separate host. A sou
 [id="mtv-cold-warm-migration-cutover_{context}"]
 == Warm migration cutover stage
 
-. Scheduled time to finalize warm migration
+. Scheduled time to finalize warm migration.
 . Shut down the source VM.
 . Copy the final snapshot delta to the target.
-. Continue in the same way as cold migration
-.. Guest conversion
-.. Starting target VM (optional)
+. Continue in the same way as cold migration.
+.. Guest conversion.
+.. Starting target VM (optional).
