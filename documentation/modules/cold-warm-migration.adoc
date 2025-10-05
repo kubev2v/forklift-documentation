@@ -5,6 +5,7 @@
 :_content-type: CONCEPT
 
 = Cold migration and warm migration in {project-short}
+[id="cold-warm-migration_{context}"]
 
 [role="_abstract"]
 Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a separate host. The VM is powered off, and there is no need for common shared storage.

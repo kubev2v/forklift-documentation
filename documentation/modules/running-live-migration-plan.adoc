@@ -26,7 +26,7 @@ The plan's *Status* changes to *Running*, and the migration's progress is displa
 +
 * *Initiate* : Migration begins.
 * *PrepareTarget*: {project-short} creates empty target `DataVolumes` in the target {virt} cluster. {project-short} then copies all secrets or config maps that are mounted by a source VM to the target namespace. {project-short} then creates target VMs in a running state. {project-short} also creates a `VirtualMachineInstanceMIgration` resource for each cluster so that the VMs can synchronize.
-* *Synchronization*: {virt} now synchronizes the VMs by using the `KubeVirt` resource of each source VM to transfer the VM's state to each target VM. This communication is done using the VirtualMachineInstanceMIgration` resource. 
+* *Synchronization*: {virt} now synchronizes the VMs by using the `KubeVirt` resource of each source VM to transfer the VM's state to each target VM. This communication is done using the `VirtualMachineInstanceMIgration` resource. 
 
 . Optional: Click the links in the migration's *Status* to see its overall status and the status of each VM:
 
@@ -37,11 +37,6 @@ The plan's *Status* changes to *Running*, and the migration's progress is displa
 *** The start and end times of the migration
 *** The amount of data copied
 *** A progress pipeline for the VM's migration
-+
-[WARNING]
-====
-vMotion, including svMotion, and relocation must be disabled for VMs that are being imported to avoid data corruption.
-====
 
 . Optional: To view your migration's logs, either as it is running or after it is completed, perform the following actions:
 

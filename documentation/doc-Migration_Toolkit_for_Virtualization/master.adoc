@@ -157,7 +157,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :context: vmware
 :vmware:
 
-include::modules/creating-plan-wizard-290-vmware.adoc[leveloffset=+2]
+include::modules/creating-plan-wizard-vmware.adoc[leveloffset=+2]
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
@@ -199,7 +199,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :context: rhv
 :rhv:
 
-include::modules/creating-plan-wizard-290-rhv.adoc[leveloffset=+2]
+include::modules/creating-plan-wizard-rhv.adoc[leveloffset=+2]
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
@@ -240,7 +240,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :context: ostack
 :ostack:
 
-include::modules/creating-plan-wizard-290-ostack.adoc[leveloffset=+2]
+include::modules/creating-plan-wizard-ostack.adoc[leveloffset=+2]
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
@@ -281,7 +281,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :context: ova
 :ova:
 
-include::modules/creating-plan-wizard-290-ova.adoc[leveloffset=+2]
+include::modules/creating-plan-wizard-ova.adoc[leveloffset=+2]
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
@@ -322,7 +322,7 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 :context: cnv
 :cnv:
 
-include::modules/creating-plan-wizard-290-cnv.adoc[leveloffset=+2]
+include::modules/creating-plan-wizard-cnv.adoc[leveloffset=+2]
 
 include::modules/creating-plan-wizard-cnv-live.adoc[leveloffset=+3]
 

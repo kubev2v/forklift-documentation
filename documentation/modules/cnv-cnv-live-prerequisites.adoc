@@ -9,7 +9,7 @@
 [role="_abstract"]
 Live migration between {virt} clusters using {project-first} has its own set of prerequisites:
 
-* {project-short} 2.10.0 or later installed. For more information, see xref:upgrading-mtv-ui_mtv[Upgrading the {project-full}].{project-short} treats all {virt} migrations run on {project-short} 2.9 or earlier as cold migrations, even if they are configured as live migrations.
+* {project-short} 2.10.0 or later installed. For more information, see xref:upgrading-mtv-ui_mtv[Upgrading the {project-full}]. {project-short} treats all {virt} migrations run on {project-short} 2.9 or earlier as cold migrations, even if they are configured as live migrations.
 * {virt} 4.20.0 or later installed on both source and target clusters.
 * In the {project-short} Operator, in the `spec` portion of the `forklift-controller` YAML, `feature_ocp_live_migration` is set to `true`. You must have `admin-cluster` privileges to set this label.
 * In the `KubeVirt` resource of both clusters in the `featureGates` of the YAML,`DecntralizedLiveMigration` appears. You must have `admin-cluster` privileges to set this label.
