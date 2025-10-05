@@ -1,0 +1,17 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="about-udn_{context}"]
+= About user defined networks
+
+[role="_abstract"]
+Beginning with {project-full} 2.10, you can use a user-defined network (UDN) as your default network for migrations from all providers, except for {virt}. This flexibility allows you to migrate virtual machines (VMs) to {virt} more consistently. 
+
+{project-short} has been redesigned to make it easy for you to migrate VMs by using a UDN. Once you configure your UDN in {virt}, you can specify it as your target network for a migration plan. {project-short} is now able to distinguish a UDH from a conventional pod network. As a result, you only have to specify the network in your migration plan, whether you create the plan using the {ocp} web console or the {project-short} command line interface.
+
+Specific usage instructions for UDNs have been incorporated into the existing procedures for creating migration plans.
+
+.Additional resources
+TBD
