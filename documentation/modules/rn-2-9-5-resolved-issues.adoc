@@ -1,0 +1,13 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-9-5_{context}"]
+= Resolved issues 2.9.5
+
+.Migrated VMs do not contain the `vm.kubevirt.io/workload` annotation
+
+In previous releases of {project-short}, the migration of Virtual Machines (VMs) from VMware to {ocp-full} Virtualization did not preserve the `vm.kubevirt.io/workload` annotation, hindering workload profile setting. Consequently, end users were unable to set workload profiles for migrated VMware VMs. 
+
+With this release of {project-short}, we have added the `vm.kubevirt.io/workload` annotation to the YAML of migrated VMs. As a result, users can now set workload profiles for migrated VMware VMs. link:https://issues.redhat.com/browse/MTV-3519[(MTV-3519)]
