@@ -10,8 +10,8 @@
 :ocp-short: OpenShift
 :ocp-full: Red Hat OpenShift Container Platform (OCP)
 // when updating the ocp-version, update the ocp-y-version
-:ocp-version: 4.19
-:ocp-y-version: 4.19, 4.18, 4.17
+:ocp-version: 4.20
+:ocp-y-version: 4.20, 4.19, 4.18
 :operator: mtv-operator
 :operator-name-ui: Migration Toolkit for Virtualization Operator
 :operator-name: MTV Operator
