@@ -3,7 +3,9 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_mod-docs-content-type: PROCEDURE
+
 [id="retrieving-vmware-moref_{context}"]
+
 = Retrieving a {vmw} vSphere moRef
 
 [role="_abstract"]

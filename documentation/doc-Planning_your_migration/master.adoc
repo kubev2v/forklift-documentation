@@ -1,0 +1,41 @@
+include::modules/common-attributes.adoc[]
+ifeval::["{build}" == "downstream"]
+[id="planning-{title}"]
+= {planning-guide-title}
+endif::[]
+ifeval::["{build}" == "upstream"]
+= {planning-guide-title} {project-version}
+endif::[]
+:toc:
+:toc-title:
+:toclevels: 3
+:compat-mode:
+:context: mtv
+:mtv:
+
+include::modules/con_planning-intro.adoc[leveloffset=+1]
+
+include::assemblies/assembly_cold-warm-migration.adoc[leveloffset=+1]
+
+include::assemblies/assembly_prerequisites-for-migration.adoc[leveloffset=+1]
+
+include::assemblies/assembly_installing-mtv-operator.adoc[leveloffset=+1]
+
+include::assemblies/assembly_migrating-vms-web-console.adoc[leveloffset=+1]
+
+include::assemblies/assembly_migrating-vms-cli.adoc[leveloffset=+1]
+
+include::assemblies/assembly_mapping-networks-storage.adoc[leveloffset=+1]
+
+include::assemblies/assembly_planning-migration-vmware.adoc[leveloffset=+1]
+
+include::assemblies/assembly_planning-migration-rhv.adoc[leveloffset=+1]
+
+include::assemblies/assembly_planning-migration-osp.adoc[leveloffset=+1]
+
+include::assemblies/assembly_planning-migration-ova.adoc[leveloffset=+1]
+
+include::assemblies/assembly_planning-migration-cnv.adoc[leveloffset=+1]
+
+
+
