@@ -3,10 +3,10 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="new-migrating-virtual-machines-cli_{context}"]
+[id="proc_migrating-virtual-machines-cli_{context}"]
 
 ifdef::vmware[]
-= Migrating from a {vmw} vSphere source provider
+= Running a VMware vSphere migration from the command-line
 
 [role="_abstract"]
 You can migrate from a {vmw} vSphere source provider by using the command-line interface (CLI).
@@ -22,7 +22,7 @@ To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-di
 
 endif::[]
 ifdef::rhv[]
-= Migrating from a {rhv-full} source provider
+= Running a {rhv-full} migration from the command-line
 
 [role="_abstract"]
 You can migrate from a {rhv-full} ({rhv-short}) source provider by using the command-line interface (CLI).
@@ -35,20 +35,20 @@ include::snip-migrating-luns.adoc[]
 
 endif::[]
 ifdef::ova[]
-= Migrating from an Open Virtual Appliance (OVA) source provider
+= Running an Open Virtual Appliance (OVA) migration from the command-line
 
 [role="_abstract"]
 You can migrate from Open Virtual Appliance (OVA) files that were created by {vmw} vSphere as a source provider by using the command-line interface (CLI).
 
 endif::[]
 ifdef::ostack[]
-= Migrating from an {osp} source provider
+= Running an {osp} migration from the command-line
 
 [role="_abstract"]
 You can migrate from an {osp} source provider by using the command-line interface (CLI).
 endif::[]
 ifdef::cnv[]
-= Migrating from a Red Hat {virt} source provider
+= Running a Red Hat {virt} migration from the command-line
 
 [role="_abstract"]
 You can use a Red Hat {virt} provider as either a source provider or as a destination provider. You can migrate from an {virt} source provider by using the command-line interface (CLI).
