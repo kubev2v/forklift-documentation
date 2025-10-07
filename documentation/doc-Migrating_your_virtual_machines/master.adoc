@@ -1,11 +1,7 @@
 include::modules/common-attributes.adoc[]
-ifeval::["{build}" == "downstream"]
 [id="migrating-{title}"]
-= {migrating-guide-title}
-endif::[]
-ifeval::["{build}" == "upstream"]
-= {migrating-guide-title} {project-version}
-endif::[]
+= Migrating your virtual machines to Red Hat OpenShift Virtualization
+
 :toc:
 :toc-title:
 :toclevels: 3
