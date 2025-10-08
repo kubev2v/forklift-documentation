@@ -60,8 +60,6 @@ The VMs are shut down during the cutover stage and the remaining data is migrate
 
 You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` manifest.
 
-include::../modules/cold-warm-migration.adoc[leveloffset=+1]
-
 [id="warm-migration-versus-cold-migration"_{context}]
 == Advantages and disadvantages of cold and warm migrations
 
@@ -98,8 +96,7 @@ a|Containerized Data Importer (CDI), a persistent storage management add-on, and
 |Low: Disks are transferred in the background. The VMs are shut down during the cutover stage, and the remaining data is migrated. Data stored in RAM is not migrated.
 
 |*Parallelism*
-|Disks are transferred sequentially for each VM. For remote migration, disks are transferred in parallel.
-footnoteref:[footnote1,Remote migration: Target environment that does not have MTV installed. Migration to a remote environment using CDI.]
+|Disks are transferred sequentially for each VM. For remote migration to a destination that does not have {project-short} installed, disks are transferred in parallel using CDI.
 |Disks are transferred in parallel by different pods.
 
 |*Connection use*
