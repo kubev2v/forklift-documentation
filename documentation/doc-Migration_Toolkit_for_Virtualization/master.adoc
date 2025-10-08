@@ -363,7 +363,7 @@ include::modules/non-admin-permissions-for-ui.adoc[leveloffset=+2]
 :context: vmware
 :vmware:
 
-include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+include::modules/proc_migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/snip_vmware-permissions.adoc[]
 
@@ -385,7 +385,7 @@ include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 :context: rhv
 :rhv:
 
-include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+include::modules/proc_migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
@@ -397,7 +397,7 @@ include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 :context: ostack
 :ostack:
 
-include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+include::modules/proc_migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
@@ -409,7 +409,7 @@ include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 :context: ova
 :ova:
 
-include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+include::modules/proc_migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
@@ -421,7 +421,7 @@ include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 :context: cnv
 :cnv:
 
-include::modules/new-migrating-virtual-machines-cli.adoc[leveloffset=+2]
+include::modules/proc_migrating-virtual-machines-cli.adoc[leveloffset=+2]
 
 include::modules/canceling-migration-cli.adoc[leveloffset=+3]
 
@@ -450,11 +450,13 @@ include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
 
 include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
-include::modules/about-hooks-for-migration-plans.adoc[leveloffset=+3]
+include::modules/about-hooks-for-migration-plans.adoc[leveloffset=+2]
 
 include::modules/adding-hook-using-ui.adoc[leveloffset=+3]
 
 include::modules/adding-hook-using-cli.adoc[leveloffset=+3]
+
+include::modules/about-udn.adoc[leveloffset=+2]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 
@@ -497,7 +499,7 @@ include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 
 include::modules/virt-v2v-mtv.adoc[leveloffset=+2]
 
-include::modules/raw-copy-mode.adoc[leveloffset=+3]
+include::modules/raw-copy-mode.adoc[leveloffset=+2]
 
 [id="logs-and-crs_{context}"]
 == Logs and custom resources
