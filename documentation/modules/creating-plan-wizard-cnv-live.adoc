@@ -92,7 +92,7 @@ If needed, click *Add mapping* to add another mapping.
 +
 If *Live migration* does not appear as an option, return to the *General* page and verify that both the source provider and target provider are {virt} clusters.
 +
-If they are both {virt} clusters, have someone with `admin-cluster` privileges ensure that the prerequisites for live migration between {virt} clusters are met. For more information, see xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
+If they are both {virt} clusters, have someone with `cluster-admin` privileges ensure that the prerequisites for live migration between {virt} clusters are met. For more information, see xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
 
 . Click *Next*.
 +
