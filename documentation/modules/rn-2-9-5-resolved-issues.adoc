@@ -11,3 +11,9 @@
 In previous releases of {project-short}, the migration of Virtual Machines (VMs) from VMware to {ocp-full} Virtualization did not preserve the `vm.kubevirt.io/workload` annotation, hindering workload profile setting. Consequently, end users were unable to set workload profiles for migrated VMware VMs.
 
 With this release of {project-short}, we have added the `vm.kubevirt.io/workload` annotation to the YAML of migrated VMs. As a result, users can now set workload profiles for migrated VMware VMs.
+
+.Base64 encoded playbook caused Ansible failure in {project-short} migration
+
+In previous releases of {project-short}, when a user configured an Ansible hook for an {virt} migration using the {project-short} console plugin, the hook's Ansible playbook content was sometimes incorrectly encoded twice using Base64. When the hook runner attempted to execute the playbook, the double encoding meant that Ansible received an unreadable, `non-plain-text` string, causing the pre-migration hook or post-migration hook to fail immediately.
+
+In this update, the logic ensures that the Ansible playbook string is only Base64-encoded once before being passed to the hook runner. Hooks utilizing custom Ansible playbooks during {virt} migrations now execute successfully as the playbook is correctly decoded to plain, readable text by the hook runner pod. Users can now reliably define and use custom Ansible hook playbooks for their VM migrations without encoding failures. 
