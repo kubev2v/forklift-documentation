@@ -7,7 +7,34 @@
 You can use the {project-first} to migrate virtual machines (VMs) from the following source providers to {virt} destination providers:
 
 * {vmw} vSphere
-* {rhv-full} ({rhv-short})
+* {rhv-full} 
 * {osp}
 * Open Virtual Appliances (OVAs) that were created by {vmw} vSphere
 * Remote {virt} clusters
+
+== Types of migration
+
+{project-short} supports three types of migration: cold, warm and live.
+
+Cold migration is available for all of the source providers listed above. This type of migration migrates VMs that are powered *_off_* and does not require common stored storage. 
+
+Warm migration is available only for {vmw} vSphere and {rhv-full}. This type of migration migrates VMs that are powered *_on_* and does require common stored storage. 
+
+These two types of migration are discussed in detail in xref:about-cold-warm-migration_mtv[About cold and warm migration].
+
+Live migration is available *_only_* for migrations between {virt} clusters. It requires {project-short} version 2.10 or later and {virt} version 4.20 or later. 
+
+Live migration is discussed in detail in xref:about-live-migration_mtv[About live migration].
+
+[IMPORTANT]
+====
+Live migration is a Technology Preview feature only. Technology Preview features
+are not supported with Red Hat production service level agreements (SLAs) and
+might not be functionally complete. Red Hat does not recommend using them
+in production. These features provide early access to upcoming product
+features, enabling customers to test functionality and provide feedback during
+the development process.
+
+For more information about the support scope of Red Hat Technology Preview
+features, see https://access.redhat.com/support/offerings/techpreview/.
+====

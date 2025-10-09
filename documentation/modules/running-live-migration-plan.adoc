@@ -3,8 +3,8 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: PROCEDURE
-[id="running-migration-plan_{context}"]
-= Running a migration plan in the MTV UI
+[id="running-live-migration-plan_{context}"]
+= Running a migration plan for a live migration between {virt} clusters
 
 [role="_abstract"]
 You can run a migration plan and view its progress in the {ocp} web console.
@@ -22,20 +22,17 @@ The *Plans* list displays the source and target providers, the number of virtual
 . Click *Start* beside a migration plan to start the migration.
 . Click *Start* in the confirmation window that opens.
 +
-The plan's *Status* changes to *Running*, and the migration's progress is displayed.
+The plan's *Status* changes to *Running*, and the migration's progress is displayed in the following stages:
 +
-ifdef::vmware,rhv[]
-Warm migration only:
-
-* The precopy stage starts.
-* Click *Cutover* to complete the migration.
-endif::vmware,rhv[]
+* *Initiate* : Migration begins.
+* *PrepareTarget*: {project-short} creates empty target `DataVolumes` in the target {virt} cluster. {project-short} then copies all secrets or config maps that are mounted by a source VM to the target namespace. {project-short} then creates target VMs in a running state. {project-short} also creates a `VirtualMachineInstanceMIgration` resource for each cluster so that the VMs can synchronize.
+* *Synchronization*: {virt} now synchronizes the VMs by using the `KubeVirt` resource of each source VM to transfer the VM's state to each target VM. This communication is done using the `VirtualMachineInstanceMIgration` resource. 
 +
 [WARNING]
 ====
 Do not take a snapshot of a VM after you start a migration. Taking a snaphot after a migration starts might cause the migration to fail. 
 ====
-
++
 . Optional: Click the links in the migration's *Status* to see its overall status and the status of each VM:
 
 ** The link on the left indicates whether the migration failed, succeeded, or is ongoing. It also reports the number of VMs whose migration succeeded, failed, or was canceled.
@@ -43,16 +40,7 @@ Do not take a snapshot of a VM after you start a migration. Taking a snaphot aft
 
 *** The name of the VM
 *** The start and end times of the migration
-*** The amount of data copied
 *** A progress pipeline for the VM's migration
-+
-ifdef::vmware[]
-[WARNING]
-====
-vMotion, including svMotion, and relocation must be disabled for VMs that are being imported to avoid data corruption.
-====
-endif::[]
-
 
 . Optional: To view your migration's logs, either as it is running or after it is completed, perform the following actions:
 

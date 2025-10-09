@@ -3,32 +3,16 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: PROCEDURE
-[id="creating-plan-wizard-290-ova_{context}"]
-= Creating an Open Virtualization Appliance (OVA) migration plan by using the MTV wizard
+[id="creating-plan-wizard-cnv-live_{context}"]
+= Creating a migration plan for a live migration between {virt} clusters by using the {project-short} wizard
 
 [role="_abstract"]
-You can migrate Open Virtual Appliance (OVA) files that were created by {vmw} vSphere by using the {project-full} plan creation wizard.
-
-The wizard is designed to lead you step-by-step in creating a migration plan.
-
-[WARNING]
-====
-Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
-
-This prevents concurrent disk access to the storage the guest points to.
-====
-
-include::snip_plan-limits.adoc[]
-
-[IMPORTANT]
-====
-When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard, but are important. Be sure to read and follow the instructions for this page carefully, even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
-====
+You create a migration plan for a live migration of virtual machines (VMs) from one {virt} cluster to another almost exactly as you create a migration plan for a cold migration. The only difference is that you specify it is a *Live migration* in the *Migration type* page.
 
 .Prerequisites
 
-* Have an OVA source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider] or xref:adding-source-provider_dest_ova[Adding {a-virt} destination provider].
-* If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
+As described in xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
+
 
 .Procedure
 
@@ -37,21 +21,20 @@ When you click *Create plan* on the *Review and create* page of the wizard, {pro
 +
 The *Create migration plan* wizard opens.
 +
-// General page
 . On the *General* page, specify the following fields:
 
 * *Plan name*: Enter a name.
 * *Plan project*: Select from the list.
-* *Source provider*: Select from the list.
-* *Target provider*: Select from the list.
+* *Source provider*: Select from the list. You can use any {virt} provider. You do not need to create a new one for a live migration. 
+* *Target provider*: Select from the list. Be sure to select the correct {virt} target provider.
 * *Target project*: Select from the list.
 
 . Click *Next*.
 +
-// Virtual machines page
-. On the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
+. On the *Virtual machines* page, select the virtual machines you want to migrate and be sure they are powered on. A live migration fails if any of its VMs are powered off.
 +
-// Network map page
+. Click *Next*.
++
 . On the *Network map* page, choose one of the following options:
 
 * *Use an existing network map*: Select an existing network map from the list.
@@ -60,10 +43,10 @@ These are network maps available for all plans, and therefore, they are _ownerle
 +
 [NOTE]
 ====
-If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
+If you choose an existing map, be sure it has the same source provider and target provider as the ones you want to use in your plan.
 ====
 
-* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which will then be considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -78,7 +61,6 @@ If needed, click *Add mapping* to add another mapping.
 
 . Click *Next*.
 +
-// Storage map page
 . On the *Storage map* page, choose one of the following options:
 
 * *Use an existing storage map*: Select an existing storage map from the list.
@@ -90,7 +72,7 @@ These are storage maps available for all plans, and therefore, they are _ownerle
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. For each map, specify the following. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -105,23 +87,17 @@ If needed, click *Add mapping* to add another mapping.
 
 . Click *Next*.
 +
-// Other settings page
-. On the *Other settings (optional)* page, you have the option to change the *Transfer network* of your migration plan.
+// Migration type page
+. On the *Migration type* page, choose *Live migration*.
 +
-The transfer network is the network used to transfer the VMs to {virt}. This is the default transfer network of the provider.
-
-** Verify that the transfer network is in the selected target project.
-
-** To choose a different transfer network, select a different transfer network from the list.
-** Optional: To configure another {ocp-short} network in the {ocp-short} web console, click *Networking > NetworkAttachmentDefinitions*.
+If *Live migration* does not appear as an option, return to the *General* page and verify that both the source provider and target provider are {virt} clusters.
 +
-To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
-
-** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+If they are both {virt} clusters, have someone with `cluster-admin` privileges ensure that the prerequisites for live migration between {virt} clusters are met. For more information, see xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
 
 . Click *Next*.
 +
-// Hooks page
+. On the *Other settings (optional)* page, click *Next* without doing anything else. The *Transfer network* option on this page is irrelevant because {virt} automatically uses the UDN that you set before as the transfer networks.
++
 . On the *Hooks (optional)* page, you can add a pre-migration hook, a post-migration hook, or both types of migration hooks. All are optional.
 
 . To add a hook, select the appropriate *Enable hook* checkbox.
@@ -141,19 +117,19 @@ You cannot include more than one pre-migration hook or more than one post-migrat
 
 .. Click its *Edit step* link.
 +
-The wizard opens to the page on which you defined the item.
+The wizard opens to the page where you defined the item.
 .. Edit the item.
 .. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
 
 . When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan.
 +
 When your plan is validated, the *Plan details* page for your plan opens in the *Details* tab.
-
+ 
 . In addition to listing details based on your entries in the wizard, the *Plan details* tab includes the following two sections after the details of the plan:
-
++
 * *Migration history*: Details about successful and unsuccessful attempts to run the plan
 * *Conditions*: Any changes that need to be made to the plan so that it can run successfully
-
++
 . When you have fixed all conditions listed, you can run your plan from the *Plans* page.
 +
 The *Plan details* page also includes five additional tabs, which are described in the table that follows:
@@ -173,3 +149,4 @@ The *Plan details* page also includes five additional tabs, which are described 
 |Editable specification of the network and storage maps used by your plan
 |Updatable specification of the hooks used by your plan, if any
 |===
+

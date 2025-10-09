@@ -3,11 +3,11 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: PROCEDURE
-[id="creating-plan-wizard-290-cnv_{context}"]
-= Creating an {virt} migration plan by using the MTV wizard
+[id="creating-plan-wizard-ostack_{context}"]
+= Creating an {osp} migration plan by using the MTV wizard
 
 [role="_abstract"]
-You can migrate {virt} virtual machines (VMs) by using the {project-full} plan creation wizard.
+You can migrate {osp} virtual machines (VMs) by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
@@ -27,7 +27,7 @@ When you click *Create plan* on the *Review and create* page of the wizard, {pro
 
 .Prerequisites
 
-* Have an {virt} source provider and an {virt} destination provider. For more information, see xref:adding-source-provider_cnv[Adding an {virt} source provider] or xref:adding-source-provider_dest_cnv[Adding {a-virt} destination provider].
+* Have an {osp} source provider and an {virt} destination provider. For more information, see xref:adding-source-provider_ostack[Adding an OpenStack source provider] or xref:adding-source-provider_dest_ostack[Adding {a-virt} destination provider].
 * If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
 
 .Procedure
@@ -60,10 +60,10 @@ These are network maps available for all plans, and therefore, they are _ownerle
 +
 [NOTE]
 ====
-If you choose an existing map, be sure it has the same source provider and target provider as the ones you want to use in your plan.
+If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which will then be considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its ownerr. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -90,7 +90,7 @@ These are storage maps available for all plans, and therefore, they are _ownerle
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. For each map, specify the following. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -140,20 +140,20 @@ You cannot include more than one pre-migration hook or more than one post-migrat
 . Edit any item by doing the following:
 
 .. Click its *Edit step* link.
-+
-The wizard opens to the page on which you defined the item.
++ 
+The wizard opens to the page where you defined the item.
 .. Edit the item.
 .. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
 
 . When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan.
 +
 When your plan is validated, the *Plan details* page for your plan opens in the *Details* tab.
- 
+
 . In addition to listing details based on your entries in the wizard, the *Plan details* tab includes the following two sections after the details of the plan:
-+
+
 * *Migration history*: Details about successful and unsuccessful attempts to run the plan
 * *Conditions*: Any changes that need to be made to the plan so that it can run successfully
-+
+
 . When you have fixed all conditions listed, you can run your plan from the *Plans* page.
 +
 The *Plan details* page also includes five additional tabs, which are described in the table that follows:
@@ -173,4 +173,3 @@ The *Plan details* page also includes five additional tabs, which are described 
 |Editable specification of the network and storage maps used by your plan
 |Updatable specification of the hooks used by your plan, if any
 |===
-

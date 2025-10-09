@@ -1,0 +1,19 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="live-migration-workflow_{context}"]
+= Live migration workflow
+
+[role="_abstract"]
+Live migration uses a different workflow than other types of migration. You can use the following workflow to understand how {project-first} orchestrates a live migration with {virt} handling the low-level mechanics of the migration. This workflow is also designed to help you troubleshoot problems that might occur during a live migration.
+
+. Start: When you click *Start plan*, {project-short} initiates the migration plan. 
+. PreHook: If you added a pre-migration hook, {project-short} runs it now.
+. Create empty `DataVolumes`: {project-short} creates empty target `DataVolumes` in the target {virt} cluster. {virt} uses `KubeVirt` to handle the actual storage migration.
+. Ensure resources: {project-short} copies all secrets or config maps that are mounted by a source VM to the target namespace.
+. Create target VMs: {project-short} creates target VMs in a running state and creates a `VirtualMachineInstanceMIgration` resource on each cluster. The VMs have a special `KubeVirt` annotation indicating to start them in migration target mode.
+. Wait for state transfer: {project-short} waits for `KubeVirt` to handle the state transfer and for the destination VMs to report as ready. `KubeVirt` also handles the shutdown of the source VMs after the state transfer.
+. PostHook: If you added a post-migration hook, {project-short} runs it now.
+. Completed: {project-short} indicates that the migration is finished.
