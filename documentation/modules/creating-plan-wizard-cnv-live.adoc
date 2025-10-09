@@ -96,9 +96,7 @@ If they are both {virt} clusters, have someone with `cluster-admin` privileges e
 
 . Click *Next*.
 +
-. On the *Other settings (optional)* page, you have the option to change the *Transfer network* of your migration plan. However, you can ignore this page. 
-
-. Click *Next*.
+. On the *Other settings (optional)* page, click *Next* without doing anything else. The *Transfer network* option on this page is irrelevant because {virt} automatically uses the UDN that you set before as the transfer networks.
 +
 . On the *Hooks (optional)* page, you can add a pre-migration hook, a post-migration hook, or both types of migration hooks. All are optional.
 

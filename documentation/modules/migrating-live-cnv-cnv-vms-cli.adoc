@@ -162,24 +162,6 @@ EOF
 You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
 ====
 
-. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
-+
-You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
-+
-Configuring the IP address enables the interface to reach the configured gateway.
-+
-[source,yaml,subs="attributes+"]
-----
-$ oc edit NetworkAttachmentDefinitions <name_of_the_NAD_to_edit>
-apiVersion: k8s.cni.cncf.io/v1
-kind: NetworkAttachmentDefinition
-metadata:
-  name: <name_of_transfer_network>
-  namespace: <namespace>
-  annotations:
-    forklift.konveyor.io/route: <IP_address>
-----
-
 . Create a `Plan` manifest for the migration:
 +
 [source,yaml,subs="attributes+"]
@@ -242,12 +224,11 @@ spec:
   plan:
     name: <name_of_plan_cr>
     namespace: <namespace>
-  cutover: <optional_cutover_time>
 EOF
 ----
 +
 [NOTE]
 ====
-If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
+The `cutover` field is irrelevant for live migrations, so it is not included in the `Plan` CR of this procedure. 
 ====
 
