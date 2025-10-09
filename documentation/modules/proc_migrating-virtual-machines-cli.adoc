@@ -21,7 +21,7 @@ To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-di
 ====
 
 .Prerequisites
-* If you are using a user-defined network (UDN), have the name of its namespace as defined in {virt}.
+* If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
 
 endif::[]
 ifdef::rhv[]
@@ -31,7 +31,7 @@ ifdef::rhv[]
 You can migrate from a {rhv-full} source provider by using the command-line interface (CLI).
 
 .Prerequisites
-* If you are using a user-defined network (UDN), have the name of its namespace as defined in {virt}.
+* If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
 * If you are migrating a virtual machine with a direct LUN disk, ensure that the nodes in the {virt} destination cluster that the VM is expected to run on can access the backend storage.
 
 include::snip-migrating-luns.adoc[]
@@ -44,7 +44,7 @@ ifdef::ova[]
 You can migrate from Open Virtual Appliance (OVA) files that were created by {vmw} vSphere as a source provider by using the command-line interface (CLI).
 
 .Prerequisites
-* If you are using a user-defined network (UDN), have the name of its namespace as defined in {virt}.
+* If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
 
 endif::[]
 ifdef::ostack[]
@@ -54,7 +54,7 @@ ifdef::ostack[]
 You can migrate from an {osp} source provider by using the command-line interface (CLI).
 
 .Prerequisites
-* If you are using a user-defined network (UDN), have the name of the its namespace as defined in {virt}.
+* If you are using a user-defined network (UDN), note the name of the its namespace as defined in {virt}.
 
 endif::[]
 ifdef::cnv[]
@@ -907,7 +907,7 @@ The template follows the Go template syntax and has access to the following vari
 *Examples*
 ** `"disk-{{.VolumeIndex}}"`
 ** `"pvc-{{.PVCName}}"`
-<15> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that none of the IPs of the VMs are within the subnet of the UDN. If an IP of a VM is within the subnet of the UDN, the migration will fail.
+<15> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that none of the IPs of the VMs are within the subnet of the UDN. If an IP of a VM is within the subnet of the UDN, the migration fails.
 <16> Specify the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 <17> Optional: Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
 <18> Optional: Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10].
@@ -986,7 +986,7 @@ EOF
 <6> Specify the name of the `NetworkMap` CR.
 <7> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <8> Specify the name of the `StorageMap` CR.
-<9> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that none of the IPs of the VMs are within the subnet of the UDN. If an IP of a VM is within the subnet of the UDN, the migration will fail.
+<9> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that none of the IPs of the VMs are within the subnet of the UDN. If an IP of a VM is within the subnet of the UDN, the migration fails.
 <10> Specify the {rhv-short} VM UUID.
 <11> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <12> Specify the name of the `Hook` CR.
@@ -1065,7 +1065,7 @@ EOF
 <4> Specify the name of the `NetworkMap` CR.
 <5> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <6> Specify the name of the `StorageMap` CR.
-<7> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that none of the IPs of the VMs are within the subnet of the UDN. If an IP of a VM is within the subnet of the UDN, the migration will fail.
+<7> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that none of the IPs of the VMs are within the subnet of the UDN. If an IP of a VM is within the subnet of the UDN, the migration fails.
 <8> Specify the OVA VM UUID.
 <9> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <10> Specify the name of the `Hook` CR.
@@ -1134,7 +1134,7 @@ EOF
 <4> Specify the name of the `NetworkMap` CR.
 <5> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
 <6> Specify the name of the `StorageMap` CR.
-<7> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that none of the IPs of the VMs are within the subnet of the UDN. If an IP of a VM is within the subnet of the UDN, the migration will fail.
+<7> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that none of the IPs of the VMs are within the subnet of the UDN. If an IP of a VM is within the subnet of the UDN, the migration fails.
 <8> Specify the {osp} VM UUID.
 <9> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
 <10> Specify the name of the `Hook` CR.

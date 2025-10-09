@@ -13,7 +13,7 @@ After you select a transfer network, associate its network attachment definition
 
 In {project-short} version 2.9 and earlier, {project-short} used the `pod` network as the default network. 
 
-In version 2.10.0 and later, {project-short} can detect if you have selected a user-defined network (UDN) as your default network. Therefore, if you set the UDN to be the migration's namespace, you do not need to select a new default network when you create your migration plan. 
+In version 2.10.0 and later, {project-short} detects if you have selected a user-defined network (UDN) as your default network. Therefore, if you set the UDN to be the migration's namespace, you do not need to select a new default network when you create your migration plan. 
 
 [IMPORTANT]
 ====
