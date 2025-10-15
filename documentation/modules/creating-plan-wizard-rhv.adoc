@@ -3,11 +3,11 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: PROCEDURE
-[id="creating-plan-wizard-290-ostack_{context}"]
-= Creating an {osp} migration plan by using the MTV wizard
+[id="creating-plan-wizard-rhv_{context}"]
+= Creating a Red Hat Virtualization migration plan by using the MTV wizard
 
 [role="_abstract"]
-You can migrate {osp} virtual machines (VMs) by using the {project-full} plan creation wizard.
+You can migrate {rhv-full} virtual machines (VMs) by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
@@ -27,7 +27,7 @@ When you click *Create plan* on the *Review and create* page of the wizard, {pro
 
 .Prerequisites
 
-* Have an {osp} source provider and an {virt} destination provider. For more information, see xref:adding-source-provider_ostack[Adding an OpenStack source provider] or xref:adding-source-provider_dest_ostack[Adding {a-virt} destination provider].
+* Have an {rhv-full} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_rhv[Adding a {rhv-full} source provider] or xref:adding-source-provider_dest_rhv[Adding {a-virt} destination provider].
 * If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
 
 .Procedure
@@ -58,12 +58,13 @@ The *Create migration plan* wizard opens.
 +
 These are network maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
 +
+
 [NOTE]
 ====
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which will then be considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -90,7 +91,7 @@ These are storage maps available for all plans, and therefore, they are _ownerle
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. For each map, specify the following. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -102,6 +103,14 @@ You can create an ownerless storage map, which you and others can use for additi
 +
 If needed, click *Add mapping* to add another mapping.
 ** *Storage map name*: Enter a name or let {project-short} automatically generate a name for the storage map.
+
+. Click *Next*.
++
+// Migration type page
+. On the *Migration type* page, choose one of the following:
+
+* *Cold migration* (default)
+* *Warm migration*
 
 . Click *Next*.
 +
@@ -140,20 +149,36 @@ You cannot include more than one pre-migration hook or more than one post-migrat
 . Edit any item by doing the following:
 
 .. Click its *Edit step* link.
-+ 
-The wizard opens to the page on which you defined the item.
++
+The wizard opens to the page where you defined the item.
 .. Edit the item.
 .. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
 
-. When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan.
+. When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan. 
 +
 When your plan is validated, the *Plan details* page for your plan opens in the *Details* tab.
++
+The *Plan settings* section of the page includes settings that you specified in the *Other settings (optional)* page and some additional optional settings. The steps below refer to the additional optional steps, but all of the settings can be edited by clicking the {kebab}, making the change, and then clicking *Save*.
 
+. Check the following item on the *Plan settings* section of the page:
+
+* *Preserve CPU mode*: Generally, the CPU model (type) for {rhv-full} VMs is set at the cluster level. However, the CPU model can be set at the VM level, which is called a custom CPU model.
++
+By default, MTV sets the CPU model on the destination cluster as follows: MTV preserves custom CPU settings for VMs that have them. For VMs without custom CPU settings, MTV does not set the CPU model. Instead, the CPU model is later set by OpenShift Virtualization.
++
+To preserve the cluster-level CPU model of your {rhv-full} VMs, do the following:
+
+.. Click the {kebab}.
+.. Toggle the *Whether to preserve the CPU model* switch.
+.. Click Save.
++
+{project-short} validates any changes you made on this page.
++
 . In addition to listing details based on your entries in the wizard, the *Plan details* tab includes the following two sections after the details of the plan:
-
++
 * *Migration history*: Details about successful and unsuccessful attempts to run the plan
 * *Conditions*: Any changes that need to be made to the plan so that it can run successfully
-
++
 . When you have fixed all conditions listed, you can run your plan from the *Plans* page.
 +
 The *Plan details* page also includes five additional tabs, which are described in the table that follows:

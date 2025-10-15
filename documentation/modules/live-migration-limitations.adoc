@@ -1,0 +1,14 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="live-migration-limitations_{context}"]
+= Limitations of live migration
+
+[role="_abstract"]
+Live migration lets you migrate virtual machines (VMs) between {virt} clusters with a minimum of downtime, but the feature does have the following limitations:
+
+* Live migration is available *_only_* for migrations between {virt} clusters. It is not available for any other source provider, whether the provider is supported by {project-first} or not.
+* Live migration does not establish connectivity between {virt} clusters. Establishing such connectivity is the responsibility of the cluster administrator.
+* Live migration does not migration resources unrelated to VMs, such as services, routes, or other application components, that may be necessary for application availability after a migration.
