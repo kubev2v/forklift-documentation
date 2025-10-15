@@ -7,7 +7,8 @@
 = Creating a validation rule
 
 [role="_abstract"]
-You create a validation rule by applying a config map custom resource (CR) containing the rule to the `Validation` service.
+
+To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, the rules must be deployed using a *ConfigMap* and referenced in the {project-short} Custom Resource (CR).
 
 [IMPORTANT]
 ====
@@ -16,6 +17,29 @@ You create a validation rule by applying a config map custom resource (CR) conta
 ====
 
 .Validation rule example
+
+Validation rules are based on virtual machine (VM) attributes that are collected and simplified by the Provider Inventory service.
+
+The `Provider Inventory` service acts as an abstraction layer, normalizing complex, provider-specific VM properties into standardized, testable attributes for the validation engine. This allows rules to be written once and applied across different source environments.
+
+For example, a validation rule needs to check if a VMware VM has NUMA node affinity configured.
+
+* Provider-Specific Path: The raw VMware API uses a deeply nested path to expose this configuration: `MOR:VirtualMachine.config.extraConfig["numa.nodeAffinity"]`.
+
+* Simplified Inventory Attribute: The `Provider Inventory` service simplifies this internal path and presents it as a testable attribute with a normalized list value:
+
+The value for this attribute is standardized as a list.
+
+[cols=",",options="header",]
+|===
+|Inventory Attribute
+|Example Value
+
+|`numa.nodeAffinity`
+|`["True"]` or `[]` (empty list if not configured)
+|===
+
+This simplified attribute (`numa.nodeAffinity`) is what the validation engine uses to execute the rules efficiently.
 
 Validation rules are based on virtual machine (VM) attributes collected by the `Provider Inventory` service.
 
@@ -77,15 +101,16 @@ EOF
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} scale -n {namespace} --replicas=0 deployment/forklift-controller
+$ oc scale -n openshift-mtv --replicas=0 deployment/forklift-validation
 ----
 
 . Start the `Validation` pod by scaling the `forklift-controller` deployment to `1`:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} scale -n {namespace} --replicas=1 deployment/forklift-controller
+$ oc scale -n openshift-mtv --replicas=1 deployment/forklift-validation
 ----
+. Wait a few moments for the pod to terminate.
 
 . Check the `Validation` pod log to verify that the pod started:
 +
