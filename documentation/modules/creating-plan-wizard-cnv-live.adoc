@@ -96,7 +96,7 @@ If they are both {virt} clusters, have someone with `cluster-admin` privileges e
 
 . Click *Next*.
 +
-. On the *Other settings (optional)* page, click *Next* without doing anything else. The *Transfer network* option on this page is irrelevant because {virt} automatically uses the UDN that you set before as the transfer networks.
+. On the *Other settings (optional)* page, click *Next* without doing anything else.
 +
 . On the *Hooks (optional)* page, you can add a pre-migration hook, a post-migration hook, or both types of migration hooks. All are optional.
 
@@ -111,7 +111,6 @@ You cannot include more than one pre-migration hook or more than one post-migrat
 
 . Click *Next*.
 +
-// Review and create page
 . On the *Review and Create* page, review the information displayed.
 . Edit any item by doing the following:
 

@@ -229,6 +229,6 @@ EOF
 +
 [NOTE]
 ====
-The `cutover` field is irrelevant for live migrations, so it is not included in the `Plan` CR of this procedure. 
+The `cutover` field is irrelevant for live migrations, so it is not included in the `Migration` CR of this procedure. 
 ====
 
