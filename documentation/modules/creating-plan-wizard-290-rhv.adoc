@@ -29,6 +29,7 @@ When you click *Create plan* on the *Review and create* page of the wizard, {pro
 
 * Have an {rhv-full} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_rhv[Adding a {rhv-full} source provider] or xref:adding-source-provider_dest_rhv[Adding {a-virt} destination provider].
 * If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
+* If you are using a user-defined network (UDN), note the name of the namespace as defined in {virt}.
 
 .Procedure
 
@@ -44,12 +45,13 @@ The *Create migration plan* wizard opens.
 * *Plan project*: Select from the list.
 * *Source provider*: Select from the list.
 * *Target provider*: Select from the list.
-* *Target project*: Select from the list.
+* *Target project*: Select from the list. If you are using a UDN, this is the namespace defined in {virt}.
 
 . Click *Next*.
 +
 // Virtual machines page
 . On the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
+. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 +
 // Network map page
 . On the *Network map* page, choose one of the following options:
