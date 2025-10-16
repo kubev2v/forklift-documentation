@@ -65,7 +65,7 @@ vms:
       name: vm-3-esx8.0-rhel8.10-raid1
       luks: { name: 'test-secret-1' }
     - id: vm-4
-name: vm-4-esx8.0-rhel8.10-raid1
+      name: vm-4-esx8.0-rhel8.10-raid1
 ----
 
 .Troubleshooting
