@@ -1,0 +1,76 @@
+// Module included in the following assemblies:
+//
+// assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_enabling-nbde-with-clevis_{context}"]
+
+= Enabling Network-Bound Disk Encryption with Clevis 
+
+[role="_abstract"]
+You can migrate virtual machines (VMs) with Linux Unified Key Setup (LUKS)-encrypted disks from VMware vSphere to Red Hat OpenShift Virtualization by enabling Network-Bound Disk Encryption (NBDE) with Clevis. Alternatively, you can manually adding passphrases for LUKS-encrypted devices in your migration plan. 
+
+When you enable NBDE with Clevis, the Tang servers automatically decrypt the LUKS-encrypted disks during a migration. If you do not use NBDE with Clevis, you must manually add passphrases for LUKS-encrypted devices so that the Tang servers can decrypt the disks during a migration. 
+
+Components::
+
+* *Migration Toolkit for Virtualization (MTV):* MTV transfers the data of VMs with LUKS-encrypted disks from the source environment, such as VMware vSphere or Red Hat Virtualization, to the target OpenShift Virtualization cluster. The data transfer is based on MTV's raw copy mode, which copies the encrypted data bit-for-bit, without modifying the underlying encryption.
+* *LUKS:* LUKS is the standard disk encryption specification used on the source VM. The encrypted partitions remain in their original state during the migration process, ensuring data security and integrity.
+* *Clevis:* Clevis is a client-side framework that automates the decryption of LUKS volumes. It works by binding a LUKS key slot to a policy. To migrate VMs with LUKS-encrypted disks, the Clevis configuration, including the policy and its associated network-based services, for example, a Tang server, is transferred to or re-established in the destination environment. After migration, the Clevis configuration on the destination OpenShift Virtualization host automatically authenticates with the configured network service to retrieve the key to unlock the LUKS-encrypted disk. The automatic retrieval of the key allows the VM to boot without a manual passphrase entry from an administrator.
+
+Benefits::
+
+* *Automation:* Eliminates the need for manual steps to decrypt volumes post-migration, reducing the risk of human error and accelerating the overall process.
+* *Enhanced security:* Maintains the security of VMs throughout their migration lifecycle by preserving LUKS encryption from the source to the destination.
+* *Seamless operation:* Ensures that VMs with encrypted disks can be brought online in the new OpenShift Virtualization environment with minimal interruption.
+
+Enabling Network-Bound Disk Encryption with Clevis in the MTV UI::
+When you enable LUKS-encrypted disks in the MTV UI, you must select either NBDE with Clevis or LUKS passphrases. You can have only one encryption type, and you apply the setting to all VMs in your migration plan.
+
+Enabling Network-Bound Disk Encryption with Clevis in the YAML file::
+When you enable LUKS-encrypted disks in the YAML file for your migration plan, you can combine encryption types and apply the setting to selected VMs in the YAML file.
+
+.Prerequisites
+* You have raw copy mode enabled in MTV to ensure that the encrypted data is copied bit-for-bit without any modification.
+* The Tang servers are accessible from your OpenShift cluster.
+* You have a LUKS key slot bound to the Tang server policy.
++
+NOTE: For MTV to access the keys from the Tang server, the keys must be on a different subnet range than a user-defined network (UDN).
+
+.Procedure
+* Enable Network-Bound Disk Encryption with Clevis in the MTV UI.
+.. In the Create migration plan wizard, navigate to *Other settings* under *Additional setup* in the left navigation pane.
+.. Select *Use NBDE/Clevis*. 
++
+If you are not using NBDE with Clevis, you add passphrases for LUKS-encrypted devices so that the Tang servers can decrypt the disks during a migration.
+.. Click *Next*, and verify that *Use NBDE/Clevis* shows as *Enabled* under *Other settings (optional)*.
+.. When you create your migration plan, click *Migration plans* in the left navigation menu, and open the *Plan Details* page for your migration plan.
+.. Click the *Edit* icon for *Disk decryption* under *Plan settings*.
+.. Verify that *Use network-bound disk encryption (NBDE/Clevis)* is selected. 
++
+If you are not using NBDE with Clevis, verify that the passphrases for LUKS-encrypted devices are added. 
+
+* Enable Network-Bound Disk Encryption with Clevis in the YAML file.
+.. Click *Migration plans* in the left navigation menu and open the *Plan Details* page for your migration plan.
+.. Click the *YAML* tab to open the `MigrationPlan` custom resource (CR) for your migration plan.
+.. For each VM under `vms` in the YAML file, enter the encryption type. In this example, you set `nbdeClevis` as the encryption type for `vm-1`, LUKS passphrase as the encryption type for `vm-2`, and no encryption type for `vm-3`:
++
+Example:
++
+----
+vms:
+    - id: vm-1
+      name: vm-1-esx8.0-rhel8.10-raid1
+      targetPowerState: 'on'
+      nbdeClevis: true,
+    - id: vm-3
+      name: vm-3-esx8.0-rhel8.10-raid1
+      luks: { name: 'test-secret-1' }
+    - id: vm-4
+name: vm-4-esx8.0-rhel8.10-raid1
+----
+
+.Troubleshooting
+* For information about LUKS or Clevis configuration on the source VM, see link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html-single/security_hardening/index#configuring-automated-unlocking-of-encrypted-volumes-using-policy-based-decryption_security-hardening[Configuring automated unlocking of encrypted volumes by using policy-based decryption] in the RHEL _Security hardening_ guide.
+
+
