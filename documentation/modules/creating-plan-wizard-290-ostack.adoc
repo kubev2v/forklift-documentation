@@ -51,7 +51,7 @@ The *Create migration plan* wizard opens.
 +
 // Virtual machines page
 . On the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
-. If you are using a UDN, verify that none of the IPs of the VMs are within the subnet of the UDN. If an IP of a VM is within the subnet of the UDN, the migration fails.
+. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 +
 // Network map page
 . On the *Network map* page, choose one of the following options:
