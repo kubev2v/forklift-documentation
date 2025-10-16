@@ -1,17 +1,12 @@
 include::modules/common-attributes.adoc[]
-ifeval::["{build}" == "downstream"]
-[id="planning-{title}"]
 = {planning-guide-title}
-endif::[]
-ifeval::["{build}" == "upstream"]
-= {planning-guide-title} {project-version}
-endif::[]
+//[id="{planning-guide-title}_{context}"]
 :toc:
 :toc-title:
 :toclevels: 3
 :compat-mode:
 :context: mtv
-:mtv:
+
 
 include::modules/con_planning-intro.adoc[leveloffset=+1]
 
