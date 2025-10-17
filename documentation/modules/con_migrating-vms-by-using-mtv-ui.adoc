@@ -1,0 +1,29 @@
+// Module included in the following assemblies:
+//
+// assembly_migrating-vms-web-console.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_migrating-vms-by-using-mtv-ui_{context}"]
+
+= Migrating virtual machines by using the MTV user interface
+
+[role="_abstract"]
+Use the {project-short} user interface to migrate virtual machines (VMs) from the following providers:
+
+* VMware vSphere
+* {rhv-full} ({rhv-short})
+* {osp}
+* Open Virtual Appliances (OVAs) that were created by VMware vSphere
+* {virt} clusters
+
+For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
+
+[IMPORTANT]
+====
+You must ensure that all prerequisites are met. For more information, see xref:assembly_prerequisites-for-migration_{context}[Prerequisites for migration].
+
+VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
+
+VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
+====
+
