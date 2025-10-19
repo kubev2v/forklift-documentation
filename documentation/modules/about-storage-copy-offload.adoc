@@ -24,7 +24,9 @@ Without storage copy offload, {project-short} migrates a virtual disk as follows
 . {project-short} sends the data over a network to {virt}.
 . {virt} writes the data to its storage. 
 +
-This method can be slow and consume significant network and host resources. With storage copy offload, the process is streamlined:
+This method can be slow and consume significant network and host resources. 
+
+With storage copy offload, the process is streamlined:
 
 . {project-short} initiates a disk transfer request.
 . Instead of sending the data, {project-short} instructs the storage array to perform a direct copy from the source storage to {virt}.
