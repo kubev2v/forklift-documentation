@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="configuring-target-vm-scheduling-ui_{context}"]
+= Scheduling target VMs from the user interface
+
+[role="_abstract"]
+You can use the {project-first} user interface, which is located in the {ocp} web console, to tell {project-first} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on.
+
+The *Virtualization* section of the {ocp} web console supports the following options for scheduling target VMs:
+
+* *VM target node selector*: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you create. This type of label is often used for nodes with special capabilities, such as GPU nodes or storage nodes. 
+* *VM target labels*: Applies organizational or operational labels to migrated VMs for identification and management.
+* *VM target affinity rules*: Implements placement policies such as co-locating related workloads or, for disaster recovery, ensuring that specific VMs are migrated to different nodes. This type of rule uses hard (requirements) and soft (preferences) conditions combined with logical operators, such as `Exists` or `DoesNotExist` instead of using the rigid key-value pairs used by a VM target node selector. As a result, target affinity rules are more flexible than target node selector rules.
++
+The {project-short} UI supports the following affinity rules:
++
+** Node affinity rules
+** Workload (pod) affinity and anti-affinity rules
+
+You configure target VM scheduling options on the *Plan details* page of the relevant migration plan. The options apply to all VMs that are included in that migration.
+
+// Instructions for the VM target scheduling options are included in the procedures for creating migration plans. The same options are supported for all vendors ({virt}, {rhv-full}, {osp}, Open Virtual Appliance (OVA), and {virt}).
+
+
+

@@ -1,0 +1,20 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="about-configuring-target-vm-scheduling_{context}"]
+= About scheduling target VMs
+
+[role="_abstract"]
+Starting with {project-first} 2.10, you can use the _target VM scheduling_ feature to direct {project-short} to migrate virtual machines (VMs) to specific nodes of {virt} as well as to schedule when to power on the VMs. Using the feature, you can design and enforce rules that you set using either the UI or command-line interface.
+
+Previously, when you migrated VMs to {virt}, {virt} automatically determined the node the VMs would be migrated to. Although this served many customers' needs, there are certain situations in which it is useful to be able to specify the target node of a VM or the conditions under which the VM is powered on, regardless of the type of migration involved.
+
+== Use cases
+
+Target VM scheduling is designed to help you with the following use cases, among others:
+
+* *Business continuity and disaster recovery*: You can use scheduling rules to migrate and power up critical VMs to several sites, in different time zones or otherwise geographically separated by significant distances. This allows you to deploy these VMs as strategic assets for business continuity, such as disaster recovery.
+
+* *Working with fluctuating demands*: In situations where demand for a service might vary significantly, rules for scheduling when to spin up VMs based upon demand allows you to use your resources more efficiently.

@@ -31,7 +31,21 @@ include::../modules/adding-hook-using-ui.adoc[leveloffset=+2]
 
 include::../modules/adding-hook-using-cli.adoc[leveloffset=+2]
 
-include::../modules/about-udn.adoc[leveloffset=+2]
+include::../modules/about-udn.adoc[leveloffset=+1]
+
+== Scheduling target VMs
+
+By default, {virt} assigns the destination nodes during VM migration. However, you can use the scheduling target VMs feature to define the destination nodes and apply specific conditions to schedule when the VMs are switched from `pending` to `on`.
+
+include::../modules/about-configuring-target-vm-scheduling.adoc[leveloffset=+2]
+
+include::../modules/target-vm-scheduling-prerequisites.adoc[leveloffset=+2]
+
+include::../modules/target-vm-scheduling-options.adoc[leveloffset=+2]
+
+include::../modules/configuring-target-vm-scheduling-cli.adoc[leveloffset=+2]
+
+include::../modules/configuring-target-vm-scheduling-ui.adoc[leveloffset=+2]
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]

@@ -1,0 +1,15 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: REFERENCE
+[id="target-vm-scheduling-prerequisites_{context}"]
+= Target VM scheduling prerequisites
+
+[role="_abstract"]
+Migrations that use target VM scheduling require the following prerequisites, in addition to the prerequisites for your source provider:
+
+* {project-first} 2.10 or later.
+* Version of {virt} that is compatible with your version of {project-short}. For {project-short} 2.10, the compatible versions of {virt} are 4.18, 4.19, and 4.20 only.
+* `cluster-admin` or equivalent security privileges that allow managing `VirtualMachineInstance` objects and associated Kubernetes scheduling primitives.
+

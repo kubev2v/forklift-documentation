@@ -24,8 +24,6 @@ In version 2.10.0 and later, {project-short} detects if you have selected a user
 {project-short} supports using UDNs for all providers except {virt}.
 ====
 
-For more information about UDNs, see 'About user defined networks' in _Migrating your virtual machines to Red Hat {virt}_. Migration procedures have been updated to include UDNs.
-
 [NOTE]
 ====
 You can override the default migration network of the provider by selecting a different network when you create a migration plan.
