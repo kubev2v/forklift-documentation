@@ -22,7 +22,7 @@ Warm migration is available only for {vmw} vSphere and {rhv-full}. This type of 
 
 These two types of migration are discussed in detail in xref:about-cold-warm-migration_mtv[About cold and warm migration].
 
-Live migration is available *_only_* for migrations between {virt} clusters. It requires {project-short} version 2.10 or later and {virt} version 4.20 or later. 
+Live migration is available *_only_* for migrations between {virt} clusters or between namespaces on the same {virt} cluster. It requires {project-short} version 2.10 or later and {virt} version 4.20 or later. 
 
 Live migration is discussed in detail in xref:about-live-migration_mtv[About live migration].
 

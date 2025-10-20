@@ -4,10 +4,10 @@
 
 :_content-type: PROCEDURE
 [id="creating-plan-wizard-cnv-live_{context}"]
-= Creating a migration plan for a live migration between {virt} clusters by using the {project-short} wizard
+= Creating a migration plan for a live migration by using the {project-short} wizard
 
 [role="_abstract"]
-You create a migration plan for a live migration of virtual machines (VMs) from one {virt} cluster to another almost exactly as you create a migration plan for a cold migration. The only difference is that you specify it is a *Live migration* in the *Migration type* page.
+You create a migration plan for a live migration of virtual machines (VMs) almost exactly as you create a migration plan for a cold migration. The only difference is that you specify it is a *Live migration* in the *Migration type* page.
 
 .Prerequisites
 
@@ -92,7 +92,7 @@ If needed, click *Add mapping* to add another mapping.
 +
 If *Live migration* does not appear as an option, return to the *General* page and verify that both the source provider and target provider are {virt} clusters.
 +
-If they are both {virt} clusters, have someone with `cluster-admin` privileges ensure that the prerequisites for live migration between {virt} clusters are met. For more information, see xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
+If they are both {virt} clusters, have someone with `cluster-admin` privileges ensure that the prerequisites for live migration are met. For more information, see xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
 
 . Click *Next*.
 +

@@ -7,7 +7,7 @@
 = {virt} live migration prerequisites
 
 [role="_abstract"]
-Live migration between {virt} clusters using {project-first} has its own set of prerequisites:
+In addition to the regular xref:cnv-prerequisites_mtv[virt} prerequisites], live migration has the following additional prerequisites:
 
 * {project-short} 2.10.0 or later installed. For more information, see xref:upgrading-mtv-ui_mtv[Upgrading the {project-full}]. {project-short} treats all {virt} migrations run on {project-short} 2.9 or earlier as cold migrations, even if they are configured as live migrations.
 * {virt} 4.20.0 or later installed on both source and target clusters.

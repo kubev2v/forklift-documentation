@@ -19,5 +19,5 @@ If you compare the migration speeds of cold and warm migrations, you can observe
 
 [NOTE]
 ====
-Live migration reduces downtime even further than warm migration, but live migration is available only for migration between {virt} clusters. Therefore it is not included in the comparison above.
+Live migration reduces downtime even further than warm migration, but live migration is available only for migration between {virt} clusters or between namespaces on the same {virt} cluster. Therefore it is not included in the comparison above.
 ====
