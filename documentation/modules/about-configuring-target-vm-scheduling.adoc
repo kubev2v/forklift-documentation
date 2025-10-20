@@ -1,0 +1,13 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="about-configuring-target-vm-scheduling_{context}"]
+= About configuring the scheduling of target VMs
+
+[role="_abstract"]
+Starting with {project-first} 2.10, you can direct {project-short} to migrate virtual machines (VMs) to specific nodes of {virt} as well as scheduling when the VMs are powered on by following rules you set in either the UI or command-line interface. 
+
+Previously, when you migrated VMs to {virt}, {virt} automatically determined the node the VMs would be migrated to. Although this served many customers' needs, there are certain situations in which it is very useful to be able to specify the target node of a VM or the conditions under which it is powered on, regardless of the type off migration involved. 
+
