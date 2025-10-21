@@ -31,7 +31,7 @@ The *Create migration plan* wizard opens.
 
 . Click *Next*.
 +
-. On the *Virtual machines* page, select the virtual machines you want to migrate and be sure they are powered on. A live migration fails if any of its VMs are powered off.
+. On the *Virtual machines* page, select the virtual machines you want to migrate and ensure they are powered on. A live migration fails if any of its VMs are powered off.
 +
 . Click *Next*.
 +
