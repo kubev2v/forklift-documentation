@@ -3,7 +3,7 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: PROCEDURE
-[id="creating-plan-wizard-290-vmware_{context}"]
+[id="creating-plan-wizard-vmware_{context}"]
 = Creating a VMware vSphere migration plan by using the MTV wizard
 
 [role="_abstract"]
@@ -63,7 +63,7 @@ These are network maps available for all plans, and therefore, they are _ownerle
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which will then be considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -90,7 +90,7 @@ These are storage maps available for all plans, and therefore, they are _ownerle
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. For each map, specify the following. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -181,7 +181,7 @@ You cannot include more than one pre-migration hook or more than one post-migrat
 
 .. Click its *Edit step* link.
 +
-The wizard opens to the page on which you defined the item.
+The wizard opens to the page where you defined the item.
 .. Edit the item.
 .. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
 
