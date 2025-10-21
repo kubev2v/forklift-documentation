@@ -42,7 +42,7 @@ include::modules/live-migration-limitations.adoc[leveloffset=+2]
 include::modules/live-migration-workflow.adoc[leveloffset=+2]
 
 [id="prerequisites-for-all-providers_{context}"]
-== Prerequisites and software requirements for all providers 
+== Prerequisites and software requirements for all providers
 
 Review the following prerequisites and software requirements to ensure that your environment is prepared for migration.
 
@@ -59,7 +59,7 @@ include::modules/encryption-support.adoc[leveloffset=+2]
 [id="prerequisites-per-provider_{context}"]
 == Specific software requirements for each provider
 
-In addition to the prerequisites and software requirements that apply to all providers, there are specific requirements for each provider. 
+In addition to the prerequisites and software requirements that apply to all providers, there are specific requirements for each provider.
 
 include::modules/vmware-prerequisites.adoc[leveloffset=+2]
 
@@ -75,7 +75,7 @@ include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 
-include::modules/additional-authentication-for-osp.adoc[leveloffset=+3] 
+include::modules/additional-authentication-for-osp.adoc[leveloffset=+3]
 
 :!mtv:
 :context: ostack
@@ -433,20 +433,6 @@ include::modules/canceling-migration-cli-entire.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 
-:ova!:
-:context: cnv
-:cnv:
-
-include::modules/proc_migrating-virtual-machines-cli.adoc[leveloffset=+2]
-
-include::modules/migrating-live-cnv-cnv-vms-cli.adoc[leveloffset=+3]
-
-include::modules/canceling-migration-cli.adoc[leveloffset=+3]
-
-include::modules/canceling-migration-cli-entire.adoc[leveloffset=+4]
-
-include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
-
 :cnv!:
 :context: mtv
 :mtv:
@@ -468,11 +454,13 @@ include::modules/updating-validation-rules-version.adoc[leveloffset=+3]
 
 include::modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
-include::modules/about-hooks-for-migration-plans.adoc[leveloffset=+3]
+include::modules/about-hooks-for-migration-plans.adoc[leveloffset=+2]
 
 include::modules/adding-hook-using-ui.adoc[leveloffset=+3]
 
 include::modules/adding-hook-using-cli.adoc[leveloffset=+3]
+
+include::modules/about-udn.adoc[leveloffset=+2]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 
@@ -515,7 +503,7 @@ include::modules/virt-migration-workflow.adoc[leveloffset=+2]
 
 include::modules/virt-v2v-mtv.adoc[leveloffset=+2]
 
-include::modules/raw-copy-mode.adoc[leveloffset=+3]
+include::modules/raw-copy-mode.adoc[leveloffset=+2]
 
 [id="logs-and-crs_{context}"]
 == Logs and custom resources
