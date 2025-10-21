@@ -14,7 +14,7 @@ You can use the {project-first} to migrate virtual machines (VMs) from the follo
 
 == Types of migration
 
-{project-short} supports three types of migration: cold, warm and live.
+{project-short} supports three types of migration: cold, warm, and live.
 
 Cold migration is available for all of the source providers listed above. This type of migration migrates VMs that are powered *_off_* and does not require common stored storage. 
 
