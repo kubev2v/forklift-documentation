@@ -43,7 +43,7 @@ These are network maps available for all plans, and therefore, they are _ownerle
 +
 [NOTE]
 ====
-If you choose an existing map, be sure it has the same source provider and target provider as the ones you want to use in your plan.
+If you select an existing map, be sure it has the same source provider and target provider as the ones you want to use in your plan.
 ====
 
 * *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
