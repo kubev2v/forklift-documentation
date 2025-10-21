@@ -478,6 +478,8 @@ include::modules/adding-hook-using-cli.adoc[leveloffset=+3]
 include::modules/about-udn.adoc[leveloffset=+2]
 include::modules/about-configuring-target-vm-scheduling.adoc[leveloffset=+2]
 
+include::modules/target-vm-scheduling-prerequisites.adoc[leveloffset=+3]
+
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 
 [id="uninstalling-mtv_{context}"]
