@@ -1,13 +1,11 @@
 include::modules/common-attributes.adoc[]
-[id="migrating-{title}"]
-= Migrating your virtual machines to Red Hat OpenShift Virtualization
-
+= {migrating-guide-title}
+//[id="{migrating-guide-title}"]
 :toc:
 :toc-title:
 :toclevels: 3
 :compat-mode:
 :context: mtv
-:mtv:
 
 
 include::modules/con_performing-migration-intro.adoc[leveloffset=+1]
@@ -33,5 +31,3 @@ include::assemblies/assembly_mtv-performance-recommendations.adoc[leveloffset=+1
 include::modules/mtv-telemetry.adoc[leveloffset=+1]
 
 
-
-:mtv!:
