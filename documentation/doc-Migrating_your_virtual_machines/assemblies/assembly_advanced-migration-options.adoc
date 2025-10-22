@@ -40,6 +40,12 @@ include::../modules/adding-hook-using-ui.adoc[leveloffset=+2]
 
 include::../modules/adding-hook-using-cli.adoc[leveloffset=+2]
 
+== Scheduling target VMs
+
+By default, when you migrate VMs, {virt} assigns the nodes that they migrate to. However, you can use the _scheduling target VMs_ feature to determine the nodes VMS are migrated to as well as applying conditions to schedule when the VMs are switched from   `Pending` to `on`.
+
+include::../modules/about-configuring-target-vm-scheduling.adoc[leveloffset=+2]
+
 
 
 ifdef::parent-context[:context: {parent-context}]
