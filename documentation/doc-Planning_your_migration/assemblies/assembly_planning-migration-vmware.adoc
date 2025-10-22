@@ -45,7 +45,7 @@ include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffs
 :context: vmware
 :vmware:
 
-include::../modules/creating-plan-wizard-290-vmware.adoc[leveloffset=+1]
+include::../modules/creating-plan-wizard-vmware.adoc[leveloffset=+1]
 
 
 :!vmware:
