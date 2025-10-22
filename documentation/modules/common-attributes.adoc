@@ -18,8 +18,8 @@
 :project-full: Migration Toolkit for Virtualization
 :project-short: MTV
 :project-first: {project-full} ({project-short})
-:project-version: 2.9
-:project-z-version: 2.9.4
+:project-version: 2.10
+:project-z-version: 2.10.0
 :rhel-first: Red Hat Enterprise Linux (RHEL)
 :the: The
 :the-lc: the
