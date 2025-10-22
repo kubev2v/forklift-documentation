@@ -7,14 +7,22 @@
 = About configuring the scheduling of target VMs
 
 [role="_abstract"]
-Starting with {project-first} 2.10, you can direct {project-short} to migrate virtual machines (VMs) to specific nodes of {virt} as well as scheduling when the VMs are powered on by following rules you set in either the UI or command-line interface. 
+Starting with {project-first} 2.10, you can use the _target VM scheduling_ feature to direct {project-short} to migrate virtual machines (VMs) to specific nodes of {virt} as well as scheduling when the VMs are powered on. The feature works by allowing you to design and enforce rules that you set in either the UI or command-line interface.
 
-Previously, when you migrated VMs to {virt}, {virt} automatically determined the node the VMs would be migrated to. Although this served many customers' needs, there are certain situations in which it is very useful to be able to specify the target node of a VM or the conditions under which it is powered on, regardless of the type of migration involved. 
+Previously, when you migrated VMs to {virt}, {virt} automatically determined the node the VMs would be migrated to. Although this served many customers' needs, there are certain situations in which it is very useful to be able to specify the target node of a VM or the conditions under which it is powered on, regardless of the type of migration involved.
 
 == Use cases
 
-* *Giving priority to critical workloads*: In many migrations, there are VMs that must be among the first migrated and powered up. Node selector rules make it possible for you to ensure that specific VMs are migrated first to support others migrated afterwards. 
+Target VM scheduling is designed to help you with the following use cases, among others: 
 
-* *Business continuity and disaster recovery*: You can use affinity rules to migrate and power up critical VMs to several sites, in different timezones or otherwise geographically separated by significant distances. This allows you to use these VMS as strategic assets during any business continuity event, rather than them being a source of worry. This is especially true for the disaster recovery aspect of business continuity planning. 
+* *Giving priority to critical workloads*: In many migrations, there are VMs that must be among the first migrated and powered up. Node selector rules make it possible for you to ensure that specific VMs are migrated first to support others migrated afterwards.
 
-* *Working with Fluctuating Demands*: In situations where demand for a service might vary significantly, rules for scheduling when to spin up spinning up of VMs based on demand allows you to use your resources more efficiently. 
+* *Business continuity and disaster recovery*: You can use affinity rules to migrate and power up critical VMs to several sites, in different timezones or otherwise geographically separated by significant distances. This allows you to use these VMS as strategic assets during any business continuity event, rather than them being a source of worry. This is especially true for the disaster recovery aspect of business continuity planning.
+
+* *Working with Fluctuating Demands*: In situations where demand for a service might vary significantly, rules for scheduling when to spin up spinning up of VMs based on demand allows you to use your resources more efficiently.
+
+== VM target scheduling options
+
+You can use the following options to schedule when your target VMs are powered on:
+
+
