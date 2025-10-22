@@ -43,7 +43,7 @@ include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffs
 :context: ostack
 :ostack:
 
-include::../modules/creating-plan-wizard-290-ostack.adoc[leveloffset=+1]
+include::../modules/creating-plan-wizard-ostack.adoc[leveloffset=+1]
 
 
 :!ostack:
