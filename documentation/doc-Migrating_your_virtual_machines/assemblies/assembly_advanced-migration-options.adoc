@@ -46,7 +46,9 @@ By default, when you migrate VMs, {virt} assigns the nodes that they migrate to.
 
 include::../modules/about-configuring-target-vm-scheduling.adoc[leveloffset=+2]
 
-include::../modules/target-vm-scheduling-prerequisites.adoc[leveloffset=+3]
+include::../modules/target-vm-scheduling-prerequisites.adoc[leveloffset=+2]
+
+include::../modules/target-vm-scheduling-options.adoc[leveloffset=+2]
 
 
 

@@ -15,33 +15,8 @@ Previously, when you migrated VMs to {virt}, {virt} automatically determined the
 
 Target VM scheduling is designed to help you with the following use cases, among others: 
 
-* *Giving priority to critical workloads*: In many migrations, there are VMs that must be among the first migrated and powered up. Node selector rules make it possible for you to ensure that specific VMs are migrated first to support others migrated afterwards.
+* *Giving priority to critical workloads*: In many migrations, there are VMs that must be among the first migrated and powered up. Node selector rules let you ensure that specific VMs are migrated first to support others migrated afterwards.
 
 * *Business continuity and disaster recovery*: You can use affinity rules to migrate and power up critical VMs to several sites, in different timezones or otherwise geographically separated by significant distances. This allows you to use these VMS as strategic assets during any business continuity event, rather than them being a source of worry. This is especially true for the disaster recovery aspect of business continuity planning.
 
 * *Working with Fluctuating Demands*: In situations where demand for a service might vary significantly, rules for scheduling when to spin up spinning up of VMs based on demand allows you to use your resources more efficiently.
-
-== VM target scheduling rule options
-
-You can use the following options to schedule when your target VMs are powered on:
-
-* *Node Selector* rule: This is both the simplest and strictest rule. You define a set of mandatory key/value label pairs that the target node must possess. If no node on the cluster has all the labels specified, the VM is not scheduled and it remains in a `Pending` state.
-
-For example, you might have a premium service level and want to migrate VMs for it to a specific node. You could create a key named `license-tier` and a value named `gold`. You could then use the *Node Selector* option to create a rule that certain VMs can only be switched `on` if migrated to a node for which `license pair=gold` is true.
-
-* *Node Affinity and Node Anti-Affinity* rules: These rules offer more flexible placement control than rigid Node Selector rules. _Node Affinity_ rules let schedule VMs to run on selected nodes. _Node Anti-affinity_ rules let you prevent VMs from being scheduled to run on selected nodes. 
-
-Both types of rules allow you to include both _hard_ and _soft_ conditions in the same rule. A hard condition is a requirement, and a soft condition is a preference.
-
-For example, whereas a Node Selector rule might require that a VM must be migrated only to a specific cluster, a Node Affinity rule with a hard condition might require that a VM be migrated to a specific cluster or that it be migrated to an SSD disk, but it cannot bebe   
-
-** Node Affinity rules 
-
-
-Node Affinity: Defines rules to require (hard rule) or prefer (soft rule) that the VM is scheduled on nodes that match certain labels.
-
-Node Anti-Affinity: Defines rules to require (hard rule) or prefer that the VM avoids scheduling on nodes that match certain characteristics. This is vital for High Availability (HA), as it ensures redundant VMs are separated across different failure domains (e.g., nodes in separate availability zones).
-
-Custom Scheduler Name: If your OpenShift environment uses a secondary or specialized scheduler (in addition to the default kube-scheduler) to handle specific workload types, you can instruct MTV to apply this custom scheduler name to the target VM's manifest. This directs the VM to use the specialized logic designed for that workload.
-
-By integrating these controls into the migration plan, you ensure that the complex scheduling logic required for modern applications is defined upfront, preventing post-migration performance degradation or unexpected scheduling errors.
