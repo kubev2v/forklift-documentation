@@ -1,0 +1,54 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="target-vm-scheduling-options_{context}"]
+= Target VM scheduling options
+
+You can use the following options to schedule when your target VMs are powered on:
+
+* *Node Selector* rule: This is both the simplest and strictest rule. You define a set of mandatory exact match key/value label pairs that the target node must possess. If no node on the cluster has all the labels specified, the VM is not scheduled and it remains in a `Pending` state until there is space on such a node.
++
+For example, you might have two service levels, gold (premium) and silver (regular), and you want to migrate VMs for the premium service to a specific node. You could create a key named `license-tier` and a value named `gold`. You could then use the *Node Selector* option to create a rule that certain VMs can only be switched `on` if migrated to a node for which `license-tier=gold` is true. Even if there is space on a node for which `license-tier=silver` is true, your VMs will status `Pending`, until there is space on a node that meets your condition.
+
+* *Node Affinity and Node Anti-Affinity* rules:  _Node Affinity_ rules let you schedule VMs to run on selected nodes. _Node Anti-affinity_ rules let you prevent VMs from being scheduled to run on selected nodes. Node Anti-affinity rules are vital for High Availability (HA), because they can be used to ensure that more than one redundant VM is not powered on in the same availability zone.
++
+Node Affinity and Node Anti-Affinity rules offer more flexible placement control than rigid Node Selector rules, because they support conditionals such as `or`, `and`, or `not`. For example, you could require that a VM be powered on "only if it is migrated to node A _or_ if it is migrated to an SSD disk, but it _cannot_ be migrated to a node for which `license-tier=silver` is true."
++
+Additionally, both types of rules allow you to include both _hard_ and _soft_ conditions in the same rule. A hard condition is a requirement, and a soft condition is a preference. The previous example used only hard conditions. A rule that states that "a VM can be powered on if it is migrated to node A _or_ if it is migrated to an SSD disk, but it is preferred not to migrate it to a node for which `license-tier=silver` is true" is an example of a rule that uses soft conditions.
+
+* *Custom Scheduler Name*: If your {virt} environment uses a secondary or specialized scheduler, in addition to the default `kube-scheduler`, to handle specific workload types, you can instruct {project-short} to apply this custom scheduler name to the target VM's manifest. This directs the VM to use the specialized logic designed for that workload.
+
+By integrating any of these three types of controls into your migration plan, you ensure that the complex scheduling logic required for modern applications is defined upfront, preventing post-migration performance degradation or unexpected scheduling errors.
+
+[IMPORTANT]
+====
+Any scheduling rule applied in a migration plan applies to all VMs in it.
+====
+
+== {project-short} target VM scheduling options at a glance
+
+The table that follows describes the target VM scheduling options that {project-short} supports and offers an example user case for each one. 
+
+[cols="3", options="header"]
+.{project-short} target VM scheduling options
+|===
+|Option |Description |Example use case
+
+| *Node Selector*
+| Specifies a hard requirement (key/value label) that the target node must possess. If no node matches the selector, the VM will remain in a `Pending` state.
+| Force a licensed application VM onto nodes labeled `license-tier=gold`.
+
+| *Node Affinity*
+| Defines rules that either require (hard) or prefer (soft) a VM to be scheduled on nodes matching certain criteria.
+| Prefer scheduling the VM on nodes that are physically located in `zone=west`.
+
+| *Node Anti-Affinity*
+| Defines rules that either require (hard) or prefer avoiding scheduling the VM on nodes matching certain criteria.
+| Require separating two redundant database VMs by ensuring they do not land on nodes in the same physical rack.
+
+| *Scheduler Name*
+| Overrides the default kube-scheduler to explicitly use a custom scheduler configured on the cluster.
+| Direct a highly specialized VM workload to a Trimaran scheduler.
+|===
