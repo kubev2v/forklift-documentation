@@ -258,7 +258,7 @@ Variable names cannot exceed 63 characters.
 *** Click the *Virtual Machines* tab.
 *** Select the desired VMs.
 *** Click the {kebab} of the VM.
-*** Select *Edit PVC name template*. For more details, see xref:pvc-naming-vmware-specific-template_vmware[PVC naming with {vmw}-specific template variables].
+*** Select *Edit PVC name template*.
 *** *** Enter the template according to the instructions.
 *** Click *Save*.
 +
