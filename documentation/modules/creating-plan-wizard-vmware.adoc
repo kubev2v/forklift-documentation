@@ -259,7 +259,7 @@ Variable names cannot exceed 63 characters.
 *** Select the desired VMs.
 *** Click the {kebab} of the VM.
 *** Select *Edit PVC name template*.
-*** *** Enter the template according to the instructions.
+*** Enter the template according to the instructions.
 *** Click *Save*.
 +
 [IMPORTANT]
