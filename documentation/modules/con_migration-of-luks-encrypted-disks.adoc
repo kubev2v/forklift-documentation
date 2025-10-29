@@ -1,0 +1,25 @@
+// Module included in the following assemblies:
+//
+// assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_migration-of-luks-encrypted-disks_{context}"]
+
+= Migration of LUKS-encrypted disks
+
+[role="_abstract"]
+You can migrate virtual machines (VMs) with Linux Unified Key Setup (LUKS)-encrypted disks from VMware vSphere to Red Hat OpenShift Virtualization by enabling Network-Bound Disk Encryption (NBDE) with Clevis. Alternatively, you can manually add passphrases for LUKS-encrypted devices in your migration plan. 
+
+Components of NBDE::
+
+* *Migration Toolkit for Virtualization (MTV):* Transfers the data of VMs with LUKS-encrypted disks from the source environment to the target OpenShift Virtualization cluster. The data transfer is based on MTV's raw copy mode, which copies the encrypted data bit-for-bit, without modifying the underlying encryption.
+* *LUKS:* The standard disk encryption specification used on the source VM. The encrypted partitions remain in their original state during the migration process, ensuring data security and integrity.
+* *Clevis:* Client-side framework that automates the decryption of LUKS volumes by binding a LUKS key slot to a policy. To migrate VMs with LUKS-encrypted disks, the Clevis configuration is transferred to or re-established in the destination environment. After migration, the Clevis configuration on the destination OpenShift Virtualization host automatically authenticates with the configured network service to retrieve the key to unlock the LUKS-encrypted disk. The automatic retrieval of the key allows the VM to boot without a manual passphrase entry from an administrator.
+
+Benefits of NBDE::
+
+* *Automation:* Eliminates the need for manual steps to decrypt volumes post-migration, reducing the risk of human error and accelerating the overall process.
+* *Enhanced security:* Maintains the security of VMs throughout their migration lifecycle by preserving LUKS encryption from the source to the destination.
+* *Seamless operation:* Ensures that VMs with encrypted disks can be brought online in the new OpenShift Virtualization environment with minimal interruption.
+
+
