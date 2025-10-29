@@ -33,6 +33,6 @@ In the OpenShift platform, all resource names, including VMs, must have DNS-comp
 . If the *Target name* column does not already show in the VM table, click *Manage columns* to select *Target name* and display the column.
 . Identify non-conformant names in the list of VMs by checking the alerts in the *Concerns* column.
 . To rename a VM, click the *More* icon at the end of the row for the VM, and click *Edit target name*.
-. Enter and save a new name for the VM. Ensure that the new name consists only of alphanumeric characters (a-z, 0-9) and hyphens. Ensure that the name does not start or end with a hyphen or contain consecutive hyphens, and it is less than 63 characters long.
+. Enter and save a new name for the VM. Ensure that the new name consists only of alphanumeric characters (a-z, 0-9) and hyphens. Ensure that the name does not start or end with a hyphen or contain consecutive hyphens and is less than 63 characters long.
 
 
