@@ -68,6 +68,8 @@ include::../modules/ova-prerequisites.adoc[leveloffset=+1]
 
 include::../modules/cnv-prerequisites.adoc[leveloffset=+1]
 
+include::../modules/cnv-cnv-live-prerequisites.adoc[leveloffset=+2]
+
 include::../modules/compatibility-guidelines.adoc[leveloffset=+1]
 
 :!mtv:
