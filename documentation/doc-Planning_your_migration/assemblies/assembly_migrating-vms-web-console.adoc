@@ -17,26 +17,9 @@ include::../modules/mtv-ui.adoc[leveloffset=+1]
 
 include::../modules/mtv-overview-page.adoc[leveloffset=+1]
 
-== Migrating virtual machines by using the MTV user interface
+include::../modules/con_migrating-vms-by-using-mtv-ui.adoc[leveloffset=+1]
 
-Use the {project-short} user interface to migrate VMs from the following providers:
-
-* VMware vSphere
-* {rhv-full} ({rhv-short})
-* {osp}
-* Open Virtual Appliances (OVAs) that were created by VMware vSphere
-* {virt} clusters
-
-For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
-
-[IMPORTANT]
-====
-You must ensure that all prerequisites are met. For more information, see xref:assembly_prerequisites-for-migration_{context}[Prerequisites for migration].
-
-VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
-
-VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
-====
+include::../modules/proc_renaming-vms-for-migration.adoc[leveloffset=+1]
 
 
 ifdef::parent-context[:context: {parent-context}]
