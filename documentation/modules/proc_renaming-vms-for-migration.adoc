@@ -27,7 +27,8 @@ In the OpenShift platform, all resource names, including VMs, must have DNS-comp
 |===
 
 .Procedure
-. In the *Create migration plan* wizard, click *Migration plans* in the left navigation menu, and open the *Plan Details* page for your migration plan.
+. In the Red Hat OpenShift web console, click *Migration for Virtualization* > *Migration plans*.
+. Open the *Plan Details* page for your migration plan.
 . Click the *Virtual Machines* tab to view a table of all VMs from the configured source provider.
 . If the *Target name* column does not already show in the VM table, click *Manage columns* to select *Target name* and display the column.
 . Identify non-conformant names in the list of VMs by checking the alerts in the *Concerns* column.
