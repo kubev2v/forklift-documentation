@@ -101,7 +101,7 @@ EOF
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc scale -n openshift-mtv --replicas=0 deployment/forklift-validation
+$ oc scale -n {namespace} --replicas=0 deployment/forklift-validation
 ----
 
 . Start the `Validation` pod by scaling the `forklift-controller` deployment to `1`:
