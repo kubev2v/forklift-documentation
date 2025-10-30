@@ -18,6 +18,9 @@ include::modules/rn-2-10.adoc[leveloffset=+1]
 // New features and enhancements by z-stream release
 include::modules/new-features-and-enhancements-2-10.adoc[leveloffset=+2]
 
+// Resolved issues intro
+include::modules/rn-resolved-issues.adoc[leveloffset=+2]
+
 // Resolved issues by z-stream release
 include::modules/rn-2-10-0-resolved-issues.adoc[leveloffset=+3]
 
