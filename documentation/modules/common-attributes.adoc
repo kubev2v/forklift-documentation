@@ -8,6 +8,7 @@
 :ocp: Red Hat OpenShift
 :ocp-name: OpenShift
 :ocp-short: OpenShift
+:ocp-full: Red Hat OpenShift Container Platform (OCP)
 // when updating the ocp-version, update the ocp-y-version
 :ocp-version: 4.19
 :ocp-y-version: 4.19, 4.18, 4.17
