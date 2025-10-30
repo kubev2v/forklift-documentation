@@ -44,6 +44,8 @@ include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffs
 
 include::../modules/creating-plan-wizard-cnv.adoc[leveloffset=+1]
 
+include::../modules/creating-plan-wizard-cnv-live.adoc[leveloffset=+2]
+
 :!cnv:
 
 

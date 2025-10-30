@@ -1,0 +1,25 @@
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_live-migration_{context}"]
+= Live migration in {project-short} 
+
+//:context: cold-warm-migration
+
+[role="_abstract"]
+You can use _live migration_ to migrate virtual machines (VMs) between {virt} clusters, or between namespaces on the same {virt} cluster, with extremely limited downtime.
+
+Live migration is supported by {project-first} version 2.10.0 and later. It requires {virt} 4.20 or later on both your source and target clusters. 
+
+Live migration makes it easier for you to perform Day 2 tasks, such as seamless maintenance and workload balancing after you have migrated your VMs to {virt}.
+
+include::../modules/benefits-live-migration.adoc[leveloffset=+1]
+
+include::../modules/live-migration-mtv-cnv.adoc[leveloffset=+1]
+
+include::../modules/live-migration-limitations.adoc[leveloffset=+1]
+
+include::../modules/live-migration-workflow.adoc[leveloffset=+1]
+
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
