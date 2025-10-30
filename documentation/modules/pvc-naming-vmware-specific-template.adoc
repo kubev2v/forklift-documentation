@@ -68,6 +68,60 @@ The example above uses `regexReplaceAll` and `toLower` functions which might be 
 
 * *Uniqueness of PVC Names*: If `pvcNameTemplateUseGenerateName` is set to `false`, it is crucial to ensure that your PVC naming template generates unique names to avoid conflicts during migration.
 
+[width="100%",cols="34%,33%,33%",options="header",]
+|===
+|Function |Description |Example
+|lower |Converts string to lowercase |++{{++ lower "`TEXT`" }} → text
+
+|upper |Converts string to uppercase |++{{++ upper "`text`" }} → TEXT
+
+|contains |Checks if string contains substring |++{{++ contains
+"`hello`" "`lo`" }} → true
+
+|replace |Replaces occurrences in a string |++{{++"`I Am Henry VIII`"
+{vbar} replace ” ” "`-`"}} → I-Am-Henry-VIII
+
+|trim |Removes whitespace from both ends |++{{++ trim ” text ” }} → text
+
+|trimAll |Removes specified characters from both ends |++{{++ trimAll
+"`$`" "`latexmath:[5.00]`" }} → 5.00
+
+|trimSuffix |Removes suffix if present |++{{++ trimSuffix "`.go`"
+"`file.go`" }} → file
+
+|trimPrefix |Removes prefix if present |++{{++ trimPrefix "`go.`"
+"`go.file`" }} → file
+
+|title |Converts to title case |++{{++ title "`hello world`" }} → Hello
+World
+
+|untitle |Converts to lowercase |++{{++ untitle "`Hello World`"
+}} → hello world
+
+|repeat |Repeats string n times |++{{++ repeat 3 "`abc`" }} → abcabcabc
+
+|substr |Extracts substring from start to end |++{{++ substr 1 4
+"`abcdef`" }} → bcd
+
+|nospace |Removes all whitespace |++{{++ nospace "`a b c`" }} → abc
+
+|trunc |Truncates string to specified length |++{{++ trunc 3 "`abcdef`"
+}} → abc
+
+|initials |Extracts first letter of each word |++{{++ initials "`John
+Doe`" }} → JD
+
+|hasPrefix |Checks if string starts with prefix |++{{++ hasPrefix "`go`"
+"`golang`" }} → true
+
+|hasSuffix |Checks if string ends with suffix |++{{++ hasSuffix "`ing`"
+"`coding`" }} → true
+
+|mustRegexReplaceAll |Replaces matches using regex with submatch
+expansion |++{{++ mustRegexReplaceAll “a(x++*++)b” "`-ab-axxb-`"
+"`$++{++1}W`" }} → -W-xxW-
+|===
+
 [id="pvc-name-regex-example-template-variables_{context}"]
 == Regular expression examples for PVC name templates
 
@@ -87,54 +141,3 @@ It is important to note that while the `.WinDriveLetter` variable can directly p
 When creating custom PVC name templates, ensure the generated names comply with Kubernetes DNS-1123 label format, which includes
 restrictions on characters and length. {project-short} will validate the template during the plan creation process and report any errors in the plan conditions.
 
-
-* *Sanitizing Illegal Characters*: This is a common use case to ensure the resulting PVC name is valid for Kubernetes, which has strict naming conventions.
-+
-[source,go]
-----
-{{ .VmName | regex.Replace "[^a-zA-Z0-9-]" "-" }}
-----
-+
-*Explanation*: `{{ .VmName }}` is the input variable—the virtual machine's name. `| regex.Replace` is the function that performs the regular expression replacement. The pipe symbol | passes the .VmName value as the input to the function.
-+
-The `"[^a-zA-Z0-9-]"` regular expression pattern matches any character that is not a lowercase letter (a-z), an uppercase letter (A-Z), a digit (0-9), or a hyphen (-).
-+
-"-": This is the replacement string. Any character that matches the pattern is replaced with a hyphen.
-+
-If your VM is named `vm_name-with.dots`, the resulting PVC name will be `vm-name-with-dots`.
-
-* *Extracting a Specific Part of a Name*: You can use regular expression to extract a piece of information, such as a drive letter, from a more complex filename:
-+
-[source,go]
-----
-{{ .FileName | regex.Find "[a-zA-Z]$" }}
-----
-+
-*Explanation*: `{{ .FileName }}` is the input variable, which is the filename of the virtual disk from the source provider.
-+
-The `| regex.Find` function finds the first substring that matches the provided regular expression pattern.
-+
-The `"[a-zA-Z]$"` regular expression pattern matches any single letter ([a-zA-Z]) that appears at the end of the string ($).
-+
-If the disk's filename is `windows-disk-D`, this template will extract just the letter D.
-
-* *Conditional Logic with regular expression*: For more advanced scenarios, you can combine regular expression matching with an if statement to apply logic based on whether a pattern exists:
-+
-[source,go]
-----
-{{ if .VmName | regex.Match "^db-" }}{{ .VmName | regex.Replace "^db-" "production-db-" }}{{ else }}{{ .VmName }}{{ end }}
-----
-+
-*Explanation*: `{{ if ... }}` starts a conditional block.
-+
-`.VmName | regex.Match "^db-"` checks if the VM name starts with the prefix `db-`. The caret `^` anchors the match to the beginning of the string.
-+
-`{{ .VmName | regex.Replace ... }}` means that if the condition is *true*, this section is executed, replacing `db-` with `production-db-`.
-+
-`{{ else }}` means that if the condition is *false*, the template falls back to this section.
-+
-`{{ .VmName }}` means that the original VM name is used if it does not match the regular expression.
-+
-If your VM is named `db-mysql-primary`, the PVC name will become `production-db-mysql-primary`.
-+
-While if your VM is named `web-server-01`, the PVC name will remain `web-server-01`.
