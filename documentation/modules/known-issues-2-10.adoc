@@ -9,7 +9,7 @@
 [role="_abstract"]
 {project-first} 2.10 has the following known issues:
 
-.Raw device mapping files prevent `copyoffload` migration of NFS-based VMs
+.Raw Device Mapping files prevent `copyoffload` migration of NFS-based VMs
 
 If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vmkfstool` command-line utility attempts to use the fallback method because NFS is file-based. However, NFS datastores do not support Raw Device Mapping (RDM) pointer files, and `vmkfstool` creates RDM files as cloning targets. 
 
