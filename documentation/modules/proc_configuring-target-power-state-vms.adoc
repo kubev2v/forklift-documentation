@@ -3,9 +3,9 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="proc_configuring-post-migration-power-state-vms_{context}"]
+[id="proc_configuring-target-power-state-vms_{context}"]
 
-= Configuring the post-migration power state of VMs
+= Configuring the target power state of VMs
 
 [role="_abstract"]
 You can set the power state of a target VM to `off`, `on`, or `auto` either in the MTV UI or in the `spec.vms` section of the `Plan` Custom Resource (CR). The `auto` setting preserves the power state of the source VM.
