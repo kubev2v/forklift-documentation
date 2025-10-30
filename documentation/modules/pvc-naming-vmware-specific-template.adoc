@@ -77,7 +77,7 @@ The {project-short} supports GoLang template syntax for Persistent Volume Claim 
 +
 [source,go]
 ----
-disk-{{ mustRegexReplaceAll \".*[^0-9](+).vmdk\" .FileName \"\$1\" }}
+disk-{{ mustRegexReplaceAll \".*[^0-9](.+).vmdk\" .FileName \"\$1\" }}
 ----
 +
 *Explanation*: This template attempts to find a sequence of one or more digits (`{plus}`) immediately preceding `.vmdk` and preceded by a non-digit character (`++[++^0-9++]++`), capturing these digits (`++\++$1`) for use in the PVC name. This helps in generating PVC names that are based on specific disk identifiers from the original VMDK file.
