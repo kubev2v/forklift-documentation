@@ -19,6 +19,6 @@ Benefits::
 
 The configuration of post-migration power states has different uses for cold migrations and warm migration:
 
-* *Cold migrations:* The cold migration process involves transferring source VMs that are powered off, but you can determine the VM's final power state on the OpenShift Virtualization cluster. For example, set the `powerState` parameter to `on` to enable the automatic startup of a VM that was off at the time of migration.
-* *Warm migrations:* The warm migration process includes an optional step to start a target VM when the migration is complete, but the `powerState` parameter provides a more transparent method for managing the power state of migrated VMs. For example, set the `powerState` parameter to `off` to prevent the VM from starting up when migrating workloads for testing or staging.
+* *Cold migrations:* The cold migration process involves transferring source VMs that might be running in the source environment. MTV shuts down running VMs during the cold migration process, and then starts the target VMs. You can determine a VM's final power state on the {virt} cluster. For example, set the `targetPowerState` parameter to `auto` to start up a VM that was running before the migration started and before MTV shut it down for the cold migration.
+* *Warm migrations:* The warm migration process includes an optional step to start a target VM when the migration is complete, but the `targetPowerState` parameter provides a more transparent method for managing the power state of migrated VMs. For example, set the `targetPowerState` parameter to `off` to prevent the VM from starting up when migrating workloads for testing or staging.
 
