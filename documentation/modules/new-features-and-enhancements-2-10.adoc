@@ -12,7 +12,7 @@
 * In the {project-short} 2.10.0 UI, the Virtual Machines tab on the Plan Details page provides improved visibility of migration progress with a clearer page title label and a display of key events in logical order. You can also hide migration resources for a cleaner UI to assess the progress of your migration. 
 //link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
 
-* In {project-short} 2.10.0, you can optimize the asynchronous input/output (AIO) buffer configuration for the VMware disk development kit (VDDK) directly in the MTV UI. AIO buffer configuration is deactivated by default, but you can activate the feature and customize the configuration in YAML to improve storage I/O operations and reduce latency when working with VDDK. link:https://issues.redhat.com/browse/MTV-2188[(MTV-2188)]
+* In {project-short} 2.10.0, you can optimize the asynchronous input/output (AIO) buffer configuration for the VMware disk development kit (VDDK) directly in the MTV UI for cold migrations. AIO buffer configuration is deactivated by default, but you can activate the feature and customize the configuration in YAML to improve storage I/O operations and reduce latency when working with VDDK. link:https://issues.redhat.com/browse/MTV-2188[(MTV-2188)]
 
 * In {project-short} 2.10.0, you can create network maps directly in the MTV UI by adding a source and target network on the Create network map page instead of writing a YAML file. 
 //link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
@@ -38,4 +38,14 @@
 
 * In {project-short} 2.10.0, you can configure VM scheduling preferences for migration plans in the MTV UI or the `Plan` Custom Resource (CR). You can add custom labels to migrated VMs, apply VM scheduling to specific nodes based on node labels, and implement affinity or anti-affinity rules for VMs against workloads or nodes. With this update, you can use the `TargetLabels`, `TargetNodeSelector`, and `TargetAffinity` fields to manage VM placement during migrations, improving resource utilization and operational compliance. 
 link:https://issues.redhat.com/browse/MTV-2768[(MTV-2768)]
+
+* In {project-short} 2.10.0, an inspection during warm migration enables early detection of issues during guest conversion. If an issue is detected, the warm migration fails before VM shutdown, and users can adjust VM settings or skip guest conversion. link:https://issues.redhat.com/browse/MTV-2427[(MTV-2427)] 
+
+* *Technical Preview:* In {project-short} 2.10.0, you can import Open Virtual Appliances (OVAs) directly from local machines to {virt} by uploading the OVAs to NFS through the web browser in the MTV UI. link:https://issues.redhat.com/browse/MTV-3371[(MTV-3371)]
+
+* In {project-short} 2.10.0, you can set `useCompatibilityMode` to `true` or `false` in the Raw Copy Mode settings in the MTV UI. With this update, you can use compatibility devices when migrating source VMs, such as SATA bus, E1000E NICs, or USB, or you can use pre-installed VirtIO devices on source VMs. link:https://issues.redhat.com/browse/MTV-3006[(MTV-3006)]  
+
+* In {project-short} 2.10.0, you can migrate VMs to existing user-defined networks (UDNs). With this update, you can create UDNs and map a VM's source network to the UDN, and you can preserve the static IP addresses of source VMs that have assigned IPs. link:https://issues.redhat.com/browse/MTV-2856[(MTV-2856)]  
+
+* *Technical Preview:* In {project-short} 2.10.0, you can live migrate VMs from one OpenShift (OCP) cluster to another, minimizing downtime with the continuous availability of VMs during the migration process. With this update, MTV creates and maps resources from the source to the destination cluster and triggers the live migration, and {virt} CNV migrates the running VM. link:https://issues.redhat.com/browse/MTV-2637[(MTV-2637)]  
 

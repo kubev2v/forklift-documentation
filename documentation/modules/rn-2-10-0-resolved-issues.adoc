@@ -7,23 +7,12 @@
 = Resolved issues 2.10.0
 
 .User could not rename virtual machines to address naming conflicts before migration
-In previous versions of {project-short}, you could not rename virtual machines (VMs) from the source provider to address naming conflicts before the VMs were migrated to Red Hat OpenShift Virtualization. In this release of {project-short}, you can modify non-compliant VM names in the {project-short} UI during the migration process to address naming conflicts and ensure compatibility with OpenShift Virtualization naming conventions. link:https://issues.redhat.com/browse/MTV-2919[(MTV-2919)] 
+In previous versions of {project-short}, you could not rename virtual machines (VMs) from the source provider to address naming conflicts before the VMs were migrated to Red Hat {virt}. In this release of {project-short}, you can modify non-compliant VM names in the {project-short} UI during the migration process to address naming conflicts and ensure compatibility with {virt} naming conventions. link:https://issues.redhat.com/browse/MTV-2919[(MTV-2919)] 
 
 .User experience was interrupted when adding a new target project to a migration plan
 In previous versions of {project-short}, you had to close the Create migration plan wizard in the MTV UI to add a new target project to your migration plan. In this release of {project-short}, the option to create a new project as a target for VMs in your migration plan is available in the Target project dropdown list on the General page of the Create migration plan wizard.
 //link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)] 
 
-.Warm migration failure before VM shutdown
-In previous versions of {project-short}, there was no inspection during {project-short} warm migration, which could lead to issues during guest conversion and potential migration failure after transferring disks. In this release of {project-short}, an inspection enables early detection of issues during guest conversion, and {project-short} warm migration fails before VM shutdown, allowing users to adjust VM settings or skip guest conversion.
-//link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]  
-
-.Importing OVAs required an NFS share
-In previous versions of {project-short}, you had to use an NFS share to import Open Virtual Appliances (OVAs) to OpenShift Virtualization. In this release of {project-short}, you can import OVAs directly from local machines to OpenShift Virtualization by web browser and the MTV UI. With this update, you no longer need to use an NFS share to import OVAs. link:https://issues.redhat.com/browse/MTV-3371[(MTV-3371)]
-
-.Raw Copy Mode applied compatibility mode to VMs with VirtIO drivers
-In previous versions of {project-short}, VM migration with Raw Copy Mode applied compatibility mode to use devices such as SATA bus, E1000E NICs, or USB, even for source VMs with pre-installed VirtIO drivers. In this release of {project-short}, you can set `useCompatibilityMode` to `true` or `false` in the Raw Copy Mode settings in the MTV UI to use either compatibility devices or pre-installed VirtIO devices.
-//link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]  
-
 .Power state of source VMs was preserved post-migration
-In previous versions of {project-short}, the power state of a source VM was preserved post-migration. In this release of {project-short}, you can set the power state of a migrated VM to `on`, `off`, or `auto`. For example, if you are migrating a VM that is running in the source environment, you can ensure that the VM is powered off post-migration to startup preserve dependencies between VMs. With this update, you can set the power state for the target VM in the MTV UI or by using the `powerState` field in the `spec.vms` section of the `Plan` Custom Resource (CR). The `auto` setting preserves the power state of the source VM. link:https://issues.redhat.com/browse/MTV-1312[(MTV-1312)]  
+In previous versions of {project-short}, the power state of a source VM was preserved post-migration. In this release of {project-short}, you can set the power state of a migrated VM to `on`, `off`, or `auto`. For example, if you are migrating a VM that is running in the source environment, you can ensure that the VM is powered off post-migration to preserve startup dependencies between VMs. With this update, you can set the power state for the target VM in the MTV UI or by using the `powerState` field in the `spec.vms` section of the `Plan` Custom Resource (CR). The `auto` setting preserves the power state of the source VM. link:https://issues.redhat.com/browse/MTV-1312[(MTV-1312)]  
 
