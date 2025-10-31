@@ -20,5 +20,9 @@ If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vm
 * Use either the HTTP or VDDK method to migrate the VM to {virt}.
 //link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
 
+.Inaccurate `ConnectionTestFailed` error messages when creating an OVA provider
+
+When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect in-progress status of the connection. link:https://issues.redhat.com/browse/MTV-3613[(MTV-3613)]
+
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
