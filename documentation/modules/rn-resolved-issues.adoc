@@ -7,5 +7,5 @@
 = Resolved issues
 
 [role="_abstract"]
-{project-first} 2.9 has the following resolved issues:
+{project-first} 2.10 has the following resolved issues:
 

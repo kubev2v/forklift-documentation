@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="known-issues-2-10_{context}"]
+= Known issues
+
+[role="_abstract"]
+{project-first} 2.10 has the following known issues:
+
+.Raw Device Mapping files prevent `copyoffload` migration of NFS-based VMs
+
+If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vmkfstools` command-line utility attempts to use the fallback method because NFS is file-based. However, NFS datastores do not support Raw Device Mapping (RDM) pointer files, and `vmkfstools` creates RDM files as cloning targets. 
+
+*Workaround:* You can use one of the following migration methods to address the limitation:
+
+* Migrate the NFS-based VM to an iSCSI or FC datastore, and then use the `copyoffload` method to migrate the VM to {virt}.
+* Migrate the VM to a local ESXi disk datastore, and then use the `copyoffload` fallback method to migrate the VM to {virt}.
+* Use either the HTTP or VDDK method to migrate the VM to {virt}.
+//link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+
+.Inaccurate `ConnectionTestFailed` error messages when creating an OVA provider
+
+When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect in-progress status of the connection. link:https://issues.redhat.com/browse/MTV-3613[(MTV-3613)]
+
+//For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
+
