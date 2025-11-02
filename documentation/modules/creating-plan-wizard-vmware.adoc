@@ -343,7 +343,7 @@ Additionally, both types of rules allow you to include both _hard_ and _soft_ co
 *** Click *Add affinity rule*.
 *** Select the *Type* of affinity rule from the list. Valid options: Node Affinity, Workload (pod) Affinity, Workload (pod) Anti-Affinity.
 *** Select the *Condition* rom the list. Valid options: Preferred during scheduling (soft condition), Required  during scheduling (hard condition).
-*** Soft condition only: Enter a numerical *Weight*. The higher the weight, the stronger the preference. Valid options: whole numbers greater than 0.
+*** Soft condition only: Enter a numerical *Weight*. The higher the weight, the stronger the preference. Valid options: whole numbers from 1-100.
 *** Enter a *Typology key*, the key for the node label that the system uses to denote the domain.
 *** Optional: Select the *Workload labels* that you want to set by doing the following:
 **** Enter a *Key*.

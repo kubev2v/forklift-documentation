@@ -11,7 +11,7 @@ You can use the {project-first} user interface, which is located in the {ocp} we
 
 The *Virtualization* section of the {ocp} web console supports the following options for scheduling target VMs:
 
-* *VM target mode selector*: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you create. This type of label is often used for nodes with special capabilities, such as GPU nodes or storage nodes. 
+* *VM target node selector*: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you create. This type of label is often used for nodes with special capabilities, such as GPU nodes or storage nodes. 
 * *VM target labels*: Applies organizational or operational labels to migrated VMs for identification and management.
 * *VM target affinity rules*: Implements placement policies such as co-locating related workloads or, for disaster recovery, ensuring that specific VMs are migrated to different nodes. This type of rule uses hard (requirements) and soft (preferences) conditions combined with logical operators, such as `Exists` or `DoesNotExist` instead of using the rigid key-value pairs used by a VM target node selector. As a result, target affinity rules are more flexible than target affinity rules.
 +
