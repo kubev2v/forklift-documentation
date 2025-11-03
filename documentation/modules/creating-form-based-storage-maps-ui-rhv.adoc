@@ -6,11 +6,11 @@
 [id="creating-form-based-storage-maps-ui-ova_{context}"]
 = Creating ownerless storage maps using the form page of the {project-short} UI
 
+[role="_abstract"]
 You can create ownerless storage maps by using the form page of the {project-short} UI.
 
 .Prerequisites
 
-[role="_abstract"]
 * Have a {rhv-full} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_rhv[Adding a {rhv-full} source provider] or xref:adding-source-provider_dest_cnv[Adding {a-virt} destination provider].
 
 .Procedure

@@ -3,14 +3,11 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: CONCEPT
-
-= Cold migration and warm migration in {project-short}
-[id="cold-warm-migration_{context}"]
+[id="warm-migration-stages_{context}"]
+= Warm migration in {project-short}
 
 [role="_abstract"]
-Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a separate host. The VM is powered off, and there is no need for common shared storage.
-
-Warm migration is when a powered *_on_* VM is migrated to a separate host. A source host state is cloned to the destination host.
+Warm migration in {project-first} includes the following two stages:
 
 [id="mtv-cold-warm-migration-precopy_{context}"]
 == Warm migration precopy stage
