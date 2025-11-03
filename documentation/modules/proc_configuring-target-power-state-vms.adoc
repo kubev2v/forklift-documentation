@@ -8,6 +8,8 @@
 = Configuring the target power state of VMs
 
 [role="_abstract"]
+You can configure the post-migration power state of VMs in advance of a migration. Plan for VMs to start up automatically, remain powered off, or preserve the power state of the source VM. For example, if you are migrating a VM that is running in the source environment, you can ensure that the VM is powered off post-migration to preserve start-up dependencies between VMs. 
+
 You can set the power state of a target VM to `off`, `on`, or `auto` either in the MTV UI or in the `spec.vms` section of the `Plan` Custom Resource (CR). The `auto` setting preserves the power state of the source VM.
 
 You can apply different post-migration power states to different VMs in a single migration plan.

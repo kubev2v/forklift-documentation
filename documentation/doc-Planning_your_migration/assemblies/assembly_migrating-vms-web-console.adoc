@@ -21,8 +21,6 @@ include::../modules/con_migrating-vms-by-using-mtv-ui.adoc[leveloffset=+1]
 
 include::../modules/proc_renaming-vms-for-migration.adoc[leveloffset=+1]
 
-include::../modules/con_target-vm-power-states.adoc[leveloffset=+1]
-
 include::../modules/proc_configuring-target-power-state-vms.adoc[leveloffset=+1]
 
 ifdef::parent-context[:context: {parent-context}]
