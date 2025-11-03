@@ -20,7 +20,7 @@ In version 2.10.0 and later, {project-short} detects if you have selected a user
 {project-short} supports using UDNs for all providers except {virt}.
 ====
 
-// UDNs are discussed in greater detail in xref:about-udn_mtv[About user defined networks]. Migration procedures have been updated to include UDNs.
+For more information about UDNs, see 'About user defined networks' in _Migrating your virtual machines to Red Hat {virt}_. Migration procedures have been updated to include UDNs.
 
 [NOTE]
 ====

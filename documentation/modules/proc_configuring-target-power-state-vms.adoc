@@ -1,0 +1,48 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_configuring-target-power-state-vms_{context}"]
+
+= Configuring the target power state of VMs
+
+[role="_abstract"]
+You can configure the post-migration power state of VMs in advance of a migration. Plan for VMs to start up automatically, remain powered off, or preserve the power state of the source VM. For example, if you are migrating a VM that is running in the source environment, you can ensure that the VM is powered off post-migration to preserve start-up dependencies between VMs. 
+
+You can set the power state of a target VM to `off`, `on`, or `auto` either in the MTV UI or in the `spec.vms` section of the `Plan` Custom Resource (CR). The `auto` setting preserves the power state of the source VM.
+
+You can apply different post-migration power states to different VMs in a single migration plan.
+
+
+.Procedure
+. Configure the power state for target VMs in the MTV UI.
+.. In the Create migration plan wizard, navigate to *Other settings* under *Additional setup* in the left navigation pane.
+.. Scroll down to *VM target power state*.
+.. Select *Auto*, *Powered on*, or *Powered off* from the dropdown menu to apply the setting to all VMs in your migration plan. You can customize the power state for selected VMs when your plan is created.
+.. Click *Next*, and verify that the correct power state shows for *VM target power state* under *Other settings (optional)*.
+.. When you create your migration plan, click *Migration plans* in the left navigation menu, and open the *Plan Details* page for your migration plan.
+.. Verify that the correct power state shows for the *VM target power state* field. You can click the *Edit* icon to change the power state.
+.. Click the *Virtual Machines* tab to view a table of all VMs from the configured source provider.
+.. Click *Manage columns* to select *Target power state* and display the column.
+.. To change the power state for a specific VM, click the *More* icon at the end of the row for the VM, and click *Edit target power state*.
+.. Select and save a new power state for the VM. 
+
+. Configure the power state for target VMs in the YAML file.
+.. In the Red Hat OpenShift web console, click *Migration for Virtualization* > *Migration plans*.
+.. Open the *Plan Details* page for your migration plan.
+.. Click the *YAML* tab to open the *Plan* custom resource (CR) for your migration plan.
+.. For each VM under *vms* in the YAML file, enter the target power state. In this example, you set a different target power state for each VM:
++
+Example:
++
+----
+  vms:
+    - id: vm-1
+      targetPowerState: off  
+    - id: vm-2
+      targetPowerState: on 
+    - id: vm-3
+      targetPowerState: auto 
+----
+
