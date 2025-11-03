@@ -58,6 +58,6 @@ spec:
 +
 A success message confirms the file upload. After several seconds, the number of virtual machines increases under the *Provider inventory* section.
 +
-* If your OVA appliance is very large, you might receive a request timeout error message.  
+* If your OVA appliance is large, you might receive a request timeout error message.  
 
 
