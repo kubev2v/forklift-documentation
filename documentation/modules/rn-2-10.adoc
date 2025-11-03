@@ -1,0 +1,10 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="rn-2-10_{context}"]
+= {project-full} 2.10
+
+[role="_abstract"]
+The release notes describe technical changes, new features and enhancements, known issues, and resolved issues.
