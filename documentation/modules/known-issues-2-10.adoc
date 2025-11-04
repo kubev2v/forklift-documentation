@@ -11,7 +11,7 @@
 
 .Raw Device Mapping files prevent `copyoffload` migration of NFS-based VMs
 
-If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vmkfstools` command-line utility attempts to use the fallback method because NFS is file-based. However, NFS datastores do not support Raw Device Mapping (RDM) pointer files, and `vmkfstools` creates RDM files as cloning targets. 
+If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vmkfstools` command-line utility attempts to use the fallback method because NFS is file-based. However, NFS datastores do not support Raw Device Mapping (RDM) pointer files, and `vmkfstools` creates RDM files as cloning targets.
 
 *Workaround:* You can use one of the following migration methods to address the limitation:
 
@@ -23,6 +23,16 @@ If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vm
 .Inaccurate `ConnectionTestFailed` error messages when creating an OVA provider
 
 When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect in-progress status of the connection. link:https://issues.redhat.com/browse/MTV-3613[(MTV-3613)]
+
+.Storage-Offload ignores "max_vm_inflight" value when limiting active migrations to 2
+
+Copy-offload migration plans may fail when more than two migrations are triggered simultaneously on a single `ESXi` host. This was observed in tests using 10 and 50 VMs (each with two 50GB disks) on a single `ESXi` host running vSphere 7.0.3.
+
+The core problem stems from an incorrect scheduling cost function during storage-offload migrations. This miscalculation leads to multiple populate-pods starting concurrently on the same `ESXi` host, even when the configured internal limit (`max_vm_inflight`) is set to *2*.
+
+**Impact:**
+
+Because VMware's underlying disk utility, vmkfstools, enforces a strict limit of 2 active copy operations per ESXi host, exceeding this limit results in errors and plan failure. Consequently, customers attempting single-host storage-offload migrations for multiple VMs at once may experience parallel migration failures, negatively impacting overall migration stability and user experience. link:https://issues.redhat.com/browse/MTV-3630[(MTV-3630)]
 
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
