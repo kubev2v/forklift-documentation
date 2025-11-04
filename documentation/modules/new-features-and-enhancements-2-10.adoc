@@ -49,8 +49,13 @@ link:https://issues.redhat.com/browse/MTV-2768[(MTV-2768)]
 
 * *Technology Preview:* In {project-short} 2.10.0, you can live migrate VMs from one OpenShift (OCP) cluster to another, minimizing downtime with the continuous availability of VMs during the migration process. With this update, MTV creates and maps resources from the source to the destination cluster and triggers the live migration, and {virt} CNV migrates the running VM. link:https://issues.redhat.com/browse/MTV-2040[(MTV-2040)]  
 
-* *Technology Preview:* In {project-short} 2.10.0, the Storage Offload Copy feature accelerates disk transfer in the storage array by bypassing the network. This update improves copy speed with the following options:
+* *Developer Preview:* In {project-short} 2.10.0, the Storage Offload Copy feature for warm migration storage offload accelerates disk transfer in the storage array by bypassing the network. This update improves copy speed with the following options for warm migrations:
+
 ** Real-time disk transfer for running VMs. 
 ** Snapshot copies from a running VM.
-** Copies of delta changes from a snapshot after the storage offload copy, minimizing the requirement for VM shutdowns. link:https://issues.redhat.com/browse/MTV-2637[(MTV-2637)]  
+** Copies of delta changes from a snapshot over the network after the base disk storage offload copy, minimizing the requirement for VM shutdowns. link:https://issues.redhat.com/browse/MTV-2637[(MTV-2637)]  
+
+* *Technology Preview:* In {project-short} 2.10.0, the Storage Offload Copy feature for cold migration storage offload accelerates disk transfer in the storage array by bypassing the network. This update improves copy speed for cold migrations. link:https://issues.redhat.com/browse/MTV-2637[(MTV-2637)]  
+
+* In the {project-short} 2.10.0 UI, you can automate the creation of VMware Virtual Disk Development Kit (VDDK) images from provided `tat.gz` files to accelerate the transfer of virtual disks. link:https://issues.redhat.com/browse/MTV-1616[(MTV-1616)]
 
