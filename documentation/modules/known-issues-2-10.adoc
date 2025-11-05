@@ -29,11 +29,13 @@ When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `Connect
 When you upload a VMware Virtual Disk Development Kit (VDDK) init image, the image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image. link:https://issues.redhat.com/browse/MTV-3673[(MTV-3673)]
 
 .Leftover PVCs consume resources in OVA migrations
+
 During Open Virtual Appliance (OVA) migrations to {virt}, leftover `ova-store-pvc-*` Persistent Volume Claims (PVCs) are bound to the target cluster, consuming excess resources. 
 
 *Workaround:* Manually delete the leftover `ova-store-pvc-*` PVCs after migration by using the `oc delete pvc <pvc_name>` command. This action removes the excess resources, but data loss might occur if the PVCs contain important data. link:https://issues.redhat.com/browse/MTV-3659[(MTV-3659)]
 
-.VM migration from OVA to {virt} cluster causes loss of interface settings in VM YAML file. 
+.VM migration from OVA to {virt} cluster causes loss of interface settings in VM YAML file
+
 The migration of VMs with DHCP settings from an Open Virtual Appliance (OVA) provider to a {virt} cluster results in the loss of interface settings in the VM YAML file post-migration. 
 
 *Workaround:* Manually configure interfaces on the VM after migration. link:https://issues.redhat.com/browse/MTV-3654[(MTV-3654)]
