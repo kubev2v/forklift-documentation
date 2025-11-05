@@ -24,5 +24,9 @@ If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vm
 
 When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect in-progress status of the connection. link:https://issues.redhat.com/browse/MTV-3613[(MTV-3613)]
 
+.VDDK image in `openshift-mtv` namespace
+
+When you upload a VMware Virtual Disk Development Kit (VDDK) init image, the image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image.
+
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
