@@ -38,5 +38,11 @@ The migration of VMs with DHCP settings from an Open Virtual Appliance (OVA) pro
 
 *Workaround:* Manually configure interfaces on the VM after migration. link:https://issues.redhat.com/browse/MTV-3654[(MTV-3654)]
 
+.Incomplete deployment of {project-short} 2.10 due to incomplete image mirroring
+
+If you use the `oc-mirror` command to mirror {project-short} 2.10 images, not all images are mirrored to the local file because of an incomplete package selection in the `ImageSetConfiguration` file. Because all of the required images for {project-short} 2.10 are not mirrored, the deployment is incomplete. 
+
+*Workaround:* Manually copy the missing images to the local file to complete the deployment. link:https://issues.redhat.com/browse/MTV-3679[(MTV-3679)] 
+
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
