@@ -7,7 +7,7 @@
 = {virt} live migration prerequisites
 
 [role="_abstract"]
-In addition to the regular xref:cnv-prerequisites_mtv[virt} prerequisites], live migration has the following additional prerequisites:
+In addition to the regular xref:cnv-prerequisites_mtv[{virt} prerequisites], live migration has the following additional prerequisites:
 
 * {project-first} 2.10.0 or later installed. {project-short} treats all {virt} migrations run on {project-short} 2.9 or earlier as cold migrations, even if they are configured as live migrations.
 * {virt} 4.20.0 or later installed on both source and target clusters.
@@ -15,4 +15,3 @@ In addition to the regular xref:cnv-prerequisites_mtv[virt} prerequisites], live
 * In the `KubeVirt` resource of both clusters in the `featureGates` of the YAML,`DecntralizedLiveMigration` is listed. You must have `cluster-admin` privileges to set this field.
 * Connectivity between the clusters must be established, including connectivity for state transfer. Technologies such as Submariner can be used for this purpose.
 * The target cluster has `VirtualMachineInstanceTypes` and `VirtualMachinePreferences` that match those used by the VMs on the source cluster.
-
