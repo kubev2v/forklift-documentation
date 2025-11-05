@@ -26,7 +26,7 @@ When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `Connect
 
 .VDDK image in `openshift-mtv` namespace
 
-When you upload a VMware Virtual Disk Development Kit (VDDK) init image, the image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image.
+When you upload a VMware Virtual Disk Development Kit (VDDK) init image, the image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image. link:https://issues.redhat.com/browse/MTV-3673[(MTV-3673)]
 
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
