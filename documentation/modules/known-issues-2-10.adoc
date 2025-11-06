@@ -28,7 +28,7 @@ When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `Connect
 
 Copy-offload migration plans may fail when more than two migrations are triggered simultaneously on a single `ESXi` host. This was observed in tests using 10 and 50 VMs (each with two 50GB disks) on a single `ESXi` host running vSphere 7.0.3.
 
-The core problem stems from an incorrect scheduling cost function during storage-offload migrations. This miscalculation leads to multiple populate-pods starting concurrently on the same `ESXi` host, even when the configured internal limit (`max_vm_inflight`) is set to *2*.
+The core problem stems from an incorrect scheduling cost function during storage-offload migrations. This miscalculation leads to multiple populate-pods starting concurrently on the same `ESXi` host, even when the configured internal limit (`max_vm_inflight`) is set to *2*. Running more than one disk copy operation simultaneously on the same `ESXi` host significantly risks this failure, leading to errors and overall migration instability. This is especially relevant when migrating multiple VMs, each potentially having multiple disks, from a single `ESXi` host.
 
 **Impact:**
 
