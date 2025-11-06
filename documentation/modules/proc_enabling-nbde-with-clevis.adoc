@@ -8,7 +8,7 @@
 = Enabling Network-Bound Disk Encryption with Clevis 
 
 [role="_abstract"]
-When you enable Network-Bound Disk Encryption (NBDE) with Clevis, the Tang servers automatically decrypt the Linux Unified Key Setup (LUKS)-encrypted disks during a migration. If you do not use NBDE with Clevis, you must manually add passphrases for LUKS-encrypted devices so that the Tang servers can decrypt the disks during a migration. 
+When you enable Network-Bound Disk Encryption (NBDE) with Clevis, the Tang server manages the keys for Linux Unified Key Setup (LUKS)-encrypted disks during a migration. If you do not use NBDE with Clevis, you must manually add passphrases for LUKS-encrypted devices. 
 
 You can enable NBDE with Clevis either in the MTV UI or in the YAML file for your migration plan:
 
@@ -16,8 +16,7 @@ You can enable NBDE with Clevis either in the MTV UI or in the YAML file for you
 * In the YAML file for your migration plan, you can combine encryption types and apply the setting to selected VMs in the YAML file.
 
 .Prerequisites
-* You have raw copy mode enabled in MTV to ensure that the encrypted data is copied bit-for-bit without any modification.
-* The Tang servers are accessible from your OpenShift cluster.
+* The Tang server is accessible from your OpenShift cluster and from the migration network.
 * You have a LUKS key slot bound to the Tang server policy.
 +
 NOTE: For MTV to access the keys from the Tang server, the keys must be on a different subnet range than a user-defined network (UDN).
