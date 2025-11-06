@@ -14,8 +14,10 @@ You can configure Open Virtual Appliance (OVA) file upload by web browser to upl
 
 * You have an NFS share to point the OVA provider at.
 * You have enough storage space in your NFS share.
+* The NFS share is writable by the QEMU group (GID 107).
 * You have a valid .ova file to upload.
 * Your .ova file has a unique file name.
+
 
 .Procedure
 . In the Red Hat OpenShift web console, click *Operators* > *Installed Operators*.
@@ -32,12 +34,14 @@ spec:
   ...
   feature_ova_appliance_management: 'true'
 ----
++
+Wait for the operator to redeploy the controller after updating the `forklift-controller` CR.
 
 . In the Red Hat OpenShift web console, click *Migration for Virtualization* > *Providers*.
 . Click the provider to open the *Details* page. Click the provider’s *YAML* tab. 
 +
 For information about creating a provider, see xref:adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider].
-. Scroll down the provider’s YAML file to `spec.settings.applianceManagement`, and set `applianceManagement` to `'true'`:
+. Scroll down the provider’s YAML file, and add the `applianceManagement` field to the `spec` section. Set `applianceManagement` to `'true'`:
 +
 Example:
 +
@@ -57,7 +61,6 @@ spec:
 . Click *Upload*.
 +
 A success message confirms the file upload. After several seconds, the number of virtual machines increases under the *Provider inventory* section.
-+
-* If your OVA appliance is large, you might receive a request timeout error message.  
+ 
 
 
