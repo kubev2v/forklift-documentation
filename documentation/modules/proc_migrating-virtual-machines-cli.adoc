@@ -617,9 +617,9 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> #<1>
+        accessMode: <access_mode> <1>
       source
-        id: <source_datastore> #<2>
+        id: <source_datastore> <2>
   provider:
     source:
       name: <source_provider>
@@ -628,11 +628,11 @@ spec:
       name: <destination_provider>
       namespace: <namespace>
   offloadOptions:
-    offloadPlugin: <offload_plugin> #<3>
+    offloadPlugin: <offload_plugin> <3>
     storageSecret:
-      name: <storage_secret_name> #<4>
+      name: <storage_secret_name> <4>
       namespace: <namespace>
-    storageVendorProduct: <storage_product> #<5>
+    storageVendorProduct: <storage_product> <5>
 EOF
 ----
 <1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
@@ -642,7 +642,7 @@ EOF
 <5> Storage copy offload feature only: Name of the storage product used in the migration. For example, `vantara` for Hitachi Vantara.
 +
 Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. The feature makes use of the `XCOPY` command in {vmw}'s vSphere Storage APIs-Array Integration (VAAI). This command lets you copy data inside a SAN more efficiently than copying the data over a network. Storage copy offload is available as a Technology Preview feature for {project-first} 2.10.0 for cold migration and as a Developer Preview feature for warm migration. It is not available for shared disks for either cold or warm migration. 
-====
+
 endif::[]
 
 ifdef::rhv[]
