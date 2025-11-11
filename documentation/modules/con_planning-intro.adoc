@@ -25,8 +25,8 @@ These two types of migration are discussed in detail in xref:about-cold-warm-mig
 
 * Live migration is available *_only_* for migrations between {virt} clusters or between namespaces on the same {virt} cluster. It requires {project-short} version 2.10 or later and {virt} version 4.20 or later. 
 +
-Live migration is discussed in detail in xref:assembly_live_migration_mtv[Live migration in {product-short}.
-+
+Live migration is discussed in detail in xref:assembly_live_migration_mtv[Live migration in {project-short}.
+
 [IMPORTANT]
 ====
 Live migration is a Technology Preview feature only. Technology Preview features

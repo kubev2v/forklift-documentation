@@ -24,7 +24,7 @@ You can create ownerless storage maps by using the form page of the {project-sho
 * *Source provider*: Select from the list.
 * *Target provider*: Select from the list.
 * *Source storage*: Select from the list.
-* *Target storage*: Select from the list
+* *Target storage*: Select from the list.
 
 . Optional: Click *Add mapping* to create additional storage maps, including mapping multiple storage sources to a single target storage class.
 . Click *Create*.
