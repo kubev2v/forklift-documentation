@@ -34,7 +34,7 @@ You can create ownerless storage maps by using the form page of the {project-sho
 +
 [NOTE]
 ====
-Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. The feature makes use of the `XCOPY` command in {vmw}'s vSphere Storage APIs-Array Integration (VAAI). This command lets you copy data inside a SAN more efficiently than copying the data over a network. Storage copy offload is available as a Technology Preview feature for {project-first} 2.10.0 for cold migration and as a Developer Preview feature for warm migration. It is not available for shared disks for either cold or warm migration For more information, see TBD.
+Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. The feature makes use of the `XCOPY` command in {vmw}'s vSphere Storage APIs-Array Integration (VAAI). This command lets you copy data inside a SAN more efficiently than copying the data over a network. Storage copy offload is available as a Technology Preview feature for {project-first} 2.10.0 for cold migration and as a Developer Preview feature for warm migration. It is not available for shared disks for either cold or warm migration For more information, see xref:about-storage-copy-offload_vmware[About migrating {vmw} virtual machines by using storage copy offload].
 ====
 
 . Optional: Click *Add mapping* to create additional storage maps, including mapping multiple storage sources to a single target storage class.
