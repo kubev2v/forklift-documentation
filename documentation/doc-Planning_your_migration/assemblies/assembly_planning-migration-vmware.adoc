@@ -29,8 +29,6 @@ include::../modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=
 
 include::../modules/about-storage-copy-offload.adoc[leveloffset=+1]
 
-include::../modules/preparing-storage-copy-offload.adoc[leveloffset=+2]
-
 include::../modules/proc_storage-copy-offload.adoc[leveloffset=+2]
 
 include::../modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+1]
