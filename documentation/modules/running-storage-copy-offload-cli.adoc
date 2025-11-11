@@ -6,4 +6,3 @@
 [id="running-storage-copy-offload-cli_{context}"]
 = Storage copy offload in the CLI
 
-TBD
