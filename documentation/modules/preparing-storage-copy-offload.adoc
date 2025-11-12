@@ -1,0 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="preparing-storage-copy-offload_{context}"]
+= Preparing to use storage copy offload
+
+[role="_abstract"]
+You need to do the following to use storage copy offload:
+
+Might be more than one module here.
