@@ -13,7 +13,7 @@ The {project-soft} CLI supports the following scheduling-related labels, all of 
 
 `targetAffinity`: Implements placement policies such as co-locating related workloads or, for disaster recovery, ensuring that specific VMs are migrated to different nodes. This type of label uses hard (requirements) and soft (preferences) conditions combined with logical operators, such as `and`, `or,` and `not`, to provide greater flexibility than the `targetLabelSelector` label discussed following. 
 `targetLabels`: Applies organizational or operational labels to migrated VMs for identification and management.
-`targetNodeSelector`: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you create. This type of label is often used for nodes with special capabilities, such as GPU nodes or storage nodes. 
+`targetNodeSelector`: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you create. This type of label is often used for nodes with special capabilities, such as GPU nodes or storage nodes.
 
 [IMPORTANT]
 ====
@@ -25,7 +25,7 @@ System-managed labels, such as migration, plan, VM ID, or application labels, ov
 Migrations that use target VM scheduling require the following prerequisites, in addition to the prerequisites for your source provider:
 
 * {project-first} 2.10 or later.
-* Version of {virt} that is compatible with your version of {project-short}. For {project-short} 2.10, the compatible versions of {virt} are 4.18, 4.19, and 4.20 only. 
+* Version of {virt} that is compatible with your version of {project-short}. For {project-short} 2.10, the compatible versions of {virt} are 4.18, 4.19, and 4.20 only.
 * `cluster-admin` or equivalent security privileges that allow managing `VirtualMachineInstance` objects and associated Kubernetes scheduling primitives.
 
 .Procedure
@@ -35,18 +35,17 @@ Migrations that use target VM scheduling require the following prerequisites, in
 +
 [source,yaml,subs="attributes+"]
 ...
-  targetAffinity: <affinity rule, which may be quite complex, is entered in lines following this label. See example that follows> 
+  targetAffinity: <affinity rule, which can be quite complex, is entered in lines following this label. See example that follows>
   targetLabels:
     label: <label>
-  targetNodeSelector: 
+  targetNodeSelector:
     <key>:<value>
   targetNamespace:<target_namespace>
 ... 
 
 .Example
 
-The following scheduling rule migrates the VMs in the plan to different nodes for disaster recovery: 
-+
+The following scheduling rule migrates the VMs in the plan to different nodes for disaster recovery:
 [source,yaml,subs="attributes+"]
 ----
   targetLabels:
@@ -64,19 +63,18 @@ The following scheduling rule migrates the VMs in the plan to different nodes fo
 ----
 
 As a result of the preceding rule, the VMs are migrated accordingly to the resulting `spec`.
-+
 [source,yaml,subs="attributes+"]
 ----
 spec:
-  runStrategy: Always 
+  runStrategy: Always
   template:
     metadata:
       creationTimestamp: null
       labels:
         app: mtv-rhel8-sanity-ceph-rbd
-        label: test1                                          
+        label: test1
     spec:
-      affinity:                                                    
+      affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:

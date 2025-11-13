@@ -7,7 +7,7 @@
 = Scheduling target VMs from the user interface
 
 [role="_abstract"]
-You can use the {project-first} user interface, which is located in the {ocp} web console, to tell {project-first} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. 
+You can use the {project-first} user interface, which is located in the {ocp} web console, to tell {project-first} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on.
 
 The *Virtualization* section of the {ocp} web console supports the following options for scheduling target VMs:
 
