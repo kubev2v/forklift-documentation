@@ -33,6 +33,8 @@ include::../modules/retrieving-vmware-moref.adoc[leveloffset=+2]
 
 include::../modules/mtv-shared-disks.adoc[leveloffset=+2]
 
+include::../modules/mtv-template-utility.adoc[leveloffset=+2]
+
 include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 :vmware!:
