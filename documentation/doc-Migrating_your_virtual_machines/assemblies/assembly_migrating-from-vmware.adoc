@@ -38,6 +38,8 @@ include::../modules/mtv-shared-disks-known-issues.adoc[leveloffset=+3]
 
 include::../modules/mtv-shared-disks-workarounds.adoc[leveloffset=+3]
 
+include::../modules/mtv-template-utility.adoc[leveloffset=+2]
+
 include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
 
 include::../modules/canceling-migration-cli-entire.adoc[leveloffset=+3]
