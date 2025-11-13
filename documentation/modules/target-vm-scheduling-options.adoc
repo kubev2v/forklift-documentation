@@ -14,15 +14,13 @@ For example, you might have two service levels, gold (premium) and silver (regul
 
 * *Affinity and Anti-Affinity* rules:  _Node Affinity_ rules let you schedule VMs to run on selected nodes or workloads (pods). _Node Anti-affinity_ rules let you prevent VMs from being scheduled to run on selected workloads (pods). 
 +
-// Node Anti-affinity rules are vital for High Availability (HA), because they can be used to ensure that more than one redundant VM is not powered on in the same availability zone.
-+
 Node Affinity and Node Anti-Affinity rules offer more flexible placement control than rigid Node Selector rules, because they support conditionals such as `In`, `NotIn`. For example, you could require that a VM be powered on "only if it is migrated to node A _or_ if it is migrated to an SSD disk, but it _cannot_ be migrated to a node for which `license-tier=silver` is true."
 +
 Additionally, both types of rules allow you to include both _hard_ and _soft_ conditions in the same rule. A hard condition is a requirement, and a soft condition is a preference. The previous example used only hard conditions. A rule that states that "a VM can be powered on if it is migrated to node A _or_ if it is migrated to an SSD disk, but it is preferred not to migrate it to a node for which `license-tier=silver` is true" is an example of a rule that uses soft conditions.
 
 [NOTE]
 ====
-Affinity rules are supported at both the node and the workload (pod) levels. Anti-Affinity rules are supported at the workload (pod) level only. 
+Affinity rules are supported by {project-short} at both the node and the workload (pod) levels, but Anti-Affinity rules are supported at the workload (pod) level only. 
 ====
 
 * *Custom Scheduler Name*: If your {virt} environment uses a secondary or specialized scheduler, in addition to the default `kube-scheduler`, to handle specific workload types, you can instruct {project-short} to apply this custom scheduler name to the target VM's manifest. This directs the VM to use the specialized logic designed for that workload. This feature is implementied by using the VM target label feature. 
@@ -33,6 +31,8 @@ By integrating any of these three types of controls into your migration plan, yo
 ====
 Any scheduling rule applied in a migration plan applies to all VMs in it.
 ====
+
+Target VM scheduling in {project-short} derives from Kubernetes's support for xref:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/[Assigning Pods to Nodes]. 
 
 == {project-short} target VM scheduling options at a glance
 
