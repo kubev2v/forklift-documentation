@@ -12,6 +12,6 @@ In addition to the regular xref:cnv-prerequisites_mtv[{virt} prerequisites], liv
 * {project-first} 2.10.0 or later installed. {project-short} treats all {virt} migrations run on {project-short} 2.9 or earlier as cold migrations, even if they are configured as live migrations.
 * {virt} 4.20.0 or later installed on both source and target clusters.
 * In the {project-short} Operator, in the `spec` portion of the `forklift-controller` YAML, `feature_ocp_live_migration` is set to `true`. You must have `cluster-admin` privileges to set this field.
-* In the `KubeVirt` resource of both clusters in the `featureGates` of the YAML,`DecntralizedLiveMigration` is listed. You must have `cluster-admin` privileges to set this field.
+* In the `KubeVirt` resource of both clusters in the `featureGates` of the YAML,`DecentralizedLiveMigration` is listed. You must have `cluster-admin` privileges to set this field.
 * Connectivity between the clusters must be established, including connectivity for state transfer. Technologies such as Submariner can be used for this purpose.
 * The target cluster has `VirtualMachineInstanceTypes` and `VirtualMachinePreferences` that match those used by the VMs on the source cluster.
