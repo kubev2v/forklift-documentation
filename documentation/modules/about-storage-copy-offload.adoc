@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+// * documentation/doc-Planninig_your_migration/assembly_planning-migration-vmware.adoc
 
 :_content-type: CONCEPT
 [id="about-storage-copy-offload_{context}"]
