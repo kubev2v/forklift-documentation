@@ -5,7 +5,7 @@ ifdef::context[:parent-context: {context}]
 
 [id="assembly_planning-migration-vmware_{context}"]
 
-= Planning migration of virtual machines from VMware vSphere
+= Planning a migration of virtual machines from VMware vSphere
 
 //:context: planning-vmware
 
