@@ -9,7 +9,7 @@
 [role="_abstract"]
 You can migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently by using a method called _storage copy offload_. You use this method to accelerate migration speed and reduce the load on your network. 
 
-{vmw}'s vSphere Storage APIs-Array Integration (VAAI) includes a command named `XCOPY`. This command lets you copy data inside a SAN more efficiently than copying the data over a network.
+{vmw}'s vSphere Storage APIs-Array Integration (VAAI) includes a command named `vmkfstools`. This command sendq the `XCOPY` command, which is part of the SCSI protocol. The `XCOPY` commandS lets you copy data inside a SAN more efficiently than copying the data over a network.
 
 {project-first} 2.10.0 leverages this command as the basis for storage copy offload, allowing you to delegate cloning your VMs' data to the storage hardware instead having it to transit it between {project-short} and {virt}. You do this by configuring the storage map in your migration plan to point to your storage array instead of the network you usually use for migration. When you start the migration plan, {project-short} migrates your VMs by copying them to the storage array you choose and using `XCOPY` to copy them directly to {virt}, instead of transmitting the contents of your VMs to {virt}. 
 
@@ -56,51 +56,16 @@ This method can be slow and consume significant network and host resources.
 With storage copy offload, the process is streamlined:
 
 . {project-short} initiates a disk transfer request.
-. Instead of sending the data, {project-short} instructs the storage array to perform a direct copy from the source storage to {virt}.
+. Instead of sending the data, {project-short} instructs the storage array in which the Vsphere Virtual Machine File System (VMFS) datastore holds the source VMs to perform a direct copy from the source storage to the target array {virt} in the correct storage class.
 +
 The storage array handles the cloning of the VM disk internally, often at a much higher speed than a network-based transfer.
 
 The Forklift project, a key component of {project-short}, includes a specialized `vsphere-xcopy-volume-populator` that directly interacts with {vmw}'s VAAI. This allows {project-short} to trigger the high-speed, array-level data copy operation for supported storage systems.
 
-[id="storage-copy-offload-vendors_{context}"]
-== Supported vendors
-
-The table that follows lists the vendors whose storage products are supported by storage copy offload and the product name to use when migrating by using the CLI:
-
-[cols="1,1",options="header"]
-.Supported storage vendors  
-|===
-|Vendor
-|Value of storageVendorProduct label
-
-|Hitachi Vantara
-|`vantara`
-
-|NetApp
-|`ontap`
-
-|Hewlett Packard Enterprise
-|`primera3par`
-
-|Pure Storage
-|`pureFlashArray`
-
-| Dell (PowerFlex)
-|`powerflex`
-
-| Dell (PowerMax)
-|`powermax`
-
-| Dell (PowerStore)
-|`powerstore`
-
-| Infinidat
-|`infinibox`
-
-| IBM
-|`flashsystem`
-|===
-
+[IMPORTANT]
+====
+The storage arrays must be the ones specified above. Otherwise `XCOPY` will perform a network copy on the ESXi. Although a network copy on the ESXi is usually considerably faster than a standard migration using an VDDK image, neither is as quick as a properly configured storage copy offload migration.
+====
 
 [role="_additional-resources"]
 .Additional resources
