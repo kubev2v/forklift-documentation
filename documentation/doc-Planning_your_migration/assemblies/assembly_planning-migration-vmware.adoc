@@ -5,7 +5,7 @@ ifdef::context[:parent-context: {context}]
 
 [id="assembly_planning-migration-vmware_{context}"]
 
-= Planning migration of virtual machines from VMware vSphere
+= Planning a migration of virtual machines from VMware vSphere
 
 //:context: planning-vmware
 
@@ -26,6 +26,10 @@ You prepare and create your VMware vSphere migration plan by performing the foll
 include::../modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+1]
 
 include::../modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=+1]
+
+include::../modules/about-storage-copy-offload.adoc[leveloffset=+1]
+
+include::../modules/proc_storage-copy-offload.adoc[leveloffset=+2]
 
 include::../modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+1]
 
