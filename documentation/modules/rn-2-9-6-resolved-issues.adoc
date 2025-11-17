@@ -1,0 +1,11 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-9-6_{context}"]
+= Resolved issues 2.9.6
+
+.Windows 2016 VM migration fails due to missing temporary directory
+
+In this update of {project-first}, the inability to migrate Windows 2016 server Virtual Machines (VMs) from VMWare to Open Converged Infrastructure (OCV) due to a missing temporary directory in VMware's `/Windows/Temp` during `virt-v2v` conversion has been resolved. The new release creates a temporary directory for Windows VM migration, enabling successful and error-free migration of Windows 2016 server VMs from VMware to OCV within `virt-v2v`.
