@@ -9,6 +9,14 @@
 [role="_abstract"]
 {project-first} 2.10 has the following known issues:
 
+
+OCP migration plan error for VMs with pre-migration hooks::
+When migrating a VM with pre-migration hooks from a source Red Hat OpenShift Container Platform (OCP) cluster to a destination OCP cluster, the migration plan fails during the Initialize phase.
++
+*Workaround:* Migrate the VM without pre-migration hooks or with post-migration hooks only.
++
+link:https://issues.redhat.com/browse/MTV-2894[MTV-2894]
+
 .Raw Device Mapping files prevent `copyoffload` migration of NFS-based VMs
 
 If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vmkfstools` command-line utility attempts to use the fallback method because NFS is file-based. However, NFS datastores do not support Raw Device Mapping (RDM) pointer files, and `vmkfstools` creates RDM files as cloning targets. 
@@ -39,12 +47,6 @@ During Open Virtual Appliance (OVA) migrations to {virt}, leftover `ova-store-pv
 The migration of VMs with DHCP settings from an Open Virtual Appliance (OVA) provider to a {virt} cluster results in the loss of interface settings in the VM YAML file post-migration. 
 
 *Workaround:* Manually configure interfaces on the VM after migration. link:https://issues.redhat.com/browse/MTV-3654[(MTV-3654)]
-
-.Incomplete deployment of {project-short} 2.10 due to incomplete image mirroring
-
-If you use the `oc-mirror` command to mirror {project-short} 2.10 images, not all images are mirrored to the chosen destination because of an incomplete related images section in the operator. Because all of the required images for {project-short} 2.10 are not mirrored, the deployment is incomplete. 
-
-*Workaround:* Manually copy the missing images to the local file to complete the deployment. link:https://issues.redhat.com/browse/MTV-3679[(MTV-3679)] 
 
 .Missing check for write permissions on OVA files for upload
 
