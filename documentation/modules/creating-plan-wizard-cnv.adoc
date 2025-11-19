@@ -44,7 +44,13 @@ The *Create migration plan* wizard opens.
 * *Plan project*: Select from the list.
 * *Source provider*: Select from the list.
 * *Target provider*: Select from the list.
-* *Target project*: Select from the list.
+* *Target project*: Select from the list or click *Create Project*.
+
+. If you clicked *Create Project*, specify the following fields and then click *Create Project*:
+
+* *Name*: Enter the name of the project. A project name must consist of lowercase alphanumeric characters or `-`. A project name must start and end with alphanumeric characters. Examples: `my-name` or `123-abc`.
+* Optional: *Display name*: Enter the display name for the project.
+* Optional: *Description*: Enter a description of the project.
 
 . Click *Next*.
 +
