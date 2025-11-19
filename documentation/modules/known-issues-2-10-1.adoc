@@ -7,7 +7,7 @@
 = Known issues
 
 [role="_abstract"]
-{project-first} 2.10 has the following known issues:
+{project-first} 2.10.1 has the following known issues:
 
 OCP migration plan error for VMs with pre-migration hooks::
 When migrating a VM with pre-migration hooks from a source Red Hat OpenShift Container Platform (OCP) cluster to a destination OCP cluster, the migration plan fails during the Initialize phase.
