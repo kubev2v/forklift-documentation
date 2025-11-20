@@ -1,0 +1,25 @@
+// Module included in the following assemblies:
+//
+// assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_migration-of-luks-encrypted-disks_{context}"]
+
+= Migration of LUKS-encrypted disks
+
+[role="_abstract"]
+If you have virtual machines (VMs) with LUKS-encrypted disks in your source VMware VSphere environment, you can migrate them to Red Hat {virt} by enabling Network-Bound Disk Encryption (NBDE) with Clevis. Alternatively, you can manually add passwords for LUKS-encrypted devices in your migration plan. 
+
+If you enable NBDE, passwords are retrieved from the Clevis server. When you manually add LUKS passwords to your migration plan, you provide the list of passwords, and you cannot use NBDE to retrieve them. The two methods for migrating LUKS-encrypted disks are incompatible. You must use either NBDE or manual LUKS passwords to migrate LUKS-encrypted disks.
+
+MTV transfers the data of VMs with LUKS-encrypted disks from the source environment to the target {virt} cluster. MTV reads only the blocks that are required for guest conversion, decrypting the required blocks and re-encrypting them locally with the same key.
+
+Clevis is a client-side framework that automates the decryption of LUKS volumes by binding a LUKS key slot to a policy. During the migration of VMs with LUKS-encrypted disks, MTV authenticates with the configured network service by requesting the key to unlock the LUKS-encrypted disk from the Tang server. The automatic retrieval of the key allows the VM to boot without a manual passphrase entry from an administrator.
+
+Benefits of NBDE::
+
+* *Automation:* Eliminates the need to enter keys manually during migration.
+* *Enhanced security:* Maintains the security of VMs throughout their migration lifecycle by preserving LUKS encryption from the source to the destination.
+* *Seamless operation:* Ensures that VMs with encrypted disks can be brought online in the new OpenShift Virtualization environment with minimal interruption.
+
+
