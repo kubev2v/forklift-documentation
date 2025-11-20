@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_advanced-migration-options.adoc
 
 :_mod-docs-content-type: PROCEDURE
 [id="retrieving-validation-service-json_{context}"]

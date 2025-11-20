@@ -1,3 +1,7 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-vms-cli.adoc
+
 :_content-type: CONCEPT
 
 [id="non-admin-permissions_{context}"]

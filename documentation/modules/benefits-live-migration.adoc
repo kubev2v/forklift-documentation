@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_live-migration.adoc
 
 :_content-type: CONCEPT
 
