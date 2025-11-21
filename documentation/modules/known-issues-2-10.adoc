@@ -39,7 +39,7 @@ link:https://issues.redhat.com/browse/MTV-3673[(MTV-3673)]
 Leftover PVCs consume resources in OVA migrations::
 During Open Virtual Appliance (OVA) migrations to {virt}, leftover `ova-store-pvc-*` Persistent Volume Claims (PVCs) are bound to the target cluster, consuming excess resources. 
 +
-*Workaround:* Manually delete the leftover `ova-store-pvc-*` PVCs after migration by using the `oc delete pvc <pvc_name>` command. This action removes the excess resources, but data loss might occur if the PVCs contain important data. 
+*Workaround:* Manually delete the leftover `ova-store-pvc-*` PVCs after migration by using the `oc delete pvc <pvc_name>` command. This action removes the excess resources, but data loss might occur. 
 +
 link:https://issues.redhat.com/browse/MTV-3659[(MTV-3659)]
 
@@ -53,7 +53,7 @@ link:https://issues.redhat.com/browse/MTV-3654[(MTV-3654)]
 Missing check for write permissions on OVA files for upload::
 When uploading an Open Virtual Appliance (OVA) file, the script does not check the write permissions for the destination directory before the upload, which can result in a permission denied error at the end of the upload process. 
 +
-*Workaround:* Check the write permission of the OVA file before initiating the upload to complete the upload process without permissions errors.
+*Workaround:* Check the write permissions of the OVA file before initiating the upload. The write permissions allow {project-short} to complete the upload process without permissions errors.
 + 
 link:https://issues.redhat.com/browse/MTV-3634[(MTV-3634)]
 

@@ -7,7 +7,7 @@
 = Resolved issues 2.10.1
 
 Migrations stalled when conversion pod and `forklift-controller` pod were on different networks::
-Before this update, migrations stalled when the conversion pod was on a different network to the `forklift-controller` pod. With this update, the network issue is resolved, and the `forklift-controller` can access the conversion pod to perform the migration.
+Before this update, migrations stalled when the conversion pod was on a different network than the `forklift-controller` pod. With this update, the network issue is resolved, and the `forklift-controller` can access the conversion pod to perform the migration.
 +
 link:https://issues.redhat.com/browse/MTV-1324[MTV-1324]
 
