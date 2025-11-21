@@ -27,7 +27,7 @@ If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vm
 //link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
 
 Inaccurate `ConnectionTestFailed` error messages when creating an OVA provider::
-When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect in-progress status of the connection.
+When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect the in-progress status of the connection.
 + 
 link:https://issues.redhat.com/browse/MTV-3613[(MTV-3613)]
 
