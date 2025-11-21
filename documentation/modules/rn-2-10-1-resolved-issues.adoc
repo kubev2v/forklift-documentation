@@ -1,0 +1,18 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-10-1_{context}"]
+= Resolved issues 2.10.1
+
+Migrations stalled when conversion pod and `forklift-controller` pod were on different networks::
+Before this update, migrations stalled when the conversion pod was on a different network than the `forklift-controller` pod. With this update, the network issue is resolved, and the `forklift-controller` can access the conversion pod to perform the migration.
++
+link:https://issues.redhat.com/browse/MTV-1324[MTV-1324]
+
+Bundle creation includes `relatedImages` field::
+Before this update, the `relatedImages` field was missing from the generated CSV during the bundle creation for MTV 2.10.0. As a result, users could not use MTV in disconnected environments. With this update, bundle creation includes the 'relatedImages' field in the generated CSV, and you can use MTV in disconnected environments without manually adding the `relatedImages` field to the CSV. 
++
+link:https://issues.redhat.com/browse/MTV-3558[MTV-3558] 
+
