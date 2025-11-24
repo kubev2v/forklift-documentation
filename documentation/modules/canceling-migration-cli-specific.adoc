@@ -1,3 +1,11 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-cnv.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-osp.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+
 :_content-type: PROCEDURE
 [id="canceling-migration-cli-specific_{context}"]
 = Canceling the migration of specific VMs from the command-line interface

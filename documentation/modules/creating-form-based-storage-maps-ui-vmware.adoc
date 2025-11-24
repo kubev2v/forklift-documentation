@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
 
 :_content-type: PROCEDURE
 [id="creating-form-based-storage-maps-ui-vmware_{context}"]

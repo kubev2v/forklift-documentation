@@ -1,3 +1,7 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/master.adoc
+
 :_mod-docs-content-type: CONCEPT
 
 [id="con_performing-migration-intro_{context}"]

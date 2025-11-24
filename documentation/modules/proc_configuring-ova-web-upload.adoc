@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-ova.adoc
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_configuring-ova-web-upload_{context}"]

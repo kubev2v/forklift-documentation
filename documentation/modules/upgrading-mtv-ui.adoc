@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_upgrading-uninstalling-mtv.adoc
 :_content-type: PROCEDURE
 [id="upgrading-mtv-ui_{context}"]
 = Upgrading {the-lc} {project-full}
