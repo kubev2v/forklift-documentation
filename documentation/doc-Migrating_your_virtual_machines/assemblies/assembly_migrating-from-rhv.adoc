@@ -28,6 +28,10 @@ include::../modules/proc_migrating-virtual-machines-cli.adoc[leveloffset=+1]
 
 include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
 
+include::../modules/canceling-migration-cli-entire.adoc[leveloffset=+3]
+
+include::../modules/canceling-migration-cli-specific.adoc[leveloffset=+3]
+
 :rhv!:
 
 ifdef::parent-context[:context: {parent-context}]
