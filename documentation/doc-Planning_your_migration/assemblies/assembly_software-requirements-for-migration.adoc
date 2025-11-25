@@ -24,9 +24,7 @@ include::../modules/source-vm-prerequisites.adoc[leveloffset=+1]
 
 include::../modules/encryption-support.adoc[leveloffset=+1]
 
-include::../modules/rhv-prerequisites.adoc[leveloffset=+1]
 
-include::../modules/openstack-prerequisites.adoc[leveloffset=+1]
 
 
 [id="additional-authentication-for-osp_{context}"]
