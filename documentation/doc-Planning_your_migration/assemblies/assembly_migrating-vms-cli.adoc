@@ -24,7 +24,7 @@ To migrate to or from an {ocp-short} cluster that is different from the one the 
 
 [IMPORTANT]
 ====
-You must ensure that all prerequisites are met. For more information, see xref:assembly_prerequisites-for-migration_{context}[Prerequisites for migration].
+You must ensure that all prerequisites are met. For more information, see xref:assembly_software-requirements-for-migration_{context}[Software requirements for migration].
 ====
 
 :mtv!:
