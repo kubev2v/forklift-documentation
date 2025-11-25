@@ -14,7 +14,9 @@ include::assemblies/assembly_cold-warm-migration.adoc[leveloffset=+1]
 
 include::assemblies/assembly_live-migration.adoc[leveloffset=+1]
 
-include::assemblies/assembly_prerequisites-for-migration.adoc[leveloffset=+1]
+include::assemblies/assembly_software-requirements-for-migration.adoc[leveloffset=+1]
+
+include::assemblies/assembly_authentication-for-osp-migrations.adoc[leveloffset=+1]
 
 include::assemblies/assembly_installing-mtv-operator.adoc[leveloffset=+1]
 

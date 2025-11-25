@@ -19,15 +19,8 @@ include::../modules/about-network-maps.adoc[leveloffset=+1]
 //About storage maps
 include::../modules/about-storage-maps.adoc[leveloffset=+1]
 
-== Creating ownerless storage maps in the {project-short} UI
-
-You can create ownerless storage maps by using the {project-short} UI to map source disk storage to {virt} storage classes.
-
-You can create this type of map by using one of the following methods:
-
-* *Create with form*, selecting items such as a source provider from lists
-* *Create with YAML*, either by entering YAML or JSON definitions or by attaching files containing the same
-
+//Creating ownerless storage maps in the {project-short} UI
+include::../modules/con_creating-ownerless-storage-maps-ui.adoc[leveloffset=+1]
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]

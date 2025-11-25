@@ -3,17 +3,14 @@ ifdef::context[:parent-context: {context}]
 
 :_mod-docs-content-type: ASSEMBLY
 
-[id="assembly_prerequisites-for-migration_{context}"]
+[id="assembly_software-requirements-for-migration_{context}"]
 
-= Prerequisites for migration
+= Software requirements for migration
 
 //:context: prerequisites
 
 [role="_abstract"]
-Review the following prerequisites to ensure that your environment is prepared for migration.
-
-[id="mtv-software-requirements_{context}"]
-== Software requirements
+Review the following software requirements to ensure that your environment is prepared for migration.
 
 {project-first} has software requirements for all providers as well as specific software requirements per provider.
 
