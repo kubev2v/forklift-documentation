@@ -10,7 +10,7 @@ ifdef::context[:parent-context: {context}]
 //:context: prerequisites
 
 [role="_abstract"]
-
+Review the specific software requirements per source provider.
 
 include::../modules/rhv-prerequisites.adoc[leveloffset=+1]
 
