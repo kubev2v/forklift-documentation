@@ -9,7 +9,7 @@
 [role="_abstract"]
 You can migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently by using a method called _storage copy offload_. You use this method to accelerate migration speed and reduce the load on your network. 
 
-{vmw}'s vSphere Storage APIs-Array Integration (VAAI) includes a command named `vmkfstools`. This command sendq the `XCOPY` command, which is part of the SCSI protocol. The `XCOPY` commandS lets you copy data inside a SAN more efficiently than copying the data over a network.
+{vmw}'s vSphere Storage APIs-Array Integration (VAAI) includes a command named `vmkfstools`. This command sends the `XCOPY` command, which is part of the SCSI protocol. The `XCOPY` commandS lets you copy data inside a SAN more efficiently than copying the data over a network.
 
 {project-first} 2.10.0 leverages this command as the basis for storage copy offload, allowing you to delegate cloning your VMs' data to the storage hardware instead having it to transit it between {project-short} and {virt}. You do this by configuring the storage map in your migration plan to point to your storage array instead of the network you usually use for migration. When you start the migration plan, {project-short} migrates your VMs by copying them to the storage array you choose and using `XCOPY` to copy them directly to {virt}, instead of transmitting the contents of your VMs to {virt}. 
 
@@ -24,7 +24,7 @@ This is because the underlying VMware utility, `vmkfstools`, strictly enforces a
 To prevent this issue, ensure that you limit the number of concurrent storage-offload migrations originating from a single ESXi host to a maximum of two.
 ====
 
-Storage copy offload is available as a Technology Preview feature for {project-first} 2.10.0 for cold migration and as a Developer Preview feature for warm migration. It is not available for shared disks for either cold or warm migrations.
+Storage copy offload is available as a Technology Preview feature for {project-first} 2.10.0 for cold migration and as a Developer Preview feature for warm migration.
 
 [IMPORTANT]
 ====
@@ -56,7 +56,7 @@ This method can be slow and consume significant network and host resources.
 With storage copy offload, the process is streamlined:
 
 . {project-short} initiates a disk transfer request.
-. Instead of sending the data, {project-short} instructs the storage array in which the Vsphere Virtual Machine File System (VMFS) datastore holds the source VMs to perform a direct copy from the source storage to the target array {virt} in the correct storage class.
+. Instead of sending the data, {project-short} instructs the storage array in which the Vsphere Virtual Machine File System (VMFS) datastore holds the source VMs to perform a direct copy from the source storage to the target volume, on the same array, in the correct storage class.
 +
 The storage array handles the cloning of the VM disk internally, often at a much higher speed than a network-based transfer.
 
