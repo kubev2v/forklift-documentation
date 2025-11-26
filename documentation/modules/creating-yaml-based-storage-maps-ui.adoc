@@ -6,7 +6,7 @@
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-rhv.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="creating-yaml-based-stoarge-maps-ui_{context}"]
 
 = Creating ownerless storage maps using YAML or JSON definitions in the {project-short} UI

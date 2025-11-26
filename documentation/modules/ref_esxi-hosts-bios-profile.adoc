@@ -1,0 +1,13 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_esxi-hosts-bios-profile_{context}"]
+= Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance
+
+Where possible, ensure that hosts used to perform migrations are set with BIOS profiles related to maximum performance. Hosts which use Host Power Management controlled within vSphere should check that `High Performance` is set.
+
+Testing showed that when transferring more than 10 VMs with both BIOS and host power management set accordingly, migrations had an increase of 15 MiB in the average datastore read rate.
+
+

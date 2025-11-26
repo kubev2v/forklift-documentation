@@ -1,7 +1,7 @@
 // Module included in the following assemblies:
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 
 [id="creating-custom-rules-for-validation-service_{context}"]
 = Creating custom rules for the Validation service

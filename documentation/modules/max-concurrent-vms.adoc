@@ -3,7 +3,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_installing-mtv-operator.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="max-concurrent-vms_{context}"]
 = Configuring the controller_max_vm_inflight parameter
 

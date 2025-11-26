@@ -1,4 +1,4 @@
-:_content-type: SNIPPET
+:_mod-docs-content-type: SNIPPET
 
 VMware only: In cold migrations, in situations in which a package manager cannot be used during the migration, {project-short} does not install the `qemu-guest-agent` daemon on the migrated VMs. This has some impact on the functionality of the migrated VMs, but overall, they are still expected to function.
 

@@ -9,7 +9,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
 
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="running-migration-plan_{context}"]
 = Running a migration plan in the MTV UI
 

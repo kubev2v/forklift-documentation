@@ -3,7 +3,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="mtv-selected-packages-2-8_{context}"]
 = {project-short} selected packages
 

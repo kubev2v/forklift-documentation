@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-rhv.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="creating-plan-wizard-rhv_{context}"]
 = Creating a Red Hat Virtualization migration plan by using the MTV wizard
 

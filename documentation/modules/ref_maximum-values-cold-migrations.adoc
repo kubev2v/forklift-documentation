@@ -1,0 +1,23 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_maximum-values-cold-migrations_{context}"]
+= Maximum values tested for cold migrations
+
+[role="_abstract"]
+The following maximum vales were tested for cold migrations:
+
+* Maximum number of ESXi hosts tested: 8
+* Maximum number of VMs in a single migration plan: 500
+* Maximum number of VMs migrated in a single test: 5000
+* Maximum number of migration plans performed concurrently: 40
+* Maximum single disk size migrated: 6 TB disk, which contained 3 TB of data
+* Maximum number of disks on a single VM migrated: 50
+* Highest observed single datastore read rate from a single ESXi server: 312 MiB/second
+* Highest observed multi-datastore read rate using eight ESXi servers and two datastores: 1,242 MiB/second
+* Highest observed virtual NIC transfer rate to an {ocp-name} worker: 327 MiB/second
+* *Maximum migration transfer rate of a single disk: 162 MiB/second (rate observed when transferring nonconcurrent migration of 1.5 TB utilized data)*
+* *Maximum cold migration transfer rate of the multiple VMs (single disk) from a single ESXi host: 294 MiB/s (concurrent migration of 30 VMs, 35/50 GiB used, from Single ESXi)*
+* *Maximum cold migration transfer rate of the multiple VMs (single disk) from multiple ESXi hosts: 1173MB/s (concurrent migration of 80 VMs, 35/50 GiB used, from 8 ESXi servers, 10 VMs from each ESXi)*

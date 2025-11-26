@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
 
-:_content-type: REFERENCE
+:_mod-docs-content-type: REFERENCE
 [id="error-messages_{context}"]
 = Error messages
 

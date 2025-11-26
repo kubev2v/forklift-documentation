@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-cnv.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="creating-plan-wizard-cnv_{context}"]
 = Creating an {virt} migration plan by using the MTV wizard
 

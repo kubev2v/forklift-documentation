@@ -6,7 +6,7 @@
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-rhv.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="selecting-migration-network-for-virt-provider_{context}"]
 = Selecting a migration network for {a-virt} provider
 
