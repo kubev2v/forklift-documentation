@@ -119,9 +119,17 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | NA
 |===
 
-. In either the UI or the CLI, create a storage map:
+. In either the UI or the CLI, complete the following steps:
 
-.. In the CLI, create a `StorageMap` custom resource (CR) according to the following example:
+.. In the UI, complete the following steps:
+
+... Create an ownerless storage map by using the procedure in xref:creating-form-based-storage-maps-ui-vmware_vmware[Creating ownerless storage maps using the form page of the {project-short} UI]. Use the *Offload plugin* named `vSphere XCOPY`.
+... Create a migration plan by using the procedure in xref:creating-plan-wizard-vmware_vmware[Creating a VMware vSphere migration plan by using the MTV wizard].
+
+
+.. In the CLI, complete the following steps:
+
+... Create a `StorageMap` custom resource (CR) according to the following example:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -195,15 +203,8 @@ spec:
 |`flashsystem`
 |===
 
-.. In the UI, create an ownerless storage map by doing the following:
-m
-... In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
-... Click *Create storage map* > *Create with YAML*.
-... Copy-paste the above `StorageMap` CR into the text box. 
-... Click *Create*.
-
-. In the UI, create a migration plan using the procedure in xref:creating-plan-wizard-vmware_vmware[Creating a VMware vSphere migration plan by using the MTV wizard].
-. In the CLI, create a migration plan using the procedure in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_migrating-from-vmware_mtv#proc_migrating-virtual-machines-cli_vmware[Running a {vmw} vSphere migration from the command-line]. In the `Plan` CR, modify the `spec:map:storage` portion of the Cr as follows:
+... Create a migration plan using the procedure in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_migrating-from-vmware_mtv#proc_migrating-virtual-machines-cli_vmware[Running a {vmw} vSphere migration from the command-line]. 
+... In the `Plan` CR, modify the `spec:map:storage` portion of the CR as follows:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -215,3 +216,4 @@ m
         name: <storage_map_in_StorageMap_CR>
         namespace: <namespace>
 ----
+
