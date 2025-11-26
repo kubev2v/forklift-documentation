@@ -22,7 +22,7 @@ During migration, {project-short} uses `virt-v2v` to collect metadata about VMs,
 
 ** Injection of VirtIO drivers, for example, network or disk drivers.
 ** Preparation of hypervisor-specific tools or agents, for example, a QEMU guest agent installation.
-** Modification of boot configuration, for example, updated bootloader or boot entries.
+** Modification of boot configuration, for example, updated boot loader or boot entries.
 
 * Removals:
 

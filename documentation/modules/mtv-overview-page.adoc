@@ -42,7 +42,7 @@ Data for this chart includes only the most recent run of a migration plan that w
 Since a single migration might involve many virtual machines, the number of migrations performed using {project-short} might vary significantly from the number of migrated virtual machines.
 ====
 
-* In the lower-right pane is a table named *{project-short} health*. This table lists all of the {project-short} pods. The most important one, `forklift-controller`, is first. The remaining pods are listed in alphabetical order. The *View all* link opens the *Health* tab. The status and creation time of each pod are listed.  There is also a link to the logs of each pod.
+* In the lower-right pane is a table named *{project-short} health*. This table lists all of the {project-short} pods. The most important one, `forklift-controller`, is first. The remaining pods are listed in alphabetical order. The *View all* link opens the *Health* tab. The status and creation time of each pod are listed. There is also a link to the logs of each pod.
 
 [id="overview-yaml-tab_{context}"]
 == YAML tab
