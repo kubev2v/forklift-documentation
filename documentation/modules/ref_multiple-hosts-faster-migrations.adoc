@@ -9,7 +9,7 @@
 [role="_abstract"]
 Using multiple hosts with registered VMs equally distributed among the ESXi hosts used for migrations leads to faster migration times.
 
-Testing showed that when transferring more than 10 single disk VMS, each containing 35 GiB of data out of a total of 50G total, using an additional host can reduce migration time.
+Testing showed that when transferring more than 10 single disk VMs, each containing 35 GiB of data out of a total of 50G total, using an additional host can reduce migration time.
 
 .Examples
 

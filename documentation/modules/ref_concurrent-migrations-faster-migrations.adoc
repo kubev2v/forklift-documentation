@@ -7,7 +7,7 @@
 = Migrations are completed faster when migrating multiple VMs concurrently
 
 [role="_abstract"]
-When multiple VMs from a specific ESXi host are to be migrated, starting concurrent migrations for multiple VMs leads to faster migration times. 
+When multiple VMs from a specific ESXi host are to be migrated by using {project-first}, starting concurrent migrations for multiple VMs leads to faster migration times. 
 
 Testing demonstrated that migrating 10 VMs (each containing 35 GiB of data, with a total size of 50 GiB) from a single host is significantly faster than migrating the same number of VMs sequentially, one after another. 
 

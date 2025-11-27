@@ -7,7 +7,7 @@
 = Maximum values tested for cold migrations
 
 [role="_abstract"]
-The following maximum vales were tested for cold migrations:
+The following maximum values were tested for cold migrations:
 
 * Maximum number of ESXi hosts tested: 8
 * Maximum number of VMs in a single migration plan: 500

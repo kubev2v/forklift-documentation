@@ -7,7 +7,7 @@
 = Maximum values tested for warm migrations
 
 [role="_abstract"]
-The following maximum vales were tested for warm migrations:
+The following maximum values were tested for warm migrations:
 
 * Maximum number of ESXi hosts tested: 8
 * Maximum number of worker nodes: 12
