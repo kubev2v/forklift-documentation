@@ -15,6 +15,11 @@ You can migrate {vmw} virtual machines (VMs) that are in a storage array network
 
 The storage copy offload feature has some unique configuration prerequisites, which are discussed in xref:proc_storage-copy-offload_vmware[Migrating {vmw} vSphere VMs by using storage copy offload]. Once you configure your system, you can migrate plans using storage copy offload by using either the {project-short} UI or its CLI. Instructions for using storage offload have been integrated into the procedures for migrating {vmw} VMs for both the Ui and CLI. 
 
+[IMPORTANT] [VDDK mage OK, VM can't migrate using both VDDK and copy-offload]
+====
+A migration plan cannot mix VDDK mappings with copy-offload mappings. Because the migration controller copies disks either through CDI volumes (VDDK) or through Volume Populators (copy-offload), all storage pairs in the plan must either include copy-offload details (secret + product) or none of them must; otherwise the plan will fail.
+====
+
 Storage copy offload is available as a Technology Preview feature for {project-first} 2.10.0 for cold migration and as a Developer Preview feature for warm migration.
 
 [IMPORTANT]
