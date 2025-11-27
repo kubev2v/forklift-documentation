@@ -159,6 +159,8 @@ include::modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=
 
 include::modules/creating-plan-wizard-vmware.adoc[leveloffset=+2]
 
+include::modules/pvc-naming-vmware-specific-template.adoc[leveloffset=+3]
+
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
