@@ -41,7 +41,7 @@ link:https://issues.redhat.com/browse/MTV-2768[(MTV-2768)]
 
 * In {project-short} 2.10.0, a `PreFlightInspection` during warm migration enables early detection of issues during guest conversion. If an issue is detected, the warm migration fails before VM shutdown, and users can adjust VM settings or skip guest conversion. Potential errors during the `PreFlightInspection` include the following:
 +
-** Missing LUKs passwords
+** Missing LUKS passwords
 ** Unsupported OS
 ** Unsupported FS 
 +
