@@ -7,7 +7,7 @@
 = Endpoint types
 
 [role="_abstract"]
-{project-short} 2.6 allows for the following vSphere provider options:
+{project-first} allows for the following vSphere provider options:
 
 * ESXi endpoint (inventory and disk transfers from ESXi), introduced in {project-short} 2.6
 
