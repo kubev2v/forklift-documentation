@@ -39,7 +39,13 @@
 * In {project-short} 2.10.0, you can configure VM scheduling preferences for migration plans in the MTV UI or the `Plan` Custom Resource (CR). You can add custom labels to migrated VMs, apply VM scheduling to specific nodes based on node labels, and implement affinity or anti-affinity rules for VMs against workloads or nodes. With this update, you can use the `TargetLabels`, `TargetNodeSelector`, and `TargetAffinity` fields to manage VM placement during migrations, improving resource utilization and operational compliance. 
 link:https://issues.redhat.com/browse/MTV-2768[(MTV-2768)]
 
-* In {project-short} 2.10.0, an inspection during warm migration enables early detection of issues during guest conversion. If an issue is detected, the warm migration fails before VM shutdown, and users can adjust VM settings or skip guest conversion. link:https://issues.redhat.com/browse/MTV-2427[(MTV-2427)] 
+* In {project-short} 2.10.0, a `PreFlightInspection` during warm migration enables early detection of issues during guest conversion. If an issue is detected, the warm migration fails before VM shutdown, and users can adjust VM settings or skip guest conversion. Potential errors during the `PreFlightInspection` include the following:
++
+** Missing LUKs passwords
+** Unsupported OS
+** Unsupported FS 
++
+link:https://issues.redhat.com/browse/MTV-2427[(MTV-2427)] 
 
 * *Technology Preview:* In {project-short} 2.10.0, you can import Open Virtual Appliances (OVAs) directly from local machines to {virt} by uploading the OVAs to NFS through the web browser in the MTV UI. link:https://issues.redhat.com/browse/MTV-3371[(MTV-3371)]
 
