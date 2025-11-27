@@ -9,6 +9,9 @@
 [role="_abstract"]
 {project-first} 2.10 introduces the following features and enhancements:
 
+* {project-short} 2.10.0 standardizes the API for `ForkliftController` global settings, now accepting only string values for feature flags, for example "true" and "false". This standard ensures consistency, clarity, and improved error handling, preventing errors caused by using boolean values instead of string values only for feature flags.
+//link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+
 * In the {project-short} 2.10.0 UI, the Virtual Machines tab on the Plan Details page provides improved visibility of migration progress with a clearer page title label and a display of key events in logical order. You can also hide migration resources for a cleaner UI to assess the progress of your migration. 
 //link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
 
