@@ -4,6 +4,7 @@
 
 :_mod-docs-content-type: CONCEPT
 [id="about-cold-warm-migration_{context}"]
+
 = About cold and warm migration
 
 [role="_abstract"]
