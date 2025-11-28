@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="creating-form-based-storage-maps-ui-vmware_{context}"]
 = Creating ownerless storage maps using the form page of the {project-short} UI
 

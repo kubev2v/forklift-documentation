@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="openstack-application-credential-authentication_{context}"]
 = Using application credential authentication with an {osp} source provider
 

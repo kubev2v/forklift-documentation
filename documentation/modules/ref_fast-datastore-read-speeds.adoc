@@ -1,0 +1,14 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_fast-datastore-read-speeds_{context}"]
+= Ensure fast datastore read speeds to ensure efficient and performant migrations
+
+[role="_abstract"]
+Datastores read rates impact the total transfer times, so it is essential to ensure fast reads are possible from the ESXi datastore to the ESXi host.
+
+Example in numbers: 200 to 300 MiB/s was the average read rate for both vSphere and ESXi endpoints for a single ESXi server. When multiple ESXi servers are used, higher datastore read rates are possible.
+
+

@@ -1,0 +1,20 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_multiple-migration-plans-vs-single_{context}"]
+= Multiple migration plans compared to a single large migration plan
+
+[role="_abstract"]
+The maximum number of disks that can be referenced by a single migration plan is 500. For more details, see link:https://issues.redhat.com/browse/MTV-1203[(MTV-1203)]. 
+
+When attempting to migrate many VMs in a single migration plan, it can take some time for all migrations to start. By breaking up one migration plan into several migration plans, it is possible to start them at the same time.
+
+Comparing migrations of:
+
+* 500 VMs using 8 ESXi hosts in 1 plan, `max_vm_inflight=100`, took 5 hours and 10 minutes.
+
+* 800 VMs using 8 ESXi hosts with 8 plans, `max_vm_inflight=100`, took 57 minutes.
+
+Testing showed that by breaking one single large plan into multiple moderately sized plans, for example, by using 100 VMs per plan, the total migration time can be reduced.

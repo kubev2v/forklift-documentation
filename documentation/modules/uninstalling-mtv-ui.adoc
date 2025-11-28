@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_upgrading-uninstalling-mtv.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="uninstalling-mtv-ui_{context}"]
 = Uninstalling {project-short} by using the {ocp} web console
 

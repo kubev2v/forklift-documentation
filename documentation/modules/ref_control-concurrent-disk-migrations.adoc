@@ -1,0 +1,22 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_control-concurrent-disk-migrations_{context}"]
+= Control maximum concurrent disk migrations per ESXi host
+
+Set the `MAX_VM_INFLIGHT MTV` variable to control the maximum number of concurrent VM transfers allowed for the ESXi host.
+
+{project-first} allows for concurrency to be controlled by using this variable; by default, it is set to 20.
+
+When setting `MAX_VM_INFLIGHT`, consider the number of maximum concurrent VM transfers that are required for ESXi hosts. It is important to consider the type of migration to be transferred concurrently. 
+
+Warm migrations use snapshots to compare and migrate only the differences between previous snapshots of the disk. The migration of the differences between snapshots happens over specific intervals before a final cut-over of the running VM to {ocp-short} occurs.
+
+In {project-short}, `MAX_VM_INFLIGHT` reserves one transfer slot per VM, regardless of current migration activity for a specific snapshot or the number of disks that belong to a single VM. The total set by `MAX_VM_INFLIGHT` is used to indicate how many concurrent VM transfers per ESXi host is allowed.
+
+.Example
+
+* `MAX_VM_INFLIGHT = 20` and 2 ESXi hosts defined in the provider mean each host can transfer 20 VMs.
+

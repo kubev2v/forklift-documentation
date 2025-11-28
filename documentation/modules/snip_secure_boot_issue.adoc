@@ -1,4 +1,4 @@
-:_content-type: SNIPPET
+:_mod-docs-content-type: SNIPPET
 
 .VMs with Secure Boot enabled might not be migrated automatically
 

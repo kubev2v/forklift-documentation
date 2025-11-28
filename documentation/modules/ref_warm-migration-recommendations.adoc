@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_warm-migration-recommendations_{context}"]
+= Warm migration recommendations
+
+[role="_abstract"]
+The following recommendations are specific to warm migrations:
+
+* Migrate up to 400 disks in parallel
+
+Testing involved migrating 200 VMs in parallel, with 2 disks each using 8 ESXi hosts, for a total of 400 disks. No tests were run on migration plans migrating over 400 disks in parallel, so it is not recommended to migrate over this number of disks in parallel.
+
+* Migrate up to 200 disks in parallel for the fastest rate
+
+Testing was successfully performed on parallel disk migrations with 200, 300, and 400 disks. There was a decrease in the precopy migration rate, approximately 25%, between the tests migrating 200 disks and those migrating 300 and 400 disks.
+
+Therefore, it is recommended to perform parallel disk migrations in groups of 200 or fewer, instead of 300 to 400 disks, unless a decline of 25% in precopy speed does not affect your cutover planning.
+
+* When possible, set cutover time to be immediately after a migration plan starts
+
+To reduce the overall time of warm migrations, it is recommended to set the cutover to occur immediately after the migration plan is started. This causes {project-short} to run *only one* precopy per VM. This recommendation is valid, no matter how many VMs are in the migration plan.
+
+* Increase precopy intervals between snapshots
+
+If you are creating many migration plans with a single VM and have enough time between the migration start and the cutover, increase the value of the `controller_precopy_interval` parameter to between 120 and 240 minutes, inclusive. The longer setting will reduce the total number of snapshots and disk transfers per VM before the cutover.

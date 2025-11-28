@@ -1,4 +1,4 @@
-:_content-type: SNIPPET
+:_mod-docs-content-type: SNIPPET
 
 .Windows VMs which use `Measured Boot` cannot be migrated
 

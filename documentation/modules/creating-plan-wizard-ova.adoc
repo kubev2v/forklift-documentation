@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-ova.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="creating-plan-wizard-ova_{context}"]
 = Creating an Open Virtualization Appliance (OVA) migration plan by using the MTV wizard
 
@@ -44,8 +44,15 @@ The *Create migration plan* wizard opens.
 * *Plan name*: Enter a name.
 * *Plan project*: Select from the list.
 * *Source provider*: Select from the list.
-* *Target provider*: Select from the list.
-* *Target project*: Select from the list. If you are using a UDN, this is the namespace defined in {virt}.
+* *Target project*: Click the list and do one of the following:
+
+.. Select an existing project from the list.
+.. Create a new project by clicking *Create Project* and doing the following:
+
+... Enter the *Name* of the project. A project name must consist of lowercase alphanumeric characters or `-`. A project name must start and end with alphanumeric characters. For example, `my-name` or `123-abc`.
+... Optional: Enter a *Display name* for the project.
+... Optional: Enter a *Description* of the project.
+... Click *Create Project*.
 
 . Click *Next*.
 +

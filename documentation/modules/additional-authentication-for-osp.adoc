@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="additional-authentication-for-osp_{context}"]
 = Additional authentication methods for migrations with {osp} source providers
 

@@ -13,12 +13,7 @@ Perform advanced migration operations, such as changing precopy snapshot interva
 
 include::../modules/changing-precopy-intervals.adoc[leveloffset=+1]
 
-
-== Creating custom rules for the Validation service
-
-The `Validation` service uses Open Policy Agent (OPA) policy rules to check the suitability of each virtual machine (VM) for migration. The `Validation` service generates a list of _concerns_ for each VM, which are stored in the `Provider Inventory` service as VM attributes. The web console displays the concerns for each VM in the provider inventory.
-
-You can create custom rules to extend the default ruleset of the `Validation` service. For example, you can create a rule that checks whether a VM has multiple disks.
+include::../modules/con_creating-custom-rules-validation.adoc[leveloffset=+1]
 
 include::../modules/about-rego-files.adoc[leveloffset=+2]
 
@@ -30,11 +25,7 @@ include::../modules/updating-validation-rules-version.adoc[leveloffset=+2]
 
 include::../modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
-== Adding hooks to an MTV migration plan
-
-You can add hooks to an {project-first} migration plan to perform automated operations on a VM, either before or after you migrate it.
-
-include::../modules/about-hooks-for-migration-plans.adoc[leveloffset=+2]
+include::../modules/about-hooks-for-migration-plans.adoc[leveloffset=+1]
 
 include::../modules/adding-hook-using-ui.adoc[leveloffset=+2]
 
@@ -44,3 +35,4 @@ include::../modules/about-udn.adoc[leveloffset=+2]
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
+

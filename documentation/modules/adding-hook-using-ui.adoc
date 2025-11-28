@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_advanced-migration-options.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="adding-migration-hook-via-ui_{context}"]
 = Adding a migration hook to a migration plan using the {ocp} web console
 

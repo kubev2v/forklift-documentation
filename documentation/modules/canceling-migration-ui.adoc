@@ -6,7 +6,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assembly_migrating-from-rhv.adoc
 // * documentation/doc-Migrating_your_virtual_machines/assembly_migrating-from-vmware.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="canceling-migration-ui_{context}"]
 = Canceling a migration
 
