@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_live-migration.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="live-migration-mtv-cnv_{context}"]
 = Live migration, {project-short}, and {virt}
 

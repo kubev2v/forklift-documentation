@@ -1,0 +1,30 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_concurrent-migrations-faster-migrations_{context}"]
+= Migrations are completed faster when migrating multiple VMs concurrently
+
+[role="_abstract"]
+When multiple VMs from a specific ESXi host are to be migrated by using {project-first}, starting concurrent migrations for multiple VMs leads to faster migration times. 
+
+Testing demonstrated that migrating 10 VMs (each containing 35 GiB of data, with a total size of 50 GiB) from a single host is significantly faster than migrating the same number of VMs sequentially, one after another. 
+
+It is possible to increase concurrent migration to more than 10 virtual machines from a single host, but it does not show a significant improvement. 
+
+.Examples
+
+* *1 single disk VMs took 6 minutes, with migration rate of 100 MiB/s*
+
+* *10 single disk VMs took 22 minutes, with migration rate of 272 MiB/s*
+
+* *20 single disk VMs took 42 minutes, with migration rate of 284 MiB/s*
+
+[NOTE]
+====
+From the aforementioned examples, it is evident that the migration of 10 virtual machines simultaneously is three times faster than the migration of identical virtual machines in a sequential manner.
+
+The migration rate was almost the same when moving 10 or 20 virtual machines simultaneously.
+====
+

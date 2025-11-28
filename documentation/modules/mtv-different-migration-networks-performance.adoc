@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 
 [id="mtv-different-migration-network-performances_{context}"]
 = Performance using different migration networks

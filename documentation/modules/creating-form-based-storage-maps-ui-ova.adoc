@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-ova.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="creating-form-based-storage-maps-ui-ova_{context}"]
 = Creating ownerless storage maps using the form page of the {project-short} UI
 

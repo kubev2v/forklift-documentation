@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assembly_advanced-migration-options.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="updating-inventory-rules-version_{context}"]
 = Updating the inventory rules version
 

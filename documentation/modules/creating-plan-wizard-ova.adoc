@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-ova.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="creating-plan-wizard-ova_{context}"]
 = Creating an Open Virtualization Appliance (OVA) migration plan by using the MTV wizard
 

@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-vms-web-console.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="mtv-ui_{context}"]
 = The MTV user interface
 

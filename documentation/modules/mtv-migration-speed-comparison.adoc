@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="mtv-migration-speed-comparison_{context}"]
 = Migration speed comparison
 

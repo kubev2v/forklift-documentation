@@ -1,4 +1,4 @@
-:_content-type: SNIPPET
+:_mod-docs-content-type: SNIPPET
 
 Migration using one or more Open Virtual Appliance (OVA) files as a source provider is a Technology Preview.
 

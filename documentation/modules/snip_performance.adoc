@@ -1,4 +1,4 @@
-:_content-type: SNIPPET
+:_mod-docs-content-type: SNIPPET
 
 The data provided here was collected from testing in Red Hat labs and is provided for reference only. 
 

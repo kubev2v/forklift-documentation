@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="virt-v2v-mtv_{context}"]
 = How MTV uses the virt-v2v tool
 

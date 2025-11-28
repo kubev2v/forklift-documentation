@@ -7,7 +7,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
 
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="canceling-migration-cli-entire_{context}"]
 = Canceling an entire migration from the command-line interface
 

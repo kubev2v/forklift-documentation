@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="creating-ownerless-storage-maps-ui_{context}"]
 = Creating ownerless storage maps in the {project-short} UI
 

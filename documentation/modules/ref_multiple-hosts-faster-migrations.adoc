@@ -1,0 +1,26 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_multiple-hosts-faster-migrations_{context}"]
+= Migrations complete faster using multiple hosts
+
+[role="_abstract"]
+Using multiple hosts with registered VMs equally distributed among the ESXi hosts used for migrations leads to faster migration times.
+
+Testing showed that when transferring more than 10 single disk VMs, each containing 35 GiB of data out of a total of 50G total, using an additional host can reduce migration time.
+
+.Examples
+
+* *80 single disk VMs, containing 35 GiB of data each, using a single host took 2 hours and 43 minutes, with a migration rate of 294 MiB/s.*
+
+* *80 single disk VMs, containing 35 GiB of data each, using 8 ESXi hosts took 41 minutes, with a migration rate of 1,173 MiB/s.*
+
+[NOTE]
+====
+From the aforementioned examples, it is evident that migrating 80 VMs from 8 ESXi hosts, 10 from each host, concurrently is four times faster than running the same VMs from a single ESXi host. 
+
+Migrating a larger number of VMs from more than 8 ESXi hosts concurrently could potentially show increased performance. However, it was not tested and therefore not recommended.
+====
+

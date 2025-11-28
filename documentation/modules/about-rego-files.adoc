@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_advanced-migration-options.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="about-rego-files_{context}"]
 = About Rego files
 

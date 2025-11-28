@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_advanced-migration-options.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="accessing-default-validation-rules_{context}"]
 = Checking the default validation rules
 

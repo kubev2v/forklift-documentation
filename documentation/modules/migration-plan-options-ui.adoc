@@ -7,7 +7,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adocw
-:_content-type: REFERENCE
+:_mod-docs-content-type: REFERENCE
 [id="migration-plan-options-ui_{context}"]
 = Migration plan options
 

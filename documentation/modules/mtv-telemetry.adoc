@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/master.adoc
 
-:_content-type: REFERENCE
+:_mod-docs-content-type: REFERENCE
 [id="mtv-telemetry_{context}"]
 = Telemetry
 

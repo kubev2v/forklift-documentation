@@ -1,0 +1,21 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_maximum-values-warm-migrations_{context}"]
+= Maximum values tested for warm migrations
+
+[role="_abstract"]
+The following maximum values were tested for warm migrations:
+
+* Maximum number of ESXi hosts tested: 8
+* Maximum number of worker nodes: 12
+* Maximum number of VMs in a single migration plan: 200
+* Maximum number of total parallel disk transfers: 400, with 200 VMs, 6 ESXis, and a transfer rate of 667 MB/s
+* Maximum single disk size migrated: 6 TB disk, which contained 3 TB of data
+* Maximum number of disks on a single VM migrated: 3
+* Maximum number of parallel disk transfers per ESXi host: 68
+* *Maximum transfer rate observed of a single disk with no concurrent migrations: 76.5 MB/s*
+* *Maximum transfer rate observed of multiple disks from a single ESXi host: 253 MB/s (concurrent migration of 10 VMs, 1 disk each, 35/50 GiB used per disk)*
+* *Total transfer rate observed of multiple disks (210) from 8 ESXi hosts: 802 MB/s (concurrent migration of 70 VMs, 3 disks each, 35/50 GiB used per disk)*

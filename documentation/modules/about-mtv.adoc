@@ -1,5 +1,5 @@
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="about-mtv_{context}"]
 = About the {project-full}
 

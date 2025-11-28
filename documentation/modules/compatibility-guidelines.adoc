@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
 
-:_content-type: REFERENCE
+:_mod-docs-content-type: REFERENCE
 [id="compatibility-guidelines_{context}"]
 = Software compatibility guidelines
 

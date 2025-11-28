@@ -1,4 +1,4 @@
-:_content-type: SNIPPET
+:_mod-docs-content-type: SNIPPET
 
 The example migration hook that follows ensures that the VM can be accessed using SSH, creates an SSH key, and runs 2 tasks: stopping the Maria database and generating a text file.
 

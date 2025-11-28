@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="resolved-issues-2-9-5_{context}"]
 = Resolved issues 2.9.5
 

@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-vms-cli.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 
 [id="non-admin-permissions_{context}"]
 = Permissions needed by non-administrators to work with migration plan components

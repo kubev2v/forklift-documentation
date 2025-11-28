@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="increasing-nfc-memory-vmware-host_{context}"]
 = Increasing the NFC service memory of an ESXi host
 

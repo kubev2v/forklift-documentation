@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="conclusions-cold-warm-migrations_{context}"]
 = Conclusions
 
