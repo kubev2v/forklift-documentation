@@ -2,9 +2,9 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
 
-
 :_mod-docs-content-type: CONCEPT
 [id="about-cold-warm-migration_{context}"]
+
 = About cold and warm migration
 
 [role="_abstract"]

@@ -1,0 +1,33 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_software-requirements-for-migration_{context}"]
+
+= Software requirements for migration
+
+//:context: prerequisites
+
+[role="_abstract"]
+Review the following software requirements to ensure that your environment is prepared for migration.
+
+{project-first} has software requirements for all providers as well as specific software requirements per provider.
+
+You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
+
+include::../modules/storage-support.adoc[leveloffset=+1]
+
+include::../modules/network-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/source-vm-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/encryption-support.adoc[leveloffset=+1]
+
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+

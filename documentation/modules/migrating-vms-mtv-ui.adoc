@@ -19,7 +19,7 @@ For all migrations, you specify the source provider, the destination provider, a
 
 [IMPORTANT]
 ====
-You must ensure that all xref:prerequisites-for-all-providers_mtv[Prerequisites and software requirements for all providers] and all xref:prerequisites-per-provider_mtv[Specific software requirements for each provider] are met.
+You must ensure that all software and provider-specific requirements for migration. For more information, see xref:assembly_software-requirements-for-migration_{context}[Software requirements for migration] and xref:assembly_provider-specific-requirements-for-migration_{context}[Provider-specific requirements for migration].
 
 {vmw} only: You must have the minimal set of xref:vmware-privileges_mtv[{vmw} privileges].
 
