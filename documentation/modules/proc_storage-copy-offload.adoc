@@ -40,85 +40,10 @@ In addition to the regular xref:vmware-prerequisites_mtv[{vmw} prerequisites], s
 oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type merge -p '{"spec": {"feature_copy_offload": "true"}}' -n openshift-mtv
 ----
 
-. Create a `Secret` in the namespace in which the migration provider is set up, usually `openshift-mtv`. Include the following credentials in the `Secret`. Note that Hitachi has a different set of credentials:
+. Create a `Secret` in the namespace in which the migration provider is set up, usually `openshift-mtv`. Include the credentials from the appropriate vendor in your `Secret`.
 +
-[cols="4", options="header"]
-.Credentials for a non-Hitachi storage copy offload Secret
-|===
-|Key| Description| Mandatory?| Default
-
-| `STORAGE_HOSTNAME`
-| IP or URL of the host (string)
-| Yes
-| NA
-
-| `STORAGE_USERNAME`
-| The user's name (string)
-| Yes
-| NA
-
-| `STORAGE_PASSWORD`
-| The user's password (string)
-| Yes
-| NA
-
-| `STORAGE_SKIP_SSL_VERIFICATION`
-| If set to `true`, SSL verification is not performed (`true`, `false`).
-| No
-|`false`
-|===
+include::snip_storage-copy-offload-secret-tables.adoc[]
 +
-[cols="4", options="header"]
-.Credentials for a Hitachi storage copy offload Secret
-|===
-|Key| Description| Mandatory?| Default
-
-| `GOVMOMI_HOSTNAME`
-| hostname or URL of the vSphere API (string)
-| Yes
-| NA
-
-| `GOVMOMI_USERNAME`
-| User name of the vSphere API (string)
-| Yes
-| NA
-
-| `GOVMOMI_PASSWORD`
-| Password of the vSphere API (string)
-| Yes
-| NA
-
-| `STORAGE_HOSTNAME`
-| The hostname or URL of the storage vendor API (string)
-| Yes
-| NA
-
-| `STORAGE_USERNAME`
-| The username of the storage vendor API (string)
-| Yes
-| NA
-
-| `STORAGE_PASSWORD`
-| The password of the storage vendor API (string)
-| Yes
-| NA
-
-| `STORAGE_PORT`
-| The port of the storage vendor API (string)
-| Yes
-| NA
-
-| `STORAGE_ID`
-| Storage array serial number (string)
-| Yes
-| NA
-
-| `HOSTGROUP_ID_LIST`
-| List of IO ports and host group IDs, for example. `CL1-A,1:CL2-B,2:CL4-A,1:CL6-A,1`
-| Yes
-| NA
-|===
-
 . In either the UI or the CLI, complete the following steps:
 
 .. In the UI, complete the following steps:

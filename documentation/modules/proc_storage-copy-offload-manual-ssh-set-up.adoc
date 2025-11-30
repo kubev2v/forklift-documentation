@@ -1,0 +1,10 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: PROCEDURE
+[id="proc_storage-copy-offload-manual-ssh-set-up_{context}"]
+= Setting up storage copy offload using a manually generated SSH key
+
+[role="_abstract"]
+You can set up the 

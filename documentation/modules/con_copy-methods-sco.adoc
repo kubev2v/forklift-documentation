@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_copy-methods-sco_{context}"]
+= Cloning methods used by storage copy offload
+
+[role="_abstract"]
+You can use either of two cloning (copying) methods to run storage copy offload migrations:
+
+* vSphere Installation on Bundle (VIB), the default method
+* SSH, the recommended method
+
+Both of these methods can run `vmkfstools` clone operations on ESXi hosts. 
+
+The default VIB method uses a custom VIB installed on ESXi hosts to expose `vmkfstools` operations via the vSphere API.
+The SSH method uses SSH to directly run `vmkfstools` commands on ESXi hosts. This method is useful when VIB installation is not possible and for the advantages that follow. 
+
+== Advantages of the SSH method
+
+The SSH method offers you the following advantages: 
+
+- No VIB installation: Does not require custom VIB deployment on ESXi hosts.
+- Standard SSH: Uses the standard ESXi SSH service with no custom components.
+- Security: Uses secure key-based authentication with command restrictions
+- Compatibility: Works with any ESXi version that supports SSH
+- Flexibility: Easier to troubleshoot and monitor SSH connections 
