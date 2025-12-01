@@ -1,0 +1,83 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_installing-mtv-operator.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_mtv-operator-parameters_{context}"]
+= {operator-name} parameters
+
+[role="_abstract"]
+The {operator-name} parameters table contains a description of each parameter and its default value.
+
+.{operator-name} parameters
+[cols="1,1,1",options="header"]
+|===
+|Parameter |Description |Default value
+
+|`controller_max_vm_inflight`
+a|The maximum number of disks or VMs that can transfer or migrate simultaneously. Varies with provider. For more information, see xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter]. 
+|`20`
+
+|`must_gather_api_cleanup_max_age`
+|The duration in hours for retaining `must gather` reports before they are automatically deleted.
+|`-1` (disabled)
+
+|`controller_container_limits_cpu`
+|The CPU limit allocated to the main controller container.
+|`500m`
+
+|`controller_container_limits_memory`
+|The memory limit allocated to the main controller container.
+|`800Mi`
+
+|`controller_precopy_interval`
+|The interval in minutes at which a new snapshot is requested before initiating a warm migration.
+|`60`
+
+|`controller_snapshot_status_check_rate_seconds`
+|The frequency in seconds with which the system checks the status of snapshot creation or removal during a warm migration.
+|`10`
+
+|`controller_filesystem_overhead`
+|Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem`.
+
+*`ForkliftController` CR only.*
+|`10`
+
+|`controller_block_overhead`
+|Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based. It can be used when data, such as encryption headers, is written to the persistent volumes in addition to the content of the virtual disk.
+
+*`ForkliftController` CR only.*
+|`0`
+
+|`vsphere_osmap_configmap_name`
+|Config map for vSphere source providers. This config map maps the operating system of the incoming VM to a {virt} preference name. This config map needs to be in the namespace where the {project-short} Operator is deployed.
+
+To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* > *Preferences*.
+
+Add values to the config map when this parameter has the default value, `forklift-vsphere-osmap.` To override or delete values, specify a config map that is different from `forklift-vsphere-osmap`.
+
+*`ForkliftController` CR only.*
+|`forklift-vsphere-osmap`
+
+|`ovirt_osmap_configmap_name`
+|Config map for {rhv-short} source providers. This config map maps the operating system of the incoming VM to a {virt} preference name. This config map needs to be in the namespace where the {project-short} Operator is deployed.
+
+To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* -> *Preferences*.
+
+You can add values to the config map when this parameter has the default value, `forklift-ovirt-osmap.` To override or delete values, specify a config map that is different from `forklift-ovirt-osmap`.
+
+*`ForkliftController` CR only.*
+|`forklift-ovirt-osmap`
+
+|`controller_retain_precopy_importer_pods`
+|Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration.
+
+*`ForkliftController` CR only.*
+
+|`false`
+|===
+
+
+
+
