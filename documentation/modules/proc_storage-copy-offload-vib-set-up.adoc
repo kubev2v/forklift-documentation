@@ -4,10 +4,10 @@
 
 :_content-type: PROCEDURE
 [id="proc_storage-copy-offload-vib-set-up_{context}"]
-= Setting up a VIB storage copy offload
+= Setting up storage copy offload using the VIB
 
 [role="_abstract"]
-You can set up the vSphere Installation on Bundle (VIB) cloning method to run storage copy offload migrations. This is the default method for running storage copy offload migrations.
+You can set up storage copy offload using the vSphere Installation on Bundle (VIB). This is the default method for running storage copy offload migrations.
 
 [IMPORTANT]
 ====
@@ -23,7 +23,7 @@ If you use this method, you must install the VIB on every ESXi host that you use
 
 .Procedure
 
-. Configure the ESXi clone method in your `Provider` CR by setting `settings:exsiCloneMethod` to `"vib"`.  
+. Configure the VIB clone method in your `Provider` CR by setting `settings:exsiCloneMethod` to `"vib"`.  
 
 .Example Provider CR
 +

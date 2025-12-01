@@ -7,4 +7,32 @@
 = Setting up storage copy offload using an automatically generated SSH key
 
 [role="_abstract"]
-You can set up the 
+By default, when you use the SSH method for setting up storage copy migrations, SSH keys are automatically generated when you create or update a relevant vSphere provider as described in the procedure that follows[break this up] 
+
+These keys have the following characteristics:
+
+- 2048-bit RSA keys
+- Stored in separate Kubernetes Secrets in the provider's namespace
+- Automatically injected into migration pods as needed
+
+SSH keys are stored in secrets with predictable names based on the name of your vSphere provider:
+
+[cols="1,1,1",options="header"]
+.Patterns of SSH secret names
+|===
+| Secret type
+| Naming pattern
+| Contains
+
+| Private key
+| `offload-ssh-keys-{provider-name}-private`
+| `private-key`: RSA private key in PEM format
+
+| Public key
+| `offload-ssh-keys-{proider-name}-public`
+| `public-key: SSH public key in authorized_keys format
+|===
+
+Example: For a provider with the name `vcenter-example`, the secrets would be `offload-ssh-keys-vcenter-example-private` and `offload-ssh-keys-vcenter-example-public`.
+
+//  Start with finding secrets, add optional -- also add Provider CR. 
