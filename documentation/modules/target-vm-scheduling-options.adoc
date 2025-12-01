@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+
+:_content-type: CONCEPT
+[id="target-vm-scheduling-options_{context}"]
+= Target VM scheduling options
+
+You can use the following options to schedule when your target VMs are powered on:
+
+* *Node Selector* rule: This is both the simplest rule. You define a set of mandatory exact match key-value label pairs that the target node must possess. If no node on the cluster has all the labels specified, the VM is not scheduled and it remains in a `Pending` state until there is space on a node that fits the key-value label pairs.
+
+* *Affinity and Anti-Affinity* rules: _Node Affinity_ rules let you schedule VMs to run on selected nodes or workloads (pods). _Node Anti-affinity_ rules let you prevent VMs from being scheduled to run on selected workloads (pods).
++
+Node Affinity and Node Anti-Affinity rules offer more flexible placement control than rigid Node Selector rules, because they support conditionals such as `In`, `NotIn`.
++
+Additionally, Affinity rules and Anti-Affinity rules allow you to include both _hard_ and _soft_ conditions in the same rule. A hard condition is a requirement, and a soft condition is a preference.
+
+[NOTE]
+====
+Affinity rules are supported by {project-short} at both the node and the workload (pod) levels, but Anti-Affinity rules are supported at the workload (pod) level only.
+====
+
+* *Custom Scheduler Name*: If your {virt} environment uses a secondary or specialized scheduler, in addition to the default `kube-scheduler`, to handle specific workload types, you can instruct {project-short} to apply this custom scheduler name to the target VM's manifest. This directs the VM to use the specialized logic designed for that workload. This feature is implemented by using the *VM target label* feature.
+
+By integrating any of these three types of controls into your migration plan, you ensure that the complex scheduling logic required for modern applications is defined upfront, preventing post-migration performance degradation or unexpected scheduling errors.
+
+[IMPORTANT]
+====
+Any scheduling rule applied in a migration plan applies to all VMs in it.
+====
+
+Target VM scheduling in {project-short} derives from Kubernetes's support for link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/[Assigning Pods to Nodes].

@@ -836,21 +836,26 @@ spec:
   pvcNameTemplate: <pvc_name_template> <10>
   pvcNameTemplateUseGenerateName: true <11>
   skipGuestConversion: false <12>
+  targetAffinity: <affinity rule> <13> 
+  targetLabels: <14>
+    label: <label> 
+  targetNodeSelector: <15>
+    <key>:<value>
   targetNamespace: <target_namespace>
-  useCompatibilityMode: true <13>
-  volumeNameTemplate: <volume_name_template> <14>
-  vms: <15>
-    - id: <source_vm1> <16>
+  useCompatibilityMode: true <16>
+  volumeNameTemplate: <volume_name_template> <17>
+  vms: <18>
+    - id: <source_vm1> <19>
     - name: <source_vm2>
-      networkNameTemplate: <network_interface_template_for_this_vm> <17>
-      pvcNameTemplate: <pvc_name_template_for_this_vm> <18>
-      volumeNameTemplate: <volume_name_template_for_this_vm> <19>
-      targetName: <target_name> <20>
-      hooks: <21>
+      networkNameTemplate: <network_interface_template_for_this_vm> <20>
+      pvcNameTemplate: <pvc_name_template_for_this_vm> <21>
+      volumeNameTemplate: <volume_name_template_for_this_vm> <22>
+      targetName: <target_name> <23>
+      hooks: <24>
         - hook:
             namespace: <namespace>
-            name: <hook> <22>
-          step: <step> <23>
+            name: <hook> <25>
+          step: <step> <26>
 
 EOF
 ----
@@ -900,10 +905,16 @@ include::snip_pvcNameTemplateUseGenerateName-warn.adoc[]
 +
 Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. 
 +
-<13> Determines whether the migration uses VirtIO devices or compatibility devices (SATA bus, E1000E NIC) when `skipGuestConversion` is `true`, that is, when raw copy mode is used for the migration. The setting of `useCompatibilityMode` has no effect when `skipGuestConversion` is `false`, because `virt-v2v` conversion always uses VirtIO devices.
+<13> Optional: Affinity rule, which may be quite complex, is entered in lines following this label.
++
+`targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
++
+<14> Optional: Applies organizational or operational labels to migrated VMs for identification and management.
+<15> Optional: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you enter.
+<16> Determines whether the migration uses VirtIO devices or compatibility devices (SATA bus, E1000E NIC) when `skipGuestConversion` is `true`, that is, when raw copy mode is used for the migration. The setting of `useCompatibilityMode` has no effect when `skipGuestConversion` is `false`, because `virt-v2v` conversion always uses VirtIO devices.
 * When set to `true`, the default setting, {project-short} uses compatibility devices (SATA bus, E1000E NIC) in the migration process to ensure that the VMs can be booted after migration.
 * When set to `false`, {project-short} uses high-performance VirtIO devices in the migration process, and `virt-v2v` ensures that the VMs can be booted after migration. Before using this option, verify that VirtIO drivers are already installed in the source VMs.
-<14> [[callout14]]Optional: Specify a template for the volume interface name for the VMs in your plan.
+<17> [[callout14]]Optional: Specify a template for the volume interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume.
 ** `.VolumeIndex`: Sequential index of the volume interface (0-based).
@@ -911,15 +922,15 @@ The template follows the Go template syntax and has access to the following vari
 *Examples*
 ** `"disk-{{.VolumeIndex}}"`
 ** `"pvc-{{.PVCName}}"`
-<15> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
-<16> Specify the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
-<17> Optional: Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
-<18> Optional: Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10].
-<19> Optional: Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout14[callout 14].
-<20> Optional: {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique, and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
-<21> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<22> Specify the name of the `Hook` CR.
-<23> Allowed values are `PreHook` before the migration plan starts or `PostHook` after the migration is complete.
+<18> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+<19> Specify the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+<20> Optional: Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
+<21> Optional: Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10].
+<22> Optional: Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout14[callout 14].
+<23> Optional: {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique, and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
+<24> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
+<25> Specify the name of the `Hook` CR.
+<26> Allowed values are `PreHook` before the migration plan starts or `PostHook` after the migration is complete.
 +
 include::snip_vmware-name-change.adoc[]
 endif::[]

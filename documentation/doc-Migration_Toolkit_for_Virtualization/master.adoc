@@ -434,6 +434,18 @@ include::modules/canceling-migration-cli-entire.adoc[leveloffset=+4]
 
 include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 
+:ova!:
+:context: cnv
+:cnv:
+
+include::modules/proc_migrating-virtual-machines-cli.adoc[leveloffset=+2]
+
+include::modules/canceling-migration-cli.adoc[leveloffset=+3]
+
+include::modules/canceling-migration-cli-entire.adoc[leveloffset=+4]
+
+include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
+
 :cnv!:
 :context: mtv
 :mtv:
@@ -462,6 +474,10 @@ include::modules/adding-hook-using-ui.adoc[leveloffset=+3]
 include::modules/adding-hook-using-cli.adoc[leveloffset=+3]
 
 include::modules/about-udn.adoc[leveloffset=+2]
+
+include::modules/about-configuring-target-vm-scheduling.adoc[leveloffset=+2]
+
+include::modules/target-vm-scheduling-prerequisites.adoc[leveloffset=+3]
 
 include::modules/upgrading-mtv-ui.adoc[leveloffset=+1]
 

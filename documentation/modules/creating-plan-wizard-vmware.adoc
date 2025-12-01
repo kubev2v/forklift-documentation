@@ -200,10 +200,10 @@ The wizard opens to the page where you defined the item.
 When your plan is validated, the *Plan details* page for your plan opens in the *Details* tab.
 +
 The *Plan settings* section of the page includes settings that you specified in the *Other settings (optional)* page and some additional optional settings. The steps below refer to the additional optional steps, but all of the settings can be edited by clicking the {kebab}, making the change, and then clicking *Save*.
-
+// Plan settings page
 . Check the following items on the *Plan settings* section of the page:
 
-* *Volume name template*: Specifies a template for the volume interface name for the VMs in your plan.
+.. *Volume name template*: Specifies a template for the volume interface name for the VMs in your plan.
 +
 The template follows the Go template syntax and has access to the following variables:
 
@@ -238,7 +238,7 @@ Variable names cannot exceed 63 characters.
 Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
 ====
 
-* *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan.
+.. *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan.
 +
 The template follows the Go template syntax and has access to the following variables:
 
@@ -275,7 +275,7 @@ Variable names cannot exceed 63 characters.
 Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
 ====
 
-* *Network name template*: Specifies a template for the network interface name for the VMs in your plan.
+.. *Network name template*: Specifies a template for the network interface name for the VMs in your plan.
 +
 The template follows the Go template syntax and has access to the following variables:
 
@@ -312,12 +312,58 @@ Variable names cannot exceed 63 characters.
 Changes you make on the *Virtual Machines* tab override any changes on the *Plan details* page.
 ====
 
-* *Raw copy mode*: By default, during migration, virtual machines (VMs) are converted using a tool named `virt-v2v` that makes them compatible with {virt}. For more information about the virt-v2v conversion process, see 'How {project-short} uses the virt-v2v tool' in _Migrating your virtual machines to Red Hat {virt}_. _Raw copy mode_ copies VMs without converting them. This allows for faster conversions, migrating VMs running a wider range of operating systems, and supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}.
+.. *Raw copy mode*: By default, during migration, virtual machines (VMs) are converted using a tool named `virt-v2v` that makes them compatible with {virt}. For more information about the virt-v2v conversion process, see 'How {project-short} uses the virt-v2v tool' in _Migrating your virtual machines to Red Hat {virt}_. _Raw copy mode_ copies VMs without converting them. This allows for faster conversions, migrating VMs running a wider range of operating systems, and supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}.
 
 ** To use raw copy mode for your migration plan, do the following:
 *** Click the *Edit* icon.
 *** Toggle the *Raw copy mode* switch.
 *** Click *Save*.
+
+.. *VM target node selector*, *VM target labels*, and *VM target affinity rules* are options that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when to power on the VMs.
++
+// For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options].
++
+// For more details on using the feature with the UI, see xref:configuring-target-vm-scheduling-ui_{context}[Scheduling target VMs from the user interface].
++
+* *VM target node selector* allows you to create mandatory exact match key-value label pairs that the target node must possess. If no node on the cluster has all the labels specified, the VM is not scheduled and it remains in a `Pending` state until there is space on a node that fits these key-value label pairs.
+
+** To use the VM target node selector for your migration plan, do the following:
+*** Click the *Edit* icon.
+*** Enter a key-value label pair. For example, to require that all VMs in the plan be migrated to your `east` data center, enter `dataCenter` as your *key* and `east` as your *label*.
+*** To add another key-value label pair, click *+* and enter another key-value pair.
+*** Click *Save*.
+
+* *VM target labels* allows you to apply organizational or operational labels to migrated VMs for identification and management. One use for these labels is to use them to specify a different scheduler for your migrated VMs, by creating a specific target VM label for it. 
+
+** To use the VM target node selector for your migration plan, do the following:
+*** Click the *Edit* icon.
+*** Enter one or more VM target labels. 
+*** Click *Save*.
+
+* *VM target affinity rules*: Target affinity rules let you use conditions to either require or prefer scheduling on specific nodes or workloads (pods).  
++
+Target anti-affinity rules let you prevent VMs from being scheduled to run on selected workloads (pods) or prefer that they are not scheduled. These kind of rules offer more flexible placement control than rigid Node Selector rules, because they support conditionals such as `In`, or `NotIn`. 
++
+For example, you could require that a VM be powered on "only if it is migrated to node A _or_ if it is migrated to an SSD disk, but it _cannot_ be migrated to a node for which `license-tier=silver` is true."
++
+Additionally, both target affinity and target anti-affinity rules allow you to include both _hard_ and _soft_ conditions in the same rule. A hard condition is a requirement, and a soft condition is a preference. The previous example used only hard conditions. A rule that states that "a VM can be powered on if it is migrated to node A _or_ if it is migrated to an SSD disk, but it is preferred not to migrate it to a node for which `license-tier=silver` is true" is an example of a rule that uses soft conditions.
++
+{project-short} supports target affinity rules at both the node level and the workload (pod) level. It supports anti-affinity rules at the workload (pod) level only. 
+
+** To use VM target affinity rules for your migration plan, do the following:
+*** Click the *Edit* icon.
+*** Click *Add affinity rule*.
+*** Select the *Type* of affinity rule from the list. Valid options: Node Affinity, Workload (pod) Affinity, Workload (pod) Anti-Affinity.
+*** Select the *Condition* rom the list. Valid options: Preferred during scheduling (soft condition), Required  during scheduling (hard condition).
+*** Soft condition only: Enter a numerical *Weight*. The higher the weight, the stronger the preference. Valid options: whole numbers from 1-100.
+*** Enter a *Typology key*, the key for the node label that the system uses to denote the domain.
+*** Optional: Select the *Workload labels* that you want to set by doing the following:
+**** Enter a *Key*.
+**** Select an *Operator* from the list. Valid options: `Exists`, `DoesNotExist`, `In`, and `NotIn`.
+**** Enter a *Value*.
+*** To add another label, click *Add expression* and add another key-value pair with an operator. 
+*** Click *Save affinity rule*.
+*** To add another affinity rule, click *Add affinity rule*. Rules with a preferred condition will stack with an `AND` relation between them. Rules with a required condition will stack with an `OR` relation between them.
 +
 {project-short} validates any changes you made on this page.
 
