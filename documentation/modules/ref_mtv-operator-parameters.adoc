@@ -7,7 +7,7 @@
 = {operator-name} parameters
 
 [role="_abstract"]
-The {operator-name} parameters table contains a description of each parameter and its default value.
+The {operator-name} parameters table contains a description of each {operator-name} parameter and its default value. 
 
 .{operator-name} parameters
 [cols="1,1,1",options="header"]
