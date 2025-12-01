@@ -7,7 +7,7 @@
 = Configuring the {operator-name}
 
 [role="_abstract"]
-You can configure the following settings of the {operator-name} by modifying the `ForkliftController` custom resource (CR), or in the *Settings* section of the *Overview* page, unless otherwise indicated.
+You can configure the {operator-name} in the *Settings* section of the *Overview* page or by modifying the `ForkliftController` custom resource (CR). Some configurations are only available in the the `ForkliftController` CR. For information about the *Settings* section of the *Overview* page, see xref:overview-settings-tab_{context}[Settings tab].
 
 * Maximum number of virtual machines (VMs) or disks per plan that {project-first} can migrate simultaneously.
 * How long `must gather` reports are retained before being automatically deleted (`ForkliftController` CR only). 
@@ -21,7 +21,8 @@ You can configure the following settings of the {operator-name} by modifying the
 * Configuration map of operating systems to preferences for {rhv-full} ({rhv-short}) source providers (`ForkliftController` CR only).
 * Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration (`ForkliftController` CR only).
 
-The procedure for configuring these settings by using the user interface is presented in xref:mtv-overview-page_{context}[Configuring MTV settings]. The procedure for configuring these settings by modifying the `ForkliftController` CR is presented following.
+NOTE: You can only use the string values "true" and "false" for feature gates, such as plugins and some services, in the `ForkliftController` CR. The `ForkliftController` API does not accept boolean values for these settings.
+
 
 .Procedure
 
