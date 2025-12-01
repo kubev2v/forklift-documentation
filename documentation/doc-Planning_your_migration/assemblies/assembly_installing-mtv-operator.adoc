@@ -36,6 +36,8 @@ include::../modules/ref_mtv-operator-parameters.adoc[leveloffset=+1]
 
 include::../modules/max-concurrent-vms.adoc[leveloffset=+1]
 
+:!mtv:
+
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
 
