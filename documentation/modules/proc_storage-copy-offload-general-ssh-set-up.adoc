@@ -7,7 +7,7 @@
 = Setting up storage copy offload using an SSH key
 
 [role="_abstract"]
-You can use either an automatically generated SSH key or a manually SSH for your storage copy offload migrations.
+You can use either an automatically generated SSH key or a manually generated SSH key for your storage copy offload migrations.
 
 Although SSH keys are automatically generated when you chose to use the SSH method, you have the option to generate manual SSH keys.
 
