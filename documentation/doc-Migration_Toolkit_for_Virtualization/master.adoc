@@ -17,19 +17,11 @@ endif::[]
 
 include::modules/about-mtv.adoc[leveloffset=+1]
 
-include::modules/cold-warm-migration.adoc[leveloffset=+1]
-
 include::modules/mtv-migration-speed-comparison.adoc[leveloffset=+2]
 
 include::modules/about-cold-warm-migration.adoc[leveloffset=+2]
 
 include::modules/status-vms-cold-migration.adoc[leveloffset=+3]
-
-include::modules/status-vms-warm-migration.adoc[leveloffset=+3]
-
-include::modules/advantages-disadvantages-cold-warm-migrations.adoc[leveloffset=+3]
-
-include::modules/conclusions-cold-warm-migrations.adoc[leveloffset=+3]
 
 include::modules/about-live-migration.adoc[leveloffset=+1]
 
@@ -75,7 +67,7 @@ include::modules/rhv-prerequisites.adoc[leveloffset=+2]
 
 include::modules/openstack-prerequisites.adoc[leveloffset=+2]
 
-include::modules/additional-authentication-for-osp.adoc[leveloffset=+3]
+
 
 :!mtv:
 :context: ostack
@@ -131,8 +123,6 @@ Use the {project-short} user interface to migrate virtual machines (VMs). It is 
 include::modules/mtv-ui.adoc[leveloffset=+2]
 
 include::modules/mtv-overview-page.adoc[leveloffset=+3]
-
-include::modules/migrating-vms-mtv-ui.adoc[leveloffset=+2]
 
 :!mtv:
 :context: vmware
@@ -328,8 +318,6 @@ include::modules/creating-plan-wizard-cnv-live.adoc[leveloffset=+3]
 
 include::modules/running-migration-plan.adoc[leveloffset=+2]
 
-include::modules/running-live-migration-plan.adoc[leveloffset=+3]
-
 include::modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
 include::modules/about-network-maps.adoc[leveloffset=+2]
@@ -454,8 +442,6 @@ include::modules/canceling-migration-cli-specific.adoc[leveloffset=+4]
 == Advanced migration options
 
 include::modules/changing-precopy-intervals.adoc[leveloffset=+2]
-
-include::modules/creating-custom-rules-for-validation-service.adoc[leveloffset=+2]
 
 include::modules/about-rego-files.adoc[leveloffset=+3]
 
