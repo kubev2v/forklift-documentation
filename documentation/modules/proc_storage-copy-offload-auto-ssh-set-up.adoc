@@ -108,6 +108,6 @@ oc create secret generic <name of public key> \
 
 [source,terminal]
 ----
-oc patch secret vsphere-credentials -p '{"data":{"SSH_TIMEOUT_SECONDS":"'$(echo -n "60" | base64)'"}}' -n openshift-mtv
+oc patch secret <provider_credentials> -p '{"data":{"SSH_TIMEOUT_SECONDS":"'$(echo -n "60" | base64)'"}}' -n <provider_namespace>
 ----
 
