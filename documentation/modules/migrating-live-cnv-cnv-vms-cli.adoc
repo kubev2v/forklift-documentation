@@ -5,13 +5,13 @@
 :_mod-docs-content-type: PROCEDURE
 [id="migrating-live-cnv-cnv-vms-cli_{context}"]
 
-= Performing a live migration using the {project-short} CLI
+= Running a Red Hat {virt} live migration from the command-line
 
 [role="_abstract"]
 You can perform a live migration by using the command-line interface (CLI). The procedure for live migration is identical to the procedure for other migrations between {virt} clusters except for the addition of the `type` label in the `Plan` CR. For a live migration, the `type` label must be set to `live`.
 
 .Prerequisites
-As described in the prerequisites for live migration. For more information, see xref:cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
+As described in the prerequisites for live migration. For more information, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_provider-specific-requirements-for-migration_mtv#cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
 
 .Procedure
 . Create a `Secret` manifest for the source provider credentials:
