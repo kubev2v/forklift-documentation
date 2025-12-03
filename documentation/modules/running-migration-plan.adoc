@@ -32,7 +32,7 @@ The *Plans* list displays the source and target providers, the number of virtual
 The plan's *Status* changes to *Running*, and the migration's progress is displayed.
 +
 ifdef::vmware,rhv[]
-Warm migration only::
+*Warm migration only:*
 
 * The precopy stage starts.
 * Click *Cutover* to complete the migration.
@@ -42,7 +42,6 @@ A `PreFlightInspection` during warm migration enables early detection of issues 
 ** Missing LUKS passwords
 ** Unsupported OS
 ** Unsupported FS 
-+
 endif::vmware,rhv[]
 +
 [WARNING]
