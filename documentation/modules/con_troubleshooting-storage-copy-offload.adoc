@@ -20,16 +20,27 @@ This section describes problems that are unique to storage copy offload and how 
 
 - VIB issues returned with a CLI error 
 
-*Description*: The following error is returned: 
-`CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:vim25" versionId="5.0" xsi:type="LocalizedMethodFault"><fault xsi:type="NotFound"></fault><localizedMessage>The object or item referred to could not be found.</localizedMessage></obj>`.
+*Description*: {project-first} returns the following error:
++
+[source,terminal]
+----
+CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:vim25" versionId="5.0" xsi:type="LocalizedMethodFault"><fault xsi:type="NotFound"></fault><localizedMessage>The object or item referred to could not be found.</localizedMessage></obj>
+----
 
 *Explanation*: If the VIB is installed, but `/etc/init.d/hostd` did not restart, then the `vmkfstools` namespace in `esxcli` is either not updated or does not exist. If it doesn't exist, it means that is the first time usage, probably right after the first use. The error returned by the remote esxcli invocation is:
 
 *Solution*: Use SSH to log into the ESXi and run `/etc/init.d/hostd restart`. Wait for a few seconds until the ESXu renews the connection with vSphere.
 
 [id=sco-ssh-issues_{context}]
-== SSH issues
-Error: manual SSH key configuration required or failed to connect via SSH
+== SSH error messages
+
+- SSH connection error
+*Description*: {project-short} returns the following error:
++
+[source,terminal]
+----
+manual SSH key configuration required or failed to connect via SSH
+----
 
 Causes and Solutions:
 
