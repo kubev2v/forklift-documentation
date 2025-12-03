@@ -1,0 +1,83 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+
+[id="con_troubleshooting-storage-copy-offload_{context}"]
+= Troubleshooting storage copy offload
+
+This section describes problems that are unique to storage copy offload and how you can resolve them.
+
+[id=sco-vsphere-esxi-connectivity_{context}]
+== vSphere-ESXi connectivity issues
+
+- Remote ESXi connection fails with SOAP error
+
+*Description*: Sometimes a remote ESXi execution fails, returning a SOAP error with no apparent root cause message.
+*Explanation*: Because vSphere invokes some SOAP/Rest endpoints on the ESXi, connection can fail because of standard error reasons that vanish after the next try. 
+*Solution*: If the populator fails, the migration can be restarted. Try to restart or retry the populator, or restart the migration.
+
+- VIB issues returned with a CLI error 
+
+*Description*: The following error is returned: 
+`CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:vim25" versionId="5.0" xsi:type="LocalizedMethodFault"><fault xsi:type="NotFound"></fault><localizedMessage>The object or item referred to could not be found.</localizedMessage></obj>`.
+
+*Explanation*: If the VIB is installed, but `/etc/init.d/hostd` did not restart, then the `vmkfstools` namespace in `esxcli` is either not updated or does not exist. If it doesn't exist, it means that is the first time usage, probably right after the first use. The error returned by the remote esxcli invocation is:
+
+*Solution*: Use SSH to log into the ESXi and run `/etc/init.d/hostd restart`. Wait for a few seconds until the ESXu renews the connection with vSphere.
+
+[id=sco-ssh-issues_{context}]
+== SSH issues
+Error: manual SSH key configuration required or failed to connect via SSH
+
+Causes and Solutions:
+
+SSH service disabled: Manually enable SSH on the ESXi host using the commands in section 6
+SSH keys not deployed: Follow the manual instructions provided in the pod logs
+Network connectivity: Verify ESXi management network is accessible from migration pods
+Timeout issues: Increase SSH_TIMEOUT_SECONDS in the Provider secret (default: 30)
+Verification steps:
+
+# Check if SSH service is running on ESXi
+vim-cmd hostsvc/get_ssh_status
+
+# Manually test SSH connectivity from a migration pod
+ssh -i /path/to/private_key root@esxi-host-ip
+Error: failed to start vmkfstools clone or task execution failed
+
+Causes and Solutions:
+
+Insufficient privileges: Ensure vSphere user has required privileges (see vSphere User Privileges section)
+Command restrictions: The secure script may not have been deployed properly
+Datastore access: Verify the ESXi host has access to both source and target datastores
+Debugging:
+
+# Check available vmkfstools commands via SSH
+ssh root@esxi-host 'which vmkfstools'
+ssh root@esxi-host 'vmkfstools --help'
+Error: SSH connection timeout or context deadline exceeded
+
+Solutions:
+
+Increase SSH_TIMEOUT_SECONDS in the Provider secret
+Check network latency between migration pods and ESXi hosts
+Verify ESXi host is not overloaded
+Consider using dedicated migration network
+Security warnings: Manual SSH key configuration required
+
+This is expected behavior when SSH keys aren't configured yet. The system will:
+
+Detect that SSH key authentication isn't working
+Provide detailed instructions in the logs for manual key installation
+Once keys are installed, use secure key-based authentication with command restrictions
+Restrict commands to vmkfstools operations only
+NetApp
+Error: cannot derive SVM to use; please specify SVM in config file
+
+This is a configuration issue with Ontap and could be fixed by specifying a default SVM using vserver commands on the ontap server:
+
+# show current config for an SVM
+vserver show -vserver ${NAME_OF_SVM}
+...
+Try to set a mgmt interface for the SVM and put that hostname in the STORAGE_HOSTNAME
