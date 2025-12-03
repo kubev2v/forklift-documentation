@@ -8,7 +8,7 @@
 
 [role="_abstract"]
 
-To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, the rules must be deployed using a *ConfigMap* and referenced in the {project-short} Custom Resource (CR).
+To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, deploy the rules by using a *ConfigMap* and reference the rules in the {project-short} Custom Resource (CR).
 
 [IMPORTANT]
 ====
@@ -101,14 +101,14 @@ EOF
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc scale -n {namespace} --replicas=0 deployment/forklift-validation
+$ {oc} scale -n {namespace} --replicas=0 deployment/forklift-validation
 ----
 
 . Start the `Validation` pod by scaling the `forklift-controller` deployment to `1`:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ oc scale -n openshift-mtv --replicas=1 deployment/forklift-validation
+$ {oc} scale -n openshift-mtv --replicas=1 deployment/forklift-validation
 ----
 . Wait a few moments for the pod to terminate.
 
