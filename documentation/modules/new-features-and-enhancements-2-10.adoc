@@ -9,6 +9,10 @@
 [role="_abstract"]
 {project-first} 2.10 introduces the following features and enhancements:
 
+* In {project-short} 2.10.0, you can migrate VMs that are running on B-tree file systems (Btrfs) to {virt} with support for OS conversion.
++
+link:https://issues.redhat.com/browse/MTV-2260[(MTV-2260)]
+
 * {project-short} 2.10.0 standardizes the API for `ForkliftController` global settings, now accepting only string values for feature flags, for example "true" and "false". This standard ensures consistency, clarity, and improved error handling, preventing errors caused by using boolean values instead of string values only for feature flags.
 +
 link:https://issues.redhat.com/browse/MTV-3566[(MTV-3566)]
