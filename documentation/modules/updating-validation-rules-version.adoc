@@ -17,10 +17,10 @@ The rules version is recorded in a `rules_version.rego` file for each provider.
 +
 [source,terminal]
 ----
-$ GET https://forklift-validation/v1/data/io/konveyor/forklift/<provider>/rules_version <1>
+$ GET https://forklift-validation/v1/data/io/konveyor/forklift/<provider>/rules_version
 ----
 +
-.Example output
+The output looks like the following example:
 +
 [source,json]
 ----
@@ -30,7 +30,7 @@ $ GET https://forklift-validation/v1/data/io/konveyor/forklift/<provider>/rules_
    }
 }
 ----
-
++
 . Connect to the terminal of the `Validation` pod:
 +
 [source,terminal,subs="attributes+"]
@@ -44,10 +44,10 @@ $ {oc} rsh <validation_pod>
 +
 [source,terminal]
 ----
-$ GET https://forklift-validation/v1/data/io/konveyor/forklift/<provider>/rules_version <1>
+$ GET https://forklift-validation/v1/data/io/konveyor/forklift/<provider>/rules_version
 ----
 +
-.Example output
+The output looks like the following example:
 +
 [source,json]
 ----

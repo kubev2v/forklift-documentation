@@ -20,7 +20,11 @@ You can use the command-line interface (CLI) to cancel an entire migration while
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} delete migration <migration> -n <namespace> <1>
+$ {oc} delete migration <migration> -n <namespace>
 ----
-<1> Specify the name of the `Migration` CR.
++
+where:
+
+`<migration>`::
+Specifies the name of the `Migration` CR.
 

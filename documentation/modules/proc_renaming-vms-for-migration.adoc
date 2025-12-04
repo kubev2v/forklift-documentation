@@ -8,7 +8,7 @@
 = Renaming virtual machines
 
 [role="_abstract"]
-VM names must be DNS-compliant and unique in the {virt} environment. When you migrate source VMs, {project-first} automatically adjusts non-compliant VM names in the target cluster to compliant names. Alternatively, you can rename target VMs in the {project-short} UI.
+VM names must be DNS-compliant and unique in the {virt} environment. When you migrate source VMs, {project-first} automatically adjusts noncompliant VM names in the target cluster to compliant names. Alternatively, you can rename target VMs in the {project-short} UI.
 
 Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
 
@@ -28,10 +28,10 @@ Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyp
 
 .Procedure
 . In the Red Hat OpenShift web console, click *Migration for Virtualization* > *Migration plans*.
-. Open the *Plan Details* page for your migration plan.
-. Click the *Virtual Machines* tab to view a table of all VMs from the configured source provider.
+. Open the *Plan details* page for your migration plan.
+. Click the *Virtual machines* tab to view a table of all VMs from the configured source provider.
 . If the *Target name* column does not already show in the VM table, click *Manage columns* to select *Target name* and display the column.
-. Identify non-compliant names in the list of VMs by checking the alerts in the *Concerns* column.
+. Identify noncompliant names in the list of VMs by checking the alerts in the *Concerns* column.
 . To rename a VM, click the *More* icon at the end of the row for the VM, and click *Edit target name*.
 . Enter and save a new name for the VM. Ensure that the new name consists only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
 

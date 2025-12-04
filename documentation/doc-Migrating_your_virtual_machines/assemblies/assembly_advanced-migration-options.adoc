@@ -33,9 +33,7 @@ include::../modules/adding-hook-using-cli.adoc[leveloffset=+2]
 
 include::../modules/about-udn.adoc[leveloffset=+1]
 
-== Scheduling target VMs
-
-By default, {virt} assigns the destination nodes during VM migration. However, you can use the scheduling target VMs feature to define the destination nodes and apply specific conditions to schedule when the VMs are switched from `pending` to `on`.
+include::../modules/con_scheduling-target-vms-intro.adoc[leveloffset=+1]
 
 include::../modules/about-configuring-target-vm-scheduling.adoc[leveloffset=+2]
 

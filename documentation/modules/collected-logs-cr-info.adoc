@@ -7,7 +7,7 @@
 = Collected logs and custom resource information
 
 [role="_abstract"]
-You can download logs and custom resource (CR) `yaml` files for the following targets by using the {ocp} web console or the command-line interface (CLI):
+You can download logs and custom resource (CR) YAML files for the following targets by using the {ocp} web console or the command-line interface (CLI):
 
 * Migration plan: Web console or CLI.
 * Virtual machine: Web console or CLI.
@@ -34,7 +34,8 @@ The `must-gather` tool collects the following logs and CR files in an archive fi
 Empty or excluded log files are not included in the `must-gather` archive file.
 ====
 
-.Example must-gather archive structure for a VMware migration plan
+The following schematic drawing shows the `must-gather` archive structure for an example VMware migration plan:
+
 ----
 must-gather
 └── namespaces

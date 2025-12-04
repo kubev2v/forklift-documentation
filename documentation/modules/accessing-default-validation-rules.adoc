@@ -24,9 +24,13 @@ $ {oc} rsh <validation_pod>
 +
 [source,terminal]
 ----
-$ cd /usr/share/opa/policies/io/konveyor/forklift/<provider> <1>
+$ cd /usr/share/opa/policies/io/konveyor/forklift/<provider>
 ----
-<1> Specify `vmware` or `ovirt`.
++
+where:
+
+provider::
+Specifies the provider. Valid options: `vmware` or `ovirt`.
 
 . Search for the default policies:
 +

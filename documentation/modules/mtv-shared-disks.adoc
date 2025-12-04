@@ -7,23 +7,23 @@
 = Migrating virtual machines with shared disks
 
 [role="_abstract"]
-You can migrate {vmw} virtual machines (VMs) with shared disks by using the {project-first}. This functionality is available only for cold migrations and is not available for shared boot disks. 
+You can migrate {vmw} virtual machines (VMs) with shared disks by using the {project-first}. This functionality is available only for cold migrations and is not available for shared boot disks.
 
-Shared disks are disks that are attached to more than one VM and that use the multi-writer option. As a result of these characteristics, shared disks are difficult to migrate. 
+Shared disks are disks that are attached to more than one VM and that use the multi-writer option. As a result of these characteristics, shared disks are difficult to migrate.
  
 In certain situations, applications in VMs require shared disks. Databases and clustered file systems are the primary use cases for shared disks.
 
 {project-short} version 2.7.11 or later includes a parameter named `migrateSharedDisks` in `Plan` custom resources (CRs) that instructs {project-short} to either migrate shared disks or to skip them during migration, as follows:
 
-* If set to `true`, {project-short} migrates the shared disks. {project-short} uses the regular cold migration flow using `virt-v2v` and labeling the shared persistent volume claims (PVCs). 
+* If set to `true`, {project-short} migrates the shared disks. {project-short} uses the regular cold migration flow using `virt-v2v` and labeling the shared persistent volume claims (PVCs).
 
 * If set to `false`, {project-short} skips the shared disks. {project-short} uses the KubeVirt Containerized-Data-Importer (CDI) for disk transfer.
 
-After the disk transfer, {project-short} automatically attempts to locate the already shared PVCs and the already migrated shared disks and attach them to the VMs. 
- 
+After the disk transfer, {project-short} automatically attempts to locate the already shared PVCs and the already migrated shared disks and attach them to the VMs.
+
 By default, `migrateSharedDisks` is set to `true`.
 
-To successfully migrate VMs with shared disks, create two `Plan` CRs as follows: 
+To successfully migrate VMs with shared disks, create two `Plan` CRs as follows:
 
 * In the first, set `migrateSharedDisks` to `true`.
 + 
@@ -31,16 +31,16 @@ To successfully migrate VMs with shared disks, create two `Plan` CRs as follows:
 
 ** All shared disks.
 ** For each shared disk, one of the VMs that is attached to it. If possible, choose VMs so that the plan does not contain any shared disks that are connected to more than one VM. See the following figures for further guidance.
-** All unshared disks attached to the VMs you choose for this plan. 
+** All unshared disks attached to the VMs you choose for this plan.
 
-* In the second, set `migrateSharedDisks` to `false`. 
+* In the second, set `migrateSharedDisks` to `false`.
 +
 {project-short} migrates the following:
 
 ** All other VMs.
 ** The unshared disks of the VMs in the second `Plan` CR.
 
-When {project-short} migrates a VM that has a shared disk to it, it does not check if it has already migrated that shared disk. Therefore, it is important to allocate the VMs in each of the two so that each shared disk is migrated once and only once. 
+When {project-short} migrates a VM that has a shared disk to it, it does not check if it has already migrated that shared disk. Therefore, it is important to allocate the VMs in each of the two so that each shared disk is migrated once and only once.
 
 To understand how to assign VMs and shared disks to each of the `Plan` CRs, consider the two figures that follow. In both, `migrateSharedDisks` is set to `true` for `plan1` and set to `false` for `plan2`.
 
@@ -49,7 +49,7 @@ In the first figure, the VMs and shared disks are assigned correctly:
 .Example of correctly assigned VMs and shared disks
 image::OK_shared_disks.png[Example successful migration]
 
-`plan1` migrates VMs 2 and 4, shared disks 1, 2, and 3, and the non-shared disks of VMs 2 and 4. VMs 2 and 4 are included in this plan, because they connect to all the shared disks once each. 
+`plan1` migrates VMs 2 and 4, shared disks 1, 2, and 3, and the non-shared disks of VMs 2 and 4. VMs 2 and 4 are included in this plan, because they connect to all the shared disks once each.
 
 `plan2` migrates VMs 1 and 3 and their non-shared disks. `plan2` does not migrate the shared disks connected to VMs 1 and 3 because `migrateSharedDisks` is set to `false`.
 
@@ -58,16 +58,16 @@ image::OK_shared_disks.png[Example successful migration]
 . From `plan1`:
 
 .. VM 3, shared disks 1 and 2, and the non-shared disks attached to VM 3.
-.. VM 4, shared disk 3, and the non-shared disks attached to VM 4. 
+.. VM 4, shared disk 3, and the non-shared disks attached to VM 4.
 
 . From `plan2`:
 
 .. VM 1 and the non-shared disks attached to it.
 .. VM 2 and the non-shared disks attached to it.
 
-The result is that VMs 2 and 4, all the shared disks, and all the non-shared disks are migrated, but only once. {project-short} is able to reattach all VMs to their disks, including the shared disks. 
+The result is that VMs 2 and 4, all the shared disks, and all the non-shared disks are migrated, but only once. {project-short} is able to reattach all VMs to their disks, including the shared disks.
 
-In second figure, the VMs and shared disks are not assigned correctly:
+In the second figure, the VMs and shared disks are not assigned correctly:
 
 .Example of incorrectly assigned VMs and shared disks
 image::not_OK_shared_disks.png[Complex cyclic shared disk dependencies]
@@ -90,14 +90,12 @@ This migration "succeeds", but it results in a problem: Shared disk 2 is migrate
 
 . In {project-short}, create a migration plan for the shared disks, the minimum number of VMs connected to them, and the unshared disk of those VMs. 
 . On the {vmw} cluster, power off all VMs attached to the shared disks.
-. In the {ocp} web console, click *Migration* > *Plans for virtualization*.
+. In the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
 . Select the desired plan.
 +
-The *Plan details* page opens. 
-. Click the *YAML* tab of the plan. 
-. Verify that `migrateSharedDisks` is set to `true`.
-+
-.Example Plan CR with `migrateSharedDisks` set to true 
+The *Plan details* page opens.
+. Click the *YAML* tab of the plan.
+. Verify that `migrateSharedDisks` is set to `true` as in the example that follows:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -141,13 +139,11 @@ spec:
 
 . Start the migration of the first plan and wait for it to finish.
 . Create a second `Plan` CR to migrate all the other VMs and their unshared disks to the same target namespace as the first.
-. In the *Plans for virtualization* page of the {ocp} web console, select the new plan.
+. In the *Migration plans* page of the {ocp} web console, select the new plan.
 +
-The *Plan details* page opens. 
-. Click the *YAML* tab of the plan. 
-. Set `migrateSharedDisks` to `false`.
-+
-.Example Plan CR with `migrateSharedDisks` set to false 
+The *Plan details* page opens.
+. Click the *YAML* tab of the plan.
+. Set `migrateSharedDisks` to `false` as in the example that follows:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -190,5 +186,4 @@ spec:
 ----
 
 . Start the migration of the second plan and wait for it to finish.
-. Verify that all shared disks are attached to the same VMs as they were before migration and that none are duplicated. In case of problems, see the discussion of known issues that follows. 
- 
+. Verify that all shared disks are attached to the same VMs as they were before migration and that none are duplicated. In case of problems, see the discussion of known issues that follows.

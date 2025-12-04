@@ -42,12 +42,12 @@ The *Create migration plan* wizard opens.
 * *Target project*: Click the list and do one of the following:
 
 .. Select an existing project from the list.
-.. Create a new project by clicking *Create Project* and doing the following:
+.. Create a new project by clicking *Create project* and doing the following:
 
 ... Enter the *Name* of the project. A project name must consist of lowercase alphanumeric characters or `-`. A project name must start and end with alphanumeric characters. For example, `my-name` or `123-abc`.
 ... Optional: Enter a *Display name* for the project.
 ... Optional: Enter a *Description* of the project.
-... Click *Create Project*.
+... Click *Create project*.
 
 . Click *Next*.
 +
@@ -70,7 +70,7 @@ If you select an existing map, be sure it has the same source provider and targe
 +
 [NOTE]
 ====
-You can create an ownerless network map, which you and others can use for additional migration plans, in the *Network Maps* section of the UI.
+You can create an ownerless network map, which you and others can use for additional migration plans, in the *Network maps* section of the UI.
 ====
 
 ** *Source network*: Select from the list.
@@ -96,7 +96,7 @@ If you choose an existing map, be sure it has the same source provider and the s
 +
 [NOTE]
 ====
-You can create an ownerless storage map, which you and others can use for additional migration plans, in the *Storage Maps* section of the UI.
+You can create an ownerless storage map, which you and others can use for additional migration plans, in the *Storage maps* section of the UI.
 ====
 
 ** *Source storage*: Select from the list.
@@ -131,7 +131,7 @@ You cannot include more than one pre-migration hook or more than one post-migrat
 
 . Click *Next*.
 +
-. On the *Review and Create* page, review the information displayed.
+. On the *Review and create* page, review the information displayed.
 . Edit any item by doing the following:
 
 .. Click its *Edit step* link.
@@ -143,7 +143,7 @@ The wizard opens to the page where you defined the item.
 . When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan.
 +
 When your plan is validated, the *Plan details* page for your plan opens in the *Details* tab.
- 
+
 . In addition to listing details based on your entries in the wizard, the *Plan details* tab includes the following two sections after the details of the plan:
 +
 * *Migration history*: Details about successful and unsuccessful attempts to run the plan

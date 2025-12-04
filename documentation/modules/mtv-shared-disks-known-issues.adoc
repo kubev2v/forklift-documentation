@@ -7,9 +7,9 @@
 = Known issue: Cyclic shared disk dependencies
 
 [role="_abstract"]
-A known issue for migrating shared disks is that virtual machines (VMs) with cyclic shared disk dependencies cannot be migrated successfully.
+When you migrate shared disks, virtual machines (VMs) with cyclic shared disk dependencies cannot be migrated successfully.
 
-* Explanation: When `migrateSharedDisks` is set to `true`, {project-short} migrates each VM in the plan, one by one, and any shared disks attached to it, without determining if a shared disk was already migrated. 
+Explanation: When `migrateSharedDisks` is set to `true`, {project-short} migrates each VM in the plan, one by one, and any shared disks attached to it, without determining if a shared disk was already migrated. 
 
 In the case of 2 VMs sharing one disk, there is no problem. {project-short} transfers the shared disk and attaches the 2 VMs to the shared disk after the migration. 
 

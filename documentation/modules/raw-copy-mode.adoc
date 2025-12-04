@@ -13,7 +13,7 @@ The main function of `virt-v2v` is to  convert the disk image of a VM into a for
 
 [NOTE]
 ====
-For a list of the operating systems that `virt-v2v` supports, see link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9].
+For a list of the operating systems that `virt-v2v` supports, see link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, RHEL 9, and RHEL 10].
 ====
 
 As a workaround for migrating VMs that use an operating system that `virt-v2v` does not support, {project-short} includes a feature called _raw copy mode_. Raw copy mode copies VMs without applying any tool to convert them for use with {virt}. The migrated VMs use emulated devices.

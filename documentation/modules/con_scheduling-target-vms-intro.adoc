@@ -1,0 +1,11 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+
+[id="con_scheduling-target-vms-intro_{context}"]
+= Scheduling target VMs
+
+[role="_abstract"]
+By default, {virt} assigns the destination nodes of virtual machines (VMs) during migration. However, you can use the scheduling target VMs feature to define the destination nodes and apply specific conditions to schedule when the VMs are switched from `pending` to `on`.

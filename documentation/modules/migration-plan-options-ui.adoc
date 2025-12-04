@@ -12,7 +12,7 @@
 = Migration plan options
 
 [role="_abstract"]
-On the *Plans for virtualization* page of the {ocp} web console, you can click the {kebab} beside a migration plan to access the following options:
+On the *Migration plans* page of the {ocp} web console, you can click the {kebab} beside a migration plan to access the following options:
 
 * *Edit Plan*: Edit the details of a migration plan. If the plan is running or has completed successfully, you cannot edit the following options:
 
@@ -27,25 +27,24 @@ ifdef::vmware,rhv[]
 * *Set cutover*: Warm migrations only. Active only if relevant. Clicking *Set cutover* opens the *Set cutover* window, which allows you to set the date and time for a cutover.
 * *Edit cutover*: Change the date or time of a scheduled cutover. Active only if relevant. Clicking *Edit cutover* opens the *Edit cutover* window, which allows you to set a new date or time for a cutover.
 endif::vmware,rhv[]
-+
-* *Duplicate Plan*: Create a new migration plan with the same virtual machines (VMs), parameters, mappings, and hooks as an existing plan. You can use this feature for the following tasks:
+* *Duplicate*: Create a new migration plan with the same virtual machines (VMs), parameters, mappings, and hooks as an existing plan. You can use this feature for the following tasks:
 
 ** Migrate VMs to a different namespace.
 ** Edit an archived migration plan.
 ** Edit a migration plan with a different status, for example, failed, canceled, running, critical, or ready.
 
-* *Archive Plan*: Delete the logs, history, and metadata of a migration plan. The plan cannot be edited or restarted. It can only be viewed, duplicated, or deleted.
+* *Archive*: Delete the logs, history, and metadata of a migration plan. The plan cannot be edited or restarted. It can only be viewed, duplicated, or deleted.
 +
 [NOTE]
 ====
-*Archive Plan* is irreversible. However, you can duplicate an archived plan.
+*Archive* is irreversible. However, you can duplicate an archived plan.
 ====
 
-* *Delete Plan*: Permanently remove a migration plan. You cannot delete a running migration plan.
+* *Delete*: Permanently remove a migration plan. You cannot delete a running migration plan.
 +
 [NOTE]
 ====
-*Delete Plan* is irreversible.
+*Delete* is irreversible.
 
 Deleting a migration plan does not remove temporary resources. To remove temporary resources, archive the plan first before deleting it.
 ====

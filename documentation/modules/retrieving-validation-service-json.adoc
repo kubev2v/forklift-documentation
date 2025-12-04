@@ -45,9 +45,13 @@ $ curl -H "Authorization: Bearer $TOKEN" https://<inventory_service_route>/provi
 +
 [source,terminal]
 ----
-$ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/<provider> -k <1>
+$ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/<provider> -k 
 ----
-<1> Allowed values for the provider are `vsphere`, `ovirt`, and `openstack`.
++
+where:
+
+<provider>::
+Specifies the type of provider. Allowed values are `vsphere`, `ovirt`, and `openstack`.
 
 . Retrieve the VMs of a provider:
 +

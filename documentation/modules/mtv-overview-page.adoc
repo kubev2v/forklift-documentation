@@ -9,7 +9,7 @@
 [role="_abstract"]
 The {project-first} *Overview* page displays system-wide information about migrations and a list of *Settings* you can change.
 
-If you have Administrator privileges, you can access the *Overview* page by clicking *Migration* -> *Overview* in the {ocp} web console.
+If you have Administrator privileges, you can access the *Overview* page by clicking *Migration for Virtualization* > *Overview* in the {ocp} web console.
 
 The *Overview* page has 3 tabs:
 

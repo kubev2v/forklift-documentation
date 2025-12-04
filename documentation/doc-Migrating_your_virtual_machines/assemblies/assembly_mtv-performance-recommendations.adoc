@@ -13,7 +13,7 @@ Review recommendations for network and storage performance, cold and warm migrat
 
 The purpose of this section is to share recommendations for efficient and effective migration of virtual machines (VMs) using {project-first}, based on findings observed through testing.
 
-The data provided here was collected from testing in Red Hat labs and is provided for reference only. 
+The data provided here was collected from testing in Red Hat labs and is provided for reference only.
 
 Overall, these numbers should be considered to show the best-case scenarios.
 
