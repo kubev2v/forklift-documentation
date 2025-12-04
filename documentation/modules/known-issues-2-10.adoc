@@ -9,10 +9,16 @@
 [role="_abstract"]
 {project-first} 2.10 has the following known issues:
 
-.Raw Device Mapping files prevent `copyoffload` migration of NFS-based VMs
+OCP migration plan error for VMs with pre-migration hooks::
+When migrating a VM with pre-migration hooks from a source Red Hat OpenShift Container Platform (OCP) cluster to a destination OCP cluster, the migration plan fails during the Initialize phase.
++
+*Workaround:* Migrate the VM without pre-migration hooks or with post-migration hooks only.
++
+link:https://issues.redhat.com/browse/MTV-2894[MTV-2894]
 
+Raw Device Mapping files prevent `copyoffload` migration of NFS-based VMs::
 If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vmkfstools` command-line utility attempts to use the fallback method because NFS is file-based. However, NFS datastores do not support Raw Device Mapping (RDM) pointer files, and `vmkfstools` creates RDM files as cloning targets. 
-
++
 *Workaround:* You can use one of the following migration methods to address the limitation:
 
 * Migrate the NFS-based VM to an iSCSI or FC datastore, and then use the `copyoffload` method to migrate the VM to {virt}.
@@ -20,37 +26,36 @@ If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vm
 * Use either the HTTP or VDDK method to migrate the VM to {virt}.
 //link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
 
-.Inaccurate `ConnectionTestFailed` error messages when creating an OVA provider
+Inaccurate `ConnectionTestFailed` error messages when creating an OVA provider::
+When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect the in-progress status of the connection.
++ 
+link:https://issues.redhat.com/browse/MTV-3613[(MTV-3613)]
 
-When you create an Open Virtual Appliance (OVA) provider in the MTV UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect in-progress status of the connection. link:https://issues.redhat.com/browse/MTV-3613[(MTV-3613)]
+VDDK image in `openshift-mtv` namespace::
+When you upload a VMware Virtual Disk Development Kit (VDDK) init image, the image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image. 
++
+link:https://issues.redhat.com/browse/MTV-3673[(MTV-3673)]
 
-.VDDK image in `openshift-mtv` namespace
-
-When you upload a VMware Virtual Disk Development Kit (VDDK) init image, the image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image. link:https://issues.redhat.com/browse/MTV-3673[(MTV-3673)]
-
-.Leftover PVCs consume resources in OVA migrations
-
+Leftover PVCs consume resources in OVA migrations::
 During Open Virtual Appliance (OVA) migrations to {virt}, leftover `ova-store-pvc-*` Persistent Volume Claims (PVCs) are bound to the target cluster, consuming excess resources. 
++
+*Workaround:* Manually delete the leftover `ova-store-pvc-*` PVCs after migration by using the `oc delete pvc <pvc_name>` command. This action removes the excess resources, but data loss might occur. 
++
+link:https://issues.redhat.com/browse/MTV-3659[(MTV-3659)]
 
-*Workaround:* Manually delete the leftover `ova-store-pvc-*` PVCs after migration by using the `oc delete pvc <pvc_name>` command. This action removes the excess resources, but data loss might occur if the PVCs contain important data. link:https://issues.redhat.com/browse/MTV-3659[(MTV-3659)]
-
-.VM migration from OVA to {virt} cluster causes loss of interface settings in VM YAML file
-
+VM migration from OVA to {virt} cluster causes loss of interface settings in VM YAML file::
 The migration of VMs with DHCP settings from an Open Virtual Appliance (OVA) provider to a {virt} cluster results in the loss of interface settings in the VM YAML file post-migration. 
++
+*Workaround:* Manually configure interfaces on the VM after migration.
++ 
+link:https://issues.redhat.com/browse/MTV-3654[(MTV-3654)]
 
-*Workaround:* Manually configure interfaces on the VM after migration. link:https://issues.redhat.com/browse/MTV-3654[(MTV-3654)]
-
-.Incomplete deployment of {project-short} 2.10 due to incomplete image mirroring
-
-If you use the `oc-mirror` command to mirror {project-short} 2.10 images, not all images are mirrored to the chosen destination because of an incomplete related images section in the operator. Because all of the required images for {project-short} 2.10 are not mirrored, the deployment is incomplete. 
-
-*Workaround:* Manually copy the missing images to the local file to complete the deployment. link:https://issues.redhat.com/browse/MTV-3679[(MTV-3679)] 
-
-.Missing check for write permissions on OVA files for upload
-
+Missing check for write permissions on OVA files for upload::
 When uploading an Open Virtual Appliance (OVA) file, the script does not check the write permissions for the destination directory before the upload, which can result in a permission denied error at the end of the upload process. 
-
-*Workaround:* Check the write permission of the OVA file before initiating the upload to complete the upload process without permissions errors. link:https://issues.redhat.com/browse/MTV-3634[(MTV-3634)]
++
+*Workaround:* Check the write permissions of the OVA file before initiating the upload. The write permissions allow {project-short} to complete the upload process without permissions errors.
++ 
+link:https://issues.redhat.com/browse/MTV-3634[(MTV-3634)]
 
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
