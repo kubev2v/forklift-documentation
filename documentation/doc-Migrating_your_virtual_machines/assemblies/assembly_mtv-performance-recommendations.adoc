@@ -28,7 +28,9 @@ include::../modules/ref_fast-datastore-read-speeds.adoc[leveloffset=+1]
 
 include::../modules/ref_endpoint-types.adoc[leveloffset=+1]
 
-include::../modules/ref_esxi-hosts-bios-profile.adoc[leveloffset=+1]
+include::../modules/mtv-esxi-performance.adoc[leveloffset=+1]
+
+include::../modules/mtv-different-migration-networks-performance.adoc[leveloffset=+1]
 
 include::../modules/ref_avoid-network-load.adoc[leveloffset=+1]
 

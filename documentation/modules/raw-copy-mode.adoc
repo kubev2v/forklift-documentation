@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+// * documentation/doc-Migrating-your-virtual-machines/assembly_troubleshooting-migration
 
 :_mod-docs-content-type: CONCEPT
 [id="raw-copy-mode_{context}"]
