@@ -26,3 +26,4 @@ For example, if the value of the parameter is 2, and VM A has 5 disks, VM B has 
 *** To remote {virt}: Disks for each ESXi host that can migrate simultaneously.
 
 ** Warm migration: Disks for each ESXi host that can migrate simultaneously.
+
