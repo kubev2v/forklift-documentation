@@ -53,7 +53,7 @@ metadata:
   name: localnet-network
   namespace: mtv-test
   annotations:
-    forklift.konveyor.io/route: <IP address> # <1>
+    forklift.konveyor.io/route: <IP address>
 ----
-<1> The `NetworkAttachmentDefinition` parameter is needed to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically. Configuring the IP address enables the interface to reach the configured gateway.
+* The `NetworkAttachmentDefinition` parameter is needed to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically. Configuring the IP address enables the interface to reach the configured gateway.
 .. Click *Save*.
