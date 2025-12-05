@@ -7,4 +7,6 @@ _site
 Gemfile.lock
 .DS_Store
 */master.html
+.vale/
+
 
