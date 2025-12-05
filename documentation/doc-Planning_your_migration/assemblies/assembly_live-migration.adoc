@@ -12,6 +12,18 @@ Live migration is supported by {project-first} version 2.10.0 and later. It requ
 
 Live migration makes it easier for you to perform Day 2 tasks, such as seamless maintenance and workload balancing after you have migrated your VMs to {virt}.
 
+[IMPORTANT]
+====
+Live migration is a Technology Preview feature only. Technology Preview features
+are not supported with Red Hat production service level agreements (SLAs) and
+might not be functionally complete. Red Hat does not recommend using them
+in production. These features provide early access to upcoming product
+features, enabling customers to test functionality and provide feedback during
+the development process.
+For more information about the support scope of Red Hat Technology Preview
+features, see https://access.redhat.com/support/offerings/techpreview/.
+====
+
 include::../modules/benefits-live-migration.adoc[leveloffset=+1]
 
 include::../modules/live-migration-mtv-cnv.adoc[leveloffset=+1]
