@@ -30,9 +30,9 @@ The procedure for configuring these settings by using the user interface is pres
 [source, YAML]
 ----
 spec:
-  parameter: value # <1>
+  parameter: value
 ----
-<1> Parameters that you can configure using the CLI are shown in the table that follows, along with a description of each parameter and its default value.
+* Parameters that you can configure using the CLI are shown in the table that follows, along with a description of each parameter and its default value.
 
 .{operator-name} parameters
 [cols="1,1,1",options="header"]
