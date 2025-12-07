@@ -13,8 +13,12 @@
 
 * {project-short} 2.9.0 is integrated with the storage offloading plugin to delegate the disk data copy process to the storage arrays. The disk data is copied by the storage array to a new persistent volume (PV) that is created on {ocp}. This PV can be used by the virtual machine. Since the data copy function is not carried over an IP-based network, the storage offloading helps to copy multi-terabyte data from single disk VMs without clogging the network, resulting in faster migrations. link:https://issues.redhat.com/browse/MTV-2241[(MTV-2241)]
 
-:FeatureName: Storage Copy Offload
-include::snip-developer-preview.adoc[leveloffset=+1]
+[IMPORTANT]
+====
+Storage Copy Offload is Developer Preview software only. Developer Preview software is not supported by Red{nbsp}Hat in any way and is not functionally complete or production-ready. Do not use Developer Preview software for production or business-critical workloads. Developer Preview software provides early access to upcoming product software in advance of its possible inclusion in a Red{nbsp}Hat product offering. Customers can use this software to test functionality and provide feedback during the development process. This software might not have any documentation, is subject to change or removal at any time, and has received limited testing. Red{nbsp}Hat might provide ways to submit feedback on Developer Preview software without an associated SLA.
+
+For more information about the support scope of Red{nbsp}Hat Developer Preview software, see link:https://access.redhat.com/support/offerings/devpreview/[Developer Preview Support Scope].
+====
 
 * {project-short} 2.9.0 supports migrating an Open Virtual Appliance (OVA) file with multiple disks by mapping the OVA disks to multiple Storage Classes. link:https://issues.redhat.com/browse/MTV-1340[(MTV-1340)]
 
