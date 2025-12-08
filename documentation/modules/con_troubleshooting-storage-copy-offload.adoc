@@ -46,7 +46,7 @@ CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="ht
 
 ** The SSH is disabled.
 +
-*Solution*: Manually enable an SSH connection on the ESXi host using the commands in link:hhttps://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-manual-ssh-set-up_vmware[Setting up storage copy offload using manually generated SSH keys].
+*Solution*: Manually enable an SSH connection on the ESXi host using the commands in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-manual-ssh-set-up_vmware[Setting up storage copy offload using manually generated SSH keys].
 
 ** There is a problem with the network connectivity.
 +

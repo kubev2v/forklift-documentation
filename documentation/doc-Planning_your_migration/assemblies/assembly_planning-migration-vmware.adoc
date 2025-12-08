@@ -33,7 +33,17 @@ include::../modules/about-storage-copy-offload.adoc[leveloffset=+1]
 
 include::../modules/proc_storage-copy-offload-steps.adoc[leveloffset=+2]
 
+include::../modules/con_copy-methods-sco.adoc[leveloffset=+2]
 
+include::../modules/proc_storage-copy-offload-vib-set-up.adoc[leveloffset=+3]
+
+include::../modules/proc_storage-copy-offload-general-ssh-set-up.adoc[leveloffset=+3]
+
+include::../modules/proc_storage-copy-offload-auto-ssh-set-up.adoc[leveloffset=+4]
+
+include::../modules/proc_storage-copy-offload-manual-ssh-set-up.adoc[leveloffset=+4]
+
+include::../modules/proc_storage-copy-offload-ui.adoc[leveloffset=+2]
 
 include::../modules/adding-source-provider.adoc[leveloffset=+1]
 
