@@ -921,7 +921,9 @@ include::snip_pvcNameTemplateUseGenerateName-warn.adoc[]
 * When set to `false`, the default value, {project-short} migrates VMs using `virt-v2v`.
 * When set to `true`, {project-short} migrates VMs using raw copy mode, which copies the VMs without converting them first.
 +
-Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. 
+Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. 
+
+For more information on `virt-v2v`, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_troubleshooting-migration_mtv#virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. 
 +
 <13> Optional: Affinity rule, which may be quite complex, is entered in lines following this label.
 +

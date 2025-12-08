@@ -3,15 +3,15 @@
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
 :_content-type: PROCEDURE
-[id="proc_storage-copy-offload_{context}"]
-= Migrating {vmw} vSphere VMs by using storage copy offload
+[id="proc_storage-copy-offload-cli_{context}"]
+= Migrating {vmw} vSphere VMs in the CLI by using storage copy offload
 
 [role="_abstract"]
 You can use the storage copy offload feature of {project-first} to migrate {vmw} vSphere virtual machines (VMs) faster than by other methods.
 
 .Prerequisites
 
-In addition to the regular xref:vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
+In addition to the regular link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
 
 * A Hitachi Vantara or NetApp ONTAP storage system or one of the following:
 ** A configured Dell PowerFlex Storage Data Client (SDC) or 
@@ -44,17 +44,9 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 +
 include::snip_storage-copy-offload-secret-tables.adoc[]
 +
-. In either the UI or the CLI, complete the following steps:
+. In the CLI, complete the following steps:
 
-.. In the UI, complete the following steps:
-
-... Create an ownerless storage map by using the procedure in xref:creating-form-based-storage-maps-ui-vmware_vmware[Creating ownerless storage maps using the form page of the {project-short} UI]. Use the *Offload plugin* named `vSphere XCOPY`.
-... Create a migration plan by using the procedure in xref:creating-plan-wizard-vmware_vmware[Creating a VMware vSphere migration plan by using the MTV wizard].
-
-
-.. In the CLI, complete the following steps:
-
-... Create a `StorageMap` custom resource (CR) according to the following example:
+.. Create a `StorageMap` custom resource (CR) according to the following example:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -128,7 +120,7 @@ spec:
 |`flashsystem`
 |===
 
-... Create a migration plan using the procedure in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_migrating-from-vmware_mtv#proc_migrating-virtual-machines-cli_vmware[Running a {vmw} vSphere migration from the command-line].
+.. Create a migration plan using the procedure in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_migrating-from-vmware_mtv#proc_migrating-virtual-machines-cli_vmware[Running a {vmw} vSphere migration from the command-line].
 ... In the `Plan` CR, modify the `spec:map:storage` portion of the CR as follows:
 +
 [source,yaml,subs="attributes+"]
