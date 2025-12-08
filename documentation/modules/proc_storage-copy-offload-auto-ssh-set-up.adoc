@@ -42,7 +42,7 @@ Example: For a provider with the name `vcenter-example`, the secrets would be `o
 .Procedure
 
 . Configure the SSH clone method in your `Provider` CR by setting `settings:exsiCloneMethod` to `"ssh"`.
-
++
 .Example Provider CR
 [source,yaml,subs="attributes+"]
 ----
@@ -60,25 +60,25 @@ spec:
   settings:
     esxiCloneMethod: "ssh" 
 ----
-
++
 . Find the SSH secrets for your vSphere Provider by running one of the following commands:
 
 .. List all SSH key secrets in the provider's namespace by running the following command:
-
++
 [source,terminal]
 ----
 $ oc get secrets -l app.kubernetes.io/component=ssh-keys -n openshift-mtv
 ----
-
++
 .. View a specific private or public key secret by running the following command:
-
++
 [source,terminal]
 ----
 $ oc get secret <name_of_private_or_public_key> -o yaml -n openshift-mtv
 ----
-
++
 . Optional: If needed, you can replace an auto-generated key pair by running the following command:
-
++
 [source,terminal]
 ----
 ssh-keygen -t rsa -b 4096 -f custom_esxi_key -N ""
@@ -89,23 +89,25 @@ This is a simpler procedure than manually generating the key pair, as described 
 . Optional: If needed, you can replace either a private key secret or a public key secret by running one of the following commands:
 
 .. Replace a private key secret by running the following command:
++
 [source,terminal]
 ----
 oc create secret generic <name_of_private_key> \
   --from-file=private-key=custom_esxi_key \
   --dry-run=client -o yaml | oc replace -f - -n openshift-mtv
 ----
-
++
 .. Replace a public key secret by running the following command:
++
 [source,terminal]
 ----
 oc create secret generic <name of public key> \
   --from-file=public-key=custom_esxi_key.pub \
   --dry-run=client -o yaml | oc replace -f - -n openshift-mtv
 ----
-
++
 . Optional: Configure the SSH timeout by adding it to your provider secret, which is the main storage credentials secret, by running the following command:
-
++
 [source,terminal]
 ----
 oc patch secret <provider_credentials> -p '{"data":{"SSH_TIMEOUT_SECONDS":"'$(echo -n "60" | base64)'"}}' -n <provider_namespace>

@@ -24,9 +24,8 @@ If you use this method, you must install the VIB on every ESXi host that you use
 .Procedure
 
 . Configure the VIB clone method in your `Provider` CR by setting `settings:exsiCloneMethod` to `"vib"`.
-
-.Example Provider CR
 +
+.Example Provider CR
 [source,yaml,subs="attributes+"]
 ----
 apiVersion: forklift.konveyor.io/v1beta1
@@ -43,7 +42,7 @@ spec:
   settings:
     esxiCloneMethod: "vib"
 ----
-
++
 . Install the VIB by using the `vib-installer` utility included in the container image by running one of the following methods:
 
 .. Auto-discover ESXi hosts from vSphere and install the VIB by running the following commands:
