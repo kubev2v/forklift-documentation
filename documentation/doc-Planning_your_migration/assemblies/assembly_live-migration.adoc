@@ -6,7 +6,7 @@
 //:context: cold-warm-migration
 
 [role="_abstract"]
-Live migration enables you to migrate VMs between {virt} clusters or namespaces with minimal downtime. This feature requires {project-first} 2.10.0 or later and {virt} 4.20 or later on both source and target clusters.
+To reduce downtime during Day 2 operations like maintenance and workload balancing, migrate VMs between {virt} clusters or namespaces using live migration. You need {project-first} 2.10.0 or later and {virt} 4.20 or later on both clusters.
 
 [IMPORTANT]
 ====

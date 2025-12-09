@@ -7,5 +7,5 @@
 = OpenStack prerequisites
 
 [role="_abstract"]
-{osp} migrations require a compatible version. MTV 2.6 and later support token authentication and application credential authentication in addition to standard credentials. These methods work with the CLI like standard migrations, differing only in `Secret` manifest preparation.
+To migrate from {osp}, ensure you have a compatible version and configure authentication. You can use token authentication, application credentials, or standard credentials with MTV 2.6 or later.
 

@@ -7,4 +7,4 @@
 = Live migration, {project-short}, and {virt}
 
 [role="_abstract"]
-Live migration combines {project-first} and {virt} capabilities. {project-short} orchestrates the migration, building resource inventories, creating migration plans, and ensuring shared resources are available. {virt} handles low-level mechanics like state and storage transfer. 
+Understand how {project-short} and {virt} work together during live migration to troubleshoot issues and plan migrations. {project-short} manages migration plans and resources while {virt} transfers VM state and storage between clusters. 

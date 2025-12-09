@@ -8,4 +8,4 @@
 = {project-short} encryption support
 
 [role="_abstract"]
-{project-first} supports encryption for Linux VMs using Linux Unified Key Setup (LUKS) and for Windows VMs using BitLocker.
+Migrate encrypted VMs to maintain security during migration. You can migrate Linux VMs encrypted with LUKS and Windows VMs encrypted with BitLocker.

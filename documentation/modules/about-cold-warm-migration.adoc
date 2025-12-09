@@ -8,7 +8,7 @@
 = About cold and warm migration
 
 [role="_abstract"]
-{project-first} supports cold migration from VMware vSphere, {rhv-full}, {osp}, OVAs created by VMware vSphere, and remote {virt} clusters. Warm migration is supported from VMware vSphere and {rhv-full} only.
+Choose cold migration to move powered-off VMs from multiple sources, or warm migration to minimize downtime for powered-on VMs. Cold migration works with VMware vSphere, {rhv-full}, {osp}, OVAs, and remote {virt} clusters; warm migration works with VMware vSphere and {rhv-full}.
 
 [id="cold-migration_{context}"]
 == Cold migration

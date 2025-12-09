@@ -7,7 +7,7 @@
 = Migration speed comparison
 
 [role="_abstract"]
-Warm and cold migrations have similar transfer and conversion speeds. Warm migration transfers snapshots in the background while VMs run. Default snapshots occur every 60 minutes; substantial VM changes require more data transfer than cold migration. Cutover time depends on changes since the last snapshot.
+Compare cold and warm migration speeds to choose the best migration type for your workload. Both have similar transfer speeds, but warm migration runs in the background with hourly snapshots while cold migration requires VM shutdown.
 
 [NOTE]
 ====
