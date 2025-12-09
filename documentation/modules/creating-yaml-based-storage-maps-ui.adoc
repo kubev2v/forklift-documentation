@@ -36,9 +36,9 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
-        id: <source_datastore> <2>
+        id: <source_datastore>
   provider:
     source:
       name: <source_provider>
@@ -48,8 +48,8 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the VMware vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. For more information about retrieving the moRef, see 'Retrieving a VMware vSphere moRef' in _Migrating your virtual machines to Red Hat {virt}_.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `id`: Specify the VMware vSphere datastore moRef, for example, `f2737930-b567-451a-9ceb-2887f6207009`. For more information about retrieving the moRef, see 'Retrieving a VMware vSphere moRef' in _Migrating your virtual machines to Red Hat {virt}_.
 endif::[]
 
 ifdef::rhv[]
@@ -65,9 +65,9 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
-        id: <source_storage_domain> <2>
+        id: <source_storage_domain>
   provider:
     source:
       name: <source_provider>
@@ -77,8 +77,8 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the {rhv-short} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `id`: Specify the {rhv-short} storage domain UUID, for example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
 
 ifdef::ova[]
@@ -94,9 +94,9 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
-        name:  Dummy storage for source provider <provider_name> <2>
+        name:  Dummy storage for source provider <provider_name>
   provider:
     source:
       name: <source_provider>
@@ -106,8 +106,8 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `name`: For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
 endif::[]
 
 ifdef::ostack[]
@@ -123,9 +123,9 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
-        id: <source_volume_type> <2>
+        id: <source_volume_type>
   provider:
     source:
       name: <source_provider>
@@ -135,12 +135,12 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `id`: Specify the {osp} `volume_type` UUID, for example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
 
 ifdef::cnv[]
-+[source,yaml,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
@@ -152,7 +152,7 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
         name: <storage_class>
   provider:
@@ -164,7 +164,7 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 endif::[]
 
 [start=5]

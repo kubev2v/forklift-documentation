@@ -15,7 +15,7 @@ The {operator-name} parameters table contains a description of each {operator-na
 |Parameter |Description |Default value
 
 |`controller_max_vm_inflight`
-a|The maximum number of disks or VMs that can transfer or migrate simultaneously. Varies with provider. For more information, see xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter]. 
+a|The maximum number of disks or VMs that can transfer or migrate simultaneously. Varies with provider. For more information, see xref:ref_max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter]. 
 |`20`
 
 |`must_gather_api_cleanup_max_age`

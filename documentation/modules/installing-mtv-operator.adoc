@@ -141,7 +141,7 @@ $ {oc} get pods -n {namespace}
 +
 The following is example output:
 +
-.Example
+Example:
 ----
 NAME                                                    READY   STATUS    RESTARTS   AGE
 forklift-api-bb45b8db4-cpzlg                            1/1     Running   0          6m34s

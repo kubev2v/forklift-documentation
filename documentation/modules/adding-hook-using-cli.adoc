@@ -111,6 +111,57 @@ $ oc get -n konveyor-forklift hook playbook -o \
 In order for a PreHook to run on a VM, the VM must be started and available via SSH.
 ====
 
-include::snip_example-hook-for-migration-plans.adoc[]
+The example migration hook that follows ensures that the VM can be accessed using SSH, creates an SSH key, and runs 2 tasks: stopping the Maria database and generating a text file.
+
+.Example migration hook
+[source,yaml,subs="attributes+"]
+----
+- name: Main
+  hosts: localhost
+  vars_files:
+    - plan.yml
+    - workload.yml
+  tasks:
+  - k8s_info:
+      api_version: v1
+      kind: Secret
+      name: privkey
+      namespace: openshift-mtv
+    register: ssh_credentials
+
+  - name: Ensure SSH directory exists
+    file:
+      path: ~/.ssh
+      state: directory
+      mode: 0750
+
+  - name: Create SSH key
+    copy:
+      dest: ~/.ssh/id_rsa
+      content: "{{ ssh_credentials.resources[0].data.key | b64decode }}"
+      mode: 0600
+
+  - add_host:
+      name: "{{ vm.ipaddress }}"  # ALT "{{ vm.guestnetworks[2].ip }}"
+      ansible_user: root
+      groups: vms
+
+- hosts: vms
+  vars_files:
+    - plan.yml
+    - workload.yml
+  tasks:
+  - name: Stop MariaDB
+    service:
+      name: mariadb
+      state: stopped
+
+  - name: Create Test File
+    copy:
+      dest: /premigration.txt
+      content: "Migration from {{ provider.source.name }}
+                of {{ vm.vm1.vm0.id }} has finished\n"
+      mode: 0644
+----
 
 

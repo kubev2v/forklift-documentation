@@ -1,6 +1,0 @@
-:_mod-docs-content-type: SNIPPET
-
-[WARNING]
-====
-Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
-====

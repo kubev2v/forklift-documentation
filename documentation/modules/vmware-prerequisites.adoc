@@ -9,7 +9,10 @@
 [role="_abstract"]
 It is strongly recommended to create a VDDK image to accelerate migrations. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
 
-include::snip-vsan.adoc[]
+[WARNING]
+====
+Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
+====
 
 The following prerequisites apply to {vmw} migrations:
 
@@ -21,7 +24,21 @@ The following prerequisites apply to {vmw} migrations:
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the Network File Copy (NFC) service memory of the host.
 * It is strongly recommended to disable hibernation because {project-first} does not support migrating hibernated VMs.
 
-include::snip_vmware-windows-vss.adoc[]
+[WARNING]
+====
+For virtual machines (VMs) running Microsoft Windows, Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. 
+
+When performing a warm migration of a Microsoft Windows virtual machine from {vmw}, you must start VSS on the Windows guest operating system in order for the snapshot and `Quiesce guest file system` to succeed.
+
+If you do not start VSS on the Windows guest operating system, the snapshot creation during the Warm migration fails with the following error:
+
+[source,terminal]
+----
+An error occurred while taking a snapshot: Failed to restart the virtual machine
+----
+
+If you set the VSS service to `Manual` and start a snapshot creation with `Quiesce guest file system = yes`. In the background, the {vmw} Snapshot provider service requests VSS to start the shadow copy.
+====
 
 [IMPORTANT]
 ====

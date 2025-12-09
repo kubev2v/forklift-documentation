@@ -11,7 +11,7 @@ You can select a migration network in the {ocp} web console for a source provide
 
 Using the default network for migration can result in poor performance because the network might not have sufficient bandwidth. This situation can have a negative effect on the source platform because the disk transfer operation might saturate the network.
 
-include::snip_vmware_esxi_nfc.adoc[]
+You can also control the network from which disks are transferred from a host by using the Network File Copy (NFC) service in vSphere.
 
 [NOTE]
 ====
@@ -23,10 +23,7 @@ If you input any value of maximum transmission unit (MTU) besides the default va
 * The migration network must have enough throughput, minimum speed of 10 Gbps, for disk transfer.
 * The migration network must be accessible to the {virt} nodes through the default gateway.
 +
-[NOTE]
-====
 The source virtual disks are copied by a pod that is connected to the pod network of the target namespace.
-====
 
 * The migration network should have jumbo frames enabled.
 
