@@ -8,7 +8,4 @@
 = {project-short} encryption support
 
 [role="_abstract"]
-{project-first} supports the following types of encryption for virtual machines (VMs):
-
-* For VMs that run on Linux: Linux Unified Key Setup (LUKS)
-* For VMs that run on Windows: BitLocker
+{project-first} supports encryption for Linux VMs using Linux Unified Key Setup (LUKS) and for Windows VMs using BitLocker.

@@ -10,15 +10,7 @@ ifdef::context[:parent-context: {context}]
 //:context: planning-rhv
 
 [role="_abstract"]
-
-You prepare and create your {rhv-full} migration plan by performing the following high-level steps in the MTV UI:
-
-- Create ownerless network maps.
-- Add a {rhv-full} source provider.
-- Select a migration network for a VMware source provider.
-- Add an OpenShift Virtualization destination provider.
-- Select a migration network for an OpenShift Virtualization provider.
-- Create a {rhv-full} migration plan.
+Create a {rhv-full} migration plan by setting up network maps, configuring source and destination providers with migration networks, and defining the migration plan in the MTV UI.
 
 :context: rhv
 :rhv:

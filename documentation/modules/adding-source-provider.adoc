@@ -57,12 +57,8 @@ endif::[]
 ifdef::cnv[]
 = Adding a Red Hat {virt} source provider
 
-[role="_abstract"] 
-You can use a Red Hat {virt} provider as both a source provider and a destination provider.
-
-Specifically, the host cluster that is automatically added as a {virt} provider can be used as both a source provider and a destination provider.
-
-You can migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
+[role="_abstract"]
+Use a Red Hat {virt} provider as both source and destination. The automatically added host cluster serves both roles. Migrate VMs to or from the cluster where {project-short} is deployed.
 
 [NOTE]
 ====
@@ -73,14 +69,8 @@ endif::[]
 ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 = Adding {a-virt} destination provider
 
-[role="_abstract"] 
-You can use a Red Hat {virt} provider as both a source provider and a destination provider.
-
-Specifically, the host cluster that is automatically added as a {virt} provider can be used as both a source provider and a destination provider.
-
-You can also add another {virt} destination provider to the {ocp} web console in addition to the default {virt} destination provider, which is the cluster where you installed {project-short}.
-
-You can migrate VMs from the cluster that {project-short} is deployed on to another cluster or from a remote cluster to the cluster that {project-short} is deployed on.
+[role="_abstract"]
+Use a Red Hat {virt} provider as both source and destination. The automatically added host cluster serves both roles. You can add additional {virt} destination providers besides the default cluster where {project-short} is installed.
 endif::[]
 
 ifdef::vmware,rhv,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]

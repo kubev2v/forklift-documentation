@@ -7,7 +7,7 @@
 = Configuring the {operator-name}
 
 [role="_abstract"]
-You can configure the {operator-name} in the *Settings* section of the *Overview* page or by modifying the `ForkliftController` custom resource (CR). Some configurations are only available in the the `ForkliftController` CR. For information about the *Settings* section of the *Overview* page, see xref:overview-settings-tab_{context}[Settings tab].
+Configure the {operator-name} through the *Settings* section of the *Overview* page or by modifying the `ForkliftController` CR. Some configurations are available only in the CR.
 
 NOTE: You can only use the string values "true" and "false" for feature gates, such as plugins and some services, in the `ForkliftController` CR. The `ForkliftController` API does not accept boolean values for these settings.
 

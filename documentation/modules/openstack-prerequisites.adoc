@@ -7,14 +7,5 @@
 = OpenStack prerequisites
 
 [role="_abstract"]
-The following prerequisites apply to {osp} migrations:
-
-* You must use a xref:compatibility-guidelines_{context}[compatible version] of {osp}.
-
-{project-short} versions 2.6 and later support the following authentication methods for migrations with {osp} source providers in addition to the standard username and password credential set:
-
-* Token authentication
-* Application credential authentication
-
-You can use these methods to migrate virtual machines with {osp} source providers using the command-line interface (CLI) the same way you migrate other virtual machines, except for how you prepare the `Secret` manifest.
+{osp} migrations require a compatible version. MTV 2.6 and later support token authentication and application credential authentication in addition to standard credentials. These methods work with the CLI like standard migrations, differing only in `Secret` manifest preparation.
 

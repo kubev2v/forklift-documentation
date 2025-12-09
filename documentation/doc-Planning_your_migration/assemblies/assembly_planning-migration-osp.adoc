@@ -10,15 +10,7 @@ ifdef::context[:parent-context: {context}]
 //:context: planning-osp
 
 [role="_abstract"]
-
-You prepare and create your {osp} migration plan by performing the following high-level steps in the MTV UI:
-
-- Create ownerless network maps.
-- Add an {osp} source provider.
-- Select a migration network for an {osp} provider.
-- Add an OpenShift Virtualization destination provider.
-- Select a migration network for an OpenShift Virtualization provider.
-- Create an {osp} migration plan.
+Create an {osp} migration plan by setting up network maps, configuring source and destination providers with migration networks, and defining the migration plan in the MTV UI.
 
 :context: ostack
 :ostack:

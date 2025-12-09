@@ -8,20 +8,7 @@
 = About cold and warm migration
 
 [role="_abstract"]
-{project-first} supports cold and warm migration as follows:
-
-{project-short} supports cold migration from the following source providers:
-
-* {vmw} vSphere
-* {rhv-full} 
-* {osp}
-* Open Virtual Appliances (OVAs) that were created by {vmw} vSphere
-* Remote {virt} clusters
-
-{project-short} supports warm migration from the following source providers:
-
-* {vmw} vSphere
-* {rhv-full}
+{project-first} supports cold migration from VMware vSphere, {rhv-full}, {osp}, OVAs created by VMware vSphere, and remote {virt} clusters. Warm migration is supported from VMware vSphere and {rhv-full} only.
 
 [id="cold-migration_{context}"]
 == Cold migration

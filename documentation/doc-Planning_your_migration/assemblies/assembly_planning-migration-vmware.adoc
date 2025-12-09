@@ -10,15 +10,7 @@ ifdef::context[:parent-context: {context}]
 //:context: planning-vmware
 
 [role="_abstract"]
-
-You prepare and create your VMware vSphere migration plan by performing the following high-level steps in the MTV UI:
-
-- Create ownerless network maps.
-- Add a VMware vSphere source provider.
-- Select a migration network for a VMware source provider.
-- Add an OpenShift Virtualization destination provider.
-- Select a migration network for an OpenShift Virtualization provider.
-- Create a VMware vSphere migration plan.
+Create a VMware vSphere migration plan by setting up network maps, configuring source and destination providers with migration networks, and defining the migration plan in the MTV UI.
 
 :context: vmware
 :vmware:

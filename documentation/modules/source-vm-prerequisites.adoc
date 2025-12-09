@@ -7,11 +7,7 @@
 = Source virtual machine prerequisites
 
 [role="_abstract"]
-The following prerequisites for source virtual machines (VMs) apply to all migrations:
-
-* ISO images and CD-ROMs are unmounted.
-* Each NIC contains either an IPv4 address or an IPv6 address, although a NIC may use both.
-* The operating system of each VM is certified and supported as a guest operating system for conversions.
+Source VM prerequisites for all migrations: unmount ISO images and CD-ROMs, ensure each NIC has an IPv4 or IPv6 address, and verify the operating system is certified and supported for guest OS conversions.
 
 [NOTE]
 ====

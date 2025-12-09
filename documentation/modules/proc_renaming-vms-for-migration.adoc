@@ -8,9 +8,7 @@
 = Renaming virtual machines for migration
 
 [role="_abstract"]
-You can rename source virtual machines (VMs) in the MTV UI to address naming conflicts. Renaming VMs ensures conformity with the Kubernetes-based naming conventions of Red Hat OpenShift Virtualization.
-
-In the OpenShift platform, all resource names, including VMs, must have DNS-compliant names. Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-). Names must not start or end with a hyphen or contain consecutive hyphens, and the length of a name is limited to 63 characters. The OpenShift API rejects noncompliant source VM names during the creation of the target VM.
+Rename source VMs in the MTV UI to resolve naming conflicts and ensure Kubernetes naming compliance. VM names must be DNS-compliant: lowercase alphanumeric characters and hyphens only, no leading or trailing hyphens, no consecutive hyphens, and 63 characters maximum.
 
 .Examples of VM naming conflicts 
 [cols="30%a,40%a,30%a",options="header",]
