@@ -7,21 +7,9 @@
 = Configuring the {operator-name}
 
 [role="_abstract"]
-You can configure the following settings of the {operator-name} by modifying the `ForkliftController` custom resource (CR), or in the *Settings* section of the *Overview* page, unless otherwise indicated.
+You can configure the {operator-name} in the *Settings* section of the *Overview* page or by modifying the `ForkliftController` custom resource (CR). Some configurations are only available in the the `ForkliftController` CR. For information about the *Settings* section of the *Overview* page, see xref:overview-settings-tab_{context}[Settings tab].
 
-* Maximum number of virtual machines (VMs) or disks per plan that {project-first} can migrate simultaneously.
-* How long `must gather` reports are retained before being automatically deleted (`ForkliftController` CR only). 
-* CPU limit allocated to the main controller container.
-* Memory limit allocated to the main controller container.
-* Interval at which a new snapshot is requested before initiating a warm migration.
-* Frequency with which the system checks the status of snapshot creation or removal during a warm migration.
-* Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem` (`ForkliftController` CR only).
-* Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based (`ForkliftController` CR only).
-* Configuration map of operating systems to preferences for vSphere source providers (`ForkliftController` CR only).
-* Configuration map of operating systems to preferences for {rhv-full} ({rhv-short}) source providers (`ForkliftController` CR only).
-* Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration (`ForkliftController` CR only).
-
-The procedure for configuring these settings by using the user interface is presented in xref:mtv-overview-page_{context}[Configuring MTV settings]. The procedure for configuring these settings by modifying the `ForkliftController` CR is presented following.
+NOTE: You can only use the string values "true" and "false" for feature gates, such as plugins and some services, in the `ForkliftController` CR. The `ForkliftController` API does not accept boolean values for these settings.
 
 .Procedure
 
@@ -30,89 +18,8 @@ The procedure for configuring these settings by using the user interface is pres
 [source, YAML]
 ----
 spec:
-  parameter: value # <1>
+  <parameter: value> 
 ----
-<1> Parameters that you can configure using the CLI are shown in the table that follows, along with a description of each parameter and its default value.
-
-.{operator-name} parameters
-[cols="1,1,1",options="header"]
-|===
-|Parameter |Description |Default value
-
-|`controller_max_vm_inflight`
-a|Varies with provider as follows:
-
-* For all migrations except OVA or {vmw} migrations: The maximum number of disks that {project-short} can transfer simultaneously.
-* For Open Virtual Appliance (OVA) migrations: The maximum number of VMs that {project-short} can migrate simultaneously.
-* For {vmw} migrations, the parameter has the following meanings:
-** Cold migration:
-
-*** To local {virt}: VMs for each ESXi host that can migrate simultaneously.
-*** To remote {virt}: Disks for each ESXi host that can migrate simultaneously.
-
-** Warm migration: Disks for each ESXi host that can migrate simultaneously.
 +
-See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this parameter.
-|`20`
-
-|`must_gather_api_cleanup_max_age`
-|The duration in hours for retaining `must gather` reports before they are automatically deleted.
-|`-1` (disabled)
-
-|`controller_container_limits_cpu`
-|The CPU limit allocated to the main controller container.
-|`500m`
-
-|`controller_container_limits_memory`
-|The memory limit allocated to the main controller container.
-|`800Mi`
-
-|`controller_precopy_interval`
-|The interval in minutes at which a new snapshot is requested before initiating a warm migration.
-|`60`
-
-|`controller_snapshot_status_check_rate_seconds`
-|The frequency in seconds with which the system checks the status of snapshot creation or removal during a warm migration.
-|`10`
-
-|`controller_filesystem_overhead`
-|Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem`.
-
-`ForkliftController` CR only.
-|`10`
-
-|`controller_block_overhead`
-|Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based. It can be used when data, such as encryption headers, is written to the persistent volumes in addition to the content of the virtual disk.
-
-`ForkliftController` CR only.
-|`0`
-
-|`vsphere_osmap_configmap_name`
-|Config map for vSphere source providers. This config map maps the operating system of the incoming VM to a {virt} preference name. This config map needs to be in the namespace where the {project-short} Operator is deployed.
-
-To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* > *Preferences*.
-
-Add values to the config map when this parameter has the default value, `forklift-vsphere-osmap.` To override or delete values, specify a config map that is different from `forklift-vsphere-osmap`.
-
-`ForkliftController` CR only.
-|`forklift-vsphere-osmap`
-
-|`ovirt_osmap_configmap_name`
-|Config map for {rhv-short} source providers. This config map maps the operating system of the incoming VM to a {virt} preference name. This config map needs to be in the namespace where the {project-short} Operator is deployed.
-
-To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* -> *Preferences*.
-
-You can add values to the config map when this parameter has the default value, `forklift-ovirt-osmap.` To override or delete values, specify a config map that is different from `forklift-ovirt-osmap`.
-
-`ForkliftController` CR only.
-|`forklift-ovirt-osmap`
-
-|`controller_retain_precopy_importer_pods`
-|Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration.
-
-`ForkliftController` CR only.
-
-|`false`
-|===
-
+** Replace `<parameter: value>` with one of the parameters from the {operator-name} parameters table. For more information, see xref:ref_mtv-operator-parameters_{context}[{operator-name} parameters]. 
 
