@@ -9,7 +9,10 @@
 [role="_abstract"]
 It is strongly recommended to create a VDDK image to accelerate migrations. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
 
-include::snip-vsan.adoc[]
+[WARNING]
+====
+Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
+====
 
 The following prerequisites apply to {vmw} migrations:
 
