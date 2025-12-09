@@ -18,9 +18,7 @@ You can create ownerless network maps by using the {project-first} UI to map sou
 .Procedure
 
 . In the {ocp} web console, click *Migration for Virtualization* > *Network maps*.
-. Click *Create NetworkMap*.
-+
-The *Create NetworkMap* page opens.
+. Click *Create NetworkMap* to open the *Create NetworkMap* page.
 . Enter the YAML or JSON definitions into the editor, or drag and drop a file into the editor.
 . If you enter YAML definitions, use the following:
 

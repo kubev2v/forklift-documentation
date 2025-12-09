@@ -26,7 +26,7 @@ Storing the VDDK image in a public registry might violate the {vmw} license term
 .Prerequisites
 
 * link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/registry/setting-up-and-configuring-the-registry#configuring-registry-storage-baremetal[{ocp} image registry].
-* `podman` installed.
+* You have `podman` installed.
 * You are working on a file system that preserves symbolic links (symlinks).
 * If you are using an external registry, {virt} must be able to access it.
 
@@ -41,11 +41,8 @@ $ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
 
 . In a browser, navigate to the link:https://developer.vmware.com/web/sdk/8.0/vddk[VMware VDDK version 8 download page].
 . Select version 8.0.1 and click *Download*.
-
-[NOTE]
-====
-In order to migrate to {virt} 4.12, download VDDK version 7.0.3.2 from the link:https://developer.vmware.com/web/sdk/7.0/vddk[VMware VDDK version 7 download page].
-====
++
+NOTE: To migrate to {virt} 4.12, download VDDK version 7.0.3.2 from the link:https://developer.vmware.com/web/sdk/7.0/vddk[VMware VDDK version 7 download page].
 
 . Save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
