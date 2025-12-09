@@ -48,8 +48,8 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `accessMode` are `ReadWriteOnce` and `ReadWriteMany`.
-* Specify the VMware vSphere datastore moRef for `id`. For example, `f2737930-b567-451a-9ceb-2887f6207009`. For more information about retrieving the moRef, see 'Retrieving a VMware vSphere moRef' in _Migrating your virtual machines to Red Hat {virt}_.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `id`: Specify the VMware vSphere datastore moRef, for example, `f2737930-b567-451a-9ceb-2887f6207009`. For more information about retrieving the moRef, see 'Retrieving a VMware vSphere moRef' in _Migrating your virtual machines to Red Hat {virt}_.
 endif::[]
 
 ifdef::rhv[]
@@ -77,8 +77,8 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `accessMode` are `ReadWriteOnce` and `ReadWriteMany`.
-* Specify the {rhv-short} storage domain UUID for `id`. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `id`: Specify the {rhv-short} storage domain UUID, for example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
 
 ifdef::ova[]
@@ -106,8 +106,8 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `accessMode` are `ReadWriteOnce` and `ReadWriteMany`.
-* For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `name`: For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
 endif::[]
 
 ifdef::ostack[]
@@ -135,12 +135,12 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `accessMode` are `ReadWriteOnce` and `ReadWriteMany`.
-* Specify the {osp} `volume_type` UUID for `id`. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `id`: Specify the {osp} `volume_type` UUID, for example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
 
 ifdef::cnv[]
-+[source,yaml,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
@@ -164,7 +164,7 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `accessMode` are `ReadWriteOnce` and `ReadWriteMany`.
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 endif::[]
 
 [start=5]

@@ -57,10 +57,10 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `type` are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
-* You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (moRef). For more information about retrieving the moRef, see 'Retrieving a VMware vSphere moRef' in _Migrating your virtual machines to Red Hat {virt}_.
-* Specify a network attachment definition for each additional {virt} network.
-* `namespace` is required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+* `type`: Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
+* `source`: You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the VMware vSphere network Managed Object Reference (moRef). For more information about retrieving the moRef, see 'Retrieving a VMware vSphere moRef' in _Migrating your virtual machines to Red Hat {virt}_.
+* `<network_attachment_definition>`: Specify a network attachment definition for each additional {virt} network.
+* `<network_attachment_definition_namespace>`: Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
 
 ifdef::rhv[]
@@ -96,10 +96,10 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `type` are `pod` and `multus`.
-* You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-short} network Universal Unique ID (UUID).
-* Specify a network attachment definition for each additional {virt} network.
-* `namespace` is required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+* `type`: Allowed values are `pod` and `multus`.
+* `source`: You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-short} network Universal Unique ID (UUID).
+* `<network_attachment_definition>`: Specify a network attachment definition for each additional {virt} network.
+* `<network_attachment_definition_namespace>`: Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
 
 ifdef::ova[]
@@ -133,10 +133,10 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `type` are `pod` and `multus`.
-* Specify the OVA network Universal Unique ID (UUID).
-* Specify a network attachment definition for each additional {virt} network.
-* `namespace` is required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+* `type`: Allowed values are `pod` and `multus`.
+* `source`: Specify the OVA network Universal Unique ID (UUID).
+* `<network_attachment_definition>`: Specify a network attachment definition for each additional {virt} network.
+* `<network_attachment_definition_namespace>`: Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
 
 ifdef::ostack[]
@@ -172,10 +172,10 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `type` are `pod` and `multus`.
-* You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {osp} network UUID.
-* Specify a network attachment definition for each additional {virt} network.
-* `namespace` is required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+* `type`: Allowed values are `pod` and `multus`.
+* `source`: You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {osp} network UUID.
+* `<network_attachment_definition>`: Specify a network attachment definition for each additional {virt} network.
+* `<network_attachment_definition_namespace>` is required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
 
 ifdef::cnv[]
@@ -212,9 +212,9 @@ spec:
       namespace: <namespace>
 EOF
 ----
-* Allowed values for `type` are `pod` and `multus`.
-* Specify a network attachment definition for each additional {virt} network. Specify the `namespace` either by using the `namespace property` or with a name built as follows: `<network_namespace>/<network_name>`.
-* `namespace` is required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+* `type`: Allowed values are `pod` and `multus`.
+* `<network_attachment_definition>`: Specify a network attachment definition for each additional {virt} network. Specify the `namespace` either by using the `namespace property` or with a name built as follows: `<network_namespace>/<network_name>`.
+* `<network_attachment_definition_namespace>`: Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 endif::[]
 
 [start=5]
