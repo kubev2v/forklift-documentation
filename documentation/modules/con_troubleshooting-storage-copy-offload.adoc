@@ -37,11 +37,7 @@ CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="ht
 
 Manual SSH key connection errors::
 +
-*Description*: {project-short} returns one of the following errors:
-
-** `Manual SSH key configuration required`
-** `Failed to connect via SSH`
-** `SSH connection timeout`
+*Description*: {project-short} returns one of the following errors: `Manual SSH key configuration required`, `Failed to connect via SSH`, or `SSH connection timeout`.
 +
 *Explanation*: The SSH connection is not running on the ESXi host for one of the following reasons:
 
