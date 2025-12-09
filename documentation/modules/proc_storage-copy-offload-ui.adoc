@@ -293,7 +293,7 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | The user's password (string)
 | Yes
 | NA
-
++
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
 | No

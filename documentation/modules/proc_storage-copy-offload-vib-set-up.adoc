@@ -42,7 +42,7 @@ spec:
   settings:
     esxiCloneMethod: "vib"
 ----
-+
+
 . Install the VIB by using the `vib-installer` utility included in the container image by running one of the following methods:
 
 .. Auto-discover ESXi hosts from vSphere and install the VIB by running the following commands:

@@ -35,7 +35,7 @@ spec:
   settings:
     esxiCloneMethod: "ssh"
 ----
-+
+
 . Get the public key from the auto-generated secret by performing the following steps:
 
 .. Get a list of SSH key secrets by running the following command:
@@ -44,8 +44,7 @@ spec:
 ----
 oc get secrets -l app.kubernetes.io/component=ssh-keys -n <namespace_with_key>
 ---- 
-// Should this be <namespace> or as is?
-+
+
 .. Extract the public key you want by running the following command:
 +
 [source,terminal]
@@ -53,14 +52,14 @@ oc get secrets -l app.kubernetes.io/component=ssh-keys -n <namespace_with_key>
 oc get secret <your_public_key> \
   -o jsonpath='{.data.public-key}' -n <namespace_with_key> | base64 -d > esxi_public_key.pub
 ----
-+
+
 .. View the public key by running the following command:
 +
 [source,terminal]
 ----
 cat esxi_public_key.pub
 ----
-+
+
 . Prepare the restricted key entry by performing the following steps:
 
 .. Prefix the public key with command restrictions by running the following command:
@@ -71,14 +70,14 @@ echo 'command="python /vmfs/volumes/<datastore_name>/secure-vmkfstools-wrapper.p
 ----
 +
 The command runs a script that adds the prefix.
-+
+
 .. View the final restricted key by running the following command:
 +
 [source,terminal]
 ----
 cat restricted_key.pub
 ----
-+
+
 . Install the restricted key on the ESXI host directly by running the following command:
 +
 [source,terminal]
@@ -86,9 +85,9 @@ cat restricted_key.pub
 cat restricted_key.pub | ssh root@<your_ESXi_host_IP> \
   'cat >> /etc/ssh/keys-root/authorized_keys'
 ----
-+
+
 . Verify the installation by performing the following steps:
-+
+
 .. Extract the private key from the Secret by running the following command:
 +
 [source,terminal]
@@ -96,14 +95,14 @@ cat restricted_key.pub | ssh root@<your_ESXi_host_IP> \
 oc get secret <your_private_key> \
   -o jsonpath='{.data.private-key}' -n <namespace_with_key> | base64 -d > esxi_private_key
 ----
-+
+
 .. Set the permissions of your private key by running the following command:
 +
 [source,terminal]
 ----
 chmod 600 esxi_private_key
 ----
-+
+
 .. Test the connection by running the following command:
 +
 [source,terminal]
@@ -112,9 +111,9 @@ ssh -i esxi_private_key root@<your_ESXi_host_IP>
 ----
 +
 If the installation was successful, you are connected to the ESXi host with restricted commands.
-+
+
 .. Run a test command that is restricted to the secure script to verify the connection.
-+
+
 . Clean up the local key files by running the following command:
 +
 [source,terminal]
