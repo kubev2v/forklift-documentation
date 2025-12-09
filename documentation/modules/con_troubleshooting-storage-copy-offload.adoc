@@ -11,21 +11,23 @@ This section describes problems that are unique to storage copy offload and how 
 [id=sco-vsphere-esxi-connectivity_{context}]
 == vSphere-ESXi connectivity issues
 
-- Remote ESXi connection fails with a SOAP error
-
+Remote ESXi connection fails with a SOAP error::
++
 *Description*: Sometimes a remote ESXi execution fails, returning a SOAP error with no apparent root cause message.
-*Explanation*: Because vSphere invokes some SOAP/Rest endpoints on the ESXi, a connection can fail because of standard error reasons that vanish after the next try. 
++
+*Explanation*: Because vSphere invokes some SOAP/Rest endpoints on the ESXi, a connection can fail because of standard error reasons that vanish after the next try.
++
 *Solution*: If the populator fails, the migration can be restarted. Try to restart or retry the populator, or restart the migration.
 
-- VIB issues returned with a CLI error
-
+VIB issues returned with a CLI error::
++
 *Description*: {project-first} returns the following error:
 +
 [source,terminal]
 ----
 CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:vim25" versionId="5.0" xsi:type="LocalizedMethodFault"><fault xsi:type="NotFound"></fault><localizedMessage>The object or item referred to could not be found.</localizedMessage></obj>
 ----
-
++
 *Explanation*: If the VIB is installed, but `/etc/init.d/hostd` did not restart, then the `vmkfstools` namespace in `esxcli` is either not updated or does not exist. If that namespace does not exist, it means that this is the first usage, probably right after the first use.
 +
 *Solution*: Use SSH to log in to the ESXi and run `/etc/init.d/hostd restart`. Wait for a few seconds until the ESXi renews the connection with vSphere.
@@ -33,14 +35,14 @@ CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="ht
 [id=sco-ssh-issues_{context}]
 == SSH error messages
 
-- manual SSH key connection errors
-
+Manual SSH key connection errors::
++
 *Description*: {project-short} returns one of the following errors:
 
 ** `Manual SSH key configuration required`
 ** `Failed to connect via SSH`
 ** `SSH connection timeout`
-
++
 *Explanation*: The SSH connection is not running on the ESXi host for one of the following reasons:
 
 ** The SSH is disabled.
@@ -54,16 +56,16 @@ CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="ht
 ** Timeout issue (least likely issue)
 +
 *Solution*: Increase the value of `SSH_TIMEOUT_SECONDS` in the provider `Secret`.
-
-- Verification steps for the above solutions:
-
++
+Verification steps for the preceding solutions:
++
 ** To verify that the SSH service is running on an ESXi host, run the following command:
 +
 [source,terminal]
 ----
 $ vim-cmd hostsvc/get_ssh_status 
 ----
-
++
 ** To manually test SSH connectivity from a migration pod, run the following command:
 +
 [source,terminal]
