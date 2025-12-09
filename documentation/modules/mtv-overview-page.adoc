@@ -89,7 +89,7 @@ a|Varies with provider as follows:
 *** To remote {virt}: Disks for each ESXi host that can migrate simultaneously.
 ** Warm migration: Disks for each ESXi host that can migrate simultaneously.
 +
-See xref:max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this setting.
+See xref:ref_max-concurrent-vms_{context}[Configuring the controller_max_vm_inflight parameter] for a detailed explanation of this setting.
 |20.
 |Adjustable by either using the *+* and *-* keys to set a different value or by clicking the textbox and entering a new value.
 |Controller main container CPU limit
