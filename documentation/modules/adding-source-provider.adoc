@@ -90,7 +90,10 @@ endif::[]
 ifdef::vmware[]
 * It is strongly recommended to create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters. A VDDK image accelerates migration and reduces the risk of a plan failing. If you are not using VDDK and a plan fails, retry with VDDK installed. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
 
-include::snip-vsan.adoc[]
+[WARNING]
+====
+Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
+====
 endif::[]
 
 ifdef::rhv[]
@@ -155,7 +158,22 @@ The URL of the uploaded archive is displayed in the *VDDK init image archive* te
 * *Password*: vCenter user password or ESXi user password.
 
 [start=3]
-include::snip-certificate-options.adoc[]
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox, and then, click *Confirm*. If not, click *Cancel*, and then, enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 
 endif::[]
 
@@ -189,7 +207,22 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 * *Username*: Username.
 * *Password*: Password.
 +
-include::snip-certificate-options.adoc[]
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox, and then, click *Confirm*. If not, click *Cancel*, and then, enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 endif::[]
 ifdef::ova[]
 . Access the *Create provider* page for Open Virtual Appliance by doing one of the following:
@@ -273,7 +306,22 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 *** *Project*: {osp} project
 *** *Domain*: {osp} domain name
 +
-include::snip-certificate-options.adoc[]
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox, and then, click *Confirm*. If not, click *Cancel*, and then, enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 endif::[]
 
 ifdef::cnv[]
@@ -305,7 +353,22 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 +
 If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
 +
-include::snip-certificate-options.adoc[]
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox, and then, click *Confirm*. If not, click *Cancel*, and then, enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 endif::[]
 
 ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
@@ -338,7 +401,22 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 +
 If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
 +
-include::snip-certificate-options.adoc[]
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox, and then, click *Confirm*. If not, click *Cancel*, and then, enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 endif::[]
 
 . Click *Create provider* to add and save the provider.

@@ -18,7 +18,10 @@ Do not include virtual machines with guest-initiated storage connections, such a
 This prevents concurrent disk access to the storage the guest points to.
 ====
 
-include::snip_plan-limits.adoc[]
+[IMPORTANT]
+====
+A plan cannot contain more than 500 VMs or 500 disks.
+====
 
 [IMPORTANT]
 ====
