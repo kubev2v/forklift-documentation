@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="proc_storage-copy-offload-vib-set-up_{context}"]
 = Setting up storage copy offload using the VIB
 
@@ -18,7 +18,7 @@ If you use this method, you must install the VIB on every ESXi host that you use
 
 * Podman or Docker installed on your local machine.
 * Root user SSH access to ESXi hosts.
-* SSH private key for ESXi authentication. This can be the the same key as used for the SSH clone method, if you use both.
+* SSH private key for ESXi authentication. This can be the same key as used for the SSH clone method, if you use both.
 * Optional: vSphere credentials. These allow you to auto-discovery ESXi hosts.
 
 .Procedure

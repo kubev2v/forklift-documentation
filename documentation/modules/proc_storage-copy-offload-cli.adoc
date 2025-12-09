@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="proc_storage-copy-offload-cli_{context}"]
 = Migrating {vmw} vSphere VMs in the CLI by using storage copy offload
 
@@ -14,7 +14,7 @@ You can use the storage copy offload feature of {project-first} to migrate {vmw}
 In addition to the regular link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
 
 * A Hitachi Vantara or NetApp ONTAP storage system or one of the following:
-** A configured Dell PowerFlex Storage Data Client (SDC) or 
+** A configured Dell PowerFlex Storage Data Client (SDC)
 ** A configured Internet Small Computer System Interface (iSCSI) storage system
 ** A configured Fibre Channel storage system
 * A working Container Storage Interface (CSI) driver connected to the above and to {virt}
@@ -376,7 +376,7 @@ spec:
 |`flashsystem`
 |===
 
-.. Create a migration plan using the procedure in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_migrating-from-vmware_mtv#proc_migrating-virtual-machines-cli_vmware[Running a {vmw} vSphere migration from the command-line].
+.. Create a migration plan by using the procedure in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_migrating-from-vmware_mtv#proc_migrating-virtual-machines-cli_vmware[Running a {vmw} vSphere migration from the command-line].
 ... In the `Plan` CR, modify the `spec:map:storage` portion of the CR as follows:
 +
 [source,yaml,subs="attributes+"]

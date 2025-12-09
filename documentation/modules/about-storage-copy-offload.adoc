@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Planninig_your_migration/assembly_planning-migration-vmware.adoc
 
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 [id="about-storage-copy-offload_{context}"]
 = Migrating {vmw} virtual machines by using storage copy offload
 
@@ -13,7 +13,7 @@ You can migrate {vmw} virtual machines (VMs) that are in a storage array network
 
 A new populator implementation under cmd/vsphere-xcopy-volume-populator is a cli program that runs in a container that is responsible to perform XCOPY to efficiently copy data from a VMDK to the target PVC.
 
-{project-first} 2.10.0 leverages this command as the basis for storage copy offload, which clones your VMs' data to the storage hardware instead of transmits it between {project-short} and {virt}. This improved migration saves both time an resources.
+{project-first} 2.10.0 leverages this command as the basis for storage copy offload, which clones your VMs' data to the storage hardware instead of transmitting it between {project-short} and {virt}. This improved migration saves both time an resources.
 
 You implement storage copy offload by configuring the storage map in your migration plan to point to your storage array instead of the network you usually use for migration. When you start the migration plan, {project-short} migrates your VMs by copying them to the storage array you choose and using `XCOPY` to copy them directly to {virt}, instead of transmitting the contents of your VMs to {virt}.
 
@@ -59,10 +59,10 @@ With storage copy offload, the process is streamlined:
 +
 The storage array handles the cloning of the VM disk internally, often at a much higher speed than a network-based transfer.
 
-The Forklift project, a key component of {project-short}, includes a specialized `vsphere-xcopy-volume-populator` that directly interacts with {vmw}'s VAAI. This allows {project-short} to trigger the high-speed, array-level data copy operation for supported storage systems.
+The Forklift project, a key component of {project-short}, includes a specialized volume populator named `vsphere-xcopy-volume-populator` that directly interacts with {vmw}'s VAAI. This allows {project-short} to trigger the high-speed, array-level data copy operation for supported storage systems.
 
 [IMPORTANT]
 ====
-The storage arrays must be the ones specified above. Otherwise `XCOPY` will perform a network copy on the ESXi. Although a network copy on the ESXi is usually considerably faster than a standard migration using an VDDK image, neither is as quick as a properly configured storage copy offload migration.
+The storage arrays must be the ones specified above. Otherwise, `XCOPY` will perform a network copy on the ESXi. Although a network copy on the ESXi is usually considerably faster than a standard migration using an VDDK image, it is not as quick as a properly configured storage copy offload migration.
 ====
 

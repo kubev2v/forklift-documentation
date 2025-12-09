@@ -2,9 +2,9 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="proc_storage-copy-offload-auto-ssh-set-up_{context}"]
-= Setting up storage copy offload using automatically generated SSH keys
+= Setting up storage copy offload by using automatically generated SSH keys
 
 [role="_abstract"]
 By default, when you use the SSH method for setting up storage copy migrations, SSH keys are automatically generated when you create or update a relevant vSphere provider.

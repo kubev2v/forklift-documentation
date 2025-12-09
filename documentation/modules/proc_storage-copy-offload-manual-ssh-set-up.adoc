@@ -2,9 +2,9 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_mod-docs-content-type: PROCEDURE
 [id="proc_storage-copy-offload-manual-ssh-set-up_{context}"]
-= Setting up storage copy offload using manually generated SSH keys
+= Setting up storage copy offload by using manually generated SSH keys
 
 [role="_abstract"]
 You can manually generate restricted SSH keys to use for storage copy offload migrations. After you generate the keys, you can then add the public key to your ESXi hosts.
