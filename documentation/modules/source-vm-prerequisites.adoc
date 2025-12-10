@@ -7,7 +7,7 @@
 = Source virtual machine prerequisites
 
 [role="_abstract"]
-Source VM prerequisites apply to all migrations. 
+Source VM prerequisites apply to all migrations from a source provider to {virt}. 
 
 Prerequisites::
 
