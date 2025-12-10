@@ -7,7 +7,7 @@
 = About network maps in migration plans
 
 [role="_abstract"]
-Create network maps in {project-first} to map source networks to {virt} networks. There are two types of network maps: maps created for a specific migration plan and maps created for use by any migration plan.
+Create network maps in {project-first} to map source networks to {virt} networks. You can create two types of network map: maps for a specific migration plan and maps for use by any migration plan.
 
 Plan-specific maps::
 
