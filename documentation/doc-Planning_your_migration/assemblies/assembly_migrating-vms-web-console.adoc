@@ -11,7 +11,7 @@ ifdef::context[:parent-context: {context}]
 
 [role="_abstract"]
 
-Use the {project-short} user interface to migrate virtual machines (VMs). It is located in the *Virtualization* section of the {ocp} web console.
+Use the {project-short} user interface to migrate VMs. It is located in the *Virtualization* section of the {ocp} web console.
 
 include::../modules/mtv-ui.adoc[leveloffset=+1]
 

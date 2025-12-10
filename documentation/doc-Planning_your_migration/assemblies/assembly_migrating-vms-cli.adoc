@@ -11,7 +11,7 @@ ifdef::context[:parent-context: {context}]
 
 [role="_abstract"]
 
-You migrate virtual machines (VMs) to {virt} from the command-line by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
+You migrate VMs to {virt} from the command-line by creating {project-short} custom resources (CRs). The CRs and the migration procedure vary by source provider.
 
 [IMPORTANT]
 ====
