@@ -7,7 +7,7 @@
 = Limitations of live migration
 
 [role="_abstract"]
-Perform a live migration works to migrate virtual machines (VMs) between {virt} clusters or between namespaces on the same {virt} cluster with a minimum of downtime.
+Perform a live migration to migrate VMs between {virt} clusters or between namespaces on the same {virt} cluster with a minimum of downtime.
 
 Limitations::
 

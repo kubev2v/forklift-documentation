@@ -7,7 +7,7 @@
 = Network prerequisites
 
 [role="_abstract"]
-Network prerequisites for all migrations: preserve IP addresses, VLANs, and network settings during migration; maintain reliable connections between source, {virt} cluster, and repository; create network attachment definitions for each additional destination network when mapping multiple networks.
+Network prerequisites apply to all migrations from a source provider to {virt}.
 
 Prerequisites::
 

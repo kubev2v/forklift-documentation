@@ -10,7 +10,7 @@ ifdef::context[:parent-context: {context}]
 //:context: prerequisites
 
 [role="_abstract"]
-You can install the {operator-name} by using the {ocp} web console or CLI. Version 2.4 and later includes the {project-short} plugin for the web console.
+You can install the {operator-name} by using the {ocp} web console or CLI. {project-first} version 2.4 and later includes the {project-short} plugin for the web console.
 
 :!mtv:
 :context: web

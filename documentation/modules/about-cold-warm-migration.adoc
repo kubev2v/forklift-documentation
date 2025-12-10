@@ -8,7 +8,7 @@
 = About cold and warm migration
 
 [role="_abstract"]
-Choose cold migration to move powered-off VMs from multiple sources, or warm migration to minimize downtime for powered-on VMs. Cold migration works with VMware vSphere, {rhv-full}, {osp}, OVAs, and remote {virt} clusters; warm migration works with VMware vSphere and {rhv-full}.
+Choose cold migration to move powered-off VMs from multiple sources to {virt}, or choose warm migration to minimize downtime for powered-on VMs. Cold migration works with VMware vSphere, {rhv-full}, {osp}, OVAs, and remote {virt} clusters; warm migration works with VMware vSphere and {rhv-full}.
 
 [id="cold-migration_{context}"]
 == Cold migration
