@@ -8,7 +8,7 @@
 = Benefits of live migration
 
 [role="_abstract"]
-Use live migration to perform Day 2 operations like maintenance and workload balancing without service disruption. You can migrate VMs between {virt} clusters and namespaces while they run, avoiding the need for scheduled downtime.
+Use live migration to perform Day 2 operations like maintenance and workload balancing with minimal service disruption. You can migrate VMs between {virt} clusters and namespaces while they run, avoiding the need for scheduled downtime.
 
 Live migration has the following benefits: 
 

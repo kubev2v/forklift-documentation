@@ -7,7 +7,7 @@
 = OpenStack prerequisites
 
 [role="_abstract"]
-To migrate from {osp} to {virt}, verify you have a compatible {osp} version and configure authentication. You can use token authentication, application credentials, or standard username and password credentials with MTV 2.6 or later.
+To migrate from {osp} to {virt}, verify you have a compatible {osp} version and configure authentication. You can use token authentication, application credentials, or standard username and password credentials with {project-short}.
 
 You can use these methods to migrate VMs from {osp} source providers by using the command-line interface (CLI) the same way you migrate other VMs, except for how you prepare the `Secret` manifest.
 

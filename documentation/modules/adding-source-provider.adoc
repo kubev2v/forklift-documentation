@@ -58,7 +58,7 @@ ifdef::cnv[]
 = Adding a Red Hat {virt} source provider
 
 [role="_abstract"]
-Use a Red Hat {virt} provider as both source and destination provider. You can migrate VMs from the cluster that {project-first} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
+You can use a Red Hat {virt} provider as both source and destination provider. You can migrate VMs from the cluster that {project-first} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
 
 [NOTE]
 ====
