@@ -7,7 +7,7 @@
 = Open Virtual Appliance (OVA) prerequisites
 
 [role="_abstract"]
-Open Virtual Appliance (OVA) migrations to {virt} require files created by VMware vSphere. OVA files must be in NFS-shared directories, either as compressed Open Virtualization Format (OVF) packages with `.ova` extensions or as extracted OVF packages. {project-first} scans root and first-level subfolders for compressed packages, and up to second-level subfolders for extracted packages.
+Open Virtual Appliance (OVA) migrations to {virt} require VMware vSphere files in NFS-shared directories. OVA files can be compressed Open Virtualization Format (OVF) packages with `.ova` extensions or extracted packages. {project-first} scans root and first-level subfolders for compressed packages, and up to second-level subfolders for extracted packages.
 
 [NOTE]
 ====
