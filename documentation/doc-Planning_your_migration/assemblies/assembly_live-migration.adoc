@@ -6,7 +6,7 @@
 //:context: cold-warm-migration
 
 [role="_abstract"]
-To reduce downtime during Day 2 operations like maintenance and workload balancing, migrate VMs between {virt} clusters or namespaces using live migration. You need {project-first} 2.10.0 or later and {virt} 4.20 or later on both clusters.
+To reduce downtime during Day 2 operations like maintenance and workload balancing, migrate VMs between {virt} clusters or namespaces by using live migration. You need {project-first} 2.10.0 or later and {virt} 4.20 or later on both clusters.
 
 [IMPORTANT]
 ====

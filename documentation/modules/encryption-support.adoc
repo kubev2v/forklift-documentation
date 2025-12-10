@@ -8,4 +8,4 @@
 = {project-short} encryption support
 
 [role="_abstract"]
-Migrate encrypted VMs to maintain security during migration. You can migrate Linux VMs encrypted with LUKS and Windows VMs encrypted with BitLocker.
+Migrate encrypted VMs to maintain security during migration to {project-first}. You can migrate Linux VMs encrypted with Linux Unified Key Setup (LUKS) and Windows VMs encrypted with BitLocker.

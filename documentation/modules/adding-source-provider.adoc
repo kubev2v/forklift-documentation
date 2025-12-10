@@ -58,7 +58,7 @@ ifdef::cnv[]
 = Adding a Red Hat {virt} source provider
 
 [role="_abstract"]
-Use a Red Hat {virt} provider as both source and destination. The automatically added host cluster serves both roles. Migrate VMs to or from the cluster where {project-short} is deployed.
+Use a Red Hat {virt} provider as both source and destination provider. You can migrate VMs from the cluster that {project-short} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
 
 [NOTE]
 ====
@@ -70,7 +70,7 @@ ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 = Adding {a-virt} destination provider
 
 [role="_abstract"]
-Use a Red Hat {virt} provider as both source and destination. The automatically added host cluster serves both roles. You can add additional {virt} destination providers besides the default cluster where {project-short} is installed.
+Use a Red Hat {virt} provider as both source and destination provider. You can migrate VMs from the cluster that {project-short} is deployed on to another cluster or from a remote cluster to the cluster that {project-short} is deployed on.
 endif::[]
 
 ifdef::vmware,rhv,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
