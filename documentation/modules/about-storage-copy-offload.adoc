@@ -63,6 +63,6 @@ The Forklift project, a key component of {project-short}, includes a specialized
 
 [IMPORTANT]
 ====
-The storage arrays must be the ones specified above. Otherwise, `XCOPY` will perform a network copy on the ESXi. Although a network copy on the ESXi is usually considerably faster than a standard migration using an VDDK image, it is not as quick as a properly configured storage copy offload migration.
+The storage arrays must be the ones specified above. Otherwise, XCOPY performs a fallback network disk copy on the ESXi. Although a fallback network disk copy on the ESXi is usually considerably faster than a standard migration using an VDDK image over the network, it is not as quick as a properly configured storage copy offload migration.
 ====
 
