@@ -7,10 +7,11 @@
 = Live migration, {project-short}, and {virt}
 
 [role="_abstract"]
-Live migration is a joint operation between {project-first} and {virt} that allows you to leverage the strengths of {project-short} when you migrate virtual machines (VMs) from one {virt} cluster to another. Tasks and responsibilities are divided between the two as follows:
+Live migration is a joint operation between {project-first} and {virt} that leverages the strengths of {project-short} when you migrate VMs from one {virt} cluster to another.
 
-* {project-short} handles the high-level orchestration that is needed to perform a live migration of {virt} Kubevirt VMs from one cluster to another. 
+Tasks and responsibilities are divided between {project-short} and {virt}: 
 
+* {project-short} manages the high-level orchestration that is needed to perform a live migration of {virt} Kubevirt VMs from one cluster to another. 
 * {virt} is responsible for the low-level migration mechanics, such as the actual state and storage transfer between the clusters.
 
 Orchestration is done by the `ForkliftController` component of {project-short}, rather than by {virt}, because `ForkliftController` is already designed to manage the migration pipeline, which includes the following responsibilities:

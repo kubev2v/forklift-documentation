@@ -7,11 +7,13 @@
 = Network prerequisites
 
 [role="_abstract"]
-The following network prerequisites apply to all migrations:
+Network prerequisites apply to all migrations from a source provider to {virt}.
+
+Prerequisites::
 
 * Do not change IP addresses, VLANs, and other network configuration settings during a migration. The MAC addresses of the virtual machines (VMs) are preserved during migration.
 * The network connections between the source environment, the {virt} cluster, and the replication repository must be reliable and uninterrupted.
-* If you are mapping more than one source and destination network, you must create a link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-creating-network-attachment-definition[network attachment definition] for each additional destination network.
+* If you are mapping more than one source and destination network, you must create a network attachment definition for each additional destination network. For more information, see link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-creating-network-attachment-definition[network attachment definition].
 
 [id="ports_{context}"]
 == Ports

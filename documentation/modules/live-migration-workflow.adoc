@@ -7,7 +7,7 @@
 = Live migration workflow
 
 [role="_abstract"]
-Live migration uses a different workflow than other types of migration. You can use the following workflow to understand how {project-first} orchestrates a live migration with {virt} handling the low-level mechanics of the migration. This workflow is also designed to help you troubleshoot problems that might occur during a live migration.
+Live migration follows a unique workflow. Understanding how {project-first} orchestrates with {virt} helps you troubleshoot migration issues.
 
 . Start: When you click *Start plan*, {project-short} initiates the migration plan. 
 . PreHook: If you added a pre-migration hook, {project-short} runs it now.

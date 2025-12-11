@@ -6,11 +6,9 @@
 //:context: cold-warm-migration
 
 [role="_abstract"]
-You can use _live migration_ to migrate virtual machines (VMs) between {virt} clusters, or between namespaces on the same {virt} cluster, with extremely limited downtime.
+You can use _live migration_ to migrate VMs between {virt} clusters or namespaces on the same {virt} cluster with minimal downtime. Live migration makes it easier to perform Day 2 tasks, such as maintenance and workload balancing after you have migrated your VMs to {virt}.
 
 Live migration is supported by {project-first} version 2.10.0 and later. It requires {virt} 4.20 or later on both your source and target clusters. 
-
-Live migration makes it easier for you to perform Day 2 tasks, such as seamless maintenance and workload balancing after you have migrated your VMs to {virt}.
 
 [IMPORTANT]
 ====

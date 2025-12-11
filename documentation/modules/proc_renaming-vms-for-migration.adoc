@@ -8,9 +8,9 @@
 = Renaming virtual machines for migration
 
 [role="_abstract"]
-You can rename source virtual machines (VMs) in the MTV UI to address naming conflicts. Renaming VMs ensures conformity with the Kubernetes-based naming conventions of Red Hat OpenShift Virtualization.
+Rename source VMs in the {project-first} UI to resolve naming conflicts and ensure compliance with the Kubernetes-based naming conventions of {virt}. The OpenShift API rejects noncompliant source VM names during the creation of the target VM.
 
-In the OpenShift platform, all resource names, including VMs, must have DNS-compliant names. Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-). Names must not start or end with a hyphen or contain consecutive hyphens, and the length of a name is limited to 63 characters. The OpenShift API rejects noncompliant source VM names during the creation of the target VM.
+VM names must be DNS-compliant. Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
 
 .Examples of VM naming conflicts 
 [cols="30%a,40%a,30%a",options="header",]
@@ -33,6 +33,6 @@ In the OpenShift platform, all resource names, including VMs, must have DNS-comp
 . If the *Target name* column does not already show in the VM table, click *Manage columns* to select *Target name* and display the column.
 . Identify non-conformant names in the list of VMs by checking the alerts in the *Concerns* column.
 . To rename a VM, click the *More* icon at the end of the row for the VM, and click *Edit target name*.
-. Enter and save a new name for the VM. Ensure that the new name consists only of alphanumeric characters (a-z, 0-9) and hyphens. Ensure that the name does not start or end with a hyphen or contain consecutive hyphens and is less than 63 characters long.
+. Enter and save a new name for the VM. Ensure that the new name consists only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
 
 

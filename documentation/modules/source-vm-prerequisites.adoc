@@ -7,7 +7,9 @@
 = Source virtual machine prerequisites
 
 [role="_abstract"]
-The following prerequisites for source virtual machines (VMs) apply to all migrations:
+Source VM prerequisites apply to all migrations from a source provider to {virt}. 
+
+Prerequisites::
 
 * ISO images and CD-ROMs are unmounted.
 * Each NIC contains either an IPv4 address or an IPv6 address, although a NIC may use both.
