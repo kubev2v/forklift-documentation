@@ -15,11 +15,10 @@ You create a validation rule by applying a config map custom resource (CR) conta
 * If you create a rule that contradicts a default rule, the `Validation` service will not start.
 ====
 
-.Validation rule example
-
 Validation rules are based on virtual machine (VM) attributes collected by the `Provider Inventory` service.
 
-For example, the VMware API uses this path to check whether a VMware VM has NUMA node affinity configured: `MOR:VirtualMachine.config.extraConfig["numa.nodeAffinity"]`.
+.Example
+The VMware API uses this path to check whether a VMware VM has NUMA node affinity configured: `MOR:VirtualMachine.config.extraConfig["numa.nodeAffinity"]`.
 
 The `Provider Inventory` service simplifies this configuration and returns a testable attribute with a list value:
 
@@ -32,7 +31,6 @@ The `Provider Inventory` service simplifies this configuration and returns a tes
 ----
 
 You create a link:https://www.openpolicyagent.org/docs/latest/policy-language/[Rego] query, based on this attribute, and add it to the `forklift-validation-config` config map:
-
 [source,terminal]
 ----
 `count(input.numaNodeAffinity) != 0`
@@ -125,4 +123,4 @@ EOF
 <2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
 <3> Specify the name of the provider `Secret` CR.
 
-You must update the rules version after creating a custom rule so that the `Inventory` service detects the changes and validates the VMs.
+. Update the rules version after creating a custom rule so that the `Inventory` service detects the changes and validates the VMs.
