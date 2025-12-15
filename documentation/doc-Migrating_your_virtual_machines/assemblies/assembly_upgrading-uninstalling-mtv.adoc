@@ -4,12 +4,12 @@ ifdef::context[:parent-context: {context}]
 
 [id="assembly_upgrading-uninstalling-mtv_{context}"]
 
-= Upgrading or uninstalling {the-lc} {project-full}
+= Upgrading or uninstalling the {project-full}
 
 //:context: upgrading-uninstalling
 
 [role="_abstract"]
-You can upgrade or uninstall {the-lc} {project-first} by using the {ocp} web console or the command-line interface (CLI).
+You can upgrade or uninstall the {project-first} by using the {ocp} web console or the command-line interface (CLI).
 
 :context: mtv
 :mtv:
