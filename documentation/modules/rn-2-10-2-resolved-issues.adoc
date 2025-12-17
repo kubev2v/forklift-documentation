@@ -30,4 +30,9 @@ Before this update, inspection pod failures occurred during large-scale warm mig
 +
 link:https://issues.redhat.com/browse/MTV-4059[MTV-4059] 
 
+Resolved certificate validation errors for VM migrations with pre-migration hooks::
+
+Before this update, the {virt} migration of VMs with pre-migration hooks caused migration plan failure in the Initialize phase because of certificate validation issues. With this update, certificate validation errors are resolved for migration of VMs with pre-migration hooks.
++
+link:https://issues.redhat.com/browse/MTV-2894[MTV-2894] 
 
