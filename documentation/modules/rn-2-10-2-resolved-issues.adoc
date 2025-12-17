@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-10-2_{context}"]
+= Resolved issues 2.10.2
+
+XCOPY error detection during volume population::
+
+Before this update, there was no indication of Extended Copy (XCOPY) errors during volume population because of storage limitations. As a consequence, end users experienced unmonitored XCOPY failures during volume population, lacking warning messages. With this release, XCOPY task status is implemented in the `vmkfstools-wrapper` tool. As a result, users now receive a warning when XCOPY issues occur during volume population.
++
+link:https://issues.redhat.com/browse/MTV-3090[MTV-3090]
+
+Improved data transfer efficiency with FC prioritization::
+
+Before this update, host mapping prioritized iSCSI over FC when both were present. As a result, users experienced data transfer fallback to network copy when both FC and iSCSI adapters were online. With this release, FC adapters are checked before iSCSI for volume mapping. FC is prioritized over iSCSI for ESXi adapters, reducing potential network copy fallbacks and improving data transfer efficiency.
++
+link:https://issues.redhat.com/browse/MTV-3966[MTV-3966] 
+
+Per disk secret usage in warm migrations from VMware with storage offload::
+
+Before this update, warm migrations from VMware to {virt} with storage offload were unsuccessful because incorrect secret usage resulted in errors related to missing access keys. With this release, warm migration now correctly uses per-disk secrets for storage offload. Warm migrations from VMware with storage offload now succeed due to improved secret usage, eliminating errors related to missing access keys.
++
+link:https://issues.redhat.com/browse/MTV-4062[MTV-4062] 
+
+Resolved inspection pod failures during large-scale warm migrations::
+
+Before this update, inspection pod failures occurred during large-scale warm migrations because the parent backing of disks was missing. This update introduces a retry limit for obtaining the parent backing of disks during inspection. As a result, large-scale warm migrations complete successfully, reducing the occurrence of inspection pod failures and stalled pods during the `PreflightInspection` step.
++
+link:https://issues.redhat.com/browse/MTV-4059[MTV-4059] 
+
+
