@@ -22,7 +22,7 @@ include::modules/rn-resolved-issues.adoc[leveloffset=+2]
 
 // Resolved issues by z-stream release
 
-include::modules/rn-2-10-1-resolved-issues.adoc[leveloffset=+3]
+include::modules/rn-2-10-2-resolved-issues.adoc[leveloffset=+3]
 
 include::modules/rn-2-10-1-resolved-issues.adoc[leveloffset=+3]
 
