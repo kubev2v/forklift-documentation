@@ -122,7 +122,7 @@ kind: Secret
 metadata:
   name: <secret>
   namespace: <namespace>
-  ownerReferences: <1>
+  ownerReferences: 
     - apiVersion: forklift.konveyor.io/v1beta1
       kind: Provider
       name: <provider_name>
@@ -132,20 +132,34 @@ metadata:
     createdForResourceType: providers
 type: Opaque
 stringData:
-  user: <user> <2>
-  password: <password> <3>
-  insecureSkipVerify: <"true"/"false"> <4>
-  cacert: | <5>
+  user: <user>
+  password: <password> 
+  insecureSkipVerify: <"true"/"false">
+  cacert: |
     <ca_certificate>
-  url: <api_end_point> <6>
+  url: <api_end_point>
 EOF
 ----
-<1> The `ownerReferences` section is optional.
-<2> Specify the {rhv-short} {manager} user.
-<3> Specify the user password.
-<4> Specify `"true"` to skip certificate verification, and specify `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
-<5> Enter the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
-<6> Specify the API endpoint URL, for example, `https://<engine_host>/ovirt-engine/api`.
++
+Where:
+
+`ownerReferences`::
+Is a optional section.
+
+`<user>`::
+Specifies the {rhv-short} {manager} user.
+
+`<password>`::
+Specifies the user password.
+
+`<"true"/"false">`::
+Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+
+`cacert`::
+Enter the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
+
+`<api_end_point>`::
+Specifies the API endpoint URL, for example, `https://<engine_host>/ovirt-engine/api`.
 endif::[]
 ifdef::ova[]
 +
@@ -157,7 +171,7 @@ kind: Secret
 metadata:
   name: <secret>
   namespace: <namespace>
-  ownerReferences: <1>
+  ownerReferences: 
     - apiVersion: forklift.konveyor.io/v1beta1
       kind: Provider
       name: <provider_name>
@@ -167,11 +181,17 @@ metadata:
     createdForResourceType: providers
 type: Opaque
 stringData:
-  url: <nfs_server:/nfs_path> <2>
+  url: <nfs_server:/nfs_path>
 EOF
 ----
-<1> The `ownerReferences` section is optional.
-<2> where: `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
++
+Where:
+
+`ownerReferences`::
+Is an optional section.
+
+`<nfs_server:/nfs_path>`::
+Where `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
 endif::[]
 ifdef::ostack[]
 +
@@ -183,7 +203,7 @@ kind: Secret
 metadata:
   name: <secret>
   namespace: <namespace>
-  ownerReferences: <1>
+  ownerReferences: 
     - apiVersion: forklift.konveyor.io/v1beta1
       kind: Provider
       name: <provider_name>
@@ -193,23 +213,37 @@ metadata:
     createdForResourceType: providers
 type: Opaque
 stringData:
-  user: <user> <2>
-  password: <password> <3>
-  insecureSkipVerify: <"true"/"false"> <4>
+  user: <user>
+  password: <password> 
+  insecureSkipVerify: <"true"/"false">
   domainName: <domain_name>
   projectName: <project_name>
   regionName: <region_name>
-  cacert: | <5>
+  cacert: |
     <ca_certificate>
-  url: <api_end_point> <6>
+  url: <api_end_point>
 EOF
 ----
-<1> The `ownerReferences` section is optional.
-<2> Specify the {osp} user.
-<3> Specify the user {osp} password.
-<4> Specify `"true"` to skip certificate verification, and specify `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
-<5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
-<6> Specify the API endpoint URL, for example, `https://<identity_service>/v3`.
++
+Where:
+
+`ownerReferences`::
+Is optional.
+
+`<user>`::
+Specifies the {osp} user.
+
+`<password>`::
+Specifies the user {osp} password.
+
+`<"true"/"false">`::
+Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+
+`cacert`::
+When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
+
+`<api_end_point>`::
+Specifies the API endpoint URL, for example, `https://<identity_service>/v3`.
 endif::[]
 
 ifdef::cnv[]
@@ -222,7 +256,7 @@ kind: Secret
 metadata:
   name: <secret>
   namespace: <namespace>
-  ownerReferences: <1>
+  ownerReferences: 
     - apiVersion: forklift.konveyor.io/v1beta1
       kind: Provider
       name: <provider_name>
@@ -232,20 +266,34 @@ metadata:
     createdForResourceType: providers
 type: Opaque
 stringData:
-  token: <token> <2>
-  password: <password> <3>
-  insecureSkipVerify: <"true"/"false"> <4>
-  cacert: | <5>
+  token: <token>
+  password: <password> 
+  insecureSkipVerify: <"true"/"false">
+  cacert: |
     <ca_certificate>
-  url: <api_end_point> <6>
+  url: <api_end_point>
 EOF
 ----
-<1> The `ownerReferences` section is optional.
-<2> Specify a token for a service account with `cluster-admin` privileges. If both `token` and `url` are left blank, the local {ocp-short} cluster is used.
-<3> Specify the user password.
-<4> Specify `"true"` to skip certificate verification, and specify `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
-<5> When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
-<6> Specify the URL of the endpoint of the API server.
++
+Where:
+
+`ownerReferences`::
+Is optional.
+
+`<token>`::
+Specifies a token for a service account with `cluster-admin` privileges. If both `token` and `url` are left blank, the local {ocp-short} cluster is used.
+
+`<password>`::
+Specifies the user password.
+
+`<"true"/"false">`::
+Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+
+`cacert`::
+When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
+
+`<api_end_point>`::
+Specifies the URL of the endpoint of the API server.
 endif::[]
 
 [start=2]
@@ -263,19 +311,29 @@ metadata:
   namespace: <namespace>
 spec:
   type: vsphere
-  url: <api_end_point> <1>
+  url: <api_end_point>
   settings:
-    vddkInitImage: <VDDK_image> <2>
-    sdkEndpoint: vcenter <3>
+    vddkInitImage: <VDDK_image>
+    sdkEndpoint: vcenter
   secret:
-    name: <secret> <4>
+    name: <secret>
     namespace: <namespace>
 EOF
 ----
-<1> Specify the URL of the API endpoint, for example, `https://<vCenter_host>/sdk`.
-<2> Optional, but it is strongly recommended to create a VDDK image to accelerate migrations. Follow OpenShift documentation to specify the VDDK image you created.
-<3> Options: `vcenter` or `esxi`.
-<4> Specify the name of the provider `Secret` CR.
++
+Where:
+
+`<api_end_point>`::
+Specifies the URL of the API endpoint, for example, `https://<vCenter_host>/sdk`.
+
+`<VDDK_image>`::
+Optional, but it is strongly recommended to create a VDDK image to accelerate migrations. Follow OpenShift documentation to specify the VDDK image you created.
+
+`sdkEndpoint`::
+Options: `vcenter` or `esxi`.
+
+`<secret>`::
+Specifies the name of the provider `Secret` CR.
 endif::[]
 
 ifdef::rhv[]
@@ -290,14 +348,20 @@ metadata:
   namespace: <namespace>
 spec:
   type: ovirt
-  url: <api_end_point> <1>
+  url: <api_end_point>
   secret:
-    name: <secret> <2>
+    name: <secret>
     namespace: <namespace>
 EOF
 ----
-<1> Specify the URL of the API endpoint, for example, `https://<engine_host>/ovirt-engine/api`.
-<2> Specify the name of provider `Secret` CR.
++
+Where:
+
+`<api_end_point>`::
+Specifies the URL of the API endpoint, for example, `https://<engine_host>/ovirt-engine/api`.
+
+`<secret>`::
+Specifies the name of provider `Secret` CR.
 endif::[]
 
 ifdef::ova[]
@@ -312,14 +376,20 @@ metadata:
   namespace: <namespace>
 spec:
   type: ova
-  url:  <nfs_server:/nfs_path> <1>
+  url:  <nfs_server:/nfs_path>
   secret:
-    name: <secret> <2>
+    name: <secret>
     namespace: <namespace>
 EOF
 ----
-<1>  where: `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
-<2> Specify the name of provider `Secret` CR.
++
+Where:
+
+`<nfs_server:/nfs_path>`::
+Where `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
+
+`<secret>`::
+Specifies the name of provider `Secret` CR.
 endif::[]
 
 ifdef::ostack[]
@@ -334,14 +404,20 @@ metadata:
   namespace: <namespace>
 spec:
   type: openstack
-  url: <api_end_point> <1>
+  url: <api_end_point>
   secret:
-    name: <secret> <2>
+    name: <secret>
     namespace: <namespace>
 EOF
 ----
-<1> Specify the URL of the API endpoint.
-<2> Specify the name of provider `Secret` CR.
++
+Where:
+
+`<api_end_point>`::
+Specifies the URL of the API endpoint.
+
+`<secret>`::
+Specifies the name of provider `Secret` CR.
 endif::[]
 
 ifdef::cnv[]
@@ -356,14 +432,20 @@ metadata:
   namespace: <namespace>
 spec:
   type: openshift
-  url: <api_end_point> <1>
+  url: <api_end_point>
   secret:
-    name: <secret> <2>
+    name: <secret>
     namespace: <namespace>
 EOF
 ----
-<1> Specify the URL of the endpoint of the API server.
-<2> Specify the name of provider `Secret` CR.
++
+Where:
+
+`<api_end_point>`::
+Specifies the URL of the endpoint of the API server.
+
+`<secret>`::
+Specifies the name of provider `Secret` CR.
 endif::[]
 
 ifdef::vmware[]
@@ -381,14 +463,22 @@ metadata:
 spec:
   provider:
     namespace: <namespace>
-    name: <source_provider> <1>
-  id: <source_host_mor> <2>
-  ipAddress: <source_network_ip> <3>
+    name: <source_provider>
+  id: <source_host_mor>
+  ipAddress: <source_network_ip>
 EOF
 ----
-<1> Specify the name of the {vmw} vSphere `Provider` CR.
-<2> Specify the Managed Object Reference (moRef) of the {vmw} vSphere host. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
-<3> Specify the IP address of the {vmw} vSphere migration network.
++
+Where:
+
+`<source_provider>`::
+Specifies the name of the {vmw} vSphere `Provider` CR.
+
+`<source_host_mor>`::
+Specifies the Managed Object Reference (moRef) of the {vmw} vSphere host. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+
+`<source_network_ip>`::
+Specifies the IP address of the {vmw} vSphere migration network.
 
 [start=4]
 . Create a `NetworkMap` manifest to map the source and destination networks:
@@ -405,13 +495,13 @@ spec:
   map:
     - destination:
         name: <network_name>
-        type: pod <1>
-      source: <2>
+        type: pod
+      source: 
         id: <source_network_id>
         name: <source_network_name>
     - destination:
-        name: <network_attachment_definition> <3>
-        namespace: <network_attachment_definition_namespace> <4>
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
         type: multus
       source:
         id: <source_network_id>
@@ -422,14 +512,26 @@ spec:
       namespace: <namespace>
     destination:
       name: <destination_provider>
-      namespace: <namespace> <5>
+      namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
-<2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {vmw} vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
-<3> Specify a network attachment definition for each additional {virt} network.
-<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<5> If you are using a user-defined network (UDN), its namespace is defined in {virt}.
++
+Where:
+
+`type`::
+Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
+
+`source`::
+You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {vmw} vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+
+`<network_attachment_definition>`::
+Specifies a network attachment definition for each additional {virt} network.
+
+`<network_attachment_definition_namespace>`::
+Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+
+`namespace`::
+If you are using a user-defined network (UDN), its namespace is defined in {virt}.
 endif::[]
 
 ifdef::rhv[]
@@ -448,13 +550,13 @@ spec:
   map:
     - destination:
         name: <network_name>
-        type: pod <1>
-      source: <2>
+        type: pod
+      source: 
         id: <source_network_id>
         name: <source_network_name>
     - destination:
-        name: <network_attachment_definition> <3>
-        namespace: <network_attachment_definition_namespace> <4>
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
         type: multus
       source:
         id: <source_network_id>
@@ -465,14 +567,26 @@ spec:
       namespace: <namespace>
     destination:
       name: <destination_provider>
-      namespace: <namespace> <5>
+      namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-short} network Universal Unique ID (UUID).
-<3> Specify a network attachment definition for each additional {virt} network.
-<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<5> If you are using a user-defined network (UDN), its namespace is defined in {virt}.
++
+Where:
+
+`type`::
+Allowed values are `pod` and `multus`.
+
+`source`::
+You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-short} network Universal Unique ID (UUID).
+
+`<network_attachment_definition>`::
+Specifies a network attachment definition for each additional {virt} network.
+
+`<network_attachment_definition_namespace>`::
+Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+
+`namespace`::
+If you are using a user-defined network (UDN), its namespace is defined in {virt}.
 endif::[]
 
 ifdef::ova[]
@@ -491,12 +605,12 @@ spec:
   map:
     - destination:
         name: <network_name>
-        type: pod <1>
+        type: pod
       source:
-        id: <source_network_id> <2>
+        id: <source_network_id>
     - destination:
-        name: <network_attachment_definition> <3>
-        namespace: <network_attachment_definition_namespace> <4>
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
         type: multus
       source:
         id: <source_network_id>
@@ -506,14 +620,26 @@ spec:
       namespace: <namespace>
     destination:
       name: <destination_provider>
-      namespace: <namespace> <5>
+      namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `pod` and `multus`.
-<2> Specify the OVA network Universal Unique ID (UUID).
-<3> Specify a network attachment definition for each additional {virt} network.
-<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<5> If you are using a user-defined network (UDN), its namespace is defined in {virt}.
++
+Where:
+
+`type`::
+Allowed values are `pod` and `multus`.
+
+`<source_network_id>`::
+Specifies the OVA network Universal Unique ID (UUID).
+
+`<network_attachment_definition>`::
+Specifies a network attachment definition for each additional {virt} network.
+
+`<network_attachment_definition_namespace>`::
+Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+
+`namespace`::
+If you are using a user-defined network (UDN), its namespace is defined in {virt}.
 endif::[]
 
 ifdef::ostack[]
@@ -532,13 +658,13 @@ spec:
   map:
     - destination:
         name: <network_name>
-        type: pod <1>
-      source:<2>
+        type: pod
+      source:
         id: <source_network_id>
         name: <source_network_name>
     - destination:
-        name: <network_attachment_definition> <3>
-        namespace: <network_attachment_definition_namespace> <4>
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
         type: multus
       source:
         id: <source_network_id>
@@ -549,14 +675,26 @@ spec:
       namespace: <namespace>
     destination:
       name: <destination_provider>
-      namespace: <namespace> <5>
+      namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `pod` and `multus`.
-<2> You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {osp} network UUID.
-<3> Specify a network attachment definition for each additional {virt} network.
-<4> Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
-<5> If you are using a user-defined network (UDN), its namespace is defined in {virt}.
++
+Where:
+
+`type`::
+Allowed values are `pod` and `multus`.
+
+`source`::
+You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {osp} network UUID.
+
+`<network_attachment_definition>`::
+Specifies a network attachment definition for each additional {virt} network.
+
+`<network_attachment_definition_namespace>`::
+Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+
+`namespace`::
+If you are using a user-defined network (UDN), its namespace is defined in {virt}.
 endif::[]
 
 ifdef::cnv[]
@@ -575,13 +713,13 @@ spec:
   map:
     - destination:
         name: <network_name>
-        type: pod <1>
+        type: pod
       source:
         name: <network_name>
         type: pod
     - destination:
-        name: <network_attachment_definition> <2>
-        namespace: <network_attachment_definition_namespace> <3>
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
         type: multus
       source:
         name: <network_attachment_definition>
@@ -596,9 +734,17 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `pod`, `ignored`, and `multus`.
-<2> Specify the network name. When the `type` is `multus`, use the {virt} network attachment definition name.
-<3> Required only when the `type` is `multus`. Specify the namespace of the {virt} network attachment definition. 
++
+Where:
+
+`type`::
+Allowed values are `pod`, `ignored`, and `multus`.
+
+`<network_attachment_definition>`::
+Specifies the network name. When the `type` is `multus`, use the {virt} network attachment definition name.
+
+`<network_attachment_definition_namespace>`::
+Required only when the `type` is `multus`. Specify the namespace of the {virt} network attachment definition. 
 endif::[]
 
 ifdef::vmware[]
@@ -617,9 +763,9 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
-        id: <source_datastore> <2>
+        id: <source_datastore>
   provider:
     source:
       name: <source_provider>
@@ -629,8 +775,14 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the {vmw} vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
++
+Where:
+
+`<access_mode>`::
+Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+
+`<source_datastore>`::
+Specifies the {vmw} vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 endif::[]
 
 ifdef::rhv[]
@@ -649,9 +801,9 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
-        id: <source_storage_domain> <2>
+        id: <source_storage_domain>
   provider:
     source:
       name: <source_provider>
@@ -661,8 +813,14 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the {rhv-short} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
++
+Where:
+
+`<access_mode>`::
+Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+
+`<source_storage_domain>`::
+Specifies the {rhv-short} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
 
 ifdef::ova[]
@@ -681,9 +839,9 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
-        name:  Dummy storage for source provider <provider_name> <2>
+        name:  Dummy storage for source provider <provider_name>
   provider:
     source:
       name: <source_provider>
@@ -693,8 +851,14 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
++
+Where:
+
+`<access_mode>`::
+Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+
+`name`::
+For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
 endif::[]
 
 ifdef::ostack[]
@@ -713,9 +877,9 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
-        id: <source_volume_type> <2>
+        id: <source_volume_type>
   provider:
     source:
       name: <source_provider>
@@ -725,8 +889,14 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-<2> Specify the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
++
+Where:
+
+`<access_mode>`::
+Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+
+`<source_volume_type>`::
+Specifies the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
 
 ifdef::cnv[]
@@ -745,7 +915,7 @@ spec:
   map:
     - destination:
         storageClass: <storage_class>
-        accessMode: <access_mode> <1>
+        accessMode: <access_mode>
       source:
         name: <storage_class>
   provider:
@@ -757,7 +927,11 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
++
+Where:
+
+`<access_mode>`::
+Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 endif::[]
 +
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
@@ -772,13 +946,19 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/kubev2v/hook-runner
-  serviceAccount:<service account> <1>
+  serviceAccount:<service account>
   playbook: |
-    LS0tCi0gbm... <2>
+    LS0tCi0gbm...
 EOF
 ----
-<1> Optional: {ocp} service account. Use the `serviceAccount` parameter to modify any cluster resources.
-<2> Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
++
+Where:
+
+`<service account>`::
+Optional: {ocp} service account. Use the `serviceAccount` parameter to modify any cluster resources.
+
+`playbook`::
+Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
 +
 [NOTE]
 ====
@@ -813,10 +993,10 @@ $ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
 metadata:
-  name: <plan> <1>
+  name: <plan>
   namespace: <namespace>
 spec:
-  warm: false <2>
+  warm: false
   provider:
     source:
       name: <source_provider>
@@ -824,51 +1004,71 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: <3>
-    network: <4>
-      name: <network_map> <5>
+  map: 
+    network: 
+      name: <network_map>
       namespace: <namespace>
-    storage: <6>
-      name: <storage_map> <7>
+    storage: 
+      name: <storage_map>
       namespace: <namespace>
-  preserveStaticIPs: <8>
-  networkNameTemplate: <network_interface_template> <9>
-  pvcNameTemplate: <pvc_name_template> <10>
-  pvcNameTemplateUseGenerateName: true <11>
-  skipGuestConversion: false <12>
-  targetAffinity: <affinity rule> <13> 
-  targetLabels: <14>
+  preserveStaticIPs: 
+  networkNameTemplate: <network_interface_template>
+  pvcNameTemplate: <pvc_name_template>
+  pvcNameTemplateUseGenerateName: true
+  skipGuestConversion: false
+  targetAffinity: <affinity rule> 
+  targetLabels: 
     label: <label> 
-  targetNodeSelector: <15>
+  targetNodeSelector: 
     <key>:<value>
   targetNamespace: <target_namespace>
-  useCompatibilityMode: true <16>
-  volumeNameTemplate: <volume_name_template> <17>
-  vms: <18>
-    - id: <source_vm1> <19>
+  useCompatibilityMode: true
+  volumeNameTemplate: <volume_name_template>
+  vms: 
+    - id: <source_vm1>
     - name: <source_vm2>
-      networkNameTemplate: <network_interface_template_for_this_vm> <20>
-      pvcNameTemplate: <pvc_name_template_for_this_vm> <21>
-      volumeNameTemplate: <volume_name_template_for_this_vm> <22>
-      targetName: <target_name> <23>
-      hooks: <24>
+      networkNameTemplate: <network_interface_template_for_this_vm>
+      pvcNameTemplate: <pvc_name_template_for_this_vm>
+      volumeNameTemplate: <volume_name_template_for_this_vm>
+      targetName: <target_name>
+      hooks: 
         - hook:
             namespace: <namespace>
-            name: <hook> <25>
-          step: <step> <26>
+            name: <hook>
+          step: <step>
 
 EOF
 ----
-<1> Specify the name of the `Plan` CR.
-<2> Specify whether the migration is warm - `true` - or cold - `false`. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
-<3> Specify only one network map and one storage map per plan.
-<4> Specify a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
-<5> Specify the name of the `NetworkMap` CR.
-<6> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
-<7> Specify the name of the `StorageMap` CR.
-<8> By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address.
++
+Where:
+
+`<plan>`::
+Specifies the name of the `Plan` CR.
+
+`warm`::
+Specifies whether the migration is warm - `true` - or cold - `false`. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
+
+`map`::
+Specify only one network map and one storage map per plan.
+
+`network`::
+Specify a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
+
+`storage`::
+Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
+
+`preserveStaticIPs`::
+By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address.
 To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
-<9> [[callout9]]Optional. Specify a template for the network interface name for the VMs in your plan.
+
+`networkNameTemplate`::
+[[callout9]]Optional. Specify a template for the network interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 * `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
 * `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
@@ -885,8 +1085,9 @@ Variable names cannot exceed 63 characters. VM names geneated by templates must 
 ====
 {project-short} does not validate VM names generated by the templates described here. Migrations that include VMs whose names include uppercase letters or that violate RFC 1123 rules fail automatically. To avoid failures, you might want to run a Go script that uses the `sprig` methods that {project-short} supports. For tables documenting the methods that {project-short} supports, see xref:mtv-template-utility_vmware[{project-short} template utility for {vmw} VM names].
 ====
-+
-<10> [[callout10]]Optional. Specify a template for the persistent volume claim (PVC) name for a plan.
+
+`pvcNameTemplate`::
+[[callout10]]Optional. Specify a template for the persistent volume claim (PVC) name for a plan.
 The template follows the Go template syntax and has access to the following variables:
 * `.VmName`: Name of the VM.
 * `.PlanName`: Name of the migration plan.
@@ -898,29 +1099,39 @@ The template follows the Go template syntax and has access to the following vari
 * `"{{.VmName}}-disk-{{.DiskIndex}}"`
 * `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
 * `"{{if .Shared}}shared-{{end}}{{.VmName}}-{{.DiskIndex}}"`
-+
-<11> Optional:
+
+`pvcNameTemplateUseGenerateName`::
+Optional:
 * When set to `true`, {project-short} adds one or more randomly generated alphanumeric characters to the name of the PVC in order to ensure all PVCs have unique names.
 * When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add such characters to the name of the PVC.
 +
 include::snip_pvcNameTemplateUseGenerateName-warn.adoc[]
-+
-<12> Determines whether VMs are converted before migration using the `virt-v2v` tool, which makes the VMs compatible with {virt}.
+
+`skipGuestConversion`::
+Determines whether VMs are converted before migration using the `virt-v2v` tool, which makes the VMs compatible with {virt}.
 * When set to `false`, the default value, {project-short} migrates VMs using `virt-v2v`.
 * When set to `true`, {project-short} migrates VMs using raw copy mode, which copies the VMs without converting them first.
 +
-Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. 
-+
-<13> Optional: Affinity rule, which may be quite complex, is entered in lines following this label.
+Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
+
+`targetAffinity`::
+Optional: Affinity rule, which may be quite complex, is entered in lines following this label.
 +
 `targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
-+
-<14> Optional: Applies organizational or operational labels to migrated VMs for identification and management.
-<15> Optional: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you enter.
-<16> Determines whether the migration uses VirtIO devices or compatibility devices (SATA bus, E1000E NIC) when `skipGuestConversion` is `true`, that is, when raw copy mode is used for the migration. The setting of `useCompatibilityMode` has no effect when `skipGuestConversion` is `false`, because `virt-v2v` conversion always uses VirtIO devices.
+
+`targetLabels`::
+Optional: Applies organizational or operational labels to migrated VMs for identification and management.
+
+`targetNodeSelector`::
+Optional: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you enter.
+
+`useCompatibilityMode`::
+Determines whether the migration uses VirtIO devices or compatibility devices (SATA bus, E1000E NIC) when `skipGuestConversion` is `true`, that is, when raw copy mode is used for the migration. The setting of `useCompatibilityMode` has no effect when `skipGuestConversion` is `false`, because `virt-v2v` conversion always uses VirtIO devices.
 * When set to `true`, the default setting, {project-short} uses compatibility devices (SATA bus, E1000E NIC) in the migration process to ensure that the VMs can be booted after migration.
 * When set to `false`, {project-short} uses high-performance VirtIO devices in the migration process, and `virt-v2v` ensures that the VMs can be booted after migration. Before using this option, verify that VirtIO drivers are already installed in the source VMs.
-<17> [[callout14]]Optional: Specify a template for the volume interface name for the VMs in your plan.
+
+`volumeNameTemplate`::
+[[callout14]]Optional: Specify a template for the volume interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume.
 ** `.VolumeIndex`: Sequential index of the volume interface (0-based).
@@ -928,15 +1139,33 @@ The template follows the Go template syntax and has access to the following vari
 *Examples*
 ** `"disk-{{.VolumeIndex}}"`
 ** `"pvc-{{.PVCName}}"`
-<18> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
-<19> Specify the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
-<20> Optional: Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
-<21> Optional: Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10].
-<22> Optional: Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout14[callout 14].
-<23> Optional: {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique, and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
-<24> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<25> Specify the name of the `Hook` CR.
-<26> Allowed values are `PreHook` before the migration plan starts or `PostHook` after the migration is complete.
+
+`vms`::
+You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+
+`<source_vm1>`::
+Specifies the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+
+`networkNameTemplate`::
+Optional: Specify a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in xref:callout9[callout 9].
+
+`pvcNameTemplate`::
+Optional: Specify a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in xref:callout10[callout 10].
+
+`volumeNameTemplate`::
+Optional: Specify a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in xref:callout14[callout 14].
+
+`targetName`::
+Optional: {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique, and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
+
+`hooks`::
+Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
+
+`<hook>`::
+Specifies the name of the `Hook` CR.
+
+`<step>`::
+Allowed values are `PreHook` before the migration plan starts or `PostHook` after the migration is complete.
 +
 include::snip_vmware-name-change.adoc[]
 
@@ -970,11 +1199,11 @@ $ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
 metadata:
-  name: <plan> <1>
+  name: <plan>
   namespace: <namespace>
-  preserveClusterCpuModel: true <2>
+  preserveClusterCpuModel: true
 spec:
-  warm: false <3>
+  warm: false
   provider:
     source:
       name: <source_provider>
@@ -982,37 +1211,65 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: <4>
-    network: <5>
-      name: <network_map> <6>
+  map: 
+    network: 
+      name: <network_map>
       namespace: <namespace>
-    storage: <7>
-      name: <storage_map> <8>
+    storage: 
+      name: <storage_map>
       namespace: <namespace>
   targetNamespace: <target_namespace>
-  vms: <9>
-    - id: <source_vm1> <10>
+  vms: 
+    - id: <source_vm1>
     - name: <source_vm2>
-      hooks: <11>
+      hooks: 
         - hook:
             namespace: <namespace>
-            name: <hook> <12>
-          step: <step> <13>
+            name: <hook>
+          step: <step>
 EOF
 ----
-<1> Specify the name of the `Plan` CR.
-<2> See note below.
-<3> Specify whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
-<4> Specify only one network map and one storage map per plan.
-<5> Specify a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
-<6> Specify the name of the `NetworkMap` CR.
-<7> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
-<8> Specify the name of the `StorageMap` CR.
-<9> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
-<10> Specify the {rhv-short} VM UUID.
-<11> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<12> Specify the name of the `Hook` CR.
-<13> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
++
+Where:
+
+`<plan>`::
+Specifies the name of the `Plan` CR.
+
+`preserveClusterCpuModel`::
+See note below.
+
+`warm`::
+Specifies whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
+
+`map`::
+Specify only one network map and one storage map per plan.
+
+`network`::
+Specify a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
+
+`storage`::
+Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
+
+`vms`::
+You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+
+`<source_vm1>`::
+Specifies the {rhv-short} VM UUID.
+
+`hooks`::
+Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
+
+`<hook>`::
+Specifies the name of the `Hook` CR.
+
+`<step>`::
+Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 +
 [NOTE]
 ====
@@ -1053,7 +1310,7 @@ $ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
 metadata:
-  name: <plan> <1>
+  name: <plan>
   namespace: <namespace>
 spec:
   provider:
@@ -1063,35 +1320,59 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: <2>
-    network: <3>
-      name: <network_map> <4>
+  map: 
+    network: 
+      name: <network_map>
       namespace: <namespace>
-    storage: <5>
-      name: <storage_map> <6>
+    storage: 
+      name: <storage_map>
       namespace: <namespace>
   targetNamespace: <target_namespace>
-  vms: <7>
-    - id: <source_vm1> <8>
+  vms: 
+    - id: <source_vm1>
     - name: <source_vm2>
-      hooks: <9>
+      hooks: 
         - hook:
             namespace: <namespace>
-            name: <hook> <10>
-          step: <step> <11>
+            name: <hook>
+          step: <step>
 EOF
 ----
-<1> Specify the name of the `Plan` CR.
-<2> Specify only one network map and one storage map per plan.
-<3> Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
-<4> Specify the name of the `NetworkMap` CR.
-<5> Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
-<6> Specify the name of the `StorageMap` CR.
-<7> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
-<8> Specify the OVA VM UUID.
-<9> Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<10> Specify the name of the `Hook` CR.
-<11> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
++
+Where:
+
+`<plan>`::
+Specifies the name of the `Plan` CR.
+
+`map`::
+Specify only one network map and one storage map per plan.
+
+`network`::
+Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
+
+`storage`::
+Specify a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
+
+`vms`::
+You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+
+`<source_vm1>`::
+Specifies the OVA VM UUID.
+
+`hooks`::
+Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+
+`<hook>`::
+Specifies the name of the `Hook` CR.
+
+`<step>`::
+Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 
 ifdef::ostack[]
@@ -1122,7 +1403,7 @@ $ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
 metadata:
-  name: <plan> <1>
+  name: <plan>
   namespace: <namespace>
 spec:
   provider:
@@ -1132,35 +1413,59 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: <2>
-    network: <3>
-      name: <network_map> <4>
+  map: 
+    network: 
+      name: <network_map>
       namespace: <namespace>
-    storage: <5>
-      name: <storage_map> <6>
+    storage: 
+      name: <storage_map>
       namespace: <namespace>
   targetNamespace: <target_namespace>
-  vms: <7>
-    - id: <source_vm1> <8>
+  vms: 
+    - id: <source_vm1>
     - name: <source_vm2>
-      hooks: <9>
+      hooks: 
         - hook:
             namespace: <namespace>
-            name: <hook> <10>
-          step: <step> <11>
+            name: <hook>
+          step: <step>
 EOF
 ----
-<1> Specify the name of the `Plan` CR.
-<2> Specify only one network map and one storage map per plan.
-<3> Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
-<4> Specify the name of the `NetworkMap` CR.
-<5> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
-<6> Specify the name of the `StorageMap` CR.
-<7> You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
-<8> Specify the {osp} VM UUID.
-<9> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<10> Specify the name of the `Hook` CR.
-<11> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
++
+Where:
+
+`<plan>`::
+Specifies the name of the `Plan` CR.
+
+`map`::
+Specify only one network map and one storage map per plan.
+
+`network`::
+Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
+
+`storage`::
+Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
+
+`vms`::
+You can use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+
+`<source_vm1>`::
+Specifies the {osp} VM UUID.
+
+`hooks`::
+Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
+
+`<hook>`::
+Specifies the name of the `Hook` CR.
+
+`<step>`::
+Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 
 ifdef::cnv[]
@@ -1191,7 +1496,7 @@ $ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
 metadata:
-  name: <plan> <1>
+  name: <plan>
   namespace: <namespace>
 spec:
   provider:
@@ -1201,35 +1506,55 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: <2>
-    network: <3>
-      name: <network_map> <4>
+  map: 
+    network: 
+      name: <network_map>
       namespace: <namespace>
-    storage: <5>
-      name: <storage_map> <6>
+    storage: 
+      name: <storage_map>
       namespace: <namespace>
   targetNamespace: <target_namespace>
   vms:
     - name: <source_vm>
       namespace: <namespace>
-      hooks: <7>
+      hooks: 
         - hook:
             namespace: <namespace>
-            name: <hook> <8>
-          step: <step> <9>
+            name: <hook>
+          step: <step>
 EOF
 ----
-<1> Specify the name of the `Plan` CR.
-<2> Specify only one network map and one storage map per plan.
-<3> Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
-<4> Specify the name of the `NetworkMap` CR.
-<5> Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
-<6> Specify the name of the `StorageMap` CR.
-<7> Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
-<8> Specify the name of the `Hook` CR.
-<9> Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
-endif::[]
++
+Where:
 
+`<plan>`::
+Specifies the name of the `Plan` CR.
+
+`map`::
+Specify only one network map and one storage map per plan.
+
+`network`::
+Specify a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
+
+`storage`::
+Specify a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
+
+`hooks`::
+Optional: Specify up to two hooks for a VM. Each hook must run during a separate migration step.
+
+`<hook>`::
+Specifies the name of the `Hook` CR.
+
+`<step>`::
+Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+endif::[]
++
 . Create a `Migration` manifest to run the `Plan` CR:
 +
 [source,yaml,subs="attributes+"]
