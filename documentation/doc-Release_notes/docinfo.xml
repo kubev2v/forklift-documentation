@@ -3,7 +3,7 @@
 <productnumber>{project-version}</productnumber>
 <subtitle>Release notes for {the-lc} {project-full} {project-version} release</subtitle>
 <abstract>
-    <para>Review new features, known issues, and resolved issues for {the-lc} {project-full} {project-version}.</para>
+    <para>Review new features, known issues, and resolved issues for {project-full} {project-version}.</para>
 </abstract>
 <authorgroup id="Author_Group">
         <author>
