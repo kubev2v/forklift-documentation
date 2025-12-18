@@ -80,7 +80,7 @@ endif::[]
 ifdef::vmware[]
 * It is strongly recommended to create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters. A VDDK image accelerates migration and reduces the risk of a plan failing. If you are not using VDDK and a plan fails, retry with VDDK installed. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
 
-[WARNING]
+[IMPORTANT]
 ====
 Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
 ====

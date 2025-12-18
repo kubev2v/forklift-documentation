@@ -1,6 +1,6 @@
 :_mod-docs-content-type: SNIPPET
 
-[WARNING]
+[IMPORTANT]
 ====
 {project-short} has limited support for the migration of dual-boot operating system VMs.
 

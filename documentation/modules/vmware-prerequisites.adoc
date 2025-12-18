@@ -9,7 +9,7 @@
 [role="_abstract"]
 It is strongly recommended to create a VDDK image to accelerate migrations. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
 
-[WARNING]
+[IMPORTANT]
 ====
 Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
 ====
@@ -24,7 +24,7 @@ The following prerequisites apply to {vmw} migrations:
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the Network File Copy (NFC) service memory of the host.
 * It is strongly recommended to disable hibernation because {project-first} does not support migrating hibernated VMs.
 
-[WARNING]
+[IMPORTANT]
 ====
 For virtual machines (VMs) running Microsoft Windows, Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. 
 

@@ -27,7 +27,7 @@ You can check that the operating system is supported by referring to the table i
 +
 include::snip_dualboot_vm.adoc[]
 +
-[WARNING]
+[IMPORTANT]
 ====
 For virtual machines (VMs) running Microsoft Windows, Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. 
 

@@ -9,7 +9,7 @@
 [role="_abstract"]
 You can change Network Block Device (NBD) transport network file copy (NFC) parameters to increase migration performance when you use Asynchronous Input/Output (AIO) buffering with the {project-first}.
 
-[WARNING]
+[IMPORTANT]
 ====
 Using AIO buffering is only suitable for cold migration use cases.
 

@@ -44,7 +44,7 @@ A `PreFlightInspection` during warm migration enables early detection of issues 
 ** Unsupported FS 
 endif::vmware,rhv[]
 +
-[WARNING]
+[IMPORTANT]
 ====
 Do not take a snapshot of a VM after you start a migration. Taking a snaphot after a migration starts might cause the migration to fail. 
 ====
@@ -60,7 +60,7 @@ Do not take a snapshot of a VM after you start a migration. Taking a snaphot aft
 *** A progress pipeline for the VM's migration
 +
 ifdef::vmware[]
-[WARNING]
+[IMPORTANT]
 ====
 vMotion, including svMotion, and relocation must be disabled for VMs that are being imported to avoid data corruption.
 ====
