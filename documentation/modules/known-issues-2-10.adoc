@@ -10,7 +10,7 @@
 {project-first} 2.10 has the following known issues:
 
 Migration failures during warm migration from VMware with storage offload::
-Incorrect secret usage during warm migration from VMware with storage offload leads to migration failures.
+Incorrect secret usage during warm migration from VMware with storage offload leads to migration failures with errors related to missing access keys.
 +
 *Workaround:* Use per-disk credentials for warm migrations from VMware with storage offload.
 +
