@@ -9,6 +9,13 @@
 [role="_abstract"]
 {project-first} 2.10 has the following known issues:
 
+Migration failures during warm migration from VMware with storage offload::
+Incorrect secret usage during warm migration from VMware with storage offload leads to migration failures.
++
+*Workaround:* Use per-disk credentials for warm migrations from VMware with storage offload.
++
+link:https://issues.redhat.com/browse/MTV-4062[MTV-4062]
+
 Raw Device Mapping files prevent `copyoffload` migration of NFS-based VMs::
 If you try to migrate an NFS-based VM by using the `copyoffload` method, the `vmkfstools` command-line utility attempts to use the fallback method because NFS is file-based. However, NFS datastores do not support Raw Device Mapping (RDM) pointer files, and `vmkfstools` creates RDM files as cloning targets. 
 +

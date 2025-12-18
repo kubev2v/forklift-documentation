@@ -18,12 +18,6 @@ Before this update, host mapping prioritized iSCSI over FC when both were presen
 +
 link:https://issues.redhat.com/browse/MTV-3966[MTV-3966] 
 
-Per disk secret usage in warm migrations from VMware with storage offload::
-
-Before this update, warm migrations from VMware to {virt} with storage offload were unsuccessful because incorrect secret usage resulted in errors related to missing access keys. With this release, warm migration now correctly uses per-disk secrets for storage offload. Warm migrations from VMware with storage offload now succeed due to improved secret usage, eliminating errors related to missing access keys.
-+
-link:https://issues.redhat.com/browse/MTV-4062[MTV-4062] 
-
 Resolved inspection pod failures during large-scale warm migrations::
 
 Before this update, inspection pod failures occurred during large-scale warm migrations because the parent backing of disks was missing. This update introduces a retry limit for obtaining the parent backing of disks during inspection. As a result, large-scale warm migrations complete successfully, reducing the occurrence of inspection pod failures and stalled pods during the `PreflightInspection` step.
