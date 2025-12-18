@@ -11,7 +11,7 @@ You can migrate {rhv-full} virtual machines (VMs) by using the {project-full} pl
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
-[WARNING]
+[IMPORTANT]
 ====
 Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
 
