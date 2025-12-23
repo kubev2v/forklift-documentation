@@ -7,7 +7,7 @@
 = Creating a validation rule
 
 [role="_abstract"]
-You create a validation rule by applying a config map custom resource (CR) containing the rule to the `Validation` service.
+To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, deploy the rules by using a *ConfigMap* and reference the rules in the {project-short} Custom Resource (CR).
 
 [IMPORTANT]
 ====
@@ -15,32 +15,37 @@ You create a validation rule by applying a config map custom resource (CR) conta
 * If you create a rule that contradicts a default rule, the `Validation` service will not start.
 ====
 
-.Validation rule example
+Validation rules are based on VM attributes collected by the `Provider Inventory` service. The `Provider Inventory` service presents provider-specific VM properties as simplified attributes for the validation engine. You can then create Rego queries based on the attributes, and add the queries to the `forklift-validation-config` ConfigMap to apply validation rules across different source environments.
 
-Validation rules are based on virtual machine (VM) attributes collected by the `Provider Inventory` service.
+For example, in a validation rule that checks if a VMware VM has NUMA node affinity configured, you have these elements:
 
-For example, the VMware API uses this path to check whether a VMware VM has NUMA node affinity configured: `MOR:VirtualMachine.config.extraConfig["numa.nodeAffinity"]`.
+* VMware API path: `MOR:VirtualMachine.config.extraConfig["numa.nodeAffinity"]`.
 
-The `Provider Inventory` service simplifies this configuration and returns a testable attribute with a list value:
+* `Provider Inventory` service attribute with a list value:
++
+[cols=",",options="header",]
+|===
+|Inventory Attribute
+|Example Value
 
+|`numa.nodeAffinity`
+|`["True"]` or `[]` (empty list if not configured)
+|===
+
+* Rego query based on the attribute:
++
 [source,terminal]
 ----
-"numaNodeAffinity": [
-    "0",
-    "1"
-],
+count(input.numaNodeAffinity) != 0
 ----
-
-You create a link:https://www.openpolicyagent.org/docs/latest/policy-language/[Rego] query, based on this attribute, and add it to the `forklift-validation-config` config map:
-
-[source,terminal]
-----
-`count(input.numaNodeAffinity) != 0`
-----
++
+For information about Rego queries, see link:https://www.openpolicyagent.org/docs/latest/policy-language/[Policy Language] in the _Open Policy Agent_ documentation.
 
 .Procedure
 
-. Create a config map CR according to the following example:
+. Create a ConfigMap CR:
++
+Example:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -52,26 +57,26 @@ metadata:
   namespace: {namespace}
 data:
   vmware_multiple_disks.rego: |-
-    package <provider_package> <1>
+    package <provider_package> 
 
-    has_multiple_disks { <2>
+    has_multiple_disks { 
       count(input.disks) > 1
     }
 
     concerns[flag] {
-      has_multiple_disks <3>
+      has_multiple_disks 
         flag := {
-          "category": "<Information>", <4>
+          "category": "<Information>", 
           "label": "Multiple disks detected",
           "assessment": "Multiple disks detected on this VM."
         }
     }
 EOF
 ----
-<1> Specify the provider package name. Allowed values are `io.konveyor.forklift.vmware` for VMware and `io.konveyor.forklift.ovirt` for {rhv-full}.
-<2> Specify the `concerns` name and Rego query.
-<3> Specify the `concerns` name and `flag` parameter values.
-<4> Allowed values are `Critical`, `Warning`, and `Information`.
++
+* `<provider_package>`: The provider package name. Valid values are `io.konveyor.forklift.vmware` for VMware and `io.konveyor.forklift.ovirt` for {rhv-full}.
+* `count(input.disks)`: Your Rego query.
+* `category`: Valid values are `Critical`, `Warning`, and `Information`.
 
 . Stop the `Validation` pod by scaling the `forklift-controller` deployment to `0`:
 +
@@ -114,15 +119,17 @@ metadata:
   name: <provider>
   namespace: {namespace}
 spec:
-  type: <provider_type> <1>
-  url: <api_end_point> <2>
+  type: <provider_type> 
+  url: <api_end_point> 
   secret:
-    name: <secret> <3>
+    name: <secret> 
     namespace: {namespace}
 EOF
 ----
-<1> Allowed values are `ovirt`, `vsphere`, and `openstack`.
-<2> Specify the API end point URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
-<3> Specify the name of the provider `Secret` CR.
++
+* `<provider_type>`: Valid values are `ovirt`, `vsphere`, and `openstack`.
+* `<api_end_point>`: The API endpoint URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
+* `<secret>`: The name of the provider `Secret` CR.
 
-You must update the rules version after creating a custom rule so that the `Inventory` service detects the changes and validates the VMs.
+.Next step
+* Update the inventory rules version after creating a custom rule so that the `Inventory` service detects the changes and validates the VMs.
