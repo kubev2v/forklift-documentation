@@ -55,7 +55,7 @@ $ oc -n openshift-mtv patch hook <name_of_hook> \
   -p '{"spec":{"serviceAccount":"<service_account>"}}' --type merge
 ----
 +
-The example migration hook that follows ensures that the VM can be accessed using SSH, creates an SSH key, and runs 2 tasks: stopping the Maria database and generating a text file.
+The example migration hook that follows ensures that the VM can be accessed using SSH, creates an SSH key, and runs two tasks: stopping the Maria database and generating a text file.
 +
 [source,yaml,subs="attributes+"]
 ----

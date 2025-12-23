@@ -48,7 +48,7 @@ $ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/prov
 $ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/vsphere/<provider id>/datastores/ -k
 ----
 
-Your output looks like the following example:
+The output looks like the following example:
 [source,terminal]
 ----
 [
