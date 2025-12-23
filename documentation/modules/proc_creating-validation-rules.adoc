@@ -78,18 +78,18 @@ EOF
 * `count(input.disks)`: Your Rego query.
 * `category`: Valid values are `Critical`, `Warning`, and `Information`.
 
-. Stop the `Validation` pod by scaling the `forklift-controller` deployment to `0`:
+. Stop the `Validation` pod by scaling the `forklift-validation` deployment to `0`:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} scale -n {namespace} --replicas=0 deployment/forklift-controller
+$ {oc} scale -n {namespace} --replicas=0 deployment/forklift-validation
 ----
 
-. Start the `Validation` pod by scaling the `forklift-controller` deployment to `1`:
+. Start the `Validation` pod by scaling the `forklift-validation` deployment to `1`:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} scale -n {namespace} --replicas=1 deployment/forklift-controller
+$ {oc} scale -n {namespace} --replicas=1 deployment/forklift-validation
 ----
 
 . Check the `Validation` pod log to verify that the pod started:
