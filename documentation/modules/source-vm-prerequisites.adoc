@@ -3,8 +3,8 @@
 // * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
 
 :_mod-docs-content-type: REFERENCE
-[id="source-vm-prerequisites_{context}"]
-= Source virtual machine prerequisites
+[id="ref_source-vm-prerequisites_{context}"]
+= Source VM prerequisites
 
 [role="_abstract"]
 Source VM prerequisites apply to all migrations from a source provider to {virt}. 
@@ -24,48 +24,4 @@ You can check that the operating system is supported by referring to the table i
 * VMs that you want to migrate with MTV 2.7._z_ run on RHEL 9.
 * The name of a VM must not contain a period (`.`). {project-first} changes any period in a VM name to a dash (`-`).
 * The name of a VM must not be the same as any other VM in the {virt} environment.
-+
-include::snip_dualboot_vm.adoc[]
-+
-[WARNING]
-====
-For virtual machines (VMs) running Microsoft Windows, Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. 
 
-When performing a warm migration of a Microsoft Windows virtual machine from {vmw}, you must start VSS on the Windows guest operating system in order for the snapshot and `Quiesce guest file system` to succeed.
-
-If you do not start VSS on the Windows guest operating system, the snapshot creation during the Warm migration fails with the following error:
-
-[source,terminal]
-----
-An error occurred while taking a snapshot: Failed to restart the virtual machine
-----
-
-If you set the VSS service to `Manual` and start a snapshot creation with `Quiesce guest file system = yes`. In the background, the {vmw} Snapshot provider service requests VSS to start the shadow copy.
-====
-+
-[NOTE]
-====
-{project-full} automatically assigns a new name to a VM that does not comply with the rules.
-
-{project-full} makes the following changes when it automatically generates a new VM name:
-
-* Excluded characters are removed.
-* Uppercase letters are switched to lowercase letters.
-* Any underscore (`_`) is changed to a dash (`-`).
-
-This feature allows a migration to proceed smoothly even if someone enters a VM name that does not follow the rules.
-====
-+
-[NOTE]
-====
-Microsoft Windows VMs, which use the link:https://learn.microsoft.com/en-us/windows/compatibility/measured-boot[Measured Boot] feature, cannot be migrated. Measured Boot is a mechanism to prevent any kind of device changes by checking each start-up component, including the firmware, all the way to the boot driver.
-
-The alternative to migration is to re-create the Windows VM directly on {virt}.
-====
-+
-[NOTE]
-====
-Virtual machines (VMs) with Secure Boot enabled currently might not be migrated automatically. This is because Secure Boot would prevent the VMs from booting on the destination provider. Secure boot is a security standard developed by members of the PC industry to ensure that a device boots using only software that is trusted by the Original Equipment Manufacturer (OEM). 
-
-Workaround: The current workaround is to disable Secure Boot on the destination. For more details, see link:https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11[Disabling Secure Boot]. link:https://issues.redhat.com/browse/MTV-1548[(MTV-1548)]
-====
