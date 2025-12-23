@@ -6,4 +6,9 @@
 [id="mtv-performance-addendum_{context}"]
 = {project-short} performance addendum
 
-include::snip_performance.adoc[]
+[role="_abstract"]
+The data that forms the basis of the preceding recommendations was collected from testing in Red Hat labs and is provided for reference only.
+
+Overall, these numbers should be considered to show the best-case scenarios.
+
+The observed performance of migration can differ from these results and depends on several factors.

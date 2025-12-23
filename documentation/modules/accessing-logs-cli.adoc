@@ -56,6 +56,10 @@ $ {oc} adm must-gather --image={must-gather} \
 [source,terminal,subs="attributes+"]
 ----
 $ {oc} adm must-gather --image={must-gather} \
-  -- VM=<vm_name> NS=<namespace> /usr/bin/targeted <1>
+  -- VM=<vm_name> NS=<namespace> /usr/bin/targeted
 ----
-<1> You must specify the VM _name_, not the VM ID, as it appears in the `Plan` CR.
++
+where:
+
+`<vm_name>`::
+Specifies the VM _name_, not the VM ID, as it appears in the `Plan` CR.

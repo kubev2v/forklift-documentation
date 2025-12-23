@@ -1,12 +1,15 @@
 include::modules/common-attributes.adoc[]
+
+[id="{migrating-guide-title}"]
 = {migrating-guide-title}
-//[id="{migrating-guide-title}"]
+
 :toc:
 :toc-title:
 :toclevels: 3
 :compat-mode:
 :context: mtv
 
+:_mod-docs-content-type: ASSEMBLY
 
 include::modules/con_performing-migration-intro.adoc[leveloffset=+1]
 

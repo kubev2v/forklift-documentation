@@ -34,7 +34,8 @@ The `must-gather` tool collects the following logs and CR files in an archive fi
 Empty or excluded log files are not included in the `must-gather` archive file.
 ====
 
-.Example must-gather archive structure for a VMware migration plan
+The following schematic drawing shows the `must-gather` archive structure for an example VMware migration plan:
+
 ----
 must-gather
 └── namespaces
