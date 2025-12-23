@@ -3,8 +3,8 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_advanced-migration-options.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="creating-validation-rule_{context}"]
-= Creating a validation rule
+[id="proc_creating-validation-rules_{context}"]
+= Creating validation rules
 
 [role="_abstract"]
 To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, deploy the rules by using a *ConfigMap* and reference the rules in the {project-short} Custom Resource (CR).
