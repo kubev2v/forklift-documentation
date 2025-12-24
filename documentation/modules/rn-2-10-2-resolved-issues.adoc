@@ -6,9 +6,9 @@
 [id="resolved-issues-2-10-2_{context}"]
 = Resolved issues 2.10.2
 
-XCOPY error detection during volume population::
+XCOPY usage detection during volume population::
 
-Before this update, there was no indication of Extended Copy (XCOPY) errors during volume population because of storage limitations. As a consequence, end users experienced unmonitored XCOPY failures during volume population, lacking warning messages. With this release, XCOPY task status is implemented in the `vmkfstools-wrapper` tool. As a result, users now receive a warning when XCOPY issues occur during volume population.
+Before this update, there was no indication of whether Extended Copy (XCOPY) was used during volume population. When copying with `vmkfstools` falls back to host copy because of storage array configuration errors or network issues, users were unaware if XCOPY was in use or not. With this release, XCOPY usage detection is implemented in the `vmkfstools-wrapper` tool. As a result, users can now monitor whether XCOPY was used during volume population through the new `vsphere_xcopy_volume_populator_xcopy_used` metric.
 +
 link:https://issues.redhat.com/browse/MTV-3090[MTV-3090]
 
