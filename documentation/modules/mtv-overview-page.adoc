@@ -116,4 +116,9 @@ See xref:ref_max-concurrent-vms_{context}[Configuring the controller_max_vm_infl
 |The interval in seconds between which the system checks the status of snapshot creation or removal during a warm migration.
 |10 seconds.
 |Adjustable by choosing another value from the list. Options: 1 second, 5 seconds, 10 seconds, 60 seconds.
+
+|Controller transfer network 
+|The `NetworkAttachmentDefinition` used for data transmission.
+|Default transfer network
+|Adjustable by choosing another value from the list.
 |===

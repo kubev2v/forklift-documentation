@@ -28,6 +28,8 @@ include::../modules/mtv-ui.adoc[leveloffset=+1]
 
 include::../modules/mtv-overview-page.adoc[leveloffset=+1]
 
+include::../modules/proc_choosing-different-controller-transfer-network.adoc[leveloffset=+2]
+
 include::../modules/con_preparing-vms-for-migration.adoc[leveloffset=+1]
 
 include::../modules/proc_renaming-vms-for-migration.adoc[leveloffset=+2]
