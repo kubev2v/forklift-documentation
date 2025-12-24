@@ -240,6 +240,11 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 
 * *Provider resource name*: Name of the source provider
 * *URL*: URL of the NFS file share that serves the OVA
++
+[NOTE]
+====
+After creating the provider, you can optionally configure OVA file upload by web browser to upload OVA files directly to the NFS share. For more information, see xref:proc_configuring-ova-web-upload_ova[Configuring OVA file upload by web browser].
+====
 endif::[]
 ifdef::ostack[]
 . Access the *Create provider* page for {osp} by doing one of the following:
