@@ -23,6 +23,9 @@ gem "jekyll-paginate"
 #
 gem "github-pages", group: :jekyll_plugins
 
+# Add the webrick gem - this is a requirement as the podman image creation fails without it
+gem "webrick"
+
 # ensures that jekyll-asciidoc is loaded first
 group :jekyll_plugins do
   gem 'jekyll-asciidoc'
