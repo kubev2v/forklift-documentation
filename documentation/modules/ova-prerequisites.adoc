@@ -16,6 +16,7 @@ Migration of OVA files that were not created by {vmw} vSphere but are compatible
 
 Prerequisites::
 
+* The NFS share is writable by the QEMU group (GID 107) if you plan to use the web upload feature for OVA files.
 * The OVA files are in one or more folders under an NFS shared directory in one of the following structures:
 ** In one or more compressed OVF packages that hold all the VM information.
 +
@@ -45,5 +46,12 @@ For example, if the NFS share is `/nfs`, then:
 *** The OVF file `/nfs/subfolder1/subfolder2/vm.ovf` is scanned.
 +
 *** However, the OVF file `/nfs/subfolder1/subfolder2/subfolder3/vm.ovf` is not scanned.
+
+* If you plan to upload OVA files using the web browser, ensure that each .ova file has a unique filename.
+
+[NOTE]
+====
+You can optionally configure OVA file upload by web browser to upload OVA files directly to the NFS share. For more information, see xref:proc_configuring-ova-web-upload_ova[Configuring OVA file upload by web browser].
+====
 
 
