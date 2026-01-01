@@ -7,7 +7,7 @@
 = {project-short} custom resources and services
 
 [role="_abstract"]
-{The} {project-first} is provided as an {ocp} Operator. It creates and manages the following custom resources (CRs) and services.
+The {operator-name} is provided as an {ocp} Operator. It creates and manages the following custom resources (CRs) and services.
 
 == {project-short} custom resources
 
