@@ -8,7 +8,7 @@
 = Renaming virtual machines for migration
 
 [role="_abstract"]
-VM names must be DNS-compliant. You can rename source VMs in the {project-first} UI. If you do not specify target VM names, {project-short} automatically adjusts the original VM name to meet requirements for DNS-compliance. 
+VM names must be DNS-compliant and must be unique in the {virt} environment for a migration to succeed. You can rename source VMs in the {project-first} UI. If you do not specify target VM names, {project-short} automatically adjusts the original VM name to meet requirements for DNS-compliance. 
 
 Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
 
