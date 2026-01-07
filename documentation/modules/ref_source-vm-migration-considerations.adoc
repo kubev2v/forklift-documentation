@@ -9,14 +9,6 @@
 [role="_abstract"]
 Review these considerations when planning your migration of VMs from a source provider to {virt}.
 
-VM naming considerations::
-* *Automatic VM name transformation:* {project-full} automatically assigns a new name to a VM that does not comply with the rules. This feature allows a migration to proceed smoothly even if someone enters a VM name that does not follow the rules. {project-full} makes the following changes when it automatically generates a new VM name:
-
-** Removes excluded characters
-** Switches uppercase letters to lowercase letters
-** Changes any underscore (`_`) to a hyphen (`-`)
-** Changes any period to a hyphen (`-`).
-
 Windows-specific considerations::
 
 * *VSS requirement for Windows warm migrations:* For VMs running Microsoft Windows, Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. When performing a warm migration of a Microsoft Windows VM from {vmw}, you must start VSS on the Windows guest OS for the snapshot and `Quiesce guest file system` to succeed. If you do not start VSS on the Windows guest OS, the snapshot creation during the Warm migration fails with the following error:
@@ -39,8 +31,7 @@ The alternative to migration is to re-create the Windows VM directly on {virt}.
 link:https://issues.redhat.com/browse/MTV-1548[(MTV-1548)]
 
 Operating system compatibility::
-* *Limited support for dual-boot OS VMs:* {project-short} has limited support for the migration of dual-boot operating system VMs. In the case of a dual-boot OS VM, {project-short} attempts to convert the first boot disk it finds.
-Alternatively, you can specify the root device in the {project-short} UI.
+* *Limited support for dual-boot OS VMs:* {project-short} has limited support for the migration of dual-boot operating system VMs. In the case of a dual-boot OS VM, {project-short} attempts to convert the first boot disk it finds. Alternatively, you can specify the root device in the {project-short} UI.
 
 
 

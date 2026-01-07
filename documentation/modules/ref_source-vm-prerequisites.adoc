@@ -24,5 +24,5 @@ You can check that the OS is supported by referring to the table in link:https:/
 * VMs that you want to migrate with MTV 2.7._z_ run on RHEL 9.
 * VM names must be DNS-compliant and must be unique in the {virt} environment for a migration to succeed. You can rename source VMs in the {project-first} UI or MTV automatically adjusts the original VM name to meet requirements. 
 ** For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines for migration].
-** For information about automatic VM name transformation, see xref:ref_source-vm-migration-considerations[VM migration considerations].
+
 
