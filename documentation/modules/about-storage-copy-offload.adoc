@@ -11,11 +11,9 @@ You can migrate {vmw} virtual machines (VMs) that are in a storage array network
 
 {vmw}'s vSphere Storage APIs-Array Integration (VAAI) includes a command named `vmkfstools`. This command sends the `XCOPY` command, which is part of the SCSI protocol. The `XCOPY` command lets you copy data inside a SAN more efficiently than copying the data over a network. The command is executed by a populator named `vsphere-xcopy-volume-populator`.
 
-A new populator implementation under cmd/vsphere-xcopy-volume-populator is a cli program that runs in a container that is responsible to perform XCOPY to efficiently copy data from a VMDK to the target PVC.
-
 {project-first} 2.10.0 leverages this command as the basis for storage copy offload, which clones your VMs' data to the storage hardware instead of transmitting it between {project-short} and {virt}. This improved migration saves both time an resources.
 
-You implement storage copy offload by configuring the storage map in your migration plan to point to your storage array instead of the network you usually use for migration. When you start the migration plan, {project-short} migrates your VMs by copying them to the storage array you choose and using `XCOPY` to copy them directly to {virt}, instead of transmitting the contents of your VMs to {virt}.
+You enable storage copy offload by configuring the storage map in your migration plan to point to your storage array instead of the network you usually use for migration. When you start the migration plan, {project-short} migrates your VMs by copying them to the storage array you choose and using `XCOPY` to copy them directly to {virt}, instead of transmitting the contents of your VMs to {virt}.
 
 The storage copy offload feature has some unique configuration prerequisites, which are discussed in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-steps[Planning and running storage copy offload migrations]. Once you configure your system, you can migrate plans using storage copy offload by using either the {project-short} UI or its CLI. Instructions for using storage offload have been integrated into the procedures for migrating {vmw} VMs for both the UI and CLI.
 
