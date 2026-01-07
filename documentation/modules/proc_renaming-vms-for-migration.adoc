@@ -12,7 +12,7 @@ VM names must be DNS-compliant. You can rename source VMs in the {project-first}
 
 Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
 
-Automatic VM name transformation:: {project-full} automatically adjusts the name of a VM that does not comply with the rules. This feature allows a migration to proceed smoothly even if someone enters a VM name that does not follow the rules. {project-full} makes the following changes when it automatically generates a new VM name:
+If you do not specify a target VM name, {project-short} makes the following changes when it automatically adjusts the name of a VM:
 
 ** Removes characters that are not alphanumeric characters (a-z, 0-9) or hyphens (-)
 ** Switches uppercase letters to lowercase letters
