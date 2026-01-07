@@ -20,9 +20,8 @@ Prerequisites::
 You can check that the OS is supported by referring to the table in link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v]. See the columns of the table that refer to RHEL 8 hosts and RHEL 9 hosts.
 ====
 +
-* VMs that you want to migrate with MTV 2.6._z_ run on RHEL 8.
-* VMs that you want to migrate with MTV 2.7._z_ run on RHEL 9.
-* VM names must be DNS-compliant and must be unique in the {virt} environment for a migration to succeed. You can rename source VMs in the {project-first} UI or MTV automatically adjusts the original VM name to meet requirements. 
-** For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines for migration].
+* VMs that you want to migrate with {project-short} 2.6._z_ run on RHEL 8.
+* VMs that you want to migrate with {project-short} 2.7._z_ run on RHEL 9.
+* VM names must be DNS-compliant and must be unique in the {virt} environment for a migration to succeed. You can rename source VMs in the {project-first} UI or {project-short} automatically adjusts the original VM name to meet requirements. For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines for migration].
 
 
