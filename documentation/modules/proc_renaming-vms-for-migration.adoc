@@ -8,9 +8,11 @@
 = Renaming virtual machines for migration
 
 [role="_abstract"]
-Rename source VMs in the {project-first} UI to resolve naming conflicts and ensure compliance with the Kubernetes-based naming conventions of {virt}. The OpenShift API rejects noncompliant source VM names during the creation of the target VM.
+VM names must be DNS-compliant. You can rename source VMs in the {project-first} UI. If you do not specify target VM names, {project-short} automatically adjusts the original VM name to meet requirements for DNS-compliance. 
 
-VM names must be DNS-compliant. Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
+Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
+
+For information about automatic VM name transformation, see xref:ref_source-vm-migration-considerations[VM migration considerations].
 
 .Examples of VM naming conflicts 
 [cols="30%a,40%a,30%a",options="header",]

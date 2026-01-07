@@ -14,14 +14,15 @@ Prerequisites::
 * ISO images and CD-ROMs are unmounted.
 * Each NIC contains either an IPv4 address or an IPv6 address, although a NIC may use both.
 * The OS of each VM is certified and supported as a guest OS for conversions.
-
++
 [NOTE]
 ====
 You can check that the OS is supported by referring to the table in link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v]. See the columns of the table that refer to RHEL 8 hosts and RHEL 9 hosts.
 ====
-
++
 * VMs that you want to migrate with MTV 2.6._z_ run on RHEL 8.
 * VMs that you want to migrate with MTV 2.7._z_ run on RHEL 9.
-* The name of a VM must not contain a period (`.`). {project-first} changes any period in a VM name to a dash (`-`).
-* The name of a VM must not be the same as any other VM in the {virt} environment.
+* VM names must be DNS-compliant and must be unique in the {virt} environment for a migration to succeed. You can rename source VMs in the {project-first} UI or MTV automatically adjusts the original VM name to meet requirements. 
+** For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines for migration].
+** For information about automatic VM name transformation, see xref:ref_source-vm-migration-considerations[VM migration considerations].
 
