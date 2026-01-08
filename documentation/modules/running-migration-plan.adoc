@@ -32,16 +32,25 @@ The *Plans* list displays the source and target providers, the number of virtual
 The plan's *Status* changes to *Running*, and the migration's progress is displayed.
 +
 ifdef::vmware,rhv[]
-*Warm migration only:*
+*Warm migration only*:
 
 * The precopy stage starts.
-* Click *Cutover* to complete the migration.
 +
 A `PreFlightInspection` during warm migration enables early detection of issues during guest conversion. If an issue is detected, the warm migration fails before VM shutdown, and you can adjust VM settings or skip guest conversion. Potential errors during the `PreFlightInspection` include the following:
 +
 ** Missing LUKS passwords
 ** Unsupported OS
-** Unsupported FS 
+** Unsupported FS
+
+. To set the cutover of the plan, perform the following steps:
+
+.. In the *Migration type* column of the migration plan, click *Schedule cutover*.
+.. In the *Schedule cutover* window, set the date and time of the cutover, and then click *Set cutover*.
+
+. To edit a cutover, perform the following steps:
+
+.. In the *Migration type* column of the migration plan, click *Edit cutover*.
+.. In the *Edit cutover* window, set the date and time of the cutover, and then click *Set cutover*.
 endif::vmware,rhv[]
 +
 [WARNING]
