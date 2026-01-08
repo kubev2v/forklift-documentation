@@ -15,7 +15,7 @@ To ensure that your custom validation rules persist across pod restarts, scaling
 * If you create a rule that contradicts a default rule, the `Validation` service will not start.
 ====
 
-Validation rules are based on VM attributes collected by the `Provider Inventory` service. The `Provider Inventory` service presents provider-specific VM properties as simplified attributes for the validation engine. You can then create Rego queries based on the attributes, and add the queries to the `forklift-validation-config` ConfigMap to apply validation rules across different source environments.
+Validation rules are based on VM attributes collected by the `Provider Inventory` service. The `Provider Inventory` service presents provider-specific VM properties as simplified attributes for the validation engine. You can then create Rego queries based on the attributes, and add the queries to the `ConfigMap` CR to apply validation rules across different source environments.
 
 For example, in a validation rule that checks if a VMware VM has NUMA node affinity configured, you have these elements:
 
