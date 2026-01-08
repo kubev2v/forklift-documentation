@@ -16,9 +16,13 @@ In addition to the regular link:https://docs.redhat.com/en/documentation/migrati
 * One of the following storage systems, configured:
 ** Hitachi Vantara
 ** NetApp ONTAP
-** Dell PowerFlex Storage Data Client (SDC)
-** Internet Small Computer System Interface (iSCSI) storage system
-** Fibre Channel storage system
+** Pure Storage FlashArray
+** Dell PowerMax
+** Dell PowerFlex
+** Dell PowerStore
+** HPE primera3par
+** Infinidat Infinibox
+** IBM Flashsystem
 * A working Container Storage Interface (CSI) driver connected to the above and to {virt}
 * A configured {vmw} vSphere provider
 * vSphere users must have a role that includes the following privileges (suggested name: `StorgeOffloader`):
@@ -238,6 +242,32 @@ $ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type m
 | The user's name (string).
 | Yes.
 | NA.
+
+| `STORAGE_PASSWORD`
+| The user's password (string)
+| Yes
+| NA
+
+| `STORAGE_SKIP_SSL_VERIFICATION`
+| If set to `true`, SSL verification is not performed (`true`, `false`).
+| No
+|`false`
+|===
++
+[width="100%",cols="22%,48%,15%,15%",options="header",]
+.Credentials for an HPE primera3par storage copy offload Secret
+|===
+|Key| Description| Mandatory?| Default
+
+| `STORAGE_HOSTNAME`
+| IP or URL of the host (string)
+| Yes
+| NA
+
+| `STORAGE_USERNAME`
+| The user's name (string)
+| Yes
+| NA
 
 | `STORAGE_PASSWORD`
 | The user's password (string)

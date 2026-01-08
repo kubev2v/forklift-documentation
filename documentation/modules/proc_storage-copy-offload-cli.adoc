@@ -23,7 +23,7 @@ In addition to the regular link:https://docs.redhat.com/en/documentation/migrati
 ** HPE primera3par
 ** Infinidat Infinibox
 ** IBM Flashsystem
-* Fibre Channel storage system driver connected to the above and to {virt}
+* A working Container Storage Interface (CSI) driver connected to the above and to {virt}
 * A configured {vmw} vSphere provider
 * vSphere users must have a role that includes thw following privileges (suggested name: `StorgeOffloader`):
 
