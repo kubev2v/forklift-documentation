@@ -11,7 +11,7 @@ You need to perform the following steps when you plan and run storage copy offlo
 
 .Procedure
 
-. Before your first migration, choose and implement a cloning method. This step is discussed in xref:con_copy-methods-sco_vmware[Cloning methods used by storage copy offload] and he sections that follow it.
+. Before your first migration, choose and implement a cloning method. This step is discussed in xref:con_copy-methods-sco_vmware[Cloning methods used by storage copy offload] and in the sections that follow it.
 
 . For each migration, follow the procedure in either xref:proc_storage-copy-offload-ui_vmware[Migrating {vmw} vSphere VMs in the UI by using storage copy offload] or link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_migrating-from-vmware_mtv#proc_storage-copy-offload-ui_vmware[Migrating {vmw} vSphere VMs in the CLI by using storage copy offload].
 . If you encounter problems that are specific to storage copy offload, consult link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_troubleshooting-migration_mtv#con_troubleshooting-storage-copy-offload_mtv[Troubleshooting storage copy offload].
