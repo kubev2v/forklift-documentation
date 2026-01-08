@@ -25,7 +25,7 @@ On the *Plans for virtualization* page of the {ocp} web console, you can click t
 
 ifdef::vmware,rhv[]
 * *Set cutover*: Warm migrations only. Active only if relevant. Clicking *Set cutover* opens the *Set cutover* window, which allows you to set the date and time for a cutover.
-* *Edit cutover*: Change the date or time of a scheduled cutover. Active only if relevant.Clicking *Edit cutover* opens the *Edit cutover* window, which allows you to set a new date or time for a cutover.
+* *Edit cutover*: Change the date or time of a scheduled cutover. Active only if relevant. Clicking *Edit cutover* opens the *Edit cutover* window, which allows you to set a new date or time for a cutover.
 endif::vmware,rhv[]
 +
 * *Duplicate Plan*: Create a new migration plan with the same virtual machines (VMs), parameters, mappings, and hooks as an existing plan. You can use this feature for the following tasks:
