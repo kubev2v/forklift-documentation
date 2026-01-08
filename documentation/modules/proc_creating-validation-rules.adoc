@@ -7,7 +7,7 @@
 = Creating validation rules
 
 [role="_abstract"]
-To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, deploy the rules by using a *ConfigMap* and reference the rules in the {project-short} Custom Resource (CR).
+To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, deploy the rules by using a *ConfigMap* Custom Resource (CR) and reference the rules in the {project-short} CR.
 
 [IMPORTANT]
 ====
@@ -38,12 +38,16 @@ For example, in a validation rule that checks if a VMware VM has NUMA node affin
 ----
 count(input.numaNodeAffinity) != 0
 ----
-+
-For information about Rego queries, see link:https://www.openpolicyagent.org/docs/latest/policy-language/[Policy Language] in the _Open Policy Agent_ documentation.
+
+For information about Rego queries and rules and examples of Rego rules, see the following resources:
+
+* link:https://www.openpolicyagent.org/docs/latest/policy-language/[Policy Language] in the _Open Policy Agent_ documentation.
+* link:https://github.com/kubev2v/forklift/tree/main/validation#opa-rules-files[OPA Rules Files] in the `forklift` documentation.
+* link:https://github.com/kubev2v/forklift/tree/main/validation/policies/io/konveyor/forklift/vmware[VMware .rego files] in the `forklift` repository.
 
 .Procedure
 
-. Create a ConfigMap CR:
+. Create a `ConfigMap`, for example `forklift-validation-config`:
 +
 Example:
 +
@@ -108,7 +112,7 @@ If the custom rule conflicts with a default rule, the `Validation` pod will not 
 $ {oc} delete provider <provider> -n {namespace}
 ----
 
-. Add the source provider to apply the new rule:
+. Add the source provider to apply the new rule. For information about adding a source provider, see the sections about adding a source provider in Chapters 10-14 of link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv[_Planning your migration to Red Hat OpenShift Virtualization_]:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -132,4 +136,5 @@ EOF
 * `<secret>`: The name of the provider `Secret` CR.
 
 .Next step
-* Update the inventory rules version after creating a custom rule so that the `Provider Inventory` service detects the changes and validates the VMs.
+
+Update the inventory rules version after creating a custom rule so that the `Provider Inventory` service detects the changes and validates the VMs. For more information, see xref:updating-inventory-rules-version_{context}[Updating the inventory rules version].
