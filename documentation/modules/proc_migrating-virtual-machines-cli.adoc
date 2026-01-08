@@ -673,7 +673,7 @@ spec:
       namespace: <namespace>
 EOF
 ----
-<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+<1> Allowed values are `ReadWriteOnce` and `ReadWriteMany`. Optional for storage copy offload migrations.
 <2> Specify the {rhv-short} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
 
