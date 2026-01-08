@@ -7,7 +7,7 @@
 = Creating validation rules
 
 [role="_abstract"]
-To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, deploy the rules by using a *ConfigMap* Custom Resource (CR) and reference the rules in the {project-short} CR.
+To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, deploy the rules by using a *ConfigMap* Custom Resource (CR) and reference the rules in the `forklift-controller` CR.
 
 [IMPORTANT]
 ====
@@ -103,7 +103,7 @@ $ {oc} scale -n {namespace} --replicas=1 deployment/forklift-validation
 $ {oc} logs -f <validation_pod>
 ----
 +
-If the custom rule conflicts with a default rule, the `Validation` pod will not start.
+If the custom rule conflicts with a default rule, the `Validation` pod does not start.
 
 . Remove the source provider:
 +
