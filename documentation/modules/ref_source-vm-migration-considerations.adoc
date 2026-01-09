@@ -14,7 +14,6 @@ VM naming::
 * *DNS compliance in {virt}:* VM names must be DNS-compliant and unique in the {virt} environment. {project-first} automatically adjusts non-compliant VM names in the target cluster. Alternatively, you can rename target VMs in the {project-short} UI. For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines].
 
 Windows-specific considerations::
-
 * *VSS requirement for Windows warm migrations:* For VMs running Microsoft Windows, the Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. When performing a warm migration of a Microsoft Windows VM from {vmw}, you must start VSS on the Windows guest OS for the snapshot and `Quiesce guest file system` to succeed. If you do not start VSS on the Windows guest OS, the snapshot creation during the Warm migration fails with the following error:
 +
 [source,terminal]
