@@ -9,9 +9,13 @@
 [role="_abstract"]
 Review these considerations when planning your migration of VMs from a source provider to {virt}.
 
+VM naming consideration::
+
+* *DNS compliance in {virt}:* VM names must be DNS-compliant and unique in the {virt} environment. When you migrate source VMs, {project-first} automatically adjusts non-compliant VM names in the target cluster to compliant names. Alternatively, you can rename target VMs in the {project-short} UI. For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines].
+
 Windows-specific considerations::
 
-* *VSS requirement for Windows warm migrations:* For VMs running Microsoft Windows, Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. When performing a warm migration of a Microsoft Windows VM from {vmw}, you must start VSS on the Windows guest OS for the snapshot and `Quiesce guest file system` to succeed. If you do not start VSS on the Windows guest OS, the snapshot creation during the Warm migration fails with the following error:
+* *VSS requirement for Windows warm migrations:* For VMs running Microsoft Windows, the Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. When performing a warm migration of a Microsoft Windows VM from {vmw}, you must start VSS on the Windows guest OS for the snapshot and `Quiesce guest file system` to succeed. If you do not start VSS on the Windows guest OS, the snapshot creation during the Warm migration fails with the following error:
 +
 [source,terminal]
 ----
@@ -31,7 +35,8 @@ The alternative to migration is to re-create the Windows VM directly on {virt}.
 link:https://issues.redhat.com/browse/MTV-1548[(MTV-1548)]
 
 Operating system compatibility::
-* *Limited support for dual-boot OS VMs:* {project-short} has limited support for the migration of dual-boot operating system VMs. In the case of a dual-boot OS VM, {project-short} attempts to convert the first boot disk it finds. Alternatively, you can specify the root device in the {project-short} UI.
+
+* *Limited support for dual-boot OS VMs:* {project-short} has limited support for the migration of dual-boot OS VMs. In the case of a dual-boot OS VM, {project-short} attempts to convert the first boot disk it finds. Alternatively, you can specify the root device in the {project-short} UI.
 
 
 
