@@ -16,7 +16,6 @@ VM naming::
 Windows-specific considerations::
 * *VSS requirement for Windows warm migrations:* For VMs running Microsoft Windows, the Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. When performing a warm migration of a Microsoft Windows VM from {vmw}, you must start VSS on the Windows guest OS for the snapshot and `Quiesce guest file system` to succeed. If you do not start VSS on the Windows guest OS, the snapshot creation during the Warm migration fails with the following error:
 +
-[source,terminal]
 ----
 An error occurred while taking a snapshot: Failed to restart the virtual machine
 ----
