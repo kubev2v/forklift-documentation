@@ -1,0 +1,25 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_source-vm-prerequisites_{context}"]
+= Source VM prerequisites
+
+[role="_abstract"]
+Source VM prerequisites apply to all migrations from a source provider to {virt}. 
+
+Prerequisites::
+
+* ISO images and CD-ROMs are unmounted.
+* Each NIC contains an IPv4 address, an IPv6 address, or both.
+* The OS of each VM is certified and supported as a guest OS for conversions.
++
+[NOTE]
+====
+You can check that the OS is supported by referring to the table in link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v]. See the columns of the table that refer to RHEL 8 hosts and RHEL 9 hosts.
+====
+
+
+
+

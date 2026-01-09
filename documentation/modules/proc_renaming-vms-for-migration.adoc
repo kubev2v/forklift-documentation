@@ -5,17 +5,17 @@
 :_mod-docs-content-type: PROCEDURE
 [id="proc_renaming-vms-for-migration_{context}"]
 
-= Renaming virtual machines for migration
+= Renaming virtual machines
 
 [role="_abstract"]
-Rename source VMs in the {project-first} UI to resolve naming conflicts and ensure compliance with the Kubernetes-based naming conventions of {virt}. The OpenShift API rejects noncompliant source VM names during the creation of the target VM.
+VM names must be DNS-compliant and unique in the {virt} environment. When you migrate source VMs, {project-first} automatically adjusts non-compliant VM names in the target cluster to compliant names. Alternatively, you can rename target VMs in the {project-short} UI.
 
-VM names must be DNS-compliant. Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
+Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
 
 .Examples of VM naming conflicts 
 [cols="30%a,40%a,30%a",options="header",]
 |===
-|Source VM name |Naming conflict | New target VM name
+|Source VM name |Naming conflict | Target VM name
 
 |`App_VM_01` | Contains uppercase letters and underscores | `app-vm-01`
 
@@ -31,7 +31,7 @@ VM names must be DNS-compliant. Valid names consist only of lowercase alphanumer
 . Open the *Plan Details* page for your migration plan.
 . Click the *Virtual Machines* tab to view a table of all VMs from the configured source provider.
 . If the *Target name* column does not already show in the VM table, click *Manage columns* to select *Target name* and display the column.
-. Identify non-conformant names in the list of VMs by checking the alerts in the *Concerns* column.
+. Identify non-compliant names in the list of VMs by checking the alerts in the *Concerns* column.
 . To rename a VM, click the *More* icon at the end of the row for the VM, and click *Edit target name*.
 . Enter and save a new name for the VM. Ensure that the new name consists only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
 
