@@ -12,7 +12,7 @@ Source VM prerequisites apply to all migrations from a source provider to {virt}
 Prerequisites::
 
 * ISO images and CD-ROMs are unmounted.
-* Each NIC contains either an IPv4 address or an IPv6 address, although a NIC may use both.
+* Each NIC contains an IPv4 address, an IPv6 address, or both.
 * The OS of each VM is certified and supported as a guest OS for conversions.
 +
 [NOTE]

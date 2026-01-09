@@ -31,7 +31,7 @@ Valid names consist only of lowercase alphanumeric characters (a-z, 0-9) and hyp
 . Open the *Plan Details* page for your migration plan.
 . Click the *Virtual Machines* tab to view a table of all VMs from the configured source provider.
 . If the *Target name* column does not already show in the VM table, click *Manage columns* to select *Target name* and display the column.
-. Identify non-conformant names in the list of VMs by checking the alerts in the *Concerns* column.
+. Identify non-compliant names in the list of VMs by checking the alerts in the *Concerns* column.
 . To rename a VM, click the *More* icon at the end of the row for the VM, and click *Edit target name*.
 . Enter and save a new name for the VM. Ensure that the new name consists only of lowercase alphanumeric characters (a-z, 0-9) and hyphens (-), with no leading or trailing hyphens, no consecutive hyphens, and a maximum of 63 characters.
 

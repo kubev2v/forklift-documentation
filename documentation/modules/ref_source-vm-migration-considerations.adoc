@@ -9,9 +9,9 @@
 [role="_abstract"]
 Review these considerations when planning your migration of VMs from a source provider to {virt}.
 
-VM naming consideration::
+VM naming::
 
-* *DNS compliance in {virt}:* VM names must be DNS-compliant and unique in the {virt} environment. When you migrate source VMs, {project-first} automatically adjusts non-compliant VM names in the target cluster to compliant names. Alternatively, you can rename target VMs in the {project-short} UI. For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines].
+* *DNS compliance in {virt}:* VM names must be DNS-compliant and unique in the {virt} environment. {project-first} automatically adjusts non-compliant VM names in the target cluster. Alternatively, you can rename target VMs in the {project-short} UI. For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines].
 
 Windows-specific considerations::
 
