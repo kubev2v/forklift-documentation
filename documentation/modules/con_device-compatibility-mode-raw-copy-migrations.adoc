@@ -43,3 +43,4 @@ Consider disabling compatibility mode when:
 
 Configuring compatibility mode::
 You can configure the compatibility mode setting when you create a migration plan. For more information, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#creating-plan-wizard-vmware_vmware[Creating a VMware vSphere migration plan by using the MTV wizard] in _Planning your migration to Red Hat OpenShift Virtualization_.
+
