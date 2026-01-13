@@ -74,8 +74,11 @@ You can add values to the config map when this parameter has the default value, 
 |Whether to retain importer pods so that the Containerized Data Importer (CDI) does not delete them during migration.
 
 *`ForkliftController` CR only.*
-
 |`false`
+
+|`controller_transfer_network`
+|The `NetworkAttachmentDefinition` used for data transmission.
+|Default transfer network
 |===
 
 

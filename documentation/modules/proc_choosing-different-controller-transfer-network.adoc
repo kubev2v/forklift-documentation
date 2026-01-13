@@ -1,0 +1,30 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-vms-web-console.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_choosing-different-controller-transfer-network_{context}"]
+= Choosing a different controller transfer network
+
+[role="_abstract"]
+Some enterprise environments isolate provider APIs, such as the vSphere API or the OpenStack API, on a dedicated transfer network segment. Choosing a different controller transfer network in these environments gives you reliable connectivity and migration capability for {project-short}.
+
+.Prerequisites
+* You have {project-short} Administrator privileges.
+
+.Procedure
+. In the {ocp} web console, click *Migration for Virtualization* -> *Overview*.
+. Click *Settings* and scroll down to *Controller transfer network*.
+. Choose a different controller transfer network from the list and click *Save*.
+. To verify that your choice was recorded, perform the following actions:
+
+.. Click the *YAML* tab of the *Overview* page.
++
+The Forklift Controller YAML opens.
+.. Verify that the value of the `spec:controller_transfer_network` section is correct.
++
+[NOTE]
+====
+The `spec:controller_transfer_network` section of the YAML does not appear when the default transfer network is used.
+====
+
