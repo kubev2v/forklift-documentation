@@ -19,7 +19,7 @@ If you specify a non-existent resource in the filtered `must-gather` command, no
 .Prerequisites
 
 * You must be logged in to the {virt} cluster as a user with the `cluster-admin` role.
-* You must have the link:https://docs.openshift.com/container-platform/{ocp-version}/cli_reference/openshift_cli/getting-started-cli.html[{ocp} CLI (`oc`)] installed.
+* You must have the {ocp-doc}/cli_tools/openshift-cli-oc#openshift-cli-oc[{ocp} CLI (oc)] installed.
 
 .Procedure
 
@@ -56,6 +56,10 @@ $ oc adm must-gather --image={must-gather} \
 [source,terminal,subs="attributes+"]
 ----
 $ oc adm must-gather --image={must-gather} \
-  -- VM=<vm_id> NS=<namespace> /usr/bin/targeted <1> 
+  -- VM=<vm_id> NS=<namespace> /usr/bin/targeted
 ----
-<1> Specify the VM _ID_ as it appears in the `Plan` CR.
++
+where:
+
+<vm_id>::
+Specifies the VM _ID_ as it appears in the `Plan` CR.

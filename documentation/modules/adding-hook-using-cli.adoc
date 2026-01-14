@@ -23,15 +23,12 @@ You can retrieve additional information stored in a secret or in a `ConfigMap` b
 
 .Prerequisites
 
-* Migration plan
-* Migration hook image or the playbook containing the hook image
-* File containing the Secret for the source provider
-* {ocp} service account called by the hook and that has at least write access for the namespace you are working in
-* SSH access for VMs you want to migrate with the public key installed on the VMs
-* VMs running on Microsoft Server only: Remote Execution enabled
-
-.Additional resources
-For instructions for creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
+* Migration plan.
+* Migration hook image or the playbook containing the hook image.
+* File containing the Secret for the source provider.
+* {ocp} service account called by the hook and that has at least write access for the namespace you are working in. For information about creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
+* SSH access for VMs you want to migrate with the public key installed on the VMs.
+* VMs running on Microsoft Server only: Remote Execution enabled.
 
 .Procedure
 . If needed, create a Secret with an SSH private key for the VM.
@@ -69,13 +66,19 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/kubev2v/hook-runner
-  serviceAccount:<service account> <1>
+  serviceAccount:<service_account> 
   playbook: |
-    LS0tCi0gbm... <2>
+    <playbook>
 EOF
 ----
-<1> (Optional) {ocp} service account. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
-<2> Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
++
+where:
+
+<service_account>::
+Specifies the {ocp} service account. This is an optional label. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
+
+<playbook>::
+Specifies the Base64-encoded Ansible Playbook to use. For example, `LS0tCi0gbm...`. If you specify a playbook, the `image` must include an `ansible-runner`.
 +
 [NOTE]
 ====
@@ -102,18 +105,21 @@ $ oc get -n konveyor-forklift hook playbook -o \
         - hook:
             namespace: <namespace>
             name: <name_of_hook>
-          step: <type_of_hook> <1>
+          step: <type_of_hook>
 ----
-<1> Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration.
++
+where:
+
+<type_of_hook>::
+Specifies the type of hook. Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration.
 
 [IMPORTANT]
 ====
 In order for a PreHook to run on a VM, the VM must be started and available via SSH.
 ====
 
-The example migration hook that follows ensures that the VM can be accessed using SSH, creates an SSH key, and runs 2 tasks: stopping the Maria database and generating a text file.
+The example migration hook that follows ensures that the VM can be accessed using SSH, creates an SSH key, and runs two tasks: stopping the Maria database and generating a text file.
 
-.Example migration hook
 [source,yaml,subs="attributes+"]
 ----
 - name: Main

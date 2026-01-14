@@ -28,14 +28,14 @@ NOTE: For MTV to access the keys from the Tang server, the keys must be on a dif
 +
 If you are not using NBDE with Clevis, you add passphrases for LUKS-encrypted devices so that the Tang servers can decrypt the disks during a migration.
 .. Click *Next*, and verify that *Use NBDE/Clevis* shows as *Enabled* under *Other settings (optional)*.
-.. When you create your migration plan, click *Migration plans* in the left navigation menu, and open the *Plan Details* page for your migration plan.
+.. When you create your migration plan, click *Migration plans* in the left navigation menu, and open the *Plan details* page for your migration plan.
 .. Click the *Edit* icon for *Disk decryption* under *Plan settings*.
 .. Verify that *Use network-bound disk encryption (NBDE/Clevis)* is selected. 
 +
 If you are not using NBDE with Clevis, verify that the passphrases for LUKS-encrypted devices are added. 
 
 . Enable NBDE with Clevis in the YAML file.
-.. Click *Migration plans* in the left navigation menu and open the *Plan Details* page for your migration plan.
+.. Click *Migration plans* in the left navigation menu and open the *Plan details* page for your migration plan.
 .. Click the *YAML* tab to open the `Plan` custom resource (CR) for your migration plan.
 .. For each VM under `vms` in the YAML file, enter the encryption type. In this example, you set `nbdeClevis` as the encryption type for `vm-1`, LUKS passphrase as the encryption type for `vm-2`, and no encryption type for `vm-3`:
 +

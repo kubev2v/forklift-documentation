@@ -3,9 +3,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assembly_migrating-from-vmware.adoc
 
 :_mod-docs-content-type: PROCEDURE
-
 [id="retrieving-vmware-moref_{context}"]
-
 = Retrieving a {vmw} vSphere moRef
 
 [role="_abstract"]
@@ -50,7 +48,8 @@ $ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/prov
 $ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/vsphere/<provider id>/datastores/ -k
 ----
 +
-.Example output
+The output looks like the following example. In this example, the moRef of the datastore `v2v_general_porpuse_ISCSI_DC` is `datastore-11` and the moRef of the datastore `f01-h27-640-SSD_2` is `datastore-730`.
++
 [source,terminal]
 ----
 [
@@ -79,5 +78,5 @@ $ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/prov
  ...
 ----
 
-In this example, the moRef of the datastore `v2v_general_porpuse_ISCSI_DC` is `datastore-11` and the moRef of the datastore `f01-h27-640-SSD_2` is `datastore-730`.
+
 

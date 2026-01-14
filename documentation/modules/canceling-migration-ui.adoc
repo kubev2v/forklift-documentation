@@ -15,11 +15,11 @@ You can cancel the migration of some or all virtual machines (VMs) while a migra
 
 .Procedure
 
-. In the {ocp} web console, click *Plans for virtualization*.
+. In the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
 . Click the name of a running migration plan to view the migration details.
 . Select one or more VMs and click *Cancel*.
 . Click *Yes, cancel* to confirm the cancellation.
 +
 In the *Migration details by VM* list, the status of the canceled VMs is *Canceled*. The unmigrated and the migrated virtual machines are not affected.
 
-You can restart a canceled migration by clicking *Restart* beside the migration plan on the *Migration plans* page.
+. Restart a canceled migration by clicking *Restart* beside the migration plan on the *Migration plans* page.

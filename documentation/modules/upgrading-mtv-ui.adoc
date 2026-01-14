@@ -18,7 +18,7 @@ ifeval::["{build}" == "upstream"]
 See link:https://docs.okd.io/latest/operators/admin/olm-upgrading-operators.html#olm-changing-update-channel_olm-upgrading-operators[Changing update channel] in the {ocp} documentation.
 endif::[]
 ifeval::["{build}" == "downstream"]
-See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/operators/administrator-tasks#olm-changing-update-channel_olm-upgrading-operators[Changing update channel] in the {ocp} documentation.
+See {ocp-doc}/operators/administrator-tasks#olm-changing-update-channel_olm-upgrading-operators[Changing the update channel for an Operator] in the {ocp} documentation.
 endif::[]
 
 . Confirm that *Upgrade status* changes from *Up to date* to *Upgrade available*. If it does not, restart the `CatalogSource` pod:
@@ -48,9 +48,9 @@ ifeval::["{build}" == "upstream"]
 See link:https://docs.okd.io/latest/operators/admin/olm-upgrading-operators.html#olm-approving-pending-upgrade_olm-upgrading-operators[Manually approving a pending upgrade] in the {ocp} documentation.
 endif::[]
 ifeval::["{build}" == "downstream"]
-See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/operators/administrator-tasks#olm-approving-pending-upgrade_olm-upgrading-operators[Manually approving a pending upgrade] in the {ocp} documentation.
+See {ocp-doc}/operators/administrator-tasks#olm-approving-pending-upgrade_olm-upgrading-operators[Manually approving a pending Operator upgrade] in the {ocp} documentation.
 endif::[]
 
-. If you are upgrading from {project-short} 2.2 and have defined VMware source providers, edit the VMware provider by adding a VDDK `init` image. Otherwise, the update will change the state of any VMware providers to `Critical`. For more information, see link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.4/html/installing_and_using_the_migration_toolkit_for_virtualization/migrating-vms-web-console#adding-source-provider_vmware[Adding a VMSphere source provider].
+. If you are upgrading from {project-short} 2.2 and have defined VMware source providers, edit the VMware provider by adding a VDDK `init` image. Otherwise, the update will change the state of any VMware providers to `Critical`. For more information, see link:https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.4/html/installing_and_using_the_migration_toolkit_for_virtualization/migrating-vms-web-console#adding-source-provider_vmware[Adding a VMware source provider].
 
-. If you mapped to NFS on the {ocp} destination provider in {project-short} 2.2, edit the `AccessModes` and `VolumeMode` parameters in the NFS storage profile. Otherwise, the upgrade will invalidate the NFS mapping. For more information, see link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.9/html-single/virtualization/index#virt-customizing-storage-profile_virt-creating-data-volumes[Customizing the storage profile].
+. If you mapped to NFS on the {ocp} destination provider in {project-short} 2.2, edit the `AccessModes` and `VolumeMode` parameters in the NFS storage profile. Otherwise, the upgrade will invalidate the NFS mapping. For more information, see {ocp-doc}/virtualization/index#virt-configuring-storage-profile[Customizing storage profiles].

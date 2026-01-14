@@ -8,7 +8,7 @@
 = Configuring OVA file upload by web browser
 
 [role="_abstract"]
-You can configure Open Virtual Appliance (OVA) file upload by web browser to upload an OVA file directly to an NFS share. To configure OVA file upload, you first enable OVA appliance management in the `ForkliftController` custom resource (CR) and then enable OVA upload for each OVA provider. When you enable OVA upload for an OVA provider, the *Upload local OVA files* option populates on the provider’s *Details* page in the MTV UI.
+You can configure Open Virtual Appliance (OVA) file upload by web browser to upload an OVA file directly to an NFS share. To configure OVA file upload, you first enable OVA appliance management in the `ForkliftController` custom resource (CR) and then enable OVA upload for each OVA provider. When you enable OVA upload for an OVA provider, the *Upload local OVA files* option populates on the provider's *Details* page in the MTV UI.
 
 .Prerequisites
 
@@ -38,10 +38,10 @@ spec:
 Wait for the operator to redeploy the controller after updating the `forklift-controller` CR.
 
 . In the Red Hat OpenShift web console, click *Migration for Virtualization* > *Providers*.
-. Click the provider to open the *Details* page. Click the provider’s *YAML* tab. 
+. Click the provider to open the *Details* page. Click the provider's *YAML* tab.
 +
 For information about creating a provider, see xref:adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider].
-. Scroll down the provider’s YAML file, and add the `applianceManagement` field to the `spec` section. Set `applianceManagement` to `'true'`:
+. Scroll down the provider's YAML file, and add the `applianceManagement` field to the `spec` section. Set `applianceManagement` to `'true'`:
 +
 Example:
 +
@@ -56,11 +56,11 @@ spec:
 ----
 +
 * A temporary 'ConnectionTestFailed' error message displays while the update is processing. You can ignore the error message.
-. Click the provider’s *Details* tab, and scroll down to the *Conditions* section. Verify that ApplianceManagementEnabled shows as True in the list of conditions.
+. Click the provider's *Details* tab, and scroll down to the *Conditions* section. Verify that ApplianceManagementEnabled shows as True in the list of conditions.
 . In the *Upload local OVA files* section, click *Browse* to find a valid .ova file.
 . Click *Upload*.
 +
 A success message confirms the file upload. After several seconds, the number of virtual machines increases under the *Provider inventory* section.
- 
+
 
 

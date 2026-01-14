@@ -43,7 +43,7 @@ The `conversion` pod runs `virt-v2v`, which installs and configures device drive
 +
 The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 
-*Cold migration from {rhv-short} or {osp} to the local {ocp-name} cluster:*
+*Cold migration from {rhv-full} or {osp} to the local {ocp-name} cluster:*
 
 . When you create a `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates for each source VM disk a `PersistentVolumeClaim` CR, and an `OvirtVolumePopulator` when the source is {rhv-short}, or an `OpenstackVolumePopulator` CR  when the source is {osp}.
 +

@@ -15,9 +15,9 @@ You can select a default migration network for {a-virt} provider in the {ocp} we
 
 After you select a transfer network, associate its network attachment definition (NAD) with the gateway to be used by this network.
 
-In {project-short} version 2.9 and earlier, {project-short} used the `pod` network as the default network. 
+In {project-short} version 2.9 and earlier, {project-short} used the `pod` network as the default network.
 
-In version 2.10.0 and later, {project-short} detects if you have selected a user-defined network (UDN) as your default network. Therefore, if you set the UDN to be the migration's namespace, you do not need to select a new default network when you create your migration plan. 
+In version 2.10.0 and later, {project-short} detects if you have selected a user-defined network (UDN) as your default network. Therefore, if you set the UDN to be the migration's namespace, you do not need to select a new default network when you create your migration plan.
 
 [IMPORTANT]
 ====
@@ -31,7 +31,7 @@ You can override the default migration network of the provider by selecting a di
 
 .Procedure
 
-. In the {ocp} web console, click *Migration* > *Providers for virtualization*.
+. In the {ocp} web console, click *Migration for Virtualization* > *Providers*.
 . Click the {virt} provider whose migration network you want to change.
 +
 When the *Providers detail* page opens:

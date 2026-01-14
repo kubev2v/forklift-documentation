@@ -29,7 +29,7 @@ The source virtual disks are copied by a pod that is connected to the pod networ
 
 .Procedure
 
-. In the {ocp} web console, click *Migration* -> *Providers for virtualization*.
+. In the {ocp} web console, click *Migration for Virtualization* > *Providers*.
 . Click the host number in the *Hosts* column beside a provider to view a list of hosts.
 . Select one or more hosts and click *Select migration network*.
 . Specify the following fields:

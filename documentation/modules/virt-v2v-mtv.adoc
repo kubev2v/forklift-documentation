@@ -34,7 +34,7 @@ If you are migrating from {vmw} or from Open Virtual Appliances (OVA) files, `vi
 s
 [NOTE]
 ====
-You can also run predefined Ansible hooks before or after a migration using {project-short}. For more information, see xref:about-hooks-for-migration-plans_mtv[Adding hooks to an MTV migration plan].
+You can also run predefined Ansible hooks before or after a migration using {project-short}. For more information, see xref:about-hooks-for-migration-plans_mtv[About hooks for MTV migration plans].
 
 These hooks do not necessarily use `virt-v2v`.
 ====

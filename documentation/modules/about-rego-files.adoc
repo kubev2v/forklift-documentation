@@ -11,15 +11,14 @@ Validation rules are written in link:https://www.openpolicyagent.org/docs/latest
 
 Each validation rule is defined in a separate `.rego` file and tests for a specific condition. If the condition evaluates as `true`, the rule adds a `{“category”, “label”, “assessment”}` hash to the `concerns`. The `concerns` content is added to the `concerns` key in the inventory record of the VM. The web console displays the content of the `concerns` key for each VM in the provider inventory.
 
-The following `.rego` file example checks for distributed resource scheduling enabled in the cluster of a VMware VM:
+The following `.rego` file example checks for distributed resource scheduling enabled (`has_drs_enabled`) in the cluster of a VMware VM:
 
-.drs_enabled.rego example
 [source,terminal]
 ----
-package io.konveyor.forklift.vmware <1>
+package io.konveyor.forklift.vmware
 
 has_drs_enabled {
-    input.host.cluster.drsEnabled <2>
+    input.host.cluster.drsEnabled
 }
 
 concerns[flag] {
@@ -31,5 +30,11 @@ concerns[flag] {
     }
 }
 ----
-<1> Each validation rule is defined within a package. The package namespaces are `io.konveyor.forklift.vmware` for VMware and `io.konveyor.forklift.ovirt` for {rhv-full}.
-<2> Query parameters are based on the `input` key of the `Validation` service JSON.
+where:
+
+`package io.konveyor.forklift.vmware`::
+Is the package namespace in this example, The package namespaces are `io.konveyor.forklift.vmware` for VMware and `io.konveyor.forklift.ovirt` for {rhv-full}.
+
+`input.host.cluster.drsEnabled`::
+Is the query parameter in this example. Query parameters are based on the `input` key of the `Validation` service JSON.
+

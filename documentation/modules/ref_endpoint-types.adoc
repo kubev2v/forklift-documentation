@@ -9,17 +9,15 @@
 [role="_abstract"]
 {project-first} allows for the following vSphere provider options:
 
-* ESXi endpoint (inventory and disk transfers from ESXi), introduced in {project-short} 2.6
-
-* vCenter Server endpoint; no networks for the ESXi host (inventory and disk transfers from vCenter)
-
+* ESXi endpoint (inventory and disk transfers from ESXi).
+* vCenter Server endpoint; no networks for the ESXi host (inventory and disk transfers from vCenter).
 * vCenter endpoint and ESXi networks are available (inventory from vCenter, disk transfers from ESXi).
 
 When transferring many VMs that are registered to multiple ESXi hosts, using the vCenter endpoint and ESXi network is suggested.
 
 [NOTE]
 ====
-As of vSphere 7.0, ESXi hosts can label which network to use for Network Block Device (NBD) transport. This is accomplished by tagging the desired virtual network interface card (NIC) with the appropriate `vSphereBackupNFC` label. When this is done, {project-short} is able to use the ESXi interface for network transfer to {ocp-short} provided that the worker and ESXi host interfaces are reachable. This is especially useful when migration users might not have access to the ESXi credentials yet want to be able to control which ESXi interface is used for migration. 
+As of vSphere 7.0, ESXi hosts can label which network to use for Network Block Device (NBD) transport. This is accomplished by tagging the desired virtual network interface controller (NIC) with the appropriate `vSphereBackupNFC` label. When this is done, {project-short} is able to use the ESXi interface for network transfer to {ocp-short} provided that the worker and ESXi host interfaces are reachable. This is especially useful when migration users might not have access to the ESXi credentials yet want to be able to control which ESXi interface is used for migration.
 
 For more details, see: link:https://issues.redhat.com/browse/MTV-1230[({project-short}-1230)]
 ====
