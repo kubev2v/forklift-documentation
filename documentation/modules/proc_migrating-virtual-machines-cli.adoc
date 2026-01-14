@@ -15,14 +15,11 @@ ifdef::vmware[]
 [role="_abstract"]
 You can migrate from a {vmw} vSphere source provider by using the command-line interface (CLI).
 
-include::snip_anti-virus-warning.adoc[]
+Considerations::
 
-include::snip_no-nvme.adoc[]
-
-[NOTE]
-====
-To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks].
-====
+* Anti-virus software can cause migrations to fail. It is strongly recommended to remove such software from source VMs before you start a migration. 
+* {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.  
+* To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks].
 
 endif::[]
 ifdef::rhv[]
@@ -1121,7 +1118,10 @@ Specifies whether to add alphanumeric characters to the name of a PVC.
 * When set to `true`, {project-short} adds one or more randomly generated alphanumeric characters to the name of the PVC in order to ensure all PVCs have unique names.
 * When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add such characters to the name of the PVC.
 +
-include::snip_pvcNameTemplateUseGenerateName-warn.adoc[]
+[WARNING]
+====
+If you set `pvcNameTemplateUseGenerateName` to `false`, the generated PVC name might not be unique and might cause conflicts.
+====
 
 `skipGuestConversion`::
 Specifies whether VMs are converted before migration using the `virt-v2v` tool, which makes the VMs compatible with {virt}.
@@ -1183,7 +1183,10 @@ Specifies the name of the `Hook` CR.
 `<step>`::
 Specifies the type of hook. Allowed values are `PreHook` before the migration plan starts or `PostHook` after the migration is complete.
 +
-include::snip_vmware-name-change.adoc[]
+[IMPORTANT]
+====
+When you migrate a {vmw} 7 VM to an {ocp-short} 4.13+ platform that uses CentOS 7.9, the name of the network interfaces changes and the static IP configuration for the VM no longer works.
+====
 
 endif::[]
 
@@ -1592,5 +1595,14 @@ EOF
 [NOTE]
 ====
 If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
+====
++
+[IMPORTANT]
+====
+When you specify the user permissions only on the VM, the `forklift-controller` consistently fails to reconcile a migration plan, and subsequently returns an HTTP 500 error. 
+
+In {project-short}, you must add permissions at the data center level, which includes storage, networks, switches, and so on, which are used by the VM. You must then propagate the permissions to the child elements.
+
+If you do not want to add this level of permissions, you must manually add the permissions to each object on the VM host required.
 ====
 
