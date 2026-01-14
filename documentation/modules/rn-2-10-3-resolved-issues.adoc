@@ -1,0 +1,35 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-10-3_{context}"]
+= Resolved issues 2.10.3
+
+FC based migrations with Dell PowerStore storage fail during host registration::
+
+Before this update, virtual machine (VM) migrations that used Fibre Channel (FC) with Dell PowerStore storage could fail during storage offload. MTV attempted to register FC initiators by using the adapter ID format instead of the World Wide Port Name (WWPN), which caused host registration to fail and prevented persistent volume mapping. With this release, MTV correctly extracts and uses the WWPN for FC initiators, allowing migrations that use Dell PowerStore storage to complete successfully.
+
+Warm migrations from VMware with storage offload fail due to incorrect secret usage::
+
+Before this update, warm migrations from VMware that used storage offload could fail with errors indicating missing access keys. MTV did not correctly use per disk credentials during the warm migration process, which caused storage offload operations to fail. With this release, MTV correctly uses per disk secrets for storage offload, allowing warm migrations from VMware to complete successfully.
++
+link:https://issues.redhat.com/browse/MTV-4062[MTV-4062]
+
+Windows VM migrations fail due to missing temporary directory during conversion::
+
+Before this update, migrating Windows VMs could fail during the conversion phase with an error indicating that a temporary directory under `C:\Windows\Temp` could not be created. This issue occurred because the `virt-v2v` package used during migration did not correctly handle temporary directory creation for certain Windows configurations, including UEFI and Secure Boot setups. With this release, MTV includes an updated `virt-v2v` package that resolves this issue, allowing Windows VM migrations to complete successfully.
++
+link:https://issues.redhat.com/browse/MTV-3949[MTV-3949]
+
+Warm migrations from VMware get stuck at cutover::
+
+Before this update, warm migrations from VMware could become stuck during the cutover phase, preventing the migration from completing. With this issue, some `DataVolume` objects remained in the `Paused` phase and the migration did not progress. With this release, MTV improves handling of the cutover workflow so warm migrations can proceed and complete successfully.
++
+link:https://issues.redhat.com/browse/MTV-3606[MTV-3606]
+
+Windows Server 2016 VM in-place upgrades can fail after migration from VMware::
+
+Before this update, Windows Server 2016 VMs migrated from VMware could fail an in-place upgrade to a later version, such as Windows Server 2019 or 2022, with error code `0x80004005`. This occurred due to a corrupted Windows driver store after conversion, which caused the `pnputil /enum-drivers` command to fail and blocked the upgrade. With this release, MTV includes an updated `virt-v2v` package that resolves this issue, allowing in-place upgrades of migrated Windows Server 2016 VMs to complete successfully.
++
+link:https://issues.redhat.com/browse/MTV-2256[MTV-2256]

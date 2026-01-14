@@ -22,6 +22,8 @@ include::modules/rn-resolved-issues.adoc[leveloffset=+2]
 
 // Resolved issues by z-stream release
 
+include::modules/rn-2-10-3-resolved-issues.adoc[leveloffset=+3]
+
 include::modules/rn-2-10-2-resolved-issues.adoc[leveloffset=+3]
 
 include::modules/rn-2-10-1-resolved-issues.adoc[leveloffset=+3]
@@ -30,6 +32,12 @@ include::modules/rn-2-10-0-resolved-issues.adoc[leveloffset=+3]
 
 // Known issues by x-stream release
 include::modules/known-issues-2-10.adoc[leveloffset=+2]
+
+// Security fixes by y-stream release
+include::modules/rn-security-fixes.adoc[leveloffset=+2]
+
+// Security fixes by z-stream release
+include::modules/rn-2-10-3-security-fixes.adoc[leveloffset=+3]
 
 // == Release notes addendum
 // include::modules/mtv-selected-packages-2-8.adoc[leveloffset=+2]

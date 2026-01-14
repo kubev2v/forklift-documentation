@@ -1,0 +1,10 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="rn-security-fixes_{context}"]
+= Security fixes
+
+[role="_abstract"]
+{project-first} 2.10 has the following security fixes:
