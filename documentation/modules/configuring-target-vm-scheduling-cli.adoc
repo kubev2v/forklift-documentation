@@ -42,9 +42,9 @@ Migrations that use target VM scheduling require the following prerequisites, in
     <key>:<value>
   targetNamespace:<target_namespace>
 ... 
-
-.Example
-
++
+Example:
++
 The following scheduling rule migrates the VMs in the plan to different nodes for disaster recovery:
 [source,yaml,subs="attributes+"]
 ----
@@ -62,7 +62,10 @@ The following scheduling rule migrates the VMs in the plan to different nodes fo
           topologyKey: kubernetes.io/hostname
 ----
 
-As a result of the preceding rule, the VMs are migrated accordingly to the resulting `spec`.
+.Result
+
+As a result of the preceding rule, the VMs are migrated accordingly to the resulting `spec`:
+
 [source,yaml,subs="attributes+"]
 ----
 spec:
