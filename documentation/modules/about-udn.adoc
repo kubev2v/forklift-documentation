@@ -13,5 +13,7 @@ Beginning with {project-full} 2.10, you can use a user-defined network (UDN) as 
 
 You can use this feature for creating migration plans by using the {ocp} web console or by using the {project-short} command-line interface. The procedures for creating migration plans have been updated to include the new feature. 
 
+[role="_additional-resources"]
 .Additional resources
-{ocp-doc}/virtualization/networking#virt-connecting-vm-to-primary-udn[Connecting a virtual machine to a primary user-defined network]
+
+* link:{ocp-doc}/virtualization/networking#virt-connecting-vm-to-primary-udn[Connecting a virtual machine to a primary user-defined network]

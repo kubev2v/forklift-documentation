@@ -180,7 +180,7 @@ where:
 
 `<access_mode>`::
 Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-+
+
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
 [source,yaml,subs="attributes+"]

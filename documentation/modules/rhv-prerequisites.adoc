@@ -28,4 +28,10 @@ You can obtain the {manager} CA certificate by navigating to https://<engine_hos
 
 ** If you are migrating a virtual machine with a direct logical unit number (LUN) disk, ensure that the nodes in the {virt} destination cluster that the VM is expected to run on can access the backend storage.
 
-include::snip-migrating-luns.adoc[]
+[NOTE]
+====
+* Unlike disk images that _are copied_ from a source provider to a target provider, LUNs are _detached_, _but not removed_, from virtual machines in the source provider and then attached to the virtual machines (VMs) that are created in the target provider.
+
+* LUNs are not removed from the source provider during the migration in case fallback to the source provider is required. However, before re-attaching the LUNs to VMs in the source provider, ensure that the LUNs are not used by VMs on the target environment at the same time, which might lead to data corruption.
+====
+

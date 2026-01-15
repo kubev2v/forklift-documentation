@@ -48,7 +48,7 @@ $ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/prov
 $ curl -H "Authorization: Bearer $TOKEN"  https://<inventory_service_route>/providers/vsphere/<provider id>/datastores/ -k
 ----
 +
-The output looks like the following example. In this example, the moRef of the datastore `v2v_general_porpuse_ISCSI_DC` is `datastore-11` and the moRef of the datastore `f01-h27-640-SSD_2` is `datastore-730`.
+* Example output: In this example, the moRef of the datastore `v2v_general_porpuse_ISCSI_DC` is `datastore-11` and the moRef of the datastore `f01-h27-640-SSD_2` is `datastore-730`.
 +
 [source,terminal]
 ----

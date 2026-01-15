@@ -6,6 +6,7 @@
 [id="target-vm-scheduling-options_{context}"]
 = Target VM scheduling options
 
+[role="_abstract"]
 You can use the following options to schedule when your target VMs are powered on:
 
 * *Node Selector* rule: This is both the simplest rule. You define a set of mandatory exact match key-value label pairs that the target node must possess. If no node on the cluster has all the labels specified, the VM is not scheduled and it remains in a `Pending` state until there is space on a node that fits the key-value label pairs.

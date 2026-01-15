@@ -32,7 +32,7 @@ The `Provider Inventory` service simplifies this configuration and returns a tes
 You create a link:https://www.openpolicyagent.org/docs/latest/policy-language/[Rego] query, based on this attribute, and add it to the `forklift-validation-config` config map:
 [source,terminal]
 ----
-`count(input.numaNodeAffinity) != 0`
+count(input.numaNodeAffinity) != 0
 ----
 
 .Procedure

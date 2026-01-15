@@ -91,9 +91,7 @@ This migration "succeeds", but it results in a problem: Shared disk 2 is migrate
 . In {project-short}, create a migration plan for the shared disks, the minimum number of VMs connected to them, and the unshared disk of those VMs. 
 . On the {vmw} cluster, power off all VMs attached to the shared disks.
 . In the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
-. Select the desired plan.
-+
-The *Plan details* page opens.
+. Select the desired plan to open the *Plan details* page.
 . Click the *YAML* tab of the plan.
 . Verify that `migrateSharedDisks` is set to `true` as in the example that follows:
 +
@@ -139,9 +137,7 @@ spec:
 
 . Start the migration of the first plan and wait for it to finish.
 . Create a second `Plan` CR to migrate all the other VMs and their unshared disks to the same target namespace as the first.
-. In the *Migration plans* page of the {ocp} web console, select the new plan.
-+
-The *Plan details* page opens.
+. In the *Migration plans* page of the {ocp} web console, select the new plan to open the *Plan details* page.
 . Click the *YAML* tab of the plan.
 . Set `migrateSharedDisks` to `false` as in the example that follows:
 +

@@ -1,6 +1,0 @@
-:_mod-docs-content-type: SNIPPET
-
-[IMPORTANT]
-====
-Anti-virus software can cause migrations to fail. It is strongly recommended to remove such software from source VMs before you start a migration. 
-====

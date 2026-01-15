@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
 
-:_content-type: PROCEDURE
+:_content-type: CONCEPT
 [id="configuring-target-vm-scheduling-ui_{context}"]
 = Scheduling target VMs from the user interface
 
