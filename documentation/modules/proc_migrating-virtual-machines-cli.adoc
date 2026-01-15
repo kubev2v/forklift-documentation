@@ -20,6 +20,7 @@ Considerations::
 * Anti-virus software can cause migrations to fail. It is strongly recommended to remove such software from source VMs before you start a migration. 
 * {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.  
 * To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks].
+* In {project-short}, you must add permissions at the data center level, which includes storage, networks, switches, and so on, which are used by the VM. You must then propagate the permissions to the child elements. When you specify the user permissions only on the VM, the `forklift-controller` consistently fails to reconcile a migration plan, and subsequently returns an HTTP 500 error. If you do not want to add this level of permissions, you must manually add the permissions to each object on the VM host required.
 
 endif::[]
 ifdef::rhv[]
@@ -1596,13 +1597,6 @@ EOF
 ====
 If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
 ====
-+
-[IMPORTANT]
-====
-When you specify the user permissions only on the VM, the `forklift-controller` consistently fails to reconcile a migration plan, and subsequently returns an HTTP 500 error. 
 
-In {project-short}, you must add permissions at the data center level, which includes storage, networks, switches, and so on, which are used by the VM. You must then propagate the permissions to the child elements.
 
-If you do not want to add this level of permissions, you must manually add the permissions to each object on the VM host required.
-====
 
