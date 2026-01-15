@@ -24,7 +24,7 @@ include::../modules/migration-plan-options-ui.adoc[leveloffset=+2]
 
 include::../modules/canceling-migration-ui.adoc[leveloffset=+2]
 
-include::../modules/proc_migrating-virtual-machines-cli.adoc[leveloffset=+1]
+include::../modules/proc_migrating-vms-cli-rhv.adoc[leveloffset=+1]
 
 include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
 
