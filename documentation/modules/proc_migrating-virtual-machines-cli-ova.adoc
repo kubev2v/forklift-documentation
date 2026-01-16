@@ -1,0 +1,307 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_migrating-virtual-machines-cli_{context}"]
+
+= Running an Open Virtual Appliance (OVA) migration from the command-line
+
+[role="_abstract"]
+You can migrate from Open Virtual Appliance (OVA) files that were created by {vmw} vSphere as a source provider by using the command-line interface (CLI).
+
+.Prerequisites
+* If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
+
+.Procedure
+. Create a `Secret` manifest for the source provider credentials:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+  ownerReferences: 
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: <provider_name>
+      uid: <provider_uid>
+  labels:
+    createdForProviderType: ova
+    createdForResourceType: providers
+type: Opaque
+stringData:
+  url: <nfs_server:/nfs_path>
+EOF
+----
++
+where:
+
+`ownerReferences`::
+Is an optional section in which you can specify a provider's `name` and `uid`.
+
+`<nfs_server:/nfs_path>`::
+Specifies the `nfs_server`, which is an IP or hostname of the server where the share was created and `nfs_path`, which is the path on the server where the OVA files are stored.
+
+[start=2]
+. Create a `Provider` manifest for the source provider:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: ova
+  url:  <nfs_server:/nfs_path>
+  secret:
+    name: <secret>
+    namespace: <namespace>
+EOF
+----
++
+where:
+
+`<nfs_server:/nfs_path>`::
+Specifies the `nfs_server`, which is an IP or hostname of the server where the share was created and `nfs_path`, which is the path on the server where the OVA files are stored.
+
+`<secret>`::
+Specifies the name of the provider `Secret` CR.
+
+[start=3]
+. Create a `NetworkMap` manifest to map the source and destination networks:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod
+      source:
+        id: <source_network_id>
+    - destination:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+      source:
+        id: <source_network_id>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
+
+`type`::
+Specifies the network type. Allowed values are `pod` and `multus`.
+
+`<source_network_id>`::
+Specifies the OVA network Universal Unique ID (UUID).
+
+`<network_attachment_definition>`::
+Specifies a network attachment definition (NAD) for each additional {virt} network.
+
+`<network_attachment_definition_namespace>`::
+Specifies the namespace of the {virt} NAD. Required only when `type` is `multus`.
+
+`namespace`::
+Specifies the namespace. If you are using a user-defined network (UDN), its namespace is defined in {virt}.
+
+[start=4]
+. Create a `StorageMap` manifest to map source and destination storage:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode>
+      source:
+        name:  Dummy storage for source provider <provider_name>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
+
+`<access_mode>`::
+Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+
+`name`::
+Specifies the source provider. For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as *Dummy storage for source provider <provider_name>*. In the `StorageMap` CR, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
+
+. Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Hook
+metadata:
+  name: <hook>
+  namespace: <namespace>
+spec:
+  image: quay.io/kubev2v/hook-runner
+  serviceAccount:<service account>
+  playbook: |
+    LS0tCi0gbm...
+EOF
+----
++
+where:
+
+`<service account>`::
+Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
+
+`playbook`::
+Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
++
+[NOTE]
+====
+You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+====
+
+[start=6]
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
++
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
++
+Configuring the IP address enables the interface to reach the configured gateway.
++
+[source,yaml,subs="attributes+"]
+----
+$ oc edit NetworkAttachmentDefinitions <name_of_the_NAD_to_edit>
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: <name_of_transfer_network>
+  namespace: <namespace>
+  annotations:
+    forklift.konveyor.io/route: <IP_address>
+----
+
+. Create a `Plan` manifest for the migration:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+metadata:
+  name: <plan>
+  namespace: <namespace>
+spec:
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+  map: 
+    network: 
+      name: <network_map>
+      namespace: <namespace>
+    storage: 
+      name: <storage_map>
+      namespace: <namespace>
+  targetNamespace: <target_namespace>
+  vms: 
+    - id: <source_vm1>
+    - name: <source_vm2>
+      hooks: 
+        - hook:
+            namespace: <namespace>
+            name: <hook>
+          step: <step>
+EOF
+----
++
+where:
+
+`<plan>`::
+Specifies the name of the `Plan` CR.
+
+`map`::
+Specifies only one network map and one storage map per plan.
+
+`network`::
+Specifies a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
+
+`storage`::
+Specifies a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
+
+`vms`::
+Specifies the source VMs and their hooks.Accepts either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+
+`<source_vm1>`::
+Specifies the OVA VM UUID.
+
+`hooks`::
+Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional label.
+
+`<hook>`::
+Specifies the name of the `Hook` CR.
+
+`<step>`::
+Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+
+. Create a `Migration` manifest to run the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Migration
+metadata:
+  name: <name_of_migration_cr>
+  namespace: <namespace>
+spec:
+  plan:
+    name: <name_of_plan_cr>
+    namespace: <namespace>
+  cutover: <optional_cutover_time>
+EOF
+----
++
+[NOTE]
+====
+If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
+====
