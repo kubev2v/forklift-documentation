@@ -7,7 +7,7 @@
 = Creating validation rules
 
 [role="_abstract"]
-To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, deploy the rules by using a *ConfigMap* Custom Resource (CR). By default, the `Validation` service reads validation rules from a ConfigMap named `forklift-validation-config` in the `{namespace}` namespace. You can optionally customize the ConfigMap name by updating the `forklift-controller` CR.
+To ensure that your custom validation rules persist across pod restarts, scaling events, and {project-first} upgrades, deploy the rules by using a *ConfigMap* Custom Resource (CR). By default, the `Validation` service reads validation rules from a ConfigMap named `forklift-validation-config` in the {namespace} namespace. You can optionally customize the ConfigMap name by updating the `forklift-controller` CR.
 
 [IMPORTANT]
 ====
@@ -36,15 +36,16 @@ For example, in a validation rule that checks if a VMware VM has NUMA node affin
 ----
 count(input.numaNodeAffinity) != 0
 ----
++
 For information about Rego files, see xref:about-rego-files_{context}[About Rego files].
 
 .Procedure
 
-. Create a `ConfigMap` named `forklift-validation-config` in the `{namespace}` namespace:
+. Create a `ConfigMap` named `forklift-validation-config` in the {namespace} namespace:
 +
 [NOTE]
 ====
-If you want to use a different ConfigMap name, you must also configure the `forklift-controller` CR. See the optional step below for details.
+If you want to use a different ConfigMap name, you must also configure the `forklift-controller` CR. For more information, see step 2.
 ====
 +
 Example:
