@@ -138,7 +138,7 @@ EOF
 * `<provider_type>`: Valid values are `ovirt`, `vsphere`, and `openstack`.
 * `<api_end_point>`: The API endpoint URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
 * `<secret>`: The name of the provider `Secret` CR.
-
 .Next step
+
 Update the inventory rules version after creating a custom rule so that the `Provider Inventory` service detects the changes and validates the VMs. For more information, see xref:updating-inventory-rules-version_{context}[Updating the inventory rules version].
 
