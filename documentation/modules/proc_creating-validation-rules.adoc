@@ -79,6 +79,7 @@ EOF
 * `<provider_package>`: The provider package name. Valid values are `io.konveyor.forklift.vmware` for VMware and `io.konveyor.forklift.ovirt` for {rhv-full}.
 * `count(input.disks)`: Your Rego query.
 * `category`: Valid values are `Critical`, `Warning`, and `Information`.
+
 . Optional: If you are using a custom ConfigMap name instead of the default `forklift-validation-config`, add the `validation_configmap_name` parameter to the `spec` section of the `ForkliftController` CR:
 +
 [source,yaml]

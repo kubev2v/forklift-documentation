@@ -38,7 +38,6 @@ Is the package namespace in this example, The package namespaces are `io.konveyo
 `input.host.cluster.drsEnabled`::
 Is the query parameter in this example. Query parameters are based on the `input` key of the `Validation` service JSON.
 
-
 For information about Rego queries and rules and examples of Rego rules, see the following resources:
 
 * link:https://www.openpolicyagent.org/docs/latest/policy-language/[Policy Language] in the _Open Policy Agent_ documentation.
