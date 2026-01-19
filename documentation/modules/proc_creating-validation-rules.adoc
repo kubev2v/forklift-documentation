@@ -92,18 +92,21 @@ spec:
 ----
 +
 * Replace `<custom_configmap_name>` with the name of your ConfigMap.
+
 . Stop the `Validation` pod by scaling the `forklift-validation` deployment to `0`:
 +
 [source,terminal,subs="attributes+"]
 ----
 $ {oc} scale -n {namespace} --replicas=0 deployment/forklift-validation
 ----
+
 . Start the `Validation` pod by scaling the `forklift-validation` deployment to `1`:
 +
 [source,terminal,subs="attributes+"]
 ----
 $ {oc} scale -n {namespace} --replicas=1 deployment/forklift-validation
 ----
+
 . Check the `Validation` pod log to verify that the pod started:
 +
 [source,terminal,subs="attributes+"]
@@ -112,12 +115,14 @@ $ {oc} logs -f <validation_pod>
 ----
 +
 If the custom rule conflicts with a default rule, the `Validation` pod does not start.
+
 . Remove the source provider:
 +
 [source,terminal,subs="attributes+"]
 ----
 $ {oc} delete provider <provider> -n {namespace}
 ----
+
 . Add the source provider to apply the new rule. For information about adding a source provider, see the sections about adding a source provider in Chapters 10-14 of link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv[_Planning your migration to Red Hat OpenShift Virtualization_]:
 +
 [source,yaml,subs="attributes+"]
@@ -140,6 +145,7 @@ EOF
 * `<provider_type>`: Valid values are `ovirt`, `vsphere`, and `openstack`.
 * `<api_end_point>`: The API endpoint URL, for example, `https://<vCenter_host>/sdk` for vSphere, `https://<engine_host>/ovirt-engine/api` for {rhv-short}, or `https://<identity_service>/v3` for {osp}.
 * `<secret>`: The name of the provider `Secret` CR.
+
 .Next step
 
 Update the inventory rules version after creating a custom rule so that the `Provider Inventory` service detects the changes and validates the VMs. For more information, see xref:updating-inventory-rules-version_{context}[Updating the inventory rules version].
