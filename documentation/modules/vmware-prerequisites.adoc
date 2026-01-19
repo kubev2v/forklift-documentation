@@ -23,6 +23,7 @@ The following prerequisites apply to {vmw} migrations:
 * If you are running a warm migration, you must enable link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] on the VMs and on the VM disks.
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the Network File Copy (NFC) service memory of the host.
 * It is strongly recommended to disable hibernation because {project-first} does not support migrating hibernated VMs.
+* The target namespace must have network connectivity to the {vmw} source environment. NetworkPolicies that block egress connections from the target namespace prevent migration from succeeding.
 
 [WARNING]
 ====

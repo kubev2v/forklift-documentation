@@ -25,6 +25,10 @@ If you input any value of maximum transmission unit (MTU) besides the default va
 +
 The source virtual disks are copied by a pod that is connected to the pod network of the target namespace.
 
+* The target namespace must have network connectivity to the VMware source environment.
++
+Migration pods run in the target namespace and require outbound access to the VMware API and ESXi hosts. If you use NetworkPolicies to restrict egress connections from the target namespace, you must configure policies that allow connections to VMware. This requirement applies whether you use the pod network, user-defined networks (UDNs), or cluster user-defined networks (CUDNs) in the target namespace.
+
 * The migration network should have jumbo frames enabled.
 
 .Procedure
