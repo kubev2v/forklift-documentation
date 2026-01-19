@@ -199,5 +199,9 @@ Specifies the name of the provider `Secret` CR.
 * `<secret>`: The name of the provider `Secret` CR.
 
 .Next step
+<<<<<<< HEAD
 * Update the inventory rules version after creating a custom rule so that the `Inventory` service detects the changes and validates the VMs.
 >>>>>>> 3c9d6bd (validation rules proc)
+=======
+* Update the inventory rules version after creating a custom rule so that the `Provider Inventory` service detects the changes and validates the VMs.
+>>>>>>> 3b93906 (edit)
