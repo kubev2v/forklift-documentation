@@ -204,5 +204,5 @@ The wizard opens to the page where you defined the item.
 
 .Next steps
 
-Configure plan settings on the *Plan details* page. For more information, see xref:configuring-plan-settings-vmware_{context}[Configuring VMware migration plan settings].
+* Configure plan settings on the *Plan details* page. For more information, see xref:configuring-plan-settings-vmware_{context}[Configuring VMware migration plan settings].
 

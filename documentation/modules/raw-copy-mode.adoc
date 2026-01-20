@@ -25,3 +25,7 @@ However, VMs migrated using raw copy mode might not boot on {virt} or perform as
 Therefore, using raw copy mode is a tradeoff between being a more versatile migration option compared to increasing the risk of problems following migration.
 
 Because of this risk, users are asked to request that Red Hat support perform raw copy mode migrations.
+
+* For information about configuring raw copy mode by using the {project-short} user interface, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#configuring-plan-settings-vmware_vmware[Configuring VMware migration plan settings].
+* For information about configuring raw copy mode by using the command-line interface, see the `skipGuestConversion` and `useCompatibilityMode` parameters in xref:proc_migrating-virtual-machines-cli_vmware[Running a VMware vSphere migration from the command-line].
+* For information about device compatibility mode for raw copy migrations, see xref:con_device-compatibility-mode-raw-copy-migrations_mtv[Device compatibility mode for raw copy migrations].

@@ -42,5 +42,5 @@ Consider disabling compatibility mode when:
 * You have verified VirtIO driver presence in the source VM before migration
 
 Configuring compatibility mode::
-You can configure the compatibility mode setting when you create a migration plan. For more information, see xref:configuring-plan-settings-vmware_vmware[Configuring VMware migration plan settings].
+You can configure the compatibility mode setting when you create a migration plan. For more information, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#configuring-plan-settings-vmware_vmware[Configuring VMware migration plan settings].
 
