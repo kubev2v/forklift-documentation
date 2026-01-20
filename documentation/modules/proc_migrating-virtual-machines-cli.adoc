@@ -1149,16 +1149,16 @@ Determines whether the migration uses VirtIO devices or compatibility devices wh
 
 `volumeNameTemplate`::
 Specifies a template for the volume interface name for the VMs in your plan. This is an optional label.
-<13> Optional: Affinity rule, which may be quite complex, is entered in lines following this label.
+Optional: Affinity rule, which may be quite complex, is entered in lines following this label.
 +
 `targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see link:{mtv-mig}assembly_advanced-migration-options_mtv#target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see link:{mtv-mig}assembly_advanced-migration-options_mtv#configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
 +
-<14> Optional: Applies organizational or operational labels to migrated VMs for identification and management.
-<15> Optional: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you enter.
-<16> Determines whether the migration uses VirtIO devices or compatibility devices when `skipGuestConversion` is `true` (raw copy mode). This setting has no effect when `skipGuestConversion` is `false` because standard V2V conversion always uses VirtIO devices.
+Optional: Applies organizational or operational labels to migrated VMs for identification and management.
+Optional: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you enter.
+Determines whether the migration uses VirtIO devices or compatibility devices when `skipGuestConversion` is `true` (raw copy mode). This setting has no effect when `skipGuestConversion` is `false` because standard V2V conversion always uses VirtIO devices.
 * When you set `useCompatibilityMode` to `true` (default): {project-short} uses compatibility devices (SATA bus, E1000E NICs, USB) to ensure the VMs can boot after migration.
 * When you set `useCompatibilityMode` to `false`: {project-short} uses pre-installed VirtIO devices on source VMs for better performance. Before you use this option, verify that VirtIO drivers are already installed in the source VMs.
-<17> [[callout14]]Optional: Specify a template for the volume interface name for the VMs in your plan.
+Optional: Specify a template for the volume interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume.
 ** `.VolumeIndex`: Sequential index of the volume interface (0-based).
