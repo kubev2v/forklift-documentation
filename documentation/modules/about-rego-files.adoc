@@ -7,7 +7,7 @@
 = About Rego files
 
 [role="_abstract"]
-Validation rules are written in link:https://www.openpolicyagent.org/docs/latest/policy-language/[Rego], the Open Policy Agent (OPA) native query language. The rules are stored as `.rego` files in the `/usr/share/opa/policies/io/konveyor/forklift/<provider>` directory of the `Validation` pod.
+Validation rules are written in Rego, the Open Policy Agent (OPA) native query language. The rules are stored as `.rego` files in the `/usr/share/opa/policies/io/konveyor/forklift/<provider>` directory of the `Validation` pod.
 
 Each validation rule is defined in a separate `.rego` file and tests for a specific condition. If the condition evaluates as `true`, the rule adds a `{“category”, “label”, “assessment”}` hash to the `concerns`. The `concerns` content is added to the `concerns` key in the inventory record of the VM. The web console displays the content of the `concerns` key for each VM in the provider inventory.
 
@@ -37,4 +37,10 @@ Is the package namespace in this example, The package namespaces are `io.konveyo
 
 `input.host.cluster.drsEnabled`::
 Is the query parameter in this example. Query parameters are based on the `input` key of the `Validation` service JSON.
+
+For information about Rego queries and rules and examples of Rego rules, see the following resources:
+
+* link:https://www.openpolicyagent.org/docs/latest/policy-language/[Policy Language] in the _Open Policy Agent_ documentation.
+* link:https://github.com/kubev2v/forklift/tree/main/validation#opa-rules-files[OPA Rules Files] in the `forklift` documentation.
+* link:https://github.com/kubev2v/forklift/tree/main/validation/policies/io/konveyor/forklift/vmware[VMware .rego files] in the `forklift` repository.
 
