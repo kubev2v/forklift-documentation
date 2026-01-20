@@ -1,0 +1,15 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-9-7_{context}"]
+= Resolved issues 2.9.7
+
+.Interpretation-conflict vulnerability in node-forge
+Before this update, an interpretation-conflict vulnerability in node-forge versions 1.3.1 and earlier was exploited by unauthenticated attackers, leading to semantic divergence and bypassing cryptographic verification. This allowed unauthenticated attackers to bypass cryptographic verification, potentially compromising user data. With this release, we have actively addressed and resolved the node-forge vulnerability in the latest updates, thereby enhancing cryptographic verification and security.
+(CVE tracker: https://access.redhat.com/security/cve/cve-2025-66031)
+
+.Unbounded recursion in node-forge ASN.1
+Before this update, unbounded recursion in node-forge ASN.1 previously led to a denial-of-service (DoS) due to stack exhaustion, making unauthenticated attackers capable of causing system disruption. This release addresses the unbounded recursion vulnerability in node-forge by updating to version 1.3.2, thereby preventing DoS via stack exhaustion for untrusted DER inputs. This enhancement improves system stability.
+(CVE-tracker: https://access.redhat.com/security/cve/cve-2025-12816)

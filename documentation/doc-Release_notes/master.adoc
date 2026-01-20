@@ -22,6 +22,8 @@ include::modules/new-features-and-enhancements-2-9.adoc[leveloffset=+2]
 // Resolved issues by y-stream release
 include::modules/rn-resolved-issues.adoc[leveloffset=+2]
 
+include::modules/rn-2-9-7-resolved-issues.adoc[leveloffset=+3]
+
 include::modules/rn-2-9-6-resolved-issues.adoc[leveloffset=+3]
 
 include::modules/rn-2-9-5-resolved-issues.adoc[leveloffset=+3]
