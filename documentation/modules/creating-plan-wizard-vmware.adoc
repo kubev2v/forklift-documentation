@@ -325,7 +325,17 @@ Changes you make on the *Virtual machines* tab override any changes on the *Plan
 
 ** To use raw copy mode for your migration plan, do the following:
 *** Click the *Edit* icon.
-*** Toggle the *Raw copy mode* switch.
+*** Toggle the *Raw copy mode* switch to enable it.
+*** Optional: Configure the *Use compatibility mode* setting:
++
+When you enable *Use compatibility mode* (default), {project-short} uses compatibility devices (SATA bus, E1000E NICs, USB) to ensure the VM can boot on {virt}.
++
+When you disable *Use compatibility mode*, {project-short} uses pre-installed VirtIO devices on the source VM for better performance.
++
+[IMPORTANT]
+====
+Only disable *Use compatibility mode* if VirtIO drivers are already installed in the source VM. VMs without pre-installed VirtIO drivers will fail to boot on {virt} if you disable compatibility mode.
+====
 *** Click *Save*.
 
 .. *VM target node selector*, *VM target labels*, and *VM target affinity rules* are options that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when to power on the VMs.
