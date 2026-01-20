@@ -31,7 +31,7 @@ The *Use compatibility mode* setting only applies when you enable raw copy mode.
 +
 [WARNING]
 ====
-Before you disable compatibility mode, verify that VirtIO drivers are installed in the source VM. VMs without VirtIO drivers will not boot on {virt} if you disable compatibility mode.
+Before you disable compatibility mode, verify that VirtIO drivers are installed in the source VM. VMs without VirtIO drivers do not boot on {virt} if you disable compatibility mode.
 ====
 
 When to disable compatibility mode::
@@ -42,5 +42,5 @@ Consider disabling compatibility mode when:
 * You have verified VirtIO driver presence in the source VM before migration
 
 Configuring compatibility mode::
-You can configure the compatibility mode setting when you create a migration plan. For more information, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#creating-plan-wizard-vmware_vmware[Creating a VMware vSphere migration plan by using the MTV wizard] in _Planning your migration to Red Hat OpenShift Virtualization_.
+You can configure the compatibility mode setting when you create a migration plan. For more information, see xref:configuring-plan-settings-vmware_vmware[Configuring VMware migration plan settings].
 

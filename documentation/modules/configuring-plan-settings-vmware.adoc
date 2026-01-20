@@ -149,7 +149,7 @@ When you disable *Use compatibility mode*, {project-short} uses pre-installed Vi
 +
 [IMPORTANT]
 ====
-Only disable *Use compatibility mode* if VirtIO drivers are already installed in the source VM. VMs without pre-installed VirtIO drivers will fail to boot on {virt} if you disable compatibility mode.
+Only disable *Use compatibility mode* if VirtIO drivers are already installed in the source VM. VMs without pre-installed VirtIO drivers do not boot on {virt} if you disable compatibility mode.
 ====
 *** Click *Save*.
 
