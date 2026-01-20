@@ -39,6 +39,8 @@ include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffs
 
 include::../modules/creating-plan-wizard-vmware.adoc[leveloffset=+1]
 
+include::../modules/configuring-plan-settings-vmware.adoc[leveloffset=+1]
+
 :!vmware:
 
 include::../modules/con_migration-of-luks-encrypted-disks.adoc[leveloffset=+1]
