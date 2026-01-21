@@ -1,0 +1,62 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-cnv.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="creating-yaml-based-network-maps-ui-cnv_{context}"]
+= Creating ownerless network maps in the {project-short} UI
+
+[role="_abstract"]
+You can create ownerless network maps by using the {project-first} UI to map source networks to {virt} networks.
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Network maps*.
+. Click *Create network map* to open the *Create network map* page.
+. Enter the YAML or JSON definitions into the editor, or drag and drop a file into the editor.
+. If you enter YAML definitions, use the following:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod
+      source:
+        name: <network_name>
+        type: pod
+    - destination:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+      source:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+* `type`: Allowed values are `pod` and `multus`.
+* `<network_attachment_definition>`: Specify a network attachment definition for each additional {virt} network. Specify the `namespace` either by using the `namespace property` or with a name built as follows: `<network_namespace>/<network_name>`.
+* `<network_attachment_definition_namespace>`: Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+
+[start=5]
+. Optional: To download your input, click *Download*.
+. Click *Create*.
++
+Your map appears in the list of network maps.
+

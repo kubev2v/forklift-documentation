@@ -15,7 +15,7 @@ Create a {rhv-full} migration plan by setting up network maps, configuring sourc
 :context: rhv
 :rhv:
 
-include::../modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+1]
+include::../modules/creating-yaml-based-network-maps-ui-rhv.adoc[leveloffset=+1]
 
 include::../modules/creating-form-based-storage-maps-ui-rhv.adoc[leveloffset=+1]
 
