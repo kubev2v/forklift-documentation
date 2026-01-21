@@ -1,0 +1,53 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-ova.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="creating-yaml-based-storage-maps-ui-ova_{context}"]
+= Creating ownerless storage maps using YAML or JSON definitions in the {project-short} UI
+
+[role="_abstract"]
+You can create ownerless storage maps by using YAML or JSON definitions in the {project-first} UI.
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
+. Click *Create storage map* > *Create with YAML*.
++
+The *Create StorageMap* page opens.
+. Enter the YAML or JSON definitions into the editor, or drag and drop a file into the editor.
+. If you enter YAML definitions, use the following:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode>
+      source:
+        name:  Dummy storage for source provider <provider_name>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `name`: For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
+
+. Optional: To download your input, click *Download*.
+. Click *Create*.
++
+Your map appears in the list of storage maps.
+

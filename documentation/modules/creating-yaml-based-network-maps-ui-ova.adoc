@@ -52,7 +52,6 @@ EOF
 * `<network_attachment_definition>`: Specify a network attachment definition for each additional {virt} network.
 * `<network_attachment_definition_namespace>`: Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 
-[start=5]
 . Optional: To download your input, click *Download*.
 . Click *Create*.
 +
