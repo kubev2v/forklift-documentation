@@ -11,6 +11,10 @@ Cold migration is the default migration type. During cold migrations, the source
 
 [NOTE]
 ====
-include::snip_qemu-guest-agent.adoc[]
+VMware only: In cold migrations, in situations in which a package manager cannot be used during the migration, {project-short} does not install the `qemu-guest-agent` daemon on the migrated VMs. This has some impact on the functionality of the migrated VMs, but overall, they are still expected to function.
+
+To enable {project-short} to automatically install `qemu-guest-agent` on the migrated VMs, ensure that your package manager can install the daemon during the first boot of the VM after migration.
+
+If that is not possible, use your preferred automated or manual procedure to install `qemu-guest-agent` manually.
 ====
 

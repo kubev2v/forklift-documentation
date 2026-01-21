@@ -9,6 +9,7 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="adding-source-provider_{context}"]
+
 ifdef::vmware[]
 = Adding a {vmw} vSphere source provider
 
@@ -19,9 +20,9 @@ Considerations::
 
 * EMS enforcement is disabled for migrations with {vmw} vSphere source providers in order to enable migrations from versions of vSphere that are supported by {project-full} but do not comply with the 2023 FIPS requirements. Therefore, users should consider whether migrations from vSphere source providers risk their compliance with FIPS. Supported versions of vSphere are specified in xref:compatibility-guidelines_mtv[Software compatibility guidelines].
 * Anti-virus software can cause migrations to fail. It is strongly recommended to remove such software from source VMs before you start a 
-* {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.  
+* {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.
+* If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:creating-plan-wizard-vmware_vmware[Creating a {vmw} vSphere migration plan using the {project-short} wizard].  
 
-include::snip-mtu-value.adoc[]
 endif::[]
 
 ifdef::rhv[]
