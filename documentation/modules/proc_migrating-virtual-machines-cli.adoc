@@ -1143,9 +1143,9 @@ Specifies organizational or operational labels to migrated VMs for identificatio
 Specifies the key-value pairs that must be matched for VMs to be scheduled on nodes. This is an optional label.
 
 `useCompatibilityMode`::
-Specifies whether the migration uses VirtIO devices or compatibility devices (SATA bus, E1000E NIC) when `skipGuestConversion` is `true`, that is, when raw copy mode is used for the migration. The setting of `useCompatibilityMode` has no effect when `skipGuestConversion` is `false`, because `virt-v2v` conversion always uses VirtIO devices.
-* When set to `true`, the default setting, {project-short} uses compatibility devices (SATA bus, E1000E NIC) in the migration process to ensure that the VMs can be booted after migration.
-* When set to `false`, {project-short} uses high-performance VirtIO devices in the migration process, and `virt-v2v` ensures that the VMs can be booted after migration. Before using this option, verify that VirtIO drivers are already installed in the source VMs.
+Determines whether the migration uses VirtIO devices or compatibility devices when `skipGuestConversion` is `true` (raw copy mode). This setting has no effect when `skipGuestConversion` is `false` because standard V2V conversion always uses VirtIO devices.
+* When you set `useCompatibilityMode` to `true` (default): {project-short} uses compatibility devices (SATA bus, E1000E NICs, USB) to ensure the VMs can boot after migration.
+* When you set `useCompatibilityMode` to `false`: {project-short} uses pre-installed VirtIO devices on source VMs for better performance. VMs without pre-installed VirtIO drivers do not boot on {virt} if you disable compatibility mode.
 
 `volumeNameTemplate`::
 Specifies a template for the volume interface name for the VMs in your plan. This is an optional label.

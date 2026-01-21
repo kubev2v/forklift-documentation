@@ -1,0 +1,46 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating-your-virtual-machines/assembly_troubleshooting-migration
+
+:_mod-docs-content-type: CONCEPT
+[id="con_device-compatibility-mode-raw-copy-migrations_{context}"]
+= Device compatibility mode for raw copy migrations
+
+[role="_abstract"]
+When you use raw copy mode, you can configure which device types {project-short} uses for migrated VMs through the *Use compatibility mode* setting.
+
+Compatibility devices (default)::
+By default, when you enable raw copy mode, {project-short} uses compatibility devices to ensure VMs can boot on {virt}:
++
+* SATA bus for disk controllers
+* E1000E NICs for network interfaces
+* USB controllers
++
+These emulated devices work without requiring additional drivers in the guest operating system, ensuring maximum bootability for migrated VMs.
+
+VirtIO devices::
+For source VMs that already have VirtIO drivers installed, you can disable compatibility mode to use VirtIO devices instead. VirtIO devices provide better performance:
++
+* VirtIO disk bus provides higher I/O throughput than SATA
+* VirtIO network interface provides better network performance than E1000E
++
+[IMPORTANT]
+====
+The *Use compatibility mode* setting only applies when you enable raw copy mode. When you disable raw copy mode (standard V2V conversion), {project-short} always uses VirtIO devices regardless of this setting.
+====
++
+[WARNING]
+====
+Before you disable compatibility mode, verify that VirtIO drivers are installed in the source VM. VMs without VirtIO drivers do not boot on {virt} if you disable compatibility mode.
+====
+
+When to disable compatibility mode::
+Consider disabling compatibility mode when:
++
+* Your source VMs are running modern operating systems with VirtIO drivers pre-installed, for example, recent versions of Red Hat Enterprise Linux or Windows with VirtIO drivers
+* Maximum performance is required for your workload
+* You have verified VirtIO driver presence in the source VM before migration
+
+Configuring compatibility mode::
+You can configure the compatibility mode setting when you create a migration plan. For more information, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#configuring-plan-settings-vmware_vmware[Configuring VMware migration plan settings].
+

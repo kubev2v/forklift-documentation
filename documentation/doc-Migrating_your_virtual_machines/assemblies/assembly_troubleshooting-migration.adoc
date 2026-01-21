@@ -28,6 +28,8 @@ include::../modules/virt-v2v-mtv.adoc[leveloffset=+2]
 
 include::../modules/raw-copy-mode.adoc[leveloffset=+2]
 
+include::../modules/con_device-compatibility-mode-raw-copy-migrations.adoc[leveloffset=+2]
+
 include::../modules/collected-logs-cr-info.adoc[leveloffset=+1]
 
 include::../modules/accessing-logs-ui.adoc[leveloffset=+2]
