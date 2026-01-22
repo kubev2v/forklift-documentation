@@ -1,0 +1,311 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-cnv.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_migrating-vms-cli-cnv_{context}"]
+
+= Running a Red Hat {virt} migration from the command-line
+
+[role="_abstract"]
+You can use a Red Hat {virt} provider as either a source provider or as a destination provider. You can migrate from an {virt} source provider by using the command-line interface (CLI).
+
+[NOTE]
+====
+The {ocp} cluster version of the source provider must be 4.16 or later.
+====
+
+.Procedure
+. Create a `Secret` manifest for the source provider credentials:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+  ownerReferences: 
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: <provider_name>
+      uid: <provider_uid>
+  labels:
+    createdForProviderType: openshift
+    createdForResourceType: providers
+type: Opaque
+stringData:
+  token: <token>
+  password: <password> 
+  insecureSkipVerify: <"true"/"false">
+  cacert: |
+    <ca_certificate>
+  url: <api_end_point>
+EOF
+----
++
+where:
+
+`ownerReferences`::
+Is an optional section in which you can specify a provider's `name` and `uid`.
+
+`<token>`::
+Specifies a token for a service account with `cluster-admin` privileges. If both `token` and `url` are left blank, the local {ocp-short} cluster is used.
+
+`<password>`::
+Specifies the user password.
+
+`<"true"/"false">`::
+Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+
+`cacert`::
+Specifies the CA cert object. When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
+
+`<api_end_point>`::
+Specifies the URL of the endpoint of the API server.
+
+. Create a `Provider` manifest for the source provider:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: openshift
+  url: <api_end_point>
+  secret:
+    name: <secret>
+    namespace: <namespace>
+EOF
+----
++
+where:
+
+`<api_end_point>`::
+Specifies the URL of the endpoint of the API server.
+
+`<secret>`::
+Specifies the name of the provider `Secret` CR.
+
+. Create a `NetworkMap` manifest to map the source and destination networks:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod
+      source:
+        name: <network_name>
+        type: pod
+    - destination:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+      source:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
+
+`type`::
+Specifies the network type. Allowed values are `pod`, `ignored`, and `multus`.
+
+`<network_attachment_definition>`::
+Specifies the network name. When the `type` is `multus`, use the {virt} (NAD) name.
+
+`<network_attachment_definition_namespace>`::
+Specifies the namespace of the {virt} NAD. Required only when the `type` is `multus`.
+
+. Create a `StorageMap` manifest to map source and destination storage:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode>
+      source:
+        name: <storage_class>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
+
+`<access_mode>`::
+Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
++
+. Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Hook
+metadata:
+  name: <hook>
+  namespace: <namespace>
+spec:
+  image: quay.io/kubev2v/hook-runner
+  serviceAccount:<service account>
+  playbook: |
+    LS0tCi0gbm...
+EOF
+----
++
+where:
+
+`<service account>`::
+Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
+
+`playbook`::
+Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
++
+[NOTE]
+====
+You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+====
+
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
++
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
++
+Configuring the IP address enables the interface to reach the configured gateway.
++
+[source,yaml,subs="attributes+"]
+----
+$ oc edit NetworkAttachmentDefinitions <name_of_the_NAD_to_edit>
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: <name_of_transfer_network>
+  namespace: <namespace>
+  annotations:
+    forklift.konveyor.io/route: <IP_address>
+----
+
+. Create a `Plan` manifest for the migration:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+metadata:
+  name: <plan>
+  namespace: <namespace>
+spec:
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+  map: 
+    network: 
+      name: <network_map>
+      namespace: <namespace>
+    storage: 
+      name: <storage_map>
+      namespace: <namespace>
+  targetNamespace: <target_namespace>
+  vms:
+    - name: <source_vm>
+      namespace: <namespace>
+      hooks: 
+        - hook:
+            namespace: <namespace>
+            name: <hook>
+          step: <step>
+EOF
+----
++
+where:
+
+`<plan>`::
+Specifies the name of the `Plan` CR.
+
+`map`::
+Specifies only one network map and one storage map per plan.
+
+`network`::
+Specifies a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
+
+`storage`::
+Specifies a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
+
+`hooks`::
+Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional label.
+
+`<hook>`::
+Specifies the name of the `Hook` CR.
+
+`<step>`::
+Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+
+. Create a `Migration` manifest to run the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Migration
+metadata:
+  name: <name_of_migration_cr>
+  namespace: <namespace>
+spec:
+  plan:
+    name: <name_of_plan_cr>
+    namespace: <namespace>
+  cutover: <optional_cutover_time>
+EOF
+----
++
+[NOTE]
+====
+If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
+====
+

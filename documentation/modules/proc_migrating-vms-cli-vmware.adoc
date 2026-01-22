@@ -1,0 +1,495 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_migrating-vms-cli-vmware_{context}"]
+
+= Running a VMware vSphere migration from the command-line
+
+[role="_abstract"]
+You can migrate from a {vmw} vSphere source provider by using the command-line interface (CLI).
+
+Considerations::
+
+* Anti-virus software can cause migrations to fail. It is strongly recommended to remove such software from source VMs before you start a migration. 
+* {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.  
+* To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks].
+
+.Prerequisites
+* If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
+
+.Procedure
+. Create a `Secret` manifest for the source provider credentials:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+  ownerReferences: 
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: <provider_name>
+      uid: <provider_uid>
+  labels:
+    createdForProviderType: vsphere
+    createdForResourceType: providers
+type: Opaque
+stringData:
+  user: <user>
+  password: <password> 
+  insecureSkipVerify: <"true"/"false">
+  cacert: |
+    <ca_certificate>
+  url: <api_end_point>
+EOF
+----
++
+where:
+
+`ownerReferences`::
+Is an optional section in which you can specify a provider's `name` and `uid`.
+
+`<user>`::
+Specifies the vCenter user or the ESX/ESXi user.
+
+`<password>`::
+Specifies the password of the vCenter user or the ESX/ESXi user.
+
+`<"true"/"false">`::
+Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+
+`cacert`::
+Specifies the CA cert object. When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
+
+`<api_end_point>`::
+Specifies the API endpoint URL of the vCenter or the ESX/ESXi, for example, `https://<vCenter_host>/sdk`.
+
+. Create a `Provider` manifest for the source provider:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: vsphere
+  url: <api_end_point>
+  settings:
+    vddkInitImage: <VDDK_image>
+    sdkEndpoint: vcenter
+  secret:
+    name: <secret>
+    namespace: <namespace>
+EOF
+----
++
+where:
+
+`<api_end_point>`::
+Specifies the URL of the API endpoint, for example, `https://<vCenter_host>/sdk`.
+
+`<VDDK_image>`::
+Specifies the VDDK image. This is an optional label, but it is strongly recommended to create a VDDK image to accelerate migrations. Follow OpenShift documentation to specify the VDDK image you created.
+
+`sdkEndpoint`::
+Specifies the URL used by the provider's SDK. Options: `vcenter` or `esxi`.
+
+`<secret>`::
+Specifies the name of the provider `Secret` CR.
+
+. Create a `Host` manifest:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Host
+metadata:
+  name: <vmware_host>
+  namespace: <namespace>
+spec:
+  provider:
+    namespace: <namespace>
+    name: <source_provider>
+  id: <source_host_mor>
+  ipAddress: <source_network_ip>
+EOF
+----
++
+where:
+
+`<source_provider>`::
+Specifies the name of the {vmw} vSphere `Provider` CR.
+
+`<source_host_mor>`::
+Specifies the Managed Object Reference (moRef) of the {vmw} vSphere host. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+
+`<source_network_ip>`::
+Specifies the IP address of the {vmw} vSphere migration network.
+
+. Create a `NetworkMap` manifest to map the source and destination networks:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod
+      source: 
+        id: <source_network_id>
+        name: <source_network_name>
+    - destination:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+      source:
+        id: <source_network_id>
+        name: <source_network_name>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
+
+`type`::
+Specifies the network type. Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
+
+`source`::
+Specifies the source network. You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {vmw} vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+
+`<network_attachment_definition>`::
+Specifies a network attachment definition (NAD) for each additional {virt} network.
+
+`<network_attachment_definition_namespace>`::
+Specifies the namespace of the {virt} NAD. Required only when `type` is `multus`.
+
+`namespace`::
+Specifies the namespace. If you are using a user-defined network (UDN), its namespace is defined in {virt}.
+
+. Create a `StorageMap` manifest to map source and destination storage:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode>
+      source:
+        id: <source_datastore>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
+
+`<access_mode>`::
+Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+
+`<source_datastore>`::
+Specifies the {vmw} vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+
+. Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Hook
+metadata:
+  name: <hook>
+  namespace: <namespace>
+spec:
+  image: quay.io/kubev2v/hook-runner
+  serviceAccount:<service account>
+  playbook: |
+    LS0tCi0gbm...
+EOF
+----
++
+where:
+
+`<service account>`::
+Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
+
+`playbook`::
+Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
++
+[NOTE]
+====
+You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+====
+
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
++
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
++
+Configuring the IP address enables the interface to reach the configured gateway.
++
+[source,yaml,subs="attributes+"]
+----
+$ oc edit NetworkAttachmentDefinitions <name_of_the_NAD_to_edit>
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: <name_of_transfer_network>
+  namespace: <namespace>
+  annotations:
+    forklift.konveyor.io/route: <IP_address>
+----
+
+. Create a `Plan` manifest for the migration:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+metadata:
+  name: <plan>
+  namespace: <namespace>
+spec:
+  warm: false
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+  map: 
+    network: 
+      name: <network_map>
+      namespace: <namespace>
+    storage: 
+      name: <storage_map>
+      namespace: <namespace>
+  preserveStaticIPs: 
+  networkNameTemplate: <network_interface_template>
+  pvcNameTemplate: <pvc_name_template>
+  pvcNameTemplateUseGenerateName: true
+  skipGuestConversion: false
+  targetAffinity: <affinity rule> 
+  targetLabels: 
+    label: <label> 
+  targetNodeSelector: 
+    <key>:<value>
+  targetNamespace: <target_namespace>
+  useCompatibilityMode: true
+  volumeNameTemplate: <volume_name_template>
+  vms: 
+    - id: <source_vm1>
+    - name: <source_vm2>
+      networkNameTemplate: <network_interface_template_for_this_vm>
+      pvcNameTemplate: <pvc_name_template_for_this_vm>
+      volumeNameTemplate: <volume_name_template_for_this_vm>
+      targetName: <target_name>
+      hooks: 
+        - hook:
+            namespace: <namespace>
+            name: <hook>
+          step: <step>
+
+EOF
+----
++
+where:
+
+`<plan>`::
+Specifies the name of the `Plan` CR.
+
+`warm`::
+Specifies whether the migration is warm - `true` - or cold - `false`. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
+
+`map`::
+Specifies the network map and the storage map used by the plan.
+
+`network`::
+Specifies a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
+
+`storage`::
+Specifies a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
+
+`preserveStaticIPs`::
+Specifies wheteher to prerserve static IP addresses. By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address.
+To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
+
+`networkNameTemplate`::
+Specifies a template for the network interface name for the VMs in your plan. This is an aoptional label.
+The template follows the Go template syntax and has access to the following variables:
+* `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
+* `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
+* `.NetworkType`: Specifies the network type. Options: `multus` or `pod`.
+* `.NetworkIndex`: Sequential index of the network interface (0-based).
++
+*Examples*
+* `"net-{{.NetworkIndex}}"`
+* `{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
++
+Variable names cannot exceed 63 characters. VM names geneated by templates must not include uppercase letters or violate RFC 1123 rules. These rules apply to a network name network template, a PVC name template, a VM name template, and a volume name template.
++
+[IMPORTANT]
+====
+{project-short} does not validate VM names generated by the templates described here. Migrations that include VMs whose names include uppercase letters or that violate RFC 1123 rules fail automatically. To avoid failures, you might want to run a Go script that uses the `sprig` methods that {project-short} supports. For tables documenting the methods that {project-short} supports, see xref:mtv-template-utility_vmware[{project-short} template utility for {vmw} VM names].
+====
+
+`pvcNameTemplate`::
+Specifies a template for the persistent volume claim (PVC) name for a plan. This is an optional label.
+The template follows the Go template syntax and has access to the following variables:
+* `.VmName`: Name of the VM.
+* `.PlanName`: Name of the migration plan.
+* `.DiskIndex`: Initial volume index of the disk.
+* `.RootDiskIndex`: Index of the root disk.
+* `.Shared`: Options: `true`, for a shared volume, `false`, for a non-shared volume.
++
+*Examples*
+* `"{{.VmName}}-disk-{{.DiskIndex}}"`
+* `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"`
+* `"{{if .Shared}}shared-{{end}}{{.VmName}}-{{.DiskIndex}}"`
+
+`pvcNameTemplateUseGenerateName`::
+Specifies whether to add alphanumeric characters to the name of a PVC.
+* When set to `true`, {project-short} adds one or more randomly generated alphanumeric characters to the name of the PVC in order to ensure all PVCs have unique names.
+* When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add such characters to the name of the PVC.
++
+[WARNING]
+====
+If you set `pvcNameTemplateUseGenerateName` to `false`, the generated PVC name might not be unique and might cause conflicts.
+====
+
+`skipGuestConversion`::
+Specifies whether VMs are converted before migration using the `virt-v2v` tool, which makes the VMs compatible with {virt}.
+* When set to `false`, the default value, {project-short} migrates VMs using `virt-v2v`.
+* When set to `true`, {project-short} migrates VMs using raw copy mode, which copies the VMs without converting them first.
++
+Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
+
+`targetAffinity`::
+Specifies a target affinity rule, which may be quite complex, is entered in lines following this label. This is an optional label.
++
+`targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
+
+`targetLabels`::
+Specifies organizational or operational labels to migrated VMs for identification and management. This is an optional label.
+
+`targetNodeSelector`::
+Specifies the key-value pairs that must be matched for VMs to be scheduled on nodes. This is an optional label.
+
+`useCompatibilityMode`::
+Determines whether the migration uses VirtIO devices or compatibility devices when `skipGuestConversion` is `true` (raw copy mode). This setting has no effect when `skipGuestConversion` is `false` because standard V2V conversion always uses VirtIO devices.
+* When you set `useCompatibilityMode` to `true` (default): {project-short} uses compatibility devices (SATA bus, E1000E NICs, USB) to ensure the VMs can boot after migration.
+* When you set `useCompatibilityMode` to `false`: {project-short} uses pre-installed VirtIO devices on source VMs for better performance. VMs without pre-installed VirtIO drivers do not boot on {virt} if you disable compatibility mode.
+
+`volumeNameTemplate`::
+Specifies a template for the volume interface name for the VMs in your plan. This is an optional label.
+The template follows the Go template syntax and has access to the following variables:
+** `.PVCName`: Name of the PVC mounted to the VM using this volume.
+** `.VolumeIndex`: Sequential index of the volume interface (0-based).
++
+*Examples*
+** `"disk-{{.VolumeIndex}}"`
+** `"pvc-{{.PVCName}}"`
+
+`vms`::
+Specifies the source VMs. Use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+
+`<source_vm1>`::
+Specifies the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+
+`networkNameTemplate`::
+Specifies a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in `spec:networkNameTemplate`. This is an optional label.
+
+`pvcNameTemplate`::
+Specifies a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in `spec:pvcNameTemplate`. This is an optional label.
+
+`volumeNameTemplate`::
+Specifies a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in `spec:volumeNameTemplate`. This is an optional label.
+
+`targetName`::
+Specifies the name of the target VM. {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique, and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically. This is an optional label.
+
+`hooks`::
+Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional label.
+
+`<hook>`::
+Specifies the name of the `Hook` CR.
+
+`<step>`::
+Specifies the type of hook. Allowed values are `PreHook` before the migration plan starts or `PostHook` after the migration is complete.
++
+[IMPORTANT]
+====
+When you migrate a {vmw} 7 VM to an {ocp-short} 4.13+ platform that uses CentOS 7.9, the name of the network interfaces changes and the static IP configuration for the VM no longer works.
+====
+
+. Create a `Migration` manifest to run the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Migration
+metadata:
+  name: <name_of_migration_cr>
+  namespace: <namespace>
+spec:
+  plan:
+    name: <name_of_plan_cr>
+    namespace: <namespace>
+  cutover: <optional_cutover_time>
+EOF
+----
++
+[NOTE]
+====
+If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
+====
++
+[IMPORTANT]
+====
+When you specify the user permissions only on the VM, the `forklift-controller` consistently fails to reconcile a migration plan, and subsequently returns an HTTP 500 error. 
+
+In {project-short}, you must add permissions at the data center level, which includes storage, networks, switches, and so on, which are used by the VM. You must then propagate the permissions to the child elements.
+
+If you do not want to add this level of permissions, you must manually add the permissions to each object on the VM host required.
+====
+

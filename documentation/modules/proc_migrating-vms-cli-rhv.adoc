@@ -1,0 +1,351 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
+
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_migrating-vms-cli-rhv_{context}"]
+
+= Running a {rhv-full} migration from the command-line
+
+[role="_abstract"]
+You can migrate from a {rhv-full} source provider by using the command-line interface (CLI).
+
+.Prerequisites
+* If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
+
+* If you are migrating a virtual machine with a direct LUN disk, ensure that the nodes in the {virt} destination cluster can access the backend storage.
+
+[NOTE]
+====
+* Unlike disk images that _are copied_ from a source provider to a target provider, LUNs are _detached_, _but not removed_, from virtual machines in the source provider and then attached to the virtual machines (VMs) that are created in the target provider.
+
+* LUNs are not removed from the source provider during the migration in case fallback to the source provider is required. However, before re-attaching the LUNs to VMs in the source provider, ensure that the LUNs are not used by VMs on the target environment at the same time, which might lead to data corruption.
+====
+
+.Procedure
+. Create a `Secret` manifest for the source provider credentials:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+  ownerReferences: 
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: <provider_name>
+      uid: <provider_uid>
+  labels:
+    createdForProviderType: ovirt
+    createdForResourceType: providers
+type: Opaque
+stringData:
+  user: <user>
+  password: <password> 
+  insecureSkipVerify: <"true"/"false">
+  cacert: |
+    <ca_certificate>
+  url: <api_end_point>
+EOF
+----
++
+where:
+
+`ownerReferences`::
+Is an optional section in which you can specify a provider's `name` and `uid`.
+
+`<user>`::
+Specifies the {rhv-full} {manager} user.
+
+`<password>`::
+Specifies the user's password.
+
+`<"true"/"false">`::
+Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
+
+`cacert`::
+Specifies the CA cert object. Enter the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
+
+`<api_end_point>`::
+Specifies the API endpoint URL, for example, `https://<engine_host>/ovirt-engine/api`.
+
+. Create a `Provider` manifest for the source provider:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: ovirt
+  url: <api_end_point>
+  secret:
+    name: <secret>
+    namespace: <namespace>
+EOF
+----
++
+where:
+
+`<api_end_point>`::
+Specifies the URL of the API endpoint, for example, `https://<engine_host>/ovirt-engine/api`.
+
+`<secret>`::
+Specifies the name of the provider `Secret` CR.
+
+. Create a `NetworkMap` manifest to map the source and destination networks:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod
+      source: 
+        id: <source_network_id>
+        name: <source_network_name>
+    - destination:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+      source:
+        id: <source_network_id>
+        name: <source_network_name>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
+
+`type`::
+Specifies the network type. Allowed values are `pod` and `multus`.
+
+`source`::
+Specifies the source network. You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-full} network Universal Unique ID (UUID).
+
+`<network_attachment_definition>`::
+Specifies a network attachment definition (NAD) for each additional {virt} network.
+
+`<network_attachment_definition_namespace>`::
+Specifies the namespace of the {virt} NAD. Required only when `type` is `multus`.
+
+`namespace`::
+Specifies the namespace. If you are using a user-defined network (UDN), its namespace is defined in {virt}.
+
+. Create a `StorageMap` manifest to map source and destination storage:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode>
+      source:
+        id: <source_storage_domain>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
+
+`<access_mode>`::
+Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+
+`<source_storage_domain>`::
+Specifies the {rhv-full} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+
+. Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Hook
+metadata:
+  name: <hook>
+  namespace: <namespace>
+spec:
+  image: quay.io/kubev2v/hook-runner
+  serviceAccount:<service account>
+  playbook: |
+    LS0tCi0gbm...
+EOF
+----
++
+where:
+
+`<service account>`::
+Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
+
+`playbook`::
+Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
++
+[NOTE]
+====
+You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+====
+
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
++
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
++
+Configuring the IP address enables the interface to reach the configured gateway.
++
+[source,yaml,subs="attributes+"]
+----
+$ oc edit NetworkAttachmentDefinitions <name_of_the_NAD_to_edit>
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: <name_of_transfer_network>
+  namespace: <namespace>
+  annotations:
+    forklift.konveyor.io/route: <IP_address>
+----
+
+. Create a `Plan` manifest for the migration:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+metadata:
+  name: <plan>
+  namespace: <namespace>
+  preserveClusterCpuModel: true
+spec:
+  warm: false
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+  map: 
+    network: 
+      name: <network_map>
+      namespace: <namespace>
+    storage: 
+      name: <storage_map>
+      namespace: <namespace>
+  targetNamespace: <target_namespace>
+  vms: 
+    - id: <source_vm1>
+    - name: <source_vm2>
+      hooks: 
+        - hook:
+            namespace: <namespace>
+            name: <hook>
+          step: <step>
+EOF
+----
++
+where:
+
+`<plan>`::
+Specifies the name of the `Plan` CR.
+
+`preserveClusterCpuModel`::
+Specifies whether a custom CPU model is used, as detailed in the note that follows.
+
+`warm`::
+Specifies whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
+
+`map`::
+Specifies the network map and the storage map used by the plan.
+
+`network`::
+Specifies a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
+
+`storage`::
+Specifies a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
+
+`vms`::
+Specifies the source VM. Use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+
+`<source_vm1>`::
+Specifies the {rhv-full} VM UUID.
+
+`hooks`::
+Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional label.
+
+`<hook>`::
+Specifies the name of the `Hook` CR.
+
+`<step>`::
+Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
++
+[NOTE]
+====
+* If the migrated machine is set with a custom CPU model, it will be set with that CPU model in the destination cluster, regardless of the setting of `preserveClusterCpuModel`.
+
+* If the migrated machine is _not_ set with a custom CPU model:
+
+** If `preserveClusterCpuModel` is set to `true`, {project-short} checks the CPU model of the VM when it runs in {rhv-full}, based on the cluster's configuration, and then sets the migrated VM with that CPU model.
+** If `preserveClusterCpuModel` is set to `false`, {project-short} does not set a CPU type and the VM is set with the default CPU model of the destination cluster.
+====
+
+. Create a `Migration` manifest to run the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Migration
+metadata:
+  name: <name_of_migration_cr>
+  namespace: <namespace>
+spec:
+  plan:
+    name: <name_of_plan_cr>
+    namespace: <namespace>
+  cutover: <optional_cutover_time>
+EOF
+----
++
+[NOTE]
+====
+If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
+====
+
