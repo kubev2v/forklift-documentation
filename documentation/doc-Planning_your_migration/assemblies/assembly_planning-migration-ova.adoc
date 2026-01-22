@@ -15,11 +15,11 @@ Create an OVA migration plan by setting up network maps, configuring source and 
 :context: ova
 :ova:
 
-include::../modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+1]
+include::../modules/creating-yaml-based-network-maps-ui-ova.adoc[leveloffset=+1]
 
 include::../modules/creating-form-based-storage-maps-ui-ova.adoc[leveloffset=+1]
 
-include::../modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+1]
+include::../modules/creating-yaml-based-storage-maps-ui-ova.adoc[leveloffset=+1]
 
 include::../modules/adding-source-provider.adoc[leveloffset=+1]
 

@@ -15,11 +15,11 @@ Create a VMware vSphere migration plan by setting up network maps, configuring s
 :context: vmware
 :vmware:
 
-include::../modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+1]
+include::../modules/creating-yaml-based-network-maps-ui-vmware.adoc[leveloffset=+1]
 
 include::../modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=+1]
 
-include::../modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+1]
+include::../modules/creating-yaml-based-storage-maps-ui-vmware.adoc[leveloffset=+1]
 
 include::../modules/adding-source-provider.adoc[leveloffset=+1]
 

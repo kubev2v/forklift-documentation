@@ -15,11 +15,11 @@ Create an {osp} migration plan by setting up network maps, configuring source an
 :context: ostack
 :ostack:
 
-include::../modules/creating-yaml-based-network-maps-ui.adoc[leveloffset=+1]
+include::../modules/creating-yaml-based-network-maps-ui-osp.adoc[leveloffset=+1]
 
 include::../modules/creating-form-based-storage-maps-ui-ostack.adoc[leveloffset=+1]
 
-include::../modules/creating-yaml-based-storage-maps-ui.adoc[leveloffset=+1]
+include::../modules/creating-yaml-based-storage-maps-ui-osp.adoc[leveloffset=+1]
 
 include::../modules/adding-source-provider.adoc[leveloffset=+1]
 
