@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-10-4_{context}"]
+= Resolved issues 2.10.4
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+NPE caused conversion type NatApp Shift migrations to fail::
+
+Before this update, during NetApp Shift migrations with `migration` type set to `conversion`, a null pointer exception (NPE) in the SSH readiness validation function caused validation to break. As a consequence, the controller stalled during validation, breaking the migration flow. With this release, the controller no longer stalls during validation in conversion mode, and conversion type migrations work as expected.
++
+link:https://issues.redhat.com/browse/MTV-4358[MTV-4358]
+
+Migrations of Red Hat Virtualization VMs with a direct LUN disk failed::
+
+Before this update, migrations of Red Hat Virtualization VMs with  a direct logical unit number (LUN) disk failed with the following error: `Disk has an invalid capacity of 0 bytes`. With this release, {project-short} validates the LUN size, instead of the disk size. As a result, migrations of Red Hat Virtualization VMs with direct LUN disks work as expected.
++
+link:https://issues.redhat.com/browse/MTV-4180[MTV-4180]
+
+Missing IP address warning displayed even when addresses were stored in inventory::
+
+Before this update, the warning for missing IP addresses was shown even when static IP addresses were stored in the {project-short} inventory. As a consequence, end users saw unnecessary warnings. With this release, the warning for missing IP addresses only appears when a static IP address is not stored, preventing incorrect warning messages.
++
+link:https://issues.redhat.com/browse/MTV-4407[MTV-4407]
