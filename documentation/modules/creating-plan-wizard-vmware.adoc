@@ -18,6 +18,11 @@ Do not include virtual machines with guest-initiated storage connections, such a
 This prevents concurrent disk access to the storage the guest points to.
 ====
 
+[WARNING]
+====
+{project-first} cannot migrate {vmw} vSphere 6 and {vmw} vSphere 7 VMs to a FIPS-compliant {virt} cluster.
+====
+
 [IMPORTANT]
 ====
 A plan cannot contain more than 500 VMs or 500 disks.
