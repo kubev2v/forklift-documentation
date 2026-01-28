@@ -16,6 +16,11 @@ Considerations::
 * {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.  
 * To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks].
 
+[WARNING]
+====
+{project-first} cannot migrate {vmw} vSphere 6 and {vmw} vSphere 7 VMs to a FIPS-compliant {virt} cluster.
+====
+
 .Prerequisites
 * If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
 
