@@ -5,7 +5,7 @@ ifdef::context[:parent-context: {context}]
 
 [id="assembly_planning-migration-vmware_{context}"]
 
-= Planning migration of virtual machines from VMware vSphere
+= Planning a migration of virtual machines from VMware vSphere
 
 //:context: planning-vmware
 
@@ -20,6 +20,22 @@ include::../modules/creating-yaml-based-network-maps-ui-vmware.adoc[leveloffset=
 include::../modules/creating-form-based-storage-maps-ui-vmware.adoc[leveloffset=+1]
 
 include::../modules/creating-yaml-based-storage-maps-ui-vmware.adoc[leveloffset=+1]
+
+include::../modules/about-storage-copy-offload.adoc[leveloffset=+1]
+
+include::../modules/proc_storage-copy-offload-steps.adoc[leveloffset=+2]
+
+include::../modules/con_copy-methods-sco.adoc[leveloffset=+2]
+
+include::../modules/proc_storage-copy-offload-vib-set-up.adoc[leveloffset=+3]
+
+include::../modules/proc_storage-copy-offload-general-ssh-set-up.adoc[leveloffset=+3]
+
+include::../modules/proc_storage-copy-offload-auto-ssh-set-up.adoc[leveloffset=+4]
+
+include::../modules/proc_storage-copy-offload-manual-ssh-set-up.adoc[leveloffset=+4]
+
+include::../modules/proc_storage-copy-offload-ui.adoc[leveloffset=+2]
 
 include::../modules/adding-source-provider.adoc[leveloffset=+1]
 
