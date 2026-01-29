@@ -6,6 +6,9 @@
 [id="resolved-issues-2-10-3_{context}"]
 = Resolved issues 2.10.3
 
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
 FC based migrations with Dell PowerStore storage fail during host registration::
 
 Before this update, virtual machine (VM) migrations that used Fibre Channel (FC) with Dell PowerStore storage could fail during storage offload. MTV attempted to register FC initiators by using the adapter ID format instead of the World Wide Port Name (WWPN), which caused host registration to fail and prevented persistent volume mapping. With this release, MTV correctly extracts and uses the WWPN for FC initiators, allowing migrations that use Dell PowerStore storage to complete successfully.

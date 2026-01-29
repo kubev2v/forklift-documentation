@@ -6,5 +6,8 @@
 [id="security-fixes-2-10-3_{context}"]
 = Security fixes 2.10.3
 
+[role="_abstract"]
+Review the security fixes in this release of {project-short}.
+
 * link:https://access.redhat.com/security/cve/CVE-2025-66031[CVE-2025-66031]
 * link:https://access.redhat.com/security/cve/CVE-2025-12816[CVE-2025-12816]

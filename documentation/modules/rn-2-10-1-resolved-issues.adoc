@@ -6,6 +6,9 @@
 [id="resolved-issues-2-10-1_{context}"]
 = Resolved issues 2.10.1
 
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
 Migrations stalled when conversion pod and `forklift-controller` pod were on different networks::
 Before this update, migrations stalled when the conversion pod was on a different network than the `forklift-controller` pod. With this update, the network issue is resolved, and the `forklift-controller` can access the conversion pod to perform the migration.
 +

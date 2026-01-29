@@ -111,15 +111,10 @@ $ oc get -n konveyor-forklift hook playbook -o \
 where:
 
 <type_of_hook>::
-Specifies the type of hook. Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration.
-
-[IMPORTANT]
-====
-In order for a PreHook to run on a VM, the VM must be started and available via SSH.
-====
-
+Specifies the type of hook. Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration. In order for a PreHook to run on a VM, the VM must be started and available via SSH.
++
 The example migration hook that follows ensures that the VM can be accessed using SSH, creates an SSH key, and runs two tasks: stopping the Maria database and generating a text file.
-
++
 [source,yaml,subs="attributes+"]
 ----
 - name: Main
