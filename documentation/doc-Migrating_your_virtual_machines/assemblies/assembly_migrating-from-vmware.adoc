@@ -28,6 +28,8 @@ include::../modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 include::../modules/proc_migrating-vms-cli-vmware.adoc[leveloffset=+1]
 
+include::../modules/proc_storage-copy-offload-cli.adoc[leveloffset=+1]
+
 include::../modules/retrieving-vmware-moref.adoc[leveloffset=+2]
 
 include::../modules/mtv-shared-disks.adoc[leveloffset=+2]

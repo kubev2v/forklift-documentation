@@ -1,0 +1,79 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="about-storage-copy-offload_{context}"]
+= Migrating {vmw} virtual machines by using storage copy offload
+
+[role="_abstract"]
+You can migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently by using a method called _storage copy offload_. You use this method to accelerate migration speed and reduce the load on your network.
+
+{vmw}'s vSphere Storage APIs-Array Integration (VAAI) includes a command named `vmkfstools`. This command sends the `XCOPY` command, which is part of the SCSI protocol. The `XCOPY` command lets you copy data inside a SAN more efficiently than copying the data over a network. The command is executed by a populator named `vsphere-xcopy-volume-populator`.
+
+{project-first} 2.10.0 leverages this command as the basis for storage copy offload, which clones your VMs' data to the storage hardware instead of transmitting it between {project-short} and {virt}. This improved migration saves both time and resources.
+
+You enable storage copy offload by configuring the storage map in your migration plan to point to your storage array instead of the network you usually use for migration. When you start the migration plan, {project-short} migrates your VMs by copying them to the storage array you choose and using `XCOPY` to copy them directly to {virt}, instead of transmitting the contents of your VMs to {virt}.
+
+The storage copy offload feature has some unique configuration prerequisites, which are discussed in link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-steps[Planning and running storage copy offload migrations]. Once you configure your system, you can migrate plans using storage copy offload by using either the {project-short} UI or its CLI. Instructions for using storage offload have been integrated into the procedures for migrating {vmw} VMs for both the UI and CLI.
+
+You must ensure that your migration plans do not mix VDDK mappings with copy-offload mappings. Because the migration controller copies disks either through CDI volumes (VDDK) or through Volume Populators (copy-offload), all storage pairs in the plan must either include copy-offload details (a `Secret` + product) or none of them must. Otherwise, the plan fails.
+
+Storage copy offload is available as a Technology Preview feature for {project-first} 2.10.0 for cold migration and as a Developer Preview feature for warm migration.
+
+[IMPORTANT]
+====
+Storage copy offload for cold migration is a Technology Preview feature only. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+
+For more information about the support scope of Red Hat Technology Preview
+features, see https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
+====
+
+[IMPORTANT]
+====
+Storage copy offload for warm migration is a Developer Preview feature only. Developer Preview software is not supported by Red{nbsp}Hat in any way and is not functionally complete or production-ready. Do not use Developer Preview software for production or business-critical workloads. Developer Preview software provides early access to upcoming product software in advance of its possible inclusion in a Red{nbsp}Hat product offering. Customers can use this software to test functionality and provide feedback during the development process. This software might not have any documentation, is subject to change or removal at any time, and has received limited testing. Red{nbsp}Hat might provide ways to submit feedback on Developer Preview software without an associated SLA.
+
+For more information about the support scope of Red{nbsp}Hat Developer Preview software, see link:https://access.redhat.com/support/offerings/devpreview/[Developer Preview Support Scope].
+====
+
+[id="how-storage-copy-offload-works_{context}"]
+== How storage copy offload works 
+
+Without storage copy offload, {project-short} migrates a virtual disk as follows:
+
+. {project-short} reads the disk from the source storage.
+. {project-short} sends the data over a network to {virt}.
+. {virt} writes the data to its storage.
++
+This method can be slow and consume significant network and host resources.
+
+With storage copy offload, the process is streamlined:
+
+. {project-short} initiates a disk transfer request.
+. Instead of sending the data, {project-short} instructs the storage array in which the vSphere Virtual Machine File System (VMFS) datastore holds the source VMs to perform a direct copy from the source storage to the target volume, on the same array, in the correct storage class.
++
+The storage array handles the cloning of the VM disk internally, often at a much higher speed than a network-based transfer.
+
+The Forklift project, a key component of {project-short}, includes a specialized volume populator named `vsphere-xcopy-volume-populator` that directly interacts with {vmw}'s VAAI. This allows {project-short} to trigger the high-speed, array-level data copy operation for supported storage systems.
+
+[IMPORTANT]
+====
+The storage arrays must be the ones specified above. Otherwise, XCOPY performs a fallback network disk copy on the ESXi. Although a fallback network disk copy on the ESXi is usually considerably faster than a standard migration using a VDDK image over the network, it is not as quick as a properly configured storage copy offload migration.
+====
+
+[id="storage-copy-offload-works-supported-providers_{context}"]
+== Supported storage providers
+
+The following storage providers support storage copy offload:
+
+* Hitachi Vantara
+* NetApp ONTAP
+* Pure Storage FlashArray
+* Dell PowerMax
+* Dell PowerFlex
+* Dell PowerStore
+* HPE 3PAR
+* HPE Primera
+* Infinidat Infinibox
+* IBM Flashsystem
+

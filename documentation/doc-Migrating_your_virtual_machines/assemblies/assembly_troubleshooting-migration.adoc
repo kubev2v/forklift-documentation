@@ -16,6 +16,8 @@ Troubleshoot migration issues, navigate custom resources (CRs), services, and wo
 
 include::../modules/error-messages.adoc[leveloffset=+1]
 
+include::../modules/con_troubleshooting-storage-copy-offload.adoc[leveloffset=+1]
+
 include::../modules/using-must-gather.adoc[leveloffset=+1]
 
 include::../modules/mtv-resources-and-services.adoc[leveloffset=+1]

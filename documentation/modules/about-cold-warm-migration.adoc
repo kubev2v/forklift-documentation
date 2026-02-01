@@ -58,9 +58,6 @@ You can start the cutover stage manually by using the {project-short} console or
 The table that follows offers a more detailed description of the advantages and disadvantages of cold migration and warm migration. It assumes that you have installed Red Hat Enterprise Linux (RHEL) 9 on the {ocp} platform on which you installed {project-short}:
 
 [cols="1,1,1",options="header"]
-.Detailed description of advantages and disadvantages
-
-[cols="1,1,1",options="header"]
 .Advantages and disadvantages of cold and warm migrations 
 |===
 |
