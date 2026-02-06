@@ -39,7 +39,7 @@ Warm migration is only supported when migrating from {vmw} vSphere or {rhv-full}
 Use warm migration when:
 
 * *You must minimize downtime for a critical workload*: The process is designed to reduce the service interruption to a few minutes, or even just seconds, during the final cutover phase.
-* *The VM is a production server or a business-critical application*: For applications that need to be available 24x7, warm migration is the preferred choice to ensure business continuity.
+* *The VM is a production server or a business-critical application*: For applications that need continuous availability, warm migration is the preferred choice to ensure business continuity.
 * *You are migrating VMs with large amounts of data spread across multiple disks*: Parallel disk transfers reduce overall migration time.
 * *You need to stage the migration over a period of time*: Warm migration copies the majority of the VM data (the precopy stage) while the VM is still running. This allows you to perform the bulk of the data transfer during business hours without impacting users.
 * *You have a pre-planned maintenance window for the final cutover*: Even with warm migration, there is a brief period of downtime when the VM is shut down to perform the final data synchronization. You can schedule this cutover for a time with the least impact.
@@ -81,7 +81,7 @@ Use the following guide to select the appropriate migration type:
 |Cold migration
 |VM is fully shut down with no risk of data changes during migration.
 
-|Production workload requiring 24x7 availability
+|Production workload requiring continuous availability
 |Warm migration
 |Service interruption reduced to seconds or minutes during cutover.
 

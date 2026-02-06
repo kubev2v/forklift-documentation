@@ -54,11 +54,11 @@ Invalid VM names include those that:
 
 For {vmw} environments, you can use Storage vMotion to rename the VM before migration. This migration process automatically renames the VM's files and folder on the datastore to match the new name you have given it in the vSphere Client. Alternatively, you can manually remove the VM from inventory, rename the files and folders, edit the `.vmx` file to update the references, and then re-add the VM to the inventory.
 
-For more information about renaming VMs in the {project-short} UI, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines].
+For more information about renaming VMs in the {project-short} UI, see link:{mtv-plan}assembly_migrating-vms-web-console_mtv#proc_renaming-vms-for-migration_mtv[Renaming virtual machines].
 
 [role="_additional-resources"]
 .Additional resources
 
-* xref:ref_source-vm-migration-considerations_{context}[Source VM migration considerations]
-* xref:vmware-prerequisites_{context}[{vmw} prerequisites]
-* xref:about-cold-warm-migration_{context}[About cold and warm migration]
+* link:{mtv-plan}assembly_software-requirements-for-migration_mtv#ref_source-vm-migration-considerations_mtv[Source VM migration considerations]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites]
+* link:{mtv-plan}assembly_cold-warm-migration_mtv#about-cold-warm-migration_mtv[About cold and warm migration]

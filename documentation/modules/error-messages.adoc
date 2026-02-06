@@ -24,7 +24,7 @@ This section provides a quick reference for common error messages encountered du
 
 |`An error occurred while taking a snapshot: Failed to restart the virtual machine`
 |Displayed during warm migration of Microsoft Windows VMs when the Volume Shadow Copy Service (VSS) is not running on the guest operating system.
-|xref:vmware-prerequisites_{context}[{vmw} prerequisites]
+|link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites]
 
 |`ConnectionTestFailed`
 |Displayed when creating an Open Virtual Appliance (OVA) provider. Error messages might appear before the provider status changes to `Ready`.
@@ -40,7 +40,7 @@ This section provides a quick reference for common error messages encountered du
 
 |`VM name validation failed: Invalid DNS name`
 |Displayed when a source VM name does not comply with Kubernetes DNS naming requirements.
-|xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines]
+|link:{mtv-plan}assembly_migrating-vms-web-console_mtv#proc_renaming-vms-for-migration_mtv[Renaming virtual machines]
 
 |`Cannot derive SVM to use; please specify SVM in config file`
 |Displayed during storage copy offload operations with NetApp storage when ONTAP is not configured correctly.

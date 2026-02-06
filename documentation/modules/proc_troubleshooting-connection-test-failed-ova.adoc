@@ -39,4 +39,4 @@ $ oc logs -n openshift-mtv deployment/forklift-controller
 [role="_additional-resources"]
 .Additional resources
 
-* xref:ova-prerequisites_{context}[OVA prerequisites]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ova-prerequisites_mtv[OVA prerequisites]

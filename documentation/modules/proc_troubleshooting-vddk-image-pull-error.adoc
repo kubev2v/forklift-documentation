@@ -63,4 +63,4 @@ $ oc get secrets -n <provider_namespace>
 [role="_additional-resources"]
 .Additional resources
 
-* xref:creating-vddk-image_mtv[Creating a VDDK image]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#creating-vddk-image_mtv[Creating a VDDK image]
