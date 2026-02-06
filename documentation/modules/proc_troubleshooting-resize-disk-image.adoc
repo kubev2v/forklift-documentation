@@ -9,7 +9,7 @@
 [role="_abstract"]
 The `Unable to resize disk image to required size` error occurs when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage.
 
-The problem occurs because the default overhead that is assumed by the Containerized Data Importer (CDI) does not completely include the reserved space for the root partition on EXT4 file systems.
+The problem occurs because the default file system overhead that is assumed by the Containerized Data Importer (CDI) does not completely include the reserved space for the root partition on EXT4 file systems.
 
 .Prerequisites
 
@@ -28,7 +28,7 @@ $ oc edit cdi -n openshift-cnv
 +
 .. Locate the `filesystemOverhead` configuration section.
 +
-.. Set the global overhead percentage to a value greater than `0.10` (10%):
+.. Set the global file system overhead percentage to a value greater than `0.10` (10%):
 +
 [source,yaml]
 ----

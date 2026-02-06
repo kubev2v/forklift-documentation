@@ -2,8 +2,8 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
 
-:_mod-docs-content-type: CONCEPT
-[id="con_troubleshooting-workflow_{context}"]
+:_mod-docs-content-type: PROCEDURE
+[id="proc_troubleshooting-workflow_{context}"]
 = Troubleshooting workflow
 
 [role="_abstract"]

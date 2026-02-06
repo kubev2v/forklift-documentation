@@ -19,7 +19,7 @@ This section provides a quick reference for common error messages encountered du
 |xref:proc_troubleshooting-warm-import-retry-limit_{context}[Resolving warm import retry limit errors]
 
 |`Unable to resize disk image to required size`
-|Displayed when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage. The default overhead assumed by CDI does not include the reserved space for the root partition.
+|Displayed when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage. The default file system overhead assumed by CDI does not include the reserved space for the root partition.
 |xref:proc_troubleshooting-resize-disk-image_{context}[Resolving disk resize errors]
 
 |`An error occurred while taking a snapshot: Failed to restart the virtual machine`

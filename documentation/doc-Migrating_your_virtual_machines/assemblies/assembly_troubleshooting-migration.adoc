@@ -14,7 +14,7 @@ Troubleshoot migration issues by following diagnostic workflows, resolving commo
 :context: mtv
 :mtv:
 
-include::../modules/con_troubleshooting-workflow.adoc[leveloffset=+1]
+include::../modules/proc_troubleshooting-workflow.adoc[leveloffset=+1]
 
 include::../modules/con_common-migration-issues.adoc[leveloffset=+1]
 

@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_understanding-mtv-migration.adoc
 
 :_mod-docs-content-type: CONCEPT
 [id="mtv-workflow_{context}"]
