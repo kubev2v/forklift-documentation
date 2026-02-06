@@ -16,12 +16,7 @@ The VMs are not shut down during the precopy stage.
 
 The VM disks are copied incrementally by using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment.
 
-[IMPORTANT]
-====
-You must enable CBT for each source VM and each VM disk.
-
 A VM can support up to 28 CBT snapshots. If the source VM has too many CBT snapshots and the `Migration Controller` service is not able to create a new snapshot, warm migration might fail. The `Migration Controller` service deletes each snapshot when the snapshot is no longer required.
-====
 
 The precopy stage runs until the cutover stage is started manually or is scheduled to start.
 
@@ -32,3 +27,9 @@ The VMs are shut down during the cutover stage and the remaining data is migrate
 You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` manifest.
 
 The duration of the cutover stage depends on how much data has changed since the last snapshot was created during the precopy stage.
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:about-cold-warm-migration_{context}[About cold and warm migration]
+* xref:con_choosing-migration-type_{context}[Choosing a migration type]

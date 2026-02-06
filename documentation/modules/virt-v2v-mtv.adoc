@@ -31,7 +31,6 @@ During migration, {project-short} uses `virt-v2v` to collect metadata about VMs,
 ** Configuration settings that are incompatible with the target system, for example, old boot settings.
 
 If you are migrating from {vmw} or from Open Virtual Appliances (OVA) files, `virt-v2v` also sets their IP addresses either during the migration or during the first reboot of the VMs after migration.
-s
 [NOTE]
 ====
 You can also run predefined Ansible hooks before or after a migration using {project-short}. For more information, see xref:about-hooks-for-migration-plans_mtv[About hooks for MTV migration plans].

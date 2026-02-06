@@ -8,7 +8,7 @@
 = About cold and warm migration
 
 [role="_abstract"]
-{project-short} provides two migration types: cold migration for powered-off VMs and warm migration for powered-on VMs. Cold migration works with {vmw} vSphere, {rhv-full}, {osp}, Open Virtual Appliances (OVAs) created by {vmw} vSphere, and remote {virt} clusters. Warm migration works with {vmw} vSphere and {rhv-full}.
+{project-short} provides two migration types: cold migration for VMs that are shut down and warm migration for running VMs. Cold migration works with {vmw} vSphere, {rhv-full}, {osp}, Open Virtual Appliances (OVAs) created by {vmw} vSphere, and remote {virt} clusters. Warm migration works with {vmw} vSphere and {rhv-full}.
 
 == Cold migration
 
@@ -34,12 +34,7 @@ The migration process has two stages:
 * *Precopy stage*: Most data is copied while VMs continue running. VM disks are copied incrementally using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots.
 * *Cutover stage*: VMs are shut down and the remaining data is migrated. Data stored in RAM is not migrated.
 
-Warm migration transfers snapshots to {ocp-short} first, then converts the VM during cutover. This means disk blocks may be copied multiple times if the VM has high utilization, but VMs remain available during most of the migration process.
-
-[IMPORTANT]
-====
-You must enable CBT for each source VM and each VM disk before starting a warm migration.
-====
+Warm migration transfers snapshots to {ocp-short} first, then converts the VM during the cutover stage. This means disk blocks may be copied multiple times if the VM has high utilization, but VMs remain available during most of the migration process. You must enable CBT for each source VM and each VM disk before starting a warm migration.
 
 [role="_additional-resources"]
 .Additional resources

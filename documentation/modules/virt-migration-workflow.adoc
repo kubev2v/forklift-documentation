@@ -20,7 +20,7 @@ You can use the detailed migration workflow to troubleshoot a failed migration.
 
 The workflow describes the following steps:
 
-*Warm Migration or migration to a remote {ocp-name} cluster:*
+*Warm migration or migration to a remote {ocp-name} cluster:*
 
 . When you create the `Migration` custom resource (CR) to run a migration plan, the `Migration Controller` service creates a `DataVolume` CR for each source VM disk.
 +
@@ -70,7 +70,7 @@ The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 
 . The `Containerized Data Importer (CDI) Controller` service creates a blank persistent volume claim (PVC) based on the parameters specified in the `DataVolume` CR.
 . If the `StorageClass` has a dynamic provisioner, the persistent volume (PV) is dynamically provisioned by the `StorageClass` provisioner.
-
++
 *For all VM disks:*
 
 . The `Migration Controller` service creates a dummy pod to bind *all PVCs*. The name of the pod contains `pvcinit`.
@@ -78,6 +78,7 @@ The `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 . The `conversion` pod runs `virt-v2v`, which converts the VM to the KVM hypervisor and transfers the disks' data to their corresponding PVs.
 +
 *After the VM disks are transferred:*
+
 . The `Migration Controller` service creates a `VirtualMachine` CR for each source virtual machine (VM), connected to the PVCs.
 . If the VM ran on the source environment, the `Migration Controller` powers on the VM, the `KubeVirt Controller` service creates a `virt-launcher` pod and a `VirtualMachineInstance` CR.
 +

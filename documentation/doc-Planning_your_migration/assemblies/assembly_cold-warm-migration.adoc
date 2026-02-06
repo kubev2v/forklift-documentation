@@ -12,7 +12,7 @@ ifdef::context[:parent-context: {context}]
 //:context: cold-warm-migration
 
 [role="_abstract"]
-{project-short} supports cold migration for powered-off VMs and warm migration for powered-on VMs with minimal downtime.
+{project-short} supports cold migration for VMs that are shut down and warm migration for running VMs with minimal downtime.
 
 include::../modules/about-cold-warm-migration.adoc[leveloffset=+1]
 
