@@ -82,5 +82,5 @@ $ tar -czf must-gather-$(date +%Y%m%d-%H%M%S).tar.gz must-gather.local.*
 [role="_additional-resources"]
 .Additional resources
 
-* For detailed information about collected logs and custom resources, see xref:collected-logs-cr-info_{context}[Logs and custom resources for troubleshooting].
-* For specific error resolution steps, see xref:error-messages_{context}[Error messages].
+* xref:collected-logs-cr-info_{context}[Logs and custom resources for troubleshooting]
+* xref:error-messages_{context}[Error messages]
