@@ -9,28 +9,30 @@ ifdef::context[:parent-context: {context}]
 //:context: troubleshooting
 
 [role="_abstract"]
-Troubleshoot migration issues, navigate custom resources (CRs), services, and workflows, and download logs and CRs for troubleshooting information.
+Troubleshoot migration issues by following diagnostic workflows, resolving common errors, and collecting logs for analysis.
 
 :context: mtv
 :mtv:
 
+include::../modules/con_troubleshooting-workflow.adoc[leveloffset=+1]
+
+include::../modules/con_common-migration-issues.adoc[leveloffset=+1]
+
 include::../modules/error-messages.adoc[leveloffset=+1]
+
+include::../modules/proc_troubleshooting-warm-import-retry-limit.adoc[leveloffset=+2]
+
+include::../modules/proc_troubleshooting-resize-disk-image.adoc[leveloffset=+2]
+
+include::../modules/proc_troubleshooting-connection-test-failed-ova.adoc[leveloffset=+2]
+
+include::../modules/proc_troubleshooting-vddk-image-pull-error.adoc[leveloffset=+2]
+
+include::../modules/proc_troubleshooting-vddk-required-vsan.adoc[leveloffset=+2]
 
 include::../modules/con_troubleshooting-storage-copy-offload.adoc[leveloffset=+1]
 
 include::../modules/using-must-gather.adoc[leveloffset=+1]
-
-include::../modules/mtv-resources-and-services.adoc[leveloffset=+1]
-
-include::../modules/mtv-workflow.adoc[leveloffset=+1]
-
-include::../modules/virt-migration-workflow.adoc[leveloffset=+2]
-
-include::../modules/virt-v2v-mtv.adoc[leveloffset=+2]
-
-include::../modules/raw-copy-mode.adoc[leveloffset=+2]
-
-include::../modules/con_device-compatibility-mode-raw-copy-migrations.adoc[leveloffset=+2]
 
 include::../modules/collected-logs-cr-info.adoc[leveloffset=+1]
 

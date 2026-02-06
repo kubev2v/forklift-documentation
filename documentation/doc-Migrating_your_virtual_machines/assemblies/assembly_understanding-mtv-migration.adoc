@@ -1,0 +1,34 @@
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_understanding-mtv-migration_{context}"]
+
+= Understanding MTV migration
+
+//:context: understanding-mtv
+
+[role="_abstract"]
+Understand the {project-first} custom resources, services, and workflows that enable virtual machine migration to {virt}.
+
+:context: mtv
+:mtv:
+
+include::../modules/mtv-resources-and-services.adoc[leveloffset=+1]
+
+include::../modules/mtv-workflow.adoc[leveloffset=+1]
+
+include::../modules/virt-migration-workflow.adoc[leveloffset=+2]
+
+include::../modules/virt-v2v-mtv.adoc[leveloffset=+2]
+
+include::../modules/raw-copy-mode.adoc[leveloffset=+2]
+
+include::../modules/con_device-compatibility-mode-raw-copy-migrations.adoc[leveloffset=+2]
+
+
+:mtv!:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+

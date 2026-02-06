@@ -1,0 +1,75 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_choosing-migration-type_{context}"]
+= Choosing a migration type
+
+[role="_abstract"]
+Choose the migration type that best fits your requirements for downtime, migration speed, and source VM compatibility.
+
+*When to use cold migration*
+
+Use cold migration when:
+
+* You can afford to shut down VMs during migration
+* You are migrating VMs with large amounts of data on a single disk
+* You are migrating from {osp} or OVA sources
+* Changed block tracking (CBT) cannot be enabled on the source VMs
+* You want the fastest migration for individual VMs with minimal complexity
+
+Cold migration shuts down the source VMs and copies all data in a single operation. Each VM is converted to be compatible with {ocp-short} before transfer, which means migrations fail immediately if conversion is not possible.
+
+*When to use warm migration*
+
+Use warm migration when:
+
+* You need to minimize VM downtime
+* You are migrating VMs with large amounts of data spread across multiple disks
+* The source VMs must remain running during most of the migration process
+* You can enable CBT on the source VMs and disks
+
+Warm migration copies most of the data while VMs remain running, then shuts down VMs only during the final cutover stage to copy remaining data. This approach significantly reduces downtime but may take longer overall for VMs with high utilization.
+
+*Decision guide*
+
+Use the following guide to select the appropriate migration type:
+
+[cols="1,2,2",options="header"]
+.Migration type decision guide
+|===
+|Your priority |Recommended migration type |Key consideration
+
+|Minimize downtime
+|Warm migration
+|Requires CBT enabled on source VMs and disks. Most data transfers while VMs run.
+
+|Fastest migration for single-disk VMs
+|Cold migration
+|VMs are shut down during entire migration. Each disk block copied once.
+
+|Migrating from {osp} or OVA
+|Cold migration
+|Warm migration is not supported for these source types.
+
+|Cannot enable CBT
+|Cold migration
+|Warm migration requires CBT to track changes incrementally.
+
+|Multi-disk VMs with even data distribution
+|Warm migration
+|Parallel disk transfers reduce overall migration time despite longer total duration.
+
+|Fail-fast validation
+|Cold migration
+|Conversion happens first, so incompatible VMs fail immediately without data transfer.
+
+|===
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:about-cold-warm-migration_{context}[About cold and warm migration]
+* xref:vmware-prerequisites_{context}[{vmw} prerequisites]
+* xref:rhv-prerequisites_{context}[{rhv-full} prerequisites]

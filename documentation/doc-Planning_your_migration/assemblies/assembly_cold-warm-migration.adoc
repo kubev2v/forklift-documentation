@@ -16,6 +16,8 @@ Cold migration is when a powered *_off_* virtual machine (VM) is migrated to a s
 
 Warm migration is when a powered *_on_* VM is migrated to a separate host. A source host state is cloned to the destination host.
 
+include::../modules/con_choosing-migration-type.adoc[leveloffset=+1]
+
 include::../modules/about-cold-warm-migration.adoc[leveloffset=+1]
 
 include::../modules/mtv-migration-speed-comparison.adoc[leveloffset=+1]

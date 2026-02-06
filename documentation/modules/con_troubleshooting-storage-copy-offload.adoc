@@ -51,7 +51,18 @@ Manual SSH key connection errors::
 
 ** Timeout issue (least likely issue)
 +
-*Solution*: Increase the value of `SSH_TIMEOUT_SECONDS` in the provider `Secret`.
+*Solution*: Increase the value of `SSH_TIMEOUT_SECONDS` in the provider `Secret`:
++
+... Edit the provider Secret:
++
+[source,terminal]
+----
+$ oc edit secret <provider_secret_name> -n openshift-mtv
+----
++
+... Add or update the `SSH_TIMEOUT_SECONDS` field with a higher value (for example, `300` for 5 minutes).
++
+... Save and close the editor.
 +
 Verification steps for the preceding solutions:
 +
@@ -59,14 +70,14 @@ Verification steps for the preceding solutions:
 +
 [source,terminal]
 ----
-$ vim-cmd hostsvc/get_ssh_status 
+$ vim-cmd hostsvc/get_ssh_status
 ----
 +
 ** To manually test SSH connectivity from a migration pod, run the following command:
 +
 [source,terminal]
 ----
-$ ssh -i /path/to/<private_key> root@<ESXI_host_Ip>
+$ ssh -i /path/to/<private_key> root@<ESXI_host_IP>
 ----
 
 [id=sco-netapp-issues_{context}]

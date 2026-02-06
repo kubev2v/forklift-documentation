@@ -1,0 +1,64 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_common-migration-issues_{context}"]
+= Common migration issues
+
+[role="_abstract"]
+This section describes common issues that users encounter when planning and executing virtual machine migrations, and how to avoid or resolve them.
+
+*My virtual machine fails to migrate or behaves unexpectedly after migration. Is the operating system supported?*
+
+Check the official list of link:https://access.redhat.com/articles/973163#ocpvirt[guest operating systems supported by {virt}] for your version of {ocp-short}. If the operating system is not on the list, it might cause migration failures or unexpected behavior after the migration is complete. The VM operating system must be certified and supported for use as a guest operating system with {virt} _and_ for link:https://access.redhat.com/articles/1351473[conversion to KVM with `virt-v2v`].
+
+*My migration plan shows a "Destination network not found" error. What should I do?*
+
+Verify that you have created a network mapping that correctly links the source network from your source environment to the destination network attachment definition in {virt}. If the network map displays a "Destination network not found" error, you must create a network attachment definition for the destination network before the migration can proceed.
+
+To resolve this issue:
+
+. Create the required network attachment definition in {virt}.
+. Update or recreate your network mapping to reference the correct destination network.
+. Validate that the network mapping shows a `Ready` status before starting the migration.
+
+*Why does warm migration fail with a snapshot error?*
+
+This often happens when changed block tracking (CBT) is not enabled on the source VM. Warm migration relies on CBT to efficiently track and transfer changes while the VM is running. You must enable CBT on the source VM and on each VM disk in your source environment before starting a warm migration.
+
+For {vmw} environments:
+
+. Enable CBT on each source VM that you plan to migrate using warm migration.
+. Enable CBT on each disk attached to the VM.
+. Verify that the VM does not exceed the maximum of 28 CBT snapshots.
+
+[IMPORTANT]
+====
+A VM can support up to 28 CBT snapshots. If the source VM has too many CBT snapshots and the Migration Controller service is not able to create a new snapshot, warm migration might fail.
+====
+
+*My virtual machine migrated successfully, but it does not function properly. What might be wrong?*
+
+A common reason VMs do not function properly, even after a successful migration, is that the name of the VM does not meet Kubernetes DNS naming requirements. VM names in {virt} must be DNS-compliant and unique.
+
+Invalid VM names include those that:
+
+* Use periods (`.`) anywhere in the name
+* Use hyphens (`-`) at the start or end of the name
+* Exceed 63 characters in length
+* Use uppercase letters
+* Use a name that differs from the VM's files or folder name on the datastore
+
+{project-short} automatically adjusts non-compliant VM names in the target cluster by replacing invalid characters. Alternatively, you can rename target VMs in the {project-short} UI during migration plan creation.
+
+For {vmw} environments, you can use Storage vMotion to rename the VM before migration. This migration process automatically renames the VM's files and folder on the datastore to match the new name you have given it in the vSphere Client. Alternatively, you can manually remove the VM from inventory, rename the files and folders, edit the `.vmx` file to update the references, and then re-add the VM to the inventory.
+
+For more information about renaming VMs in the {project-short} UI, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines].
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:ref_source-vm-migration-considerations_{context}[Source VM migration considerations]
+* xref:vmware-prerequisites_{context}[{vmw} prerequisites]
+* xref:about-cold-warm-migration_{context}[About cold and warm migration]

@@ -1,0 +1,66 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_troubleshooting-vddk-image-pull-error_{context}"]
+= Resolving VDDK image pull errors
+
+[role="_abstract"]
+When you create a provider in a namespace different from `openshift-mtv`, migrations fail with an image pull error.
+
+The VDDK init image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image.
+
+.Prerequisites
+
+* You have access to the {ocp-short} cluster as a user with appropriate permissions.
+* The VDDK image has been created and uploaded.
+
+.Procedure
+
+. Verify that the VDDK image is accessible from the target namespace:
++
+[source,terminal]
+----
+$ oc get imagestream -n openshift-mtv
+----
+
+. Choose one of the following options:
++
+*Option 1: Upload the VDDK image to the provider's namespace*
++
+.. Upload the VDDK image to the same namespace as your provider.
+.. Update the provider configuration to reference the VDDK image in the local namespace.
++
+*Option 2: Configure image pull secrets for cross-namespace access*
++
+.. Create or verify image pull secrets in the provider's namespace:
++
+[source,terminal]
+----
+$ oc get secrets -n <provider_namespace>
+----
++
+.. If necessary, create a service account with access to pull images from the `openshift-mtv` namespace.
++
+.. Update the provider configuration to use the cross-namespace image reference.
+
+. Update the provider to reference the correct VDDK image location:
++
+.. In the {project-short} UI, navigate to *Providers*.
+.. Edit the {vmw} provider.
+.. In the *VDDK init image* field, enter the correct image URL.
+.. Save the provider configuration.
+
+. Retry the migration plan.
+
+.Verification
+
+. Navigate to the migration plan's details page.
+. Verify that the VM migration starts without image pull errors.
+. Check the pod logs to confirm that the VDDK image was pulled successfully.
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:creating-vddk-image_mtv[Creating a VDDK image]

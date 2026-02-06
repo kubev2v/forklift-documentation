@@ -1,0 +1,42 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_troubleshooting-connection-test-failed-ova_{context}"]
+= Resolving OVA connection test errors
+
+[role="_abstract"]
+When you create an Open Virtual Appliance (OVA) provider in the {project-short} UI, `ConnectionTestFailed` error messages might be displayed before the provider status changes to `Ready`.
+
+The error messages are misleading and do not accurately reflect the in-progress status of the connection test.
+
+.Procedure
+
+. Wait for the provider status to update. If the provider configuration is correct, the status will change to `Ready` despite the temporary error messages.
+
+. If the status does not change to `Ready` after several minutes, verify your OVA provider configuration:
++
+.. Check that the OVA URL or path is correct and accessible.
+.. Verify network connectivity to the OVA storage location.
+.. Ensure that any required authentication credentials are correct.
+
+. If the issue persists, check the forklift controller logs for more detailed error information:
++
+[source,terminal]
+----
+$ oc logs -n openshift-mtv deployment/forklift-controller
+----
+
+. Correct any configuration issues identified and update the provider.
+
+.Verification
+
+. Navigate to *Providers* in the {project-short} UI.
+. Verify that the OVA provider shows a status of `Ready`.
+. Attempt to create a migration plan using the OVA provider to confirm it is accessible.
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:ova-prerequisites_{context}[OVA prerequisites]
