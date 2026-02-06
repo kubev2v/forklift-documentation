@@ -95,11 +95,3 @@ Use the following guide to select the appropriate migration type:
 ====
 {osp} and OVA sources do not support warm migration. Remote {virt} clusters support only cold migration.
 ====
-
-[role="_additional-resources"]
-.Additional resources
-
-* xref:about-cold-warm-migration_{context}[About cold and warm migration]
-* xref:warm-migration-stages_{context}[Warm migration stages]
-* xref:vmware-prerequisites_{context}[{vmw} prerequisites]
-* xref:rhv-prerequisites_{context}[{rhv-full} prerequisites]

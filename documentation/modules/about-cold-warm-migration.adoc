@@ -35,9 +35,3 @@ The migration process has two stages:
 * *Cutover stage*: VMs are shut down and the remaining data is migrated. Data stored in RAM is not migrated.
 
 Warm migration transfers snapshots to {ocp-short} first, then converts the VM during the cutover stage. This means disk blocks may be copied multiple times if the VM has high utilization, but VMs remain available during most of the migration process. You must enable CBT for each source VM and each VM disk before starting a warm migration.
-
-[role="_additional-resources"]
-.Additional resources
-
-* xref:warm-migration-stages_{context}[Warm migration stages]
-* xref:con_choosing-migration-type_{context}[Choosing a migration type]
