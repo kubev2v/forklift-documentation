@@ -1,0 +1,24 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-vms-web-console.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_navigating-mtv-pages_{context}"]
+= Navigating MTV pages
+
+[role="_abstract"]
+The {project-first} user interface provides several main pages to help you manage your VM migrations.
+
+You can access {project-short} in the {ocp-short} web console by clicking *Migration for Virtualization* in the left navigation menu under the *Virtualization* section.
+
+The main pages include:
+
+*Providers*:: View and manage your source and target virtualization providers. Add new providers, test connections, and monitor provider health.
+
+*Migration plans*:: Create, view, and manage migration plans. Monitor the status of running migrations and view migration history. Access the plan details page to configure settings, select VMs, and customize migration parameters.
+
+*Mappings for virtualization*:: Create and manage network and storage mappings that define how source resources map to target resources in the destination environment.
+
+*Overview* (administrators only):: View system-wide migration statistics, health information, and configure {project-short} settings. This page provides charts showing migration history, VM status, and plan status across all migrations.
+
+Each page provides filtering, sorting, and search capabilities to help you manage your resources efficiently.
