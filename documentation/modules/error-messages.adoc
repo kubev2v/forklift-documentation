@@ -7,7 +7,7 @@
 = Error messages
 
 [role="_abstract"]
-This section provides a quick reference for common error messages encountered during migration. For detailed resolution steps, see the linked troubleshooting procedures.
+Review common error messages encountered during migration. For detailed resolution steps, see the linked troubleshooting procedures.
 
 [cols="2,3,1",options="header"]
 .Common migration error messages

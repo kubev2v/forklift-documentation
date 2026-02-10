@@ -7,7 +7,7 @@
 = Common migration issues
 
 [role="_abstract"]
-This section describes common issues that users encounter when planning and executing virtual machine migrations, and how to avoid or resolve them.
+Review common issues that you might encounter when planning and executing virtual machine migrations, and how to avoid or resolve them.
 
 *My virtual machine fails to migrate or behaves unexpectedly after migration. Is the operating system supported?*
 

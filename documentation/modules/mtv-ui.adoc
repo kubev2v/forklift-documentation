@@ -18,6 +18,16 @@ In pages related to components, you can click on the *Projects* list, which is i
 
 The *Tips and tricks* panel provides contextual guidance and best practices to help you plan and execute your migrations successfully.
 
-You can access the *Tips and tricks* panel by clicking the information icon in the upper-right corner of the {project-short} pages in the web console.
+You can access the panel by clicking the *Tips and tricks* link in the upper-right corner of all {project-short} pages in the web console.
 
-The panel contains recommendations and important information related to migration planning and execution, aligned with the content in the _Planning your migration_ and _Migrating your virtual machines_ guides.
+The panel includes a dropdown menu where you can select from the following topics:
+
+* Creating a provider
+* Migrating your virtual machines
+* Choosing the right migration type
+* Creating a network mapping
+* Creating a storage mapping
+* Optimizing migration speed
+* Troubleshooting
+
+Each topic includes explanations of key terminology and considerations, with links to {project-short} documentation, {project-short} performance recommendations, Red Hat Customer Support, and Red Hat {virt} Administration training.
