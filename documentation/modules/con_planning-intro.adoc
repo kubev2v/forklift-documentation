@@ -17,6 +17,11 @@ following source providers to OpenShift Virtualization destination providers:
 * Open Virtual Appliances (OVAs) that were created by {vmw} vSphere
 * Remote {virt} clusters
 
+[NOTE]
+====
+OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or KVM images.
+====
+
 == Types of migration
 
 {project-short} supports three types of migration: cold, warm, and live.

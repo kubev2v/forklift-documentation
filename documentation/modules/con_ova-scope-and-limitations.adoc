@@ -1,0 +1,16 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
+
+:_mod-docs-content-type: CONCEPT
+
+[id="con_ova-scope-and-limitations_{context}"]
+= OVA scope and limitations
+
+[role="_abstract"]
+
+OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or KVM images.
+
+The OVA import process utilizes `virt-v2v` to prepare guest operating systems for KVM. Vendor-supplied appliances often use proprietary bootloaders or disk layouts that are incompatible with this conversion. Moreover, converting a vendor OVA may invalidate vendor support agreements. 
+
+To ensure stability and vendor support, always prioritize importing the vendor's native QCOW2 image by using either the {virt} "Upload Image" or the {virt} "Import from URL" workflow rather than using the {project-first} OVA path.

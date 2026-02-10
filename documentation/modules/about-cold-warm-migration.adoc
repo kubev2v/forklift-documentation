@@ -10,6 +10,12 @@
 [role="_abstract"]
 Choose cold migration for VMs that are shut down and warm migration for running VMs. Cold migration works with {vmw} vSphere, {rhv-full}, {osp}, Open Virtual Appliances (OVAs) created by {vmw} vSphere, and remote {virt} clusters. Warm migration works with {vmw} vSphere and {rhv-full}.
 
+[NOTE]
+====
+OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or KVM images.
+====
+
+[id="cold-migration_{context}"]
 == Cold migration
 
 Cold migration is the default migration type. The source virtual machines are shut down while the data is copied.
