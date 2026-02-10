@@ -13,7 +13,7 @@ A fatal error occurred when migrating win-virtio VMs::
 
 Before this update, migrations of `win-virtio` VMs failed due to a `MEMORY MANAGEMENT` fatal error. With this release, the error no longer occurs and migrations of `win-virtio` VMs work as expected.
 +
-link:https://issues.redhat.com/browse/RHEL-141510[RHEL-141510]
+link:https://issues.redhat.com/browse/MTV-4534[MTV-4534]
 
 Warm migrations of VMs with multiple VirtIO disks failed::
 
