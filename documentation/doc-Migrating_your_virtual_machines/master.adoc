@@ -12,7 +12,7 @@ include::modules/common-attributes.adoc[]
 :_mod-docs-content-type: ASSEMBLY
 
 [role="_abstract"]
-This guide describes how to migrate virtual machines to {virt} by using {project-first}.
+Migrate virtual machines to {virt} by using {project-first}.
 
 include::modules/con_performing-migration-intro.adoc[leveloffset=+1]
 
