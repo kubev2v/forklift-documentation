@@ -9,7 +9,7 @@ include::modules/common-attributes.adoc[]
 :context: release-notes
 
 [role="_abstract"]
-This document describes technical changes, new features and enhancements, known issues, and resolved issues for {project-full}.
+Review technical changes, new features and enhancements, known issues, and resolved issues for {project-full}.
 
 include::modules/rn-2-10.adoc[leveloffset=+1]
 
