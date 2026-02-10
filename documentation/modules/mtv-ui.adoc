@@ -12,3 +12,12 @@ The {project-first} user interface is integrated into the {ocp-short} web consol
 In the left panel, you can choose a page related to a component of the migration progress, for example, *Providers*. Or, if you are an administrator, you can choose *Overview*, which contains information about migrations and lets you configure {project-short} settings.
 
 In pages related to components, you can click on the *Projects* list, which is in the upper-left portion of the page, and see which projects (namespaces) you are allowed to work with.
+
+[id="tips-and-tricks-panel_{context}"]
+== The Tips and tricks panel
+
+The *Tips and tricks* panel provides contextual guidance and best practices to help you plan and execute your migrations successfully.
+
+You can access the *Tips and tricks* panel by clicking the information icon in the upper-right corner of the {project-short} pages in the web console.
+
+The panel contains recommendations and important information related to migration planning and execution, aligned with the content in the _Planning your migration_ and _Migrating your virtual machines_ guides.
