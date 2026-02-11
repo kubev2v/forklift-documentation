@@ -13,7 +13,7 @@ When troubleshooting migration issues, follow this recommended sequence to ident
 
 . *Check the migration progress* for a high-level overview of your virtual machine (VM) migration status.
 +
-.. Navigate to the *VirtualMachines* tab on your migration plan's details page.
+.. Navigate to the *Virtual machines* tab on your migration plan's details page.
 .. Review the status of each VM to identify where errors are occurring.
 +
 You can typically find where the error is occurring at this stage. VMs can be migrated in two different ways:
@@ -43,14 +43,14 @@ Forklift controller logs capture {project-first} related events and provide deta
 +
 The `must-gather` tool collects comprehensive diagnostic information about your cluster.
 +
-.. Navigate to the directory where you want to store the must-gather data:
+.. Navigate to the directory where you want to store the `must-gather` data:
 +
 [source,terminal]
 ----
 $ cd /path/to/must-gather-directory
 ----
 +
-.. Run the must-gather command:
+.. Run the `must-gather` command:
 +
 [source,terminal]
 ----

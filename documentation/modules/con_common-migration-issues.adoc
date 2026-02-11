@@ -13,9 +13,9 @@ Review common issues that you might encounter when planning and executing virtua
 
 Check the official list of link:https://access.redhat.com/articles/973163#ocpvirt[guest operating systems supported by {virt}] for your version of {ocp-short}. If the operating system is not on the list, it might cause migration failures or unexpected behavior after the migration is complete. The VM operating system must be certified and supported for use as a guest operating system with {virt} _and_ for link:https://access.redhat.com/articles/1351473[conversion to KVM with `virt-v2v`].
 
-*My migration plan shows a "Destination network not found" error. What should I do?*
+*My migration plan shows a `Destination network not found` error. What should I do?*
 
-Verify that you have created a network mapping that correctly links the source network from your source environment to the destination network attachment definition in {virt}. If the network map displays a "Destination network not found" error, you must create a network attachment definition for the destination network before the migration can proceed.
+Verify that you have created a network mapping that correctly links the source network from your source environment to the destination network attachment definition in {virt}. If the network map displays a `Destination network not found` error, you must create a network attachment definition for the destination network before the migration can proceed.
 
 To resolve this issue:
 
