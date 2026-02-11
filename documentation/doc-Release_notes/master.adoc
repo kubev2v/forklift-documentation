@@ -8,6 +8,8 @@ include::modules/common-attributes.adoc[]
 :compat-mode:
 :context: release-notes
 
+Review technical changes, new features and enhancements, known issues, and resolved issues for {project-full}.
+
 include::modules/rn-2-10.adoc[leveloffset=+1]
 
 // Technical changes by x-stream release
