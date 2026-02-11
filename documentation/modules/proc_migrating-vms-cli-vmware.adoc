@@ -450,6 +450,8 @@ Specifies whether VMs are converted before migration using the `virt-v2v` tool, 
 * When set to `false`, the default value, {project-short} migrates VMs using `virt-v2v`.
 * When set to `true`, {project-short} migrates VMs using raw copy mode, which copies the VMs without converting them first.
 +
+Raw copy mode is intended for specific scenarios where the guest is already KVM-compatible. It requires a valid pre-populated source or specific disk configuration; otherwise the migration can result in empty PVCs rather than a raw data copy of the disk.
++
 Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
 
 `targetAffinity`::

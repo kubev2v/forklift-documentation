@@ -11,7 +11,7 @@ Open Virtual Appliance (OVA) migrations to {virt} require VMware vSphere files i
 
 [NOTE]
 ====
-Migration of OVA files that were not created by {vmw} vSphere but are compatible with vSphere might succeed. However, migration of such files is not supported by {project-short}. {project-short} supports only OVA files created by {vmw} vSphere.
+Migration of OVA files that were not created by {vmw} vSphere but are compatible with vSphere might succeed. However, migration of such files is not supported by {project-short}. {project-short} supports only OVA files created by {vmw} vSphere. For third-party vendor appliances (for example, networking or security appliances), use the vendor's native `.qcow2` or KVM image instead of the OVA migration path.
 ====
 
 Prerequisites::

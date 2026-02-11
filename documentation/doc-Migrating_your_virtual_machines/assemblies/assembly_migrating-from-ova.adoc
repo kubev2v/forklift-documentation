@@ -11,6 +11,16 @@ ifdef::context[:parent-context: {context}]
 [role="_abstract"]
 Run your OVA migration plan from the MTV UI or from the command-line.
 
+[id="about-ova-import_{context}"]
+== About OVA import
+
+[NOTE]
+====
+OVA import is intended for migrating supported guest operating systems exported from VMware vSphere. The process utilizes `virt-v2v` to prepare the guest OS for KVM.
+
+Vendor-supplied appliances (for example, networking or security appliances) are not recommended for OVA import. They often use proprietary bootloaders or disk layouts that are incompatible with this conversion, and converting a vendor OVA may invalidate vendor support agreements. To ensure stability and vendor support, use the vendor's native `.qcow2` or KVM image via the OpenShift Virtualization "Upload Image" or "Import from URL" workflow instead of the MTV OVA path.
+====
+
 == Prerequisites
 
 * You have planned your migration from OVA.
