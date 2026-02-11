@@ -14,8 +14,12 @@ following source providers to OpenShift Virtualization destination providers:
 * {vmw} vSphere
 * {rhv-full} 
 * {osp}
-* Open Virtual Appliances (OVAs) that were created by {vmw} vSphere footnote:[OVA migration is validated for VMware-exported virtual machines. For third-party networking or security appliances, check with the vendor for native KVM/OpenShift images (QCOW2).]
-* Remote {virt} clusters
+* Open Virtual Appliances (OVAs) that were created by {vmw} vSphere
+
+[NOTE]
+====
+Migration of OVAs is supported for VMware-exported virtual machines. For third-party networking or security appliances, check with the vendor for native KVM/OpenShift images (QCOW2). [still needs fixing]
+====
 
 == Types of migration
 

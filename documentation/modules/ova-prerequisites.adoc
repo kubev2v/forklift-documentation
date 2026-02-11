@@ -14,6 +14,12 @@ Open Virtual Appliance (OVA) migrations to {virt} require VMware vSphere files i
 Migration of OVA files that were not created by {vmw} vSphere but are compatible with vSphere might succeed. However, migration of such files is not supported by {project-short}. {project-short} supports only OVA files created by {vmw} vSphere. For third-party vendor appliances (for example, networking or security appliances), use the vendor's native `.qcow2` or KVM image instead of the OVA migration path.
 ====
 
+add/incorporate
+
+*Target scope:* OVA import is intended for migrating supported guest operating systems exported from VMware vSphere.
+*Vendor appliances:* Do not use OVA import for third-party vendor appliances (e.g. F5, Cisco, Netscaler); they often fail virt-v2v conversion. Use vendor-provided QCOW2 or KVM-native images instead.
+*Support:* Converting a vendor OVA may invalidate vendor support agreements.
+
 Prerequisites::
 
 * The NFS share is writable by the QEMU group (GID 107) if you plan to use the web upload feature for OVA files.

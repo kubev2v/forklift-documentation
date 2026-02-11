@@ -1,0 +1,4 @@
+OVA import uses virt-v2v and is intended for _supported guest operating systems exported from VMware vSphere_.
+Not recommended for third-party vendor appliances, because they often use proprietary bootloaders or disk layouts and may fail (e.g. “no bootloader detected”, disk layout incompatibilities).
+Support warning: Converting a vendor OVA may invalidate vendor support agreements.
+Recommendation: Prefer the vendor’s native .qcow2 image via OpenShift Virtualization “Upload Image” or “Import from URL” instead of the MTV OVA path when available

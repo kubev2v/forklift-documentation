@@ -454,6 +454,16 @@ Raw copy mode is intended for specific scenarios where the guest is already KVM-
 +
 Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
 
+
+Add/incorporate:
+
+skipGuestConversion is intended for scenarios where the guest is *already KVM-compatible* or conversion is not feasible.
+It *requires a valid pre-populated source and appropriate disk configuration*.
+Using it with an incompatible source or misconfigured disks can result in *empty PVCs* rather than a raw copy of the disk data.
+
+
+
+
 `targetAffinity`::
 Specifies a target affinity rule, which may be quite complex, is entered in lines following this label. This is an optional label.
 +

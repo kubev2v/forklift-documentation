@@ -10,6 +10,11 @@
 [role="_abstract"]
 Choose cold migration to move powered-off VMs from multiple sources to {virt}, or choose warm migration to minimize downtime for powered-on VMs. Cold migration works with {vmw} vSphere, {rhv-full}, {osp}, Open Virtual Appliances (OVAs) that were created by {vmw} vSphere, and remote {virt} clusters; warm migration works with {vmw} vSphere and {rhv-full}.
 
+[NOTE]
+====
+Migration of OVAs is supported for VMware-exported virtual machines. For third-party networking or security appliances, check with the vendor for native KVM/OpenShift images (QCOW2). [still needs fixing]
+====
+
 [id="cold-migration_{context}"]
 == Cold migration
 
