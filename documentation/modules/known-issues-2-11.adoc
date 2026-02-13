@@ -23,7 +23,7 @@ Inactive migration plans are incorrectly labeled as "Running" when `max_vms_infl
 +
 *Workaround:*  There is currently no workaround for this issue.
 +
-link:https://issues.redhat.com/browse/MTV-1736 
+link:https://issues.redhat.com/browse/MTV-1736[MTV-1736] 
 
 
 

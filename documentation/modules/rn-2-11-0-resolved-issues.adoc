@@ -9,9 +9,52 @@
 [role="_abstract"]
 Review the resolved issues in this release of {project-short}.
 
-Heading::
-In previous versions of {project-short}, you could not rename virtual machines (VMs) from the source provider to address naming conflicts before the VMs were migrated to Red Hat {virt}. In this release of {project-short}, you can modify non-compliant VM names in the {project-short} UI during the migration process to address naming conflicts and ensure compatibility with {virt} naming conventions. 
+Target cluster namespaces now visible for cross-cluster live migration::
+
+Before this update, during cross-cluster live migration, projects were fetched from the host cluster instead of the target cluster. As a consequence, target cluster namespaces were not visible in the UI, causing user inconvenience. With this release, cross-cluster live migration fetches project data from the target cluster, making target cluster namespaces visible in the UI during migration.
 +
-link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)] 
+link:https://issues.redhat.com/browse/MTV-3915[MTV-3915]
+
+VDDK image archive upload succeeds in private namespaces::
+
+Before this update,  VMware Virtual Disk Development Kit (VDDK) image archive upload failure occurred in private namespaces due to incorrect namespace usage. As a consequence, users experienced VDDK image upload failure in private namespaces during source provider creation. With this release, you can upload VDDK tar archives successfully in private namespaces. 
++
+link:https://issues.redhat.com/browse/MTV-3618[3618]
+
+Correct UI display of migration type after change::
+
+Before this update, if you changed the `Migration type` on the Plan details page in the {project-short} UI from warm to cold, the YAML file was updated correctly but the UI did not display the the updated migration type. With this release, the UI edit field for `Migration type` updates the migration type in the YAML file and the UI correctly displays the updated migration type.
++
+link:https://issues.redhat.com/browse/MTV-3476[MTV-3476]
+
+Correct VM name display in migration progress::
+
+Before this update, during the migration of a VM with a non-conformant name in OpenShift, the name was standardized. However, the migration progress in the {project-short} UI showed the original non-conformant VM name. As a consequence, users saw incorrect VM names in the Migration progress list, with links causing `404` errors. With this release, the migration progress now shows accurate VM names and links.
++
+link:https://issues.redhat.com/browse/MTV-4386[MTV-4386]
+
+Resolved "Unable to retrieve data" error in cold migration plans with static IP preservation::
+
+Before this update, users encountered an "Unable to retrieve data" error during VM listing in cold migration plans created with static IP preservation on vCenter7. With this release, cold migration plans now retrieve VM data correctly, eliminating 'Unable to retrieve data' errors.
++
+link:https://issues.redhat.com/browse/MTV-3266[MTV-3266]
+
+Improved `DiskTransfer` warm migration progress Indicator::
+
+Before this update, the warm migration progress indicator for `DiskTransfer` remained unchecked due to incomplete progress evaluation. As a consequence, users saw incomplete migration progress for the `DiskTransfer` step. With this release, the `DiskTransfer` progress indicator shows a checkmark when all tasks are completed, improving migration visibility.
++
+link:https://issues.redhat.com/browse/MTV-3585[MTV-3585]  
+
+Fetch and populate volumes for storage mappings during plan creation for OCP provider::
+
+Before this update, you could not fetch and populate volumes for storage mappings from Red Hat OpenShift Container Platform (OCP) during plan creation for an OCP provider. With this release, plan creation for host-to-host plans includes fetching and populating source storage, improving the selection of storage mappings during plan creation.
++
+link:https://issues.redhat.com/browse/MTV-3574[MTV-3574]
+
+Improved cluster-to-cluster live migration network mapping in OCP::
+
+Before this update, incorrect management of network attachments in Red Hat OpenShift Container Platform (OCP) target networks during updates led to complications with network mapping during live migration, resulting in inaccurate network configurations. With this release, the target network mapping issue in {project-short} for an OCP source provider is resolved. As a result, cluster-to-cluster live migration now correctly maps networks, improving migration accuracy.
++
+link:https://issues.redhat.com/browse/MTV-3576[MTV-3576]
 
 
