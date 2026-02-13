@@ -17,7 +17,7 @@ link:https://issues.redhat.com/browse/MTV-3681[MTV-3681]
 
 Enhanced pre-migration issue visibility::
 
-This update enhances the visibility of pre-migration concerns for individual VMs, providing a clear taxonomy and visual indicators to distinguish between critical issues, VM-specific failures, and ignorable warnings. The updated UI includes new icons, colors, and labels for quick comprehension of validation issue severity. The "Conditions" column of the VM table now displays all current concerns impacting the plan, with filters for Name, Severity, Type, and Folder. A total of critical alerts is displayed at the top of the page, with a "View all alerts" button for detailed analysis. This improvement increases the clarity and understanding of pre-migration concerns, simplifying the migration process.
+{project-short} 2.11.0 enhances the visibility of pre-migration concerns for individual VMs, providing a clear taxonomy and visual indicators to distinguish between critical issues, VM-specific failures, and ignorable warnings. The updated UI includes new icons, colors, and labels for quick comprehension of validation issue severity. The "Conditions" column of the VM table now displays all current concerns impacting the plan, with filters for Name, Severity, Type, and Folder. A total of critical alerts is displayed at the top of the page, with a "View all alerts" button for detailed analysis. This improvement increases the clarity and understanding of pre-migration concerns, simplifying the migration process.
 +
 link:https://issues.redhat.com/browse/MTV-3712[MTV-3712] 
 
@@ -35,25 +35,37 @@ link:https://issues.redhat.com/browse/MTV-1370[MTV-1370]
 
 Add descriptive notes to migration plans::
 
-Cluster administrators can now add descriptive notes to their migration plans during creation. The new Description field allows easy differentiation and management of various plans within the web console. Users can identify the purpose, scope, and owner of each plan by adding reasons for each migration in the Description field. The added context is visible in the plan table and Plan details page for long-term management and auditing purposes.
+In {project-short} 2.11.0, cluster administrators can now add descriptive notes to their migration plans during creation. The new Description field allows easy differentiation and management of various plans within the web console. Users can identify the purpose, scope, and owner of each plan by adding reasons for each migration in the Description field. The added context is visible in the plan table and Plan details page for long-term management and auditing purposes.
 +
 link:https://issues.redhat.com/browse/MTV-3748[MTV-3748]
+
 Unified interaction model for form editing::
 
-This update introduces a unified, consistent interaction model for editing forms and fields across the {project-short} web console, streamlining tasks for cluster administrators. The new design includes an edit button that opens a modal for inputs, promoting clarity and reducing configuration errors. This update aims to reduce cognitive load and eliminate varying UI behaviors on different pages, making administrative tasks easier and quicker.
+{project-short} 2.11.0 introduces a unified, consistent interaction model for editing forms and fields across the {project-short} web console, streamlining tasks for cluster administrators. The new design includes an edit button that opens a modal for inputs, promoting clarity and reducing configuration errors. This update aims to reduce cognitive load and eliminate varying UI behaviors on different pages, making administrative tasks easier and quicker.
 +
 link:https://issues.redhat.com/browse/MTV-3742[MTV-3742]
 
 Enhanced Create provider form for source providers::
 
-With this update, the *Create provider* form in the {project-short} UI has unique authentication and validation fields for source providers such as OpenShift, OpenStack, Red Hat Virtualization (oVirt), and vSphere. The new form provides a cleaner and more user-friendly experience when creating providers, making it easier for cluster administrators to create plans for migrating their VMs.
+In {project-short} 2.11.0, the *Create provider* form in the {project-short} UI has unique authentication and validation fields for source providers such as OpenShift, OpenStack, Red Hat Virtualization (oVirt), and vSphere. The new form provides a cleaner and more user-friendly experience when creating providers, making it easier for cluster administrators to create plans for migrating their VMs.
 +
 link:https://issues.redhat.com/browse/MTV-3737[MTV-3737]
 
 Validation alert for VDDK for VMware warm migrations::
 
-This update introduces visible validation checks for warm migration from VMware environments in the web console. Users are alerted if the VMware vSphere Virtual Disk Development Kit (VDDK) is missing or incorrectly configured, preventing silent failures and saving time on migration plans. Updated {project-short} documentation provides guidance on VDDK installation.
+{project-short} 2.11.0 introduces visible validation checks for warm migration from VMware environments in the web console. Users are alerted if the VMware vSphere Virtual Disk Development Kit (VDDK) is missing or incorrectly configured, preventing silent failures and saving time on migration plans. Updated {project-short} documentation provides guidance on VDDK installation.
 +
 link:https://issues.redhat.com/browse/MTV-3805[MTV-3805]
 
+Improved data migration error handling and diagnostics::
+
+{project-short} 2.11.0 enhances data integrity during VM migration by using features introduced in RHEL 10.1. This release introduces filesystem-level consistency checks, improved system error handling, and internal diagnostics. Warm migration and features like storage offload minimize downtime with efficient disk migration and data transfer. 
++
+link:https://issues.redhat.com/browse/MTV-3906[MTV-3906]
+
+Storage Offload Copy optimization for network usage::
+
+{project-short} 2.11.0 introduces the general availability of the Storage Offload Copy feature for warm and cold migrations. This feature accelerates disk transfer in the storage array by bypassing the network, enabling snapshot creation and base disk copying while the VM is running. Delta changes can be copied over the network post-base disk storage offload copy, reducing the need for VM shutdowns. Storage Offload Copy results is in reduced network usage for delta changes, improved overall performance, and enhanced migration efficiency.
++
+link:https://issues.redhat.com/browse/MTV-3952[MTV-3952]
 
