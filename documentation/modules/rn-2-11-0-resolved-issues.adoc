@@ -1,0 +1,17 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="resolved-issues-2-11-0_{context}"]
+= Resolved issues 2.11.0
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+Heading::
+In previous versions of {project-short}, you could not rename virtual machines (VMs) from the source provider to address naming conflicts before the VMs were migrated to Red Hat {virt}. In this release of {project-short}, you can modify non-compliant VM names in the {project-short} UI during the migration process to address naming conflicts and ensure compatibility with {virt} naming conventions. 
++
+link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)] 
+
+

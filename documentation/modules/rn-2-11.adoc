@@ -3,8 +3,8 @@
 // * documentation/doc-Release_notes/master.adoc
 
 :_mod-docs-content-type: CONCEPT
-[id="rn-2-10_{context}"]
-= {project-full} 2.10
+[id="rn-2-11_{context}"]
+= {project-full} 2.11
 
 [role="_abstract"]
 The release notes describe technical changes, new features and enhancements, known issues, and resolved issues.

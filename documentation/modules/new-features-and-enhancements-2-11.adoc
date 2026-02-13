@@ -1,0 +1,29 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="new-features-and-enhancements-2-11_{context}"]
+= New features and enhancements
+
+[role="_abstract"]
+{project-first} 2.11 introduces the following features and enhancements.
+
+* In {project-short} 2.11.0, you can ...
++
+link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+
+* {project-short} 2.11.0 standardizes... 
++
+link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+
+* In the {project-short} 2.11.0 UI, the... 
++ 
+link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+
+* *Technology Preview:* In {project-short} 2.11.0, you can ...
+
+link:https://issues.redhat.com/browse/MTV-XXXX(MTV-XXXX)]  
+
+
+

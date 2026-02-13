@@ -1,0 +1,31 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="known-issues-2-11_{context}"]
+= Known issues
+
+[role="_abstract"]
+{project-first} 2.11 has the following known issues.
+
+Forklift console plugin fails to load on IPv6-only OpenShift clusters::       
+   
+When {project-short} 2.9.1 is deployed on an IPv6-only OpenShift cluster, an incorrect API endpoint prevents the forklift-console-plugin from serving a valid plugin manifest, displaying the error "Failed to get a valid plugin manifest from /api/plugins/forklift-console-plugins/".  While the forklift-ui-plugin pod runs successfully, the console plugin cannot load, preventing access to the {project-short} user interface in the OpenShift web console. This issue affects all IPv6-only cluster deployments with OpenShift 4.19.7 and CNV 4.19.1.
++
+*Workaround:* None. Deploy {project-short} on dual-stack or IPv4 clusters until this issue is resolved.
++
+link:https://issues.redhat.com/browse/MTV-3116[MTV-3116]
+
+Incorrect labeling of inactive migration plans::
+
+Inactive migration plans are incorrectly labeled as "Running" when `max_vms_inflight` exceeds the total number of disks per migration. This label leads to confusion about the actual state of the plans, as all migration plans appear to be "Running" in the user interface. 
++
+*Workaround:*  There is currently no workaround for this issue.
++
+link:https://issues.redhat.com/browse/MTV-1736 
+
+
+
+//For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
+
