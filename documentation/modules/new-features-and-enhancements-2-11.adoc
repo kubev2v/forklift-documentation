@@ -9,21 +9,51 @@
 [role="_abstract"]
 {project-first} 2.11 introduces the following features and enhancements.
 
-* In {project-short} 2.11.0, you can ...
+Customizable service account for pre-plan and post-plan hooks in Create migration plan pages::
+
+In {project-short} 2.11.0, users can set a service account name for pre-plan and post-plan hooks in the Create migration plan pages. This UI setting allows for greater flexibility and control over the service accounts used in these hooks, ensuring they have the necessary permissions to manage cluster resources. The `Service account` field is a free text field as the service account information is not stored in the inventory for a remote cluster. This enhancement enhances the overall security and customization of the user's deployment.
 +
-link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+link:https://issues.redhat.com/browse/MTV-3681[MTV-3681]
 
-* {project-short} 2.11.0 standardizes... 
+Enhanced pre-migration issue visibility::
+
+This update enhances the visibility of pre-migration concerns for individual VMs, providing a clear taxonomy and visual indicators to distinguish between critical issues, VM-specific failures, and ignorable warnings. The updated UI includes new icons, colors, and labels for quick comprehension of validation issue severity. The "Conditions" column of the VM table now displays all current concerns impacting the plan, with filters for Name, Severity, Type, and Folder. A total of critical alerts is displayed at the top of the page, with a "View all alerts" button for detailed analysis. This improvement increases the clarity and understanding of pre-migration concerns, simplifying the migration process.
 +
-link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+link:https://issues.redhat.com/browse/MTV-3712[MTV-3712] 
 
-* In the {project-short} 2.11.0 UI, the... 
-+ 
-link:https://issues.redhat.com/browse/MTV-XXXX[(MTV-XXXX)]
+Enhanced learning experience in {project-short} UI::
 
-* *Technology Preview:* In {project-short} 2.11.0, you can ...
+With this update, the `Tips and tricks` section in the {project-short} UI is significantly expanded, offering curated learning paths and improved user guidance. This enhancement simplifies complex workflow steps, integrates with Red Hat {virt} LightSpeed AI for dynamic guidance, and reorganizes content for a better learning process for {project-short} administrators.
++
+link:https://issues.redhat.com/browse/MTV-3718[MTV-3718]
 
-link:https://issues.redhat.com/browse/MTV-XXXX(MTV-XXXX)]  
+*Technology Preview:* Enhanced telemetry tracking for efficient user experience::
 
+With this update, {project-short} telemetry tracking monitors and evaluates design changes to the {project-short} service. Telemetry tracking captures key metrics for insights into system behavior and effectiveness, enabling data-driven enhancements to the {project-short} UI for a more efficient user experience.
++
+link:https://issues.redhat.com/browse/MTV-1370[MTV-1370]
+
+Add descriptive notes to migration plans::
+
+Cluster administrators can now add descriptive notes to their migration plans during creation. The new Description field allows easy differentiation and management of various plans within the web console. Users can identify the purpose, scope, and owner of each plan by adding reasons for each migration in the Description field. The added context is visible in the plan table and Plan details page for long-term management and auditing purposes.
++
+link:https://issues.redhat.com/browse/MTV-3748[MTV-3748]
+Unified interaction model for form editing::
+
+This update introduces a unified, consistent interaction model for editing forms and fields across the {project-short} web console, streamlining tasks for cluster administrators. The new design includes an edit button that opens a modal for inputs, promoting clarity and reducing configuration errors. This update aims to reduce cognitive load and eliminate varying UI behaviors on different pages, making administrative tasks easier and quicker.
++
+link:https://issues.redhat.com/browse/MTV-3742[MTV-3742]
+
+Enhanced Create provider form for source providers::
+
+With this update, the *Create provider* form in the {project-short} UI has unique authentication and validation fields for source providers such as OpenShift, OpenStack, Red Hat Virtualization (oVirt), and vSphere. The new form provides a cleaner and more user-friendly experience when creating providers, making it easier for cluster administrators to create plans for migrating their VMs.
++
+link:https://issues.redhat.com/browse/MTV-3737[MTV-3737]
+
+Validation alert for VDDK for VMware warm migrations::
+
+This update introduces visible validation checks for warm migration from VMware environments in the web console. Users are alerted if the VMware vSphere Virtual Disk Development Kit (VDDK) is missing or incorrectly configured, preventing silent failures and saving time on migration plans. Updated {project-short} documentation provides guidance on VDDK installation.
++
+link:https://issues.redhat.com/browse/MTV-3805[MTV-3805]
 
 
