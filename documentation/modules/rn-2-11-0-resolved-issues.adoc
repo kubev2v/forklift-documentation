@@ -17,19 +17,19 @@ link:https://issues.redhat.com/browse/MTV-3915[MTV-3915]
 
 VDDK image archive upload succeeds in private namespaces::
 
-Before this update,  VMware Virtual Disk Development Kit (VDDK) image archive upload failure occurred in private namespaces due to incorrect namespace usage. As a consequence, users experienced VDDK image upload failure in private namespaces during source provider creation. With this release, you can upload VDDK tar archives successfully in private namespaces. 
+Before this update, {vmw} Virtual Disk Development Kit (VDDK) image archive upload failure occurred in private namespaces due to incorrect namespace usage. As a consequence, users experienced VDDK image upload failure in private namespaces during source provider creation. With this release, you can upload VDDK tar archives successfully in private namespaces.
 +
-link:https://issues.redhat.com/browse/MTV-3618[3618]
+link:https://issues.redhat.com/browse/MTV-3618[MTV-3618]
 
 Correct UI display of migration type after change::
 
-Before this update, if you changed the `Migration type` on the Plan details page in the {project-short} UI from warm to cold, the YAML file was updated correctly but the UI did not display the the updated migration type. With this release, the UI edit field for `Migration type` updates the migration type in the YAML file and the UI correctly displays the updated migration type.
+Before this update, if you changed the `Migration type` on the Plan details page in the {project-short} UI from warm to cold, the YAML file was updated correctly but the UI did not display the updated migration type. With this release, the UI edit field for `Migration type` updates the migration type in the YAML file and the UI correctly displays the updated migration type.
 +
 link:https://issues.redhat.com/browse/MTV-3476[MTV-3476]
 
 Correct VM name display in migration progress::
 
-Before this update, during the migration of a VM with a non-conformant name in OpenShift, the name was standardized. However, the migration progress in the {project-short} UI showed the original non-conformant VM name. As a consequence, users saw incorrect VM names in the Migration progress list, with links causing `404` errors. With this release, the migration progress now shows accurate VM names and links.
+Before this update, during the migration of a VM with a non-conformant name in {ocp-short}, the name was standardized. However, the migration progress in the {project-short} UI showed the original non-conformant VM name. As a consequence, users saw incorrect VM names in the Migration progress list, with links causing `404` errors. With this release, the migration progress now shows accurate VM names and links.
 +
 link:https://issues.redhat.com/browse/MTV-4386[MTV-4386]
 
@@ -39,27 +39,27 @@ Before this update, users encountered an "Unable to retrieve data" error during 
 +
 link:https://issues.redhat.com/browse/MTV-3266[MTV-3266]
 
-Improved `DiskTransfer` warm migration progress Indicator::
+Improved `DiskTransfer` warm migration progress indicator::
 
 Before this update, the warm migration progress indicator for `DiskTransfer` remained unchecked due to incomplete progress evaluation. As a consequence, users saw incomplete migration progress for the `DiskTransfer` step. With this release, the `DiskTransfer` progress indicator shows a checkmark when all tasks are completed, improving migration visibility.
 +
-link:https://issues.redhat.com/browse/MTV-3585[MTV-3585]  
+link:https://issues.redhat.com/browse/MTV-3585[MTV-3585]
 
-Fetch and populate volumes for storage mappings during plan creation for OCP provider::
+Fetch and populate volumes for storage mappings during plan creation for {ocp-short} provider::
 
-Before this update, you could not fetch and populate volumes for storage mappings from Red Hat OpenShift Container Platform (OCP) during plan creation for an OCP provider. With this release, plan creation for host-to-host plans includes fetching and populating source storage, improving the selection of storage mappings during plan creation.
+Before this update, you could not fetch and populate volumes for storage mappings from {ocp} during plan creation for an {ocp-short} provider. With this release, plan creation for host-to-host plans includes fetching and populating source storage, improving the selection of storage mappings during plan creation.
 +
 link:https://issues.redhat.com/browse/MTV-3574[MTV-3574]
 
-Improved cluster-to-cluster live migration network mapping in OCP::
+Improved cluster-to-cluster live migration network mapping in {ocp-short}::
 
-Before this update, incorrect management of network attachments in Red Hat OpenShift Container Platform (OCP) target networks during updates led to complications with network mapping during live migration, resulting in inaccurate network configurations. With this release, the target network mapping issue in {project-short} for an OCP source provider is resolved. As a result, cluster-to-cluster live migration now correctly maps networks, improving migration accuracy.
+Before this update, incorrect management of network attachments in {ocp} target networks during updates led to complications with network mapping during live migration, resulting in inaccurate network configurations. With this release, the target network mapping issue in {project-short} for an {ocp-short} source provider is resolved. As a result, cluster-to-cluster live migration now correctly maps networks, improving migration accuracy.
 +
 link:https://issues.redhat.com/browse/MTV-3576[MTV-3576]
 
 Removed misleading VM shutdown message during migrations for OVA providers::
 
-Before this update, users received a misleading message about VM shutdown during Open Virtual Appliance (OVA) migration, even though no VMs are sourced for OVA providers. With this release, the incorrect message for OVA providers during plan migration is removed. 
+Before this update, users received a misleading message about VM shutdown during Open Virtual Appliance (OVA) migration, even though no VMs are sourced for OVA providers. With this release, the incorrect message for OVA providers during plan migration is removed.
 +
 link:https://issues.redhat.com/browse/MTV-3572[MTV-3572]
 
@@ -83,14 +83,80 @@ link:https://issues.redhat.com/browse/MTV-3864[MTV-3864]
 
 Restoration of 'Target name' column on Virtual machines tab::
 
-Before this update, the removal of the 'Target name' column during {project-short} product updates caused the column to disappear from the `Virtual machines` tab on the Plan details page in the {project-short} UI. With this release, the 'Target name' column on the `Virtual machines` tab is now restored. 
+Before this update, the removal of the 'Target name' column during {project-short} product updates caused the column to disappear from the `Virtual machines` tab on the Plan details page in the {project-short} UI. With this release, the 'Target name' column on the `Virtual machines` tab is now restored.
 +
-link:https://issues.redhat.com/browse/MTV-4238[MTV-4238] 
+link:https://issues.redhat.com/browse/MTV-4238[MTV-4238]
 
 Removal of invalid NADs during network map creation::
 
 Before this update, the {project-short} UI became unresponsive when trying to remove an invalid Network Attachment Definition (NAD) during network map creation from YAML. With this release, you can remove network maps with invalid NAD IDs and manage network maps more effectively.
 +
 link:https://issues.redhat.com/browse/MTV-3610[MTV-3610]
+
+Write permission check for OVA upload::
+
+Before this update, users encountered permission denied errors during OVA file upload. With this release, there is a check for write permissions before OVA upload. As a result, OVA uploads no longer fail due to permission errors.
++
+link:https://issues.redhat.com/browse/MTV-3634[MTV-3634]
+
+Warm migration with insecure TLS in {rhv-short} provider::
+
+Before this update, warm migrations with a {rhv-full} provider failed due to missing support for insecure TLS. As a consequence, warm migration failed with TLS insecure (skip cert validation) in {project-short} 2.8.5. With this release, `InsecureSkipVerify` is added to CDI for warm migrations with a {rhv-short} provider. As a result, warm migration with TLS insecure (skip cert validation) now succeeds.
++
+link:https://issues.redhat.com/browse/MTV-2811[MTV-2811]
+
+IP preservation improvement in VM migration::
+
+Before this update, the IP preservation in VM migration failed to verify if the IP was from the subnet, causing end users to experience IP mismatch during VM migration. With this release, {project-short} preserves and assigns IPs from the subnet for VMs with explicitly assigned IPs during migration to {virt}. As a result, {project-short} now ensures VM transfer during migration to {virt}.
++
+link:https://issues.redhat.com/browse/MTV-3130[MTV-3130]
+
+Improved VDDK connection processing for warm migrations from {vmw} vSphere::
+
+Before this update, warm migrations from {vmw} vSphere intermittently failed during the `Disk transfer` phase with a VDDK connection error. With this release, VDDK connection processing is improved, with warm migrations from {vmw} vSphere now completing successfully during the disk transfer phase.
++
+link:https://issues.redhat.com/browse/MTV-3514[MTV-3514]
+
+Improved network interface detection for legacy RHEL 5 32-bit VMs in {vmw} migration::
+
+Before this update, {project-short} did not recognize the `VirtualPCNet32` network type in {vmw} during migration. As a consequence, legacy RHEL 5 32-bit VMs were migrated without network interfaces, causing connectivity issues for users. With this release, {project-short} supports `VirtualPCNet32` NICs and detects 32-bit RHEL5 VMs with the `VirtualPCNet32` network type, enhancing network interface visibility during migration.
++
+link:https://issues.redhat.com/browse/MTV-3796[MTV-3796]
+
+Accurate identification of FC host objects in FC protocol VM migration::
+
+Before this update, FC protocol VM migration failed to identify existing FC host objects in Infinibox due to incorrect adapter ID comparison. As a consequence, FC protocol VM migration failed to identify existing FC hosts, causing volume creation failure. With this update, {project-short} has implemented active WWPN extraction and comparison for accurate identification of FC host objects during FC protocol VM migration in Infinibox. This enhancement prevents volume creation failure due to incorrect `port_name`.
++
+link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
+
+NVMe disk support for vSphere VM migration validation::
+
+Before this update, NVMe disk support was missing for vSphere VM migration, meaning NVMe migration could be successful but not validated. With this update, NVMe disk support is added for successful NVMe migration and validation from {vmw} vSphere.
++
+link:https://issues.redhat.com/browse/MTV-2444[MTV-2444]
+
+VM migration stability with multiple interfaces in pod networks::
+
+Before this update, VM migration failure occurred when multiple interfaces were connected to a pod network in {virt}. With this release, {project-short} now supports multiple interfaces per VM.
++
+link:https://issues.redhat.com/browse/MTV-2666[MTV-2666]
+
+Elimination of orphaned PVCs in OVA migrations::
+
+Before this update, OVA migration left orphaned `ova-store-pvc-*` PVCs on target clusters, consuming resources. As a consequence, excess OVA-store PVCs could cause potential resource exhaustion for users. With this update, OVA migration no longer leaves leftover PVCs on target clusters, improving resource utilization and reducing potential data loss.
++
+link:https://issues.redhat.com/browse/MTV-3659[MTV-3659]
+
+Changes in device identification during OVA to {ocp-short} migration::
+
+Before this update, the migration of VMs with DHCP settings from an OVA provider to an {ocp-short} cluster resulted in the loss of interface settings in the VM YAML file, causing only one default interface with a pod network to remain in the VM. As a consequence, users experienced VMs with incorrect interface settings after migration. The issue occurred because the OVA scanner identified NICs and other device types based on the display name, which was unreliable. With this update, device identification is based on the resource type provided in the OVF specification, preserving interface settings during migration and preventing incorrect configurations.
++
+link:https://issues.redhat.com/browse/MTV-3654[MTV-3654]
+
+Hidden `ConnectionTestFailed` error messages during OVA provider creation::
+
+Before this update, `ConnectionTestFailed` error messages were displayed during OVA provider creation, leading to user confusion. With this update, these error messages are hidden during OVA provider creation, providing a clearer user experience when creating an OVA provider.
++
+link:https://issues.redhat.com/browse/MTV-3613[MTV-3613]
 
 
