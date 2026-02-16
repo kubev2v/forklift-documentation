@@ -62,6 +62,12 @@ You can use a Red Hat {virt} provider as both source and destination provider. Y
 ====
 The {ocp} cluster version of the source provider must be 4.16 or later.
 ====
+
+[WARNING]
+====
+It is not possible to migrate VMs from {virt} to {virt} without cluster administrator ClusterRoleBinding being assigned to service account provider. 
+====
+
 endif::[]
 
 ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
