@@ -69,3 +69,15 @@ Storage Offload Copy optimization for network usage::
 +
 link:https://issues.redhat.com/browse/MTV-3952[MTV-3952]
 
+Native alerting with OpenShift monitoring stack::
+
+{project-short} 2.11.0 introduces native alerting, integrating with OpenShift's Prometheus-based monitoring stack. Administrators now receive notifications for migration plan failures or critical issues, reducing manual monitoring. Users can configure alerts for email, Slack, or PagerDuty, ensuring timely notifications and minimizing downtime.
++
+link:https://issues.redhat.com/browse/MTV-2529[MTV-2529]
+
+*Developer Preview:*Pre-migration test for dual-boot VMs::
+
+{project-short} introduces a more accurate conversion assessment before migration by fetching additional information from guest machines. With this enhancement, users can perform a pre-migration check for dual-boot VMs, ensuring a successful conversion before the migration process begins.
++
+link:https://issues.redhat.com/browse/MTV-2481[MTV-2481]
+

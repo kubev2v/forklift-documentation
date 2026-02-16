@@ -25,6 +25,30 @@ Inactive migration plans are incorrectly labeled as "Running" when `max_vms_infl
 +
 link:https://issues.redhat.com/browse/MTV-1736[MTV-1736] 
 
+Migration between OCP namespaces causes MAC address collisions::
+
+During migration between OCP namespaces in a cluster, MAC address collisions result in VM creation failure.
++
+*Workaround:* Disable the KubeMacPool. For more information, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/virtualization/networking#virt-managing-kubemacpool-cli_virt-using-mac-address-pool-for-vms[Managing KubeMacPool by using the CLI] in the OCP documentation.
++
+link:https://issues.redhat.com/browse/MTV-2446[MTV-2446]
+
+vSphere 6 or 7 migration fails on FIPS-enabled clusters::   
+
+In {project-short} 2.11.0, an update to Golang 1.25 causes a connection failure on FIPS-enabled clusters with VMware 6 or 7, due to unsupported TLS 1.2 with Extended Master Secret. As a consequence, users cannot migrate vSphere 6 or 7 VMs to a FIPS-compliant cluster. 
++
+*Workaround:* Disable FIPS mode on the cluster or use a vSphere version that supports TLS 1.2 with Extended Master Secret to migrate VMs.
++
+link:https://issues.redhat.com/browse/MTV-4411[MTV-4411]
+
+Second migration plan with shared RDM disks fails when shared disk migration is disabled::   
+                                                                                
+When migrating two VMs with shared RDM disks using copyoffload in separate migration plans, the second migration plan fails at the `ImageConversion` step if shared disk migration is disabled. After successfully migrating the first VM with shared disk migration enabled, creating a second migration plan with shared disk migration disabled incorrectly creates two populate pods—one for the OS disk and one for the shared RDM disk—instead of creating only the OS disk populate pod. This causes the second migration to fail.
++
+*Workaround:* A known workaround is currently unavailable for this issue.
++
+link:https://issues.redhat.com/browse/MTV-4549[MTV-4549]
+
 
 
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
