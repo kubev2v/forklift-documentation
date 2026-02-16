@@ -1,4 +1,17 @@
-OVA import uses virt-v2v and is intended for _supported guest operating systems exported from VMware vSphere_.
-Not recommended for third-party vendor appliances, because they often use proprietary bootloaders or disk layouts and may fail (e.g. “no bootloader detected”, disk layout incompatibilities).
-Support warning: Converting a vendor OVA may invalidate vendor support agreements.
-Recommendation: Prefer the vendor’s native .qcow2 image via OpenShift Virtualization “Upload Image” or “Import from URL” instead of the MTV OVA path when available
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+
+[id="con_ova-scope-and-limitations_{context}"]
+
+= OVA scope and limitations
+
+[role="_abstract"]
+
+OVA import for vendor appliances is designed to migrate VMs whose operating systems are exported from {vmw} vSphere. These kinds of VMs can be migrated successfully to {virt} by {project-first}, because `virt-v2v`, the tool used by {project-short} to convert VMs to run on {virt}, supports their operating systems. 
+
+Many third-party vendor-supplied OVA appliances, such as F5, Cisco, and Netscaler, use proprietary bootloaders or disk layouts. As a result, these appliances often fail the `virt-v2v` conversion step with errors such as "no bootloader detected" or disk layout incompatibilities. Even setting `skipGuestConversion` to `true` with these appliances often fails with a blank PVC rather than a raw data copy of the disk bits. Additionally, converting a third-party vendor OVA might invalidate support agreements
+
+To avoid these problems, if your OVAs are third-party applications, request the vendor's native `.qcow2` and import the OVAs directly to {virt} using the {virt} "Upload image" or "Import from URL" features rather than using {project-short}. 
