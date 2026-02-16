@@ -1,0 +1,16 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+
+[id="con_ova-scope-and-limitations_{context}"]
+= OVA scope and limitations
+
+[role="_abstract"]
+
+OVA migration is validated for VMware-exported virtual machines. For third-party networking or security appliances, check with the vendor for native KVM (`.qcow2`) images, so that the migrated VMs can run on {virt}.
+
+The OVA import process utilizes `virt-v2v` to prepare guest operating systems for KVM. Vendor-supplied appliances often use proprietary bootloaders or disk layouts that are incompatible with this conversion. To ensure stability and vendor support, always prioritize importing the vendor's native .qcow2 image by using the OpenShift Virtualization "Upload Image" or "Import from URL" workflow rather than using the MTV OVA path.
+
+
