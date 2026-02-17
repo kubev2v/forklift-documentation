@@ -11,21 +11,15 @@ You can migrate {vmw} vSphere virtual machines (VMs) from {vmw} vCenter or from 
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
+Limitations::
+
+* Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration. This prevents concurrent disk access to the storage the guest points to.
+
+* A plan cannot contain more than 500 VMs or 500 disks.
+
 [WARNING]
 ====
-Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
-
-This prevents concurrent disk access to the storage the guest points to.
-====
-
-[IMPORTANT]
-====
-A plan cannot contain more than 500 VMs or 500 disks.
-====
-
-[IMPORTANT]
-====
-When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains important settings that do not appear in the wizard. For more information about configuring these settings, see xref:configuring-plan-settings-vmware_{context}[Configuring VMware migration plan settings].
+{project-first} cannot migrate {vmw} vSphere 6 and {vmw} vSphere 7 VMs to a FIPS-compliant {virt} cluster.
 ====
 
 .Prerequisites
@@ -200,7 +194,7 @@ The wizard opens to the page where you defined the item.
 
 . When you finish reviewing the details of the plan, click *Create plan*.
 +
-{project-short} validates your plan. When your plan is validated, the *Plan details* page for your plan opens.
+{project-short} validates your plan. When your plan is validated, the *Plan details* page for your plan opens. If everything is OK, the *Plan details* page for your plan opens. This page contains important settings that do not appear in the wizard.
 
 .Next steps
 

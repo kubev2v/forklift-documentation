@@ -14,6 +14,11 @@ It is strongly recommended to create a VDDK image to accelerate migrations. For 
 Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
 ====
 
+[WARNING]
+====
+{project-first} cannot migrate {vmw} vSphere 6 and {vmw} vSphere 7 VMs to a FIPS-compliant {virt} cluster.
+====
+
 The following prerequisites apply to {vmw} migrations:
 
 * You must use a xref:compatibility-guidelines_{context}[compatible version] of {vmw} vSphere.
@@ -27,16 +32,9 @@ The following prerequisites apply to {vmw} migrations:
 
 [WARNING]
 ====
-For virtual machines (VMs) running Microsoft Windows, Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. 
+For virtual machines (VMs) running Microsoft Windows, Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. When performing a warm migration of a Microsoft Windows virtual machine from {vmw}, you must start VSS on the Windows guest operating system in order for the snapshot and `Quiesce guest file system` to succeed.
 
-When performing a warm migration of a Microsoft Windows virtual machine from {vmw}, you must start VSS on the Windows guest operating system in order for the snapshot and `Quiesce guest file system` to succeed.
-
-If you do not start VSS on the Windows guest operating system, the snapshot creation during the Warm migration fails with the following error:
-
-[source,terminal]
-----
-An error occurred while taking a snapshot: Failed to restart the virtual machine
-----
+If you do not start VSS on the Windows guest operating system, the snapshot creation during the warm migration fails with the following error: `An error occurred while taking a snapshot: Failed to restart the virtual machine.`
 
 If you set the VSS service to `Manual` and start a snapshot creation with `Quiesce guest file system = yes`. In the background, the {vmw} Snapshot provider service requests VSS to start the shadow copy.
 ====
@@ -44,11 +42,6 @@ If you set the VSS service to `Manual` and start a snapshot creation with `Quies
 [IMPORTANT]
 ====
 In case of a power outage, data might be lost for a VM with disabled hibernation. However, if hibernation is not disabled, migration will fail.
-====
-
-[NOTE]
-====
-Neither {project-short} nor OpenShift Virtualization support conversion of Btrfs for migrating VMs from {vmw}.
 ====
 
 [id="vmware-privileges_{context}"]
