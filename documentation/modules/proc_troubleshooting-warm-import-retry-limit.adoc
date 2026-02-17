@@ -1,0 +1,48 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_troubleshooting-warm-import-retry-limit_{context}"]
+= Resolving warm import retry limit errors
+
+[role="_abstract"]
+The `warm import retry limit reached` error occurs during a warm migration when a {vmw} virtual machine (VM) has reached the maximum number of changed block tracking (CBT) snapshots during the precopy stage.
+
+A VM can support up to 28 CBT snapshots. During warm migration, {project-short} creates snapshots at regular intervals (one-hour intervals by default) to track changes incrementally. If the source VM has too many CBT snapshots and the Migration Controller service cannot create a new snapshot, warm migration fails with this error.
+
+.Prerequisites
+
+* You have access to the {vmw} vSphere environment with appropriate permissions.
+
+.Procedure
+
+. In the {vmw} vSphere Client, navigate to the source VM that failed migration.
+
+. Review the existing snapshots on the VM:
++
+.. Right-click the VM and select *Snapshots* -> *Manage Snapshots*.
+.. Identify CBT snapshots created by {project-short}.
+
+. Delete some of the CBT snapshots to bring the total number below 28:
++
+.. Select the snapshots you want to delete.
+.. Click *Delete* to remove the selected snapshots.
++
+[NOTE]
+====
+The Migration Controller service automatically deletes each snapshot when it is no longer required. You only need to manually delete snapshots if the limit is reached before the controller can clean them up.
+====
+
+. In the {project-short} UI, restart the migration plan.
+
+.Verification
+
+. Navigate to the migration plan's details page.
+. Verify that the VM migration progresses through the precopy stage without the retry limit error.
+
+[role="_additional-resources"]
+.Additional resources
+
+* link:{mtv-plan}assembly_cold-warm-migration_mtv#about-cold-warm-migration_mtv[About cold and warm migration]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites]

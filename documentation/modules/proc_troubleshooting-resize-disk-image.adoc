@@ -1,0 +1,54 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_troubleshooting-resize-disk-image_{context}"]
+= Resolving disk resize errors
+
+[role="_abstract"]
+The `Unable to resize disk image to required size` error occurs when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage.
+
+The problem occurs because the default file system overhead that is assumed by the Containerized Data Importer (CDI) does not completely include the reserved space for the root partition on EXT4 file systems.
+
+.Prerequisites
+
+* You have access to the {ocp-short} cluster as a user with the `cluster-admin` role.
+
+.Procedure
+
+. Increase the file system overhead in CDI to more than 10%:
++
+.. Edit the CDI configuration:
++
+[source,terminal]
+----
+$ oc edit cdi -n openshift-cnv
+----
++
+.. Locate the `filesystemOverhead` configuration section.
++
+.. Set the global file system overhead percentage to a value greater than `0.10` (10%):
++
+[source,yaml]
+----
+spec:
+  config:
+    filesystemOverhead:
+      global: "0.15"
+----
++
+.. Save and close the editor.
+
+. Retry the migration plan.
+
+.Verification
+
+. Navigate to the migration plan's details page.
+. Verify that the VM migration completes without disk resize errors.
+. After migration, verify that the VM can boot and access all disk volumes.
+
+[role="_additional-resources"]
+.Additional resources
+
+* link:https://docs.openshift.com/container-platform/latest/virt/storage/virt-configuring-cdi-for-filesystem-overhead.html[Configuring CDI for file system overhead]

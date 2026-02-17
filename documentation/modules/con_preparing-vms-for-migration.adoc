@@ -1,0 +1,17 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-vms-web-console.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_preparing-vms-for-migration_{context}"]
+= Preparing VMs for migration
+
+[role="_abstract"]
+Before running a migration plan, you can prepare your virtual machines to ensure a successful migration. The {project-short} web console provides tools to help you configure VM settings in advance.
+
+Common preparation tasks include:
+
+* *Renaming VMs*: Ensure VM names comply with DNS naming requirements for the target {virt} environment.
+* *Configuring power states*: Set the target power state for VMs after migration to control whether they start automatically or remain powered off.
+
+You can perform these tasks after creating a migration plan but before running the migration. The changes you make apply to the target VMs in the destination environment.

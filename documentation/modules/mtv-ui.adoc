@@ -12,3 +12,22 @@ The {project-first} user interface is integrated into the {ocp-short} web consol
 In the left panel, you can choose a page related to a component of the migration progress, for example, *Providers*. Or, if you are an administrator, you can choose *Overview*, which contains information about migrations and lets you configure {project-short} settings.
 
 In pages related to components, you can click on the *Projects* list, which is in the upper-left portion of the page, and see which projects (namespaces) you are allowed to work with.
+
+[id="tips-and-tricks-panel_{context}"]
+== The Tips and tricks panel
+
+The *Tips and tricks* panel provides contextual guidance and best practices to help you plan and execute your migrations successfully.
+
+You can access the panel by clicking the *Tips and tricks* link in the upper-right corner of all {project-short} pages in the web console.
+
+The panel includes a dropdown menu where you can select from the following topics:
+
+* Creating a provider
+* Migrating your virtual machines
+* Choosing the right migration type
+* Creating a network mapping
+* Creating a storage mapping
+* Optimizing migration speed
+* Troubleshooting
+
+Each topic includes explanations of key terminology and considerations, with links to {project-short} documentation, {project-short} performance recommendations, Red Hat Customer Support, and Red Hat {virt} Administration training.

@@ -7,18 +7,47 @@
 = Error messages
 
 [role="_abstract"]
-This section describes error messages and how to resolve them.
+Review common error messages encountered during migration. For detailed resolution steps, see the linked troubleshooting procedures.
 
-[id="warm-import-retry-limit_{context}"]
-== warm import retry limit reached
+[cols="2,3,1",options="header"]
+.Common migration error messages
+|===
+|Error message |Description |Resolution
 
-The `warm import retry limit reached` error message is displayed during a warm migration if a {vmw} virtual machine (VM) has reached the maximum number (28) of changed block tracking (CBT) snapshots during the precopy stage.
+|`warm import retry limit reached`
+|Displayed during a warm migration when a {vmw} virtual machine (VM) has reached the maximum number (28) of changed block tracking (CBT) snapshots during the precopy stage.
+|xref:proc_troubleshooting-warm-import-retry-limit_{context}[Resolving warm import retry limit errors]
 
-To resolve this problem, delete some of the CBT snapshots from the VM and restart the migration plan.
+|`Unable to resize disk image to required size`
+|Displayed when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage. The default file system overhead assumed by CDI does not include the reserved space for the root partition.
+|xref:proc_troubleshooting-resize-disk-image_{context}[Resolving disk resize errors]
 
-[id="unable-resize-disk-image_{context}"]
-== Unable to resize disk image to required size
+|`An error occurred while taking a snapshot: Failed to restart the virtual machine`
+|Displayed during warm migration of Microsoft Windows VMs when the Volume Shadow Copy Service (VSS) is not running on the guest operating system.
+|link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites]
 
-The `Unable to resize disk image to required size` error message is displayed when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage. The problem occurs because the default overhead that is assumed by CDI does not completely include the reserved place for the root partition.
+|`ConnectionTestFailed`
+|Displayed when creating an Open Virtual Appliance (OVA) provider. Error messages might appear before the provider status changes to `Ready`.
+|xref:proc_troubleshooting-connection-test-failed-ova_{context}[Resolving OVA connection test errors]
 
-To resolve this problem, increase the file system overhead in CDI to more than 10%.
+|`Error pulling VDDK image`
+|Displayed when a provider in a namespace different from `openshift-mtv` cannot access the VDDK image.
+|xref:proc_troubleshooting-vddk-image-pull-error_{context}[Resolving VDDK image pull errors]
+
+|`Manual SSH key configuration required`, `Failed to connect via SSH`, or `SSH connection timeout`
+|Displayed when {project-short} cannot establish an SSH connection to the ESXi host during storage copy offload operations.
+|xref:con_troubleshooting-storage-copy-offload_{context}[Troubleshooting storage copy offload]
+
+|`VM name validation failed: Invalid DNS name`
+|Displayed when a source VM name does not comply with Kubernetes DNS naming requirements.
+|link:{mtv-plan}assembly_migrating-vms-web-console_mtv#proc_renaming-vms-for-migration_mtv[Renaming virtual machines]
+
+|`Cannot derive SVM to use; please specify SVM in config file`
+|Displayed during storage copy offload operations with NetApp storage when ONTAP is not configured correctly.
+|xref:con_troubleshooting-storage-copy-offload_{context}[Troubleshooting storage copy offload]
+
+|`Migration failed: VDDK image required for vSAN storage`
+|Displayed when a VM is backed by {vmw} vSAN storage and no VDDK image is configured. VDDK is mandatory for vSAN migrations.
+|xref:proc_troubleshooting-vddk-required-vsan_{context}[Resolving VDDK vSAN errors]
+
+|===

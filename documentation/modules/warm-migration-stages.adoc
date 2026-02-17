@@ -1,0 +1,29 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="warm-migration-stages_{context}"]
+
+= Warm migration stages
+
+[role="_abstract"]
+Warm migration operates in two stages: the precopy stage, where most data is copied while VMs run, and the cutover stage, where VMs are shut down to complete the migration.
+
+== Precopy stage
+
+The VMs are not shut down during the precopy stage.
+
+The VM disks are copied incrementally by using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment.
+
+A VM can support up to 28 CBT snapshots. If the source VM has too many CBT snapshots and the `Migration Controller` service is not able to create a new snapshot, warm migration might fail. The `Migration Controller` service deletes each snapshot when the snapshot is no longer required.
+
+The precopy stage runs until the cutover stage is started manually or is scheduled to start.
+
+== Cutover stage
+
+The VMs are shut down during the cutover stage and the remaining data is migrated. Data stored in RAM is not migrated.
+
+You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` custom resource (CR).
+
+The duration of the cutover stage depends on how much data has changed since the last snapshot was created during the precopy stage.

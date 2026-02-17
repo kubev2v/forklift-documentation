@@ -1,0 +1,86 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_troubleshooting-workflow_{context}"]
+= Troubleshooting workflow
+
+[role="_abstract"]
+When troubleshooting migration issues, follow this recommended sequence to identify and resolve problems efficiently.
+
+.Procedure
+
+. *Check the migration progress* for a high-level overview of your virtual machine (VM) migration status.
++
+.. Navigate to the *Virtual machines* tab on your migration plan's details page.
+.. Review the status of each VM to identify where errors are occurring.
++
+You can typically find where the error is occurring at this stage. VMs can be migrated in two different ways:
++
+* *Warm migration*: VMs are migrated with minimal downtime while remaining powered on during the precopy stage.
+* *Cold migration*: VMs are shut down during the entire migration process.
+
+. *View pod logs* for specific information about pod status within Kubernetes.
++
+[NOTE]
+====
+Pod logs are only available after the image conversion stage has started.
+====
++
+.. On the migration plan's details page, expand the *Migration Resources* section.
+.. Under the *Pod* subheading, click *View logs*.
+.. Review the logs for error messages or warnings that indicate the cause of the failure.
+
+. *Review forklift controller logs* if the migration progress and pod logs are not helpful.
++
+Forklift controller logs capture {project-first} related events and provide detailed information about the migration process.
++
+.. Access the forklift controller logs through the {ocp-short} web console or CLI.
+.. Search for error messages or warnings related to your migration plan or specific VMs.
+
+. *Collect must-gather logs* if previous troubleshooting steps do not resolve the issue.
++
+The `must-gather` tool collects comprehensive diagnostic information about your cluster.
++
+.. Navigate to the directory where you want to store the `must-gather` data:
++
+[source,terminal]
+----
+$ cd /path/to/must-gather-directory
+----
++
+.. Run the `must-gather` command:
++
+[source,terminal]
+----
+$ oc adm must-gather --image=registry.redhat.io/migration-toolkit-virtualization/mtv-must-gather-rhel8:latest
+----
++
+.. Review the collected logs in the newly created directory.
+
+. *Optional: Open a support case with Red Hat* if you need assistance from Red Hat Support.
++
+.. Create a compressed file from the must-gather directory:
++
+[source,terminal]
+----
+$ tar -czf must-gather-$(date +%Y%m%d-%H%M%S).tar.gz must-gather.local.*
+----
++
+.. Open a support case on the link:https://access.redhat.com/support/cases/#/case/new[Red Hat Customer Portal].
++
+.. Attach the compressed must-gather file to your support case.
++
+.. Provide a detailed description of the issue, including:
++
+* Migration plan details
+* Source and target provider information
+* Error messages from the UI or logs
+* Steps to reproduce the issue
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:collected-logs-cr-info_{context}[Logs and custom resources for troubleshooting]
+* xref:error-messages_{context}[Error messages]

@@ -7,14 +7,12 @@
 = Migration speed comparison
 
 [role="_abstract"]
-Compare cold and warm migration speeds to choose the best migration type for your workload. Both have similar transfer speeds, but warm migration runs in the background with hourly snapshots while cold migration requires VM shutdown.
+Compare cold and warm migration speeds to choose the best migration type for your workload. Both have similar transfer speeds, but warm migration runs in the background with hourly snapshots while cold migration requires VMs to be shut down. Warm migration requires a shutdown at the cutover stage, but cold migration requires a shutdown for the whole process.
 
-Comparison::
-
-* The observed speeds for the warm migration single disk transfer and disk conversion are approximately the same as for the cold migration.
-* The benefit of warm migration is that the transfer of the snapshot happens in the background while the VM is powered *_on_*.
-* The default snapshot time is taken every 60 minutes. If VMs change substantially, more data needs to be transferred than in cold migration when the VM is powered *_off_*.
-* The cutover time, meaning the shutdown of the VM and last snapshot transfer, depends on how much the VM has changed since the last snapshot.
+* The observed speeds for the warm migration single disk transfer and disk conversion are approximately the same as for cold migration.
+* The benefit of warm migration is that the transfer of the snapshot happens in the background while the VM is running.
+* The default snapshot time is taken every 60 minutes. If VMs change substantially, more data needs to be transferred than in cold migration when the VM is shut down.
+* The cutover stage, meaning the final VM shutdown and last snapshot transfer, depends on how much the VM has changed since the last snapshot.
 
 [NOTE]
 ====
