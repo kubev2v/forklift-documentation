@@ -1,0 +1,46 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_advanced-migration-options.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="migration-hook-workflow_{context}"]
+= Migration hook workflow
+
+[role="_abstract"]
+The illustration that follows shows the general process of using a migration hook.
+
+.Adding a hook to a migration plan
+image::migration_hook_process.png[Adding a hook to a migration plan]
+
+*Process:*
+
+. Input your Ansible hook and credentials.
+
+.. Input an Ansible hook image to the {project-short} controller using either the UI or the CLI.
++
+* In the UI, specify the `ansible-runner` and enter the `playbook.yml` that contains the hook.
+* In the CLI, input the hook image, which specifies the playbook that runs the hook.
+
+.. If you need additional data to run the playbook inside the pod, such as SSH data, create a Secret that contains credentials for the VM. The Secret is not mounted to the pod, but is called by the playbook.
++
+[NOTE]
+====
+This Secret is not the same as the `Secret` CR that contains the credentials of your source provider.
+====
+
+. The {project-short} controller creates the `ConfigMap`, which contains:
+
+** `workload.yml`, which contains information about the VMs.
+** `playbook.yml`, the raw string playbook you want to run.
+** `plan.yml`, which is the `Plan` CR.
++
+The `ConfigMap` contains the name of the VM and instructs the playbook what to do.
+
+. The {project-short} controller creates a job that starts the user-specified image.
+.. Mounts the `ConfigMap` to the container.
++
+The Ansible hook imports the Secret that the user previously entered.
+. The job runs a pre-migration hook or a post-migration hook as follows:
+
+.. For a pre-migration hook, the job logs into the VMs on the source provider using SSH and runs the hook.
+.. For a post-migration hook, the job logs into the VMs on {virt} using SSH and runs the hook.

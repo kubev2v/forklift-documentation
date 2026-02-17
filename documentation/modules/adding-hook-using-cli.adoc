@@ -7,26 +7,16 @@
 = Adding a migration hook to a migration plan using the CLI
 
 [role="_abstract"]
-You can use a `Hook` CR to add a pre-migration hook or a post-migration hook to an existing migration plan by using the {project-first} CLI.
+You can use a `Hook` CR to add a pre-migration hook or a post-migration hook to an existing migration plan by using the {project-first} CLI. For example, you can create a `Hook` custom resource (CR) to install the `cloud-init` service on a VM and write a file before migration.
 
-For example, you can create a `Hook` custom resource (CR) to install the `cloud-init` service on a VM and write a file before migration.
-
-[NOTE]
-====
-You can run one pre-migration hook, one post-migration hook, or one of each per migration plan. Each hook needs its own `Hook` CR, but a `Plan` CR contains data for all the hooks it uses.
-====
-
-[NOTE]
-====
-You can retrieve additional information stored in a secret or in a `ConfigMap` by using a `k8s` module.
-====
+You can run one pre-migration hook, one post-migration hook, or one of each per migration plan. Each hook needs its own `Hook` CR, but a `Plan` CR contains data for all the hooks it uses. You can retrieve additional information stored in a secret or in a `ConfigMap` by using a `k8s` module.
 
 .Prerequisites
 
 * Migration plan.
 * Migration hook image or the playbook containing the hook image.
 * File containing the Secret for the source provider.
-* {ocp} service account called by the hook and that has at least write access for the namespace you are working in. For information about creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
+* (Optional) {ocp} service account called by the hook. The service account must have at least write access for the namespace you are working in. For information about creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
 * SSH access for VMs you want to migrate with the public key installed on the VMs.
 * VMs running on Microsoft Server only: Remote Execution enabled.
 
@@ -66,7 +56,7 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/kubev2v/hook-runner
-  serviceAccount:<service_account> 
+  serviceAccount: <service_account>
   playbook: |
     <playbook>
 EOF
@@ -75,15 +65,15 @@ EOF
 where:
 
 <service_account>::
-Specifies the {ocp} service account. This is an optional label. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
-
-<playbook>::
-Specifies the Base64-encoded Ansible Playbook to use. For example, `LS0tCi0gbm...`. If you specify a playbook, the `image` must include an `ansible-runner`.
+Specifies the {ocp} service account. This is an optional field. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
 +
 [NOTE]
 ====
-You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+You can set the service account directly in the {ocp} web console when creating or editing a migration plan by using the *Service account* field. See xref:adding-migration-hook-via-ui_{context}[Adding a migration hook using the web console] for the simplified UI workflow. The CLI/YAML method documented here is still supported for advanced use cases and automation.
 ====
+
+<playbook>::
+Specifies the Base64-encoded Ansible Playbook to use. For example, `LS0tCi0gbm...`. If you specify a playbook, the `image` must include an `ansible-runner`. You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
 +
 [NOTE]
 ====
@@ -111,9 +101,9 @@ $ oc get -n konveyor-forklift hook playbook -o \
 where:
 
 <type_of_hook>::
-Specifies the type of hook. Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration. In order for a PreHook to run on a VM, the VM must be started and available via SSH.
+Specifies the type of hook. Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration. In order for a PreHook to run on a VM, the VM must be started and available using SSH.
 +
-The example migration hook that follows ensures that the VM can be accessed using SSH, creates an SSH key, and runs two tasks: stopping the Maria database and generating a text file.
+The following example hook ensures that the VM can be accessed using SSH, creates an SSH key, and runs two tasks: stopping the MariaDB database and generating a text file.
 +
 [source,yaml,subs="attributes+"]
 ----

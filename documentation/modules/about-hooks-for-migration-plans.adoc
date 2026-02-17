@@ -9,60 +9,22 @@
 [role="_abstract"]
 You can add hooks to an {project-first} migration plan to perform automated operations on a VM, either before or after you migrate it.
 
-You can add hooks to {project-first} migration plans using either the {project-short} CLI or the {project-short} user interface, which is located in the {ocp} web console.
+You can add hooks to {project-first} migration plans by using either the {project-short} CLI or the {project-short} user interface, which is located in the {ocp} web console.
 
 * _Pre-migration_ hooks are hooks that perform operations on a VM that is located on a provider. This prepares the VM for migration.
 * _Post-migration_ hooks are hooks that perform operations on a VM that has migrated to {virt}.
 
-[id="default-hook-image_{context}"]
-== Default hook image
+Default hook image::
 The default hook image for an {project-short} hook is `quay.io/kubev2v/hook-runner`. The image is based on the Ansible Runner image with the addition of `python-openshift` to provide Ansible Kubernetes resources and a recent `oc` binary.
 
-[id="hook-execution_{context}"]
-== Hook execution
-An Ansible Playbook that is provided as part of a migration hook is mounted into the hook container as a `ConfigMap`. The hook container is run as a job on the desired cluster in the `openshift-mtv` namespace using the `ServiceAccount` you choose.
+Hook execution::
+An Ansible Playbook that is provided as part of a migration hook is mounted into the hook container as a `ConfigMap`. The hook container is run as a job that uses a service account on the relevant cluster in the `openshift-mtv` namespace.
 
-When you add a hook, you must specify the namespace where the `Hook` CR is located, the name of the hook, and whether the hook is a pre-migration hook or a post-migration hook.
+When you add a hook, you must specify the name of the hook and whether it is a pre-migration hook or a post-migration hook. You can optionally specify a service account. When you add a hook by using the {ocp} web console, you can specify the service account name in the *Service account* field when creating or editing the migration plan. When you add a hook by using the CLI, you can specify the service account in the `Hook` CR.
+
+If you specify a service account, it must have the appropriate RBAC permissions to manage cluster resources and at least write access for the namespace you are working in.
 
 [IMPORTANT]
 ====
 In order for a hook to run on a VM, the VM must be started and available using SSH.
 ====
-
-The illustration that follows shows the general process of using a migration hook. For specific procedures, see xref:adding-migration-hook-via-ui_{context}[Adding a migration hook to a migration plan using the {ocp} web console] and xref:adding-migration-hook-via-cli_{context}[Adding a migration hook to a migration plan using the CLI].
-
-.Adding a hook to a migration plan
-image::migration_hook_process.png[Adding a hook to a migration plan]
-
-*Process:*
-
-. Input your Ansible hook and credentials.
-
-.. Input an Ansible hook image to the {project-short} controller using either the UI or the CLI.
-+
-* In the UI, specify the `ansible-runner` and enter the `playbook.yml` that contains the hook.
-* In the CLI, input the hook image, which specifies the playbook that runs the hook.
-
-.. If you need additional data to run the playbook inside the pod, such as SSH data, create a Secret that contains credentials for the VM. The Secret is not mounted to the pod, but is called by the playbook.
-+
-[NOTE]
-====
-This Secret is not the same as the `Secret` CR that contains the credentials of your source provider.
-====
-
-. The {project-short} controller creates the `ConfigMap`, which contains:
-
-** `workload.yml`, which contains information about the VMs.
-** `playbook.yml`, the raw string playbook you want to run.
-** `plan.yml`, which is the `Plan` CR.
-+
-The `ConfigMap` contains the name of the VM and instructs the playbook what to do.
-
-. The {project-short} controller creates a job that starts the user specified image.
-.. Mounts the `ConfigMap` to the container.
-+
-The Ansible hook imports the Secret that the user previously entered.
-. The job runs a pre-migration hook or a post-migration hook as follows:
-
-.. For a pre-migration hook, the job logs into the VMs on the source provider using SSH and runs the hook.
-.. For a post-migration hook, the job logs into the VMs on {virt} using SSH and runs the hook.

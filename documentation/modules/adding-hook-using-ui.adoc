@@ -7,26 +7,16 @@
 = Adding a migration hook to a migration plan using the {ocp} web console
 
 [role="_abstract"]
-You can add a migration hook to an existing migration plan by using the {ocp} web console. 
+You can add a migration hook to an existing migration plan by using the {ocp} web console. For example, you can create a hook to install the `cloud-init` service on a VM and write a file before migration. You can optionally specify a service account for the hook directly in the web console.
 
-[NOTE]
-====
-You need to run one command in the {project-first} CLI.
-====
-
-For example, you can create a hook to install the `cloud-init` service on a VM and write a file before migration.
-
-[NOTE]
-====
 You can run one pre-migration hook, one post-migration hook, or one of each per migration plan.
-====
 
 .Prerequisites
 
 * Migration plan.
 * Migration hook file, whose contents you copy and paste into the web console.
 * File containing the `Secret` for the source provider.
-* {ocp} service account called by the hook and that has at least write access for the namespace you are working in. For instructions for creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
+* (Optional) {ocp} service account called by the hook. The service account must have at least write access for the namespace you are working in. For information about creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
 * SSH access for VMs you want to migrate with the public key installed on the VMs.
 * VMs running on Microsoft Server only: Remote Execution enabled.
 
@@ -38,24 +28,19 @@ You can run one pre-migration hook, one post-migration hook, or one of each per 
 
 .. In the *Pre migration hook* section, toggle the *Enable hook* switch to *Enable pre migration hook*.
 .. Enter the *Hook runner image*. If you are specifying the `spec.playbook`, you need to use an image that has an `ansible-runner`.
+.. Optional: Enter the *Service account* name. The service account must have the necessary RBAC permissions to manage cluster resources from the hook pod.
 .. Paste your hook as a YAML file in the *Ansible playbook* text box. 
 
 . For a post-migration hook, perform the following steps:
 
-.. In the *Post migration hook*, toggle the *Enable hook* switch *Enable post migration hook*.
+.. In the *Post migration hook*, toggle the *Enable hook* switch to *Enable post migration hook*.
 .. Enter the *Hook runner image*. If you are specifying the `spec.playbook`, you need to use an image that has an `ansible-runner`.
+.. Optional: Enter the *Service account* name. The service account must have the necessary RBAC permissions to manage cluster resources from the hook pod.
 .. Paste your hook as a YAML file in the *Ansible playbook* text box.
 
 . At the top of the tab, click *Update hooks*.
-. In a terminal, enter the following command to associate each hook with your {ocp} service account:
 +
-[source,terminal,subs="attributes+"]
-----
-$ oc -n openshift-mtv patch hook <name_of_hook> \
-  -p '{"spec":{"serviceAccount":"<service_account>"}}' --type merge
-----
-+
-The example migration hook that follows ensures that the VM can be accessed using SSH, creates an SSH key, and runs two tasks: stopping the Maria database and generating a text file.
+The following example hook ensures that the VM can be accessed using SSH, creates an SSH key, and runs two tasks: stopping the MariaDB database and generating a text file.
 +
 [source,yaml,subs="attributes+"]
 ----

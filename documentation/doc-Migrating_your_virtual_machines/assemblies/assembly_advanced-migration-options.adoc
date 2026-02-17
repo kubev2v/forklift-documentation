@@ -27,6 +27,8 @@ include::../modules/retrieving-validation-service-json.adoc[leveloffset=+2]
 
 include::../modules/about-hooks-for-migration-plans.adoc[leveloffset=+1]
 
+include::../modules/ref_migration-hook-workflow.adoc[leveloffset=+2]
+
 include::../modules/adding-hook-using-ui.adoc[leveloffset=+2]
 
 include::../modules/adding-hook-using-cli.adoc[leveloffset=+2]
