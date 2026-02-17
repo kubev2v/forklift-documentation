@@ -8,18 +8,13 @@
 [role="_abstract"]
 You can use _live migration_ to migrate VMs between {virt} clusters or namespaces on the same {virt} cluster with minimal downtime. Live migration makes it easier to perform Day 2 tasks, such as maintenance and workload balancing after you have migrated your VMs to {virt}.
 
-Live migration is supported by {project-first} version 2.10.0 and later. It requires {virt} 4.20 or later on both your source and target clusters. 
+Live migration is supported by {project-first} version 2.10.0 and later. It requires {virt} 4.20 or later on both your source and target clusters.
 
 [IMPORTANT]
 ====
-Live migration is a Technology Preview feature only. Technology Preview features
-are not supported with Red Hat production service level agreements (SLAs) and
-might not be functionally complete. Red Hat does not recommend using them
-in production. These features provide early access to upcoming product
-features, enabling customers to test functionality and provide feedback during
-the development process.
-For more information about the support scope of Red Hat Technology Preview
-features, see https://access.redhat.com/support/offerings/techpreview/.
+There is a known issue with live migration: Migration between namespaces on the same {virt} cluster fails because of MAC address collisions. 
+
+link:https://issues.redhat.com/browse/MTV-2446[(MTV-2446)]
 ====
 
 include::../modules/benefits-live-migration.adoc[leveloffset=+1]
