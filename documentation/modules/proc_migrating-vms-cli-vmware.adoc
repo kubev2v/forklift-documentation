@@ -356,12 +356,15 @@ spec:
   pvcNameTemplate: <pvc_name_template>
   pvcNameTemplateUseGenerateName: true
   skipGuestConversion: false
-  targetAffinity: <affinity rule> 
+  targetAffinity: <target_affinity_rule> 
   targetLabels: 
     label: <label> 
   targetNodeSelector: 
     <key>:<value>
   targetNamespace: <target_namespace>
+  convertorLabels: <importer_converter_labels>
+  convertorNodeSelector: <key>:<value>
+  convertorAffinity<importer_affinity_rule>
   useCompatibilityMode: true
   volumeNameTemplate: <volume_name_template>
   vms: 
@@ -455,10 +458,10 @@ Specifies whether VMs are converted before migration using the `virt-v2v` tool, 
 * When set to `false`, the default value, {project-short} migrates VMs using `virt-v2v`.
 * When set to `true`, {project-short} migrates VMs using raw copy mode, which copies the VMs without converting them first.
 +
-Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
+Raw copy mode copies VMs without converting them with `virt-v2v`. This provides faster conversions for migrating VMs running a wider range of operating systems and supports migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
 
 `targetAffinity`::
-Specifies a target affinity rule, which may be quite complex, is entered in lines following this label. This is an optional label.
+Specifies a VM target affinity rule that is entered in the lines following this label. This is an optional label.
 +
 `targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
 
@@ -467,6 +470,30 @@ Specifies organizational or operational labels to migrated VMs for identificatio
 
 `targetNodeSelector`::
 Specifies the key-value pairs that must be matched for VMs to be scheduled on nodes. This is an optional label.
+
+`convertorLabels`::
+Cold migrations only: Specifies organizational or operational labels for the `virt-v2v` convertor pods (importer pods) for identification and management. This is an optional label.
++
+[IMPORTANT]
+====
+To ensure proper system functionality, system-managed labels override any user-defined labels with the same keys. System-managed labels include `migration`, `plan`, `vmID`, and `forklift.app`.
+====
++
+For more details on labels and selectors in Kubernetes, see https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#labels[Labels and Selectors].
++
+`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` conversion pod (importer pod) for cold migrations from {vmw} providers. With this feature, you can set the `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` that control the labels, `noteSelector`, and `Affinity` of the convertor pod.
++
+For more information on importer files, see {mtv-plan}assembly_planning-migration-vmware#con_about-configuring-importer-pods_vmware[About scheduling importer pods].
+
+`convertorNodeSelector`::
+Cold migrations only: Specifies the key-value pairs that must be matched for data to be transferred by the `virt-v2v` convertor pods (importer pods) to the specified target nodes. This is an optional label. With this feature, you can dedicate specific nodes for disk conversion workloads that require high I/O performance or network access to source VMware infrastructure.
++
+For more details on node selectors in Kubernetes, see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector[nodeSelector].
+
+`convertorAffinity`::
+Cold migrations only: Specifies a hard-affinity or a soft-affinity rule for `virt-v2v` convertor pods (importer pods). This is an optional label. Affinity rules can be used to optimize placement for disk conversion performance, such as co-locating with storage or ensuring network proximity to VMware infrastructure for cold migration data transfers.  
++
+For more information on affinity rules in Kubernetes, see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity[Affinity and anti-affinity].
 
 `useCompatibilityMode`::
 Determines whether the migration uses VirtIO devices or compatibility devices when `skipGuestConversion` is `true` (raw copy mode). This setting has no effect when `skipGuestConversion` is `false` because standard V2V conversion always uses VirtIO devices.
