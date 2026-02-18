@@ -47,7 +47,7 @@ link:https://issues.redhat.com/browse/MTV-3742[MTV-3742]
 
 Enhanced Create provider form for source providers::
 
-In {project-short} 2.11.0, the *Create provider* form in the {project-short} UI has unique authentication and validation fields for source providers such as {ocp-short}, {osp}, {rhv-full} (oVirt), and vSphere. The new form provides a cleaner and more user-friendly experience when creating providers, making it easier for cluster administrators to create plans for migrating their VMs.
+In {project-short} 2.11.0, the *Create provider* form in the {project-short} UI has unique authentication and validation fields for source providers such as {ocp-short}, {osp}, {rhv-full} (oVirt), and {vmw} vSphere. The new form provides a cleaner and more user-friendly experience when creating providers, making it easier for cluster administrators to create plans for migrating their VMs.
 +
 link:https://issues.redhat.com/browse/MTV-3737[MTV-3737]
 

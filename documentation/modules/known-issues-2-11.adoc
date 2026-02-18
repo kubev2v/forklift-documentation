@@ -33,11 +33,11 @@ During migration between {ocp-short} namespaces in a cluster, MAC address collis
 +
 link:https://issues.redhat.com/browse/MTV-2446[MTV-2446]
 
-vSphere 6 or 7 migration fails on FIPS-enabled clusters::
+{vmw} vSphere 6 or 7 migration fails on FIPS-enabled clusters::
 
-In {project-short} 2.11.0, an update to Golang 1.25 causes a connection failure on FIPS-enabled clusters with {vmw} 6 or 7, due to unsupported TLS 1.2 with Extended Master Secret. As a consequence, users cannot migrate vSphere 6 or 7 VMs to a FIPS-compliant cluster.
+In {project-short} 2.11.0, an update to Golang 1.25 causes a connection failure on FIPS-enabled clusters with {vmw} vSphere 6 or 7, due to unsupported TLS 1.2 with Extended Master Secret. As a consequence, users cannot migrate {vmw} vSphere 6 or 7 VMs to a FIPS-compliant cluster.
 +
-*Workaround:* Disable FIPS mode on the cluster or use a vSphere version that supports TLS 1.2 with Extended Master Secret to migrate VMs.
+*Workaround:* Disable FIPS mode on the cluster or use a {vmw} vSphere version that supports TLS 1.2 with Extended Master Secret to migrate VMs.
 +
 link:https://issues.redhat.com/browse/MTV-4411[MTV-4411]
 

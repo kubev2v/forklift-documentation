@@ -129,9 +129,9 @@ Before this update, FC protocol VM migration failed to identify existing FC host
 +
 link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
 
-NVMe disk support for vSphere VM migration validation::
+NVMe disk support for {vmw} vSphere VM migration validation::
 
-Before this update, NVMe disk support was missing for vSphere VM migration, meaning NVMe migration could be successful but not validated. With this update, NVMe disk support is added for successful NVMe migration and validation from {vmw} vSphere.
+Before this update, NVMe disk support was missing for {vmw} vSphere VM migration, meaning NVMe migration could be successful but not validated. With this update, NVMe disk support is added for successful NVMe migration and validation from {vmw} vSphere.
 +
 link:https://issues.redhat.com/browse/MTV-2444[MTV-2444]
 
