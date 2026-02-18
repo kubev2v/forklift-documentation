@@ -65,7 +65,7 @@ EOF
 where:
 
 <service_account>::
-Specifies the {ocp} service account. This is an optional field. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
+Optional: Specifies the {ocp} service account. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
 +
 [NOTE]
 ====
