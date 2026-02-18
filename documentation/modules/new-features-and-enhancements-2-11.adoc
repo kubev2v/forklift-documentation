@@ -17,7 +17,7 @@ link:https://issues.redhat.com/browse/MTV-3681[MTV-3681]
 
 Enhanced pre-migration issue visibility::
 
-{project-short} 2.11.0 enhances the visibility of pre-migration concerns for individual VMs, providing a clear taxonomy and visual indicators to distinguish between critical issues, VM-specific failures, and ignorable warnings. The updated UI includes new icons, colors, and labels for quick comprehension of validation issue severity. The `Conditions` column of the VM table now displays all current concerns impacting the plan, with filters for Name, Severity, Type, and Folder. A total of critical alerts is displayed at the top of the page, with a "View all alerts" button for detailed analysis. This improvement increases the clarity and understanding of pre-migration concerns, simplifying the migration process.
+{project-short} 2.11.0 enhances the visibility of pre-migration concerns for individual VMs, providing a clear taxonomy and visual indicators to distinguish between critical issues, VM-specific failures, and ignorable warnings. The updated UI includes new icons, colors, and labels for quick comprehension of validation issue severity. The `Conditions` column of the VM table now displays all current concerns impacting the plan, with filters for Name, Severity, Type, and Folder. A total of critical alerts is displayed at the top of the page, with a `View all alerts` button for detailed analysis. This improvement increases the clarity and understanding of pre-migration concerns, simplifying the migration process.
 +
 link:https://issues.redhat.com/browse/MTV-3712[MTV-3712]
 
@@ -35,7 +35,7 @@ link:https://issues.redhat.com/browse/MTV-3636[MTV-3636]
 
 Add descriptive notes to migration plans::
 
-In {project-short} 2.11.0, cluster administrators can now add descriptive notes to their migration plans during creation. The new Description field allows easy differentiation and management of various plans within the web console. Users can identify the purpose, scope, and owner of each plan by adding reasons for each migration in the Description field. The added context is visible in the plan table and Plan details page for long-term management and auditing purposes.
+In {project-short} 2.11.0, cluster administrators can now add descriptive notes to their migration plans during creation. The new `Description` field allows easy differentiation and management of various plans within the web console. Users can identify the purpose, scope, and owner of each plan by adding reasons for each migration in the Description field. The added context is visible in the plan table and Plan details page for long-term management and auditing purposes.
 +
 link:https://issues.redhat.com/browse/MTV-3748[MTV-3748]
 

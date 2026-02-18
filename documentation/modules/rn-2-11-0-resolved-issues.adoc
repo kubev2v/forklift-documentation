@@ -23,19 +23,19 @@ link:https://issues.redhat.com/browse/MTV-3618[MTV-3618]
 
 Correct UI display of migration type after change::
 
-Before this update, if you changed the `Migration type` on the Plan details page in the {project-short} UI from warm to cold, the YAML file was updated correctly but the UI did not display the updated migration type. With this release, the UI edit field for `Migration type` updates the migration type in the YAML file and the UI correctly displays the updated migration type.
+Before this update, if you changed the `Migration type` on the `Plan details` page in the {project-short} UI from warm to cold, the YAML file was updated correctly but the UI did not display the updated migration type. With this release, the UI edit field for `Migration type` updates the migration type in the YAML file and the UI correctly displays the updated migration type.
 +
 link:https://issues.redhat.com/browse/MTV-3476[MTV-3476]
 
 Correct VM name display in migration progress::
 
-Before this update, during the migration of a VM with a non-conformant name in {ocp-short}, the name was standardized. However, the migration progress in the {project-short} UI showed the original non-conformant VM name. As a consequence, users saw incorrect VM names in the Migration progress list, with links causing `404` errors. With this release, the migration progress now shows accurate VM names and links.
+Before this update, during the migration of a VM with a non-conformant name in {ocp-short}, the name was standardized. However, the migration progress in the {project-short} UI showed the original non-conformant VM name. As a consequence, users saw incorrect VM names in the `Migration progress` list, with links causing `404` errors. With this release, the migration progress now shows accurate VM names and links.
 +
 link:https://issues.redhat.com/browse/MTV-4386[MTV-4386]
 
-Resolved "Unable to retrieve data" error in cold migration plans with static IP preservation::
+Resolved `Unable to retrieve data` error in cold migration plans with static IP preservation::
 
-Before this update, users encountered an "Unable to retrieve data" error during VM listing in cold migration plans created with static IP preservation on vCenter7. With this release, cold migration plans now retrieve VM data correctly, eliminating 'Unable to retrieve data' errors.
+Before this update, users encountered an `Unable to retrieve data` error during VM listing in cold migration plans created with static IP preservation on vCenter7. With this release, cold migration plans now retrieve VM data correctly, eliminating `Unable to retrieve data` errors.
 +
 link:https://issues.redhat.com/browse/MTV-3266[MTV-3266]
 
@@ -63,27 +63,27 @@ Before this update, users received a misleading message about VM shutdown during
 +
 link:https://issues.redhat.com/browse/MTV-3572[MTV-3572]
 
-Adjusted 'Tips and tricks' link placement to avoid conflict with reserved UI elements::
+Adjusted `Tips and tricks` link placement to avoid conflict with reserved UI elements::
 
-Before this update, the 'Tips and tricks' link placement in the upper-right corner of the {project-short} UI conflicted with reserved UI elements. As a consequence, UI elements were misaligned, causing content shift and potential confusion. With this release, the 'Tips and tricks' link is displayed to the left side of the reserved UI element. As a result, the UI now has improved consistency.
+Before this update, the `Tips and tricks` link placement in the upper-right corner of the {project-short} UI conflicted with reserved UI elements. As a consequence, UI elements were misaligned, causing content shift and potential confusion. With this release, the `Tips and tricks` link is displayed to the left side of the reserved UI element. As a result, the UI now has improved consistency.
 +
 link:https://issues.redhat.com/browse/MTV-3870[MTV-3870]
 
 Topic selector consistency improvement::
 
-Before this update, the topic selector in the Tips and tricks panel in the {project-short} UI displayed the active topic while it was pointing to the active topic. As a consequence, end users saw duplicate topic headings in the topic selector and the top area of the Tips and tricks panel. With this release, the topic selector defaults to `No topic selected`, enhancing the overall UI consistency.
+Before this update, the topic selector in the `Tips and tricks` panel in the {project-short} UI displayed the active topic while it was pointing to the active topic. As a consequence, end users saw duplicate topic headings in the topic selector and the top area of the `Tips and tricks` panel. With this release, the topic selector defaults to `No topic selected`, enhancing the overall UI consistency.
 +
 link:https://issues.redhat.com/browse/MTV-3869[MTV-3869]
 
 Improved Migration plan page visibility for target projects::
 
-Before this update, the Migration plan page in the {project-short} UI displayed the `openshift-mtv` project by default, but the target project was not displayed by default. With this update, the default view of the Migration plan page now includes the 'Target project' column, enhancing visibility and navigation for migration plans.
+Before this update, the `Migration plan` page in the {project-short} UI displayed the `openshift-mtv` project by default, but the target project was not displayed by default. With this update, the default view of the `Migration plan` page now includes the `Target project` column, enhancing visibility and navigation for migration plans.
 +
 link:https://issues.redhat.com/browse/MTV-3864[MTV-3864]
 
-Restoration of 'Target name' column on Virtual machines tab::
+Restoration of `Target name` column on Virtual machines tab::
 
-Before this update, the removal of the 'Target name' column during {project-short} product updates caused the column to disappear from the `Virtual machines` tab on the Plan details page in the {project-short} UI. With this release, the 'Target name' column on the `Virtual machines` tab is now restored.
+Before this update, the removal of the `Target name` column during {project-short} product updates caused the column to disappear from the `Virtual machines` tab on the `Plan details` page in the {project-short} UI. With this release, the `Target name` column on the `Virtual machines` tab is now restored.
 +
 link:https://issues.redhat.com/browse/MTV-4238[MTV-4238]
 
