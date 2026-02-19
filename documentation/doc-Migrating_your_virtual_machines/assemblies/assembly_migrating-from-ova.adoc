@@ -11,6 +11,8 @@ ifdef::context[:parent-context: {context}]
 [role="_abstract"]
 Run your OVA migration plan from the MTV UI or from the command-line.
 
+include::../modules/con_ova-scope-and-limitations.adoc[leveloffset=+1]
+
 == Prerequisites
 
 * You have planned your migration from OVA.
