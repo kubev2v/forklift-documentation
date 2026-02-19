@@ -1,0 +1,129 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="new-features-and-enhancements-2-11_{context}"]
+= New features and enhancements
+
+[role="_abstract"]
+{project-first} 2.11 introduces the following features and enhancements.
+
+Customizable service account for pre-plan and post-plan hooks in Create migration plan pages::
+
+In {project-short} 2.11.0, users can set a service account name for pre-plan and post-plan hooks in the Create migration plan pages. This UI setting allows for greater flexibility and control over the service accounts used in these hooks, ensuring they have the necessary permissions to manage cluster resources. The `Service account` field is a free text field as the service account information is not stored in the inventory for a remote cluster. This enhancement improves the overall security and customization of the user's deployment.
++
+link:https://issues.redhat.com/browse/MTV-3681[MTV-3681]
+
+Enhanced pre-migration issue visibility::
+
+{project-short} 2.11.0 enhances the visibility of pre-migration concerns for individual VMs, providing a clear taxonomy and visual indicators to distinguish between critical issues, VM-specific failures, and ignorable warnings. The updated UI includes new icons, colors, and labels for quick comprehension of validation issue severity. The `Conditions` column of the VM table now displays all current concerns impacting the plan, with filters for Name, Severity, Type, and Folder. A total of critical alerts is displayed at the top of the page, with a `View all alerts` button for detailed analysis. This improvement increases the clarity and understanding of pre-migration concerns, simplifying the migration process.
++
+link:https://issues.redhat.com/browse/MTV-3712[MTV-3712]
+
+Enhanced learning experience in {project-short} UI::
+
+With this update, the `Tips and tricks` section in the {project-short} UI is significantly expanded, offering curated learning paths and improved user guidance. This enhancement simplifies complex workflow steps, integrates with Red Hat {virt} LightSpeed AI for dynamic guidance, and reorganizes content for a better learning process for {project-short} administrators.
++
+link:https://issues.redhat.com/browse/MTV-3718[MTV-3718]
+
+Technology Preview: Performance metrics during migration::
+
+With this update, {project-short} provides performance metrics during migration, including network and storage throughput. This enhancement aims to assist users in making informed decisions about system configuration for better performance tuning. Real-time insights into these metrics during migration plans are now available in the {project-short} UI.
++
+link:https://issues.redhat.com/browse/MTV-3636[MTV-3636]
+
+Add descriptive notes to migration plans::
+
+In {project-short} 2.11.0, cluster administrators can now add descriptive notes to their migration plans during creation. The new `Description` field allows easy differentiation and management of various plans within the web console. Users can identify the purpose, scope, and owner of each plan by adding reasons for each migration in the Description field. The added context is visible in the plan table and Plan details page for long-term management and auditing purposes.
++
+link:https://issues.redhat.com/browse/MTV-3748[MTV-3748]
+
+Unified interaction model for form editing::
+
+{project-short} 2.11.0 introduces a unified, consistent interaction model for editing forms and fields across the {project-short} web console, streamlining tasks for cluster administrators. The new design includes an edit button that opens a modal for inputs, promoting clarity and reducing configuration errors. This update aims to reduce cognitive load and eliminate varying UI behaviors on different pages, making administrative tasks easier and quicker.
++
+link:https://issues.redhat.com/browse/MTV-3742[MTV-3742]
+
+Enhanced Create provider form for source providers::
+
+In {project-short} 2.11.0, the *Create provider* form in the {project-short} UI has unique authentication and validation fields for source providers such as {ocp-short}, {osp}, {rhv-full} (oVirt), and {vmw} vSphere. The new form provides a cleaner and more user-friendly experience when creating providers, making it easier for cluster administrators to create plans for migrating their VMs.
++
+link:https://issues.redhat.com/browse/MTV-3737[MTV-3737]
+
+Validation alert for VDDK for {vmw} warm migrations::
+
+{project-short} 2.11.0 introduces visible validation checks for warm migration from {vmw} environments in the web console. Users are alerted if the {vmw} vSphere Virtual Disk Development Kit (VDDK) is missing or incorrectly configured, preventing silent failures and saving time on migration plans. Updated {project-short} documentation provides guidance on VDDK installation.
++
+link:https://issues.redhat.com/browse/MTV-3805[MTV-3805]
+
+Improved data migration error handling and diagnostics::
+
+{project-short} 2.11.0 enhances data integrity during VM migration by using features introduced in RHEL 10.1. This release introduces filesystem-level consistency checks, improved system error handling, and internal diagnostics. Warm migration and features like storage offload minimize downtime with efficient disk migration and data transfer. 
++
+link:https://issues.redhat.com/browse/MTV-3906[MTV-3906]
+
+Storage Offload Copy::
+
+In {project-short} 2.11.0, the Storage Offload Copy feature accelerates disk transfer in the storage array by bypassing the network, enabling snapshot creation and base disk copying. Storage Offload Copy results in reduced network usage, improved overall performance, and enhanced migration efficiency.
++
+* *Technology Preview:* Storage Offload Copy for warm migration enables snapshot creation and base disk copying while the VM is running. Delta changes can be copied over the network post-base disk storage offload copy, reducing the need for VM shutdowns.
+* Storage Offload Copy for cold migration is generally available.
++
+link:https://issues.redhat.com/browse/MTV-3710[MTV-3710]
+
+Native alerting with {ocp-short} monitoring stack::
+
+{project-short} 2.11.0 introduces native alerting, integrating with {ocp-short}'s Prometheus-based monitoring stack. Administrators now receive notifications for migration plan failures or critical issues, reducing manual monitoring. Users can configure alerts for email, Slack, or PagerDuty, ensuring timely notifications and minimizing downtime.
++
+link:https://issues.redhat.com/browse/MTV-2529[MTV-2529]
+
+*Developer Preview:* Pre-migration test for dual-boot VMs::
+
+{project-short} introduces a more accurate conversion assessment before migration by fetching additional information from guest machines. With this enhancement, users can perform a pre-migration check for dual-boot VMs, ensuring a successful conversion before the migration process begins.
++
+link:https://issues.redhat.com/browse/MTV-2481[MTV-2481]
+
+Developer Preview: Importing VMs from Amazon EC2::
+
+With this update, users can import VMs directly from Amazon EC2, streamlining the process and expanding the platform's compatibility. This enhancement supports cold migration to ROSA, with storage mapping limited to the same storage. It does not currently support targeting non-ROSA, different accounts, different regions, warm or live migrations.
++
+link:https://issues.redhat.com/browse/MTV-2735[MTV-2735]
+
+Developer Preview: Customizable firstboot scripts for VM migrations::
+
+{project-short} 2.11.0 introduces customizable firstboot scripts for VM migrations, enhancing deployment flexibility and personalization. Users can now specify these scripts in their migration plans for per-plan customization. Scripts are executed by `virt-customize` during the guest conversion process, eliminating the need for SSH keys for VM migration and integrating `virt-customize` for script injection during VM conversion and startup.
++
+link:https://issues.redhat.com/browse/MTV-3638[MTV-3638]
+
+Enhanced network assignment for Forklift Controller pods::
+
+In {project-short} 2.11.0, the assignment of a secondary network to Forklift Controller pods is now supported, similar to Importer and Populator pods. This update addresses connectivity issues with the {ocp} default node network and {vmw} or {rhv-short} providers, reducing the need for cluster-wide changes. The existing CRD flag is reused for network assignment, simplifying setup for network configuration and communication between the Forklift Controller and external providers.
++
+link:https://issues.redhat.com/browse/MTV-3644[MTV-3644]
+
+Direct default gateway configuration in Network Attachment Definition::
+
+In {project-short} 2.11.0, migration admins can set the default gateway directly in the Network Attachment Definition (NAD) configuration. In cases where the default route annotation is not set, the software now attempts to fetch the default gateway from the NAD configuration.
++
+link:https://issues.redhat.com/browse/MTV-3699[MTV-3699]
+
+Technology Preview: Customizing ephemeral storage for improved migration stability::
+
+In {project-short} 2.11.0, you can customize ephemeral storage during migration, preventing failures due to insufficient node storage in large-scale migrations, Open Virtualization Format (OVA) imports, and nodes with limited storage. Users can define a `storageClass` for temporary storage, enabling `virt-v2v` pods to mount a temporary Persistent Volume Claim (PVC) on the defined `storageClass`, improving migration stability and success. This update reduces the likelihood of migration failures caused by limited node storage.
++
+link:https://issues.redhat.com/browse/MTV-3709[MTV-3709]
+
+OS-specific VM configuration for improved performance::
+
+With this update, {project-short} detects the operating system that VMs are running on automatically. This enhancement optimizes VM performance in {project-short} and reduces the need for manual adjustments, saving time and reducing potential errors.
++
+link:https://issues.redhat.com/browse/MTV-3963[MTV-3963]
+
+Enhanced IP preservation in VM migration::
+
+In {project-short} 2.11.0, IP preservation for VM migration now verifies that IPs are from the correct subnet before assignment. {project-short} preserves and assigns IPs from the subnet for VMs with explicitly assigned IPs during migration to {virt}, ensuring accurate IP assignment and preventing IP mismatches during migration.
++
+link:https://issues.redhat.com/browse/MTV-3130[MTV-3130]
+
+

@@ -1,0 +1,91 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="known-issues-2-11_{context}"]
+= Known issues
+
+[role="_abstract"]
+{project-first} 2.11 has the following known issues.
+
+Forklift console plugin fails to load on IPv6-only {ocp-short} clusters::
+
+When {project-short} 2.9.1 is deployed on an IPv6-only {ocp-short} cluster, an incorrect API endpoint prevents the forklift-console-plugin from serving a valid plugin manifest, displaying the error `Failed to get a valid plugin manifest from /api/plugins/forklift-console-plugins/`. While the forklift-ui-plugin pod runs successfully, the console plugin cannot load, preventing access to the {project-short} user interface in the {ocp-short} web console. This issue affects all IPv6-only cluster deployments with {ocp-short} 4.19.7 and CNV 4.19.1.
++
+*Workaround:* Deploy {project-short} on dual-stack or IPv4 clusters until this issue is resolved.
++
+link:https://issues.redhat.com/browse/MTV-3116[MTV-3116]
+
+Incorrect labeling of inactive migration plans::
+
+Inactive migration plans are incorrectly labeled as `Running` when `max_vms_inflight` exceeds the total number of disks per migration. This label leads to confusion about the actual state of the plans, as all migration plans appear to be `Running` in the user interface.
++
+*Workaround:* Currently, there is no workaround for this issue.
++
+link:https://issues.redhat.com/browse/MTV-1736[MTV-1736]
+
+Migration between {ocp-short} namespaces causes MAC address collisions::
+
+During migration between {ocp-short} namespaces in a cluster, MAC address collisions result in VM creation failure.
++
+*Workaround:* Disable the KubeMacPool. For more information, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/virtualization/networking#virt-managing-kubemacpool-cli_virt-using-mac-address-pool-for-vms[Managing KubeMacPool by using the CLI] in the {ocp-short} documentation.
++
+link:https://issues.redhat.com/browse/MTV-2446[MTV-2446]
+
+{vmw} vSphere 6 or 7 migration fails on FIPS-enabled clusters::
+
+In {project-short} 2.11.0, an update to Golang 1.25 causes a connection failure on FIPS-enabled clusters with {vmw} vSphere 6 or 7, due to unsupported TLS 1.2 with Extended Master Secret. As a consequence, users cannot migrate {vmw} vSphere 6 or 7 VMs to a FIPS-compliant cluster.
++
+*Workaround:* Disable FIPS mode on the cluster or use a {vmw} vSphere version that supports TLS 1.2 with Extended Master Secret to migrate VMs.
++
+link:https://issues.redhat.com/browse/MTV-4411[MTV-4411]
+
+Second migration plan with shared RDM disks fails when shared disk migration is disabled::
+
+When migrating two VMs with shared RDM disks using copyoffload in separate migration plans, the second migration plan fails at the `ImageConversion` step if shared disk migration is disabled. After successfully migrating the first VM with shared disk migration enabled, creating a second migration plan with shared disk migration disabled incorrectly creates two populate pods—one for the OS disk and one for the shared RDM disk—instead of creating only the OS disk populate pod. This causes the second migration to fail.
++
+*Workaround:* Currently, there is no workaround for this issue.
++
+link:https://issues.redhat.com/browse/MTV-4549[MTV-4549]
+
+VDDK image only in `openshift-mtv` namespace::
+
+When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image.
++
+link:https://issues.redhat.com/browse/MTV-3673[MTV-3673]
+
+Inaccurate `ConnectionTestFailed` error messages when creating an OVA provider::
+
+When you create an Open Virtual Appliance (OVA) provider in the {project-short} UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect the in-progress status of the connection.
++
+link:https://issues.redhat.com/browse/MTV-3613[MTV-3613]
+
+Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox::
+
+Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox due to incorrect adapter ID comparison. As a consequence, FC protocol VM migration fails to identify existing FC hosts, causing volume creation failure due to incorrect `port_name`.
++
+*Workaround:* Currently, there is no workaround for this issue.
++
+link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
+
+Migration stalls during VM migration to OCP with FC::
+
+During the migration of VMs to an OpenShift Container Platform (OCP) cluster with Fibre Channel (FC), the migration stalls when attempting to add a transfer network to a target namespace that does not have permissions to the transfer network.
++
+*Workaround:* Currently, there is no workaround for this issue.  
++
+link:https://issues.redhat.com/browse/MTV-4547[MTV-4547]
+
+Unexpected shutdown of forklift-controller due to network or storage map deletion::
+
+Deleting network or storage maps causes the `forklift-controller` to shut down unexpectedly, leaving the migration plan state as `Ready` and causing pods to continue running. 
++
+*Workaround:* Delete and restart the pods manually.
++
+link:https://issues.redhat.com/browse/MTV-4413[MTV-4413]
+
+
+
+//For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
+
