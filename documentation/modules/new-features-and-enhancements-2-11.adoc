@@ -63,9 +63,12 @@ Improved data migration error handling and diagnostics::
 +
 link:https://issues.redhat.com/browse/MTV-3906[MTV-3906]
 
-Technology Preview: Storage Offload Copy optimization for network usage::
+Storage Offload Copy::
 
-In {project-short} 2.11.0, the Storage Offload Copy feature for warm and cold migrations accelerates disk transfer in the storage array by bypassing the network, enabling snapshot creation and base disk copying while the VM is running. Delta changes can be copied over the network post-base disk storage offload copy, reducing the need for VM shutdowns. Storage Offload Copy results in reduced network usage for delta changes, improved overall performance, and enhanced migration efficiency.
+In {project-short} 2.11.0, the Storage Offload Copy feature accelerates disk transfer in the storage array by bypassing the network, enabling snapshot creation and base disk copying. Storage Offload Copy results in reduced network usage, improved overall performance, and enhanced migration efficiency.
++
+* *Technology Preview:* Storage Offload Copy for warm migration enables snapshot creation and base disk copying while the VM is running. Delta changes can be copied over the network post-base disk storage offload copy, reducing the need for VM shutdowns.
+* Storage Offload Copy for cold migration is generally available.
 +
 link:https://issues.redhat.com/browse/MTV-3710[MTV-3710]
 
@@ -113,8 +116,14 @@ link:https://issues.redhat.com/browse/MTV-3709[MTV-3709]
 
 OS-specific VM configuration for improved performance::
 
-With this update, VM owners can configure their VMs based on the specific operating system they are running. This enhancement optimizes VM performance in {project-short} and reduces the need for manual adjustments, saving time and reducing potential errors.
+With this update, {project-short} detects the operating system that VMs are running on automatically. This enhancement optimizes VM performance in {project-short} and reduces the need for manual adjustments, saving time and reducing potential errors.
 +
 link:https://issues.redhat.com/browse/MTV-3963[MTV-3963]
+
+Enhanced IP preservation in VM migration::
+
+In {project-short} 2.11.0, IP preservation for VM migration now verifies that IPs are from the correct subnet before assignment. {project-short} preserves and assigns IPs from the subnet for VMs with explicitly assigned IPs during migration to {virt}, ensuring accurate IP assignment and preventing IP mismatches during migration.
++
+link:https://issues.redhat.com/browse/MTV-3130[MTV-3130]
 
 

@@ -105,12 +105,6 @@ Before this update, warm migrations with a {rhv-full} provider failed due to mis
 +
 link:https://issues.redhat.com/browse/MTV-2811[MTV-2811]
 
-IP preservation improvement in VM migration::
-
-Before this update, the IP preservation in VM migration failed to verify if the IP was from the subnet, causing end users to experience IP mismatch during VM migration. With this release, {project-short} preserves and assigns IPs from the subnet for VMs with explicitly assigned IPs during migration to {virt}. As a result, {project-short} now ensures VM transfer during migration to {virt}.
-+
-link:https://issues.redhat.com/browse/MTV-3130[MTV-3130]
-
 Improved VDDK connection processing for warm migrations from {vmw} vSphere::
 
 Before this update, warm migrations from {vmw} vSphere intermittently failed during the `Disk transfer` phase with a VDDK connection error. With this release, VDDK connection processing is improved, with warm migrations from {vmw} vSphere now completing successfully during the disk transfer phase.
