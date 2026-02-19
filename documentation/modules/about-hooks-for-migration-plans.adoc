@@ -20,7 +20,7 @@ Hook configuration::
 
 * Default hook image: The default hook image for an {project-short} hook is `quay.io/kubev2v/hook-runner`. The image is based on the Ansible Runner image with the addition of `python-openshift` to provide Ansible Kubernetes resources and a recent `oc` binary.
 * Hook execution: An Ansible Playbook that is provided as part of a migration hook is mounted into the hook container as a `ConfigMap`. The hook container is run as a job on the relevant cluster in the `openshift-mtv` namespace. When you add a hook, you must specify the name of the hook and whether it is a pre-migration hook or a post-migration hook.
-* Service account: You can optionally specify a service account when adding a hook. When you add a hook by using the {ocp} web console, you can specify the service account name in the *Service account* field when creating or editing the migration plan. When you add a hook by using the CLI, you can specify the service account in the `Hook` CR. If you specify a service account, it must have the appropriate RBAC permissions to manage cluster resources and at least write access for the namespace you are working in.
+* Service account: You can optionally specify a service account when adding a hook. When you add a hook by using the {ocp} web console, you can specify the service account name in the *Service account* field when creating or editing the migration plan. When you add a hook by using the CLI, you can specify the service account in the `Hook` CR. If you specify a service account, it must have the appropriate RBAC permissions to manage cluster resources and at least write access for the `openshift-mtv` namespace where hooks execute.
 
 [IMPORTANT]
 ====
