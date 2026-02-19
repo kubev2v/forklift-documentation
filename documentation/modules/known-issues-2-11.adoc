@@ -55,21 +55,6 @@ When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the imag
 +
 link:https://issues.redhat.com/browse/MTV-3673[MTV-3673]
 
-OVA Migration with {project-short} may result in VM boot failure due to incompatible boot loader type during EFI firmware migration::
-
-During OVA migration, {project-short} changes Extensible Firmware Interface (EFI) to BIOS, leading to VM boot failure due to the incompatible boot loader type during EFI firmware migration.
-+
-*Workaround:* Edit the VM YAML file firmware to use EFI, and set the `secureBoot` value according to the source VM setting to successfully boot VMs. For example:
-+
-----
-firmware:
-bootloader:
-efi:
-secureBoot: false (or true, according to source VM setting)
-----
-+
-link:https://issues.redhat.com/browse/MTV-4497[MTV-4497]
-
 Migration stalls during VM migration to OCP with FC::
 
 During the migration of VMs to an OpenShift Container Platform (OCP) cluster with Fibre Channel (FC), the migration stalls when attempting to add a transfer network to a target namespace that does not have permissions to the transfer network.

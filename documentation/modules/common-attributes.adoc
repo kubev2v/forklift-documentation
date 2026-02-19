@@ -9,8 +9,8 @@
 :ocp-name: OpenShift
 :ocp-short: OpenShift
 // when updating the ocp-version, update the ocp-y-version
-:ocp-version: 4.20
-:ocp-y-version: 4.20, 4.19, 4.18
+:ocp-version: 4.21
+:ocp-y-version: 4.21, 4.20, 4.19
 :ocp-doc: link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single
 :operator: mtv-operator
 :operator-name-ui: Migration Toolkit for Virtualization Operator
@@ -22,7 +22,7 @@
 :project-version: 2.11
 :mtv-plan: https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/{project-version}/html/planning_your_migration_to_red_hat_openshift_virtualization/
 :mtv-mig: https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/{project-version}/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/
-:project-z-version: 2.11.x
+:project-z-version: 2.11.0
 :rhel-first: Red Hat Enterprise Linux (RHEL)
 :virt: OpenShift Virtualization
 :must-gather: registry.redhat.io/migration-toolkit-virtualization/mtv-must-gather-rhel8:{project-z-version}
