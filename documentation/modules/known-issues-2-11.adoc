@@ -55,6 +55,20 @@ When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the imag
 +
 link:https://issues.redhat.com/browse/MTV-3673[MTV-3673]
 
+Inaccurate `ConnectionTestFailed` error messages when creating an OVA provider::
+
+When you create an Open Virtual Appliance (OVA) provider in the {project-short} UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect the in-progress status of the connection.
++
+link:https://issues.redhat.com/browse/MTV-3613[MTV-3613]
+
+Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox::
+
+Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox due to incorrect adapter ID comparison. As a consequence, FC protocol VM migration fails to identify existing FC hosts, causing volume creation failure due to incorrect `port_name`.
++
+*Workaround:* Currently, there is no workaround for this issue.
++
+link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
+
 Migration stalls during VM migration to OCP with FC::
 
 During the migration of VMs to an OpenShift Container Platform (OCP) cluster with Fibre Channel (FC), the migration stalls when attempting to add a transfer network to a target namespace that does not have permissions to the transfer network.

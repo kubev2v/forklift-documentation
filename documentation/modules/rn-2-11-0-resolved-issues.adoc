@@ -123,12 +123,6 @@ Before this update, {project-short} did not recognize the `VirtualPCNet32` netwo
 +
 link:https://issues.redhat.com/browse/MTV-3796[MTV-3796]
 
-Accurate identification of FC host objects in FC protocol VM migration::
-
-Before this update, FC protocol VM migration failed to identify existing FC host objects in Infinibox due to incorrect adapter ID comparison. As a consequence, FC protocol VM migration failed to identify existing FC hosts, causing volume creation failure. With this update, {project-short} has implemented active WWPN extraction and comparison for accurate identification of FC host objects during FC protocol VM migration in Infinibox. This enhancement prevents volume creation failure due to incorrect `port_name`.
-+
-link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
-
 NVMe disk support for {vmw} vSphere VM migration validation::
 
 Before this update, NVMe disk support was missing for {vmw} vSphere VM migration, meaning NVMe migration could be successful but not validated. With this update, NVMe disk support is added for successful NVMe migration and validation from {vmw} vSphere.
@@ -152,11 +146,5 @@ Changes in device identification during OVA to {ocp-short} migration::
 Before this update, the migration of VMs with DHCP settings from an OVA provider to an {ocp-short} cluster resulted in the loss of interface settings in the VM YAML file, causing only one default interface with a pod network to remain in the VM. As a consequence, users experienced VMs with incorrect interface settings after migration. The issue occurred because the OVA scanner identified NICs and other device types based on the display name, which was unreliable. With this update, device identification is based on the resource type provided in the OVF specification, preserving interface settings during migration and preventing incorrect configurations.
 +
 link:https://issues.redhat.com/browse/MTV-3654[MTV-3654]
-
-Hidden `ConnectionTestFailed` error messages during OVA provider creation::
-
-Before this update, `ConnectionTestFailed` error messages were displayed during OVA provider creation, leading to user confusion. With this update, these error messages are hidden during OVA provider creation, providing a clearer user experience when creating an OVA provider.
-+
-link:https://issues.redhat.com/browse/MTV-3613[MTV-3613]
 
 
