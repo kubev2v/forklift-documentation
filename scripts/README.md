@@ -10,7 +10,7 @@ python3 scripts/generate_release_notes.py
 
 The script will prompt you for:
 1. **Base branch selection**: Choose from available git branches or enter a custom branch name (the new branch will be created from this)
-2. **MTV version**: Enter the version number (e.g., `2.11.0`)
+2. **MTV version**: Enter the version number (e.g., `2.11.1`)
 3. **Resolved issues CSV**: Path to CSV file containing resolved JIRA tickets
 4. **Known issues CSV**: Path to CSV file containing known issues JIRA tickets
 
@@ -101,8 +101,8 @@ After running the script:
 ### Alternative: Using JIRA Query Language (JQL)
 
 You can also export using JQL queries:
-- Resolved issues: `project = MTV AND status = Resolved AND fixVersion = "2.11.0"`
-- Known issues: `project = MTV AND labels = "known-issue" AND fixVersion = "2.11.0"`
+- Resolved issues: `project = MTV AND status = Resolved AND fixVersion = "2.11.1"`
+- Known issues: `project = MTV AND labels = "known-issue" AND fixVersion = "2.11.1"`
 
 ## Troubleshooting
 

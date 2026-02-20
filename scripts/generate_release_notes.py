@@ -138,11 +138,11 @@ class ReleaseNotesGenerator:
     def select_version(self) -> str:
         """Prompt user to enter MTV version."""
         while True:
-            version = input("\nEnter MTV version (e.g., 2.11.0): ").strip()
+            version = input("\nEnter MTV version (e.g., 2.11.1): ").strip()
             if re.match(r'^\d+\.\d+(\.\d+)?$', version):
                 return version
             else:
-                print("Invalid version format. Please use format like '2.11.0' or '2.11'")
+                print("Invalid version format. Please use format like '2.11.1' or '2.11'")
     
     def parse_jira_csv(self, csv_path: str) -> List[Dict[str, str]]:
         """
@@ -452,12 +452,241 @@ class ReleaseNotesGenerator:
         print(f"✓ Updated: {self.master_adoc_path}")
         return True
     
-    def save_file(self, content: str, filename: str):
-        """Save content to file in modules directory."""
+    def extract_existing_issue_keys(self, filepath: Path) -> set:
+        """Extract issue keys (e.g., MTV-3915) from existing AsciiDoc file."""
+        issue_keys = set()
+        if not filepath.exists():
+            return issue_keys
+        
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Find all JIRA issue links: link:https://issues.redhat.com/browse/MTV-XXXX[MTV-XXXX]
+        pattern = r'link:https://issues\.redhat\.com/browse/([A-Z]+-\d+)\['
+        matches = re.findall(pattern, content)
+        issue_keys.update(matches)
+        
+        return issue_keys
+    
+    def parse_existing_content(self, filepath: Path) -> tuple:
+        """
+        Parse existing AsciiDoc file to extract header and body.
+        Returns (header_lines, body_lines, existing_issue_keys)
+        """
+        if not filepath.exists():
+            return ([], [], set())
+        
+        with open(filepath, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+        
+        # Extract issue keys
+        existing_keys = self.extract_existing_issue_keys(filepath)
+        
+        # Find where the actual content starts (after abstract)
+        header_end = 0
+        for i, line in enumerate(lines):
+            if '[role="_abstract"]' in line:
+                # Header ends after the abstract line + 1
+                header_end = i + 2
+                break
+        
+        header_lines = [line.rstrip('\n') for line in lines[:header_end]]
+        body_lines = [line.rstrip('\n') for line in lines[header_end:]]
+        
+        return (header_lines, body_lines, existing_keys)
+    
+    def merge_content(self, existing_header: List[str], existing_body: List[str], 
+                     new_content: str, existing_keys: set) -> str:
+        """
+        Merge new content with existing content, avoiding duplicates.
+        
+        Args:
+            existing_header: Header lines from existing file
+            existing_body: Body lines from existing file
+            new_content: New content to merge
+            existing_keys: Set of existing issue keys to avoid duplicates
+            
+        Returns:
+            Merged content as string
+        """
+        # Parse new content to extract issues
+        new_lines = new_content.split('\n')
+        
+        # Find where issues start in new content (after abstract)
+        new_issues_start = 0
+        for i, line in enumerate(new_lines):
+            if '[role="_abstract"]' in line:
+                new_issues_start = i + 2
+                break
+        
+        # Extract new issues (skip header)
+        # Issue format: Title:: ... description ... + link:.../MTV-XXXX[MTV-XXXX]
+        new_issues = []
+        current_issue_lines = []
+        current_issue_key = None
+        
+        i = new_issues_start
+        while i < len(new_lines):
+            line = new_lines[i]
+            
+            # Check if this line contains an issue key (end of an issue)
+            issue_key_match = re.search(r'link:https://issues\.redhat\.com/browse/([A-Z]+-\d+)\[', line)
+            if issue_key_match:
+                issue_key = issue_key_match.group(1)
+                if issue_key not in existing_keys:
+                    # This is a new issue - add all lines from start to this line
+                    if current_issue_lines:
+                        new_issues.extend(current_issue_lines)
+                        new_issues.append(line)  # Add the link line
+                        new_issues.append("")  # Add blank line after issue
+                    current_issue_lines = []
+                    current_issue_key = issue_key
+                else:
+                    # Duplicate issue, skip it - reset and continue
+                    current_issue_lines = []
+                    current_issue_key = None
+                    # Skip until next issue (blank line or next title ending with ::)
+                    i += 1
+                    while i < len(new_lines) and not new_lines[i].strip().endswith('::'):
+                        i += 1
+                    i -= 1  # Back up one line
+            else:
+                # Check if this is the start of a new issue (title ending with ::)
+                if line.strip().endswith('::') and current_issue_key is None:
+                    # Start collecting a new issue
+                    current_issue_lines = [line]
+                elif current_issue_lines:
+                    # Continue collecting current issue
+                    current_issue_lines.append(line)
+            
+            i += 1
+        
+        # Add last issue if any (in case file doesn't end with link)
+        if current_issue_lines and current_issue_key:
+            new_issues.extend(current_issue_lines)
+        
+        # Merge: header + existing body + new issues
+        merged_lines = existing_header.copy()
+        if existing_body:
+            # Remove trailing blank lines from existing body
+            while existing_body and not existing_body[-1].strip():
+                existing_body.pop()
+            merged_lines.extend(existing_body)
+            if new_issues:
+                merged_lines.append("")  # Add spacing before new issues
+        merged_lines.extend(new_issues)
+        
+        return '\n'.join(merged_lines)
+    
+    def append_to_file(self, filepath: Path, new_content: str, existing_keys: set) -> tuple:
+        """
+        Append new content to existing file, avoiding duplicates.
+        
+        Returns:
+            (success: bool, new_count: int, existing_count: int)
+        """
+        # Parse existing content
+        existing_header, existing_body, file_existing_keys = self.parse_existing_content(filepath)
+        
+        # Combine with provided existing_keys (in case we filtered before)
+        all_existing_keys = existing_keys | file_existing_keys
+        
+        # Extract new issue keys from content
+        new_keys = self.extract_existing_issue_keys_from_content(new_content)
+        new_keys_to_add = new_keys - all_existing_keys
+        
+        if not new_keys_to_add:
+            return (False, 0, len(all_existing_keys))
+        
+        # Merge content
+        merged_content = self.merge_content(existing_header, existing_body, new_content, all_existing_keys)
+        
+        # Write merged content
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(merged_content)
+        
+        return (True, len(new_keys_to_add), len(all_existing_keys))
+    
+    def save_file(self, content: str, filename: str, append_mode: bool = True) -> bool:
+        """
+        Save content to file in modules directory.
+        If file exists and append_mode is True, merges new content with existing.
+        
+        Args:
+            content: The content to write
+            filename: The filename (relative to modules directory)
+            append_mode: If True and file exists, append new issues (default: True)
+            
+        Returns:
+            True if file was saved, False if user cancelled or no new content
+        """
         filepath = self.modules_path / filename
+        
+        # Check if file exists
+        if filepath.exists():
+            if append_mode:
+                # Extract existing issue keys
+                existing_keys = self.extract_existing_issue_keys(filepath)
+                new_keys = self.extract_existing_issue_keys_from_content(content)
+                new_keys_count = len(new_keys - existing_keys)
+                existing_count = len(existing_keys)
+                
+                if new_keys_count > 0:
+                    print(f"\n📄 File exists: {filepath}")
+                    print(f"   Found {existing_count} existing issue(s), {new_keys_count} new issue(s)")
+                    
+                    # Append new content
+                    success, added_count, total_existing = self.append_to_file(filepath, content, existing_keys)
+                    
+                    if success:
+                        print(f"✓ Updated: {filepath} (appended {added_count} new issue(s))")
+                        return True
+                    else:
+                        print(f"⚠️  No new issues to add to {filepath}")
+                        return False
+                else:
+                    print(f"⚠️  File exists: {filepath}")
+                    print(f"   All {len(new_keys)} issue(s) already exist in file. Skipping.")
+                    return False
+            else:
+                # Overwrite mode
+                print(f"\n⚠️  Warning: File already exists: {filepath}")
+                response = input("Overwrite existing file? (y/n/backup): ").strip().lower()
+                
+                if response == 'n':
+                    print(f"✗ Skipped: {filepath}")
+                    return False
+                elif response == 'backup' or response == 'b':
+                    # Create backup
+                    backup_path = filepath.with_suffix(filepath.suffix + '.backup')
+                    import shutil
+                    shutil.copy2(filepath, backup_path)
+                    print(f"📋 Created backup: {backup_path}")
+                elif response != 'y':
+                    print(f"✗ Skipped: {filepath}")
+                    return False
+                
+                # Write the file
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                
+                print(f"✓ Updated: {filepath}")
+                return True
+        
+        # File doesn't exist, create new
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(content)
+        
         print(f"✓ Generated: {filepath}")
+        return True
+    
+    def extract_existing_issue_keys_from_content(self, content: str) -> set:
+        """Extract issue keys from content string."""
+        issue_keys = set()
+        pattern = r'link:https://issues\.redhat\.com/browse/([A-Z]+-\d+)\['
+        matches = re.findall(pattern, content)
+        issue_keys.update(matches)
+        return issue_keys
     
     def run(self):
         """Main execution flow."""
@@ -511,24 +740,33 @@ class ReleaseNotesGenerator:
         # Step 6: Generate files
         print("\n[Step 6] Generating Release Notes Files")
         
-        # Generate release notes header
+        files_saved = []
+        
+        # Generate release notes header (don't append, always overwrite if exists)
         version_major = '.'.join(self.version.split('.')[:2])  # e.g., 2.11
         header_content = self.generate_release_notes_header(self.version)
         header_filename = f"rn-{version_major.replace('.', '-')}.adoc"
-        self.save_file(header_content, header_filename)
+        if self.save_file(header_content, header_filename, append_mode=False):
+            files_saved.append(header_filename)
         
-        # Generate resolved issues
+        # Generate resolved issues (append mode - merge with existing)
         if resolved_tickets:
             version_safe = self.version.replace('.', '-')
             resolved_content = self.generate_resolved_issues(resolved_tickets, self.version)
             resolved_filename = f"rn-{version_safe}-resolved-issues.adoc"
-            self.save_file(resolved_content, resolved_filename)
+            if self.save_file(resolved_content, resolved_filename, append_mode=True):
+                files_saved.append(resolved_filename)
         
-        # Generate known issues
+        # Generate known issues (append mode - merge with existing)
         if known_tickets:
             known_content = self.generate_known_issues(known_tickets, version_major)
             known_filename = f"known-issues-{version_major.replace('.', '-')}.adoc"
-            self.save_file(known_content, known_filename)
+            if self.save_file(known_content, known_filename, append_mode=True):
+                files_saved.append(known_filename)
+        
+        if not files_saved:
+            print("\n⚠️  No files were saved. Exiting.")
+            return
         
         # Step 7: Update master.adoc
         print("\n[Step 7] Updating master.adoc")
@@ -538,12 +776,9 @@ class ReleaseNotesGenerator:
         print("Release notes generation complete!")
         print("=" * 60)
         print(f"\nBranch: {self.new_branch}")
-        print("\nGenerated files:")
-        print(f"  - documentation/modules/{header_filename}")
-        if resolved_tickets:
-            print(f"  - documentation/modules/rn-{self.version.replace('.', '-')}-resolved-issues.adoc")
-        if known_tickets:
-            print(f"  - documentation/modules/known-issues-{version_major.replace('.', '-')}.adoc")
+        print("\nFiles saved:")
+        for filename in files_saved:
+            print(f"  - documentation/modules/{filename}")
         print(f"  - documentation/doc-Release_notes/master.adoc (updated)")
         print("\nNext steps:")
         print("1. Review the generated files")
