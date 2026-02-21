@@ -8,6 +8,8 @@ include::modules/common-attributes.adoc[]
 :compat-mode:
 :context: release-notes
 
+
+include::modules/rn-2-11.adoc[leveloffset=+1]
 include::modules/rn-2-11.adoc[leveloffset=+1]
 
 // Technical changes by x-stream release
@@ -19,6 +21,8 @@ include::modules/new-features-and-enhancements-2-11.adoc[leveloffset=+2]
 
 // Resolved issues by y-stream release
 include::modules/rn-resolved-issues.adoc[leveloffset=+2]
+
+include::modules/rn-2-11-1-resolved-issues.adoc[leveloffset=+3]
 
 // Resolved issues by z-stream release. Most recent release goes first in the list.
 
@@ -45,3 +49,4 @@ include::modules/known-issues-2-11.adoc[leveloffset=+2]
 
 // == Release notes addendum
 // include::modules/mtv-selected-packages-2-8.adoc[leveloffset=+2]
+
