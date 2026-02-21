@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="resolved-issues-2-11-1_{context}"]
+= Resolved issues 2.11.1
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+Test resolved issue one::
+
+This was a bug that has been fixed in 2.11.1.
++
+link:https://issues.redhat.com/browse/MTV-Test-4[MTV-Test-4]
+
+Test resolved issue two::
+
+Another resolved item for the test release.
++
+link:https://issues.redhat.com/browse/MTV-Test-5[MTV-Test-5]
+
+Test resolved issue three::
+
+Third resolved issue for dummy PR.
++
+link:https://issues.redhat.com/browse/MTV-Test-6[MTV-Test-6]

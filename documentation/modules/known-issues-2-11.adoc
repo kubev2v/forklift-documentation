@@ -85,7 +85,29 @@ Deleting network or storage maps causes the `forklift-controller` to shut down u
 +
 link:https://issues.redhat.com/browse/MTV-4413[MTV-4413]
 
+Test known issue one::
 
+This is a dummy known issue for testing release notes generation.
++
+*Workaround:* Use workaround A for now.
++
+link:https://issues.redhat.com/browse/MTV-Test-1[MTV-Test-1]
+
+Test known issue two::
+
+Another dummy known issue to validate the script.
++
+*Workaround:* Restart the service as a workaround.
++
+link:https://issues.redhat.com/browse/MTV-Test-2[MTV-Test-2]
+
+Test known issue three::
+
+Third known issue for MTV 2.11.1 test PR.
++
+*Workaround:* Disable the feature temporarily.
++
+link:https://issues.redhat.com/browse/MTV-Test-3[MTV-Test-3]
 
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
