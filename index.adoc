@@ -8,5 +8,6 @@ Forklift is a tool for migrating virtual machines from VMware, OpenStack, KubeVi
 
 ## Documentation
 
-* link:documentation/doc-Migration_Toolkit_for_Virtualization/master/index.html[Installing and using Forklift]
+* link:documentation/doc-Planning_your_migration/master/index.html[Planning your migration]
+* link:documentation/doc-Migrating_your_virtual_machines/master/index.html[Migrating your virtual machines]
 * link:documentation/doc-Release_notes/master/index.html[Release notes]

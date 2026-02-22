@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Migration_Toolkit_for_Virtualization/master.adoc
+// * documentation/doc-Planning_your_migration/master.adoc
 
 :_mod-docs-content-type: CONCEPT
 [id="about-live-migration_{context}"]
