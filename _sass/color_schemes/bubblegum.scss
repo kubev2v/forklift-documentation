@@ -1,0 +1,91 @@
+// Bubblegum — a soft, pastel color scheme for Forklift docs
+// Inspired by Red Hat colors, lightened to pastels
+
+// Pastel palette
+$bg-cream: #faf8f5;
+$bg-sidebar: #fdf6f0;
+
+$pink-soft: #e8658a;
+$pink-light: #fce4ec;
+$pink-dark: #c24567;
+
+$blue-soft: #2b7abf;
+$blue-light: #e3f0fb;
+$blue-dark: #1a5f9e;
+
+$green-soft: #6dbf7b;
+$green-light: #e8f5e9;
+$green-dark: #4a9a58;
+
+$yellow-soft: #f5c842;
+$yellow-light: #fff8e1;
+$yellow-dark: #c49a00;
+
+$red-soft: #ef7b7b;
+$red-light: #fdecea;
+$red-dark: #d45454;
+
+$gray-warm-10: #f7f5f3;
+$gray-warm-20: #e8e4e0;
+$gray-warm-30: #c9c4be;
+$gray-warm-50: #8a857e;
+$gray-warm-60: #6b665f;
+$gray-warm-70: #4e4a44;
+$gray-warm-80: #36332e;
+$gray-warm-90: #2a2724;
+
+// Override JTD base palette
+$white: $bg-cream;
+
+$grey-dk-000: $gray-warm-50;
+$grey-dk-100: $gray-warm-60;
+$grey-dk-200: $gray-warm-70;
+$grey-dk-250: $gray-warm-80;
+$grey-dk-300: $gray-warm-90;
+
+$grey-lt-000: $gray-warm-10;
+$grey-lt-100: $gray-warm-20;
+$grey-lt-200: $gray-warm-20;
+$grey-lt-300: $gray-warm-30;
+
+$purple-000: $blue-soft;
+$purple-100: $blue-dark;
+$purple-200: darken($blue-dark, 10%);
+$purple-300: darken($blue-dark, 18%);
+
+$blue-000: $blue-soft;
+$blue-100: $blue-dark;
+$blue-200: darken($blue-dark, 10%);
+$blue-300: darken($blue-dark, 18%);
+
+$green-000: $green-soft;
+$green-100: $green-dark;
+$green-200: darken($green-dark, 10%);
+$green-300: darken($green-dark, 18%);
+
+$yellow-000: $yellow-soft;
+$yellow-100: $yellow-dark;
+$yellow-200: darken($yellow-dark, 10%);
+$yellow-300: darken($yellow-dark, 18%);
+
+$red-000: $red-soft;
+$red-100: $red-dark;
+$red-200: darken($red-dark, 10%);
+$red-300: darken($red-dark, 18%);
+
+// Derived variables
+$link-color: $blue-soft;
+$body-text-color: $gray-warm-90;
+$body-heading-color: $gray-warm-80;
+$border-color: $gray-warm-20;
+$body-background-color: $bg-cream;
+$sidebar-color: $bg-sidebar;
+$search-background-color: #fff;
+$table-background-color: #fff;
+$code-background-color: $gray-warm-10;
+$feedback-color: $blue-dark;
+$btn-primary-color: $pink-soft;
+
+// Font stack
+$body-font-family: "Red Hat Text", system-ui, -apple-system, blinkmacsystemfont,
+  "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
