@@ -1,0 +1,208 @@
+// Custom styles for Forklift Documentation — Bubblegum theme
+
+// Flat solid colors on hover/active — no gradients
+.site-title:hover,
+.site-button:hover,
+.nav-list .nav-list-item .nav-list-link:hover,
+.nav-list .nav-list-item .nav-list-expander:hover,
+.nav-list .nav-list-item .nav-list-link.active {
+  background-image: none;
+  background-color: #e3f0fb;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-blue,
+.btn-blue:hover,
+.btn-green,
+.btn-green:hover,
+.btn-purple,
+.btn-purple:hover,
+.btn-red,
+.btn-red:hover {
+  background-image: none;
+}
+
+// Headings use Red Hat Display
+h1, h2, h3, h4, h5, h6 {
+  font-family: $body-heading-font-family;
+}
+
+// Site title in sidebar
+.site-title {
+  font-family: $body-heading-font-family;
+}
+
+// Soft pink accent line on sidebar
+.side-bar {
+  border-right: 3px solid #e8658a;
+  background-color: #fdf6f0;
+}
+
+// Active navigation item accent
+.nav-list .nav-list-item .nav-list-link.active {
+  border-left-color: #e8658a;
+}
+
+// Search input focus ring
+.search-input:focus {
+  border-color: #5b9bd5;
+  box-shadow: 0 0 0 3px rgba(91, 155, 213, 0.25);
+}
+
+// AsciiDoc admonition blocks
+.admonitionblock {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  border-left: 4px solid;
+
+  table {
+    margin-bottom: 0;
+    background-color: transparent;
+    border: 0;
+
+    td {
+      border: 0;
+      padding: 0;
+    }
+
+    td.icon {
+      padding-right: 0.75rem;
+      vertical-align: top;
+      width: 1%;
+      white-space: nowrap;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    td.content {
+      padding-left: 0;
+    }
+  }
+
+  &.note {
+    background-color: #e3f0fb;
+    border-left-color: #5b9bd5;
+
+    td.icon { color: #3a7ab5; }
+  }
+
+  &.tip {
+    background-color: #e8f5e9;
+    border-left-color: #6dbf7b;
+
+    td.icon { color: #4a9a58; }
+  }
+
+  &.warning {
+    background-color: #fff8e1;
+    border-left-color: #f5c842;
+
+    td.icon { color: #c49a00; }
+  }
+
+  &.caution {
+    background-color: #fdecea;
+    border-left-color: #ef7b7b;
+
+    td.icon { color: #d45454; }
+  }
+
+  &.important {
+    background-color: #fce4ec;
+    border-left-color: #e8658a;
+
+    td.icon { color: #c24567; }
+  }
+}
+
+// Premonition plugin blocks (if still used)
+.premonition {
+  display: grid;
+  grid-template-columns: 43px auto;
+  padding: 13px;
+  margin: 1.5rem 0;
+  border-radius: 6px;
+  border-left: 4px solid #5b9bd5;
+  background-color: #e3f0fb;
+
+  .content {
+    padding-left: 0.75rem;
+    padding-right: 1rem;
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  .header {
+    font-weight: 600;
+    font-size: 1rem;
+    padding-bottom: 4px;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  & > svg {
+    opacity: 0.6;
+    margin-top: 0.36rem;
+    margin-left: 0.7rem;
+  }
+
+  &.info, &.pn-info {
+    background-color: #e8f5e9;
+    border-color: #6dbf7b;
+    color: #4a9a58;
+
+    .header { color: #4a9a58; }
+  }
+
+  &.warning, &.pn-warn {
+    background-color: #fff8e1;
+    border-color: #f5c842;
+    color: #c49a00;
+
+    .header { color: #c49a00; }
+  }
+
+  &.error, &.pn-error {
+    background-color: #fce4ec;
+    border-color: #e8658a;
+    color: #c24567;
+
+    .header { color: #c24567; }
+  }
+}
+
+// Tighter table wrapper spacing
+.table-wrapper {
+  margin-bottom: 0.5rem !important;
+}
+
+// AsciiDoc table styling
+table.tableblock {
+  width: 100%;
+
+  th.tableblock,
+  td.tableblock {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+// Better spacing for AsciiDoc ordered/unordered lists
+.olist, .ulist {
+  margin-bottom: 1rem;
+}
+
+// AsciiDoc literal/listing blocks
+.listingblock, .literalblock {
+  margin: 1rem 0;
+
+  pre {
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+}

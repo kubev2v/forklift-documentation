@@ -1,70 +1,136 @@
 # Site settings
-show_downloads: false
-title: "Forklift Documentation"
-description: "Migrating VMware virtual machines to KubeVirt"
-permalink: pretty
+title: Forklift Documentation
+description: Migrating VMware virtual machines to KubeVirt
+baseurl: ""
+url: ""
 repository: kubev2v/forklift-documentation
-baseurl: /
-tags: "migration, VMware, OpenShift Virtualization, KubeVirt, migrating, virtual machines, OpenShift"
 
-logo: "/assets/img/forklift-logo-darkbg.svg"
-type: website
-future: false
+# Theme
+theme: just-the-docs
+color_scheme: bubblegum
 
-twitter:
-  username: konveyor_io
-  image: assets/img/konveyor-logo-forklift.jpg
+# Logo
+logo: /assets/img/forklift-logo-lightbg.svg
+
+# Search
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: false
+
+# Heading anchor links
+heading_anchors: true
+
+# Aux links (top-right of every page)
+aux_links:
+  "View on GitHub":
+    - "https://github.com/kubev2v/forklift-documentation"
+aux_links_new_tab: true
+
+# Footer
+footer_content: >-
+  Forklift Documentation &mdash; maintained by
+  <a href="https://github.com/kubev2v">kubev2v</a>.
+  Distributed under the
+  <a href="https://github.com/kubev2v/forklift-documentation/blob/main/LICENSE">Apache-2.0 license</a>.
+
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-cayman
-defaults:
-  - scope:
-      path: "assets/img"
-    values:
-      image: true
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
 
-plugins: [jekyll-paginate, jekyll-asciidoc, jekyll-redirect-from, jekyll-feed, jekyll-sitemap, premonition, jekyll/tagging,  jekyll-seo-tag]
-
+# AsciiDoc support
 asciidoc: {}
 asciidoctor:
   base_dir: :docdir
   attributes:
-  - virt=KubeVirt
-  - a-virt=a KubeVirt
-  - oc=kubectl
-  - ocp=OKD
-  - ocp-short=OKD
-  - planning-guide-title=Planning your migration
-  - migrating-guide-title=Migrating your virtual machines
-  - rn-title=Release notes
-  - context=forklift
-  - description=Migrating virtual machines to KubeVirt
-  - rhv-full=oVirt
-  - rhv-short=oVirt
-  - a-rhv=an {rhv-full}
-  - a-rhv-short=an {rhv-short}
-  - manager=Engine
-  - abstract=Forklift enables you to migrate virtual machines from VMware or {rhv-full} to {virt} running on {ocp}.
-  - author=Forklift documentation team
-  - showtitle=@
-  - build=upstream
-  - keywords=migration, virtual machines, kubevirt
-  - imagesdir=../modules/images
-  - must-gather=quay.io/kubev2v/forklift-must-gather:latest
-  - namespace=konveyor-forklift
-  - operator=forklift-operator
-  - operator-name=Forklift Operator
-  - project-short=Forklift
-  - project-full=Forklift
-  - project-first=Forklift
-  - the-lc=
-  - the=
-  - experimental
+    - virt=KubeVirt
+    - a-virt=a KubeVirt
+    - oc=kubectl
+    - ocp=OKD
+    - ocp-short=OKD
+    - planning-guide-title=Planning your migration
+    - migrating-guide-title=Migrating your virtual machines
+    - rn-title=Release notes
+    - context=forklift@
+    - description=Migrating virtual machines to KubeVirt
+    - rhv-full=oVirt
+    - rhv-short=oVirt
+    - a-rhv=an {rhv-full}
+    - a-rhv-short=an {rhv-short}
+    - manager=Engine
+    - abstract=Forklift enables you to migrate virtual machines from VMware or {rhv-full} to {virt} running on {ocp}.
+    - author=Forklift documentation team
+    - showtitle=@
+    - build=upstream
+    - keywords=migration, virtual machines, kubevirt
+    - imagesdir=../modules/images
+    - must-gather=quay.io/kubev2v/forklift-must-gather:latest
+    - namespace=konveyor-forklift
+    - operator=forklift-operator
+    - operator-name=Forklift Operator
+    - project-short=Forklift
+    - project-full=Forklift
+    - project-first=Forklift
+    - the-lc=
+    - the=
+    - experimental
+    - mtv-plan=/documentation/doc-Planning_your_migration/master.html?
+    - mtv-mig=/documentation/doc-Migrating_your_virtual_machines/master.html?
+    - mig-plan=/documentation/doc-Planning_your_migration/master.html?
   safe: unsafe
 
+# Plugins
+plugins:
+  - jekyll-asciidoc
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-feed
+  - jekyll-include-cache
+
+# Callouts (Just the Docs built-in)
+callouts:
+  note:
+    title: Note
+    color: blue
+  warning:
+    title: Warning
+    color: yellow
+  important:
+    title: Important
+    color: red
+  tip:
+    title: Tip
+    color: green
+  caution:
+    title: Caution
+    color: yellow
+
+# Exclude module/assembly files from being built as standalone pages.
+# They are included into master.adoc via AsciiDoc include:: directives,
+# and Asciidoctor reads them from the filesystem directly.
 exclude:
   - README.md
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - LICENSE
   - .history
   - .sass-cache/
   - .jekyll-cache/
@@ -76,16 +142,12 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-
-tag_page_layout: tag
-tag_page_dir: /tag/
-
-kramdown:
-  input: GFM
-  syntax_highlighter_opts:
-    css_class: 'highlight'
-    span:
-      line_numbers: false
-    block:
-      line_numbers: false
-      start_line: 1
+  - .cursor/
+  - .github/
+  - modules/
+  - documentation/modules/
+  - documentation/doc-Planning_your_migration/assemblies/
+  - documentation/doc-Planning_your_migration/modules/
+  - documentation/doc-Migrating_your_virtual_machines/assemblies/
+  - documentation/doc-Migrating_your_virtual_machines/modules/
+  - documentation/doc-Release_notes/modules/
