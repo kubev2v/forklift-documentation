@@ -6,8 +6,20 @@ This script automates the generation of release notes from JIRA ticket exports.
 It prompts for branch selection, MTV version, and processes CSV files containing
 known issues and resolved issues. It creates a new git branch and generates all
 necessary release notes files.
+
+Outputs:
+  - documentation/modules/rn-<x>-<y>.adoc          (x-stream header, e.g. 2.11)
+  - documentation/modules/rn-<x>-<y>-<z>-resolved-issues.adoc (z-stream resolved)
+  - documentation/modules/known-issues-<x>-<y>.adoc (known issues for x-stream)
+  - documentation/doc-Release_notes/master.adoc    (updated to include new modules)
+
+Usage:
+  Interactive:  python generate_release_notes.py
+  With options: python generate_release_notes.py --version 2.11.1 --base main \\
+                  --resolved path/to/resolved.csv --known path/to/known.csv --yes
 """
 
+import argparse
 import os
 import sys
 import csv
@@ -19,9 +31,12 @@ from datetime import datetime
 
 
 class ReleaseNotesGenerator:
-    """Generates release notes from JIRA ticket exports."""
-    
-    def __init__(self, repo_path: str):
+    """
+    Generates release notes from JIRA ticket exports.
+    Handles branch creation, CSV parsing, AsciiDoc generation, and master.adoc updates.
+    """
+
+    def __init__(self, repo_path: str, non_interactive: bool = False):
         self.repo_path = Path(repo_path)
         self.docs_path = self.repo_path / "documentation"
         self.modules_path = self.docs_path / "modules"
@@ -30,9 +45,11 @@ class ReleaseNotesGenerator:
         self.base_branch = None
         self.new_branch = None
         self.version = None
-        
+        # When True, skip interactive prompts (overwrite/continue/branch reuse)
+        self.non_interactive = non_interactive
+
     def get_git_branches(self) -> List[str]:
-        """Get list of available git branches."""
+        """Return sorted list of local and remote branch names (without remotes/ prefix)."""
         try:
             result = subprocess.run(
                 ["git", "branch", "-a"],
@@ -56,7 +73,7 @@ class ReleaseNotesGenerator:
             return []
     
     def select_branch(self) -> str:
-        """Prompt user to select a base git branch."""
+        """Prompt user to select a base git branch (by number or by typing branch name)."""
         branches = self.get_git_branches()
         if not branches:
             branch = input("Enter base branch name: ").strip()
@@ -82,13 +99,13 @@ class ReleaseNotesGenerator:
                 print("Invalid input. Please enter a number or branch name.")
     
     def create_release_branch(self, base_branch: str, version: str) -> str:
-        """Create a new git branch for release notes."""
+        """Create and checkout branch MTV-RN-<version> from base_branch. Reuses branch if it exists."""
         branch_name = f"MTV-RN-{version}"
-        
+
         print(f"\nCreating new branch: {branch_name} from {base_branch}")
-        
+
         try:
-            # Checkout base branch first
+            # Checkout base branch first so new branch is created from it
             subprocess.run(
                 ["git", "checkout", base_branch],
                 cwd=self.repo_path,
@@ -125,7 +142,7 @@ class ReleaseNotesGenerator:
                 text=True
             )
             if result.stdout.strip():
-                response = input(f"Branch {branch_name} already exists. Use it? (y/n): ").strip().lower()
+                response = 'y' if getattr(self, 'non_interactive', False) else input(f"Branch {branch_name} already exists. Use it? (y/n): ").strip().lower()
                 if response == 'y':
                     subprocess.run(
                         ["git", "checkout", branch_name],
@@ -136,7 +153,7 @@ class ReleaseNotesGenerator:
             raise
     
     def select_version(self) -> str:
-        """Prompt user to enter MTV version."""
+        """Prompt user for MTV version; accepts X.Y or X.Y.Z (e.g. 2.11 or 2.11.1)."""
         while True:
             version = input("\nEnter MTV version (e.g., 2.11.1): ").strip()
             if re.match(r'^\d+\.\d+(\.\d+)?$', version):
@@ -146,21 +163,20 @@ class ReleaseNotesGenerator:
     
     def parse_jira_csv(self, csv_path: str) -> List[Dict[str, str]]:
         """
-        Parse JIRA CSV export file.
-        
-        Expected CSV format (columns may vary, script will auto-detect):
-        - Issue key (e.g., MTV-3915)
-        - Summary/Title
-        - Description
-        - Status
-        - For known issues: Workaround (optional)
-        
-        The script will try to detect common column names.
+        Parse JIRA CSV export into list of dicts with keys: key, summary, description, workaround.
+
+        Expected CSV columns (names are matched case-insensitively):
+          - Issue key (e.g. MTV-3915 or MTV-Test-1)
+          - Summary/Title
+          - Description
+          - Workaround (optional; used for known issues)
+
+        Delimiter is auto-detected. Returns list of ticket dicts; rows without a key are skipped.
         """
         tickets = []
-        
+
         with open(csv_path, 'r', encoding='utf-8') as f:
-            # Try to detect delimiter
+            # Sniff delimiter (comma vs semicolon) from first 1KB
             sample = f.read(1024)
             f.seek(0)
             sniffer = csv.Sniffer()
@@ -215,15 +231,10 @@ class ReleaseNotesGenerator:
         return tickets
     
     def format_issue_text(self, summary: str, description: str, workaround: Optional[str] = None) -> str:
-        """Format issue text for AsciiDoc."""
-        # Clean up text
+        """Format a single issue as AsciiDoc: title::, description, optional *Workaround:* block."""
         summary = summary.strip()
         description = description.strip()
-        
-        # Remove HTML tags if present
         description = re.sub(r'<[^>]+>', '', description)
-        
-        # Format the issue entry
         lines = [f"{summary}::", ""]
         
         if description:
@@ -240,7 +251,7 @@ class ReleaseNotesGenerator:
         return "\n".join(lines)
     
     def generate_resolved_issues(self, tickets: List[Dict[str, str]], version: str) -> str:
-        """Generate resolved issues AsciiDoc content."""
+        """Build AsciiDoc content for the resolved-issues module (z-stream, e.g. 2.11.1)."""
         version_safe = version.replace('.', '-')
         version_id = version.replace('.', '-')
         
@@ -271,7 +282,7 @@ class ReleaseNotesGenerator:
         return "\n".join(lines)
     
     def generate_known_issues(self, tickets: List[Dict[str, str]], version: str) -> str:
-        """Generate known issues AsciiDoc content."""
+        """Build AsciiDoc content for known-issues module (version is x-stream, e.g. 2.11)."""
         version_id = version.split('.')[0] + '-' + version.split('.')[1]  # e.g., 2.11
         
         lines = [
@@ -307,7 +318,7 @@ class ReleaseNotesGenerator:
         return "\n".join(lines)
     
     def generate_release_notes_header(self, version: str) -> str:
-        """Generate the main release notes header file."""
+        """Generate the x-stream release notes header (e.g. rn-2-11.adoc)."""
         version_major = '.'.join(version.split('.')[:2])  # e.g., 2.11
         version_id = version_major.replace('.', '-')
         
@@ -328,7 +339,12 @@ class ReleaseNotesGenerator:
         return "\n".join(lines)
     
     def update_master_adoc(self, version: str, has_resolved: bool, has_known: bool) -> bool:
-        """Update master.adoc to include new release notes modules."""
+        """
+        Update documentation/doc-Release_notes/master.adoc to include:
+        - x-stream header include (rn-<x>-<y>.adoc) if not already present (avoids duplicate)
+        - z-stream resolved-issues include (rn-<x>-<y>-<z>-resolved-issues.adoc)
+        - known-issues include (known-issues-<x>-<y>.adoc)
+        """
         if not self.master_adoc_path.exists():
             print(f"Warning: master.adoc not found at {self.master_adoc_path}")
             return False
@@ -344,38 +360,44 @@ class ReleaseNotesGenerator:
         # Check if this version already exists
         if f"rn-{version_major_safe}.adoc" in content:
             print(f"Warning: Release notes for version {version_major} already exist in master.adoc")
-            response = input("Continue anyway? (y/n): ").strip().lower()
+            response = 'y' if getattr(self, 'non_interactive', False) else input("Continue anyway? (y/n): ").strip().lower()
             if response != 'y':
                 return False
         
         lines = content.split('\n')
         new_lines = []
-        
-        # Track what we've inserted
         header_inserted = False
         resolved_inserted = False
         known_inserted = False
-        
         i = 0
         while i < len(lines):
             line = lines[i]
             
-            # Insert release notes header right after common-attributes
+            # Insert release notes header right after common-attributes (x-stream include, e.g. rn-2-11.adoc)
             if not header_inserted and line.strip() == 'include::modules/common-attributes.adoc[]':
                 new_lines.append(line)
-                # Skip to the first rn- include and insert before it
                 j = i + 1
                 while j < len(lines) and not lines[j].strip().startswith('include::modules/rn-'):
                     new_lines.append(lines[j])
                     j += 1
-                # Insert new header
+                # Avoid duplicate include (see e.g. PR #865): if rn-<x>-<y>.adoc is already
+                # in master.adoc, copy it once and continue; do not insert a second include.
+                if j < len(lines):
+                    existing_include = lines[j].strip()
+                    expected_include = f"include::modules/rn-{version_major_safe}.adoc[leveloffset=+1]"
+                    if existing_include == expected_include:
+                        new_lines.append(lines[j])
+                        header_inserted = True
+                        i = j + 1
+                        continue
+                # First rn- include is for an older version; insert our header before it
                 new_lines.append("")
                 new_lines.append(f"include::modules/rn-{version_major_safe}.adoc[leveloffset=+1]")
                 header_inserted = True
                 i = j
                 continue
             
-            # Insert resolved issues after the last resolved issues include
+            # Insert z-stream resolved-issues include after the last existing resolved-issues include
             if has_resolved and not resolved_inserted:
                 if '// Resolved issues by z-stream release' in line:
                     new_lines.append(line)
@@ -404,7 +426,7 @@ class ReleaseNotesGenerator:
                     i = k
                     continue
             
-            # Replace known issues include
+            # Ensure known-issues-<x>-<y>.adoc is included (replace or add)
             if has_known and not known_inserted:
                 if '// Known issues by x-stream release' in line:
                     new_lines.append(line)
@@ -424,7 +446,7 @@ class ReleaseNotesGenerator:
             new_lines.append(line)
             i += 1
         
-        # Fallback: if we didn't find insertion points, try simpler approach
+        # Fallback: insert resolved-issues include after any existing resolved-issues line
         if has_resolved and not resolved_inserted:
             # Find the resolved issues section and append
             for idx, line in enumerate(new_lines):
@@ -453,16 +475,14 @@ class ReleaseNotesGenerator:
         return True
     
     def extract_existing_issue_keys(self, filepath: Path) -> set:
-        """Extract issue keys (e.g., MTV-3915) from existing AsciiDoc file."""
+        """Extract JIRA issue keys from AsciiDoc file (e.g. MTV-3915, MTV-Test-1) for deduplication."""
         issue_keys = set()
         if not filepath.exists():
             return issue_keys
-        
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-        
-        # Find all JIRA issue links: link:https://issues.redhat.com/browse/MTV-XXXX[MTV-XXXX]
-        pattern = r'link:https://issues\.redhat\.com/browse/([A-Z]+-\d+)\['
+        # Match link:https://issues.redhat.com/browse/KEY[KEY]; KEY may be MTV-123 or MTV-Test-1
+        pattern = r'link:https://issues\.redhat\.com/browse/([A-Z][A-Z0-9-]*-\d+)\['
         matches = re.findall(pattern, content)
         issue_keys.update(matches)
         
@@ -530,7 +550,7 @@ class ReleaseNotesGenerator:
             line = new_lines[i]
             
             # Check if this line contains an issue key (end of an issue)
-            issue_key_match = re.search(r'link:https://issues\.redhat\.com/browse/([A-Z]+-\d+)\[', line)
+            issue_key_match = re.search(r'link:https://issues\.redhat\.com/browse/([A-Z][A-Z0-9-]*-\d+)\[', line)
             if issue_key_match:
                 issue_key = issue_key_match.group(1)
                 if issue_key not in existing_keys:
@@ -609,20 +629,11 @@ class ReleaseNotesGenerator:
     
     def save_file(self, content: str, filename: str, append_mode: bool = True) -> bool:
         """
-        Save content to file in modules directory.
-        If file exists and append_mode is True, merges new content with existing.
-        
-        Args:
-            content: The content to write
-            filename: The filename (relative to modules directory)
-            append_mode: If True and file exists, append new issues (default: True)
-            
-        Returns:
-            True if file was saved, False if user cancelled or no new content
+        Write content to documentation/modules/<filename>.
+        If file exists and append_mode is True, merges new issues into existing (no duplicate keys).
+        If append_mode is False and file exists, prompts to overwrite (or uses --yes).
         """
         filepath = self.modules_path / filename
-        
-        # Check if file exists
         if filepath.exists():
             if append_mode:
                 # Extract existing issue keys
@@ -651,7 +662,7 @@ class ReleaseNotesGenerator:
             else:
                 # Overwrite mode
                 print(f"\n⚠️  Warning: File already exists: {filepath}")
-                response = input("Overwrite existing file? (y/n/backup): ").strip().lower()
+                response = 'y' if getattr(self, 'non_interactive', False) else input("Overwrite existing file? (y/n/backup): ").strip().lower()
                 
                 if response == 'n':
                     print(f"✗ Skipped: {filepath}")
@@ -683,25 +694,34 @@ class ReleaseNotesGenerator:
     def extract_existing_issue_keys_from_content(self, content: str) -> set:
         """Extract issue keys from content string."""
         issue_keys = set()
-        pattern = r'link:https://issues\.redhat\.com/browse/([A-Z]+-\d+)\['
+        pattern = r'link:https://issues\.redhat\.com/browse/([A-Z][A-Z0-9-]*-\d+)\['
         matches = re.findall(pattern, content)
         issue_keys.update(matches)
         return issue_keys
     
-    def run(self):
-        """Main execution flow."""
+    def run(
+        self,
+        base_branch: Optional[str] = None,
+        version: Optional[str] = None,
+        resolved_csv: Optional[str] = None,
+        known_csv: Optional[str] = None,
+    ):
+        """
+        Run the full flow: branch selection, version, CSVs, then generate modules and update master.adoc.
+        Pass base_branch, version, resolved_csv, known_csv to skip prompts (non-interactive).
+        """
         print("=" * 60)
         print("Forklift/MTV Release Notes Generator")
         print("=" * 60)
         
         # Step 1: Select base branch
         print("\n[Step 1] Base Branch Selection")
-        self.base_branch = self.select_branch()
+        self.base_branch = base_branch if base_branch is not None else self.select_branch()
         print(f"Selected base branch: {self.base_branch}")
         
         # Step 2: Select version
         print("\n[Step 2] Version Selection")
-        self.version = self.select_version()
+        self.version = version if version is not None else self.select_version()
         print(f"Selected version: {self.version}")
         
         # Step 3: Create release branch
@@ -710,7 +730,10 @@ class ReleaseNotesGenerator:
         
         # Step 4: Upload resolved issues
         print("\n[Step 4] Resolved Issues")
-        resolved_file = input("Enter path to resolved issues CSV file (or press Enter to skip): ").strip()
+        if resolved_csv is None:
+            resolved_file = input("Enter path to resolved issues CSV file (or press Enter to skip): ").strip()
+        else:
+            resolved_file = resolved_csv
         resolved_tickets = []
         if resolved_file:
             if os.path.exists(resolved_file):
@@ -722,7 +745,10 @@ class ReleaseNotesGenerator:
         
         # Step 5: Upload known issues
         print("\n[Step 5] Known Issues")
-        known_file = input("Enter path to known issues CSV file (or press Enter to skip): ").strip()
+        if known_csv is None:
+            known_file = input("Enter path to known issues CSV file (or press Enter to skip): ").strip()
+        else:
+            known_file = known_csv
         known_tickets = []
         if known_file:
             if os.path.exists(known_file):
@@ -788,15 +814,43 @@ class ReleaseNotesGenerator:
 
 
 def main():
-    """Entry point."""
+    """Parse CLI, create generator, and run. Exits on Ctrl+C or exception."""
+    parser = argparse.ArgumentParser(
+        description="Generate Forklift/MTV release notes from JIRA CSV exports.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  Interactive:
+    python generate_release_notes.py
+
+  Non-interactive (e.g. test PR):
+    python generate_release_notes.py --version 2.11.1 --base main \\
+      --resolved scripts/test_data/resolved_issues.csv \\
+      --known scripts/test_data/known_issues.csv --yes
+        """,
+    )
+    parser.add_argument("--version", metavar="X.Y.Z", help="MTV version (e.g., 2.11.1)")
+    parser.add_argument("--base", dest="base_branch", metavar="BRANCH", help="Base git branch")
+    parser.add_argument("--resolved", metavar="CSV", help="Path to resolved issues CSV")
+    parser.add_argument("--known", metavar="CSV", help="Path to known issues CSV")
+    parser.add_argument("--yes", "-y", action="store_true", help="Non-interactive: overwrite/use existing without prompting")
+    args = parser.parse_args()
+
+    non_interactive = args.yes or any([args.version, args.base_branch, args.resolved, args.known])
+
     # Get repository path (script location's parent)
     script_path = Path(__file__).resolve()
     repo_path = script_path.parent.parent
-    
-    generator = ReleaseNotesGenerator(str(repo_path))
-    
+
+    generator = ReleaseNotesGenerator(str(repo_path), non_interactive=non_interactive)
+
     try:
-        generator.run()
+        generator.run(
+            base_branch=args.base_branch,
+            version=args.version,
+            resolved_csv=args.resolved,
+            known_csv=args.known,
+        )
     except KeyboardInterrupt:
         print("\n\nOperation cancelled by user.")
         sys.exit(1)
