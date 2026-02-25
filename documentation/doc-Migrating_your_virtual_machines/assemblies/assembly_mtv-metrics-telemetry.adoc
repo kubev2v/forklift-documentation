@@ -1,0 +1,21 @@
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_mtv-metrics-telemetry_{context}"]
+
+= Metrics and telemetry
+
+:context: mtv
+
+[role="_abstract"]
+{project-first} provides metrics for monitoring migration performance and collects telemetry data to help Red Hat improve the product.
+
+include::../modules/ref_mtv-performance-metrics.adoc[leveloffset=+1]
+
+include::../modules/con_mtv-telemetry.adoc[leveloffset=+1]
+
+include::../modules/ref_mtv-telemetry-metrics.adoc[leveloffset=+1]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

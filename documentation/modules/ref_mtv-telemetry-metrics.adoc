@@ -1,0 +1,62 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-metrics-telemetry.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_mtv-telemetry-metrics_{context}"]
+= Telemetry metrics
+
+[role="_abstract"]
+The following metrics are collected and forwarded as telemetry data.
+
+mtv_migrations_status_total::
++
+*Type:* Counter
++
+*Description:* Records the total number of migrations for each combination of migration status, provider, migration mode, and target cluster.
++
+*Labels:*
++
+* `status`: Migration status (`Succeeded`, `Failed`, `Canceled`)
+// `awsec2` - planned value, keep or remove?
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+// `RCM` - planned value, keep or remove?
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
++
+*Example:* `Succeeded, vsphere, cold, local = 2` indicates 2 successful cold migrations from vSphere to a local cluster.
+
+mtv_migration_plan_vms_total::
++
+*Type:* Counter
++
+*Description:* Counts the total number of VMs for each combination of VM status, provider, migration mode, and target cluster.
++
+*Labels:*
++
+* `vm_status`: Final VM state (`Succeeded`, `Failed`)
+// `awsec2` - planned value, keep or remove?
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+// `RCM` - planned value, keep or remove?
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
++
+*Example:* `succeeded, vsphere, warm, local = 2` indicates 2 VMs successfully migrated using warm migration from vSphere to a local cluster.
+
+mtv_migration_vm_oses_total::
++
+*Type:* Counter
++
+*Description:* Counts the number of VMs by operating system for each combination of VM status, provider, migration mode, and target cluster.
++
+*Labels:*
++
+* `vm_status`: Final VM state (`Succeeded`, `Failed`)
+// `awsec2` - planned value, keep or remove?
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+// `RCM` - planned value, keep or remove?
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
+* `os`: Operating system (for example, `rhel8.6`, `windows2022`, `ubuntu`)
++
+*Example:* `succeeded, vsphere, warm, local, rhel8.6 = 2` indicates 2 VMs running RHEL 8.6 were successfully migrated using warm migration from vSphere to a local cluster.

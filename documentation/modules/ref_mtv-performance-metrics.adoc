@@ -1,0 +1,137 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-metrics-telemetry.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_mtv-performance-metrics_{context}"]
+= Performance metrics
+
+[role="_abstract"]
+{project-short} provides the following performance and monitoring metrics that are available locally for tracking migration status, performance, and resource usage. Some of these metrics are also available in the {project-short} user interface during migration.
+
+[IMPORTANT]
+====
+Network and storage throughput metrics are Technology Preview features only. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+
+For more information about the support scope of Red Hat Technology Preview features, see https://access.redhat.com/support/offerings/techpreview/.
+====
+
+mtv_plans_status::
++
+*Type:* Gauge
++
+*Description:* Reflects the current status of all migration plans.
++
+*Labels:*
++
+* `plan_status`: Migration plan status (`Succeeded`, `Failed`, `Canceled`, `Executing`, `Running`, `Pending`, `Blocked`, `Deleted`)
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
++
+*Example:* `Executing, vsphere, warm, local = 2` indicates 2 warm migrations from vSphere to a local cluster are currently executing.
+
+mtv_migration_duration_seconds::
++
+*Type:* Gauge
++
+*Description:* Measures the duration of completed migration plans in seconds.
++
+*Labels:*
++
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
+* `plan_id`: Migration plan identifier (Kubernetes UUID)
++
+*Example:* `vsphere, warm, local, abcdefab-1234-... = 1234` indicates a warm migration from vSphere to a local cluster, with plan ID `abcdefab-1234-...`, completed in 1234 seconds.
+
+mtv_migration_data_transferred_bytes::
++
+*Type:* Gauge
++
+*Description:* Tracks the total data transferred for each successful migration plan in bytes.
++
+*Labels:*
++
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
+* `plan_id`: Migration plan identifier (Kubernetes UUID)
++
+*Example:* `vsphere, warm, local, abcdefab-1234-... = 12345678901` indicates a successful warm migration plan from vSphere to a local cluster, with plan ID `abcdefab-1234-...`, transferred approximately 12 GB of data.
+
+mtv_workload_migrations_status_total::
++
+*Type:* Counter
++
+*Description:* Provides a total count for every combination of labels for different migrations, including the plan ID. This metric serves as a mapping between migration status and specific plan IDs.
++
+*Labels:*
++
+* `migration_status`: Migration status (`Succeeded`, `Failed`, `Canceled`)
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
+* `plan_id`: Migration plan identifier (Kubernetes UUID)
++
+*Example:* `Succeeded, vsphere, cold, local, abcdef... = 1` indicates 1 successful cold migration from vSphere to a local cluster for plan `abcdef...`.
+
+mtv_migrations_duration_seconds::
++
+*Type:* Histogram
++
+*Description:* Counts the number of migration plans that finished within specific time intervals (for example, 1-2h, 2-5h, 5-10h, 10-24h, 24-48h).
++
+*Labels:*
++
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
++
+*Example:* `vsphere, warm, local = 2` indicates 2 warm migrations from vSphere to a local cluster finished in 1 to 2 hours.
+
+mtv_plan_alert_status::
++
+*Type:* Gauge
++
+*Description:* Contains information about migration failures, including the migration mode, source provider, plan name, and the phase where the migration failed.
++
+*Labels:*
++
+* `mode`: Migration type (`cold`, `warm`)
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+* `plan_name`: Migration plan name
+* `phase`: Migration phase where failure occurred
++
+This metric helps identify where in the migration process failures are occurring.
+
+mtv_migration_net_throughput::
++
+*Type:* Gauge
++
+*Description:* Exposes current network throughput for each running migration plan.
++
+*Labels:*
++
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
+* `plan_id`: Migration plan identifier (Kubernetes UUID)
++
+This metric provides real-time insights into network performance during active migrations.
+
+mtv_migration_storage_throughput::
++
+*Type:* Gauge
++
+*Description:* Exposes current storage throughput for each running migration plan.
++
+*Labels:*
++
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+* `mode`: Migration type (`cold`, `warm`)
+* `target`: Destination cluster (`local`, `remote`)
+* `plan_id`: Migration plan identifier (Kubernetes UUID)
++
+This metric provides real-time insights into storage performance during active migrations.

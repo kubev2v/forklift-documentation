@@ -1,0 +1,21 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-metrics-telemetry.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_mtv-telemetry_{context}"]
+= Telemetry
+
+[role="_abstract"]
+Red Hat uses telemetry to collect anonymous usage data from {project-first} installations to help us improve the usability and efficiency of {project-short}.
+
+{project-short} collects the following categories of data:
+
+* Migration plan status: The number of migrations that failed, succeeded, or were canceled.
+* Virtual machine status: The number of VMs that failed or succeeded migration.
+* Operating systems: The number of VMs migrated by operating system (for example, RHEL 8.6, Windows Server 2022, Ubuntu).
+* Provider: The source virtualization platform (for example, {rhv-full}, vSphere, {osp}, OVA, {virt}).
+* Mode: The type of migration (cold or warm).
+* Target: The destination cluster (local or remote).
+
+Metrics are calculated every 10 seconds and are reported per week, per month, and per year.
