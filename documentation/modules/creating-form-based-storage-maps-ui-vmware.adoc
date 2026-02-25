@@ -34,9 +34,9 @@ You can create ownerless storage maps by using the form page of the {project-sho
 +
 [NOTE]
 ====
-Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. This feature makes use of the command `vmkfstools` on the ESXi host, which invokes the `XCOPY` command on the storage array using an Internet Small Computer Systems Interface (iSCSI) or Fibre Channel (FC) connection. Storage copy offload lets you copy data inside a SAN more efficiently than copying the data over a network. Storage copy offload is available as a Technology Preview feature for {project-first} 2.10 for cold migration and as a Developer Preview feature for warm migration. 
+Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. This feature makes use of the command `vmkfstools` on the ESXi host, which invokes the `XCOPY` command on the storage array using an Internet Small Computer Systems Interface (iSCSI) or Fibre Channel (FC) connection. Storage copy offload lets you copy data inside a SAN more efficiently than copying the data over a network. For {project-first} 2.11, storage copy offload is available as GA for cold migration and as a Technology Preview feature for warm migration.
 
-For more information about storage copy offload, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#about-storage-copy-offload[Migrating {vmw} virtual machines by using storage copy offload].
+For more information about storage copy offload, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.11/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#about-storage-copy-offload_vmware[Migrating {vmw} virtual machines by using storage copy offload].
 ====
 
 . Optional: Click *Add mapping* to create additional storage maps, including mapping multiple storage sources to a single target storage class.
