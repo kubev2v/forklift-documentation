@@ -28,7 +28,7 @@ If you specify a non-existent resource in the filtered `must-gather` command, no
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} adm must-gather --image={must-gather}
+$ {oc} adm must-gather --image={must-gather-image}
 ----
 +
 The data is saved as `/must-gather/must-gather.tar.gz`. You can upload this file to a support case on the link:https://access.redhat.com/[Red Hat Customer Portal].
@@ -39,7 +39,7 @@ The data is saved as `/must-gather/must-gather.tar.gz`. You can upload this file
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} adm must-gather --image={must-gather} \
+$ {oc} adm must-gather --image={must-gather-image} \
   -- NS=<namespace> /usr/bin/targeted
 ----
 
@@ -47,7 +47,7 @@ $ {oc} adm must-gather --image={must-gather} \
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} adm must-gather --image={must-gather} \
+$ {oc} adm must-gather --image={must-gather-image} \
   -- PLAN=<migration_plan> /usr/bin/targeted
 ----
 
@@ -55,7 +55,7 @@ $ {oc} adm must-gather --image={must-gather} \
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} adm must-gather --image={must-gather} \
+$ {oc} adm must-gather --image={must-gather-image} \
   -- VM=<vm_name> NS=<namespace> /usr/bin/targeted
 ----
 +
