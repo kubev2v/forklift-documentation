@@ -1,0 +1,16 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-10-6_{context}"]
+= Resolved issues 2.10.6
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+Migrations with shared disk migration disabled failed::
+
+In {project-short}, migration of shared disks is done by running two migration plans, one with `migrateSharedDisk` option set to `true` and one with the option set to `false`. Before this update, the migration plan with the option set to `false` failed because an unnecessary `populator` pod was created. With this release, the unnecessary pod is not created, and migration of shared disks works as expected.
++
+link:https://issues.redhat.com/browse/MTV-4555[MTV-4555]
