@@ -1,0 +1,14 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="technical-changes-2-10_{context}"]
+= Technical changes
+
+[role="_abstract"]
+{project-first} has the following technical changes.
+
+{project-short} 2.10.1 rebased to RHEL 10::
+
+{project-short} 2.10.1 was rebased to {rhel-first} 10.

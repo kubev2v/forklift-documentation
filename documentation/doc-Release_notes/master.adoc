@@ -10,8 +10,8 @@ include::modules/common-attributes.adoc[]
 
 include::modules/rn-2-10.adoc[leveloffset=+1]
 
-// Technical changes by x-stream release
-//include::modules/technical-changes-2-9.adoc[leveloffset=+2]
+// Technical changes by y-stream release
+include::modules/technical-changes-2-10.adoc[leveloffset=+2]
 //include::modules/upgrade-notes-2.9.adoc[leveloffset=+2]
 
 // New features and enhancements by z-stream release
@@ -21,6 +21,8 @@ include::modules/new-features-and-enhancements-2-10.adoc[leveloffset=+2]
 include::modules/rn-resolved-issues.adoc[leveloffset=+2]
 
 // Resolved issues by z-stream release
+
+include::modules/rn-2-10-6-resolved-issues.adoc[leveloffset=+3]
 
 include::modules/rn-2-10-5-resolved-issues.adoc[leveloffset=+3]
 
