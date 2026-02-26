@@ -11,9 +11,7 @@ ifdef::context[:parent-context: {context}]
 [role="_abstract"]
 Run your {osp} migration plan from the MTV UI or from the command-line.
 
-== Prerequisites
-
-* You have planned your migration from {osp}.
+include::../modules/con_prerequisites-migrating-osp.adoc[leveloffset=+1]
 
 :context: ostack
 :ostack:

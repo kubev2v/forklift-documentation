@@ -472,7 +472,7 @@ Specifies organizational or operational labels to migrated VMs for identificatio
 Specifies the key-value pairs that must be matched for VMs to be scheduled on nodes. This is an optional label.
 
 `convertorLabels`::
-Cold migrations only: Specifies organizational or operational labels for the `virt-v2v` convertor pods (importer pods) for identification and management. This is an optional label.
+Cold migrations only: Specifies organizational or operational labels for the `virt-v2v` converter pods (importer pods) for identification and management. This is an optional label.
 +
 [IMPORTANT]
 ====
@@ -481,17 +481,17 @@ To ensure proper system functionality, system-managed labels override any user-d
 +
 For more details on labels and selectors in Kubernetes, see https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#labels[Labels and Selectors].
 +
-`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` conversion pod (importer pod) for cold migrations from {vmw} providers. With this feature, you can set the `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` that control the labels, `noteSelector`, and `Affinity` of the convertor pod.
+`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` converter pod (importer pod) for cold migrations from {vmw} providers. With this feature, you can set the `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` that control the labels, `noteSelector`, and `Affinity` of the converter pod.
 +
 For more information on importer files, see {mtv-plan}assembly_planning-migration-vmware#con_about-configuring-importer-pods_vmware[About scheduling importer pods].
 
 `convertorNodeSelector`::
-Cold migrations only: Specifies the key-value pairs that must be matched for data to be transferred by the `virt-v2v` convertor pods (importer pods) to the specified target nodes. This is an optional label. With this feature, you can dedicate specific nodes for disk conversion workloads that require high I/O performance or network access to source VMware infrastructure.
+Cold migrations only: Specifies the key-value pairs that must be matched for data to be transferred by the `virt-v2v` converter pods (importer pods) to the specified target nodes. This is an optional label. With this feature, you can dedicate specific nodes for disk conversion workloads that require high I/O performance or network access to source VMware infrastructure.
 +
 For more details on node selectors in Kubernetes, see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector[nodeSelector].
 
 `convertorAffinity`::
-Cold migrations only: Specifies a hard-affinity or a soft-affinity rule for `virt-v2v` convertor pods (importer pods). This is an optional label. Affinity rules can be used to optimize placement for disk conversion performance, such as co-locating with storage or ensuring network proximity to VMware infrastructure for cold migration data transfers.  
+Cold migrations only: Specifies a hard-affinity or a soft-affinity rule for `virt-v2v` converter pods (importer pods). This is an optional label. Affinity rules can be used to optimize placement for disk conversion performance, such as co-locating with storage or ensuring network proximity to VMware infrastructure for cold migration data transfers.  
 +
 For more information on affinity rules in Kubernetes, see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity[Affinity and anti-affinity].
 
