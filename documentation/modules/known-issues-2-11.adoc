@@ -43,7 +43,7 @@ link:https://issues.redhat.com/browse/MTV-4411[MTV-4411]
 
 Second migration plan with shared RDM disks fails when shared disk migration is disabled::
 
-When migrating two VMs with shared RDM disks using copyoffload in separate migration plans, the second migration plan fails at the `ImageConversion` step if shared disk migration is disabled. After successfully migrating the first VM with shared disk migration enabled, creating a second migration plan with shared disk migration disabled incorrectly creates two populate pods—one for the OS disk and one for the shared RDM disk—instead of creating only the OS disk populate pod. This causes the second migration to fail.
+When migrating two VMs with shared RDM disks by using copyoffload in separate migration plans, the second migration plan fails at the `ImageConversion` step if shared disk migration is disabled. After successfully migrating the first VM with shared disk migration enabled, creating a second migration plan with shared disk migration disabled incorrectly creates two populate pods—one for the operating system disk and one for the shared RDM disk—instead of creating only the operating system disk populate pod. This causes the second migration to fail.
 +
 *Workaround:* Currently, there is no workaround for this issue.
 +
@@ -69,9 +69,9 @@ Fibre Channel (FC) protocol VM migration fails to identify existing FC host obje
 +
 link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
 
-Migration stalls during VM migration to OCP with FC::
+Migration stalls during VM migration to Red Hat OpenShift Container Platform with FC::
 
-During the migration of VMs to an OpenShift Container Platform (OCP) cluster with Fibre Channel (FC), the migration stalls when attempting to add a transfer network to a target namespace that does not have permissions to the transfer network.
+During the migration of VMs to a Red Hat OpenShift Container Platform cluster with Fibre Channel (FC), the migration stalls when attempting to add a transfer network to a target namespace that does not have permissions to the transfer network.
 +
 *Workaround:* Currently, there is no workaround for this issue.  
 +
@@ -85,7 +85,7 @@ Deleting network or storage maps causes the `forklift-controller` to shut down u
 +
 link:https://issues.redhat.com/browse/MTV-4413[MTV-4413]
 
-{vmw} warm migration with SATA CD-ROM and SATA disks fails due to source guest OS not being detected::
+{vmw} warm migration with SATA CD-ROM and SATA disks fails due to source guest operating system not being detected::
 
 {vmw} only: Warm migration with SATA CD-ROM and SATA disks fails because of incorrect disk assignment.
 +

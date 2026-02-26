@@ -20,7 +20,7 @@ Verify that you have created a network mapping that correctly links the source n
 To resolve this issue:
 
 . Create the required network attachment definition in {virt}.
-. Update or recreate your network mapping to reference the correct destination network.
+. Update or re-create your network mapping to reference the correct destination network.
 . Validate that the network mapping shows a `Ready` status before starting the migration.
 
 *Why does warm migration fail with a snapshot error?*
@@ -50,7 +50,7 @@ Invalid VM names include those that:
 * Use uppercase letters
 * Use a name that differs from the VM's files or folder name on the datastore
 
-{project-short} automatically adjusts non-compliant VM names in the target cluster by replacing invalid characters. Alternatively, you can rename target VMs in the {project-short} UI during migration plan creation.
+{project-short} automatically adjusts noncompliant VM names in the target cluster by replacing invalid characters. Alternatively, you can rename target VMs in the {project-short} UI during migration plan creation.
 
 For {vmw} environments, you can use Storage vMotion to rename the VM before migration. This migration process automatically renames the VM's files and folder on the datastore to match the new name you have given it in the vSphere Client. Alternatively, you can manually remove the VM from inventory, rename the files and folders, edit the `.vmx` file to update the references, and then re-add the VM to the inventory.
 

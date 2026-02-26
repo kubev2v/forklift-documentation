@@ -15,16 +15,13 @@ Procedures for both options are given in the sections that follow.
 
 .Procedure
 [id="storage-copy-offload-general-ssh-security_{context}"]
-.Important notes and security considerations
-- All public keys must include command restrictions for security.
-- The command path in the restrictions must match the secure script path: `/vmfs/volumes/{datastore-name}/secure-vmkfstools-wrapper.py`.
-- You must install the SSH key in each ESXi host in your migration environment.
-- SSH service must be enabled on all target ESXi hosts.
-- To support ESXi access control, commands are restricted to `vmkfstools` operations only.
-
-.Security recommendations
-It is recommended to follow the following security recommendations:
-
-- Use separate key pairs for different environments.
-- Rotate keys periodically.
-- Consider using shorter-lived keys for enhanced security.
+- *Important notes and security considerations*
+** All public keys must include command restrictions for security.
+** The command path in the restrictions must match the secure script path: `/vmfs/volumes/{datastore-name}/secure-vmkfstools-wrapper.py`.
+** You must install the SSH key in each ESXi host in your migration environment.
+** SSH service must be enabled on all target ESXi hosts.
+** To support ESXi access control, commands are restricted to `vmkfstools` operations only.
+- *Security recommendations*
+** Use separate key pairs for different environments.
+** Rotate keys periodically.
+** Consider using shorter-lived keys for enhanced security.

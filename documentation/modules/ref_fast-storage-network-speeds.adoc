@@ -7,14 +7,14 @@
 = Ensure fast storage and network speeds
 
 [role="_abstract"]
-Ensure fast storage and network speeds, both for {vmw} and {ocp} (OCP) environments.
+Ensure fast storage and network speeds, both for {vmw} and {ocp} (Red Hat OpenShift Container Platform) environments.
 
 * To perform fast migrations, {vmw} must have fast read access to datastores. Networking between {vmw} ESXi hosts should be fast, ensure a 10 GiB network connection, and avoid network bottlenecks.
 
-** Extend the {vmw} network to the OCP Workers Interface network environment.
+** Extend the {vmw} network to the Red Hat OpenShift Container Platform Workers Interface network environment.
 
 ** It is important to ensure that the {vmw} network offers high throughput (10 Gigabit Ethernet) and rapid networking to guarantee that the reception rates align with the read rate of the ESXi datastore.
 
 ** Be aware that the migration process uses significant network bandwidth and that the migration network is utilized. If other services use that network, it might have an impact on those services and their migration rates.
 
-** For example, 200 to 325 MiB/s was the average network transfer rate from the `vmnic` for each ESXi host associated with transferring data to the OCP interface.
+** For example, 200 to 325 MiB/s was the average network transfer rate from the `vmnic` for each ESXi host associated with transferring data to the Red Hat OpenShift Container Platform interface.

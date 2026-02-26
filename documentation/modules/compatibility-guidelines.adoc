@@ -27,7 +27,7 @@ Generally it is advised to upgrade {rhv-full} Manager to the previously mentione
 
 Therefore, it is recommended to upgrade {rhv-short} to the supported version above before the migration to {virt}.
 
-However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3, and might work in practice in many environments using {project-short} {project-version}. In this case, it is recommended to upgrade {rhv-full} Manager to the previously mentioned supported version before the migration to {virt}.
+However, migrations from {rhv-short} 4.3.11 were tested with {project-short} 2.3, and might work in practice in many environments by using {project-short} {project-version}. In this case, it is recommended to upgrade {rhv-full} Manager to the previously mentioned supported version before the migration to {virt}.
 ====
 
 [id="openshift-operator-life-cycles"]

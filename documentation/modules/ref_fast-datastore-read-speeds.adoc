@@ -9,6 +9,6 @@
 [role="_abstract"]
 Datastores read rates impact the total transfer times, so it is essential to ensure fast reads are possible from the ESXi datastore to the ESXi host.
 
-Example in numbers: 200 to 300 MiB/s was the average read rate for both vSphere and ESXi endpoints for a single ESXi server. When multiple ESXi servers are used, higher datastore read rates are possible.
+Example in numbers: 200 to 300 MiB per second was the average read rate for both vSphere and ESXi endpoints for a single ESXi server. When multiple ESXi servers are used, higher datastore read rates are possible.
 
 

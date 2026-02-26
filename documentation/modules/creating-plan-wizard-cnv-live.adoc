@@ -109,7 +109,7 @@ If they are both {virt} clusters, have someone with `cluster-admin` privileges e
 
 . To add a hook, select the appropriate *Enable hook* checkbox.
 . Enter the *Hook runner image*.
-. Enter the *Ansible playbook* of the hook in the window.
+. Enter the *Ansible Playbook* of the hook in the window.
 +
 [NOTE]
 ====
