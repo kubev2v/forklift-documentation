@@ -11,7 +11,7 @@ If you have the link:https://docs.openshift.com/container-platform/{ocp-version}
 
 You can see the defaults, which you can override in the `ForkliftController` custom resource (CR), listed as follows. If necessary, you can adjust these defaults. 
 
-These settings are highly dependent on your environment. If there are many migrations happening at once and the quotas are not set enough for the migrations, then the migrations can fail. This can also be correlated to the `MAX_VM_INFLIGHT` setting that determines how many VMs/disks are migrated at once.
+These settings are highly dependent on your environment. If there are many migrations happening at once and the quotas are not set enough for the migrations, then the migrations can fail. This can also be correlated to the `MAX_VM_INFLIGHT` setting that determines how many VMs and disks are migrated at once.
 
 The following defaults can be overriden in the `ForkliftController` CR:
 

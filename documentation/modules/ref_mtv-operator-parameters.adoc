@@ -38,13 +38,13 @@ a|The maximum number of disks or VMs that can transfer or migrate simultaneously
 |The frequency in seconds with which the system checks the status of snapshot creation or removal during a warm migration.
 |`10`
 
-|`controller_filesystem_overhead`
-|Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem`.
+|`controller_filesystem_resource usage`
+|Percentage of space in persistent volumes allocated as file system resource usage when the `storageclass` is `filesystem`.
 
 *`ForkliftController` CR only.*
 |`10`
 
-|`controller_block_overhead`
+|`controller_block_resource usage`
 |Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based. It can be used when data, such as encryption headers, is written to the persistent volumes in addition to the content of the virtual disk.
 
 *`ForkliftController` CR only.*

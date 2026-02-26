@@ -60,10 +60,10 @@ where:
 Is an optional section in which you can specify a provider's `name` and `uid`.
 
 `<user>`::
-Specifies the vCenter user or the ESX/ESXi user.
+Specifies the vCenter user or the ESX or ESXi user.
 
 `<password>`::
-Specifies the password of the vCenter user or the ESX/ESXi user.
+Specifies the password of the vCenter user or the ESX or ESXi user.
 
 `<"true"/"false">`::
 Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
@@ -72,7 +72,7 @@ Specifies `"true"` to skip certificate verification, and specifies `"false"` to 
 Specifies the CA cert object. When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 
 `<api_end_point>`::
-Specifies the API endpoint URL of the vCenter or the ESX/ESXi, for example, `https://<vCenter_host>/sdk`.
+Specifies the API endpoint URL of the vCenter or the ESX or ESXi, for example, `https://<vCenter_host>/sdk`.
 
 . Create a `Provider` manifest for the source provider:
 +
@@ -237,7 +237,7 @@ Specifies the `Secret` that contains the storage provider credentials.
 `<storage_vendor_product>`::
 Specifies the name of the storage product used in the migration. For example, `vantara` for Hitachi Vantara. Storage copy offload only. Valid strings are listed in the table that follows this CR.
 +
-Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. This feature makes use of the command `vmkfstools` on the ESXi host, which invokes the `XCOPY` command on the storage array using an Internet Small Computer Systems Interface (iSCSI) or Fibre Channel (FC) connection. Storage copy offload lets you copy data inside a SAN more efficiently than copying the data over a network. For {project-first} 2.11, storage copy offload is available as GA for cold migration and as a Technology Preview feature for warm migration. For more information, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.11/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#about-storage-copy-offload_vmware[Migrating {vmw} virtual machines by using storage copy offload].
+Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. This feature makes use of the command `vmkfstools` on the ESXi host, which invokes the `XCOPY` command on the storage array by using an Internet Small Computer Systems Interface (iSCSI) or Fibre Channel (FC) connection. Storage copy offload lets you copy data inside a SAN more efficiently than copying the data over a network. For {project-first} 2.11, storage copy offload is available as GA for cold migration and as a Technology Preview feature for warm migration. For more information, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.11/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#about-storage-copy-offload_vmware[Migrating {vmw} virtual machines by using storage copy offload].
 
 `<source_datastore>`::
 Specifies the {vmw} vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
@@ -454,11 +454,11 @@ If you set `pvcNameTemplateUseGenerateName` to `false`, the generated PVC name m
 ====
 
 `skipGuestConversion`::
-Specifies whether VMs are converted before migration using the `virt-v2v` tool, which makes the VMs compatible with {virt}.
-* When set to `false`, the default value, {project-short} migrates VMs using `virt-v2v`.
-* When set to `true`, {project-short} migrates VMs using raw copy mode, which copies the VMs without converting them first.
+Specifies whether VMs are converted before migration by using the `virt-v2v` tool, which makes the VMs compatible with {virt}.
+* When set to `false`, the default value, {project-short} migrates VMs by using `virt-v2v`.
+* When set to `true`, {project-short} migrates VMs by using raw copy mode, which copies the VMs without converting them first.
 +
-Raw copy mode copies VMs without converting them with `virt-v2v`. This provides faster conversions for migrating VMs running a wider range of operating systems and supports migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
+Raw copy mode copies VMs without converting them with `virt-v2v`. This provides faster conversions for migrating VMs running a wider range of operating systems and supports migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated by using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
 
 `targetAffinity`::
 Specifies a VM target affinity rule that is entered in the lines following this label. This is an optional label.
@@ -472,7 +472,7 @@ Specifies organizational or operational labels to migrated VMs for identificatio
 Specifies the key-value pairs that must be matched for VMs to be scheduled on nodes. This is an optional label.
 
 `convertorLabels`::
-Cold migrations only: Specifies organizational or operational labels for the `virt-v2v` convertor pods (importer pods) for identification and management. This is an optional label.
+Cold migrations only: Specifies organizational or operational labels for the `virt-v2v` converter pods (importer pods) for identification and management. This is an optional label.
 +
 [IMPORTANT]
 ====
@@ -481,17 +481,17 @@ To ensure proper system functionality, system-managed labels override any user-d
 +
 For more details on labels and selectors in Kubernetes, see https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#labels[Labels and Selectors].
 +
-`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` conversion pod (importer pod) for cold migrations from {vmw} providers. With this feature, you can set the `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` that control the labels, `noteSelector`, and `Affinity` of the convertor pod.
+`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` converter pod (importer pod) for cold migrations from {vmw} providers. With this feature, you can set the `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` that control the labels, `noteSelector`, and `Affinity` of the converter pod.
 +
 For more information on importer files, see {mtv-plan}assembly_planning-migration-vmware#con_about-configuring-importer-pods_vmware[About scheduling importer pods].
 
 `convertorNodeSelector`::
-Cold migrations only: Specifies the key-value pairs that must be matched for data to be transferred by the `virt-v2v` convertor pods (importer pods) to the specified target nodes. This is an optional label. With this feature, you can dedicate specific nodes for disk conversion workloads that require high I/O performance or network access to source VMware infrastructure.
+Cold migrations only: Specifies the key-value pairs that must be matched for data to be transferred by the `virt-v2v` converter pods (importer pods) to the specified target nodes. This is an optional label. With this feature, you can dedicate specific nodes for disk conversion workloads that require high I/O performance or network access to source VMware infrastructure.
 +
 For more details on node selectors in Kubernetes, see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector[nodeSelector].
 
 `convertorAffinity`::
-Cold migrations only: Specifies a hard-affinity or a soft-affinity rule for `virt-v2v` convertor pods (importer pods). This is an optional label. Affinity rules can be used to optimize placement for disk conversion performance, such as co-locating with storage or ensuring network proximity to VMware infrastructure for cold migration data transfers.  
+Cold migrations only: Specifies a hard-affinity or a soft-affinity rule for `virt-v2v` converter pods (importer pods). This is an optional label. Affinity rules can be used to optimize placement for disk conversion performance, such as co-locating with storage or ensuring network proximity to VMware infrastructure for cold migration data transfers.  
 +
 For more information on affinity rules in Kubernetes, see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity[Affinity and anti-affinity].
 

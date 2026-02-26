@@ -173,7 +173,7 @@ Migrating shared disks might slow down the migration process.
 
 . To add a hook, select the appropriate *Enable hook* checkbox.
 . Enter the *Hook runner image*.
-. Enter the *Ansible playbook* of the hook in the window.
+. Enter the *Ansible Playbook* of the hook in the window.
 +
 [NOTE]
 ====

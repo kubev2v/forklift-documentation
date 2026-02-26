@@ -43,12 +43,12 @@ OS_USERNAME
 $ openstack token issue
 ----
 +
-The output, referred to here as `<openstack_token_output>`, includes the `token`, `userID`, and `projectID` that you need for authentication using a token with user ID.
+The output, referred to here as `<openstack_token_output>`, includes the `token`, `userID`, and `projectID` that you need for authentication by using a token with user ID.
 
 
 . Create a `Secret` manifest similar to the following:
 
-** For authentication using a token with user ID:
+** For authentication by using a token with user ID:
 +
 [source,yaml]
 ----
@@ -70,7 +70,7 @@ stringData:
 EOF
 ----
 
-** For authentication using a token with user name:
+** For authentication by using a token with user name:
 +
 [source,yaml]
 ----
