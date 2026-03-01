@@ -44,7 +44,7 @@ a|The maximum number of disks or VMs that can transfer or migrate simultaneously
 *`ForkliftController` CR only.*
 |`10`
 
-|`controller_block_resource usage`
+|`controller_block_overhead`
 |Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any `storageclass` that is block-based. It can be used when data, such as encryption headers, is written to the persistent volumes in addition to the content of the virtual disk.
 
 *`ForkliftController` CR only.*
