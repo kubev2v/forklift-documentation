@@ -86,7 +86,7 @@ If the configured file system resource usage, which has a default value of 10%, 
 
 In some cases, however, you might want to decrease the file system overhead to reduce storage consumption.
 
-You can change the file system resource usage by changing the value of the `controller_filesystem_resource usage` in the `spec` portion of the `forklift-controller` CR, as described in xref:configuring-mtv-operator_{context}[Configuring the MTV Operator].
+You can change the file system resource usage by changing the value of the `controller_filesystem_overhead` in the `spec` portion of the `forklift-controller` CR, as described in xref:configuring-mtv-operator_{context}[Configuring the MTV Operator].
 ====
 
 
