@@ -75,7 +75,7 @@ See link:https://docs.redhat.com/en/documentation/openshift_container_platform/{
 
 [NOTE]
 ====
-If your migration uses block storage and persistent volumes created with an EXT4 file system, increase the file system resource usage in the Containerized Data Importer (CDI) to be more than 10%. The default resource usage that is assumed by CDI does not completely include the reserved place for the root partition. If you do not increase the file system resource usage in CDI by this amount, your migration might fail.
+If your migration uses block storage and persistent volumes created with an EXT4 file system, increase the file system overhead in the Containerized Data Importer (CDI) to be more than 10%. The default overhead that is assumed by CDI does not completely include the reserved place for the root partition. If you do not increase the file system overhead in CDI by this amount, your migration might fail.
 ====
 
 [NOTE]
