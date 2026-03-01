@@ -28,7 +28,7 @@ $ oc edit cdi -n openshift-cnv
 +
 .. Locate the `filesystemOverhead` configuration section.
 +
-.. Set the global file system resource usage percentage to a value greater than `0.10` (10%):
+.. Set the global file system  overhead percentage to a value greater than `0.10` (10%):
 +
 [source,yaml]
 ----
