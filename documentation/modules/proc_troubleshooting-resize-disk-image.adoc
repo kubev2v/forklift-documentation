@@ -17,7 +17,7 @@ The problem occurs because the default file system resource usage that is assume
 
 .Procedure
 
-. Increase the file system resource usage in CDI to more than 10%:
+. Increase the file system overhead in CDI to more than 10%:
 +
 .. Edit the CDI configuration:
 +
