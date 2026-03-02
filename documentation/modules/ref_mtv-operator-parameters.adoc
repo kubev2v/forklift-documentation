@@ -51,7 +51,7 @@ a|The maximum number of disks or VMs that can transfer or migrate simultaneously
 |`0`
 
 |`vsphere_osmap_configmap_name`
-|Config map for vSphere source providers. This config map maps the operating system of the incoming VM to a {virt} preference name. This config map needs to be in the namespace where the {project-short} Operator is deployed.
+|Config map for vSphere source providers. This config map maps the operating system of the incoming VM to {a-virt} preference name. This config map needs to be in the namespace where the {project-short} Operator is deployed.
 
 To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* > *Preferences*.
 
@@ -61,7 +61,7 @@ Add values to the config map when this parameter has the default value, `forklif
 |`forklift-vsphere-osmap`
 
 |`ovirt_osmap_configmap_name`
-|Config map for {rhv-short} source providers. This config map maps the operating system of the incoming VM to a {virt} preference name. This config map needs to be in the namespace where the {project-short} Operator is deployed.
+|Config map for {rhv-short} source providers. This config map maps the operating system of the incoming VM to {a-virt} preference name. This config map needs to be in the namespace where the {project-short} Operator is deployed.
 
 To see the list of preferences in your {virt} environment, open the {ocp-name} web console and click *Virtualization* -> *Preferences*.
 

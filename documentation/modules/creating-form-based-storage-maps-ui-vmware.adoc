@@ -4,14 +4,16 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="creating-form-based-storage-maps-ui-vmware_{context}"]
-= Creating ownerless storage maps using the form page of the {project-short} UI
+= Creating ownerless storage maps by using the form page of the {project-short} UI
 
 [role="_abstract"]
-You can create ownerless storage maps by using the form page of the {project-short} UI.
+You can add ownerless storage maps by using the form page of the {project-first} UI. Later, you can add these maps to a migration plan by using the *Use an existing storage map* option in the *Storage map* page of the {project-short} wizard.
+
+For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
 
 .Prerequisites
 
-* Have a {vmw} source provider and a {virt} destination provider. For more information, see xref:adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
+* Have a {vmw} source provider and {a-virt} destination provider. For more information, see xref:adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
 
 .Procedure
 
