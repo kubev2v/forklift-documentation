@@ -2,8 +2,8 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/master.adoc
 
-:_mod-docs-content-type: REFERENCE
-[id="mtv-telemetry_{context}"]
+:_mod-docs-content-type: CONCEPT
+[id="con_mtv-telemetry_{context}"]
 = Telemetry
 
 [role="_abstract"]
@@ -11,19 +11,36 @@ Red Hat uses telemetry to collect anonymous usage data from {project-first} inst
 
 {project-short} collects the following categories of data:
 
-* Migration plan status: The number of migrations that failed, succeeded, or were canceled.
-* Virtual machine status: The number of VMs that failed or succeeded migration.
-* Operating systems: The number of VMs migrated by operating system (for example, RHEL 8.6, Windows Server 2022, Ubuntu).
-* Provider: The source virtualization platform (for example, {rhv-full}, vSphere, {osp}, OVA, {virt}).
-* Mode: The type of migration (cold or warm).
-* Target: The destination cluster (local or remote).
+.Telemetry data categories
+[cols="1,3",options="header"]
+|===
+|Category |Description
 
+|Migration plan status
+|The number of migrations that failed, succeeded, or were canceled.
+
+|Virtual machine status
+|The number of VMs that failed or succeeded migration.
+
+|Operating systems
+|The number of VMs migrated by operating system (for example, RHEL 8.6, Windows Server 2022, Ubuntu).
+
+|Provider
+|The source virtualization platform (for example, {rhv-full}, vSphere, {osp}, OVA, {virt}).
+
+|Mode
+|The type of migration (cold or warm).
+
+|Target
+|The destination cluster (local or remote).
+|===
+
+// TODO: Check this wording - unclear if metrics are calculated every 10s then aggregated/reported weekly/monthly/yearly, or if there's another meaning
 Metrics are calculated every 10 seconds and are reported per week, per month, and per year.
 
-[id="telemetry-metrics_{context}"]
-== Telemetry metrics
+*Telemetry metrics*
 
-The following metrics are collected and forwarded as telemetry data.
+The following metrics are collected and forwarded as telemetry data:
 
 mtv_migrations_status_total::
 +
@@ -57,7 +74,7 @@ mtv_migration_plan_vms_total::
 * `mode`: Migration type (`cold`, `warm`)
 * `target`: Destination cluster (`local`, `remote`)
 +
-*Example:* `succeeded, vsphere, warm, local = 2` indicates 2 VMs successfully migrated using warm migration from vSphere to a local cluster.
+*Example:* `Succeeded, vsphere, warm, local = 2` indicates 2 VMs successfully migrated using warm migration from vSphere to a local cluster.
 
 mtv_migration_vm_oses_total::
 +
@@ -75,4 +92,4 @@ mtv_migration_vm_oses_total::
 * `target`: Destination cluster (`local`, `remote`)
 * `os`: Operating system (for example, `rhel8.6`, `windows2022`, `ubuntu`)
 +
-*Example:* `succeeded, vsphere, warm, local, rhel8.6 = 2` indicates 2 VMs running RHEL 8.6 were successfully migrated using warm migration from vSphere to a local cluster.
+*Example:* `Succeeded, vsphere, warm, local, rhel8.6 = 2` indicates 2 VMs running RHEL 8.6 were successfully migrated using warm migration from vSphere to a local cluster.

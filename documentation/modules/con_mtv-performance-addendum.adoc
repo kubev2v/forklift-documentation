@@ -3,7 +3,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
 
 :_mod-docs-content-type: CONCEPT
-[id="mtv-performance-addendum_{context}"]
+[id="con_mtv-performance-addendum_{context}"]
 = {project-short} performance addendum
 
 [role="_abstract"]

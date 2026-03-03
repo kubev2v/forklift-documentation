@@ -2,8 +2,8 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/master.adoc
 
-:_mod-docs-content-type: CONCEPT
-[id="mtv-esxi-performance_{context}"]
+:_mod-docs-content-type: REFERENCE
+[id="ref_mtv-esxi-performance_{context}"]
 = ESXi performance
 
 [role="_abstract"]
@@ -13,10 +13,9 @@ Where possible, ensure that hosts used to perform migrations are set with BIOS p
 
 Testing showed that when transferring more than 10 VMs with both BIOS and host power management set accordingly, migrations had an increase of 15 MiB in the average datastore read rate.
 
-[id="mtv-single-esxi-host-performance_{context}"]
-== Single ESXi host performance
+*Single ESXi host performance*
 
-Test migration by using the same ESXi host.
+Test migrations by using a single ESXi host.
 
 In each iteration, the total VMs increase to display the impact of concurrent migration on the duration.
 
@@ -86,10 +85,9 @@ The optimal number of VMs per ESXi is 10.
 |3:25:15
 |===
 
-[id="mtv-multiple-esxi-host-performance_{context}"]
-== Multiple ESXi hosts and a single data store
+*Multiple ESXi hosts and a single data store*
 
-In each iteration, the number of ESXi hosts was increased, to show that increasing the number of ESXi hosts improves the migration time (50 GiB disk, Utilization 70%).
+In each iteration, the number of ESXi hosts was increased to show that increasing the number of ESXi hosts improves the migration time (50 GiB disk, Utilization 70%).
 
 .Multiple ESXi hosts and single data store
 [width="100%",cols="45%,9%,9%,13%,12%,12%",options="header",]
