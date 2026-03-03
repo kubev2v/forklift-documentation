@@ -36,9 +36,9 @@ Red Hat uses telemetry to collect anonymous usage data from {project-first} inst
 |===
 
 // TODO: Check this wording - unclear if metrics are calculated every 10s then aggregated/reported weekly/monthly/yearly, or if there's another meaning
-Metrics are calculated every 10 seconds and are reported per week, per month, and per year.
-
 *Telemetry metrics*
+
+Metrics are calculated every 10 seconds and are reported per week, per month, and per year.
 
 The following metrics are collected and forwarded as telemetry data:
 
