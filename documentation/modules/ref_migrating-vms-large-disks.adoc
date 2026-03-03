@@ -4,10 +4,10 @@
 
 :_mod-docs-content-type: REFERENCE
 [id="ref_migrating-vms-large-disks_{context}"]
-= Advanced optimization techniques
+= Large disk migrations
 
 [role="_abstract"]
-Advanced optimization techniques can help address specific migration challenges, such as VMs with large disks or optimizing data transfer methods.
+Migrating VMs with large disks requires special considerations for optimal performance and minimal downtime.
 
 The following recommendations are suggested for VMs with data on disk totaling to 1 TB or greater for each individual disk:
 

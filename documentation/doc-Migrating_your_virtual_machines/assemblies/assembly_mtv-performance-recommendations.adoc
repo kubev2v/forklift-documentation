@@ -61,10 +61,11 @@ include::../modules/ref_warm-migration-recommendations.adoc[leveloffset=+1]
 
 include::../modules/ref_maximum-values-warm-migrations.adoc[leveloffset=+2]
 
-// Advanced optimization
+// Large disk migrations
 include::../modules/ref_migrating-vms-large-disks.adoc[leveloffset=+1]
 
-include::../modules/ref_mtv-aio-buffer.adoc[leveloffset=+2]
+// AIO buffer performance
+include::../modules/ref_mtv-aio-buffer.adoc[leveloffset=+1]
 
 // Additional information
 include::../modules/con_mtv-performance-addendum.adoc[leveloffset=+1]
