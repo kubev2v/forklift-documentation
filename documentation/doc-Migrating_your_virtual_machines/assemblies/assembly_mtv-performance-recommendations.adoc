@@ -22,6 +22,8 @@ The observed performance of migration can differ from these results and depends 
 :context: mtv
 :mtv:
 
+include::../modules/ref_mtv-performance-metrics.adoc[leveloffset=+1]
+
 include::../modules/ref_fast-storage-network-speeds.adoc[leveloffset=+1]
 
 include::../modules/ref_fast-datastore-read-speeds.adoc[leveloffset=+1]
