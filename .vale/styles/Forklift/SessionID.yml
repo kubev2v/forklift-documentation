@@ -1,0 +1,8 @@
+# Merge blocker: do not use "SessionID" or "Session ID" in Forklift documentation.
+extends: existence
+message: "Do not use '%s' in documentation. Use the approved term instead."
+level: error
+ignorecase: true
+tokens:
+  - SessionID
+  - Session ID
