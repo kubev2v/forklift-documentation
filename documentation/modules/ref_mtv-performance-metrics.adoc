@@ -7,7 +7,7 @@
 = Performance metrics
 
 [role="_abstract"]
-{project-short} provides the following performance and monitoring metrics that are available locally for tracking migration status, performance, and resource usage. Some of these metrics are also available in the {project-short} user interface during migration.
+{project-short} provides performance metrics to help you make informed decisions about system configuration and performance tuning. Some metrics, such as network and storage throughput, are displayed in the {project-short} user interface during active migrations. All metrics are available for local monitoring and alerts, for example, in a custom dashboard.
 
 [IMPORTANT]
 ====
