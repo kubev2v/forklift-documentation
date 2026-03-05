@@ -17,13 +17,7 @@ Red Hat uses telemetry to collect anonymous usage data from {project-first} inst
 |Category |Description
 
 |Migration plan status
-|The number of migrations that failed, succeeded, or were canceled.
-
-|Virtual machine status
-|The number of VMs that failed or succeeded migration.
-
-|Operating systems
-|The number of VMs migrated by operating system (for example, RHEL 8.6, Windows Server 2022, Ubuntu).
+|The number of migrations that succeeded, failed, or were canceled.
 
 |Provider
 |The source virtualization platform (for example, {rhv-full}, vSphere, {osp}, OVA, {virt}).
@@ -42,54 +36,22 @@ Metrics are calculated every 10 seconds and are reported per week, per month, an
 
 The following metrics are collected and forwarded as telemetry data:
 
-mtv_migrations_status_total::
+cluster:mtv_migrations_status_total:sum::
 +
-*Type:* Counter
+*Type:* Gauge
 +
-*Description:* Records the total number of migrations for each combination of migration status, provider, migration mode, and target cluster.
+*Description:* Provides the total count of VM migrations on the cluster for each combination of migration status, provider, migration mode, and target cluster.
 +
 *Labels:*
 +
-* `status`: Migration status (`Succeeded`, `Failed`, `Canceled`)
-// `awsec2` - planned value, keep or remove?
+* `status`: Migration status (`Success`, `Failed`, `Canceled`)
 * `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
-// `RCM` - planned value, keep or remove?
-* `mode`: Migration type (`cold`, `warm`)
-* `target`: Destination cluster (`local`, `remote`)
+* `mode`: Migration type (`Cold`, `Warm`)
+* `target`: Destination cluster (`Local`, `Remote`)
 +
-*Example:* `Succeeded, vsphere, cold, local = 2` indicates 2 successful cold migrations from vSphere to a local cluster.
+*Examples:*
++
+* `Success, vsphere, Cold, Local = 10` indicates 10 successful cold migrations from vSphere to a local cluster.
+* `Canceled, vsphere, Warm, Local = 5` indicates 5 canceled warm migrations from vSphere to a local cluster.
 
-mtv_migration_plan_vms_total::
-+
-*Type:* Counter
-+
-*Description:* Counts the total number of VMs for each combination of VM status, provider, migration mode, and target cluster.
-+
-*Labels:*
-+
-* `vm_status`: Final VM state (`Succeeded`, `Failed`)
-// `awsec2` - planned value, keep or remove?
-* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
-// `RCM` - planned value, keep or remove?
-* `mode`: Migration type (`cold`, `warm`)
-* `target`: Destination cluster (`local`, `remote`)
-+
-*Example:* `Succeeded, vsphere, warm, local = 2` indicates 2 VMs successfully migrated using warm migration from vSphere to a local cluster.
 
-mtv_migration_vm_oses_total::
-+
-*Type:* Counter
-+
-*Description:* Counts the number of VMs by operating system for each combination of VM status, provider, migration mode, and target cluster.
-+
-*Labels:*
-+
-* `vm_status`: Final VM state (`Succeeded`, `Failed`)
-// `awsec2` - planned value, keep or remove?
-* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
-// `RCM` - planned value, keep or remove?
-* `mode`: Migration type (`cold`, `warm`)
-* `target`: Destination cluster (`local`, `remote`)
-* `os`: Operating system (for example, `rhel8.6`, `windows2022`, `ubuntu`)
-+
-*Example:* `Succeeded, vsphere, warm, local, rhel8.6 = 2` indicates 2 VMs running RHEL 8.6 were successfully migrated using warm migration from vSphere to a local cluster.
