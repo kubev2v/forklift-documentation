@@ -44,14 +44,14 @@ cluster:mtv_migrations_status_total:sum::
 +
 *Labels:*
 +
+--
 * `status`: Migration status (`Success`, `Failed`, `Canceled`)
 * `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
 * `mode`: Migration type (`Cold`, `Warm`)
 * `target`: Destination cluster (`Local`, `Remote`)
+--
 +
 *Examples:*
 +
 * `Success, vsphere, Cold, Local = 10` indicates 10 successful cold migrations from vSphere to a local cluster.
 * `Canceled, vsphere, Warm, Local = 5` indicates 5 canceled warm migrations from vSphere to a local cluster.
-
-
