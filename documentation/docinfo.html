@@ -1,0 +1,526 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var depth = window.location.pathname.split("/").filter(Boolean).length - 1;
+  var prefix = depth > 0 ? "../".repeat(depth) : "./";
+  window.__pagefindBase = prefix + "_pagefind/";
+  var css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = window.__pagefindBase + "pagefind-ui.css";
+  document.head.appendChild(css);
+})();
+</script>
+<style>
+/* ============================================================
+   Custom Theme Overrides for Asciidoctor Default Stylesheet
+   ============================================================ */
+
+/* --- Font stack --- */
+html { scroll-padding-top: 56px; }
+body {
+  font-family: "Red Hat Text", sans-serif !important;
+  padding-top: 48px !important;
+}
+
+/* --- Top navigation bar --- */
+#fork-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 1.25rem;
+  height: 48px;
+  background: #1a1a2e;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+#fork-nav > a {
+  color: #9ca3b0;
+  text-decoration: none;
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+#fork-nav > a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+#fork-nav > a.active { color: #fff; background: rgba(255,255,255,0.12); }
+#fork-nav .fork-brand {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  margin-right: 1.25rem;
+  padding: 0;
+}
+
+/* --- Left sidebar TOC --- */
+#toc.toc2 {
+  top: 48px !important;
+  background: #f8f9fa;
+  border-right: 1px solid #e0e3e8;
+  padding: 1rem 0 2rem 0;
+  width: 18rem;
+  font-family: "Red Hat Text", sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #c8ccd4 transparent;
+}
+#toc.toc2::-webkit-scrollbar { width: 5px; }
+#toc.toc2::-webkit-scrollbar-thumb { background: #c8ccd4; border-radius: 3px; }
+#toc.toc2::-webkit-scrollbar-track { background: transparent; }
+
+#toctitle {
+  font-size: 0.7rem !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8890a0 !important;
+  padding: 0 1rem 0.6rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid #e0e3e8;
+}
+body.toc2 { padding-left: 18rem !important; }
+@media screen and (min-width:1280px) {
+  #toc.toc2 { width: 20rem; }
+  body.toc2 { padding-left: 20rem !important; }
+}
+
+/* TOC links */
+#toc a { color: #3a3f4b; text-decoration: none; transition: color 0.12s; }
+#toc a:hover { color: #0066cc; }
+
+/* Level 1 items */
+#toc .sectlevel1 { padding: 0; margin: 0; list-style: none; }
+#toc .sectlevel1 > li { border-bottom: 1px solid #eceef2; }
+#toc .sectlevel1 > li:last-child { border-bottom: none; }
+
+/* Accordion header (injected by JS) */
+.toc-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+.toc-toggle a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  flex: 1;
+}
+.toc-chevron {
+  flex-shrink: 0;
+  width: 16px; height: 16px;
+  margin-top: 2px;
+  transition: transform 0.2s ease;
+  color: #9ca3b0;
+}
+.toc-chevron.open { transform: rotate(90deg); }
+
+/* Items without children */
+#toc .sectlevel1 > li.toc-leaf > a {
+  display: block;
+  padding: 0.55rem 1rem 0.55rem 1.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* Level 2 */
+#toc .sectlevel2 {
+  list-style: none;
+  padding: 0 0 0.35rem 0;
+  margin: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+}
+#toc .sectlevel2.collapsed { max-height: 0 !important; opacity: 0; padding: 0; }
+#toc .sectlevel2 > li > a {
+  display: block;
+  padding: 0.25rem 1rem 0.25rem 2.1rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #555b68;
+}
+#toc .sectlevel2 > li > a:hover { color: #0066cc; }
+
+/* Level 3 */
+#toc .sectlevel3 {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+#toc .sectlevel3 > li > a {
+  display: block;
+  padding: 0.2rem 1rem 0.2rem 2.9rem;
+  font-size: 0.74rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #777e8c;
+}
+#toc .sectlevel3 > li > a:hover { color: #0066cc; }
+
+/* Active highlight */
+#toc a.toc-active {
+  color: #0066cc !important;
+  font-weight: 600 !important;
+}
+#toc .sectlevel1 > li.toc-section-active {
+  border-left: 3px solid #0066cc;
+  background: rgba(0, 102, 204, 0.03);
+}
+
+/* --- Headings and titles --- */
+h1, h2, h3, h4, h5, h6,
+#toctitle, .title, .sidebarblock > .content > .title {
+  color: #1a1a2e !important;
+  font-family: "Red Hat Display", sans-serif !important;
+}
+#header { padding-top: 1rem !important; }
+h1 { font-size: 1.75rem !important; font-weight: 700 !important; margin-top: 0 !important; }
+h2 { font-size: 1.4rem !important; font-weight: 600 !important; padding-bottom: 0.3rem; border-bottom: 1px solid #eceef2; }
+h3 { font-size: 1.15rem !important; font-weight: 600 !important; }
+h4 { font-size: 1rem !important; font-weight: 600 !important; }
+.sect1 + .sect1 { border-top: none !important; }
+
+/* --- Links --- */
+#content a { color: #0066cc; }
+#content a:hover { color: #004999; }
+
+/* --- Code blocks --- */
+.literalblock pre, .listingblock > .content > pre {
+  background: #f4f5f7 !important;
+  border: 1px solid #e0e3e8 !important;
+  border-radius: 6px !important;
+  padding: 0.85rem 1rem !important;
+  font-family: "Red Hat Mono", monospace !important;
+  font-size: 0.82rem !important;
+  line-height: 1.55 !important;
+  color: #1a1a2e !important;
+}
+code { font-family: "Red Hat Mono", monospace; background: #f0f1f4; padding: 0.15em 0.35em; border-radius: 3px; font-size: 0.85em; }
+
+/* --- Tables --- */
+table.tableblock {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.88rem;
+}
+table.tableblock th {
+  background: #f0f2f5 !important;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid #d0d4dc !important;
+}
+table.tableblock td, table.tableblock th {
+  padding: 0.5rem 0.75rem !important;
+  border: 1px solid #e0e3e8 !important;
+}
+table.tableblock tbody tr:nth-child(even) { background: #fafbfc; }
+
+/* --- Admonition blocks --- */
+.admonitionblock > table {
+  border-radius: 6px !important;
+  border: none !important;
+  border-left: 4px solid #9ca3b0 !important;
+  background: #f0f1f4;
+  width: 100%;
+}
+.admonitionblock td.icon { display: none !important; }
+.admonitionblock td.content {
+  font-size: 0.88rem;
+  padding: 0.65rem 1rem !important;
+  line-height: 1.5;
+}
+.admonitionblock td.content > .title {
+  font-family: "Red Hat Display", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  margin-bottom: 0.2rem;
+}
+/* Note — informational blue */
+.admonitionblock.note > table { background: #e8f0fe; border-left-color: #19407c !important; }
+/* Tip — helpful green */
+.admonitionblock.tip > table { background: #e6f4ea; border-left-color: #1e8e3e !important; }
+/* Important — attention red */
+.admonitionblock.important > table { background: #fce8e6; border-left-color: #c5221f !important; }
+/* Warning — caution amber */
+.admonitionblock.warning > table { background: #fef7e0; border-left-color: #e37400 !important; }
+/* Caution — danger orange-red */
+.admonitionblock.caution > table { background: #fce8e6; border-left-color: #bf3400 !important; }
+
+/* --- Search (Pagefind UI) --- */
+#fork-search {
+  position: relative;
+  margin-left: auto;
+  margin-right: 0.5rem;
+  width: 220px;
+}
+#fork-search .pagefind-ui {
+  font-family: "Red Hat Text", sans-serif;
+}
+#fork-search .pagefind-ui__search-input {
+  font-family: "Red Hat Text", sans-serif;
+  font-size: 0.8rem;
+  height: 32px;
+  padding: 0 0.6rem 0 2rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  width: 100%;
+  outline: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+#fork-search .pagefind-ui__search-input::placeholder { color: #9ca3b0; }
+#fork-search .pagefind-ui__search-input:focus {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.3);
+}
+#fork-search .pagefind-ui__search-clear { top: 4px; right: 6px; }
+#fork-search .pagefind-ui__search-clear::before { color: #9ca3b0; }
+#fork-search .pagefind-ui__drawer {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  width: 420px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e0e3e8;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  z-index: 2000;
+}
+#fork-search .pagefind-ui__result {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid #f0f1f4;
+}
+#fork-search .pagefind-ui__result-link {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #0066cc;
+  text-decoration: none;
+}
+#fork-search .pagefind-ui__result-link:hover { text-decoration: underline; }
+#fork-search .pagefind-ui__result-excerpt {
+  font-size: 0.8rem;
+  color: #555b68;
+  line-height: 1.45;
+}
+#fork-search mark {
+  background: #fef7e0;
+  color: inherit;
+  padding: 0 1px;
+  border-radius: 2px;
+}
+#fork-search .pagefind-ui__message {
+  font-size: 0.8rem;
+  color: #555b68;
+  padding: 0.6rem 0.85rem;
+}
+#fork-search .pagefind-ui__form::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  z-index: 1;
+}
+#fork-search .pagefind-ui__form { position: relative; }
+#fork-search .pagefind-ui__button { display: none; }
+
+/* --- Mobile responsive --- */
+@media screen and (max-width: 768px) {
+  #toc.toc2 { width: 100%; position: relative; top: 0 !important; border-right: none; border-bottom: 1px solid #e0e3e8; }
+  body.toc2 { padding-left: 0 !important; }
+  #fork-nav { font-size: 0.8rem; gap: 0.1rem; padding: 0 0.5rem; }
+  #fork-nav .fork-brand { margin-right: 0.5rem; font-size: 0.9rem; }
+  #fork-search { width: 160px; }
+  #fork-search .pagefind-ui__drawer { width: 300px; right: -20px; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  // --- Top navigation bar with active page indicator ---
+  var path = window.location.pathname;
+  var nav = document.createElement("div");
+  nav.id = "fork-nav";
+  var links = [
+    { href: "../index.html", text: "Forklift Docs", cls: "fork-brand" },
+    { href: "../doc-Planning_your_migration/master.html", text: "Planning", match: "Planning" },
+    { href: "../doc-Migrating_your_virtual_machines/master.html", text: "Migrating", match: "Migrating" },
+    { href: "../doc-Release_notes/master.html", text: "Release Notes", match: "Release" }
+  ];
+  links.forEach(function(l) {
+    var a = document.createElement("a");
+    a.href = l.href;
+    a.textContent = l.text;
+    if (l.cls) a.className = l.cls;
+    if (l.match && path.indexOf(l.match) !== -1) a.classList.add("active");
+    nav.appendChild(a);
+  });
+
+  var searchDiv = document.createElement("div");
+  searchDiv.id = "fork-search";
+  nav.appendChild(searchDiv);
+
+  var ghLink = document.createElement("a");
+  ghLink.href = "https://github.com/kubev2v/forklift-documentation";
+  ghLink.textContent = "GitHub";
+  nav.appendChild(ghLink);
+
+  document.body.insertBefore(nav, document.body.firstChild);
+
+  // --- Initialize Pagefind UI ---
+  var pfScript = document.createElement("script");
+  pfScript.src = (window.__pagefindBase || "/_pagefind/") + "pagefind-ui.js";
+  pfScript.onload = function() {
+    new PagefindUI({
+      element: "#fork-search",
+      showSubResults: true,
+      showImages: false,
+      resetStyles: false
+    });
+  };
+  document.head.appendChild(pfScript);
+
+  // --- TOC Accordion ---
+  var toc = document.getElementById("toc");
+  if (!toc) return;
+
+  var chevronSVG = '<svg class="toc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 4 10 8 6 12"/></svg>';
+
+  var topItems = toc.querySelectorAll(".sectlevel1 > li");
+  topItems.forEach(function(li) {
+    var childUl = li.querySelector(":scope > ul");
+    var link = li.querySelector(":scope > a");
+    if (!link) return;
+
+    if (!childUl) {
+      li.classList.add("toc-leaf");
+      return;
+    }
+
+    // Wrap link + chevron in a toggle container
+    var toggle = document.createElement("div");
+    toggle.className = "toc-toggle";
+    toggle.innerHTML = chevronSVG;
+    toggle.appendChild(link);
+    li.insertBefore(toggle, childUl);
+
+    // Start collapsed
+    childUl.classList.add("collapsed");
+    childUl.style.maxHeight = "0px";
+
+    var chevron = toggle.querySelector(".toc-chevron");
+
+    toggle.addEventListener("click", function(e) {
+      // Allow the link click to navigate; toggle on chevron or whitespace click
+      if (e.target === link) return;
+      e.preventDefault();
+      toggleSection(li);
+    });
+
+    // Also toggle when clicking the link
+    link.addEventListener("click", function(e) {
+      if (childUl.classList.contains("collapsed")) {
+        e.preventDefault();
+        toggleSection(li);
+      }
+    });
+  });
+
+  function toggleSection(li) {
+    var ul = li.querySelector(":scope > .toc-toggle + ul, :scope > ul");
+    var chevron = li.querySelector(".toc-chevron");
+    if (!ul) return;
+
+    if (ul.classList.contains("collapsed")) {
+      ul.classList.remove("collapsed");
+      ul.style.maxHeight = ul.scrollHeight + "px";
+      if (chevron) chevron.classList.add("open");
+    } else {
+      ul.style.maxHeight = ul.scrollHeight + "px";
+      requestAnimationFrame(function() {
+        ul.style.maxHeight = "0px";
+        ul.classList.add("collapsed");
+      });
+      if (chevron) chevron.classList.remove("open");
+    }
+  }
+
+  function expandSection(li) {
+    var ul = li.querySelector(":scope > .toc-toggle + ul, :scope > ul");
+    var chevron = li.querySelector(".toc-chevron");
+    if (!ul || !ul.classList.contains("collapsed")) return;
+    ul.classList.remove("collapsed");
+    ul.style.maxHeight = ul.scrollHeight + "px";
+    if (chevron) chevron.classList.add("open");
+  }
+
+  // --- Scroll-spy: highlight current section, auto-expand its parent ---
+  var allTocLinks = toc.querySelectorAll("a[href^='#']");
+  var sections = [];
+  allTocLinks.forEach(function(a) {
+    var id = a.getAttribute("href").slice(1);
+    var el = document.getElementById(id);
+    if (el) sections.push({ el: el, link: a });
+  });
+
+  var rafId = null;
+  window.addEventListener("scroll", function() {
+    if (rafId) return;
+    rafId = requestAnimationFrame(function() {
+      rafId = null;
+      updateScrollSpy();
+    });
+  }, { passive: true });
+
+  function updateScrollSpy() {
+    var scrollY = window.scrollY + 100;
+    var current = null;
+
+    for (var i = sections.length - 1; i >= 0; i--) {
+      if (sections[i].el.offsetTop <= scrollY) {
+        current = sections[i];
+        break;
+      }
+    }
+
+    // Clear all active states
+    allTocLinks.forEach(function(a) { a.classList.remove("toc-active"); });
+    topItems.forEach(function(li) { li.classList.remove("toc-section-active"); });
+
+    if (!current) return;
+    current.link.classList.add("toc-active");
+
+    // Find and expand the parent sectlevel1 li
+    var parentLi = current.link.closest(".sectlevel1 > li");
+    if (parentLi) {
+      parentLi.classList.add("toc-section-active");
+      expandSection(parentLi);
+
+      // Scroll TOC to keep active link visible
+      var tocRect = toc.getBoundingClientRect();
+      var linkRect = current.link.getBoundingClientRect();
+      if (linkRect.top < tocRect.top + 60 || linkRect.bottom > tocRect.bottom - 20) {
+        current.link.scrollIntoView({ block: "center", behavior: "smooth" });
+      }
+    }
+  }
+
+  // Initial scroll-spy run
+  setTimeout(updateScrollSpy, 100);
+});
+</script>

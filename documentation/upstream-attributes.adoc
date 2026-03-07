@@ -1,0 +1,52 @@
+// Upstream (Forklift) attribute overrides
+// Included conditionally by master.adoc files when building upstream docs.
+// Downstream (MTV) attributes are in modules/common-attributes.adoc.
+
+// Product naming
+:virt: KubeVirt
+:a-virt: a KubeVirt
+:ocp: OKD
+:ocp-short: OKD
+:ocp-name: OKD
+:project-short: Forklift
+:project-full: Forklift
+:project-first: Forklift
+:rhv-full: oVirt
+:rhv-short: oVirt
+:a-rhv: an {rhv-full}
+:a-rhv-short: an {rhv-short}
+:manager: Engine
+:the-lc:
+:the:
+
+// CLI and operator
+:oc: kubectl
+:namespace: konveyor-forklift
+:operator: forklift-operator
+:operator-name: Forklift Operator
+:must-gather: quay.io/kubev2v/forklift-must-gather:latest
+
+// Guide titles
+:planning-guide-title: Planning your migration
+:migrating-guide-title: Migrating your virtual machines
+:rn-title: Release notes
+
+// Doc metadata
+:author: Forklift documentation team
+:description: Migrating virtual machines to KubeVirt
+:keywords: migration, virtual machines, kubevirt
+:icons: font
+:experimental:
+:imagesdir: ../modules/images
+
+// Build type
+:build: upstream
+
+// TOC configuration — produces a fixed left sidebar TOC
+:toc: left
+:toclevels: 3
+
+// Cross-guide links (relative paths for static HTML)
+:mtv-plan: ../doc-Planning_your_migration/master.html?
+:mtv-mig: ../doc-Migrating_your_virtual_machines/master.html?
+:mig-plan: ../doc-Planning_your_migration/master.html?

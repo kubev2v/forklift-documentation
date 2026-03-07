@@ -1,10 +1,10 @@
 include::modules/common-attributes.adoc[]
+ifdef::upstream[]
+include::../upstream-attributes.adoc[]
+endif::[]
 [id="release_notes"]
 = Release notes
 :_mod-docs-content-type: ASSEMBLY
-:toc:
-:toc-title:
-:toclevels: 2
 :compat-mode:
 :context: release-notes
 

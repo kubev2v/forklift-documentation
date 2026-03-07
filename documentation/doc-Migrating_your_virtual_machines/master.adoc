@@ -1,11 +1,11 @@
 include::modules/common-attributes.adoc[]
+ifdef::upstream[]
+include::../upstream-attributes.adoc[]
+endif::[]
 
 [id="{migrating-guide-title}"]
 = {migrating-guide-title}
 
-:toc:
-:toc-title:
-:toclevels: 3
 :compat-mode:
 :context: mtv
 
