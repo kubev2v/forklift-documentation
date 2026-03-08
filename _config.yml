@@ -81,7 +81,8 @@ asciidoctor:
     - build=upstream
     - keywords=migration, virtual machines, kubevirt
     - imagesdir=../modules/images
-    - must-gather=quay.io/kubev2v/forklift-must-gather:latest
+    - must-gather-image=quay.io/kubev2v/forklift-must-gather:latest
+    - hook-runner-image=quay.io/kubev2v/hook-runner
     - namespace=konveyor-forklift
     - operator=forklift-operator
     - operator-name=Forklift Operator

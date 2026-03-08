@@ -36,7 +36,8 @@ Upstream builds load `common-attributes.adoc` first, then `_config.yml` override
 | `{rhv-short}` | oVirt | RHV |
 | `{a-rhv}` | an oVirt | a Red Hat Virtualization |
 | `{manager}` | Engine | Manager |
-| `{must-gather}` | quay.io/kubev2v/forklift-must-gather:latest | registry.redhat.io/.../mtv-must-gather-rhel8:{project-z-version} |
+| `{must-gather-image}` | quay.io/kubev2v/forklift-must-gather:latest | registry.redhat.io/.../mtv-must-gather-rhel8:{project-z-version} |
+| `{hook-runner-image}` | quay.io/kubev2v/hook-runner | registry.redhat.io/rhmtc/openshift-migration-hook-runner-rhel8:v1.8 |
 | `{vmw}` | *(not overridden)* | VMware |
 
 ### Downstream-only variables (no upstream override)

@@ -25,7 +25,8 @@
 :project-z-version: 2.11.0
 :rhel-first: Red Hat Enterprise Linux (RHEL)
 :virt: OpenShift Virtualization
-:must-gather: registry.redhat.io/migration-toolkit-virtualization/mtv-must-gather-rhel8:{project-z-version}
+:must-gather-image: registry.redhat.io/migration-toolkit-virtualization/mtv-must-gather-rhel8:{project-z-version}
+:hook-runner-image: registry.redhat.io/rhmtc/openshift-migration-hook-runner-rhel8:v1.8
 :rhv-full: Red Hat Virtualization
 :rhv-short: RHV
 :a-rhv: a {rhv-full}
