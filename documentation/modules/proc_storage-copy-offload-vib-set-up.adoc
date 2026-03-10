@@ -7,7 +7,7 @@
 = Setting up storage copy offload using the VIB
 
 [role="_abstract"]
-You can set up storage copy offload using the vSphere Installation on Bundle (VIB). This is the default method for running storage copy offload migrations.
+You can set up storage copy offload by using the vSphere Installation on Bundle (VIB). This is the default method for running storage copy offload migrations.
 
 [IMPORTANT]
 ====

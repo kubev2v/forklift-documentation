@@ -29,14 +29,14 @@ You can run one pre-migration hook, one post-migration hook, or one of each per 
 .. In the *Pre migration hook* section, toggle the *Enable hook* switch to *Enable pre migration hook*.
 .. Enter the *Hook runner image*. If you are specifying the `spec.playbook`, you need to use an image that has an `ansible-runner`.
 .. Optional: Enter the *Service account* name. The service account must have the necessary RBAC permissions to manage cluster resources and at least write access for the `openshift-mtv` namespace where hooks execute.
-.. Paste your hook as a YAML file in the *Ansible playbook* text box. 
+.. Paste your hook as a YAML file in the *Ansible Playbook* text box. 
 
 . For a post-migration hook, perform the following steps:
 
 .. In the *Post migration hook*, toggle the *Enable hook* switch to *Enable post migration hook*.
 .. Enter the *Hook runner image*. If you are specifying the `spec.playbook`, you need to use an image that has an `ansible-runner`.
 .. Optional: Enter the *Service account* name. The service account must have the necessary RBAC permissions to manage cluster resources and at least write access for the `openshift-mtv` namespace where hooks execute.
-.. Paste your hook as a YAML file in the *Ansible playbook* text box.
+.. Paste your hook as a YAML file in the *Ansible Playbook* text box.
 
 . At the top of the tab, click *Update hooks*.
 +

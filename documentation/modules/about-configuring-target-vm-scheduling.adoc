@@ -15,6 +15,6 @@ Previously, when you migrated VMs to {virt}, {virt} automatically determined the
 
 Target VM scheduling is designed to help you with the following use cases, among others:
 
-* *Business continuity and disaster recovery*: You can use scheduling rules to migrate and power up critical VMs to several sites, in different time zones or otherwise geographically separated by significant distances. This allows you to deploy these VMs as strategic assets for business continuity, such as disaster recovery.
+* *Business continuity and disaster recovery*: You can use scheduling rules to migrate and power on critical VMs to several sites, in different time zones or otherwise geographically separated by significant distances. This allows you to deploy these VMs as strategic assets for business continuity, such as disaster recovery.
 
 * *Working with fluctuating demands*: In situations where demand for a service might vary significantly, rules for scheduling when to spin up VMs based upon demand allows you to use your resources more efficiently.

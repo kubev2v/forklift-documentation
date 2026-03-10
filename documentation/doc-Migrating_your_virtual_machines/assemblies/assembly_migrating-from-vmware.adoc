@@ -12,9 +12,7 @@ ifdef::context[:parent-context: {context}]
 [role="_abstract"]
 Run your VMware migration plan from the MTV UI or from the command-line.
 
-== Prerequisites
-
-* You have planned your migration from VMware vSphere.
+include::../modules/con_prerequisites-migrating-vmware.adoc[leveloffset=+1]
 
 :context: vmware
 :vmware:

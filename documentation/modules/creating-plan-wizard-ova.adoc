@@ -138,7 +138,7 @@ To learn more about the different types of networks {ocp-short} supports, see li
 
 . To add a hook, select the appropriate *Enable hook* checkbox.
 . Enter the *Hook runner image*.
-. Enter the *Ansible playbook* of the hook in the window.
+. Enter the *Ansible Playbook* of the hook in the window.
 +
 [NOTE]
 ====

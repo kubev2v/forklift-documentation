@@ -1,0 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_prerequisites-migrating-ova_{context}"]
+= Prerequisites
+
+[role="_abstract"]
+Ensure that you have completed the planning steps before running your OVA migration.
+
+* You have planned your migration from OVA.

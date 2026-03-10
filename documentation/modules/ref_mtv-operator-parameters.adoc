@@ -39,7 +39,7 @@ a|The maximum number of disks or VMs that can transfer or migrate simultaneously
 |`10`
 
 |`controller_filesystem_overhead`
-|Percentage of space in persistent volumes allocated as file system overhead when the `storageclass` is `filesystem`.
+|Percentage of space in persistent volumes allocated as file system resource usage when the `storageclass` is `filesystem`.
 
 *`ForkliftController` CR only.*
 |`10`

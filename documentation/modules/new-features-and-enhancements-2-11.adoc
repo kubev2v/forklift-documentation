@@ -23,7 +23,7 @@ link:https://issues.redhat.com/browse/MTV-3712[MTV-3712]
 
 Enhanced learning experience in {project-short} UI::
 
-With this update, the `Tips and tricks` section in the {project-short} UI is significantly expanded, offering curated learning paths and improved user guidance. This enhancement simplifies complex workflow steps, integrates with Red Hat {virt} LightSpeed AI for dynamic guidance, and reorganizes content for a better learning process for {project-short} administrators.
+With this update, the `Tips and tricks` section in the {project-short} UI is significantly expanded, offering curated learning paths and improved user guidance. This enhancement simplifies complex workflow steps, integrates with Red Hat Ansible Lightspeed for dynamic guidance, and reorganizes content for a better learning process for {project-short} administrators.
 +
 link:https://issues.redhat.com/browse/MTV-3718[MTV-3718]
 
@@ -114,9 +114,9 @@ In {project-short} 2.11.0, you can customize ephemeral storage during migration,
 +
 link:https://issues.redhat.com/browse/MTV-3709[MTV-3709]
 
-OS-specific VM configuration for improved performance::
+Operating system-specific VM configuration for improved performance::
 
-With this update, {project-short} detects the operating system that VMs are running on automatically. This enhancement optimizes VM performance in {project-short} and reduces the need for manual adjustments, saving time and reducing potential errors.
+With this update, {project-short} detects the operating system that VMs are running on automatically. This enhancement optimizes VM performance and reduces the need for manual adjustments, saving time and reducing potential errors.
 +
 link:https://issues.redhat.com/browse/MTV-3963[MTV-3963]
 

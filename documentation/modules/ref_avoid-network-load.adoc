@@ -11,7 +11,7 @@ You can reduce the network load on {vmw} networks by selecting the migration net
 
 By incorporating a virtualization provider, {project-short} enables the selection of a specific network, which is accessible on the ESXi hosts, for the purpose of migrating virtual machines to {ocp-short}. Selecting this migration network from the ESXi host in the {project-short} UI ensures that the transfer is performed using the selected network as an ESXi endpoint.
 
-It is imperative to ensure that the network selected has connectivity to the OCP interface, has adequate bandwidth for migrations, and that the network interface is not saturated.
+It is imperative to ensure that the network selected has connectivity to the Red Hat OpenShift Container Platform interface, has adequate bandwidth for migrations, and that the network interface is not saturated.
 
 In environments with fast networks, such as 10GbE networks, migration network impacts can be expected to match the rate of ESXi datastore reads.
 

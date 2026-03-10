@@ -8,7 +8,7 @@
 = About scheduling importer pods
 
 [role="_abstract"]
-{project-full} uses `virt-v2v` convertor pods, or _importer pods_, to transfer data from VMware source virtual machines (VMs) to target VMs. 
+{project-full} uses `virt-v2v` converter pods, or _importer pods_, to transfer data from VMware source virtual machines (VMs) to target VMs. 
 
 By default, {virt} assigns the nodes to which these importer pods transfer data. However, for cold migrations from VMware VMs, you can schedule the destination nodes for the importer pods.
 

@@ -1,0 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_prerequisites-migrating-rhv_{context}"]
+= Prerequisites
+
+[role="_abstract"]
+Ensure that you have completed the planning steps before running your {rhv-full} migration.
+
+* You have planned your migration from {rhv-full}.

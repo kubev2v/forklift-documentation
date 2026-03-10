@@ -49,6 +49,4 @@ spec:
 . After migration, verify that the VM can boot and access all disk volumes.
 
 [role="_additional-resources"]
-.Additional resources
-
 * link:https://docs.openshift.com/container-platform/latest/virt/storage/virt-configuring-cdi-for-filesystem-overhead.html[Configuring CDI for file system overhead]

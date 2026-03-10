@@ -13,9 +13,7 @@ Run your OVA migration plan from the MTV UI or from the command-line.
 
 include::../modules/con_ova-scope-and-limitations.adoc[leveloffset=+1]
 
-== Prerequisites
-
-* You have planned your migration from OVA.
+include::../modules/con_prerequisites-migrating-ova.adoc[leveloffset=+1]
 
 :context: ova
 :ova:

@@ -6,6 +6,7 @@
 [id="con_troubleshooting-storage-copy-offload_{context}"]
 = Troubleshooting storage copy offload
 
+[role="_abstract"]
 This section describes problems that are unique to storage copy offload and how you can resolve them.
 
 [id=sco-vsphere-esxi-connectivity_{context}]
@@ -15,7 +16,7 @@ Remote ESXi connection fails with a SOAP error::
 +
 *Description*: Sometimes a remote ESXi execution fails, returning a SOAP error with no apparent root cause message.
 +
-*Explanation*: Because vSphere invokes some SOAP/REST endpoints on the ESXi, a connection can fail because of standard error reasons that vanish after the next try.
+*Explanation*: Because vSphere invokes some SOAP or REST endpoints on the ESXi, a connection can fail because of standard error reasons that vanish after the next try.
 +
 *Solution*: If the populator fails, the migration can be restarted. Try to restart or retry the populator, or restart the migration.
 
@@ -30,7 +31,7 @@ CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="ht
 +
 *Explanation*: If the VIB is installed, but `/etc/init.d/hostd` did not restart, then the `vmkfstools` namespace in `esxcli` is either not updated or does not exist. If that namespace does not exist, it means that this is the first usage, probably right after the first use.
 +
-*Solution*: Use SSH to log in to the ESXi and run `/etc/init.d/hostd restart`. Wait for a few seconds until the ESXi renews the connection with vSphere.
+*Solution*: Use SSH to log in to the ESXi host and run `/etc/init.d/hostd restart`. Wait for a few seconds until the ESXi renews the connection with vSphere.
 
 [id=sco-ssh-issues_{context}]
 == SSH error messages
@@ -43,7 +44,7 @@ Manual SSH key connection errors::
 
 ** The SSH is disabled.
 +
-*Solution*: Manually enable an SSH connection on the ESXi host by using the commands in {mtv-mig}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-manual-ssh-set-up_vmware[Setting up storage copy offload using manually generated SSH keys].
+*Solution*: Manually enable an SSH connection on the ESXi host by using the commands in {mtv-mig}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-manual-ssh-set-up_vmware[Setting up storage copy offload by using manually generated SSH keys].
 
 ** There is a problem with the network connectivity.
 +

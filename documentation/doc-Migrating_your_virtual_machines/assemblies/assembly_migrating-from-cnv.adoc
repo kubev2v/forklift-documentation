@@ -9,9 +9,7 @@ ifdef::context[:parent-context: {context}]
 [role="_abstract"]
 Run your {virt} migration plan from the MTV UI or from the command-line.
 
-== Prerequisites
-
-* You have planned your migration from {virt}.
+include::../modules/con_prerequisites-migrating-cnv.adoc[leveloffset=+1]
 
 :context: cnv
 :cnv:

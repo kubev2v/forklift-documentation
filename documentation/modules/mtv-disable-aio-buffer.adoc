@@ -7,7 +7,7 @@
 = Disabling AIO buffering
 
 [role="_abstract"]
-You can disable AIO buffering for a cold migration using {project-first}. You must disable AIO buffering for a warm migration using {project-short}.
+You can disable AIO buffering for a cold migration by using {project-first}. You must disable AIO buffering for a warm migration by using {project-short}.
 
 [NOTE]
 ====
