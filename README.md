@@ -2,7 +2,7 @@
 
 # Forklift documentation
 
-Forklift is an upstream project for migrating virtual machines from VMware or oVirt to KubeVirt.
+Forklift is an upstream project for migrating virtual machines from VMware, oVirt, OpenStack, OVA, or KubeVirt to KubeVirt.
 
 ## Contributing to Forklift documentation
 
@@ -13,43 +13,69 @@ See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Building a document preview
 
-You can build a document preview by running a Jekyll container.
+### Using a container (recommended)
 
-You must have Podman installed.
+You need [Podman](https://podman.io/) or [Docker](https://www.docker.com/) installed. No other dependencies are required.
 
-1. Clone the repository:
-  ```console
-  $ git clone -b source https://github.com/kubev2v/forklift-documentation.git && cd forklift-documentation
-  ```
-2. Create `.jekyll-cache` and `_site` directories:
-  ```console
-  $ for i in .jekyll-cache _site; do mkdir ${i} && chmod 777 ${i}; done
-  ```
-3. Create a `Gemfile.lock` file:
-  ```console
-  $ for i in Gemfile.lock; do touch ${i} && chmod 777 ${i}; done
-  ```
-4. Run a Jekyll container:
-- If your operating system is SELinux-enabled:
+**With Make:**
 
-  ```console
-  $ podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll:Z jekyll/jekyll jekyll serve --watch --future
-  ```
+```console
+$ make build          # build the site into _site/
+$ make serve          # build and serve at http://localhost:8000
+```
 
-  **Note**: The `Z` at the end of the volume (`-v`) relabels the contents so that they can be written from within the container, like running `chcon -Rt svirt_sandbox_file_t -l s0:c1,c2` yourself. You must run this command in the cloned directory.
+**Without Make:**
 
-- If your operating system is not SELinux-enabled:
+```console
+$ podman build -t forklift-docs-builder .
+$ podman run --rm -v "$(pwd)":/docs:Z forklift-docs-builder make build-local
+```
 
-  ```console
-  $ podman run -it --rm --name jekyll -p 4000:4000 -v $(pwd):/srv/jekyll jekyll/jekyll jekyll serve --watch --future
-  ```
+To also start a local preview server:
 
-5. Navigate to `http://<localhost>:4000` in a web browser to view the preview.
+```console
+$ podman build -t forklift-docs-builder .
+$ podman run --rm -v "$(pwd)":/docs:Z -p 8000:8000 forklift-docs-builder make serve-local
+```
+
+Replace `podman` with `docker` if using Docker.
+
+Navigate to `http://localhost:8000` in a web browser to view the preview.
+
+### Building locally (without a container)
+
+You need [Ruby](https://www.ruby-lang.org/) with [Asciidoctor](https://asciidoctor.org/), [Node.js](https://nodejs.org/) (for search indexing), and Python 3 (for the preview server).
+
+Install Asciidoctor:
+
+```console
+$ gem install asciidoctor
+```
+
+**With Make:**
+
+```console
+$ make build-local    # build the site into _site/
+$ make serve-local    # build and serve at http://localhost:8000
+```
+
+**Without Make:**
+
+```console
+$ asciidoctor -b html5 -d book --safe-mode unsafe \
+    -a upstream -a build=upstream \
+    -a docinfodir="$(pwd)/documentation" -a docinfo=shared \
+    -o _site/documentation/doc-Planning_your_migration/master.html \
+    documentation/doc-Planning_your_migration/master.adoc
+
+$ npx -y pagefind --site _site --root-selector "#content" --output-subdir _pagefind
+
+$ cd _site && python3 -m http.server 8000
+```
+
+Repeat the `asciidoctor` command for each guide (`doc-Migrating_your_virtual_machines`, `doc-Release_notes`).
 
 ## Code of conduct
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
-## PR preview rendering
-
-[![](https://www.netlify.com/img/global/badges/netlify-light.svg)](https://www.netlify.com)

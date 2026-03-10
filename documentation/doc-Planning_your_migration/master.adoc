@@ -1,9 +1,9 @@
 include::modules/common-attributes.adoc[]
+ifdef::upstream[]
+include::../upstream-attributes.adoc[]
+endif::[]
 = {planning-guide-title}
 //[id="{planning-guide-title}_{context}"]
-:toc:
-:toc-title:
-:toclevels: 3
 :compat-mode:
 :context: mtv
 

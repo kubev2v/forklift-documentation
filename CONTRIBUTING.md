@@ -13,11 +13,11 @@ This document uses the following variables to ensure that upstream and downstrea
 | -------- | -------------- | ---------------- |
 | project-full | Forklift   | Migration Toolkit for Virtualization |
 | project-short | Forklift | MTV |
-| project-version | 2.0 | 2.0 |
+| project-version | 2.11 | 2.11 |
 | virt | KubeVirt | OpenShift Virtualization |
-| ocp | OKD | Red Hat OpenShift Container Platform |
-| ocp-version   | 4.7 | 4.7 |
-| ocp-short | OKD | OCP |
+| ocp | OKD | Red Hat OpenShift |
+| ocp-version   | 4.21 | 4.21 |
+| ocp-short | OKD | OpenShift |
 
 Variables cannot be used in CLI commands or code blocks unless you include the "attributes" keyword:
 
