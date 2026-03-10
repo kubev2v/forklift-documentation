@@ -7,7 +7,7 @@
 = Telemetry
 
 [role="_abstract"]
-Red Hat uses telemetry to collect anonymous usage data from {project-first} installations to help us improve the usability and efficiency of {project-short}.
+Red Hat uses telemetry to collect anonymous usage data from {project-first} installations to help improve the usability and efficiency of {project-short}.
 
 {project-short} collects the following categories of data:
 
@@ -29,12 +29,9 @@ Red Hat uses telemetry to collect anonymous usage data from {project-first} inst
 |The destination cluster (local or remote).
 |===
 
-// TODO: Check this wording - unclear if metrics are calculated every 10s then aggregated/reported weekly/monthly/yearly, or if there's another meaning
 *Telemetry metrics*
 
-Metrics are calculated every 10 seconds and are reported per week, per month, and per year.
-
-The following metrics are collected and forwarded as telemetry data:
+The following metrics are collected every 10 seconds and forwarded to Red Hat as telemetry data:
 
 cluster:mtv_migrations_status_total:sum::
 +
@@ -44,8 +41,13 @@ cluster:mtv_migrations_status_total:sum::
 +
 *Labels:*
 +
+[NOTE]
+====
+Label values are case sensitive.
+====
++
 --
-* `status`: Migration status (`Success`, `Failed`, `Canceled`)
+* `status`: Migration status (`Succeeded`, `Failed`, `Canceled`)
 * `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
 * `mode`: Migration type (`Cold`, `Warm`)
 * `target`: Destination cluster (`Local`, `Remote`)
@@ -53,5 +55,5 @@ cluster:mtv_migrations_status_total:sum::
 +
 *Examples:*
 +
-* `Success, vsphere, Cold, Local = 10` indicates 10 successful cold migrations from vSphere to a local cluster.
+* `Succeeded, vsphere, Cold, Local = 10` indicates 10 successful cold migrations from vSphere to a local cluster.
 * `Canceled, vsphere, Warm, Local = 5` indicates 5 canceled warm migrations from vSphere to a local cluster.
