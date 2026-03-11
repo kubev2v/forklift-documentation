@@ -11,7 +11,7 @@ endif::[]
 
 :_mod-docs-content-type: ASSEMBLY
 
-include::modules/con_performing-migration-intro.adoc[leveloffset=+1]
+include::modules/con_performing-migration-intro.adoc[leveloffset=0]
 
 include::assemblies/assembly_migrating-from-vmware.adoc[leveloffset=+1]
 
@@ -33,6 +33,6 @@ include::assemblies/assembly_troubleshooting-migration.adoc[leveloffset=+1]
 
 include::assemblies/assembly_mtv-performance-recommendations.adoc[leveloffset=+1]
 
-include::modules/mtv-telemetry.adoc[leveloffset=+1]
+include::modules/mtv-telemetry.adoc[leveloffset=0]
 
 

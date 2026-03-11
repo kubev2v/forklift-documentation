@@ -15,31 +15,31 @@ Create {a-virt} migration plan by setting up network maps, configuring source an
 :context: cnv
 :cnv:
 
-include::../modules/creating-form-based-network-maps-ui-cnv.adoc[leveloffset=+1]
+include::../modules/creating-form-based-network-maps-ui-cnv.adoc[leveloffset=0]
 
-include::../modules/creating-yaml-based-network-maps-ui-cnv.adoc[leveloffset=+1]
+include::../modules/creating-yaml-based-network-maps-ui-cnv.adoc[leveloffset=0]
 
-include::../modules/creating-form-based-storage-maps-ui-cnv.adoc[leveloffset=+1]
+include::../modules/creating-form-based-storage-maps-ui-cnv.adoc[leveloffset=0]
 
-include::../modules/creating-yaml-based-storage-maps-ui-cnv.adoc[leveloffset=+1]
+include::../modules/creating-yaml-based-storage-maps-ui-cnv.adoc[leveloffset=0]
 
-include::../modules/adding-source-provider.adoc[leveloffset=+1]
+include::../modules/adding-source-provider.adoc[leveloffset=0]
 
 :!cnv:
 :context: dest_cnv
 :dest_cnv:
 
-include::../modules/adding-source-provider.adoc[leveloffset=+1]
+include::../modules/adding-source-provider.adoc[leveloffset=0]
 
-include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
+include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=0]
 
 :!dest_cnv:
 :context: cnv
 :cnv:
 
-include::../modules/creating-plan-wizard-cnv.adoc[leveloffset=+1]
+include::../modules/creating-plan-wizard-cnv.adoc[leveloffset=0]
 
-include::../modules/creating-plan-wizard-cnv-live.adoc[leveloffset=+2]
+include::../modules/creating-plan-wizard-cnv-live.adoc[leveloffset=0]
 
 :!cnv:
 

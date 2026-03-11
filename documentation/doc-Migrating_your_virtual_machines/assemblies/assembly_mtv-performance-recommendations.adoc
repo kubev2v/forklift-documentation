@@ -22,41 +22,41 @@ The observed performance of migration can differ from these results and depends 
 :context: mtv
 :mtv:
 
-include::../modules/ref_fast-storage-network-speeds.adoc[leveloffset=+1]
+include::../modules/ref_fast-storage-network-speeds.adoc[leveloffset=0]
 
-include::../modules/ref_fast-datastore-read-speeds.adoc[leveloffset=+1]
+include::../modules/ref_fast-datastore-read-speeds.adoc[leveloffset=0]
 
-include::../modules/ref_endpoint-types.adoc[leveloffset=+1]
+include::../modules/ref_endpoint-types.adoc[leveloffset=0]
 
-include::../modules/mtv-esxi-performance.adoc[leveloffset=+1]
+include::../modules/mtv-esxi-performance.adoc[leveloffset=0]
 
-include::../modules/mtv-different-migration-networks-performance.adoc[leveloffset=+1]
+include::../modules/mtv-different-migration-networks-performance.adoc[leveloffset=0]
 
-include::../modules/ref_avoid-network-load.adoc[leveloffset=+1]
+include::../modules/ref_avoid-network-load.adoc[leveloffset=0]
 
-include::../modules/ref_control-concurrent-disk-migrations.adoc[leveloffset=+1]
+include::../modules/ref_control-concurrent-disk-migrations.adoc[leveloffset=0]
 
-include::../modules/ref_concurrent-migrations-faster-migrations.adoc[leveloffset=+1]
+include::../modules/ref_concurrent-migrations-faster-migrations.adoc[leveloffset=0]
 
-include::../modules/ref_multiple-hosts-faster-migrations.adoc[leveloffset=+1]
+include::../modules/ref_multiple-hosts-faster-migrations.adoc[leveloffset=0]
 
-include::../modules/ref_multiple-migration-plans-vs-single.adoc[leveloffset=+1]
+include::../modules/ref_multiple-migration-plans-vs-single.adoc[leveloffset=0]
 
-include::../modules/ref_maximum-values-cold-migrations.adoc[leveloffset=+1]
+include::../modules/ref_maximum-values-cold-migrations.adoc[leveloffset=0]
 
-include::../modules/ref_warm-migration-recommendations.adoc[leveloffset=+1]
+include::../modules/ref_warm-migration-recommendations.adoc[leveloffset=0]
 
-include::../modules/ref_maximum-values-warm-migrations.adoc[leveloffset=+1]
+include::../modules/ref_maximum-values-warm-migrations.adoc[leveloffset=0]
 
-include::../modules/ref_migrating-vms-large-disks.adoc[leveloffset=+1]
+include::../modules/ref_migrating-vms-large-disks.adoc[leveloffset=0]
 
-include::../modules/mtv-aio-buffer.adoc[leveloffset=+1]
+include::../modules/mtv-aio-buffer.adoc[leveloffset=0]
 
-include::../modules/mtv-enable-aio-buffer.adoc[leveloffset=+2]
+include::../modules/mtv-enable-aio-buffer.adoc[leveloffset=0]
 
-include::../modules/mtv-disable-aio-buffer.adoc[leveloffset=+2]
+include::../modules/mtv-disable-aio-buffer.adoc[leveloffset=0]
 
-include::../modules/mtv-performance-addendum.adoc[leveloffset=+1]
+include::../modules/mtv-performance-addendum.adoc[leveloffset=0]
 
 :mtv!:
 

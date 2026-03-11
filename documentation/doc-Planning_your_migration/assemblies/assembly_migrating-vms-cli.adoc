@@ -31,7 +31,7 @@ You must ensure that all prerequisites are met. For more information, see xref:a
 :context: cli
 :cli:
 
-include::../modules/non-admin-permissions-for-ui.adoc[leveloffset=+1]
+include::../modules/non-admin-permissions-for-ui.adoc[leveloffset=0]
 
 :cli!:
 :context: mtv

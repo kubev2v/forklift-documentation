@@ -12,31 +12,31 @@ ifdef::context[:parent-context: {context}]
 [role="_abstract"]
 Review the specific software requirements per source provider.
 
-include::../modules/rhv-prerequisites.adoc[leveloffset=+1]
+include::../modules/rhv-prerequisites.adoc[leveloffset=0]
 
-include::../modules/openstack-prerequisites.adoc[leveloffset=+1]
+include::../modules/openstack-prerequisites.adoc[leveloffset=0]
 
-include::../modules/ostack-token-auth.adoc[leveloffset=+2]
+include::../modules/ostack-token-auth.adoc[leveloffset=0]
 
-include::../modules/ostack-app-cred-auth.adoc[leveloffset=+2]
+include::../modules/ostack-app-cred-auth.adoc[leveloffset=0]
 
-include::../modules/vmware-prerequisites.adoc[leveloffset=+1]
+include::../modules/vmware-prerequisites.adoc[leveloffset=0]
 
-include::../modules/creating-vmware-role-mtv-permissions.adoc[leveloffset=+2]
+include::../modules/creating-vmware-role-mtv-permissions.adoc[leveloffset=0]
 
-include::../modules/creating-vddk-image.adoc[leveloffset=+2]
+include::../modules/creating-vddk-image.adoc[leveloffset=0]
 
-include::../modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=+2]
+include::../modules/increasing-nfc-memory-vmware-host.adoc[leveloffset=0]
 
-include::../modules/vddk-validator-containers.adoc[leveloffset=+2]
+include::../modules/vddk-validator-containers.adoc[leveloffset=0]
 
-include::../modules/ova-prerequisites.adoc[leveloffset=+1]
+include::../modules/ova-prerequisites.adoc[leveloffset=0]
 
-include::../modules/cnv-prerequisites.adoc[leveloffset=+1]
+include::../modules/cnv-prerequisites.adoc[leveloffset=0]
 
-include::../modules/cnv-cnv-live-prerequisites.adoc[leveloffset=+2]
+include::../modules/cnv-cnv-live-prerequisites.adoc[leveloffset=0]
 
-include::../modules/compatibility-guidelines.adoc[leveloffset=+1]
+include::../modules/compatibility-guidelines.adoc[leveloffset=0]
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]

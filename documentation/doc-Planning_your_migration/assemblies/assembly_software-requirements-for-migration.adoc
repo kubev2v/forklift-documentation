@@ -16,15 +16,15 @@ Review the following software requirements to ensure that your environment is pr
 
 You must install xref:compatibility-guidelines_{context}[compatible versions] of {ocp} and {virt}.
 
-include::../modules/storage-support.adoc[leveloffset=+1]
+include::../modules/storage-support.adoc[leveloffset=0]
 
-include::../modules/network-prerequisites.adoc[leveloffset=+1]
+include::../modules/network-prerequisites.adoc[leveloffset=0]
 
-include::../modules/ref_source-vm-prerequisites.adoc[leveloffset=+1]
+include::../modules/ref_source-vm-prerequisites.adoc[leveloffset=0]
 
-include::../modules/ref_source-vm-migration-considerations.adoc[leveloffset=+1]
+include::../modules/ref_source-vm-migration-considerations.adoc[leveloffset=0]
 
-include::../modules/encryption-support.adoc[leveloffset=+1]
+include::../modules/encryption-support.adoc[leveloffset=0]
 
 
 ifdef::parent-context[:context: {parent-context}]

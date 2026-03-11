@@ -11,7 +11,7 @@ ifdef::context[:parent-context: {context}]
 [role="_abstract"]
 Run your OVA migration plan from the MTV UI or from the command-line.
 
-include::../modules/con_ova-scope-and-limitations.adoc[leveloffset=+1]
+include::../modules/con_ova-scope-and-limitations.adoc[leveloffset=0]
 
 == Prerequisites
 
@@ -20,19 +20,19 @@ include::../modules/con_ova-scope-and-limitations.adoc[leveloffset=+1]
 :context: ova
 :ova:
 
-include::../modules/running-migration-plan.adoc[leveloffset=+1]
+include::../modules/running-migration-plan.adoc[leveloffset=0]
 
-include::../modules/migration-plan-options-ui.adoc[leveloffset=+2]
+include::../modules/migration-plan-options-ui.adoc[leveloffset=0]
 
-include::../modules/canceling-migration-ui.adoc[leveloffset=+2]
+include::../modules/canceling-migration-ui.adoc[leveloffset=0]
 
-include::../modules/proc_migrating-vms-cli-ova.adoc[leveloffset=+1]
+include::../modules/proc_migrating-vms-cli-ova.adoc[leveloffset=0]
 
-include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
+include::../modules/canceling-migration-cli.adoc[leveloffset=0]
 
-include::../modules/canceling-migration-cli-entire.adoc[leveloffset=+3]
+include::../modules/canceling-migration-cli-entire.adoc[leveloffset=+1]
 
-include::../modules/canceling-migration-cli-specific.adoc[leveloffset=+3]
+include::../modules/canceling-migration-cli-specific.adoc[leveloffset=+1]
 
 :ova!:
 

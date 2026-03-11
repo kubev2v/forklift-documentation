@@ -14,13 +14,13 @@ ifdef::context[:parent-context: {context}]
 [role="_abstract"]
 {project-short} supports cold migration for VMs that are shut down and warm migration for running VMs with minimal downtime.
 
-include::../modules/about-cold-warm-migration.adoc[leveloffset=+1]
+include::../modules/about-cold-warm-migration.adoc[leveloffset=0]
 
-include::../modules/warm-migration-stages.adoc[leveloffset=+1]
+include::../modules/warm-migration-stages.adoc[leveloffset=0]
 
-include::../modules/mtv-migration-speed-comparison.adoc[leveloffset=+1]
+include::../modules/mtv-migration-speed-comparison.adoc[leveloffset=0]
 
-include::../modules/con_choosing-migration-type.adoc[leveloffset=+1]
+include::../modules/con_choosing-migration-type.adoc[leveloffset=0]
 
 
 ifdef::parent-context[:context: {parent-context}]

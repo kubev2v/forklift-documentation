@@ -14,17 +14,17 @@ Understand the {project-first} custom resources, services, and workflows that en
 :context: mtv
 :mtv:
 
-include::../modules/mtv-resources-and-services.adoc[leveloffset=+1]
+include::../modules/mtv-resources-and-services.adoc[leveloffset=0]
 
-include::../modules/mtv-workflow.adoc[leveloffset=+1]
+include::../modules/mtv-workflow.adoc[leveloffset=0]
 
-include::../modules/virt-migration-workflow.adoc[leveloffset=+2]
+include::../modules/virt-migration-workflow.adoc[leveloffset=0]
 
-include::../modules/virt-v2v-mtv.adoc[leveloffset=+2]
+include::../modules/virt-v2v-mtv.adoc[leveloffset=0]
 
-include::../modules/raw-copy-mode.adoc[leveloffset=+2]
+include::../modules/raw-copy-mode.adoc[leveloffset=0]
 
-include::../modules/con_device-compatibility-mode-raw-copy-migrations.adoc[leveloffset=+2]
+include::../modules/con_device-compatibility-mode-raw-copy-migrations.adoc[leveloffset=0]
 
 
 :mtv!:
