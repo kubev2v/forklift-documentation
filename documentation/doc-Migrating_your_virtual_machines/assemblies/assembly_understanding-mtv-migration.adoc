@@ -16,9 +16,13 @@ Understand the {project-first} custom resources, services, and workflows that en
 
 include::../modules/mtv-resources-and-services.adoc[leveloffset=+1]
 
+include::../modules/mtv-resources-and-services-toc-sections.adoc[leveloffset=+1]
+
 include::../modules/mtv-workflow.adoc[leveloffset=+1]
 
 include::../modules/virt-migration-workflow.adoc[leveloffset=+2]
+
+include::../modules/virt-v2v-mtv-toc-sections.adoc[leveloffset=+1]
 
 include::../modules/virt-v2v-mtv.adoc[leveloffset=+2]
 

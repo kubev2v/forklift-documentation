@@ -1,0 +1,4 @@
+= OpenShift Operator Life Cycles
+
+
+For more information about the software maintenance Life Cycle classifications for Operators shipped by Red Hat for use with OpenShift Container Platform, see link:https://access.redhat.com/support/policy/updates/openshift_operators#platform-agnostic[OpenShift Operator Life Cycles].
