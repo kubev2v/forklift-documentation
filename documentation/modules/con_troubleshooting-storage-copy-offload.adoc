@@ -9,7 +9,7 @@
 This section describes problems that are unique to storage copy offload and how you can resolve them.
 
 [id=sco-vsphere-esxi-connectivity_{context}]
-== vSphere-ESXi connectivity issues
+= vSphere-ESXi connectivity issues
 
 Remote ESXi connection fails with a SOAP error::
 +
@@ -33,7 +33,7 @@ CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="ht
 *Solution*: Use SSH to log in to the ESXi and run `/etc/init.d/hostd restart`. Wait for a few seconds until the ESXi renews the connection with vSphere.
 
 [id=sco-ssh-issues_{context}]
-== SSH error messages
+= SSH error messages
 
 Manual SSH key connection errors::
 +
@@ -81,7 +81,7 @@ $ ssh -i /path/to/<private_key> root@<ESXI_host_IP>
 ----
 
 [id=sco-netapp-issues_{context}]
-== NetApp Error
+= NetApp Error
 
 *Description*: {project-short} returns the following error:
 

@@ -11,7 +11,7 @@ Starting with {project-first} 2.10, you can use the _target VM scheduling_ featu
 
 Previously, when you migrated VMs to {virt}, {virt} automatically determined the node the VMs would be migrated to. Although this served many customers' needs, there are certain situations in which it is useful to be able to specify the target node of a VM or the conditions under which the VM is powered on, regardless of the type of migration involved.
 
-== Use cases
+= Use cases
 
 Target VM scheduling is designed to help you with the following use cases, among others:
 

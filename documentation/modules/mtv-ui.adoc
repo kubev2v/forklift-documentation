@@ -14,7 +14,7 @@ In the left panel, you can choose a page related to a component of the migration
 In pages related to components, you can click on the *Projects* list, which is in the upper-left portion of the page, and see which projects (namespaces) you are allowed to work with.
 
 [id="tips-and-tricks-panel_{context}"]
-== The Tips and tricks panel
+= The Tips and tricks panel
 
 The *Tips and tricks* panel provides contextual guidance and best practices to help you plan and execute your migrations successfully.
 

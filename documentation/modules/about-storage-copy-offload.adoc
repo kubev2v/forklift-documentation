@@ -30,7 +30,7 @@ features, see https://access.redhat.com/support/offerings/techpreview/[Technolog
 ====
 
 [id="how-storage-copy-offload-works_{context}"]
-== How storage copy offload works 
+= How storage copy offload works 
 
 Without storage copy offload, {project-short} migrates a virtual disk as follows:
 
@@ -55,7 +55,7 @@ The storage arrays must be the ones specified above. Otherwise, XCOPY performs a
 ====
 
 [id="storage-copy-offload-works-supported-providers_{context}"]
-== Supported storage providers
+= Supported storage providers
 
 The following storage providers support storage copy offload:
 

@@ -13,7 +13,7 @@ vSphere Installation on Bundle (VIB) is the default method. This method uses a c
 
 SSH is the recommended method. This method uses SSH to directly run `vmkfstools` commands on ESXi hosts. This method is useful when VIB installation is not possible and for the advantages that follow.
 
-== Advantages of the SSH method
+= Advantages of the SSH method
 
 The SSH method offers you the following advantages:
 

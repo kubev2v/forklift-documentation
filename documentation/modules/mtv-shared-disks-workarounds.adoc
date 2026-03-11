@@ -13,7 +13,7 @@ As discussed previously, it is important to try to create 2 `Plan` CRs in which 
 * "Remove" one of the shared disks
 
 [id="duplicate-shared-disk_{context}"]
-== Duplicate a shared disk
+= Duplicate a shared disk
 
 In the figure that follows, VMs 2 and 3 are migrated with the shared disks in the first plan, and VM 1 is migrated in the second plan. This eliminates the cyclic dependencies, but there is a disadvantage to this workaround: it duplicates shared disk 3. The solution is to remove the duplicated PV and migrate VM 1 again.
 
@@ -25,7 +25,7 @@ Advantage: The source VMs are not affected.
 Disadvantage: One shared disk gets transferred twice, so you need to manually delete the duplicate disk and reconnect VM 3 to shared disk 3 in Red Hat OpenShift after the migration.
 
 [id="remove-shared-link_{context}"]
-== "Remove" a shared disk
+= "Remove" a shared disk
 
 The figure that follows shows an alternative solution: Remove the link to one of the shared disks from one source VM. Doing this breaks the cyclic dependencies. Note that in the current {vmw} UI, removing the link is referred to as "removing" the disk.
 

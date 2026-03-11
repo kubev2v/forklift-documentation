@@ -16,7 +16,7 @@ OVA migration is validated for migrating supported guest operating systems expor
 ====
 
 [id="cold-migration_{context}"]
-== Cold migration
+= Cold migration
 
 Cold migration is the default migration type. The source virtual machines are shut down while the data is copied.
 
@@ -31,7 +31,7 @@ To enable {project-short} to automatically install `qemu-guest-agent` on the mig
 If that is not possible, use your preferred automated or manual procedure to install `qemu-guest-agent` manually.
 ====
 
-== Warm migration
+= Warm migration
 
 Warm migration copies most of the data while the source virtual machines (VMs) remain running, minimizing downtime.
 

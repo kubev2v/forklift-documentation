@@ -20,7 +20,7 @@ The *Overview* page has 3 tabs:
 * Settings
 
 [id="overview-tab_{context}"]
-== Overview tab
+= Overview tab
 
 The *Overview* tab is to help you quickly create providers and find information about the whole system:
 
@@ -45,12 +45,12 @@ Since a single migration might involve many virtual machines, the number of migr
 * In the lower-right pane is a table named *{project-short} health*. This table lists all of the {project-short} pods. The most important one, `forklift-controller`, is first. The remaining pods are listed in alphabetical order. The *View all* link opens the *Health* tab. The status and creation time of each pod are listed. You can also see a link to the logs of each pod.
 
 [id="overview-yaml-tab_{context}"]
-== YAML tab
+= YAML tab
 
 The *YAML* tab displays the `ForkliftController` custom resource (CR) that defines the operation of the {project-short} Operator. You can modify the CR in this tab.
 
 [id="overview-health-tab_{context}"]
-== Health tab
+= Health tab
 
 The *Health* tab has two panes:
 
@@ -59,7 +59,7 @@ The *Health* tab has two panes:
 * In the lower pane, there is a table named *Conditions*. It lists the following possible types (states) of the {project-short} Operator, the status of the type, the last time the condition was updated, the reason for the update, and a message about the condition.
 
 [id="overview-history-tab_{context}"]
-== History tab
+= History tab
 
 The *History* tab displays information about migrations.
 
@@ -68,7 +68,7 @@ The *History* tab displays information about migrations.
 * To the right of the filter is the *Group by plan* toggle switch, which lets you display either all migrations or view only the most recent migration run per plan within the specified time range.
 
 [id="overview-settings-tab_{context}"]
-== Settings tab
+= Settings tab
 
 The table that follows describes the settings that are visible in the *Settings* tab, their default values, and other possible values that can be set or chosen, if needed.
 

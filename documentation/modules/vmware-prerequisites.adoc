@@ -45,7 +45,7 @@ In case of a power outage, data might be lost for a VM with disabled hibernation
 ====
 
 [id="vmware-privileges_{context}"]
-== {vmw} privileges
+= {vmw} privileges
 
 The following minimal set of {vmw} privileges is required to migrate virtual machines to {virt} with the {project-first}.
 

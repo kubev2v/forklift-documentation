@@ -16,7 +16,7 @@ Prerequisites::
 * If you are mapping more than one source and destination network, you must create a network attachment definition for each additional destination network. For more information, see link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-creating-network-attachment-definition[network attachment definition].
 
 [id="ports_{context}"]
-== Ports
+= Ports
 
 The firewalls must enable traffic over the following ports:
 

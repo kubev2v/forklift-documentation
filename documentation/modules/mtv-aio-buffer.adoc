@@ -17,7 +17,7 @@ Disable AIO settings before initializing warm migrations. For more details, see 
 ====
 
 [id="mtv-aio-buffer-key-findings_{context}"]
-== Key findings
+= Key findings
 
 * The best migration performance was achieved by migrating multiple (10) virtual machines (VMs) on a single ESXi host with the following values:
 ** `VixDiskLib.nfcAio.Session.BufSizeIn64KB=16`
@@ -32,7 +32,7 @@ Disable AIO settings before initializing warm migrations. For more details, see 
 * There was no significant improvement observed when using AIO buffer settings with multiple VMs from multiple hosts.
 
 [id="mtv-aio-buffer-key-requirements_{context}"]
-== Key requirements for support for AIO sizes and buffer counts
+= Key requirements for support for AIO sizes and buffer counts
 
 Support is based upon tests performed using the following versions:
 
