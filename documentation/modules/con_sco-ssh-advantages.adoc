@@ -1,0 +1,17 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_sco-ssh-advantages_{context}"]
+= Advantages of the SSH cloning method
+
+
+[role="_abstract"]
+The SSH cloning method offers you the following advantages:
+
+- No VIB installation: Does not require custom VIB deployment on ESXi hosts
+- Standard SSH: Uses the standard ESXi SSH service with no custom components
+- Security: Uses secure key-based authentication with command restrictions
+- Compatibility: Works with any ESXi version that supports SSH
+- Flexibility: Easier to troubleshoot and monitor SSH connections

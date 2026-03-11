@@ -1,0 +1,15 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_storage-copy-offload-general-ssh-set-up_{context}"]
+= Setting up storage copy offload by using an SSH key
+
+[role="_abstract"]
+You can use either an automatically generated SSH key or a manually generated SSH key for your storage copy offload migrations.
+
+Although SSH keys are automatically generated when you choose to use the SSH method, you have the option to generate manual SSH keys.
+
+Procedures for both options are given in the sections that follow.
+
