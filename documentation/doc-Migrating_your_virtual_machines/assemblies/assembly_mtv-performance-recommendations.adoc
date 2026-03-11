@@ -30,6 +30,8 @@ include::../modules/ref_endpoint-types.adoc[leveloffset=+1]
 
 include::../modules/mtv-esxi-performance.adoc[leveloffset=+1]
 
+include::../modules/mtv-esxi-performance-toc-sections.adoc[leveloffset=+1]
+
 include::../modules/mtv-different-migration-networks-performance.adoc[leveloffset=+1]
 
 include::../modules/ref_avoid-network-load.adoc[leveloffset=+1]
@@ -51,6 +53,8 @@ include::../modules/ref_maximum-values-warm-migrations.adoc[leveloffset=+1]
 include::../modules/ref_migrating-vms-large-disks.adoc[leveloffset=+1]
 
 include::../modules/mtv-aio-buffer.adoc[leveloffset=+1]
+
+include::../modules/mtv-aio-buffer-toc-sections.adoc[leveloffset=+1]
 
 include::../modules/mtv-enable-aio-buffer.adoc[leveloffset=+2]
 
