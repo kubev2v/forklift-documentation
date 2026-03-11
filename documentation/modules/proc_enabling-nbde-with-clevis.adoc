@@ -55,6 +55,4 @@ vms:
 ----
 
 .Troubleshooting
-* For information about LUKS or Clevis configuration on the source VM, see link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html-single/security_hardening/index#configuring-automated-unlocking-of-encrypted-volumes-using-policy-based-decryption_security-hardening[Configuring automated unlocking of encrypted volumes by using policy-based decryption] in the RHEL _Security hardening_ guide.
-
-
+* For information about LUKS or Clevis configuration on the source VM, see link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/security_hardening/configuring-automated-unlocking-of-encrypted-volumes-by-using-policy-based-decryption[Configuring automated unlocking of encrypted volumes by using policy-based decryption] in the RHEL _Security hardening_ guide.
