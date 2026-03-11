@@ -16,6 +16,10 @@ ifdef::context[:parent-context: {context}]
 
 include::../modules/about-cold-warm-migration.adoc[leveloffset=+1]
 
+include::../modules/about-cold-warm-migration-toc-sections.adoc[leveloffset=+1]
+
+include::../modules/warm-migration-stages-toc-sections.adoc[leveloffset=+1]
+
 include::../modules/warm-migration-stages.adoc[leveloffset=+1]
 
 include::../modules/mtv-migration-speed-comparison.adoc[leveloffset=+1]
