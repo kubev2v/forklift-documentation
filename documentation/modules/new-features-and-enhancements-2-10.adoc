@@ -2,14 +2,49 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_mod-docs-content-type: CONCEPT
+:_mod-docs-content-type: REFERENCE
 [id="new-features-and-enhancements-2-10_{context}"]
 = New features and enhancements
 
 [role="_abstract"]
 {project-first} 2.10 introduces the following features and enhancements:
 
-* In {project-short} 2.10.1, you can migrate VMs that are running on B-tree file systems (Btrfs) to {virt} with support for OS conversion.
+* In {project-short} 2.10.6, you can control nested virtualization behavior during migration with the new `enableNestedVirtualization` option. This option accepts three values:
+
+** Not set (default): Nested virtualization is automatically detected from the source VM and preserved on the target.
+** `true`: Force enables nested virtualization on the target VM, regardless of source settings.
+** `false`: Force disables nested virtualization on the target VM, regardless of source settings.
++
+This option gives you the flexibility to mitigate performance issues stemming from Virtualization Based Security (VBS) activation. 
++
+By disabling VBS on target VMs during the migration of Windows VMs that do not need nested virtualization, you can avoid potential performance degradation, resulting in a more streamlined and efficient migration process.
++
+[NOTE]
+====
+After you migrate your VMs to {virt}, you can re-enable VBS by running the following YAML:
+
+[source,yaml,subs="attributes+"]
+----
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: <vm_name>
+spec:
+  template:
+    spec:
+      domain:
+        cpu:
+          features:
+            - name: vmx
+              policy: optional
+            - name: svm
+              policy: optional
+----         
+====
++
+link:https://issues.redhat.com/browse/MTV-4698[(MTV-4698)]
+
+* In {project-short} 2.10.1, you can migrate VMs that are running on B-tree file systems (Btrfs) to {virt} with support for operating system conversion.
 +
 link:https://issues.redhat.com/browse/MTV-2260[(MTV-2260)]
 
@@ -57,8 +92,8 @@ link:https://issues.redhat.com/browse/MTV-2768[(MTV-2768)]
 * In {project-short} 2.10.0, a `PreFlightInspection` during warm migration enables early detection of issues during guest conversion. If an issue is detected, the warm migration fails before VM shutdown, and users can adjust VM settings or skip guest conversion. Potential errors during the `PreFlightInspection` include the following:
 +
 ** Missing LUKS passwords
-** Unsupported OS
-** Unsupported FS 
+** Unsupported operating system
+** Unsupported file system 
 +
 link:https://issues.redhat.com/browse/MTV-2427[(MTV-2427)] 
 
@@ -70,7 +105,7 @@ link:https://issues.redhat.com/browse/MTV-2427[(MTV-2427)]
 +
 link:https://issues.redhat.com/browse/MTV-2856[(MTV-2856)]  
 
-* *Technology Preview:* In {project-short} 2.10.0, you can live migrate VMs from one OpenShift (OCP) cluster to another, minimizing downtime with the continuous availability of VMs during the migration process. With this update, MTV creates and maps resources from the source to the destination cluster and triggers the live migration, and {virt} CNV migrates the running VM. 
+* *Technology Preview:* In {project-short} 2.10.0, you can live migrate VMs from one Red Hat OpenShift cluster to another, minimizing downtime with the continuous availability of VMs during the migration process. With this update, MTV creates and maps resources from the source to the destination cluster and triggers the live migration, and {virt} CNV migrates the running VM. 
 +
 link:https://issues.redhat.com/browse/MTV-2040[(MTV-2040)]  
 
