@@ -17,7 +17,7 @@ Prerequisites::
 +
 [NOTE]
 ====
-You can check that the OS is supported by referring to the table in link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v]. See the columns of the table that refer to RHEL 8 hosts and RHEL 9 hosts.
+You can check that the OS is supported by referring to the table in link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, RHEL 9, and RHEL 10]. See the column of the table that refers to RHEL 10 hosts.
 ====
 
 
