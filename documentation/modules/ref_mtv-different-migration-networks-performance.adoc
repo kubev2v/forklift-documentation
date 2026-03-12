@@ -2,9 +2,9 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/master.adoc
 
-:_mod-docs-content-type: CONCEPT
+:_mod-docs-content-type: REFERENCE
 
-[id="mtv-different-migration-network-performances_{context}"]
+[id="ref_mtv-different-migration-network-performances_{context}"]
 = Performance using different migration networks
 
 [role="_abstract"]

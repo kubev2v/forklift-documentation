@@ -2,18 +2,20 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_mtv-performance-recommendations.adoc
 
-:_mod-docs-content-type: CONCEPT
-[id="mtv-aio-buffer_{context}"]
+:_mod-docs-content-type: REFERENCE
+[id="ref_mtv-aio-buffer_{context}"]
 = Increasing AIO sizes and buffer counts for NBD transport mode
 
 [role="_abstract"]
 You can change Network Block Device (NBD) transport network file copy (NFC) parameters to increase migration performance when you use Asynchronous Input/Output (AIO) buffering with the {project-first}.
 
+For information about configuring AIO buffering, see link:{mtv-mig}assembly_advanced-migration-options_mtv[Advanced migration options].
+
 [WARNING]
 ====
 Using AIO buffering is only suitable for cold migration use cases.
 
-Disable AIO settings before initializing warm migrations. For more details, see xref:mtv-disable-aio-buffer_mtv[Disabling AIO Buffer Configuration].
+Remove AIO buffer configuration before initializing warm migrations. For more details, see xref:proc_mtv-remove-aio-buffer_mtv[Removing AIO buffer configuration].
 ====
 
 [id="mtv-aio-buffer-key-findings_{context}"]

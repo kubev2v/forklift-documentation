@@ -1,0 +1,59 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_mtv-telemetry_{context}"]
+= Telemetry
+
+[role="_abstract"]
+Red Hat uses telemetry to collect anonymous usage data from {project-first} installations to help improve the usability and efficiency of {project-short}.
+
+{project-short} collects the following categories of data:
+
+.Telemetry data categories
+[cols="1,3",options="header"]
+|===
+|Category |Description
+
+|Migration plan status
+|The number of migrations that succeeded, failed, or were canceled.
+
+|Provider
+|The source virtualization platform (for example, {rhv-full}, vSphere, {osp}, OVA, {virt}).
+
+|Mode
+|The type of migration (cold or warm).
+
+|Target
+|The destination cluster (local or remote).
+|===
+
+*Telemetry metrics*
+
+The following metrics are collected every 10 seconds and forwarded to Red Hat as telemetry data:
+
+cluster:mtv_migrations_status_total:sum::
++
+*Type:* Gauge
++
+*Description:* Provides the total count of VM migrations on the cluster for each combination of migration status, provider, migration mode, and target cluster.
++
+*Labels:*
++
+[NOTE]
+====
+Label values are case sensitive.
+====
++
+--
+* `status`: Migration status (`Succeeded`, `Failed`, `Canceled`)
+* `provider`: Source platform (`vsphere`, `ova`, `openstack`, `ovirt`, `openshift`)
+* `mode`: Migration type (`Cold`, `Warm`)
+* `target`: Destination cluster (`Local`, `Remote`)
+--
++
+*Examples:*
++
+* `Succeeded, vsphere, Cold, Local = 10` indicates 10 successful cold migrations from vSphere to a local cluster.
+* `Canceled, vsphere, Warm, Local = 5` indicates 5 canceled warm migrations from vSphere to a local cluster.

@@ -4,59 +4,62 @@ ifdef::context[:parent-context: {context}]
 
 [id="assembly_mtv-performance-recommendations_{context}"]
 
-= MTV performance recommendations
+= Performance metrics and recommendations
 
 //:context: performance
 
 [role="_abstract"]
-Review recommendations for network and storage performance, cold and warm migrations, and multiple migrations or single migrations.
+{project-short} provides performance metrics for monitoring migrations and recommendations for optimizing network and storage, cold and warm migrations, and migration concurrency.
 
-The purpose of this section is to share recommendations for efficient and effective migration of virtual machines (VMs) using {project-first}, based on findings observed through testing.
+Performance metrics are available for all source providers. Performance recommendations and test data are based on {vmw} vSphere migrations.
 
-The data provided here was collected from testing in Red Hat labs and is provided for reference only.
+The data that forms the basis of the following recommendations was collected from testing in Red Hat labs and is provided for reference only. Overall, these numbers should be considered to show the best-case scenarios. The observed performance of migration can differ from these results and depends on several factors.
 
-Overall, these numbers should be considered to show the best-case scenarios.
+For procedures to configure performance optimizations, see link:{mtv-mig}assembly_advanced-migration-options_mtv[Advanced migration options].
 
-The observed performance of migration can differ from these results and depends on several factors.
+// TODO: SME REVIEW - Verify unit consistency: Some modules use MB/s (warm migrations, AIO), others use MiB/s (cold migrations, concurrency). Is this intentional (different measurement types) or should they be standardized? MB and MiB are different units (1 MiB ≈ 1.05 MB).
 
 :context: mtv
 :mtv:
 
+// Monitoring migration performance
+include::../modules/ref_mtv-performance-metrics.adoc[leveloffset=+1]
+
+// Infrastructure and network optimization
 include::../modules/ref_fast-storage-network-speeds.adoc[leveloffset=+1]
 
-include::../modules/ref_fast-datastore-read-speeds.adoc[leveloffset=+1]
+include::../modules/ref_fast-datastore-read-speeds.adoc[leveloffset=+2]
 
-include::../modules/ref_endpoint-types.adoc[leveloffset=+1]
+include::../modules/ref_endpoint-types.adoc[leveloffset=+2]
 
-include::../modules/mtv-esxi-performance.adoc[leveloffset=+1]
+include::../modules/ref_mtv-esxi-performance.adoc[leveloffset=+2]
 
-include::../modules/mtv-different-migration-networks-performance.adoc[leveloffset=+1]
+include::../modules/ref_mtv-different-migration-networks-performance.adoc[leveloffset=+2]
 
-include::../modules/ref_avoid-network-load.adoc[leveloffset=+1]
+include::../modules/ref_avoid-network-load.adoc[leveloffset=+2]
 
+// Concurrency and parallelization
 include::../modules/ref_control-concurrent-disk-migrations.adoc[leveloffset=+1]
 
-include::../modules/ref_concurrent-migrations-faster-migrations.adoc[leveloffset=+1]
+include::../modules/ref_concurrent-migrations-faster-migrations.adoc[leveloffset=+2]
 
-include::../modules/ref_multiple-hosts-faster-migrations.adoc[leveloffset=+1]
+include::../modules/ref_multiple-hosts-faster-migrations.adoc[leveloffset=+2]
 
-include::../modules/ref_multiple-migration-plans-vs-single.adoc[leveloffset=+1]
+include::../modules/ref_multiple-migration-plans-vs-single.adoc[leveloffset=+2]
 
+// Cold migration performance
 include::../modules/ref_maximum-values-cold-migrations.adoc[leveloffset=+1]
 
+// Warm migration performance
 include::../modules/ref_warm-migration-recommendations.adoc[leveloffset=+1]
 
-include::../modules/ref_maximum-values-warm-migrations.adoc[leveloffset=+1]
+include::../modules/ref_maximum-values-warm-migrations.adoc[leveloffset=+2]
 
+// Large disk migrations
 include::../modules/ref_migrating-vms-large-disks.adoc[leveloffset=+1]
 
-include::../modules/mtv-aio-buffer.adoc[leveloffset=+1]
-
-include::../modules/mtv-enable-aio-buffer.adoc[leveloffset=+2]
-
-include::../modules/mtv-disable-aio-buffer.adoc[leveloffset=+2]
-
-include::../modules/mtv-performance-addendum.adoc[leveloffset=+1]
+// AIO buffer performance
+include::../modules/ref_mtv-aio-buffer.adoc[leveloffset=+1]
 
 :mtv!:
 

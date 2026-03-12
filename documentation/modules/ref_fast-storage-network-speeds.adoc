@@ -4,12 +4,12 @@
 
 :_mod-docs-content-type: REFERENCE
 [id="ref_fast-storage-network-speeds_{context}"]
-= Ensure fast storage and network speeds
+= Infrastructure and network optimization
 
 [role="_abstract"]
-Ensure fast storage and network speeds, both for {vmw} and {ocp} (OCP) environments.
+Optimizing your infrastructure and network configuration is essential for achieving fast migration performance. Ensure fast storage and network speeds, both for {vmw} and {ocp} (OCP) environments.
 
-* To perform fast migrations, {vmw} must have fast read access to datastores. Networking between {vmw} ESXi hosts should be fast, ensure a 10 GiB network connection, and avoid network bottlenecks.
+* To perform fast migrations, {vmw} must have fast read access to datastores. Networking between {vmw} ESXi hosts should be fast. Ensure a 10 GiB network connection and avoid network bottlenecks.
 
 ** Extend the {vmw} network to the OCP Workers Interface network environment.
 

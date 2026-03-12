@@ -1,0 +1,19 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_advanced-migration-options.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_mtv-aio-buffer_{context}"]
+= About AIO buffering for cold migrations
+
+[role="_abstract"]
+You can configure Asynchronous Input/Output (AIO) buffering to optimize Network Block Device (NBD) transport performance for cold migrations in specific scenarios.
+
+AIO buffering adjusts the buffer size and count parameters for NBD transport network file copy (NFC) operations. This optimization is most effective when migrating multiple virtual machines (VMs) concurrently from a single ESXi host.
+
+[IMPORTANT]
+====
+AIO buffering is only suitable for cold migration use cases. You must remove AIO buffer configuration before performing warm migrations.
+====
+
+For information about performance test results and recommendations, see link:{mtv-mig}assembly_mtv-performance-recommendations_mtv#ref_mtv-aio-buffer_mtv[Increasing AIO sizes and buffer counts for NBD transport mode].

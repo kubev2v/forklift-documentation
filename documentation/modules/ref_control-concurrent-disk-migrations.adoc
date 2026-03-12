@@ -4,10 +4,10 @@
 
 :_mod-docs-content-type: REFERENCE
 [id="ref_control-concurrent-disk-migrations_{context}"]
-= Control maximum concurrent disk migrations per ESXi host
+= Concurrent migration settings
 
 [role="_abstract"]
-Set the `MAX_VM_INFLIGHT MTV` variable to control the maximum number of concurrent VM transfers allowed for the ESXi host.
+Configuring concurrent migration settings can significantly improve migration performance by allowing multiple VMs and hosts to migrate simultaneously. Set the `MAX_VM_INFLIGHT MTV` variable to control the maximum number of concurrent VM transfers allowed for the ESXi host.
 
 {project-first} allows for concurrency to be controlled by using this variable; by default, it is set to 20.
 
