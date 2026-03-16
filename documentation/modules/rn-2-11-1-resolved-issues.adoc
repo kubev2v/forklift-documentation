@@ -46,7 +46,7 @@ Increased memory limits for `forklift-cli-download` pod to prevent `OOMKilled` e
 --
 Before this update, insufficient memory limits in the `forklift-cli-download` pod caused Kubernetes `OOMKilled` memory errors after an update of the {project-short} Operator. As a result, the pod entered `CrashLoopBackOff` state. This update increases memory limits for the `forklift-cli-download` pod to prevent `OOMKilled` errors, improving deployment stability.
 
-link:https://issues.redhat.com/browse/MTV-4482[MTV-4482]
+link:https://redhat.atlassian.net/browse/MTV-4482[MTV-4482]
 --
 
 NetApp ONTAP initiator group filtering for XCOPY consistency::
@@ -54,7 +54,7 @@ NetApp ONTAP initiator group filtering for XCOPY consistency::
 --
 Before this update, VM migrations on ESXi hosts with both FC and iSCSI adapters could experience issues with XCOPY usage because NetApp ONTAP initiator groups contained both FC and iSCSI initiators. With this update, you can filter initiators in ONTAP initiator groups by protocol for XCOPY consistency.
 
-link:https://issues.redhat.com/browse/MTV-4515[MTV-4515]
+link:https://redhat.atlassian.net/browse/MTV-4515[MTV-4515]
 --
 
 Correct LUN path detection during copy offload for PVCs with economy storage class::
@@ -62,7 +62,7 @@ Correct LUN path detection during copy offload for PVCs with economy storage cla
 --
 Before this update, copy offload for Persistent Volume Claims (PVCs) that use the `ontap-san-economy` storage class assumed all PVCs used dedicated FlexVols with a specific LUN path. With this update, {project-short} detects the economy storage class and extracts the correct LUN path from the PV attributes, ensuring copy offload functionality.
 
-link:https://issues.redhat.com/browse/MTV-4556[MTV-4556]
+link:https://redhat.atlassian.net/browse/MTV-4556[MTV-4556]
 --
 
 Shared PVCs now labeled `Shareable: true` in storage offload migrations::
@@ -70,7 +70,7 @@ Shared PVCs now labeled `Shareable: true` in storage offload migrations::
 --
 Before this update, shared PersistentVolumeClaims (PVCs) were not labeled `Shareable: true` during migration with storage offload. As a consequence, shareable disks were not automatically attached to VMs. With this release, shared PVCs have the `Shareable: true` label, and shared disks are correctly attached to VMs.
 
-link:https://issues.redhat.com/browse/MTV-4580[MTV-4580]
+link:https://redhat.atlassian.net/browse/MTV-4580[MTV-4580]
 --
 
 SATA CD-ROM disks skipped during warm migration::
@@ -78,7 +78,7 @@ SATA CD-ROM disks skipped during warm migration::
 --
 Before this update, warm migration with SATA CD-ROM and SATA disks failed because of incorrect disk assignment. With this release, the SATA CD-ROM disks are intentionally skipped during warm migration because these disks are not migrated, resulting in successful conversion.
 
-link:https://issues.redhat.com/browse/MTV-4592[MTV-4592]
+link:https://redhat.atlassian.net/browse/MTV-4592[MTV-4592]
 --
 
 Consistent disk order in multi-boot VMs::
@@ -86,7 +86,21 @@ Consistent disk order in multi-boot VMs::
 --
 Before this update, there were disk order inconsistencies in the `virt-v2v-inspector` because of a conflict in how `libvirt` and {vmw} order the disks. As a consequence, users experienced unpredictable boot failures during VM conversion. With this release, the `virt-v2v-inspector` presents disks in a consistent order, reducing conversion failures in multi-boot VMs.
 
-link:https://issues.redhat.com/browse/MTV-4718[MTV-4718]
+link:https://redhat.atlassian.net/browse/MTV-4718[MTV-4718]
+--
+
+XFSv4 migrations failed::
++
+--
+{project-short} 2.10.1 was rebased to {rhel-first} 10, which does not support XFS version 4 (XFSv4). As a result, XFSv4 migrations failed for {project-short} 2.10.1-2.10.5. With this release, a new `spec.xfsCompatibility` option is available on the migration plan. When set to `false`, the default setting, the plan uses the standard conversion image. When set to `true`, the plan uses the XFS-compatible conversion image instead of the standard conversion image. 
++
+[WARNING]
+====
+If you enable XFS support for a migration plan, then the plan cannot support Btrfs migration.
+====
++
+link:https://redhat.atlassian.net/browse/MTV-4685[MTV-4685] and link:https://issues.redhat.com/browse/MTV-4709[MTV-4709]
+
 --
 
 Active blocking of migration when target namespaces lack transfer network permissions::
