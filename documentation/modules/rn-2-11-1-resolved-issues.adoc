@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_content-type: CONCEPT
+:_content-type: REFERENCE
 [id="resolved-issues-2-11-1_{context}"]
 = Resolved issues 2.11.1
 
@@ -86,7 +86,7 @@ Consistent disk order in multi-boot VMs::
 --
 Before this update, there were disk order inconsistencies in the `virt-v2v-inspector` because of a conflict in how `libvirt` and {vmw} order the disks. As a consequence, users experienced unpredictable boot failures during VM conversion. With this release, the `virt-v2v-inspector` presents disks in a consistent order, reducing conversion failures in multi-boot VMs.
 
-link:https://issues.redhat.com/browse/MTV-4592[MTV-4718]
+link:https://issues.redhat.com/browse/MTV-4718[MTV-4718]
 --
 
 Active blocking of migration when target namespaces lack transfer network permissions::
