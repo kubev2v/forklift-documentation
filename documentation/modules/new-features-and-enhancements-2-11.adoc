@@ -9,6 +9,12 @@
 [role="_abstract"]
 {project-first} 2.11 introduces the following features and enhancements.
 
+Direct OVA import from local machines to {virt} in {project-short} UI::
+
+Previously, this feature was available as Technology Preview. In {project-short} 2.11.1, you can import Open Virtual Appliances (OVAs) directly from local machines to {virt} by uploading the OVAs to NFS through the web browser in the {project-short} UI.
++
+link:https://issues.redhat.com/browse/MTV-3698[MTV-3698]
+
 Customizable service account for pre-plan and post-plan hooks in Create migration plan pages::
 
 In {project-short} 2.11.0, users can set a service account name for pre-plan and post-plan hooks in the Create migration plan pages. This UI setting allows for greater flexibility and control over the service accounts used in these hooks, ensuring they have the necessary permissions to manage cluster resources. The `Service account` field is a free text field as the service account information is not stored in the inventory for a remote cluster. This enhancement improves the overall security and customization of the user's deployment.
