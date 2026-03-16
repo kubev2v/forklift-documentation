@@ -92,7 +92,7 @@ link:https://redhat.atlassian.net/browse/MTV-4718[MTV-4718]
 XFSv4 migrations failed::
 +
 --
-{project-short} 2.10.1 was rebased to {rhel-first} 10, which does not support XFS version 4 (XFSv4). As a result, XFSv4 migrations failed for {project-short} 2.10.1-2.10.5. With this release, a new `spec.xfsCompatibility` option is available on the migration plan. When set to `false`, the default setting, the plan uses the standard conversion image. When set to `true`, the plan uses the XFS-compatible conversion image instead of the standard conversion image. 
+{project-short} 2.11.0 was rebased to {rhel-first} 10, which does not support XFS version 4 (XFSv4). As a result, a new `spec.xfsCompatibility` option is available on the migration plan. When set to `false`, the default setting, the plan uses the standard conversion image. When set to `true`, the plan uses the XFS-compatible conversion image instead of the standard conversion image.
 +
 [WARNING]
 ====
