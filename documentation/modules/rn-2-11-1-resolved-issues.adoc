@@ -85,7 +85,6 @@ XFSv4 migrations failed::
 +
 --
 {project-short} 2.11.0 was rebased to {rhel-first} 10, which does not support XFS version 4 (XFSv4). As a result, a new `spec.xfsCompatibility` option is available on the migration plan. When set to `false`, the default setting, the plan uses the standard conversion image. When set to `true`, the plan uses the XFS-compatible conversion image instead of the standard conversion image.
-+
 [WARNING]
 ====
 If you enable XFS support for a migration plan, then the plan cannot support Btrfs migration.
