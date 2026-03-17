@@ -72,5 +72,13 @@ When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the imag
 +
 link:https://issues.redhat.com/browse/MTV-3673[MTV-3673]
 
+Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox::
+
+Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox due to incorrect adapter ID comparison. As a consequence, FC protocol VM migration fails to identify existing FC hosts, causing volume creation failure due to incorrect `port_name`.
++
+*Workaround:* Currently, there is no workaround for this issue.
++
+link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
+
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
