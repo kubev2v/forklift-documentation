@@ -2,12 +2,28 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_mod-docs-content-type: CONCEPT
+:_mod-docs-content-type: REFERENCE
 [id="known-issues-2-11_{context}"]
 = Known issues
 
 [role="_abstract"]
 {project-first} 2.11 has the following known issues.
+
+VM migration failures when disks exceed LUN ID limit on ESXi host::
+
+During VM migrations with a large number of disks, the ESXi host's limit on discoverable SCSI LUN IDs can lead to migration failures when the disk count surpasses the host's LUN ID limit.
++
+*Workaround:* Increase the `Disk.MaxLUN` value on each ESXi host to support discovery of a higher number of LUN IDs during migrations.
++
+link:https://issues.redhat.com/browse/MTV-4719[MTV-4719]
+
+Live migration support limit in custom namespaces with host providers:: 
+
+Host providers in custom namespaces operate with restricted permissions that prevent {project-short} from accessing resources for live migration support, for example, verifying a feature gate is enabled or synchronizing certificates between namespaces. As a result, live migration currently has limited supported in custom namespaces with host providers. 
++
+*Workaround:* Use the default host provider or create a provider with an appropriate access token. 
++
+link:https://issues.redhat.com/browse/MTV-3347[MTV-3347]
 
 Forklift console plugin fails to load on IPv6-only {ocp-short} clusters::
 
@@ -55,12 +71,6 @@ When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the imag
 +
 link:https://issues.redhat.com/browse/MTV-3673[MTV-3673]
 
-Inaccurate `ConnectionTestFailed` error messages when creating an OVA provider::
-
-When you create an Open Virtual Appliance (OVA) provider in the {project-short} UI, `ConnectionTestFailed` error messages are displayed before the provider status changes to `Ready`. The error messages are misleading and do not accurately reflect the in-progress status of the connection.
-+
-link:https://issues.redhat.com/browse/MTV-3613[MTV-3613]
-
 Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox::
 
 Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox due to incorrect adapter ID comparison. As a consequence, FC protocol VM migration fails to identify existing FC hosts, causing volume creation failure due to incorrect `port_name`.
@@ -68,28 +78,6 @@ Fibre Channel (FC) protocol VM migration fails to identify existing FC host obje
 *Workaround:* Currently, there is no workaround for this issue.
 +
 link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
-
-Migration stalls during VM migration to OCP with FC::
-
-During the migration of VMs to an OpenShift Container Platform (OCP) cluster with Fibre Channel (FC), the migration stalls when attempting to add a transfer network to a target namespace that does not have permissions to the transfer network.
-+
-*Workaround:* Currently, there is no workaround for this issue.  
-+
-link:https://issues.redhat.com/browse/MTV-4547[MTV-4547]
-
-Unexpected shutdown of forklift-controller due to network or storage map deletion::
-
-Deleting network or storage maps causes the `forklift-controller` to shut down unexpectedly, leaving the migration plan state as `Ready` and causing pods to continue running. 
-+
-*Workaround:* Delete and restart the pods manually.
-+
-link:https://issues.redhat.com/browse/MTV-4413[MTV-4413]
-
-{vmw} warm migration with SATA CD-ROM and SATA disks fails due to source guest OS not being detected::
-
-{vmw} only: Warm migration with SATA CD-ROM and SATA disks fails because of incorrect disk assignment.
-+
-link:https://issues.redhat.com/browse/MTV-4592[MTV-4592]
 
 //For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
