@@ -57,7 +57,6 @@ In {project-short} 2.11.0, an update to Golang 1.25 causes a connection failure 
 +
 link:https://issues.redhat.com/browse/MTV-4411[MTV-4411]
 
-// TODO: Check if MTV-4549 is resolved in 2.11.1
 Second migration plan with shared RDM disks fails when shared disk migration is disabled::
 
 When migrating two VMs with shared RDM disks using copyoffload in separate migration plans, the second migration plan fails at the `ImageConversion` step if shared disk migration is disabled. After successfully migrating the first VM with shared disk migration enabled, creating a second migration plan with shared disk migration disabled incorrectly creates two populate pods—one for the OS disk and one for the shared RDM disk—instead of creating only the OS disk populate pod. This causes the second migration to fail.
