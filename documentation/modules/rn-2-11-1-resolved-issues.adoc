@@ -25,12 +25,6 @@ Before this update, misleading `ConnectionTestFailed` error messages were displa
 link:https://issues.redhat.com/browse/MTV-3613[MTV-3613]
 --
 
-FC host identification for VM migration in Infinibox::
-+
---
-Before this update, Fibre Channel (FC) protocol VM migration failed to identify existing FC host objects in Infinibox due to incorrect adapter ID comparison. With this release, the identification of FC hosts in {project-short} is accurate, ensuring successful VM migration in Infinibox.
-
-//link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
 --
 
 Forklift-controller no longer unexpectedly shuts down due to map deletion::
