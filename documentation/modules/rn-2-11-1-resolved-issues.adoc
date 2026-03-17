@@ -89,7 +89,6 @@ XFSv4 migrations failed::
 ====
 If you enable XFS support for a migration plan, then the plan cannot support Btrfs migration.
 ====
-+
 link:https://redhat.atlassian.net/browse/MTV-4685[MTV-4685] and link:https://issues.redhat.com/browse/MTV-4709[MTV-4709]
 
 --
