@@ -13,7 +13,6 @@ Where possible, ensure that hosts used to perform migrations are set with BIOS p
 
 Testing showed that when transferring more than 10 VMs with both BIOS and host power management set accordingly, migrations had an increase of 15 MiB in the average datastore read rate.
 
-<<<<<<< HEAD:documentation/modules/ref_mtv-esxi-performance.adoc
 *Single ESXi host performance*
 
 Test migrations by using a single ESXi host.
@@ -122,6 +121,3 @@ In each iteration, the number of ESXi hosts was increased to show that increasin
 |cold
 |1:04:57
 |===
-=======
-[id="mtv-single-esxi-host-performance_{context}"]
->>>>>>> a1cb644 (CQA 11th March - TOC fix):documentation/modules/mtv-esxi-performance.adoc
