@@ -9,6 +9,43 @@
 [role="_abstract"]
 {project-first} 2.11 introduces the following features and enhancements.
 
+Controlling nested virtualization in migrations::
+
+In {project-short} 2.11.1, you can control nested virtualization behavior during migration with the new `enableNestedVirtualization` option. This option accepts three values:
+
+** Not set (default): Nested virtualization is automatically detected from the source VM and preserved on the target.
+** `true`: Force enables nested virtualization on the target VM, regardless of source settings.
+** `false`: Force disables nested virtualization on the target VM, regardless of source settings.
++
+This option gives you the flexibility to mitigate performance issues stemming from Virtualization Based Security (VBS) activation. 
++
+By disabling VBS on target VMs during the migration of Windows VMs that do not need nested virtualization, you can avoid potential performance degradation, resulting in a more streamlined and efficient migration process.
++
+[NOTE]
+====
+After you migrate your VMs to {virt}, you can re-enable VBS by running the following YAML:
+
+[source,yaml,subs="attributes+"]
+----
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: <vm_name>
+spec:
+  template:
+    spec:
+      domain:
+        cpu:
+          features:
+            - name: vmx
+              policy: optional
+            - name: svm
+              policy: optional
+----         
+====
++
+link:https://issues.redhat.com/browse/MTV-4698[(MTV-4698)]
+
 Direct OVA import from local machines to {virt} in {project-short} UI::
 
 Previously, this feature was available as Technology Preview. In {project-short} 2.11.1, you can import Open Virtual Appliances (OVAs) directly from local machines to {virt} by uploading the OVAs to NFS through the web browser in the {project-short} UI.
