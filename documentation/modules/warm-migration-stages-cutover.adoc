@@ -1,4 +1,4 @@
-/ Module included in the following assemblies:
+// Module included in the following assemblies:
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
 
