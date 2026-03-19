@@ -1,6 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="warm-migration-stages-precopy_{context}"]
 = Precopy stage
 
-
+[role="_abstract"]
 The VMs are not shut down during the precopy stage.
 
 The VM disks are copied incrementally by using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment.
