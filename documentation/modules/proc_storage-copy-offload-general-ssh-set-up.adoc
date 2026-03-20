@@ -2,8 +2,8 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
 
-:_mod-docs-content-type: PROCEDURE
-[id="proc_storage-copy-offload-general-ssh-set-up_{context}"]
+:_mod-docs-content-type: CONCEPT
+[id="con_storage-copy-offload-general-ssh-set-up_{context}"]
 = Setting up storage copy offload by using an SSH key
 
 [role="_abstract"]
@@ -13,8 +13,7 @@ Although SSH keys are automatically generated when you choose to use the SSH met
 
 Procedures for both options are given in the sections that follow.
 
-[id="storage-copy-offload-general-ssh-security_{context}"]
-== Important notes and security considerations 
+*Important notes and security considerations:*
 
 - All public keys must include command restrictions for security.
 - The command path in the restrictions must match the secure script path: `/vmfs/volumes/{datastore-name}/secure-vmkfstools-wrapper.py`.
@@ -22,9 +21,9 @@ Procedures for both options are given in the sections that follow.
 - SSH service must be enabled on all target ESXi hosts.
 - To support ESXi access control, commands are restricted to `vmkfstools` operations only.
 
-== Security recommendations
+*Security recommendations:*
 
-It is recommended to follow the following security recommendations:
+Follow these security recommendations:
 
 - Use separate key pairs for different environments.
 - Rotate keys periodically.
