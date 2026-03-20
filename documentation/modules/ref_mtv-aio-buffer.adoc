@@ -19,24 +19,3 @@ Remove AIO buffer configuration before initializing warm migrations. For more de
 ====
 
 [id="mtv-aio-buffer-key-findings_{context}"]
-== Key findings
-
-* The best migration performance was achieved by migrating multiple (10) virtual machines (VMs) on a single ESXi host with the following values:
-** `VixDiskLib.nfcAio.Session.BufSizeIn64KB=16`
-** `vixDiskLib.nfcAio.Session.BufCount=4`
-
-* The following improvements were noted when using AIO buffer settings (asynchronous buffer counts):
-** Migration time was reduced by *31.1%*, from 0:24:32 to 0:16:54.
-** Read rate was increased from 347.83 MB/s to 504.93 MB/s.
-
-* There was no significant improvement observed when using AIO buffer settings with a single VM.
-
-* There was no significant improvement observed when using AIO buffer settings with multiple VMs from multiple hosts.
-
-[id="mtv-aio-buffer-key-requirements_{context}"]
-== Key requirements for support for AIO sizes and buffer counts
-
-Support is based upon tests performed using the following versions:
-
-* vSphere 7.0.3
-* VDDK 7.0.3
