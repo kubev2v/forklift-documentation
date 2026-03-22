@@ -4,8 +4,8 @@
 
 :_mod-docs-content-type: REFERENCE
 [id="ref_openshift-operator-life-cycles-{context}"]
-
 = OpenShift Operator Life Cycles
 
-
-For more information about the software maintenance Life Cycle classifications for Operators shipped by Red Hat for use with OpenShift Container Platform, see link:https://access.redhat.com/support/policy/updates/openshift_operators#platform-agnostic[OpenShift Operator Life Cycles].
+[role="_abstract"]
+Red Hat Operators have specific software maintenance life cycles. You can read about the life cycle of the {project-short} Operator 
+in the "Platform Agnostic Operators" section of link:https://access.redhat.com/support/policy/updates/openshift_operators#platform-agnostic[OpenShift Operator Life Cycles].

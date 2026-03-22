@@ -26,11 +26,11 @@ include::../modules/con_navigating-mtv-pages.adoc[leveloffset=+1]
 
 include::../modules/mtv-ui.adoc[leveloffset=+1]
 
-include::../modules/mtv-ui-toc-sections.adoc[leveloffset=+1]
+include::../modules/con_tips-and-tricks.adoc[leveloffset=+1]
 
 include::../modules/mtv-overview-page.adoc[leveloffset=+1]
 
-include::../modules/mtv-overview-page-toc-sections.adoc[leveloffset=+1]
+// include::../modules/mtv-overview-page-toc-sections.adoc[leveloffset=+1]
 
 include::../modules/proc_choosing-different-controller-transfer-network.adoc[leveloffset=+2]
 

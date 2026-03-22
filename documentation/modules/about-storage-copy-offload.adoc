@@ -28,5 +28,3 @@ Storage copy offload for warm migration is a Technology Preview feature only. Te
 For more information about the support scope of Red Hat Technology Preview
 features, see https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
 ====
-
-[id="how-storage-copy-offload-works_{context}"]

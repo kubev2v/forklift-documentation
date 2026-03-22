@@ -1,6 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assembly_migrating-vms-web-console.adoc
+
+:_content-type: CONCEPT
+[id="con_tips-and-tricks_{context}"]
 = The Tips and tricks panel
 
-
+[role="_abstract"]
 The *Tips and tricks* panel provides contextual guidance and best practices to help you plan and execute your migrations successfully.
 
 You can access the panel by clicking the *Tips and tricks* link in the upper-right corner of all {project-short} pages in the web console.

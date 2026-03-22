@@ -1,6 +1,5 @@
 = Overview tab
 
-
 The *Overview* tab is to help you quickly create providers and find information about the whole system:
 
 * In the upper pane, is the *Welcome* section, which includes buttons that let you open the *Create provider* UI for each vendor ({vmw}, Open Virtual Appliance, OpenStack, {rhv-full}, and {virt}). You can close this section by clicking the {kebab} in the upper-right corner and selecting *Hide from view*. You can reopen it by clicking *Show the welcome card* in the upper-right corner.
