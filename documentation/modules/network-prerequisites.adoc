@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_software-requirements-for-migration.adoc
 
 :_mod-docs-content-type: REFERENCE
 [id="network-prerequisites_{context}"]
@@ -15,4 +15,3 @@ Prerequisites::
 * The network connections between the source environment, the {virt} cluster, and the replication repository must be reliable and uninterrupted.
 * If you are mapping more than one source and destination network, you must create a network attachment definition for each additional destination network. For more information, see link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-creating-network-attachment-definition[network attachment definition].
 
-[id="ports_{context}"]
