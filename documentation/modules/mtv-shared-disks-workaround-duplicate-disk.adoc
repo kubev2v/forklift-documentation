@@ -1,0 +1,19 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="mtv-shared-disks-workaround-duplicate-disk_{context}"]
+= Duplicated disk workaround for cyclic shared disk dependencies
+
+[role="_abstract"]
+One way to resolve cyclic shared disk dependencies is to intentionally duplicate a shared disk in your migration and then remove one of the copies.
+
+In the figure that follows, VMs 2 and 3 are migrated with the shared disks in the first plan, and VM 1 is migrated in the second plan. This eliminates the cyclic dependencies, but there is a disadvantage to this workaround: it duplicates shared disk 3. The solution is to remove the duplicated PV and migrate VM 1 again.
+
+.Duplicated shared disk
+image::cyclic_workaround1.png[Duplicate a shared disk]
+
+Advantage: The source VMs are not affected.
+
+Disadvantage: One shared disk gets transferred twice, so you need to manually delete the duplicate disk and reconnect VM 3 to shared disk 3 in Red Hat OpenShift after the migration.

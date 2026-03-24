@@ -28,11 +28,9 @@ include::../modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 include::../modules/proc_migrating-vms-cli-ova.adoc[leveloffset=+1]
 
-include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
+include::../modules/canceling-migration-cli-entire.adoc[leveloffset=+2]
 
-include::../modules/canceling-migration-cli-entire.adoc[leveloffset=+3]
-
-include::../modules/canceling-migration-cli-specific.adoc[leveloffset=+3]
+include::../modules/canceling-migration-cli-specific.adoc[leveloffset=+2]
 
 :ova!:
 
