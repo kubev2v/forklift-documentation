@@ -16,17 +16,19 @@ Understand the {project-first} custom resources, services, and workflows that en
 
 include::../modules/mtv-resources-and-services.adoc[leveloffset=+1]
 
-include::../modules/mtv-resources-and-services-toc-sections.adoc[leveloffset=+1]
-
 include::../modules/mtv-workflow.adoc[leveloffset=+1]
 
 include::../modules/virt-migration-workflow.adoc[leveloffset=+2]
 
-include::../modules/virt-v2v-mtv-toc-sections.adoc[leveloffset=+1]
+include::../modules/virt-v2v-mtv.adoc[leveloffset=+1]
 
-include::../modules/virt-v2v-mtv.adoc[leveloffset=+2]
+include::../modules/virt-v2v-mtv-main-functions.adoc[leveloffset=+2]
 
-include::../modules/raw-copy-mode.adoc[leveloffset=+2]
+include::../modules/virt-v2v-mtv-customizing-removing-installing.adoc[leveloffset=+2]
+
+include::../modules/virt-v2v-mtv-permissions.adoc[leveloffset=+2]
+
+include::../modules/raw-copy-mode.adoc[leveloffset=+1]
 
 include::../modules/con_device-compatibility-mode-raw-copy-migrations.adoc[leveloffset=+2]
 

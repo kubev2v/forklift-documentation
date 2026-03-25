@@ -1,0 +1,5 @@
+[id="virt-v2v-mtv-permissions_{context}"]
+== Permissions and virt-v2v
+
+[role="_abstract"]
+`virt-v2v` does not require permissions or access credentials for the guest operating system itself because `virt-v2v` is not run against a running VM, but only against the disks of a VM.

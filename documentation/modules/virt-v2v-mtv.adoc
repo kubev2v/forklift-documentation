@@ -11,4 +11,3 @@ The {project-first} uses the `virt-v2v` tool to convert the disk image of a virt
 
 `virt-v2v` is included in Red Hat Enterprise Linux (RHEL) versions 7 and later.
 
-[id="main-functions-virt-v2v-mtv_{context}"]
