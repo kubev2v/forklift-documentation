@@ -1,0 +1,28 @@
+
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id=sco-netapp-issues_{context}]
+= NetApp issues
+
+[role="_abstract"]
+These NetApp issues can cause problems for storage copy offload migrations.
+
+*Description*: {project-short} returns the following error:
+
+`Cannot derive SVM to use; please specify SVM in config file`
+
+*Explanation*: ONTAP is not configured correctly.
+
+*Solution*: Configure your default ONTAP Storage Virtual Machine (SVM) by running the following commands:
+
+. Show the current configuration for the SVM by running the following command on the ONTAP server:
++
+[source,terminal]
+----
+$ vserver show -vserver ${NAME_OF_SVM}
+----
+
+. Set a management interface for the SVM and enter its `hostname` in the `STORAGE_HOSTNAME` by following the instructions in the NetApp Knowledge Base article, link: https://kb.netapp.com/Cloud/Astra/Trident/Trident_fails_to_access_ONTAP_on_SVM_level_and_on_Cluster_level[Trident fails to access ONTAP on SVM level and on Cluster level]. The link requires you to log in.

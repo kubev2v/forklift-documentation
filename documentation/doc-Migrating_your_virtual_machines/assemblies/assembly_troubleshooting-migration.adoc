@@ -32,7 +32,11 @@ include::../modules/proc_troubleshooting-vddk-required-vsan.adoc[leveloffset=+2]
 
 include::../modules/con_troubleshooting-storage-copy-offload.adoc[leveloffset=+1]
 
-include::../modules/con_troubleshooting-storage-copy-offload-toc-sections.adoc[leveloffset=+1]
+include::../modules/con_troubleshooting-storage-copy-offload-vsphere-esxi-issues.adoc[leveloffset=+2]
+
+include::../modules/con_troubleshooting-storage-copy-offload-ssh-issues.adoc[leveloffset=+2]
+
+include::../modules/con_troubleshooting-storage-copy-offload-netapp-issues.adoc[leveloffset=+2]
 
 include::../modules/using-must-gather.adoc[leveloffset=+1]
 

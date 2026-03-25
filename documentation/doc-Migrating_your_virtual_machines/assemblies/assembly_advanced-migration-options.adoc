@@ -45,7 +45,7 @@ include::../modules/con_scheduling-target-vms-intro.adoc[leveloffset=+1]
 
 include::../modules/about-configuring-target-vm-scheduling.adoc[leveloffset=+2]
 
-include::../modules/about-configuring-target-vm-scheduling-toc-sections.adoc[leveloffset=+2]
+include::../modules/about-configuring-target-vm-scheduling-use-cases.adoc[leveloffset=+2]
 
 include::../modules/target-vm-scheduling-prerequisites.adoc[leveloffset=+2]
 
