@@ -4,7 +4,7 @@
 
 :_mod-docs-content-type: REFERENCE
 [id="mtv-shared-disks-workaround-duremoveplicate-disk_{context}"]
-= "Remove disk workaround for cyclic shared disk dependencies
+= "Remove" disk workaround for cyclic shared disk dependencies
 
 [role="_abstract"]
 One way to resolve cyclic shared disk dependencies is to remove the link to one of the shared disks from one source VM before the migration and to reattach it afterwards. Removing the link breaks the cyclic dependencies. Note that in the current {vmw} UI, removing the link is referred to as "removing" the disk.
