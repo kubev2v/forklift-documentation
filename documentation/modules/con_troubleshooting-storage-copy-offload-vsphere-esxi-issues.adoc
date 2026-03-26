@@ -13,7 +13,7 @@ Remote ESXi connection fails with a SOAP error::
 +
 *Description*: Sometimes a remote ESXi execution fails, returning a SOAP error with no apparent root cause message.
 +
-*Explanation*: Because vSphere invokes some SOAP/REST endpoints on the ESXi, a connection can fail because of standard error reasons that vanish after the next try.
+*Explanation*: Because vSphere invokes some SOAP or REST endpoints on the ESXi, a connection can fail because of standard error reasons that vanish after the next try.
 +
 *Solution*: If the populator fails, the migration can be restarted. Try to restart or retry the populator, or restart the migration.
 

@@ -18,7 +18,7 @@ Manual SSH key connection errors::
 
 ** The SSH is disabled.
 +
-*Solution*: Manually enable an SSH connection on the ESXi host by using the commands in {mtv-mig}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-manual-ssh-set-up_vmware[Setting up storage copy offload using manually generated SSH keys].
+*Solution*: Manually enable an SSH connection on the ESXi host by using the commands in {mtv-mig}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-manual-ssh-set-up_vmware[Setting up storage copy offload by using manually generated SSH keys].
 
 ** There is a problem with the network connectivity.
 +

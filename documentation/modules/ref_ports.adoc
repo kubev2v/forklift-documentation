@@ -6,6 +6,7 @@
 [id="ref_ports_{context}"]
 = Ports
 
+[role="_abstract"]
 The firewalls must enable traffic over the following ports:
 
 [cols="1,1,1,1,2a",options="header"]

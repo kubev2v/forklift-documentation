@@ -1,6 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="vmware-privileges_{context}"]
 = {vmw} privileges
 
-
+[role="_abstract"]
 The following minimal set of {vmw} privileges is required to migrate virtual machines to {virt} with the {project-first}.
 
 [cols="2", options="header"]
