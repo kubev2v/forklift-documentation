@@ -35,9 +35,9 @@ include::../modules/con_copy-methods-sco.adoc[leveloffset=+2]
 
 include::../modules/con_sco-ssh-advantages.adoc[leveloffset=+2]
 
-include::../modules/con_ssh-notes-and-security.adoc[leveloffset=+2]
-
 include::../modules/proc_storage-copy-offload-vib-set-up.adoc[leveloffset=+2]
+
+include::../modules/con_ssh-notes-and-security.adoc[leveloffset=+2]
 
 include::../modules/con_storage-copy-offload-general-ssh-set-up.adoc[leveloffset=+2]
 
