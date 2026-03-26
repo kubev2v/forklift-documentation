@@ -1,0 +1,31 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id=sco-vsphere-esxi-issues_{context}]
+= vSphere-ESXi connectivity issues
+
+[role="_abstract"]
+These vSphere-ESXi connectivity issues can cause problems for storage copy offload migrations.
+
+Remote ESXi connection fails with a SOAP error::
++
+*Description*: Sometimes a remote ESXi execution fails, returning a SOAP error with no apparent root cause message.
++
+*Explanation*: Because vSphere invokes some SOAP or REST endpoints on the ESXi, a connection can fail because of standard error reasons that vanish after the next try.
++
+*Solution*: If the populator fails, the migration can be restarted. Try to restart or retry the populator, or restart the migration.
+
+VIB issues returned with a CLI error::
++
+*Description*: {project-first} returns the following error:
++
+[source,terminal]
+----
+CLI Fault: The object or item referred to could not be found. <obj xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:vim25" versionId="5.0" xsi:type="LocalizedMethodFault"><fault xsi:type="NotFound"></fault><localizedMessage>The object or item referred to could not be found.</localizedMessage></obj>
+----
++
+*Explanation*: If the VIB is installed, but `/etc/init.d/hostd` did not restart, then the `vmkfstools` namespace in `esxcli` is either not updated or does not exist. If that namespace does not exist, it means that this is the first usage, probably right after the first use.
++
+*Solution*: Use SSH to log in to the ESXi and run `/etc/init.d/hostd restart`. Wait for a few seconds until the ESXi renews the connection with vSphere.
