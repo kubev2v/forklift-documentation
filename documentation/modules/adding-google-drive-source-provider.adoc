@@ -30,13 +30,13 @@ You can add a Google Drive source provider in the {ocp} web console by creating 
 apiVersion: v1
 kind: Secret
 metadata:
-  name: <google_drive_secret> <1>
+  name: <google_drive_secret>
   namespace: openshift-mtv
   labels:
     createdForProviderType: google-drive
 type: Opaque
 stringData:
-  key.json: | <2>
+  key.json: |
     {
       "type": "service_account",
       "project_id": "<your-gcp-project-id>",
@@ -51,8 +51,14 @@ stringData:
       "universe_domain": "googleapis.com"
     }
 ----
-<1> Specify a name for the secret.
-<2> Paste the entire JSON content from the service account key file downloaded from Google Cloud Platform. Do not encode or modify the JSON content.
++
+where:
++
+`<google_drive_secret>`::
+Specifies the name of the secret.
++
+`key.json`::
+Specifies the entire JSON content from the service account key file downloaded from Google Cloud Platform. Do not encode or modify the JSON content.
 
 . Click *Create*.
 
@@ -67,19 +73,29 @@ stringData:
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
-  name: <google_drive_provider> <1>
+  name: <google_drive_provider>
   namespace: openshift-mtv
 spec:
-  type: google-drive <2>
-  url: "gdrive://<google-drive-folder-id>" <3>
+  type: google-drive
+  url: "gdrive://<google-drive-folder-id>"
   secret:
-    name: <google_drive_secret> <4>
+    name: <google_drive_secret>
     namespace: openshift-mtv
 ----
-<1> Specify a name for the provider.
-<2> The provider type must be `google-drive`.
-<3> Specify the Google Drive folder ID. You can find this in the Google Drive folder URL after `/folders/`. For example, if the URL is `https://drive.google.com/drive/folders/1a2b3c4d5e6f`, the folder ID is `1a2b3c4d5e6f`.
-<4> Specify the name of the secret created in the previous steps.
++
+where:
++
+`<google_drive_provider>`::
+Specifies the name of the provider.
++
+`type`::
+Specifies the provider type. Must be `google-drive`.
++
+`url`::
+Specifies the Google Drive folder ID. You can find this in the Google Drive folder URL after `/folders/`. For example, if the URL is `https://drive.google.com/drive/folders/1a2b3c4d5e6f`, the folder ID is `1a2b3c4d5e6f`.
++
+`secret.name`::
+Specifies the name of the secret created in the previous steps.
 
 . Click *Create*.
 
