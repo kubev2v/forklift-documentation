@@ -19,4 +19,4 @@ Prerequisites::
 * *Supported file formats*: VM disk images must be in a supported format, such as:
 ** QCOW2 (QEMU Copy-On-Write version 2)
 ** VMDK (Virtual Machine Disk)
-** OVA (Open Virtual Appliance) files created by VMware vSphere
+** OVA (Open Virtual Appliance) files created by {vmw} vSphere
