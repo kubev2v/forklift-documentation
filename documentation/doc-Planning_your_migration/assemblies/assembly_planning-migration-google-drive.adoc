@@ -1,0 +1,54 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_planning-migration-google-drive_{context}"]
+
+= Planning a migration of virtual machines from Google Drive
+
+//:context: planning-google-drive
+
+[role="_abstract"]
+Create a Google Drive migration plan by setting up network maps, configuring source and destination providers with migration networks, and defining the migration plan in the {project-first} UI.
+
+[NOTE]
+====
+Like OVA migrations, Google Drive migrations are file-based imports. The network mapping, storage mapping, and migration execution procedures are identical to OVA migrations. The key differences are in the prerequisites and provider configuration.
+====
+
+:context: google-drive
+:google-drive:
+
+include::../modules/creating-form-based-network-maps-ui-google-drive.adoc[leveloffset=+1]
+
+include::../modules/creating-yaml-based-network-maps-ui-google-drive.adoc[leveloffset=+1]
+
+include::../modules/creating-form-based-storage-maps-ui-google-drive.adoc[leveloffset=+1]
+
+include::../modules/creating-yaml-based-storage-maps-ui-google-drive.adoc[leveloffset=+1]
+
+include::../modules/adding-google-drive-source-provider.adoc[leveloffset=+1]
+
+:!google-drive:
+:context: dest_google-drive
+:dest_google-drive:
+
+include::../modules/adding-source-provider.adoc[leveloffset=+1]
+
+include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
+
+:!dest_google-drive:
+:context: google-drive
+:google-drive:
+
+include::../modules/creating-plan-wizard-google-drive.adoc[leveloffset=+1]
+
+:!google-drive:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+

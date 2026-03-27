@@ -1,0 +1,65 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_provider-specific-requirements-for-migration.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="google-drive-prerequisites_{context}"]
+= Google Drive prerequisites
+
+[role="_abstract"]
+Google Drive migrations to {virt} require virtual machine disk image files stored in Google Drive with proper authentication configured through Google Cloud Platform. {project-first} accesses these files using OAuth 2.0 service account credentials and imports them directly into the target environment.
+
+Considerations::
+
+* Like OVA migrations, Google Drive migrations are file-based imports. The network mapping, storage mapping, and migration execution procedures are identical to OVA migrations. The key differences are in the prerequisites and provider configuration.
+* The service account JSON key file contains sensitive credentials. Store this file securely and limit access to authorized personnel only.
+* You can share individual files instead of folders if needed. Ensure that all files required for the migration are accessible to the service account.
+* *File organization*: Organize your VM disk images in Google Drive folders for easier management. Note the Google Drive folder ID from the URL (the string after `/folders/` in the browser address bar).
+* *File size and transfer time*: Large VM disk images may take significant time to transfer. Plan your migration windows accordingly.
+* *API quotas and limits*: Google Drive API has usage quotas. For large-scale migrations, monitor your API usage in the Google Cloud Console to avoid rate limiting.
+
+Prerequisites::
+
+* *Google Cloud Platform project*: You must have an active project in the Google Cloud Console with the Google Drive API enabled.
+* *Google Drive API access*: The Google Drive API must be enabled for your project with the necessary permissions configured.
+* *OAuth 2.0 service account*: A service account must be created with appropriate roles (such as Storage Object Viewer or Drive API Read-only) and a JSON key file generated.
+* *Shared Google Drive folder*: The Google Drive folder or files containing the VM disk images must be shared with the service account's email address with at least read permissions.
+* *Network connectivity*: The OpenShift cluster nodes must have egress network connectivity to Google Drive API endpoints (`*.googleapis.com`).
+* *Supported file formats*: VM disk images must be in a supported format, such as:
+** QCOW2 (QEMU Copy-On-Write version 2)
+** VMDK (Virtual Machine Disk)
+** OVA (Open Virtual Appliance) files created by VMware vSphere
+
+.Configuring Google Cloud Platform for {project-short}
+
+To prepare your Google Cloud Platform environment for importing VM disk images from Google Drive:
+
+. Create or select a Google Cloud project in the link:https://console.cloud.google.com[Google Cloud Console].
+
+. Enable the Google Drive API:
+.. Navigate to *APIs & Services* > *Library*.
+.. Search for "Google Drive API" and click *Enable*.
+
+. Create a service account:
+.. Navigate to *IAM & Admin* > *Service Accounts*.
+.. Click *Create Service Account*.
+.. Enter a name and description for the service account.
+.. Click *Create and Continue*.
+
+. Grant the service account appropriate permissions:
+.. Assign roles such as *Storage Object Viewer* or *Drive API Read-only*.
+.. Click *Continue* and then *Done*.
+
+. Generate a service account key:
+.. Click the created service account to open its details page.
+.. Navigate to the *Keys* tab.
+.. Click *Add Key* > *Create new key*.
+.. Select *JSON* as the key type.
+.. Click *Create* to download the JSON key file to your machine.
+
+. Share the Google Drive folder containing VM disk images:
+.. In Google Drive, navigate to the folder containing your VM disk image files.
+.. Right-click the folder and select *Share*.
+.. Enter the service account's email address (found in the JSON key file or the service account details page).
+.. Grant at least *Viewer* permissions.
+.. Click *Share*.
