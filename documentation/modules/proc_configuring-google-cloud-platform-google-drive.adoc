@@ -7,28 +7,17 @@
 = Configuring Google Cloud Platform for {project-short}
 
 [role="_abstract"]
-Google Drive migrations to {virt} require virtual machine disk image files stored in Google Drive with proper authentication configured through Google Cloud Platform. {project-first} accesses these files by using OAuth 2.0 service account credentials and imports them directly into the target environment.
+To prepare your Google Cloud Platform environment for importing VM disk images from Google Drive, you must create a service account, enable the Google Drive API, and share the Google Drive folder with the service account.
 
 Considerations::
 
+* {project-first} accesses Google Drive files by using OAuth 2.0 service account credentials and imports them directly into the target environment.
 * Like OVA migrations, Google Drive migrations are file-based imports. The network mapping, storage mapping, and migration execution procedures are identical to OVA migrations. The key differences are in the prerequisites and provider configuration.
 * The service account JSON key file contains sensitive credentials. Store this file securely and limit access to authorized personnel only.
 * You can share individual files instead of folders if needed. Ensure that all files required for the migration are accessible to the service account.
 * *File organization*: Organize your VM disk images in Google Drive folders for easier management. Note the Google Drive folder ID from the URL (the string after `/folders/` in the browser address bar).
 * *File size and transfer time*: Large VM disk images may take significant time to transfer. Plan your migration windows accordingly.
 * *API quotas and limits*: Google Drive API has usage quotas. For large-scale migrations, monitor your API usage in the Google Cloud Console to avoid rate limiting.
-
-.Prerequisites
-
-* *Google Cloud Platform project*: You must have an active project in the Google Cloud Console with the Google Drive API enabled.
-* *Google Drive API access*: The Google Drive API must be enabled for your project with the necessary permissions configured.
-* *OAuth 2.0 service account*: A service account must be created with appropriate roles (such as Storage Object Viewer or Drive API Read-only) and a JSON key file generated.
-* *Shared Google Drive folder*: The Google Drive folder or files containing the VM disk images must be shared with the service account's email address with at least read permissions.
-* *Network connectivity*: The OpenShift cluster nodes must have egress network connectivity to Google Drive API endpoints (`*.googleapis.com`).
-* *Supported file formats*: VM disk images must be in a supported format, such as:
-** QCOW2 (QEMU Copy-On-Write version 2)
-** VMDK (Virtual Machine Disk)
-** OVA (Open Virtual Appliance) files created by VMware vSphere
 
 .Procedure
 

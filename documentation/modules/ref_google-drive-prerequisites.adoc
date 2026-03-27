@@ -1,0 +1,22 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_provider-specific-requirements-for-migration.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="google-drive-prerequisites_{context}"]
+= Google Drive prerequisites
+
+[role="_abstract"]
+Google Drive migrations to {virt} require virtual machine disk image files stored in Google Drive with proper authentication configured through Google Cloud Platform.
+
+Prerequisites::
+
+* *Google Cloud Platform project*: You must have an active project in the Google Cloud Console with the Google Drive API enabled.
+* *Google Drive API access*: The Google Drive API must be enabled for your project with the necessary permissions configured.
+* *OAuth 2.0 service account*: A service account must be created with appropriate roles (such as Storage Object Viewer or Drive API Read-only) and a JSON key file generated.
+* *Shared Google Drive folder*: The Google Drive folder or files containing the VM disk images must be shared with the service account's email address with at least read permissions.
+* *Network connectivity*: The OpenShift cluster nodes must have egress network connectivity to Google Drive API endpoints (`*.googleapis.com`).
+* *Supported file formats*: VM disk images must be in a supported format, such as:
+** QCOW2 (QEMU Copy-On-Write version 2)
+** VMDK (Virtual Machine Disk)
+** OVA (Open Virtual Appliance) files created by VMware vSphere

@@ -32,7 +32,9 @@ include::../modules/vddk-validator-containers.adoc[leveloffset=+2]
 
 include::../modules/ova-prerequisites.adoc[leveloffset=+1]
 
-include::../modules/proc_configuring-google-cloud-platform-google-drive.adoc[leveloffset=+1]
+include::../modules/ref_google-drive-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/proc_configuring-google-cloud-platform-google-drive.adoc[leveloffset=+2]
 
 include::../modules/cnv-prerequisites.adoc[leveloffset=+1]
 
