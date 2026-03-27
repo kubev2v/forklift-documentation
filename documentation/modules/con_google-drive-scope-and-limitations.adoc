@@ -1,0 +1,32 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-google-drive.adoc
+
+:_mod-docs-content-type: CONCEPT
+
+[id="con_google-drive-scope-and-limitations_{context}"]
+= Google Drive scope and limitations
+
+[role="_abstract"]
+
+Google Drive migration is validated for importing virtual machine disk image files stored in Google Drive to {virt}. Supported file formats include QCOW2, VMDK, and OVA files created by {vmw} vSphere.
+
+The Google Drive import process is a file-based migration similar to OVA imports. It utilizes `virt-v2v` to prepare guest operating systems for KVM when importing files such as VMDK or OVA. For third-party networking or security appliances, check with the vendor for native QCOW2 or KVM images.
+
+Vendor-supplied appliances often use proprietary bootloaders or disk layouts that are incompatible with this conversion process. Moreover, converting a vendor appliance may invalidate vendor support agreements.
+
+To ensure stability and vendor support, always prioritize importing the vendor's native QCOW2 image by using either the {virt} "Upload Image" or the {virt} "Import from URL" workflow rather than using the {project-first} Google Drive import path for vendor appliances.
+
+.Supported file formats
+
+* QCOW2 (QEMU Copy-On-Write version 2) disk images
+* VMDK (Virtual Machine Disk) images
+* OVA (Open Virtual Appliance) packages created by VMware vSphere
+
+.Limitations
+
+* Google Drive migration supports only cold migration. Warm migration is not supported for file-based imports.
+* The service account must have read access to all files and folders containing VM disk images in Google Drive.
+* Network connectivity from the OpenShift cluster to Google Drive API endpoints (`*.googleapis.com`) is required.
+* Large file transfers may be subject to Google Drive API rate limits and quotas. Monitor your API usage in the Google Cloud Console for large-scale migrations.
+* A migration plan cannot contain more than 500 VMs or 500 disks.
