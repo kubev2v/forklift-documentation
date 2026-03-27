@@ -1,0 +1,109 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-google-drive.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="adding-google-drive-source-provider_{context}"]
+= Adding a Google Drive source provider
+
+[role="_abstract"]
+You can add a Google Drive source provider in the {ocp} web console by creating a `Secret` manifest for the OAuth 2.0 service account credentials and a `Provider` manifest that references the secret and specifies the Google Drive folder location.
+
+.Prerequisites
+
+* Google Cloud Platform project configured with Google Drive API enabled.
+* Service account created with appropriate permissions and JSON key file generated.
+* Google Drive folder containing VM disk images shared with the service account.
+
+.Procedure
+
+. In the {ocp} web console, click *Workloads* > *Secrets*.
+
+. Select your project from the *Project* list.
+
+. Click *Create* > *From YAML*.
+
+. Replace the default content with the following `Secret` manifest:
++
+[source,yaml,subs="attributes+"]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <google_drive_secret>
+  namespace: openshift-mtv
+  labels:
+    createdForProviderType: google-drive
+type: Opaque
+stringData:
+  key.json: |
+    {
+      "type": "service_account",
+      "project_id": "<your-gcp-project-id>",
+      "private_key_id": "<your-private-key-id>",
+      "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
+      "client_email": "<your-service-account-email>",
+      "client_id": "<your-client-id>",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://oauth2.googleapis.com/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "<your-cert-url>",
+      "universe_domain": "googleapis.com"
+    }
+----
++
+where:
++
+`<google_drive_secret>`::
+Specifies the name of the secret.
++
+`key.json`::
+Specifies the entire JSON content from the service account key file downloaded from Google Cloud Platform. Do not encode or modify the JSON content.
+
+. Click *Create*.
+
+. Click *Migration for Virtualization* > *Providers for virtualization*.
+
+. Click *Create Provider* > *From YAML*.
+
+. Replace the default content with the following `Provider` manifest:
++
+[source,yaml,subs="attributes+"]
+----
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <google_drive_provider>
+  namespace: openshift-mtv
+spec:
+  type: google-drive
+  url: "gdrive://<google-drive-folder-id>"
+  secret:
+    name: <google_drive_secret>
+    namespace: openshift-mtv
+----
++
+where:
++
+`<google_drive_provider>`::
+Specifies the name of the provider.
++
+`type`::
+Specifies the provider type. Must be `google-drive`.
++
+`url`::
+Specifies the Google Drive folder ID. You can find this in the Google Drive folder URL after `/folders/`. For example, if the URL is `https://drive.google.com/drive/folders/1a2b3c4d5e6f`, the folder ID is `1a2b3c4d5e6f`.
++
+`secret.name`::
+Specifies the name of the secret created in the previous steps.
+
+. Click *Create*.
+
+.Verification
+
+* The provider appears in the list of providers with a status of *Ready*.
+* If the provider status shows an error, verify that:
+** The service account JSON key is valid and correctly formatted.
+** The Google Drive folder ID is correct.
+** The Google Drive folder or files are shared with the service account email address.
+** The OpenShift cluster has network connectivity to `*.googleapis.com`.
