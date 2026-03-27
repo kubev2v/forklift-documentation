@@ -1,6 +1,7 @@
 // Module included in the following assemblies:
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-cnv.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-google-drive.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-osp.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-ova.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-rhv.adoc
@@ -64,14 +65,14 @@ The {ocp} cluster version of the source provider must be 4.16 or later.
 ====
 endif::[]
 
-ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_google-drive,dest_cnv[]
 = Adding {a-virt} destination provider
 
 [role="_abstract"]
 Use a Red Hat {virt} provider as both source and destination provider. You can migrate VMs from the cluster that {project-first} is deployed on to another cluster or from a remote cluster to the cluster that {project-short} is deployed on.
 endif::[]
 
-ifdef::vmware,rhv,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
+ifdef::vmware,rhv,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_google-drive,dest_cnv[]
 .Prerequisites
 endif::[]
 
@@ -88,7 +89,7 @@ ifdef::rhv[]
 * {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, specify the {manager} Apache CA certificate
 endif::[]
 
-ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_google-drive,dest_cnv[]
 * You must have {a-virt} link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/authentication_and_authorization/using-service-accounts[service account token] with `cluster-admin` privileges.
 endif::[]
 
@@ -364,7 +365,7 @@ If both *URL* and *Service account bearer token* are left blank, the local {ocp-
 Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 endif::[]
 
-ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_google-drive,dest_cnv[]
 . Access the *Create {virt} provider* interface by doing one of the following:
 
 .. In the {ocp} web console, click *Migration for Virtualization > Providers*.
