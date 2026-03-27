@@ -2,12 +2,12 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_provider-specific-requirements-for-migration.adoc
 
-:_mod-docs-content-type: REFERENCE
-[id="google-drive-prerequisites_{context}"]
-= Google Drive prerequisites
+:_mod-docs-content-type: PROCEDURE
+[id="configuring-google-cloud-platform-google-drive_{context}"]
+= Configuring Google Cloud Platform for {project-short}
 
 [role="_abstract"]
-Google Drive migrations to {virt} require virtual machine disk image files stored in Google Drive with proper authentication configured through Google Cloud Platform. {project-first} accesses these files using OAuth 2.0 service account credentials and imports them directly into the target environment.
+Google Drive migrations to {virt} require virtual machine disk image files stored in Google Drive with proper authentication configured through Google Cloud Platform. {project-first} accesses these files by using OAuth 2.0 service account credentials and imports them directly into the target environment.
 
 Considerations::
 
@@ -18,7 +18,7 @@ Considerations::
 * *File size and transfer time*: Large VM disk images may take significant time to transfer. Plan your migration windows accordingly.
 * *API quotas and limits*: Google Drive API has usage quotas. For large-scale migrations, monitor your API usage in the Google Cloud Console to avoid rate limiting.
 
-Prerequisites::
+.Prerequisites
 
 * *Google Cloud Platform project*: You must have an active project in the Google Cloud Console with the Google Drive API enabled.
 * *Google Drive API access*: The Google Drive API must be enabled for your project with the necessary permissions configured.
@@ -30,9 +30,7 @@ Prerequisites::
 ** VMDK (Virtual Machine Disk)
 ** OVA (Open Virtual Appliance) files created by VMware vSphere
 
-.Configuring Google Cloud Platform for {project-short}
-
-To prepare your Google Cloud Platform environment for importing VM disk images from Google Drive:
+.Procedure
 
 . Create or select a Google Cloud project in the link:https://console.cloud.google.com[Google Cloud Console].
 
