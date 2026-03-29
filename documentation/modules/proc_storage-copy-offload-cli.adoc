@@ -36,6 +36,12 @@ In addition to the regular link:https://docs.redhat.com/en/documentation/migrati
 *** Advanced settings
 *** Query patch
 *** Storage partition configuration
+* It is strongly recommended to delete any preexisting snapshots before you start a storage copy offload migration, especially performance-sensitive migrations. Pre-existing snapshots prevent use of `XCOPY` and force `vmkfstools` to use a slower software-based cloning method.
+
+[IMPORTANT]
+====
+Snapshots created by a warm migration do not affect storage copy offload migrations. Only preexisting snapshots cause this issue.
+====
 
 .Procedure
 
