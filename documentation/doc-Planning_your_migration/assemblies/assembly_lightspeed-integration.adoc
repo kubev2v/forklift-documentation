@@ -1,0 +1,23 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/master.adoc
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_lightspeed-integration_{context}"]
+
+= Red Hat OpenShift Lightspeed integration with {project-short}
+
+//:context: lightspeed-integration
+
+[role="_abstract"]
+You can use Red Hat OpenShift Lightspeed, a generative AI-based virtual assistant, to help plan and troubleshoot your virtual machine migrations with {project-first}.
+
+include::../modules/con_using-lightspeed-with-mtv.adoc[leveloffset=+1]
+
+include::../modules/proc_enabling-lightspeed-mtv-integration.adoc[leveloffset=+1]
+
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
