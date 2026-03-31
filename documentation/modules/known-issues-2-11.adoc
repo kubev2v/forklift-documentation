@@ -9,9 +9,9 @@
 [role="_abstract"]
 {project-first} 2.11 has the following known issues.
 
-VM migration failures when disks exceed LUN ID limit on ESXi host::
+VMware migrations fail when the disk count exceeds the ESXi host LUN ID limit::
 
-During VM migrations with a large number of disks, the ESXi host's limit on discoverable SCSI LUN IDs can lead to migration failures when the disk count surpasses the host's LUN ID limit.
+VMware migrations with many disks fail if the disk count exceeds the host limit for discoverable SCSI LUN IDs.
 +
 *Workaround:* Increase the `Disk.MaxLUN` value on each ESXi host to support discovery of a higher number of LUN IDs during migrations.
 +
