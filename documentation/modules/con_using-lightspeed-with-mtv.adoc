@@ -19,37 +19,36 @@ OpenShift Lightspeed integration with {project-short} is available as a Technolo
 For more information about the support scope of Red Hat Technology Preview features, see link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
 ====
 
-== How Lightspeed helps with {project-short}
+== Lightspeed use cases
 
-Lightspeed can assist you throughout the migration lifecycle:
+You can ask Lightspeed questions in natural language throughout the migration lifecycle:
 
-Planning and assessment:: Ask questions about migration prerequisites, recommended settings, and best practices for your specific environment.
-
-Real-time troubleshooting:: Get plain-language explanations of migration failures without manually parsing logs or error messages.
-
-Post-migration guidance:: Receive recommendations for resource optimization and validation after migration is complete.
-
-== Example prompts and use cases
-
-You can ask Lightspeed questions in natural language throughout your migration workflow. The following examples show common scenarios:
-
-Planning and assessment::
+Planning and assessment:: Ask questions about migration prerequisites, recommended settings, best practices, and configuration requirements for your specific environment and source platform.
++
+For example:
++
 * "What are the prerequisites for warm migration from VMware?"
 * "What network requirements do I need for migrating VMs?"
 * "How do I check network mapping for a failed migration?"
 
-Troubleshooting migration issues::
+Real-time troubleshooting:: Get plain-language explanations of migration failures, error messages, and stuck migrations without manually parsing logs or navigating through complex error messages.
++
+For example:
++
 * "Why did the migration for VM 'ProdDB-01' fail?"
 * "Why is my warm migration stuck?"
 * "What does the error 'import retry limit exceeded' mean?"
 * "How do I resolve Changed Block Tracking (CBT) snapshot issues?"
 
-Post-migration validation::
+Post-migration guidance:: Receive recommendations for validating migrated virtual machines, optimizing resource configurations, and troubleshooting post-migration issues.
++
+For example:
++
 * "Why aren't my VMs working after migration?"
 * "How do I verify my migrated VMs are running correctly?"
 * "What should I check after migration is complete?"
 
-== How it works
+== Data access and analysis
 
 When you ask Lightspeed a question about {project-short}, the assistant:
 
