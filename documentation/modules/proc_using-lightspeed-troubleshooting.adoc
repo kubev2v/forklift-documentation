@@ -1,0 +1,75 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: PROCEDURE
+
+[id="proc_using-lightspeed-troubleshooting_{context}"]
+= Using Red Hat OpenShift Lightspeed to troubleshoot migration issues
+
+[role="_abstract"]
+You can use Red Hat OpenShift Lightspeed to diagnose and troubleshoot virtual machine migration failures by asking questions in natural language.
+
+.Prerequisites
+
+* {ocp} 4.15 or later
+* Red Hat OpenShift Lightspeed Operator installed and configured on your cluster
+* {project-short} 2.12 or later
+* You have access to the {ocp} web console
+* You have permission to view {project-short} resources in the cluster
++
+For information about installing and configuring Red Hat OpenShift Lightspeed, see the link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[Red Hat OpenShift Lightspeed documentation].
+
+.Procedure
+
+. In the {ocp} web console, click the *OpenShift Lightspeed* icon in the header to open the chat assistant.
+
+. Type your question about the migration issue in natural language.
++
+For example:
++
+* "Why did the migration for VM 'ProdDB-01' fail?"
+* "What is the current status of the warm migration for my database cluster?"
+* "Why is my migration plan stuck?"
+
+. Review the response from Lightspeed, which provides:
++
+* A plain-language diagnosis of the issue
+* Specific error details from the migration logs
+* Recommended actions to resolve the problem
+
+. Follow the recommended steps to resolve the issue.
+
+. Optional: Ask follow-up questions for clarification or additional guidance.
++
+For example, if a warm migration fails because it exceeded the import retry limit, you might ask:
++
+----
+Why did the migration plan for VM 'Server-Prod-01' fail?
+----
++
+Lightspeed analyzes the migration custom resource and responds with a plain-language explanation:
++
+----
+The migration for 'Server-Prod-01' failed because it exceeded the warm
+import retry limit. This typically occurs in a warm migration if the VM
+has reached the maximum number of Changed Block Tracking (CBT) snapshots
+during the precopy stage.
+
+To fix this, you need to:
+1. Delete some of the CBT snapshots from the source VM
+2. Restart the migration plan
+
+Would you like me to provide the specific steps for deleting CBT snapshots?
+----
+
+.Verification
+
+* Compare the plain-language diagnosis from Lightspeed with the raw error message in the migration logs to understand the root cause.
+* Check that the recommended solution addresses your specific migration failure.
+
+[role="_additional-resources"]
+.Additional resources
+
+* link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[Red Hat OpenShift Lightspeed documentation]
+* xref:con_using-lightspeed-with-mtv_{context}[Red Hat OpenShift Lightspeed integration with {project-short}]
