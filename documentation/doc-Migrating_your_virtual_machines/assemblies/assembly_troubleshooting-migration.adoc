@@ -16,6 +16,8 @@ Troubleshoot migration issues by following diagnostic workflows, resolving commo
 
 include::../modules/proc_troubleshooting-workflow.adoc[leveloffset=+1]
 
+include::../modules/proc_using-lightspeed-troubleshooting.adoc[leveloffset=+1]
+
 include::../modules/con_common-migration-issues.adoc[leveloffset=+1]
 
 include::../modules/error-messages.adoc[leveloffset=+1]

@@ -1,0 +1,40 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/master.adoc
+
+:_mod-docs-content-type: CONCEPT
+
+[id="con_using-lightspeed-with-mtv_{context}"]
+= Red Hat OpenShift Lightspeed integration with {project-short}
+
+[role="_abstract"]
+You can use Red Hat OpenShift Lightspeed, a generative AI-based virtual assistant, to help plan and troubleshoot your virtual machine migrations with {project-first}.
+
+OpenShift Lightspeed is integrated directly into the {ocp} web console. It provides intelligent assistance through a natural-language interface, allowing you to ask questions, receive troubleshooting guidance, and get step-by-step instructions without leaving the console.
+
+[NOTE]
+====
+OpenShift Lightspeed integration with {project-short} is available as a Technology Preview feature. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+
+For more information about the support scope of Red Hat Technology Preview features, see link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
+====
+
+== How Lightspeed helps with {project-short}
+
+Lightspeed can assist you throughout the migration lifecycle:
+
+Planning and assessment:: Ask questions about migration prerequisites, recommended settings, and best practices for your specific environment. For example: "What are the prerequisites for warm migration from VMware?"
+
+Real-time troubleshooting:: Get plain-language explanations of migration failures without manually parsing logs or error messages. For example: "Why did the migration for VM 'ProdDB-01' fail?"
+
+Post-migration guidance:: Receive recommendations for resource optimization and validation after migration is complete.
+
+== How it works
+
+When you ask Lightspeed a question about {project-short}, the assistant:
+
+. Accesses real-time data from your cluster, including migration plan status, custom resources, and logs
+. Analyzes the data using your authenticated user credentials and respects your existing role-based access control (RBAC) permissions
+. Provides a conversational response with specific, actionable information
+
+The assistant operates using your own user credentials and can only access resources that you have permission to view.
