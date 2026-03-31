@@ -2,6 +2,12 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
 
+// SME CHECK: Is there a specific workflow where users navigate to a migration plan,
+// click the VirtualMachines tab, and then access Lightspeed from that context?
+// Or do users simply click the OpenShift Lightspeed icon in the header from anywhere in the console?
+// The JIRA mentions "accessing AI insights from the 'VirtualMachines' tab of a migration plan"
+// but it's unclear if there's a specific UI element on that tab or if it's just contextual awareness.
+
 :_mod-docs-content-type: PROCEDURE
 
 [id="proc_using-lightspeed-troubleshooting_{context}"]
@@ -22,15 +28,17 @@ For information about installing and configuring Red Hat OpenShift Lightspeed, s
 
 .Procedure
 
+// SME CHECK: Verify the exact UI label/text for the Lightspeed icon in the OCP console header.
+// Is it "OpenShift Lightspeed" or "Red Hat OpenShift Lightspeed"? Match the exact UI text.
 . In the {ocp} web console, click the *OpenShift Lightspeed* icon in the header to open the chat assistant.
 
 . Type your question about the migration issue in natural language.
 +
 For example:
 +
-* "Why did the migration for VM 'ProdDB-01' fail?"
+* "Why is my network mapping failing for plan 'vmware-prod-vms'?"
 * "What is the current status of the warm migration for my database cluster?"
-* "Why is my migration plan stuck?"
+* "How do I fix naming convention violations in my migration plan?"
 
 . Review the response from Lightspeed, which provides:
 +
@@ -72,4 +80,4 @@ Would you like me to provide the specific steps for deleting CBT snapshots?
 .Additional resources
 
 * link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[Red Hat OpenShift Lightspeed documentation]
-* xref:con_using-lightspeed-with-mtv_{context}[Red Hat OpenShift Lightspeed integration with {project-short}]
+* link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.12/html-single/planning_your_migration/index#con_using-lightspeed-with-mtv[Red Hat OpenShift Lightspeed integration with {project-short}] in _Planning your migration_

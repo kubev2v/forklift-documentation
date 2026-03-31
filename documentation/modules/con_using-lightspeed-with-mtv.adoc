@@ -23,11 +23,31 @@ For more information about the support scope of Red Hat Technology Preview featu
 
 Lightspeed can assist you throughout the migration lifecycle:
 
-Planning and assessment:: Ask questions about migration prerequisites, recommended settings, and best practices for your specific environment. For example: "What are the prerequisites for warm migration from VMware?"
+Planning and assessment:: Ask questions about migration prerequisites, recommended settings, and best practices for your specific environment.
 
-Real-time troubleshooting:: Get plain-language explanations of migration failures without manually parsing logs or error messages. For example: "Why did the migration for VM 'ProdDB-01' fail?"
+Real-time troubleshooting:: Get plain-language explanations of migration failures without manually parsing logs or error messages.
 
 Post-migration guidance:: Receive recommendations for resource optimization and validation after migration is complete.
+
+== Example prompts and use cases
+
+You can ask Lightspeed questions in natural language throughout your migration workflow. The following examples show common scenarios:
+
+Planning and assessment::
+* "What are the prerequisites for warm migration from VMware?"
+* "What network requirements do I need for migrating VMs?"
+* "How do I check network mapping for a failed migration?"
+
+Troubleshooting migration issues::
+* "Why did the migration for VM 'ProdDB-01' fail?"
+* "Why is my warm migration stuck?"
+* "What does the error 'import retry limit exceeded' mean?"
+* "How do I resolve Changed Block Tracking (CBT) snapshot issues?"
+
+Post-migration validation::
+* "Why aren't my VMs working after migration?"
+* "How do I verify my migrated VMs are running correctly?"
+* "What should I check after migration is complete?"
 
 == How it works
 
@@ -37,4 +57,6 @@ When you ask Lightspeed a question about {project-short}, the assistant:
 . Analyzes the data using your authenticated user credentials and respects your existing role-based access control (RBAC) permissions
 . Provides a conversational response with specific, actionable information
 
-The assistant operates using your own user credentials and can only access resources that you have permission to view.
+== Privacy and data handling
+
+The assistant operates using your own user credentials and can only access resources that you have permission to view. Lightspeed uses cluster metadata, migration resource status, and log data to provide contextual assistance. All data access respects your existing RBAC permissions, and the assistant cannot access resources beyond your authorization level.
