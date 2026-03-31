@@ -10,11 +10,6 @@
 [role="_abstract"]
 You can enable the Red Hat OpenShift Lightspeed integration with {project-short} to provide AI-assisted guidance for planning and troubleshooting VM migrations.
 
-[NOTE]
-====
-Red Hat OpenShift Lightspeed integration with {project-short} is available as a Technology Preview feature. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production.
-====
-
 .Prerequisites
 
 * {ocp} 4.15 or later
@@ -28,6 +23,7 @@ For information about installing and configuring Red Hat OpenShift Lightspeed, s
 
 . Deploy the {project-short} MCP server:
 +
+// SME CHECK: Verify that this GitHub raw URL is still current and accessible.
 [source,terminal,subs="attributes+"]
 ----
 $ oc apply -f https://raw.githubusercontent.com/kubev2v/kubectl-mtv/main/deploy/mcp-server.yaml
