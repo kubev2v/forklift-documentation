@@ -20,9 +20,7 @@ include::assemblies/assembly_provider-specific-requirements-for-migration.adoc[l
 
 include::assemblies/assembly_installing-mtv-operator.adoc[leveloffset=+1]
 
-include::modules/con_using-lightspeed-with-mtv.adoc[leveloffset=+1]
-
-include::modules/proc_enabling-lightspeed-mtv-integration.adoc[leveloffset=+1]
+include::assemblies/assembly_lightspeed-integration.adoc[leveloffset=+1]
 
 include::assemblies/assembly_migrating-vms-web-console.adoc[leveloffset=+1]
 
