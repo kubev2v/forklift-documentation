@@ -28,6 +28,12 @@ include::../modules/canceling-migration-ui.adoc[leveloffset=+2]
 
 include::../modules/proc_migrating-vms-cli-vmware.adoc[leveloffset=+1]
 
+include::../modules/ref_pvc-name-template-variables-vmware.adoc[leveloffset=+2]
+
+include::../modules/ref_network-name-template-variables-vmware.adoc[leveloffset=+2]
+
+include::../modules/ref_volume-name-template-variables-vmware.adoc[leveloffset=+2]
+
 include::../modules/proc_storage-copy-offload-cli.adoc[leveloffset=+1]
 
 include::../modules/retrieving-vmware-moref.adoc[leveloffset=+2]
