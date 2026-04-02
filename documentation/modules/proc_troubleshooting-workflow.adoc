@@ -2,6 +2,10 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
 
+// SME CHECK: Review the flow of this troubleshooting workflow in the full assembly context
+// after adding Lightspeed AI as step 2. Verify that the xref to proc_using-lightspeed-troubleshooting
+// resolves correctly and that the workflow progression makes sense.
+
 :_mod-docs-content-type: PROCEDURE
 [id="proc_troubleshooting-workflow_{context}"]
 = Troubleshooting workflow
@@ -21,6 +25,14 @@ You can typically find where the error is occurring at this stage. VMs can be mi
 * *Warm migration*: VMs are migrated with minimal downtime while remaining powered on during the precopy stage.
 * *Cold migration*: VMs are shut down during the entire migration process.
 
+. *Ask Red Hat OpenShift Lightspeed* for AI-assisted troubleshooting guidance.
++
+If you have Red Hat OpenShift Lightspeed configured with {project-short}, you can ask questions in natural language to get plain-language explanations of migration failures, recommended solutions, and guidance for resolving common issues.
++
+For example: "Why did the migration for VM 'ProdDB-01' fail?"
++
+See xref:proc_using-lightspeed-troubleshooting_{context}[Using Red Hat OpenShift Lightspeed to troubleshoot migration issues] for detailed instructions.
+
 . *View pod logs* for specific information about pod status within Kubernetes.
 +
 [NOTE]
@@ -32,7 +44,7 @@ Pod logs are only available after the image conversion stage has started.
 .. Under the *Pod* subheading, click *View logs*.
 .. Review the logs for error messages or warnings that indicate the cause of the failure.
 
-. *Review forklift controller logs* if the migration progress and pod logs are not helpful.
+. *Review forklift controller logs* if the migration progress, AI guidance, and pod logs are not helpful.
 +
 Forklift controller logs capture {project-first} related events and provide detailed information about the migration process.
 +
@@ -41,7 +53,7 @@ Forklift controller logs capture {project-first} related events and provide deta
 
 . *Collect must-gather logs* if previous troubleshooting steps do not resolve the issue.
 +
-The `must-gather` tool collects comprehensive diagnostic information about your cluster.
+The `must-gather` tool collects comprehensive diagnostic information about your cluster. Red Hat OpenShift Lightspeed analyzes the same types of data that `must-gather` collects, but `must-gather` provides a complete archive for Red Hat Support analysis.
 +
 .. Navigate to the directory where you want to store the `must-gather` data:
 +
