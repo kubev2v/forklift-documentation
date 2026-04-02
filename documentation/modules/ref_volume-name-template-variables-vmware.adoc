@@ -1,0 +1,24 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: REFERENCE
+
+[id="ref_volume-name-template-variables-vmware_{context}"]
+= Volume name template variables
+
+[role="_abstract"]
+When creating a migration plan, you can use template variables to customize the names of volume interfaces for migrated virtual machines. The template follows Go template syntax.
+
+== Available variables
+
+The `volumeNameTemplate` field has access to the following variables:
+
+* `.PVCName`: Name of the PVC mounted to the VM using this volume.
+* `.VolumeIndex`: Sequential index of the volume interface (0-based).
+
+== Examples
+
+* `"disk-{{.VolumeIndex}}"`
+* `"pvc-{{.PVCName}}"`

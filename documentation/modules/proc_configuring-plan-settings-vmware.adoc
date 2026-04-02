@@ -3,7 +3,7 @@
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="configuring-plan-settings-vmware_{context}"]
+[id="proc_configuring-plan-settings-vmware_{context}"]
 = Configuring VMware migration plan settings
 
 [role="_abstract"]
@@ -23,17 +23,7 @@ The *Plan settings* section includes settings that you specified in the *Other s
 
 .. *Volume name template*: Specifies a template for the volume interface name for the VMs in your plan.
 +
-The template follows the Go template syntax and has access to the following variables:
-
-** `.PVCName`: Name of the PVC mounted to the VM using this volume
-** `.VolumeIndex`: Sequential index of the volume interface (0-based)
-+
-Examples
-
-** `"disk-{{.VolumeIndex}}"`
-** `"pvc-{{.PVCName}}"`
-+
-Variable names cannot exceed 63 characters.
+For a list of available variables and examples, see xref:ref_volume-name-template-variables-vmware_{context}[Volume name template variables].
 +
 ** To specify a volume name template for all the VMs in your plan, do the following:
 
@@ -59,46 +49,7 @@ Changes you make on the *Virtual Machines* tab override any changes on the *Plan
 
 .. *PVC name template*: Specifies a template for the name of the persistent volume claim (PVC) for the VMs in your plan.
 +
-The template follows the Go template syntax and has access to the following variables:
-
-** `.VmName`: Name of the VM in the source cluster
-** `.TargetVmName`: Final VM name in the target cluster. May equal `.VmName` if no rename or normalization occurs.
-** `.PlanName`: Name of the migration plan
-** `.DiskIndex`: Initial volume index of the disk
-** `.RootDiskIndex`: Index of the root disk
-** `.WinDriveLetter`: Windows drive letter in lowercase (for example, `c`, `d`). Requires the guest agent to be running on the source VM. Only applicable to Windows guests.
-** `.FileName`: Name of the virtual disk file (for example, `vm-disk1.vmdk`). VMware only.
-+
-[NOTE]
-====
-The `.WinDriveLetter` variable requires the QEMU Guest Agent (or VMware Tools) to be active and reachable on the source VM. Additionally, `.WinDriveLetter` requires a disk key mapping between the guest OS and the hardware disk. This mapping may be missing for some disk configurations, particularly IDE disks. When the mapping is missing, {project-short} raises an information-level concern and the variable cannot be resolved in the PVC name template.
-
-The `.FileName` variable provides only the filename (for example, `vm-disk1.vmdk`), not the full datastore path.
-====
-+
-[IMPORTANT]
-====
-PVC names must comply with DNS-1123 naming rules: they must consist of lowercase alphanumeric characters or hyphens (`-`), start with an alphanumeric character, and not exceed 63 characters. {project-short} validates the `pvcNameTemplate` against the actual VM inventory when you create a migration plan. If the template syntax is invalid or if the resulting PVC names do not comply with Kubernetes naming rules, {project-short} adds an error to the plan conditions and prevents the migration from running.
-====
-+
-*Template functions*
-+
-You can use Go template functions to transform variable values into valid PVC names. Common functions include:
-+
-** `trimSuffix`: Removes a suffix from a string. For example, `++{{++.FileName | trimSuffix ".vmdk"}}` removes the `.vmdk` extension.
-** `replace`: Replaces all occurrences of a substring. For example, `++{{++.FileName | replace "_" "-"}}` replaces underscores with hyphens.
-** `lower`: Converts a string to lowercase. For example, `++{{++.FileName | lower}}`.
-+
-Functions can be chained together using the pipe (`|`) operator. For advanced use cases, regular expression functions such as `mustRegexReplaceAll` are also available.
-+
-Examples
-
-** `"{{.VmName}}-disk-{{.DiskIndex}}"` – Basic template with VM name and disk index
-** `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"` – Conditional naming for root disk
-** `"pvc-{{.VmName}}-drive-{{.WinDriveLetter}}"` – Include Windows drive letter (results in `pvc-myvm-drive-c`)
-** `"{{.FileName | trimSuffix \".vmdk\" | replace \"_\" \"-\" | replace \".\" \"-\" | lower}}-disk-{{.DiskIndex}}"` – Transform filename to valid PVC name (transforms `VM_Disk.1.vmdk` to `vm-disk-1-disk-0`)
-+
-Variable names cannot exceed 63 characters.
+For a list of available variables, template functions, and examples, see xref:ref_pvc-name-template-variables-vmware_{context}[PVC name template variables].
 +
 ** To specify a PVC name template for all the VMs in your plan, do the following:
 
@@ -123,19 +74,7 @@ Changes you make on the *Virtual Machines* tab override any changes on the *Plan
 
 .. *Network name template*: Specifies a template for the network interface name for the VMs in your plan.
 +
-The template follows the Go template syntax and has access to the following variables:
-
-** `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
-** `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
-** `.NetworkType`: Network type. Options: `multus` or `pod`.
-** `.NetworkIndex`: Sequential index of the network interface (0-based).
-+
-Examples
-
-** `"net-{{.NetworkIndex}}"`
-** `{{if eq .NetworkType "pod"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`
-+
-Variable names cannot exceed 63 characters.
+For a list of available variables and examples, see xref:ref_network-name-template-variables-vmware_{context}[Network name template variables].
 +
 ** To specify a network name template for all the VMs in your plan, do the following:
 
