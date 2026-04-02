@@ -1,6 +1,7 @@
 // Module included in the following assemblies:
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-cnv.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-google-drive.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-osp.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-ova.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-rhv.adoc
@@ -19,15 +20,10 @@ In {project-short} version 2.9 and earlier, {project-short} used the `pod` netwo
 
 In version 2.10.0 and later, {project-short} detects if you have selected a user-defined network (UDN) as your default network. Therefore, if you set the UDN to be the migration's namespace, you do not need to select a new default network when you create your migration plan.
 
-[IMPORTANT]
-====
-{project-short} supports using UDNs for all providers except {virt}.
-====
+Considerations::
 
-[NOTE]
-====
-You can override the default migration network of the provider by selecting a different network when you create a migration plan.
-====
+* {project-short} supports using UDNs for all providers except {virt}.
+* You can override the default migration network of the provider by selecting a different network when you create a migration plan.
 
 .Procedure
 
