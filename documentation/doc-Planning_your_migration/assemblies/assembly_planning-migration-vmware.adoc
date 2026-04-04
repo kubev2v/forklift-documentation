@@ -25,9 +25,15 @@ include::../modules/creating-yaml-based-storage-maps-ui-vmware.adoc[leveloffset=
 
 include::../modules/about-storage-copy-offload.adoc[leveloffset=+1]
 
+include::../modules/about-storage-copy-offload-toc-sections.adoc[leveloffset=+1]
+
 include::../modules/proc_storage-copy-offload-steps.adoc[leveloffset=+2]
 
+include::../modules/con_copy-methods-sco-toc-sections.adoc[leveloffset=+1]
+
 include::../modules/con_copy-methods-sco.adoc[leveloffset=+2]
+
+include::../modules/proc_storage-copy-offload-general-ssh-set-up-toc-sections.adoc[leveloffset=+1]
 
 include::../modules/proc_storage-copy-offload-vib-set-up.adoc[leveloffset=+3]
 
