@@ -21,7 +21,6 @@ In addition to the regular link:https://docs.redhat.com/en/documentation/migrati
 ** Dell PowerFlex
 ** Dell PowerStore
 ** HPE 3PAR or HPE Primera
-** Infinidat Infinibox
 ** IBM Flashsystem
 * A working Container Storage Interface (CSI) driver connected to the above and to {virt}
 * A configured {vmw} vSphere provider
@@ -36,6 +35,12 @@ In addition to the regular link:https://docs.redhat.com/en/documentation/migrati
 *** Advanced settings
 *** Query patch
 *** Storage partition configuration
+* It is strongly recommended to delete any pre-existing snapshots before you start a storage copy offload migration. Pre-existing snapshots prevent use of `XCOPY` and force `vmkfstools` to use a slower software-based cloning method. This issue is especially important for performance-sensitive storage copy offload migrations.
+
+[NOTE]
+====
+Snapshots created by a warm migration do not affect storage copy offload migrations, only pre-existing snapshots cause this issue.
+====
 
 .Procedure
 
