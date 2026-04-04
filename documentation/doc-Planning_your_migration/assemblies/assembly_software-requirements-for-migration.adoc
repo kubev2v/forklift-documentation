@@ -20,6 +20,8 @@ include::../modules/storage-support.adoc[leveloffset=+1]
 
 include::../modules/network-prerequisites.adoc[leveloffset=+1]
 
+include::../modules/ref_ports.adoc[leveloffset=+1]
+
 include::../modules/ref_source-vm-prerequisites.adoc[leveloffset=+1]
 
 include::../modules/ref_source-vm-migration-considerations.adoc[leveloffset=+1]
