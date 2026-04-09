@@ -9,6 +9,25 @@
 [role="_abstract"]
 {project-first} 2.11 introduces the following features and enhancements.
 
+You can configure a custom `ServiceAccount` object for all MTV pods::
+
+You can configure a custom `ServiceAccount` object for all {project-short} pods, including CDI pods. This enhancement supports migrating workloads that are run under specific service accounts with well-defined RBAC roles. As a result, feature {project-short} can access storage backends, pull secrets, or perform API calls that require a dedicated `ServiceAccount` object with specific permissions.
++
+link:https://redhat.atlassian.net/browse/MTV-4722[MTV-4722]
+
+You can define which VMs in a plan are attached to a shared disk::
+
+In a single migration plan, you can define which VMs share a disk. This enhancement eliminates the need to create two migration plans when migrating shared disks: one where all VMs share a disk, and another where none do. This option lets you streamline the process for migrating shared disks.
++
+link:https://redhat.atlassian.net/browse/MTV-4978[MTV-4978]
+
+Storage copy offload: You can map RDM disks as LUN devices::
+
+Storage copy offload migrations support mapping Raw Device Mapping (RDM) disks as either Logical Unit Number (LUN) disks or regular disks. This enhancement lets you specify that RDM disks are to be attached as LUN disks in a storage copy offload migration.
++
+link:https://redhat.atlassian.net/browse/MTV-5020[MTV-5020]
+
+
 Volume-to-volume copy now supported for HPE Primera and HPE 3PAR, enabling storage copy offload migrations for these storage providers::
 
 {project-short} 2.11.2 supports volume-to-volume copy operations for storage copy offload migrations on HPE Primera and HPE 3PAR arrays. These operations copy the underlying VMware Raw Device Mapping (RDM) or VMware vSphere Virtual Volumes (vVols) volume onto the target volume that the CSI driver creates. This improvement allows storage copy offload migrations for HPE Primera or HPE 3PAR storage providers.
