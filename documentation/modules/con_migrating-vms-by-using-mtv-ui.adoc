@@ -24,6 +24,6 @@ You must ensure that all prerequisites are met. For more information, see xref:a
 
 VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
 
-VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
+VMware only: Creating a xref:creating-vddk-image_{context}[{vmw} Virtual Disk Development Kit (VDDK)] image will increase migration speed.
 ====
 
