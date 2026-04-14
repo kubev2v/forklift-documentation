@@ -5,7 +5,6 @@
 :_mod-docs-content-type: CONCEPT
 
 [id="con_performing-migration-intro_{context}"]
-
 = Performing a migration
 
 [role="_abstract"]

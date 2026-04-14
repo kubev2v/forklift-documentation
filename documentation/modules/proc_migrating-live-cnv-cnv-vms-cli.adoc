@@ -4,7 +4,6 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_migrating-live-cnv-cnv-vms-cli_{context}"]
-
 = Running a Red Hat {virt} live migration from the command-line
 
 [role="_abstract"]

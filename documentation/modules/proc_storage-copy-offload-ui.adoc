@@ -54,289 +54,288 @@ $ {oc} patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type
 
 . Create a `Secret` in the namespace in which the migration provider is set up, usually +{namespace}+. Include the credentials from the appropriate vendor in your `Secret`.
 +
-[width="100%",cols="22%,48%,15%,15%",options="header",]
-.Credentials for a Hitachi storage copy offload Secret
+[width="100%",cols="22%,48%,15%,15%",options="header"]
+.Credentials for a Hitachi Vantara storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
 | `GOVMOMI_HOSTNAME`
-| hostname or URL of the vSphere API (string).
-| Yes.
-| N/A.
+| The hostname or URL of the vSphere API (string)
+| Yes
+|
 
 | `GOVMOMI_USERNAME`
-| User name of the vSphere API (string).
-| Yes.
-| N/A.
+| The username of the vSphere API (string)
+| Yes
+|
 
 | `GOVMOMI_PASSWORD`
-| Password of the vSphere API (string).
-| Yes.
-| N/A.
+| The password of the vSphere API (string)
+| Yes
+|
 
 | `STORAGE_HOSTNAME`
-| The hostname or URL of the storage vendor API (string).
-| Yes.
-| N/A.
+| The hostname or URL of the storage vendor API (string)
+| Yes
+|
 
 | `STORAGE_USERNAME`
-| The username of the storage vendor API (string).
-| Yes.
-| N/A.
+| The username of the storage vendor API (string)
+| Yes
+|
 
 | `STORAGE_PASSWORD`
-| The password of the storage vendor API (string).
-| Yes.
-| N/A.
+| The password of the storage vendor API (string)
+| Yes
+|
 
 | `STORAGE_PORT`
-| The port of the storage vendor API (string).
-| Yes.
-| N/A.
+| The port of the storage vendor API (string)
+| Yes
+|
 
 | `STORAGE_ID`
-| Storage array serial number (string).
-| Yes.
-| N/A.
+| The storage array serial number (string)
+| Yes
+|
 
 | `HOSTGROUP_ID_LIST`
-| List of IO ports and host group IDs, for example. `CL1-A,1:CL2-B,2:CL4-A,1:CL6-A,1`.
-| Yes.
-| N/A.
+| A list of I/O ports and host group IDs, for example, `CL1-A,1:CL2-B,2:CL4-A,1:CL6-A,1`
+| Yes
+|
 |===
 +
-[width="100%",cols="22%,48%,15%,15%",options="header",]
+[width="100%",cols="22%,48%,15%,15%",options="header"]
 .Credentials for a NetApp ONTAP storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
 | `STORAGE_HOSTNAME`
-| IP or URL of the host (string). Either enter the management IP for the entire cluster or enter a dedicated storage virtual machine management logical interface (SVM LIF).
-| Yes.
-| N/A.
+| The IP or URL of the host (string). Either enter the management IP for the entire cluster or enter a dedicated storage virtual machine management logical interface (SVM LIF).
+| Yes
+|
 
 | `STORAGE_USERNAME`
-| The user's name (string).
-| Yes.
-| N/A.
+| The username (string)
+| Yes
+|
 
 | `STORAGE_PASSWORD`
-| The user's password (string).
-| Yes.
-| N/A.
+| The user password (string)
+| Yes
+|
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
-| No.
-|`false`.
+| No
+| `false`
 
-|`ONTAP_SVM`
-| The storage virtual machine (SVM) to be used in all client interactions. It can be taken from `trident.netapp.io/v1/TridentBackend.config.ontap_config.svm` resource field.
-| Yes.
-| N/A.
+| `ONTAP_SVM`
+| The storage virtual machine (SVM) to be used in all client interactions. It can be taken from the `trident.netapp.io/v1/TridentBackend.config.ontap_config.svm` resource field.
+| Yes
+|
 |===
 +
-[width="100%",cols="22%,48%,15%,15%",options="header",]
-.Credentials for a Pure FlashArray storage copy offload Secret
+[width="100%",cols="22%,48%,15%,15%",options="header"]
+.Credentials for a Pure Storage FlashArray storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
 | `STORAGE_HOSTNAME`
-| IP or URL of the host (string).
-| Yes.
-| N/A.
+| The IP or URL of the host (string)
+| Yes
+|
 
 | `STORAGE_USERNAME`
-| The user's name (string).
-| Yes.
-| N/A.
+| The username (string)
+| Yes
+|
 
 | `STORAGE_PASSWORD`
-| The user's password (string).
-| Yes.
-| N/A.
+| The user password (string)
+| Yes
+|
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
-| No.
-|`false`
+| No
+| `false`
 
-|`PURE_CLUSTER_PREFIX`
+| `PURE_CLUSTER_PREFIX`
 | The cluster prefix is set in the `StorageCluster` resource. Retrieve it by running `printf "px_%.8s" $(oc get storagecluster -A -o=jsonpath='{.items[?(@.spec.cloudStorage.provider=="pure")].status.clusterUid}')` in the CLI.
-| Yes.
-| N/A.
+| Yes
+|
 |===
 +
-[width="100%",cols="22%,48%,15%,15%",options="header",]
+[width="100%",cols="22%,48%,15%,15%",options="header"]
 .Credentials for a Dell PowerMax storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
 | `STORAGE_HOSTNAME`
-| IP or URL of the host (string).
-| Yes.
-| N/A.
+| The IP or URL of the host (string)
+| Yes
+|
 
 | `STORAGE_USERNAME`
-| The user's name (string).
-| Yes.
-| N/A.
+| The username (string)
+| Yes
+|
 
 | `STORAGE_PASSWORD`
-| The user's password (string).
-| Yes.
-| N/A.
+| The user password (string)
+| Yes
+|
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
-| No..
-|`false`
+| No
+| `false`
 
 | `POWERMAX_SYMMETRIX_ID`
-| The Symmetrix ID of the storage array. Can be taken from the config map under the 'powermax' namespace, which the CSI driver uses.
-| Yes.
-| N/A.
+| The Symmetrix ID of the storage array. It can be taken from the config map under the `powermax` namespace, which the CSI driver uses.
+| Yes
+|
  
 | `POWERMAX_PORT_GROUP_NAME`
-| The port group to use for masking view creation.
-| Yes.
-| N/A.
+| The port group to use for masking view creation
+| Yes
+|
 |===
 +
-[width="100%",cols="22%,48%,15%,15%",options="header",]
+[width="100%",cols="22%,48%,15%,15%",options="header"]
 .Credentials for a Dell PowerFlex storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
 | `STORAGE_HOSTNAME`
-| IP or URL of the host (string).
-| Yes.
-| N/A.
+| The IP or URL of the host (string)
+| Yes
+|
 
 | `STORAGE_USERNAME`
-| The user's name (string).
-| Yes.
-| N/A.
+| The username (string)
+| Yes
+|
 
 | `STORAGE_PASSWORD`
-| The user's password (string).
-| Yes.
-| N/A.
+| The user password (string)
+| Yes
+|
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
-| No.
-|`false`.
+| No
+| `false`
 
 | `POWERFLEX_SYSTEM_ID`
-| The system ID of the storage array. Can be taken from `vxflexos-config`` from the `vxflexos`` namespace or from the `openshift-operators` namespace.
-| Yes.
-| N/A.
+| The system ID of the storage array. It can be taken from `vxflexos-config` from the `vxflexos` namespace or from the `openshift-operators` namespace.
+| Yes
+|
 |===
 +
-[width="100%",cols="22%,48%,15%,15%",options="header",]
+[width="100%",cols="22%,48%,15%,15%",options="header"]
 .Credentials for a Dell PowerStore storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
 | `STORAGE_HOSTNAME`
-| IP or URL of the host (string)
-| Yes.
-| N/A.
+| The IP or URL of the host (string)
+| Yes
+|
 
 | `STORAGE_USERNAME`
-| The user's name (string).
-| Yes.
-| N/A.
+| The username (string)
+| Yes
+|
 
 | `STORAGE_PASSWORD`
-| The user's password (string).
-| Yes.
-| N/A.
+| The user password (string)
+| Yes
+|
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
-| No.
-|`false`.
+| No
+| `false`
 |===
 +
-[width="100%",cols="22%,48%,15%,15%",options="header",]
+[width="100%",cols="22%,48%,15%,15%",options="header"]
 .Credentials for an HPE 3PAR or HPE Primera storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
 | `STORAGE_HOSTNAME`
-| Must include the full URL with protocol. 
-For HPE 3PAR, must also include Web Services API (WSAPI) port. Use the HPE 3PAR command `cli% showwsapi` to determine the correct WSAPI port. HPE 3PAR systems default to port 8080 for both HTTP and HTTPS connections, HPE Primera defaults to port 443 (SSL/HTTPS). Depending on configured certificates, you might need to skip SSL verification. Example: `https://192.168.1.1:8080`.
+| Must include the full URL with protocol. For HPE 3PAR, must also include Web Services API (WSAPI) port. Use the HPE 3PAR command `cli% showwsapi` to determine the correct WSAPI port. HPE 3PAR systems default to port 8080 for both HTTP and HTTPS connections. HPE Primera defaults to port 443 (SSL/HTTPS). Depending on configured certificates, you might need to skip SSL verification. Example: `https://192.168.1.1:8080`.
 | Yes
-| N/A
+|
 
 | `STORAGE_USERNAME`
-| The user's name (string)
+| The username (string)
 | Yes
-| N/A
+|
 
 | `STORAGE_PASSWORD`
-| The user's password (string)
+| The user password (string)
 | Yes
-| N/A
+|
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
 | No
-|`false`
+| `false`
 |===
 +
-[width="100%",cols="22%,48%,15%,15%",options="header",]
-.Credentials for an Infinidat InfiniBox storage copy offload Secret
+[width="100%",cols="22%,48%,15%,15%",options="header"]
+.Credentials for an Infinidat InfiBox storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
 | `STORAGE_HOSTNAME`
-| IP or URL of the host (string)
+| The IP or URL of the host (string)
 | Yes
-| N/A
+|
 
 | `STORAGE_USERNAME`
-| The user's name (string)
+| The username (string)
 | Yes
-| N/A
+|
 
 | `STORAGE_PASSWORD`
-| The user's password (string)
+| The user password (string)
 | Yes
-| N/A
+|
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
 | No
-|`false`
+| `false`
 |===
 +
-[width="100%",cols="22%,48%,15%,15%",options="header",]
+[width="100%",cols="22%,48%,15%,15%",options="header"]
 .Credentials for an IBM FlashSystem storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
 | `STORAGE_HOSTNAME`
-| IP or URL of the host (string)
+| The IP or URL of the host (string)
 | Yes
-| N/A
+|
 
 | `STORAGE_USERNAME`
-| The user's name (string)
+| The username (string)
 | Yes
-| N/A
+|
 
 | `STORAGE_PASSWORD`
-| The user's password (string)
+| The user password (string)
 | Yes
-| N/A
-+
+|
+
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
 | No
-|`false`
+| `false`
 |===
 +
 . In the UI complete the following steps:

@@ -3,7 +3,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
 
 :_mod-docs-content-type: REFERENCE
-[id="con_common-migration-issues_{context}"]
+[id="ref_common-migration-issues_{context}"]
 = Common migration issues
 
 [role="_abstract"]

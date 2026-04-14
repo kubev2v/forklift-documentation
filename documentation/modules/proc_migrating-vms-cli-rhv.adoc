@@ -2,10 +2,8 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
 
-
 :_mod-docs-content-type: PROCEDURE
 [id="proc_migrating-vms-cli-rhv_{context}"]
-
 = Running a {rhv-full} migration from the command-line
 
 [role="_abstract"]
