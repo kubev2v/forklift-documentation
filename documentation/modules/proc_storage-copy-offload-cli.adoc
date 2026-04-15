@@ -25,7 +25,7 @@ In addition to the regular link:https://docs.redhat.com/en/documentation/migrati
 ** IBM Flashsystem
 * A working Container Storage Interface (CSI) driver connected to the above and to {virt}
 * A configured {vmw} vSphere provider
-* vSphere users must have a role that includes the following privileges (suggested name: `StorgeOffloader`):
+* vSphere users must have a role that includes the following privileges (suggested name: `StorageOffloader`):
 
 ** Global
 *** Settings
@@ -41,7 +41,7 @@ In addition to the regular link:https://docs.redhat.com/en/documentation/migrati
 
 . In the {project-short} Operator, set the value of `feature_copy_offload` to `true` in `forklift-controller` by running the following command:
 +
-[source, terminal]
+[source,terminal,subs="+quotes"]
 ----
 oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type merge -p '{"spec": {"feature_copy_offload": "true"}}' -n openshift-mtv
 ----
@@ -56,47 +56,47 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | `GOVMOMI_HOSTNAME`
 | hostname or URL of the vSphere API (string).
 | Yes.
-| NA.
+| N/A.
 
 | `GOVMOMI_USERNAME`
 | User name of the vSphere API (string).
 | Yes.
-| NA.
+| N/A.
 
 | `GOVMOMI_PASSWORD`
 | Password of the vSphere API (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_HOSTNAME`
 | The hostname or URL of the storage vendor API (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_USERNAME`
 | The username of the storage vendor API (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_PASSWORD`
 | The password of the storage vendor API (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_PORT`
 | The port of the storage vendor API (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_ID`
 | Storage array serial number (string).
 | Yes.
-| NA.
+| N/A.
 
 | `HOSTGROUP_ID_LIST`
 | List of IO ports and host group IDs, for example. `CL1-A,1:CL2-B,2:CL4-A,1:CL6-A,1`.
 | Yes.
-| NA.
+| N/A.
 |===
 +
 [width="100%",cols="22%,48%,15%,15%",options="header",]
@@ -107,17 +107,17 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | `STORAGE_HOSTNAME`
 | IP or URL of the host (string). Either enter the management IP for the entire cluster or enter a dedicated storage virtual machine management logical interface (SVM LIF).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_USERNAME`
 | The user's name (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_PASSWORD`
 | The user's password (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
@@ -127,7 +127,7 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 |`ONTAP_SVM`
 | The storage virtual machine (SVM) to be used in all client interactions. It can be taken from `trident.netapp.io/v1/TridentBackend.config.ontap_config.svm` resource field.
 | Yes.
-| NA.
+| N/A.
 |===
 +
 [width="100%",cols="22%,48%,15%,15%",options="header",]
@@ -138,17 +138,17 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | `STORAGE_HOSTNAME`
 | IP or URL of the host (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_USERNAME`
 | The user's name (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_PASSWORD`
 | The user's password (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
@@ -158,7 +158,7 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 |`PURE_CLUSTER_PREFIX`
 | The cluster prefix is set in the `StorageCluster` resource. Retrieve it by running `printf "px_%.8s" $(oc get storagecluster -A -o=jsonpath='{.items[?(@.spec.cloudStorage.provider=="pure")].status.clusterUid}')` in the CLI.
 | Yes.
-| NA.
+| N/A.
 |===
 +
 [width="100%",cols="22%,48%,15%,15%",options="header",]
@@ -169,17 +169,17 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | `STORAGE_HOSTNAME`
 | IP or URL of the host (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_USERNAME`
 | The user's name (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_PASSWORD`
 | The user's password (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
@@ -189,12 +189,12 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | `POWERMAX_SYMMETRIX_ID`
 | The Symmetrix ID of the storage array. Can be taken from the config map under the 'powermax' namespace, which the CSI driver uses.
 | Yes.
-| NA.
+| N/A.
  
 | `POWERMAX_PORT_GROUP_NAME`
 | The port group to use for masking view creation.
 | Yes.
-| NA.
+| N/A.
 |===
 +
 [width="100%",cols="22%,48%,15%,15%",options="header",]
@@ -205,17 +205,17 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | `STORAGE_HOSTNAME`
 | IP or URL of the host (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_USERNAME`
 | The user's name (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_PASSWORD`
 | The user's password (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
@@ -225,7 +225,7 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | `POWERFLEX_SYSTEM_ID`
 | The system ID of the storage array. Can be taken from `vxflexos-config`` from the `vxflexos`` namespace or from the `openshift-operators` namespace.
 | Yes.
-| NA.
+| N/A.
 |===
 +
 [width="100%",cols="22%,48%,15%,15%",options="header",]
@@ -236,22 +236,22 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | `STORAGE_HOSTNAME`
 | IP or URL of the host (string)
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_USERNAME`
 | The user's name (string).
 | Yes.
-| NA.
+| N/A.
 
 | `STORAGE_PASSWORD`
-| The user's password (string)
-| Yes
-| NA
+| The user's password (string).
+| Yes.
+| N/A.
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
-| No
-|`false`
+| No.
+|`false`.
 |===
 +
 [width="100%",cols="22%,48%,15%,15%",options="header",]
@@ -263,17 +263,17 @@ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type mer
 | Must include the full URL with protocol. 
 For HPE 3PAR, must also include Web Services API (WSAPI) port. Use the HPE 3PAR command `cli% showwsapi` to determine the correct WSAPI port. HPE 3PAR systems default to port 8080 for both HTTP and HTTPS connections, HPE Primera defaults to port 443 (SSL/HTTPS). Depending on configured certificates, you might need to skip SSL verification. Example: `https://192.168.1.1:8080`.
 | Yes
-| NA
+| N/A
 
 | `STORAGE_USERNAME`
 | The user's name (string)
 | Yes
-| NA
+| N/A
 
 | `STORAGE_PASSWORD`
 | The user's password (string)
 | Yes
-| NA
+| N/A
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
@@ -289,17 +289,17 @@ For HPE 3PAR, must also include Web Services API (WSAPI) port. Use the HPE 3PAR 
 | `STORAGE_HOSTNAME`
 | IP or URL of the host (string)
 | Yes
-| NA
+| N/A
 
 | `STORAGE_USERNAME`
 | The user's name (string)
 | Yes
-| NA
+| N/A
 
 | `STORAGE_PASSWORD`
 | The user's password (string)
 | Yes
-| NA
+| N/A
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).
@@ -315,17 +315,17 @@ For HPE 3PAR, must also include Web Services API (WSAPI) port. Use the HPE 3PAR 
 | `STORAGE_HOSTNAME`
 | IP or URL of the host (string)
 | Yes
-| NA
+| N/A
 
 | `STORAGE_USERNAME`
 | The user's name (string)
 | Yes
-| NA
+| N/A
 
 | `STORAGE_PASSWORD`
 | The user's password (string)
 | Yes
-| NA
+| N/A
 
 | `STORAGE_SKIP_SSL_VERIFICATION`
 | If set to `true`, SSL verification is not performed (`true`, `false`).

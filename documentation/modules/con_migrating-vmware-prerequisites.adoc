@@ -1,0 +1,10 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_migrating-vmware-prerequisites_{context}"]
+= Prerequisites for migrating VMware VMs
+
+[role="_abstract"]
+Before you start migrating your virtual machines from {vmw} vSphere, be sure that you have planned your migration.

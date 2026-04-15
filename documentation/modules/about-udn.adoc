@@ -16,4 +16,4 @@ You can use this feature for creating migration plans by using the {ocp} web con
 [role="_additional-resources"]
 .Additional resources
 
-* link:{ocp-doc}/virtualization/networking#virt-connecting-vm-to-primary-udn[Connecting a virtual machine to a primary user-defined network]
+* {ocp-doc}/virtualization/networking#virt-connecting-vm-to-primary-udn[Connecting a virtual machine to a primary user-defined network]
