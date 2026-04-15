@@ -18,12 +18,12 @@ If you use this method, you must install the VIB on every ESXi host that you use
 
 * Podman or Docker installed on your local machine.
 * Root user SSH access to ESXi hosts.
-* SSH private key for ESXi authentication. This can be the same key as used for the SSH clone method, if you use both.
+* SSH private key for ESXi authentication. This can be the same key used for the SSH clone method, if you use both.
 * Optional: vSphere credentials. These allow you to auto-discovery ESXi hosts.
 
 .Procedure
 
-. Configure the VIB clone method in your `Provider` CR by setting `settings:exsiCloneMethod` to `"vib"`.
+. Configure the VIB clone method in your `Provider` CR by setting `settings:esxiCloneMethod` to `"vib"`.
 +
 .Example Provider CR
 [source,yaml,subs="attributes+"]
@@ -47,7 +47,7 @@ spec:
 
 .. Auto-discover ESXi hosts from vSphere and install the VIB by running the following commands:
 +
-[source, terminal]
+[source,terminal,subs="+quotes"]
 ----
 $ podman run -it --rm \
   --entrypoint /bin/vib-installer \
@@ -64,7 +64,7 @@ $ podman run -it --rm \
 
 .. Or specify ESXi hosts manually and install the VIB by running the following commands:
 +
-[source, terminal]
+[source,terminal,subs="+quotes"]
 ----
 $ podman run -it --rm \
   --entrypoint /bin/vib-installer \

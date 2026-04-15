@@ -20,7 +20,7 @@ Procedures for both options are given in the sections that follow.
 - The command path in the restrictions must match the secure script path: `/vmfs/volumes/{datastore-name}/secure-vmkfstools-wrapper.py`.
 - You must install the SSH key in each ESXi host in your migration environment.
 - SSH service must be enabled on all target ESXi hosts.
-- To support ESXi access control, commands are restricted to `vmkfstools` operations only.
+- To support ESXi access control, commands are restricted to `vmkfstools` operations.
 
 == Security recommendations
 

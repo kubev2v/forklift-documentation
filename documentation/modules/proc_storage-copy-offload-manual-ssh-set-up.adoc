@@ -16,7 +16,7 @@ You can manually generate restricted SSH keys to use for storage copy offload mi
 
 .Procedure
 
-. Configure the SSH clone method in your `Provider` CR by setting `settings:exsiCloneMethod` to `"ssh"`.
+. Configure the SSH clone method in your `Provider` CR by setting `settings:esxiCloneMethod` to `"ssh"`.
 +
 .Example Provider CR
 [source,yaml,subs="attributes+"]
@@ -38,16 +38,14 @@ spec:
 
 . Get the public key from the auto-generated secret by performing the following steps:
 
-.. Get a list of SSH key secrets by running the following command:
-+
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ oc get secrets -l app.kubernetes.io/component=ssh-keys -n <namespace_with_key>
 ---- 
 
 .. Extract the public key you want by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ oc get secret <your_public_key> \
   -o jsonpath='{.data.public-key}' -n <namespace_with_key> | base64 -d > esxi_public_key.pub
@@ -55,7 +53,7 @@ $ oc get secret <your_public_key> \
 
 .. View the public key by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ cat esxi_public_key.pub
 ----
@@ -64,7 +62,7 @@ $ cat esxi_public_key.pub
 
 .. Prefix the public key with command restrictions by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ echo 'command="python /vmfs/volumes/<datastore_name>/secure-vmkfstools-wrapper.sh",no-port-forwarding,no-agent-forwarding,no-X11-forwarding '$(cat esxi_public_key.pub) > restricted_key.pub
 ----
@@ -73,14 +71,14 @@ The command runs a script that adds the prefix.
 
 .. View the final restricted key by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ cat restricted_key.pub
 ----
 
 . Install the restricted key on the ESXI host directly by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ cat restricted_key.pub | ssh root@<your_ESXi_host_IP> \
   'cat >> /etc/ssh/keys-root/authorized_keys'
@@ -90,7 +88,7 @@ $ cat restricted_key.pub | ssh root@<your_ESXi_host_IP> \
 
 .. Extract the private key from the Secret by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ oc get secret <your_private_key> \
   -o jsonpath='{.data.private-key}' -n <namespace_with_key> | base64 -d > esxi_private_key
@@ -98,14 +96,14 @@ $ oc get secret <your_private_key> \
 
 .. Set the permissions of your private key by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ chmod 600 esxi_private_key
 ----
 
 .. Test the connection by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ ssh -i esxi_private_key root@<your_ESXi_host_IP>
 ----
@@ -116,7 +114,7 @@ If the installation was successful, you are connected to the ESXi host with rest
 
 . Clean up the local key files by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ rm -f esxi_public_key.pub restricted_key.pub esxi_private_key
 ----

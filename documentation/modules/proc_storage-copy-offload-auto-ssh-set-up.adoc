@@ -29,7 +29,7 @@ SSH keys are stored in secrets with predictable names based on the name of your 
 | `private-key`: RSA private key in PEM format
 
 | Public key
-| `offload-ssh-keys-{proider-name}-public`
+| `offload-ssh-keys-{provider-name}-public`
 | `public-key: SSH public key in authorized_keys format
 |===
 
@@ -41,7 +41,7 @@ Example: For a provider with the name `vcenter-example`, the secrets would be `o
 
 .Procedure
 
-. Configure the SSH clone method in your `Provider` CR by setting `settings:exsiCloneMethod` to `"ssh"`.
+. Configure the SSH clone method in your `Provider` CR by setting `settings:esxiCloneMethod` to `"ssh"`.
 +
 .Example Provider CR
 [source,yaml,subs="attributes+"]
@@ -65,21 +65,21 @@ spec:
 
 .. List all SSH key secrets in the provider's namespace by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="+quotes"]
 ----
 $ oc get secrets -l app.kubernetes.io/component=ssh-keys -n openshift-mtv
 ----
 +
 .. View a specific private or public key secret by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="+quotes"]
 ----
 $ oc get secret <name_of_private_or_public_key> -o yaml -n openshift-mtv
 ----
 +
 . Optional: If needed, you can replace an auto-generated key pair by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="+quotes"]
 ----
 $ ssh-keygen -t rsa -b 4096 -f custom_esxi_key -N ""
 ----
@@ -90,7 +90,7 @@ This is a simpler procedure than manually generating the key pair, as described 
 
 .. Replace a private key secret by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="+quotes"]
 ----
 $ oc create secret generic <name_of_private_key> \
   --from-file=private-key=custom_esxi_key \
@@ -99,7 +99,7 @@ $ oc create secret generic <name_of_private_key> \
 +
 .. Replace a public key secret by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="+quotes"]
 ----
 $ oc create secret generic <name of public key> \
   --from-file=public-key=custom_esxi_key.pub \
@@ -108,7 +108,7 @@ $ oc create secret generic <name of public key> \
 +
 . Optional: Configure the SSH timeout by adding it to your provider secret, which is the main storage credentials secret, by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="+quotes"]
 ----
 $ oc patch secret <provider_credentials> -p '{"data":{"SSH_TIMEOUT_SECONDS":"'$(echo -n "60" | base64)'"}}' -n <provider_namespace>
 ----
