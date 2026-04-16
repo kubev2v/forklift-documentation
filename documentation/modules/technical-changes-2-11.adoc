@@ -11,7 +11,7 @@ Review the technical changes in this release of {project-short}.
 
 Storage copy offload for Infinidat Infinibox (Developer Preview)::
 
-{project-first} provides storage copy offload for Infinidat Infinibox, for both cold and warm migrations, as a Developer Preview.
+{project-first} provides storage copy offload for Infinidat Infinibox for both cold and warm migrations as a Developer Preview.
 +
 [IMPORTANT]
 ====
