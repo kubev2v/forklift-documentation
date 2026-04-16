@@ -17,7 +17,7 @@ link:https://redhat.atlassian.net/browse/MTV-4722[MTV-4722]
 
 You can define which VMs in a plan are attached to a shared disk::
 
-In a single migration plan, you can define which VMs share a disk. This enhancement eliminates the need to create two migration plans when migrating shared disks: one where all VMs share a disk, and another where none do. This option lets you streamline the process for migrating shared disks.
+In a single migration plan, you can define which VMs share a disk. This enhancement eliminates the need to create two migration plans when migrating shared disks: one where all VMs share a disk and another where none do. This option lets you streamline the process for migrating shared disks.
 +
 link:https://redhat.atlassian.net/browse/MTV-4978[MTV-4978]
 
