@@ -15,7 +15,7 @@ Before this update, if an ESXi host's Fibre Channel or iSCSI initiators were not
 +
 With this update, the system validates the initiator registration. As a result, if the initiators are not registered, the system displays the following message to help you resolve the problem:
 +
-`Can't find a host on symmetrix %s with initiators matching %v. Ensure the ESXi host has a corresponding host object in PowerMax with the correct FC/iSCSI initiators registered.`
+`Can't find a host on Symmetrix %s with initiators matching %v. Ensure the ESXi host has a corresponding host object in PowerMax with the correct FC/iSCSI initiators registered.`
 +
 link:https://issues.redhat.com/browse/MTV-4873[MTV-4873]
 
