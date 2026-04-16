@@ -19,6 +19,17 @@ The storage copy offload feature has some unique configuration prerequisites, wh
 
 You must ensure that your migration plans do not mix VDDK mappings with copy-offload mappings. Because the migration controller copies disks either through CDI volumes (VDDK) or through Volume Populators (copy-offload), all storage pairs in the plan must either include copy-offload details (a `Secret` + product) or exclude them entirely. Otherwise, the plan fails.
 
+For storage copy offload migrations, especially performance-sensitive migrations, it is strongly recommended to delete any preexisting snapshots before you start the migration.
+
+[IMPORTANT]
+====
+Preexisting snapshots cause {project-short} to create snapshot delta chains. These chains prevent the array from performing block-level hardware acceleration for the hardware clone because the `vmkfstools` clone path used for offload cannot use hardware-accelerated `XCOPY`. 
+
+As a result, the operation falls back to a software clone (host-based copy). Although such a fallback migration is faster than a standard migration, it increases migration time and Esxi workload compared to an `XCOPY` migration.
+
+Snapshots created by a warm migration do not affect storage copy offload migrations. Only preexisting snapshots cause this issue.
+====
+
 For {project-first} 2.11, storage copy offload is available as GA for cold migration and as a Technology Preview feature for warm migration.
 
 [IMPORTANT]
@@ -51,7 +62,7 @@ The Forklift project, a key component of {project-short}, includes a specialized
 
 [IMPORTANT]
 ====
-The storage arrays must be the ones specified above. Otherwise, XCOPY performs a fallback network disk copy on the ESXi. Although a fallback network disk copy on the ESXi is usually considerably faster than a standard migration using a VDDK image over the network, it is not as quick as a properly configured storage copy offload migration.
+The storage arrays must be the ones specified above. Otherwise, `XCOPY` performs a fallback network disk copy on the ESXi. Although a fallback network disk copy on the ESXi is usually considerably faster than a standard migration using a VDDK image over the network, it is not as quick as a properly configured storage copy offload migration.
 ====
 
 [id="storage-copy-offload-works-supported-providers_{context}"]
