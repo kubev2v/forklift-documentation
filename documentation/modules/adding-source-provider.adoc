@@ -128,7 +128,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 +
 Do one of the following:
 
-** Select the *Skip VMWare Virtual Disk Development Kit (VDDK) SDK acceleration (not recommended)*.
+** Select the *Skip {vmw} Virtual Disk Development Kit (VDDK) SDK acceleration (not recommended)*.
 
 ** Enter the path in the *VDDK init image* text box. Format: `<registry_route_or_server_path>/vddk:<tag>`.
 

@@ -25,7 +25,7 @@ Correct UI display of migration type after change::
 
 Before this update, if you changed the `Migration type` on the `Plan details` page in the {project-short} UI from warm to cold, the YAML file was updated correctly but the UI did not display the updated migration type. With this release, the UI edit field for `Migration type` updates the migration type in the YAML file and the UI correctly displays the updated migration type.
 +
-link:https://issues.redhat.com/browse/MTV-3476[MTV-3476]
+link:https://issues.redhat.com/browse/MTV-3476[(MTV-3476)]
 
 Correct VM name display in migration progress::
 

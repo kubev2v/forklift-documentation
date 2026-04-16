@@ -74,7 +74,7 @@ spec:
 ----         
 ====
 +
-link:https://issues.redhat.com/browse/MTV-4698[(MTV-4698)]
+link:https://issues.redhat.com/browse/MTV-4698[MTV-4698]
 
 Direct OVA import from local machines to {virt} in {project-short} UI::
 
@@ -126,7 +126,7 @@ link:https://issues.redhat.com/browse/MTV-3737[MTV-3737]
 
 Validation alert for VDDK for {vmw} warm migrations::
 
-{project-short} 2.11.0 introduces visible validation checks for warm migration from {vmw} environments in the web console. Users are alerted if the {vmw} vSphere Virtual Disk Development Kit (VDDK) is missing or incorrectly configured, preventing silent failures and saving time on migration plans. Updated {project-short} documentation provides guidance on VDDK installation.
+{project-short} 2.11.0 introduces visible validation checks for warm migration from {vmw} environments in the web console. Users are alerted if the {vmw} Virtual Disk Development Kit (VDDK) is missing or incorrectly configured, preventing silent failures and saving time on migration plans. Updated {project-short} documentation provides guidance on VDDK installation.
 +
 link:https://issues.redhat.com/browse/MTV-3805[MTV-3805]
 
