@@ -31,6 +31,6 @@ The `fstrim` stage of `virt-v2v` is now skipped for warm migrations::
 
 Before this update, large (multi-terabyte) warm migrations took a long time during the `fstrim` stage of `virt-v2v`.
 +
-With this update, {project-short} uses the `--no-fstrim` option for `virt-v2v`. As a result, large warm migrations run correctly. Note that the converted guest might use more space after the conversion.
+With this update, {project-short} uses the `--no-fstrim` option for `virt-v2v`. As a result, large warm migrations run correctly. The converted guest might use more space after the conversion.
 +
 link:https://issues.redhat.com/browse/MTV-4941[MTV-4941]
