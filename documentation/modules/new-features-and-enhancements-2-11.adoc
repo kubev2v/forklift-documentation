@@ -47,7 +47,7 @@ In {project-short} 2.11.1, you can control nested virtualization behavior during
 ** `true`: Force enables nested virtualization on the target VM, regardless of source settings.
 ** `false`: Force disables nested virtualization on the target VM, regardless of source settings.
 +
-This option gives you the flexibility to mitigate performance issues stemming from Virtualization Based Security (VBS) activation. 
+This option gives you the flexibility to mitigate performance issues stemming from Virtualization Based Security (VBS) activation.
 +
 By disabling VBS on target VMs during the migration of Windows VMs that do not need nested virtualization, you can avoid potential performance degradation, resulting in a more streamlined and efficient migration process.
 +
@@ -71,10 +71,10 @@ spec:
               policy: optional
             - name: svm
               policy: optional
-----         
+----
 ====
 +
-link:https://issues.redhat.com/browse/MTV-4698[(MTV-4698)]
+link:https://issues.redhat.com/browse/MTV-4698[MTV-4698]
 
 Direct OVA import from local machines to {virt} in {project-short} UI::
 
@@ -132,7 +132,7 @@ link:https://issues.redhat.com/browse/MTV-3805[MTV-3805]
 
 Improved data migration error handling and diagnostics::
 
-{project-short} 2.11.0 enhances data integrity during VM migration by using features introduced in RHEL 10.1. This release introduces filesystem-level consistency checks, improved system error handling, and internal diagnostics. Warm migration and features like storage offload minimize downtime with efficient disk migration and data transfer. 
+{project-short} 2.11.0 enhances data integrity during VM migration by using features introduced in RHEL 10.1. This release introduces filesystem-level consistency checks, improved system error handling, and internal diagnostics. Warm migration and features like storage offload minimize downtime with efficient disk migration and data transfer.
 +
 link:https://issues.redhat.com/browse/MTV-3906[MTV-3906]
 
@@ -199,4 +199,8 @@ In {project-short} 2.11.0, IP preservation for VM migration now verifies that IP
 +
 link:https://issues.redhat.com/browse/MTV-3130[MTV-3130]
 
+Updated virtio-win drivers for improved migration stability::
 
+The `virtio-win` package, which provides drivers for Microsoft Windows virtual machines, is rebased to version 1.9.57. With this update, virtual machine migrations are more stable and include security updates. This update also resolves rare instances of stop errors that occurred during migrations.
++
+link:https://redhat.atlassian.net/browse/MTV-5077[MTV-5077]
