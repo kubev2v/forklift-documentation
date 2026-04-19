@@ -1,0 +1,18 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: REFERENCE
+[id="resolved-issues-2-11-4_{context}"]
+= Resolved issues 2.11.4
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+The `fstrim` stage of `virt-v2v` is now skipped for migrations using RHEL 9 with `xfsCompatibility` set to `true`::
+
+Before this update, migrations of VMs with the `xfsCompatibility` parameter set to {virt} platforms that use {rhel-first} 9 took a long time during the `fstrim` stage of `virt-v2v`.
++
+With this update, {project-short} uses the `--no-fstrim` option for `virt-v2v` for these migrations to RHEL 9-based {virt} platforms. As a result, these migrations run correctly. The converted guest might use more space after the conversion.
++
+link:https://issues.redhat.com/browse/MTV-5062[MTV-5062]
