@@ -10,7 +10,7 @@
 [role="_abstract"]
 You can use Red Hat OpenShift Lightspeed, a generative AI-based virtual assistant, to help plan and troubleshoot your virtual machine migrations with {project-first}.
 
-OpenShift Lightspeed is integrated directly into the {ocp} web console. It provides intelligent assistance through a natural-language interface, allowing you to ask questions, receive troubleshooting guidance, and get step-by-step instructions without leaving the console.
+Red Hat OpenShift Lightspeed is integrated directly into the {ocp} web console. It provides intelligent assistance through a natural-language interface, allowing you to ask questions, receive troubleshooting guidance, and get step-by-step instructions without leaving the console.
 
 [NOTE]
 ====
@@ -18,6 +18,16 @@ OpenShift Lightspeed integration with {project-short} is available as a Technolo
 
 For more information about the support scope of Red Hat Technology Preview features, see link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
 ====
+
+.Prerequisites
+
+* {ocp} 4.15 or later
+* {project-short} 2.12 or later
+* Red Hat OpenShift Lightspeed Operator installed and configured on your cluster
++
+For information about installing and configuring Red Hat OpenShift Lightspeed, see the link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[Red Hat OpenShift Lightspeed documentation].
+
+The {project-short} Operator automatically configures the integration with Red Hat OpenShift Lightspeed when both components are installed. No additional configuration is required.
 
 == Lightspeed use cases
 
@@ -31,12 +41,12 @@ For example:
 * "What network requirements do I need for migrating VMs?"
 * "How do I check network mapping for a failed migration?"
 
-Real-time troubleshooting:: Get plain-language explanations of migration failures, error messages, and stuck migrations without manually parsing logs or navigating through complex error messages.
+Real-time troubleshooting:: Get plain-language explanations of migration failures, error messages, and stalled migrations without manually parsing logs.
 +
 For example:
 +
 * "Why did the migration for VM 'ProdDB-01' fail?"
-* "Why is my warm migration stuck?"
+* "Why is my warm migration stalled?"
 * "What does the error 'import retry limit exceeded' mean?"
 * "How do I resolve Changed Block Tracking (CBT) snapshot issues?"
 
@@ -59,3 +69,13 @@ When you ask Lightspeed a question about {project-short}, the assistant:
 == Privacy and data handling
 
 The assistant operates using your own user credentials and can only access resources that you have permission to view. Lightspeed uses cluster metadata, migration resource status, and log data to provide contextual assistance. All data access respects your existing RBAC permissions, and the assistant cannot access resources beyond your authorization level.
+
+== How the integration works
+
+The {project-short} Operator automatically configures the integration with Red Hat OpenShift Lightspeed by:
+
+* Deploying the {project-short} MCP (Model Context Protocol) server
+* Registering the MCP server with Red Hat OpenShift Lightspeed
+* Configuring the necessary feature gates and endpoints
+
+This integration enables Lightspeed to access {project-short} resources and provide context-aware assistance for your migrations.

@@ -2,9 +2,6 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
 
-// SME CHECK: Review the flow of this troubleshooting workflow in the full assembly context
-// after adding Lightspeed AI as step 2. Verify that the xref to proc_using-lightspeed-troubleshooting
-// resolves correctly and that the workflow progression makes sense.
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_troubleshooting-workflow_{context}"]
@@ -53,7 +50,7 @@ Forklift controller logs capture {project-first} related events and provide deta
 
 . *Collect must-gather logs* if previous troubleshooting steps do not resolve the issue.
 +
-The `must-gather` tool collects comprehensive diagnostic information about your cluster. Red Hat OpenShift Lightspeed analyzes the same types of data that `must-gather` collects, but `must-gather` provides a complete archive for Red Hat Support analysis.
+The `must-gather` tool collects comprehensive diagnostic information about your cluster and packages it for Red Hat Support analysis.
 +
 .. Navigate to the directory where you want to store the `must-gather` data:
 +
