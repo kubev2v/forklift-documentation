@@ -6,6 +6,7 @@
 [id="con_troubleshooting-storage-copy-offload_{context}"]
 = Troubleshooting storage copy offload
 
+[role="_abstract"]
 This section describes problems that are unique to storage copy offload and how you can resolve them.
 
 [id=sco-vsphere-esxi-connectivity_{context}]
