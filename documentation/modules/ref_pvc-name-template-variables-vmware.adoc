@@ -25,7 +25,7 @@ The `pvcNameTemplate` field has access to the following variables:
 * `.Shared`: Indicates whether the volume is shared. Options: `true` for a shared volume, `false` for a non-shared volume.
 * `.WinDriveLetter`: Windows drive letter in lowercase (for example, `c`, `d`). Only applicable to Windows guests.
 +
-This variable requires the QEMU Guest Agent (or {vmw} Tools) to be active and reachable on the source VM. It also requires a disk key mapping between the guest operating system and the hardware disk. This mapping may be missing for some disk configurations, particularly IDE disks. When the mapping is missing (for example, on Linux VMs or when the Windows drive letter is not explicitly set), the variable resolves to an empty string.
+This variable requires the QEMU Guest Agent (or {vmw} Tools) to be active and reachable on the source VM. It also requires a disk key mapping between the guest operating system and the hardware disk. This mapping may be missing for some disk configurations, particularly IDE disks. When the mapping is missing (for example, on Linux VMs or when the Windows drive letter is not explicitly set), the variable resolves to an empty string. If this results in an invalid PVC name, {project-short} adds an error to the plan conditions and prevents the migration from running.
 * `.FileName`: Name of the virtual disk file (for example, `vm-disk1.vmdk`), not the full datastore path. {vmw} only.
 
 == Template functions
