@@ -11,8 +11,7 @@
 [role="_abstract"]
 When creating a migration plan, you can use template variables to customize the names of persistent volume claims (PVCs) for migrated virtual machine disks. The template follows Go template syntax.
 
-PVC names must be DNS-compliant: they must consist of lowercase alphanumeric characters or hyphens (`-`), start with an alphanumeric character, and not exceed 63 characters. {project-short} validates the `pvcNameTemplate` against the actual VM inventory when you create a migration plan. If the template syntax is invalid or if the resulting PVC names are not DNS-compliant, {project-short} adds an error to the plan conditions and prevents the migration from running.
-// TODO: Check with SME - Confirm MTV validates PVC templates at plan creation time (unlike network/volume templates which aren't validated).
+You must ensure that PVC names are DNS-compliant: they must consist of lowercase alphanumeric characters or hyphens (`-`), start with an alphanumeric character, and not exceed 63 characters. If the template syntax is invalid or if the resulting PVC names are not DNS-compliant, {project-short} adds an error to the plan conditions and prevents the migration from running.
 
 == Available variables
 
@@ -21,13 +20,12 @@ The `pvcNameTemplate` field has access to the following variables:
 * `.VmName`: Name of the VM in the source cluster.
 * `.TargetVmName`: Final VM name in the target cluster. May equal `.VmName` if no rename or normalization occurs.
 * `.PlanName`: Name of the migration plan.
-* `.DiskIndex`: Initial volume index of the disk.
-* `.RootDiskIndex`: Index of the root disk.
-* `.Shared`: Options: `true`, for a shared volume, `false`, for a non-shared volume.
+* `.DiskIndex`: Sequential index of the disk (0-based).
+* `.RootDiskIndex`: Index value that identifies the root disk.
+* `.Shared`: Indicates whether the volume is shared. Options: `true` for a shared volume, `false` for a non-shared volume.
 * `.WinDriveLetter`: Windows drive letter in lowercase (for example, `c`, `d`). Only applicable to Windows guests.
 +
-This variable requires the QEMU Guest Agent (or {vmw} Tools) to be active and reachable on the source VM. It also requires a disk key mapping between the guest operating system and the hardware disk. This mapping may be missing for some disk configurations, particularly IDE disks. When the mapping is missing, {project-short} raises an information-level concern and the variable cannot be resolved in the PVC name template.
-// TODO: Check with SME - Does .WinDriveLetter resolve to empty string when used on Linux VM or when mapping is missing? Original Jira mentioned "may resolve to an empty string or trigger a validation warning"
+This variable requires the QEMU Guest Agent (or {vmw} Tools) to be active and reachable on the source VM. It also requires a disk key mapping between the guest operating system and the hardware disk. This mapping may be missing for some disk configurations, particularly IDE disks. When the mapping is missing (for example, on Linux VMs or when the Windows drive letter is not explicitly set), the variable resolves to an empty string.
 * `.FileName`: Name of the virtual disk file (for example, `vm-disk1.vmdk`), not the full datastore path. {vmw} only.
 
 == Template functions
