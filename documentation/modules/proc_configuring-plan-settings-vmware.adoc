@@ -11,7 +11,7 @@ After you create a migration plan by using the {project-full} wizard, the *Plan 
 
 .Prerequisites
 
-* You have created a migration plan by using the {project-full} wizard. For more information, see xref:creating-plan-wizard-vmware_{context}[Creating a VMware vSphere migration plan by using the MTV wizard].
+* You have created a migration plan by using the {project-full} wizard. For more information, see xref:proc_creating-plan-wizard-vmware_{context}[Creating a VMware vSphere migration plan by using the MTV wizard].
 
 .Procedure
 

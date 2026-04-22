@@ -3,7 +3,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_understanding-mtv-migration.adoc
 
 :_mod-docs-content-type: CONCEPT
-[id="raw-copy-mode_{context}"]
+[id="con_raw-copy-mode_{context}"]
 = Raw copy mode
 
 [role="_abstract"]
@@ -11,14 +11,7 @@ In regular cold and warm migrations, {project-first} uses a program called `virt
 
 The main function of `virt-v2v` is to convert the disk image of a VM into a format compatible with {virt}.
 
-This program is described in detail in xref:virt-v2v-mtv_{context}[How {project-short} uses the virt-v2v tool].
-
-What is important to note here is that although `virt-v2v` is compatible with major operating systems such as recent versions of Red Hat Enterprise Linux, Windows, and Windows Server, it is not compatible with macOS and some other operating systems.
-
-[NOTE]
-====
-For a list of the operating systems that `virt-v2v` supports, see link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, RHEL 9, and RHEL 10].
-====
+Although `virt-v2v` is compatible with major operating systems such as recent versions of Red Hat Enterprise Linux, Windows, and Windows Server, it is not compatible with macOS and some other operating systems.
 
 As a workaround for migrating VMs that use an operating system that `virt-v2v` does not support, {project-short} includes a feature called _raw copy mode_. Raw copy mode copies VMs without applying any tool to convert them for use with {virt}. The migrated VMs use emulated devices.
 
@@ -30,6 +23,11 @@ Therefore, using raw copy mode is a tradeoff between being a more versatile migr
 
 Because of this risk, users are asked to request that Red Hat support perform raw copy mode migrations.
 
-* For information about configuring raw copy mode by using the {project-short} user interface, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_configuring-plan-settings-vmware_vmware[Configuring VMware migration plan settings] in _Planning your migration to Red Hat {virt}_.
-* For information about configuring raw copy mode by using the command-line interface, see the `skipGuestConversion` and `useCompatibilityMode` parameters in xref:proc_migrating-vms-cli-vmware_vmware[Running a VMware vSphere migration from the command-line].
-* For information about device compatibility mode for raw copy migrations, see xref:con_device-compatibility-mode-raw-copy-migrations_mtv[Device compatibility mode for raw copy migrations].
+[role="_additional-resources"]
+.Additional resources
+
+* xref:virt-v2v-mtv_{context}[How {project-short} uses the virt-v2v tool]
+* link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, RHEL 9, and RHEL 10]
+* link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_configuring-plan-settings-vmware_vmware[Configuring VMware migration plan settings]
+* xref:proc_migrating-vms-cli-vmware_vmware[Running a VMware vSphere migration from the command-line]
+* xref:con_device-compatibility-mode-raw-copy-migrations_mtv[Device compatibility mode for raw copy migrations]
