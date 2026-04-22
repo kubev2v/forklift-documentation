@@ -9,7 +9,7 @@
 [role="_abstract"]
 Review the resolved issues in this release of {project-short}.
 
-The `fstrim` stage of `virt-v2v` is now skipped for migrations using RHEL 9 with `xfsCompatibility` set to `true`::
+Skipping `fstrim` stage improves migration times for `xfsCompatibility` on RHEL 9::
 
 Before this update, migrations of VMs with the `xfsCompatibility` parameter set to {virt} platforms that use {rhel-first} 9 took a long time during the `fstrim` stage of `virt-v2v`.
 +
