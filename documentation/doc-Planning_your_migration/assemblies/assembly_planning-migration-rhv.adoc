@@ -23,13 +23,13 @@ include::../modules/creating-form-based-storage-maps-ui-rhv.adoc[leveloffset=+1]
 
 include::../modules/creating-yaml-based-storage-maps-ui-rhv.adoc[leveloffset=+1]
 
-include::../modules/adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
 :!rhv:
 :context: dest_rhv
 :dest_rhv:
 
-include::../modules/adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
 include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
 

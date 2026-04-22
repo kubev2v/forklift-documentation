@@ -13,7 +13,7 @@ For more information about network and storage maps in {project-short}, see link
 
 .Prerequisites
 
-* Have an Open Virtual Appliance (OVA) source provider and {a-virt} destination provider. For more information, see xref:adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider] or xref:adding-source-provider_dest_cnv[Adding {a-virt} destination provider].
+* Have an Open Virtual Appliance (OVA) source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider] or xref:proc_adding-source-provider_dest_cnv[Adding {a-virt} destination provider].
 
 .Procedure
 

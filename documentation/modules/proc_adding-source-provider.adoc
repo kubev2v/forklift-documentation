@@ -8,7 +8,7 @@
 
 
 :_mod-docs-content-type: PROCEDURE
-[id="adding-source-provider_{context}"]
+[id="proc_adding-source-provider_{context}"]
 
 ifdef::vmware[]
 = Adding a {vmw} vSphere source provider

@@ -39,15 +39,15 @@ include::../modules/proc_storage-copy-offload-manual-ssh-set-up.adoc[leveloffset
 
 include::../modules/proc_storage-copy-offload-ui.adoc[leveloffset=+2]
 
-include::../modules/adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
-include::../modules/selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+1]
 
 :!vmware:
 :context: dest_vmware
 :dest_vmware:
 
-include::../modules/adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
 include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
 

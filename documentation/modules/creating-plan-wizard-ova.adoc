@@ -30,7 +30,7 @@ When you click *Create plan* on the *Review and create* page of the wizard, {pro
 
 .Prerequisites
 
-* Have an OVA source provider and {a-virt} destination provider. For more information, see xref:adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider] or xref:adding-source-provider_dest_ova[Adding {a-virt} destination provider].
+* Have an OVA source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider] or xref:proc_adding-source-provider_dest_ova[Adding {a-virt} destination provider].
 * If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
 * If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
 
@@ -129,7 +129,7 @@ The transfer network is the network used to transfer the VMs to {virt}. This is 
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
-** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:proc_selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 . Click *Next*.
 +
