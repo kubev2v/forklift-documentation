@@ -13,7 +13,7 @@ For more information about network and storage maps in {project-short}, see link
 
 .Prerequisites
 
-* Have an {osp} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_cnv[Adding a {ocp} source provider] or xref:proc_adding-source-provider_dest_cnv[Adding {a-virt} destination provider].
+* Have an {osp} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_ostack[Adding an {osp} source provider] or xref:proc_adding-source-provider_dest_ostack[Adding {a-virt} destination provider].
 
 .Procedure
 

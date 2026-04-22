@@ -44,4 +44,4 @@ Functions can be chained together using the pipe (`|`) operator. Regular express
 * `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"` – Conditional naming for root disk
 * `"{{if .Shared}}shared-{{end}}{{.VmName}}-{{.DiskIndex}}"` – Mark shared volumes
 * `"pvc-{{.VmName}}-drive-{{.WinDriveLetter}}"` – Include Windows drive letter (results in `pvc-myvm-drive-c`)
-* `"{{.FileName | trimSuffix \".vmdk\" | replace \"_\" \"-\" | replace \".\" \"-\" | lower}}-disk-{{.DiskIndex}}"` – Transform filename to valid PVC name (transforms `VM_Disk.1.vmdk` to `vm-disk-1-disk-0`)
+* `"{{.FileName | trimSuffix ".vmdk" | replace "_" "-" | replace "." "-" | lower}}-disk-{{.DiskIndex}}"` – Transform filename to valid PVC name (transforms `VM_Disk.1.vmdk` to `vm-disk-1-disk-0`)
