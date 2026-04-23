@@ -2,7 +2,7 @@
 //
 // * documentation/doc-Release_notes/master.adoc
 
-:_content-type: REFERENCE
+:_mod-docs-content-type: REFERENCE
 [id="resolved-issues-2-11-3_{context}"]
 = Resolved issues 2.11.3
 
