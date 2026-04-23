@@ -40,7 +40,7 @@ Wait for the operator to redeploy the controller after updating the `forklift-co
 . In the Red Hat OpenShift web console, click *Migration for Virtualization* > *Providers*.
 . Click the provider to open the *Details* page. Click the provider's *YAML* tab.
 +
-For information about creating a provider, see xref:adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider].
+For information about creating a provider, see xref:proc_adding-source-provider_ova[Adding an Open Virtual Appliance (OVA) source provider].
 . Scroll down the provider's YAML file, and add the `applianceManagement` field to the `spec` section. Set `applianceManagement` to `'true'`:
 +
 Example:

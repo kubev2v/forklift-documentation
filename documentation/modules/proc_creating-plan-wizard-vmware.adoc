@@ -3,7 +3,7 @@
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="creating-plan-wizard-vmware_{context}"]
+[id="proc_creating-plan-wizard-vmware_{context}"]
 = Creating a VMware vSphere migration plan by using the MTV wizard
 
 [role="_abstract"]
@@ -24,7 +24,7 @@ Limitations::
 
 .Prerequisites
 
-* Have a {vmw} source provider and {a-virt} destination provider. For more information, see xref:adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
+* Have a {vmw} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:proc_adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
 * If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
 * If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
 
@@ -140,7 +140,7 @@ You do not need to enter the passphrases in a specific order. For each LUKS-encr
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
-** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:proc_selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 * *Preserve static IPs*: By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP linked to the interface name in the guest VM lose their IP during migration.
 
@@ -198,5 +198,5 @@ The wizard opens to the page where you defined the item.
 
 .Next steps
 
-* Configure plan settings on the *Plan details* page. For more information, see xref:configuring-plan-settings-vmware_{context}[Configuring VMware migration plan settings].
+* Configure plan settings on the *Plan details* page. For more information, see xref:proc_configuring-plan-settings-vmware_{context}[Configuring VMware migration plan settings].
 

@@ -30,7 +30,7 @@ When you click *Create plan* on the *Review and create* page of the wizard, {pro
 
 .Prerequisites
 
-* Have an {virt} source provider and an {virt} destination provider. For more information, see xref:adding-source-provider_cnv[Adding an {virt} source provider] or xref:adding-source-provider_dest_cnv[Adding {a-virt} destination provider].
+* Have an {virt} source provider and an {virt} destination provider. For more information, see xref:proc_adding-source-provider_cnv[Adding an {virt} source provider] or xref:proc_adding-source-provider_dest_cnv[Adding {a-virt} destination provider].
 * If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
 
 .Procedure
@@ -128,7 +128,7 @@ The transfer network is the network used to transfer the VMs to {virt}. This is 
 +
 To learn more about the different types of networks {ocp-short} supports, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/networking/index#additional-networks-provided_understanding-multiple-networks[Additional Networks in OpenShift Container Platform].
 
-** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
+** To adjust the maximum transmission unit (MTU) of the {ocp-short} transfer network, you must also change the MTU of the VMware migration network. For more information, see xref:proc_selecting-migration-network-for-vmware-source-provider_vmware[Selecting a migration network for a VMware source provider].
 
 . Click *Next*.
 +

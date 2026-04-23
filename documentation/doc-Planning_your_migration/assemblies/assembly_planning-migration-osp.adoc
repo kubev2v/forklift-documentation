@@ -23,13 +23,13 @@ include::../modules/creating-form-based-storage-maps-ui-ostack.adoc[leveloffset=
 
 include::../modules/creating-yaml-based-storage-maps-ui-osp.adoc[leveloffset=+1]
 
-include::../modules/adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
 :!ostack:
 :context: dest_ostack
 :dest_ostack:
 
-include::../modules/adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
 include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
 

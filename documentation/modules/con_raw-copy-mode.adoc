@@ -1,0 +1,31 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_understanding-mtv-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_raw-copy-mode_{context}"]
+= Raw copy mode
+
+[role="_abstract"]
+In regular cold and warm migrations, {project-first} uses a program called `virt-v2v` to convert the disk image of virtual machines (VMs) into a format compatible with {virt} after the VMs have been copied from their source provider.
+
+Although `virt-v2v` is compatible with major operating systems such as recent versions of Red Hat Enterprise Linux, Windows, and Windows Server, it is not compatible with macOS and some other operating systems.
+
+As a workaround for migrating VMs that use an operating system that `virt-v2v` does not support, {project-short} includes a feature called _raw copy mode_. Raw copy mode copies VMs without conversion for use with {virt}. The migrated VMs use emulated devices.
+
+This enables more robust migrations, enabling a wider range of operating systems and configurations. Examples are VMs with uncommon file systems, VMs with uncommon encryption technologies or without access to keys.
+
+However, VMs migrated using raw copy mode might not boot on {virt} or perform as well as VMs migrated in the regular way.
+
+Therefore, using raw copy mode is a tradeoff between being a more versatile migration option compared to increasing the risk of problems following migration.
+
+Because of this risk, users are asked to request that Red Hat support perform raw copy mode migrations.
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:virt-v2v-mtv_{context}[How {project-short} uses the virt-v2v tool]
+* link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, RHEL 9, and RHEL 10]
+* link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_configuring-plan-settings-vmware_vmware[Configuring VMware migration plan settings]
+* xref:proc_migrating-vms-cli-vmware_vmware[Running a VMware vSphere migration from the command-line]
+* xref:con_device-compatibility-mode-raw-copy-migrations_mtv[Device compatibility mode for raw copy migrations]

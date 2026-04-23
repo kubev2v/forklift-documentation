@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: REFERENCE
+
+[id="ref_network-name-template-variables-vmware_{context}"]
+= Network name template variables
+
+[role="_abstract"]
+When creating a migration plan, you can use template variables to customize the names of network interfaces for migrated virtual machines. The template follows Go template syntax.
+
+You must ensure that network interface names are DNS-compliant: they must consist of lowercase alphanumeric characters or hyphens (`-`), start with an alphanumeric character, and not exceed 63 characters. If the template syntax is invalid or if the resulting network interface names are not DNS-compliant, {project-short} adds an error to the plan conditions and prevents the migration from running.
+
+== Available variables
+
+The `networkNameTemplate` field has access to the following variables:
+
+* `.NetworkName`: Name of the Multus Network Attachment Definition if the target network is `multus`. Empty otherwise.
+* `.NetworkNamespace`: Namespace where the Multus Network Attachment Definition is located if the target network is `multus`. Empty otherwise.
+* `.NetworkType`: Specifies the network type. Options: `multus` or `pod`.
+* `.NetworkIndex`: Sequential index of the network interface (0-based).
+
+== Examples
+
+* `"net-{{.NetworkIndex}}"`
+* `"{{if eq .NetworkType \"pod\"}}pod{{else}}multus-{{.NetworkIndex}}{{end}}"`

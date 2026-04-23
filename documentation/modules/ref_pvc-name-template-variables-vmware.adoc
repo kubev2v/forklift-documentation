@@ -1,0 +1,47 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: REFERENCE
+
+[id="ref_pvc-name-template-variables-vmware_{context}"]
+= PVC name template variables
+
+[role="_abstract"]
+When creating a migration plan, you can use template variables to customize the names of persistent volume claims (PVCs) for migrated virtual machine disks. The template follows Go template syntax.
+
+You must ensure that PVC names are DNS-compliant: they must consist of lowercase alphanumeric characters or hyphens (`-`), start with an alphanumeric character, and not exceed 63 characters. If the template syntax is invalid or if the resulting PVC names are not DNS-compliant, {project-short} adds an error to the plan conditions and prevents the migration from running.
+
+== Available variables
+
+The `pvcNameTemplate` field has access to the following variables:
+
+* `.VmName`: Name of the VM in the source cluster.
+* `.TargetVmName`: Final VM name in the target cluster. May equal `.VmName` if no rename or normalization occurs.
+* `.PlanName`: Name of the migration plan.
+* `.DiskIndex`: Sequential index of the disk (0-based).
+* `.RootDiskIndex`: Index value that identifies the root disk.
+* `.Shared`: Indicates whether the volume is shared. Options: `true` for a shared volume, `false` for a non-shared volume.
+* `.WinDriveLetter`: Windows drive letter in lowercase (for example, `c`, `d`). Only applicable to Windows guests.
++
+This variable requires the QEMU Guest Agent (or {vmw} Tools) to be active and reachable on the source VM. It also requires a disk key mapping between the guest operating system and the hardware disk. This mapping may be missing for some disk configurations, particularly IDE disks. When the mapping is missing (for example, on Linux VMs or when the Windows drive letter is not explicitly set), the variable resolves to an empty string. If this results in an invalid PVC name, {project-short} adds an error to the plan conditions and prevents the migration from running.
+* `.FileName`: Name of the virtual disk file (for example, `vm-disk1.vmdk`), not the full datastore path. {vmw} only.
+
+== Template functions
+
+You can use Go template functions to transform variable values into valid PVC names. Common functions include:
+
+* `trimSuffix`: Removes a suffix from a string. For example, `++{{++.FileName | trimSuffix ".vmdk"}}` removes the `.vmdk` extension.
+* `replace`: Replaces all occurrences of a substring. For example, `++{{++.FileName | replace "_" "-"}}` replaces underscores with hyphens.
+* `lower`: Converts a string to lowercase. For example, `++{{++.FileName | lower}}`.
+
+Functions can be chained together using the pipe (`|`) operator. Regular expression functions such as `mustRegexReplaceAll` are also available for advanced transformations.
+
+== Examples
+
+* `"{{.VmName}}-disk-{{.DiskIndex}}"` – Basic template with VM name and disk index
+* `"{{if eq .DiskIndex .RootDiskIndex}}root{{else}}data{{end}}-{{.DiskIndex}}"` – Conditional naming for root disk
+* `"{{if .Shared}}shared-{{end}}{{.VmName}}-{{.DiskIndex}}"` – Mark shared volumes
+* `"pvc-{{.VmName}}-drive-{{.WinDriveLetter}}"` – Include Windows drive letter (results in `pvc-myvm-drive-c`)
+* `"{{.FileName | trimSuffix ".vmdk" | replace "_" "-" | replace "." "-" | lower}}-disk-{{.DiskIndex}}"` – Transform filename to valid PVC name (transforms `VM_Disk.1.vmdk` to `vm-disk-1-disk-0`)
