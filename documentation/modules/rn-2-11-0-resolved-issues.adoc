@@ -141,4 +141,3 @@ Before this update, the migration of VMs with DHCP settings from an OVA provider
 +
 link:https://issues.redhat.com/browse/MTV-3654[MTV-3654]
 
-
