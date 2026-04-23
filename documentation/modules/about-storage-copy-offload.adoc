@@ -25,7 +25,7 @@ For storage copy offload migrations, especially performance-sensitive migrations
 ====
 Preexisting snapshots cause {project-short} to create snapshot delta chains. These chains prevent the array from performing block-level hardware acceleration for the hardware clone because the `vmkfstools` clone path used for offload cannot use hardware-accelerated `XCOPY`. 
 
-As a result, the operation falls back to a software clone (host-based copy). Although such a fallback migration is faster than a standard migration, it increases migration time and Esxi workload compared to an `XCOPY` migration.
+As a result, the operation falls back to a software clone (host-based copy). Although such a fallback migration is faster than a standard migration, it increases migration time and ESXi workload compared to an `XCOPY` migration.
 
 Snapshots created by a warm migration do not affect storage copy offload migrations. Only preexisting snapshots cause this issue.
 ====
