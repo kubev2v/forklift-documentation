@@ -11,7 +11,7 @@ Review common issues that you might encounter when planning and executing virtua
 
 *My virtual machine fails to migrate or behaves unexpectedly after migration. Is the operating system supported?*
 
-Check the official list of link:https://access.redhat.com/articles/973163#ocpvirt[guest operating systems supported by {virt}] for your version of {ocp-short}. If the operating system is not on the list, it might cause migration failures or unexpected behavior after the migration is complete. The VM operating system must be certified and supported for use as a guest operating system with {virt} _and_ for link:https://access.redhat.com/articles/1351473[conversion to KVM with `virt-v2v`].
+Check the official list of guest operating systems supported by {virt} at the end of this section for your version of {ocp-short}. If the operating system is not on the list, it might cause migration failures or unexpected behavior after the migration is complete. The VM operating system must be certified and supported for use as a guest operating system with {virt} _and_ for conversion to KVM with `virt-v2v`.
 
 *My migration plan shows a `Destination network not found` error. What should I do?*
 
@@ -20,7 +20,7 @@ Verify that you have created a network mapping that correctly links the source n
 To resolve this issue:
 
 . Create the required network attachment definition in {virt}.
-. Update or recreate your network mapping to reference the correct destination network.
+. Update or re-create your network mapping to reference the correct destination network.
 . Validate that the network mapping shows a `Ready` status before starting the migration.
 
 *Why does warm migration fail with a snapshot error?*
@@ -50,15 +50,15 @@ Invalid VM names include those that:
 * Use uppercase letters
 * Use a name that differs from the VM's files or folder name on the datastore
 
-{project-short} automatically adjusts non-compliant VM names in the target cluster by replacing invalid characters. Alternatively, you can rename target VMs in the {project-short} UI during migration plan creation.
+{project-short} automatically adjusts noncompliant VM names in the target cluster by replacing invalid characters. Alternatively, you can rename target VMs in the {project-short} UI during migration plan creation.
 
 For {vmw} environments, you can use Storage vMotion to rename the VM before migration. This migration process automatically renames the VM's files and folder on the datastore to match the new name you have given it in the vSphere Client. Alternatively, you can manually remove the VM from inventory, rename the files and folders, edit the `.vmx` file to update the references, and then re-add the VM to the inventory.
 
-For more information about renaming VMs in the {project-short} UI, see link:{mtv-plan}assembly_migrating-vms-web-console_mtv#proc_renaming-vms-for-migration_mtv[Renaming virtual machines].
-
 [role="_additional-resources"]
 .Additional resources
-
+* link:https://access.redhat.com/articles/4234591[Certified Guest Operating Systems in {virt}]
+* link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, RHEL 9, and RHEL 10]
 * link:{mtv-plan}assembly_software-requirements-for-migration_mtv#ref_source-vm-migration-considerations_mtv[Source VM migration considerations]
 * link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites]
 * link:{mtv-plan}assembly_cold-warm-migration_mtv#about-cold-warm-migration_mtv[About cold and warm migration]
+* link:{mtv-plan}assembly_migrating-vms-web-console_mtv#proc_renaming-vms-for-migration_mtv[Renaming virtual machines]

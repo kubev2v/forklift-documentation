@@ -16,4 +16,6 @@ AIO buffering adjusts the buffer size and count parameters for NBD transport net
 AIO buffering is only suitable for cold migration use cases. You must remove AIO buffer configuration before performing warm migrations.
 ====
 
-For information about performance test results and recommendations, see link:{mtv-mig}assembly_mtv-performance-recommendations_mtv#ref_mtv-aio-buffer_mtv[Increasing AIO sizes and buffer counts for NBD transport mode].
+[role="_additional-resources"]
+.Additional resources
+* link:{mtv-mig}assembly_mtv-performance-recommendations_mtv#ref_mtv-aio-buffer_mtv[Increasing AIO sizes and buffer counts for NBD transport mode]

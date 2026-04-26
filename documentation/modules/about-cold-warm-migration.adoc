@@ -37,7 +37,11 @@ Warm migration copies most of the data while the source virtual machines (VMs) r
 
 The migration process has two stages:
 
-* *Precopy stage*: Most data is copied while VMs continue running. VM disks are copied incrementally using link:https://kb.vmware.com/s/article/1020128[changed block tracking (CBT)] snapshots.
+* *Precopy stage*: Most data is copied while VMs continue running. VM disks are copied incrementally using changed block tracking (CBT) snapshots.
 * *Cutover stage*: VMs are shut down and the remaining data is migrated. Data stored in RAM is not migrated.
 
 Warm migration transfers snapshots to {ocp-short} first, then converts the VM during the cutover stage. This means disk blocks may be copied multiple times if the VM has high utilization, but VMs remain available during most of the migration process. You must enable CBT for each source VM and each VM disk before starting a warm migration.
+
+[role="_additional-resources"]
+.Additional resources
+* link:https://kb.vmware.com/s/article/1020128[Changed block tracking (CBT) on virtual machines]
