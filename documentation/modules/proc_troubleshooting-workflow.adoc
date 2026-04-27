@@ -22,13 +22,13 @@ You can typically find where the error is occurring at this stage. VMs can be mi
 * *Warm migration*: VMs are migrated with minimal downtime while remaining powered on during the precopy stage.
 * *Cold migration*: VMs are shut down during the entire migration process.
 
-. *Ask Red Hat OpenShift Lightspeed* for AI-assisted troubleshooting guidance.
+. *Ask {lightspeed-full}* for AI-assisted troubleshooting guidance.
 +
-If you have Red Hat OpenShift Lightspeed configured with {project-short}, you can ask questions in natural language to get plain-language explanations of migration failures, recommended solutions, and guidance for resolving common issues.
+If you have {lightspeed-full} configured with {project-short}, you can ask questions in natural language to get plain-language explanations of migration failures, recommended solutions, and guidance for resolving common issues.
 +
 For example: "Why did the migration for VM 'ProdDB-01' fail?"
 +
-See xref:proc_using-lightspeed-troubleshooting_{context}[Using Red Hat OpenShift Lightspeed to troubleshoot migration issues] for detailed instructions.
+See xref:proc_using-lightspeed-troubleshooting_{context}[Using {lightspeed-full} to troubleshoot migration issues] for detailed instructions.
 
 . *View pod logs* for specific information about pod status within Kubernetes.
 +
