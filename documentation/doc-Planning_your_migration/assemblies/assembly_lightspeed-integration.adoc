@@ -17,7 +17,7 @@ Get AI-powered troubleshooting assistance for your virtual machine migrations wi
 == Prerequisites
 
 * {ocp} 4.15 or later
-* {project-short} 2.12 or later
+* {project-short} {project-version} or later
 * {lightspeed-full} Operator installed and configured on your cluster
 
 include::../modules/con_using-lightspeed-with-mtv.adoc[leveloffset=+1]

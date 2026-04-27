@@ -22,9 +22,9 @@ For information about installing and configuring {lightspeed-full}, see the link
 
 . In the {ocp} web console, click *Operators* -> *Installed Operators* in the left navigation menu.
 
-. Ensure you are in the correct project. For example, `konveyor-forklift`.
+. Ensure you are in the correct project. For example, `{namespace}`.
 
-. Click the *Forklift Operator* from the list of installed operators.
+. Click the *{operator-name}* from the list of installed operators.
 
 . Click the *ForkliftController* tab and then click your controller instance to view its details.
 

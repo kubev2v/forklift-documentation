@@ -16,10 +16,10 @@ Quickly resolve migration issues by asking {lightspeed-full} questions in natura
 * {lightspeed-operator} installed and configured on your cluster
 +
 For information about installing and configuring {lightspeed-full}, see the link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[{lightspeed-full} documentation].
-* {project-short} 2.12 or later
+* {project-short} {project-version} or later
 * The {lightspeed-full} integration is enabled in the `ForkliftController` custom resource
 +
-For more information, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.12/html-single/planning_your_migration/index#proc_enabling-lightspeed-integration[Enabling the {lightspeed-full} integration] in _Planning your migration_.
+For more information, see link:{mtv-plan}index#proc_enabling-lightspeed-integration[Enabling the {lightspeed-full} integration] in _Planning your migration_.
 * You have access to the {ocp} web console
 * You have permission to view {project-short} resources in the cluster
 
@@ -59,4 +59,4 @@ For example:
 .Additional resources
 
 * link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[{lightspeed-full} documentation]
-* link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.12/html-single/planning_your_migration/index#con_using-lightspeed-with-mtv[{lightspeed-full} integration with {project-short}]
+* link:{mtv-plan}index#con_using-lightspeed-with-mtv[{lightspeed-full} integration with {project-short}]
