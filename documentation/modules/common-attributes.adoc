@@ -33,6 +33,11 @@
 :manager: Manager
 :vmw: VMware
 
+// Red Hat OpenShift Lightspeed
+:lightspeed-full: Red Hat OpenShift Lightspeed
+:lightspeed-short: Lightspeed
+:lightspeed-operator: Red Hat OpenShift Lightspeed Operator
+
 // doc metadata
 :icons: font
 :build: downstream

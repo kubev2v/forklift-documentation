@@ -5,33 +5,21 @@
 :_mod-docs-content-type: CONCEPT
 
 [id="con_using-lightspeed-with-mtv_{context}"]
-= Red Hat OpenShift Lightspeed integration with {project-short}
+= {lightspeed-full} integration with {project-short}
 
 [role="_abstract"]
-You can use Red Hat OpenShift Lightspeed, a generative AI-based virtual assistant, to help plan and troubleshoot your virtual machine migrations with {project-first}.
+Use {lightspeed-full} to quickly diagnose migration issues and get step-by-step guidance without manually parsing logs or searching documentation.
 
-Red Hat OpenShift Lightspeed is integrated directly into the {ocp} web console. It provides intelligent assistance through a natural-language interface, allowing you to ask questions, receive troubleshooting guidance, and get step-by-step instructions without leaving the console.
+{lightspeed-full} is integrated into the {ocp} web console. It provides intelligent assistance through a natural-language interface, allowing you to ask questions, receive troubleshooting guidance, and get step-by-step instructions.
 
 [NOTE]
 ====
-OpenShift Lightspeed integration with {project-short} is available as a Technology Preview feature. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
-
-For more information about the support scope of Red Hat Technology Preview features, see link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
+{lightspeed-full} integration with {project-short} is available as a Technology Preview feature. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
 ====
 
-.Prerequisites
+== {lightspeed-short} use cases
 
-* {ocp} 4.15 or later
-* {project-short} 2.12 or later
-* Red Hat OpenShift Lightspeed Operator installed and configured on your cluster
-+
-For information about installing and configuring Red Hat OpenShift Lightspeed, see the link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[Red Hat OpenShift Lightspeed documentation].
-
-The {project-short} Operator automatically configures the integration with Red Hat OpenShift Lightspeed when both components are installed. No additional configuration is required.
-
-== Lightspeed use cases
-
-You can ask Lightspeed questions in natural language throughout the migration lifecycle:
+You can ask {lightspeed-short} questions in natural language throughout the migration lifecycle:
 
 Planning and assessment:: Ask questions about migration prerequisites, recommended settings, best practices, and configuration requirements for your specific environment and source platform.
 +
@@ -60,22 +48,28 @@ For example:
 
 == Data access and analysis
 
-When you ask Lightspeed a question about {project-short}, the assistant:
+When you ask {lightspeed-short} a question about {project-short}, {lightspeed-short}:
 
 . Accesses real-time data from your cluster, including migration plan status, custom resources, and logs
-. Analyzes the data using your authenticated user credentials and respects your existing role-based access control (RBAC) permissions
+. Analyzes the data in accordance with your user credentials and role-based access control (RBAC) permissions
 . Provides a conversational response with specific, actionable information
 
 == Privacy and data handling
 
-The assistant operates using your own user credentials and can only access resources that you have permission to view. Lightspeed uses cluster metadata, migration resource status, and log data to provide contextual assistance. All data access respects your existing RBAC permissions, and the assistant cannot access resources beyond your authorization level.
+{lightspeed-short} operates by using your own user credentials and can only access resources that you have permission to view. {lightspeed-short} accesses cluster metadata, migration resource status, and log data to provide contextual assistance. All data access respects your existing RBAC permissions, and {lightspeed-short} cannot access resources beyond your authorization level.
 
 == How the integration works
 
-The {project-short} Operator automatically configures the integration with Red Hat OpenShift Lightspeed by:
+After you enable the `feature_lightspeed_integration` feature flag in the `ForkliftController` custom resource, the {project-short} Operator configures the integration with {lightspeed-full} by:
 
 * Deploying the {project-short} MCP (Model Context Protocol) server
-* Registering the MCP server with Red Hat OpenShift Lightspeed
-* Configuring the necessary feature gates and endpoints
+* Registering the MCP server with {lightspeed-full}
+* Configuring the necessary endpoints
 
-This integration enables Lightspeed to access {project-short} resources and provide context-aware assistance for your migrations.
+This integration enables {lightspeed-short} to access {project-short} resources and provide context-aware assistance for your migrations.
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:proc_enabling-lightspeed-integration_{context}[Enabling the {lightspeed-full} integration]
+* link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope]
