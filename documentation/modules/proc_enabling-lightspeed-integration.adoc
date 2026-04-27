@@ -1,0 +1,74 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_lightspeed-integration.adoc
+
+:_mod-docs-content-type: PROCEDURE
+
+[id="proc_enabling-lightspeed-integration_{context}"]
+= Enabling the {lightspeed-full} integration
+
+[role="_abstract"]
+Enable {lightspeed-full} integration to access AI-powered migration assistance and troubleshooting directly from the {ocp} web console.
+
+.Prerequisites
+
+* You are logged in to the {ocp} web console as a user with cluster administrator privileges.
+* {lightspeed-full} is installed and configured on the cluster.
++
+For information about installing and configuring {lightspeed-full}, see the link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[{lightspeed-full} documentation].
+* The {project-short} Operator is installed.
+
+.Procedure
+
+. In the {ocp} web console, click *Operators* -> *Installed Operators* in the left navigation menu.
+
+. Ensure you are in the correct project. For example, +{namespace}+.
+
+. Click the *{operator-name}* from the list of installed operators.
+
+. Click the *ForkliftController* tab and then click your controller instance to view its details.
+
+. Click the *YAML* tab to edit the resource configuration.
+
+. In the `spec:` section, locate or add the `feature_lightspeed_integration` parameter and set its value to `'true'`:
++
+[source,yaml]
+----
+spec:
+  feature_lightspeed_integration: 'true'
+----
++
+[NOTE]
+====
+To disable the feature later, you can change this value to `'false'`.
+====
+
+. Click *Save*.
++
+The {lightspeed-full} pods restart and initialize to load the new Model Context Protocol (MCP) for {project-short}.
+
+. Optional: Monitor the pod restart progress by running the following command:
++
+[source,terminal]
+----
+$ oc get pods -n openshift-lightspeed -w
+----
+
+.Verification
+
+. In the {ocp} web console, open the {lightspeed-full} chat assistant:
++
+* Click the *{lightspeed-full}* icon in the top global header of the web console, or
+* Click the floating *{lightspeed-full}* icon at the bottom right of the screen.
+
+. Type a query related to your {project-short} environment into the chat prompt.
++
+For example:
++
+----
+Can you list my MTV providers from all namespaces?
+----
+
+. Press *Enter* or click the send icon.
++
+{lightspeed-short} uses its `mtv_read` capabilities to fetch and display your providers directly in the chat window.

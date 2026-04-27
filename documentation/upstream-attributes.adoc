@@ -26,6 +26,11 @@
 :operator-name: Forklift Operator
 :must-gather: quay.io/kubev2v/forklift-must-gather:latest
 
+// Red Hat OpenShift Lightspeed
+:lightspeed-full: Red Hat OpenShift Lightspeed
+:lightspeed-short: Lightspeed
+:lightspeed-operator: Red Hat OpenShift Lightspeed Operator
+
 // Guide titles
 :planning-guide-title: Planning your migration
 :migrating-guide-title: Migrating your virtual machines

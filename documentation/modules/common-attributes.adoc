@@ -2,7 +2,8 @@
 // Attributes for Forklift (upstream) are in ../upstream-attributes.adoc
 // text
 :kebab: Options menu image:kebab.png[title="Options menu",height=20]
-// If namespace must be formatted with backticks, use + instead.
+// Note: Backticks (`) block variable substitution. To format {namespace} in monospace
+// while allowing it to resolve, use +{namespace}+ instead of `{namespace}`.
 :namespace: openshift-mtv
 :oc: oc
 :ocp: Red Hat OpenShift
@@ -32,6 +33,11 @@
 :a-virt: an {virt}
 :manager: Manager
 :vmw: VMware
+
+// Red Hat OpenShift Lightspeed
+:lightspeed-full: Red Hat OpenShift Lightspeed
+:lightspeed-short: Lightspeed
+:lightspeed-operator: Red Hat OpenShift Lightspeed Operator
 
 // doc metadata
 :icons: font
