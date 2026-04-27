@@ -22,7 +22,7 @@ For information about installing and configuring {lightspeed-full}, see the link
 
 . In the {ocp} web console, click *Operators* -> *Installed Operators* in the left navigation menu.
 
-. Ensure you are in the correct project. For example, `{namespace}`.
+. Ensure you are in the correct project. For example, +{namespace}+.
 
 . Click the *{operator-name}* from the list of installed operators.
 
