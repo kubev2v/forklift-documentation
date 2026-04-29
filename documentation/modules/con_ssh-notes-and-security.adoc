@@ -7,7 +7,7 @@
 = Security requirements and recommendations for the SSH cloning method
 
 [role="_abstract"]
-Follow these security requirements and recommendations when you use the SH cloning method:
+Follow these security requirements and recommendations when you use the SSH cloning method:
 
 Security requirements::
 - All public keys must include command restrictions for security.

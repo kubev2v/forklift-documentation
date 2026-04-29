@@ -4,7 +4,7 @@
 
 :_mod-docs-content-type: CONCEPT
 
-[id="virt-v2v-mtv-customizing-removing-installing-_{context}"]
+[id="virt-v2v-mtv-customizing-removing-installing_{context}"]
 = Customizing, removing, and installing files
 
 [role="_abstract"]

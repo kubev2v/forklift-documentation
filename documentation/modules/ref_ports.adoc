@@ -103,7 +103,7 @@ Disk transfer authentication
 |NFS service
 
 |111
-|TCP or UCP
+|TCP or UDP
 |{ocp-short} nodes
 |Server containing the OVA files
 |RPC Portmapper, only needed for NFSv4.0

@@ -3,7 +3,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/master.adoc
 
 :_content-type: CONCEPT
-[id="about-configuring-target-vm-scheduling-use-caes_{context}"]
+[id="about-configuring-target-vm-scheduling-use-cases_{context}"]
 = Use cases for target VM scheduling
 
 [role="_abstract"]
