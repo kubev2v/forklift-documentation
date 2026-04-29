@@ -9,12 +9,17 @@
 [role="_abstract"]
 You must install compatible software versions. The table that follows lists the relevant software versions for this version of {project-first}.
 
-[cols="1,1,1,1,1,1", options="header"]
+[cols="1,1,1,1,1,1,1", options="header"]
 .Compatible software versions
 |===
-|{project-full} |{ocp} |{virt} |VMware vSphere |{rhv-full}|OpenStack
-|{project-version} |{ocp-y-version} |{ocp-y-version} |6.5 or later |4.4 SP1 or later|16.1 or later
+|{project-full} |{ocp} |{virt} |VMware vSphere |{rhv-full}|OpenStack|Microsoft Hyper-V
+|{project-version} |{ocp-y-version} |{ocp-y-version} |6.5 or later |4.4 SP1 or later|16.1 or later|Windows Server 2019 or later
 |===
+
+[NOTE]
+====
+[Technical review needed: Confirm supported Windows Server versions for Hyper-V - 2016, 2019, 2022, 2025]
+====
 
 [NOTE]
 ====

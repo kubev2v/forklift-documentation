@@ -1,6 +1,7 @@
 // Module included in the following assemblies:
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-cnv.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-hyperv.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-osp.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-ova.adoc
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-rhv.adoc
@@ -40,10 +41,22 @@ You can add Open Virtual Appliance (OVA) files that were created by {vmw} vSpher
 
 endif::[]
 
+ifdef::hyperv[]
+= Adding a Microsoft Hyper-V source provider
+
+[role="_abstract"]
+You can add a Microsoft Hyper-V source provider by using the {ocp} web console. Hyper-V virtual machines are exported to an SMB shared directory for migration.
+
+[NOTE]
+====
+{project-short} supports only cold migration from Microsoft Hyper-V. Warm migration is not available.
+====
+endif::[]
+
 ifdef::ostack[]
 = Adding an {osp} source provider
 
-[role="_abstract"] 
+[role="_abstract"]
 You can add an {osp} source provider by using the {ocp} web console.
 
 [IMPORTANT]
@@ -244,6 +257,60 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 After creating the provider, you can optionally configure OVA file upload by web browser to upload OVA files directly to the NFS share. For more information, see xref:proc_configuring-ova-web-upload_ova[Configuring OVA file upload by web browser].
 ====
 endif::[]
+ifdef::hyperv[]
+. Access the *Create provider* page for Microsoft Hyper-V by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+... Click *Microsoft Hyper-V*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *Microsoft Hyper-V*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Microsoft Hyper-V* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
++
+.. *Provider details*
+
+* *Provider resource name*: Name of the source provider.
+* *URL*: Path to the SMB shared directory containing the Hyper-V exported VMs. For example, `//192.168.122.115/VMShare` or `\\192.168.122.115\VMShare`.
++
+The SMB shared directory must be accessible from both the Hyper-V host and the {ocp-short} cluster.
+
+.. *Provider credentials*
+
+* *Username*: Username for accessing the SMB share. For example, `Administrator` or `DOMAIN\username`.
+* *Password*: Password for accessing the SMB share.
+
+[start=3]
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox, and then, click *Confirm*. If not, click *Cancel*, and then, enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+endif::[]
 ifdef::ostack[]
 . Access the *Create provider* page for {osp} by doing one of the following:
 
@@ -417,6 +484,14 @@ endif::[]
 The provider appears in the list of providers.
 
 ifdef::vmware[]
++
+[NOTE]
+====
+It might take a few minutes for the provider to have the status `Ready`.
+====
+endif::[]
+
+ifdef::hyperv[]
 +
 [NOTE]
 ====
