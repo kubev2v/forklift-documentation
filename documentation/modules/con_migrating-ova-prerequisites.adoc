@@ -1,0 +1,10 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_migration/assemblies/assembly_migrating-from-ova.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_migrating-vmware-prerequisites_{context}"]
+= Prerequisites for migrating OVA VMs
+
+[role="_abstract"]
+Before you start migrating your virtual machines from Open Virtual Appliance (OVA) files, be sure that you have planned your migration.
