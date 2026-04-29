@@ -4,10 +4,10 @@
 
 :_mod-docs-content-type: REFERENCE
 [id="ref_ports_{context}"]
-= Ports
+= Network ports
 
 [role="_abstract"]
-The firewalls must enable traffic over the following ports:
+The firewalls must enable traffic over the following ports for a successful migration to {virt}.
 
 [cols="1,1,1,1,2a",options="header"]
 .Network ports required for migrating from VMware vSphere
