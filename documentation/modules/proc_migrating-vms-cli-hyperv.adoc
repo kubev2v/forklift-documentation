@@ -164,7 +164,7 @@ where:
 Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 
 `<source_storage_id>`::
-Specifies the Hyper-V storage identifier, such as the file path to the virtual hard disk (for example, `C:\VHDs\disk.vhdx`), a volume GUID path, or a storage pool name.
+Specifies the Hyper-V storage identifier, such as the file path to the virtual hard drive (for example, `C:\VHDs\disk.vhdx`), a volume GUID path, or a storage pool name.
 
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
@@ -178,7 +178,7 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/kubev2v/hook-runner
-  serviceAccount:<service account>
+  serviceAccount: <service_account>
   playbook: |
     LS0tCi0gbm...
 EOF
@@ -186,7 +186,7 @@ EOF
 +
 where:
 
-`<service account>`::
+`<service_account>`::
 Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
 
 `playbook`::

@@ -26,7 +26,6 @@ The *Create StorageMap* page opens.
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: StorageMap
 metadata:
@@ -46,11 +45,10 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-EOF
 ----
 +
 * `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-* `source`: Specify the Hyper-V storage identifier, such as the file path to the virtual hard disk (for example, `C:\VHDs\disk.vhdx`), a volume GUID path, or a storage pool name.
+* `source`: Specify the Hyper-V storage identifier, such as the file path to the virtual hard drive (for example, `C:\VHDs\disk.vhdx`), a volume GUID path, or a storage pool name.
 
 . Optional: To download your input, click *Download*.
 . Click *Create*.
