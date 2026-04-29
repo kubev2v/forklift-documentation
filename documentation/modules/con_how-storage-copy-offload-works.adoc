@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_how-storage-copy-works_{context}"]
+= How storage copy offload works
+
+[role="_abstract"]
+Use storage copy offload to copy a virtual disk directly from a source to the target volume without needing to transmit data over a network.
+
+Without storage copy offload, {project-short} migrates a virtual disk as follows:
+
+. {project-short} reads the disk from the source storage.
+. {project-short} sends the data over a network to {virt}.
+. {virt} writes the data to its storage.
++
+This method can be slow and consume significant network and host resources.
+
+With storage copy offload, the process is streamlined:
+
+. {project-short} initiates a disk transfer request.
+. Instead of sending the data, {project-short} instructs the storage array in which the vSphere Virtual Machine File System (VMFS) datastore holds the source VMs to perform a direct copy from the source storage to the target volume, on the same array, in the correct storage class.
++
+The storage array handles the cloning of the VM disk internally, often at a much higher speed than a network-based transfer.
+
+The Forklift project, a key component of {project-short}, includes a specialized volume populator named `vsphere-xcopy-volume-populator` that directly interacts with {vmw}'s VAAI. This allows {project-short} to trigger the high-speed, array-level data copy operation for supported storage systems.
+
+[IMPORTANT]
+====
+The storage arrays must be supported storage providers. Otherwise, XCOPY performs a fallback network disk copy on the ESXi. Although a fallback network disk copy on the ESXi is usually considerably faster than a standard migration using a VDDK image over the network, it is not as quick as a properly configured storage copy offload migration.
+====
+

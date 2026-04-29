@@ -1,0 +1,23 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="mtv-shared-disks-workaround-remove-disk_{context}"]
+= "Remove" disk workaround for cyclic shared disk dependencies
+
+[role="_abstract"]
+One way to resolve cyclic shared disk dependencies is to remove the link to one of the shared disks from one source VM before the migration and to reattach it afterwards. Removing the link breaks the cyclic dependencies. Note that in the current {vmw} UI, removing the link is referred to as "removing" the disk.
+
+The figure that follows shows this solution. 
+
+."Removed" shared disk
+image::draft_workaround2.png[Remove a shared disk]
+
+In this case, VM 2 and 3 are migrated with the shared disks in the first plan, but the link between VM 3 and shared disk 3 is removed. As before, VM 1 is migrated in the second plan.
+
+Doing this breaks the cyclic dependencies, but this workaround has a drawback: VM 3 is disconnected from shared disk 3 and remains disconnected after the migration. The solution is to manually reattach shared disk 3 to VM 3 after the migration finishes.
+
+Advantage: No disks are duplicated.
+
+Disadvantage: You need to modify VM 3 by removing its link to shared disk 3 before the migration, and you need to manually reconnect VM 3 to shared disk 3 in {ocp} after the migration.

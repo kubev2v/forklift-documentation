@@ -1,0 +1,22 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="cold-migration_{context}"]
+= Cold migration
+
+[role="_abstract"]
+Cold migration is the default migration type. The source virtual machines are shut down while the data is copied.
+
+Cold migration converts each VM to be compatible with {ocp-short} before transferring it. If a VM cannot be converted, the migration fails immediately (fail fast). All disk blocks are copied once in a sequential process.
+
+[NOTE]
+====
+VMware only: In cold migrations, in situations in which a package manager cannot be used during the migration, {project-short} does not install the `qemu-guest-agent` daemon on the migrated VMs. This has some impact on the functionality of the migrated VMs, but overall, they are still expected to function.
+
+To enable {project-short} to automatically install `qemu-guest-agent` on the migrated VMs, ensure that your package manager can install the daemon during the first boot of the VM after migration.
+
+If that is not possible, use your preferred automated or manual procedure to install `qemu-guest-agent` manually.
+====
+

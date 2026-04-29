@@ -1,0 +1,14 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/master.adoc
+
+:_content-type: CONCEPT
+[id="about-configuring-target-vm-scheduling-use-cases_{context}"]
+= Use cases for target VM scheduling
+
+[role="_abstract"]
+Target VM scheduling is designed to help you with the following use cases, among others:
+
+* *Business continuity and disaster recovery*: You can use scheduling rules to migrate and power on critical VMs to several sites, in different time zones or otherwise geographically separated by significant distances. This allows you to deploy these VMs as strategic assets for business continuity, such as disaster recovery.
+
+* *Working with fluctuating demands*: In situations where demand for a service might vary significantly, rules for scheduling when to spin up VMs based upon demand allows you to use your resources more efficiently.
