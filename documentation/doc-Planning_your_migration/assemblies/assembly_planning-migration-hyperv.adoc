@@ -15,13 +15,13 @@ Create a Microsoft Hyper-V migration plan by setting up network maps, configurin
 :context: hyperv
 :hyperv:
 
-include::../modules/creating-form-based-network-maps-ui-hyperv.adoc[leveloffset=+1]
+include::../modules/proc_creating-form-based-network-maps-ui-hyperv.adoc[leveloffset=+1]
 
-include::../modules/creating-yaml-based-network-maps-ui-hyperv.adoc[leveloffset=+1]
+include::../modules/proc_creating-yaml-based-network-maps-ui-hyperv.adoc[leveloffset=+1]
 
-include::../modules/creating-form-based-storage-maps-ui-hyperv.adoc[leveloffset=+1]
+include::../modules/proc_creating-form-based-storage-maps-ui-hyperv.adoc[leveloffset=+1]
 
-include::../modules/creating-yaml-based-storage-maps-ui-hyperv.adoc[leveloffset=+1]
+include::../modules/proc_creating-yaml-based-storage-maps-ui-hyperv.adoc[leveloffset=+1]
 
 include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
@@ -37,7 +37,7 @@ include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffs
 :context: hyperv
 :hyperv:
 
-include::../modules/creating-plan-wizard-hyperv.adoc[leveloffset=+1]
+include::../modules/proc_creating-plan-wizard-hyperv.adoc[leveloffset=+1]
 
 :!hyperv:
 

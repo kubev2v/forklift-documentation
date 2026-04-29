@@ -3,11 +3,11 @@
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-hyperv.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="creating-yaml-based-network-maps-ui-hyperv_{context}"]
+[id="proc_creating-yaml-based-network-maps-ui-hyperv_{context}"]
 = Creating ownerless network maps by using YAML or JSON definitions in the {project-short} UI
 
 [role="_abstract"]
-You can add ownerless network maps by using YAML or JSON definitions in the YAML page of the {project-first} UI to map source networks to {virt} networks. Later, you can add these maps to a migration plan by using the *Use an existing network map* option in the *Network map* page of the {project-short} wizard.
+You can add ownerless network maps by using YAML or JSON definitions in the {project-first} UI. Later, you can add these maps to a migration plan by using the *Use an existing network map* option in the {project-short} wizard.
 
 For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
 
@@ -54,7 +54,7 @@ EOF
 ----
 +
 * `type`: Allowed values are `pod` and `multus`.
-* `source`: Specify the Hyper-V network adapter name or identifier.
+* `source`: Specify the Hyper-V network adapter (virtual switch) name or ID. The `name` is the virtual switch friendly name. The `id` is the switch GUID in 8-4-4-4-12 hexadecimal format.
 * `<network_attachment_definition>`: Specify a network attachment definition for each additional {virt} network.
 * `<network_attachment_definition_namespace>`: Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
 

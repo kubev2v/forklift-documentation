@@ -3,7 +3,7 @@
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-hyperv.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="creating-form-based-storage-maps-ui-hyperv_{context}"]
+[id="proc_creating-form-based-storage-maps-ui-hyperv_{context}"]
 = Creating ownerless storage maps by using the form page of the {project-short} UI
 
 [role="_abstract"]

@@ -8,7 +8,7 @@
 = About cold and warm migration
 
 [role="_abstract"]
-Choose cold migration for VMs that are shut down and warm migration for running VMs. Cold migration works with {vmw} vSphere, {rhv-full}, {osp}, Open Virtual Appliances (OVAs) created by {vmw} vSphere, Microsoft Hyper-V, and remote {virt} clusters. Warm migration works with {vmw} vSphere and {rhv-full}.
+Cold migration is for VMs that are shut down and works with {vmw} vSphere, {rhv-full}, {osp}, Open Virtual Appliances (OVAs) created by {vmw} vSphere, Microsoft Hyper-V, and remote {virt} clusters. Warm migration is for running VMs and works with {vmw} vSphere and {rhv-full}.
 
 [NOTE]
 ====

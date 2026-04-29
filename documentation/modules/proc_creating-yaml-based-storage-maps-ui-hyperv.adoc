@@ -3,7 +3,7 @@
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-hyperv.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="creating-yaml-based-storage-maps-ui-hyperv_{context}"]
+[id="proc_creating-yaml-based-storage-maps-ui-hyperv_{context}"]
 = Creating ownerless storage maps by using YAML or JSON definitions in the {project-short} UI
 
 [role="_abstract"]
@@ -50,7 +50,7 @@ EOF
 ----
 +
 * `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-* `source`: Specify the Hyper-V storage identifier.
+* `source`: Specify the Hyper-V storage identifier, such as the file path to the virtual hard disk (for example, `C:\VHDs\disk.vhdx`), a volume GUID path, or a storage pool name.
 
 . Optional: To download your input, click *Download*.
 . Click *Create*.

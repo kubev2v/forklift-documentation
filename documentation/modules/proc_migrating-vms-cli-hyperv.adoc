@@ -120,7 +120,7 @@ where:
 Specifies the network type. Allowed values are `pod` and `multus`.
 
 `<source_network_id>`::
-Specifies the Hyper-V network adapter name or identifier.
+Specifies the Hyper-V network adapter (virtual switch) name or ID. The name is the virtual switch friendly name. The ID is the switch GUID in 8-4-4-4-12 hexadecimal format.
 
 `<network_attachment_definition>`::
 Specifies a network attachment definition (NAD) for each additional {virt} network.
@@ -164,7 +164,7 @@ where:
 Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 
 `<source_storage_id>`::
-Specifies the Hyper-V storage identifier.
+Specifies the Hyper-V storage identifier, such as the file path to the virtual hard disk (for example, `C:\VHDs\disk.vhdx`), a volume GUID path, or a storage pool name.
 
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
