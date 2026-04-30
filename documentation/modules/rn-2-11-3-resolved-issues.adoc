@@ -23,7 +23,7 @@ Storage copy offload: Pure Storage FlashArray HTTP client timeout is configurabl
 
 Before this update, the timeout for a Pure Storage FlashArray HTTP client was hard-coded to 30 seconds. As a consequence, during migrations of VMs with many disks, simultaneous `CopyVolume` requests to the Pure Storage FlashArray timed out, leaving PVCs stuck in `Pending` status.
 +
-With this update, you can configure the timeout by setting the new `STORAGE_HTTP_TIMEOUT_SECONDS` key and value in the Pure Storage FlashArray `Secret`. As a result, migrations complete successfully without timing out. Note that the key’s default value is 30 seconds.
+With this update, you can configure the timeout by setting the new `STORAGE_HTTP_TIMEOUT_SECONDS` key and value in the Pure Storage FlashArray `Secret`. As a result, migrations complete successfully without timing out. Note that the key's default value is 30 seconds.
 +
 link:https://issues.redhat.com/browse/MTV-5004[MTV-5004]
 

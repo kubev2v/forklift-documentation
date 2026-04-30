@@ -31,4 +31,6 @@ By integrating any of these three types of controls into your migration plan, yo
 Any scheduling rule applied in a migration plan applies to all VMs in it.
 ====
 
-Target VM scheduling in {project-short} derives from Kubernetes's support for link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/[Assigning Pods to Nodes].
+[role="_additional-resources"]
+.Additional resources
+* link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/[Assigning Pods to Nodes]

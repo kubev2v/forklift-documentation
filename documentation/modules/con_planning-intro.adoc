@@ -22,6 +22,7 @@ following source providers to OpenShift Virtualization destination providers:
 OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or KVM images.
 ====
 
+[id="types-of-migration_{context}"]
 == Types of migration
 
 {project-short} supports three types of migration: cold, warm, and live.
@@ -29,9 +30,10 @@ OVA migration is validated for migrating supported guest operating systems expor
 * Cold migration is available for all of the source providers listed above. This type of migration migrates VMs that are powered *_off_* and does not require common stored storage. 
 
 * Warm migration is available only for {vmw} vSphere and {rhv-full}. This type of migration migrates VMs that are powered *_on_* and does require common stored storage. 
-+
-These two types of migration are discussed in detail in xref:about-cold-warm-migration_mtv[About cold and warm migration].
 
 * Live migration is available *_only_* for migrations between {virt} clusters or between namespaces on the same {virt} cluster. It requires {project-short} version 2.10 or later and {virt} version 4.20 or later. 
-+
-Live migration is discussed in detail in xref:assembly_live-migration_mtv[Live migration in {project-short}].
+
+[role="_additional-resources"]
+.Additional resources
+* xref:about-cold-warm-migration_mtv[About cold and warm migration]
+* xref:assembly_live-migration_mtv[Live migration in {project-short}]

@@ -6,7 +6,8 @@
 [id="con_troubleshooting-storage-copy-offload_{context}"]
 = Troubleshooting storage copy offload
 
-This section describes problems that are unique to storage copy offload and how you can resolve them.
+[role="_abstract"]
+Resolve these problems that are unique to storage copy offload.
 
 [id=sco-vsphere-esxi-connectivity_{context}]
 == vSphere-ESXi connectivity issues
@@ -15,7 +16,7 @@ Remote ESXi connection fails with a SOAP error::
 +
 *Description*: Sometimes a remote ESXi execution fails, returning a SOAP error with no apparent root cause message.
 +
-*Explanation*: Because vSphere invokes some SOAP/REST endpoints on the ESXi, a connection can fail because of standard error reasons that vanish after the next try.
+*Explanation*: Because vSphere invokes some SOAP or REST endpoints on the ESXi, a connection can fail because of standard error reasons that vanish after the next try.
 +
 *Solution*: If the populator fails, the migration can be restarted. Try to restart or retry the populator, or restart the migration.
 
@@ -41,11 +42,11 @@ Manual SSH key connection errors::
 +
 *Explanation*: The SSH connection is not running on the ESXi host for one of the following reasons:
 
-** The SSH is disabled.
+** Disabled SSH
 +
-*Solution*: Manually enable an SSH connection on the ESXi host by using the commands in {mtv-mig}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-manual-ssh-set-up_vmware[Setting up storage copy offload using manually generated SSH keys].
+*Solution*: Manually enable an SSH connection on the ESXi host by using the commands in "Setting up storage copy offload by using manually generated SSH keys" in _Planning your virtual machines to Red Hat OpenShift Virtualization_. A link for these instructions is available in the "Additional resources" section at the end of this module.
 
-** There is a problem with the network connectivity.
+** Network connectivity issue
 +
 *Solution*: Verify that the ESXi management network is accessible from the migration pods.
 
@@ -98,4 +99,9 @@ $ ssh -i /path/to/<private_key> root@<ESXI_host_IP>
 $ vserver show -vserver ${NAME_OF_SVM}
 ----
 
-. Set a management interface for the SVM and enter its `hostname` in the `STORAGE_HOSTNAME` by following the instructions in the NetApp Knowledge Base article, link: https://kb.netapp.com/Cloud/Astra/Trident/Trident_fails_to_access_ONTAP_on_SVM_level_and_on_Cluster_level[Trident fails to access ONTAP on SVM level and on Cluster level]. The link requires you to log in.
+. Set a management interface for the SVM and enter its `hostname` in the `STORAGE_HOSTNAME` parameter by following the instructions in the NetApp Knowledge Base article, "Trident fails to access ONTAP on SVM level and on Cluster level." A link for these instructions is available in the "Additional resources" section at the end of this module. The link requires you to log in.
+
+[role="_additional-resources"]
+.Additional resources
+* link:{mtv-mig}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-manual-ssh-set-up_vmware[Setting up storage copy offload using manually generated SSH keys]
+* link:https://kb.netapp.com/Cloud/Astra/Trident/Trident_fails_to_access_ONTAP_on_SVM_level_and_on_Cluster_level[Trident fails to access ONTAP on SVM level and on Cluster level]

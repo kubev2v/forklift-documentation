@@ -20,10 +20,9 @@ For all migrations, you specify the source provider, the destination provider, a
 
 [IMPORTANT]
 ====
-You must ensure that all prerequisites are met. For more information, see xref:assembly_software-requirements-for-migration_{context}[Software requirements for migration].
-
-VMware only: You must have the minimal set of xref:vmware-privileges_{context}[VMware privileges].
-
-VMware only: Creating a xref:creating-vddk-image_{context}[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
+You must ensure that all software requirements are met.
 ====
 
+[role="_additional-resources"]
+.Additional resources
+* xref:assembly_software-requirements-for-migration_{context}[Software requirements for migration]
