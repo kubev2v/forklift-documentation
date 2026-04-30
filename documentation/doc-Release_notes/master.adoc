@@ -8,11 +8,12 @@ endif::[]
 :compat-mode:
 :context: release-notes
 
+[role="_abstract"]
+Review these release notes for {project-first} version {project-version}.
+
 include::modules/rn-2-11.adoc[leveloffset=+1]
 
 // Technical changes by x-stream release
-
-
 include::modules/technical-changes-2-11.adoc[leveloffset=+2]
 
 // New features and enhancements by z-stream release
@@ -33,12 +34,3 @@ include::modules/rn-2-11-0-resolved-issues.adoc[leveloffset=+3]
 
 // Known issues by x-stream release
 include::modules/known-issues-2-11.adoc[leveloffset=+2]
-
-// Security fixes by y-stream release
-//include::modules/rn-security-fixes.adoc[leveloffset=+2]
-
-// Security fixes by z-stream release
-//include::modules/rn-2-11-z-security-fixes.adoc[leveloffset=+3]
-
-// == Release notes addendum
-// include::modules/mtv-selected-packages-2-11.adoc[leveloffset=+2]
