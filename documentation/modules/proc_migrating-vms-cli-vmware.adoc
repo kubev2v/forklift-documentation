@@ -284,7 +284,7 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/kubev2v/hook-runner
-  serviceAccount:<service account>
+  serviceAccount: <service_account>
   playbook: |
     LS0tCi0gbm...
 EOF
@@ -292,7 +292,7 @@ EOF
 +
 where:
 
-`<service account>`::
+`<service_account>`::
 Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
 
 `playbook`::

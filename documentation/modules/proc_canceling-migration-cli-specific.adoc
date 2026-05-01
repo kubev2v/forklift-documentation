@@ -7,7 +7,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="canceling-migration-cli-specific_{context}"]
+[id="proc_canceling-migration-cli-specific_{context}"]
 = Canceling the migration of specific VMs from the command-line interface
 
 [role="_abstract"]
@@ -39,7 +39,12 @@ where:
 `id` or `name`::
 Specifies a VM by using the `id` key or the `name` key.
 +
+ifndef::hyperv[]
 The value of the `id` key is the _managed object reference_, for a {vmw} VM, or the _VM UUID_, for a {rhv-full} VM.
+endif::hyperv[]
+ifdef::hyperv[]
+The value of the `id` key is the Hyper-V VM GUID.
+endif::hyperv[]
 
 . Retrieve the `Migration` custom resource (CR) to monitor the progress of the remaining VMs, following this example:
 +

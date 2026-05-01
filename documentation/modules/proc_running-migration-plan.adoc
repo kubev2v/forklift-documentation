@@ -10,7 +10,7 @@
 
 
 :_mod-docs-content-type: PROCEDURE
-[id="running-migration-plan_{context}"]
+[id="proc_running-migration-plan_{context}"]
 = Running a migration plan in the MTV UI
 
 [role="_abstract"]
@@ -87,6 +87,7 @@ The VM's details are displayed.
 +
 The *Logs* tab opens.
 +
+ifndef::hyperv[]
 [NOTE]
 ====
 Logs are not always available. The following are common reasons for logs not being available:
@@ -96,6 +97,17 @@ Logs are not always available. The following are common reasons for logs not bei
 * The pod was deleted.
 * The migration failed before running the pod.
 ====
+endif::hyperv[]
+ifdef::hyperv[]
+[NOTE]
+====
+Logs are not always available. The following are common reasons for logs not being available:
+
+* No pod was created.
+* The pod was deleted.
+* The migration failed before running the pod.
+====
+endif::hyperv[]
 
 .. To see the raw logs, click the *Raw* link.
 .. To download the logs, click the *Download* link.

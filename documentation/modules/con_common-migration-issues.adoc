@@ -61,4 +61,4 @@ For more information about renaming VMs in the {project-short} UI, see link:{mtv
 
 * link:{mtv-plan}assembly_software-requirements-for-migration_mtv#ref_source-vm-migration-considerations_mtv[Source VM migration considerations]
 * link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites]
-* link:{mtv-plan}assembly_cold-warm-migration_mtv#about-cold-warm-migration_mtv[About cold and warm migration]
+* link:{mtv-plan}assembly_cold-warm-migration_mtv#con_about-cold-warm-migration_mtv[About cold and warm migration]

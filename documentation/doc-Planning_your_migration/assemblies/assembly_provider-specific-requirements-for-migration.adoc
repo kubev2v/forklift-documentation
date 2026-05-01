@@ -32,11 +32,13 @@ include::../modules/vddk-validator-containers.adoc[leveloffset=+2]
 
 include::../modules/ova-prerequisites.adoc[leveloffset=+1]
 
+include::../modules/ref_hyperv-prerequisites.adoc[leveloffset=+1]
+
 include::../modules/cnv-prerequisites.adoc[leveloffset=+1]
 
 include::../modules/cnv-cnv-live-prerequisites.adoc[leveloffset=+2]
 
-include::../modules/compatibility-guidelines.adoc[leveloffset=+1]
+include::../modules/ref_compatibility-guidelines.adoc[leveloffset=+1]
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]

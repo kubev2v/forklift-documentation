@@ -1,0 +1,64 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-hyperv.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_creating-yaml-based-network-maps-ui-hyperv_{context}"]
+= Creating ownerless network maps by using YAML or JSON definitions in the {project-short} UI
+
+[role="_abstract"]
+Use YAML or JSON to create ownerless network maps in the {project-first} UI. You can select these maps later when creating a migration plan.
+
+For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
+
+.Prerequisites
+
+* Have a Microsoft Hyper-V source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_hyperv[Adding a Microsoft Hyper-V source provider] or xref:proc_adding-source-provider_dest_hyperv[Adding {a-virt} destination provider].
+
+.Procedure
+
+. In the {ocp} web console, go to *Migration for Virtualization* > *Network maps* > *Create network map* > *Create with YAML*.
+. Enter the YAML or JSON definitions into the editor, or drag and drop a file.
+. If you enter YAML definitions, use the following:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod
+      source:
+        id: <source_network_id>
+    - destination:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+      source:
+        id: <source_network_id>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+* `type`: `pod` or `multus`.
+* `source`: The Hyper-V network adapter (virtual switch) name or ID. The `name` is the virtual switch friendly name. The `id` is the switch GUID in 8-4-4-4-12 hexadecimal format. To retrieve these identifiers, see xref:proc_retrieving-hyperv-ids_{context}[Retrieving Microsoft Hyper-V network and storage identifiers].
+* `<network_attachment_definition>`: A network attachment definition for each additional {virt} network.
+* `<network_attachment_definition_namespace>`: The namespace of the {virt} network attachment definition. Required only when `type` is `multus`.
+
+. Optional: To download your input, click *Download*.
+. Click *Create*.
++
+Your map appears in the list of network maps.
+

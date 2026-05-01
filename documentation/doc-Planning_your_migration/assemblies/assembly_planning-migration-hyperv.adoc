@@ -1,0 +1,51 @@
+
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_planning-migration-hyperv_{context}"]
+
+= Planning a migration of virtual machines from Microsoft Hyper-V
+
+//:context: planning-hyperv
+
+[role="_abstract"]
+Create a Microsoft Hyper-V migration plan by setting up network maps, configuring source and destination providers with migration networks, and defining the migration plan in the {project-first} UI.
+
+:context: hyperv
+:hyperv:
+
+include::../modules/proc_creating-form-based-network-maps-ui-hyperv.adoc[leveloffset=+1]
+
+include::../modules/proc_creating-yaml-based-network-maps-ui-hyperv.adoc[leveloffset=+1]
+
+include::../modules/proc_creating-form-based-storage-maps-ui-hyperv.adoc[leveloffset=+1]
+
+include::../modules/proc_creating-yaml-based-storage-maps-ui-hyperv.adoc[leveloffset=+1]
+
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
+
+:!hyperv:
+:context: dest_hyperv
+:dest_hyperv:
+
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
+
+include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
+
+:!dest_hyperv:
+:context: hyperv
+:hyperv:
+
+include::../modules/proc_retrieving-hyperv-ids.adoc[leveloffset=+1]
+
+include::../modules/proc_creating-plan-wizard-hyperv.adoc[leveloffset=+1]
+
+:!hyperv:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
+
+
+

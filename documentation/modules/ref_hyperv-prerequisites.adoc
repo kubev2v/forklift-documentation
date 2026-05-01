@@ -1,0 +1,57 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_provider-specific-requirements-for-migration.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_hyperv-prerequisites_{context}"]
+= Microsoft Hyper-V prerequisites
+
+// SME REVIEW NEEDED: This file needs technical details verified and added:
+// - How are VMs exported to the SMB share? (manual/automatic)
+// - Does MTV connect via WinRM or only SMB? Why no WinRM credentials in UI?
+// - What are the specific WinRM configuration commands and settings?
+// - What service account permissions are required? (Local Admin, Hyper-V Admin, or specific privileges)
+// - What are the specific SMB share permissions and configuration details?
+// - Are there additional network requirements or firewall rules beyond ports 5986 and 445?
+// - What are the scope/limitations? (Clustered Hyper-V? CSV? Gen1 vs Gen2 VMs? SCVMM?)
+
+[role="_abstract"]
+To migrate virtual machines from Microsoft Hyper-V to {virt}, you must configure an SMB share for VM exports, enable WinRM on the Hyper-V host, and ensure network connectivity. Review these requirements before creating a provider.
+
+[NOTE]
+====
+{project-short} supports only cold migration from Microsoft Hyper-V. Warm migration is not available.
+====
+
+The following prerequisites apply to Microsoft Hyper-V migrations:
+
+* You must use a xref:ref_compatibility-guidelines_{context}[compatible version] of Windows Server with Hyper-V.
+* You must configure Windows Remote Management (WinRM) on the Hyper-V host for HTTPS communication.
+* An SMB share must be available and accessible from both the Hyper-V host and the {ocp-short} cluster.
+* The service account used for authentication must have appropriate permissions to access the SMB share and manage Hyper-V virtual machines.
+* The target namespace must have network connectivity to the SMB share and the Hyper-V WinRM endpoint. NetworkPolicies that block egress connections from the target namespace prevent migration from succeeding.
+* The VM operating system must be certified and supported for use as a link:https://access.redhat.com/articles/973163#ocpvirt[guest operating system with {virt}] _and_ for link:https://access.redhat.com/articles/1351473[conversion to KVM with `virt-v2v`].
+* A default `MigController` instance must be present. This instance is required for the Storage Migration option in the {ocp} web console in certain {ocp-name} versions. For steps to create the default `MigController` instance, see link:https://access.redhat.com/solutions/7136894[Storage Migration Option Missing for Virtual Machines in OpenShift 4.20 Despite Availability in 4.18].
+
+[id="ref_hyperv-network-requirements_{context}"]
+== Network requirements
+
+The following network ports must be accessible for Microsoft Hyper-V migrations:
+
+[cols="1,1,2", options="header"]
+.Network ports
+|===
+|Port |Protocol |Description
+|5986 |TCP |WinRM HTTPS (default)
+|445 |TCP |SMB file sharing
+|===
+
+[id="ref_hyperv-smb-share_{context}"]
+== SMB share requirements
+
+The SMB share must be configured with the following requirements:
+
+* The share must be accessible using either Windows UNC path format (`\\server\share`) or Linux SMB path format (`//server/share`).
+* The service account credentials must have read and write access to the SMB share.
+* The share must have sufficient storage space to hold the exported Hyper-V virtual machine files.
+* The Hyper-V host must be able to export virtual machines to the share.
