@@ -294,7 +294,6 @@ The name of the `Hook` CR.
 `<step>`::
 The hook type: `PreHook` (before migration) or `PostHook` (after migration).
 
-// SME REVIEW NEEDED: Is the cutover parameter supported for Hyper-V cold migrations, or should it be removed?
 .. Create a `Migration` manifest to run the `Plan` CR:
 +
 [source,yaml,subs="attributes+"]
@@ -309,11 +308,5 @@ spec:
   plan:
     name: <name_of_plan_cr>
     namespace: <namespace>
-  cutover: <optional_cutover_time>
 EOF
 ----
-+
-[NOTE]
-====
-If you specify a cutover time, use the ISO 8601 format with the UTC time offset, for example, `2024-04-04T01:23:45.678+09:00`.
-====

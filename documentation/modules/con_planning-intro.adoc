@@ -30,7 +30,7 @@ OVA migration is validated for migrating supported guest operating systems expor
 
 * Warm migration is available only for {vmw} vSphere and {rhv-full}. This type of migration migrates VMs that are powered *_on_* and does require common stored storage. 
 +
-These two types of migration are discussed in detail in xref:about-cold-warm-migration_mtv[About cold and warm migration].
+These two types of migration are discussed in detail in xref:con_about-cold-warm-migration_mtv[About cold and warm migration].
 
 * Live migration is available *_only_* for migrations between {virt} clusters or between namespaces on the same {virt} cluster. It requires {project-short} version 2.10 or later and {virt} version 4.20 or later. 
 +

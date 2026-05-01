@@ -25,7 +25,7 @@ To migrate virtual machines from Microsoft Hyper-V to {virt}, you must configure
 
 The following prerequisites apply to Microsoft Hyper-V migrations:
 
-* You must use a xref:compatibility-guidelines_{context}[compatible version] of Windows Server with Hyper-V.
+* You must use a xref:ref_compatibility-guidelines_{context}[compatible version] of Windows Server with Hyper-V.
 * You must configure Windows Remote Management (WinRM) on the Hyper-V host for HTTPS communication.
 * An SMB share must be available and accessible from both the Hyper-V host and the {ocp-short} cluster.
 * The service account used for authentication must have appropriate permissions to access the SMB share and manage Hyper-V virtual machines.

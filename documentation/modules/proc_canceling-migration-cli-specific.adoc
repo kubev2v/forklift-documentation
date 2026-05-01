@@ -7,7 +7,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
 
 :_mod-docs-content-type: PROCEDURE
-[id="canceling-migration-cli-specific_{context}"]
+[id="proc_canceling-migration-cli-specific_{context}"]
 = Canceling the migration of specific VMs from the command-line interface
 
 [role="_abstract"]

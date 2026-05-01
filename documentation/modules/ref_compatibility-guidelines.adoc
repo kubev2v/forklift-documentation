@@ -3,7 +3,7 @@
 // * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
 
 :_mod-docs-content-type: REFERENCE
-[id="compatibility-guidelines_{context}"]
+[id="ref_compatibility-guidelines_{context}"]
 = Software compatibility guidelines
 
 [role="_abstract"]
@@ -16,10 +16,7 @@ You must install compatible software versions. The table that follows lists the 
 |{project-version} |{ocp-y-version} |{ocp-y-version} |6.5 or later |4.4 SP1 or later|16.1 or later|Windows Server 2019 or later
 |===
 
-[NOTE]
-====
-[Technical review needed: Confirm supported Windows Server versions for Hyper-V - 2016, 2019, 2022, 2025]
-====
+// SME REVIEW NEEDED: Confirm supported Windows Server versions for Hyper-V - 2016, 2019, 2022, 2025?
 
 [NOTE]
 ====

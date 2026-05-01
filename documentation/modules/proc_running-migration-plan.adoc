@@ -10,7 +10,7 @@
 
 
 :_mod-docs-content-type: PROCEDURE
-[id="running-migration-plan_{context}"]
+[id="proc_running-migration-plan_{context}"]
 = Running a migration plan in the MTV UI
 
 [role="_abstract"]

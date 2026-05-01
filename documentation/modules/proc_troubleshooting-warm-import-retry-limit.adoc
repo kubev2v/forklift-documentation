@@ -44,5 +44,5 @@ The Migration Controller service automatically deletes each snapshot when it is 
 [role="_additional-resources"]
 .Additional resources
 
-* link:{mtv-plan}assembly_cold-warm-migration_mtv#about-cold-warm-migration_mtv[About cold and warm migration]
+* link:{mtv-plan}assembly_cold-warm-migration_mtv#con_about-cold-warm-migration_mtv[About cold and warm migration]
 * link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites]
