@@ -37,6 +37,8 @@ include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffs
 :context: hyperv
 :hyperv:
 
+include::../modules/proc_retrieving-hyperv-ids.adoc[leveloffset=+1]
+
 include::../modules/proc_creating-plan-wizard-hyperv.adoc[leveloffset=+1]
 
 :!hyperv:

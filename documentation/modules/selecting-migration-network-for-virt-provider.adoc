@@ -21,7 +21,7 @@ In version 2.10.0 and later, {project-short} detects if you have selected a user
 
 [IMPORTANT]
 ====
-{project-short} supports using UDNs for all providers except {virt}.
+{project-short} supports using UDNs for migrations from all source providers except when the source provider is also {virt} (for OpenShift-to-OpenShift migrations).
 ====
 
 [NOTE]

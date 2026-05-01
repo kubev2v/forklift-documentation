@@ -7,7 +7,7 @@
 = Creating ownerless network maps by using YAML or JSON definitions in the {project-short} UI
 
 [role="_abstract"]
-You can add ownerless network maps by using YAML or JSON definitions in the {project-first} UI. Later, you can add these maps to a migration plan by using the *Use an existing network map* option in the {project-short} wizard.
+Use YAML or JSON to create ownerless network maps in the {project-first} UI. You can select these maps later when creating a migration plan.
 
 For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
 
@@ -17,9 +17,8 @@ For more information about network and storage maps in {project-short}, see link
 
 .Procedure
 
-. In the {ocp} web console, click *Migration for Virtualization* > *Network maps*.
-. Click *Create network map* > *Create with YAML*.
-. Enter the YAML or JSON definitions into the editor, or drag and drop a file into the editor.
+. In the {ocp} web console, go to *Migration for Virtualization* > *Network maps* > *Create network map* > *Create with YAML*.
+. Enter the YAML or JSON definitions into the editor, or drag and drop a file.
 . If you enter YAML definitions, use the following:
 +
 [source,yaml,subs="attributes+"]
@@ -53,10 +52,10 @@ spec:
 EOF
 ----
 +
-* `type`: Allowed values are `pod` and `multus`.
-* `source`: Specify the Hyper-V network adapter (virtual switch) name or ID. The `name` is the virtual switch friendly name. The `id` is the switch GUID in 8-4-4-4-12 hexadecimal format.
-* `<network_attachment_definition>`: Specify a network attachment definition for each additional {virt} network.
-* `<network_attachment_definition_namespace>`: Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+* `type`: `pod` or `multus`.
+* `source`: The Hyper-V network adapter (virtual switch) name or ID. The `name` is the virtual switch friendly name. The `id` is the switch GUID in 8-4-4-4-12 hexadecimal format. To retrieve these identifiers, see xref:proc_retrieving-hyperv-ids_{context}[Retrieving Microsoft Hyper-V network and storage identifiers].
+* `<network_attachment_definition>`: A network attachment definition for each additional {virt} network.
+* `<network_attachment_definition_namespace>`: The namespace of the {virt} network attachment definition. Required only when `type` is `multus`.
 
 . Optional: To download your input, click *Download*.
 . Click *Create*.

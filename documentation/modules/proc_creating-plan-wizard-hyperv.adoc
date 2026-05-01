@@ -113,6 +113,8 @@ If you choose an existing map, be sure it has the same source provider and the s
 ====
 You can create an ownerless storage map, which you and others can use for additional migration plans, in the *Storage maps* section of the UI.
 ====
++
+// SME REVIEW NEEDED: Does the wizard auto-detect CSV/local paths? Should users verify auto-generated mappings?
 
 ** *Source storage*: Select from the list.
 ** *Target storage*: Select from the list.

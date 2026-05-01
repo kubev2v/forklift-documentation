@@ -43,16 +43,17 @@ EOF
 where:
 
 `ownerReferences`::
-Is an optional section in which you can specify a provider's `name` and `uid`.
+Optional section for the provider's `name` and `uid`.
 
+// SME REVIEW NEEDED: Do unquoted backslashes break YAML parsing? Should we recommend only forward-slash format?
 `<smb_server_path>`::
-Specifies the SMB share path in the format `//server/share` or `\\server\share`, for example, `//192.168.122.115/VMShare`.
+The SMB share path in `//server/share` or `\\server\share` format (for example, `//192.168.122.115/VMShare`).
 
 `<smb_username>`::
-Specifies the username for accessing the SMB share, for example, `Administrator` or `DOMAIN\username`.
+The username for the SMB share (for example, `Administrator` or `DOMAIN\username`).
 
 `<smb_password>`::
-Specifies the password for accessing the SMB share.
+The password for the SMB share.
 
 . Create a `Provider` manifest for the source provider:
 +
@@ -76,10 +77,10 @@ EOF
 where:
 
 `<smb_server_path>`::
-Specifies the SMB share path in the format `//server/share` or `\\server\share`, for example, `//192.168.122.115/VMShare`.
+The SMB share path in `//server/share` or `\\server\share` format (for example, `//192.168.122.115/VMShare`).
 
 `<secret>`::
-Specifies the name of the provider `Secret` CR.
+The name of the provider `Secret` CR.
 
 . Create a `NetworkMap` manifest to map the source and destination networks:
 +
@@ -117,19 +118,19 @@ EOF
 where:
 
 `type`::
-Specifies the network type. Allowed values are `pod` and `multus`.
+The network type: `pod` or `multus`.
 
 `<source_network_id>`::
-Specifies the Hyper-V network adapter (virtual switch) name or ID. The name is the virtual switch friendly name. The ID is the switch GUID in 8-4-4-4-12 hexadecimal format.
+The Hyper-V network adapter (virtual switch) name or ID. The name is the virtual switch friendly name. The ID is the switch GUID in 8-4-4-4-12 hexadecimal format.
 
 `<network_attachment_definition>`::
-Specifies a network attachment definition (NAD) for each additional {virt} network.
+A network attachment definition (NAD) for each additional {virt} network.
 
 `<network_attachment_definition_namespace>`::
-Specifies the namespace of the {virt} NAD. Required only when `type` is `multus`.
+The namespace of the {virt} NAD. Required only when `type` is `multus`.
 
 `namespace`::
-Specifies the namespace. If you are using a user-defined network (UDN), its namespace is defined in {virt}.
+The namespace. If you are using a user-defined network (UDN), its namespace is defined in {virt}.
 
 . Create a `StorageMap` manifest to map source and destination storage:
 +
@@ -161,10 +162,10 @@ EOF
 where:
 
 `<access_mode>`::
-Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+The access mode: `ReadWriteOnce` or `ReadWriteMany`.
 
 `<source_storage_id>`::
-Specifies the Hyper-V storage identifier, such as the file path to the virtual hard drive (for example, `C:\VHDs\disk.vhdx`), a volume GUID path, or a storage pool name.
+The Hyper-V storage identifier (file path, volume GUID path, or storage pool name). For example, `C:\VHDs\disk.vhdx`.
 
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
 +
@@ -187,21 +188,17 @@ EOF
 where:
 
 `<service_account>`::
-Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
+The {ocp} service account (optional). Use this parameter to modify cluster resources.
 
 `playbook`::
-Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
+The Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
 +
 [NOTE]
 ====
 You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
 ====
 
-. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
-+
-You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
-+
-Configuring the IP address enables the interface to reach the configured gateway.
+. Create the network attachment definition (NAD) for the transfer network to configure the interface IP address (DHCP or static) and enable gateway access:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -255,38 +252,39 @@ EOF
 where:
 
 `<plan>`::
-Specifies the name of the `Plan` CR.
+The name of the `Plan` CR.
 
 `map`::
-Specifies only one network map and one storage map per plan.
+One network map and one storage map per plan.
 
 `network`::
-Specifies a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+A network mapping. Required even if VMs are not assigned to a network (the mapping can be empty).
 
 `<network_map>`::
-Specifies the name of the `NetworkMap` CR.
+The name of the `NetworkMap` CR.
 
 `storage`::
-Specifies a storage mapping even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+A storage mapping. Required even if VMs are not assigned disk images (the mapping can be empty).
 
 `<storage_map>`::
-Specifies the name of the `StorageMap` CR.
+The name of the `StorageMap` CR.
 
 `vms`::
-Specifies the source VMs and their hooks. Accepts either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+The source VMs and their hooks. Use `id` or `name` to specify VMs. If using a UDN, verify the provider IP address is outside the UDN subnet to avoid migration failure.
 
 `<source_vm1>`::
-Specifies the Hyper-V VM identifier.
+The Hyper-V VM identifier.
 
 `hooks`::
-Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional label.
+Up to two hooks per migration (optional). Each hook must run during a separate migration step.
 
 `<hook>`::
-Specifies the name of the `Hook` CR.
+The name of the `Hook` CR.
 
 `<step>`::
-Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+The hook type: `PreHook` (before migration) or `PostHook` (after migration).
 
+// SME REVIEW NEEDED: Is the cutover parameter supported for Hyper-V cold migrations, or should it be removed?
 . Create a `Migration` manifest to run the `Plan` CR:
 +
 [source,yaml,subs="attributes+"]

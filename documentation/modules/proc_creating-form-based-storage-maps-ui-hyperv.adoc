@@ -7,7 +7,7 @@
 = Creating ownerless storage maps by using the form page of the {project-short} UI
 
 [role="_abstract"]
-You can add ownerless storage maps by using the form page of the {project-first} UI. Later, you can add these maps to a migration plan by using the *Use an existing storage map* option in the *Storage map* page of the {project-short} wizard.
+Use the form page to create ownerless storage maps in the {project-first} UI. You can select these maps later when creating a migration plan.
 
 For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
 
@@ -17,8 +17,7 @@ For more information about network and storage maps in {project-short}, see link
 
 .Procedure
 
-. In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
-. Click *Create storage map* > *Create with form*.
+. In the {ocp} web console, go to *Migration for Virtualization* > *Storage maps* > *Create storage map* > *Create with form*.
 . Specify the following:
 
 * *Map name*: Name of the storage map.
