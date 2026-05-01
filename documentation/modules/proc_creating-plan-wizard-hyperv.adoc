@@ -11,27 +11,13 @@ You can migrate virtual machines from Microsoft Hyper-V by using the {project-fu
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
-[NOTE]
-====
-{project-short} supports only cold migration from Microsoft Hyper-V. Warm migration is not available.
-====
+Limitations::
 
-[WARNING]
-====
-Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration.
+* {project-short} supports only cold migration from Microsoft Hyper-V. Warm migration is not available.
 
-This prevents concurrent disk access to the storage the guest points to.
-====
+* Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration. This prevents concurrent disk access to the storage the guest points to.
 
-[IMPORTANT]
-====
-A plan cannot contain more than 500 VMs or 500 disks.
-====
-
-[IMPORTANT]
-====
-When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard, but are important. Be sure to read and follow the instructions for this page carefully, even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
-====
+* A plan cannot contain more than 500 VMs or 500 disks.
 
 .Prerequisites
 
