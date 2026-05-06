@@ -1,6 +1,7 @@
 // Module included in the following assemblies:
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-cnv.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-google-drive.adoc
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-osp.adoc
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
@@ -39,7 +40,24 @@ where:
 `id` or `name`::
 Specifies a VM by using the `id` key or the `name` key.
 +
-The value of the `id` key is the _managed object reference_, for a {vmw} VM, or the _VM UUID_, for a {rhv-full} VM.
+ifdef::vmware[]
+The value of the `id` key is the _managed object reference_ for a {vmw} VM.
+endif::[]
+ifdef::rhv[]
+The value of the `id` key is the _VM UUID_ for a {rhv-full} VM.
+endif::[]
+ifdef::ostack[]
+The value of the `id` key is the _VM UUID_ for an {osp} VM.
+endif::[]
+ifdef::ova[]
+The value of the `id` key is the _VM name_ from the OVA file for an OVA VM.
+endif::[]
+ifdef::google-drive[]
+The value of the `id` key is the _VM disk image file name_ (or Google Drive File ID) as it appears in Google Drive.
+endif::[]
+ifdef::cnv[]
+The value of the `id` key is the _VM name_ for a {virt} VM.
+endif::[]
 
 . Retrieve the `Migration` custom resource (CR) to monitor the progress of the remaining VMs, following this example:
 +

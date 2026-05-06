@@ -55,7 +55,7 @@ endif::vmware,rhv[]
 +
 [WARNING]
 ====
-Do not take a snapshot of a VM after you start a migration. Taking a snaphot after a migration starts might cause the migration to fail.
+Do not take a snapshot of a VM after you start a migration. Taking a snapshot after a migration starts might cause the migration to fail.
 ====
 
 . Optional: Click the links in the migration's *Status* to see its overall status and the status of each VM:

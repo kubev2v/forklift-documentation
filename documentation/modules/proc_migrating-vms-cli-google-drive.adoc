@@ -1,6 +1,9 @@
 // Module included in the following assemblies:
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-google-drive.adoc
+//
+// TODO (SME): Does the 'id' value (line 289) expect the literal file name (e.g., "my-vm.qcow2")
+//             or the Google Drive File ID (alphanumeric string from the API)?
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_migrating-vms-cli-google-drive_{context}"]

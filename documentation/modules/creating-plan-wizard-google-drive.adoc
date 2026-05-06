@@ -2,10 +2,9 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-google-drive.adoc
 //
-// TODO: Check with SME to clarify the "500 VMs or 500 disks" limit (line 17).
-// Is this: (a) independent limits (500 VMs AND 500 disks), or
-//          (b) combined/first-hit limit (500 VMs OR 500 disks, whichever comes first)?
-// This ambiguity exists across all provider docs (vmware, rhv, ova, ostack, cnv).
+// TODO (SME): Clarify the "500 VMs or 500 disks" limit (line 17).
+//             Are these independent limits (500 VMs AND 500 disks) or whichever limit is reached first?
+//             This wording appears in all provider docs.
 
 :_mod-docs-content-type: PROCEDURE
 [id="creating-plan-wizard-google-drive_{context}"]
