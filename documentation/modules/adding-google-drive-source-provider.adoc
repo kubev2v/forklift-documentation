@@ -19,7 +19,7 @@ You can add a Google Drive source provider in the {ocp} web console by creating 
 
 . In the {ocp} web console, click *Workloads* > *Secrets*.
 
-. Select your project from the *Project* list.
+. Select the +{namespace}+ project from the *Project* list.
 
 . Click *Create* > *From YAML*.
 
@@ -31,7 +31,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: <google_drive_secret>
-  namespace: openshift-mtv
+  namespace: <namespace>
   labels:
     createdForProviderType: google-drive
 type: Opaque
@@ -57,6 +57,9 @@ where:
 `<google_drive_secret>`::
 Specifies the name of the secret.
 +
+`<namespace>`::
+Specifies the namespace. The default namespace for {project-short} is +{namespace}+.
++
 `key.json`::
 Specifies the entire JSON content from the service account key file downloaded from Google Cloud Platform. Do not encode or modify the JSON content.
 
@@ -74,19 +77,22 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
   name: <google_drive_provider>
-  namespace: openshift-mtv
+  namespace: <namespace>
 spec:
   type: google-drive
   url: "gdrive://<google-drive-folder-id>"
   secret:
     name: <google_drive_secret>
-    namespace: openshift-mtv
+    namespace: <namespace>
 ----
 +
 where:
 +
 `<google_drive_provider>`::
 Specifies the name of the provider.
++
+`<namespace>`::
+Specifies the namespace. The default namespace for {project-short} is +{namespace}+.
 +
 `type`::
 Specifies the provider type. Must be `google-drive`.

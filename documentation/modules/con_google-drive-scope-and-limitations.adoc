@@ -1,6 +1,11 @@
 // Module included in the following assemblies:
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-google-drive.adoc
+//
+// TODO: Check with SME to clarify the "500 VMs or 500 disks" limit (line 26).
+// Is this: (a) independent limits (500 VMs AND 500 disks), or
+//          (b) combined/first-hit limit (500 VMs OR 500 disks, whichever comes first)?
+// This ambiguity exists across all provider docs (vmware, rhv, ova, ostack, cnv).
 
 :_mod-docs-content-type: CONCEPT
 
@@ -15,7 +20,7 @@ The Google Drive import process is a file-based migration similar to OVA imports
 
 Vendor-supplied appliances often use proprietary bootloaders or disk layouts that are incompatible with this conversion process. Moreover, converting a vendor appliance may invalidate vendor support agreements.
 
-To ensure stability and vendor support, always prioritize importing the vendor's native QCOW2 image by using either the {virt} "Upload Image" or the {virt} "Import from URL" workflow rather than using the {project-first} Google Drive import path for vendor appliances.
+To ensure stability and vendor support, always prioritize importing the vendor's native QCOW2 image by using either the {virt} "Upload Image" or the {virt} "Import from URL" workflow rather than by using the {project-first} Google Drive import path for vendor appliances.
 
 Limitations::
 

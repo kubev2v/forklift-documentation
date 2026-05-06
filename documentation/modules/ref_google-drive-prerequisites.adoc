@@ -13,8 +13,8 @@ Prerequisites::
 
 * *Google Cloud Platform project*: You must have an active project in the Google Cloud Console with the Google Drive API enabled.
 * *Google Drive API access*: The Google Drive API must be enabled for your project with the necessary permissions configured.
-* *OAuth 2.0 service account*: A service account must be created with appropriate roles (such as Storage Object Viewer or Drive API Read-only) and a JSON key file generated.
-* *Shared Google Drive folder*: The Google Drive folder or files containing the VM disk images must be shared with the service account's email address with at least read permissions.
+* *OAuth 2.0 service account*: A service account must be created with a JSON key file generated. Access to Google Drive is granted by sharing files and folders with the service account's email address (for example, `service-account@project.iam.gserviceaccount.com`). For shared drives, add the service account as a member with a role such as Reader, Content Manager, or Contributor. For organizations using Google Workspace with restricted sharing, domain-wide delegation may be required.
+* *Shared Google Drive folder*: The Google Drive folder or files containing the VM disk images must be shared with the service account's email address with at least read (Viewer) permissions.
 * *Network connectivity*: The OpenShift cluster nodes must have egress network connectivity to Google Drive API endpoints (`*.googleapis.com`).
 * *Supported file formats*: VM disk images must be in a supported format, such as:
 ** QCOW2 (QEMU Copy-On-Write version 2)

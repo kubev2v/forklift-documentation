@@ -1,6 +1,11 @@
 // Module included in the following assemblies:
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-google-drive.adoc
+//
+// TODO: Check with SME to clarify the "500 VMs or 500 disks" limit (line 17).
+// Is this: (a) independent limits (500 VMs AND 500 disks), or
+//          (b) combined/first-hit limit (500 VMs OR 500 disks, whichever comes first)?
+// This ambiguity exists across all provider docs (vmware, rhv, ova, ostack, cnv).
 
 :_mod-docs-content-type: PROCEDURE
 [id="creating-plan-wizard-google-drive_{context}"]
@@ -19,9 +24,9 @@ Considerations::
 
 .Prerequisites
 
-* Have a Google Drive source provider and {a-virt} destination provider. For more information, see xref:adding-google-drive-source-provider_google-drive[Adding a Google Drive source provider] or xref:adding-source-provider_dest_google-drive[Adding {a-virt} destination provider].
+* Have a Google Drive source provider and {a-virt} destination provider. For more information, see xref:adding-google-drive-source-provider_google-drive[Adding a Google Drive source provider] or xref:proc_adding-source-provider_dest_google-drive[Adding {a-virt} destination provider].
 * If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
-* If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
+* If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}. Verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 
 .Procedure
 
@@ -50,7 +55,6 @@ The *Create migration plan* wizard opens.
 +
 // Virtual machines page
 . On the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
-. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 +
 // Network map page
 . On the *Network map* page, choose one of the following options:
@@ -64,7 +68,7 @@ These are network maps available for all plans, and therefore, they are _ownerle
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create by using this option are not available in the *Use an existing network map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -91,7 +95,7 @@ These are storage maps available for all plans, and therefore, they are _ownerle
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create by using this option are not available in the *Use an existing storage map* option because each is created with an owner.
 +
 [NOTE]
 ====

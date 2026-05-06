@@ -215,7 +215,7 @@ Configuring the IP address enables the interface to reach the configured gateway
 +
 [source,yaml,subs="attributes+"]
 ----
-$ oc edit NetworkAttachmentDefinitions <name_of_the_NAD_to_edit>
+$ oc edit network-attachment-definitions <name_of_the_NAD_to_edit> -n <namespace>
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:

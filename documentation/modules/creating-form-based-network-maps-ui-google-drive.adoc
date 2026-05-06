@@ -13,7 +13,7 @@ For more information about network and storage maps in {project-short}, see link
 
 .Prerequisites
 
-* Have a Google Drive source provider and {a-virt} destination provider. For more information, see xref:adding-google-drive-source-provider_google-drive[Adding a Google Drive source provider] or xref:adding-source-provider_dest_google-drive[Adding {a-virt} destination provider].
+* Have a Google Drive source provider and {a-virt} destination provider. For more information, see xref:adding-google-drive-source-provider_google-drive[Adding a Google Drive source provider] or xref:proc_adding-source-provider_dest_google-drive[Adding {a-virt} destination provider].
 
 .Procedure
 

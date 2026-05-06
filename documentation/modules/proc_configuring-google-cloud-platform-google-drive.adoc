@@ -32,10 +32,8 @@ Considerations::
 .. Click *Create Service Account*.
 .. Enter a name and description for the service account.
 .. Click *Create and Continue*.
-
-. Grant the service account appropriate permissions:
-.. Assign roles such as *Storage Object Viewer* or *Drive API Read-only*.
-.. Click *Continue* and then *Done*.
+.. Click *Continue* to skip granting project roles (Google Drive access is managed by file/folder sharing, not IAM roles).
+.. Click *Done*.
 
 . Generate a service account key:
 .. Click the created service account to open its details page.
