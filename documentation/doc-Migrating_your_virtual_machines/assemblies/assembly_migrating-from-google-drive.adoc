@@ -18,7 +18,7 @@ Like OVA migrations, Google Drive migrations are file-based imports. The network
 
 == Prerequisites
 
-* You have planned your migration from Google Drive.
+* You have planned your migration from Google Drive. For more information, see link:{mtv-plan}assembly_planning-migration-google-drive_mtv[Planning a migration of virtual machines from Google Drive].
 
 include::../modules/con_google-drive-scope-and-limitations.adoc[leveloffset=+1]
 

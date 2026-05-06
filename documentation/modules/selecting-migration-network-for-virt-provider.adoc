@@ -30,7 +30,7 @@ Considerations::
 . In the {ocp} web console, click *Migration for Virtualization* > *Providers*.
 . Click the {virt} provider whose migration network you want to change.
 +
-When the *Providers detail* page opens:
+When the *Provider details* page opens:
 
 . Click the *Networks* tab.
 . Click *Set default transfer network*.

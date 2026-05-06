@@ -34,7 +34,7 @@ include::../modules/adding-google-drive-source-provider.adoc[leveloffset=+1]
 :context: dest_google-drive
 :dest_google-drive:
 
-include::../modules/adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
 include::../modules/selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
 
