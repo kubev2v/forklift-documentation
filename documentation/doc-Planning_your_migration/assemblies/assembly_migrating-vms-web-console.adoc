@@ -10,18 +10,22 @@ ifdef::context[:parent-context: {context}]
 //:context: migrating-vms-web
 
 [role="_abstract"]
-Use the {project-short} user interface to migrate virtual machines (VMs) from VMware vSphere, {rhv-full} ({rhv-short}), {osp}, Open Virtual Appliances (OVAs) that were created by VMware vSphere, or {virt} clusters. 
-
-For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
+Use the {project-short} user interface to migrate virtual machines (VMs) from {vmw} vSphere, {rhv-full} ({rhv-short}), {osp}, Open Virtual Appliances (OVAs) that were created by {vmw} vSphere, or {virt} clusters. For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
 
 [IMPORTANT]
 ====
-You must ensure that all prerequisites are met. For more information, see link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration].
+You must ensure that all prerequisites are met.
 
-VMware only: You must have the minimal set of link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-privileges_mtv[VMware privileges].
+{vmw} only: You must have the minimal set of {vmw} privileges.
 
-VMware only: Creating a link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#proc_creating-vddk-image_mtv[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
+{vmw} only: Creating a {vmw} Virtual Disk Development Kit (VDDK) image will increase migration speed.
 ====
+
+[role="_additional-resources"]
+== Additional resources
+* link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration]
+* link:{mtv-plan}ref_vmware-privileges_mtv[VMware privileges]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#proc_creating-vddk-image_mtv[Creating a VDDK image]
 
 include::../modules/con_navigating-mtv-pages.adoc[leveloffset=+1]
 
