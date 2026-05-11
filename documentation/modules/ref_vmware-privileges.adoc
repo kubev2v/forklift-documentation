@@ -7,9 +7,9 @@
 = {vmw} privileges
 
 [role="_abstract"]
-Configure user permissions in {vmw} vSphere to allow {project-first} to access and migrate virtual machines. The minimal set of privileges ensures that {project-first} can read VM configurations, manage snapshots, and transfer disk data.
+Configure user permissions in {vmw} vSphere to allow {project-first} to access and migrate virtual machines (VMs). The minimal set of privileges ensures that {project-first} can read VM configurations, manage snapshots, and transfer disk data.
 
-The following minimal set of {vmw} privileges is required to migrate virtual machines to {virt} with the {project-first}. All `Virtual machine.Provisioning` privileges are required.
+The following minimal set of {vmw} privileges is required to migrate VMs to {virt} with the {project-first}. All `Virtual machine.Provisioning` privileges are required.
 
 [cols="2", options="header"]
 .`Virtual machine.Interaction` privileges

@@ -7,7 +7,7 @@
 = {vmw} prerequisites
 
 [role="_abstract"]
-Verify that your {vmw} vSphere environment meets the requirements for migrating virtual machines to {virt}. Understanding these prerequisites helps you prepare your source environment and avoid migration failures.
+Verify that your {vmw} vSphere environment meets the requirements for migrating virtual machines (VMs) to {virt}. Understanding these prerequisites helps you prepare your source environment and avoid migration failures.
 
 Create a VDDK image to accelerate migrations. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
 
