@@ -5,16 +5,15 @@ DOCDIR      := documentation
 CONTAINER_ENGINE ?= $(shell command -v podman 2>/dev/null || command -v docker 2>/dev/null)
 IMAGE_NAME       := forklift-docs-builder
 
-ATTRS := -a upstream -a build=upstream -a docinfodir=$(CURDIR)/$(DOCDIR) -a docinfo=shared
+ATTRS_UPSTREAM   := -a upstream -a build=upstream -a docinfodir=$(CURDIR)/$(DOCDIR) -a docinfo=shared
+ATTRS_DOWNSTREAM := -a build=downstream -a docinfodir=$(CURDIR)/$(DOCDIR) -a docinfo=shared
 
 GUIDES := $(DOCDIR)/doc-Planning_your_migration/master.adoc \
           $(DOCDIR)/doc-Migrating_your_virtual_machines/master.adoc \
           $(DOCDIR)/doc-Release_notes/master.adoc
 
-HTML_OUT := $(patsubst $(DOCDIR)/%.adoc,$(OUTDIR)/$(DOCDIR)/%.html,$(GUIDES))
-
 .DEFAULT_GOAL := help
-.PHONY: help build serve build-local serve-local image clean search copy-assets
+.PHONY: help build serve build-local serve-local image clean
 
 ## help: Show this help message
 help:
@@ -39,23 +38,37 @@ serve: image
 # --- Local targets (require Ruby, Asciidoctor, Node.js, Python 3) ---
 
 ## build-local: Build docs locally (requires Ruby, Asciidoctor, Node.js)
-build-local: $(HTML_OUT) copy-assets search
-
-$(OUTDIR)/$(DOCDIR)/%.html: $(DOCDIR)/%.adoc
-	@mkdir -p $(dir $@)
-	$(ASCIIDOCTOR) -b html5 -d book --safe-mode unsafe $(ATTRS) -o $(CURDIR)/$@ $<
-
-## copy-assets: Copy static assets to the output directory
-copy-assets:
-	@mkdir -p $(OUTDIR)/$(DOCDIR)
-	cp $(DOCDIR)/index.html $(OUTDIR)/$(DOCDIR)/index.html
-	@mkdir -p $(OUTDIR)/assets/img
-	cp -r assets/img/* $(OUTDIR)/assets/img/ 2>/dev/null || true
-	@echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=documentation/index.html"></head></html>' > $(OUTDIR)/index.html
-
-## search: Generate the Pagefind search index
-search:
-	npx -y pagefind --site $(OUTDIR) --root-selector "#content" --output-subdir _pagefind
+# Builds both upstream (Forklift) and downstream (MTV) into _site/upstream/ and
+# _site/downstream/, with a root switcher page at _site/index.html.
+build-local:
+# --- upstream (Forklift) ---
+	@mkdir -p $(OUTDIR)/upstream/$(DOCDIR)
+	@for guide in $(GUIDES); do \
+		outfile=$(OUTDIR)/upstream/$$(echo $$guide | sed 's/\.adoc$$/.html/'); \
+		mkdir -p $$(dirname $$outfile); \
+		$(ASCIIDOCTOR) -b html5 -d book --safe-mode unsafe $(ATTRS_UPSTREAM) \
+			-o $(CURDIR)/$$outfile $$guide; \
+	done
+	cp $(DOCDIR)/index.html $(OUTDIR)/upstream/$(DOCDIR)/index.html
+	@mkdir -p $(OUTDIR)/upstream/assets/img
+	cp -r assets/img/* $(OUTDIR)/upstream/assets/img/ 2>/dev/null || true
+	@echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=documentation/index.html"></head></html>' > $(OUTDIR)/upstream/index.html
+	npx -y pagefind --site $(OUTDIR)/upstream --root-selector "#content" --output-subdir _pagefind
+# --- downstream (MTV) ---
+	@mkdir -p $(OUTDIR)/downstream/$(DOCDIR)
+	@for guide in $(GUIDES); do \
+		outfile=$(OUTDIR)/downstream/$$(echo $$guide | sed 's/\.adoc$$/.html/'); \
+		mkdir -p $$(dirname $$outfile); \
+		$(ASCIIDOCTOR) -b html5 -d book --safe-mode unsafe $(ATTRS_DOWNSTREAM) \
+			-o $(CURDIR)/$$outfile $$guide; \
+	done
+	cp $(DOCDIR)/index-downstream.html $(OUTDIR)/downstream/$(DOCDIR)/index.html
+	@mkdir -p $(OUTDIR)/downstream/assets/img
+	cp -r assets/img/* $(OUTDIR)/downstream/assets/img/ 2>/dev/null || true
+	@echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=documentation/index.html"></head></html>' > $(OUTDIR)/downstream/index.html
+	npx -y pagefind --site $(OUTDIR)/downstream --root-selector "#content" --output-subdir _pagefind
+# --- root switcher page ---
+	cp $(DOCDIR)/index-both.html $(OUTDIR)/index.html
 
 ## serve-local: Build and serve docs locally at localhost:8000
 serve-local: build-local

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forklift / MTV Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Red Hat Text", sans-serif;
+    background: #f8f9fa;
+    color: #3a3f4b;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .switcher {
+    max-width: 720px;
+    width: 100%;
+    text-align: center;
+  }
+  .switcher h1 {
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 0.5rem;
+  }
+  .switcher p {
+    font-size: 0.95rem;
+    color: #555b68;
+    margin-bottom: 2rem;
+  }
+  .variants {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .variant {
+    background: #fff;
+    border: 2px solid #e0e3e8;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .variant:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .variant.upstream { border-color: #1a1a2e; }
+  .variant.upstream:hover { border-color: #0066cc; }
+  .variant.downstream { border-color: #a30000; }
+  .variant.downstream:hover { border-color: #c9190b; }
+  .variant .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .variant.upstream .badge {
+    background: #e8f0fe;
+    color: #19407c;
+  }
+  .variant.downstream .badge {
+    background: #fce8e6;
+    color: #a30000;
+  }
+  .variant h2 {
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+  .variant p {
+    font-size: 0.85rem;
+    color: #555b68;
+    margin: 0;
+  }
+  .variant .arrow {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+  .variant.upstream .arrow { color: #0066cc; }
+  .variant.downstream .arrow { color: #a30000; }
+  footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.78rem;
+    color: #8890a0;
+  }
+  footer a { color: #555b68; text-decoration: none; }
+  footer a:hover { color: #0066cc; }
+  @media screen and (max-width: 600px) {
+    .variants { grid-template-columns: 1fr; }
+    .switcher h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="switcher">
+  <h1>Documentation Preview</h1>
+  <p>Select which variant to view. Both are built from the same source with different product attributes.</p>
+
+  <div class="variants">
+    <a class="variant upstream" href="upstream/documentation/index.html">
+      <span class="badge">Upstream</span>
+      <h2>Forklift</h2>
+      <p>Community project. Uses OKD, KubeVirt, kubectl, and oVirt terminology.</p>
+      <span class="arrow">Open Forklift docs &rarr;</span>
+    </a>
+
+    <a class="variant downstream" href="downstream/documentation/index.html">
+      <span class="badge">Downstream</span>
+      <h2>Migration Toolkit for Virtualization</h2>
+      <p>Red Hat product. Uses OpenShift, OpenShift Virtualization, oc, and RHV terminology.</p>
+      <span class="arrow">Open MTV docs &rarr;</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  Maintained by <a href="https://github.com/kubev2v">kubev2v</a> &middot;
+  <a href="https://github.com/kubev2v/forklift-documentation/blob/main/LICENSE">Apache-2.0</a>
+</footer>
+
+</body>
+</html>
