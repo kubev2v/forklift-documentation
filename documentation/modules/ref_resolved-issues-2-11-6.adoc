@@ -16,5 +16,5 @@ link:https://redhat.atlassian.net/browse/MTV-5320[MTV-5320]
 
 Populator pods no longer fail with VIB installation errors during storage offload migrations::
 Before this update, each populator pod attempted to check and install the VIB on the ESXi host at runtime. When many pods spawned simultaneously for a virtual machine with many disks, the concurrent `esxcli` calls overwhelmed the host. As a consequence, populator pods failed. With this update, the automatic VIB installation is removed from the populator flow. As a result, populator pods no longer fail with VIB installation errors. You must install the VIB on ESXi hosts manually before a migration.
-
-// no ticket number due to security issue
++
+link:https://redhat.atlassian.net/browse/MTV-5320[MTV-5320]
