@@ -6,7 +6,7 @@ CONTAINER_ENGINE ?= $(shell command -v podman 2>/dev/null || command -v docker 2
 IMAGE_NAME       := forklift-docs-builder
 
 ATTRS_UPSTREAM   := -a upstream -a build=upstream -a docinfodir=$(CURDIR)/$(DOCDIR) -a docinfo=shared
-ATTRS_DOWNSTREAM := -a build=downstream -a docinfodir=$(CURDIR)/$(DOCDIR) -a docinfo=shared
+ATTRS_DOWNSTREAM := -a build=downstream -a toc=left -a toclevels=3 -a docinfodir=$(CURDIR)/$(DOCDIR) -a docinfo=shared
 
 GUIDES := $(DOCDIR)/doc-Planning_your_migration/master.adoc \
           $(DOCDIR)/doc-Migrating_your_virtual_machines/master.adoc \
