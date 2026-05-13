@@ -13,3 +13,8 @@ Migrations no longer fail unexpectedly due to memory issues on ESXi hosts::
 Before this update, {project-short} automatically installed a vSphere Installation Bundle (VIB) called `vmkfstools-wrapper` on each clone. This often caused memory issues on ESXi hosts, and migrations failed as a result. This release removes automatic VIB installation, and memory failures no longer occur during clone operations. The `vmkfstools-wrapper` VIB is only needed for storage copy offload migrations. For information about VIB installation, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-vib-set-up_vmware[Setting up storage copy offload using the VIB].
 +
 link:https://redhat.atlassian.net/browse/MTV-5320[MTV-5320]
+
+Populator pods no longer fail with VIB installation errors during storage offload migrations::
+Before this update, each populator pod attempted to check and install the VIB on the ESXi host at runtime. When many pods spawned simultaneously for a virtual machine with many disks, the concurrent `esxcli` calls overwhelmed the host. As a consequence, failures occurred. With this update, the automatic VIB installation is removed from the populator flow. As a result, populator pods no longer fail with VIB installation errors. Users must install the VIB on ESXi hosts manually before a migration.
+
+// no ticket number due to security issue
