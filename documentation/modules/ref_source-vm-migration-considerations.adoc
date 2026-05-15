@@ -14,21 +14,26 @@ VM naming::
 * *DNS compliance in {virt}:* VM names must be DNS-compliant and unique in the {virt} environment. {project-first} automatically adjusts non-compliant VM names in the target cluster. Alternatively, you can rename target VMs in the {project-short} UI. For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines].
 
 Windows-specific considerations::
-* *VSS requirement for Windows warm migrations:* For VMs running Microsoft Windows, the Volume Shadow Copy Service (VSS) inside the guest VM is used to quiesce the file system and applications. When performing a warm migration of a Microsoft Windows VM from {vmw}, you must start VSS on the Windows guest OS for the snapshot and `Quiesce guest file system` to succeed. If you do not start VSS on the Windows guest OS, the snapshot creation during the Warm migration fails with the following error:
+* *Windows services for warm migrations:* For warm migrations of Microsoft Windows VMs from {vmw}, the following Windows services must be running or enabled on the source VM:
++
+** *Volume Shadow Copy Service (VSS)*: Used to quiesce the file system and applications during snapshot creation.
+** *{vmw} Snapshot Provider*: Requests VSS to start the shadow copy when a snapshot is created with `Quiesce guest file system` enabled.
++
+If these services are not running or are disabled, snapshot creation during warm migration fails with an error similar to:
 +
 ----
 An error occurred while taking a snapshot: Failed to restart the virtual machine
 ----
 +
-If you set the VSS service to `Manual` and start a snapshot creation with `Quiesce guest file system = yes`, the {vmw} Snapshot provider service requests VSS to start the shadow copy in the background.
+If you set the VSS service to `Manual`, it starts automatically when a snapshot creation with `Quiesce guest file system = yes` is triggered. The {vmw} Snapshot Provider service requests VSS to start the shadow copy in the background.
 
-* *Measured Boot limitation:* Microsoft Windows VMs, which use the Measured Boot feature, cannot be migrated. Measured Boot is a mechanism to prevent any kind of device changes by checking each start-up component, including the firmware, all the way to the boot driver. For more information, see link:https://learn.microsoft.com/en-us/windows/compatibility/measured-boot[Measured Boot] in the Microsoft documentation.
+* *Measured Boot limitation:* Microsoft Windows VMs that use the Measured Boot feature cannot be migrated. Measured Boot is a mechanism that prevents device changes by checking each start-up component, from the firmware to the boot driver. For more information, see link:https://learn.microsoft.com/en-us/windows/compatibility/measured-boot[Measured Boot] in the Microsoft documentation.
 +
 The alternative to migration is to re-create the Windows VM directly on {virt}.
 
-* *Secure Boot limitation:* VMs with Secure Boot enabled currently might not be migrated automatically. This is because Secure Boot would prevent the VMs from booting on the destination provider. Secure boot is a security standard developed by members of the PC industry to ensure that a device boots using only software that is trusted by the Original Equipment Manufacturer (OEM).
+* *Secure Boot limitation:* VMs with Secure Boot enabled might fail to migrate automatically because Secure Boot prevents the VMs from booting on the destination provider. Secure Boot is a security standard developed by members of the PC industry to ensure that a device boots using only software trusted by the Original Equipment Manufacturer (OEM).
 +
-*Workaround:* The current workaround is to disable Secure Boot on the destination. For more details, see link:https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11[Disabling Secure Boot] in the Microsoft documentation. 
+*Workaround:* Disable Secure Boot on the destination. For more details, see link:https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11[Disabling Secure Boot] in the Microsoft documentation. 
 +
 link:https://issues.redhat.com/browse/MTV-1548[(MTV-1548)]
 
