@@ -21,7 +21,7 @@ Prerequisites::
 * You must be logged in as a user with at least the minimal set of {vmw} privileges. For more information, see xref:ref_vmware-privileges_{context}[VMware privileges].
 * The target namespace must have network connectivity to the {vmw} source environment. `NetworkPolicies` that block egress connections from the target namespace will cause the migration to fail.
 * The VM operating system must be certified and supported for use as a guest operating system with {virt} and for conversion to KVM with `virt-v2v`. For more information, see link:https://access.redhat.com/articles/973163#ocpvirt[Guest operating systems supported on {virt}] and link:https://access.redhat.com/articles/1351473[Supported virtual machine guest operating systems for conversions].
-* Disable hibernation on the source VMs. If hibernation is disabled, VM data might be lost in the event of a power outage.
+* Disable hibernation on the source VMs. If hibernation is disabled, VM data might be lost if there is a power outage.
 * VMware Tools must be installed on the source VM to run a warm migration or to access the VM using a pre-migration hook. For more information, see link:https://www.vmware.com/support/ws5/doc/new_guest_tools_ws.html[VMware Tools].
 * If you are running a warm migration, you must enable changed block tracking (CBT) on the VMs and on the VM disks. For more information, see link:https://kb.vmware.com/s/article/1020128[Changed Block Tracking (CBT) on virtual machines].
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the Network File Copy (NFC) service memory of the host.
