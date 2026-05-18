@@ -28,7 +28,7 @@ You must ensure that all prerequisites are met.
 ====
 
 [role="_additional-resources"]
-== Additional resources
+.Additional resources
 * link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration]
 * link:{mtv-plan}ref_vmware-privileges_mtv[VMware privileges]
 * link:{mtv-plan}proc_creating-vddk-image_mtv[Creating a VDDK image]
