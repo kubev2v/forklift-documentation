@@ -11,8 +11,6 @@ Configure user permissions in {vmw} vSphere to allow {project-first} to access a
 
 The required privileges vary based on migration type (cold or warm) and VM characteristics (encrypted or unencrypted). All migrations require datastore access and session validation. Warm migrations require additional snapshot and guest OS management privileges. Encrypted VMs require cryptographic privileges.
 
-The following {vmw} privileges are required to migrate VMs to {virt}.
-
 == Privileges required for all migrations
 
 The following privileges are required for all VM migrations, regardless of migration type or VM characteristics.
@@ -42,8 +40,6 @@ The following privileges are required for all VM migrations, regardless of migra
 |===
 
 == Privileges for warm migrations
-
-The following privileges are required only for warm migrations.
 
 The following provisioning privileges are required for warm migrations to access VM disks and transfer configuration files.
 
