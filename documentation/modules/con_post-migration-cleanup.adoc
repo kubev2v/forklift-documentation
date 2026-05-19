@@ -1,0 +1,45 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-cnv.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-osp.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_understanding-mtv-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_post-migration-cleanup_{context}"]
+= Post-migration cleanup and archiving migration plans
+
+[role="_abstract"]
+You must archive migration plans to release temporary {project-short} resources. 
+
+The status of a migration plan determines which temporary resources are retained:
+
+* *Successful migrations*: The plan status is `Succeeded` in the YAML file and *Complete* in the UI. The migration process automatically deletes conversion pods, populator pods, and temporary persistent volume claim (PVC) mounts. Permanent PVCs are attached to the target virtual machines (VMs). 
+* *Failed migrations*: The plan status is `Failed` in the YAML file and *Incomplete* in the UI. PVC mounts remain attached to the source VMs. Conversion and populator pods are not deleted until you archive the plan. These resources are retained so that you can investigate the failure.
+
+[id="archive-versus-delete-migration-plan_{context}"]
+== Archive versus delete
+
+You can use the *Archive* and *Delete* options on the *Migration plans* page for different purposes:
+
+*Archive*:: 
+Use this option to remove temporary migration resources. These resources include completed migration and validation pods and all PVC mounts, temporary and permanent. Archiving also removes the logs, history, and detailed metadata of the plan from active use. You cannot edit or restart the plan. You can still view, duplicate, or delete an archived plan.
+
+*Delete*:: 
+Use this option to permanently remove the migration plan custom resource (CR) from the {ocp} web console or the CLI. Deleting a plan does not remove temporary resources unless you archive the plan first.
+
+[id="downstream-dr-impact-unarchived-plans_{context}"]
+== Impact on downstream disaster recovery workflows
+
+[WARNING]
+====
+If you do not archive migration plans, mounted PVCs can remain in use. This continued use can block downstream disaster recovery (DR) or downstream remote disaster recovery (RDR) workflows that share the same storage. Relocation and failover operations can become stuck when PVCs are still mounted to VMs or completed {project-short} pods. Archive completed migration plans as part of your post-migration workflows. This action is especially important when you use DR or replication tooling on the same cluster storage.
+====
+
+[role="_additional-resources"]
+.Additional resources
+* link:{mtv-mig}assembly_troubleshooting-migration_mtv#ref_common-migration-issues_mtv[Common migration issues]
+* link:{mtv-mig}assembly_troubleshooting-migration_mtv#con_collected-logs-cr-info_mtv[Collected logs and custom resource information]

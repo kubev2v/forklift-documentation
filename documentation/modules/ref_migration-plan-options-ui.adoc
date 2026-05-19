@@ -1,5 +1,4 @@
-// Module included in the following assemblies:
-//
+
 // Module included in the following assemblies:
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-cnv.adoc
@@ -33,11 +32,16 @@ endif::vmware,rhv[]
 ** Edit an archived migration plan.
 ** Edit a migration plan with a different status, for example, failed, canceled, running, critical, or ready.
 
-* *Archive*: Delete the logs, history, and metadata of a migration plan. The plan cannot be edited or restarted. It can only be viewed, duplicated, or deleted.
+* *Archive*: Clean up temporary migration and validation resources, including completed pods and their PVC mounts. The plan cannot be edited or restarted. It can only be viewed, duplicated, or deleted.
 +
 [NOTE]
 ====
 *Archive* is irreversible. However, you can duplicate an archived plan.
+====
++
+[IMPORTANT]
+====
+For successful migrations, {project-short} automatically deletes PVC mounts, conversion pods, and populator pods. For failed migrations, archiving is required to delete PVC mounts and release temporary resources.
 ====
 
 * *Delete*: Permanently remove a migration plan. You cannot delete a running migration plan.
@@ -56,4 +60,9 @@ The results of archiving and then deleting a migration plan vary by whether you 
 * If you created them using the UI, then the migration plan and its mappings no longer appear in the UI.
 * If you created them using the CLI, then the mappings might still appear in the UI. This is because mappings in the CLI can be used by more than one migration plan, but mappings created in the UI can only be used in one migration plan.
 ====
+
+[role="_additional-resources"]
+.Additional resources
+* xref:con_post-migration-cleanup_{context}[Post-migration cleanup and archiving migration plans]
+* xref:proc_recommended-post-migration-workflow_{context}[Recommended post-migration workflow]
 

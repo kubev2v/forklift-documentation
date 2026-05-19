@@ -107,3 +107,17 @@ endif::hyperv[]
 
 .. To see the raw logs, click the *Raw* link.
 .. To download the logs, click the *Download* link.
+
+. After the migration status is *Completed* and you have collected any logs you need, archive the migration plan by doing the following.
++
+On the *Migration plans* page, click the {kebab} beside the plan and select *Archive*.
++
+[IMPORTANT]
+====
+For successful migrations, {project-short} automatically deletes PVC mounts, conversion pods, and populator pods. For failed migrations, completed migration and validation pods retain PVC mounts until you archive the plan, allowing you to investigate the failure. Unarchived failed migration plans can block downstream disaster recovery (DR) or remote disaster recovery (RDR) workflows on shared storage.
+====
+
+[role="_additional-resources"]
+.Additional resources
+* xref:con_post-migration-cleanup_{context}[Post-migration cleanup and archiving migration plans]
+* xref:ref_migration-plan-options-ui_{context}[Migration plan options]
