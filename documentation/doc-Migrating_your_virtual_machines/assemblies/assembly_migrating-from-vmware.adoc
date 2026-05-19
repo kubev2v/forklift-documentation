@@ -25,6 +25,10 @@ include::../modules/proc_running-migration-plan.adoc[leveloffset=+1]
 
 include::../modules/ref_migration-plan-options-ui.adoc[leveloffset=+2]
 
+include::../modules/con_post-migration-cleanup.adoc[leveloffset=+2]
+
+include::../modules/proc_recommended-post-migration-workflow.adoc[leveloffset=+2]
+
 include::../modules/proc_canceling-migration-ui.adoc[leveloffset=+2]
 
 include::../modules/proc_migrating-vms-cli-vmware.adoc[leveloffset=+1]

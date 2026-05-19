@@ -146,7 +146,6 @@ Example:
 NAME                                                    READY   STATUS    RESTARTS   AGE
 forklift-api-bb45b8db4-cpzlg                            1/1     Running   0          6m34s
 forklift-controller-7649db6845-zd25p                    2/2     Running   0          6m38s
-forklift-must-gather-api-78fb4bcdf6-h2r4m               1/1     Running   0          6m28s
 forklift-operator-59c87cfbdc-pmkfc                      1/1     Running   0          28m
 forklift-ui-plugin-5c5564f6d6-zpd85                     1/1     Running   0          6m24s
 forklift-validation-7d84c74c6f-fj9xg                    1/1     Running   0          6m30s
