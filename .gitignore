@@ -8,3 +8,4 @@ _site
 .claude/
 .jekyll-cache/
 Gemfile.lock
+!.github/workflows/
