@@ -36,4 +36,4 @@ If you cannot migrate all the VMs for any reason, you can create multiple `Migra
 . For each VM in the `Plan` CR, the `Migration Controller` service records the VM migration progress in the `Migration` CR.
 . Once the data transfer for each VM in the `Plan` CR completes, the `Migration Controller` service creates a `VirtualMachine` CR.
 +
-When all VMs have been migrated, the `Migration Controller` service updates the status of the `Plan` CR to `Completed`. The power state of each source VM is maintained after migration.
+When all VMs have been migrated, the `Migration Controller` service updates the status of the `Plan` CR to `Succeeded`, which displays as *Complete* in the UI. The power state of each source VM is maintained after migration.

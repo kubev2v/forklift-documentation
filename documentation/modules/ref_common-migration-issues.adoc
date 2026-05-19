@@ -56,8 +56,19 @@ For {vmw} environments, you can use Storage vMotion to rename the VM before migr
 
 For more information about renaming VMs in the {project-short} UI, see link:{mtv-plan}assembly_migrating-vms-web-console_mtv#proc_renaming-vms-for-migration_mtv[Renaming virtual machines].
 
+*Why do Completed migration or validation pods still show PVC mounts?*
+
+For failed migrations, the migration plan status *Incomplete* in the UI, or `failed` in the YAML file, means the migration workflow finished but {project-short} did not remove temporary pods or release PVC mounts. Completed migration and validation pods, such as `conversion` and `importer` pods, continue to mount PVCs until you archive the migration plan. This allows you to investigate what went wrong with the migration. For successful migrations, {project-short} automatically deletes temporary PVC mounts, conversion pods, and populator pods.
+
+*Why are disaster recovery relocations or failovers stuck after MTV migrations?*
+
+Unarchived failed migration plans can leave PVCs mounted by completed {project-short} pods. Downstream disaster recovery tooling that uses the same storage can be blocked, causing relocation or failover operations to become stuck.
+
+To resolve this issue, archive failed migration plans as part of your post-migration workflow. For more information, see link:{mtv-mig}assembly_troubleshooting-migration_mtv#con_post-migration-cleanup_mtv[Post-migration cleanup and archiving migration plans].
+
 [role="_additional-resources"]
 .Additional resources
+* link:{mtv-mig}assembly_troubleshooting-migration_mtv#con_post-migration-cleanup_mtv[Post-migration cleanup and archiving migration plans]
 * link:{mtv-plan}assembly_software-requirements-for-migration_mtv#ref_source-vm-migration-considerations_mtv[Source VM migration considerations]
 * link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_vmware-prerequisites_mtv[{vmw} prerequisites]
 * link:{mtv-plan}assembly_cold-warm-migration_mtv#con_about-cold-warm-migration_mtv[About cold and warm migration]
