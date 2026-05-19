@@ -18,7 +18,8 @@
 For {rhel-first}-based guests, `virt-v2v` attempts to install the guest agent from the Red Hat registry. If the migration is run in a detached environment, the installation program fails, and you must use hooks or other automation to install the guest agent.
 ====
 
-For more information, see the man reference pages:
+[role="_additional-resources"]
+== Additional resources
 
 * link:https://libguestfs.org/virt-v2v.1.html[`virt-v2v` - Convert a guest to use KVM]
 * link:https://libguestfs.org/virt-customize.1.html[`virt-customize` - Customize a virtual machine]

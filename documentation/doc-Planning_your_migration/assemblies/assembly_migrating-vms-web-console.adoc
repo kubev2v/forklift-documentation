@@ -18,13 +18,16 @@ For all migrations, you specify the source provider, the destination provider, a
 ====
 You must ensure that all prerequisites are met.
 
-{vmw} only: You must have the minimal set of {vmw} privileges.
+VMware only: You must have the minimal set of VMware privileges.
 
-{vmw} only: Creating a {vmw} Virtual Disk Development Kit (VDDK) image will increase migration speed.
+VMware only: Creating a VMware Virtual Disk Development Kit (VDDK) image will increase migration speed.
+
+For more information about the requirements, see the "Additional resources" section.
 ====
 
 [role="_additional-resources"]
-.Additional resources
+== Additional resources
+
 * link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration]
 * link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-privileges_mtv[VMware privileges]
 * link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#proc_creating-vddk-image_mtv[Creating a VDDK image]
@@ -44,6 +47,7 @@ include::../modules/con_preparing-vms-for-migration.adoc[leveloffset=+1]
 include::../modules/proc_renaming-vms-for-migration.adoc[leveloffset=+2]
 
 include::../modules/proc_configuring-target-power-state-vms.adoc[leveloffset=+2]
+
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
