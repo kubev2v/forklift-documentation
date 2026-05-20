@@ -1,0 +1,44 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-aws.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_creating-form-based-network-maps-ui-aws_{context}"]
+= Creating ownerless network maps from the form page in the {project-short} UI
+
+[role="_abstract"]
+You can add ownerless network maps from the form page in the {project-first} UI. Later, you can add these maps to a migration plan by using the *Use an existing network map* option in the *Network map* page of the {project-short} wizard.
+
+Network maps define the mapping between {aws} subnet IDs and OpenShift networks (pod network or Multus networks).
+
+For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
+
+.Prerequisites
+
+* Have an {aws} {ec2} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_aws[Adding an {aws} {ec2} source provider] or xref:proc_adding-source-provider_dest_aws[Adding {a-virt} destination provider].
+
+// SME REVIEW: Are there any AWS-specific network prerequisites?
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Network maps*.
+. Click *Create network map* > *Create with form*.
+. Specify the following:
+
+* *Network map name*: Name of the network map.
+* *Project*: Select from the list.
+* *Source provider*: Select the {aws} {ec2} source provider from the list.
+* *Target provider*: Select the {virt} destination provider from the list.
+* *Source network*: Select the {aws} subnet ID from the list.
++
+// SME REVIEW: Can you provide:
+// - Screenshot of the network map creation form for AWS EC2
+// - Example AWS subnet ID format (e.g., subnet-abc123def456)
+// - How users can locate their subnet IDs in the AWS Console or CLI
++
+* *Target network*: Select the OpenShift network from the list. This can be the pod network or a Multus network attachment definition.
+
+. Optional: Click *Add mapping* to create additional network maps, including mapping multiple network sources to a single target network.
+. Click *Create*.
++
+Your map appears in the list of network maps.

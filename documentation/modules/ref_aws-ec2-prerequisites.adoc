@@ -1,0 +1,37 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_aws-ec2-prerequisites_{context}"]
+= {aws} {ec2} prerequisites
+
+[IMPORTANT]
+====
+Importing VMs from Amazon {ec2} is Technology Preview software only. Technology Preview features are not supported with Red{nbsp}Hat production service level agreements (SLAs) and might not be functionally complete. Red{nbsp}Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+
+For more information about the support scope of Red{nbsp}Hat Technology Preview features, see link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
+====
+
+[role="_abstract"]
+To migrate from {aws} {ec2} to {virt}, verify you meet the cluster, region, and credential requirements. {project-short} uses {aws} Elastic Block Store (EBS) snapshots and the EBS Container Storage Interface (CSI) driver to migrate {ec2} instances.
+
+// SME REVIEW: Is there a feature flag to enable AWS EC2 migration? If so, add instructions here.
+
+The following prerequisites apply to {aws} {ec2} migrations:
+
+* Red Hat OpenShift Service on {aws} ({rosa}) or OpenShift Dedicated (OSD) on {aws} cluster
+* EBS CSI driver installed and configured on the target cluster
+* {project-short} Operator installed
+* {ec2} instances must be in the same {aws} region as the {rosa} or OSD cluster. {project-short} does not support cross-region migration.
+* {ec2} instances must be stopped before migration. {project-short} supports cold migration only.
+* {ec2} instances must use EBS volumes only. Instances with instance store volumes are not supported.
+* {aws} credentials with the following IAM permissions:
+** `DescribeSnapshots`
+** `CreateVolume`
+** `DescribeVolumes`
+** `CreateTags`
+
+// SME REVIEW: Are there additional IAM permissions required? Please confirm this is the complete list.
+// SME REVIEW: Are there any other EC2 instance requirements (e.g., specific instance types, OS versions, etc.)?
+
