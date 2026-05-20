@@ -70,7 +70,7 @@ If the {virt} storage does not support link:https://access.redhat.com/documentat
 +
 `ReadWriteOnce` access mode does not support live virtual machine migration.
 
-See link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/virtualization/virtual-machines#virt-customizing-storage-profile_virt-creating-data-volumes[Enabling a statically-provisioned storage class] for details on editing the storage profile.
+See link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single/virtualization/index#virt-customizing-storage-profile_virt-configuring-storage-profile[Enabling a statically-provisioned storage class] for details on editing the storage profile.
 ====
 
 [NOTE]
