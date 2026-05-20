@@ -26,11 +26,13 @@ $ {oc} mtv create provider <provider_name> \
      --type ec2 \
      --ec2-region <region> \
      --username $EC2_KEY \
-     --password $EC2_SECRET \
-     --provider-insecure-skip-tls
+     --password $EC2_SECRET
 ----
 +
-The `--provider-insecure-skip-tls` flag is optional. Add this flag to skip TLS certificate validation.
+[NOTE]
+====
+To skip TLS certificate validation, add the `--provider-insecure-skip-tls` flag to the command.
+====
 +
 where:
 +
