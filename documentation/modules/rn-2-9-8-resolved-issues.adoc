@@ -1,0 +1,20 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-9-8_{context}"]
+= Resolved issues 2.9.8
+
+{project-first} 2.9.8 is a Container Grade Only (CGO) release, which is released to refresh the health grades of the containers. No code was changed in the product itself compared to that of {project-short} 2.9.7.
+
+{project-short} 2.9.8 fixes the following CVEs:
+
+* link:https://access.redhat.com/security/cve/cve-2026-29063[CVE-2026-29063]
+* link:https://access.redhat.com/security/cve/cve-2026-4598[CVE-2026-4598]
+* link:https://access.redhat.com/security/cve/cve-2026-4599[CVE-2026-4599]
+* link:https://access.redhat.com/security/cve/cve-2026-4600[CVE-2026-4600]
+* link:https://access.redhat.com/security/cve/cve-2026-4601[CVE-2026-4601]
+* link:https://access.redhat.com/security/cve/cve-2026-4602[CVE-2026-4602]
+* link:https://access.redhat.com/security/cve/cve-2026-4800[CVE-2026-4800]
+* link:https://access.redhat.com/security/cve/cve-2026-4926[CVE-2026-4926]
