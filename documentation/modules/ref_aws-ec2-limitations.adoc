@@ -13,6 +13,7 @@
 * Only cold migration is supported. {project-short} does not support warm or live migrations from {ec2}.
 * {ec2} instances must be stopped before migration begins.
 * Only Red Hat OpenShift Service on {aws} ({rosa}) and OpenShift Dedicated (OSD) on {aws} clusters are supported as migration targets. {project-short} does not support migration to other OpenShift platforms.
+// SME REVIEW: The provider UI has a "Use cross-account credentials" option, but engineering requirements say cross-account is out of scope. Please clarify: Is cross-account migration supported? If yes, what are the limitations?
 * {project-short} supports migration within the same {aws} account only. Cross-account migration is not supported.
 * {ec2} instances must be in the same {aws} region as the target {rosa} or OSD cluster. Cross-region migration is not supported.
 * Storage mapping is limited to the same storage type. {project-short} maps EBS volumes to EBS-backed storage classes only.
