@@ -157,7 +157,7 @@ The *Create provider* form has unique authentication and validation fields for s
 link:https://issues.redhat.com/browse/MTV-3737[MTV-3737]
 
 Validation alert for VDDK for {vmw} warm migrations::
-With this enhancement, visible validation checks for warm migrations from {vmw} environments are available in the web console. You receive an alert if the {vmw} vSphere Virtual Disk Development Kit (VDDK) is missing or incorrectly configured.
+With this enhancement, visible validation checks for warm migrations from {vmw} environments are available in the web console. You receive an alert if the {vmw} Virtual Disk Development Kit (VDDK) is missing or incorrectly configured.
 +
 These validation checks prevent silent failures during migration. Updated {project-short} documentation provides guidance on VDDK installation. As a result, you can save time on your migration plans.
 +
@@ -253,7 +253,7 @@ During VM migration, {project-short} verifies that IP addresses are from the cor
 +
 link:https://issues.redhat.com/browse/MTV-3130[MTV-3130]
 
-`virtio-win` rebased to 1.9.57::
+virtio-win rebased to 1.9.57::
 The `virtio-win` package, which provides drivers for Microsoft Windows virtual machines, has been rebased to upstream version 1.9.57. This version provides important fixes and enhancements. For more information, see the following security advisory:
 +
 link:https://access.redhat.com/errata/RHSA-2026:5077[RHSA-2026:5077 - Security Advisory]

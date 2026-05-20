@@ -1,4 +1,4 @@
-// Module included in the following assemblies:
+s// Module included in the following assemblies:
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
 
@@ -12,5 +12,5 @@ Choose cold migration for VMs that are shut down and warm migration for running 
 
 [NOTE]
 ====
-OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or KVM images.
+OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or Kernel-based Virtual Machine (KVM) images.
 ====

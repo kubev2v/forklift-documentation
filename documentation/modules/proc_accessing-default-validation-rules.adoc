@@ -29,8 +29,8 @@ $ cd /usr/share/opa/policies/io/konveyor/forklift/<provider>
 +
 where:
 
-provider::
-Specifies the provider. Valid options: `vmware` or `ovirt`.
+<provider>::
+Specifies the <provider>. Valid options: `vmware` or `ovirt`.
 
 . Search for the default policies:
 +

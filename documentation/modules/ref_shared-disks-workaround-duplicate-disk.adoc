@@ -3,7 +3,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
 
 :_mod-docs-content-type: REFERENCE
-[id="mtv-shared-disks-workaround-duplicate-disk_{context}"]
+[id="ref_shared-disks-workaround-duplicate-disk_{context}"]
 = Duplicated disk workaround for cyclic shared disk dependencies
 
 [role="_abstract"]
