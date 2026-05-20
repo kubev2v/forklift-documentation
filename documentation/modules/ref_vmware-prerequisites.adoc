@@ -21,16 +21,16 @@ Prerequisites::
 * You must be logged in as a user with at least the minimal set of {vmw} privileges. For more information, see xref:ref_vmware-privileges_{context}[VMware privileges].
 * The target namespace must have network connectivity to the {vmw} source environment. `NetworkPolicies` that block egress connections from the target namespace cause the migration to fail.
 * The VM operating system must be certified and supported for use as a guest operating system with {virt} and for conversion to KVM with `virt-v2v`. For more information, see link:https://access.redhat.com/articles/4234591[Certified Guest Operating Systems in {virt}] and link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, RHEL 9, and RHEL 10].
-* Disable hibernation on the source VMs. If hibernation is disabled, VM data might be lost if there is a power outage.
+* Disable hibernation on the source VMs. When hibernation is disabled, VM data might be lost if there is a power outage.
 * VMware Tools must be installed on the source VM to run a warm migration or to access the VM using a pre-migration hook. For more information, see link:https://knowledge.broadcom.com/external/article/315382/overview-of-vmware-tools.html[VMware Tools].
 * If you are running a warm migration, you must enable changed block tracking (CBT) on the VMs and on the VM disks. For more information, see link:https://kb.vmware.com/s/article/1020128[Changed Block Tracking (CBT) on virtual machines].
 * If you are migrating more than 10 VMs from an ESXi host in the same migration plan, you must increase the Network File Copy (NFC) service memory of the host.
 * A default `MigController` instance must be present. This instance is required for the Storage Migration option in the {ocp} web console in certain {ocp-name} versions. For steps to create the default `MigController` instance, see link:https://access.redhat.com/solutions/7136894[Storage Migration Option Missing for Virtual Machines in OpenShift 4.20 Despite Availability in 4.18].
 
 Considerations::
-* *Warm migrations of Microsoft Windows VMs:* For warm migrations of Microsoft Windows virtual machines from {vmw}, the following Windows services must be running or enabled on the source VM:
+* *Warm migrations of Microsoft Windows VMs:* For warm migrations of Microsoft Windows virtual machines from {vmw}, the following Windows services must be enabled (set to `Manual` or `Automatic`) on the source VM:
 +
 ** *Volume Shadow Copy Service (VSS)*: Used to quiesce the file system and applications during snapshot creation.
-** *{vmw} Snapshot Provider*: Requests VSS to start the shadow copy when a snapshot is created with `Quiesce guest file system` enabled.
+** *{vmw} Snapshot Provider*: Integrated with {vmw} Tools to trigger VSS during snapshot operations.
 +
-If these services are not running or are disabled, snapshot creation during warm migration fails with an error similar to: `An error occurred while taking a snapshot: Failed to restart the virtual machine.` If you set the VSS service to `Manual`, it starts automatically when a snapshot creation with `Quiesce guest file system = yes` is triggered. The {vmw} Snapshot Provider service requests VSS to start the shadow copy in the background.
+You do not need to manually start the VSS service before migration. When {project-short} initiates a snapshot with `Quiesce guest file system` enabled, {vmw} Tools automatically triggers VSS to start. If VSS is disabled or missing, snapshot creation fails with an error similar to: `An error occurred while taking a snapshot: Failed to restart the virtual machine.`

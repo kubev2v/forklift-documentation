@@ -11,21 +11,19 @@ Review these considerations when planning your migration of VMs from a source pr
 
 VM naming::
 
-* *DNS compliance in {virt}:* VM names must be DNS-compliant and unique in the {virt} environment. {project-first} automatically adjusts non-compliant VM names in the target cluster. Alternatively, you can rename target VMs in the {project-short} UI. For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines].
+* *DNS compliance in {virt}:* VM names must be DNS-compliant and unique in the {virt} environment. {project-first} automatically adjusts noncompliant VM names in the target cluster. Alternatively, you can rename target VMs in the {project-short} UI. For information about renaming VMs, see xref:proc_renaming-vms-for-migration_{context}[Renaming virtual machines].
 
 Windows-specific considerations::
-* *Windows services for warm migrations:* For warm migrations of Microsoft Windows VMs from {vmw}, the following Windows services must be running or enabled on the source VM:
+* *Windows services for warm migrations:* For warm migrations of Microsoft Windows VMs from {vmw}, the following Windows services must be enabled (set to `Manual` or `Automatic`) on the source VM:
 +
 ** *Volume Shadow Copy Service (VSS)*: Used to quiesce the file system and applications during snapshot creation.
-** *{vmw} Snapshot Provider*: Requests VSS to start the shadow copy when a snapshot is created with `Quiesce guest file system` enabled.
+** *{vmw} Snapshot Provider*: Integrated with {vmw} Tools to trigger VSS during snapshot operations.
 +
-If these services are not running or are disabled, snapshot creation during warm migration fails with an error similar to:
+You do not need to manually start the VSS service before migration. When {project-short} initiates a snapshot with `Quiesce guest file system` enabled, {vmw} Tools automatically triggers VSS to start. If VSS is disabled or missing, snapshot creation fails with an error similar to:
 +
 ----
 An error occurred while taking a snapshot: Failed to restart the virtual machine
 ----
-+
-If you set the VSS service to `Manual`, it starts automatically when a snapshot creation with `Quiesce guest file system = yes` is triggered. The {vmw} Snapshot Provider service requests VSS to start the shadow copy in the background.
 
 * *Measured Boot limitation:* Microsoft Windows VMs that use the Measured Boot feature cannot be migrated. Measured Boot is a mechanism that prevents device changes by checking each start-up component, from the firmware to the boot driver. For more information, see link:https://learn.microsoft.com/en-us/windows/compatibility/measured-boot[Measured Boot] in the Microsoft documentation.
 +
