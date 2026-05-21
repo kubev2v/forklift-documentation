@@ -38,6 +38,8 @@ include::../modules/ref_cnv-prerequisites.adoc[leveloffset=+1]
 
 include::../modules/ref_cnv-cnv-live-prerequisites.adoc[leveloffset=+2]
 
+include::../modules/ref_aws-ec2-prerequisites.adoc[leveloffset=+1]
+
 include::../modules/ref_compatibility-guidelines.adoc[leveloffset=+1]
 
 include::../modules/ref_openshift-operator-life-cycles.adoc[leveloffset=+2]

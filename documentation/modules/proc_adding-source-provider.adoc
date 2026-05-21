@@ -105,7 +105,7 @@ ifdef::vmware,rhv,aws,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cn
 endif::[]
 
 ifdef::aws[]
-* {aws} credentials with required IAM permissions. For more information, see xref:ref_aws-ec2-prerequisites_aws[{aws} {ec2} prerequisites].
+* {aws} credentials with required IAM permissions. For more information, see xref:ref_aws-ec2-prerequisites_mtv[{aws} {ec2} prerequisites].
 * EBS CSI driver installed on the target cluster
 endif::[]
 

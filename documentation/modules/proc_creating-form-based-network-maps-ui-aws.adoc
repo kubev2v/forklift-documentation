@@ -17,7 +17,7 @@ For more information about network and storage maps in {project-short}, see link
 
 * Have an {aws} {ec2} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_aws[Adding an {aws} {ec2} source provider] or xref:proc_adding-source-provider_dest_aws[Adding {a-virt} destination provider].
 
-// SME REVIEW: Are there any AWS-specific network prerequisites?
+// Can we get an example AWS subnet ID format?
 
 .Procedure
 
@@ -30,12 +30,6 @@ For more information about network and storage maps in {project-short}, see link
 * *Source provider*: Select the {aws} {ec2} source provider from the list.
 * *Target provider*: Select the {virt} destination provider from the list.
 * *Source network*: Select the {aws} subnet ID from the list.
-+
-// SME REVIEW: Can you provide:
-// - Screenshot of the network map creation form for AWS EC2
-// - Example AWS subnet ID format (e.g., subnet-abc123def456)
-// - How users can locate their subnet IDs in the AWS Console or CLI
-+
 * *Target network*: Select the OpenShift network from the list. This can be the pod network or a Multus network attachment definition.
 
 . Optional: Click *Add mapping* to create additional network maps, including mapping multiple network sources to a single target network.

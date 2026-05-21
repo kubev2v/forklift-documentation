@@ -12,123 +12,297 @@ You can migrate from an {aws} {ec2} source provider by using the command-line in
 
 .Prerequisites
 
-* {aws} {ec2} source provider configured
 * {virt} destination provider configured
 * {ec2} instances must be stopped before migration
 
+// Does anything need to be changed in the Secret and Provider manifests for AWS EC2?
+// Does anything need to be changed in the NetworkMap manifest for AWS EC2?
+// Does anything need to be changed in the StorageMap manifest for AWS EC2?
+// Does anything need to be changed in the Plan manifest for AWS EC2?
+
 .Procedure
 
-. Create the {aws} {ec2} source provider:
+. Create a `Secret` manifest for the source provider credentials:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
-$ {oc} mtv create provider <provider_name> \
-     --type ec2 \
-     --ec2-region <region> \
-     --username $EC2_KEY \
-     --password $EC2_SECRET
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+  ownerReferences:
+    - apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+type: Opaque
+stringData:
+  accessKeyId: <aws_access_key_id>
+  secretAccessKey: <aws_secret_access_key>
+EOF
 ----
-+
-[NOTE]
-====
-To skip TLS certificate validation, add the `--provider-insecure-skip-tls` flag to the command.
-====
 +
 where:
 +
-`<provider_name>`::
-Specifies the name of the {aws} {ec2} provider.
+`<secret>`::
+Specifies the name of the `Secret` CR.
 +
-`<region>`::
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
++
+`ownerReferences`::
+Is an optional section in which you can specify a provider's `name` and `uid`.
++
+`<aws_access_key_id>`::
+Specifies the {aws} access key ID.
++
+`<aws_secret_access_key>`::
+Specifies the {aws} secret access key.
+
+. Create a `Provider` manifest for the source provider:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: ec2
+  url: <aws_region>
+  secret:
+    name: <secret>
+    namespace: <namespace>
+EOF
+----
++
+where:
++
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
++
+`<source_provider>`::
+Specifies the name of the source provider.
++
+`<aws_region>`::
 Specifies the {aws} region where your {ec2} instances are located, for example, `us-east-1` or `us-east-2`. This must be the same region as your {rosa} or OSD cluster.
 +
-`$EC2_KEY`::
-Specifies the {aws} access key ID. Set this as an environment variable to avoid exposing credentials in command history.
-+
-`$EC2_SECRET`::
-Specifies the {aws} secret access key. Set this as an environment variable to avoid exposing credentials in command history.
+`<secret>`::
+Specifies the name of the provider `Secret` CR.
 
-. Create the {virt} destination provider:
+. Create a `NetworkMap` manifest to map the source and destination networks:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
-$ {oc} mtv create provider host --type openshift
-----
-+
-This creates a provider named `host` for the local OpenShift cluster.
-
-. Verify the providers are ready:
-+
-[source,terminal,subs="attributes+"]
-----
-$ {oc} mtv get providers
-----
-+
-Both providers should show `STATUS` as `Ready`.
-
-. Get the inventory of {ec2} instances:
-+
-[source,terminal,subs="attributes+"]
-----
-$ {oc} mtv get inventory vms <provider_name>
-----
-+
-This lists all {ec2} instances discovered by the provider, including their state and platform information.
-
-. Create network and storage maps as needed. For more information, see link:{mtv-plan}assembly_planning-migration-aws_mtv#proc_creating-form-based-network-maps-ui-aws_aws[Creating ownerless network maps from the form page in the {project-short} UI] and link:{mtv-plan}assembly_planning-migration-aws_mtv#proc_creating-form-based-storage-maps-ui-aws_aws[Creating ownerless storage maps from the form page in the {project-short} UI].
-+
-// SME REVIEW: Can you provide examples of creating network and storage maps using oc mtv CLI commands?
-
-. Create a migration plan:
-+
-[source,terminal,subs="attributes+"]
-----
-$ {oc} mtv create plan <plan_name> \
-     --source <provider_name> \
-     --vms <instance_id_1>,<instance_id_2>
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod
+      source:
+        id: <source_subnet_id>
+    - destination:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+      source:
+        id: <source_subnet_id>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
 ----
 +
 where:
 +
-`<plan_name>`::
-Specifies the name of the migration plan.
+`<network_map>`::
+Specifies the name of the network map.
 +
-`<provider_name>`::
-Specifies the name of the {aws} {ec2} source provider.
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
 +
-`<instance_id_1>,<instance_id_2>`::
-Specifies one or more {ec2} instance IDs to migrate. Separate multiple instance IDs with commas.
+`<source_subnet_id>`::
+Specifies the {aws} subnet ID (for example, `subnet-abc123def456`).
 +
-[NOTE]
-====
-If you specify `--warm` when creating a plan, {project-short} automatically changes it to cold migration because {ec2} only supports cold migration.
-====
+`type`::
+Specifies the network type. Allowed values are `pod` and `multus`.
++
+`<network_attachment_definition>`::
+Specifies a network attachment definition (NAD) for each additional {virt} network.
++
+`<network_attachment_definition_namespace>`::
+Specifies the namespace of the {virt} NAD. Required only when `type` is `multus`.
 
-. Start the migration:
+. Create a `StorageMap` manifest to map source and destination storage:
 +
-[source,terminal,subs="attributes+"]
+[source,yaml,subs="attributes+"]
 ----
-$ {oc} mtv start plan <plan_name>
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+      source:
+        id: <source_volume_type>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
 ----
++
+where:
++
+`<storage_map>`::
+Specifies the name of the storage map.
++
+`<storage_class>`::
+Specifies the {virt} storage class that uses the {aws} EBS CSI driver.
++
+`<source_volume_type>`::
+Specifies the EBS volume type (for example, `gp2`, `gp3`, `io1`).
+
+. Create a `Plan` manifest for the migration:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+metadata:
+  name: <plan>
+  namespace: <namespace>
+spec:
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+  map:
+    network:
+      name: <network_map>
+      namespace: <namespace>
+    storage:
+      name: <storage_map>
+      namespace: <namespace>
+  targetNamespace: <target_namespace>
+  vms:
+    - id: <source_vm1>
+    - name: <source_vm2>
+      hooks:
+        - hook:
+            namespace: <namespace>
+            name: <hook>
+          step: <step>
+EOF
+----
++
+where:
++
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
++
+`<plan>`::
+Specifies the name of the `Plan` CR.
++
+`map`::
+Specifies only one network map and one storage map per plan.
++
+`network`::
+Specifies a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
++
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
++
+`storage`::
+Specifies a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
++
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
++
+`<target_namespace>`::
+Specifies the target namespace in {virt} where the migrated VMs will be created.
++
+`vms`::
+Specifies the source VMs. Accepts either the `id` or the `name` parameter to specify the source VMs.
++
+`<source_vm1>`::
+Specifies the {ec2} instance ID.
++
+`hooks`::
+Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional label.
++
+`<hook>`::
+Specifies the name of the `Hook` CR.
++
+`<step>`::
+Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+
+. Create a `Migration` manifest to run the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Migration
+metadata:
+  name: <name_of_migration_cr>
+  namespace: <namespace>
+spec:
+  plan:
+    name: <name_of_plan_cr>
+    namespace: <namespace>
+EOF
+----
++
+where:
++
+`<name_of_migration_cr>`::
+Specifies the name of the `Migration` CR.
++
+`<name_of_plan_cr>`::
+Specifies the name of the `Plan` CR to execute.
 
 . Monitor the migration progress:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} mtv get plans
+$ {oc} get migration/<name_of_migration_cr> -n <namespace> -o yaml
 ----
 +
-This shows the migration status and progress for all plans.
+This shows the migration status and progress.
 
 . View detailed migration information:
 +
 [source,terminal,subs="attributes+"]
 ----
-$ {oc} get vmimports
+$ {oc} get vmimports -n <namespace>
 ----
 +
 This shows the detailed phases of the VM import process.
 
 .Additional resources
 
-* xref:proc_migrating-vms-cli-ostack_ostack[Running an {osp} migration from the command-line]
+* link:{mtv-plan}assembly_planning-migration-aws_mtv[Planning a migration of virtual machines from {aws} {ec2}]

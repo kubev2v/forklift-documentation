@@ -15,7 +15,7 @@ For more information about network and storage maps in {project-short}, see link
 
 [IMPORTANT]
 ====
-Storage mapping for {aws} {ec2} migration is limited to the same storage type. You must map EBS volumes to storage classes that use the {aws} EBS CSI driver.
+You must map EBS volumes to storage classes that use the {aws} EBS CSI driver.
 ====
 
 .Prerequisites
@@ -23,8 +23,6 @@ Storage mapping for {aws} {ec2} migration is limited to the same storage type. Y
 * Have an {aws} {ec2} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_aws[Adding an {aws} {ec2} source provider] or xref:proc_adding-source-provider_dest_aws[Adding {a-virt} destination provider].
 * EBS CSI driver installed and configured on the target cluster.
 * Storage classes configured to use the EBS CSI driver.
-
-// SME REVIEW: Are there any additional AWS-specific storage prerequisites?
 
 .Procedure
 
@@ -37,18 +35,7 @@ Storage mapping for {aws} {ec2} migration is limited to the same storage type. Y
 * *Source provider*: Select the {aws} {ec2} source provider from the list.
 * *Target provider*: Select the {virt} destination provider from the list.
 * *Source storage*: Select the EBS volume type from the list.
-+
-// SME REVIEW: Can you provide:
-// - Screenshot of the storage map creation form for AWS EC2
-// - List of supported EBS volume types (e.g., gp2, gp3, io1, io2, st1, sc1)
-// - Any volume types that are not supported
-+
 * *Target storage*: Select a storage class that uses the EBS CSI driver from the list.
-+
-// SME REVIEW: What does "same storage only" limitation mean exactly?
-// - Can you provide examples of valid storage mappings?
-// - Can you provide examples of invalid storage mappings?
-// - Are there recommended storage class configurations?
 
 . Optional: Click *Add mapping* to create additional storage maps, including mapping multiple storage sources to a single target storage class.
 . Click *Create*.
