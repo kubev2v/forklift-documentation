@@ -35,6 +35,11 @@ metadata:
   ownerReferences:
     - apiVersion: forklift.konveyor.io/v1beta1
       kind: Provider
+      name: <provider_name>
+      uid: <provider_uid>
+  labels:
+    createdForProviderType: ec2
+    createdForResourceType: providers
 type: Opaque
 stringData:
   accessKeyId: <aws_access_key_id>
@@ -52,6 +57,12 @@ Specifies the namespace for the resource. Use +{namespace}+ for the {project-sho
 +
 `ownerReferences`::
 Is an optional section in which you can specify a provider's `name` and `uid`.
++
+`<provider_name>`::
+Specifies the name of the provider that owns this secret.
++
+`<provider_uid>`::
+Specifies the unique identifier of the provider.
 +
 `<aws_access_key_id>`::
 Specifies the {aws} access key ID.
