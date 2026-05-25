@@ -1,0 +1,22 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: REFERENCE
+
+[id="ref_sco-supported-storage-providers_{context}"]
+= Supported storage providers
+
+[role="_abstract"]
+Use any of these storage providers with storage copy offload:
+
+* Hitachi Vantara
+* NetApp ONTAP
+* Pure Storage FlashArray
+* Dell PowerMax
+* Dell PowerFlex
+* Dell PowerStore
+* HPE 3PAR
+* HPE Primera
+* Infinidat InfiniBox
+* IBM Flashsystem

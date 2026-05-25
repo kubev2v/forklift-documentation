@@ -40,6 +40,8 @@ include::../modules/ref_cnv-cnv-live-prerequisites.adoc[leveloffset=+2]
 
 include::../modules/ref_compatibility-guidelines.adoc[leveloffset=+1]
 
+include::../modules/ref_openshift-operator-life-cycles.adoc[leveloffset=+2]
+
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
 

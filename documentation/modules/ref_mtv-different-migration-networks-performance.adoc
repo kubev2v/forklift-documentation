@@ -3,7 +3,6 @@
 // * documentation/doc-Migrating_your_virtual_machines/master.adoc
 
 :_mod-docs-content-type: REFERENCE
-
 [id="ref_mtv-different-migration-networks-performance_{context}"]
 = Performance using different migration networks
 

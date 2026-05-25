@@ -9,6 +9,7 @@
 [role="_abstract"]
 The {operator-name} is provided as a {ocp} Operator. It creates and manages the following custom resources (CRs) and services.
 
+[id="mtv-custom-resources_{context}"]
 == {project-short} custom resources
 
 * `Provider` CR stores attributes that enable {project-short} to connect to and interact with the source and target providers.
@@ -19,6 +20,7 @@ The {operator-name} is provided as a {ocp} Operator. It creates and manages the 
 +
 Only one `Migration` CR per migration plan can run at a given time. You can create multiple `Migration` CRs for a single `Plan` CR.
 
+[id="mtv-services_{context}"]
 == {project-short} services
 
 * The `Inventory` service performs the following actions:
@@ -35,4 +37,3 @@ When you create a migration plan, the `Migration Controller` service validates t
 * The `Populator Controller` service orchestrates disk transfers using Volume Populators.
 
 * The `Kubevirt Controller` and `Containerized Data Import (CDI) Controller` services handle most technical operations.
-

@@ -5,7 +5,6 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_migrating-vms-cli-ova_{context}"]
-
 = Running an Open Virtual Appliance (OVA) migration from the command-line
 
 [role="_abstract"]

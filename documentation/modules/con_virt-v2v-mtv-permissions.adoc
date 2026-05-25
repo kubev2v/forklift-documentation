@@ -1,0 +1,10 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_understanding-mtv-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_virt-v2v-mtv-permissions_{context}"]
+= Permissions and virt-v2v
+
+[role="_abstract"]
+`virt-v2v` does not require permissions or access credentials for the guest operating system itself because `virt-v2v` is not run against a running VM, but only against the disks of a VM.

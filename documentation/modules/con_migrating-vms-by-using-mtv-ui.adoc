@@ -20,10 +20,19 @@ For all migrations, you specify the source provider, the destination provider, a
 
 [IMPORTANT]
 ====
-You must ensure that all prerequisites are met. For more information, see link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration].
+You must ensure that all prerequisites are met.
 
-VMware only: You must have the minimal set of link:{mtv-plan}vmware-privileges_mtv[VMware privileges].
+VMware only: You must have the minimal set of VMware privileges.
 
-VMware only: Creating a link:{mtv-plan}proc_creating-vddk-image_mtv[VMware Virtual Disk Development Kit (VDDK)] image will increase migration speed.
+VMware only: Creating a VMware Virtual Disk Development Kit (VDDK) image increases migration speed.
+
+For more information about the requirements, see the "Additional resources" section.
 ====
+
+[role="_additional-resources"]
+== Additional resources
+
+* link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-privileges_mtv[VMware privileges]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#proc_creating-vddk-image_mtv[VMware Virtual Disk Development Kit (VDDK)]
 

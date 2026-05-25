@@ -14,12 +14,12 @@ Review common error messages encountered during migration. For detailed resoluti
 |===
 |Error message |Description |Resolution
 
-|`warm import retry limit reached`
-|Displayed during a warm migration when a {vmw} virtual machine (VM) has reached the maximum number (28) of changed block tracking (CBT) snapshots during the precopy stage.
+|`Warm import retry limit reached`
+|Displayed during a warm migration when a {vmw} virtual machine (VM) has reached the maximum number (32) of changed block tracking (CBT) snapshots during the precopy stage.
 |xref:proc_troubleshooting-warm-import-retry-limit_{context}[Resolving warm import retry limit errors]
 
 |`Unable to resize disk image to required size`
-|Displayed when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage. The default file system overhead assumed by CDI does not include the reserved space for the root partition.
+|Displayed when migration fails because a virtual machine on the target provider uses persistent volumes with an EXT4 file system on block storage. CDI assumes a default amount of space consumed by the file system, but this does not include the reserved space for the root partition.
 |xref:proc_troubleshooting-resize-disk-image_{context}[Resolving disk resize errors]
 
 |`An error occurred while taking a snapshot: Failed to restart the virtual machine`
@@ -27,7 +27,7 @@ Review common error messages encountered during migration. For detailed resoluti
 |link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_vmware-prerequisites_mtv[{vmw} prerequisites]
 
 |`ConnectionTestFailed`
-|Displayed when creating an Open Virtual Appliance (OVA) provider. Error messages might appear before the provider status changes to `Ready`.
+|Displayed when creating an Open Virtual Appliance (OVA) provider. Error messages might be displayed before the provider status changes to `Ready``.
 |xref:proc_troubleshooting-connection-test-failed-ova_{context}[Resolving OVA connection test errors]
 
 |`Error pulling VDDK image`
@@ -36,7 +36,7 @@ Review common error messages encountered during migration. For detailed resoluti
 
 |`Manual SSH key configuration required`, `Failed to connect via SSH`, or `SSH connection timeout`
 |Displayed when {project-short} cannot establish an SSH connection to the ESXi host during storage copy offload operations.
-|xref:con_troubleshooting-storage-copy-offload_{context}[Troubleshooting storage copy offload]
+|xref:ref_troubleshooting-storage-copy-offload_{context}[Troubleshooting storage copy offload]
 
 |`VM name validation failed: Invalid DNS name`
 |Displayed when a source VM name does not comply with Kubernetes DNS naming requirements.
@@ -44,10 +44,9 @@ Review common error messages encountered during migration. For detailed resoluti
 
 |`Cannot derive SVM to use; please specify SVM in config file`
 |Displayed during storage copy offload operations with NetApp storage when ONTAP is not configured correctly.
-|xref:con_troubleshooting-storage-copy-offload_{context}[Troubleshooting storage copy offload]
+|xref:ref_troubleshooting-storage-copy-offload_{context}[Troubleshooting storage copy offload]
 
 |`Migration failed: VDDK image required for vSAN storage`
 |Displayed when a VM is backed by {vmw} vSAN storage and no VDDK image is configured. VDDK is mandatory for vSAN migrations.
 |xref:proc_troubleshooting-vddk-required-vsan_{context}[Resolving VDDK vSAN errors]
-
 |===

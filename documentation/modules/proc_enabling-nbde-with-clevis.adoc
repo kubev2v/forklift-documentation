@@ -4,7 +4,6 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_enabling-nbde-with-clevis_{context}"]
-
 = Enabling Network-Bound Disk Encryption with Clevis 
 
 [role="_abstract"]

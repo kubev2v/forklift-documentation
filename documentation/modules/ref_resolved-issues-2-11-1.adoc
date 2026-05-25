@@ -28,7 +28,7 @@ link:https://issues.redhat.com/browse/MTV-3613[MTV-3613]
 Forklift-controller no longer unexpectedly shuts down due to map deletion::
 +
 --
-Before this update, the deletion of network or storage maps in the `forklift-controller` could cause unexpected shutdowns. With this update, deletion of these maps now results in migration plans moving to a `NotReady` state, as opposed to actively terminating associated pods. 
+Before this update, the deletion of network or storage maps in the `forklift-controller` could cause unexpected shutdowns. With this update, deletion of these maps now results in migration plans moving to a `NotReady` state, instead of actively terminating associated pods. 
 
 link:https://issues.redhat.com/browse/MTV-4413[MTV-4413]
 --
@@ -36,7 +36,7 @@ link:https://issues.redhat.com/browse/MTV-4413[MTV-4413]
 Increased memory limits for `forklift-cli-download` pod to prevent `OOMKilled` errors::
 +
 --
-Before this update, insufficient memory limits in the `forklift-cli-download` pod caused Kubernetes `OOMKilled` memory errors after an update of the {project-short} Operator. As a result, the pod entered `CrashLoopBackOff` state. This update increases memory limits for the `forklift-cli-download` pod to prevent `OOMKilled` errors, improving deployment stability.
+Before this update, insufficient memory limits in the `forklift-cli-download` pod caused Kubernetes `OOMKilled` memory errors after an update of the {project-short} Operator. As a result, the pod entered the `CrashLoopBackOff` state. This update increases memory limits for the `forklift-cli-download` pod to prevent `OOMKilled` errors, improving deployment stability.
 
 link:https://redhat.atlassian.net/browse/MTV-4482[MTV-4482]
 --
@@ -85,20 +85,19 @@ XFSv4 migrations failed::
 +
 --
 {project-short} 2.11.0 was rebased to {rhel-first} 10, which does not support XFS version 4 (XFSv4). As a result, a new `spec.xfsCompatibility` option is available on the migration plan. When set to `false`, the default setting, the plan uses the standard conversion image. When set to `true`, the plan uses the XFS-compatible conversion image instead of the standard conversion image.
+
 [WARNING]
 ====
 If you enable XFS support for a migration plan, then the plan cannot support Btrfs migration.
 ====
-link:https://redhat.atlassian.net/browse/MTV-4685[MTV-4685] and link:https://issues.redhat.com/browse/MTV-4709[MTV-4709]
 
+link:https://redhat.atlassian.net/browse/MTV-4685[MTV-4685] and link:https://issues.redhat.com/browse/MTV-4709[MTV-4709]
 --
 
 Active blocking of migration when target namespaces lack transfer network permissions::
 +
 --
-Before this update, during VM migration to Red Hat OpenShift Container Platform (OCP) with Fibre Channel, migration could stall when target namespaces lacked permission to transfer networks. This update enhances error handling with active blocking of migration when target namespaces lack transfer network permissions.
+Before this update, during VM migration to Red Hat OpenShift Container Platform with Fibre Channel, migration could stall when target namespaces lacked permission to transfer networks. This update enhances error handling with active blocking of migration when target namespaces lack transfer network permissions.
 
 link:https://issues.redhat.com/browse/MTV-4547[MTV-4547]
 --
-
-

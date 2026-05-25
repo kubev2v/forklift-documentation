@@ -10,7 +10,6 @@
 Review the resolved issues in this release of {project-short}.
 
 Skipping `fstrim` stage improves migration times for `xfsCompatibility` on RHEL 9::
-
 Before this update, virtual machine migrations with the `xfsCompatibility` parameter enabled to RHEL 9-based platforms encountered issues because the `--no-fstrim` option was incorrectly applied to the migration process. With this release, the `--no-fstrim` option is removed for these migrations. As a result, migrations based on RHEL 9 platforms run correctly.
 +
 link:https://redhat.atlassian.net/browse/MTV-5062[MTV-5062]

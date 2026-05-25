@@ -25,17 +25,25 @@ include::../modules/proc_creating-yaml-based-storage-maps-ui-vmware.adoc[levelof
 
 include::../modules/con_about-storage-copy-offload.adoc[leveloffset=+1]
 
+include::../modules/con_how-storage-copy-offload-works.adoc[leveloffset=+2]
+
+include::../modules/ref_sco-supported-storage-providers.adoc[leveloffset=+2]
+
 include::../modules/proc_storage-copy-offload-steps.adoc[leveloffset=+2]
 
 include::../modules/con_copy-methods-sco.adoc[leveloffset=+2]
 
-include::../modules/proc_storage-copy-offload-vib-set-up.adoc[leveloffset=+3]
+include::../modules/con_sco-ssh-advantages.adoc[leveloffset=+2]
 
-include::../modules/proc_storage-copy-offload-general-ssh-set-up.adoc[leveloffset=+3]
+include::../modules/proc_storage-copy-offload-vib-set-up.adoc[leveloffset=+2]
 
-include::../modules/proc_storage-copy-offload-auto-ssh-set-up.adoc[leveloffset=+4]
+include::../modules/con_storage-copy-offload-general-ssh-set-up.adoc[leveloffset=+2]
 
-include::../modules/proc_storage-copy-offload-manual-ssh-set-up.adoc[leveloffset=+4]
+include::../modules/con_ssh-notes-and-security.adoc[leveloffset=+2]
+
+include::../modules/proc_storage-copy-offload-auto-ssh-set-up.adoc[leveloffset=+2]
+
+include::../modules/proc_storage-copy-offload-manual-ssh-set-up.adoc[leveloffset=+2]
 
 include::../modules/proc_storage-copy-offload-ui.adoc[leveloffset=+2]
 

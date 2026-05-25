@@ -4,7 +4,6 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_configuring-ova-web-upload_{context}"]
-
 = Configuring OVA file upload by web browser
 
 [role="_abstract"]

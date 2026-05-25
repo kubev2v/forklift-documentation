@@ -37,7 +37,7 @@ spec:
 ----
 
 . Get the public key from the auto-generated secret by performing the following steps:
-
++
 [source,terminal,subs="attributes+"]
 ----
 $ oc get secrets -l app.kubernetes.io/component=ssh-keys -n <namespace_with_key>

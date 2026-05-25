@@ -37,9 +37,11 @@ include::../modules/proc_retrieving-vmware-moref.adoc[leveloffset=+2]
 
 include::../modules/proc_mtv-shared-disks.adoc[leveloffset=+2]
 
-include::../modules/ref_known-issues-shared-disks.adoc[leveloffset=+3]
+include::../modules/ref_known-issues-shared-disks.adoc[leveloffset=+2]
 
-include::../modules/ref_cyclic-shared-disk-workarounds.adoc[leveloffset=+3]
+include::../modules/ref_shared-disks-workaround-duplicate-disk.adoc[leveloffset=+2]
+
+include::../modules/ref_shared-disks-workaround-remove-disk.adoc[leveloffset=+2]
 
 include::../modules/con_mtv-template-utility.adoc[leveloffset=+2]
 

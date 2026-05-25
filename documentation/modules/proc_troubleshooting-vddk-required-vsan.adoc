@@ -7,9 +7,9 @@
 = Resolving VDDK vSAN errors
 
 [role="_abstract"]
-Virtual machine migrations fail with an error when a VM is backed by {vmw} vSAN storage and no VDDK image is configured.
+Virtual machine migrations fail with an error when a VM is backed by {vmw} vSAN storage and no {vmw} Virtual Disk Development Kit (VDDK) image is configured.
 
-VDDK (VMware Virtual Disk Development Kit) is mandatory for migrations from VMware vSAN storage. Migrations do not work without VDDK when a VM is backed by vSAN.
+VDDK is mandatory for migrations from {vmw} vSAN storage. Migrations do not work without VDDK when a VM is backed by vSAN.
 
 [WARNING]
 ====

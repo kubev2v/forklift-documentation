@@ -14,11 +14,18 @@ Review the following software requirements to ensure that your environment is pr
 
 {project-first} has software requirements for all providers as well as specific software requirements per provider.
 
-You must install link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_compatibility-guidelines_mtv[compatible versions] of {ocp} and {virt}.
+You must install compatible versions of {ocp} and {virt}. For more information about requirements, see the "Additional resources" section.
+
+[role="_additional-resources"]
+== Additional resources
+
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_compatibility-guidelines_mtv[Provider-specific requirements for migration]
 
 include::../modules/ref_storage-support.adoc[leveloffset=+1]
 
 include::../modules/ref_network-prerequisites.adoc[leveloffset=+1]
+
+include::../modules/ref_ports.adoc[leveloffset=+1]
 
 include::../modules/ref_source-vm-prerequisites.adoc[leveloffset=+1]
 

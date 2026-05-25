@@ -16,7 +16,13 @@ ifdef::context[:parent-context: {context}]
 
 include::../modules/con_about-cold-warm-migration.adoc[leveloffset=+1]
 
-include::../modules/con_warm-migration-stages.adoc[leveloffset=+1]
+include::../modules/con_cold-migration.adoc[leveloffset=+1]
+
+include::../modules/con_warm-migration.adoc[leveloffset=+1]
+
+include::../modules/con_warm-migration-stages-precopy.adoc[leveloffset=+2]
+
+include::../modules/con_warm-migration-stages-cutover.adoc[leveloffset=+2]
 
 include::../modules/con_mtv-migration-speed-comparison.adoc[leveloffset=+1]
 

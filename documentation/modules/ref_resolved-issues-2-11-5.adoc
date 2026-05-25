@@ -38,3 +38,8 @@ MTV resolves memory footprint and script truncation issues on ESX and ESXi::
 Before this update, migration failures occurred due to memory-related issues on more than 30 virtual machines (VMs). Additionally, during storage copy offload migrations that were set up by using SSH, a script was truncated on some uploads, which prevented other tasks from reading it. As a consequence, some VMs remained incomplete during migration, and the system returned a `failed to update task status: failed to get task status: failed to parse status response: failed to parse XML response: EOF` error. With this update, the memory footprint and script truncation issues on ESX and ESXi were fixed. As a result, the migration of more than 35 VMs is successful, improving the stability of the migration process. This fix applies only to storage copy offload migrations that are set up by using SSH; it does not apply to migrations that are set up by using a vSphere Installation on Bundle (VIB).
 +
 link:https://redhat.atlassian.net/browse/MTV-4732[MTV-4732]
+
+Virtual machines with Sun partition tables and Veritas storage no longer fail to migrate::
+Before this update, when migrating a virtual machine with a Sun partition table and Veritas storage, the disk cylinder-head-sector (CHS) geometry reported by the operating system did not match the geometry stored on the disk label. As a consequence, the `parted` command could not find the file system type, and the migration failed with a `libguestfs` error. With this update, the migration process correctly handles the geometry mismatch. As a result, virtual machines with Sun partition tables and Veritas storage migrate successfully.
++
+link:https://redhat.atlassian.net/browse/MTV-5253[MTV-5253]

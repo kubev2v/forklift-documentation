@@ -9,81 +9,76 @@
 [role="_abstract"]
 {project-first} 2.11 has the following known issues.
 
-Migrations fail for VMs sharing the same BIOS UUID due to a Libvirt limitation:: 
-While {project-short} correctly handles source virtual machines (VMs), a known issue in Libvirt (RHEL-174300) causes conflicts on the target environment if multiple VMs share the same BIOS UUID. As a consequence, the migration fails.
+Migrations fail for VMs sharing the same BIOS UUID due to a libvirt limitation:: 
+While {project-short} correctly handles source virtual machines (VMs), a known issue in libvirt (RHEL-174300) causes conflicts on the target environment if multiple VMs share the same BIOS UUID. As a consequence, the migration fails.
 +
-*Workaround:* Ensure that all VMs have unique BIOS UUIDs before you initiate the migration.
+To work around this problem, ensure that all VMs have unique BIOS UUIDs before you initiate the migration.
 +
 link:https://redhat.atlassian.net/browse/MTV-5326[MTV-5326] and link:https://redhat.atlassian.net/browse/RHEL-174300[RHEL-174300]
 
 VMware migrations fail when the disk count exceeds the ESXi host LUN ID limit::
-VMware migrations with many disks fail if the disk count exceeds the host limit for discoverable SCSI LUN IDs.
-+
-*Workaround:* Increase the `Disk.MaxLUN` value on each ESXi host to support discovery of a higher number of LUN IDs during migrations.
+When VMware migrations involve many disks, the disk count might exceed the host limit for discoverable SCSI LUN IDs. As a consequence, the migrations fail.
++ 
+To work around this problem, increase the `Disk.MaxLUN` value on each ESXi host to support discovery of a higher number of LUN IDs during migrations.
 +
 link:https://issues.redhat.com/browse/MTV-4719[MTV-4719]
 
-Live migration support limit in custom namespaces with host providers:: 
-
-Host providers in custom namespaces operate with restricted permissions that prevent {project-short} from accessing resources for live migration support, for example, verifying a feature gate is enabled or synchronizing certificates between namespaces. As a result, live migration currently has limited supported in custom namespaces with host providers. 
+Live migration is limited in custom namespaces with host providers::
+Host providers in custom namespaces have restricted permissions that prevent {project-short} from accessing live migration resources. As a consequence, {project-short} provides limited support for live migration in these namespaces.
 +
-*Workaround:* Use the default host provider or create a provider with an appropriate access token. 
+To work around this problem, use the default host provider or create a provider with an appropriate access token.
 +
 link:https://issues.redhat.com/browse/MTV-3347[MTV-3347]
 
 Forklift console plugin fails to load on IPv6-only {ocp-short} clusters::
-
-When {project-short} 2.9.1 is deployed on an IPv6-only {ocp-short} cluster, an incorrect API endpoint prevents the forklift-console-plugin from serving a valid plugin manifest, displaying the error `Failed to get a valid plugin manifest from /api/plugins/forklift-console-plugins/`. While the forklift-ui-plugin pod runs successfully, the console plugin cannot load, preventing access to the {project-short} user interface in the {ocp-short} web console. This issue affects all IPv6-only cluster deployments with {ocp-short} 4.19.7 and CNV 4.19.1.
+When {project-short} is deployed on an IPv6-only {ocp-short} cluster, an incorrect API endpoint prevents the `forklift-console` plugin from serving a valid plugin manifest. As a consequence, the error `Failed to get a valid plugin manifest from /api/plugins/forklift-console-plugins/` is displayed in the {project-short} extension to the {ocp} web console. While the `forklift-ui-plugin` pod runs successfully, the console plugin cannot load, preventing access to the {project-short} user interface.
 +
-*Workaround:* Deploy {project-short} on dual-stack or IPv4 clusters until this issue is resolved.
+This issue applies to all IPv6-only cluster deployments with {ocp-short} 4.19.7 and CNV 4.19.1. This issue was first observed in {project-short} version 2.9.1 and continues to exist in {project-short} version 2.11.
++
+To work around this problem, deploy {project-short} on dual-stack or IPv4 clusters.
 +
 link:https://issues.redhat.com/browse/MTV-3116[MTV-3116]
 
-Incorrect labeling of inactive migration plans::
-
-Inactive migration plans are incorrectly labeled as `Running` when `max_vms_inflight` exceeds the total number of disks per migration. This label leads to confusion about the actual state of the plans, as all migration plans appear to be `Running` in the user interface.
+Inactive migration plans are incorrectly displayed as Running::
+When `max_vms_inflight` exceeds the total number of disks per migration, inactive migration plans receive an incorrect status. As a consequence, these inactive migration plans are displayed as *Running* in the user interface.
 +
-*Workaround:* Currently, there is no workaround for this issue.
+No known workaround exists.
 +
 link:https://issues.redhat.com/browse/MTV-1736[MTV-1736]
 
 Migration between {ocp-short} namespaces causes MAC address collisions::
-
-During migration between {ocp-short} namespaces in a cluster, MAC address collisions result in VM creation failure.
+During migration between {ocp-short} namespaces in a cluster, MAC address collisions occur. As a consequence, VM creation fails.
 +
-*Workaround:* Disable the KubeMacPool. For more information, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/virtualization/networking#virt-managing-kubemacpool-cli_virt-using-mac-address-pool-for-vms[Managing KubeMacPool by using the CLI] in the {ocp-short} documentation.
+To work around this problem, disable the `KubeMacPool`. For more information, see link:https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/virtualization/networking#virt-managing-kubemacpool-cli_virt-using-mac-address-pool-for-vms[Managing KubeMacPool by using the CLI] in the {ocp-short} documentation.
 +
 link:https://issues.redhat.com/browse/MTV-2446[MTV-2446]
 
-{vmw} vSphere 6 or 7 migration fails on FIPS-enabled clusters::
 
-In {project-short} 2.11.0, an update to Golang 1.25 causes a connection failure on FIPS-enabled clusters with {vmw} vSphere 6 or 7, due to unsupported TLS 1.2 with Extended Master Secret. As a consequence, users cannot migrate {vmw} vSphere 6 or 7 VMs to a FIPS-compliant cluster.
+{vmw} vSphere 6 or 7 migration fails on FIPS-enabled clusters::
+In {project-short} 2.11.0, an update to Golang 1.25 causes a connection failure on FIPS-enabled clusters with {vmw} vSphere 6 or 7 due to unsupported TLS 1.2 with Extended Master Secret (EMS). As a consequence, you cannot migrate {vmw} vSphere 6 or 7 VMs to a FIPS-compliant cluster.
 +
-*Workaround:* Disable FIPS mode on the cluster or use a {vmw} vSphere version that supports TLS 1.2 with Extended Master Secret to migrate VMs.
+To work around this problem, disable FIPS mode on the cluster. Alternatively, use a {vmw} vSphere version that supports TLS 1.2 with EMS to migrate VMs.
 +
 link:https://issues.redhat.com/browse/MTV-4411[MTV-4411]
 
 Second migration plan with shared RDM disks fails when shared disk migration is disabled::
-
-When migrating two VMs with shared RDM disks using copyoffload in separate migration plans, the second migration plan fails at the `ImageConversion` step if shared disk migration is disabled. After successfully migrating the first VM with shared disk migration enabled, creating a second migration plan with shared disk migration disabled incorrectly creates two populate pods—one for the OS disk and one for the shared RDM disk—instead of creating only the OS disk populate pod. This causes the second migration to fail.
+You might migrate two VMs with shared Raw Device Mapping (RDM) disks by using `copyoffload` in separate migration plans. If you disable shared disk migration after successfully migrating the first VM, the second plan incorrectly creates two populated pods: one for the operating system disk and one for the shared RDM disk. As a consequence, the second migration plan fails at the `ImageConversion` step.
 +
-*Workaround:* Currently, there is no workaround for this issue.
+No known workaround exists.
 +
 link:https://issues.redhat.com/browse/MTV-4549[MTV-4549]
 
-VDDK image only in +{namespace}+ namespace::
-
-When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the image URL is located in the +{namespace}+ namespace. If you create a provider in a different namespace, there is an error when pulling the image.
+VDDK image pulls fail outside the +{namespace}+ namespace::
+When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the image URL is located in the +{namespace}+ namespace. If you create a provider in a different namespace, an error occurs. As a consequence, the image pull fails.
++
+No known workaround exists.
 +
 link:https://issues.redhat.com/browse/MTV-3673[MTV-3673]
 
-Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox::
-
-Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox due to incorrect adapter ID comparison. As a consequence, FC protocol VM migration fails to identify existing FC hosts, causing volume creation failure due to incorrect `port_name`.
+Fibre Channel protocol VM migration fails to identify existing FC host objects in Infinidat InfiniBox::
+During Fibre Channel (FC) protocol VM migration, an incorrect adapter ID comparison prevents {project-short} from identifying existing FC host objects in Infinidat InfiniBox. As a consequence, volume creation fails due to an incorrect `port_name`.
 +
-*Workaround:* Currently, there is no workaround for this issue.
+No known workaround exists.
 +
 link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
-
-//For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 

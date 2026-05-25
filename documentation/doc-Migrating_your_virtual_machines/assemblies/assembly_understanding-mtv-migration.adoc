@@ -20,12 +20,17 @@ include::../modules/con_mtv-workflow.adoc[leveloffset=+1]
 
 include::../modules/con_virt-migration-workflow.adoc[leveloffset=+2]
 
-include::../modules/con_virt-v2v-mtv.adoc[leveloffset=+2]
+include::../modules/con_virt-v2v-mtv.adoc[leveloffset=+1]
 
-include::../modules/con_raw-copy-mode.adoc[leveloffset=+2]
+include::../modules/con_virt-v2v-mtv-main-functions.adoc[leveloffset=+2]
+
+include::../modules/con_virt-v2v-mtv-customizing-removing-installing.adoc[leveloffset=+2]
+
+include::../modules/con_virt-v2v-mtv-permissions.adoc[leveloffset=+2]
+
+include::../modules/con_raw-copy-mode.adoc[leveloffset=+1]
 
 include::../modules/con_device-compatibility-mode-raw-copy-migrations.adoc[leveloffset=+2]
-
 
 :mtv!:
 

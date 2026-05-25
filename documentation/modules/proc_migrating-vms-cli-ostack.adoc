@@ -4,7 +4,6 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_migrating-vms-cli-ostack_{context}"]
-
 = Running an {osp} migration from the command-line
 
 [role="_abstract"]

@@ -12,10 +12,14 @@ Live migration is supported by {project-first} version 2.10.0 and later. It requ
 
 [IMPORTANT]
 ====
-There is a known issue with live migration: Migration between namespaces on the same {virt} cluster fails because of MAC address collisions. 
-
-link:https://issues.redhat.com/browse/MTV-2446[(MTV-2446)]
+Migration between namespaces on the same {virt} cluster fails because of MAC address collisions. For more information about this known issue, see the "Additional resources" section.
 ====
+
+[role="_additional-resources"]
+== Additional resources
+
+* link:https://issues.redhat.com/browse/MTV-2446[(MTV-2446)]
+
 
 include::../modules/con_benefits-live-migration.adoc[leveloffset=+1]
 
