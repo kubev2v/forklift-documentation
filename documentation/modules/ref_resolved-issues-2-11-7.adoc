@@ -1,0 +1,61 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-11-7_{context}"]
+= Resolved issues 2.11.7
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+The libvirt API correctly identifies VM UUIDs, preventing incorrect VM names::
+Before this update, virtual machine (VM) UUID duplication in {vmw} caused inconsistent `libvirt` domain name returns. As a consequence, duplicate VM names led to confusion and incorrect selection. With this release, the `libvirt` API correctly identifies VM UUIDs. As a result, `libvirt` no longer returns incorrect VM names.
++
+link:https://issues.redhat.com/browse/MTV-5326[MTV-5326]
+
+RDM-to-SCSI interface conversion in MigrationPlan is corrected::
+Before this update, setting `spec.rdmAsLun=true` in a `MigrationPlan` did not correctly convert the RDM disk interface from virtio to SCSI. As a consequence, the logical unit number (LUN) type was incompatible. With this release, the interface type conversion for RDM disks in a `MigrationPlan` is corrected. As a result, RDM disks converted to a LUN have the required SCSI interface type.
++
+link:https://issues.redhat.com/browse/MTV-5387[MTV-5387]
+
+The GetAllHosts function supports pagination on Infinidat InfiniBox arrays::
+Before this update, the `GetAllHosts` function on Infinidat InfiniBox arrays used an upstream driver that lacked pagination. Because of this, the function silently returned only the first page. As a consequence, host lookups failed during volume mapping on InfiniBox arrays with many hosts. With this release, the `GetAllHosts` function is updated to use a driver that supports pagination. As a result, {project-short} prevents host lookup failures during volume mapping on InfiniBox arrays with many hosts.
++
+link:https://issues.redhat.com/browse/MTV-5390[MTV-5390]
+
+Multiple IP addresses per MAC address are correctly handled in Linux guest migrations::
+Before this update, the script incorrectly treated configurations with multiple IP addresses on a single MAC address as duplicate MAC addresses. As a consequence, the script generated an empty `/etc/udev/rules.d/70-persistent-net.rules` file, causing issues like renamed network interface controllers (NICs) and missing IP addresses on boot. With this release, the duplicate MAC address detection logic no longer treats multiple IP addresses per MAC address as an error. As a result, {project-short} correctly handles multiple IP addresses per MAC address during Linux guest migrations, ensuring persistent network configuration in {virt}.
++
+link:https://issues.redhat.com/browse/MTV-5522[MTV-5522]
+
+PVCs are cleaned up after XCOPY migration failures::
+Before this update, {project-short} failed to clean up persistent volume claims (PVCs) after archiving a failed XCOPY migration. As a consequence, orphaned PVCs remained on the cluster, which caused logical unit number (LUN) utilization issues. With this release, the PVC cleanup process is updated for XCOPY storage copy offload migrations. As a result, {project-short} automatically cleans up PVCs after a migration failure, which prevents unnecessary LUN utilization and operational issues.
++
+link:https://issues.redhat.com/browse/MTV-5546[MTV-5546]
+
+PowerShell CLM no longer causes Convert-PrefixToMask failures in {project-short} migrations::
+Before this update, the `Convert-PrefixToMask` function failed when PowerShell Constrained Language Mode (CLM) was enabled on the target virtual machine (VM). As a consequence, {project-short} wrote empty subnet masks to the registry during migration. With this release, the `Convert-PrefixToMask` function is updated to operate correctly under PowerShell CLM. As a result, {project-short} writes the correct subnet masks to the registry when PowerShell CLM is enabled on the target VM.
++
+link:https://issues.redhat.com/browse/MTV-5555[MTV-5555]
+
+XFSv5 on RHEL 7 no longer falsely reports corruption::
+Before this update, when converting a RHEL 7 guest, XFSv5 incorrectly reported file system corruption without actual issues. As a consequence, these false alarms caused migration plans to fail. With this release, as a temporary measure, {project-short} adds the `feature_xfs_repair_ignore` option to skip the test. As a result, enabling this option allows conversions to continue. If you are unsure whether to use this flag in specific cases, contact Red Hat Support for guidance.
++
+link:https://issues.redhat.com/browse/MTV-5584[MTV-5584]
+
+A vmID filter in the getPopulatorCrList function prevents CR deletion for active VMs::
+Before this update, the `getPopulatorCrList()` function filtered only migration user identifiers (UIDs). As a consequence, cleanup deleted custom resources (CRs) of all virtual machines (VMs) that started in previous waves, which caused populator pod failures. With this release, {project-short} adds a `vmID` filter to the `getPopulatorCrList()` function. As a result, the migration process no longer deletes CRs of active VMs during cleanup, which prevents populator pod failures.
++
+link:https://issues.redhat.com/browse/MTV-5602[MTV-5602]
+
+Concurrent copy-offload operations no longer cause failures during VM creation::
+Before this update, unaccounted copy-offload disk operations in the populator flow exceeded the `maxInFlight` limit. As a consequence, excessive concurrent disk operations caused user scale tests to fail. With this release, the new `controller_max_populator_inflight` parameter limits running volume populators per ESXi source host. As a result, `maxInFlight` limits concurrent virtual machine (VM) migrations, which prevents concurrency failures.
++
+link:https://issues.redhat.com/browse/MTV-5621[MTV-5621]
+
+FC initiator lookups no longer fail on PowerMax storage::
+Before this update, a Fibre Channel (FC) initiator lookup format mismatch with the PowerMax API caused ID validation errors. As a consequence, unnecessary re-mapping on unchanged volumes caused failures that prevented {project-short} from populating PowerMax storage. With this release, {project-short} uses the correct FC initiator lookup format and removes the unnecessary re-mapping loop. As a result, {project-short} successfully populates PowerMax storage during storage copy offload migrations.
++
+link:https://issues.redhat.com/browse/MTV-5624[MTV-5624]
+

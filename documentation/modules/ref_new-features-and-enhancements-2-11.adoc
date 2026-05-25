@@ -9,6 +9,34 @@
 [role="_abstract"]
 {project-first} 2.11 introduces the following features and enhancements.
 
+[id="new-features-and-enhancements-2-11-7_{context}"]
+== {project-short} 2.11.7
+
+You can map a single source network to multiple NADs::
+Currently, `kubevirt` prevents mapping multiple network interface controllers (NICs) to a single network attachment definition (NAD). With this enhancement, you can map a single source network to multiple destination NADs.
++
+When the NICs are created in the target virtual machine (VM), each receives a different NAD from the mapped pool. As a result, you can successfully migrate VMs with multiple NICs on the same source network. The following example shows the `network-21` source network mapped to the `nad-a` and `nad-b` destination NADs:
++
+[source,yaml]
+----
+spec:
+  map:
+    - destination:
+        name: nad-a
+        namespace: mtv-5511-test
+        type: multus
+      source:
+        id: network-21
+    - destination:
+        name: nad-b
+        namespace: mtv-5511-test
+        type: multus
+      source:
+        id: network-21
+----
++
+link:https://issues.redhat.com/browse/MTV-5623[MTV-5623]
+
 [id="new-features-and-enhancements-2-11-5_{context}"]
 == {project-short} 2.11.5
 
@@ -120,7 +148,7 @@ link:https://issues.redhat.com/browse/MTV-3712[MTV-3712]
 Enhanced learning experience in the {project-short} UI::
 The *Tips and tricks* section in the {project-short} UI is significantly expanded. It offers curated learning paths and improved user guidance.
 +
-This enhancement simplifies complex workflow steps and reorganizes content for a better learning process. It also integrates with Red{nbsp}Hat {virt} LightSpeed AI for dynamic guidance. As a result, you can learn and navigate the system more effectively.
+This enhancement simplifies complex workflow steps and reorganizes content for a better learning process. It also integrates with Red{nbsp}Hat OpenShift Lightspeed for dynamic guidance. As a result, you can learn and navigate the system more effectively.
 +
 link:https://issues.redhat.com/browse/MTV-3718[MTV-3718]
 
