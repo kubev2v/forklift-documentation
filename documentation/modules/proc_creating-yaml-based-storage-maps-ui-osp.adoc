@@ -1,0 +1,59 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-osp.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_creating-yaml-based-storage-maps-ui-osp_{context}"]
+= Creating ownerless storage maps by using YAML or JSON definitions in the {project-short} UI
+
+[role="_abstract"]
+You can add ownerless storage maps by using YAML or JSON definitions in the YAML page of the {project-first} UI. Later, you can add these maps to a migration plan by using the *Use an existing storage map* option in the *Storage map* page of the {project-short} wizard.
+
+For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
+
+.Prerequisites
+
+* Have an {osp} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_ostack[Adding an {osp} source provider] or xref:proc_adding-source-provider_dest_ostack[Adding {a-virt} destination provider].
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
+. Click *Create storage map* > *Create with YAML*.
++
+The *Create StorageMap* page opens.
+. Enter the YAML or JSON definitions into the editor, or drag and drop a file into the editor.
+. If you enter YAML definitions, use the following:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+        accessMode: <access_mode>
+      source:
+        id: <source_volume_type>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+* `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+* `id`: Specify the {osp} `volume_type` UUID, for example, `f2737930-b567-451a-9ceb-2887f6207009`.
+
+. Optional: To download your input, click *Download*.
+. Click *Create*.
++
+Your map appears in the list of storage maps.
+

@@ -5,3 +5,7 @@ documentation/*/build/*
 _site
 .DS_Store
 */master.html
+.claude/
+.jekyll-cache/
+Gemfile.lock
+!.github/workflows/

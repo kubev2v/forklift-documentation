@@ -24,7 +24,7 @@ Because of this risk, users are asked to request that Red Hat support perform ra
 [role="_additional-resources"]
 .Additional resources
 
-* xref:virt-v2v-mtv_{context}[How {project-short} uses the virt-v2v tool]
+* xref:con_virt-v2v-mtv_{context}[How {project-short} uses the virt-v2v tool]
 * link:https://access.redhat.com/articles/1351473[Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, RHEL 9, and RHEL 10]
 * link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_configuring-plan-settings-vmware_vmware[Configuring VMware migration plan settings]
 * xref:proc_migrating-vms-cli-vmware_vmware[Running a VMware vSphere migration from the command-line]

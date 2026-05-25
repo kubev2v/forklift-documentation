@@ -12,18 +12,22 @@ Live migration is supported by {project-first} version 2.10.0 and later. It requ
 
 [IMPORTANT]
 ====
-There is a known issue with live migration: Migration between namespaces on the same {virt} cluster fails because of MAC address collisions. 
-
-link:https://issues.redhat.com/browse/MTV-2446[(MTV-2446)]
+Migration between namespaces on the same {virt} cluster fails because of MAC address collisions. For more information about this known issue, see the "Additional resources" section.
 ====
 
-include::../modules/benefits-live-migration.adoc[leveloffset=+1]
+[role="_additional-resources"]
+== Additional resources
 
-include::../modules/live-migration-mtv-cnv.adoc[leveloffset=+1]
+* link:https://issues.redhat.com/browse/MTV-2446[(MTV-2446)]
 
-include::../modules/live-migration-limitations.adoc[leveloffset=+1]
 
-include::../modules/live-migration-workflow.adoc[leveloffset=+1]
+include::../modules/con_benefits-live-migration.adoc[leveloffset=+1]
+
+include::../modules/con_live-migration-mtv-cnv.adoc[leveloffset=+1]
+
+include::../modules/con_live-migration-limitations.adoc[leveloffset=+1]
+
+include::../modules/con_live-migration-workflow.adoc[leveloffset=+1]
 
 
 ifdef::parent-context[:context: {parent-context}]

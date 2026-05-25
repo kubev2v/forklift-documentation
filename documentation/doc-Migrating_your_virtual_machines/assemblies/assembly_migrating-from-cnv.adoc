@@ -16,21 +16,21 @@ Run your {virt} migration plan from the MTV UI or from the command-line.
 :context: cnv
 :cnv:
 
-include::../modules/running-migration-plan.adoc[leveloffset=+1]
+include::../modules/proc_running-migration-plan.adoc[leveloffset=+1]
 
-include::../modules/migration-plan-options-ui.adoc[leveloffset=+2]
+include::../modules/ref_migration-plan-options-ui.adoc[leveloffset=+2]
 
-include::../modules/canceling-migration-ui.adoc[leveloffset=+2]
+include::../modules/proc_canceling-migration-ui.adoc[leveloffset=+2]
 
 include::../modules/proc_migrating-vms-cli-cnv.adoc[leveloffset=+1]
 
-include::../modules/migrating-live-cnv-cnv-vms-cli.adoc[leveloffset=+1]
+include::../modules/proc_migrating-live-cnv-cnv-vms-cli.adoc[leveloffset=+1]
 
-include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
+include::../modules/con_canceling-migration-cli.adoc[leveloffset=+2]
 
-include::../modules/canceling-migration-cli-entire.adoc[leveloffset=+3]
+include::../modules/proc_canceling-migration-cli-entire.adoc[leveloffset=+3]
 
-include::../modules/canceling-migration-cli-specific.adoc[leveloffset=+3]
+include::../modules/proc_canceling-migration-cli-specific.adoc[leveloffset=+3]
 
 :cnv!:
 

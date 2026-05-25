@@ -1,0 +1,155 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_installing-mtv-operator.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_installing-mtv-operator_{context}"]
+ifdef::web[]
+= Installing the {operator-name} by using the {ocp} web console
+
+[role="_abstract"] 
+You can install the {operator-name} by using the {ocp} web console.
+endif::[]
+ifdef::cli[]
+= Installing the {operator-name} by using the command-line interface
+
+[role="_abstract"] 
+You can install the {operator-name} by using the command-line interface (CLI).
+endif::[]
+
+.Prerequisites
+
+* {ocp} {ocp-y-version} installed.
+* {virt} Operator installed on an OpenShift migration target cluster.
+* You must be logged in as a user with `cluster-admin` permissions.
+
+.Procedure
+
+ifdef::web[]
+. In the {ocp} web console, click *Operators* -> *OperatorHub*.
+. Use the *Filter by keyword* field to search for *{operator}*.
+ifeval::["{build}" == "upstream"]
++
+[NOTE]
+====
+The {operator-name} is a Community Operator. Red Hat does not support Community Operators.
+====
+endif::[]
+. Click *{operator-name-ui}* and then click *Install*.
+. Click *Create ForkliftController* when the button becomes active.
+. Click *Create*.
++
+Your ForkliftController appears in the list that is displayed.
+. Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.
+. Click *Operators* -> *Installed Operators* to verify that *{operator-name-ui}* appears in the +{namespace}+ project with the status *Succeeded*.
++
+When the plugin is ready you will be prompted to reload the page.  The  *Migration* menu item is automatically added to the navigation bar, displayed on the left of the {ocp} web console.
+endif::[]
+ifdef::cli[]
+
+. Create the +{namespace}+ project:
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  name: {namespace}
+EOF
+----
+
+. Create an `OperatorGroup` CR called `migration`:
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: migration
+  namespace: {namespace}
+spec:
+  targetNamespaces:
+    - {namespace}
+EOF
+----
+
+. Create a `Subscription` CR for the Operator:
+ifeval::["{build}" == "upstream"]
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: {operator}
+  namespace: {namespace}
+spec:
+  channel: development
+  installPlanApproval: Automatic
+  name: {operator}
+  source: community-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: "{namespace}-operator.{project-z-version}"
+EOF
+----
+endif::[]
+ifeval::["{build}" == "downstream"]
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: {operator}
+  namespace: {namespace}
+spec:
+  channel: release-v{project-version}
+  installPlanApproval: Automatic
+  name: {operator}
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: "mtv-operator.v{project-z-version}"
+EOF
+----
+endif::[]
+
+. Create a `ForkliftController` CR:
++
+[source,terminal,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: ForkliftController
+metadata:
+  name: forklift-controller
+  namespace: {namespace}
+spec:
+  olm_managed: true
+EOF
+----
+
+. Verify that the {project-short} pods are running:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} get pods -n {namespace}
+----
++
+The following is example output:
++
+Example:
+----
+NAME                                                    READY   STATUS    RESTARTS   AGE
+forklift-api-bb45b8db4-cpzlg                            1/1     Running   0          6m34s
+forklift-controller-7649db6845-zd25p                    2/2     Running   0          6m38s
+forklift-must-gather-api-78fb4bcdf6-h2r4m               1/1     Running   0          6m28s
+forklift-operator-59c87cfbdc-pmkfc                      1/1     Running   0          28m
+forklift-ui-plugin-5c5564f6d6-zpd85                     1/1     Running   0          6m24s
+forklift-validation-7d84c74c6f-fj9xg                    1/1     Running   0          6m30s
+forklift-volume-populator-controller-85d5cb64b6-mrlmc   1/1     Running   0          6m36s
+----
+endif::[]

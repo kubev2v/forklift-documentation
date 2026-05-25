@@ -18,9 +18,9 @@ include::../modules/proc_troubleshooting-workflow.adoc[leveloffset=+1]
 
 include::../modules/proc_using-lightspeed-troubleshooting.adoc[leveloffset=+1]
 
-include::../modules/con_common-migration-issues.adoc[leveloffset=+1]
+include::../modules/ref_common-migration-issues.adoc[leveloffset=+1]
 
-include::../modules/error-messages.adoc[leveloffset=+1]
+include::../modules/ref_error-messages.adoc[leveloffset=+1]
 
 include::../modules/proc_troubleshooting-warm-import-retry-limit.adoc[leveloffset=+2]
 
@@ -32,15 +32,21 @@ include::../modules/proc_troubleshooting-vddk-image-pull-error.adoc[leveloffset=
 
 include::../modules/proc_troubleshooting-vddk-required-vsan.adoc[leveloffset=+2]
 
-include::../modules/con_troubleshooting-storage-copy-offload.adoc[leveloffset=+1]
+include::../modules/ref_troubleshooting-storage-copy-offload.adoc[leveloffset=+1]
 
-include::../modules/using-must-gather.adoc[leveloffset=+1]
+include::../modules/ref_troubleshooting-storage-copy-offload-vsphere-esxi-issues.adoc[leveloffset=+2]
 
-include::../modules/collected-logs-cr-info.adoc[leveloffset=+1]
+include::../modules/ref_troubleshooting-storage-copy-offload-ssh-issues.adoc[leveloffset=+2]
 
-include::../modules/accessing-logs-ui.adoc[leveloffset=+2]
+include::../modules/ref_troubleshooting-storage-copy-offload-netapp-issues.adoc[leveloffset=+2]
 
-include::../modules/accessing-logs-cli.adoc[leveloffset=+2]
+include::../modules/proc_using-must-gather.adoc[leveloffset=+1]
+
+include::../modules/con_collected-logs-cr-info.adoc[leveloffset=+1]
+
+include::../modules/proc_accessing-logs-ui.adoc[leveloffset=+2]
+
+include::../modules/proc_accessing-logs-cli.adoc[leveloffset=+2]
 
 
 :mtv!:

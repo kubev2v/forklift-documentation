@@ -9,7 +9,7 @@
 
 [role="_abstract"]
 
-OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or KVM images.
+OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or Kernel-based Virtual Machine (KVM) images.
 
 The OVA import process utilizes `virt-v2v` to prepare guest operating systems for KVM. Vendor-supplied appliances often use proprietary bootloaders or disk layouts that are incompatible with this conversion. Moreover, converting a vendor OVA may invalidate vendor support agreements. 
 

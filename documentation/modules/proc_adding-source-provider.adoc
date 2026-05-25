@@ -18,7 +18,7 @@ You can migrate {vmw} vSphere VMs from {vmw} vCenter or from a {vmw} ESX/ESXi se
 
 Considerations::
 
-* EMS enforcement is disabled for migrations with {vmw} vSphere source providers in order to enable migrations from versions of vSphere that are supported by {project-full} but do not comply with the 2023 FIPS requirements. Therefore, users should consider whether migrations from vSphere source providers risk their compliance with FIPS. Supported versions of vSphere are specified in xref:compatibility-guidelines_mtv[Software compatibility guidelines].
+* EMS enforcement is disabled for migrations with {vmw} vSphere source providers in order to enable migrations from versions of vSphere that are supported by {project-full} but do not comply with the 2023 FIPS requirements. Therefore, users should consider whether migrations from vSphere source providers risk their compliance with FIPS. Supported versions of vSphere are specified in xref:ref_compatibility-guidelines_mtv[Software compatibility guidelines].
 * Anti-virus software can cause migrations to fail. It is strongly recommended to remove such software from source VMs before you start a migration.
 * {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.
 * If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:proc_creating-plan-wizard-vmware_vmware[Creating a {vmw} vSphere migration plan using the {project-short} wizard].  
@@ -76,7 +76,7 @@ ifdef::vmware,rhv,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 endif::[]
 
 ifdef::vmware[]
-* It is strongly recommended to create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters. A VDDK image accelerates migration and reduces the risk of a plan failing. If you are not using VDDK and a plan fails, retry with VDDK installed. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
+* It is strongly recommended to create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters. A VDDK image accelerates migration and reduces the risk of a plan failing. If you are not using VDDK and a plan fails, retry with VDDK installed. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
 
 [WARNING]
 ====
@@ -101,7 +101,7 @@ ifdef::vmware[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -113,7 +113,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{vmw}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -124,11 +124,11 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 * *Provider resource name*: Name of the source provider.
 * *Endpoint type*: Select the vSphere provider endpoint type. Options: *vCenter* or *ESXi*. You can migrate virtual machines from vCenter, an ESX/ESXi server that is not managed by vCenter, or from an ESX/ESXi server that is managed by vCenter but does not go through vCenter.
 * *URL*: URL of the SDK endpoint of the vCenter on which the source VM is mounted. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
-* *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:creating-vddk-image_mtv[Creating a VDDK image].
+* *VDDK init image*: `VDDKInitImage` path. It is strongly recommended to create a VDDK init image to accelerate migrations. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
 +
 Do one of the following:
 
-** Select the *Skip VMWare Virtual Disk Development Kit (VDDK) SDK acceleration (not recommended)*.
+** Select the *Skip {vmw} Virtual Disk Development Kit (VDDK) SDK acceleration (not recommended)*.
 
 ** Enter the path in the *VDDK init image* text box. Format: `<registry_route_or_server_path>/vddk:<tag>`.
 
@@ -172,7 +172,7 @@ ifdef::rhv[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 +
@@ -184,7 +184,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{rhv-full}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -219,7 +219,7 @@ ifdef::ova[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 ... Click *Open Virtual Appliance*.
@@ -230,7 +230,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Open Virtual Appliance* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -251,7 +251,7 @@ ifdef::ostack[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 ... Click *{osp}*.
@@ -262,7 +262,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{osp}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -324,7 +324,7 @@ ifdef::cnv[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 ... Click *{virt}*.
@@ -335,7 +335,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 . Specify the following fields:
@@ -371,7 +371,7 @@ ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 ... Click *{virt}*.
@@ -382,7 +382,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 

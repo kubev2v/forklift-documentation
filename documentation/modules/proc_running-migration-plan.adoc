@@ -1,0 +1,95 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-cnv.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-osp.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_running-migration-plan_{context}"]
+= Running a migration plan in the MTV UI
+
+[role="_abstract"]
+You can run a migration plan and view its progress in the {ocp} web console.
+
+.Prerequisites
+
+* Valid migration plan.
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
++
+The *Plans* list displays the source and target providers, the number of virtual machines (VMs) being migrated, the status, the date that the migration started, and the description of each plan.
+
+. Click *Start* beside a migration plan to start the migration.
+. Click *Start* in the confirmation window that opens.
++
+The plan's *Status* changes to *Running*, and the migration's progress is displayed.
++
+[WARNING]
+====
+Do not take a snapshot of a VM after you start a migration. Taking a snapshot after a migration starts might cause the migration to fail.
+====
++
+ifdef::vmware,rhv[]
+*Warm migration only*:
+
+* The precopy stage starts.
++
+A `PreFlightInspection` during warm migration enables early detection of issues during guest conversion. If an issue is detected, the warm migration fails before VM shutdown, and you can adjust VM settings or skip guest conversion. Potential errors during the `PreFlightInspection` include the following:
++
+** Missing LUKS passwords
+** Unsupported OS
+** Unsupported FS
+
+. To set the cutover of the plan, perform the following steps:
+
+.. In the *Migration type* column of the migration plan, click *Schedule cutover*.
+.. In the *Schedule cutover* window, set the date and time of the cutover, and then click *Set cutover*.
+
+. To edit a cutover, perform the following steps:
+
+.. In the *Migration type* column of the migration plan, click *Edit cutover*.
+.. In the *Edit cutover* window, set the date and time of the cutover, and then click *Set cutover*.
+endif::vmware,rhv[]
+
+. Optional: Click the links in the migration's *Status* to see its overall status and the status of each VM:
+
+** The link on the left indicates whether the migration failed, succeeded, or is ongoing. It also reports the number of VMs whose migration succeeded, failed, or was canceled.
+** The link on the right opens the *Virtual machines* tab of the *Plan details* page. For each VM, the tab displays the following data:
+
+*** The name of the VM
+*** The start and end times of the migration
+*** The amount of data copied
+*** A progress pipeline for the VM's migration
++
+ifdef::vmware[]
+[WARNING]
+====
+vMotion, including svMotion, and relocation must be disabled for VMs that are being imported to avoid data corruption.
+====
+endif::[]
+
+
+. To view your migration's logs, either as it is running or after it is completed:
+
+.. Click the *Virtual machines* tab.
+.. Click the arrow (*>*) before the name of the virtual machine whose migration progress you want to check.
++
+.. In the *Pods* section, in the *Pod links* column, click the *Logs* link.
++
+[NOTE]
+====
+Logs might not be available for the following common reasons:
+
+* The migration is from {virt} to {virt}. In this case, the `virt-v2v` utility is not involved, so no pod is required.
+* No pod was created.
+* The pod was deleted.
+* The migration failed before running the pod.
+====
+
+.. To see the raw logs, click the *Raw* link.
+.. To download the logs, click the *Download* link.

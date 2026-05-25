@@ -1,0 +1,34 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-rhv.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_creating-form-based-storage-maps-ui-rhv_{context}"]
+= Creating ownerless storage maps by using the form page of the {project-short} UI
+
+[role="_abstract"]
+You can add ownerless storage maps by using the form page of the {project-first} UI. Later, you can add these maps to a migration plan by using the *Use an existing storage map* option in the *Storage map* page of the {project-short} wizard.
+
+For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
+
+.Prerequisites
+
+* Have a {rhv-full} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_rhv[Adding a {rhv-full} source provider] or xref:proc_adding-source-provider_dest_rhv[Adding {a-virt} destination provider].
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
+. Click *Create storage map* > *Create with form*.
+. Specify the following:
+
+* *Map name*: Name of the storage map.
+* *Project*: Select from the list.
+* *Source provider*: Select from the list.
+* *Target provider*: Select from the list.
+* *Source storage*: Select from the list.
+* *Target storage*: Select from the list.
+
+. Optional: Click *Add mapping* to create additional storage maps, including mapping multiple storage sources to a single target storage class.
+. Click *Create*.
++
+Your map appears in the list of storage maps.

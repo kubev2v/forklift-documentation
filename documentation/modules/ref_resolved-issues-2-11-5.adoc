@@ -1,0 +1,45 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-11-5_{context}"]
+= Resolved issues 2.11.5
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}. Some linked Jira tickets are accessible only with Red Hat credentials.
+
+MTV preserves static IPs on migrated Windows VMs when the DHCP Client service is disabled::
+Before this update, the network configuration script failed to set static IP addresses if the DHCP Client service was disabled in a source Windows virtual machine (VM). As a consequence, {project-short} did not preserve static IPs during the migration. With this update, a patch was implemented to enable static IP configuration even when the DHCP service is disabled. As a result, {project-short} preserves static IPs on migrated Windows VMs if the user enables the `feature_windows_registry_network_config` feature flag.
++
+link:https://redhat.atlassian.net/browse/MTV-5245[MTV-5245]
+
+MTV blocks a migration plan when a VM has no IP address::
+Before this update, a user could create a migration plan with the preserve static IP option selected for a VM that had no IP address. As a consequence, {project-short} allowed the migration to proceed. With this release, the system was modified to verify the presence of an IP address before running the plan. As a result, {project-short} blocks the migration plan.
++
+link:https://redhat.atlassian.net/browse/MTV-5244[MTV-5244]
+
+The MTV UI does not display Hyper-V as a source provider::
+Before this update, the {project-short} user interface (UI) displayed Hyper-V as a source provider even though it is not supported. As a consequence, users could view an unsupported source provider in the UI. With this release, the UI was modified to remove Hyper-V from the list of available source providers. As a result, the {project-short} UI does not display Hyper-V as a source provider.
++
+link:https://redhat.atlassian.net/browse/MTV-5174[MTV-5174]
+
+MTV powers off the correct VM during migration when multiple VMs share a BIOS UUID::
+Before this update, {project-short} could not distinguish between multiple VMs sharing the same BIOS UUID. As a consequence, {project-short} incorrectly powered off the first matching VM during migration, leading to potential data loss and downtime. With this release, the migration process was modified to use `moRef` instead of BIOS UUID. As a result, {project-short} correctly identifies and powers off the correct VM during migration. While {project-short} correctly handles the power-off phase, environments with duplicate BIOS UUIDs might still experience migration failures due to a known issue in Libvirt. For more information, see the "Known issues" section.
++
+link:https://redhat.atlassian.net/browse/MTV-5091[MTV-5091]
+
+MTV allocates sufficient disk space during RHEL 3, 4, and 5 migrations::
+Before this update, {project-short} did not allocate enough disk space when pre-creating output disks during migrations from Red Hat Enterprise Linux (RHEL) 3, 4, or 5. As a consequence, the migrations failed with an error indicating that the destination size was smaller than the source size. With this update, the estimated disk size was increased. As a result, {project-short} allocates the correct disk space, and the migrations succeed.
++
+link:https://redhat.atlassian.net/browse/MTV-4872[MTV-4872]
+
+MTV resolves memory footprint and script truncation issues on ESX and ESXi::
+Before this update, migration failures occurred due to memory-related issues on more than 30 virtual machines (VMs). Additionally, during storage copy offload migrations that were set up by using SSH, a script was truncated on some uploads, which prevented other tasks from reading it. As a consequence, some VMs remained incomplete during migration, and the system returned a `failed to update task status: failed to get task status: failed to parse status response: failed to parse XML response: EOF` error. With this update, the memory footprint and script truncation issues on ESX and ESXi were fixed. As a result, the migration of more than 35 VMs is successful, improving the stability of the migration process. This fix applies only to storage copy offload migrations that are set up by using SSH; it does not apply to migrations that are set up by using a vSphere Installation on Bundle (VIB).
++
+link:https://redhat.atlassian.net/browse/MTV-4732[MTV-4732]
+
+Virtual machines with Sun partition tables and Veritas storage no longer fail to migrate::
+Before this update, when migrating a virtual machine with a Sun partition table and Veritas storage, the disk cylinder-head-sector (CHS) geometry reported by the operating system did not match the geometry stored on the disk label. As a consequence, the `parted` command could not find the file system type, and the migration failed with a `libguestfs` error. With this update, the migration process correctly handles the geometry mismatch. As a result, virtual machines with Sun partition tables and Veritas storage migrate successfully.
++
+link:https://redhat.atlassian.net/browse/MTV-5253[MTV-5253]

@@ -1,0 +1,11 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_rn-resolved-issues_{context}"]
+= Resolved issues
+
+[role="_abstract"]
+{project-first} 2.11 has the following resolved issues.
+

@@ -1,0 +1,21 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_accessing-logs-ui_{context}"]
+= Downloading logs and custom resource information from the web console
+
+[role="_abstract"]
+You can download logs and information about custom resources (CRs) for a completed, failed, or canceled migration plan or for migrated virtual machines (VMs) from the {ocp} web console.
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
+. Click *Get logs* beside a migration plan name.
+. In the *Get logs* window, click *Get logs*.
++
+The logs are collected. A `Log collection complete` message is displayed.
+
+. Click *Download logs* to download the archive file.
+. To download logs for a migrated VM, click a migration plan name and then click *Get logs* beside the VM.

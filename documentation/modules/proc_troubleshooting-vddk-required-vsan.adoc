@@ -7,9 +7,9 @@
 = Resolving VDDK vSAN errors
 
 [role="_abstract"]
-Virtual machine migrations fail with an error when a VM is backed by {vmw} vSAN storage and no VDDK image is configured.
+Virtual machine migrations fail with an error when a VM is backed by {vmw} vSAN storage and no {vmw} Virtual Disk Development Kit (VDDK) image is configured.
 
-VDDK (VMware Virtual Disk Development Kit) is mandatory for migrations from VMware vSAN storage. Migrations do not work without VDDK when a VM is backed by vSAN.
+VDDK is mandatory for migrations from {vmw} vSAN storage. Migrations do not work without VDDK when a VM is backed by vSAN.
 
 [WARNING]
 ====
@@ -23,11 +23,11 @@ Virtual machine (VM) migrations do not work without VDDK when a VM is backed by 
 
 .Procedure
 
-. Create a VDDK image. For more information, see link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#creating-vddk-image_mtv[Creating a VDDK image].
+. Create a VDDK image. For more information, see link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#proc_creating-vddk-image_mtv[Creating a VDDK image].
 
 . Upload the VDDK image to the cluster:
 +
-.. Verify that the image is uploaded to the `openshift-mtv` namespace or the provider's namespace.
+.. Verify that the image is uploaded to the +{namespace}+ namespace or the provider's namespace.
 .. Note the image URL for the next step.
 
 . Update the provider configuration to reference the VDDK image:
@@ -50,5 +50,5 @@ Virtual machine (VM) migrations do not work without VDDK when a VM is backed by 
 [role="_additional-resources"]
 .Additional resources
 
-* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#creating-vddk-image_mtv[Creating a VDDK image]
-* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#proc_creating-vddk-image_mtv[Creating a VDDK image]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_vmware-prerequisites_mtv[{vmw} prerequisites]

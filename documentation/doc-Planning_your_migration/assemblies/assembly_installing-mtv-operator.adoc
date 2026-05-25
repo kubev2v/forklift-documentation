@@ -15,16 +15,16 @@ You can install the {operator-name} by using the {ocp} web console or CLI. {proj
 :!mtv:
 :context: web
 :web:
-include::../modules/installing-mtv-operator.adoc[leveloffset=+1]
+include::../modules/proc_installing-mtv-operator.adoc[leveloffset=+1]
 
 :!web:
 :context: cli
 :cli:
-include::../modules/installing-mtv-operator.adoc[leveloffset=+1]
+include::../modules/proc_installing-mtv-operator.adoc[leveloffset=+1]
 :!cli:
 :context: mtv
 :mtv:
-include::../modules/configuring-mtv-operator.adoc[leveloffset=+1]
+include::../modules/proc_configuring-mtv-operator.adoc[leveloffset=+1]
 
 include::../modules/ref_mtv-operator-parameters.adoc[leveloffset=+1]
 

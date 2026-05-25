@@ -23,9 +23,9 @@ The error messages are misleading and do not accurately reflect the in-progress 
 
 . If the issue persists, check the forklift controller logs for more detailed error information:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-$ oc logs -n openshift-mtv deployment/forklift-controller
+$ {oc} logs -n {namespace} deployment/forklift-controller
 ----
 
 . Correct any configuration issues identified and update the provider.
@@ -39,4 +39,4 @@ $ oc logs -n openshift-mtv deployment/forklift-controller
 [role="_additional-resources"]
 .Additional resources
 
-* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ova-prerequisites_mtv[OVA prerequisites]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_ova-prerequisites_mtv[OVA prerequisites]

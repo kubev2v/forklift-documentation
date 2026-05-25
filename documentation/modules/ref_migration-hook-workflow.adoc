@@ -3,7 +3,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_advanced-migration-options.adoc
 
 :_mod-docs-content-type: REFERENCE
-[id="migration-hook-workflow_{context}"]
+[id="ref_migration-hook-workflow_{context}"]
 = Migration hook workflow
 
 [role="_abstract"]

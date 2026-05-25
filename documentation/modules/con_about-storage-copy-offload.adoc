@@ -1,0 +1,38 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_about-storage-copy-offload_{context}"]
+= Migrating {vmw} virtual machines by using storage copy offload
+
+[role="_abstract"]
+Migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently by using the _storage copy offload_ feature of {project-first}. Use this feature to accelerate migration speed and to reduce the load on your network.
+
+{vmw}'s vSphere Storage APIs-Array Integration (VAAI) includes a command named `vmkfstools`. This command sends the `XCOPY` command, which is part of the SCSI protocol. The `XCOPY` command lets you copy data inside a SAN more efficiently than copying the data over a network. The command is executed by a populator named `vsphere-xcopy-volume-populator`.
+
+{project-first} uses this command as the basis for storage copy offload, which clones your VMs' data to the storage hardware instead of transmitting it between {project-short} and {virt}.
+
+You enable storage copy offload by configuring the storage map in your migration plan to point to your storage array instead of the network that you usually use for migration. When you start the migration plan, {project-short} migrates your VMs by copying them to the storage array that you choose. {project-short} then uses XCOPY to copy them directly to {virt}, instead of transmitting the contents of your VMs.
+
+The storage copy offload feature has unique configuration prerequisites. You can review these requirements in "Planning and running storage copy offload migrations". A link to this topic is available in the "Additional resources" section at the end of this module. After you configure your system, you can migrate plans by using storage copy offload from either the {project-short} UI or the CLI. The procedures for migrating {vmw} VMs include instructions for storage copy offload.
+
+You must ensure that your migration plans do not mix VDDK mappings with copy-offload mappings. Because the migration controller copies disks either through CDI volumes (VDDK) or through Volume Populators (copy-offload), all storage pairs in the plan must either include copy-offload details (a `Secret` + product) or exclude them entirely. Otherwise, the plan fails.
+
+For storage copy offload migrations, especially performance-sensitive migrations, it is strongly recommended to delete any preexisting snapshots before you start the migration.
+
+[IMPORTANT]
+====
+Preexisting snapshots cause {project-short} to create snapshot delta chains. These chains prevent the array from performing block-level hardware acceleration for the hardware clone because the `vmkfstools` clone path used for offload cannot use hardware-accelerated `XCOPY`. 
+
+As a result, the operation falls back to a software clone (host-based copy). Although such a fallback migration is faster than a standard migration, it increases migration time and ESXi workload compared to an `XCOPY` migration.
+
+Snapshots created by a warm migration do not affect storage copy offload migrations. Only preexisting snapshots cause this issue.
+====
+
+For {project-first} 2.11, storage copy offload is available as GA for cold migration and as a Technology Preview feature for warm migration.
+
+[IMPORTANT]
+====
+Storage copy offload for warm migration is a Technology Preview feature only. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+====

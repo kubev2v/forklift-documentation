@@ -1,0 +1,63 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-cnv.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-osp.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_canceling-migration-cli-specific_{context}"]
+= Canceling the migration of specific VMs from the command-line interface
+
+[role="_abstract"]
+You can use the command-line interface (CLI) to cancel the migration of specific virtual machines (VMs) while a migration is in progress.
+
+.Procedure
+
+. Add the specific VMs to the `spec.cancel` block of the `Migration` manifest, following this example:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Migration
+metadata:
+  name: <migration>
+  namespace: <namespace>
+...
+spec:
+  cancel:
+  - id: vm-102
+  - id: vm-203
+    name: rhel8-vm
+EOF
+----
++
+where:
+
+`id` or `name`::
+Specifies a VM by using the `id` key or the `name` key.
++
+ifdef::vmware[]
+The value of the `id` key is the _managed object reference_ for a {vmw} VM.
+endif::[]
+ifdef::rhv[]
+The value of the `id` key is the _VM UUID_ for a {rhv-full} VM.
+endif::[]
+ifdef::ostack[]
+The value of the `id` key is the _VM UUID_ for an {osp} VM.
+endif::[]
+ifdef::ova[]
+The value of the `id` key is the _VM name_ from the OVA file for an OVA VM.
+endif::[]
+ifdef::cnv[]
+The value of the `id` key is the _VM name_ for a {virt} VM.
+endif::[]
+
+. Retrieve the `Migration` custom resource (CR) to monitor the progress of the remaining VMs, following this example:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} get migration/<migration> -n <namespace> -o yaml
+----

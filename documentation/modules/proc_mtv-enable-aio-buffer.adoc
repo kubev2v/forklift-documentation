@@ -11,11 +11,11 @@ You can enable and configure Asynchronous Input/Output (AIO) buffering for use w
 
 .Procedure
 
-. Ensure that the `forklift-controller` pod in the `openshift-mtv` namespace supports the AIO buffer values. Since the pod name prefix is dynamic, check the pod name by running the following command:
+. Ensure that the `forklift-controller` pod in the +{namespace}+ namespace supports the AIO buffer values. Since the pod name prefix is dynamic, check the pod name by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-oc get pods -n openshift-mtv | grep forklift-controller | awk '{print $1}'
+{oc} get pods -n {namespace} | grep forklift-controller | awk '{print $1}'
 ----
 +
 For example, the output if the pod name prefix is "forklift-controller-667f57c8f8-qllnx" would be:
@@ -27,9 +27,9 @@ forklift-controller-667f57c8f8-qllnx
 
 . Check the environment variables of the pod by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-oc get pod forklift-controller-667f57c8f8-qllnx -n openshift-mtv -o yaml
+{oc} get pod forklift-controller-667f57c8f8-qllnx -n {namespace} -o yaml
 ----
 +
 . Check for the following lines in the output:
@@ -42,13 +42,13 @@ oc get pod forklift-controller-667f57c8f8-qllnx -n openshift-mtv -o yaml
 ...
 ----
 
-. In the `openshift-mtv namespace`, edit the `ForkliftController` custom resource (CR) by performing the following steps:
+. In the +{namespace}+ namespace, edit the `ForkliftController` custom resource (CR) by performing the following steps:
 
 .. Access the `ForkliftController` CR for editing by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-oc edit forkliftcontroller -n openshift-mtv
+{oc} edit forkliftcontroller -n {namespace}
 ----
 
 .. Add the following lines to the `spec` section of the `ForkliftController` CR:
@@ -61,9 +61,9 @@ virt_v2v_extra_conf_config_map: "perf"
 
 . Create the required config map `perf` by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-oc -n openshift-mtv create cm perf
+{oc} -n {namespace} create cm perf
 ----
 
 . Convert the desired buffer configuration values to Base64. For example, for 16/4, run the following command:
@@ -82,7 +82,7 @@ Vml4RGlza0xpYi5uZmNBaW8uU2Vzc2lvbi5CdWZTaXplSW42NEtCPTE2CnZpeERpc2tMaWIubmZjQWlv
 
 . In the config map `perf`, enter the Base64 string in the `binaryData` section, for example:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 apiVersion: v1
 kind: ConfigMap
@@ -90,7 +90,7 @@ binaryData:
   input.conf: Vml4RGlza0xpYi5uZmNBaW8uU2Vzc2lvbi5CdWZTaXplSW42NEtCPTE2CnZpeERpc2tMaWIubmZjQWlvLlNlc3Npb24uQnVmQ291bnQ9NAo=
 metadata:
   name: perf
-  namespace: openshift-mtv
+  namespace: {namespace}
 ----
 
 . Restart the `forklift-controller` pod to apply the new configuration.

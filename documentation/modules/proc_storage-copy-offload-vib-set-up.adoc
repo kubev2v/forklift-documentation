@@ -32,13 +32,13 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
   name: my-vsphere-provider
-  namespace: openshift-mtv
+  namespace: {namespace}
 spec:
   type: vsphere
   url: https://vcenter.example.com
   secret:
     name: vsphere-credentials
-    namespace: openshift-mtv
+    namespace: {namespace}
   settings:
     esxiCloneMethod: "vib"
 ----
@@ -47,7 +47,7 @@ spec:
 
 .. Auto-discover ESXi hosts from vSphere and install the VIB by running the following commands:
 +
-[source,terminal,subs="+quotes"]
+[source,terminal,subs="attributes+,+quotes"]
 ----
 $ podman run -it --rm \
   --entrypoint /bin/vib-installer \
@@ -56,7 +56,7 @@ $ podman run -it --rm \
   -e GOVMOMI_PASSWORD='your-password' \
   -e GOVMOMI_HOSTNAME='vcenter.example.com' \
   -e GOVMOMI_INSECURE='true' \
-  $(oc get deployment forklift-volume-populator-controller  -n openshift-mtv -o jsonpath='{.spec.template.spec.containers[0].env[?(@.name == "VSPHERE_XCOPY_VOLUME_POPULATOR_IMAGE")].value}') \
+  $({oc} get deployment forklift-volume-populator-controller  -n {namespace} -o jsonpath='{.spec.template.spec.containers[0].env[?(@.name == "VSPHERE_XCOPY_VOLUME_POPULATOR_IMAGE")].value}') \
   --ssh-key-file /tmp/esxi_key \
   --datacenter MyDatacenter
 
@@ -64,12 +64,12 @@ $ podman run -it --rm \
 
 .. Or specify ESXi hosts manually and install the VIB by running the following commands:
 +
-[source,terminal,subs="+quotes"]
+[source,terminal,subs="attributes+,+quotes"]
 ----
 $ podman run -it --rm \
   --entrypoint /bin/vib-installer \
   -v $HOME/.ssh/id_rsa:/tmp/esxi_key:Z \
-  $(oc get deployment forklift-volume-populator-controller  -n openshift-mtv -o jsonpath='{.spec.template.spec.containers[0].env[?(@.name == "VSPHERE_XCOPY_VOLUME_POPULATOR_IMAGE")].value}') \
+  $({oc} get deployment forklift-volume-populator-controller  -n {namespace} -o jsonpath='{.spec.template.spec.containers[0].env[?(@.name == "VSPHERE_XCOPY_VOLUME_POPULATOR_IMAGE")].value}') \
   --ssh-key-file /tmp/esxi_key \
   --esxi-hosts 'esxi1.example.com,esxi2.example.com,esxi3.example.com'
 ----

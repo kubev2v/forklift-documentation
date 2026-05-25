@@ -7,9 +7,9 @@
 = Resolving VDDK image pull errors
 
 [role="_abstract"]
-When you create a provider in a namespace different from `openshift-mtv`, migrations fail with an image pull error.
+When you create a provider in a namespace different from +{namespace}+, migrations fail with an image pull error.
 
-The VDDK init image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image.
+The VDDK init image URL is located in the +{namespace}+ namespace. If you create a provider in a different namespace, there is an error when pulling the image.
 
 .Prerequisites
 
@@ -20,9 +20,9 @@ The VDDK init image URL is located in the `openshift-mtv` namespace. If you crea
 
 . Verify that the VDDK image is accessible from the target namespace:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-$ oc get imagestream -n openshift-mtv
+$ {oc} get imagestream -n {namespace}
 ----
 
 . Choose one of the following options:
@@ -41,7 +41,7 @@ $ oc get imagestream -n openshift-mtv
 $ oc get secrets -n <provider_namespace>
 ----
 +
-.. If necessary, create a service account with access to pull images from the `openshift-mtv` namespace.
+.. If necessary, create a service account with access to pull images from the +{namespace}+ namespace.
 +
 .. Update the provider configuration to use the cross-namespace image reference.
 
@@ -63,4 +63,4 @@ $ oc get secrets -n <provider_namespace>
 [role="_additional-resources"]
 .Additional resources
 
-* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#creating-vddk-image_mtv[Creating a VDDK image]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#proc_creating-vddk-image_mtv[Creating a VDDK image]

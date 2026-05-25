@@ -1,0 +1,158 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-cnv.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_creating-plan-wizard-cnv-live_{context}"]
+= Creating a migration plan for a live migration by using the {project-short} wizard
+
+[role="_abstract"]
+You create a migration plan for a live migration of virtual machines (VMs) almost exactly as you create a migration plan for a cold migration. The only difference is that you specify it is a *Live migration* in the *Migration type* page.
+
+.Prerequisites
+
+As described in xref:ref_cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
+. Click *Create plan*.
++
+The *Create migration plan* wizard opens.
++
+. On the *General* page, specify the following fields:
+
+* *Plan name*: Enter a name.
+* *Plan project*: Select from the list.
+* *Source provider*: Select from the list. You can use any {virt} provider. You do not need to create a new one for a live migration.
+* *Target provider*: Select from the list. Be sure to select the correct {virt} target provider.
+* *Target project*: Click the list and do one of the following:
+
+.. Select an existing project from the list.
+.. Create a new project by clicking *Create project* and doing the following:
+
+... Enter the *Name* of the project. A project name must consist of lowercase alphanumeric characters or `-`. A project name must start and end with alphanumeric characters. For example, `my-name` or `123-abc`.
+... Optional: Enter a *Display name* for the project.
+... Optional: Enter a *Description* of the project.
+... Click *Create project*.
+
+. Click *Next*.
++
+. On the *Virtual machines* page, select the virtual machines you want to migrate and ensure they are powered on. A live migration fails if any of its VMs are powered off.
++
+. Click *Next*.
++
+. On the *Network map* page, choose one of the following options:
+
+* *Use an existing network map*: Select an existing network map from the list.
++
+These are network maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
++
+[NOTE]
+====
+If you select an existing map, be sure it has the same source provider and target provider as the ones you want to use in your plan.
+====
+
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
++
+[NOTE]
+====
+You can create an ownerless network map, which you and others can use for additional migration plans, in the *Network maps* section of the UI.
+====
+
+** *Source network*: Select from the list.
+** *Target network*: Select from the list.
++
+If needed, click *Add mapping* to add another mapping.
+** *Network map name*: Enter a name or let {project-short} automatically generate a name for the network map.
+
+. Click *Next*.
++
+. On the *Storage map* page, choose one of the following options:
+
+* *Use an existing storage map*: Select an existing storage map from the list.
++
+These are storage maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
++
+[NOTE]
+====
+If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
+====
+
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
++
+[NOTE]
+====
+You can create an ownerless storage map, which you and others can use for additional migration plans, in the *Storage maps* section of the UI.
+====
+
+** *Source storage*: Select from the list.
+** *Target storage*: Select from the list.
++
+If needed, click *Add mapping* to add another mapping.
+** *Storage map name*: Enter a name or let {project-short} automatically generate a name for the storage map.
+
+. Click *Next*.
++
+// Migration type page
+. On the *Migration type* page, choose *Live migration*.
++
+If *Live migration* does not appear as an option, return to the *General* page and verify that both the source provider and target provider are {virt} clusters.
++
+If they are both {virt} clusters, have someone with `cluster-admin` privileges ensure that the prerequisites for live migration are met. For more information, see xref:ref_cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].
+
+. Click *Next*.
++
+. On the *Other settings (optional)* page, click *Next* without doing anything else.
++
+. On the *Hooks (optional)* page, you can add a pre-migration hook, a post-migration hook, or both types of migration hooks. All are optional.
+
+. To add a hook, select the appropriate *Enable hook* checkbox.
+. Enter the *Hook runner image*.
+. Enter the *Ansible playbook* of the hook in the window.
++
+[NOTE]
+====
+You cannot include more than one pre-migration hook or more than one post-migration hook in a migration plan.
+====
+
+. Click *Next*.
++
+. On the *Review and create* page, review the information displayed.
+. Edit any item by doing the following:
+
+.. Click its *Edit step* link.
++
+The wizard opens to the page where you defined the item.
+.. Edit the item.
+.. Either click *Next* to advance to the next page of the wizard, or click *Skip to review* to return directly to the *Review and create* page.
+
+. When you finish reviewing the details of the plan, click *Create plan*. {project-short} validates your plan.
++
+When your plan is validated, the *Plan details* page for your plan opens in the *Details* tab.
+
+. In addition to listing details based on your entries in the wizard, the *Plan details* tab includes the following two sections after the details of the plan:
++
+* *Migration history*: Details about successful and unsuccessful attempts to run the plan
+* *Conditions*: Any changes that need to be made to the plan so that it can run successfully
++
+. When you have fixed all conditions listed, you can run your plan from the *Plans* page.
++
+The *Plan details* page also includes five additional tabs, which are described in the table that follows:
++
+[cols="1,1,1,1,1",options="header"]
+.Tabs of the Plan details page
+|===
+|YAML
+|Virtual Machines
+|Resources
+|Mappings
+|Hooks
+
+|Editable YAML `Plan` manifest based on your plan's details including source provider, network and storage maps, VMs, and any issues with your VMs
+|The VMs the plan migrates
+|Calculated resources: VMs, CPUs, and total memory for both total VMs and running VMs
+|Editable specification of the network and storage maps used by your plan
+|Updatable specification of the hooks used by your plan, if any
+|===
+

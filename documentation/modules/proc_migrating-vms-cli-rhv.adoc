@@ -2,10 +2,8 @@
 //
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-rhv.adoc
 
-
 :_mod-docs-content-type: PROCEDURE
 [id="proc_migrating-vms-cli-rhv_{context}"]
-
 = Running a {rhv-full} migration from the command-line
 
 [role="_abstract"]
@@ -55,6 +53,10 @@ EOF
 +
 where:
 
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
+
+
 `ownerReferences`::
 Is an optional section in which you can specify a provider's `name` and `uid`.
 
@@ -93,6 +95,10 @@ EOF
 ----
 +
 where:
+
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
+
 
 `<api_end_point>`::
 Specifies the URL of the API endpoint, for example, `https://<engine_host>/ovirt-engine/api`.
@@ -136,6 +142,10 @@ EOF
 ----
 +
 where:
+
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
+
 
 `type`::
 Specifies the network type. Allowed values are `pod` and `multus`.
@@ -181,6 +191,10 @@ EOF
 +
 where:
 
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
+
+
 `<access_mode>`::
 Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 
@@ -206,6 +220,10 @@ EOF
 ----
 +
 where:
+
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
+
 
 `<service account>`::
 Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
@@ -276,6 +294,10 @@ EOF
 ----
 +
 where:
+
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
+
 
 `<plan>`::
 Specifies the name of the `Plan` CR.

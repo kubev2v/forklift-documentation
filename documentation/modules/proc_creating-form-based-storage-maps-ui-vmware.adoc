@@ -1,0 +1,47 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_creating-form-based-storage-maps-ui-vmware_{context}"]
+= Creating ownerless storage maps by using the form page of the {project-short} UI
+
+[role="_abstract"]
+You can add ownerless storage maps by using the form page of the {project-first} UI. Later, you can add these maps to a migration plan by using the *Use an existing storage map* option in the *Storage map* page of the {project-short} wizard.
+
+For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
+
+.Prerequisites
+
+* Have a {vmw} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_vmware[Adding a VMware vSphere source provider] or xref:proc_adding-source-provider_dest_vmware[Adding {a-virt} destination provider].
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Storage maps*.
+. Click *Create storage map* > *Create with form*.
+. Specify the following:
+
+* *Map name*: Name of the storage map.
+* *Project*: Select from the list.
+* *Source provider*: Select from the list.
+* *Target provider*: Select from the list.
+* *Source storage*: Select from the list.
+* *Target storage*: Select from the list.
+
+. Optional: If this is a storage map for a migration using storage copy offload, specify the following offload options:
+
+* *Offload plugin*: Select `vSphere XCOPY` from the list.
+* *Storage secret*: Select from the list.
+* *Storage product*: Select from the list.
++
+[NOTE]
+====
+Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. This feature makes use of the command `vmkfstools` on the ESXi host, which invokes the `XCOPY` command on the storage array using an Internet Small Computer Systems Interface (iSCSI) or Fibre Channel (FC) connection. Storage copy offload lets you copy data inside a SAN more efficiently than copying the data over a network. For {project-first} 2.11, storage copy offload is available as GA for cold migration and as a Technology Preview feature for warm migration.
+
+For more information about storage copy offload, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.11/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#con_about-storage-copy-offload_vmware[Migrating {vmw} virtual machines by using storage copy offload].
+====
+
+. Optional: Click *Add mapping* to create additional storage maps, including mapping multiple storage sources to a single target storage class.
+. Click *Create*.
++
+Your map appears in the list of storage maps.

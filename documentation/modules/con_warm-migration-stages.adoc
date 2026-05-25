@@ -1,0 +1,11 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_warm-migration-stages_{context}"]
+
+= Warm migration stages
+
+[role="_abstract"]
+Warm migration operates in two stages: the precopy stage, where most data is copied while VMs run, and the cutover stage, where VMs are shut down to complete the migration.

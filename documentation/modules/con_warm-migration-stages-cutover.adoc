@@ -1,0 +1,14 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_warm-migration-stages-cutover_{context}"]
+= Cutover stage
+
+[role="_abstract"]
+The VMs are shut down during the cutover stage and the remaining data is migrated. Data stored in RAM is not migrated.
+
+You can start the cutover stage manually by using the {project-short} console or you can schedule a cutover time in the `Migration` custom resource (CR).
+
+The duration of the cutover stage depends on how much data has changed since the last snapshot was created during the precopy stage.

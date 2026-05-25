@@ -1,0 +1,30 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_installing-mtv-operator.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_configuring-mtv-operator_{context}"]
+= Configuring the {operator-name}
+
+[role="_abstract"]
+Configure the {operator-name} through the *Settings* section of the *Overview* page or by modifying the `ForkliftController` custom resource (CR). Some configurations are available only in the CR.
+
+NOTE: You can only use the string values "true" and "false" for feature gates, such as plugins and some services, in the `ForkliftController` CR. The `ForkliftController` API does not accept boolean values for these settings.
+
+For information about the *Settings* section of the *Overview* page, see xref:overview-settings-tab_{context}[Settings tab].
+
+.Procedure
+
+* Change a parameter's value in the `spec` section of the `ForkliftController` CR by adding the parameter and value as follows:
++
+[source, YAML]
+----
+spec:
+  <parameter: value> 
+----
++
+** Replace `<parameter: value>` with one of the parameters from the {operator-name} parameters table. For more information, see xref:ref_mtv-operator-parameters_{context}[{operator-name} parameters]. 
+
+
+
+

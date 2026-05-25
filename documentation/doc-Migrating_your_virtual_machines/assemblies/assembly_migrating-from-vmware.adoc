@@ -17,11 +17,11 @@ Run your VMware migration plan from the MTV UI or from the command-line.
 
 include::../modules/con_migrating-vmware-prerequisites.adoc[leveloffset=+1]
 
-include::../modules/running-migration-plan.adoc[leveloffset=+1]
+include::../modules/proc_running-migration-plan.adoc[leveloffset=+1]
 
-include::../modules/migration-plan-options-ui.adoc[leveloffset=+2]
+include::../modules/ref_migration-plan-options-ui.adoc[leveloffset=+2]
 
-include::../modules/canceling-migration-ui.adoc[leveloffset=+2]
+include::../modules/proc_canceling-migration-ui.adoc[leveloffset=+2]
 
 include::../modules/proc_migrating-vms-cli-vmware.adoc[leveloffset=+1]
 
@@ -33,21 +33,23 @@ include::../modules/ref_volume-name-template-variables-vmware.adoc[leveloffset=+
 
 include::../modules/proc_storage-copy-offload-cli.adoc[leveloffset=+1]
 
-include::../modules/retrieving-vmware-moref.adoc[leveloffset=+2]
+include::../modules/proc_retrieving-vmware-moref.adoc[leveloffset=+2]
 
-include::../modules/mtv-shared-disks.adoc[leveloffset=+2]
+include::../modules/proc_mtv-shared-disks.adoc[leveloffset=+2]
 
-include::../modules/mtv-shared-disks-known-issues.adoc[leveloffset=+3]
+include::../modules/ref_known-issues-shared-disks.adoc[leveloffset=+2]
 
-include::../modules/mtv-shared-disks-workarounds.adoc[leveloffset=+3]
+include::../modules/ref_shared-disks-workaround-duplicate-disk.adoc[leveloffset=+2]
 
-include::../modules/mtv-template-utility.adoc[leveloffset=+2]
+include::../modules/ref_shared-disks-workaround-remove-disk.adoc[leveloffset=+2]
 
-include::../modules/canceling-migration-cli.adoc[leveloffset=+2]
+include::../modules/con_mtv-template-utility.adoc[leveloffset=+2]
 
-include::../modules/canceling-migration-cli-entire.adoc[leveloffset=+3]
+include::../modules/con_canceling-migration-cli.adoc[leveloffset=+2]
 
-include::../modules/canceling-migration-cli-specific.adoc[leveloffset=+3]
+include::../modules/proc_canceling-migration-cli-entire.adoc[leveloffset=+3]
+
+include::../modules/proc_canceling-migration-cli-specific.adoc[leveloffset=+3]
 
 :vmware!:
 

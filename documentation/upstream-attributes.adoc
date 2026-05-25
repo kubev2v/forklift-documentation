@@ -1,3 +1,4 @@
+:_mod-docs-content-type: ATTRIBUTES
 // Upstream (Forklift) attribute overrides
 // Included conditionally by master.adoc files when building upstream docs.
 // Downstream (MTV) attributes are in modules/common-attributes.adoc.

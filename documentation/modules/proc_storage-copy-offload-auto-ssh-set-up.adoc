@@ -50,13 +50,13 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
   name: my-vsphere-provider
-  namespace: openshift-mtv
+  namespace: {namespace}
 spec:
   type: vsphere
   url: https://vcenter.example.com
   secret:
     name: vsphere-credentials
-    namespace: openshift-mtv
+    namespace: {namespace}
   settings:
     esxiCloneMethod: "ssh" 
 ----
@@ -65,16 +65,16 @@ spec:
 
 .. List all SSH key secrets in the provider's namespace by running the following command:
 +
-[source,terminal,subs="+quotes"]
+[source,terminal,subs="attributes+,+quotes"]
 ----
-$ oc get secrets -l app.kubernetes.io/component=ssh-keys -n openshift-mtv
+$ {oc} get secrets -l app.kubernetes.io/component=ssh-keys -n {namespace}
 ----
 +
 .. View a specific private or public key secret by running the following command:
 +
-[source,terminal,subs="+quotes"]
+[source,terminal,subs="attributes+,+quotes"]
 ----
-$ oc get secret <name_of_private_or_public_key> -o yaml -n openshift-mtv
+$ {oc} get secret <name_of_private_or_public_key> -o yaml -n {namespace}
 ----
 +
 . Optional: If needed, you can replace an auto-generated key pair by running the following command:
@@ -90,20 +90,20 @@ This is a simpler procedure than manually generating the key pair, as described 
 
 .. Replace a private key secret by running the following command:
 +
-[source,terminal,subs="+quotes"]
+[source,terminal,subs="attributes+,+quotes"]
 ----
-$ oc create secret generic <name_of_private_key> \
+$ {oc} create secret generic <name_of_private_key> \
   --from-file=private-key=custom_esxi_key \
-  --dry-run=client -o yaml | oc replace -f - -n openshift-mtv
+  --dry-run=client -o yaml | {oc} replace -f - -n {namespace}
 ----
 +
 .. Replace a public key secret by running the following command:
 +
-[source,terminal,subs="+quotes"]
+[source,terminal,subs="attributes+,+quotes"]
 ----
-$ oc create secret generic <name of public key> \
+$ {oc} create secret generic <name of public key> \
   --from-file=public-key=custom_esxi_key.pub \
-  --dry-run=client -o yaml | oc replace -f - -n openshift-mtv
+  --dry-run=client -o yaml | {oc} replace -f - -n {namespace}
 ----
 +
 . Optional: Configure the SSH timeout by adding it to your provider secret, which is the main storage credentials secret, by running the following command:

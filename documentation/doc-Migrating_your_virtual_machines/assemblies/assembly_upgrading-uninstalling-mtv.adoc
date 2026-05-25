@@ -14,11 +14,11 @@ You can upgrade or uninstall the {project-first} by using the {ocp} web console 
 :context: mtv
 :mtv:
 
-include::../modules/upgrading-mtv-ui.adoc[leveloffset=+1]
+include::../modules/proc_upgrading-mtv-ui.adoc[leveloffset=+1]
 
-include::../modules/uninstalling-mtv-ui.adoc[leveloffset=+1]
+include::../modules/proc_uninstalling-mtv-ui.adoc[leveloffset=+1]
 
-include::../modules/uninstalling-mtv-cli.adoc[leveloffset=+1]
+include::../modules/proc_uninstalling-mtv-cli.adoc[leveloffset=+1]
 
 :mtv!:
 

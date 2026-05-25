@@ -1,0 +1,26 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_advanced-migration-options.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_changing-precopy-intervals_{context}"]
+= Changing precopy intervals for warm migration
+
+[role="_abstract"]
+You can change the snapshot interval by patching the `ForkliftController` custom resource (CR).
+
+.Procedure
+
+* Patch the `ForkliftController` CR:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} patch forkliftcontroller/<forklift-controller> -n {namespace} -p '{"spec": {"controller_precopy_interval": <interval_in_minutes>}}' --type=merge
+----
++
+where:
+
+<interval_in_minutes>`::
+Specifies the precopy interval in minutes. The default value is `60`.
++
+You do not need to restart the `forklift-controller` pod.

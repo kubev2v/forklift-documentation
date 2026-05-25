@@ -1,0 +1,18 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_live-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_live-migration-limitations_{context}"]
+= Limitations of live migration
+
+[role="_abstract"]
+You can perform live migration to migrate VMs between {virt} clusters or between namespaces on the same {virt} cluster with minimal downtime.
+
+Limitations::
+
+* Live migration is available *_only_* for migrations between {virt} clusters or between namespaces on the same {virt} cluster. It is not available for any other source provider, whether the provider is supported by {project-first} or not.
+* Live migration does not establish connectivity between {virt} clusters. Establishing such connectivity is the responsibility of the cluster administrator.
+* Live migration does not migrate resources unrelated to VMs, such as services, routes, or other application components, that may be necessary for application availability after a migration.
+* Live migration is not supported with host {virt} providers that you create in custom namespaces (providers that you configure without a URL or token). These providers operate with restricted permissions that prevent {project-short} from accessing the resources needed for live migration, such as verifying feature gates or synchronizing certificates between namespaces. As a workaround, use the host {virt} provider that is installed in the +{namespace}+ namespace or create {a-virt} provider with a URL and service account token that has cluster-level permissions.
+

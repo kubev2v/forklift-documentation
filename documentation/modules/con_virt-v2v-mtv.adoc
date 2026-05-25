@@ -1,0 +1,12 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_understanding-mtv-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_virt-v2v-mtv_{context}"]
+= How MTV uses the virt-v2v tool
+
+[role="_abstract"]
+The {project-first} uses the `virt-v2v` tool to convert the disk image of a virtual machine (VM) into a format compatible with {virt}. The tool makes migrations easier because it automatically performs the tasks needed to make your VMs work with {virt}. For example, enabling paravirtualized VirtIO drivers in the converted VM, if possible, and installing the QEMU guest agent.
+
+`virt-v2v` is included in Red Hat Enterprise Linux (RHEL) versions 7 and later.

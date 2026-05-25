@@ -88,10 +88,10 @@ Changes you make on the *Virtual Machines* tab override any changes on the *Plan
 +
 [IMPORTANT]
 ====
-You must ensure that the templates you enter on the *Plan details* page generate DNS-compliant names. If the template syntax is invalid or if the resulting names are not DNS-compliant, {project-short} adds an error to the plan conditions and prevents the migration from running. To help ensure valid names, you might want to run a Go script that uses the `sprig` methods that {project-short} supports. For tables documenting the methods that {project-short} supports, see {mtv-mig}assembly_migrating-from-vmware#mtv-template-utility_vmware[{project-short} template utility for {vmw}].
+You must ensure that the templates you enter on the *Plan details* page generate DNS-compliant names. If the template syntax is invalid or if the resulting names are not DNS-compliant, {project-short} adds an error to the plan conditions and prevents the migration from running. To help ensure valid names, you might want to run a Go script that uses the `sprig` methods that {project-short} supports. For tables documenting the methods that {project-short} supports, see {mtv-mig}assembly_migrating-from-vmware#con_mtv-template-utility_vmware[{project-short} template utility for {vmw}].
 ====
 
-.. *Raw copy mode*: By default, during migration, virtual machines (VMs) are converted using a tool named `virt-v2v` that makes them compatible with {virt}. For more information about the virt-v2v conversion process, see link:{mtv-mig}assembly_understanding-mtv-migration_mtv#virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. _Raw copy mode_ copies VMs without converting them. This allows for faster conversions, migrating VMs running a wider range of operating systems, and supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}.
+.. *Raw copy mode*: By default, during migration, virtual machines (VMs) are converted using a tool named `virt-v2v` that makes them compatible with {virt}. For more information about the virt-v2v conversion process, see link:{mtv-mig}assembly_understanding-mtv-migration_mtv#con_virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]. _Raw copy mode_ copies VMs without converting them. This allows for faster conversions, migrating VMs running a wider range of operating systems, and supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}.
 
 ** To use raw copy mode for your migration plan, do the following:
 *** Click the *Edit* icon.
@@ -110,9 +110,9 @@ Only disable *Use compatibility mode* if VirtIO drivers are already installed in
 
 .. *VM target node selector*, *VM target labels*, and *VM target affinity rules* are options that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when to power on the VMs.
 +
-For more information on the feature in general, see link:{mtv-mig}assembly_advanced-migration-options_mtv#target-vm-scheduling-options_mtv[Target VM scheduling options].
+For more information on the feature in general, see link:{mtv-mig}assembly_advanced-migration-options_mtv#con_target-vm-scheduling-options_mtv[Target VM scheduling options].
 +
-For more details on using the feature with the UI, see link:{mtv-mig}assembly_advanced-migration-options_mtv#configuring-target-vm-scheduling-ui_mtv[Scheduling target VMs from the user interface].
+For more details on using the feature with the UI, see link:{mtv-mig}assembly_advanced-migration-options_mtv#con_configuring-target-vm-scheduling-ui_mtv[Scheduling target VMs from the user interface].
 
 * *VM target node selector* allows you to create mandatory exact match key-value label pairs that the target node must possess. If no node on the cluster has all the labels specified, the VM is not scheduled and it remains in a `Pending` state until there is space on a node that fits these key-value label pairs.
 

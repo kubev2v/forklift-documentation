@@ -56,6 +56,11 @@ body {
   padding: 0;
 }
 
+/* --- Downstream nav bar variant --- */
+#fork-nav.fork-nav-downstream {
+  background: #a30000;
+}
+
 /* --- Left sidebar TOC --- */
 #toc.toc2 {
   top: 48px !important;
@@ -354,10 +359,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // --- Top navigation bar with active page indicator ---
   var path = window.location.pathname;
+  var isDownstream = path.indexOf("/downstream/") !== -1;
   var nav = document.createElement("div");
   nav.id = "fork-nav";
+  if (isDownstream) nav.classList.add("fork-nav-downstream");
   var links = [
-    { href: "../index.html", text: "Forklift Docs", cls: "fork-brand" },
+    { href: "../index.html", text: isDownstream ? "MTV Docs" : "Forklift Docs", cls: "fork-brand" },
     { href: "../doc-Planning_your_migration/master.html", text: "Planning", match: "Planning" },
     { href: "../doc-Migrating_your_virtual_machines/master.html", text: "Migrating", match: "Migrating" },
     { href: "../doc-Release_notes/master.html", text: "Release Notes", match: "Release" }

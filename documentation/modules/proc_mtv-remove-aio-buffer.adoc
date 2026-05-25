@@ -16,13 +16,13 @@ The procedure that follows assumes the AIO buffering was enabled and configured 
 
 .Procedure
 
-. In the `openshift-mtv namespace`, edit the `ForkliftController` custom resource (CR) by performing the following steps:
+. In the +{namespace}+ namespace, edit the `ForkliftController` custom resource (CR) by performing the following steps:
 
 .. Access the `ForkliftController` CR for editing by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-oc edit forkliftcontroller -n openshift-mtv
+{oc} edit forkliftcontroller -n {namespace}
 ----
 
 .. Remove the following lines from the `spec` section of the `ForkliftController` CR:
@@ -35,9 +35,9 @@ virt_v2v_extra_conf_config_map: "`perf`"
 
 . Delete the config map named `perf`:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-oc delete cm perf -n openshift-mtv
+{oc} delete cm perf -n {namespace}
 ----
 
 . Optional: Restart the `forklift-controller` pod to ensure that the changes took effect.

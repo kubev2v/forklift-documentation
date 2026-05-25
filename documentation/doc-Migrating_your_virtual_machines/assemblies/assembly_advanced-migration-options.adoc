@@ -9,9 +9,14 @@ ifdef::context[:parent-context: {context}]
 //:context: advanced-migration-options
 
 [role="_abstract"]
-Perform advanced migration operations, such as changing precopy snapshot intervals for warm migration, configuring AIO buffering for performance optimization, creating custom rules for validation, or adding hooks to your migration plan. For performance test data and optimization recommendations, see link:{mtv-mig}assembly_mtv-performance-recommendations_mtv[MTV performance recommendations].
+Perform advanced migration operations, such as changing precopy snapshot intervals for warm migration, configuring AIO buffering for performance optimization, creating custom rules for validation, or adding hooks to your migration plan. For performance test data and optimization recommendations, see the "Additional resources" section.
 
-include::../modules/changing-precopy-intervals.adoc[leveloffset=+1]
+[role="_additional-resources"]
+== Additional resources
+
+* link:{mtv-mig}assembly_mtv-performance-recommendations_mtv[MTV performance recommendations]
+
+include::../modules/proc_changing-precopy-intervals.adoc[leveloffset=+1]
 
 include::../modules/con_mtv-aio-buffer.adoc[leveloffset=+1]
 
@@ -21,37 +26,38 @@ include::../modules/proc_mtv-remove-aio-buffer.adoc[leveloffset=+2]
 
 include::../modules/con_creating-custom-rules-validation.adoc[leveloffset=+1]
 
-include::../modules/about-rego-files.adoc[leveloffset=+2]
+include::../modules/con_about-rego-files.adoc[leveloffset=+2]
 
-include::../modules/accessing-default-validation-rules.adoc[leveloffset=+2]
+include::../modules/proc_accessing-default-validation-rules.adoc[leveloffset=+2]
 
 include::../modules/proc_creating-validation-rules.adoc[leveloffset=+2]
 
-include::../modules/updating-validation-rules-version.adoc[leveloffset=+2]
+include::../modules/proc_updating-inventory-rules-version.adoc[leveloffset=+2]
 
-include::../modules/retrieving-validation-service-json.adoc[leveloffset=+2]
+include::../modules/proc_retrieving-validation-service-json.adoc[leveloffset=+2]
 
-include::../modules/about-hooks-for-migration-plans.adoc[leveloffset=+1]
+include::../modules/con_about-hooks-for-migration-plans.adoc[leveloffset=+1]
 
 include::../modules/ref_migration-hook-workflow.adoc[leveloffset=+2]
 
-include::../modules/adding-hook-using-ui.adoc[leveloffset=+2]
+include::../modules/proc_adding-migration-hook-via-ui.adoc[leveloffset=+2]
 
-include::../modules/adding-hook-using-cli.adoc[leveloffset=+2]
+include::../modules/proc_adding-migration-hook-via-cli.adoc[leveloffset=+2]
 
-include::../modules/about-udn.adoc[leveloffset=+1]
+include::../modules/con_about-udn.adoc[leveloffset=+1]
 
 include::../modules/con_scheduling-target-vms-intro.adoc[leveloffset=+1]
 
-include::../modules/about-configuring-target-vm-scheduling.adoc[leveloffset=+2]
+include::../modules/con_about-configuring-target-vm-scheduling.adoc[leveloffset=+2]
 
-include::../modules/target-vm-scheduling-prerequisites.adoc[leveloffset=+2]
+include::../modules/ref_target-vm-scheduling-prerequisites.adoc[leveloffset=+2]
 
-include::../modules/target-vm-scheduling-options.adoc[leveloffset=+2]
+include::../modules/con_target-vm-scheduling-options.adoc[leveloffset=+2]
 
-include::../modules/configuring-target-vm-scheduling-cli.adoc[leveloffset=+2]
+include::../modules/proc_configuring-target-vm-scheduling-cli.adoc[leveloffset=+2]
 
-include::../modules/configuring-target-vm-scheduling-ui.adoc[leveloffset=+2]
+include::../modules/con_configuring-target-vm-scheduling-ui.adoc[leveloffset=+2]
+
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]

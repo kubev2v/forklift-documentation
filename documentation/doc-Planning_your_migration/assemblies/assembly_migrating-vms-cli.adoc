@@ -24,18 +24,24 @@ To migrate to or from an {ocp-short} cluster that is different from the one the 
 
 [IMPORTANT]
 ====
-You must ensure that all prerequisites are met. For more information, see xref:assembly_software-requirements-for-migration_{context}[Software requirements for migration].
+You must ensure that all prerequisites are met. For more information about prerequisites, see the "Additional resources" section.
 ====
+
+[role="_additional-resources"]
+== Additional resources
+
+* link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration]
 
 :mtv!:
 :context: cli
 :cli:
 
-include::../modules/non-admin-permissions-for-ui.adoc[leveloffset=+1]
+include::../modules/con_non-admin-permissions.adoc[leveloffset=+1]
 
 :cli!:
 :context: mtv
 :mtv:
+
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
