@@ -9,7 +9,7 @@
 [role="_abstract"]
 Configure user permissions in {vmw} vSphere to allow {project-first} to access and migrate virtual machines (VMs). These permissions control what {project-first} can read, modify, and execute during the migration process. Setting up the correct privileges ensures successful migrations while maintaining security by granting only the necessary access rights.
 
-The required privileges vary based on migration type (cold or warm) and VM characteristics (encrypted or unencrypted). All migrations require datastore access and session validation. Warm migrations require additional snapshot and guest OS management privileges. Encrypted VMs require cryptographic privileges.
+The required privileges vary based on migration type (cold or warm) and VM characteristics (encrypted or unencrypted). All migrations require datastore access and session validation. Warm migrations require additional snapshot and guest operating system management privileges. Encrypted VMs require cryptographic privileges.
 
 == Privileges required for all migrations
 
@@ -39,9 +39,9 @@ The following privileges are required for all VM migrations, regardless of migra
 |`Virtual machine.Guest operating system management by VIX API` |Allows managing a virtual machine by the {vmw} Virtual Infrastructure eXtension (VIX) API.
 |===
 
-== Privileges for warm migrations
+== Provisioning privileges
 
-The following provisioning privileges are required for warm migrations to access VM disks and transfer configuration files.
+The following provisioning privileges are required to access VM disks and transfer configuration files.
 
 [cols="2", options="header"]
 .`Virtual machine.Provisioning` privileges (required)
@@ -86,6 +86,8 @@ The following provisioning privileges may be required depending on your environm
 |`Virtual machine.Provisioning.Read customization specifications`
 |Allows reading a customization specification.
 |===
+
+== Warm migration privileges
 
 The following snapshot management privileges are required only for warm migrations.
 
