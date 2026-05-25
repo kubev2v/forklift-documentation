@@ -9,7 +9,12 @@ ifdef::context[:parent-context: {context}]
 //:context: advanced-migration-options
 
 [role="_abstract"]
-Perform advanced migration operations, such as changing precopy snapshot intervals for warm migration, configuring AIO buffering for performance optimization, creating custom rules for validation, or adding hooks to your migration plan. For performance test data and optimization recommendations, see link:{mtv-mig}assembly_mtv-performance-recommendations_mtv[MTV performance recommendations].
+Perform advanced migration operations, such as changing precopy snapshot intervals for warm migration, configuring AIO buffering for performance optimization, creating custom rules for validation, or adding hooks to your migration plan. For performance test data and optimization recommendations, see the "Additional resources" section.
+
+[role="_additional-resources"]
+== Additional resources
+
+* link:{mtv-mig}assembly_mtv-performance-recommendations_mtv[MTV performance recommendations]
 
 include::../modules/proc_changing-precopy-intervals.adoc[leveloffset=+1]
 
@@ -52,6 +57,7 @@ include::../modules/con_target-vm-scheduling-options.adoc[leveloffset=+2]
 include::../modules/proc_configuring-target-vm-scheduling-cli.adoc[leveloffset=+2]
 
 include::../modules/con_configuring-target-vm-scheduling-ui.adoc[leveloffset=+2]
+
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]

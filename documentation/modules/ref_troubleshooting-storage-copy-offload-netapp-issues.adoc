@@ -4,7 +4,7 @@
 // * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
 
 :_mod-docs-content-type: REFERENCE
-[id=ref_sco-netapp-issues_{context}]
+[id="ref_troubleshooting-storage-copy-offload-netapp-issues_{context}"]
 = NetApp issues
 
 [role="_abstract"]

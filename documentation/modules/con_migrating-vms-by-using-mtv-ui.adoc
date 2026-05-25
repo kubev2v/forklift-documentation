@@ -24,12 +24,15 @@ You must ensure that all prerequisites are met.
 
 {vmw} only: You must have the minimal set of {vmw} privileges.
 
-{vmw} only: Creating a {vmw} Virtual Disk Development Kit (VDDK) image will increase migration speed.
+{vmw} only: Creating a {vmw} Virtual Disk Development Kit (VDDK) image increases migration speed.
+
+For more information about the requirements, see the "Additional resources" section.
 ====
 
 [role="_additional-resources"]
-.Additional resources
+== Additional resources
+
 * link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration]
-* link:{mtv-plan}ref_vmware-privileges_mtv[VMware privileges]
-* link:{mtv-plan}proc_creating-vddk-image_mtv[Creating a VDDK image]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-privileges_mtv[{vmw} privileges]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#proc_creating-vddk-image_mtv[{vmw} Virtual Disk Development Kit (VDDK)]
 

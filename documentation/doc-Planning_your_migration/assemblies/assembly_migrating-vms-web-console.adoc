@@ -10,7 +10,9 @@ ifdef::context[:parent-context: {context}]
 //:context: migrating-vms-web
 
 [role="_abstract"]
-Use the {project-short} user interface to migrate virtual machines (VMs) from {vmw} vSphere, {rhv-full} ({rhv-short}), {osp}, Open Virtual Appliances (OVAs) that were created by {vmw} vSphere, or {virt} clusters. For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
+Use the {project-short} user interface to migrate virtual machines (VMs) from {vmw} vSphere, {rhv-full} ({rhv-short}), {osp}, Open Virtual Appliances (OVAs) that were created by {vmw} vSphere, or {virt} clusters.
+
+For all migrations, you specify the source provider, the destination provider, and the migration plan. The specific procedures vary per provider.
 
 [IMPORTANT]
 ====
@@ -19,12 +21,15 @@ You must ensure that all prerequisites are met.
 {vmw} only: You must have the minimal set of {vmw} privileges.
 
 {vmw} only: Creating a {vmw} Virtual Disk Development Kit (VDDK) image will increase migration speed.
+
+For more information about the requirements, see the "Additional resources" section.
 ====
 
 [role="_additional-resources"]
 == Additional resources
+
 * link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration]
-* link:{mtv-plan}ref_vmware-privileges_mtv[VMware privileges]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-privileges_mtv[{vmw} privileges]
 * link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#proc_creating-vddk-image_mtv[Creating a VDDK image]
 
 include::../modules/con_navigating-mtv-pages.adoc[leveloffset=+1]
@@ -42,6 +47,7 @@ include::../modules/con_preparing-vms-for-migration.adoc[leveloffset=+1]
 include::../modules/proc_renaming-vms-for-migration.adoc[leveloffset=+2]
 
 include::../modules/proc_configuring-target-power-state-vms.adoc[leveloffset=+2]
+
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
