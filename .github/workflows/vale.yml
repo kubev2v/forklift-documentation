@@ -14,15 +14,18 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       actions: read
-      checks: read
+      checks: write      # Reviewdog needs write access to create check runs
       contents: read
-      pull-requests: read
+      pull-requests: write # Reviewdog needs write access to post PR comments
     steps:
       - uses: actions/checkout@v4
+      
       - name: Install Asciidoctor
         run: sudo apt-get install -y asciidoctor
+        
       - uses: errata-ai/vale-action@reviewdog
         with:
+          sync: true # <--- THIS IS THE ADDITION. It runs 'vale sync' on-the-fly.
           filter_mode: diff_context
           vale_flags: "--no-exit --minAlertLevel=error --glob=*.adoc"
           reporter: github-pr-review
