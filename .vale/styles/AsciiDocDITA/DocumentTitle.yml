@@ -18,6 +18,7 @@ script: |
   r_comment_line    := text.re_compile("^(//|//[^/].*)$")
   r_document_title  := text.re_compile("^(?:=[ \\t]+[^ \\t].*|ifn?def::\\S*\\[=[ \\t]+[^ \\t].*\\][ \\t]*)$")
   r_excluded_type   := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:snippet|attributes)[ \\t]*$")
+  r_ignore_type     := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)[ \\t]*$")
 
   document          := text.split(text.trim_suffix(scope, "\n"), "\n")
 
@@ -47,6 +48,11 @@ script: |
       continue
     }
     if in_code_block { continue }
+
+    if r_ignore_type.match(line) {
+      matches = []
+      break
+    }
 
     if r_excluded_type.match(line) || r_document_title.match(line) {
       matches = []

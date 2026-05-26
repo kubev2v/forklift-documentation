@@ -21,10 +21,11 @@ script: |
   r_comment_block   := text.re_compile("^/{4,}\\s*$")
   r_comment_line    := text.re_compile("^(//|//[^/].*)$")
   r_conditional     := text.re_compile("^(?:ifn?def|ifeval|endif)::\\S*\\[.*\\][ \\t]*$")
-  r_content_type    := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:procedure)")
+  r_content_type    := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:procedure)[ \\t]*$")
   r_empty_line      := text.re_compile("^[ \\t]*$")
   r_example_block   := text.re_compile("^\\[example\\][ \\t]*$")
   r_example_delim   := text.re_compile("^={4,}[ \\t]*$")
+  r_ignore_type     := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)[ \\t]*$")
   r_image           := text.re_compile("^image::(?:\\S|\\S.*\\S)\\[.*\\][ \\t]*$")
   r_supported_title := text.re_compile("^\\.{1,2}(?:Prerequisites?|Procedure|Verification|Results?|Troubleshooting|Troubleshooting steps?|Next steps?)[ \\t]*$")
   r_table_cell      := text.re_compile("^\\.[^ \\t|]+\\|")
@@ -66,6 +67,11 @@ script: |
       continue
     }
     if in_code_block { continue }
+
+    if r_ignore_type.match(line) {
+      matches = []
+      break
+    }
 
     if r_content_type.match(line) {
       is_procedure = true

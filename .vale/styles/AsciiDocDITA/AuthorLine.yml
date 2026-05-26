@@ -18,6 +18,7 @@ script: |
   r_condition_start := text.re_compile("^(?:ifn?def|ifeval)::\\S*\\[.*\\][ \\t]*$")
   r_condition_end   := text.re_compile("^endif::\\S*\\[.*\\][ \\t]*$")
   r_document_title  := text.re_compile("^=[ \\t]+\\S.*$")
+  r_ignore_type     := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)[ \\t]*$")
 
   // Teams are inconsistent in how they name attribute definition files.
   // As it is impossible to reliably identify which files only define attributes
@@ -51,6 +52,11 @@ script: |
     }
     if in_comment_block { continue }
     if r_comment_line.match(line) { continue }
+
+    if r_ignore_type.match(line) {
+      matches = []
+      break
+    }
 
     if r_condition_start.match(line) {
       condition_count++

@@ -21,6 +21,7 @@ script: |
   r_document_title  := text.re_compile("^(?:=[ \\t]+[^ \\t].*|ifn?def::\\S*\\[=[ \\t]+[^ \\t].*\\][ \\t]*)$")
   r_empty_line      := text.re_compile("^[ \\t]*$")
   r_id_attribute    := text.re_compile("^\\[(?:id=['\\x22]?|#|\\[)[A-Za-z_:{}][A-Za-z0-9_.:{}-]*(?:['\\x22]?,?[^\\]]*|,[^\\]]*\\]?|\\]?)\\][ \\t]*$")
+  r_ignore_type     := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)[ \\t]*$")
 
   document          := text.split(text.trim_suffix(scope, "\n"), "\n")
 
@@ -56,6 +57,11 @@ script: |
       continue
     }
     if in_code_block { continue }
+
+    if r_ignore_type.match(line) {
+      matches = []
+      break
+    }
 
     if r_id_attribute.match(line) {
       assigned_id = true

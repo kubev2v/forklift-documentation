@@ -16,7 +16,7 @@ script: |
   r_code_block      := text.re_compile("^(?:\\.{4,}|-{4,})[ \\t]*$")
   r_comment_block   := text.re_compile("^/{4,}\\s*$")
   r_comment_line    := text.re_compile("^(//|//[^/].*)$")
-  r_content_type    := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)")
+  r_ignore_type     := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)[ \\t]*$")
   r_nested_section  := text.re_compile("^={3,6}[ \\t]\\S.*$")
 
   document          := text.split(text.trim_suffix(scope, "\n"), "\n")
@@ -53,7 +53,7 @@ script: |
     }
     if in_code_block { continue }
 
-    if r_content_type.match(line) {
+    if r_ignore_type.match(line) {
       matches = []
       break
     } else if r_nested_section.match(line) {
