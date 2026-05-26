@@ -19,7 +19,7 @@ script: |
   r_comment_line    := text.re_compile("^(//|//[^/].*)$")
   r_content_type    := text.re_compile("^:_(?:mod-docs-content|content|module)-type:")
   r_document_title  := text.re_compile("^(?:=[ \\t]+[^ \\t].*|ifn?def::\\S*\\[=[ \\t]+[^ \\t].*\\][ \\t]*)$")
-  r_excluded_type   := text.re_compile("[ \\t]+(?i:attributes|map|snippet)[ \\t]*$")
+  r_excluded_type   := text.re_compile("[ \\t]+(?i:attributes|ignore|map|snippet)[ \\t]*$")
 
   document          := text.split(text.trim_suffix(scope, "\n"), "\n")
 

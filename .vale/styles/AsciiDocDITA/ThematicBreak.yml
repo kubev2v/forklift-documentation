@@ -9,20 +9,13 @@ level: warning
 link: https://github.com/jhradilek/asciidoctor-dita-vale/blob/main/README.md#warnings
 scope: raw
 script: |
-  // tokens:
-  //   - "^'{3,}[ \\t]*$"
-  //   - '^[*_]{3}[ \t]*$'
-  //   - '^\* \* \*[ \t]*$'
-  //   - '^- - -[ \t]*$'
-  //   - '^_ _ _[ \t]*$'
-
   text              := import("text")
   matches           := []
 
   r_code_block      := text.re_compile("^(?:\\.{4,}|-{4,})[ \\t]*$")
   r_comment_block   := text.re_compile("^/{4,}\\s*$")
   r_comment_line    := text.re_compile("^(//|//[^/].*)$")
-  r_content_type    := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)")
+  r_ignore_type     := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)[ \\t]*$")
   r_thematic_break  := text.re_compile("^(?:'{3,}|[*_-]{3}|\\* \\* \\*|_ _ _|- - -)[ \\t]*$")
 
   document          := text.split(text.trim_suffix(scope, "\n"), "\n")
@@ -59,7 +52,7 @@ script: |
     }
     if in_code_block { continue }
 
-    if r_content_type.match(line) {
+    if r_ignore_type.match(line) {
       matches = []
       break
     } else if r_thematic_break.match(line) {

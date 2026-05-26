@@ -20,6 +20,7 @@ script: |
   r_comment_block    := text.re_compile("^/{4,}\\s*$")
   r_empty_line       := text.re_compile("^[ \\t]*$")
   r_entity_reference := text.re_compile("&[a-zA-Z][a-zA-Z0-9]*;")
+  r_ignore_type      := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)[ \\t]*$")
   r_list_continue    := text.re_compile("^\\+[ \\t]*$")
   r_sub_disabled     := text.re_compile("-replacements")
   r_sub_replacements := text.re_compile("subs=['\\x22](?:[^'\\x22]*,[ \\t]*|)\\+?(?:replacements|normal)(?:[ \\t]*,[^'\\x22]*|)['\\x22]")
@@ -70,6 +71,11 @@ script: |
         replacements = true
       }
       continue
+    }
+
+    if r_ignore_type.match(line) {
+      matches = []
+      break
     }
 
     if replacements && ! in_code_block {

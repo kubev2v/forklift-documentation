@@ -21,9 +21,10 @@ script: |
   r_comment_block   := text.re_compile("^/{4,}\\s*$")
   r_comment_line    := text.re_compile("^(//|//[^/].*)$")
   r_conditional     := text.re_compile("^(?:ifn?def|ifeval|endif)::\\S*\\[.*\\][ \\t]*$")
-  r_content_type    := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:assembly)")
+  r_content_type    := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:assembly)[ \\t]*$")
   r_empty_line      := text.re_compile("^[ \\t]*$")
   r_id_attribute    := text.re_compile("^\\[(?:id=['\\x22]|#|\\[)[A-Za-z_:{}][A-Za-z0-9_.:{}-]*(?:['\\x22],?[^\\]]*|,[^\\]]*\\]?|\\]?)\\][ \\t]*$")
+  r_ignore_type     := text.re_compile("^:_(?:mod-docs-content|content|module)-type:[ \\t]+(?i:ignore)[ \\t]*$")
   r_include         := text.re_compile("^include::(?:[^ \\t\\[]|[^[]*[^ \\t\\[])\\[.*\\][ \\t]*$")
   r_inline_link     := text.re_compile("^[ \\t]*[\\*-][ \\t]+(?:|link:|<)(?:|\\+\\+)(?:https?|file|ftp|irc)://[^ \\t\\[\\]]+(?:|\\+\\+)(?:|\\[.*?\\])>?[ \\t]*$")
   r_inline_xref     := text.re_compile("^[ \\t]*[\\*-][ \\t]+<<[A-Za-z0-9/.:{].*?>>[ \\t]*$")
@@ -54,6 +55,11 @@ script: |
     }
     if in_comment_block { continue }
     if r_comment_line.match(line) { continue }
+
+    if r_ignore_type.match(line) {
+      matches = []
+      break
+    }
 
     if r_content_type.match(line) {
       is_assembly = true
