@@ -185,8 +185,8 @@ metadata:
   name: <hook>
   namespace: <namespace>
 spec:
-  image: quay.io/kubev2v/hook-runner
-  serviceAccount: <service_account>
+  image: {hook-runner-image}
+  serviceAccount:<service account>
   playbook: |
     LS0tCi0gbm...
 EOF

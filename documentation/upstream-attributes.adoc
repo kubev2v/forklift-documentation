@@ -25,7 +25,8 @@
 :namespace: konveyor-forklift
 :operator: forklift-operator
 :operator-name: Forklift Operator
-:must-gather: quay.io/kubev2v/forklift-must-gather:latest
+:must-gather-image: quay.io/kubev2v/forklift-must-gather:latest
+:hook-runner-image: quay.io/kubev2v/hook-runner
 
 // Red Hat OpenShift Lightspeed
 :lightspeed-full: Red Hat OpenShift Lightspeed
