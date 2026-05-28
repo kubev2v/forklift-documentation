@@ -7,7 +7,7 @@
 = Running a Red Hat {virt} migration from the command-line
 
 [role="_abstract"]
-You can use a Red Hat {virt} provider as either a source provider or as a destination provider. You can migrate from an {virt} source provider by using the command-line interface (CLI).
+You can use a Red Hat {virt} provider as either a source provider or as a destination provider. You can migrate from {a-virt} source provider by using the command-line interface (CLI).
 
 [NOTE]
 ====
@@ -252,18 +252,20 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: 
-    network: 
+  map:
+    network:
       name: <network_map>
       namespace: <namespace>
-    storage: 
+    storage:
       name: <storage_map>
       namespace: <namespace>
   targetNamespace: <target_namespace>
+  pvcNameTemplate: <pvc_name_template>
   vms:
     - name: <source_vm>
       namespace: <namespace>
-      hooks: 
+      pvcNameTemplate: <pvc_name_template_for_this_vm>
+      hooks:
         - hook:
             namespace: <namespace>
             name: <hook>
@@ -273,29 +275,36 @@ EOF
 +
 where:
 
-`<namespace>`::
-Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
-
 `<plan>`::
 Specifies the name of the `Plan` CR.
 
-`map`::
-Specifies only one network map and one storage map per plan.
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
 
-`network`::
-Specifies a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+`<source_provider>`::
+Specifies the name of the source `Provider` CR.
+
+`<destination_provider>`::
+Specifies the name of the destination `Provider` CR.
 
 `<network_map>`::
 Specifies the name of the `NetworkMap` CR.
 
-`storage`::
-Specifies a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
-
 `<storage_map>`::
 Specifies the name of the `StorageMap` CR.
 
-`hooks`::
-Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional label.
+`<target_namespace>`::
+Specifies the target namespace in the destination cluster.
+
+`<pvc_name_template>`::
+Specifies a template for the persistent volume claim (PVC) name for all VMs in the plan. This is an optional field.
+For a list of available variables, template functions, and examples, see link:{mtv-plan}assembly_planning-migration-cnv_mtv#ref_pvc-name-template-variables-cnv_cnv[PVC name template variables for {virt}-to-{virt} migrations].
+
+`<source_vm>`::
+Specifies the name of the source VM to migrate.
+
+`<pvc_name_template_for_this_vm>`::
+Specifies a template for the PVC name for this specific VM, overriding the plan-level template. This is an optional field.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.
