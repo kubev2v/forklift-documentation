@@ -19,7 +19,7 @@ The `pvcNameTemplate` field has access to the following variables for {virt}-to-
 * `.VmName`: Name of the VM in the source {ocp} cluster.
 * `.TargetVmName`: Final VM name in the target cluster. May equal `.VmName` if no rename or normalization occurs.
 * `.PlanName`: Name of the migration plan.
-* `.DiskIndex`: Sequential index of the disk (0-based).
+* `.DiskIndex`: Sequential index of the disk (0-based, where the first disk is 0, the second is 1, and so on).
 * `.SourcePVCName`: Original name of the PVC in the source cluster.
 * `.SourcePVCNamespace`: Namespace of the PVC in the source cluster.
 
@@ -31,7 +31,7 @@ You can use Go template functions to transform variable values into valid PVC na
 * `replace`: Replaces all occurrences of a substring. For example, `++{{++.SourcePVCName | replace "_" "-"}}` replaces underscores with hyphens.
 * `lower`: Converts a string to lowercase. For example, `++{{++.VmName | lower}}`.
 
-Functions can be chained together using the pipe (`|`) operator. Regular expression functions such as `mustRegexReplaceAll` are also available for advanced transformations.
+You can chain functions together by using the pipe (`|`) operator. You can also use regular expression functions such as `mustRegexReplaceAll` for advanced transformations.
 
 For a complete list of available template functions, see xref:con_mtv-template-utility_{context}[{project-short} template utility].
 
@@ -41,13 +41,15 @@ If you do not specify a `pvcNameTemplate`, {project-short} preserves the origina
 
 [NOTE]
 ====
-Unlike VMware migrations, {virt}-to-{virt} migrations always use the template output as the exact PVC name. The `pvcNameTemplateUseGenerateName` field is ignored for {virt}-to-{virt} migrations.
+Unlike VMware migrations, {virt}-to-{virt} migrations always use the template output as the exact PVC name. {virt}-to-{virt} migrations ignore the `pvcNameTemplateUseGenerateName` field.
 ====
 
 == Examples
 
+Use the `trunc` function to ensure template output does not exceed the 63-character limit:
+
 * `"{{.TargetVmName}}-{{.SourcePVCName}}"` – Prefix the source PVC name with the target VM name (for example, `myvm-data-disk` for a VM named `myvm` and PVC named `data-disk`)
-* `"migrated-{{.SourcePVCName}}-{{.DiskIndex}}"` – Add a migration prefix and disk index
+* `"migrated-{{.SourcePVCName}}-{{.DiskIndex}}"` – Add a migration prefix and disk index (where 0 is the first disk)
 * `"{{.TargetVmName}}-disk-{{.DiskIndex}}"` – Use the target VM name with a disk index
-* `"{{trunc 10 .PlanName}}-{{trunc 20 .TargetVmName}}-{{.DiskIndex}}"` – Truncated plan and target VM names with disk index for uniqueness
+* `"{{trunc 10 .PlanName}}-{{trunc 20 .TargetVmName}}-{{.DiskIndex}}"` – Truncate the plan and target VM names to prevent exceeding the 63-character limit
 * `"{{.TargetVmName}}-{{.SourcePVCNamespace}}-{{.SourcePVCName}}"` – Include source namespace for clarity in multi-namespace migrations
