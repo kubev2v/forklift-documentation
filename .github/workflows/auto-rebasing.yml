@@ -1,0 +1,13 @@
+name: Auto Rebasing
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  autorebase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cirrus-actions/rebase@1.4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
