@@ -1,0 +1,15 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-11-8_{context}"]
+= Resolved issues 2.11.8
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+Concurrent VM migrations no longer cause PVC data loss::
+Before this update, improper filtering in the `getPopulatorPods()` function affected concurrent virtual machine (VM) migrations. A cleanup process incorrectly killed the populator pods of other VMs. As a consequence, users experienced permanent data loss due to deleted persistent volume claims (PVCs). With this release, `getPopulatorPods()` uses a new VM ID label on populator pods for filtering. As a result, concurrent VM migrations no longer delete PVCs and cause data loss.
++
+link:https://redhat.atlassian.net/browse/MTV-5655[MTV-5655]
