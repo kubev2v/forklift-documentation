@@ -7,7 +7,7 @@
 = About user defined networks
 
 [role="_abstract"]
-Beginning with {project-full} 2.10, you can use a user-defined network (UDN) as your default network for migrations from all providers, except for {virt}. This flexibility allows you to migrate virtual machines (VMs) to {virt} more consistently.
+Beginning with {project-full} 2.10, you can use a user-defined network (UDN) as your default network for migrations from all source providers, except when the source provider is also {virt}. UDNs are not supported for {ocp-short}-to-{ocp-short} migrations because the network configuration is preserved from the source cluster. This flexibility allows you to migrate virtual machines (VMs) to {virt} more consistently.
 
 {project-short} has been redesigned to make it easy for you to migrate VMs to UDN namespaces. Once you configure your UDN in {virt}, you can specify it as your default network in the migration plan mapping. {project-short} is now able to distinguish a UDN from a conventional pod network. 
 

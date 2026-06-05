@@ -36,9 +36,10 @@ metadata:
     createdForResourceType: providers
 type: Opaque
 stringData:
-  url: <smb_server_path>
-  username: <smb_username>
-  password: <smb_password>
+  url: <winrm_host_address>
+  smbUrl: <smb_server_path>
+  username: <username>
+  password: <password>
 EOF
 ----
 +
@@ -47,14 +48,17 @@ where:
 `ownerReferences`::
 Optional section for the provider's `name` and `uid`.
 +
+`<winrm_host_address>`::
+The Hyper-V host address for WinRM connectivity, for example, `192.168.122.115` or `hyperv-host.example.com`.
++
 `<smb_server_path>`::
 The SMB share path in `//server/share` format, for example, `//192.168.122.115/VMShare`. Use forward slashes to avoid YAML parsing issues with unquoted backslashes.
 +
-`<smb_username>`::
-The username for the SMB share (for example, `Administrator` or `DOMAIN\username`).
+`<username>`::
+The username for authentication, for example, `Administrator` or `DOMAIN\username`. Used for both WinRM and SMB access by default.
 +
-`<smb_password>`::
-The password for the SMB share.
+`<password>`::
+The password for authentication. Used for both WinRM and SMB access by default.
 
 .. Create a `Provider` manifest for the source provider:
 +
@@ -68,7 +72,7 @@ metadata:
   namespace: <namespace>
 spec:
   type: hyperv
-  url:  <smb_server_path>
+  url: <winrm_host_address>
   secret:
     name: <secret>
     namespace: <namespace>
@@ -77,8 +81,8 @@ EOF
 +
 where:
 +
-`<smb_server_path>`::
-The SMB share path in `//server/share` or `\\server\share` format (for example, `//192.168.122.115/VMShare`).
+`<winrm_host_address>`::
+The Hyper-V host address for WinRM connectivity, for example, `192.168.122.115` or `hyperv-host.example.com`.
 +
 `<secret>`::
 The name of the provider `Secret` CR.
