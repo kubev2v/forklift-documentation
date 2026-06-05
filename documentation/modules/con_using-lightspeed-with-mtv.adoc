@@ -60,7 +60,7 @@ When you ask {lightspeed-short} a question about {project-short}, {lightspeed-sh
 
 [IMPORTANT]
 ====
-When using {lightspeed-short} with an external AI service provider, cluster information, logs, and resource details may be transmitted to that provider. Organizations handling sensitive data should evaluate whether external AI services align with their security and compliance requirements.
+When using Lightspeed with an external AI service provider, cluster information, logs, and resource details may be transmitted to that provider. Evaluate whether external AI services align with the security and compliance requirements of your organization.
 ====
 
 == How the integration works
