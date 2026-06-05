@@ -44,10 +44,8 @@ endif::[]
 ifdef::hyperv[]
 = Adding a Microsoft Hyper-V source provider
 
-// SME REVIEW NEEDED: Should we add Prerequisites for SMB share setup and VM export process?
-
 [role="_abstract"]
-You can add a Microsoft Hyper-V source provider by using the {ocp} web console. Hyper-V virtual machines are exported to an SMB share for migration.
+You can add a Microsoft Hyper-V source provider by using the {ocp} web console. The provider uses WinRM to connect to the Hyper-V host and reads VM disk files from a configured SMB share.
 
 [NOTE]
 ====
@@ -286,8 +284,8 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 .. *Provider details*
 
 * *Provider resource name*: Name of the source provider.
-// SME REVIEW NEEDED: Does the UI safely escape backslashes, or should we recommend only forward-slash format?
-* *URL*: Path to the SMB share containing the Hyper-V exported VMs. For example, `//192.168.122.115/VMShare` or `\\192.168.122.115\VMShare`.
+* *URL*: The Hyper-V host address for WinRM connectivity, for example, `192.168.122.115` or `hyperv-host.example.com`.
+* *SMB share path*: Path to the SMB share that contains the VM disk files, for example, `//192.168.122.115/VMShare`.
 +
 The SMB share must be accessible from both the Hyper-V host and the {ocp-short} cluster.
 

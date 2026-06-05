@@ -47,9 +47,8 @@ where:
 `ownerReferences`::
 Optional section for the provider's `name` and `uid`.
 +
-// SME REVIEW NEEDED: Do unquoted backslashes break YAML parsing? Should we recommend only forward-slash format?
 `<smb_server_path>`::
-The SMB share path in `//server/share` or `\\server\share` format (for example, `//192.168.122.115/VMShare`).
+The SMB share path in `//server/share` format, for example, `//192.168.122.115/VMShare`. Use forward slashes to avoid YAML parsing issues with unquoted backslashes.
 +
 `<smb_username>`::
 The username for the SMB share (for example, `Administrator` or `DOMAIN\username`).
