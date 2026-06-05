@@ -87,9 +87,9 @@ The following provisioning privileges may be required depending on your environm
 |Allows reading a customization specification.
 |===
 
-== Warm migration privileges
+== Warm migration and deep inspection privileges
 
-The following snapshot management privileges are required only for warm migrations.
+The following snapshot management privileges are required for warm migrations and deep inspection.
 
 [cols="2", options="header"]
 .`Virtual machine.Snapshot management` privileges
