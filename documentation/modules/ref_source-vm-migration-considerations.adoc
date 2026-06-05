@@ -19,7 +19,7 @@ Windows-specific considerations::
 ** *Volume Shadow Copy Service (VSS)*: Used to quiesce the file system and applications during snapshot creation.
 ** *{vmw} Snapshot Provider*: Integrated with {vmw} Tools to trigger VSS during snapshot operations.
 +
-You do not need to manually start the VSS service before migration. When {project-short} initiates a snapshot with `Quiesce guest file system` enabled, {vmw} Tools automatically triggers VSS to start. If VSS is disabled or missing, snapshot creation fails with an error similar to:
+You do not need to manually start the VSS service before migration. When {project-short} initiates a snapshot with `Quiesce guest file system` enabled, {vmw} Tools automatically trigger VSS to start. If VSS is disabled or missing, snapshot creation fails with an error similar to:
 +
 ----
 An error occurred while taking a snapshot: Failed to restart the virtual machine
