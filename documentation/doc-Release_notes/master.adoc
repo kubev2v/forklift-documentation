@@ -14,28 +14,16 @@ Review these release notes for {project-first} version {project-version}.
 include::modules/ref_rn-2-11.adoc[leveloffset=+1]
 
 // Technical changes by x-stream release
-include::modules/ref_technical-changes-2-11.adoc[leveloffset=+2]
+include::modules/ref_technical-changes-2-12.adoc[leveloffset=+2]
 
 // New features and enhancements by z-stream release
-include::modules/ref_new-features-and-enhancements-2-11.adoc[leveloffset=+2]
+include::modules/ref_new-features-and-enhancements-2-12.adoc[leveloffset=+2]
 
 // Resolved issues by y-stream release
 include::modules/ref_rn-resolved-issues.adoc[leveloffset=+2]
 
 // Resolved issues by z-stream release. Most recent release goes first in the list.
-include::modules/ref_resolved-issues-2-11-7.adoc[leveloffset=+3]
-
-include::modules/ref_resolved-issues-2-11-6.adoc[leveloffset=+3]
-
-include::modules/ref_resolved-issues-2-11-5.adoc[leveloffset=+3]
-
-include::modules/ref_resolved-issues-2-11-4.adoc[leveloffset=+3]
-
-include::modules/ref_resolved-issues-2-11-3.adoc[leveloffset=+3]
-
-include::modules/ref_resolved-issues-2-11-1.adoc[leveloffset=+3]
-
-include::modules/ref_resolved-issues-2-11-0.adoc[leveloffset=+3]
+include::modules/ref_resolved-issues-2-12-0.adoc[leveloffset=+3]
 
 // Known issues by x-stream release
-include::modules/ref_known-issues-2-11.adoc[leveloffset=+2]
+include::modules/ref_known-issues-2-12.adoc[leveloffset=+2]

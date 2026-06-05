@@ -1,0 +1,62 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-0_{context}"]
+= Resolved issues 2.12.0
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+RDM disks converted to a LUN now have the correct SCSI interface type::
+Before this update, setting `spec.rdmAsLun=true` in a `MigrationPlan` converted the Raw Device Mapping (RDM) disk to a logical unit number (LUN) but kept the `virtio` interface instead of changing it to Small Computer System Interface (SCSI) [1, 2]. As a consequence, the LUN disk type was incompatible with the user interface (UI) [1, 2]. With this release, the interface type conversion for RDM disks in a `MigrationPlan` is corrected [1, 2]. As a result, RDM disks converted to a LUN have the required `SCSI` interface type [1, 2].
++
+link:https://redhat.atlassian.net/browse/MTV-5610[MTV-5610]
+
+// looks like a duplicate to the above - are we ok to remove
+RDM disks converted to a LUN now have the correct SCSI interface type::
+Before this update, setting `spec.rdmAsLun=true` in a `MigrationPlan` converted the Raw Device Mapping (RDM) disk to a logical unit number (LUN) but kept the `virtio` interface instead of changing it to Small Computer System Interface (SCSI). As a consequence, the LUN disk type was incompatible with the user interface (UI). With this release, the interface type conversion for RDM disks in a `MigrationPlan` is corrected. As a result, RDM disks converted to a LUN have the required `SCSI` interface type.
++
+link:https://redhat.atlassian.net/browse/MTV-5620[MTV-5620]
+
+VMs with multiple IPv4 addresses on a single NIC no longer lose network connectivity::
+Before this update, migrating a Red Hat Enterprise Linux (RHEL) virtual machine (VM) from VMware to OpenShift Virtualization with the *Preserve static IPs* option enabled caused the post-conversion script to incorrectly treat multiple IPv4 addresses on a single network interface controller (NIC) sharing the same Media Access Control (MAC) address as a duplicate MAC address error. As a consequence, the script generated an empty `/etc/udev/rules.d/70-persistent-net.rules` file, which caused the VM to lose network connectivity because NetworkManager failed to activate the profile on boot. With this release, the post-conversion script correctly parses and allows multiple IPv4 addresses assigned to a single MAC address. As a result, the migration process successfully generates persistent `udev` rules, preserves original interface names, allows NetworkManager profiles to activate correctly, and assigns all static IP addresses on the migrated VM.
++
+link:https://redhat.atlassian.net/browse/MTV-5609[MTV-5609]
+
+XFSv5 on RHEL 7 no longer falsely reports corruption::
+Before this update, XFSv5 on Red Hat Enterprise Linux (RHEL) 7 incorrectly reported file system corruption without actual issues, which caused migration plans to fail. As a consequence, users performed unnecessary repairs. With this release, {project-short} adds the `feature_xfs_repair_ignore` option to the `ForkliftController` custom resource to ignore the `xfs_repair` exit status for XFSv5 on RHEL 7. As a result, enabling this option prevents XFSv5 from falsely reporting corrupted file systems and failing migration plans. This option is disabled by default; enable it only when necessary.
++
+link:https://redhat.atlassian.net/browse/MTV-5608[MTV-5608]
+
+PowerShell CLM no longer causes empty subnet masks in Windows VM migrations::
+Before this update, migrating Windows virtual machines (VMs) with PowerShell Constrained Language Mode (CLM) enabled caused firstboot network configuration scripts to fail because they used .NET methods blocked by CLM. As a consequence, {project-short} wrote empty or incorrect subnet masks and network settings to the registry. With this release, the network configuration scripts use CLM-compatible alternatives. As a result, {project-short} reliably configures static IP addresses, subnet masks, gateways, and Domain Name System (DNS) settings on migrated Windows VMs.
++
+link:https://redhat.atlassian.net/browse/MTV-5607[MTV-5607]
+
+PVCs are now cleaned up after XCOPY migration failures::
+Before this update, {project-short} failed to clean up persistent volume claims (PVCs) after archiving a failed XCOPY migration. As a consequence, orphaned PVCs remained on the cluster, which caused logical unit number (LUN) utilization issues. With this release, the PVC cleanup process is updated for XCOPY storage copy offload migrations. As a result, {project-short} automatically cleans up PVCs after a migration failure, which prevents unnecessary LUN utilization and operational issues.
++
+link:https://redhat.atlassian.net/browse/MTV-5546[MTV-5546]
+
+Migrations no longer fail unexpectedly due to memory issues on ESXi hosts::
+Before this update, {project-short} automatically installed a vSphere Installation Bundle (VIB) called `vmkfstools-wrapper` on each clone. As a consequence, this process caused memory issues on ESXi hosts, and migrations failed. With this release, {project-short} removes the automatic VIB installation. As a result, memory failures no longer occur during clone operations. The `vmkfstools-wrapper` VIB is only needed for storage copy offload migrations. For information about VIB installation, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-vib-set-up_vmware[Setting up storage copy offload using the VIB].
++
+link:https://redhat.atlassian.net/browse/MTV-5320[MTV-5320]
+
+Copy offload migrations no longer fail to find vVol volumes on HPE Primera storage::
+Before this update, when using VMware Virtual Volume (vVol) copy offload, the volume populator pod could not find the vVol volume on Hewlett Packard Enterprise (HPE) Primera storage because of volume name differences. As a consequence, volume cloning failed with an error indicating that the volume ID could not be found. With this release, the volume populator is updated to correctly handle volume name matching for HPE Primera storage. As a result, {project-short} successfully locates and clones vVol volumes during copy offload migrations.
++
+link:https://redhat.atlassian.net/browse/MTV-5186[MTV-5186]
+
+VM interface names and static IP settings no longer change after migration::
+Before this update, migrating a Red Hat Enterprise Linux (RHEL) 7.2 virtual machine (VM) from VMware ESXi to a Red Hat OpenShift Container Platform cluster caused the network interface names and static IP address settings to change. As a consequence, the migrated VMs did not retain their original network configuration. With this release, {project-short} updates the network configuration process to preserve the source settings. As a result, interface names and static IP address settings remain unchanged after the migration.
++
+link:https://redhat.atlassian.net/browse/MTV-4715[MTV-4715]
+
+The forklift-cli-download pod no longer fails with OOM errors after an upgrade::
+Before this update, upgrading the {project-short} Operator to version 2.10.2 or 2.10.3 introduced a `forklift-cli-download` deployment with insufficient default memory limits. As a consequence, the pod repeatedly terminated with out-of-memory (OOM) errors, which caused the Red Hat OpenShift Container Platform cluster to report the {project-short} infrastructure as unhealthy. With this release, the operator logic increases the default memory allocations for the `forklift-cli-download` pod. As a result, the deployment successfully starts without triggering OOM errors, and the {project-short} infrastructure remains in a healthy state.
++
+link:https://redhat.atlassian.net/browse/MTV-4482[MTV-4482]
+
