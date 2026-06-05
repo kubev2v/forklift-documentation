@@ -11,7 +11,7 @@ endif::[]
 [role="_abstract"]
 Review these release notes for {project-first} version {project-version}.
 
-include::modules/ref_rn-2-11.adoc[leveloffset=+1]
+include::modules/ref_rn-2-12.adoc[leveloffset=+1]
 
 // Technical changes by x-stream release
 include::modules/ref_technical-changes-2-12.adoc[leveloffset=+2]
