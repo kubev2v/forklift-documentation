@@ -1,0 +1,48 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_known-issues-2-12_{context}"]
+= Known issues
+
+[role="_abstract"]
+{project-first} {project-version} has the following known issues.
+
+VM migrations with XFS v4 file systems fail during conversion::
+Migrating a virtual machine (VM) with an XFS v4 file system uses a Red Hat Enterprise Linux 9 `virt-v2v` image. This image does not support the `virt_v2v_memsize` and `virt_v2v_smp` parameters. As a consequence, the migration fails during the conversion phase if you set these parameters with `xfsCompatibility: true`.
++
+To work around this problem, do not combine `xfsCompatibility: true` with the `virt_v2v_memsize` or `virt_v2v_smp` parameters. As a result, you avoid unexpected conversion failures.
++
+link:https://redhat.atlassian.net/browse/MTV-5595[MTV-5595]
+
+Inactive migration plans incorrectly display as running::
+The `max_vms_inflight` parameter sets a limit for concurrent virtual machine (VM) migrations or migrating disks. When migrations exceed this limit, the migration process queues the excess migration plans. As a consequence, the user interface (UI) incorrectly displays the status of these inactive, queued plans as *Running*.
++
+No known workaround exists.
++
+link:https://redhat.atlassian.net/browse/MTV-1736[MTV-1736]
+
+Deploying many User Defined Networks simultaneously causes node failures::
+Migrating from VMware to OpenShift Virtualization or deploying User Defined Networks (UDNs) can cause heavy resource contention. This contention occurs if you create more than 72 UDNs and their attached resources simultaneously. Open vSwitch (OVS) becomes starved for CPU time. Additionally, there is no way to determine if a UDN is fully created before attaching resources. As a consequence, high pod ready latency occurs, and nodes might enter a `NotReady` state.
++
+To work around this problem, limit simultaneous UDN creation to 72 or fewer. For larger deployments, create the UDNs upfront. Wait for Open Virtual Network Kubernetes (OVNK) utilization to settle before you deploy attached resources. As a result, you maintain stable pod ready latency and prevent node failures.
++
+link:https://redhat.atlassian.net/browse/MTV-5695[MTV-5695]
+
+Warm migrations of NBDE VMs fail during preflight inspection::
+A warm migration of a Network-Bound Disk Encryption (NBDE) virtual machine (VM) uses a DI pod. This pod cannot connect to the Tang server. As a consequence, the preflight inspection fails, and the migration plan fails.
++
+To work around this problem, disable the preflight inspection step by adding `runPreflightInspection: false` to the migration plan `spec`:
++
+[source,yaml]
+----
+spec:
+  ...
+  runPreflightInspection: false
+  ...
+----
++
+As a result, the migration proceeds without the preflight inspection. Potential issues in the plan might not be caught before execution.
++
+link:https://redhat.atlassian.net/browse/MTV-5750[MTV-5750]

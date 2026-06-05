@@ -1,0 +1,97 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-0_{context}"]
+= Resolved issues 2.12.0
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+Deleted migration plans no longer leave orphaned PVCs::
+Before this update, the cleanup process removed only populator pods. It left the original and prime persistent volume claims (PVCs) in the cluster. As a consequence, these orphaned PVCs remained after you archived and deleted a migration plan, so you had to manually remove them. With this release, the cleanup process is updated to handle all associated storage resources. As a result, archiving and deleting a migration plan automatically removes the original and prime PVCs. They no longer remain in the cluster.
++
+link:https://redhat.atlassian.net/browse/MTV-3353[MTV-3353]
+
+`DiskTransfer` icon turns into a checkmark after successful warm migrations::
+Before this update, the `DiskTransfer` icon failed to turn into a checkmark after a successful warm migration. This issue occurred during storage copy offload migrations. As a consequence, you could not visually confirm a successful migration. With this release, the migration process correctly updates the status. As a result, the icon turns into a checkmark when a warm migration succeeds.
++
+link:https://redhat.atlassian.net/browse/MTV-4274[MTV-4274]
+
+Empty `.spec.map.storage` fields no longer show unrelated names::
+Before this update, leaving the `.spec.map.storage` field empty in a migration plan YAML file caused an issue. A random storage map name appeared in the user interface (UI). As a consequence, an unrelated name incorrectly appeared for an empty storage map. With this release, the migration process correctly handles empty storage maps. As a result, unrelated storage map names no longer appear in the UI.
++
+link:https://redhat.atlassian.net/browse/MTV-4994[MTV-4994]
+
+Network map creation supports Multus NADs across namespaces::
+Before this update, the user interface (UI) did not display certain Multus NADs in the *Target network* drop-down list. This issue affected Multus NADs outside the installation namespace. As a consequence, you could not create network maps between the vCenter and the host by using these NADs. With this release, the drop-down list includes Multus NADs from all namespaces. As a result, you can successfully create network maps by using these NADs.
++
+link:https://redhat.atlassian.net/browse/MTV-5079[MTV-5079]
+
+Archived cross-cluster migration plans no longer retain VMIMs::
+Before this update, archiving a cross-cluster live migration plan failed to remove associated virtual machine instance migrations (VMIMs). As a consequence, these VMIMs persisted after you archived and deleted a plan. This persistence caused in-flight migrations to fail. With this release, the cleanup process is updated to handle all associated resources. As a result, archiving and deleting a cross-cluster live migration plan automatically removes the associated VMIMs.
++
+link:https://redhat.atlassian.net/browse/MTV-5523[MTV-5523]
+
+Migration plans correctly convert RDM disks to SCSI::
+Before this update, setting `spec.rdmAsLun=true` in a `MigrationPlan` custom resource did not convert the interface from virtio to SCSI. As a consequence, you encountered a disk interface mismatch. Logical unit number (LUN) disks retained the virtio interface instead of the required SCSI interface. With this release, setting `spec.rdmAsLun=true` correctly converts the interface type of Raw Device Mapping (RDM) disks to SCSI. As a result, RDM disks converted to LUNs have the correct interface type.
++
+link:https://redhat.atlassian.net/browse/MTV-5610[MTV-5610]
+
+VMs with multiple IPv4 addresses on a single NIC no longer lose network connectivity::
+Before this update, a Red{nbsp}Hat Enterprise Linux (RHEL) virtual machine (VM) migration involving multiple IPv4 addresses could fail. This occurred if you enabled the *Preserve static IPs* option on a single network interface controller (NIC). The post-conversion script incorrectly treated the shared Media Access Control (MAC) address as a duplicate MAC address error. As a consequence, the script generated an empty `/etc/udev/rules.d/70-persistent-net.rules` file. This file caused the VM to lose network connectivity because NetworkManager failed to activate the profile on boot.
++
+With this release, the post-conversion script correctly parses and allows multiple IPv4 addresses assigned to a single MAC address. As a result, the migration process successfully generates persistent `udev` rules and preserves original interface names. It also allows NetworkManager profiles to activate correctly and assigns all static IP addresses on the migrated VM.
++
+link:https://redhat.atlassian.net/browse/MTV-5609[MTV-5609]
+
+XFSv5 on RHEL 7 no longer falsely reports corruption::
+Before this update, XFSv5 on Red Hat Enterprise Linux (RHEL) 7 incorrectly reported file system corruption without actual issues. This false reporting caused migration plans to fail. As a consequence, you might have performed unnecessary repairs.
++
+With this release, a new `feature_xfs_repair_ignore` option in the `ForkliftController` custom resource (CR) ignores the `xfs_repair` exit status. As a result, enabling this option prevents XFSv5 from falsely reporting corrupted file systems and failing migration plans. This option is disabled by default, so you must enable it only when necessary.
++
+link:https://redhat.atlassian.net/browse/MTV-5608[MTV-5608]
+
+PowerShell CLM no longer causes empty subnet masks in Windows VM migrations::
+Before this update, migrating Windows virtual machines (VMs) with PowerShell Constrained Language Mode (CLM) enabled caused firstboot network configuration scripts to fail. This failure occurred because the scripts used .NET methods blocked by CLM. As a consequence, the migration process wrote empty or incorrect subnet masks and network settings to the registry.
++
+With this release, the network configuration scripts use CLM-compatible alternatives. As a result, the process reliably configures static IP addresses, subnet masks, and gateways. It also configures Domain Name System (DNS) settings on migrated Windows VMs.
++
+link:https://redhat.atlassian.net/browse/MTV-5607[MTV-5607]
+
+PVCs are cleaned up after XCOPY migration failures::
+Before this update, the migration process failed to clean up persistent volume claims (PVCs) after archiving a failed XCOPY migration. As a consequence, orphaned PVCs remained on the cluster, which caused logical unit number (LUN) utilization issues.
++
+With this release, the PVC cleanup process is updated for XCOPY storage copy offload migrations. As a result, the cleanup process automatically removes PVCs after a migration failure. This prevents unnecessary LUN utilization and operational issues.
++
+link:https://redhat.atlassian.net/browse/MTV-5546[MTV-5546]
+
+Migrations no longer fail unexpectedly due to memory issues on ESXi hosts::
+Before this update, the migration process automatically installed a vSphere Installation Bundle (VIB) called `vmkfstools-wrapper` on each clone. As a consequence, this process caused memory issues on ESXi hosts, and migrations failed.
++
+With this release, the update removes the automatic VIB installation. As a result, memory failures no longer occur during clone operations. The `vmkfstools-wrapper` VIB is only needed for storage copy offload migrations. For more information about VIB installation, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-vib-set-up_vmware[Setting up storage copy offload using the VIB].
++
+link:https://redhat.atlassian.net/browse/MTV-5320[MTV-5320]
+
+Copy offload migrations no longer fail to find vVol volumes on HPE Primera storage::
+Before this update, the volume populator pod could not find the VMware Virtual Volume (vVol) during copy offload. This failure occurred on Hewlett Packard Enterprise (HPE) Primera storage because of volume name differences. As a consequence, volume cloning failed and returned an error about a missing volume ID.
++
+With this release, the volume populator correctly handles volume name matching for HPE Primera storage. As a result, the migration process successfully locates and clones vVol volumes during copy offload migrations.
++
+link:https://redhat.atlassian.net/browse/MTV-5186[MTV-5186]
+
+VM interface names and static IP settings no longer change after migration::
+Before this update, migrating a Red Hat Enterprise Linux (RHEL) 7.2 virtual machine (VM) caused network configuration changes. This issue occurred when migrating from VMware ESXi to a Red Hat OpenShift Container Platform cluster. The network interface names and static IP address settings changed. As a consequence, the migrated VMs did not retain their original network configuration.
++
+With this release, the network configuration process is updated to preserve the source settings. As a result, interface names and static IP address settings remain unchanged after the migration.
++
+link:https://redhat.atlassian.net/browse/MTV-4715[MTV-4715]
+
+The forklift-cli-download pod no longer fails with OOM errors after an upgrade::
+Before this update, upgrading the {project-short} Operator to version 2.10.2 or 2.10.3 introduced a `forklift-cli-download` deployment. This deployment had insufficient default memory limits. As a consequence, the pod repeatedly terminated with out-of-memory (OOM) errors. These errors caused the Red Hat OpenShift Container Platform cluster to report the {project-short} infrastructure as unhealthy.
++
+With this release, the operator logic increases the default memory allocations for the `forklift-cli-download` pod. As a result, the deployment successfully starts without triggering OOM errors, and the {project-short} infrastructure remains healthy.
++
+link:https://redhat.atlassian.net/browse/MTV-4482[MTV-4482]
+
