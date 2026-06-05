@@ -58,6 +58,11 @@ When you ask {lightspeed-short} a question about {project-short}, {lightspeed-sh
 
 {lightspeed-short} operates by using your own user credentials and can only access resources that you have permission to view. {lightspeed-short} accesses cluster metadata, migration resource status, and log data to provide contextual assistance. All data access respects your existing RBAC permissions, and {lightspeed-short} cannot access resources beyond your authorization level.
 
+[IMPORTANT]
+====
+When using {lightspeed-short} with an external AI service provider, cluster information, logs, and resource details may be transmitted to that provider. Organizations handling sensitive data should evaluate whether external AI services align with their security and compliance requirements. For on-premises data processing, consider using Red Hat Enterprise Linux AI (RHEL AI) or Red Hat OpenShift AI.
+====
+
 == How the integration works
 
 After you enable the `feature_mcp_server` feature flag in the `ForkliftController` custom resource, the {project-short} Operator configures the integration with {lightspeed-full} by:
