@@ -45,7 +45,7 @@ spec:
 ----
 +
 * `accessMode`: `ReadWriteOnce` or `ReadWriteMany`.
-* `source`: The Hyper-V storage identifier (file path, volume GUID path, or storage pool name). For example, `C:\VHDs\disk.vhdx`. To retrieve these identifiers, see xref:proc_retrieving-hyperv-ids_{context}[Retrieving Microsoft Hyper-V network and storage identifiers].
+* `source`: The Hyper-V storage identifier (file path, volume GUID path, or storage pool name). For example, `"C:\VHDs\disk.vhdx"` or `C:\\VHDs\\disk.vhdx` to prevent YAML parsing errors. To retrieve these identifiers, see xref:proc_retrieving-hyperv-ids_{context}[Retrieving Microsoft Hyper-V network and storage identifiers].
 
 . Optional: To download your input, click *Download*.
 . Click *Create*.

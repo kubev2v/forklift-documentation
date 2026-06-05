@@ -23,7 +23,6 @@ For more information about network and storage maps in {project-short}, see link
 +
 [source,yaml,subs="attributes+"]
 ----
-$ cat << EOF | {oc} apply -f -
 apiVersion: forklift.konveyor.io/v1beta1
 kind: NetworkMap
 metadata:
@@ -49,7 +48,6 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-EOF
 ----
 +
 * `type`: `pod` or `multus`.
