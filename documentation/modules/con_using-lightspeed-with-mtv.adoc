@@ -60,7 +60,7 @@ When you ask {lightspeed-short} a question about {project-short}, {lightspeed-sh
 
 [IMPORTANT]
 ====
-When using {lightspeed-short} with an external AI service provider, cluster information, logs, and resource details may be transmitted to that provider. Organizations handling sensitive data should evaluate whether external AI services align with their security and compliance requirements. For on-premises data processing, consider using Red Hat Enterprise Linux AI (RHEL AI) or Red Hat OpenShift AI.
+When using {lightspeed-short} with an external AI service provider, cluster information, logs, and resource details may be transmitted to that provider. Organizations handling sensitive data should evaluate whether external AI services align with their security and compliance requirements.
 ====
 
 == How the integration works
