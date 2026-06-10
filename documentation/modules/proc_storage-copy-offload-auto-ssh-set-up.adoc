@@ -84,7 +84,7 @@ $ {oc} get secret <name_of_private_or_public_key> -o yaml -n {namespace}
 $ ssh-keygen -t rsa -b 4096 -f custom_esxi_key -N ""
 ----
 +
-This is a simpler procedure than manually generating the key pair, as described in TBD.
+This is a simpler procedure than manually generating the key pair, as described in xref:proc_storage-copy-offload-manual-ssh-set-up_vmware[Setting up storage copy offload by using manually generated SSH keys].
 
 . Optional: If needed, you can replace either a private key secret or a public key secret by running one of the following commands:
 
