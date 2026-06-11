@@ -5,7 +5,7 @@ ifdef::context[:parent-context: {context}]
 
 [id="assembly_planning-migration-hyperv_{context}"]
 
-= Planning a migration of virtual machines from Microsoft Hyper-V
+= Planning a migration of virtual machines (VMs) from Microsoft Hyper-V
 
 //:context: planning-hyperv
 

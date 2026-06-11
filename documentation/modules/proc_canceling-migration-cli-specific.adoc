@@ -40,22 +40,22 @@ where:
 Specifies a VM by using the `id` key or the `name` key.
 +
 ifdef::vmware[]
-The value of the `id` key is the _managed object reference_ for a {vmw} VM.
+The value of the `id` key is the managed object reference for a {vmw} VM.
 endif::[]
 ifdef::rhv[]
-The value of the `id` key is the _VM UUID_ for a {rhv-full} VM.
+The value of the `id` key is the universally unique identifier (UUID) for a {rhv-full} VM.
 endif::[]
 ifdef::ostack[]
-The value of the `id` key is the _VM UUID_ for an {osp} VM.
+The value of the `id` key is the universally unique identifier (UUID) for an {osp} VM.
 endif::[]
 ifdef::ova[]
-The value of the `id` key is the _VM name_ from the OVA file for an OVA VM.
+The value of the `id` key is the VM name for an OVA VM.
 endif::[]
 ifdef::cnv[]
-The value of the `id` key is the _VM name_ for a {virt} VM.
+The value of the `id` key is the VM name for a {virt} VM.
 endif::[]
 ifdef::hyperv[]
-The value of the `id` key is the Hyper-V VM GUID.
+The value of the `id` key is the globally unique identifier (GUID) for the Hyper-V VM.
 endif::hyperv[]
 
 . Retrieve the `Migration` custom resource (CR) to monitor the progress of the remaining VMs, following this example:

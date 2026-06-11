@@ -9,7 +9,7 @@ ifdef::context[:parent-context: {context}]
 //:context: migrating-hyperv
 
 [role="_abstract"]
-Run your Microsoft Hyper-V migration plan from the MTV UI or from the command-line.
+Run your Microsoft Hyper-V migration plan from the {project-first} UI or from the command-line.
 
 == Prerequisites
 

@@ -1,4 +1,4 @@
-s// Module included in the following assemblies:
+// Module included in the following assemblies:
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_cold-warm-migration.adoc
 
@@ -8,7 +8,7 @@ s// Module included in the following assemblies:
 = About cold and warm migration
 
 [role="_abstract"]
-Cold migration is for VMs that are shut down and works with {vmw} vSphere, {rhv-full}, {osp}, Open Virtual Appliances (OVAs) created by {vmw} vSphere, Microsoft Hyper-V, and remote {virt} clusters. Warm migration is for running VMs and works with {vmw} vSphere and {rhv-full}.
+Cold migration is for virtual machines (VMs) that are shut down and works with {vmw} vSphere, {rhv-full}, {osp}, Open Virtual Appliances (OVAs) created by {vmw} vSphere, Microsoft Hyper-V, and remote {virt} clusters. Warm migration is for running VMs and works with {vmw} vSphere and {rhv-full}.
 
 [NOTE]
 ====

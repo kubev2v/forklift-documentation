@@ -7,7 +7,7 @@
 = Microsoft Hyper-V prerequisites
 
 [role="_abstract"]
-Verify that your Microsoft Hyper-V environment meets the requirements for migrating virtual machines to {virt}. You must configure WinRM for host connectivity, expose VM disk files on an SMB share, and ensure network access between the Hyper-V host and the {ocp-short} cluster.
+To migrate from Microsoft Hyper-V to {virt}, verify that your environment meets the requirements and configure host connectivity and storage access. For general software requirements, see link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration].
 
 {project-short} supports Generation 1 and Generation 2 VMs and automatically detects VHD and VHDX disk formats by file extension.
 
@@ -23,7 +23,7 @@ Limitations::
 
 * You must use a compatible version of Windows Server with Hyper-V. For more information, see xref:ref_compatibility-guidelines_{context}[Software compatibility guidelines].
 * You must configure Windows Remote Management (WinRM) on the Hyper-V host for HTTPS communication.
-* An SMB share must be available and accessible from both the Hyper-V host and the {ocp-short} cluster.
+* A Server Message Block (SMB) share must be available and accessible from both the Hyper-V host and the {ocp-short} cluster.
 * VM disk files (VHD or VHDX) must be exposed on the SMB share before migration. {project-short} does not export VMs automatically.
 * The service account must be a member of the Hyper-V Administrators group and have read access to the SMB share, for example, Local Administrator.
 * The target namespace must have network connectivity to both the SMB share and the Hyper-V WinRM endpoint. NetworkPolicies that block egress connections from the target namespace prevent migration from succeeding.

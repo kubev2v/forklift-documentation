@@ -4,10 +4,10 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_creating-plan-wizard-hyperv_{context}"]
-= Creating a Microsoft Hyper-V migration plan by using the MTV wizard
+= Creating a Microsoft Hyper-V migration plan by using the {project-short} wizard
 
 [role="_abstract"]
-You can migrate virtual machines from Microsoft Hyper-V by using the {project-full} plan creation wizard.
+You can migrate virtual machines (VMs) from Microsoft Hyper-V by using the {project-full} plan creation wizard.
 
 The wizard is designed to lead you step-by-step in creating a migration plan.
 
@@ -15,7 +15,7 @@ Limitations::
 
 * {project-short} supports only cold migration from Microsoft Hyper-V. Warm migration is not available.
 
-* Do not include virtual machines with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration. This prevents concurrent disk access to the storage the guest points to.
+* Do not include VMs with guest-initiated storage connections, such as Internet Small Computer Systems Interface (iSCSI) connections or Network File System (NFS) mounts. These require either additional planning before migration or reconfiguration after migration. This prevents concurrent disk access to the storage the guest points to.
 
 * A plan cannot contain more than 500 VMs or 500 disks.
 
@@ -51,7 +51,7 @@ The *Create migration plan* wizard opens.
 . Click *Next*.
 +
 // Virtual machines page
-. On the *Virtual machines* page, select the virtual machines you want to migrate and click *Next*.
+. On the *Virtual machines* page, select the VMs you want to migrate and click *Next*.
 . If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 +
 // Network map page
@@ -66,7 +66,7 @@ These are network maps available for all plans, and therefore, they are _ownerle
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create by using this option are not available in the *Use an existing network map* option because each is created with an owner.
 +
 [NOTE]
 ====
@@ -93,7 +93,7 @@ These are storage maps available for all plans, and therefore, they are _ownerle
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create by using this option are not available in the *Use an existing storage map* option because each is created with an owner.
 +
 [NOTE]
 ====

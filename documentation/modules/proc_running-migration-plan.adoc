@@ -9,7 +9,7 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_running-migration-plan_{context}"]
-= Running a migration plan in the MTV UI
+= Running a migration plan in the {project-short} UI
 
 [role="_abstract"]
 You can run a migration plan and view its progress in the {ocp} web console.

@@ -45,7 +45,7 @@ ifdef::hyperv[]
 = Adding a Microsoft Hyper-V source provider
 
 [role="_abstract"]
-You can add a Microsoft Hyper-V source provider by using the {ocp} web console. The provider uses WinRM to connect to the Hyper-V host and reads VM disk files from a configured SMB share.
+You can add a Microsoft Hyper-V source provider by using the {ocp} web console. The provider uses Windows Remote Management (WinRM) to connect to the Hyper-V host and reads virtual machine (VM) disk files from a configured Server Message Block (SMB) share.
 
 [NOTE]
 ====
