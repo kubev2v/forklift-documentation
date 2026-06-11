@@ -23,6 +23,7 @@ the development process.
 
 * {vmw} vSphere source provider configured in {project-short}.
 * {vmw} Virtual Disk Development Kit (VDDK) configured for the source provider.
+* Changed Block Tracking (CBT) must be enabled.
 * Cluster resources to run inspection worker pods.
 
 .Procedure
@@ -108,7 +109,7 @@ The *Inspect virtual machines* window opens.
 
 [NOTE]
 ====
-After an inspection completes, {project-short} automatically deletes the temporary inspection pod and associated persistent volume claims (PVCs) to free up cluster resources. If you need to troubleshoot a failed inspection, you can view the inspection pod logs and Conversion CR from the *Inspections* section by clicking the *Pod* or *Conversion* links in the *ResourceLinks* column.
+{project-short} automatically deletes inspection pods and persistent volume claims (PVCs) after an inspection completes. If you created the inspection from a migration plan, it is deleted when you archive the plan. If you created the inspection from a provider inventory, it is not automatically deleted. To troubleshoot a failed inspection, click the *Pod* or *Conversion* links in the *ResourceLinks* column of the *Inspections* section.
 ====
 
 [role="_additional-resources"]

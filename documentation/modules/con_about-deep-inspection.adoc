@@ -23,6 +23,7 @@ Prerequisites::
 
 * {vmw} vSphere source provider configured in {project-short}.
 * {vmw} Virtual Disk Development Kit (VDDK) configured in your source provider. Deep Inspection uses VDDK to access VM disk images.
+* Changed Block Tracking (CBT) must be enabled.
 * Cluster resources available to run inspection pods. Each pod needs CPU, memory, and storage to mount and analyze VM disks.
 
 Limitations::
@@ -32,7 +33,7 @@ Limitations::
 
 Considerations::
 
-* Deep Inspection takes longer than standard inspection. It must transfer disk data and perform detailed analysis.
+* Deep Inspection takes longer than standard inspection. It creates a VM snapshot and inspects the base disks, then performs detailed analysis.
 * Inspection time depends on VM disk size and cluster resources.
 
 == Inspection methods
@@ -45,7 +46,7 @@ Considerations::
 
 == How Deep Inspection works
 
-Deep Inspection launches a temporary pod in your {ocp-short} cluster. The pod uses VDDK to mount the VM's disk images. It analyzes the guest operating system without booting the VM. After the analysis finishes, {project-short} cleans up the pod and stores the results.
+Deep Inspection launches a temporary pod in your {ocp-short} cluster that uses VDDK to mount the VM's disk images. {project-short} creates a snapshot to analyze the guest operating system without affecting the VM's power state, whether it is stopped or running. After analysis, {project-short} cleans up the pod and stores the results.
 
 Deep Inspection provides detailed information about the VM to help assess migration readiness:
 
@@ -58,22 +59,12 @@ Deep Inspection provides detailed information about the VM to help assess migrat
 a|
 * Operating system name, version, and architecture
 * kernel version
-* Installed storage and network drivers
-* VirtIO driver availability
 
 |Storage and file systems
 a|
 * File system types (for example, ext4, xfs, ntfs)
 * Partition layouts and mount points
 * Root device path (critical for dual-boot or multi-disk VMs)
-* Boot loader configuration
-
-|Migration compatibility
-a|
-* Missing VirtIO drivers required for {virt}
-* Unsupported guest operating systems
-* Dual-boot configurations requiring root device specification
-* Partition layouts that might cause conversion issues
 |===
 
 == When to use Deep Inspection

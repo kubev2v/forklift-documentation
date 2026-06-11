@@ -23,6 +23,7 @@ the development process.
 
 * {vmw} vSphere source provider configured in {project-short}.
 * {vmw} Virtual Disk Development Kit (VDDK) configured for the source provider.
+* Changed Block Tracking (CBT) must be enabled.
 * Cluster resources to run inspection worker pods.
 * `oc` CLI tool installed and access to the {ocp-short} cluster.
 * Managed object reference (moRef) ID of the VM you want to inspect.
@@ -31,7 +32,6 @@ the development process.
 
 . Create a Conversion CR YAML file for the VM you want to inspect. For example, `vm-inspection.yaml`:
 +
-// SME REVIEW: Is this Conversion CR YAML structure correct? Verify apiVersion, spec.source.id, spec.source.name, spec.provider fields.
 [source,yaml,subs="attributes+"]
 ----
 apiVersion: forklift.konveyor.io/v1beta1
@@ -39,32 +39,67 @@ kind: Conversion
 metadata:
   name: <vm_name>-inspection
   namespace: {namespace}
+  labels:
+    conversion-type: DeepInspection
+    vmID: <vm_moref_id>
 spec:
-  source:
+  connection:
+    secret:
+      name: <provider_secret_name>
+      namespace: {namespace}
+  diskEncryption:
+    secret:
+      name: <luks_secret_name>
+      namespace: {namespace}
+    type: LUKS
+  targetNamespace: {namespace}
+  type: DeepInspection
+  vddkImage: <vddk_image>
+  vm:
     id: <vm_moref_id>
     name: <vm_name>
-  provider:
-    name: <provider_name>
-    namespace: {namespace}
+    type: vsphere
+  xfsCompatibility: <xfs_compatibility>
 ----
 +
 where:
 +
 --
-<vm_name>-inspection::
-Specifies a unique name for the Conversion CR. A common convention is to use the VM name followed by `-inspection`.
+`<vm_name>-inspection`::
+Specifies a unique name for the `Conversion` CR. A common convention is to use the VM name followed by `-inspection`.
 
-{namespace}::
+`<namespace>`::
 Specifies the namespace where {project-short} is installed. The default is +{namespace}+.
 
-<vm_moref_id>::
+`labels`::
+Required. Must include `conversion-type: DeepInspection` and `vmID` set to the VM's moRef ID.
+
+`<vm_moref_id>`::
 Specifies the managed object reference (moRef) ID of the VM. For information about retrieving the moRef ID, see xref:proc_retrieving-vmware-moref_{context}[Retrieving the moRef].
 
-<vm_name>::
+`<provider_secret_name>`::
+Specifies the name of the secret for the source provider.
+
+`diskEncryption`::
+Optional. Only required when the VM disks are LUKS encrypted.
+
+`<luks_secret_name>`::
+Specifies the name of the secret that contains the LUKS encryption password.
+
+`targetNamespace`::
+Required. Specifies where the Deep Inspection pod is created.
+
+`<vddk_image>`::
+Specifies the VDDK image to use. For example, `quay.io/kubev2v/vddk:8`.
+
+`vm.id`, `vm.name`, `vm.type`::
+Required. Specifies the moRef ID and name of the VMware VM.
+
+`<vm_name>`::
 Specifies the name of the VM as it appears in the {vmw} vSphere inventory.
 
-<provider_name>::
-Specifies the name of the {vmw} vSphere provider CR.
+`<xfs_compatibility>`::
+Specifies whether to use XFS compatibility mode. Set to `true` for XFSv4, `false` for XFSv5.
 --
 
 . Create the Conversion CR:
@@ -89,15 +124,23 @@ $ oc get pods -n {namespace} | grep <vm_name>-inspection
 +
 The pod status should progress from `Pending` to `Running` to `Completed`.
 
+. Check the inspection status:
++
+[source,terminal,subs="attributes+"]
+----
+$ oc get conversion <vm_name>-inspection -n {namespace} -o json | jq '.status.phase'
+----
++
+The status can be `Running`, `Pending`, `Successful`, `Failed`, or `Canceled`.
+
 . Retrieve the inspection results from the Conversion CR:
 +
-// SME REVIEW: Is the jsonpath correct for inspection results? Should it be .status.inspectionResult or something else?
 [source,terminal,subs="attributes+"]
 ----
 $ oc get conversion <vm_name>-inspection -n {namespace} -o json | jq '.status.inspectionResult'
 ----
 +
-The inspection results include information about the guest operating system, file systems, architecture, and any detected issues.
+The inspection results include information about the guest operating system, file systems, architecture, and any detected issues. The `inspectionResult` field is only present when the inspection succeeds.
 
 . After the inspection completes, the inspection pod and associated persistent volume claims (PVCs) are automatically cleaned up by {project-short}. To troubleshoot a failed inspection, view the pod logs:
 +

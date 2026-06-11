@@ -16,9 +16,6 @@ Deep Inspection can identify concerns that are organized by category and severit
 Changed Block Tracking (CBT) not enabled::
 CBT is not enabled on the source VM. This does not prevent migration. However, it can impact performance during warm migrations.
 
-VirtIO drivers missing::
-The VM lacks VirtIO drivers required for {virt}. This is a critical concern. Address it before migration.
-
 Unsupported operating system::
 The guest operating system is not supported for migration to {virt}. Check the {project-short} compatibility matrix for supported operating systems.
 
@@ -33,7 +30,7 @@ The VM has multiple bootable operating systems. You must specify the correct roo
 Use Deep Inspection results to prepare VMs for migration:
 
 Address critical concerns::
-Resolve errors before you start the migration. For example, install VirtIO drivers on Windows VMs. Verify operating system support.
+Resolve errors before you start the migration. Verify operating system support.
 
 Configure root device for multi-boot VMs::
 If Deep Inspection finds a multi-boot configuration, use the root device path in the inspection results. Configure the *Root device* setting in your migration plan.
