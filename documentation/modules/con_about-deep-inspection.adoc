@@ -22,7 +22,7 @@ the development process.
 Prerequisites::
 
 * {vmw} vSphere source provider configured in {project-short}.
-* {vmw} Virtual Disk Development Kit (VDDK) configured in your source provider. Deep Inspection uses VDDK to access VM disk images.
+* {vmw} Virtual Disk Development Kit (VDDK) configured for the source provider. Deep Inspection uses VDDK to access VM disk images.
 * Changed Block Tracking (CBT) must be enabled.
 * Cluster resources available to run inspection pods. Each pod needs CPU, memory, and storage to mount and analyze VM disks.
 

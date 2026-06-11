@@ -43,6 +43,4 @@ Use the disk and partition information to plan storage allocations in the destin
 
 [role="_additional-resources"]
 .Additional resources
-* link:{mtv-mig}assembly_migrating-from-vmware_vmware#proc_inspecting-vms-ui_vmware[Inspecting VMs in the MTV UI]
-* link:{mtv-mig}assembly_migrating-from-vmware_vmware#proc_inspecting-vms-cli_vmware[Inspecting VMs by using the command line interface]
 * xref:proc_creating-plan-wizard-vmware_{context}[Creating a {vmw} vSphere migration plan by using the MTV wizard]

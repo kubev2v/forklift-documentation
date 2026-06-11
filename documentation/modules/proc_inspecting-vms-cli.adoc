@@ -158,7 +158,6 @@ $ oc delete conversion <vm_name>-inspection -n {namespace}
 
 [role="_additional-resources"]
 .Additional resources
-* link:{mtv-plan}assembly_planning-migration-vmware_vmware#con_about-deep-inspection_vmware[About Deep Inspection]
 * link:{mtv-plan}assembly_planning-migration-vmware_vmware#ref_deep-inspection-validation-results_vmware[Understanding Deep Inspection validation results]
 * xref:proc_retrieving-vmware-moref_{context}[Retrieving the VMware moRef]
 * link:https://access.redhat.com/support/offerings/techpreview/[Red Hat Technology Preview Features Support Scope]
