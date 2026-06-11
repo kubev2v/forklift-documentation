@@ -7,7 +7,12 @@
 = {virt} prerequisites
 
 [role="_abstract"]
-To migrate between {virt} clusters, verify that both clusters have matching {project-first} versions and the source uses {virt} 4.16 or later. You can migrate forward to newer {virt} versions if both are compatible with your {project-short} version.
+To migrate between {virt} clusters, verify that both clusters have compatible {virt} versions and that the source uses {virt} 4.16 or later. You can migrate forward to newer {virt} versions if both are compatible with your {project-short} version.
+
+[NOTE]
+====
+{project-first} does not need to be installed on both clusters. Install {project-short} on one cluster, and add the other cluster as a remote {virt} provider. {project-short} can run on the source cluster, the destination cluster, or a separate cluster, and it delegates the migration operations to the remote clusters.
+====
 
 [IMPORTANT]
 ====
