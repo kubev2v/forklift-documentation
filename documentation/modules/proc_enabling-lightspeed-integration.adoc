@@ -26,7 +26,9 @@ For information about installing and configuring {lightspeed-full}, see the link
 
 . Click the *{operator-name}* from the list of installed operators.
 
-. Click the *ForkliftController* tab and then click your controller instance to view its details.
+. Click the *ForkliftController* tab.
+
+. Click your controller instance to view its details.
 
 . Click the *YAML* tab to edit the resource configuration.
 
@@ -45,7 +47,7 @@ To disable the feature later, you can change this value to `'false'`.
 
 . Click *Save*.
 +
-The {lightspeed-full} pods restart and initialize to load the new Model Context Protocol (MCP) for {project-short}.
+The {lightspeed-full} pods restart to load the new Model Context Protocol (MCP) configuration for {project-short}.
 
 . Optional: Monitor the pod restart progress by running the following command:
 +

@@ -24,7 +24,7 @@ You can typically find where the error is occurring at this stage. VMs can be mi
 
 . *Ask {lightspeed-full}* for AI-assisted troubleshooting guidance.
 +
-If you have {lightspeed-full} configured with {project-short}, you can ask questions in natural language to get plain-language explanations of migration failures, recommended solutions, and guidance for resolving common issues.
+If {lightspeed-full} is configured with {project-short}, you can ask questions in natural language to get plain-language explanations of migration failures, recommended solutions, and guidance for resolving common issues.
 +
 For example: "Why did the migration for VM 'ProdDB-01' fail?"
 +

@@ -5,12 +5,12 @@
 :_mod-docs-content-type: CONCEPT
 
 [id="con_using-lightspeed-with-mtv_{context}"]
-= {lightspeed-full} integration with {project-short}
+= About {lightspeed-short} and {project-short}
 
 [role="_abstract"]
 Use {lightspeed-full} to quickly diagnose migration issues and get step-by-step guidance without manually parsing logs or searching documentation.
 
-{lightspeed-full} is integrated into the {ocp} web console. It provides intelligent assistance through a natural-language interface, allowing you to ask questions, receive troubleshooting guidance, and get step-by-step instructions.
+{lightspeed-full} is integrated into the {ocp} web console. It provides intelligent assistance through a natural-language interface where you can ask questions, receive troubleshooting guidance, and get step-by-step instructions.
 
 [NOTE]
 ====
@@ -42,7 +42,7 @@ Post-migration guidance:: Receive recommendations for validating migrated virtua
 +
 For example:
 +
-* "Why aren't my VMs working after migration?"
+* "Why are my VMs not working after migration?"
 * "How do I verify my migrated VMs are running correctly?"
 * "What should I check after migration is complete?"
 
@@ -51,16 +51,16 @@ For example:
 When you ask {lightspeed-short} a question about {project-short}, {lightspeed-short}:
 
 . Accesses real-time data from your cluster, including migration plan status, custom resources, and logs
-. Analyzes the data in accordance with your user credentials and role-based access control (RBAC) permissions
+. Analyzes the data based on your user credentials and role-based access control (RBAC) permissions
 . Provides a conversational response with specific, actionable information
 
 == Privacy and data handling
 
-{lightspeed-short} operates by using your own user credentials and can only access resources that you have permission to view. {lightspeed-short} accesses cluster metadata, migration resource status, and log data to provide contextual assistance. All data access respects your existing RBAC permissions, and {lightspeed-short} cannot access resources beyond your authorization level.
+{lightspeed-short} uses your own user credentials and can only access resources that you have permission to view. {lightspeed-short} accesses cluster metadata, migration resource status, and log data to provide contextual assistance. All data access respects your existing RBAC permissions, and {lightspeed-short} cannot access resources beyond your authorization level.
 
 [IMPORTANT]
 ====
-When using Lightspeed with an external AI service provider, cluster information, logs, and resource details may be transmitted to that provider. Evaluate whether external AI services align with the security and compliance requirements of your organization.
+When you use {lightspeed-short} with an external AI service provider, cluster information, logs, and resource details may be transmitted to that provider. Evaluate whether external AI services align with the security and compliance requirements of your organization.
 ====
 
 == How the integration works
