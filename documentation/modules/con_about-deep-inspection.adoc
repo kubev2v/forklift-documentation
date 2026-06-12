@@ -7,7 +7,7 @@
 = About Deep Inspection
 
 [role="_abstract"]
-You can use Deep Inspection to analyze virtual machine (VM) disk images before migration. This finds compatibility issues that standard inspection might miss and helps you plan remediation before starting the migration.
+You can use Deep Inspection to analyze virtual machine (VM) disk images before migration. Deep Inspection finds compatibility issues that standard inspection might miss and helps you plan remediation before starting the migration.
 
 [IMPORTANT]
 ====
@@ -28,7 +28,7 @@ Prerequisites::
 
 Limitations::
 
-* Deep Inspection is available only for {vmw} vSphere providers. It is not available for other source providers.
+* Deep Inspection is available only for {vmw} vSphere providers.
 * {project-short} limits concurrent inspections to 10 by default. Additional inspections are queued until resources become available.
 
 Considerations::
@@ -40,15 +40,15 @@ Considerations::
 
 {project-short} supports two methods for inspecting VMs before migration:
 
-* Standard inspection: Queries the source provider's API to collect VM metadata. This includes operating system information, disk configuration, and hardware settings. This method is fast. It does not need extra resources. However, it relies on metadata from the provider.
+* Standard inspection: Queries the source provider's API to collect VM metadata. This includes operating system information, disk configuration, and hardware settings. This method is fast and does not require extra resources, but it relies on metadata from the provider.
 
-* Deep Inspection: Launches a temporary worker pod in the {ocp-short} cluster. The pod mounts and analyzes the VM's disk images directly. This method gives you more confidence in migration success. It finds guest-level issues that standard inspection might miss.
+* Deep Inspection: Launches a temporary worker pod in the {ocp-short} cluster. The pod mounts and analyzes the VM's disk images directly. This method provides greater confidence in migration success by finding guest-level issues that standard inspection might miss.
 
 == How Deep Inspection works
 
-Deep Inspection launches a temporary pod in your {ocp-short} cluster that uses VDDK to mount the VM's disk images. {project-short} creates a snapshot to analyze the guest operating system without affecting the VM's power state, whether it is stopped or running. After analysis, {project-short} cleans up the pod and stores the results.
+Deep Inspection launches a temporary pod in your {ocp-short} cluster that uses VDDK to mount the VM's disk images. {project-short} creates a snapshot to analyze the guest operating system without affecting the VM's power state, whether it is running or stopped. After analysis, {project-short} cleans up the pod and stores the results.
 
-Deep Inspection provides detailed information about the VM to help assess migration readiness:
+Deep Inspection provides detailed information about the VM to help you assess migration readiness:
 
 [cols="30%,70%",options="header"]
 |===
@@ -58,7 +58,7 @@ Deep Inspection provides detailed information about the VM to help assess migrat
 |Operating system and hardware
 a|
 * Operating system name, version, and architecture
-* kernel version
+* Kernel version
 
 |Storage and file systems
 a|

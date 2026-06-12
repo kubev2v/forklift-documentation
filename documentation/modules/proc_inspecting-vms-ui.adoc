@@ -7,7 +7,7 @@
 = Inspecting VMs in the MTV UI
 
 [role="_abstract"]
-You can run Deep Inspection from the {project-short} web interface to identify compatibility issues before migration. Trigger inspections from either a migration plan or a provider inventory to analyze VM disk images and detect potential conversion problems.
+You can run Deep Inspection from the {project-short} web interface to identify compatibility issues before migration. You can trigger inspections from either a migration plan or a provider inventory to analyze VM disk images and detect potential conversion problems.
 
 [IMPORTANT]
 ====
@@ -25,6 +25,8 @@ the development process.
 * {vmw} Virtual Disk Development Kit (VDDK) configured for the source provider.
 * Changed Block Tracking (CBT) must be enabled.
 * Cluster resources to run inspection worker pods.
+* `oc` CLI tool installed
+* Access to the {ocp-short} cluster
 
 .Procedure
 
@@ -109,7 +111,7 @@ The *Inspect virtual machines* window opens.
 
 [NOTE]
 ====
-{project-short} automatically deletes inspection pods and persistent volume claims (PVCs) after an inspection completes. If you created the inspection from a migration plan, it is deleted when you archive the plan. If you created the inspection from a provider inventory, it is not automatically deleted. To troubleshoot a failed inspection, click the *Pod* or *Conversion* links in the *ResourceLinks* column of the *Inspections* section.
+{project-short} automatically deletes inspection pods and persistent volume claims (PVCs) after an inspection completes. If you create the inspection from a migration plan, the inspection records are deleted when you archive the plan. If you create the inspection from a provider inventory, the inspection records are not automatically deleted and must be removed manually. To troubleshoot a failed inspection, click the *Pod* or *Conversion* links in the *ResourceLinks* column of the *Inspections* section.
 ====
 
 [role="_additional-resources"]

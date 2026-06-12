@@ -14,10 +14,10 @@ You can use Deep Inspection validation results to assess migration feasibility a
 Deep Inspection can identify concerns that are organized by category and severity:
 
 Changed Block Tracking (CBT) not enabled::
-CBT is not enabled on the source VM. This does not prevent migration. However, it can impact performance during warm migrations.
+CBT is not enabled on the source VM. This does not prevent migration. However, it can affect performance during warm migrations.
 
 Unsupported operating system::
-The guest operating system is not supported for migration to {virt}. Check the {project-short} compatibility matrix for supported operating systems.
+The guest operating system is not supported for migration to {virt}. For information about supported operating systems, see the {project-short} compatibility matrix.
 
 File system issues::
 File system configurations that might cause conversion failures.
@@ -33,7 +33,7 @@ Address critical concerns::
 Resolve errors before you start the migration. Verify operating system support.
 
 Configure root device for multi-boot VMs::
-If Deep Inspection finds a multi-boot configuration, use the root device path in the inspection results. Configure the *Root device* setting in your migration plan.
+If Deep Inspection finds a multi-boot configuration, use the root device path from the inspection results. Configure the *Root device* setting in your migration plan.
 
 Review file system compatibility::
 Verify that all file systems are supported by {virt} and the target operating system version.
