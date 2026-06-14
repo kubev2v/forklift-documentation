@@ -31,6 +31,8 @@ include::../modules/proc_migrating-vms-cli-vmware.adoc[leveloffset=+1]
 
 include::../modules/proc_storage-copy-offload-cli.adoc[leveloffset=+1]
 
+include::../modules/proc_netapp-shift-integration-cli.adoc[leveloffset=+1]
+
 include::../modules/proc_retrieving-vmware-moref.adoc[leveloffset=+2]
 
 include::../modules/proc_mtv-shared-disks.adoc[leveloffset=+2]

@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_netapp-shift-integration-cli_{context}"]
+= Migrating {vmw} VMs with NetApp Shift integration from the CLI
+
+[role="_abstract"]
+Create and run a migration plan by using custom resources (CRs). Do this after NetApp Shift clones the disks and creates labeled persistent volume claims (PVCs) on the target cluster.
+
+.Prerequisites
+
+* You completed link:{mtv-plan}assembly_planning-migration-vmware_mtv#ref_netapp-shift-prerequisites_vmware[Prerequisites for NetApp Shift integration].
+
+.Procedure
+
+. Complete Phase 1 (NetApp Shift) by cloning the disks, creating the PVCs, and verifying the PVC metadata.
++
+For more information, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_netapp-shift-integration-steps_vmware[Planning and running a NetApp Shift integration migration].
+
+. Follow the procedure for a standard {vmw} migration that uses the CLI, with the following additional specifications:
+
+.. In the `StorageMap` manifest, for the `storageClass` label, specify a storage class that is annotated for NetApp Shift.
+.. In the `Plan` manifest, set the value of `warm` to `false`. Verify that each `spec;vms:id` value matches a `vmID` label on the PVCs that NetApp Shift created. 
++
+For more information about the standard {vmw} CLI procedure, see link:{mtv-mig}assembly_migrating-from-vmware_mtv#proc_migrating-vms-cli-vmware_vmware[Running a VMware migration from the CLI].
+
