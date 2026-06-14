@@ -22,6 +22,8 @@ include::../modules/con_virt-migration-workflow.adoc[leveloffset=+2]
 
 include::../modules/con_virt-v2v-mtv.adoc[leveloffset=+1]
 
+include::../modules/con_virt-v2v-in-place-netapp-shift.adoc[leveloffset=+2]
+
 include::../modules/con_virt-v2v-mtv-main-functions.adoc[leveloffset=+2]
 
 include::../modules/con_virt-v2v-mtv-customizing-removing-installing.adoc[leveloffset=+2]

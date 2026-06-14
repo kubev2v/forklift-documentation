@@ -1,0 +1,46 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_netapp-shift-integration-steps_{context}"]
+= Planning and running a NetApp Shift integration migration
+
+[role="_abstract"]
+Plan and run a {vmw} cold migration that uses NetApp Shift zero-copy integration. You can perform this migration by using either the {project-short} UI or the CLI.
+
+.Prerequisites
+* You reviewed xref:ref_netapp-shift-prerequisites_{context}[Prerequisites for NetApp Shift integration].
+* You understand xref:con_how-netapp-shift-integration-works_{context}[How NetApp Shift integration works].
+* You installed NetApp Shift according to the instructions on the NetApp site. 
+
+.Procedure
+
+. In vSphere, delete all snapshots for the source virtual machines (VMs) and consolidate the disks to flatten the disk chain.
++
+Because of proprietary {vmw} file formatting, you must flatten the VM disks before you migrate them.
+
+. Use NetApp Shift to clone the VM disks and create persistent volume claims (PVCs) on the target cluster.
++
+Follow the NetApp Shift product documentation for disk clones and PVC generation in the target namespace.
+
+. Verify the PVC labels and annotations on each disk PVC.
++
+Confirm that each PVC has the `vmID` label and the `forklift.konveyor.io/nfs-server` and `forklift.konveyor.io/nfs-path` annotations.
+
+. Configure your {vmw} source provider, {virt} destination provider, network map, storage map annotated for NetApp Shift, and a migration plan. 
++
+Follow the specific UI or CLI instructions to configure each component.  
+
+. Run the migration plan, and verify that the migrated VMs are created and running in {virt}.
+
+. Optional: Archive the migration plan after a successful migration. 
++
+For more information, see link:{mtv-mig}assembly_migrating-from-vmware_mtv#con_post-migration-cleanup_vmware[Post-migration cleanup and archiving migration plans].
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:proc_netapp-shift-integration-ui_vmware[Migrating {vmw} VMs with NetApp Shift integration in the UI]
+* link:{mtv-mig}assembly_migrating-from-vmware_vmware#proc_netapp-shift-integration-cli_vmware[Migrating {vmw} VMs with NetApp Shift integration from the CLI]
+
