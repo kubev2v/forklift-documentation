@@ -105,7 +105,7 @@ You can create an ownerless storage map, which you and others can use for additi
 ====
 
 ** *Source storage*: Select from the list.
-** *Target storage*: Select from the list.
+** *Target storage*: Select from the list. For migrations using NetApp Shift, select a target storage with a *NetApp Shift* annotation.
 +
 If needed, click *Add mapping* to add another mapping.
 ** *Storage map name*: Enter a name or let {project-short} automatically generate a name for the storage map.
