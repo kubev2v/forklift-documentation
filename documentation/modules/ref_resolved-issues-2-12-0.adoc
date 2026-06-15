@@ -67,10 +67,10 @@ With this release, the PVC cleanup process is updated for XCOPY storage copy off
 +
 link:https://redhat.atlassian.net/browse/MTV-5546[MTV-5546]
 
-Migrations no longer fail unexpectedly due to memory issues on ESXi hosts::
+Automatic VIB installation no longer causes memory issues on ESXi hosts::
 Before this update, the migration process automatically installed a vSphere Installation Bundle (VIB) called `vmkfstools-wrapper` on each clone. As a consequence, this process caused memory issues on ESXi hosts, and migrations failed.
 +
-With this release, the update removes the automatic VIB installation. As a result, memory failures no longer occur during clone operations. The `vmkfstools-wrapper` VIB is only needed for storage copy offload migrations. For more information about VIB installation, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-vib-set-up_vmware[Setting up storage copy offload using the VIB].
+With this update, the migration process does not automatically install the VIB. As a result, the VIB no longer causes memory issues and subsequent migration failures during clone operations. The `vmkfstools-wrapper` VIB is needed only for storage copy offload migrations. For more information about VIB installation, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_storage-copy-offload-vib-set-up_vmware[Setting up storage copy offload using the VIB].
 +
 link:https://redhat.atlassian.net/browse/MTV-5320[MTV-5320]
 
