@@ -7,7 +7,7 @@
 = Inspecting VMs in the MTV UI
 
 [role="_abstract"]
-You can identify virtual machine compatibility issues before migration by using Deep Inspection to analyze disk images. Running inspections helps you detect and resolve conversion problems early, reducing migration failures.
+You can identify virtual machine (VM) compatibility issues before migration by using Deep Inspection to analyze disk images. Running inspections helps you detect and resolve conversion problems early, reducing migration failures.
 
 [IMPORTANT]
 ====

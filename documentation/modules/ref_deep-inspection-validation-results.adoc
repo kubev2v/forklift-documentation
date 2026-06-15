@@ -27,7 +27,7 @@ The VM has multiple bootable operating systems. You must specify the correct roo
 
 == Migration preparation considerations
 
-Deep Inspection results help determine the necessary preparation steps before migrating virtual machines:
+Deep Inspection results help determine the necessary preparation steps before migrating virtual machines (VMs):
 
 Critical concerns::
 Resolving errors and verifying operating system support before beginning the migration prevents failures.
