@@ -166,7 +166,7 @@ When your plan is validated, the *Plan details* page for your plan opens in the 
 * *Migration history*: Details about successful and unsuccessful attempts to run the plan
 * *Conditions*: Any changes that need to be made to the plan so that it can run successfully
 
-. When you have fixed all conditions listed, you can run your plan from the *Plans* page.
+. After you resolve all listed conditions, you can run your plan from the *Plans* page.
 +
 The *Plan details* page also includes five additional tabs, which are described in the table that follows:
 +

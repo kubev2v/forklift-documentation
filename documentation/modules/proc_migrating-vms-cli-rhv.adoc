@@ -226,7 +226,7 @@ Specifies the namespace for the resource. Use +{namespace}+ for the {project-sho
 
 
 `<service account>`::
-Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
+Specifies the {ocp} service account. This is an optional field. Use the `serviceAccount` parameter to modify any cluster resources.
 
 `playbook`::
 Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
@@ -309,7 +309,7 @@ Specifies whether a custom CPU model is used, as detailed in the note that follo
 Specifies whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
 
 `map`::
-Specifies the network map and the storage map used by the plan.
+Specifies the network map and storage map used by the plan.
 
 `network`::
 Specifies a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
@@ -330,7 +330,7 @@ Specifies the source VM. Use either the `id` or the `name` parameter to specify 
 Specifies the {rhv-full} VM UUID.
 
 `hooks`::
-Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional label.
+Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional field.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.

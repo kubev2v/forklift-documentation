@@ -38,6 +38,8 @@ include::assemblies/assembly_planning-migration-ova.adoc[leveloffset=+1]
 
 include::assemblies/assembly_planning-migration-hyperv.adoc[leveloffset=+1]
 
+include::assemblies/assembly_planning-migration-aws.adoc[leveloffset=+1]
+
 include::assemblies/assembly_planning-migration-cnv.adoc[leveloffset=+1]
 
 

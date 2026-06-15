@@ -1,0 +1,322 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-aws.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_migrating-vms-cli-aws_{context}"]
+
+= Running an {aws} {ec2} migration from the command-line
+
+[role="_abstract"]
+You can migrate {ec2} instances to {virt} by using the command-line interface (CLI) to create and configure Secret, Provider, NetworkMap, StorageMap, Plan, and Migration custom resources.
+
+.Prerequisites
+
+* {virt} destination provider configured
+* {ec2} instances must be stopped before migration
+
+
+.Procedure
+
+. Create a `Secret` manifest for the source provider credentials:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret>
+  namespace: <namespace>
+type: Opaque
+stringData:
+  region: <aws_region>
+  accessKeyId: <aws_access_key_id>
+  secretAccessKey: <aws_secret_access_key>
+  # targetAccessKeyId: <target_aws_access_key_id>
+  # targetSecretAccessKey: <target_aws_secret_access_key>
+EOF
+----
++
+where:
++
+`<secret>`::
+Specifies the name of the `Secret` CR.
++
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
++
+`<aws_region>`::
+Specifies the {aws} region where your {ec2} instances are located, for example, `us-east-1` or `us-east-2`.
++
+`<aws_access_key_id>`::
+Specifies the {aws} access key ID for the source account.
++
+`<aws_secret_access_key>`::
+Specifies the {aws} secret access key for the source account.
++
+`<target_aws_access_key_id>`::
+Specifies the {aws} access key ID for the target account. Required only for cross-account migrations.
++
+`<target_aws_secret_access_key>`::
+Specifies the {aws} secret access key for the target account. Required only for cross-account migrations.
++
+[NOTE]
+====
+For same-account migrations, use the OpenShift cluster's {aws} credentials to ensure the Elastic Block Store (EBS) Container Storage Interface (CSI) driver can access the migrated volumes.
+====
+
+. Create a `Provider` manifest for the source provider:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: <source_provider>
+  namespace: <namespace>
+spec:
+  type: ec2
+  secret:
+    name: <secret>
+    namespace: <namespace>
+  settings:
+    target-az: <target_availability_zone>
+EOF
+----
++
+where:
++
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
++
+`<source_provider>`::
+Specifies the name of the source provider.
++
+`<secret>`::
+Specifies the name of the provider `Secret` CR.
++
+`<target_availability_zone>`::
+Specifies the target {aws} availability zone where {project-short} creates EBS volumes, for example, `us-east-1a`. This must match an availability zone where OpenShift worker nodes run.
++
+[IMPORTANT]
+====
+EBS volumes are availability zone-specific. If the `target-az` setting does not match an availability zone where OpenShift worker nodes run, the EBS CSI driver cannot attach the volumes to worker nodes, causing the migration to fail.
+====
+
+. Create a `NetworkMap` manifest to map the source and destination networks:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: NetworkMap
+metadata:
+  name: <network_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        name: <network_name>
+        type: pod
+      source:
+        id: <source_subnet_id>
+    - destination:
+        name: <network_attachment_definition>
+        namespace: <network_attachment_definition_namespace>
+        type: multus
+      source:
+        id: <source_subnet_id>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
++
+`<network_map>`::
+Specifies the name of the network map.
++
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
++
+`<source_subnet_id>`::
+Specifies the {aws} subnet ID (for example, `subnet-abc123def456`).
++
+`type`::
+Specifies the network type. Allowed values are `pod` and `multus`.
++
+`<network_attachment_definition>`::
+Specifies a network attachment definition (NAD) for each additional {virt} network.
++
+`<network_attachment_definition_namespace>`::
+Specifies the namespace of the {virt} NAD. Required only when `type` is `multus`.
+
+. Create a `StorageMap` manifest to map source and destination storage:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: <storage_map>
+  namespace: <namespace>
+spec:
+  map:
+    - destination:
+        storageClass: <storage_class>
+      source:
+        id: <source_volume_type>
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+EOF
+----
++
+where:
++
+`<storage_map>`::
+Specifies the name of the storage map.
++
+`<storage_class>`::
+Specifies the storage class that uses the {aws} EBS CSI driver. The storage class must be configured for the same availability zone as the `target-az` setting in the Provider resource.
++
+`<source_volume_type>`::
+Specifies the EBS volume type (for example, `gp2`, `gp3`, `io1`).
+
+. Create a `Plan` manifest for the migration:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+metadata:
+  name: <plan>
+  namespace: <namespace>
+spec:
+  provider:
+    source:
+      name: <source_provider>
+      namespace: <namespace>
+    destination:
+      name: <destination_provider>
+      namespace: <namespace>
+  map:
+    network:
+      name: <network_map>
+      namespace: <namespace>
+    storage:
+      name: <storage_map>
+      namespace: <namespace>
+  targetNamespace: <target_namespace>
+  vms:
+    - id: <source_vm1>
+    - name: <source_vm2>
+      hooks:
+        - hook:
+            namespace: <namespace>
+            name: <hook>
+          step: <step>
+EOF
+----
++
+where:
++
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
++
+`<plan>`::
+Specifies the name of the `Plan` CR.
++
+`map`::
+Specifies the network map and storage map used by the plan.
++
+`network`::
+Specifies a network mapping, even if the migration does not assign the virtual machines (VMs) to a network. The mapping can be empty in this case.
++
+`<network_map>`::
+Specifies the name of the `NetworkMap` CR.
++
+`storage`::
+Specifies a storage mapping, even if the migration does not assign disk images to the VMs. The mapping can be empty in this case.
++
+`<storage_map>`::
+Specifies the name of the `StorageMap` CR.
++
+`<target_namespace>`::
+Specifies the target namespace in {virt} where {project-short} creates the migrated VMs.
++
+`vms`::
+Specifies the source VMs. Accepts either the `id` or the `name` parameter to specify the source VMs.
++
+`<source_vm1>`::
+Specifies the {ec2} instance ID.
++
+`hooks`::
+Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional field.
++
+`<hook>`::
+Specifies the name of the `Hook` CR.
++
+`<step>`::
+Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+
+. Create a `Migration` manifest to run the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Migration
+metadata:
+  name: <name_of_migration_cr>
+  namespace: <namespace>
+spec:
+  plan:
+    name: <name_of_plan_cr>
+    namespace: <namespace>
+EOF
+----
++
+where:
++
+`<name_of_migration_cr>`::
+Specifies the name of the `Migration` CR.
++
+`<name_of_plan_cr>`::
+Specifies the name of the `Plan` CR to execute.
+
+. Monitor the migration progress:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} get migration/<name_of_migration_cr> -n <namespace> -o yaml
+----
++
+This shows the migration status and progress.
+
+. View detailed migration information:
++
+[source,terminal,subs="attributes+"]
+----
+$ {oc} get vmimports -n <namespace>
+----
++
+This shows the detailed phases of the VM import process.
+
+[role="_additional-resources"]
+.Additional resources
+
+* link:{mtv-plan}assembly_planning-migration-aws_mtv[Planning a migration of virtual machines from {aws} {ec2}]

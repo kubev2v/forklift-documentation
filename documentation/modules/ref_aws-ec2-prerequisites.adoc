@@ -1,0 +1,31 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_provider-specific-requirements-for-migration.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_aws-ec2-prerequisites_{context}"]
+= {aws} {ec2} prerequisites
+
+[role="_abstract"]
+Before migrating {ec2} instances to {virt}, verify your environment meets the cluster, region, availability zone, and credential requirements. Cold migration uses {aws} Elastic Block Store (EBS) snapshots and the EBS Container Storage Interface (CSI) driver.
+
+The following prerequisites apply to {aws} {ec2} migrations:
+
+* Red Hat OpenShift Service on {aws} ({rosa}) or OpenShift Dedicated (OSD) on {aws} cluster
+* EBS CSI driver must be installed and configured on the target cluster with storage classes available for mapping
+* {project-short} Operator must be installed
+* {ec2} instances must be in the same {aws} region as the {rosa} or OSD cluster. {project-short} does not support cross-region migration.
+* {ec2} instances must be stopped before migration. {project-short} supports cold migration only.
+* {ec2} instances must use EBS volumes only. {project-short} does not support instances with instance store volumes.
+* {aws} IAM credentials with the following permissions for same-account migrations:
+** `ec2:Describe*` (includes `DescribeInstances`, `DescribeSnapshots`, `DescribeVolumes`)
+** `ec2:CreateSnapshot`
+** `ec2:DeleteSnapshot`
+** `ec2:StopInstances`
+** `ec2:CreateVolume`
+** `ec2:DeleteVolume`
++
+For cross-account migrations, you must also include the following permission:
++
+** `ec2:ModifySnapshotAttribute`
+

@@ -221,7 +221,7 @@ Specifies the namespace for the resource. Use +{namespace}+ for the {project-sho
 
 
 `<service account>`::
-Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
+Specifies the {ocp} service account. This is an optional field. Use the `serviceAccount` parameter to modify any cluster resources.
 
 `playbook`::
 Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
@@ -296,7 +296,7 @@ Specifies the namespace for the resource. Use +{namespace}+ for the {project-sho
 Specifies the name of the `Plan` CR.
 
 `map`::
-Specifies only one network map and one storage map per plan.
+Specifies the network map and storage map used by the plan.
 
 `network`::
 Specifies a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
@@ -317,7 +317,7 @@ Specifies the source VMs. Accepts either the `id` or the `name` parameter to spe
 Specifies the {osp} VM UUID.
 
 `hooks`::
-Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional label.
+Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional field.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.
