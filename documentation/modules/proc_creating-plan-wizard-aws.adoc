@@ -2,38 +2,33 @@
 //
 // * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-aws.adoc
 
-// Is cross-account migration supported?
-// Is this correct (EBS volumes map to EBS-backed storage classes only)?
-
 :_mod-docs-content-type: PROCEDURE
 [id="proc_creating-plan-wizard-aws_{context}"]
 = Creating an {aws} {ec2} migration plan by using the MTV wizard
 
 [role="_abstract"]
-You can migrate {aws} {ec2} instances with the {project-full} plan creation wizard.
-
-The wizard is designed to lead you step-by-step in creating a migration plan.
+You can migrate {aws} {ec2} instances to {virt} by using the {project-full} plan creation wizard to configure source and target providers, network and storage mappings, and migration settings.
 
 Limitations::
 
-* Only cold migration is supported. {project-short} does not support warm or live migrations from {ec2}.
+* {project-short} supports cold migration only. {project-short} does not support warm or live migrations from {ec2}.
 * {ec2} instances must be stopped before migration begins.
-* Only Red Hat OpenShift Service on {aws} ({rosa}) and OpenShift Dedicated (OSD) on {aws} clusters are supported as migration targets. {project-short} does not support migration to other OpenShift platforms.
-* {project-short} supports migration within the same {aws} account only. Cross-account migration is not supported.
-* {ec2} instances must be in the same {aws} region as the target {rosa} or OSD cluster. Cross-region migration is not supported.
-* {project-short} maps EBS volumes to EBS-backed storage classes only.
-* A plan cannot contain more than 500 VMs or 500 disks.
+* {project-short} supports Red Hat Enterprise Linux (RHEL) guest operating systems only. {project-short} does not support migration of instances running Windows, Amazon Linux, or other non-RHEL operating systems.
+* {project-short} supports Red Hat OpenShift Service on {aws} ({rosa}) and OpenShift Dedicated (OSD) on {aws} clusters as migration targets only. {project-short} does not support migration to other OpenShift platforms.
+* {ec2} instances must be in the same {aws} region as the target {rosa} or OSD cluster. {project-short} does not support cross-region migration.
+* {project-short} maps Elastic Block Store (EBS) volumes to EBS-backed storage classes only.
+* A plan cannot contain more than 500 virtual machines (VMs) or 500 disks.
 
 [IMPORTANT]
 ====
-When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard, but are important. Be sure to read and follow the instructions for this page carefully, even though it is outside the plan creation wizard. The page can be opened later, any time before you run the plan, so you can come back to it if needed.
+When you click *Create plan* on the *Review and create* page of the wizard, {project-first} validates your plan. If everything is OK, the *Plan details* page for your plan opens. This page contains settings that do not appear in the wizard, but are important. Be sure to read and follow the instructions for this page carefully, even though it is outside the plan creation wizard. You can open this page later, any time before you run the plan, so you can come back to it if needed.
 ====
 
 .Prerequisites
 
 * Have an {aws} {ec2} source provider and an {virt} destination provider. For more information, see xref:proc_adding-source-provider_aws[Adding an {aws} {ec2} source provider] or xref:proc_adding-source-provider_dest_aws[Adding {a-virt} destination provider].
-* If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
-* {ec2} instances you want to migrate must be stopped.
+* To create a *Network map* or a *Storage map* for use with multiple migration plans, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan.
+* Stop all {ec2} instances you want to migrate.
 
 .Procedure
 
@@ -71,14 +66,14 @@ Only stopped {ec2} instances appear in the list. Running instances cannot be mig
 
 * *Use an existing network map*: Select an existing network map from the list.
 +
-These are network maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
+These network maps are available for all plans and are _ownerless_ in terms of the system. If you select this option and choose a map, {project-short} attaches a copy of that map to your plan, and your plan becomes the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
 +
 [NOTE]
 ====
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use a new network map*: Allows you to create a new network map by supplying the following data. This map is attached to this plan, which is then considered to be its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each is created with an owner.
+* *Use a new network map*: Allows you to create a new network map by supplying the following data. {project-short} attaches this map to this plan, which then becomes its owner. Maps that you create using this option are not available in the *Use an existing network map* option because each has an owner.
 +
 [NOTE]
 ====
@@ -98,14 +93,14 @@ If needed, click *Add mapping* to add another mapping.
 
 * *Use an existing storage map*: Select an existing storage map from the list.
 +
-These are storage maps available for all plans, and therefore, they are _ownerless_ in terms of the system. If you select this option and choose a map, a copy of that map is attached to your plan, and your plan is the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
+These storage maps are available for all plans and are _ownerless_ in terms of the system. If you select this option and choose a map, {project-short} attaches a copy of that map to your plan, and your plan becomes the _owner_ of that copy. Any changes you make to your copy do not affect the original plan or any copies that other users have.
 +
 [NOTE]
 ====
 If you choose an existing map, be sure it has the same source provider and the same target provider as the ones you want to use in your plan.
 ====
 
-* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. These maps are attached to this plan, which is then their owner. Maps that you create using this option are not available in the *Use an existing storage map* option because each is created with an owner.
+* *Use new storage map*: Allows you to create one or two new storage maps by supplying the following data. {project-short} attaches these maps to this plan, which then becomes their owner. Maps that you create using this option are not available in the *Use an existing storage map* option because each has an owner.
 +
 [NOTE]
 ====
@@ -114,7 +109,7 @@ You can create an ownerless storage map, which you and others can use for additi
 +
 [IMPORTANT]
 ====
-For {aws} {ec2} migrations, you must map EBS volumes to storage classes that use the {aws} EBS CSI driver.
+For {aws} {ec2} migrations, you must map EBS volumes to storage classes that use the {aws} EBS Container Storage Interface (CSI) driver.
 ====
 
 ** *Source storage*: Select the EBS volume type from the list.

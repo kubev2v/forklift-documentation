@@ -8,17 +8,13 @@
 = Running an {aws} {ec2} migration from the command-line
 
 [role="_abstract"]
-You can migrate from an {aws} {ec2} source provider by using the command-line interface (CLI).
+You can migrate {ec2} instances to {virt} by using the command-line interface (CLI) to create and configure Secret, Provider, NetworkMap, StorageMap, Plan, and Migration custom resources.
 
 .Prerequisites
 
 * {virt} destination provider configured
 * {ec2} instances must be stopped before migration
 
-// Does anything need to be changed in the Secret and Provider manifests for AWS EC2?
-// Does anything need to be changed in the NetworkMap manifest for AWS EC2?
-// Does anything need to be changed in the StorageMap manifest for AWS EC2?
-// Does anything need to be changed in the Plan manifest for AWS EC2?
 
 .Procedure
 
@@ -32,18 +28,13 @@ kind: Secret
 metadata:
   name: <secret>
   namespace: <namespace>
-  ownerReferences:
-    - apiVersion: forklift.konveyor.io/v1beta1
-      kind: Provider
-      name: <provider_name>
-      uid: <provider_uid>
-  labels:
-    createdForProviderType: ec2
-    createdForResourceType: providers
 type: Opaque
 stringData:
+  region: <aws_region>
   accessKeyId: <aws_access_key_id>
   secretAccessKey: <aws_secret_access_key>
+  # targetAccessKeyId: <target_aws_access_key_id>
+  # targetSecretAccessKey: <target_aws_secret_access_key>
 EOF
 ----
 +
@@ -55,20 +46,25 @@ Specifies the name of the `Secret` CR.
 `<namespace>`::
 Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
 +
-`ownerReferences`::
-Is an optional section in which you can specify a provider's `name` and `uid`.
-+
-`<provider_name>`::
-Specifies the name of the provider that owns this secret.
-+
-`<provider_uid>`::
-Specifies the unique identifier of the provider.
+`<aws_region>`::
+Specifies the {aws} region where your {ec2} instances are located, for example, `us-east-1` or `us-east-2`.
 +
 `<aws_access_key_id>`::
-Specifies the {aws} access key ID.
+Specifies the {aws} access key ID for the source account.
 +
 `<aws_secret_access_key>`::
-Specifies the {aws} secret access key.
+Specifies the {aws} secret access key for the source account.
++
+`<target_aws_access_key_id>`::
+Optional. Specifies the {aws} access key ID for the target account. Required only for cross-account migrations.
++
+`<target_aws_secret_access_key>`::
+Optional. Specifies the {aws} secret access key for the target account. Required only for cross-account migrations.
++
+[NOTE]
+====
+For same-account migrations, use the OpenShift cluster's {aws} credentials to ensure the Elastic Block Store (EBS) Container Storage Interface (CSI) driver can access the migrated volumes.
+====
 
 . Create a `Provider` manifest for the source provider:
 +
@@ -82,10 +78,11 @@ metadata:
   namespace: <namespace>
 spec:
   type: ec2
-  url: <aws_region>
   secret:
     name: <secret>
     namespace: <namespace>
+  settings:
+    target-az: <target_availability_zone>
 EOF
 ----
 +
@@ -97,11 +94,16 @@ Specifies the namespace for the resource. Use +{namespace}+ for the {project-sho
 `<source_provider>`::
 Specifies the name of the source provider.
 +
-`<aws_region>`::
-Specifies the {aws} region where your {ec2} instances are located, for example, `us-east-1` or `us-east-2`. This must be the same region as your {rosa} or OSD cluster.
-+
 `<secret>`::
 Specifies the name of the provider `Secret` CR.
++
+`<target_availability_zone>`::
+Specifies the target {aws} availability zone where {project-short} creates EBS volumes, for example, `us-east-1a`. This must match an availability zone where OpenShift worker nodes run.
++
+[IMPORTANT]
+====
+EBS volumes are availability zone-specific. If the `target-az` setting does not match an availability zone where OpenShift worker nodes run, the EBS CSI driver cannot attach the volumes to worker nodes, causing the migration to fail.
+====
 
 . Create a `NetworkMap` manifest to map the source and destination networks:
 +
@@ -188,7 +190,7 @@ where:
 Specifies the name of the storage map.
 +
 `<storage_class>`::
-Specifies the {virt} storage class that uses the {aws} EBS CSI driver.
+Specifies the storage class that uses the {aws} EBS CSI driver. The storage class must be configured for the same availability zone as the `target-az` setting in the Provider resource.
 +
 `<source_volume_type>`::
 Specifies the EBS volume type (for example, `gp2`, `gp3`, `io1`).
@@ -242,19 +244,19 @@ Specifies the name of the `Plan` CR.
 Specifies only one network map and one storage map per plan.
 +
 `network`::
-Specifies a network mapping, even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
+Specifies a network mapping, even if the migration does not assign the virtual machines (VMs) to a network. The mapping can be empty in this case.
 +
 `<network_map>`::
 Specifies the name of the `NetworkMap` CR.
 +
 `storage`::
-Specifies a storage mapping, even if the VMs to be migrated are not assigned with disk images. The mapping can be empty in this case.
+Specifies a storage mapping, even if the migration does not assign disk images to the VMs. The mapping can be empty in this case.
 +
 `<storage_map>`::
 Specifies the name of the `StorageMap` CR.
 +
 `<target_namespace>`::
-Specifies the target namespace in {virt} where the migrated VMs will be created.
+Specifies the target namespace in {virt} where {project-short} creates the migrated VMs.
 +
 `vms`::
 Specifies the source VMs. Accepts either the `id` or the `name` parameter to specify the source VMs.
