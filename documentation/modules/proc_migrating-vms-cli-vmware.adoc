@@ -103,7 +103,7 @@ Specifies the namespace for the resource. Use +{namespace}+ for the {project-sho
 Specifies the URL of the API endpoint, for example, `https://<vCenter_host>/sdk`.
 
 `<VDDK_image>`::
-Specifies the VDDK image. This is an optional label, but it is strongly recommended to create a VDDK image to accelerate migrations. Follow OpenShift documentation to specify the VDDK image you created.
+Specifies the VDDK image. This is an optional field, but it is strongly recommended to create a VDDK image to accelerate migrations. Follow OpenShift documentation to specify the VDDK image you created.
 
 `sdkEndpoint`::
 Specifies the URL used by the provider's SDK. Options: `vcenter` or `esxi`.
@@ -310,7 +310,7 @@ where:
 Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
 
 `<service account>`::
-Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
+Specifies the {ocp} service account. This is an optional field. Use the `serviceAccount` parameter to modify any cluster resources.
 
 `playbook`::
 Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
@@ -428,11 +428,11 @@ To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warni
 
 `networkNameTemplate`::
 Specifies a template for the network interface name for the VMs in your plan. This is an optional field.
-For a list of available variables and examples, see xref:ref_network-name-template-variables-vmware_{context}[Network name template variables].
+For a list of available variables and examples, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#ref_network-name-template-variables-vmware_vmware[Network name template variables].
 
 `pvcNameTemplate`::
 Specifies a template for the persistent volume claim (PVC) name for a plan. This is an optional field.
-For a list of available variables, template functions, and examples, see xref:ref_pvc-name-template-variables-vmware_{context}[PVC name template variables].
+For a list of available variables, template functions, and examples, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#ref_pvc-name-template-variables-vmware_vmware[PVC name template variables].
 
 `pvcNameTemplateUseGenerateName`::
 Specifies whether to add alphanumeric characters to the name of a PVC.
@@ -493,7 +493,7 @@ Determines whether the migration uses VirtIO devices or compatibility devices wh
 
 `volumeNameTemplate`::
 Specifies a template for the volume interface name for the VMs in your plan. This is an optional field.
-For a list of available variables and examples, see xref:ref_volume-name-template-variables-vmware_{context}[Volume name template variables].
+For a list of available variables and examples, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#ref_volume-name-template-variables-vmware_vmware[Volume name template variables].
 
 `vms`::
 Specifies the source VMs. Use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
@@ -502,19 +502,22 @@ Specifies the source VMs. Use either the `id` or the `name` parameter to specify
 Specifies the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:proc_retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 
 `networkNameTemplate`::
-Specifies a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in `spec:networkNameTemplate`. This is an optional label.
+Specifies a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. This is an optional field.
+For a list of available variables and examples, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#ref_network-name-template-variables-vmware_vmware[Network name template variables].
 
 `pvcNameTemplate`::
-Specifies a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in `spec:pvcNameTemplate`. This is an optional label.
+Specifies a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. This is an optional field.
+For a list of available variables, template functions, and examples, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#ref_pvc-name-template-variables-vmware_vmware[PVC name template variables].
 
 `volumeNameTemplate`::
-Specifies a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in `spec:volumeNameTemplate`. This is an optional label.
+Specifies a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. This is an optional field.
+For a list of available variables and examples, see link:{mtv-plan}assembly_planning-migration-vmware_mtv#ref_volume-name-template-variables-vmware_vmware[Volume name template variables].
 
 `targetName`::
-Specifies the name of the target VM. {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique, and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically. This is an optional label.
+Specifies the name of the target VM. {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique, and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically. This is an optional field.
 
 `hooks`::
-Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional label.
+Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional field.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.

@@ -1,0 +1,57 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-cnv.adoc
+
+:_mod-docs-content-type: REFERENCE
+
+[id="ref_pvc-name-template-variables-cnv_{context}"]
+= PVC name template variables for {virt}-to-{virt} migrations
+
+[role="_abstract"]
+You can use template variables to customize persistent volume claim (PVC) names for migrated VM disks to satisfy storage policies, backup requirements, or organizational naming standards.
+
+Templates use Go template syntax to define naming patterns for {virt}-to-{virt} migrations.
+
+You must ensure that PVC names are DNS-compliant: they must consist of lowercase alphanumeric characters or hyphens (`-`), start with an alphanumeric character, and not exceed 63 characters. If the template syntax is invalid or if the resulting PVC names are not DNS-compliant, {project-short} adds an error to the plan conditions and prevents the migration from running.
+
+== Available variables
+
+The following variables are available in the `pvcNameTemplate` field for {virt}-to-{virt} migrations:
+
+* `.VmName`: Name of the VM in the source {ocp} cluster.
+* `.TargetVmName`: Final VM name in the target cluster. May equal `.VmName` if no rename or normalization occurs.
+* `.PlanName`: Name of the migration plan.
+* `.DiskIndex`: Sequential index of the disk (0-based, where the first disk is 0, the second is 1, and so on).
+* `.SourcePVCName`: Original name of the PVC in the source cluster.
+* `.SourcePVCNamespace`: Namespace of the PVC in the source cluster.
+
+== Template functions
+
+You can use Go template functions to transform variable values into valid PVC names. Common functions include:
+
+* `trunc`: Truncates a string to a specified length. For example, `++{{++trunc 10 .PlanName}}` limits the plan name to 10 characters.
+* `replace`: Replaces all occurrences of a substring. For example, `++{{++.SourcePVCName | replace "_" "-"}}` replaces underscores with hyphens.
+* `lower`: Converts a string to lowercase. For example, `++{{++.VmName | lower}}`.
+
+You can chain functions together by using the pipe (`|`) operator. You can also use regular expression functions such as `mustRegexReplaceAll` for advanced transformations.
+
+For a complete list of available template functions, see xref:con_mtv-template-utility_{context}[{project-short} template utility].
+
+== Default behavior
+
+If you do not specify a `pvcNameTemplate`, {project-short} preserves the original PVC name from the source cluster: `++{{++.SourcePVCName}}`.
+
+[NOTE]
+====
+Unlike {vmw} migrations, {virt}-to-{virt} migrations always use the template output as the exact PVC name. {virt}-to-{virt} migrations ignore the `pvcNameTemplateUseGenerateName` field.
+====
+
+== Examples
+
+The following examples show common PVC naming patterns. Use the `trunc` function to prevent template output from exceeding the 63-character limit:
+
+* `"{{.TargetVmName}}-{{.SourcePVCName}}"` – Prefix the source PVC name with the target VM name (for example, `myvm-data-disk` for a VM named `myvm` and PVC named `data-disk`)
+* `"migrated-{{.SourcePVCName}}-{{.DiskIndex}}"` – Add a migration prefix and disk index (where 0 is the first disk)
+* `"{{.TargetVmName}}-disk-{{.DiskIndex}}"` – Use the target VM name with a disk index
+* `"{{trunc 10 .PlanName}}-{{trunc 20 .TargetVmName}}-{{.DiskIndex}}"` – Truncate the plan and target VM names to prevent exceeding the 63-character limit
+* `"{{.TargetVmName}}-{{.SourcePVCNamespace}}-{{.SourcePVCName}}"` – Include source namespace for clarity in multi-namespace migrations

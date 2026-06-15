@@ -39,6 +39,8 @@ include::../modules/proc_selecting-migration-network-for-virt-provider.adoc[leve
 
 include::../modules/proc_creating-plan-wizard-cnv.adoc[leveloffset=+1]
 
+include::../modules/ref_pvc-name-template-variables-cnv.adoc[leveloffset=+2]
+
 include::../modules/proc_creating-plan-wizard-cnv-live.adoc[leveloffset=+2]
 
 :!cnv:
