@@ -7,7 +7,7 @@
 = Understanding Deep Inspection validation results
 
 [role="_abstract"]
-You can use Deep Inspection validation results to assess migration feasibility and prepare virtual machines for conversion. Review the concerns organized by category and severity to address critical issues before migration.
+Deep Inspection validation results provide categorized findings that help you assess migration feasibility. The severity levels and concern categories indicate which issues require resolution before migration.
 
 == Validation concerns
 
@@ -20,26 +20,26 @@ Unsupported operating system::
 The guest operating system is not supported for migration to {virt}. For information about supported operating systems, see the {project-short} compatibility matrix.
 
 File system issues::
-File system configurations that might cause conversion failures.
+The VM has file system configurations that might cause conversion failures.
 
 Multi-boot configuration::
 The VM has multiple bootable operating systems. You must specify the correct root device path in the migration plan settings.
 
-== Preparing for migration
+== Migration preparation considerations
 
-Use Deep Inspection results to prepare VMs for migration:
+Deep Inspection results help determine the necessary preparation steps before migrating virtual machines:
 
-Address critical concerns::
-Resolve errors before you start the migration. Verify operating system support.
+Critical concerns::
+Resolving errors and verifying operating system support before beginning the migration prevents failures.
 
-Configure root device for multi-boot VMs::
-If Deep Inspection finds a multi-boot configuration, use the root device path from the inspection results. Configure the *Root device* setting in your migration plan.
+Multi-boot configurations::
+When Deep Inspection detects a multi-boot configuration, the *Root device* setting in the migration plan should match the root device path from the inspection results.
 
-Review file system compatibility::
-Verify that all file systems are supported by {virt} and the target operating system version.
+File system compatibility::
+{virt} and the target operating system version must support all file systems on the source VM.
 
-Plan resource allocation::
-Use the disk and partition information to plan storage allocations in the destination environment.
+Resource allocation::
+The disk and partition information provides the baseline data required for planning storage allocations in the destination environment.
 
 [role="_additional-resources"]
 .Additional resources
