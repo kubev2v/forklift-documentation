@@ -35,7 +35,7 @@ You can use Go template functions to transform variable values into valid PVC na
 
 You can chain functions together by using the pipe (`|`) operator. You can also use regular expression functions such as `mustRegexReplaceAll` for advanced transformations.
 
-For a complete list of available template functions, see xref:con_mtv-template-utility_{context}[{project-short} template utility].
+For a complete list of available template functions, see link:{mtv-mig}assembly_migrating-from-vmware_mtv#con_mtv-template-utility_vmware[{project-short} template utility].
 
 == Default behavior
 
