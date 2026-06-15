@@ -1,0 +1,25 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_new-features-and-enhancements-2-12_{context}"]
+= New features and enhancements
+
+[role="_abstract"]
+{project-first} 2.12 introduces the following features and enhancements.
+
+[id="new-features-and-enhancements-2-12-0_{context}"]
+== {project-short} 2.12.0
+
+The web console user interface now supports multiple languages::
+This update introduces comprehensive multi-language translation and internationalization to the {project-short} web console user interface. This enhancement allows global administrators and infrastructure teams to navigate migration plans, view provider status, and manage virtual machine (VM) migrations natively in their preferred language. As a result, the console plugin automatically matches the user's language preference configured in the Red Hat OpenShift Container Platform web console to support the following languages:
++
+* Spanish
+* French
+* Japanese
+* Korean
+* Simplified Chinese
+
++
+link:https://redhat.atlassian.net/browse/MTV-3917[MTV-3917]

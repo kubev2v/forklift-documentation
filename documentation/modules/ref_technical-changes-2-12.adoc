@@ -1,0 +1,11 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_technical-changes-2-12_{context}"]
+= Technical changes
+
+[role="_abstract"]
+Review the technical changes in this release of {project-short}.
+

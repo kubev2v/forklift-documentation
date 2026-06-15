@@ -1,0 +1,29 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_known-issues-2-12_{context}"]
+= Known issues
+
+[role="_abstract"]
+{project-first} 2.12 has the following known issues.
+
+Virtual machine migrations with XFS v4 file systems no longer fail unexpectedly during conversion::
+Before this update, migrating a virtual machine (VM) with an XFS v4 file system and `xfsCompatibility: true` used a Red Hat Enterprise Linux 9 `virt-v2v` image that did not support the `virt_v2v_memsize` and `virt_v2v_smp` parameters. As a consequence, if these parameters were set, the migration failed during the conversion phase. With this release, {project-short} prevents migrations that combine `xfsCompatibility: true` with the `virt_v2v_memsize` or `virt_v2v_smp` parameters. As a result, {project-short} avoids unexpected conversion failures by forbidding incompatible configurations.
++
+link:https://redhat.atlassian.net/browse/MTV-5595[MTV-5595]
+
+Inactive migration plans incorrectly display as running::
+When the number of concurrent virtual machine (VM) migrations or migrating disks exceeds the limit set by the `max_vms_inflight` parameter, {project-short} queues the excess migration plans. As a consequence, the user interface (UI) incorrectly displays the status of these inactive, queued plans as "Running".
++
+No known workaround exists.
++
+link:https://redhat.atlassian.net/browse/MTV-1736[MTV-1736]
+
+Deploying many User Defined Networks simultaneously causes high pod ready latency and node failures::
+When migrating from VMware to OpenShift Virtualization or deploying User Defined Networks (UDNs), creating more than 72 UDNs and their attached resources simultaneously causes heavy resource contention. Open vSwitch (OVS) becomes starved for CPU time, and there is no observable way to determine if a UDN is fully created before resources are attached. As a consequence, high pod ready latency occurs, and nodes might enter a `NotReady` state.
++
+To work around this problem, limit simultaneous UDN creation to 72 or fewer. For deployments requiring more UDNs, create the UDNs upfront and wait for Open Virtual Network Kubernetes (OVNK) utilization to settle before deploying any resources attached to the UDNs. As a result, you maintain stable pod ready latency and prevent node failures.
++
+link:https://redhat.atlassian.net/browse/MTV-5695[MTV-5695]
