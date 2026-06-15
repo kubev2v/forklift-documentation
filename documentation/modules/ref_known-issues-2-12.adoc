@@ -12,7 +12,7 @@
 VM migrations with XFS v4 file systems fail during conversion::
 Migrating a virtual machine (VM) with an XFS v4 file system uses a Red Hat Enterprise Linux 9 `virt-v2v` image. This image does not support the `virt_v2v_memsize` and `virt_v2v_smp` parameters. As a consequence, the migration fails during the conversion phase if you set these parameters with `xfsCompatibility: true`.
 +
-To work around this problem, do not combine `xfsCompatibility: true` with the `virt_v2v_memsize` or `virt_v2v_smp` parameters. As a result, you avoid unexpected conversion failures.
+To work around this problem, apply the instructions in the Red Hat Knowledgebase solution link:https://access.redhat.com/solutions/7135435[MTV Migrations fails as virt-v2v appliance runs out of memory]. As a result, you avoid unexpected conversion failures.
 +
 link:https://redhat.atlassian.net/browse/MTV-5595[MTV-5595]
 
