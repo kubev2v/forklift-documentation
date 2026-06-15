@@ -1,0 +1,127 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_new-features-and-enhancements-2-12_{context}"]
+= New features and enhancements
+
+[role="_abstract"]
+{project-first} 2.12 introduces the following features and enhancements.
+
+[id="new-features-and-enhancements-2-12-0_{context}"]
+== {project-short} 2.12.0
+
+{project-short} UI integrates Red Hat OpenShift Lightspeed::
+With this release, the {project-short} user interface (UI) integrates Red Hat OpenShift Lightspeed. As a virtual infrastructure administrator, you can use free-text queries to generate AI-powered results. You can use this AI integration to quickly find specific answers during complex migrations. This feature also aligns Red Hat OpenShift Lightspeed across the OpenShift console and the UI. As a result, you can troubleshoot migration issues more efficiently.
++
+link:https://redhat.atlassian.net/browse/MTV-4445[MTV-4445]
+
+{project-short} supports AWS EC2 as a source provider (Technology Preview)::
+With this release, {project-short} supports migrations from Amazon Web Services (AWS) Elastic Compute Cloud (EC2) as a Technology Preview. You can define AWS EC2 as a source provider by using the user interface (UI) or the command-line interface (CLI). To access this capability, you must enable the associated feature flag. You can migrate only Red{nbsp}Hat Enterprise Linux (RHEL) virtual machines (VMs) that were created from official Red{nbsp}Hat images. You cannot migrate AWS operating systems or Windows machines. As a result, you can migrate these supported workloads to a Red{nbsp}Hat-supported environment.
++
+link:https://redhat.atlassian.net/browse/MTV-4466[MTV-4466]
+
+{project-short} supports storage copy offload for warm migrations::
+With this release, storage copy offload for warm migrations is fully supported. Before this update, this feature was available as a Technology Preview. You can use this feature to transfer data during a warm migration. As a result, you can migrate virtual machines (VMs) more efficiently.
++
+link:https://redhat.atlassian.net/browse/MTV-4562[MTV-4562]
+
+{project-short} integrates with the NetApp Shift toolkit for zero-copy migrations::
+With this release, {project-short} integrates with the NetApp Shift toolkit for {vmw} environments. You can use this integration to perform zero-copy cold migrations. As a result, you can reduce migration downtime and transfer data more quickly.
++
+The {project-short} user interface (UI) generates specially labeled persistent volume claims (PVCs). These PVCs signal the NetApp Trident Container Storage Interface (CSI) to perform the disk transfer. After the transfer completes, the migration process automatically executes the guest conversion. The process also applies the necessary boot permissions and provisions the final virtual machine (VM) on {virt}.
+* If a source VM is powered on when the migration starts, the migration process automatically powers it off.
++
+link:https://redhat.atlassian.net/browse/MTV-3142[MTV-3142]
+
+Deep inspection tool assesses VM readiness for migration (Technology Preview)::
+With this release, a deep inspection tool assesses the readiness of virtual machines (VMs) for migration as a Technology Preview. The tool inspects the VM file system, which is particularly useful for dual-boot VMs. The user interface (UI) displays this information. You can use this data to choose root mounts and determine migration readiness without manual planning. As a result, you reduce conversion failures and the time required to prepare a VM.
++
+link:https://redhat.atlassian.net/browse/MTV-2482[MTV-2482], link:https://redhat.atlassian.net/browse/MTV-4472[MTV-4472]
+
+{project-short} supports explicit instance type selection for VMs::
+With this release, you can explicitly select an instance type for each virtual machine (VM). You can make this selection when you create a plan in a private cloud cluster. The user interface (UI) displays a list of all available instance types. You can use this feature to optimize resources for specific workloads. As a result, you can manage and scale your cloud infrastructure more efficiently.
++
+link:https://redhat.atlassian.net/browse/MTV-1661[MTV-1661]
+
+Selective shared disk attachment for VMs in a migration plan::
+In a single migration plan, you can define which virtual machines (VMs) share a disk. This enhancement eliminates the need to create two migration plans when you migrate shared disks. Before this update, you had to create separate plans for VMs with and without shared disks. As a result, you can streamline the process for migrating shared disks.
++
+[WARNING]
+====
+You can include VMs with and without shared disks in a single plan. However, if a VM without a shared disk finishes migrating first, the shared disk might not attach to its target VM.
+====
++
+link:https://redhat.atlassian.net/browse/MTV-4635[MTV-4635]
+
+{project-short} UI supports adding virtual machines to existing plans::
+With this release, you can add virtual machines (VMs) to existing plans in the {project-short} user interface (UI). You can use this feature to dynamically scale your infrastructure. As a result, you can optimize your workloads and manage resources more efficiently.
++
+link:https://redhat.atlassian.net/browse/MTV-1726[MTV-1726]
+
+User interface supports configuring tolerations and nodeSelector for importer pods::
+With this release, you can configure the `tolerations` and `nodeSelector` fields for importer pods in the user interface (UI). You can use this feature to customize pod placement and manage resource allocation for importer tasks. As a result, you can optimize workloads for specific infrastructure requirements.
++
+link:https://redhat.atlassian.net/browse/MTV-3015[MTV-3015]
+
+Migration process supports custom firstboot scripts (Technology Preview)::
+With this release, the custom firstboot scripts feature is provided as a Technology Preview. Before this update, this feature was available as a Developer Preview. You can use this feature to customize the initial setup of your virtual machines (VMs). This customization eliminates the need for Secure Shell (SSH) key management. As a result, you streamline the migration process and deploy VMs more efficiently.
++
+link:https://redhat.atlassian.net/browse/MTV-3641[MTV-3641]
+
+{project-short} supports direct hook triggers within AAP (Technology Preview)::
+With this release, you can use `{project-short}` to trigger hooks directly in the Ansible Automation Platform (AAP) as a Technology Preview. Before this update, you had to specify a hook inside the hook image or the hook `configmap`. These methods lacked a connection to AAP. You no longer need to specify hooks manually. As a result, you streamline the migration process and improve automation workflows.
++
+link:https://redhat.atlassian.net/browse/MTV-3663[MTV-3663]
+
+{virt} migrations support PVC name templates::
+With this release, migration plans support the `pvcNameTemplate` field for {virt} to {virt} migrations. You can use this feature to customize the names of persistent volume claims (PVCs). As a result, you can match the generated PVC names to your storage naming conventions.
++
+link:https://redhat.atlassian.net/browse/MTV-3669[MTV-3669]
+
+The web console user interface supports multiple languages::
+This update introduces comprehensive multilanguage translation and internationalization to the {project-short} web console user interface. With this enhancement, you can navigate migration plans, view provider status, and manage virtual machine (VM) migrations in your preferred language. As a result, the console plugin matches your language preference in the Red Hat OpenShift Container Platform web console. It supports the following languages:
++
+* Spanish
+* French
+* Japanese
+* Korean
+* Simplified Chinese
++
+link:https://redhat.atlassian.net/browse/MTV-3917[MTV-3917]
+
+{project-short} supports real-time monitoring of migration performance::
+With this release, real-time monitoring of migration performance is fully supported. Before this update, this feature was available as a Technology Preview. You can monitor network and storage throughput in real time during a migration. You can use these metrics to make informed decisions about performance tuning and configuration. As a result, you can improve the efficiency of your data migrations.
++
+link:https://redhat.atlassian.net/browse/MTV-4458[MTV-4458]
+
+{project-short} UI provides storage offload recommendations::
+With this release, the {project-short} user interface (UI) validates and optimizes storage offload configurations. When you select source and target storage, the UI displays optimal storage classes in drop-down menus. The UI also clearly indicates when a migration uses storage copy offload or the Virtual Disk Development Kit (VDDK). You can use these recommendations to decrease migration times. As a result, you can configure your migrations more efficiently.
++
+link:https://redhat.atlassian.net/browse/MTV-4492[MTV-4492]
+
+You can map a single source network to multiple NADs::
+Currently, `kubevirt` prevents mapping multiple network interface controllers (NICs) to a single network attachment definition (NAD). With this enhancement, you can map a single source network to multiple destination NADs.
++
+When the NICs are created in the target virtual machine (VM), each receives a different NAD from the mapped pool. As a result, you can successfully migrate VMs with multiple NICs on the same source network. The following example shows the `network-21` source network mapped to the `nad-a` and `nad-b` destination NADs:
++
+[source,yaml]
+----
+spec:
+  map:
+    - destination:
+        name: nad-a
+        namespace: mtv-5511-test
+        type: multus
+      source:
+        id: network-21
+    - destination:
+        name: nad-b
+        namespace: mtv-5511-test
+        type: multus
+      source:
+        id: network-21
+----
++
+link:https://issues.redhat.com/browse/MTV-5511[MTV-5511]

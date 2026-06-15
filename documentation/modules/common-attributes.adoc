@@ -10,8 +10,8 @@
 :ocp-name: OpenShift
 :ocp-short: OpenShift
 // when updating the ocp-version, update the ocp-y-version
-:ocp-version: 4.21
-:ocp-y-version: 4.21, 4.20, 4.19
+:ocp-version: 4.22
+:ocp-y-version: 4.22, 4.21, 4.20
 :ocp-doc: link:https://docs.redhat.com/en/documentation/openshift_container_platform/{ocp-version}/html-single
 :operator: mtv-operator
 :operator-name-ui: Migration Toolkit for Virtualization Operator
@@ -57,4 +57,5 @@
 :migrating-guide-title: Migrating your virtual machines to Red Hat {virt}
 :subtitle-migrating: Migrating virtual machines from {vmw} vSphere, {rhv-full} or {osp} platforms, or other platforms to Red Hat {virt} by using the {project-full}
 :abstract-migrating: Run your migration plan by using either the {project-first} user interface in the Red Hat OpenShift web console or the command-line interface.
+
 
