@@ -16,12 +16,6 @@ To work around this problem, apply the instructions in the Red Hat Knowledgebase
 +
 link:https://redhat.atlassian.net/browse/MTV-5595[MTV-5595]
 
-Inactive migration plans incorrectly display as running::
-The `max_vms_inflight` parameter sets a limit for concurrent virtual machine (VM) migrations or migrating disks. When migrations exceed this limit, the migration process queues the excess migration plans. As a consequence, the user interface (UI) incorrectly displays the status of these inactive, queued plans as *Running*.
-+
-No known workaround exists.
-+
-link:https://redhat.atlassian.net/browse/MTV-1736[MTV-1736]
 
 Deploying many User Defined Networks simultaneously causes node failures::
 Migrating from VMware to OpenShift Virtualization or deploying User Defined Networks (UDNs) can cause heavy resource contention. This contention occurs if you create more than 72 UDNs and their attached resources simultaneously. Open vSwitch (OVS) becomes starved for CPU time. Additionally, there is no way to determine if a UDN is fully created before attaching resources. As a consequence, high pod ready latency occurs, and nodes might enter a `NotReady` state.
