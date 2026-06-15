@@ -206,7 +206,7 @@ where:
 Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
 
 `<service account>`::
-Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
+Specifies the {ocp} service account. This is an optional field. Use the `serviceAccount` parameter to modify any cluster resources.
 
 `playbook`::
 Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.

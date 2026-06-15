@@ -8,13 +8,15 @@
 = PVC name template variables for {virt}-to-{virt} migrations
 
 [role="_abstract"]
-You can use template variables to customize persistent volume claim (PVC) names for migrated VM disks to satisfy storage policies, backup integration, or organizational naming standards. Templates use Go template syntax to define naming patterns for {virt}-to-{virt} migrations.
+You can use template variables to customize persistent volume claim (PVC) names for migrated VM disks to satisfy storage policies, backup requirements, or organizational naming standards.
+
+Templates use Go template syntax to define naming patterns for {virt}-to-{virt} migrations.
 
 You must ensure that PVC names are DNS-compliant: they must consist of lowercase alphanumeric characters or hyphens (`-`), start with an alphanumeric character, and not exceed 63 characters. If the template syntax is invalid or if the resulting PVC names are not DNS-compliant, {project-short} adds an error to the plan conditions and prevents the migration from running.
 
 == Available variables
 
-The `pvcNameTemplate` field has access to the following variables for {virt}-to-{virt} migrations:
+The following variables are available in the `pvcNameTemplate` field for {virt}-to-{virt} migrations:
 
 * `.VmName`: Name of the VM in the source {ocp} cluster.
 * `.TargetVmName`: Final VM name in the target cluster. May equal `.VmName` if no rename or normalization occurs.
@@ -41,12 +43,12 @@ If you do not specify a `pvcNameTemplate`, {project-short} preserves the origina
 
 [NOTE]
 ====
-Unlike VMware migrations, {virt}-to-{virt} migrations always use the template output as the exact PVC name. {virt}-to-{virt} migrations ignore the `pvcNameTemplateUseGenerateName` field.
+Unlike {vmw} migrations, {virt}-to-{virt} migrations always use the template output as the exact PVC name. {virt}-to-{virt} migrations ignore the `pvcNameTemplateUseGenerateName` field.
 ====
 
 == Examples
 
-Use the `trunc` function to ensure template output does not exceed the 63-character limit:
+The following examples show common PVC naming patterns. Use the `trunc` function to prevent template output from exceeding the 63-character limit:
 
 * `"{{.TargetVmName}}-{{.SourcePVCName}}"` – Prefix the source PVC name with the target VM name (for example, `myvm-data-disk` for a VM named `myvm` and PVC named `data-disk`)
 * `"migrated-{{.SourcePVCName}}-{{.DiskIndex}}"` – Add a migration prefix and disk index (where 0 is the first disk)
