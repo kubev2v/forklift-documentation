@@ -10,7 +10,7 @@
 Review the resolved issues in this release of {project-short}.
 
 Deleted migration plans no longer leave orphaned PVCs::
-Before this update, the cleanup process removed only populator pods. It left the original and prime persistent volume claims (PVCs) in the cluster. As a consequence, these orphaned PVCs remained after you archived and deleted a migration plan, so you had to manually remove them. With this release, the cleanup process is updated to handle all associated storage resources. As a result, archiving and deleting a migration plan automatically removes the original and prime PVCs. They no longer remain in the cluster.
+Before this update, the cleanup process removed only populator pods. It left the original and prime persistent volume claims (PVCs) in the cluster. As a consequence, these orphaned PVCs remained after you archived and deleted a migration plan. With this release, the cleanup process is updated to handle all associated storage resources. As a result, archiving and deleting a migration plan automatically removes the original and prime PVCs. They no longer remain in the cluster.
 +
 link:https://redhat.atlassian.net/browse/MTV-3353[MTV-3353]
 
