@@ -22,6 +22,8 @@ include::../modules/proc_openstack-application-credential-authentication.adoc[le
 
 include::../modules/ref_vmware-prerequisites.adoc[leveloffset=+1]
 
+include::../modules/ref_vmware-privileges.adoc[leveloffset=+2]
+
 include::../modules/proc_creating-vmware-role-mtv-permissions.adoc[leveloffset=+2]
 
 include::../modules/proc_creating-vddk-image.adoc[leveloffset=+2]

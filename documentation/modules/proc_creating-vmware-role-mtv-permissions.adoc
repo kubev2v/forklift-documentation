@@ -1,6 +1,6 @@
 // Module included in the following assemblies:
 //
-// * documentation/doc-Planning_your_migration/assemblies/assembly_prerequisites-for-migration.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_provider-specific-requirements-for-migration.adoc
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_creating-vmware-role-mtv-permissions_{context}"]
@@ -13,7 +13,7 @@ The procedure that follows explains how to do this in general. For detailed inst
 
 .Procedure
 
-. In the vCenter Server UI, create a role that includes the set of privileges described in the table in xref:ref_vmware-prerequisites_mtv[VMware prerequisites].
+. In the vCenter Server UI, create a role that includes the set of privileges described in the tables in xref:ref_vmware-privileges_{context}[VMware privileges].
 . In the vSphere inventory UI, grant privileges for users with this role to the appropriate vSphere logical objects at one of the following levels:
 
 .. At the user or group level: Assign privileges to the appropriate logical objects in the data center and use the *Propagate to child objects* option. 

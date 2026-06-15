@@ -1,0 +1,117 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_provider-specific-requirements-for-migration.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_vmware-privileges_{context}"]
+= {vmw} privileges
+
+[role="_abstract"]
+Configure user permissions in {vmw} vSphere to allow {project-first} to access and migrate virtual machines (VMs). These permissions control what {project-first} can read, modify, and execute during the migration process. Setting up the correct privileges ensures successful migrations while maintaining security by granting only the necessary access rights.
+
+The required privileges vary based on migration type (cold or warm) and VM characteristics (encrypted or unencrypted). All migrations require datastore access and session validation. Warm migrations require additional snapshot and guest operating system management privileges. Encrypted VMs require cryptographic privileges.
+
+== Privileges required for all migrations
+
+The following privileges are required for all VM migrations, regardless of migration type or VM characteristics.
+
+[cols="2", options="header"]
+.Datastore privileges
+|===
+|Privilege |Description
+|`Datastore.Browse datastore` |Allows exploring the contents of a datastore.
+|`Datastore.Low level file operations` |Allows performing low-level file operations - read, write, delete, and rename - in a datastore.
+|===
+
+[cols="2", options="header"]
+.Sessions privileges
+|===
+|Privilege |Description
+|`Sessions.Validate session` |Allows verification of the validity of a session.
+|===
+
+[cols="2", options="header"]
+.`Virtual machine.Interaction` privileges
+|===
+|Privilege |Description
+|`Virtual machine.Interaction.Power Off` |Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
+|`Virtual machine.Interaction.Power On` |Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
+|`Virtual machine.Guest operating system management by VIX API` |Allows managing a virtual machine by the {vmw} Virtual Infrastructure eXtension (VIX) API.
+|===
+
+== Provisioning privileges
+
+The following provisioning privileges are required to access VM disks and transfer configuration files.
+
+[cols="2", options="header"]
+.`Virtual machine.Provisioning` privileges (required)
+|===
+|Privilege |Description
+|`Virtual machine.Provisioning.Allow disk access`
+|Allows opening a disk on a virtual machine for random read and write access. Used mostly for remote disk mounting.
+|`Virtual machine.Provisioning.Allow file access`
+|Allows operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
+|`Virtual machine.Provisioning.Allow read-only disk access`
+|Allows opening a disk on a virtual machine for random read access. Used mostly for remote disk mounting.
+|`Virtual machine.Provisioning.Allow virtual machine download`
+|Allows read operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
+|`Virtual machine.Provisioning.Allow virtual machine files upload`
+|Allows write operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
+|===
+
+The following provisioning privileges may be required depending on your environment and VM configuration, such as when migrating templates or VMs that require customization.
+
+[cols="2", options="header"]
+.`Virtual machine.Provisioning` privileges (optional)
+|===
+|Privilege |Description
+|`Virtual machine.Provisioning.Clone template`
+|Allows cloning of a template.
+|`Virtual machine.Provisioning.Clone virtual machine`
+|Allows cloning of an existing virtual machine and allocation of resources.
+|`Virtual machine.Provisioning.Create template from virtual machine`
+|Allows creation of a new template from a virtual machine.
+|`Virtual machine.Provisioning.Customize guest`
+|Allows customization of a virtual machine's guest operating system without moving the virtual machine.
+|`Virtual machine.Provisioning.Deploy template`
+|Allows deployment of a virtual machine from a template.
+|`Virtual machine.Provisioning.Mark as template`
+|Allows marking an existing powered-off virtual machine as a template.
+|`Virtual machine.Provisioning.Mark as virtual machine`
+|Allows marking an existing template as a virtual machine.
+|`Virtual machine.Provisioning.Modify customization specification`
+|Allows creation, modification, or deletion of customization specifications.
+|`Virtual machine.Provisioning.Promote disks`
+|Allows promote operations on a virtual machine's disks.
+|`Virtual machine.Provisioning.Read customization specifications`
+|Allows reading a customization specification.
+|===
+
+== Warm migration and deep inspection privileges
+
+The following snapshot management privileges are required for warm migrations and deep inspection.
+
+[cols="2", options="header"]
+.`Virtual machine.Snapshot management` privileges
+|===
+|Privilege |Description
+|`Virtual machine.Snapshot management.Create snapshot` |Allows creation of a snapshot from the virtual machine's current state.
+|`Virtual machine.Snapshot management.Remove snapshot` |Allows removal of a snapshot from the snapshot history.
+|===
+
+== Privileges for encrypted VMs
+
+The following privileges are required only when migrating encrypted VMs.
+
+[cols="2", options="header"]
+.Cryptographic privileges
+|===
+|Privilege |Description
+|`Cryptographic.Decrypt` |Allows decryption of an encrypted virtual machine.
+|`Cryptographic.Direct access` |Allows access to encrypted resources.
+|===
+
+[TIP]
+====
+Create a role in {vmw} with the permissions described in the preceding tables and then apply this role to the *Inventory* section. For more information, see xref:proc_creating-vmware-role-mtv-permissions_{context}[Creating a {vmw} role to apply {project-short} permissions].
+====
