@@ -56,10 +56,10 @@ Specifies the {aws} access key ID for the source account.
 Specifies the {aws} secret access key for the source account.
 +
 `<target_aws_access_key_id>`::
-Optional. Specifies the {aws} access key ID for the target account. Required only for cross-account migrations.
+Specifies the {aws} access key ID for the target account. Required only for cross-account migrations.
 +
 `<target_aws_secret_access_key>`::
-Optional. Specifies the {aws} secret access key for the target account. Required only for cross-account migrations.
+Specifies the {aws} secret access key for the target account. Required only for cross-account migrations.
 +
 [NOTE]
 ====
@@ -241,7 +241,7 @@ Specifies the namespace for the resource. Use +{namespace}+ for the {project-sho
 Specifies the name of the `Plan` CR.
 +
 `map`::
-Specifies only one network map and one storage map per plan.
+Specifies the network map and storage map used by the plan.
 +
 `network`::
 Specifies a network mapping, even if the migration does not assign the virtual machines (VMs) to a network. The mapping can be empty in this case.
@@ -265,7 +265,7 @@ Specifies the source VMs. Accepts either the `id` or the `name` parameter to spe
 Specifies the {ec2} instance ID.
 +
 `hooks`::
-Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional label.
+Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional field.
 +
 `<hook>`::
 Specifies the name of the `Hook` CR.
@@ -316,6 +316,7 @@ $ {oc} get vmimports -n <namespace>
 +
 This shows the detailed phases of the VM import process.
 
+[role="_additional-resources"]
 .Additional resources
 
 * link:{mtv-plan}assembly_planning-migration-aws_mtv[Planning a migration of virtual machines from {aws} {ec2}]

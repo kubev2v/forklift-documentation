@@ -7,7 +7,7 @@
 = {aws} {ec2} prerequisites
 
 [role="_abstract"]
-Before migrating {ec2} instances to {virt}, verify your environment meets the cluster, region, availability zone, and credential requirements. Plan for cold migration by using {aws} Elastic Block Store (EBS) snapshots and the EBS Container Storage Interface (CSI) driver.
+Before migrating {ec2} instances to {virt}, verify your environment meets the cluster, region, availability zone, and credential requirements. Cold migration uses {aws} Elastic Block Store (EBS) snapshots and the EBS Container Storage Interface (CSI) driver.
 
 The following prerequisites apply to {aws} {ec2} migrations:
 

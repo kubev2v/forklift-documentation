@@ -281,6 +281,9 @@ Specifies the name of the `Plan` CR.
 `<namespace>`::
 Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
 
+`map`::
+Specifies the network map and storage map used by the plan.
+
 `<source_provider>`::
 Specifies the name of the source `Provider` CR.
 
@@ -305,6 +308,9 @@ Specifies the name of the source VM to migrate.
 
 `<pvc_name_template_for_this_vm>`::
 Specifies a template for the PVC name for this specific VM, overriding the plan-level template. This is an optional field.
+
+`hooks`::
+Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional field.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.

@@ -408,7 +408,7 @@ Specifies the name of the `Plan` CR.
 Specifies whether the migration is warm - `true` - or cold - `false`. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
 
 `map`::
-Specifies the network map and the storage map used by the plan.
+Specifies the network map and storage map used by the plan.
 
 `network`::
 Specifies a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
@@ -452,18 +452,18 @@ Specifies whether VMs are converted before migration by using the `virt-v2v` too
 Raw copy mode copies VMs without converting them with `virt-v2v`. This provides faster conversions for migrating VMs running a wider range of operating systems and supports migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:con_virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
 
 `targetAffinity`::
-Specifies a VM target affinity rule that is entered in the lines following this label. This is an optional label.
+Specifies a VM target affinity rule that is entered in the lines following this label. This is an optional field.
 +
 `targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:con_target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:proc_configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
 
 `targetLabels`::
-Specifies organizational or operational labels to migrated VMs for identification and management. This is an optional label.
+Specifies organizational or operational labels to migrated VMs for identification and management. This is an optional field.
 
 `targetNodeSelector`::
-Specifies the key-value pairs that must be matched for VMs to be scheduled on nodes. This is an optional label.
+Specifies the key-value pairs that must be matched for VMs to be scheduled on nodes. This is an optional field.
 
 `convertorLabels`::
-Cold migrations only: Specifies organizational or operational labels for the `virt-v2v` convertor pods (importer pods) for identification and management. This is an optional label.
+Cold migrations only: Specifies organizational or operational labels for the `virt-v2v` convertor pods (importer pods) for identification and management. This is an optional field.
 +
 [IMPORTANT]
 ====

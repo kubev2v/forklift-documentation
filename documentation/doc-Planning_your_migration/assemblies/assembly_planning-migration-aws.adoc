@@ -11,13 +11,13 @@ ifdef::context[:parent-context: {context}]
 
 [IMPORTANT]
 ====
-Importing VMs from Amazon {ec2} is Technology Preview software only. Technology Preview features are not supported with Red{nbsp}Hat production service level agreements (SLAs) and might not be functionally complete. Red{nbsp}Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+Importing VMs from Amazon {ec2} is a Technology Preview feature only. Technology Preview features are not supported with Red{nbsp}Hat production service level agreements (SLAs) and might not be functionally complete. Red{nbsp}Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
 ====
 
 [role="_abstract"]
-Create an {aws} {ec2} migration plan by setting up network maps, storage maps, and configuring source and destination providers in the {project-first} UI.
+Create an {aws} {ec2} migration plan by setting up network and storage maps and configuring source and destination providers in the {project-first} UI.
 
-{aws} {ec2} migration supports cold migration only to Red Hat OpenShift Service on {aws} ({rosa}) or OpenShift Dedicated (OSD) on {aws} clusters.
+{aws} {ec2} migration supports cold migration only. The target cluster must be Red Hat OpenShift Service on {aws} ({rosa}) or OpenShift Dedicated (OSD) on {aws}.
 
 :context: aws
 :aws:
@@ -50,7 +50,7 @@ include::../modules/proc_creating-plan-wizard-aws.adoc[leveloffset=+1]
 
 [id="additional-resources_planning-aws"]
 [role="_additional-resources"]
-== Additional resources
+.Additional resources
 
 * link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope]
 

@@ -14,8 +14,6 @@
 [role="_abstract"]
 You can use the command-line interface (CLI) to cancel an entire migration while a migration is in progress.
 
-// When a Migration CR is deleted, are resources automatically cleaned up (same question for all providers)?
-
 .Procedure
 
 *  Delete the `Migration` CR:

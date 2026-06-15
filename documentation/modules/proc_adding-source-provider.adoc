@@ -106,7 +106,7 @@ endif::[]
 
 ifdef::aws[]
 * {aws} credentials with required IAM permissions. For more information, see xref:ref_aws-ec2-prerequisites_mtv[{aws} {ec2} prerequisites].
-* EBS CSI driver installed on the target cluster
+* EBS CSI driver installed on the target cluster.
 endif::[]
 
 ifdef::vmware[]
@@ -137,7 +137,7 @@ ifdef::vmware[]
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 
 ... Click *{vmw}*.
 
@@ -149,7 +149,7 @@ If the *Welcome* pane is not visible, click *Show the welcome card* in the upper
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 +
@@ -208,7 +208,7 @@ ifdef::rhv[]
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 +
 ... Click *{rhv-full}*.
 
@@ -220,7 +220,7 @@ If the *Welcome* pane is not visible, click *Show the welcome card* in the upper
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 
@@ -255,7 +255,7 @@ ifdef::ova[]
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 ... Click *Open Virtual Appliance*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
@@ -266,7 +266,7 @@ If the *Welcome* pane is not visible, click *Show the welcome card* in the upper
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 
@@ -342,7 +342,7 @@ ifdef::ostack[]
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 ... Click *{osp}*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
@@ -353,7 +353,7 @@ If the *Welcome* pane is not visible, click *Show the welcome card* in the upper
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 
@@ -415,7 +415,7 @@ ifdef::cnv[]
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 ... Click *{virt}*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
@@ -426,7 +426,7 @@ If the *Welcome* pane is not visible, click *Show the welcome card* in the upper
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 . Specify the following fields:
 
 * *Provider resource name*: Name of the source provider
@@ -462,7 +462,7 @@ ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 ... Click *{virt}*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
@@ -473,7 +473,7 @@ If the *Welcome* pane is not visible, click *Show the welcome card* in the upper
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 
@@ -510,7 +510,7 @@ ifdef::aws[]
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 ... Click *Amazon {ec2}*.
 
 .. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
@@ -521,7 +521,7 @@ If the *Welcome* pane is not visible, click *Show the welcome card* in the upper
 +
 If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
-If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
 
 . Specify the following fields:
 +
