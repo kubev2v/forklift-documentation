@@ -95,3 +95,11 @@ With this release, the operator logic increases the default memory allocations f
 +
 link:https://redhat.atlassian.net/browse/MTV-4482[MTV-4482]
 
+Inactive migration plans no longer incorrectly display as running::
+Before this update, the `max_vms_inflight` parameter set a limit for concurrent virtual machine (VM) migrations or migrating disks. When migrations exceeded this limit, the migration process queued the excess migration plans. As a consequence, the user interface (UI) incorrectly displayed the status of these inactive, queued plans as "Running".
++
+With this update, the UI correctly processes the status of queued plans. As a result, inactive migration plans no longer incorrectly display as running.
++
+link:https://redhat.atlassian.net/browse/MTV-1736[MTV-1736]
+
+
