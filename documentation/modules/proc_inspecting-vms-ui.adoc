@@ -1,0 +1,120 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_inspecting-vms-ui_{context}"]
+= Inspecting VMs in the MTV UI
+
+[role="_abstract"]
+You can identify virtual machine (VM) compatibility issues before migration by using Deep Inspection to analyze disk images. Running inspections helps you detect and resolve conversion problems early, reducing migration failures.
+
+[IMPORTANT]
+====
+Deep Inspection is a Technology Preview feature only. Technology Preview features
+are not supported with Red Hat production service level agreements (SLAs) and
+might not be functionally complete. Red Hat does not recommend using them
+in production. These features provide early access to upcoming product
+features, enabling customers to test functionality and provide feedback during
+the development process.
+====
+
+.Prerequisites
+
+* {vmw} vSphere source provider configured in {project-short}.
+* {vmw} Virtual Disk Development Kit (VDDK) configured for the source provider.
+* Changed Block Tracking (CBT) must be enabled.
+* Cluster resources to run inspection worker pods.
+* `oc` CLI tool installed
+* Access to the {ocp-short} cluster
+
+.Procedure
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Migration plans*.
+. Click the name of a migration plan to open its details page.
+. On the *Plan details* page, click *Inspect VMs* in the page header or from the *Actions* menu.
++
+The *Inspect virtual machines* window opens.
+
+. In the *Inspect virtual machines* window:
+
+.. Select the VMs you want to inspect by clicking the checkbox next to each VM name.
++
+You can use the filter and search options to find specific VMs.
+.. Use the *Manage columns* option to customize which columns are displayed.
+.. Click *Select all* to select all VMs in the plan, or select VMs individually.
++
+[NOTE]
+====
+{project-short} processes inspections in batches of 10 concurrent operations. If you select more than 10 VMs, {project-short} queues the remaining VMs and processes them as earlier inspections complete.
+====
+
+. Click *Inspect*.
++
+{project-short} creates Conversion custom resources (CRs) for the selected VMs and begins the inspection process.
++
+Alternatively, you can inspect VMs from a provider inventory:
+
+. In the {ocp} web console, click *Migration for Virtualization* > *Providers*.
+. Click the name of a {vmw} vSphere provider to open its details page.
+. On the *Provider details* page, click the *Virtual machines* tab.
+. Click *Inspect VMs* in the page header or from the *Actions* menu.
++
+The *Inspect virtual machines* window opens.
+
+. Follow steps 4-5 from the plan inspection procedure above.
+
+.Verification
+
+. Monitor the inspection progress in the *Virtual machines* tab of either the plan or provider details page.
+. Check the *Inspection status* column for each VM. The following table describes the possible status values:
++
+[cols="25%,75%",options="header"]
+|===
+|Status
+|Description
+
+|Not inspected
+|No Deep Inspection has been run for this VM. Only standard inspection (metadata collection) has been performed.
+
+|Pending
+|The inspection has been queued but has not yet started. This typically occurs when the maximum number of concurrent inspections (10) is already running.
+
+|Running
+|The inspection pod is currently mounting and analyzing the VM's disks.
+
+|Succeeded / Inspection passed
+|The inspection completed successfully. Detailed results are available in the VM details.
+
+|Failed
+|The inspection encountered an error and could not complete. Check the inspection pod logs for details.
+
+|Canceled
+|The inspection was manually canceled before completion.
+|===
+
+. To view detailed inspection results:
+
+.. Click the arrow (*>*) to the left of a VM name to expand its details.
+.. In the expanded view, review the following sections:
++
+--
+* *Concerns*: Lists any issues or warnings detected during inspection, organized by category (for example, Changed Block Tracking (CBT) not enabled) and severity level.
+* *Assessment*: Describes the impact of each concern.
+* *Inspections*: Shows a table of inspection runs with links to the Conversion CR and inspection pod, along with the creation timestamp.
+* *Inspection results*: Displays detailed information about the guest operating system, including:
+** Operating system name and version
+** Operating system architecture (for example, x86_64)
+** File systems detected
+** Root device path
+--
+
+[NOTE]
+====
+{project-short} automatically deletes inspection pods and persistent volume claims (PVCs) after an inspection completes. If you create the inspection from a migration plan, the inspection records are deleted when you archive the plan. If you create the inspection from a provider inventory, the inspection records are not automatically deleted and must be removed manually. To troubleshoot a failed inspection, click the *Pod* or *Conversion* links in the *ResourceLinks* column of the *Inspections* section.
+====
+
+[role="_additional-resources"]
+.Additional resources
+* link:{mtv-plan}assembly_planning-migration-vmware_vmware#ref_deep-inspection-validation-results_vmware[Understanding Deep Inspection validation results]
+* link:https://access.redhat.com/support/offerings/techpreview/[Red Hat Technology Preview Features Support Scope]

@@ -75,6 +75,10 @@ include::../modules/ref_volume-name-template-variables-vmware.adoc[leveloffset=+
 
 :!vmware:
 
+include::../modules/con_about-deep-inspection.adoc[leveloffset=+1]
+
+include::../modules/ref_deep-inspection-validation-results.adoc[leveloffset=+1]
+
 include::../modules/con_migration-of-luks-encrypted-disks.adoc[leveloffset=+1]
 
 include::../modules/proc_enabling-nbde-with-clevis.adoc[leveloffset=+1]

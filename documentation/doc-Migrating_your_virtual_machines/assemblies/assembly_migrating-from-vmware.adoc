@@ -17,6 +17,10 @@ Run your VMware migration plan from the MTV UI or from the command-line.
 
 include::../modules/con_migrating-vmware-prerequisites.adoc[leveloffset=+1]
 
+include::../modules/proc_inspecting-vms-ui.adoc[leveloffset=+1]
+
+include::../modules/proc_inspecting-vms-cli.adoc[leveloffset=+1]
+
 include::../modules/proc_running-migration-plan.adoc[leveloffset=+1]
 
 include::../modules/ref_migration-plan-options-ui.adoc[leveloffset=+2]

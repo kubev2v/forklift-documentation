@@ -1,0 +1,46 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_deep-inspection-validation-results_{context}"]
+= Understanding Deep Inspection validation results
+
+[role="_abstract"]
+Deep Inspection validation results provide categorized findings that help you assess migration feasibility. The severity levels and concern categories indicate which issues require resolution before migration.
+
+== Validation concerns
+
+Deep Inspection can identify concerns that are organized by category and severity:
+
+Changed Block Tracking (CBT) not enabled::
+CBT is not enabled on the source VM. This does not prevent migration. However, it can affect performance during warm migrations.
+
+Unsupported operating system::
+The guest operating system is not supported for migration to {virt}. For information about supported operating systems, see the {project-short} compatibility matrix.
+
+File system issues::
+The VM has file system configurations that might cause conversion failures.
+
+Multi-boot configuration::
+The VM has multiple bootable operating systems. You must specify the correct root device path in the migration plan settings.
+
+== Migration preparation considerations
+
+Deep Inspection results help determine the necessary preparation steps before migrating virtual machines (VMs):
+
+Critical concerns::
+Resolving errors and verifying operating system support before beginning the migration prevents failures.
+
+Multi-boot configurations::
+When Deep Inspection detects a multi-boot configuration, the *Root device* setting in the migration plan should match the root device path from the inspection results.
+
+File system compatibility::
+{virt} and the target operating system version must support all file systems on the source VM.
+
+Resource allocation::
+The disk and partition information provides the baseline data required for planning storage allocations in the destination environment.
+
+[role="_additional-resources"]
+.Additional resources
+* xref:proc_creating-plan-wizard-vmware_{context}[Creating a {vmw} vSphere migration plan by using the MTV wizard]
