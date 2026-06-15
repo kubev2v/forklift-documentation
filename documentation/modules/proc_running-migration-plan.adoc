@@ -9,7 +9,7 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_running-migration-plan_{context}"]
-= Running a migration plan in the MTV UI
+= Running a migration plan in the {project-short} UI
 
 [role="_abstract"]
 You can run a migration plan and view its progress in the {ocp} web console.
@@ -81,6 +81,9 @@ endif::[]
 +
 .. In the *Pods* section, in the *Pod links* column, click the *Logs* link.
 +
+The *Logs* tab opens.
++
+ifndef::hyperv[]
 [NOTE]
 ====
 Logs might not be available for the following common reasons:
@@ -90,6 +93,17 @@ Logs might not be available for the following common reasons:
 * The pod was deleted.
 * The migration failed before running the pod.
 ====
+endif::hyperv[]
+ifdef::hyperv[]
+[NOTE]
+====
+Logs are not always available. The following are common reasons for logs not being available:
+
+* No pod was created.
+* The pod was deleted.
+* The migration failed before running the pod.
+====
+endif::hyperv[]
 
 .. To see the raw logs, click the *Raw* link.
 .. To download the logs, click the *Download* link.

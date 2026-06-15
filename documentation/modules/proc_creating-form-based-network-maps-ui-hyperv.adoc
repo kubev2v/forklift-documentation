@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-hyperv.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_creating-form-based-network-maps-ui-hyperv_{context}"]
+= Creating ownerless network maps by using the form page of the {project-short} UI
+
+[role="_abstract"]
+Use the form page to create ownerless network maps in the {project-first} UI. You can select these maps later when creating a migration plan.
+
+For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
+
+.Prerequisites
+
+* Have a Microsoft Hyper-V source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_hyperv[Adding a Microsoft Hyper-V source provider] or xref:proc_adding-source-provider_dest_hyperv[Adding {a-virt} destination provider].
+
+.Procedure
+
+. In the {ocp} web console, go to *Migration for Virtualization* > *Network maps* > *Create network map* > *Create with form*.
+. Specify the following:
+
+* *Network map name*: Name of the network map.
+* *Project*: Select from the list.
+* *Source provider*: Select from the list.
+* *Target provider*: Select from the list.
+* *Source network*: Select from the list.
+* *Target network*: Select from the list.
+
+. Optional: Click *Add mapping* to create additional network maps, including mapping multiple network sources to a single target network.
+. Click *Create*.
++
+Your map appears in the list of network maps.

@@ -32,6 +32,8 @@ include::../modules/ref_vddk-validator-containers.adoc[leveloffset=+2]
 
 include::../modules/ref_ova-prerequisites.adoc[leveloffset=+1]
 
+include::../modules/ref_hyperv-prerequisites.adoc[leveloffset=+1]
+
 include::../modules/ref_cnv-prerequisites.adoc[leveloffset=+1]
 
 include::../modules/ref_cnv-cnv-live-prerequisites.adoc[leveloffset=+2]

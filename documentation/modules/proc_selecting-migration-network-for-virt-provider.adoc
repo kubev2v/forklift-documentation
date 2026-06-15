@@ -21,7 +21,7 @@ In version 2.10.0 and later, {project-short} detects if you have selected a user
 
 Considerations::
 
-* {project-short} supports using UDNs for all providers except {virt}.
+* {project-short} supports using UDNs for migrations from all source providers except when the source provider is also {virt} (for {ocp-short}-to-{ocp-short} migrations).
 * You can override the default migration network of the provider by selecting a different network when you create a migration plan.
 
 .Procedure
