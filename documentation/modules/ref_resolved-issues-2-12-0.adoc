@@ -49,7 +49,7 @@ link:https://redhat.atlassian.net/browse/MTV-5609[MTV-5609]
 XFSv5 on RHEL 7 no longer falsely reports corruption::
 Before this update, XFSv5 on Red Hat Enterprise Linux (RHEL) 7 incorrectly reported file system corruption without actual issues. This false reporting caused migration plans to fail. As a consequence, you might have performed unnecessary repairs.
 +
-With this release, a new `feature_xfs_repair_ignore` option in the `ForkliftController` custom resource (CR) ignores the `xfs_repair` exit status. As a result, enabling this option prevents XFSv5 from falsely reporting corrupted file systems and failing migration plans. This option is disabled by default, so you must enable it only when necessary.
+With this update, a new `feature_xfs_repair_ignore` option in the `ForkliftController` custom resource (CR) ignores the `xfs_repair` exit status. As a result, enabling this option prevents XFSv5 from falsely reporting corrupted file systems and failing migration plans. This option is disabled by default because skipping the `xfs_repair` check might cause you to miss actual problems. You must enable this option only when necessary.
 +
 link:https://redhat.atlassian.net/browse/MTV-5608[MTV-5608]
 
