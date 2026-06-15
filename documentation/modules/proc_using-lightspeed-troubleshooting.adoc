@@ -1,0 +1,62 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: PROCEDURE
+
+[id="proc_using-lightspeed-troubleshooting_{context}"]
+= Using {lightspeed-full} to troubleshoot migration issues
+
+[role="_abstract"]
+Quickly resolve migration issues by asking {lightspeed-full} questions in natural language instead of manually parsing logs and error messages.
+
+.Prerequisites
+
+* {ocp} 4.15 or later
+* {lightspeed-operator} installed and configured on your cluster
++
+For information about installing and configuring {lightspeed-full}, see the link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[{lightspeed-full} documentation].
+* {project-short} {project-version} or later
+* The {lightspeed-full} integration is enabled in the `ForkliftController` custom resource
++
+For more information, see link:{mtv-plan}index#proc_enabling-lightspeed-integration[Enabling the {lightspeed-full} integration] in _Planning your migration_.
+* You have access to the {ocp} web console
+* You have permission to view {project-short} resources in the cluster
+
+.Procedure
+
+. While viewing your migration plans or resources in the {project-short} user interface, open the {lightspeed-full} chat assistant:
++
+* Click the *{lightspeed-full}* icon in the top global header of the web console, or
+* Click the floating *{lightspeed-full}* icon at the bottom right of the screen.
++
+The chat assistant opens as a slide-out panel.
+
+. Type your question about the migration issue in natural language.
++
+For example:
++
+* "Why is my network mapping failing for plan 'vmware-prod-vms'?"
+* "What is the current status of the warm migration for my database cluster?"
+* "How do I fix naming convention violations in my migration plan?"
+
+. Review the response from {lightspeed-short}, which provides:
++
+* A plain-language diagnosis of the issue
+* Specific error details from the migration logs
+* Recommended actions to resolve the problem
+
+. Follow the recommended steps to resolve the issue.
+
+. Optional: Ask follow-up questions for clarification or additional guidance.
+
+.Verification
+
+* Compare the plain-language diagnosis from {lightspeed-short} with the raw error message in the migration logs to understand the root cause.
+* Check that the recommended solution addresses your specific migration failure.
+
+[role="_additional-resources"]
+.Additional resources
+
+* link:https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed[{lightspeed-full} documentation]
+* link:{mtv-plan}index#con_using-lightspeed-with-mtv[{lightspeed-full} integration with {project-short}]
