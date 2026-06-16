@@ -1,0 +1,80 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-hyperv.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_adding-source-provider_{context}"]
+= Adding a Microsoft Hyper-V source provider
+
+[role="_abstract"]
+You can add a Microsoft Hyper-V source provider by using the {ocp} web console. The provider uses Windows Remote Management (WinRM) to connect to the Hyper-V host and reads virtual machine (VM) disk files from a configured Server Message Block (SMB) share.
+
+[NOTE]
+====
+{project-short} supports only cold migration from Microsoft Hyper-V. Warm migration is not available.
+====
+
+.Procedure
+
+. Access the *Create provider* page for Microsoft Hyper-V by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+... Click *Microsoft Hyper-V*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *Microsoft Hyper-V*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Microsoft Hyper-V* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
++
+.. *Provider details*
+
+* *Provider resource name*: Name of the source provider.
+* *URL*: The Hyper-V host address for WinRM connectivity, for example, `192.168.122.115` or `hyperv-host.example.com`.
+* *SMB share path*: Path to the SMB share that contains the VM disk files, for example, `//192.168.122.115/VMShare`.
++
+The SMB share must be accessible from both the Hyper-V host and the {ocp-short} cluster.
+
+.. *Provider credentials*
+
+* *Username*: Username for accessing the SMB share. For example, `Administrator` or `DOMAIN\username`.
+* *Password*: Password for accessing the SMB share.
+
+[start=3]
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to the left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox and then click *Confirm*. If not, click *Cancel* and then enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+
+. Click *Create provider* to add and save the provider.
++
+The provider appears in the list of providers.
++
+[NOTE]
+====
+It might take a few minutes for the provider to move to the `Ready` status.
+====
