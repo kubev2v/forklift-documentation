@@ -125,3 +125,10 @@ spec:
 ----
 +
 link:https://issues.redhat.com/browse/MTV-5511[MTV-5511]
+
+`HyperV` provider for migrations (Technology Preview)::
+{project-short} provides a `HyperV` provider along with Red{nbsp}Hat-provided documentation. This feature enables you to perform migration operations from the `HyperV` platform by using the user interface (UI) instead of the command-line interface (CLI). As a result, you have a dependable migration path.
++
+This feature is hidden by default. To use the provider, you must opt in by enabling the feature flag in the UI. The `HyperV` provider is available as a Technology Preview, and is not recommended for production environments.
++
+link:https://redhat.atlassian.net/browse/MTV-4462[MTV-4462]
