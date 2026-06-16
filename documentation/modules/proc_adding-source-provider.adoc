@@ -54,7 +54,7 @@ You can add a Microsoft Hyper-V source provider by using the {ocp} web console. 
 ====
 endif::[]
 
-ifdef::aws[]
+ifdef::source-aws[]
 = Adding an {aws} {ec2} source provider
 
 [role="_abstract"]
@@ -100,11 +100,11 @@ ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
 Use a Red Hat {virt} provider as both source and destination provider. You can migrate VMs from the cluster that {project-first} is deployed on to another cluster or from a remote cluster to the cluster that {project-short} is deployed on.
 endif::[]
 
-ifdef::vmware,rhv,aws,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
+ifdef::vmware,rhv,source-aws,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
 .Prerequisites
 endif::[]
 
-ifdef::aws[]
+ifdef::source-aws[]
 * {aws} credentials with required IAM permissions. For more information, see xref:ref_aws-ec2-prerequisites_mtv[{aws} {ec2} prerequisites].
 * EBS CSI driver installed on the target cluster.
 endif::[]
@@ -453,6 +453,49 @@ If both *URL* and *Service account bearer token* are left blank, the local {ocp-
 Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 endif::[]
 
+ifdef::source-aws[]
+. Access the *Create provider* page for {aws} {ec2} by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+... Click *Amazon {ec2}*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *Amazon {ec2}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Amazon {ec2}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
++
+* *Provider resource name*: Name of the source provider.
+* *{aws} region*: The {aws} region where your {ec2} instances are located, for example, `us-east-1`. This must be the same region as your {rosa} or OSD cluster.
++
+. Specify the provider credentials:
++
+* *Access key ID*: {aws} access key ID for authenticating to the {ec2} API.
+* *Secret access key*: {aws} secret access key for authenticating to the {ec2} API.
++
+. Configure target settings:
++
+* *Auto-detect target settings*: Select this checkbox to automatically fetch target {aws} credentials from the cluster and detect the target availability zone from worker nodes. This option is selected by default.
++
+* *Use cross-account credentials*: Select this checkbox if the target {aws} account is different from the source account. When selected, you must provide the following:
++
+** *Target access key ID*: {aws} access key ID for the target account.
+** *Target secret access key*: {aws} secret access key for the target account.
+
+endif::[]
+
 ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
 . Access the *Create {virt} provider* interface by doing one of the following:
 
@@ -501,54 +544,11 @@ If both *URL* and *Service account bearer token* are left blank, the local {ocp-
 Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 endif::[]
 
-ifdef::aws[]
-. Access the *Create provider* page for {aws} {ec2} by doing one of the following:
-
-.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
-... Click *Create Provider*.
-... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
-+
-If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
-+
-If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
-... Click *Amazon {ec2}*.
-
-.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
-... In the *Welcome* pane, click *Amazon {ec2}*.
-+
-If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Amazon {ec2}* when the *Welcome* pane opens.
-... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
-+
-If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
-+
-If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
-
-. Specify the following fields:
-+
-* *Provider resource name*: Name of the source provider.
-* *{aws} region*: The {aws} region where your {ec2} instances are located, for example, `us-east-1`. This must be the same region as your {rosa} or OSD cluster.
-+
-. Specify the provider credentials:
-+
-* *Access key ID*: {aws} access key ID for authenticating to the {ec2} API.
-* *Secret access key*: {aws} secret access key for authenticating to the {ec2} API.
-+
-. Configure target settings:
-+
-* *Auto-detect target settings*: Select this checkbox to automatically fetch target {aws} credentials from the cluster and detect the target availability zone from worker nodes. This option is selected by default.
-+
-* *Use cross-account credentials*: Select this checkbox if the target {aws} account is different from the source account. When selected, you must provide the following:
-+
-** *Target access key ID*: {aws} access key ID for the target account.
-** *Target secret access key*: {aws} secret access key for the target account.
-
-endif::[]
-
 . Click *Create provider* to add and save the provider.
 +
 The provider appears in the list of providers.
 
-ifdef::vmware,aws[]
+ifdef::vmware,source-aws[]
 +
 [NOTE]
 ====
