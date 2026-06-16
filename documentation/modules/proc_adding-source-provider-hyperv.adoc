@@ -22,7 +22,7 @@ You can add a Microsoft Hyper-V source provider by using the {ocp} web console. 
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 ... Click *Microsoft Hyper-V*.
@@ -33,7 +33,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Microsoft Hyper-V* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 

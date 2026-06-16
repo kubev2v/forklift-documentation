@@ -44,7 +44,7 @@ If you have Administrator privileges, you can see all projects. Otherwise, you c
 
 . Specify the following fields:
 
-* *Provider resource name*: Name of the source provider
+* *Provider resource name*: Name of the destination provider
 * *URL*: URL of the endpoint of the API server
 * *Service account bearer token*: Token for a service account with `cluster-admin` privileges
 +
