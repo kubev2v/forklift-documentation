@@ -125,3 +125,10 @@ spec:
 ----
 +
 link:https://issues.redhat.com/browse/MTV-5511[MTV-5511]
+
+`HyperV` provider for migrations (Technology Preview)::
+{project-short} provides a `HyperV` provider for migrations. This feature enables you to perform migration operations from the `HyperV` platform by using the user interface (UI) in addition to the command-line interface (CLI). As a result, you can migrate virtual machines (VMs) from `HyperV` to {ocp-name}.
++
+The `HyperV` provider is available as a Technology Preview, and is not recommended for production environments.
++
+link:https://redhat.atlassian.net/browse/MTV-4462[MTV-4462]
