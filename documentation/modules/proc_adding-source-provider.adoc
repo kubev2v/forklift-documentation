@@ -54,7 +54,7 @@ You can add a Microsoft Hyper-V source provider by using the {ocp} web console. 
 ====
 endif::[]
 
-ifdef::aws[]
+ifdef::source-aws[]
 = Adding an {aws} {ec2} source provider
 
 [role="_abstract"]
@@ -100,11 +100,11 @@ ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
 Use a Red Hat {virt} provider as both source and destination provider. You can migrate VMs from the cluster that {project-first} is deployed on to another cluster or from a remote cluster to the cluster that {project-short} is deployed on.
 endif::[]
 
-ifdef::vmware,rhv,aws,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
+ifdef::vmware,rhv,source-aws,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
 .Prerequisites
 endif::[]
 
-ifdef::aws[]
+ifdef::source-aws[]
 * {aws} credentials with required IAM permissions. For more information, see xref:ref_aws-ec2-prerequisites_mtv[{aws} {ec2} prerequisites].
 * EBS CSI driver installed on the target cluster.
 endif::[]
@@ -453,7 +453,7 @@ If both *URL* and *Service account bearer token* are left blank, the local {ocp-
 Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
 endif::[]
 
-ifdef::aws[]
+ifdef::source-aws[]
 . Access the *Create provider* page for {aws} {ec2} by doing one of the following:
 
 .. In the {ocp} web console, click *Migration for Virtualization > Providers*.
