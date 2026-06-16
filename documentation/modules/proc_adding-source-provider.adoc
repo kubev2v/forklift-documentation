@@ -548,7 +548,7 @@ endif::[]
 +
 The provider appears in the list of providers.
 
-ifdef::vmware,aws[]
+ifdef::vmware,source-aws[]
 +
 [NOTE]
 ====
