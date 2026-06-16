@@ -132,3 +132,13 @@ link:https://issues.redhat.com/browse/MTV-5511[MTV-5511]
 The `HyperV` provider is available as a Technology Preview, and is not recommended for production environments.
 +
 link:https://redhat.atlassian.net/browse/MTV-4462[MTV-4462]
+
+Migration process waits for all Windows VM reboots to complete::
+{project-short} waits until all reboots are complete when migrating Windows virtual machines (VMs). This enhancement is implemented because Windows VMs require multiple reboots during the migration process. As a result, the migration status accurately reflects when a Windows VM is fully migrated and ready for use.
++
+link:https://redhat.atlassian.net/browse/MTV-5342[MTV-5342]
+
+Handling of shared disks with the multi-writer attribute set to false::
+{project-short} handles shared disks with the `multi-writer` attribute set to `false` as shared disks. This enhancement is implemented to ensure that these disks are processed in the same way as disks with `multi-writer` set to `true`. As a result, all shared disks are consistently migrated as shared disks.
++
+link:https://redhat.atlassian.net/browse/MTV-4683[MTV-4683]
