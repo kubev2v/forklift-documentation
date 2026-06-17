@@ -32,6 +32,7 @@ With this release, {project-short} integrates with the NetApp Shift toolkit for 
 +
 The {project-short} user interface (UI) generates specially labeled persistent volume claims (PVCs). These PVCs signal the NetApp Trident Container Storage Interface (CSI) to perform the disk transfer. After the transfer completes, the migration process automatically executes the guest conversion. The process also applies the necessary boot permissions and provisions the final virtual machine (VM) on {virt}.
 * If a source VM is powered on when the migration starts, the migration process automatically powers it off.
+
 +
 link:https://redhat.atlassian.net/browse/MTV-3142[MTV-3142]
 
@@ -142,3 +143,13 @@ Handling of shared disks with the multi-writer attribute set to false::
 {project-short} handles shared disks with the `multi-writer` attribute set to `false` as shared disks. This enhancement is implemented to ensure that these disks are processed in the same way as disks with `multi-writer` set to `true`. As a result, all shared disks are consistently migrated as shared disks.
 +
 link:https://redhat.atlassian.net/browse/MTV-4683[MTV-4683]
+
+Integration with {ocp-name} Lightspeed using an MCP::
+{project-short} provides a Model Context Protocol (MCP) to integrate with {ocp} Lightspeed. This enhancement is implemented to connect {project-short} capabilities with the {ocp-name} Lightspeed interface. As a result, you can interact with {project-short} directly through {ocp-name} Lightspeed.
++
+link:https://redhat.atlassian.net/browse/MTV-4455[MTV-4455]
+
+Support for the `pvcNameTemplate` parameter in {virt} to {virt} migrations::
+{project-short} supports the `pvcNameTemplate` parameter for {virt} to {virt} migrations. This enhancement is implemented to enable the customization of Persistent Volume Claim (PVC) names during the migration process. As a result, you can specify custom names for PVCs when migrating virtual machines (VMs) between {virt} environments.
++
+link:https://redhat.atlassian.net/browse/MTV-3668[MTV-3668]
