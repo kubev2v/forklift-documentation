@@ -11,7 +11,7 @@ When you create YAML-based network maps or storage maps for Microsoft Hyper-V mi
 
 .Prerequisites
 
-* You have added a Microsoft Hyper-V source provider and the provider status is `Ready`. For more information, see xref:proc_adding-source-provider_hyperv[Adding a Microsoft Hyper-V source provider].
+* You have added a Microsoft Hyper-V source provider and the provider status is `Ready`. For more information, see xref:proc_adding-source-provider_{context}[Adding a Microsoft Hyper-V source provider].
 
 .Procedure
 
