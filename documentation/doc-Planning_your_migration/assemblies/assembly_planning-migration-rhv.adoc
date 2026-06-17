@@ -13,7 +13,6 @@ ifdef::context[:parent-context: {context}]
 Create a {rhv-full} migration plan by setting up network maps, configuring source and destination providers with migration networks, and defining the migration plan in the {project-first} UI.
 
 :context: rhv
-:rhv:
 
 include::../modules/proc_creating-form-based-network-maps-ui-rhv.adoc[leveloffset=+1]
 
@@ -23,23 +22,17 @@ include::../modules/proc_creating-form-based-storage-maps-ui-rhv.adoc[leveloffse
 
 include::../modules/proc_creating-yaml-based-storage-maps-ui-rhv.adoc[leveloffset=+1]
 
-include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider-rhv.adoc[leveloffset=+1]
 
-:!rhv:
 :context: dest_rhv
-:dest_rhv:
 
-include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-virt-destination-provider.adoc[leveloffset=+1]
 
 include::../modules/proc_selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
 
-:!dest_rhv:
 :context: rhv
-:rhv:
 
 include::../modules/proc_creating-plan-wizard-rhv.adoc[leveloffset=+1]
-
-:!rhv:
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
