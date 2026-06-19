@@ -30,8 +30,7 @@ link:https://redhat.atlassian.net/browse/MTV-4562[MTV-4562]
 {project-short} integrates with the NetApp Shift toolkit for zero-copy migrations::
 With this release, {project-short} integrates with the NetApp Shift toolkit for {vmw} environments. You can use this integration to perform zero-copy cold migrations. As a result, you can reduce migration downtime and transfer data more quickly.
 +
-The {project-short} user interface (UI) generates specially labeled persistent volume claims (PVCs). These PVCs signal the NetApp Trident Container Storage Interface (CSI) to perform the disk transfer. After the transfer completes, the migration process automatically executes the guest conversion. The process also applies the necessary boot permissions and provisions the final virtual machine (VM) on {virt}.
-* If a source VM is powered on when the migration starts, the migration process automatically powers it off.
+The {project-short} user interface (UI) generates specially labeled persistent volume claims (PVCs). These PVCs signal the NetApp Trident Container Storage Interface (CSI) to perform the disk transfer. After the transfer completes, the migration process automatically executes the guest conversion. The process also applies the necessary boot permissions and provisions the final virtual machine (VM) on {virt}. If a source VM is powered on when the migration starts, the migration process automatically powers it off.
 +
 link:https://redhat.atlassian.net/browse/MTV-3142[MTV-3142]
 
