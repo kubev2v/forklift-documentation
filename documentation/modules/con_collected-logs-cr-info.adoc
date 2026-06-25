@@ -7,7 +7,6 @@
 = Collected logs and custom resource information
 
 [role="_abstract"]
-[role="_abstract"]
 You can download logs and custom resource (CR) YAML files for migration plans, virtual machines (VMs), and namespaces.
 
 Depending on the target, you can use the {ocp} web console or the command-line interface (CLI):
@@ -29,7 +28,6 @@ You can use the `must-gather` tool to collect the following logs and CR files in
 ** `conversion` pod: VM conversion log. The `conversion` pod runs `virt-v2v`, which installs and configures device drivers on the persistent volume claims (PVCs) of the VM. The `conversion` pod naming convention is `<migration_plan>-<vm_id><5_char_id>`.
 ** `virt-launcher` pod: VM launcher log. When a migrated VM is powered on, the `virt-launcher` pod runs `QEMU-KVM` with the PVCs attached as VM disks.
 ** `forklift-controller` pod: The log is filtered for the migration plan, VM, or namespace specified by the `must-gather` command.
-** `forklift-must-gather-api` pod: The log is filtered for the migration plan, VM, or namespace specified by the `must-gather` command.
 ** `hook-job` pod: The log is filtered for hook jobs. The `hook-job` naming convention is `<migration_plan>-<vm_id><5_char_id>`, for example, `plan2j-vm-3696-posthook-4mx85` or `plan2j-vm-3696-prehook-mwqnl`.
 +
 [NOTE]
@@ -68,7 +66,5 @@ must-gather
         │       └── mig-plan-cold.yaml
         └── logs
             ├── forklift-controller-67656d574-w74md
-            │   └── current.log
-            └── forklift-must-gather-api-89fc7f4b6-hlwb6
                 └── current.log
 ----
