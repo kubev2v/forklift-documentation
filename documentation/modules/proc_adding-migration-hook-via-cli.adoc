@@ -55,7 +55,7 @@ metadata:
   name: <hook>
   namespace: <namespace>
 spec:
-  image: quay.io/kubev2v/hook-runner
+  image: {hook-runner-image}
   serviceAccount: <service_account>
   playbook: |
     <playbook>
