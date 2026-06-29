@@ -147,7 +147,3 @@ Integration with {ocp-name} Lightspeed using an MCP::
 +
 link:https://redhat.atlassian.net/browse/MTV-4455[MTV-4455]
 
-Support for the `pvcNameTemplate` parameter in {virt} to {virt} migrations::
-{project-short} supports the `pvcNameTemplate` parameter for {virt} to {virt} migrations. This enhancement is implemented to enable the customization of Persistent Volume Claim (PVC) names during the migration process. As a result, you can specify custom names for PVCs when migrating virtual machines (VMs) between {virt} environments.
-+
-link:https://redhat.atlassian.net/browse/MTV-3668[MTV-3668]
