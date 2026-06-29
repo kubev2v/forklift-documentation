@@ -20,7 +20,7 @@ You must map EBS volumes to storage classes that use the {aws} EBS CSI driver.
 
 .Prerequisites
 
-* Have an {aws} {ec2} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_aws[Adding an {aws} {ec2} source provider] or xref:proc_adding-source-provider_dest_aws[Adding {a-virt} destination provider].
+* Have an {aws} {ec2} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_{context}[Adding an {aws} {ec2} source provider] or xref:proc_adding-virt-destination-provider_dest_{context}[Adding {a-virt} destination provider].
 * EBS CSI driver installed and configured on the target cluster.
 * Storage classes configured to use the EBS CSI driver.
 
