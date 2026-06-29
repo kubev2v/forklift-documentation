@@ -12,6 +12,11 @@ Use any of these storage providers with storage copy offload:
 
 * Hitachi Vantara
 * NetApp ONTAP
++
+[NOTE]
+====
+This storage provider applies only to storage copy offload (block/LUN, `XCOPY`) migrations. For NFS-backed VMs, see xref:con_about-netapp-shift-integration_{context}[Migrating {vmw} virtual machines by using NetApp Shift zero-copy integration].
+====
 * Pure Storage FlashArray
 * Dell PowerMax
 * Dell PowerFlex
@@ -20,3 +25,4 @@ Use any of these storage providers with storage copy offload:
 * HPE Primera
 * Infinidat InfiniBox
 * IBM Flashsystem
+

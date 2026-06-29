@@ -10,3 +10,11 @@
 The {project-first} uses the `virt-v2v` tool to convert the disk image of a virtual machine (VM) into a format compatible with {virt}. The tool makes migrations easier because it automatically performs the tasks needed to make your VMs work with {virt}. For example, enabling paravirtualized VirtIO drivers in the converted VM, if possible, and installing the QEMU guest agent.
 
 `virt-v2v` is included in Red Hat Enterprise Linux (RHEL) versions 7 and later.
+
+For NetApp Shift zero-copy integration, {project-short} uses `virt-v2v-in-place` on PVCs that NetApp Shift already provisioned on the cluster. 
+
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:con_virt-v2v-in-place-netapp-shift_{context}[How MTV uses virt-v2v-in-place with NetApp Shift]
