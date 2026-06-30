@@ -1,0 +1,17 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-2_{context}"]
+= Resolved issues 2.12.2
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+Shared disk migration: VMs with shared disks now migrate reliably::
+Before this update, when you migrated two VMs in the same plan that shared a disk, the VM with `migrateSharedDisks` set to `false` could complete migration and attach to the shared PVC before the data was fully written by the VM with `migrateSharedDisks` set to true. This caused the shared disk to appear connected but be inaccessible to the VM that did not migrate the disk.
++
+With this update, the VM with `migrateSharedDisks` set to `false` waits in the scheduler queue until the VM with `migrateSharedDisks` set to `true` completes its migration. As a result, all data is fully written to the shared PVC before both VMs attach to it, allowing both VMs to access the shared disk successfully after migration.
++
+link:https://issues.redhat.com/browse/MTV-5883[MTV-5883]
