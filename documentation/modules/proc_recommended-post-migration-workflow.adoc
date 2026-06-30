@@ -18,6 +18,7 @@ After a successful migration, follow this workflow to clean up your resources.
 .Procedure
 
 . Verify that migrated virtual machines (VMs) are running as expected in {virt}.
+. For successful migrations, {project-short} automatically cleans up temporary resources. For failed migrations, you must archive the plan to release temporary resources.
 . Optional: Download or collect migration logs from the *Plan details* page while pods are still available. For more information about accessing logs, see link:{mtv-mig}assembly_troubleshooting-migration_mtv#proc_accessing-logs-ui_mtv[Accessing logs in the web console].
 . Archive the migration plan by using the *Archive* option on the *Migration plans* page.
 . Optional: If you no longer need the plan record, delete the migration plan. You must archive the plan before you delete it.

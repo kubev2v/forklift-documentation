@@ -13,7 +13,7 @@
 = Post-migration cleanup and archiving migration plans
 
 [role="_abstract"]
-You must archive migration plans to release temporary {project-short} resources. 
+{project-short} automatically cleans up temporary resources for successful migrations. For failed migrations, you must archive the migration plan to release temporary resources.
 
 The status of a migration plan determines which temporary resources are retained:
 
@@ -25,15 +25,21 @@ The status of a migration plan determines which temporary resources are retained
 
 You can use the *Archive* and *Delete* options on the *Migration plans* page for different purposes:
 
-*Archive*:: 
-Use this option to remove temporary migration resources. These resources include completed migration and validation pods and all PVC mounts, temporary and permanent. Archiving also removes the logs, history, and detailed metadata of the plan from active use. You cannot edit or restart the plan. You can still view, duplicate, or delete an archived plan.
+*Archive*::
+Use this option to remove temporary migration resources for failed migrations. These resources include completed migration and validation pods and all PVC mounts, temporary and permanent. Archiving also removes the logs, history, and detailed metadata of the plan from active use. You cannot edit or restart the plan. You can still view, duplicate, or delete an archived plan.
++
+[NOTE]
+====
+For successful migrations, {project-short} automatically deletes temporary resources, so archiving is not required for cleanup purposes. However, you might still want to archive successful plans to remove their logs, history, and detailed metadata from active use.
+====
 
-*Delete*:: 
-Use this option to permanently remove the migration plan custom resource (CR) from the {ocp} web console or the CLI. Deleting a plan does not remove temporary resources unless you archive the plan first.
+*Delete*::
+Use this option to permanently remove the migration plan custom resource (CR) from the {ocp} web console or the CLI. For failed migrations, deleting a plan does not remove temporary resources. You must archive the plan first to clean up temporary resources, then delete it.
 
 [id="downstream-dr-impact-unarchived-plans_{context}"]
 == Impact on downstream disaster recovery workflows
 
+// Should this be changed to "failed migration plans" or should it be left as a general statement?
 [WARNING]
 ====
 If you do not archive migration plans, mounted PVCs can remain in use. This continued use can block downstream disaster recovery (DR) or downstream remote disaster recovery (RDR) workflows that share the same storage. Relocation and failover operations can become stuck when PVCs are still mounted to VMs or completed {project-short} pods. Archive completed migration plans as part of your post-migration workflows. This action is especially important when you use DR or replication tooling on the same cluster storage.

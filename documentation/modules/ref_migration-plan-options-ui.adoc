@@ -41,11 +41,12 @@ endif::vmware,rhv[]
 +
 [IMPORTANT]
 ====
-For successful migrations, {project-short} automatically deletes PVC mounts, conversion pods, and populator pods. For failed migrations, archiving is required to delete PVC mounts and release temporary resources.
+For successful migrations, {project-short} automatically deletes temporary PVC mounts, conversion pods, and populator pods. For failed migrations, you must archive the plan to delete temporary PVC mounts and release temporary resources.
 ====
 
 * *Delete*: Permanently remove a migration plan. You cannot delete a running migration plan.
 +
+// Should this be changed to specify only failed migrations?
 [NOTE]
 ====
 *Delete* is irreversible.

@@ -36,7 +36,7 @@ When you create a migration plan, the `Migration Controller` service validates t
 +
 [IMPORTANT]
 ====
-For successful migrations, {project-short} automatically deletes PVC mounts, conversion pods, and populator pods and changes the plan's status to *Complete* in the UI, or `Succeeded` in the YAML file. For failed migrations, the plan's status is *Incomplete* in the UI, or `failed` in the YAML file, and PVC mounts are kept so you can investigate the failure. You must archive a failed migration plan.
+For successful migrations, {project-short} automatically deletes temporary PVC mounts, conversion pods, and populator pods and changes the plan's status to *Complete* in the UI, or `Succeeded` in the YAML file. For failed migrations, the plan's status is *Incomplete* in the UI, or `failed` in the YAML file, and temporary PVC mounts are kept so you can investigate the failure. You must archive a failed migration plan to clean up temporary resources.
 ====
 
 * The `Populator Controller` service orchestrates disk transfers using Volume Populators.
