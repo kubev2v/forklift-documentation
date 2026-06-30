@@ -4,10 +4,10 @@
 
 :_mod-docs-content-type: REFERENCE
 [id="ref_resolved-issues-2-12-0_{context}"]
-= Resolved issues 2.12.0
+= {project-short} fixed issues 2.12.0
 
 [role="_abstract"]
-Review the resolved issues in this release of {project-short}.
+Review the fixed issues in this release of {project-short}.
 
 Deleted migration plans no longer leave orphaned PVCs::
 Before this update, the cleanup process removed only populator pods. It left the original and prime persistent volume claims (PVCs) in the cluster. As a consequence, these orphaned PVCs remained after you archived and deleted a migration plan. With this release, the cleanup process is updated to handle all associated storage resources. As a result, archiving and deleting a migration plan automatically removes the original and prime PVCs. They no longer remain in the cluster.

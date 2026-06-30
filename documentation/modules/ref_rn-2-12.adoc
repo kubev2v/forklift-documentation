@@ -7,4 +7,4 @@
 = {project-full} 2.12
 
 [role="_abstract"]
-The release notes describe technical changes, new features and enhancements, known issues, and resolved issues.
+The release notes describe technical changes, new features and enhancements, known issues, and fixed issues.

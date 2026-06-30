@@ -1,0 +1,45 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-2_{context}"]
+= {project-short} fixed issues 2.12.2
+
+[role="_abstract"]
+Review the fixed issues in this release of {project-short}.
+
+Server certificates validated against user-provided CA certificates::
+Before this update, the vSphere provider did not validate the server certificate against the user-provided certificate authority (CA) certificate. As a consequence, the provider accepted any valid Privacy-Enhanced Mail (PEM) content and bypassed actual certificate verification. With this update, the vSphere provider properly validates the vCenter server certificate against the user-provided CA certificate. As a result, the provider fails with a `ConnectionTestFailed` condition if the trust chain is broken.
++
+link:https://issues.redhat.com/browse/MTV-5636[MTV-5636]
+
+You can run preflight inspections on NBDE VMs::
+Before this update, the Deep Inspection (DI) pod for a Network-Bound Disk Encryption (NBDE) virtual machine could not reach the Tang server. As a consequence, the preflight inspection failed, and the migration plan failed. With this update, the DI pod successfully connects to the Tang server. As a result, you can run the default preflight inspection on virtual machines that have NBDE enabled.
++
+link:https://redhat.atlassian.net/browse/MTV-5750[MTV-5750]
+
+Shared disks successfully accessed after virtual machine migrations::
+Before this update, a virtual machine (VM) with `migrateSharedDisks` set to `false` attached to a shared persistent volume claim (PVC) prematurely. As a consequence, the shared disk appeared connected but was inaccessible to that VM. With this update, the VM waits in the scheduler queue until the other VM completes its migration. As a result, all data is fully written, and both VMs can access the shared PVC successfully.
++
+link:https://issues.redhat.com/browse/MTV-5883[MTV-5883]
+
+Continuous authentication retry attempts prevented on Hyper-V hosts::
+Before this update, the Hyper-V provider repeatedly retried failed connections when WinRM Basic authentication was disabled. As a consequence, the continuous connection attempts overloaded the Hyper-V host. With this update, the provider detects the authentication failure, sets the `ConnectionAuthFailed` condition, and stops reconciliation. As a result, the provider properly surfaces the failure and does not overload the host.
++
+link:https://issues.redhat.com/browse/MTV-5829[MTV-5829]
+
+You can set storage copy offload parameters after storage map creation::
+Before this update, you could not set storage copy offload parameters after you created and saved a storage map. As a consequence, you could not use an existing map for storage copy offload migrations. With this update, you can specify these parameters on a *Storage map* page after you save the map. As a result, you can successfully update existing storage maps for these migrations.
++
+link:https://issues.redhat.com/browse/MTV-5900[MTV-5900]
+
+Storage copy offload migrations on IBM FlashSystem no longer fail when vdisk protection is disabled at the pool level::
+Before this update, the copy-offload populator validated only the system-level vdisk protection settings for IBM FlashSystem storage. As a consequence, storage copy offload migrations failed if vdisk protection was enabled at the system level, even if it was disabled for the specific child pools in use. With this update, the validation process checks the vdisk protection settings at the pool level. As a result, storage copy offload migrations succeed when vdisk protection is disabled for the specific child pools, regardless of the system-level configuration.
++
+link:https://redhat.atlassian.net/browse/MTV-6038[MTV-6038]
+
+Plan reconciliation time no longer increases during concurrent migrations::
+Before this update, the scheduler queried the inventory service individually for every running virtual machine (VM). As a consequence, high latency in inventory GET calls caused mutex contention and delayed concurrent migrations. With this update, the inventory application programming interface (API) is optimized to reduce database loads. As a result, the scheduler processes concurrent migrations without significant delays in plan reconciliation time.
++
+link:https://issues.redhat.com/browse/MTV-6052[MTV-6052]
