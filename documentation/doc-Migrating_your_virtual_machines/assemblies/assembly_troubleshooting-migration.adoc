@@ -20,6 +20,18 @@ include::../modules/proc_using-lightspeed-troubleshooting.adoc[leveloffset=+1]
 
 include::../modules/ref_common-migration-issues.adoc[leveloffset=+1]
 
+:mtv!:
+:context: cleanup1
+:cleanup1:
+
+include::../modules/con_post-migration-cleanup.adoc[leveloffset=+1]
+
+include::../modules/proc_recommended-post-migration-workflow.adoc[leveloffset=+1]
+
+:cleanup1!:
+:context: mtv
+:mtv:
+
 include::../modules/ref_error-messages.adoc[leveloffset=+1]
 
 include::../modules/proc_troubleshooting-warm-import-retry-limit.adoc[leveloffset=+2]
