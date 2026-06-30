@@ -46,7 +46,6 @@ For successful migrations, {project-short} automatically deletes temporary PVC m
 
 * *Delete*: Permanently remove a migration plan. You cannot delete a running migration plan.
 +
-// Should this be changed to specify only failed migrations?
 [NOTE]
 ====
 *Delete* is irreversible.

@@ -39,7 +39,6 @@ Use this option to permanently remove the migration plan custom resource (CR) fr
 [id="downstream-dr-impact-unarchived-plans_{context}"]
 == Impact on downstream disaster recovery workflows
 
-// Should this be changed to "failed migration plans" or should it be left as a general statement?
 [WARNING]
 ====
 If you do not archive migration plans, mounted PVCs can remain in use. This continued use can block downstream disaster recovery (DR) or downstream remote disaster recovery (RDR) workflows that share the same storage. Relocation and failover operations can become stuck when PVCs are still mounted to VMs or completed {project-short} pods. Archive completed migration plans as part of your post-migration workflows. This action is especially important when you use DR or replication tooling on the same cluster storage.
