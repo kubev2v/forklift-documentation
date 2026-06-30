@@ -31,23 +31,6 @@ To work around this problem, limit simultaneous UDN creation to 72 or fewer. For
 +
 link:https://redhat.atlassian.net/browse/MTV-5695[MTV-5695]
 
-Warm migrations of NBDE VMs fail during preflight inspection::
-A warm migration of a Network-Bound Disk Encryption (NBDE) virtual machine (VM) uses a DI pod. This pod cannot connect to the Tang server. As a consequence, the preflight inspection fails, and the migration plan fails.
-+
-To work around this problem, disable the preflight inspection step by adding `runPreflightInspection: false` to the migration plan `spec`:
-+
-[source,yaml]
-----
-spec:
-  ...
-  runPreflightInspection: false
-  ...
-----
-+
-As a result, the migration proceeds without the preflight inspection. Potential issues in the plan might not be caught before execution.
-+
-link:https://redhat.atlassian.net/browse/MTV-5750[MTV-5750]
-
 Duplicate default persistent routes retained after VM migrations::
 A script execution issue during a virtual machine (VM) migration causes duplicate default persistent routes to be retained. As a consequence, the duplicated routes cause network issues after the migration.
 +

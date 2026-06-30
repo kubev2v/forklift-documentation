@@ -9,6 +9,14 @@
 [role="_abstract"]
 {project-first} 2.12 introduces the following features and enhancements.
 
+[id="new-features-and-enhancements-2-12-2_{context}"]
+== {project-short} 2.12.2
+
+CSI volume import is available for copy-offload migrations (Developer Preview)::   
+{project-short} introduces a new copy-offload method that uses Container Storage Interface (CSI) driver volume import capabilities. This method migrates VMware vSphere Virtual Volumes (vVols) and Raw Device Mapping (RDM) disks. Instead of running a dedicated populator pod per disk, {project-short} creates a persistent volume claim (PVC) with vendor-specific import annotations. The CSI driver handles volume provisioning from the existing source volume. As a result, the CSI driver manages the volume lifecycle. This enhancement makes migrations safer, reduces configuration requirements, and improves reliability.
++
+link:https://issues.redhat.com/browse/MTV-5483[MTV-5483]
+
 [id="new-features-and-enhancements-2-12-1_{context}"]
 == {project-short} 2.12.1
 
