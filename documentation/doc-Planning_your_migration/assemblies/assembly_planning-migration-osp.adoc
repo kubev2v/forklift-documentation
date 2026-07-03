@@ -13,6 +13,7 @@ ifdef::context[:parent-context: {context}]
 Create an {osp} migration plan by setting up network maps, configuring source and destination providers with migration networks, and defining the migration plan in the {project-first} UI.
 
 :context: ostack
+:ostack:
 
 include::../modules/proc_creating-form-based-network-maps-ui-ostack.adoc[leveloffset=+1]
 
@@ -22,17 +23,24 @@ include::../modules/proc_creating-form-based-storage-maps-ui-ostack.adoc[levelof
 
 include::../modules/proc_creating-yaml-based-storage-maps-ui-osp.adoc[leveloffset=+1]
 
-include::../modules/proc_adding-source-provider-ostack.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
+:!ostack:
 :context: dest_ostack
+:dest_ostack:
 
-include::../modules/proc_adding-virt-destination-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
 include::../modules/proc_selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
 
+:!dest_ostack:
 :context: ostack
+:ostack:
 
 include::../modules/proc_creating-plan-wizard-ostack.adoc[leveloffset=+1]
+
+
+:!ostack:
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]

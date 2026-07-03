@@ -1,0 +1,590 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-aws.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-cnv.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-hyperv.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-osp.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-ova.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-rhv.adoc
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_adding-source-provider_{context}"]
+
+ifdef::vmware[]
+= Adding a {vmw} vSphere source provider
+
+[role="_abstract"] 
+You can migrate {vmw} vSphere VMs from {vmw} vCenter or from a {vmw} ESX/ESXi server without going through vCenter.
+
+Considerations::
+
+* EMS enforcement is disabled for migrations with {vmw} vSphere source providers in order to enable migrations from versions of vSphere that are supported by {project-full} but do not comply with the 2023 FIPS requirements. Therefore, users should consider whether migrations from vSphere source providers risk their compliance with FIPS. Supported versions of vSphere are specified in xref:ref_compatibility-guidelines_mtv[Software compatibility guidelines].
+* Remove anti-virus software from source VMs before migration to prevent migration failures.
+* {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.
+* If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:proc_creating-plan-wizard-vmware_vmware[Creating a {vmw} vSphere migration plan using the {project-short} wizard].  
+
+endif::[]
+
+ifdef::rhv[]
+= Adding {a-rhv} source provider
+
+[role="_abstract"] 
+You can add {a-rhv} source provider by using the {ocp} web console.
+endif::[]
+
+ifdef::ova[]
+= Adding an Open Virtual Appliance (OVA) source provider
+
+[role="_abstract"] 
+You can add Open Virtual Appliance (OVA) files that were created by {vmw} vSphere as a source provider by using the {ocp} web console.
+
+endif::[]
+
+ifdef::hyperv[]
+= Adding a Microsoft Hyper-V source provider
+
+[role="_abstract"]
+You can add a Microsoft Hyper-V source provider by using the {ocp} web console. The provider uses Windows Remote Management (WinRM) to connect to the Hyper-V host and reads virtual machine (VM) disk files from a configured Server Message Block (SMB) share.
+
+[NOTE]
+====
+{project-short} supports only cold migration from Microsoft Hyper-V. Warm migration is not available.
+====
+endif::[]
+
+ifdef::source-aws[]
+= Adding an {aws} {ec2} source provider
+
+[role="_abstract"]
+You can add an {aws} {ec2} source provider to migrate {ec2} instances to {virt} on Red Hat OpenShift Service on {aws} ({rosa}) or OpenShift Dedicated (OSD) on {aws}.
+
+[IMPORTANT]
+====
+Importing VMs from Amazon {ec2} is a Technology Preview feature only. Technology Preview features are not supported with Red{nbsp}Hat production service level agreements (SLAs) and might not be functionally complete. Red{nbsp}Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+
+For more information about the support scope of Red{nbsp}Hat Technology Preview features, see link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
+====
+
+endif::[]
+
+ifdef::ostack[]
+= Adding an {osp} source provider
+
+[role="_abstract"]
+You can add an {osp} source provider by using the {ocp} web console.
+
+[IMPORTANT]
+====
+When you migrate an image-based VM from an {osp} provider, a snapshot is created for the image that is attached to the source VM, and the data from the snapshot is copied over to the target VM. This means that the target VM will have the same state as that of the source VM at the time the snapshot was created.
+====
+endif::[]
+
+ifdef::cnv[]
+= Adding a Red Hat {virt} source provider
+
+[role="_abstract"]
+You can use a Red Hat {virt} provider as both source and destination provider. You can migrate VMs from the cluster that {project-first} is deployed on to another cluster, or from a remote cluster to the cluster that {project-short} is deployed on.
+
+[NOTE]
+====
+The {ocp} cluster version of the source provider must be 4.16 or later.
+====
+endif::[]
+
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
+= Adding {a-virt} destination provider
+
+[role="_abstract"]
+Use a Red Hat {virt} provider as both source and destination provider. You can migrate VMs from the cluster that {project-first} is deployed on to another cluster or from a remote cluster to the cluster that {project-short} is deployed on.
+endif::[]
+
+ifdef::vmware,rhv,source-aws,dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
+.Prerequisites
+endif::[]
+
+ifdef::source-aws[]
+* {aws} credentials with required IAM permissions. For more information, see xref:ref_aws-ec2-prerequisites_mtv[{aws} {ec2} prerequisites].
+* EBS CSI driver installed on the target cluster.
+endif::[]
+
+ifdef::vmware[]
+* Create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters to accelerate migrations and reduce the risk of migration plan failures. If you are not using VDDK and a plan fails, retry with VDDK installed. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
+
+[WARNING]
+====
+Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
+====
+endif::[]
+
+ifdef::rhv[]
+* {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, specify the {manager} Apache CA certificate
+endif::[]
+
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
+* You must have {a-virt} link:https://access.redhat.com/documentation/en-us/openshift_container_platform/{ocp-version}/html/authentication_and_authorization/using-service-accounts[service account token] with `cluster-admin` privileges.
+endif::[]
+
+.Procedure
+
+ifdef::vmware[]
+. Access the *Create provider* page for {vmw} by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+
+... Click *{vmw}*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{vmw}*.
++ 
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{vmw}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
++
+.. *Provider details*
+
+* *Provider resource name*: Name of the source provider.
+* *Endpoint type*: Select the vSphere provider endpoint type. Options: *vCenter* or *ESXi*. You can migrate virtual machines from vCenter, an ESX/ESXi server that is not managed by vCenter, or from an ESX/ESXi server that is managed by vCenter but does not go through vCenter.
+* *URL*: URL of the SDK endpoint of the vCenter on which the source VM is mounted. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If a certificate for FQDN is specified, the value of this field needs to match the FQDN in the certificate.
+* *VDDK init image*: `VDDKInitImage` path. Create a VDDK init image to accelerate migrations. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
++
+Do one of the following:
+
+** Select the *Skip {vmw} Virtual Disk Development Kit (VDDK) SDK acceleration (not recommended)*.
+
+** Enter the path in the *VDDK init image* text box. Format: `<registry_route_or_server_path>/vddk:<tag>`.
+
+** Upload a VDDK archive and build a VDDK init image from the archive by doing the following:
+
+*** Click *Browse* next to the *VDDK init image archive* text box, select the desired file, and click *Select*.
+
+*** Click *Upload*.
++
+The URL of the uploaded archive is displayed in the *VDDK init image archive* text box.
+
+.. *Provider credentials*
+
+* *Username*: vCenter user or ESXi user. For example, `user@vsphere.local`.
+* *Password*: vCenter user password or ESXi user password.
+
+[start=3]
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to the left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox and then click *Confirm*. If not, click *Cancel* and then enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+
+endif::[]
+
+ifdef::rhv[]
+. Access the *Create provider* page for {rhv-full} by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
++
+... Click *{rhv-full}*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click  *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{rhv-full}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{rhv-full}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
+
+* *Provider resource name*: Name of the source provider.
+* *URL*: URL of the API endpoint of the {rhv-full} Manager (RHVM) on which the source VM is mounted. Ensure that the URL includes the path leading to the RHVM API server, usually `/ovirt-engine/api`. For example, `https://rhv-host-example.com/ovirt-engine/api`.
+* *Username*: Username.
+* *Password*: Password.
++
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to the left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox and then click *Confirm*. If not, click *Cancel* and then enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+endif::[]
+ifdef::ova[]
+. Access the *Create provider* page for Open Virtual Appliance by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+... Click *Open Virtual Appliance*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *Open Virtual Appliance*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Open Virtual Appliance* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
+
+* *Provider resource name*: Name of the source provider
+* *URL*: URL of the NFS file share that serves the OVA
++
+[NOTE]
+====
+After creating the provider, you can optionally configure OVA file upload by web browser to upload OVA files directly to the NFS share. For more information, see xref:proc_configuring-ova-web-upload_ova[Configuring OVA file upload by web browser].
+====
+endif::[]
+ifdef::hyperv[]
+. Access the *Create provider* page for Microsoft Hyper-V by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+... Click *Microsoft Hyper-V*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *Microsoft Hyper-V*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Microsoft Hyper-V* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
++
+.. *Provider details*
+
+* *Provider resource name*: Name of the source provider.
+* *URL*: The Hyper-V host address for WinRM connectivity, for example, `192.168.122.115` or `hyperv-host.example.com`.
+* *SMB share path*: Path to the SMB share that contains the VM disk files, for example, `//192.168.122.115/VMShare`.
++
+The SMB share must be accessible from both the Hyper-V host and the {ocp-short} cluster.
+
+.. *Provider credentials*
+
+* *Username*: Username for accessing the SMB share. For example, `Administrator` or `DOMAIN\username`.
+* *Password*: Password for accessing the SMB share.
+
+[start=3]
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to the left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox and then click *Confirm*. If not, click *Cancel* and then enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+endif::[]
+ifdef::ostack[]
+. Access the *Create provider* page for {osp} by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+... Click *{osp}*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{osp}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{osp}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
+
+* *Provider resource name*: Name of the source provider.
+* *URL*: URL of the {osp} Identity (Keystone) endpoint. For example, `http://controller:5000/v3`.
+* *Authentication type*: Choose one of the following methods of authentication and supply the information related to your choice. For example, if you choose *Application credential ID* as the authentication type, the *Application credential ID* and the *Application credential secret* fields become active, and you need to supply the ID and the secret.
+
+** *Application credential ID*
+*** *Application credential ID*: {osp} application credential ID
+*** *Application credential secret*: {osp} application credential `Secret`
+
+** *Application credential name*
+*** *Application credential name*: {osp} application credential name
+*** *Application credential secret*: {osp} application credential `Secret`
+*** *Username*: {osp} username
+*** *Domain*: {osp} domain name
+
+** *Token with user ID*
+*** *Token*: {osp} token
+*** *User ID*: {osp} user ID
+*** *Project ID*:  {osp} project ID
+
+** *Token with user Name*
+*** *Token*: {osp} token
+*** *Username*: {osp} username
+*** *Project*: {osp} project
+*** *Domain name*: {osp} domain name
+
+** *Password*
+*** *Username*: {osp} username
+*** *Password*: {osp} password
+*** *Project*: {osp} project
+*** *Domain*: {osp} domain name
++
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to the left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox and then click *Confirm*. If not, click *Cancel* and then enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+endif::[]
+
+ifdef::cnv[]
+. Access the *Create provider* interface {virt} by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+... Click *{virt}*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{virt}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+. Specify the following fields:
+
+* *Provider resource name*: Name of the source provider
+* *URL*: URL of the endpoint of the API server
+* *Service account bearer token*: Token for a service account with `cluster-admin` privileges
++
+If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
++
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to the left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox and then click *Confirm*. If not, click *Cancel* and then enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+endif::[]
+
+ifdef::source-aws[]
+. Access the *Create provider* page for {aws} {ec2} by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+... Click *Amazon {ec2}*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *Amazon {ec2}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Amazon {ec2}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
++
+* *Provider resource name*: Name of the source provider.
+* *{aws} region*: The {aws} region where your {ec2} instances are located, for example, `us-east-1`. This must be the same region as your {rosa} or OSD cluster.
++
+. Specify the provider credentials:
++
+* *Access key ID*: {aws} access key ID for authenticating to the {ec2} API.
+* *Secret access key*: {aws} secret access key for authenticating to the {ec2} API.
++
+. Configure target settings:
++
+* *Auto-detect target settings*: Select this checkbox to automatically fetch target {aws} credentials from the cluster and detect the target availability zone from worker nodes. This option is selected by default.
++
+* *Use cross-account credentials*: Select this checkbox if the target {aws} account is different from the source account. When selected, you must provide the following:
++
+** *Target access key ID*: {aws} access key ID for the target account.
+** *Target secret access key*: {aws} secret access key for the target account.
+
+endif::[]
+
+ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_aws,dest_cnv[]
+. Access the *Create {virt} provider* interface by doing one of the following:
+
+.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
+... Click *Create Provider*.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+... Click *{virt}*.
+
+.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
+... In the *Welcome* pane, click *{virt}*.
++
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
+... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
++
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
++
+If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+
+. Specify the following fields:
+
+* *Provider resource name*: Name of the source provider
+* *URL*: URL of the endpoint of the API server
+* *Service account bearer token*: Token for a service account with `cluster-admin` privileges
++
+If both *URL* and *Service account bearer token* are left blank, the local {ocp-short} cluster is used.
++
+. Choose one of the following options for validating CA certificates:
++
+** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
+** *Use the system CA certificate*: Migrate after validating the system CA certificate.
+** *Skip certificate validation* : Migrate without validating a CA certificate.
++
+.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to the left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
+.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
+.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
++
+. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
++
+.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
+.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox and then click *Confirm*. If not, click *Cancel* and then enter the correct certificate information manually.
++
+Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+endif::[]
+
+. Click *Create provider* to add and save the provider.
++
+The provider appears in the list of providers.
+
+ifdef::vmware,source-aws[]
++
+[NOTE]
+====
+It might take a few minutes for the provider to move to the `Ready` status.
+====
+endif::[]
+
+ifdef::hyperv[]
++
+[NOTE]
+====
+It might take a few minutes for the provider to move to the `Ready` status.
+====
+endif::[]
+
+ifdef::ova[]
++
+[NOTE]
+====
+An error message might appear that states that an error has occurred. You can ignore this message.
+====
+endif::[]
+
+ifdef::vmware,rhv,ostack,cnv,cnv2[]
+. Optional: Add access to the UI of the provider:
+.. On the *Providers* page, click the provider.
++
+The *Provider details* page opens.
+.. Click the *Edit* icon under *External UI web link*.
+.. Enter the link and click *Save*.
++
+[NOTE]
+====
+If you do not enter a link, {project-short} attempts to calculate the correct link.
+
+* If {project-short} succeeds, the hyperlink of the field points to the calculated link.
+* If {project-short} does not succeed, the field remains empty.
+====
+endif::[]

@@ -26,7 +26,7 @@ When you click *Create plan* on the *Review and create* page of the wizard, {pro
 
 .Prerequisites
 
-* Have an {aws} {ec2} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_{context}[Adding an {aws} {ec2} source provider] or xref:proc_adding-virt-destination-provider_dest_{context}[Adding {a-virt} destination provider].
+* Have an {aws} {ec2} source provider and an {virt} destination provider. For more information, see xref:proc_adding-source-provider_aws[Adding an {aws} {ec2} source provider] or xref:proc_adding-source-provider_dest_aws[Adding {a-virt} destination provider].
 * To create a *Network map* or a *Storage map* for use with multiple migration plans, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan.
 * Stop all {ec2} instances you want to migrate.
 

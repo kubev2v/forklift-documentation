@@ -20,6 +20,7 @@ Create an {aws} {ec2} migration plan by setting up network and storage maps and 
 {aws} {ec2} migration supports cold migration only. The target cluster must be Red Hat OpenShift Service on {aws} ({rosa}) or OpenShift Dedicated (OSD) on {aws}.
 
 :context: aws
+:source-aws:
 
 include::../modules/proc_creating-form-based-network-maps-ui-aws.adoc[leveloffset=+1]
 
@@ -29,17 +30,23 @@ include::../modules/proc_creating-form-based-storage-maps-ui-aws.adoc[leveloffse
 
 include::../modules/proc_creating-yaml-based-storage-maps-ui-aws.adoc[leveloffset=+1]
 
-include::../modules/proc_adding-source-provider-aws.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
+:!source-aws:
 :context: dest_aws
+:dest_aws:
 
-include::../modules/proc_adding-virt-destination-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
 
 include::../modules/proc_selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
 
+:!dest_aws:
 :context: aws
+:source-aws:
 
 include::../modules/proc_creating-plan-wizard-aws.adoc[leveloffset=+1]
+
+:!source-aws:
 
 [id="additional-resources_planning-aws"]
 [role="_additional-resources"]
