@@ -85,7 +85,7 @@ link:https://redhat.atlassian.net/browse/MTV-3663[MTV-3663]
 {virt} migrations support PVC name templates::
 With this release, migration plans support the `pvcNameTemplate` field for {virt} to {virt} migrations. You can use this feature to customize the names of persistent volume claims (PVCs). As a result, you can match the generated PVC names to your storage naming conventions.
 +
-link:https://redhat.atlassian.net/browse/MTV-3668[MTV-3668]
+link:https://redhat.atlassian.net/browse/MTV-3669[MTV-3669]
 
 The {project-short} UI supports multiple languages::
 This update introduces comprehensive multilanguage translation and internationalization to the {project-short} UI. With this enhancement, you can navigate migration plans, view provider status, and manage virtual machine (VM) migrations in your preferred language. As a result, the console plugin matches your language preference in the Red Hat {virt} web console. It supports the following languages:
