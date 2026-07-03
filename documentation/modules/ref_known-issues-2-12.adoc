@@ -9,13 +9,6 @@
 [role="_abstract"]
 {project-first} {project-version} has the following known issues.
 
-Static IP loss during RHEL 9 and 10 VM migrations::
-On Red Hat Enterprise Linux (RHEL) 9 and 10 systems, predictable network interface naming overrides `udev` rename rules. As a consequence, NetworkManager fails to activate the connection, and the virtual machine (VM) loses its static IP address.
-+
-To work around this problem, manually add systemd `.link` files into the `/etc/systemd/network/` directory to rename the interface. As a result, NetworkManager activates the connection and retains the static IP address.
-+
-link:https://issues.redhat.com/browse/MTV-5530[MTV-5530]
-
 VM migrations with XFS v4 file systems fail during conversion::
 Migrating a virtual machine (VM) with an XFS v4 file system uses a Red Hat Enterprise Linux 9 `virt-v2v` image. This image does not support the `virt_v2v_memsize` and `virt_v2v_smp` parameters. As a consequence, the migration fails during the conversion phase if you set these parameters with `xfsCompatibility: true`.
 +
@@ -47,10 +40,3 @@ spec:
 As a result, the migration proceeds without the preflight inspection. Potential issues in the plan might not be caught before execution.
 +
 link:https://redhat.atlassian.net/browse/MTV-5750[MTV-5750]
-
-Duplicate default persistent routes retained after VM migrations::
-A script execution issue during a virtual machine (VM) migration causes duplicate default persistent routes to be retained. As a consequence, the duplicated routes cause network issues after the migration.
-+
-To work around this problem, manually remove the duplicate persistent routes. As a result, the system uses the correct network configuration.
-+
-link:https://issues.redhat.com/browse/MTV-5880[MTV-5880]
