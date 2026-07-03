@@ -9,7 +9,7 @@
 [role="_abstract"]
 The VMs are not shut down during the precopy stage.
 
-The VM disks are copied incrementally by using changed block tracking (CBT) snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment.For more information about CBT snapshots, see the "Additional resources" section.
+The VM disks are copied incrementally by using changed block tracking (CBT) snapshots. The snapshots are created at one-hour intervals by default. You can change the snapshot interval by updating the `forklift-controller` deployment. For more information about CBT snapshots, see the "Additional resources" section.
 
 A VM can support up to 28 CBT snapshots. If the source VM has too many CBT snapshots and the `Migration Controller` service is not able to create a new snapshot, warm migration might fail. The `Migration Controller` service deletes each snapshot when the snapshot is no longer required.
 

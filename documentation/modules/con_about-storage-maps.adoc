@@ -15,7 +15,7 @@ Plan-specific maps are owned by that plan. You can create these kinds of maps in
 
 Ownerless maps::
 
-Maps created for use by any migration plan are to said to be _ownerless_. You can create this kind of map in the *Storage maps* page of the *Migration for Virtualization* section of the {virt} web console.
+Maps created for use by any migration plan are said to be _ownerless_. You can create this kind of map in the *Storage maps* page of the *Migration for Virtualization* section of the {virt} web console.
 +
 You, or anyone working in the same project, can use ownerless maps when creating a migration plan in the *Plan creation wizard*. When you choose one of these unowned maps for a migration plan, {project-short} creates a copy of the map and defines your migration plan as the _owner of that copy_. Any changes you make to the copy do not affect the original map, nor do they apply to any other plan that uses a copy of the map.
 

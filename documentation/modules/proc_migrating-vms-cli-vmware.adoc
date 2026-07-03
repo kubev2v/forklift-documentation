@@ -30,7 +30,7 @@ kind: Secret
 metadata:
   name: <secret>
   namespace: <namespace>
-  ownerReferences: 
+  ownerReferences:
     - apiVersion: forklift.konveyor.io/v1beta1
       kind: Provider
       name: <provider_name>
@@ -41,7 +41,7 @@ metadata:
 type: Opaque
 stringData:
   user: <user>
-  password: <password> 
+  password: <password>
   insecureSkipVerify: <"true"/"false">
   cacert: |
     <ca_certificate>
@@ -159,7 +159,7 @@ spec:
     - destination:
         name: <network_name>
         type: pod
-      source: 
+      source:
         id: <source_network_id>
         name: <source_network_name>
     - destination:
@@ -214,7 +214,7 @@ spec:
     - destination:
         storageClass: <storage_class>
         accessMode: <access_mode>
-      offloadPlugin: 
+      offloadPlugin:
         vsphereXcopyConfig:
           secretRef: <Secret_for_the_storage_vendor_product>
           storageVendorProduct: <storage_vendor_product>
@@ -357,22 +357,22 @@ spec:
     destination:
       name: <destination_provider>
       namespace: <namespace>
-  map: 
-    network: 
+  map:
+    network:
       name: <network_map>
       namespace: <namespace>
-    storage: 
+    storage:
       name: <storage_map>
       namespace: <namespace>
-  preserveStaticIPs: 
+  preserveStaticIPs:
   networkNameTemplate: <network_interface_template>
   pvcNameTemplate: <pvc_name_template>
   pvcNameTemplateUseGenerateName: true
   skipGuestConversion: false
-  targetAffinity: <target_affinity_rule> 
-  targetLabels: 
-    label: <label> 
-  targetNodeSelector: 
+  targetAffinity: <target_affinity_rule>
+  targetLabels:
+    label: <label>
+  targetNodeSelector:
     <key>:<value>
   targetNamespace: <target_namespace>
   convertorLabels: <importer_converter_labels>
@@ -380,14 +380,14 @@ spec:
   convertorAffinity<importer_affinity_rule>
   useCompatibilityMode: true
   volumeNameTemplate: <volume_name_template>
-  vms: 
+  vms:
     - id: <source_vm1>
     - name: <source_vm2>
       networkNameTemplate: <network_interface_template_for_this_vm>
       pvcNameTemplate: <pvc_name_template_for_this_vm>
       volumeNameTemplate: <volume_name_template_for_this_vm>
       targetName: <target_name>
-      hooks: 
+      hooks:
         - hook:
             namespace: <namespace>
             name: <hook>
@@ -423,7 +423,7 @@ Specifies a storage mapping even if the VMs to be migrated are not assigned with
 Specifies the name of the `StorageMap` CR.
 
 `preserveStaticIPs`::
-Specifies wheteher to prerserve static IP addresses. By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address.
+Specifies whether to preserve static IP addresses. By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address.
 To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 
 `networkNameTemplate`::
@@ -472,7 +472,7 @@ To ensure proper system functionality, system-managed labels override any user-d
 +
 For more details on labels and selectors in Kubernetes, see https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#labels[Labels and Selectors].
 +
-`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` conversion pod (importer pod) for cold migrations from {vmw} providers. With this feature, you can set the `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` that control the labels, `noteSelector`, and `Affinity` of the convertor pod.
+`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` conversion pod (importer pod) for cold migrations from {vmw} providers. With this feature, you can set the `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` that control the labels, `nodeSelector`, and `Affinity` of the convertor pod.
 +
 For more information on importer files, see {mtv-plan}assembly_planning-migration-vmware#con_about-configuring-importer-pods_vmware[About scheduling importer pods].
 
@@ -482,7 +482,7 @@ Cold migrations only: Specifies the key-value pairs that must be matched for dat
 For more details on node selectors in Kubernetes, see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector[nodeSelector].
 
 `convertorAffinity`::
-Cold migrations only: Specifies a hard-affinity or a soft-affinity rule for `virt-v2v` convertor pods (importer pods). This is an optional field. Affinity rules can be used to optimize placement for disk conversion performance, such as co-locating with storage or ensuring network proximity to {vmw} infrastructure for cold migration data transfers.  
+Cold migrations only: Specifies a hard-affinity or a soft-affinity rule for `virt-v2v` convertor pods (importer pods). This is an optional field. Affinity rules can be used to optimize placement for disk conversion performance, such as co-locating with storage or ensuring network proximity to {vmw} infrastructure for cold migration data transfers.
 +
 For more information on affinity rules in Kubernetes, see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity[Affinity and anti-affinity].
 
@@ -555,7 +555,7 @@ If you specify a cutover time, use the ISO 8601 format with the UTC time offset,
 +
 [IMPORTANT]
 ====
-When you specify the user permissions only on the VM, the `forklift-controller` consistently fails to reconcile a migration plan, and subsequently returns an HTTP 500 error. 
+When you specify the user permissions only on the VM, the `forklift-controller` consistently fails to reconcile a migration plan, and subsequently returns an HTTP 500 error.
 
 In {project-short}, you must add permissions at the data center level, which includes storage, networks, switches, and so on, which are used by the VM. You must then propagate the permissions to the child elements.
 
