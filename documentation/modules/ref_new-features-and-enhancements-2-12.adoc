@@ -95,6 +95,7 @@ This update introduces comprehensive multilanguage translation and international
 * Japanese
 * Korean
 * Simplified Chinese
+
 +
 link:https://redhat.atlassian.net/browse/MTV-3917[MTV-3917]
 
