@@ -1,0 +1,45 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-1_{context}"]
+= Resolved issues 2.12.1
+
+[role="_abstract"]
+Review the resolved issues in this release of {project-short}.
+
+Correct handling of shared disks in {project-short} when multi-writer is set to false::
+Before this update, MTV incorrectly handled shared disks with `multi-writer` set to `false` as individual disks. As a consequence, the system incorrectly treated user data on multiple shared disks, and potentially caused data inconsistency. With this update, shared disks with `multi-writer` set to `false` behave as if the setting is `true`. As a result, the system handles shared disks correctly and maintains data consistency.
++
+link:https://issues.redhat.com/browse/MTV-4706[MTV-4706]
+
+Progress bars added in the {project-short} UI for cold storage copy offload migrations::
+Before this update, the {project-short} UI did not render progress bars during cold storage copy offload migrations. As a consequence, you could not track the progress of long-running multi-disk migrations. With this update, the *Disk transfer* and *Disk counter* columns include progress bars. As a result, you can monitor multi-disk migrations in real time.
++
+link:https://issues.redhat.com/browse/MTV-5679[MTV-5679]
+
+{project-short} {vmw} driver cleanup searches for devcon.exe in multiple paths::
+Before this update, the {project-short} {vmw} driver cleanup failed to search for `devcon.exe` in specified paths. As a consequence, you could not clean the driver properly, which led to potential system instability. With this update, the cleanup process searches for `devcon.exe` in `C:\Windows\Build\Tools`, `firstboot` scripts, and `PATH`. As a result, the driver correctly searches for the file and ensures a stable system.
++
+link:https://issues.redhat.com/browse/MTV-5781[MTV-5781]
+
+Correct transfer method displayed in the {project-short} UI for storage copy offload migrations::
+Before this update, the {project-short} UI incorrectly showed `DiskTransferV2v` during storage copy offload migrations due to misconfigured settings. As a consequence, you saw incorrect transfer reporting when you did not use `v2v` transfers. With this update, the UI displays the correct transfer method. As a result, you can accurately identify the transfer type.
++
+link:https://issues.redhat.com/browse/MTV-5783[MTV-5783]
+
+Runtime panics prevented during vSphere conversion plan cancellations::
+Before this update, canceling {vmw} vSphere conversion plans caused a `nil pointer dereference` error when accessing `Context.Map.Storage`. As a consequence, a runtime panic occurred. With this update, {project-short} validates `Context.Map.Storage` before processing the cancellation. As a result, the tool does not crash.
++
+link:https://issues.redhat.com/browse/MTV-5784[MTV-5784]
+
+Support for VLAN-aware network mapping for Hyper-V migrations:: 
+Before this update, a Hyper-V virtual machine (VM) might use multiple network interface controllers (NICs) on the same virtual switch. The *Network Map* page displayed these NICs as a single source network even if they used different VLANs. As a consequence, the system mapped all NICs on that network to the same destination, which caused incorrect network configurations after migration. With this update, the *Network Map* page detects VLAN conflicts and displays VLAN-qualified source entries, such as "Lab-External (VLAN 100)". As a result, you can map each VLAN to a different target network attachment definition (NAD) and correctly migrate your VMs.
++
+link:https://issues.redhat.com/browse/MTV-5806[MTV-5806]
+
+Pre-existing PVCs preserved during initialization to prevent data loss::
+Before this update, when the migration `type` was set to `conversion`, the process deleted pre-existing persistent volume claims (PVCs) during initialization. As a consequence, the migration failed and caused data loss during the storage copy offload workflow. With this update, the migration process preserves pre-existing PVCs. As a result, you can successfully complete the storage copy offload workflow without data loss.
++
+link:https://issues.redhat.com/browse/MTV-5879[MTV-5879]

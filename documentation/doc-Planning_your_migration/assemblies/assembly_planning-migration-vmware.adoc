@@ -13,7 +13,6 @@ ifdef::context[:parent-context: {context}]
 Create a VMware vSphere migration plan by setting up network maps, configuring source and destination providers with migration networks, and defining the migration plan in the {project-first} UI.
 
 :context: vmware
-:vmware:
 
 include::../modules/proc_creating-form-based-network-maps-ui-vmware.adoc[leveloffset=+1]
 
@@ -47,21 +46,17 @@ include::../modules/proc_storage-copy-offload-manual-ssh-set-up.adoc[leveloffset
 
 include::../modules/proc_storage-copy-offload-ui.adoc[leveloffset=+2]
 
-include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-source-provider-vmware.adoc[leveloffset=+1]
 
 include::../modules/proc_selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+1]
 
-:!vmware:
 :context: dest_vmware
-:dest_vmware:
 
-include::../modules/proc_adding-source-provider.adoc[leveloffset=+1]
+include::../modules/proc_adding-virt-destination-provider.adoc[leveloffset=+1]
 
 include::../modules/proc_selecting-migration-network-for-virt-provider.adoc[leveloffset=+1]
 
-:!dest_vmware:
 :context: vmware
-:vmware:
 
 include::../modules/proc_creating-plan-wizard-vmware.adoc[leveloffset=+1]
 
