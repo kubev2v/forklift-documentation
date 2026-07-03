@@ -85,7 +85,7 @@ link:https://redhat.atlassian.net/browse/MTV-3663[MTV-3663]
 {virt} migrations support PVC name templates::
 With this release, migration plans support the `pvcNameTemplate` field for {virt} to {virt} migrations. You can use this feature to customize the names of persistent volume claims (PVCs). As a result, you can match the generated PVC names to your storage naming conventions.
 +
-link:https://redhat.atlassian.net/browse/MTV-3669[MTV-3669]
+link:https://redhat.atlassian.net/browse/MTV-3668[MTV-3668]
 
 The {project-short} UI supports multiple languages::
 This update introduces comprehensive multilanguage translation and internationalization to the {project-short} UI. With this enhancement, you can navigate migration plans, view provider status, and manage virtual machine (VM) migrations in your preferred language. As a result, the console plugin matches your language preference in the Red Hat {virt} web console. It supports the following languages:
@@ -95,6 +95,7 @@ This update introduces comprehensive multilanguage translation and international
 * Japanese
 * Korean
 * Simplified Chinese
+
 +
 link:https://redhat.atlassian.net/browse/MTV-3917[MTV-3917]
 
@@ -139,3 +140,18 @@ link:https://issues.redhat.com/browse/MTV-5511[MTV-5511]
 The `HyperV` provider is available as a Technology Preview, and is not recommended for production environments.
 +
 link:https://redhat.atlassian.net/browse/MTV-4462[MTV-4462]
+
+Migration process waits for all Windows VM reboots to complete::
+{project-short} waits until all reboots are complete when migrating Windows virtual machines (VMs). This enhancement is implemented because Windows VMs require multiple reboots during the migration process. As a result, the migration status accurately reflects when a Windows VM is fully migrated and ready for use.
++
+link:https://redhat.atlassian.net/browse/MTV-5342[MTV-5342]
+
+Handling of shared disks with the multi-writer attribute set to false::
+{project-short} handles shared disks with the `multi-writer` attribute set to `false` as shared disks. This enhancement is implemented to ensure that these disks are processed in the same way as disks with `multi-writer` set to `true`. As a result, all shared disks are consistently migrated as shared disks.
++
+link:https://redhat.atlassian.net/browse/MTV-4683[MTV-4683]
+
+Integration with {ocp-name} Lightspeed using an MCP::
+{project-short} provides a Model Context Protocol (MCP) to integrate with {ocp} Lightspeed. This enhancement is implemented to connect {project-short} capabilities with the {ocp-name} Lightspeed interface. As a result, you can interact with {project-short} directly through {ocp-name} Lightspeed.
++
+link:https://redhat.atlassian.net/browse/MTV-4455[MTV-4455]
