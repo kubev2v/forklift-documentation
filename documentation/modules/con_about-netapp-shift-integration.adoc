@@ -7,7 +7,9 @@
 = Migrating {vmw} virtual machines by using NetApp Shift zero-copy integration
 
 [role="_abstract"]
-Use the NetApp Shift zero-copy integration with {project-first} to migrate {vmw} virtual machines (VMs) on NetApp NFS storage more efficiently. The NetApp Shift toolkit clones VM disks within the storage array in approximately one second. The toolkit also creates persistent volume claims (PVCs) on the target Red Hat {virt} cluster. The migration process then converts the guest operating system in place and creates the VM without transferring disk data over the network.
+To migrate {vmw} virtual machines (VMs) on NetApp NFS storage more efficiently, use the NetApp Shift zero-copy integration with {project-first}. The NetApp Shift toolkit clones VM disks within the storage array. {project-short} also creates persistent volume claims (PVCs) with specific annotations. These annotations trigger the NetApp Shift plugin in the target Red Hat {virt} cluster. 
+
+The migration process then converts the guest operating system in place and creates the VM without copying the disks.
 
 The NetApp Shift toolkit targets _file-based_ NFS storage. This differs from _storage copy offload_. Storage copy offload uses block storage, logical unit numbers (LUNs), and the `XCOPY` SCSI command on supported SAN arrays. As a result, storage copy offload does not apply to NFS datastores. These datastores cannot expose LUNs for remapping between ESXi hosts and the target cluster.
 
@@ -23,14 +25,9 @@ Review the following prerequisites and limitations before you begin planning a N
 [id="netapp-shift-integration-overview_{context}"]
 == How the NetApp Shift toolkit works
 
-The NetApp Shift toolkit performs storage-side cloning and PVC creation. The {project-short} UI creates specially labeled and annotated PVCs that are displayed in the UI. These PVCs signal the NetApp Trident Container Storage Interface (CSI) driver to call internal NetApp tooling for the migration.
+The NetApp Shift toolkit performs storage-side cloning, and {project-short} creates the PVCs for migration. The {project-short} UI creates and displays specially labeled and annotated PVCs. These PVCs signal the NetApp Trident Container Storage Interface (CSI) driver to call internal NetApp tooling for the migration. The PVCs are annotated so that the migration process can match each PVC to the correct source VM. The process then matches the PVC to the correct target VM during migration. 
 
-Phase 1 (storage) and phase 2 (migration) are separate:
-
-* *Phase 1: NetApp Shift:* The NetApp Shift toolkit clones VM disks on the NFS array in approximately one second. It creates a PVC per disk in the target namespace. It also labels or annotates each PVC so the migration process can match it to the source VM. 
-* *Phase 2: {project-short}:* You create and run a migration plan in the {project-short} UI. The migration process skips network disk transfer when matching PVCs exist. The process then converts disks with `virt-v2v-in-place` and creates the target VMs.
-
-In a demonstration, over 1 TB of data was transferred in approximately one second by using this method.
+You create and run a migration plan in the {project-short} UI. The migration process skips network disk transfer when matching PVCs exist. The process then converts disks with `virt-v2v-in-place` and creates the target VMs.
 
 [id="netapp-shift-vs-storage-copy-offload_{context}"]
 == NetApp Shift integration versus storage copy offload
@@ -59,10 +56,6 @@ In a demonstration, over 1 TB of data was transferred in approximately one secon
 |Guest conversion
 | Standard `virt-v2v` path after volume populate\
 | `virt-v2v-in-place` on existing PVCs
-
-|Performance
-| Depends on array and network
-| Over 1 TB in approximately 1 second (demo)
 |===
 
 [role="_additional-resources"]

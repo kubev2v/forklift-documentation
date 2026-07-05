@@ -19,10 +19,6 @@ Create and run a migration plan in the {project-short} UI when NetApp Shift has 
 
 .Procedure
 
-. Complete Phase 1 (NetApp Shift) by cloning the disks, creating the PVCs, and verifying the PVC metadata.
-+
-For more information, see xref:proc_netapp-shift-integration-steps_{context}[Planning and running a NetApp Shift integration migration].
-
 . In the {ocp} web console, open the *Migration for Virtualization* page. Verify that your {vmw} source provider and {virt} destination provider exist.
 
 . Create a migration plan. Select *Cold migration* on the *Migration type* page. 

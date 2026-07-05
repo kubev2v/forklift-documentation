@@ -26,7 +26,7 @@ Follow the NetApp Shift product documentation for disk clones and PVC generation
 
 . Verify the PVC labels and annotations on each disk PVC.
 +
-Confirm that each PVC has the `vmID` label and the `forklift.konveyor.io/nfs-server` and `forklift.konveyor.io/nfs-path` annotations.
+Confirm that each PVC has the `shift.netapp.io/storage-class-type` annotations.
 
 . Configure your {vmw} source provider, {virt} destination provider, network map, storage map annotated for NetApp Shift, and a migration plan. 
 +
@@ -34,7 +34,7 @@ Follow the specific UI or CLI instructions to configure each component.
 
 . Run the migration plan, and verify that the migrated VMs are created and running in {virt}.
 
-. Optional: Archive the migration plan after a successful migration. 
+. If the migration fails, archive the migration plan. Archiving is optional for successful migrations. 
 +
 For more information, see link:{mtv-mig}assembly_migrating-from-vmware_mtv#con_post-migration-cleanup_vmware[Post-migration cleanup and archiving migration plans].
 

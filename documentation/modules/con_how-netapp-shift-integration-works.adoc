@@ -7,7 +7,8 @@
 = NetApp Shift migrations versus standard migrations
 
 [role="_abstract"]
-The NetApp Shift toolkit and {project-first} divide work across two phases during zero-copy migrations. This process differs from a standard network disk copy migration. You can use this integration to reduce migration downtime.
+To reduce migration downtime, {project-first} and the NetApp Shift toolkit divide work during zero-copy migrations. This process differs from a standard network disk copy migration.
+
 
 [id="standard-vmware-migration-data-path_{context}"]
 == Standard migration (network disk copy)
@@ -19,30 +20,23 @@ Without NetApp Shift integration, you use {project-short} to migrate a {vmw} vir
 . The process writes data to target persistent volumes.
 . The process runs guest conversion and creates the VM.
 
-This method can be slow for large disks and consumes significant network and host resources. For example, a 1 TB disk might take hours to transfer over the network.
+This method can be slow for large disks. It also consumes significant network and host resources.
 
 [id="netapp-shift-migration-data-path_{context}"]
 == NetApp Shift zero-copy integration (no network disk copy)
 
 With NetApp Shift zero-copy integration, the migration proceeds as follows:
+ 
+. *NetApp Shift:* The toolkit clones VM disks within the NetApp NFS storage array. 
+. *{project-short} user interface (UI):* The UI creates specially labeled and annotated PVCs on the target cluster.
+. *NetApp Trident CSI:* The CSI driver reads the PVC annotations and calls internal NetApp tooling.
+. *{project-short} migration process:* The process powers off any active source VMs. It detects matching PVCs and skips the network disk transfer. The process runs `virt-v2v-in-place` guest conversion directly on the PVCs. It then creates the target VMs.
 
-. *{project-short} user interface (UI):* On the *Storage maps* page of the {project-short} UI, you select a *Target provider* that is specially labeled "NetApp Shift". This selection signals the NetApp Trident CSI driver to call NetApp Shift tooling.
-. *NetApp Shift (Phase 1):* The NetApp Shift toolkit clones VM disks within the NetApp NFS storage array in approximately one second. The toolkit creates a PVC on the target Red{nbsp}Hat {virt} cluster for each cloned disk.
-. *NetApp Trident CSI:* The CSI driver ensures that each PVC carries the labels and annotations that the migration process requires.
-. *Migration process (Phase 2):* The migration process detects matching PVCs for VMs in the migration plan and skips transferring disk contents over the network.
-. *Migration process:* If the source VM is powered on, the process powers it off. The process then runs `virt-v2v-in-place` guest conversion directly on the PVCs.
-. *Migration process:* The process creates the target VMs from the converted PVCs.
-
-This method eliminates the network copy step to improve performance. The disk data is already on cluster storage before the migration process starts the conversion. In a demonstration, over 1 TB of data was transferred in approximately one second by using this method.
+This method eliminates the network copy step to improve performance. The disk data is already on cluster storage before the conversion starts.
 
 [NOTE]
 ====
-Review the following considerations for NetApp Shift migrations:
-
-* The primary sources of downtime are guest conversion and necessary reboots. For example, Windows guests require a reboot after VirtIO driver installation. Data transfer time is not a primary source of downtime.
-* You still configure {vmw} source and {virt} destination providers, network maps, and storage maps by using standard workflows. 
-* NetApp Shift integration changes how disks reach the cluster. It does not change how you map networks or storage classes for the target VM. 
-* You must annotate storage classes in the {project-short} UI to indicate NetApp Shift capability.
+NetApp Shift integration changes how disks reach the target cluster. It does not change how you map networks or storage classes for the target VM. You still configure providers, network maps, and storage maps by using standard workflows. 
 ====
 
 [role="_additional-resources"]

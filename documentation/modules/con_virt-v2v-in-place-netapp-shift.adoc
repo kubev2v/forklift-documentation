@@ -15,7 +15,7 @@ In a typical VMware migration, {project-short} transfers disk data to the cluste
 
 == virt-v2v-in-place with NetApp Shift
 
-When NetApp Shift has already cloned disks and created PVCs with the required `vmID` label and NFS annotations:
+When NetApp Shift has already cloned disks and {project-short} has created PVCs and NFS annotations:
 
 . {project-short} matches PVCs to VMs in the migration plan.
 . {project-short} powers off the source VM if it is running (cold migration only).
