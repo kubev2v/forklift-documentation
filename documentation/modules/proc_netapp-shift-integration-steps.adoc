@@ -10,9 +10,7 @@
 Plan and run a {vmw} cold migration that uses NetApp Shift zero-copy integration. You can perform this migration by using either the {project-short} UI or the CLI.
 
 .Prerequisites
-* You reviewed xref:ref_netapp-shift-prerequisites_{context}[Prerequisites for NetApp Shift integration].
-* You understand xref:con_how-netapp-shift-integration-works_{context}[How NetApp Shift integration works].
-* You deployed the The NetApp Shift toolkit as a containerized service with NetApp Trident CSI and Migration Toolkit for Virtualization (MTV). according to https://docs.netapp.com/us-en/netapp-solutions-virtualization/migration/shift-toolkit-deploy-operator.html[Manually deploy the Shift operator (Standard mode)].
+* You completed xref:ref_netapp-shift-prerequisites_{context}[Prerequisites for NetApp Shift integration].
 
 .Procedure
 
@@ -41,6 +39,7 @@ For more information, see link:{mtv-mig}assembly_migrating-from-vmware_mtv#con_p
 [role="_additional-resources"]
 .Additional resources
 
+* xref:con_how-netapp-shift-integration-works_{context}[How NetApp Shift integration works].
 * xref:proc_netapp-shift-integration-ui_vmware[Migrating {vmw} VMs with NetApp Shift integration in the UI]
 * link:{mtv-mig}assembly_migrating-from-vmware_vmware#proc_netapp-shift-integration-cli_vmware[Migrating {vmw} VMs with NetApp Shift integration from the CLI]
 
