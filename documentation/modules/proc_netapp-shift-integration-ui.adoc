@@ -12,8 +12,6 @@ Create and run a migration plan in the {project-short} UI when NetApp Shift has 
 .Prerequisites
 
 * You completed xref:ref_netapp-shift-prerequisites_{context}[Prerequisites for NetApp Shift integration].
-* You have installed NetApp Shift according to the instructions on the NetApp site. 
-* NetApp Shift created the PVCs.
 * You configured a {vmw} source provider, a {virt} destination provider, a network map, and a storage map annotated for NetApp Shift.
 * Storage classes that will be used for NetApp Shift migrations are annotated in the {project-short} UI to indicate NetApp Shift capability.
 

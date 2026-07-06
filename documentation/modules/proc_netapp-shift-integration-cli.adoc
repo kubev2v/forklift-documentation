@@ -17,7 +17,7 @@ Create and run a migration plan by using custom resources (CRs). Do this after N
 
 . Follow the procedure for a standard {vmw} migration that uses the CLI, with the following additional specifications:
 
-.. In the `StorageMap` manifest, for the `storageClass` label, specify a storage class that is annotated for NetApp Shift.
+.. In the `StorageMap` manifest, for the `storageClass` field, specify a storage class that is annotated for NetApp Shift.
 .. In the `Plan` manifest, set the value of `warm` to `false`.
 +
 For more information about the standard {vmw} CLI procedure, see link:{mtv-mig}assembly_migrating-from-vmware_mtv#proc_migrating-vms-cli-vmware_vmware[Running a VMware migration from the CLI].

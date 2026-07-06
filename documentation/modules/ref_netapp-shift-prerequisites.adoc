@@ -20,7 +20,7 @@ In addition to the standard link:{mtv-plan}assembly_provider-specific-requiremen
 [id="ref_netapp-prerequisites-netapp-storage_{context}"]
 == NetApp Shift and storage
 
-* The NetApp Shift toolkit is installed on the {virt} cluster as an add-on to the NetApp Trident Operator.
+* The NetApp Shift toolkit is deployed as a containerized service with NetApp Trident CSI and Migration Toolkit for Virtualization (MTV). according to https://docs.netapp.com/us-en/netapp-solutions-virtualization/migration/shift-toolkit-deploy-operator.html[Manually deploy the Shift operator (Standard mode)].
 * Source VMs use NFS-based storage on NetApp ONTAP. They do not use block or LUN datastores, which apply to storage copy offload.
 * The target {virt} cluster is accessible to NetApp Shift so that the toolkit can create persistent volume claims (PVCs) in the intended namespace.
 * A Container Storage Interface (CSI) driver or storage class suitable for the cloned NFS-backed volumes is available on the target cluster.
