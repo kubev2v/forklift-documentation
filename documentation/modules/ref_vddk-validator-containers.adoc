@@ -13,7 +13,7 @@ You can see the defaults, which you can override in the `ForkliftController` cus
 
 These settings are highly dependent on your environment. If there are many migrations happening at once and the quotas are not set enough for the migrations, then the migrations can fail. This can also be correlated to the `MAX_VM_INFLIGHT` setting that determines how many VMs/disks are migrated at once.
 
-The following defaults can be overriden in the `ForkliftController` CR:
+The following defaults can be overridden in the `ForkliftController` CR:
 
 * Defaults that affect both cold and warm migrations:
 +

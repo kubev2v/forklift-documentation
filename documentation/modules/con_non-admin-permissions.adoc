@@ -41,7 +41,7 @@ As a more comprehensive example, you can grant non-administrators the following 
 * Not be able to create providers or to change system settings
 
 [cols="3", options="header"]
-.Example permissions required for non-adminstrators to work with migration plan components but not create providers
+.Example permissions required for non-administrators to work with migration plan components but not create providers
 |===
 |Actions |API group |Resource
 
