@@ -122,12 +122,15 @@ endif::[]
 [source,terminal,subs="attributes+"]
 ----
 $ cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
 kind: ForkliftController
 metadata:
   name: forklift-controller
   namespace: openshift-mtv
-spec:
-  controller_log_level: 3
+spec":
+  feature_ui_plugin: true
+  feature_validation: true
+  feature_volume_populator: true
 EOF
 ----
 
