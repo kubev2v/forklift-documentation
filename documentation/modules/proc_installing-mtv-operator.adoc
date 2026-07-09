@@ -7,13 +7,13 @@
 ifdef::web[]
 = Installing the {operator-name} by using the {ocp} web console
 
-[role="_abstract"] 
+[role="_abstract"]
 You can install the {operator-name} by using the {ocp} web console.
 endif::[]
 ifdef::cli[]
 = Installing the {operator-name} by using the command-line interface
 
-[role="_abstract"] 
+[role="_abstract"]
 You can install the {operator-name} by using the command-line interface (CLI).
 endif::[]
 
@@ -126,9 +126,11 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: ForkliftController
 metadata:
   name: forklift-controller
-  namespace: {namespace}
+  namespace: openshift-mtv
 spec:
-  olm_managed: true
+  feature_ui_plugin: true
+  feature_validation: true
+  feature_volume_populator: true
 EOF
 ----
 
