@@ -17,46 +17,6 @@ The `targetVMName` variable is available for the `PVCNameTemplate` configuration
 +
 link:https://issues.redhat.com/browse/MTV-3445[MTV-3445]
  
-CSI volume import is available for copy-offload migrations (Developer Preview)::
-{project-short} introduces a new copy-offload method that uses Container Storage Interface (CSI) driver volume import capabilities. This capability is a Developer Preview feature. This method migrates VMware vSphere Virtual Volumes (vVols) and Raw Device Mapping (RDM) disks only within the same array. Instead of running a dedicated populator pod per disk, {project-short} creates a persistent volume claim (PVC) with vendor-specific import annotations. The CSI driver handles volume provisioning from the existing source volume and manages the volume lifecycle. This enhancement makes migrations safer, reduces configuration requirements, and improves reliability. The user interface does not display a progress bar. It indicates only whether the migration is finished.
-+
-This feature requires the following prerequisites:
-+
-* The `StorageMap` configuration must include both `vsphereXcopyConfig` and `csiVolumeImport`. In {project-short} 2.12, RDM disks require an XCOPY plugin entry for vendor resolution. You must configure both parameters on the same mapping entry:
-+
-[source,yaml,subs="+quotes"]
-----
-spec:
-  map:
-  - destination:
-      storageClass: primera3par
-    offloadPlugin:
-      csiVolumeImport:
-        secretRef: hpe-3par-secret
-        storageVendorProduct: primera3par
-      vsphereXcopyConfig:
-        secretRef: hpe-3par-secret
-        storageVendorProduct: primera3par
-    source:
-      id: __<datastore_id>__
-----
-+
-* You must patch the vSphere provider secret to skip SSL verification. The CSI import code currently reads the SSL skip flag from the vSphere provider secret instead of the storage secret. To find your provider secret name, run the following command:
-+
-[subs="+quotes"]
-----
-$ oc get provider __<provider_name>__ -o jsonpath='{.spec.secret.name}'
-----
-+
-To patch the vSphere provider secret, run the following command:
-+
-[subs="+quotes"]
-----
-$ oc patch secret __<vsphere_provider_secret>__ \
-  -p '{"data":{"insecureSkipVerify":"'"$(echo -n true | base64)"'"}}'
-----
-+
-link:https://issues.redhat.com/browse/MTV-5483[MTV-5483]
 
 SCSI persistent reservation support is available for shared RDM disk migrations::
 SCSI persistent reservation support is available for shared Raw Device Mapping (RDM) disk migrations. When you enable the `rdmAsLun` parameter, {project-short} automatically configures the `lun.reservation` and `errorPolicy` properties for target virtual machine (VM) disks. As a result, you avoid manual post-migration edits for clustering solutions. This feature also prevents shared disks from being placed on the same node.
