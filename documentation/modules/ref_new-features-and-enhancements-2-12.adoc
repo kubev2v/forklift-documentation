@@ -16,17 +16,12 @@ The `targetVMName` variable is available for PVC name templates::
 The `targetVMName` variable is available for the `PVCNameTemplate` configuration. You can configure this template to generate persistent volume claim (PVC) names for virtual machine (VM) disks. As a result, you can include the target VM name in the generated PVC names. For example, you can use `spec.pvcNameTemplate: '{{.TargetVmName}}-disk-{{.DiskIndex}}'`.
 +
 link:https://issues.redhat.com/browse/MTV-3445[MTV-3445]
- 
+
 
 SCSI persistent reservation support is available for shared RDM disk migrations::
 SCSI persistent reservation support is available for shared Raw Device Mapping (RDM) disk migrations. When you enable the `rdmAsLun` parameter, {project-short} automatically configures the `lun.reservation` and `errorPolicy` properties for target virtual machine (VM) disks. As a result, you avoid manual post-migration edits for clustering solutions. This feature also prevents shared disks from being placed on the same node.
 +
 link:https://issues.redhat.com/browse/MTV-6049[MTV-6049]
-
-The `xcopyUsed` indicator is available in the plan status::
-The `xcopyUsed` indicator is available in the migration plan status. You can use this indicator to track whether the storage array used XCOPY (hardware-accelerated copy) for each virtual machine (VM) disk. It appears as a task annotation and in the `VSphereXcopyVolumePopulator` custom resource (CR) status. For example, a `task.Annotations["xcopyUsed"]` value of `"1"` indicates that XCOPY was used. As a result, you can debug performance differences and validate the storage array configuration.
-+
-link:https://issues.redhat.com/browse/MTV-5871[MTV-5871]
 
 The `--diagnostics` flag is available for the `kubectl-mtv describe plan` command::
 The `--diagnostics` (`-D`) flag is available for the `kubectl-mtv describe plan` command. This flag gathers logs, events, and configuration details into a single diagnostics report. As a result, you avoid manually piecing together information to troubleshoot failed or stuck virtual machine (VM) migrations.
