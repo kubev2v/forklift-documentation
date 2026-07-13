@@ -1,0 +1,20 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_data-integrity-during-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_migration-error-handling_{context}"]
+= Migration error handling
+
+[role="_abstract"]
+{project-first} treats system and storage errors during migration as unrecoverable. Operations that fail do not allow the migration to continue as if they succeeded.
+
+[id="mandatory-return-code-checks_{context}"]
+== Mandatory return code checks
+
+{project-short} strictly checks the return codes of system calls and errors out appropriately upon failure. This removes previous logic where some system calls were treated as merely advisory. As a result, {project-short} provides greater robustness and reliability against transient system or storage errors during migration.
+
+[role="_additional-resources"]
+.Additional resources
+* xref:con_about-data-integrity-during-migration_{context}[Data integrity during migration]
+* link:{mtv-mig}assembly_troubleshooting-migration_mtv[Troubleshooting migration]

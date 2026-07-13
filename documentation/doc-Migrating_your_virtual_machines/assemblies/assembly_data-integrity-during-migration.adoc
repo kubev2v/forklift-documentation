@@ -1,0 +1,29 @@
+ifdef::context[:parent-context: {context}]
+
+:_mod-docs-content-type: ASSEMBLY
+
+[id="assembly_data-integrity-during-migration_{context}"]
+
+= Data integrity during migration
+
+[role="_abstract"]
+{project-first} strengthens data integrity and consistency during virtual machine migration by validating filesystems, handling errors reliably, and providing internal diagnostics.
+
+:context: mtv
+:mtv:
+
+include::../modules/con_about-data-integrity-during-migration.adoc[leveloffset=+1]
+
+include::../modules/con_filesystem-consistency-checks.adoc[leveloffset=+1]
+
+include::../modules/con_migration-error-handling.adoc[leveloffset=+1]
+
+include::../modules/con_blkhash-diagnostics.adoc[leveloffset=+1]
+
+include::../modules/con_downtime-and-data-integrity.adoc[leveloffset=+1]
+
+:mtv!:
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
+
