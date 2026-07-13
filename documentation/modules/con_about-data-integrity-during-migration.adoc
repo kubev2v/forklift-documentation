@@ -1,0 +1,35 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_data-integrity-during-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_about-data-integrity-during-migration_{context}"]
+= Data integrity during migration
+
+[role="_abstract"]
+{project-first} detects and reports potential data issues as early as possible before migrated virtual machines (VMs) are handed off on {virt}.
+
+Starting with {project-short} 2.12, {project-short} uses capabilities delivered in {rhel-first} 10.1 to strengthen data integrity and consistency during VM migration. These capabilities provide the following:
+
+* File system consistency validation
+* Reliable failure when migration operations encounter errors
+* Internal diagnostics that help identify suspected storage problems
+
+[id="what-mtv-validates-during-migration_{context}"]
+== What {project-short} validates during migration
+
+{project-short} strengthens migration in the following ways:
+
+* Filesystem consistency at conversion boundaries
+* Reliable failure when conversion or disk-copy operations encounter system or storage errors 
+* Internal diagnostics during disk copy for support analysis
+
+{project-short} also supports methods for minimizing migration cutover downtime while applying these integrity measures where the migration path supports them.
+
+[role="_additional-resources"]
+.Additional resources
+* xref:con_filesystem-consistency-checks_{context}[Filesystem consistency checks]
+* xref:con_migration-error-handling_{context}[Migration error handling]
+* xref:con_blkhash-diagnostics_{context}[Internal disk copy diagnostics (blkhash)]
+* xref:con_downtime-and-data-integrity_{context}[Minimizing downtime while preserving data integrity]
+* link:{mtv-mig}assembly_understanding-mtv-migration_mtv#con_virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]
