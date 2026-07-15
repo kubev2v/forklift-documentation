@@ -1,0 +1,43 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_multi-array-rdm-support_{context}"]
+= Multi-array Raw Device Mapping support for storage copy offload
+
+[role="_abstract"]
+You can migrate virtual machines with multiple disks across different storage arrays when using storage copy offload. This feature enables migration of VMs with up to 60 disks, where disks can reside on different arrays from the same vendor or from different vendors.
+
+== Multi-array disambiguation
+
+{project-short} automatically resolves storage mapping when multiple storage arrays from the same vendor are present. When a storage map contains multiple destination candidates for a single vendor, {project-short} uses Network Address Authority (NAA) identifier matching to determine the correct target datastore.
+
+The system matches the Raw Device Mapping (RDM) disk's NAA identifier with the backing device NAA identifiers of candidate datastores using longest-common-prefix logic. This ensures that each disk is paired with the correct storage array without manual intervention.
+
+// Info needed: Does this NAA matching apply only to RDM disks, or does it also work with VMDK files? Are there any disk types that are excluded from this automatic matching?
+
+== Supported storage configurations
+
+{project-short} supports the following storage copy offload configurations for multi-array migrations:
+
+* VMs with up to 60 disks
+* Disks distributed across multiple storage arrays from the same vendor
+* Disks distributed across multiple storage arrays from different vendors
+* Mixed storage array configurations in a single migration plan
+
+// Info needed: Are there any limitations on mixing different storage vendors in a single migration plan? For example, can you have some disks on Dell PowerMax and others on Pure Storage FlashArray in the same VM migration?
+
+== Expanded vendor support
+
+{project-short} includes expanded Organizationally Unique Identifier (OUI) prefix coverage for supported storage vendors. The built-in vendor mapping list includes:
+
+* Multiple OUI prefixes per vendor (for example, Dell EMC Symmetrix and VMAX prefixes are both recognized under PowerMax)
+* Support for both standard NAA hexadecimal formats and VML (vSphere Managed Object) formats
+
+// Info needed: What is the complete list of supported storage vendors and their OUI prefixes? This information would be helpful for users planning migrations.
+
+[NOTE]
+====
+Administrators can extend or override the built-in vendor mapping list by using a Kubernetes ConfigMap. For more information, see xref:proc_configuring-naa-oui-map_{context}[Configuring custom NAA-to-vendor mappings].
+====

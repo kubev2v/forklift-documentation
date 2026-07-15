@@ -40,6 +40,11 @@ Storage copy offload is a feature that allows you to migrate {vmw} virtual machi
 
 For more information about storage copy offload, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.11/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#con_about-storage-copy-offload_vmware[Migrating {vmw} virtual machines by using storage copy offload].
 ====
++
+[NOTE]
+====
+{project-short} supports migrating VMs with multiple disks (up to 60) across different storage arrays from the same vendor or different vendors. When multiple storage arrays from the same vendor are configured, {project-short} automatically uses Network Address Authority (NAA) identifier matching to map each disk to the correct target datastore. For more information, see xref:con_multi-array-rdm-support_{context}[Multi-array Raw Device Mapping support for storage copy offload].
+====
 
 . Optional: Click *Add mapping* to create additional storage maps, including mapping multiple storage sources to a single target storage class.
 . Click *Create*.

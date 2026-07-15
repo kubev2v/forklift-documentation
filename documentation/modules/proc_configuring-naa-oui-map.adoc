@@ -1,0 +1,68 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_configuring-naa-oui-map_{context}"]
+= Configure custom NAA-to-vendor mappings
+
+[role="_abstract"]
+You can configure custom Network Address Authority (NAA) to vendor mappings by creating or editing the `forklift-naa-oui-map` ConfigMap. This allows you to extend or override the built-in Organizationally Unique Identifier (OUI) prefix mappings without requiring a controller restart.
+
+.Prerequisites
+
+* Administrator access to the {ocp} cluster where {project-short} is installed.
+* The NAA or OUI prefix that requires custom mapping is identified.
+
+// Info needed: What namespace should this ConfigMap be created in? Is it the same namespace where MTV is installed (typically openshift-mtv)?
+
+.Procedure
+
+. Create or edit the `forklift-naa-oui-map` ConfigMap:
++
+[source,terminal]
+----
+$ oc edit configmap forklift-naa-oui-map -n <namespace>
+----
++
+// Info needed: What is the correct namespace? Replace <namespace> with the actual namespace.
+
+. Add or modify the NAA-to-vendor mappings in the `data` section of the ConfigMap:
++
+[source,yaml]
+----
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: forklift-naa-oui-map
+  namespace: <namespace>  // Info needed: Specify the correct namespace
+data:
+  # Format: "NAA_or_OUI_prefix": "vendor_name"
+  "60000970": "EMC"
+  "6000097000001": "Dell_PowerMax_Custom"
+  "naa.68ccf09800": "Pure_Storage_Custom"
+  # VML format example
+  "vml.020000000060000970": "EMC_VML"
+----
++
+// Info needed: What is the exact format for the vendor_name value? Should it match specific strings from a predefined list, or can it be any descriptive string? Are there naming conventions to follow?
+
+. Save the ConfigMap.
++
+The {project-short} controller automatically detects the ConfigMap changes and applies the new mappings without requiring a restart.
+
+// Info needed: How long does it take for the controller to pick up ConfigMap changes? Is there a way to verify that the new mappings are active?
+
+.Verification
+
+// Info needed: What is the recommended way to verify that custom NAA-to-vendor mappings are working correctly? Are there logs to check or a test procedure to follow?
+
+[NOTE]
+====
+Custom mappings in the `forklift-naa-oui-map` ConfigMap take precedence over built-in mappings. If you specify a NAA or OUI prefix that already exists in the built-in list, your custom mapping overrides the default value.
+====
+
+[NOTE]
+====
+The ConfigMap supports both standard NAA hexadecimal format prefixes and VML (vSphere Managed Object) format prefixes.
+====
