@@ -24,4 +24,9 @@ Both types of storage map for a project are shown in the *Storage maps* page, bu
 * Maps created in the *Storage maps* step of the *Plan creation wizard* are shown as being owned by the migration plan.
 * Maps created in the *Storage maps* page of the *Migration for Virtualization* section of the {virt} web console are shown as having no owner.
 
+[NOTE]
+====
+When using storage copy offload, {project-short} supports migrating virtual machines with multiple disks (up to 60) across different storage arrays from the same vendor or different vendors. The system automatically maps each disk to the correct target datastore using Network Address Authority (NAA) identifier matching.
+====
+
 
