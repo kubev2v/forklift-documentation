@@ -28,7 +28,7 @@ endif::[]
 ifdef::web[]
 . In the {ocp} web console, click *Operators* -> *OperatorHub*.
 . Use the *Filter by keyword* field to search for *{operator}*.
-ifeval::["{build}" == "upstream"]
+ifdef::upstream[]
 +
 [NOTE]
 ====
@@ -76,7 +76,7 @@ EOF
 ----
 
 . Create a `Subscription` CR for the Operator:
-ifeval::["{build}" == "upstream"]
+ifdef::upstream[]
 +
 [source,terminal,subs="attributes+"]
 ----
@@ -96,7 +96,7 @@ spec:
 EOF
 ----
 endif::[]
-ifeval::["{build}" == "downstream"]
+ifdef::downstream[]
 +
 [source,terminal,subs="attributes+"]
 ----
