@@ -1,0 +1,14 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-3_{context}"]
+= {project-short} fixed issues 2.12.3
+
+[role="_abstract"]
+Review the fixed issues in this release of {project-short}.
+
+{project-short} 2.12.3 fixes the following CVE:
+
+* link:https://access.redhat.com/security/cve/cve-2026-48801[CVE-2026-48801]

@@ -9,6 +9,19 @@
 [role="_abstract"]
 {project-first} 2.12 introduces the following features and enhancements.
 
+[id="new-features-and-enhancements-2-12-3_{context}"]
+== {project-short} 2.12.3 new features and enhancements
+
+{project-short} supports migration from Windows Failover Clusters (Technology Preview)::
+{project-short} inventories and migrates virtual machines (VMs) from Windows Server Failover Cluster environments that run Hyper-V. You can configure a single provider that points to the cluster name object (CNO). {project-short} automatically discovers all cluster nodes, their VMs, and shared storage. This storage includes Cluster Shared Volumes (CSV) and Server Message Block (SMB) shares. The migration scheduler distributes work across nodes to prevent overloading a single host and blocks migrations from nodes in a maintenance or paused state. This capability is a Technology Preview feature. As a result, you can migrate VMs from clustered Hyper-V environments without configuring a separate provider for each host.
++
+link:https://issues.redhat.com/browse/MTV-5807[MTV-5807]
+
+{project-short} preserves migrated VM PCI addresses for {vmw} migrations::
+{project-short} collects and preserves Peripheral Component Interconnect (PCI) addresses and slot numbers from the {vmw} source virtual machine (VM). This capability ensures that network interfaces maintain the same PCI topology during migration to OpenShift, which prevents issues with device drivers, hardware passthrough, and monitoring tools. As a result, you ensure application and configuration consistency throughout the migration process.
++
+link:https://issues.redhat.com/browse/MTV-6145[MTV-6145]
+
 [id="new-features-and-enhancements-2-12-2_{context}"]
 == {project-short} 2.12.2 new features and enhancements
 
