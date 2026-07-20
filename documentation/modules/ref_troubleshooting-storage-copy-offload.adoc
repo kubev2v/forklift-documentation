@@ -19,23 +19,17 @@ If you encounter storage mapping errors, verify the following:
 * The NAA identifiers are correctly reported by the storage arrays.
 * If using custom vendor mappings, the `forklift-naa-oui-map` ConfigMap is correctly configured.
 
-// Info needed: What are the specific error messages that users might see if NAA matching fails? What logs should they check? What are the common causes of NAA matching failures?
-
 For more information about multi-array support and NAA-based disambiguation, see xref:con_multi-array-rdm-support_{context}[Multi-array Raw Device Mapping support for storage copy offload].
 
 == Custom NAA-to-vendor mapping issues
 
-If you have configured custom NAA-to-vendor mappings using the `forklift-naa-oui-map` ConfigMap and the mappings are not working as expected:
+If you have configured custom NAA-to-vendor mappings by using the `forklift-naa-oui-map` ConfigMap and the mappings are not working as expected:
 
 . Verify that the ConfigMap is created in the correct namespace.
-+
-// Info needed: What is the correct namespace?
 
 . Check that the NAA or OUI prefix format is correct in the ConfigMap.
 
 . Verify that the ConfigMap changes have been picked up by the controller.
-+
-// Info needed: What logs should users check to verify that the ConfigMap was loaded? What is the log message that confirms the custom mappings are active?
 
 . Ensure that there are no syntax errors in the ConfigMap YAML.
 
