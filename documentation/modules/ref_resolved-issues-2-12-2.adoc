@@ -43,8 +43,3 @@ Plan reconciliation time no longer increases during concurrent migrations::
 Before this update, the scheduler queried the inventory service individually for every running virtual machine (VM). As a consequence, high latency in inventory GET calls caused mutex contention and delayed concurrent migrations. With this update, the inventory application programming interface (API) is optimized to reduce database loads. As a result, the scheduler processes concurrent migrations without significant delays in plan reconciliation time.
 +
 link:https://issues.redhat.com/browse/MTV-6052[MTV-6052]
-
-SCSI reservations are no longer enabled by default on shared RDM disks::
-Before this update, SCSI reservations were enabled by default on all shared Raw Device Mapping (RDM) disks during migration. As a consequence, issues occurred when a reservation was not desired or supported for a given workload. With this update, the `scsiReservation` variable is available to enable or disable reservations on demand. You can configure this setting per migration plan for all virtual machines (VMs), and a per-VM override is also available. As a result, you have explicit control over whether SCSI reservations are enabled for shared RDM disks, which prevents unintended reservation behavior and allows you fine-grained configuration per workload.
-+
-link:https://issues.redhat.com/browse/MTV-6070[MTV-6070]

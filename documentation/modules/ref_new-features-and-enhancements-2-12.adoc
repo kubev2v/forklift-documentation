@@ -12,6 +12,11 @@
 [id="new-features-and-enhancements-2-12-2_{context}"]
 == {project-short} 2.12.2 new features and enhancements
 
+Configurable SCSI reservations for shared RDM disks::
+The `scsiReservation` variable is available to enable or disable reservations on demand for shared Raw Device Mapping (RDM) disks. You can configure this setting per migration plan for all virtual machines (VMs), and a per-VM override is also available. This enhancement prevents issues that occur when a reservation is not desired or supported for a given workload. As a result, you have explicit control over whether SCSI reservations are enabled for shared RDM disks, which prevents unintended reservation behavior and allows fine-grained configuration per workload.
++
+link:https://issues.redhat.com/browse/MTV-6070[MTV-6070]
+
 The `targetVMName` variable is available for PVC name templates::
 The `targetVMName` variable is available for the `PVCNameTemplate` configuration. You can configure this template to generate persistent volume claim (PVC) names for virtual machine (VM) disks. As a result, you can include the target VM name in the generated PVC names. For example, you can use `spec.pvcNameTemplate: '{{.TargetVmName}}-disk-{{.DiskIndex}}'`.
 +
