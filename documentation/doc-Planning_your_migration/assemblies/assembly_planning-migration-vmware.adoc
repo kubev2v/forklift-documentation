@@ -30,6 +30,8 @@ include::../modules/ref_sco-supported-storage-providers.adoc[leveloffset=+2]
 
 include::../modules/proc_storage-copy-offload-steps.adoc[leveloffset=+2]
 
+include::../modules/con_sco-warm-migration-performance.adoc[leveloffset=+2]
+
 include::../modules/con_copy-methods-sco.adoc[leveloffset=+2]
 
 include::../modules/con_sco-ssh-advantages.adoc[leveloffset=+2]

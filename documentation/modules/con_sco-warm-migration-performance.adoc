@@ -1,0 +1,39 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_sco-warm-migration-performance_{context}"]
+= Disk write activity and warm migration performance for storage copy offload
+
+[role="_abstract"]
+You can evaluate whether warm migration with storage copy offload saves time compared to cold migration by measuring the disk write rate of your virtual machines before you migrate.
+
+During a warm migration, {project-short} takes periodic Changed Block Tracking (CBT) snapshots while the virtual machine (VM) continues to run. Each snapshot captures the blocks that changed since the previous snapshot. When the disk write rate is high, the resulting change sets are larger, which increases the time required to copy each delta.
+
+If the cumulative copy time for these change sets approaches or exceeds the total copy time of a cold migration, warm migration does not provide a time advantage. The migration still completes successfully, but the downtime reduction that warm migration is designed to provide is diminished or eliminated.
+
+The impact of disk write rates on migration time can vary by an order of magnitude. For example:
+
+* A VM writing at a lower rate, such as 50 kilobytes per second, produces minimal change sets that add little to the total copy time.
+* A VM writing at a higher rate, such as 5 megabytes per second, can accumulate change sets of several gigabytes, potentially resulting in no time savings compared to a cold migration.
+
+[NOTE]
+====
+High disk write activity does not cause the migration to fail. The warm migration process completes correctly regardless of the write rate. However, the expected reduction in downtime might not occur.
+====
+
+== Measuring storage array performance before migration
+
+Before you migrate VMs in a production environment, measure the disk write rate of your storage array to determine whether warm migration provides a time advantage over cold migration.
+
+To measure your storage array performance, perform the following steps:
+
+. Select a test VM that is representative of your production workload.
+. Use a disk stress tool to generate write activity on the test VM at varied write speeds.
+. Run a warm migration of the test VM with storage copy offload enabled.
+. Compare the total migration time against a cold migration of the same VM.
+
+// TODO: Add single-VM test example demonstrating storage performance measurement with varied write speeds
+
+Based on your test results, you can determine the disk write rate threshold at which warm migration no longer provides a time advantage for your storage array. Use this information to decide whether to use warm or cold migration for your production VMs.
