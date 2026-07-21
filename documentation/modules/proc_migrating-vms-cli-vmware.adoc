@@ -235,6 +235,9 @@ where:
 `<namespace>`::
 Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
 
+`storageClass`::
+Specifies the storage class. For a NetApp Shift integration migration, specify a storage class that is annotated for NetApp Shift.
+
 `<access_mode>`::
 Specifies the access mode. Optional for storage copy offload, required for other VMware migrations. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 

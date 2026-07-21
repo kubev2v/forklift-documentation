@@ -1,0 +1,44 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_netapp-shift-prerequisites_{context}"]
+= Prerequisites for NetApp Shift integration
+
+[role="_abstract"]
+To migrate {vmw} virtual machines (VMs) by using NetApp Shift zero-copy integration, you must meet certain prerequisites.
+
+[id="ref_netapp-prerequisites-mtv-vmw_{context}"]
+== {project-short} and {vmw}
+
+In addition to the standard link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_vmware-prerequisites_mtv[{vmw} prerequisites], you must meet the following requirements:
+
+* {project-first} version 2.12 or later is installed on the target cluster.
+* Storage classes that you use for NetApp Shift migrations are annotated in the {project-short} user interface (UI) to indicate NetApp Shift capability.
+
+[id="ref_netapp-prerequisites-netapp-storage_{context}"]
+== NetApp Shift and storage
+
+* The NetApp Shift toolkit is deployed as a containerized service with NetApp Trident CSI and Migration Toolkit for Virtualization (MTV). according to https://docs.netapp.com/us-en/netapp-solutions-virtualization/migration/shift-toolkit-deploy-operator.html[Manually deploy the Shift operator (Standard mode)].
+* Source VMs use NFS-based storage on NetApp ONTAP. They do not use block or LUN datastores, which apply to storage copy offload.
+* The target {virt} cluster is accessible to NetApp Shift so that the toolkit can create persistent volume claims (PVCs) in the intended namespace.
+* A Container Storage Interface (CSI) driver or storage class suitable for the cloned NFS-backed volumes is available on the target cluster.
+
+[id="ref_netapp-prerequisites-source-vms_{context}"]
+== Source VM requirements
+
+* Source VMs do not have active snapshots. 
++
+[IMPORTANT]
+====
+Due to proprietary {vmw} file formatting, VM disks must be flattened before migration. You have deleted all snapshots and consolidated disks in vSphere.
+====
+
+* A source VM can be powered on initially, but the migration process automatically powers it off during the migration.
+* You have identified the target namespace in which the NetApp Shift toolkit creates PVCs.
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:proc_netapp-shift-integration-steps_{context}[Planning and running NetApp Shift integration migrations]

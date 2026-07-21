@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: PROCEDURE
+[id="proc_netapp-shift-integration-ui_{context}"]
+= Migrating {vmw} VMs with NetApp Shift integration in the UI
+
+[role="_abstract"]
+Create and run a migration plan in the {project-short} UI when NetApp Shift has already cloned disks and created labeled persistent volume claims (PVCs) on the target cluster.
+
+.Prerequisites
+
+* You completed xref:ref_netapp-shift-prerequisites_{context}[Prerequisites for NetApp Shift integration].
+* You configured a {vmw} source provider, a {virt} destination provider, a network map, and a storage map annotated for NetApp Shift.
+* Storage classes that will be used for NetApp Shift migrations are annotated in the {project-short} UI to indicate NetApp Shift capability.
+
+.Procedure
+
+. In the {ocp} web console, open the *Migration for Virtualization* page. Verify that your {vmw} source provider and {virt} destination provider exist.
+
+. Create a migration plan. Select *Cold migration* on the *Migration type* page. 
++
+Select the virtual machines (VMs) whose disks NetApp Shift already cloned. Include only the VMs that have matching PVCs in the target namespace. For more information about creating a plan in the UI, see xref:proc_creating-plan-wizard-vmware_{context}[Creating a VMware vSphere migration plan by using the MTV wizard].
+
+. Configure the plan settings as needed. 
++
+For more information, see xref:proc_configuring-plan-settings-vmware_{context}[Configuring VMware migration plan settings].
+
+[role="_additional-resources"]
+.Additional resources
+
+* link:{mtv-mig}assembly_migrating-from-vmware_mtv#proc_netapp-shift-integration-cli_vmware[Migrating {vmw} VMs with NetApp Shift integration from the CLI]

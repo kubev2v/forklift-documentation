@@ -11,21 +11,27 @@ You can use the storage copy offload feature of {project-first} to migrate {vmw}
 
 .Prerequisites
 
-In addition to the regular link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_provider-specific-requirements-for-migration_mtv#ref_vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
+In addition to the regular link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
 
-* One of the following storage systems, configured:
+* One of the following storage systems is configured:
 ** Hitachi Vantara
 ** NetApp ONTAP
+// +
+// [NOTE]
+// ====
+// [fix ref] This provider applies only to storage copy offload_ (block/LUN, `XCOPY`) migrations. For NFS-backed VMs, see xref:con_about-netapp-shift-integration_{context}[Migrating {vmw} virtual machines by using NetApp Shift zero-copy integration].
+// ====
 ** Pure Storage FlashArray
 ** Dell PowerMax
 ** Dell PowerFlex
 ** Dell PowerStore
 ** HPE 3PAR or HPE Primera
 ** Infinidat InfiniBox
-** IBM Flashsystem
-* A working Container Storage Interface (CSI) driver connected to the above and to {virt}
-* A configured {vmw} vSphere provider
-* vSphere users must have a role that includes the following privileges (suggested name: `StorageOffloader`):
+** IBM FlashSystem
+
+* A Container Storage Interface (CSI) driver is working and connected to the storage system and to {virt}.
+* A {vmw} vSphere provider is configured.
+* You have a vSphere user role that includes the following privileges (suggested name: `StorageOffloader`):
 
 ** Global
 *** Settings
@@ -36,8 +42,8 @@ In addition to the regular link:https://docs.redhat.com/en/documentation/migrati
 *** Advanced settings
 *** Query patch
 *** Storage partition configuration
-* It is strongly recommended to delete any preexisting snapshots before you start a storage copy offload migration, especially performance-sensitive migrations. Pre-existing snapshots prevent use of `XCOPY` and force `vmkfstools` to use a slower software-based cloning method.
-
+* You have deleted any preexisting snapshots, especially for performance-sensitive migrations. Preexisting snapshots prevent the use of `XCOPY` and force `vmkfstools` to use a slower software-based cloning method.
++
 [IMPORTANT]
 ====
 Snapshots created by a warm migration do not affect storage copy offload migrations. Only preexisting snapshots cause this issue.

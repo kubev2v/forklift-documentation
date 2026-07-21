@@ -46,6 +46,16 @@ include::../modules/proc_storage-copy-offload-manual-ssh-set-up.adoc[leveloffset
 
 include::../modules/proc_storage-copy-offload-ui.adoc[leveloffset=+2]
 
+include::../modules/con_about-netapp-shift-integration.adoc[leveloffset=+1]
+
+include::../modules/con_how-netapp-shift-integration-works.adoc[leveloffset=+2]
+
+include::../modules/ref_netapp-shift-prerequisites.adoc[leveloffset=+2]
+
+include::../modules/proc_netapp-shift-integration-steps.adoc[leveloffset=+2]
+
+include::../modules/proc_netapp-shift-integration-ui.adoc[leveloffset=+2]
+
 include::../modules/proc_adding-source-provider-vmware.adoc[leveloffset=+1]
 
 include::../modules/proc_selecting-migration-network-for-vmware-source-provider.adoc[leveloffset=+1]

@@ -1,0 +1,67 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_about-netapp-shift-integration_{context}"]
+= Migrating {vmw} virtual machines by using NetApp Shift zero-copy integration
+
+[role="_abstract"]
+To migrate {vmw} virtual machines (VMs) on NetApp NFS storage more efficiently, use the NetApp Shift zero-copy integration with {project-first}. The NetApp Shift toolkit clones VM disks within the storage array. {project-short} also creates persistent volume claims (PVCs) with specific annotations. These annotations trigger the NetApp Shift plugin in the target Red Hat {virt} cluster. 
+
+The migration process then converts the guest operating system in place and creates the VM without copying the disks.
+
+The NetApp Shift toolkit targets _file-based_ NFS storage. This differs from _storage copy offload_. Storage copy offload uses block storage, logical unit numbers (LUNs), and the `XCOPY` SCSI command on supported SAN arrays. As a result, storage copy offload does not apply to NFS datastores. These datastores cannot expose LUNs for remapping between ESXi hosts and the target cluster.
+
+[IMPORTANT]
+====
+Review the following prerequisites and limitations before you begin planning a NetApp Shift migration:
+
+* You can perform only cold migrations. If a source VM is powered on initially, the migration process automatically powers it off.
+* The primary sources of downtime are guest conversion and necessary reboots. For example, Windows guests require a reboot after driver installation.
+* Source VMs cannot have active snapshots. Due to proprietary {vmw} file formatting, you must delete all snapshots and flatten all disks before you initiate the migration.
+====
+
+[id="netapp-shift-integration-overview_{context}"]
+== How the NetApp Shift toolkit works
+
+The NetApp Shift toolkit performs storage-side cloning, and {project-short} creates the PVCs for migration. The {project-short} UI creates and displays specially labeled and annotated PVCs. These PVCs signal the NetApp Trident Container Storage Interface (CSI) driver to call internal NetApp tooling for the migration. The PVCs are annotated so that the migration process can match each PVC to the correct source VM. The process then matches the PVC to the correct target VM during migration. 
+
+You create and run a migration plan in the {project-short} UI. The migration process skips network disk transfer when matching PVCs exist. The process then converts disks with `virt-v2v-in-place` and creates the target VMs.
+
+[id="netapp-shift-vs-storage-copy-offload_{context}"]
+== NetApp Shift integration versus storage copy offload
+
+[width="100%",cols="25%,37%,38%",options="header"]
+.Comparison of accelerated {vmw} migration options
+|===
+|Aspect | Storage copy offload | NetApp Shift zero-copy integration
+
+|Storage type
+| Block (SAN, LUN, VMFS)
+| File-based (NFS on NetApp ONTAP)
+
+|Disk copy mechanism
+| `vmkfstools` or `XCOPY` via `vsphere-xcopy-volume-populator`
+| Array-side clone by NetApp Shift with PVCs pre-created on cluster
+
+|Migration type
+| Cold and warm migration
+| Cold migration only
+
+|Disk transfer over network
+| Bypassed for base copy (array handles clone)
+| Bypassed (disks already on target PVCs)
+
+|Guest conversion
+| Standard `virt-v2v` path after volume populate\
+| `virt-v2v-in-place` on existing PVCs
+|===
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:con_how-netapp-shift-integration-works_{context}[NetApp Shift migrations versus standard migrations]
+* xref:proc_netapp-shift-integration-steps_{context}[Planning and running NetApp Shift integration migrations]
+* link:{mtv-mig}assembly_understanding-mtv-migration_mtv#con_virt-v2v-in-place-netapp-shift_mtv[How {project-short} uses virt-v2v-in-place with NetApp Shift]
+* xref:con_about-storage-copy-offload_{context}[Migrating {vmw} virtual machines by using storage copy offload]

@@ -49,11 +49,14 @@ spec:
 EOF
 ----
 +
+* `storageClass`: For a NetApp Shift integration migration, specify a storage class that is annotated for NetApp Shift.
 * `accessMode`: Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
-* `id`: Specify the VMware vSphere datastore moRef, for example, `datastore-11`. For more information about retrieving the moRef, see link:{mtv-mig}assembly_migrating-from-vmware_mtv#proc_retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef] in _{migrating-guide-title}_.
+* `id`: Specify the {vmw} vSphere datastore moRef, for example, `datastore-11`. For more information about retrieving the moRef, see link:{mtv-mig}assembly_migrating-from-vmware_mtv#proc_retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef] in _{migrating-guide-title}_.
 
 . Optional: To download your input, click *Download*.
 . Click *Create*.
 +
 Your map appears in the list of storage maps.
+
+
 

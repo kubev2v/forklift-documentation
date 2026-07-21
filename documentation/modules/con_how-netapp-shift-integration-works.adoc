@@ -1,0 +1,46 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_how-netapp-shift-integration-works_{context}"]
+= NetApp Shift migrations versus standard migrations
+
+[role="_abstract"]
+To reduce migration downtime, {project-first} and the NetApp Shift toolkit divide work during zero-copy migrations. This process differs from a standard network disk copy migration.
+
+
+[id="standard-vmware-migration-data-path_{context}"]
+== Standard migration (network disk copy)
+
+Without NetApp Shift integration, you use {project-short} to migrate a {vmw} virtual disk as follows:
+
+. {project-short} reads the disk from the source {vmw} environment.
+. The process sends the data over the migration network to the target cluster.
+. The process writes data to target persistent volumes.
+. The process runs guest conversion and creates the VM.
+
+This method can be slow for large disks. It also consumes significant network and host resources.
+
+[id="netapp-shift-migration-data-path_{context}"]
+== NetApp Shift zero-copy integration (no network disk copy)
+
+With NetApp Shift zero-copy integration, the migration proceeds as follows:
+ 
+. *NetApp Shift:* The toolkit clones VM disks within the NetApp NFS storage array. 
+. *{project-short} user interface (UI):* The UI creates specially labeled and annotated PVCs on the target cluster.
+. *NetApp Trident CSI:* The CSI driver reads the PVC annotations and calls internal NetApp tooling.
+. *{project-short} migration process:* The process powers off any active source VMs. It detects matching PVCs and skips the network disk transfer. The process runs `virt-v2v-in-place` guest conversion directly on the PVCs. It then creates the target VMs.
+
+This method eliminates the network copy step to improve performance. The disk data is already on cluster storage before the conversion starts.
+
+[NOTE]
+====
+NetApp Shift integration changes how disks reach the target cluster. It does not change how you map networks or storage classes for the target VM. You still configure providers, network maps, and storage maps by using standard workflows. 
+====
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:con_about-netapp-shift-integration_{context}[Migrating {vmw} virtual machines by using NetApp Shift zero-copy integration]
+* link:{mtv-mig}assembly_understanding-mtv-migration_mtv#con_virt-v2v-in-place-netapp-shift_mtv[How {project-short} uses virt-v2v-in-place with NetApp Shift]

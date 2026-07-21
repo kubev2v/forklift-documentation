@@ -1,0 +1,30 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_understanding-mtv-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_virt-v2v-in-place-netapp-shift_{context}"]
+= How MTV uses virt-v2v-in-place with NetApp Shift
+
+[role="_abstract"]
+For NetApp Shift integration, {project-short} uses the `virt-v2v-in-place` tool to convert guest operating systems on persistent volume claims (PVCs) that already exist on the target cluster, instead of copying disk images over the network before conversion.
+
+== Standard virt-v2v path
+
+In a typical VMware migration, {project-short} transfers disk data to the cluster (for example, by using the VMware Virtual Disk Development Kit (VDDK) or CDI importers), then runs `virt-v2v` to convert the disk image for {virt}.
+
+== virt-v2v-in-place with NetApp Shift
+
+When NetApp Shift has already cloned disks and {project-short} has created PVCs and NFS annotations:
+
+. {project-short} matches PVCs to VMs in the migration plan.
+. {project-short} powers off the source VM if it is running (cold migration only).
+. {project-short} runs `virt-v2v-in-place` on those PVCs to install VirtIO drivers, adjust guest configuration, and perform other conversion tasks without re-copying disk data.
+. {project-short} creates the target `VirtualMachine` from the converted PVCs.
+
+The primary sources of downtime are guest conversion and necessary reboots (for example, Windows guests require a reboot after VirtIO driver installation), not data transfer time.
+
+[role="_additional-resources"]
+.Additional resources
+
+* xref:con_virt-v2v-mtv_{context}[How MTV uses the virt-v2v tool]
