@@ -29,10 +29,3 @@ As a result, the operation falls back to a software clone (host-based copy). Alt
 
 Snapshots created by a warm migration do not affect storage copy offload migrations. Only preexisting snapshots cause this issue.
 ====
-
-For {project-first} 2.11, storage copy offload is available as GA for cold migration and as a Technology Preview feature for warm migration.
-
-[IMPORTANT]
-====
-Storage copy offload for warm migration is a Technology Preview feature only. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
-====
