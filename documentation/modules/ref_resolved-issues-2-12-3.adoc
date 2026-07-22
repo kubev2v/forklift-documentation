@@ -20,7 +20,7 @@ Before this update, the help output for the `kubectl-mtv` command displayed only
 link:https://issues.redhat.com/browse/MTV-6106[MTV-6106]
 
 Validation rule prevents the migration of virtual machines with more than 165 disks::
-Before this update, {project-short} did not detect or warn users when they migrated a virtual machine (VM) with an excessive number of attached disks. As a consequence, migrating a VM with more than 165 disks could result in a target VM that lacked network connectivity upon boot up. With this release, a validation rule is added to detect the number of attached disks. As a result, the migration process is prevented for VMs with more than 165 disks.
+Before this update, {project-short} did not detect or warn users when they migrated a virtual machine (VM) with an excessive number of attached disks. As a consequence, migrating a VM with more than 165 disks could result in a target VM that lacked network connectivity upon boot up. With this release, a validation rule is added to detect the number of attached disks. As a result, users receive a warning when migrating VMs with more than 165 disks.
 +
 link:https://issues.redhat.com/browse/MTV-6178[MTV-6178]
 
