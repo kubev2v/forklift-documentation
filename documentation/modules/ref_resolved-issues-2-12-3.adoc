@@ -9,6 +9,46 @@
 [role="_abstract"]
 Review the fixed issues in this release of {project-short}.
 
+Network interfaces preserve PCI addresses during migration from vSphere::
+Before this update, {project-short} did not collect or preserve PCI slot numbers from the source virtual machine (VM) when migrating from vSphere to OpenShift Container Platform. As a consequence, network interfaces received different PCI addresses in the target VM, which could break applications or configurations that depended on a specific PCI topology. With this release, the inventory collector fetches PCI slot information from vSphere, and the migration process populates the PCI address field in the target virtual machine instance (VMI) specification. As a result, PCI addresses are preserved to maintain the same PCI topology as the source VM.
++
+link:https://issues.redhat.com/browse/MTV-6145[MTV-6145]
+
+The kubectl-mtv command help output displays the maximum limit for the show-log-lines flag::
+Before this update, the help output for the `kubectl-mtv` command displayed only the default value for the `--show-log-lines` flag. As a consequence, users were unaware of the maximum limit for the number of log lines that could be displayed in the diagnostics output. With this release, the help text is updated to include the maximum limit. As a result, the `--help` flag displays both the default value and the maximum limit for the `--show-log-lines` flag.
++
+link:https://issues.redhat.com/browse/MTV-6106[MTV-6106]
+
+Validation rule prevents the migration of virtual machines with more than 165 disks::
+Before this update, {project-short} did not detect or warn users when they migrated a virtual machine (VM) with an excessive number of attached disks. As a consequence, migrating a VM with more than 165 disks could result in a target VM that lacked network connectivity upon boot up. With this release, a validation rule is added to detect the number of attached disks. As a result, the migration process is prevented for VMs with more than 165 disks.
++
+link:https://issues.redhat.com/browse/MTV-6178[MTV-6178]
+
+Storage copy offload migrations from VMware using HPE 3PAR or Primera storage fail::
+When you perform a storage copy offload migration from VMware that uses Hewlett Packard Enterprise (HPE) 3PAR or Primera storage, the `vsphere-xcopy-volume-populator` pod generates a host set name that exceeds the HPE WSAPI length limit. As a consequence, the HPE array rejects the request and the migration fails. This issue is a vendor limitation. No known workaround exists.
++
+link:https://issues.redhat.com/browse/MTV-5752[MTV-5752]
+
+Migration plans display a validating status during VDDK validation::
+Before this update, if the v2v image took time to pull during Virtual Disk Development Kit (VDDK) validation after a migration plan was created, the plan status displayed as "Unknown". As a consequence, it was unclear to users that the migration plan was actually undergoing validation. With this release, the status reporting is updated. As a result, the migration plan displays a "Validating" status while the VDDK is validating.
++
+link:https://issues.redhat.com/browse/MTV-6108[MTV-6108]
+
+AWS providers require a target availability zone during configuration::
+Before this update, the user interface did not require users to specify a target availability zone (`spec.settings.target-az`) when adding an Amazon Web Services (AWS) provider. As a consequence, the provider displayed a "ready" status, but users could not migrate virtual machines from the AWS provider. With this release, the user interface requires the target availability zone setting during provider configuration. As a result, AWS providers are configured correctly for migrations upon creation.
++
+link:https://issues.redhat.com/browse/MTV-6177[MTV-6177]
+
+Storage copy offload populator filters initiators correctly for PowerMax V3 arrays::
+Before this update, PowerMax V3 arrays (such as the 2000 and 8000 series) did not return the `port_group_protocol` field in the portgroup response. As a consequence, the storage copy offload populator skipped initiator filtering because it relied on this field. With this release, the populator falls back to the `type` field if the `port_group_protocol` field is absent. As a result, initiator filtering functions correctly during migrations that use PowerMax V3 arrays.
++
+link:https://issues.redhat.com/browse/MTV-6182[MTV-6182]
+
+Migration plan validation succeeds for virtual machines with disabled RDM disks::
+Before this update, migration plan validation failed for virtual machines (VMs) with a raw device mapping (RDM) disk when performing a storage copy offload migration, even if the `DISABLE_RDM_METHOD` parameter was set to `true`. As a consequence, the migration process incorrectly required a source-vendor storage map entry, which caused the validation to fail and prevented the migration. With this release, the validation logic respects the `DISABLE_RDM_METHOD` parameter. As a result, migration plan validation passes by using a target-only storage map, and a separate source-vendor storage map entry is not required.
++
+link:https://issues.redhat.com/browse/MTV-6137[MTV-6137]
+
 {project-short} 2.12.3 fixes the following CVE:
 
 * link:https://access.redhat.com/security/cve/cve-2026-48801[CVE-2026-48801]
