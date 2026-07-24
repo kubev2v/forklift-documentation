@@ -1,0 +1,49 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_troubleshooting-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_about-self-service-tsr_{context}"]
+= Self-service Technical Supportability Review
+
+[role="_abstract"]
+You can use the self-service Technical Supportability Review (TSR) on the Red{nbsp}Hat Customer Portal to validate your cluster configuration against Red{nbsp}Hat common practices.
+
+[NOTE]
+====
+The `must-gather` tool collects diagnostic information about your cluster, including resource definitions, service logs, and configuration data. The TSR requires a general cluster `must-gather`, not the {project-short}-specific `must-gather`. Run `oc adm must-gather` without the `--image` flag to collect the full cluster diagnostic data that the TSR evaluates.
+====
+
+The self-service TSR uses AI to evaluate your cluster's `must-gather` data and provides a prioritized executive summary of recommendations. This serves as a starting point to help you identify and resolve potential issues before they impact your environment.
+
+The TSR evaluates hundreds of touchpoints across the {ocp} platform, including {virt} and {project-full}. Coverage is continually expanding.
+
+[id="when-to-use-self-service-tsr_{context}"]
+== Self-service TSR use cases
+
+Integrating the self-service TSR into your regular operational workflow can be helpful in the following scenarios:
+
+Routine benchmarking::
+Use the TSR quarterly to benchmark cluster health and plan for routine maintenance activities.
+
+Pre-flight checks::
+Validate your cluster configuration before major structural changes, including upgrades, migrations, and expansions.
+
+Critical event preparation::
+Confirm cluster stability ahead of high-traffic business events, such as seasonal peaks, or operational milestones, such as year-end shutdowns, business continuity drills, and compliance audits.
+
+[id="how-to-access-tsr_{context}"]
+== Self-service TSR access
+
+You can run a self-service review by uploading your cluster's `must-gather` data to the *Analyze* tab in the *Support* section of the Red{nbsp}Hat Customer Portal. For a direct link, see the "Technical Supportability Review with AI tool" link in the "Additional resources" section of this guide. The *Analyze* feature generates a prioritized executive summary that identifies your cluster's top risks and recommends corrective actions. Review the recommendations and implement the suggested corrective actions to address the identified risks.
+
+The self-service TSR provides a solid baseline for cluster health. If you need additional guidance or a more comprehensive review, contact your Red{nbsp}Hat account team to arrange an assisted review through a Technical Account Manager (TAM) or Red{nbsp}Hat consultant. An assisted review includes human analysis, deeper coverage, and access to checks that are updated more frequently than the self-service version.
+
+[role="_additional-resources"]
+[id="additional-resources_troubleshooting-migration_{context}"]
+== Additional resources
+
+* link:https://access.redhat.com/support/cases/#/analyze[Technical Supportability Review with AI tool]
+* link:https://access.redhat.com/solutions/7141255[Red{nbsp}Hat Technical Supportability Review with AI: Proactive AI-Driven Cluster Assessments for {ocp}]
+* link:{ocp-doc}/support/gathering-cluster-data[Gathering data about your cluster] 
+

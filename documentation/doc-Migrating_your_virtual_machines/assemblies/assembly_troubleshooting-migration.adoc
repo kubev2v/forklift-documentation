@@ -42,6 +42,8 @@ include::../modules/ref_troubleshooting-storage-copy-offload-netapp-issues.adoc[
 
 include::../modules/proc_using-must-gather.adoc[leveloffset=+1]
 
+include::../modules/con_about-self-service-tsr.adoc[leveloffset=+1]
+
 include::../modules/con_collected-logs-cr-info.adoc[leveloffset=+1]
 
 include::../modules/proc_accessing-logs-ui.adoc[leveloffset=+2]
