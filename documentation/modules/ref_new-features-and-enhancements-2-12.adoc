@@ -22,6 +22,11 @@ link:https://issues.redhat.com/browse/MTV-5807[MTV-5807]
 +
 link:https://issues.redhat.com/browse/MTV-6145[MTV-6145]
 
+Self-service Technical Supportability Review supports {virt} and {project-short}::
+The Red{nbsp}Hat Customer Portal now offers a self-service Technical Supportability Review (TSR) that validates your cluster configuration against Red{nbsp}Hat recommended practices. The TSR uses AI to analyze your cluster's `must-gather` data and delivers a prioritized executive summary of your cluster's top risks with recommended corrective actions. The TSR runs hundreds of checks across the {ocp} platform, including {virt} and {project-short}, with coverage continuously expanding.
++
+For more information, see link:https://access.redhat.com/support/cases/#/analyze[Technical Supportability Review with AI tool] and link:https://access.redhat.com/solutions/7141255[Red Hat Technical Supportability Review with AI: Proactive AI-Driven Cluster Assessments for OpenShift Container Platform].
+
 [id="new-features-and-enhancements-2-12-2_{context}"]
 == {project-short} 2.12.2 new features and enhancements
 
