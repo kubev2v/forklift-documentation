@@ -1,0 +1,50 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-4_{context}"]
+= {project-short} fixed issues 2.12.4
+
+[role="_abstract"]
+Review the fixed issues in this release of {project-short}.
+
+Secondary static IP addresses are preserved during Windows VM migrations::
+Before this update, {project-short} validation incorrectly required at least two Domain Name System (DNS) servers. As a consequence, configurations with one DNS server were discarded, and Windows virtual machines (VMs) lost their secondary static IP configurations. With this update, the validation requires a minimum of four fields in the Internet Protocol (IP) configuration instead of five. As a result, {project-short} correctly preserves secondary static IP addresses after migration.
++
+link:https://issues.redhat.com/browse/MTV-5316[MTV-5316]
+
+CSI import PVCs are included in the pvcinit pod during migrations::
+Before this update, Container Storage Interface (CSI) import Persistent Volume Claims (PVCs) were not included in the `pvcinit` pod. As a consequence, migrations using the `WaitForFirstConsumer` volume binding mode stalled in the `CopyDisks` phase. This issue caused the CSI import PVCs to remain pending indefinitely. With this update, {project-short} includes CSI import PVCs in the `pvcinit` pod. As a result, the CSI import PVCs receive a consumer pod, which triggers their binding and allows the migration to complete successfully.
++
+link:https://issues.redhat.com/browse/MTV-6045[MTV-6045]
+
+Storage copy offload migrations correctly track populator pod limits::
+Before this update, {project-short} tracked the maximum populator limit against the registered host instead of the runtime host. As a consequence, the controller incorrectly throttled concurrent populator pods when dedicated hosts were defined. With this update, the controller targets the runtime host by using a `throttleHost` label. As a result, {project-short} correctly enforces the maximum populator pod limit on dedicated ESXi hosts.
++
+link:https://issues.redhat.com/browse/MTV-6055[MTV-6055]
+
+Static IP addresses are preserved during RHOSP migrations to primary UserDefinedNetworks::
+Before this update, {project-short} did not support static IP address preservation during migrations to a primary `UserDefinedNetwork` (UDN). This issue affected virtual machines (VMs) migrated from Red Hat OpenStack Platform (RHOSP). As a consequence, the migration process dynamically assigned new IP addresses to the virtual machines. With this update, you can preserve static IP addresses by enabling the `feature_static_udn_ip_addresses` feature flag. As a result, migrated VMs correctly retain their static IP configurations in the target network.
++
+link:https://issues.redhat.com/browse/MTV-6060[MTV-6060]
+
+{project-short} synchronizes vSphere provider inventories correctly after virtual machine deletions::
+Before this update, {project-short} sometimes failed to process virtual machine (VM) deletions from vCenter. This internal failure rolled back the entire batch of inventory changes. As a consequence, deleted VMs lingered in the inventory, and other batched updates failed to synchronize without triggering a warning. With this update, {project-short} reliably processes deletions and prevents individual failures from rolling back entire batches. As a result, the vSphere provider inventory synchronizes correctly without leaving stale VM entries.
++
+link:https://issues.redhat.com/browse/MTV-6073[MTV-6073]
+
+Plan status and plan type filters display options::
+Before this update, the select dropdown failed to appear when you selected a filter on the *Migration plans* page. As a consequence, you could not select a status or type to filter the migration plans. With this update, the select dropdown displays the filtering options. As a result, you can filter your migration plans correctly.
++
+link:https://issues.redhat.com/browse/MTV-6214[MTV-6214]
+
+Active OvirtVolumePopulator custom resources are preserved during migrations:: 
+Before this update, during multi-virtual machine (VM) migrations, {project-short} prematurely deleted active OvirtVolumePopulator custom resources. As a consequence, subsequent VM transfers in the migration plan failed. With this update, {project-short} retains these custom resources until all transfers are complete. As a result, all virtual machines in the plan migrate successfully.
++
+link:https://issues.redhat.com/browse/MTV-6223[MTV-6223]
+
+PowerMax migrations adopt orphaned storage groups and masking views::
+Before this update, the migration process lacked a `SIGTERM` handler during Dell PowerMax storage copy offload migrations. As a consequence, evicted populator pods left orphaned `xcopy` storage groups and masking views, which caused repeated migration errors. With this update, {project-short} adopts these orphaned storage groups and masking views instead of recreating them. As a result, migrations complete successfully without leaving orphaned resources on the storage array.
++
+link:https://issues.redhat.com/browse/MTV-6320[MTV-6320]
