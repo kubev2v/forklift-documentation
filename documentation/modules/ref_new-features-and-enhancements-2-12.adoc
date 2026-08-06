@@ -9,6 +9,14 @@
 [role="_abstract"]
 {project-first} 2.12 introduces the following features and enhancements.
 
+[id="new-features-and-enhancements-2-12-5_{context}"]
+== {project-short} 2.12.5 new features and enhancements
+
+Storage copy offload migrations report XCOPY usage per disk::
+With this update, {project-short} propagates the `xcopyUsed` indicator from the populator pod to the migration plan status. Previously, this information was only available as a transient Prometheus metric that was lost when the populator pod completed. Each disk transfer task includes an `xcopyUsed` annotation that shows whether the storage array used hardware-accelerated copy or a software fallback. As a result, you can identify which disks benefited from XCOPY and troubleshoot performance differences across storage configurations.
++
+link:https://redhat.atlassian.net/browse/MTV-5871[MTV-5871]
+
 [id="new-features-and-enhancements-2-12-3_{context}"]
 == {project-short} 2.12.3 new features and enhancements
 
