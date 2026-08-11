@@ -9,6 +9,13 @@
 [role="_abstract"]
 {project-first} {project-version} has the following known issues.
 
+Windows Server 2012 R2 VMs do not boot after migration from {vmw}::
+The current `virtio-win` package does not include VirtIO drivers for Windows Server 2012 or Windows Server 2012 R2. As a consequence, when you migrate a Windows Server 2012 R2 virtual machine (VM) from {vmw} vSphere, {project-short} cannot inject the required storage and network drivers during conversion. The VM does not boot correctly on {virt} and might enter Windows Recovery Environment or a login loop.
++
+Currently, there is no workaround for this issue.
++
+link:https://redhat.atlassian.net/browse/MTV-6329[MTV-6329]
+
 Static IP loss during RHEL 9 and 10 VM migrations::
 On Red Hat Enterprise Linux (RHEL) 9 and 10 systems, predictable network interface naming overrides `udev` rename rules. As a consequence, NetworkManager fails to activate the connection, and the virtual machine (VM) loses its static IP address.
 +

@@ -1,0 +1,20 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-5_{context}"]
+= {project-short} fixed issues 2.12.5
+
+[role="_abstract"]
+Review the fixed issues in this release of {project-short}.
+
+{project-short} caches `StorageClass` lookups during migrations::
+Previously, the {project-short} controller queried the Kubernetes API for NetApp `StorageClass` resources on every reconcile cycle. As a consequence, migrations created a large number of API requests, which slowed the API server. With this update, the controller caches `StorageClass` lookups. As a result, migrations create fewer API requests and controller performance improves.
++
+link:https://redhat.atlassian.net/browse/MTV-6366[MTV-6366]
+
+Hyper-V migrations support VM disks on local storage and Cluster Shared Volumes::
+Previously, {project-short} only mapped VM disk paths that were either Universal Naming Convention (UNC) paths or paths directly under the configured SMB share directory. As a consequence, VMs with disks on Cluster Shared Volumes (CSVs) or default local storage paths failed to migrate with a `No such file or directory` error during the `virt-v2v` stage. With this update, {project-short} correctly maps disk paths from additional storage locations. As a result, Hyper-V migrations succeed for VMs with disks on CSVs, local storage, or other non-SMB paths.
++
+link:https://redhat.atlassian.net/browse/MTV-6279[MTV-6279]
