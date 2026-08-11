@@ -15,6 +15,6 @@ Previously, the {project-short} controller queried the Kubernetes API for NetApp
 link:https://redhat.atlassian.net/browse/MTV-6366[MTV-6366]
 
 Hyper-V migrations support VM disks on local storage and Cluster Shared Volumes::
-Previously, {project-short} only mapped VM disk paths that were either UNC paths or paths directly under the configured SMB share directory. As a consequence, VMs with disks on Cluster Shared Volumes (CSV) or default local storage paths failed to migrate with a "No such file or directory" error during the `virt-v2v` stage. With this update, {project-short} correctly maps disk paths from additional storage locations. As a result, Hyper-V migrations succeed for VMs with disks on CSV, local storage, or other non-SMB paths.
+Previously, {project-short} only mapped VM disk paths that were either Universal Naming Convention (UNC) paths or paths directly under the configured SMB share directory. As a consequence, VMs with disks on Cluster Shared Volumes (CSVs) or default local storage paths failed to migrate with a `No such file or directory` error during the `virt-v2v` stage. With this update, {project-short} correctly maps disk paths from additional storage locations. As a result, Hyper-V migrations succeed for VMs with disks on CSVs, local storage, or other non-SMB paths.
 +
 link:https://redhat.atlassian.net/browse/MTV-6279[MTV-6279]
