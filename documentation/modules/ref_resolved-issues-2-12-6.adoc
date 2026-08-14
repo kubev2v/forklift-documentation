@@ -10,7 +10,7 @@
 Review the fixed issues in this release of {project-short}.
 
 Migration plans allow multiple VM NICs mapped to the same linux-bridge NAD::
-Previously, {project-short} blocked plans when multiple VM NICs were mapped to the same Multus NetworkAttachmentDefinition (NAD). OVN-Kubernetes does not support multiple interfaces on the same NAD. {project-short} applied this check to all NAD types. As a consequence, plans using a linux-bridge NAD with multiple NICs failed with a `Multiple VM NICs use the same Multus NAD name` error. Linux-bridge NADs do support this setup. With this update, {project-short} applies the check only to OVN-Kubernetes NADs. As a result, plans that use linux-bridge NADs with multiple NICs on the same NAD succeed.
+Previously, {project-short} blocked plans when multiple VM NICs were mapped to the same Multus NetworkAttachmentDefinition (NAD). Although OVN-Kubernetes does not support multiple interfaces on the same NAD, linux-bridge NADs do. Because {project-short} applied this check universally, plans using a linux-bridge NAD with multiple NICs failed with a `Multiple VM NICs use the same Multus NAD name` error. With this update, {project-short} applies the check only to OVN-Kubernetes NADs. As a result, plans that use linux-bridge NADs with multiple NICs on the same NAD succeed.
 +
 link:https://redhat.atlassian.net/browse/MTV-6394[MTV-6394]
 
@@ -20,11 +20,11 @@ Previously, {project-short} identified VMs in {vmw} vSphere by BIOS UUID. When m
 link:https://redhat.atlassian.net/browse/MTV-6396[MTV-6396]
 
 Storage copy offload populator metrics are exposed::
-Previously, the vSphere XCOPY volume populator did not expose three Prometheus metrics: `vsphere_xcopy_volume_populator_xcopy_used`, `vsphere_xcopy_volume_populator_progress`, and `vsphere_xcopy_volume_populator_vib_version`. As a consequence, you could not track transfer progress or confirm whether XCOPY hardware offload was used. With this update, the populator pod exposes all three metrics. As a result, you can query them in the {ocp-name} console under *Observe → Metrics*.
+Previously, the vSphere XCOPY volume populator did not expose the following Prometheus metrics: `vsphere_xcopy_volume_populator_xcopy_used`, `vsphere_xcopy_volume_populator_progress`, and `vsphere_xcopy_volume_populator_vib_version`. As a consequence, you could not track transfer progress or confirm whether XCOPY hardware offload was used. With this update, the populator pod exposes all three metrics. As a result, you can query them in the {ocp-name} console under *Observe → Metrics*.
 +
 link:https://redhat.atlassian.net/browse/MTV-6397[MTV-6397]
 
 IBM FlashSystem storage copy offload migrations no longer fail with rate limit errors::
-Previously, IBM FlashSystem limits authentication requests to 3 per second. Multi-VM storage copy offload (XCOPY) migrations exceeded this limit when `controller_max_populator_inflight` was set above 2. As a consequence, migrations failed mid-run with a `FlashSystem authentication failed. Status: 429 Too Many Requests` error. With this update, {project-short} adds retry and backoff logic for 429 responses. As a result, multi-VM XCOPY migrations to IBM FlashSystem succeed at higher concurrency.
+Previously, IBM FlashSystem limited authentication requests to 3 per second. Multi-VM storage copy offload (XCOPY) migrations exceeded this limit when `controller_max_populator_inflight` was set above 2. As a consequence, migrations failed mid-run with a `FlashSystem authentication failed. Status: 429 Too Many Requests` error. With this update, {project-short} adds retry and backoff logic for 429 responses. As a result, multi-VM XCOPY migrations to IBM FlashSystem succeed at higher concurrency.
 +
 link:https://redhat.atlassian.net/browse/MTV-6398[MTV-6398]
