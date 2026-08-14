@@ -9,8 +9,8 @@
 [role="_abstract"]
 Review the fixed issues in this release of {project-short}.
 
-Migration plans allow multiple VM NICs mapped to the same linux-bridge NAD::
-Previously, {project-short} blocked plans when multiple VM NICs were mapped to the same Multus NetworkAttachmentDefinition (NAD). Although OVN-Kubernetes does not support multiple interfaces on the same NAD, linux-bridge NADs do. Because {project-short} applied this check universally, plans using a linux-bridge NAD with multiple NICs failed with a `Multiple VM NICs use the same Multus NAD name` error. With this update, {project-short} applies the check only to OVN-Kubernetes NADs. As a result, plans that use linux-bridge NADs with multiple NICs on the same NAD succeed.
+Migration plans allow multiple VM NICs mapped to the same NAD::
+Previously, {project-short} blocked plans when multiple VM NICs were mapped to the same Multus NetworkAttachmentDefinition (NAD), regardless of NAD type. As a consequence, plans failed with a `Multiple VM NICs use the same Multus NAD name` error. With this update, {project-short} removes this restriction. As a result, plans that map multiple VM NICs to the same NAD succeed for both linux-bridge and OVN-Kubernetes NAD types.
 +
 link:https://redhat.atlassian.net/browse/MTV-6394[MTV-6394]
 
