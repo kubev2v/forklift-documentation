@@ -9,14 +9,6 @@
 [role="_abstract"]
 {project-first} 2.12 introduces the following features and enhancements.
 
-[id="new-features-and-enhancements-2-12-6_{context}"]
-== {project-short} 2.12.6 new features and enhancements
-
-{project-short} automatically removes {vmw} drivers and tools during migration::
-With this update, {project-short} automatically removes {vmw}-specific drivers and tools from virtual machines (VMs) during migration. As a result, migrated VMs do not require manual cleanup of {vmw}-specific components after migration.
-+
-link:https://redhat.atlassian.net/browse/MTV-6395[MTV-6395]
-
 [id="new-features-and-enhancements-2-12-5_{context}"]
 == {project-short} 2.12.5 new features and enhancements
 
