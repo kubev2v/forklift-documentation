@@ -29,7 +29,7 @@ link:https://redhat.atlassian.net/browse/MTV-6365[MTV-6365]
 == {project-short} 2.12.4 new features and enhancements
 
 CSI volume import is available for copy-offload migrations (Developer Preview)::
-With this update, {project-short} introduces a new copy-offload method that uses Container Storage Interface (CSI) driver volume import capabilities. This method migrates {vmw} vSphere Virtual Volumes (vVols) and Raw Device Mapping (RDM) disks within the same array, without running a dedicated populator pod per disk. This capability is a Developer Preview feature.
+With this update, {project-short} introduces a new copy-offload method that uses Container Storage Interface (CSI) driver volume import capabilities. This method migrates {vmw} vSphere Virtual Volumes (vVols) and Raw Device Mapping (RDM) disks within the same array, without running a dedicated populator pod per disk. The {project-short} UI does not display a progress bar for this method and indicates only whether the migration is complete. This capability is a Developer Preview feature.
 +
 link:https://issues.redhat.com/browse/MTV-5483[MTV-5483]
 
