@@ -25,14 +25,6 @@ With this update, {project-short} propagates the `xcopyUsed` indicator from the 
 +
 link:https://redhat.atlassian.net/browse/MTV-6365[MTV-6365]
 
-[id="new-features-and-enhancements-2-12-4_{context}"]
-== {project-short} 2.12.4 new features and enhancements
-
-CSI volume import is available for copy-offload migrations (Developer Preview)::
-With this update, {project-short} introduces a new copy-offload method that uses Container Storage Interface (CSI) driver volume import capabilities. This method migrates {vmw} vSphere Virtual Volumes (vVols) and Raw Device Mapping (RDM) disks within the same array, without running a dedicated populator pod per disk. The {project-short} UI does not display a progress bar for this method and indicates only whether the migration is complete. This capability is a Developer Preview feature.
-+
-link:https://issues.redhat.com/browse/MTV-5483[MTV-5483]
-
 [id="new-features-and-enhancements-2-12-3_{context}"]
 == {project-short} 2.12.3 new features and enhancements
 
@@ -53,6 +45,11 @@ For more information, see link:https://access.redhat.com/support/cases/#/analyze
 
 [id="new-features-and-enhancements-2-12-2_{context}"]
 == {project-short} 2.12.2 new features and enhancements
+
+CSI volume import is available for copy-offload migrations (Developer Preview)::
+With this update, {project-short} introduces a new copy-offload method that uses Container Storage Interface (CSI) driver volume import capabilities. This method migrates {vmw} vSphere Virtual Volumes (vVols) and Raw Device Mapping (RDM) disks within the same array, without running a dedicated populator pod per disk. The {project-short} UI does not display a progress bar for this method and indicates only whether the migration is complete. This capability is a Developer Preview feature.
++
+link:https://issues.redhat.com/browse/MTV-5483[MTV-5483]
 
 Configurable SCSI reservations for shared RDM disks::
 The `scsiReservation` variable is available to enable or disable reservations on demand for shared Raw Device Mapping (RDM) disks. This variable is disabled by default. You can configure this setting per migration plan for all virtual machines (VMs), and a per-VM override is also available. This enhancement prevents issues that occur when a reservation is not desired or supported for a given workload. As a result, you have explicit control over whether SCSI reservations are enabled for shared RDM disks, which prevents unintended reservation behavior and allows fine-grained configuration per workload.
