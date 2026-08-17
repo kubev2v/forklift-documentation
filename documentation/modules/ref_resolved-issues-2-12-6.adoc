@@ -23,8 +23,3 @@ Storage copy offload populator metrics are exposed::
 Previously, the vSphere XCOPY volume populator did not expose the following Prometheus metrics: `vsphere_xcopy_volume_populator_xcopy_used`, `vsphere_xcopy_volume_populator_progress`, and `vsphere_xcopy_volume_populator_vib_version`. As a consequence, you could not track transfer progress or confirm whether XCOPY hardware offload was used. With this update, the populator pod exposes all three metrics. As a result, you can query them in the {ocp-name} console under *Observe → Metrics*.
 +
 link:https://redhat.atlassian.net/browse/MTV-6397[MTV-6397]
-
-IBM FlashSystem storage copy offload migrations no longer fail with rate limit errors::
-Previously, IBM FlashSystem limited authentication requests to 3 per second. Multi-VM storage copy offload (XCOPY) migrations exceeded this limit when `controller_max_populator_inflight` was set above 2. As a consequence, migrations failed mid-run with a `FlashSystem authentication failed. Status: 429 Too Many Requests` error. With this update, {project-short} adds retry and backoff logic for 429 responses. As a result, multi-VM XCOPY migrations to IBM FlashSystem succeed at higher concurrency.
-+
-link:https://redhat.atlassian.net/browse/MTV-6398[MTV-6398]
