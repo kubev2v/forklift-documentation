@@ -1,0 +1,25 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-6_{context}"]
+= {project-short} fixed issues 2.12.6
+
+[role="_abstract"]
+Review the fixed issues in this release of {project-short}.
+
+Migration plans allow multiple VM NICs mapped to the same NAD::
+Previously, {project-short} blocked plans when multiple VM NICs were mapped to the same Multus NetworkAttachmentDefinition (NAD), regardless of NAD type. As a consequence, plans failed with a `Multiple VM NICs use the same Multus NAD name` error. With this update, {project-short} removes this restriction. As a result, plans that map multiple VM NICs to the same NAD succeed for both linux-bridge and OVN-Kubernetes NAD types.
++
+link:https://redhat.atlassian.net/browse/MTV-6394[MTV-6394]
+
+Warm migrations succeed when {vmw} VMs share the same BIOS UUID::
+Previously, {project-short} identified VMs in {vmw} vSphere by BIOS UUID. When multiple VMs shared the same BIOS UUID, the controller resolved it to the wrong VM and passed the wrong managed object reference (moRef) to VDDK. As a consequence, warm migrations failed with a disk not found error. With this update, {project-short} uses the `instanceUuid` field to identify VMs. As a result, warm migrations succeed even when VMs share the same BIOS UUID.
++
+link:https://redhat.atlassian.net/browse/MTV-6396[MTV-6396]
+
+Storage copy offload populator metrics are exposed::
+Previously, the vSphere XCOPY volume populator did not expose the following Prometheus metrics: `vsphere_xcopy_volume_populator_xcopy_used`, `vsphere_xcopy_volume_populator_progress`, and `vsphere_xcopy_volume_populator_vib_version`. As a consequence, you could not track transfer progress or confirm whether XCOPY hardware offload was used. With this update, the populator pod exposes all three metrics. As a result, you can query them in the {ocp-name} console under *Observe → Metrics*.
++
+link:https://redhat.atlassian.net/browse/MTV-6397[MTV-6397]
