@@ -15,7 +15,7 @@
 Deferred SELinux relabeling is available for virt-v2v conversions::
 With this update, you can defer SELinux relabeling to the first boot of a migrated virtual machine (VM) instead of relabeling during conversion. To enable deferred relabeling, set the `virt_v2v_extra_args` field to `--selinux-relabel-at-boot` in the `ForkliftController` custom resource (CR) by running the following command:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
 $ {oc} patch ForkliftController -n {namespace} forklift-controller --type=merge -p '{"spec": {"virt_v2v_extra_args":"--selinux-relabel-at-boot"}}'
 ----
