@@ -1,0 +1,15 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-7_{context}"]
+= {project-short} fixed issues 2.12.7
+
+[role="_abstract"]
+Review the fixed issues in this release of {project-short}.
+
+Multi-VM migrations do not delete OvirtVolumePopulator resources prematurely::
+Previously, during multi-VM migrations, the `forklift-controller` incorrectly deleted `OvirtVolumePopulator` resources. This occurred when a single virtual machine (VM) in a migration plan completed its migration. As a consequence, other active VM transfers in the same plan failed. With this update, the `forklift-controller` retains the `OvirtVolumePopulator` resources until all VMs in the plan finish migrating. As a result, all VM transfers in a multi-VM migration plan complete successfully.
++
+link:https://issues.redhat.com/browse/MTV-6447[MTV-6447]

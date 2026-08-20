@@ -1,0 +1,30 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_mod-docs-content-type: REFERENCE
+[id="ref_resolved-issues-2-12-8_{context}"]
+= {project-short} fixed issues 2.12.8
+
+[role="_abstract"]
+Review the fixed issues in this release of {project-short}.
+
+Target VM name resolution is standardized across all adapters::
+Previously, the plan builder and validator resolved target virtual machine (VM) names using different field-priority orders. As a consequence, they computed different persistent volume claim (PVC) names, causing migration plan validation to fail. With this update, {project-short} standardizes the target VM name resolution order across all adapters. As a result, all adapters resolve names consistently, which prevents mismatched PVC names during migration plan validation.
++
+link:https://issues.redhat.com/browse/MTV-6446[MTV-6446]
+
+Hyper-V provider automatically recovers from the ConnectionFailed status::
+Previously, the reconciler failed to re-queue the provider after Windows Remote Management (WinRM) basic authentication was re-enabled. As a consequence, the provider remained stuck in the `ConnectionFailed` status until you manually re-created it. With this update, the reconciler re-queues the provider for a connection retest. As a result, the Hyper-V provider automatically recovers from the `ConnectionFailed` status.
++
+link:https://issues.redhat.com/browse/MTV-6450[MTV-6450]
+
+CSI affinity labels are copied to prime PVCs to enable co-location::
+Previosly, during PowerStore, PowerFlex, or NetApp ONTAP migrations, {project-short} omitted CSI affinity labels on intermediate `prime` PersistentVolumeClaims (PVCs). As a consequence, the Container Storage Interface (CSI) driver could not co-locate source and destination volumes. With this update, {project-short} copies CSI affinity labels to `prime` PVCs during creation. As a result, the CSI driver successfully co-locates the volumes.
++
+link:https://issues.redhat.com/browse/MTV-6454[MTV-6454]
+
+Inventory database bloat and memory usage are reduced during vSphere migrations::
+Previously, migrating virtual machines (VMs) with many custom value definitions from VMware vSphere caused high memory consumption. This occurred because {project-short} copied the entire custom value definition to each VM in the inventory database. As a consequence, the inventory container ran out of memory, and migration plans failed. With this update, {project-short} stores custom value definitions in a separate database table and caches these definitions in memory. As a result, this optimization reduces database size and memory consumption, and migration plans complete successfully.
++
+link:https://issues.redhat.com/browse/MTV-6558[MTV-6558]
