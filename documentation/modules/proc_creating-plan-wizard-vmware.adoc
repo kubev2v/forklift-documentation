@@ -27,6 +27,7 @@ Limitations::
 * Have a {vmw} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_{context}[Adding a VMware vSphere source provider] or xref:proc_adding-virt-destination-provider_dest_{context}[Adding {a-virt} destination provider].
 * If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
 * If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
+* Optional: If you are migrating disks encrypted using Linux Unified Key Setup (LUKS), you can create a `Secret` manifest with `type` set to `Opaque` that contains the decryption passphrase. You can then select this secret in the migration plan wizard instead of entering the passphrase manually.
 
 .Procedure
 
@@ -123,11 +124,11 @@ If needed, click *Add mapping* to add another mapping.
 // Other settings page
 . On the *Other settings (optional)* page, specify any of the following settings that are appropriate for your plan. All are optional.
 
-* *Disk decryption passphrases*: For disks encrypted using Linux Unified Key Setup (LUKS).
+* *Disk decryption passphrases*: For disks encrypted using Linux Unified Key Setup (LUKS), select one of the following options:
 
-** Enter a decryption passphrase for a LUKS-encrypted device.
-** To add another passphrase, click *Add passphrase* and add a passphrase.
-** Repeat as needed.
+** *Use network-bound disk encryption (NBDE/Clevis)*: Select this option to use NBDE with Clevis to decrypt LUKS-encrypted disks during migration.
+** *Use an existing secret*: Select a secret from the list. The secret must be a `Secret` manifest with `type` set to `Opaque` that contains the decryption passphrase.
+** *Enter passphrases*: Enter a decryption passphrase for a LUKS-encrypted device. Repeat as needed.
 +
 You do not need to enter the passphrases in a specific order. For each LUKS-encrypted device, {project-short} tries each passphrase until one unlocks the device.
 
