@@ -18,15 +18,6 @@ You can migrate virtual machines (VMs) with LUKS-encrypted disks from VMware vSp
 
 In the user interface (UI), you can select only one decryption method per migration plan. If you use YAML configurations, you can combine different methods for virtual machines in the same plan.
 
-If you select an existing `Secret` manifest, the secret must meet these requirements:
-
-* The `Secret` manifest must have the `Opaque` type.
-* The secret must reside in the migration plan project.
-* Each data entry in the secret must represent one passphrase.
-* You can use any key name in the `data` or `stringData` fields.
-
-Example: TBD
-
 {project-short} transfers the data of VMs with LUKS-encrypted disks from the source environment to the target {virt} cluster. {project-short} reads only the blocks required for guest conversion. {project-short} decrypts these blocks and re-encrypts them locally with the same key.
 
 Clevis is a client-side framework that automates the decryption of LUKS volumes by binding a LUKS key slot to a policy. During the migration, {project-short} authenticates with the configured network service. It requests the key to unlock the LUKS-encrypted disk from the Tang server. With automatic key retrieval, the VM boots without manual passphrase entry.
@@ -36,4 +27,5 @@ Benefits of NBDE::
 * *Automation:* Eliminates the need to enter keys manually during migration.
 * *Enhanced security:* Maintains VM security during migration by preserving LUKS encryption from the source to the destination.
 * *Seamless operation:* Ensures that VMs with encrypted disks boot in the target environment with minimal interruption.
+
 

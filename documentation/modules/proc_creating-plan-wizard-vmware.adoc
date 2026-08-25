@@ -24,10 +24,43 @@ Limitations::
 
 .Prerequisites
 
-* Have a {vmw} source provider and {a-virt} destination provider. For more information, see xref:proc_adding-source-provider_{context}[Adding a VMware vSphere source provider] or xref:proc_adding-virt-destination-provider_dest_{context}[Adding {a-virt} destination provider].
-* If you plan to create a *Network map* or a *Storage map* that will be used by more than one migration plan, create it in the *Network maps* or *Storage maps* page of the UI before you create a migration plan that uses that map.
-* If you are using a user-defined network (UDN), note the name of its namespace as defined in {virt}.
-* Optional: If you are migrating disks encrypted using Linux Unified Key Setup (LUKS), you can create a `Secret` manifest with `type` set to `Opaque` that contains the decryption passphrase. You can then select this secret in the migration plan wizard instead of entering the passphrase manually.
+* You configured a {vmw} source provider and an {a-virt} destination provider. For details, see xref:proc_adding-source-provider_{context}[Adding a VMware vSphere source provider] or xref:proc_adding-virt-destination-provider_dest_{context}[Adding {a-virt} destination provider].
+* If you plan to share a network or storage map across multiple plans, create the map first. Create the map on the *Network maps* or *Storage maps* page of the user interface (UI) before creating your plan.
+* If you use a user-defined network (UDN), you know the namespace name as defined in {virt}.
+* If you migrate disks encrypted with Linux Unified Key Setup (LUKS), you can create a `Secret` manifest to provide the decryption passphrase. The secret must meet these requirements:
+** Have the `Opaque` type.
+** Reside in the namespace of the migration plan.
+** Contain one passphrase per data entry.
+** Use any key name in the `data` or `stringData` fields.
++
+--
+For example, you can use the following YAML configuration to define the secret:
+
+[source,yaml,subs="+quotes"]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: __<luks_secret_name>__
+  namespace: __<migration_plan_namespace>__
+type: Opaque
+stringData:
+  __<disk_key>__: "__<passphrase>__"
+----
+where:
+
+`<luks_secret_name>`::
+Specifies the name of your decryption secret.
+
+`<migration_plan_namespace>`::
+Specifies the namespace where you create your migration plan.
+
+`<disk_key>`::
+Specifies any key name that represents the encrypted disk.
+
+`<passphrase>`::
+Specifies the decryption passphrase for your LUKS-encrypted device.
+--
 
 .Procedure
 
