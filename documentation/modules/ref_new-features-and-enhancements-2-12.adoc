@@ -9,6 +9,14 @@
 [role="_abstract"]
 {project-first} 2.12 introduces the following features and enhancements.
 
+[id="new-features-and-enhancements-2-12-7_{context}"]
+== {project-short} 2.12.7 new features and enhancements
+
+IPv6 static addresses are preserved during Windows VM migrations::
+Previously, {project-short} preserved only IPv4 static addresses during Windows virtual machine (VM) migrations. As a consequence, the firstboot network configuration scripts silently dropped IPv6 addresses. With this update, {project-short} preserves both IPv4 and IPv6 static addresses, including dual-stack and IPv6-only configurations. As a result, migrated Windows VMs correctly retain all static network settings in the target environment.
++
+link:https://issues.redhat.com/browse/MTV-6467[MTV-6467]
+
 [id="new-features-and-enhancements-2-12-6_{context}"]
 == {project-short} 2.12.6 new features and enhancements
 
