@@ -8,7 +8,6 @@
 = Migration of LUKS-encrypted disks
 
 [role="_abstract"]
-= Migration of LUKS-encrypted disks
 
 You can migrate virtual machines (VMs) with LUKS-encrypted disks from VMware vSphere to Red Hat OpenShift Virtualization. Use one of these methods:
 
