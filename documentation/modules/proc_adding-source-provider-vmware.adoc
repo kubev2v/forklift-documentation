@@ -11,14 +11,14 @@ You can migrate {vmw} vSphere virtual machines (VMs) from {vmw} vCenter or from 
 
 Considerations::
 
-* {project-short} disables EMS enforcement for migrations with {vmw} vSphere source providers to enable migrations from versions of vSphere that {project-full} supports but that do not comply with the 2023 FIPS requirements. Therefore, you should consider whether migrations from vSphere source providers risk your compliance with FIPS. See xref:ref_compatibility-guidelines_mtv[Software compatibility guidelines] for supported versions of vSphere.
+* {project-short} disables EMS enforcement for {vmw} vSphere source provider migrations, enabling migrations from supported vSphere versions that do not comply with 2023 FIPS requirements. Therefore, you should consider whether migrations from vSphere source providers risk your compliance with FIPS. See xref:ref_compatibility-guidelines_mtv[Software compatibility guidelines] for supported versions of vSphere.
 * Remove anti-virus software from source VMs before migration to prevent migration failures.
 * {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.
-* If you input any value of maximum transmission unit (MTU) besides the default value in your migration network, you must also input the same value in the {ocp-short} transfer network that you use. For more information about the {ocp-short} transfer network, see xref:proc_creating-plan-wizard-vmware_vmware[Creating a {vmw} vSphere migration plan using the {project-short} wizard].
+* If you specify a non-default maximum transmission unit (MTU) value for your migration network, you must use the same MTU value in the {ocp-short} transfer network. For more information about the {ocp-short} transfer network, see xref:proc_creating-plan-wizard-vmware_vmware[Creating a {vmw} vSphere migration plan using the {project-short} wizard].
 
 .Prerequisites
 
-* Create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry that is accessible to all clusters to accelerate migrations and reduce the risk of migration plan failures. If you are not using VDDK and a plan fails, retry with VDDK installed. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
+* Create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry accessible to all clusters. Using a VDDK image accelerates migrations and reduces migration plan failures. If you are not using VDDK and a plan fails, retry with VDDK installed. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
 
 [WARNING]
 ====
@@ -29,71 +29,52 @@ Virtual machine (VM) migrations do not work without VDDK when a VM is backed by 
 
 . Access the *Create provider* page for {vmw} by doing one of the following:
 
-.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
-... Click *Create Provider*.
-... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
-+
-If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
-+
-If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+* *From the Providers page:* In the {ocp} web console, click *Migration for Virtualization > Providers*, click *Create Provider*, select a *Project* from the list, and then click *{vmw}*.
 
-... Click *{vmw}*.
+* *From the Overview page (Administrators only):* In the {ocp} web console, click *Migration for Virtualization > Overview*, click *{vmw}* in the *Welcome* pane, and select a *Project* from the list.
++
+[NOTE]
+====
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page.
+====
++
+The default project depends on the active {project-short} project (if *All projects* is active, the default is `+{namespace}+`). Administrators can view all projects; authorized non-administrators see only their assigned projects.
 
-.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
-... In the *Welcome* pane, click *{vmw}*.
+. Enter the provider details:
 +
-If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{vmw}* when the *Welcome* pane opens.
-... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
-+
-If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
-+
-If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
-
-. Specify the following fields:
-+
-.. *Provider details*
-
 * *Provider resource name*: Name of the source provider.
-* *Endpoint type*: Select the vSphere provider endpoint type. Options: *vCenter* or *ESXi*. You can migrate virtual machines from vCenter, an ESX/ESXi server that is not managed by vCenter, or from an ESX/ESXi server that is managed by vCenter but does not go through vCenter.
+* *Endpoint type*: Select *vCenter* or *ESXi*.
++
+You can migrate VMs from:
++
+** vCenter
+** An ESX/ESXi server not managed by vCenter
+** An ESX/ESXi server managed by vCenter (bypassing vCenter)
 * *URL*: URL of the SDK endpoint of the vCenter that hosts the source VM. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If you specify a certificate for FQDN, the value of this field must match the FQDN in the certificate.
-* *VDDK init image*: `VDDKInitImage` path. Create a VDDK init image to accelerate migrations. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
+
+. Optional: Configure the *VDDK init image* field by doing one of the following:
 +
-Do one of the following:
-
-** Select the *Skip {vmw} Virtual Disk Development Kit (VDDK) SDK acceleration (not recommended)*.
-
-** Enter the path in the *VDDK init image* text box. Format: `<registry_route_or_server_path>/vddk:<tag>`.
-
-** Upload a VDDK archive and build a VDDK init image from the archive by doing the following:
-
-*** Click *Browse* next to the *VDDK init image archive* text box, select the desired file, and click *Select*.
-
-*** Click *Upload*.
+* *Skip VDDK acceleration:* Select *Skip {vmw} Virtual Disk Development Kit (VDDK) SDK acceleration (not recommended)*.
+* *Enter an existing image path:* In the *VDDK init image* field, enter the image path in the format `<registry_route_or_server_path>/vddk:<tag>`.
+* *Upload a VDDK archive:* Click *Browse* next to *VDDK init image archive*, select the archive file, click *Select*, and then click *Upload*. The *VDDK init image archive* text box displays the URL of the uploaded archive.
 +
-The *VDDK init image archive* text box displays the URL of the uploaded archive.
+For more information about creating a VDDK image, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
 
-.. *Provider credentials*
-
+. Enter the provider credentials:
++
 * *Username*: vCenter user or ESXi user. For example, `user@vsphere.local`.
 * *Password*: vCenter user password or ESXi user password.
 
-[start=3]
 . Choose one of the following options for validating CA certificates:
 +
-** *Use a custom CA certificate*: Migrate after validating a custom CA certificate.
-** *Use the system CA certificate*: Migrate after validating the system CA certificate.
-** *Skip certificate validation* : Migrate without validating a CA certificate.
+** *Use a custom CA certificate*: Keep *Skip certificate validation* toggled left and provide the certificate:
 +
-.. To use a custom CA certificate, leave the *Skip certificate validation* switch toggled to the left, and _either_ drag the CA certificate to the text box _or_ browse for it and click *Select*.
-.. To use the system CA certificate, leave the *Skip certificate validation* switch toggled to the left, and leave the *CA certificate* text box empty.
-.. To skip certificate validation, toggle the *Skip certificate validation* switch to the right.
-+
-. Optional: Ask {project-short} to fetch a custom CA certificate from the provider's API endpoint URL.
-+
-.. Click *Fetch certificate from URL*. The *Verify certificate* window opens.
-.. If the details are correct, select the *I trust the authenticity of this certificate* checkbox and then click *Confirm*. If not, click *Cancel* and then enter the correct certificate information manually.
-+
-Once confirmed, the CA certificate will be used to validate subsequent communication with the API endpoint.
+*** *Upload file:* Drag the certificate to the text box, or click *Browse* and click *Select*.
+*** *Fetch from URL:* Click *Fetch certificate from URL*, select *I trust the authenticity of this certificate*, and click *Confirm*.
+
+** *Use the system CA certificate*: Keep *Skip certificate validation* toggled left and leave the *CA certificate* text box empty.
+
+** *Skip certificate validation*: Toggle *Skip certificate validation* to the right.
 
 . Click *Create provider* to add and save the provider.
 +
