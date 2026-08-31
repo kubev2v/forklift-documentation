@@ -48,6 +48,7 @@
 
 // Build type
 :build: upstream
+:upstream:
 
 // TOC configuration — produces a fixed left sidebar TOC
 :toc: left
