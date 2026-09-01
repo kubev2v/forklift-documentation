@@ -35,8 +35,8 @@ The default project depends on the active {project-short} project (if *All proje
 
 . Enter the provider credentials:
 +
-* *Username*: Username.
-* *Password*: Password.
+* *Username*: Username
+* *Password*: Password
 
 . Choose one of the following options for validating CA certificates:
 +

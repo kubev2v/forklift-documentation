@@ -18,11 +18,11 @@ Considerations::
 
 .Prerequisites
 
-* Create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry accessible to all clusters. Using a VDDK image accelerates migrations and reduces migration plan failures. If you are not using VDDK and a plan fails, retry with VDDK installed. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
-
-[WARNING]
+* Create a {vmw} Virtual Disk Development Kit (VDDK) image in a secure registry accessible to all clusters. VDDK is required for warm migrations and VMs backed by {vmw} vSAN. For cold migrations, VDDK is optional but accelerates the migration process. For more information, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
++
+[NOTE]
 ====
-Virtual machine (VM) migrations do not work without VDDK when a VM is backed by {vmw} vSAN.
+You can configure the provider without VDDK if you are only performing cold migrations of VMs that are not backed by vSAN, but VDDK is strongly recommended to improve migration performance and reliability.
 ====
 
 .Procedure
@@ -50,20 +50,20 @@ You can migrate VMs from:
 ** vCenter
 ** An ESX/ESXi server not managed by vCenter
 ** An ESX/ESXi server managed by vCenter (bypassing vCenter)
-* *URL*: URL of the SDK endpoint of the vCenter that hosts the source VM. Ensure that the URL includes the `sdk` path, usually `/sdk`. For example, `https://vCenter-host-example.com/sdk`. If you specify a certificate for FQDN, the value of this field must match the FQDN in the certificate.
+* *URL*: URL of the SDK endpoint. Ensure that the URL includes the `sdk` path, usually `/sdk`. For vCenter, use `https://vCenter-host-example.com/sdk`. For ESXi, use `https://esxi-host-example.com/sdk`. If you specify a certificate for FQDN, the value of this field must match the FQDN in the certificate.
 
-. Optional: Configure the *VDDK init image* field by doing one of the following:
+. Configure the *VDDK init image* field by doing one of the following:
 +
-* *Skip VDDK acceleration:* Select *Skip {vmw} Virtual Disk Development Kit (VDDK) SDK acceleration (not recommended)*.
 * *Enter an existing image path:* In the *VDDK init image* field, enter the image path in the format `<registry_route_or_server_path>/vddk:<tag>`.
 * *Upload a VDDK archive:* Click *Browse* next to *VDDK init image archive*, select the archive file, click *Select*, and then click *Upload*. The *VDDK init image archive* text box displays the URL of the uploaded archive.
+* *Skip VDDK:* Select *Skip {vmw} Virtual Disk Development Kit (VDDK) SDK acceleration (not recommended)*. Only skip VDDK if you are performing cold migrations of VMs that are not backed by vSAN.
 +
 For more information about creating a VDDK image, see xref:proc_creating-vddk-image_mtv[Creating a VDDK image].
 
 . Enter the provider credentials:
 +
-* *Username*: vCenter user or ESXi user. For example, `user@vsphere.local`.
-* *Password*: vCenter user password or ESXi user password.
+* *Username*: vCenter user or ESXi user, for example, `user@vsphere.local`
+* *Password*: vCenter user password or ESXi user password
 
 . Choose one of the following options for validating CA certificates:
 +

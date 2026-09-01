@@ -39,7 +39,7 @@ The SMB share must be accessible from both the Hyper-V host and the {ocp-short} 
 
 . Enter the provider credentials:
 +
-* *Username*: Username for accessing the SMB share. For example, `Administrator` or `DOMAIN\username`
+* *Username*: Username for accessing the SMB share, for example, `Administrator` or `DOMAIN\username`
 * *Password*: Password for accessing the SMB share
 
 . Choose one of the following options for validating CA certificates:
