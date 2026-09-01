@@ -9,29 +9,41 @@
 [role="_abstract"]
 When you enable Network-Bound Disk Encryption (NBDE) with Clevis, the Tang server manages the keys for Linux Unified Key Setup (LUKS)-encrypted disks during a migration. If you do not use NBDE to migrate LUKS-encrypted disks from your source environment, you can decrypt LUKS-encrypted devices either by selecting an existing Secret manifest containing the decryption passphrase or by entering passphrases manually.
 
-You can configure LUKS disk decryption either in the MTV UI or in the YAML file for your migration plan:
+You can configure LUKS disk decryption either in the {project-short} UI or in the YAML file for your migration plan:
 
-* In the MTV UI, you can select only one decryption method per migration plan, which applies to all VMs in that plan.
+* In the {project-short} UI, you can select only one decryption method per migration plan, which applies to all VMs in that plan.
 * In the YAML file for your migration plan, you can combine different decryption methods and apply them to selected VMs in the same plan.
 
 .Prerequisites
+
+For NBDE with Clevis:
+
 * The Tang server is accessible from your OpenShift cluster and from the migration network.
 * You have a LUKS key slot bound to the Tang server policy.
 +
-NOTE: For MTV to access the keys from the Tang server, the keys must be on a different subnet range than a user-defined network (UDN).
+NOTE: For {project-short} to access the keys from the Tang server, the keys must be on a different subnet range than a user-defined network (UDN).
+
+For Secret manifest or manual passphrase:
+
+* You have the LUKS decryption passphrase available.
 
 .Procedure
 . Configure disk decryption in the {project-short} UI.
 .. In the Create migration plan wizard, navigate to *Other settings* under *Additional setup* in the left navigation pane.
-.. Select *Use NBDE/Clevis*. 
+.. Select the decryption method for LUKS-encrypted disks:
 +
-If you are not using NBDE with Clevis, add passphrases for LUKS-encrypted devices or select a Secret manifest so the migration plan can decrypt the disks during a migration.
-.. Click *Next*, and verify that *Use NBDE/Clevis* shows as *Enabled* under *Other settings (optional)*.
+* For NBDE with Clevis: Select *Use NBDE/Clevis*.
+* For Secret manifest or manual passphrase: Add passphrases for LUKS-encrypted devices or select a Secret manifest.
+.. Click *Next*, and verify your selection under *Other settings (optional)*:
++
+* For NBDE with Clevis: Verify that *Use NBDE/Clevis* shows as *Enabled*.
+* For Secret manifest or manual passphrase: Verify that the Secret manifest or passphrases are listed.
 .. When you create your migration plan, click *Migration plans* in the left navigation menu, and open the *Plan details* page for your migration plan.
 .. Click the *Edit* icon for *Disk decryption* under *Plan settings*.
-.. Verify that *Use network-bound disk encryption (NBDE/Clevis)* is selected. 
+.. Verify your decryption method:
 +
-If you are not using NBDE with Clevis, verify that the selected `Secret` manifest or passphrases for LUKS-encrypted devices are added.. 
+* For NBDE with Clevis: Verify that *Use network-bound disk encryption (NBDE/Clevis)* is selected.
+* For Secret manifest or manual passphrase: Verify that the selected Secret manifest is configured or that passphrases for LUKS-encrypted devices are added. 
 
 . Configure disk decryption in the YAML file.
 .. Click *Migration plans* in the left navigation menu and open the *Plan details* page for your migration plan.
