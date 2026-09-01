@@ -26,6 +26,7 @@ NOTE: For {project-short} to access the keys from the Tang server, the keys must
 For Secret manifest or manual passphrase:
 
 * You have the LUKS decryption passphrase available.
+* Optional: If you create a `Secret` manifest to provide the decryption passphrase, the secret must have the `Opaque` type, reside in the namespace of the migration plan, and contain one passphrase per data entry. For details, see xref:proc_creating-plan-wizard-vmware_{context}[Creating a VMware vSphere migration plan by using the MTV wizard].
 
 .Procedure
 . Configure disk decryption in the {project-short} UI.
