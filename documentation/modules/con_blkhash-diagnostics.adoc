@@ -1,0 +1,32 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_data-integrity-during-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_blkhash-diagnostics_{context}"]
+= Internal disk copy diagnostics (blkhash)
+
+[role="_abstract"]
+During the disk copying phase of migration, {project-first} computes a `blkhash` checksum for internal diagnostic use. This helps Red{nbsp}Hat Support investigate cases where storage corruption is suspected during or after migration.
+
+[id="network-storage-integrity_{context}"]
+== Network and storage integrity
+
+{project-short} generally relies on the network and storage layers working correctly, and those layers detect and report uncorrectable errors. Ensure that your network and storage are properly configured, for example by using RAID and multipath.
+
+[id="blkhash-purpose_{context}"]
+== Purpose of `blkhash`
+
+{project-short} computes `blkhash` during the disk copying phase. `blkhash` is primarily an internal diagnostic tool for Red{nbsp}Hat Support. It is not a customer-operated integrity guarantee and does not replace network or storage integrity mechanisms.
+
+When data integrity issues are suspected, Red{nbsp}Hat prioritizes those issues and works with storage vendors to diagnose problems.
+
+[IMPORTANT]
+====
+`blkhash` is an internal diagnostic tool. You cannot configure, validate, or compare `blkhash` values as part of normal migration operations.
+====
+
+[role="_additional-resources"]
+.Additional resources
+* xref:con_about-data-integrity-during-migration_{context}[Data integrity during migration]
+* link:{mtv-mig}assembly_troubleshooting-migration_mtv[Troubleshooting migration]

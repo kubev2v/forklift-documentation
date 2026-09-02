@@ -1,0 +1,25 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_data-integrity-during-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_filesystem-consistency-checks_{context}"]
+= Filesystem consistency checks
+
+[role="_abstract"]
+During migration, {project-short} runs the `fsck`(filesystem check) utility to validate filesystem-level consistency across the migration boundary. It runs `fsck` before conversion starts and again after conversion completes. 
+
+[id="pre-conversion-filesystem-checks_{context}"]
+== Pre-conversion filesystem check
+
+{project-short} runs `fsck` before the start of conversion. This check validates filesystem-level consistency on the source disk image before conversion begins.
+
+[id="post-conversion-filesystem-checks_{context}"]
+== Post-conversion filesystem check
+
+{project-short} runs `fsck` after conversion completes. This check validates filesystem-level consistency on the migrated image before the virtual machine (VM) is handed off.
+
+[role="_additional-resources"]
+.Additional resources
+* xref:con_about-data-integrity-during-migration_{context}[Data integrity during migration]
+* link:{mtv-mig}assembly_understanding-mtv-migration_mtv#con_virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool]

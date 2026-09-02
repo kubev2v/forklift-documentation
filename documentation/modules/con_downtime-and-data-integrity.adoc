@@ -1,0 +1,26 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_data-integrity-during-migration.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_downtime-and-data-integrity_{context}"]
+= Minimizing downtime while preserving data integrity
+
+[role="_abstract"]
+{project-first} supports features that reduce migration cutover downtime while applying filesystem and error-handling integrity checks where the migration path supports them.
+
+[id="warm-migration-final-downtime_{context}"]
+== Warm migration
+
+{project-short} supports warm migrations, which use snapshots to migrate underlying disks while the source virtual machine (VM) remains operational. This approach significantly reduces final downtime.
+
+[id="sco-and-downtime_{context}"]
+== Storage copy offload
+
+The storage copy offload feature transfers data directly within the storage array, reducing migration time.
+
+[role="_additional-resources"]
+.Additional resources
+* xref:con_about-data-integrity-during-migration_{context}[Data integrity during migration]
+* link:{mtv-plan}assembly_cold-warm-migration_mtv[Cold and warm migration in {project-short}]
+* link:{mtv-plan}assembly_planning-migration-vmware_mtv#con_about-storage-copy-offload_vmware[Storage copy offload]
