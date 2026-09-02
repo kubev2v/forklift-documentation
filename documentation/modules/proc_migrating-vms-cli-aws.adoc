@@ -195,6 +195,60 @@ Specifies the storage class that uses the {aws} EBS CSI driver. The storage clas
 `<source_volume_type>`::
 Specifies the EBS volume type (for example, `gp2`, `gp3`, `io1`).
 
+
+. Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
++
+[source,yaml,subs="attributes+"]
+----
+$  cat << EOF | {oc} apply -f -
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Hook
+metadata:
+  name: <hook>
+  namespace: <namespace>
+spec:
+  image: quay.io/kubev2v/hook-runner
+  serviceAccount: <service_account>
+  playbook: |
+    LS0tCi0gbm...
+EOF
+----
++
+where:
+
+`<namespace>`::
+Specifies the namespace for the resource. Use +{namespace}+ for the {project-short} namespace, or specify a custom namespace if you have configured providers in a different project.
+
+
+`<service account>`::
+Specifies the {ocp} service account. This is an optional field. Use the `serviceAccount` parameter to modify any cluster resources.
+
+`playbook`::
+Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
++
+[NOTE]
+====
+You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
+====
+
+. Enter the following command to create the network attachment definition (NAD) of the transfer network used for {project-short} migrations.
++
+You use this definition to configure an IP address for the interface, either from the Dynamic Host Configuration Protocol (DHCP) or statically.
++
+Configuring the IP address enables the interface to reach the configured gateway.
++
+[source,yaml,subs="attributes+"]
+----
+$ oc edit NetworkAttachmentDefinitions <name_of_the_NAD_to_edit>
+apiVersion: k8s.cni.cncf.io/v1
+kind: NetworkAttachmentDefinition
+metadata:
+  name: <name_of_transfer_network>
+  namespace: <namespace>
+  annotations:
+    forklift.konveyor.io/route: <IP_address>
+----
+
 . Create a `Plan` manifest for the migration:
 +
 [source,yaml,subs="attributes+"]
