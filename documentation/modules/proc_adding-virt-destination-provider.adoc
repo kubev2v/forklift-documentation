@@ -32,7 +32,7 @@ You can use a Red Hat {virt} provider as both source and destination provider. Y
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page.
 ====
 +
-The default project depends on the active {project-short} project (if *All projects* is active, the default is `+{namespace}+`). Administrators can view all projects; authorized non-administrators see only their assigned projects.
+The default project depends on the active {project-short} project. If *All projects* is active, the default is +{namespace}+. Administrators can view all projects; authorized non-administrators see only their assigned projects.
 
 . Enter the provider details:
 +

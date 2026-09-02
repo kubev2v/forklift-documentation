@@ -22,7 +22,7 @@ You can add Open Virtual Appliance (OVA) files that were created by {vmw} vSpher
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page.
 ====
 +
-The default project depends on the active {project-short} project (if *All projects* is active, the default is `+{namespace}+`). Administrators can view all projects; authorized non-administrators see only their assigned projects.
+The default project depends on the active {project-short} project. If *All projects* is active, the default is +{namespace}+. Administrators can view all projects; authorized non-administrators see only their assigned projects.
 
 . Enter the provider details:
 +
