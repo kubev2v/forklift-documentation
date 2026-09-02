@@ -13,27 +13,19 @@ You can add Open Virtual Appliance (OVA) files that were created by {vmw} vSpher
 
 . Access the *Create provider* page for Open Virtual Appliance by doing one of the following:
 
-.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
-... Click *Create Provider*.
-... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
-+
-If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
-+
-If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
-... Click *Open Virtual Appliance*.
+* *From the Providers page:* In the {ocp} web console, click *Migration for Virtualization > Providers*, click *Create Provider*, select a *Project* from the list, and then click *Open Virtual Appliance*.
 
-.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
-... In the *Welcome* pane, click *Open Virtual Appliance*.
+* *From the Overview page (Administrators only):* In the {ocp} web console, click *Migration for Virtualization > Overview*, click *Open Virtual Appliance* in the *Welcome* pane, and select a *Project* from the list.
 +
-If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Open Virtual Appliance* when the *Welcome* pane opens.
-... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
+[NOTE]
+====
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page.
+====
 +
-If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
-+
-If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+The default project depends on the active {project-short} project (if *All projects* is active, the default is `+{namespace}+`). Administrators can view all projects; authorized non-administrators see only their assigned projects.
 
-. Specify the following fields:
-
+. Enter the provider details:
++
 * *Provider resource name*: Name of the source provider
 * *URL*: URL of the Network File System (NFS) file share that serves the OVA
 +

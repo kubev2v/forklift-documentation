@@ -25,31 +25,23 @@ For more information about the support scope of Red{nbsp}Hat Technology Preview 
 
 . Access the *Create provider* page for {aws} {ec2} by doing one of the following:
 
-.. In the {ocp} web console, click *Migration for Virtualization > Providers*.
-... Click *Create Provider*.
-... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
-+
-If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
-+
-If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
-... Click *Amazon {ec2}*.
+* *From the Providers page:* In the {ocp} web console, click *Migration for Virtualization > Providers*, click *Create Provider*, select a *Project* from the list, and then click *Amazon {ec2}*.
 
-.. If you have Administrator privileges, in the {ocp} web console, click *Migration for Virtualization > Overview*.
-... In the *Welcome* pane, click *Amazon {ec2}*.
+* *From the Overview page (Administrators only):* In the {ocp} web console, click *Migration for Virtualization > Overview*, click *Amazon {ec2}* in the *Welcome* pane, and select a *Project* from the list.
 +
-If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Amazon {ec2}* when the *Welcome* pane opens.
-... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
+[NOTE]
+====
+If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page.
+====
 +
-If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
-+
-If you have Administrator privileges, you can see all projects. Otherwise, you can see only the projects you are authorized to work with.
+The default project depends on the active {project-short} project (if *All projects* is active, the default is `+{namespace}+`). Administrators can view all projects; authorized non-administrators see only their assigned projects.
 
-. Specify the following fields:
+. Enter the provider details:
 +
 * *Provider resource name*: Name of the source provider.
 * *{aws} region*: The {aws} region where your {ec2} instances are located, for example, `us-east-1`. This must be the same region as your {rosa} or OSD cluster.
 +
-. Specify the provider credentials:
+. Enter the provider credentials:
 +
 * *Access key ID*: {aws} access key ID for authenticating to the {ec2} API.
 * *Secret access key*: {aws} secret access key for authenticating to the {ec2} API.
