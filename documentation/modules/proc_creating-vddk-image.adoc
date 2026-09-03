@@ -14,7 +14,7 @@ It is strongly recommended that {project-first} should be used with the {vmw} Vi
 Creating a VDDK image, although optional, is highly recommended. Using {project-short} without VDDK is not recommended and could result in significantly lower migration speeds.
 ====
 
-To make use of this feature, you download the VDDK, build a VDDK image, and push the VDDK image to your image registry.
+To make use of this feature, build a VDDK image and push the VDDK image to your image registry.
 
 The VDDK package contains symbolic links, therefore, the procedure of creating a VDDK image must be performed on a file system that preserves symbolic links (symlinks).
 
@@ -32,19 +32,6 @@ Storing the VDDK image in a public registry might violate the {vmw} license term
 
 .Procedure
 
-. Create and navigate to a temporary directory:
-+
-[source,terminal]
-----
-$ mkdir /tmp/<dir_name> && cd /tmp/<dir_name>
-----
-
-. In a browser, navigate to the link:https://developer.vmware.com/web/sdk/8.0/vddk[VMware VDDK version 8 download page].
-. Select version 8.0.1 and click *Download*.
-+
-NOTE: To migrate to {virt} 4.12, download VDDK version 7.0.3.2 from the link:https://developer.vmware.com/web/sdk/7.0/vddk[VMware VDDK version 7 download page].
-
-. Save the VDDK archive file in the temporary directory.
 . Extract the VDDK archive:
 +
 [source,terminal]
