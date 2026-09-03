@@ -20,11 +20,11 @@ Previously, the reconciler failed to re-queue the provider after Windows Remote 
 link:https://issues.redhat.com/browse/MTV-6450[MTV-6450]
 
 CSI affinity labels are copied to prime PVCs to enable co-location::
-Previosly, during PowerStore, PowerFlex, or NetApp ONTAP migrations, {project-short} omitted CSI affinity labels on intermediate `prime` PersistentVolumeClaims (PVCs). As a consequence, the Container Storage Interface (CSI) driver could not co-locate source and destination volumes. With this update, {project-short} copies CSI affinity labels to `prime` PVCs during creation. As a result, the CSI driver successfully co-locates the volumes.
+Previously, during PowerStore, PowerFlex, or NetApp ONTAP migrations, {project-short} omitted CSI affinity labels on intermediate `prime` PersistentVolumeClaims (PVCs). As a consequence, the Container Storage Interface (CSI) driver could not co-locate source and destination volumes. With this update, {project-short} copies CSI affinity labels to `prime` PVCs during creation. As a result, the CSI driver successfully co-locates the volumes.
 +
 link:https://issues.redhat.com/browse/MTV-6454[MTV-6454]
 
 Inventory database bloat and memory usage are reduced during vSphere migrations::
-Previously, migrating virtual machines (VMs) with many custom value definitions from VMware vSphere caused high memory consumption. This occurred because {project-short} copied the entire custom value definition to each VM in the inventory database. As a consequence, the inventory container ran out of memory, and migration plans failed. With this update, {project-short} stores custom value definitions in a separate database table and caches these definitions in memory. As a result, this optimization reduces database size and memory consumption, and migration plans complete successfully.
+Previously, migrating virtual machines (VMs) with many custom value definitions from {vmw} vSphere caused high memory consumption and migration plan failures. With this update, {project-short} reduces memory consumption.
 +
 link:https://issues.redhat.com/browse/MTV-6558[MTV-6558]
