@@ -33,6 +33,8 @@ include::assemblies/assembly_upgrading-uninstalling-mtv.adoc[leveloffset=+1]
 
 include::assemblies/assembly_understanding-mtv-migration.adoc[leveloffset=+1]
 
+include::assemblies/assembly_data-integrity-during-migration.adoc[leveloffset=+1]
+
 include::assemblies/assembly_troubleshooting-migration.adoc[leveloffset=+1]
 
 include::assemblies/assembly_mtv-performance-recommendations.adoc[leveloffset=+1]
