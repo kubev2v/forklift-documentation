@@ -9,6 +9,13 @@
 [role="_abstract"]
 To migrate from Microsoft Hyper-V to {virt}, verify that your environment meets the requirements and configure host connectivity and storage access. For general software requirements, see link:{mtv-plan}assembly_software-requirements-for-migration_mtv[Software requirements for migration].
 
+[IMPORTANT]
+====
+Importing VMs from Microsoft Hyper-V is a Technology Preview feature only. Technology Preview features are not supported with Red{nbsp}Hat production service level agreements (SLAs) and might not be functionally complete. Red{nbsp}Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+
+For more information about the support scope of Red{nbsp}Hat Technology Preview features, see link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope].
+====
+
 {project-short} supports Generation 1 and Generation 2 VMs and automatically detects VHD and VHDX disk formats by file extension.
 
 Limitations::

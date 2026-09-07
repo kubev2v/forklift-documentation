@@ -12,6 +12,11 @@ ifdef::context[:parent-context: {context}]
 [role="_abstract"]
 Create a Microsoft Hyper-V migration plan by setting up network maps, configuring source and destination providers with migration networks, and defining the migration plan in the {project-first} UI.
 
+[IMPORTANT]
+====
+Importing VMs from Microsoft Hyper-V is a Technology Preview feature only. Technology Preview features are not supported with Red{nbsp}Hat production service level agreements (SLAs) and might not be functionally complete. Red{nbsp}Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+====
+
 :context: hyperv
 
 include::../modules/proc_creating-form-based-network-maps-ui-hyperv.adoc[leveloffset=+1]
@@ -35,6 +40,12 @@ include::../modules/proc_selecting-migration-network-for-virt-provider.adoc[leve
 include::../modules/proc_retrieving-hyperv-ids.adoc[leveloffset=+1]
 
 include::../modules/proc_creating-plan-wizard-hyperv.adoc[leveloffset=+1]
+
+[id="additional-resources_planning-hyperv"]
+[role="_additional-resources"]
+== Additional resources
+
+* link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scope]
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
