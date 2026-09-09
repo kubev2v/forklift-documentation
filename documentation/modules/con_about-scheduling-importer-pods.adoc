@@ -10,12 +10,12 @@
 [role="_abstract"]
 {project-full} uses `virt-v2v` convertor pods, or _importer pods_, to transfer data from VMware source virtual machines (VMs) to target VMs. 
 
-By default, {virt} assigns the nodes to which these importer pods transfer data. However, for cold migrations from VMware VMs, you can schedule the destination nodes for the importer pods.
+By default, {virt} assigns the nodes to which these importer pods transfer data. However, for migrations from VMware VMs, you can schedule the destination nodes for the importer pods by using node selector configuration.
 
 [IMPORTANT]
 ====
-Scheduling importer pods is supported _only_ for cold migrations from VMware VMs. It is not supported for warm migrations from VMware or for migrations from other vendors.
+For cold migrations from VMware VMs, you can configure `nodeSelector`, `tolerations`, labels, and affinity rules for importer pods. For warm migrations from VMware VMs, you can configure only `nodeSelector` for importer pods. Scheduling importer pods is not supported for migrations from other vendors.
 ====
 
-In {project-short} 2.11, scheduling importer pods is available only for migrations from the command-line interface. You schedule the importer pods in the `Plan` CR, as described in step 8 of {mtv-mig}assembly_migrating-from-vmware_mtv#proc_migrating-vms-cli-vmware_vmware[Running a {vmw} vSphere migration from the command-line].
+Scheduling importer pods is available only for migrations from the command-line interface. You schedule the importer pods in the `Plan` CR, as described in step 8 of {mtv-mig}assembly_migrating-from-vmware_mtv#proc_migrating-vms-cli-vmware_vmware[Running a {vmw} vSphere migration from the command-line].
 

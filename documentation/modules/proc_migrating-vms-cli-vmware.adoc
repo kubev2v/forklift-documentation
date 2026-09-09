@@ -472,12 +472,12 @@ To ensure proper system functionality, system-managed labels override any user-d
 +
 For more details on labels and selectors in Kubernetes, see https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#labels[Labels and Selectors].
 +
-`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` conversion pod (importer pod) for cold migrations from {vmw} providers. With this feature, you can set the `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` that control the labels, `nodeSelector`, and `Affinity` of the convertor pod.
+`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` conversion pod (importer pod) from {vmw} providers. For cold migrations, you can configure `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity`. For warm migrations, you can configure only `convertorNodeSelector`.
 +
 For more information on importer files, see {mtv-plan}assembly_planning-migration-vmware#con_about-configuring-importer-pods_vmware[About scheduling importer pods].
 
 `convertorNodeSelector`::
-Cold migrations only: Specifies the key-value pairs that must be matched for data to be transferred by the `virt-v2v` convertor pods (importer pods) to the specified target nodes. This is an optional field. With this feature, you can dedicate specific nodes for disk conversion workloads that require high I/O performance or network access to source {vmw} infrastructure.
+Specifies the key-value pairs that must be matched for data to be transferred by the `virt-v2v` convertor pods (importer pods) to the specified target nodes. This is an optional field. With this feature, you can dedicate specific nodes for disk conversion workloads that require high I/O performance or network access to source {vmw} infrastructure. Supported for both cold and warm migrations.
 +
 For more details on node selectors in Kubernetes, see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector[nodeSelector].
 
