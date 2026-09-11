@@ -26,7 +26,7 @@ For more information about network and storage maps in {project-short}, see link
 * *Source provider*: Select from the list.
 * *Target provider*: Select from the list.
 * *Source storage*: Select from the list.
-* *Target storage*: Select from the list.
+* *Target storage*: Select from the list. For migrations using NetApp Shift, select a target storage with a *NetApp Shift* annotation.
 
 . Optional: If this is a storage map for a migration using storage copy offload, specify the following offload options:
 

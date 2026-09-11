@@ -8,7 +8,7 @@
 = NetApp issues
 
 [role="_abstract"]
-These NetApp issues can cause problems for storage copy offload migrations.
+These NetApp issues can cause problems for storage copy offload  migrations.
 
 *Description*: {project-short} returns the following error:
 
