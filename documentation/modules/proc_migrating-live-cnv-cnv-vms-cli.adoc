@@ -7,7 +7,7 @@
 = Running a Red Hat {virt} live migration from the command-line
 
 [role="_abstract"]
-You can perform a live migration by using the command-line interface (CLI). The procedure for live migration is identical to the procedure for other migrations between {virt} clusters except for the addition of the `type` label in the `Plan` CR. For a live migration, the `type` label must be set to `live`.
+Perform live migration using the CLI. Live migration is identical to other {virt} migrations except you must set the `type` label to `live` in the Plan CR.
 
 .Prerequisites
 Ensure you meet the {virt} live migration prerequisites. For more information, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_provider-specific-requirements-for-migration_mtv#ref_cnv-cnv-live-prerequisites_mtv[{virt} live migration prerequisites].

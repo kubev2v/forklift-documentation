@@ -7,7 +7,7 @@
 = Adding a migration hook to a migration plan using the {ocp} web console
 
 [role="_abstract"]
-You can add a migration hook to an existing migration plan by using the {ocp} web console. For example, you can create a hook to install the `cloud-init` service on a VM and write a file before migration. You can optionally specify a service account for the hook directly in the web console.
+Add a migration hook to an existing migration plan using the {ocp} web console. Optionally specify a service account for the hook.
 
 You can run one pre-migration hook, one post-migration hook, or one of each per migration plan.
 

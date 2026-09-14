@@ -8,7 +8,7 @@
 = Migration of LUKS-encrypted disks
 
 [role="_abstract"]
-If you have virtual machines (VMs) with LUKS-encrypted disks in your source VMware VSphere environment, you can migrate them to Red Hat {virt} by enabling Network-Bound Disk Encryption (NBDE) with Clevis. Alternatively, you can manually add passwords for LUKS-encrypted devices in your migration plan. 
+Migrate VMs with LUKS-encrypted disks to {virt} by enabling Network-Bound Disk Encryption (NBDE) with Clevis or by manually adding passwords in your migration plan. 
 
 If you enable NBDE, passwords are retrieved from the Clevis server. When you manually add LUKS passwords to your migration plan, you provide the list of passwords, and you cannot use NBDE to retrieve them. The two methods for migrating LUKS-encrypted disks are incompatible. You must use either NBDE or manual LUKS passwords to migrate LUKS-encrypted disks.
 
