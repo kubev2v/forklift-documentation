@@ -4,42 +4,59 @@
 
 :_mod-docs-content-type: PROCEDURE
 [id="proc_enabling-nbde-with-clevis_{context}"]
-= Enabling Network-Bound Disk Encryption with Clevis 
+= Enabling network-bound disk encryption with Clevis 
 
 [role="_abstract"]
-When you enable Network-Bound Disk Encryption (NBDE) with Clevis, the Tang server manages the keys for Linux Unified Key Setup (LUKS)-encrypted disks during a migration. If you do not use NBDE to migrate LUKS-encrypted disks from your source environment, you can manually add passwords for LUKS-encrypted devices instead. You must use either NBDE or manual LUKS passwords to migrate LUKS-encrypted disks.
+When you enable network-bound disk encryption (NBDE) with Clevis, the Tang server manages the decryption keys during migration. If you do not use NBDE, you can decrypt Linux Unified Key Setup (LUKS) disks manually. Alternatively, you can use an existing secret.
 
-You can enable NBDE with Clevis either in the MTV UI or in the YAML file for your migration plan:
+You can configure LUKS decryption in the {project-short} user interface (UI) or in the migration plan YAML file.
 
-* In the MTV UI, you must select either NBDE with Clevis or LUKS passphrases. You can have only one encryption type, and you apply the setting to all VMs in your migration plan.
-* In the YAML file for your migration plan, you can combine encryption types and apply the setting to selected VMs in the YAML file.
+* In the UI, you can select only one decryption method per plan. This method applies to all virtual machines (VMs) in that plan.
+* In the YAML file, you can combine different decryption methods for different VMs in the same plan.
 
 .Prerequisites
+
+For NBDE with Clevis:
+
 * The Tang server is accessible from your OpenShift cluster and from the migration network.
-* You have a LUKS key slot bound to the Tang server policy.
+* You bound a LUKS key slot to the Tang server policy.
 +
-NOTE: For MTV to access the keys from the Tang server, the keys must be on a different subnet range than a user-defined network (UDN).
+[NOTE]
+====
+To access the Tang server keys, they must reside on a different subnet than a user-defined network (UDN).
+====
+
+For a `Secret` manifest or manual passphrase:
+
+* You have the LUKS decryption passphrase.
+* Optional: If you create a `Secret` manifest, it must have the `Opaque` type and reside in the plan namespace.
+* The secret must contain one passphrase per data entry. For details, see xref:proc_creating-plan-wizard-vmware_{context}[Creating a VMware vSphere migration plan by using the MTV wizard].
 
 .Procedure
-. Enable NBDE with Clevis in the MTV UI.
-.. In the Create migration plan wizard, navigate to *Other settings* under *Additional setup* in the left navigation pane.
-.. Select *Use NBDE/Clevis*. 
-+
-If you are not using NBDE with Clevis, you add passphrases for LUKS-encrypted devices so that the Tang servers can decrypt the disks during a migration.
-.. Click *Next*, and verify that *Use NBDE/Clevis* shows as *Enabled* under *Other settings (optional)*.
-.. When you create your migration plan, click *Migration plans* in the left navigation menu, and open the *Plan details* page for your migration plan.
-.. Click the *Edit* icon for *Disk decryption* under *Plan settings*.
-.. Verify that *Use network-bound disk encryption (NBDE/Clevis)* is selected. 
-+
-If you are not using NBDE with Clevis, verify that the passphrases for LUKS-encrypted devices are added. 
 
-. Enable NBDE with Clevis in the YAML file.
+. Configure disk decryption in the {project-short} UI.
+.. In the *Create migration plan* wizard, navigate to *Other settings* under *Additional setup* in the left navigation pane.
+.. Select the decryption method for LUKS-encrypted disks:
++
+* For NBDE with Clevis: Select *Use NBDE/Clevis*.
+* For a `Secret` manifest or manual passphrase: Add passphrases for the LUKS devices or select a `Secret` manifest.
+.. Click *Next*, and verify your selection under *Other settings (optional)*:
++
+* For NBDE with Clevis: Verify that *Use NBDE/Clevis* is *Enabled*.
+* For a `Secret` manifest or manual passphrase: Verify that the `Secret` manifest or passphrases are listed.
+.. After you create the migration plan, click *Migration plans* in the left navigation menu. Open the *Plan details* page.
+.. Click the *Edit* icon for *Disk decryption* under *Plan settings*.
+.. Verify your decryption method:
++
+* For NBDE with Clevis: Verify that *Use network-bound disk encryption (NBDE/Clevis)* is selected.
+* For a `Secret` manifest or manual passphrase: Verify that you configured the `Secret` manifest or added the passphrases. 
+
+. Configure disk decryption in the YAML file.
 .. Click *Migration plans* in the left navigation menu and open the *Plan details* page for your migration plan.
 .. Click the *YAML* tab to open the `Plan` custom resource (CR) for your migration plan.
-.. For each VM under `vms` in the YAML file, enter the encryption type. In this example, you set `nbdeClevis` as the encryption type for `vm-1`, LUKS passphrase as the encryption type for `vm-2`, and no encryption type for `vm-3`:
+.. For each VM under the `vms` field, enter the decryption method. In this example, you set `nbdeClevis` for `vm-1`, a passphrase secret for `vm-2`, and omit decryption for `vm-3`:
 +
-Example:
-+
+[source,yaml]
 ----
 vms:
   - id: vm-1
@@ -52,6 +69,12 @@ vms:
   - id: vm-3
     name: vm-3-esx8.0-rhel8.10-raid1
 ----
++
+[NOTE]
+====
+If you configure both `nbdeClevis` and `luks` for the same VM, {project-short} uses `nbdeClevis` and ignores the `luks` setting.
+====
 
 .Troubleshooting
-* For information about LUKS or Clevis configuration on the source VM, see link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/security_hardening/configuring-automated-unlocking-of-encrypted-volumes-by-using-policy-based-decryption[Configuring automated unlocking of encrypted volumes by using policy-based decryption] in the RHEL _Security hardening_ guide.
+
+* For information about configuring LUKS or Clevis on the source VM, see the RHEL _Security hardening_ guide. See link:https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/security_hardening/configuring-automated-unlocking-of-encrypted-volumes-by-using-policy-based-decryption[Configuring automated unlocking of encrypted volumes by using policy-based decryption].
