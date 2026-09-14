@@ -7,7 +7,7 @@
 = Configuring VMware migration plan settings
 
 [role="_abstract"]
-Configure advanced migration plan settings on the *Plan details* page. These settings do not appear in the wizard but can affect your migration.
+After you create a migration plan by using the {project-full} wizard, configure advanced migration plan settings on the *Plan details* page. These settings do not appear in the wizard but can affect your migration.
 
 .Prerequisites
 

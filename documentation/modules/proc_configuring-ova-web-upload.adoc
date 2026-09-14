@@ -7,7 +7,7 @@
 = Configuring OVA file upload by web browser
 
 [role="_abstract"]
-Configure Open Virtual Appliance (OVA) file upload to enable web browser uploads directly to an NFS share. Enable OVA management in the ForkliftController CR and then enable uploads for each provider.
+Configure Open Virtual Appliance (OVA) file upload to enable web browser uploads directly to an NFS share. Enable OVA management in the ForkliftController CR and then enable uploads for each provider in the {project-short} UI.
 
 .Prerequisites
 

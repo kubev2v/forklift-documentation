@@ -7,7 +7,7 @@
 = Creating ownerless network maps by using YAML or JSON definitions in the {project-short} UI
 
 [role="_abstract"]
-Add ownerless network maps using YAML or JSON definitions to map source networks to {virt} networks. Then add these maps to a migration plan using the wizard.
+Add ownerless network maps by using YAML or JSON definitions to map source networks to {virt} networks. Then add these maps to a migration plan using the wizard.
 
 For more information about network and storage maps in {project-short}, see link:{mtv-plan}assembly_mapping-networks-storage_mtv[Mapping networks and storage in migration plans].
 

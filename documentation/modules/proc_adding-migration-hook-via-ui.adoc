@@ -7,7 +7,7 @@
 = Adding a migration hook to a migration plan using the {ocp} web console
 
 [role="_abstract"]
-Add a migration hook to an existing migration plan using the {ocp} web console. Optionally specify a service account for the hook.
+Add a migration hook to an existing migration plan by using the {ocp} web console. Optionally, specify a service account for the hook.
 
 You can run one pre-migration hook, one post-migration hook, or one of each per migration plan.
 

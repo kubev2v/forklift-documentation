@@ -7,7 +7,7 @@
 = Creating validation rules
 
 [role="_abstract"]
-Deploy custom validation rules using a ConfigMap custom resource to persist across pod restarts, scaling events, and upgrades. The Validation service reads rules from a ConfigMap named `forklift-validation-config` by default.
+Deploy custom validation rules using a ConfigMap custom resource to persist across pod restarts, scaling events, and upgrades. The Validation service reads rules from a ConfigMap named `forklift-validation-config`  in the +{namespace}+ namespace by default.
 
 [IMPORTANT]
 ====
