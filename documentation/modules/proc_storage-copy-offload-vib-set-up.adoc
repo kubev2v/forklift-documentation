@@ -81,5 +81,5 @@ Run `vib-installer --help` for a list of all available flags. Flags match the ma
 +
 [NOTE]
 =====
-For alternative VIB installation methods using Ansible, see link:https://github.com/kubev2v/forklift/blob/main/cmd/vsphere-xcopy-volume-populator/vmkfstools-wrapper/README.md[Esxcli plugin that wraps vmkfstools].
+For alternative VIB installation methods using Ansible, see link:https://github.com/kubev2v/forklift/blob/main/cmd/vsphere-copy-offload-populator/vmkfstools-wrapper/README.md[Esxcli plugin that wraps vmkfstools].
 =====
