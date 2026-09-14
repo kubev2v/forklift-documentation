@@ -7,7 +7,7 @@
 = {vmw} privileges
 
 [role="_abstract"]
-Configure user permissions in {vmw} vSphere to allow {project-first} to access and migrate virtual machines (VMs). These permissions control what {project-first} can read, modify, and execute during the migration process. Setting up the correct privileges ensures successful migrations while maintaining security by granting only the necessary access rights.
+Configure {vmw} vSphere user permissions to allow {project-short} to access and migrate VMs. Privileges vary based on migration type and VM encryption status.
 
 The required privileges vary based on migration type (cold or warm) and VM characteristics (encrypted or unencrypted). All migrations require datastore access and session validation. Warm migrations require additional snapshot and guest operating system management privileges. Encrypted VMs require cryptographic privileges.
 
