@@ -1,0 +1,28 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Planning_your_migration/assemblies/assembly_planning-migration-vmware.adoc
+
+:_mod-docs-content-type: CONCEPT
+[id="con_sco-warm-migration-performance_{context}"]
+= Disk write activity and warm migration performance for storage copy offload
+
+[role="_abstract"]
+Evaluate whether warm migration with storage copy offload reduces final switchover downtime compared to cold migration. To do this, measure the disk write rate of your virtual machines before migrating.
+
+During a warm migration, {project-short} takes periodic Changed Block Tracking (CBT) snapshots while the virtual machine (VM) continues to run. Each snapshot captures the blocks that changed since the previous snapshot. When the disk write rate is high, the resulting change sets are larger. Larger change sets increase the time required to copy each delta.
+
+Warm migration might take longer overall than cold migration while still providing the intended downtime reduction. Evaluate the final switchover downtime against the cold-migration baseline as your primary decision metric. You can evaluate the total elapsed migration time as a secondary metric. If copying the final change set takes longer than a cold migration, warm migration provides no downtime advantage.
+
+The impact of disk write rates on downtime can vary significantly. The following examples illustrate how disk write rates impact downtime:
+
+* A VM writing at 50 kilobytes per second produces minimal change sets. These change sets add little to the switchover downtime.
+* A VM writing at 5 megabytes per second accumulates large change sets. This data volume can eliminate the expected downtime savings.
+
+[NOTE]
+====
+High disk write activity can reduce or eliminate the expected downtime benefit of warm migration. Within your tested workload range, the migration might complete correctly without reducing downtime.
+====
+
+Before you migrate VMs in a production environment, measure the disk write rate of your storage array. This measurement helps you determine if warm migration provides a downtime advantage over cold migration.
+
+You can evaluate your storage array performance by testing a representative VM with a disk stress tool at varied write speeds. Compare the final switchover downtime against a cold migration to determine the disk write rate threshold. At this threshold, warm migration loses its downtime advantage. Use this threshold to choose between warm and cold migrations for your production VMs.
