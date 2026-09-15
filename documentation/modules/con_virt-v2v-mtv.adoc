@@ -7,6 +7,6 @@
 = How MTV uses the virt-v2v tool
 
 [role="_abstract"]
-The {project-first} uses the `virt-v2v` tool to convert the disk image of a virtual machine (VM) into a format compatible with {virt}. The tool makes migrations easier because it automatically performs the tasks needed to make your VMs work with {virt}. For example, enabling paravirtualized VirtIO drivers in the converted VM, if possible, and installing the QEMU guest agent.
+{project-short} uses the `virt-v2v` tool to convert VM disk images to a format compatible with {virt}. The tool automatically enables VirtIO drivers and installs the QEMU guest agent.
 
 `virt-v2v` is included in Red Hat Enterprise Linux (RHEL) versions 7 and later.

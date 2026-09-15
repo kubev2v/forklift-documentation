@@ -7,7 +7,7 @@
 = Performance metrics
 
 [role="_abstract"]
-{project-short} provides performance metrics to help you make informed decisions about system configuration and performance tuning. Some metrics, such as network and storage throughput, are displayed in the {project-short} user interface during active migrations. All metrics are available for local monitoring and alerts, for example, in a custom dashboard.
+{project-short} provides performance metrics for system configuration and tuning. Network and storage throughput metrics are displayed during active migrations. All metrics are available for local monitoring and alerts.
 
 [IMPORTANT]
 ====
