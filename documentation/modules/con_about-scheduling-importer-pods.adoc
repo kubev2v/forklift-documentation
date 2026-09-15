@@ -17,5 +17,5 @@ By default, {virt} assigns the nodes to which these importer pods transfer data.
 Scheduling importer pods is supported _only_ for cold migrations from VMware VMs. It is not supported for warm migrations from VMware or for migrations from other vendors.
 ====
 
-In {project-short} 2.11, scheduling importer pods is available only for migrations from the command-line interface. You schedule the importer pods in the `Plan` CR, as described in step 8 of {mtv-mig}assembly_migrating-from-vmware_mtv#proc_migrating-vms-cli-vmware_vmware[Running a {vmw} vSphere migration from the command-line].
+In {project-short} 2.11, scheduling importer pods is available only for migrations from the command-line interface. You schedule the importer pods in the `Plan` CR, as described in step 8 of xref:proc_migrating-vms-cli-vmware_vmware[Running a {vmw} vSphere migration from the command-line].
 
