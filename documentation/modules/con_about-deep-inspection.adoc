@@ -78,6 +78,6 @@ Use Deep Inspection for:
 
 [role="_additional-resources"]
 .Additional resources
-* link:../doc-Migrating_your_virtual_machines/master.html#proc_inspecting-vms-ui_vmware[Inspecting VMs in the MTV UI]
-* link:../doc-Migrating_your_virtual_machines/master.html#proc_inspecting-vms-cli_vmware[Inspecting VMs by using the command line interface]
+* link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.12/html/migrating_your_virtual_machines_to_red_hat_openshift_virtualization/assembly_migrating-from-vmware_mtv#proc_inspecting-vms-ui_vmware[Inspecting VMs in the MTV UI]
+* link:{mtv-mig}assembly_migrating-from-vmware_mtv#proc_inspecting-vms-cli_vmware[Inspecting VMs by using the command line interface]
 * link:https://access.redhat.com/support/offerings/techpreview/[Red Hat Technology Preview Features Support Scope]
